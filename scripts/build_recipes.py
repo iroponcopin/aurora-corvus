@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from site_common import ROOT, esc, page, write_page, load_bundle, available_langs  # noqa: E402
+from site_common import ROOT, esc, page, write_page, load_bundle, available_langs, asset_root_prefix  # noqa: E402
 
 
 def build_lang(lang):
@@ -67,7 +67,7 @@ def build_lang(lang):
         active="recipes",
         body=body,
         depth=1,
-        extra_head='<script defer src="../assets/js/recipes.js"></script>\n',
+        extra_head=f'<script defer src="{asset_root_prefix(1, lang)}assets/js/recipes.js"></script>\n',
     )
     write_page(lang, "recipes/", html)
 

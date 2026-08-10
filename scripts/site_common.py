@@ -117,6 +117,17 @@ def _prefix(levels: int) -> str:
     return "../" * levels if levels else "./"
 
 
+def asset_root_prefix(depth: int, lang: str) -> str:
+    """Public helper for build scripts that need to reference assets/data
+    from inside `extra_head` (e.g. a page-specific <script src>) -- must use
+    this rather than a hardcoded "../", since non-ja languages sit one
+    directory deeper than ja. Mirrors page()'s own root_prefix computation
+    exactly; see the recipes.js/changelog.js 404 this fixed (§ commit
+    history) for what goes wrong if a build script hardcodes the prefix
+    instead of calling this."""
+    return _prefix(_levels_to_root(depth, lang))
+
+
 def _nav_html(bundle: dict, active: str, lang_prefix: str) -> str:
     items = []
     for key, slug in NAV_SECTIONS:
