@@ -621,14 +621,13 @@
         "Se redibujaron los iconos de los 113 vehículos, los 35 trenes y 3 armas.",
         "Se eliminó el límite de saldo en el banco (ATM), que antes era de 100 000; ahora se puede ahorrar sin límite.",
         "Se añadió una receta para convertir el bloque de amatista de nuevo en fragmentos de amatista.",
-        "Se activaron los cambios que multiplican por 5 el límite natural de aparición de mobs hostiles y que amplían mucho el nivel máximo de encantamiento (normalmente 30). Ambos pertenecen al MOD de Supervivencia."
+        "Se activó el cambio que amplía mucho el nivel máximo de encantamiento (normalmente 30). Pertenece al MOD de Supervivencia."
       ],
       "balance_changes": [
         "Arma láser: daño 160→200, cadencia 6→10 disparos/s, capacidad de cargador 100→200.",
         "Taladro: velocidad de minado 12,0→24,0, durabilidad 2048→10 240.",
         "Se amplió mucho el límite de población del Reino del Cielo y la Ciudad Ángel (por ejemplo, mercaderes del reino 16→48, habitantes 64→192).",
-        "La resolución predeterminada de la imagen de la cámara de seguridad cambió de 192 a 768.",
-        "El límite natural de aparición de mobs hostiles se multiplicó por 5. Pero en este punto había un error: debía aplicarse solo al mundo normal, y por error también se aplicaba al Nether y al End con el mismo multiplicador (se corregirá en una actualización posterior)."
+        "La resolución predeterminada de la imagen de la cámara de seguridad cambió de 192 a 768."
       ],
       "warnings": [
         "En el MOD de armas de fuego (sorakaze_guns) y el MOD Cielo (sorakaze_sky), si no eliminas `config/sorakaze_guns.json` y `config/sorakaze_sky.json` después de actualizar, no se aplicarán los cambios numéricos anteriores.",
@@ -677,7 +676,6 @@
         "Minigún: daño reducido en un 75 %.",
         "Rifle de asalto: daño aumentado un 25 %. La eficiencia de daño medida, en daño por segundo, queda así: rifle de asalto 3750 > arma láser 2000 > minigún 250.",
         "El Recolector Universal (herramienta de minado dropeada por un jefe) pasó de tener durabilidad a romperse tras usarse 5 veces. Ya no se le puede aplicar Reparación ni Irrompibilidad en el yunque, pero sí se le puede seguir aplicando velocidad de minado, Fortuna y Toque de Seda.",
-        "El multiplicador del límite natural de aparición de mobs hostiles subió de ×5 a ×15. Además, se corrigió el error por el que se aplicaba por error también en el Nether y el End, y ahora queda limitado al mundo normal.",
         "El valor predeterminado del nivel máximo de encantamiento se ajustó de 255 a 20 (el límite configurable también se redujo de 255 a 32). Ya no aparecerán valores anómalos como el «nivel de encantamiento 255» reportado por algunos jugadores."
       ],
       "warnings": [
@@ -942,9 +940,7 @@
         "Se devolvió el aspecto del Muñeco de Fuegos Artificiales a su forma plana de la v1.8.3, dejando atrás la figura tridimensional de «peluche» añadida en la v1.8.4 (a petición del propietario). El límite de usos y demás funciones no han cambiado.",
         "El límite de aparición de mobs hostiles del mundo normal pasó de «15 veces el de vanilla» (equivalente a unos 1050) a un número real de 150. No afecta al Nether, al End ni al Cielo (se corrigió a la vez el error por el que antes se aplicaba por error a todas las dimensiones)."
       ],
-      "balance_changes": [
-        "Límite de aparición de mobs hostiles (solo mundo normal): 15 veces el de vanilla (equivalente a unos 1050) → número real de 150"
-      ],
+      "balance_changes": [],
       "warnings": [
         "No hace falta eliminar ni reescribir la configuración. El valor del límite de aparición se actualiza automáticamente al nuevo valor por defecto."
       ],
@@ -974,6 +970,53 @@
         "La pantalla de receta 3×3 de la app «Consultas» no puede recibir del servidor la información de en qué casilla va cada ingrediente, así que se muestra de forma simplificada, colocando los materiales en orden desde el principio (el tipo y la cantidad de los materiales sí son correctos).",
         "Ni los nuevos iconos de las ojivas, ni la traducción del panel de control, ni las nuevas pantallas de las apps del teléfono se han comprobado todavía en la pantalla real del juego.",
         "Sigue sin resolverse (desde una versión anterior) que 16 de los 17 colores de la ventana de vidrio reforzado no tengan nombre."
+      ]
+    },
+    {
+      "release": "v1.8.7",
+      "date": "2026-08-10",
+      "title": "Se refuerzan el lanzacohetes y la ojiva nuclear, y se renuevan los efectos de sonido de las armas",
+      "summary": "Se multiplicó por 8 la potencia del lanzacohetes, y también se amplió mucho el radio de explosión de la ojiva nuclear. Además, se mejoró con nuevos efectos de sonido la sensación de uso de la mira y el bloqueo de objetivo, que hasta ahora funcionaban bien pero eran difíciles de notar. La ojiva nuclear también se puede usar ahora como el nuevo combustible de gama alta del MOD de Electricidad.",
+      "highlights": [
+        "El daño del lanzacohetes pasó de 40 a 320 (×8).",
+        "El daño directo de la ojiva nuclear se reforzó a 320×70 = 22 400. También se amplió mucho el radio de explosión, pero por diseño de seguridad no destruye la roca base ni el terreno no cargado.",
+        "Se rehicieron los efectos de sonido de cuando mantienes la mira levantada y del momento en que se consigue el bloqueo de objetivo. Antes seguían siendo los sonidos genéricos de interfaz de vanilla, así que aunque la función en sí funcionaba bien, era difícil notarla.",
+        "La ojiva nuclear ya se puede usar como combustible en el MOD de Electricidad. Es una fuente de energía con unas 100 veces la potencia y 144 veces el tiempo de combustión (alrededor de 1 hora) de un cubo de lava de vanilla."
+      ],
+      "balance_changes": [
+        "Potencia del lanzacohetes: 40 → 320 (×8)",
+        "Daño directo de la ojiva nuclear: 22 400 (320×70)"
+      ],
+      "warnings": [
+        "No hace falta eliminar la configuración. El valor por defecto se actualiza automáticamente.",
+        "El lanzamisiles en sí todavía no tiene ningún mecanismo para protegerse de su propia explosión. Como el radio de explosión de la ojiva nuclear (64 bloques) es mayor que el alcance mínimo del lanzador (24 bloques), si apuntas a un objetivo cercano puede que el propio lanzador acabe destruido."
+      ],
+      "known_limitations": [
+        "El aspecto de la explosión nuclear (partículas, temblor de pantalla) y los nuevos efectos de sonido todavía no se han comprobado en el juego real.",
+        "Tampoco se ha verificado el impacto en los FPS ni las bajadas de rendimiento al producirse una gran explosión nuclear con jugadores presentes."
+      ]
+    },
+    {
+      "release": "v1.8.8",
+      "date": "2026-08-10",
+      "title": "Se refuerza aún más la ojiva nuclear y se añade la batería al MOD de Electricidad",
+      "summary": "Se reforzó aún más el daño directo de la ojiva nuclear, multiplicándolo por 3, y el sonido de impacto ahora se oye desde mucho más lejos. Se añadió al MOD de Electricidad el nuevo bloque «batería», y cambió la forma en que se recibe la electricidad de los generadores.",
+      "highlights": [
+        "El daño directo de la ojiva nuclear pasó de 22 400 a 67 200 (×3).",
+        "El sonido de impacto ahora se oye hasta un radio de 20 000 bloques. El sonido de disparo también se volvió más atronador.",
+        "El lanzamisiles aumentó de tamaño, y se añadió un efecto de destrucción que se expande por etapas junto con un destello de luz al impactar la ojiva nuclear.",
+        "Se añadió al MOD de Electricidad el nuevo bloque «batería». Ahora la electricidad del generador y la central nuclear se acumula primero en la batería, y cuando se llena, produce una celda de energía. Esa celda de energía se saca y se introduce en la ranura de combustible del panel de disyuntores para usarla."
+      ],
+      "balance_changes": [
+        "Daño directo de la ojiva nuclear: 22 400 → 67 200 (×3)"
+      ],
+      "warnings": [
+        "[Importante] El generador y la central nuclear ya no pueden llevar electricidad al panel de disyuntores si no pasa antes por la batería. El cableado anterior de «generador → cable → panel de disyuntores» por sí solo ya no basta para que llegue la electricidad. La energía solar, eólica e hidráulica siguen llegando directamente, como hasta ahora.",
+        "No hace falta eliminar la configuración."
+      ],
+      "known_limitations": [
+        "2 de las pruebas relacionadas con la ojiva nuclear no se han podido confirmar del todo al ejecutarse con el entorno de desarrollo muy cargado (la propia detonación y destrucción de la ojiva nuclear sí se ha comprobado con pruebas de detonación en un servidor real).",
+        "Tampoco se ha comprobado el aspecto de la animación de apertura y cierre de la tapa de la batería."
       ]
     }
   ],

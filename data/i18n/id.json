@@ -621,14 +621,13 @@
         "Ikon item untuk 113 kendaraan, 35 kereta, dan 3 senjata digambar ulang.",
         "Batas atas saldo tabungan bank (ATM) yang sebelumnya 100.000 dihapus, kini bisa menabung tanpa batas.",
         "Menambahkan resep untuk mengubah kembali Blok Ametis menjadi Pecahan Ametis.",
-        "Perubahan yang menaikkan batas spawn alami mob musuh menjadi 5 kali lipat standar, serta batas level enchant (biasanya 30) dinaikkan cukup besar, kini diaktifkan (keduanya di MOD Survival)."
+        "Perubahan yang menaikkan batas level enchant (biasanya 30) secara signifikan kini diaktifkan (MOD Survival)."
       ],
       "balance_changes": [
         "Laser Gun: Damage 160→200, laju tembak 6 tembakan/detik→10 tembakan/detik, kapasitas magasin 100→200 peluru.",
         "Bor: kecepatan menambang 12,0→24,0, daya tahan 2048→10240.",
         "Batas populasi Kerajaan Langit dan Kota Malaikat dinaikkan besar-besaran (contoh: pedagang kerajaan 16→48 orang, warga 64→192 orang).",
-        "Nilai awal resolusi video Kamera CCTV berubah dari 192→768.",
-        "Batas spawn alami mob musuh menjadi 5 kali lipat standar. Namun pada titik ini seharusnya hanya berlaku untuk Overworld, tetapi ada bug di mana kelipatan yang sama secara tidak sengaja juga berlaku di Nether dan End (direncanakan diperbaiki di update mendatang)."
+        "Nilai awal resolusi video Kamera CCTV berubah dari 192→768."
       ],
       "warnings": [
         "MOD Senjata Api (sorakaze_guns) dan MOD Langit (sorakaze_sky) memerlukan penghapusan `config/sorakaze_guns.json` dan `config/sorakaze_sky.json` setelah update, jika tidak, perubahan angka di atas tidak akan diterapkan.",
@@ -671,13 +670,13 @@
         "Memperbaiki bug di mana saat duduk di kursi masinis/penumpang kereta (seluruh 8 jenis), pandangan hanya terisi dinding di bawah jendela dan luar hampir tidak terlihat. Kini pandangan ke depan dan samping terlihat dengan benar.",
         "Memperbaiki bug di negara kota \"Singapura\" di langit di mana bangunan sama sekali tidak tergenerasi, hotel yang sama dibangun berulang kali, atau pohon dan desa tertinggal melayang di udara. Namun perbaikan ini hanya berlaku untuk area yang baru tergenerasi setelah update. Untuk medan yang sudah rusak dan tergenerasi sebelumnya, disertakan alat pemulihan khusus admin untuk membangun ulang hanya area yang terdampak.",
         "MOD Bos kini memiliki item pengaturan config yang bisa disesuaikan terkait kemunculan Plague Doctor.",
-        "Kekuatan serangan napas Wyvern menjadi setengahnya."
+        "Kekuatan serangan napas Wyvern menjadi setengahnya.",
+        "Memperbaiki bug di mana batas spawn alami mob musuh secara keliru juga berlaku di Nether dan End, kini terbatas hanya berlaku di Overworld (MOD Survival)."
       ],
       "balance_changes": [
         "Damage Minigun berkurang 75%.",
         "Damage Assault Rifle naik 25%. Efisiensi damage terukur per detik: Assault Rifle 3750 > Laser Gun 2000 > Minigun 250.",
         "Alat Panen Serbaguna (alat tambang drop bos) diubah dari sistem daya tahan menjadi sistem hitungan pemakaian, yaitu \"rusak setelah 5 kali pakai\". Enchant Mending dan Unbreaking di anvil sudah tidak bisa lagi diterapkan, tetapi Efficiency, Fortune, dan Silk Touch masih bisa diterapkan.",
-        "Kelipatan batas spawn alami mob musuh dinaikkan dari 5 kali menjadi 15 kali. Sekaligus memperbaiki bug di mana kelipatan ini secara tidak sengaja juga berlaku di Nether dan End, kini hanya berlaku di Overworld.",
         "Nilai awal batas level enchant disesuaikan dari 255→20 (batas yang bisa diatur juga diperkecil dari 255→32). Angka aneh seperti \"level enchant 255\" yang dilaporkan sejumlah pemain tidak akan muncul lagi."
       ],
       "warnings": [
@@ -942,9 +941,7 @@
         "Tampilan Boneka Kembang Api dikembalikan dari sosok 'boneka mainan' tiga dimensi yang ditambahkan di v1.8.4 menjadi gambar datar seperti sebelum v1.8.3 (sesuai permintaan pemilik proyek). Fitur seperti batas pemakaian tidak berubah.",
         "Batas spawn mob musuh di Overworld diubah dari 'kelipatan 15 vanilla' (setara sekitar 1050 ekor) menjadi angka pasti 150 ekor. Tidak berdampak pada Nether, End, atau Langit (sekaligus memperbaiki bug sebelumnya di mana kelipatan ini secara keliru berlaku di semua dimensi)."
       ],
-      "balance_changes": [
-        "Batas spawn mob musuh (hanya Overworld): kelipatan 15 vanilla (setara sekitar 1050 ekor) → angka pasti 150 ekor"
-      ],
+      "balance_changes": [],
       "warnings": [
         "Tidak perlu menghapus atau mengubah config. Angka batas spawn akan otomatis diperbarui ke nilai bawaan yang baru."
       ],
@@ -974,6 +971,53 @@
         "Layar resep 3×3 pada aplikasi 'Cari Info' menampilkan tata letak sederhana yang mengisi bahan secara berurutan dari awal, karena informasi penempatan bahan di petak mana tidak bisa diterima dari server (jenis dan jumlah bahan itu sendiri tetap benar).",
         "Ikon baru hulu ledak, terjemahan panel kontrol, dan tampilan layar baru aplikasi ponsel semuanya belum dikonfirmasi di layar permainan sungguhan.",
         "16 dari 17 warna Panel Kaca Diperkuat masih belum memiliki nama (sejak versi sebelumnya)."
+      ]
+    },
+    {
+      "release": "v1.8.7",
+      "date": "2026-08-10",
+      "title": "Peluncur Roket dan Hulu Ledak Nuklir Diperkuat, Efek Suara Senjata Diperbarui",
+      "summary": "Kekuatan Peluncur Roket dinaikkan menjadi 8 kali lipat, dan jangkauan ledakan Hulu Ledak Nuklir juga diperluas secara besar-besaran. Selain itu, rasa penggunaan scope dan lock-on yang sebenarnya sudah berfungsi dengan benar tetapi sulit disadari kini diperjelas dengan efek suara baru. Hulu Ledak Nuklir kini juga bisa digunakan sebagai bahan bakar kelas tertinggi yang baru untuk MOD Listrik.",
+      "highlights": [
+        "Damage Peluncur Roket naik dari 40→320 (8 kali lipat).",
+        "Damage tembakan langsung Hulu Ledak Nuklir diperkuat menjadi 320×70=22.400. Jangkauan ledakannya juga diperluas secara besar-besaran, tetapi dirancang aman sehingga tidak merusak bedrock atau medan yang belum dimuat.",
+        "Efek suara saat membidik dengan scope dan saat lock-on berhasil dibuat ulang dari awal. Sebelumnya masih menggunakan suara UI umum bawaan vanilla, sehingga meski fiturnya sendiri sudah berfungsi normal, tetap sulit disadari.",
+        "Hulu Ledak Nuklir kini bisa digunakan sebagai bahan bakar untuk MOD Listrik. Sumber energi ini memiliki output sekitar 100 kali lipat dan waktu pembakaran 144 kali lipat (sekitar 1 jam) dibandingkan Ember Lava vanilla."
+      ],
+      "balance_changes": [
+        "Kekuatan Peluncur Roket: 40 → 320 (8 kali lipat)",
+        "Damage tembakan langsung Hulu Ledak Nuklir: 22.400 (320×70)"
+      ],
+      "warnings": [
+        "Tidak perlu menghapus config. Nilai bawaan akan diperbarui secara otomatis.",
+        "Peluncur Misil sendiri belum memiliki mekanisme untuk melindungi diri dari ledakannya sendiri. Karena radius ledakan Hulu Ledak Nuklir (64 blok) lebih besar daripada jarak tembak minimum Peluncur Misil (24 blok), membidik target yang terlalu dekat bisa menghancurkan Peluncur Misil itu sendiri."
+      ],
+      "known_limitations": [
+        "Tampilan ledakan nuklir (partikel, guncangan layar) dan efek suara baru masih belum dikonfirmasi dalam permainan sungguhan.",
+        "FPS dan penurunan performa saat terjadi ledakan nuklir skala besar dengan pemain di sekitarnya belum diuji."
+      ]
+    },
+    {
+      "release": "v1.8.8",
+      "date": "2026-08-10",
+      "title": "Hulu Ledak Nuklir Diperkuat Lagi, Baterai Ditambahkan ke MOD Listrik",
+      "summary": "Damage tembakan langsung Hulu Ledak Nuklir diperkuat lagi menjadi 3 kali lipat, dan suara ledakan saat mengenai sasaran kini terdengar hingga jarak yang lebih jauh. Blok baru \"Baterai\" ditambahkan ke MOD Listrik, dan cara generator mengirimkan listriknya pun berubah.",
+      "highlights": [
+        "Damage tembakan langsung Hulu Ledak Nuklir naik dari 22.400→67.200 (3 kali lipat).",
+        "Suara ledakan saat mengenai sasaran kini terdengar hingga radius 20.000 blok. Suara saat ditembakkan juga dibuat lebih menggelegar.",
+        "Peluncur Misil diperbesar, dan ditambahkan efek kilatan cahaya serta kehancuran yang menyebar secara bertahap saat Hulu Ledak Nuklir mengenai sasaran.",
+        "Menambahkan blok baru \"Baterai\" ke MOD Listrik. Listrik dari Generator dan Pembangkit Nuklir kini terlebih dahulu disimpan di Baterai, dan setelah cukup terkumpul akan menghasilkan Sel Energi. Sel Energi yang terbentuk bisa diambil lalu dimasukkan ke slot bahan bakar Panel Pemutus untuk digunakan."
+      ],
+      "balance_changes": [
+        "Damage tembakan langsung Hulu Ledak Nuklir: 22.400 → 67.200 (3 kali lipat)"
+      ],
+      "warnings": [
+        "【Penting】Generator dan Pembangkit Nuklir kini tidak bisa mengirim listrik ke Panel Pemutus tanpa melalui Baterai. Rangkaian lama \"Generator → Kabel → Panel Pemutus\" saja tidak akan lagi mengalirkan listrik. Panel Surya, Turbin Angin, dan Generator Aliran Air tetap bisa mengalir langsung seperti sebelumnya.",
+        "Tidak perlu menghapus config."
+      ],
+      "known_limitations": [
+        "2 dari sejumlah pengujian terkait Hulu Ledak Nuklir belum bisa dipastikan sepenuhnya saat dijalankan dalam kondisi beban tinggi di lingkungan pengembangan (peledakan dan kehancuran Hulu Ledak Nuklir itu sendiri sudah dikonfirmasi berfungsi lewat pengujian peledakan di server sungguhan).",
+        "Tampilan animasi buka-tutup tutup Baterai belum dikonfirmasi."
       ]
     }
   ],

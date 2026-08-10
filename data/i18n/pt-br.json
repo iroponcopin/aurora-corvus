@@ -621,14 +621,13 @@
         "Os ícones de item de 113 veículos, 35 trens e 3 armas foram redesenhados.",
         "O limite de saldo do banco (caixa eletrônico), antes de 100 mil, foi removido — agora dá para depositar sem limite.",
         "Adicionada a receita para transformar o Bloco de Ametista de volta em Fragmento de Ametista.",
-        "Foram ativadas as mudanças que multiplicam por 5 o limite de spawn natural de mobs hostis e que aumentam bastante o nível máximo de encantamento (normalmente 30) — ambas do MOD de Sobrevivência."
+        "Foi ativada a mudança que aumenta bastante o nível máximo de encantamento (normalmente 30) — do MOD de Sobrevivência."
       ],
       "balance_changes": [
         "Arma laser: dano 160 → 200, cadência de tiro 6 → 10 disparos/s, capacidade do carregador 100 → 200.",
         "Broca: velocidade de mineração 12,0 → 24,0, durabilidade 2048 → 10240.",
         "Aumentamos bastante o limite de população do Reino Celestial e da Cidade dos Anjos (por exemplo, mercadores do reino 16 → 48, moradores 64 → 192).",
-        "A resolução padrão da imagem da câmera de segurança mudou de 192 para 768.",
-        "O limite de spawn natural de mobs hostis subiu para 5× o padrão. Só que, nesta versão, existe um bug em que esse multiplicador — que deveria valer só para o Mundo Normal — acaba sendo aplicado também no Nether e no End por engano (correção prevista para uma atualização futura)."
+        "A resolução padrão da imagem da câmera de segurança mudou de 192 para 768."
       ],
       "warnings": [
         "No MOD de armas de fogo (sorakaze_guns) e no MOD Céu (sorakaze_sky), as mudanças de valores acima só fazem efeito se você apagar `config/sorakaze_guns.json` e `config/sorakaze_sky.json` depois de atualizar.",
@@ -671,13 +670,13 @@
         "Corrigimos o bug em que, ao sentar na cabine do maquinista ou nos assentos de passageiros dos 8 trens, a visão ficava presa na parede abaixo da janela, sem quase nada visível lá fora. Agora dá para ver direito para a frente e para os lados.",
         "Corrigimos os bugs da cidade-estado “Singapura”, no céu: prédios que não eram gerados de jeito nenhum, o mesmo hotel sendo construído repetidas vezes, e árvores ou vilas ficando flutuando no ar. Só que a correção vale apenas para terrenos gerados a partir de agora. Para os terrenos já gerados com defeito, incluímos uma ferramenta de recuperação para a administração recriar só a área afetada.",
         "No MOD de Chefes, os itens de configuração relacionados ao surgimento do Médico da Peste agora podem ser ajustados pela configuração.",
-        "O poder do ataque de sopro do Wyvern caiu pela metade."
+        "O poder do ataque de sopro do Wyvern caiu pela metade.",
+        "Corrigimos o bug em que o limite de spawn natural de mobs hostis era aplicado por engano também no Nether e no End: agora vale só para o Mundo Normal (MOD de Sobrevivência)."
       ],
       "balance_changes": [
         "Dano da Minigun reduzido em 75%.",
         "Dano do fuzil de assalto aumentado em 25%. Medindo de verdade, a eficiência de dano por segundo ficou assim: fuzil de assalto 3750 > arma laser 2000 > minigun 250.",
         "O Coletor Universal (ferramenta de mineração dropada por chefe) deixou de funcionar por durabilidade e passou a quebrar depois de exatamente 5 usos. Não é mais possível aplicar Reparação ou Indestrutibilidade na bigorna, mas ainda dá para aplicar velocidade de mineração, sorte e toque suave.",
-        "O multiplicador do limite de spawn natural de mobs hostis subiu de 5× para 15×. Também corrigimos o bug em que esse multiplicador era aplicado por engano no Nether e no End: agora vale só para o Mundo Normal.",
         "O valor padrão do nível máximo de encantamento foi ajustado de 255 para 20 (e o limite que pode ser configurado também caiu de 255 para 32). Isso acaba com números absurdos, como o “nível de encantamento 255” relatado por alguns jogadores."
       ],
       "warnings": [
@@ -974,6 +973,53 @@
         "A tela de receita 3×3 do app “Pesquisar” não recebe do servidor a informação de em qual espaço cada ingrediente vai, então ela mostra uma versão simplificada, preenchendo os ingredientes em sequência a partir do primeiro espaço (o tipo e a quantidade dos ingredientes em si estão corretos).",
         "Os novos ícones das ogivas, a tradução do painel de controle e as novas telas dos apps do celular ainda não foram conferidos na tela do jogo de verdade.",
         "16 das 17 cores das janelas de vidro reforçado continuam sem nome (esse problema vem de versões anteriores)."
+      ]
+    },
+    {
+      "release": "v1.8.7",
+      "date": "2026-08-10",
+      "title": "Lança-foguetes e ogiva nuclear reforçados, efeitos sonoros das armas renovados",
+      "summary": "Aumentamos o poder do lança-foguetes em 8 vezes e ampliamos bastante o raio de explosão da ogiva nuclear. Além disso, melhoramos a sensação de uso da mira e do travamento de alvo — que já funcionavam direito, mas eram difíceis de perceber — com novos efeitos sonoros. A ogiva nuclear também passou a poder ser usada como o novo combustível de mais alto nível do MOD de Energia.",
+      "highlights": [
+        "O dano do lança-foguetes subiu de 40 para 320 (8×).",
+        "O dano de impacto direto da ogiva nuclear foi reforçado para 320 × 70 = 22.400. O raio de explosão também aumentou bastante, mas o design continua seguro: bedrock e terrenos não carregados não são destruídos.",
+        "Recriamos os efeitos sonoros de quando você está segurando a mira e do momento em que o travamento de alvo é concluído. Antes, eles usavam o som genérico de interface da vanilla, então, mesmo funcionando direito, era difícil perceber que a função tinha sido ativada.",
+        "A ogiva nuclear agora pode ser usada como combustível no MOD de Energia: é uma fonte de energia com cerca de 100× o rendimento e 144× o tempo de queima (cerca de 1 hora) de um balde de lava da vanilla."
+      ],
+      "balance_changes": [
+        "Poder do lança-foguetes: 40 → 320 (8×)",
+        "Dano de impacto direto da ogiva nuclear: 22.400 (320 × 70)"
+      ],
+      "warnings": [
+        "Não é preciso apagar a configuração. Os valores padrão são atualizados automaticamente.",
+        "O lança-mísseis em si ainda não tem nenhum mecanismo de proteção contra sua própria explosão. Como o raio de explosão da ogiva nuclear (64 blocos) é maior que o alcance mínimo do lança-mísseis (24 blocos), mirar em um alvo próximo pode acabar destruindo o próprio lança-mísseis junto."
+      ],
+      "known_limitations": [
+        "A aparência da explosão nuclear (partículas, tremor de tela) e os novos efeitos sonoros ainda não foram conferidos jogando de verdade.",
+        "O FPS e a possível queda de desempenho durante uma explosão nuclear em larga escala, com jogadores por perto, ainda não foram testados."
+      ]
+    },
+    {
+      "release": "v1.8.8",
+      "date": "2026-08-10",
+      "title": "Ogiva nuclear reforçada ainda mais, bateria adicionada ao MOD de Energia",
+      "summary": "O dano de impacto direto da ogiva nuclear foi triplicado, e o som de impacto agora é ouvido a uma distância ainda maior. O MOD de Energia ganhou um novo bloco, a Bateria, mudando a forma como o gerador entrega eletricidade.",
+      "highlights": [
+        "O dano de impacto direto da ogiva nuclear subiu de 22.400 para 67.200 (3×).",
+        "O som de impacto agora é ouvido a até 20.000 blocos de distância. O som de disparo também ficou mais estrondoso.",
+        "O lança-mísseis ficou maior, e foram adicionados um efeito de destruição em estágios progressivos e um clarão no momento do impacto da ogiva nuclear.",
+        "Adicionamos um novo bloco ao MOD de Energia: a Bateria. Agora a eletricidade do gerador e da usina nuclear fica armazenada primeiro na bateria e, ao acumular o suficiente, gera uma célula de energia. Basta retirar a célula de energia criada e encaixá-la no slot de combustível do quadro de distribuição."
+      ],
+      "balance_changes": [
+        "Dano de impacto direto da ogiva nuclear: 22.400 → 67.200 (3×)"
+      ],
+      "warnings": [
+        "[Importante] O gerador e a usina nuclear agora só conseguem levar eletricidade até o quadro de distribuição passando pela bateria. A fiação antiga — só “gerador → cabo → quadro de distribuição” — deixa de funcionar sozinha. Energia solar, eólica e hidráulica continuam chegando diretamente, como antes.",
+        "Não é preciso apagar a configuração."
+      ],
+      "known_limitations": [
+        "2 dos testes relacionados à ogiva nuclear não puderam ser confirmados com o ambiente de desenvolvimento sob carga alta (a detonação e a destruição da ogiva nuclear em si já foram confirmadas em testes de detonação num servidor de verdade).",
+        "A aparência da animação de abrir e fechar a tampa da bateria ainda não foi conferida."
       ]
     }
   ],

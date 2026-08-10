@@ -612,7 +612,7 @@
       "release": "v1.7.0",
       "date": "2026-08-01",
       "title": "Mise à jour simultanée des 7 MOD et déblocage de contenu caché",
-      "summary": "Les 7 MOD s'alignent pour la première fois et sont désormais tous distribués sous le même numéro de version (v1.7.0). La correction d'un bug du recueil de recettes révèle une grande quantité de contenu jusqu'ici invisible, comme les produits alimentaires et les objets de la cité-État céleste « Singapour ». Le MOD véhicules reçoit une nouvelle vue à la première personne (vue cockpit).",
+      "summary": "Les 7 MOD s'alignent pour la première fois et sont désormais tous distribués sous le même numéro de version (v1.7.0). La correction d'un bug du recueil de recettes révèle une grande quantité de contenu jusqu'ici caché, comme les produits alimentaires et les objets de la cité-État céleste « Singapour ». Le MOD véhicules reçoit une nouvelle vue à la première personne (vue cockpit).",
       "highlights": [
         "C'est la première fois que les 7 MOD sont distribués sous un même numéro de version. Jusqu'ici, chaque MOD suivait sa propre numérotation.",
         "La correction d'un bug du recueil de recettes fait apparaître dans celui-ci les 300 produits alimentaires en vente dans la cité-État céleste « Singapour », ainsi que des objets comme le bélier de siège, le titre de propriété, le cadastre ou l'étagère à provisions. Ces objets s'achètent en boutique et ne sont pas fabricables.",
@@ -621,14 +621,13 @@
         "Les icônes de 113 véhicules, 35 trains et 3 armes ont été entièrement redessinées.",
         "Le plafond de solde de la banque (DAB), auparavant fixé à 100 000, est supprimé : il est désormais possible d'épargner sans limite.",
         "Ajout d'une recette permettant de retransformer un bloc d'améthyste en éclats d'améthyste.",
-        "Le plafond d'apparition naturelle des monstres, porté à 5 fois la valeur standard, et le relèvement important du plafond de niveau d'enchantement (30 normalement) sont désormais actifs (les deux réglages appartiennent au MOD survie)."
+        "Le relèvement important du plafond de niveau d'enchantement (30 normalement) est désormais actif (MOD survie)."
       ],
       "balance_changes": [
         "Fusil laser : dégâts 160 → 200, cadence de tir 6 → 10 coups/seconde, capacité du chargeur 100 → 200.",
         "Foreuse : vitesse de minage 12,0 → 24,0, durabilité 2048 → 10240.",
         "Fort relèvement des plafonds de population du Royaume céleste et de la cité des anges (exemple : marchands du royaume 16 → 48, habitants 64 → 192).",
-        "La résolution par défaut du flux vidéo de la caméra de sécurité passe de 192 à 768.",
-        "Le plafond d'apparition des monstres passe à 5 fois la valeur standard. À ce stade, cependant, ce multiplicatif — censé ne s'appliquer qu'au monde normal — s'applique par erreur aussi au Nether et à l'End (correction prévue lors d'une prochaine mise à jour)."
+        "La résolution par défaut du flux vidéo de la caméra de sécurité passe de 192 à 768."
       ],
       "warnings": [
         "Pour le MOD armes à feu (sorakaze_guns) et le MOD Ciel (sorakaze_sky), les changements de valeurs ci-dessus ne sont pris en compte qu'après suppression de `config/sorakaze_guns.json` et `config/sorakaze_sky.json`.",
@@ -671,13 +670,13 @@
         "Correction du problème qui, assis au poste de conduite ou sur un siège des trains (8 modèles), ne laissait voir que le mur sous la fenêtre au lieu de l'extérieur. La vue vers l'avant et sur les côtés est désormais correcte.",
         "Correction de bugs à Singapour, la cité-État céleste : des bâtiments ne se généraient pas du tout, le même hôtel se répétait plusieurs fois, ou des arbres et des villages restaient suspendus en l'air. Seules les terres nouvellement générées après ce correctif en bénéficient. Pour les zones déjà générées et abîmées, un outil de réparation dédié, limité aux zones concernées, est fourni pour les administrateurs.",
         "Le MOD boss reçoit des paramètres de config réglables concernant l'apparition du médecin de la peste.",
-        "Les dégâts du souffle de la wyverne sont réduits de moitié."
+        "Les dégâts du souffle de la wyverne sont réduits de moitié.",
+        "Correction du bug qui appliquait par erreur le plafond d'apparition naturelle des monstres au Nether et à l'End : il se limite désormais au monde normal (MOD survie)."
       ],
       "balance_changes": [
         "Dégâts du minigun réduits de 75 %.",
         "Dégâts du fusil d'assaut augmentés de 25 %. Puissance effective mesurée par seconde : fusil d'assaut 3750 > fusil laser 2000 > minigun 250.",
         "Le récolteur universel (outil de minage laissé tombé par un boss) passe d'une durabilité classique à une limite de « 5 utilisations avant de casser ». Il n'est plus possible d'y appliquer Solidité ou Raccommodage à l'enclume, mais Efficacité, Fortune et Toucher de soie restent applicables.",
-        "Le multiplicateur du plafond d'apparition naturelle des monstres passe de 5 à 15. Le bug qui l'appliquait par erreur au Nether et à l'End est corrigé : il ne s'applique plus qu'au monde normal.",
         "La valeur par défaut du plafond de niveau d'enchantement passe de 255 à 20 (le plafond réglable est lui aussi réduit, de 255 à 32). Les niveaux d'enchantement anormaux, comme le « niveau 255 » signalé par certains joueurs, ne devraient plus apparaître."
       ],
       "warnings": [
@@ -974,6 +973,53 @@
         "L'écran de recette 3×3 de l'appli « Recherche » ne peut pas recevoir du serveur l'information sur l'emplacement exact de chaque ingrédient dans la grille ; il affiche donc un rendu simplifié où les ingrédients sont rangés à la suite depuis le début (le type et la quantité des ingrédients, eux, restent corrects).",
         "Les nouvelles icônes des ogives, la traduction du panneau de contrôle et les nouveaux écrans des applications du téléphone n'ont, dans tous les cas, pas encore été vérifiés à l'écran en jeu.",
         "16 des 17 couleurs de vitre en verre renforcé restent toujours sans nom (problème hérité d'une version précédente)."
+      ]
+    },
+    {
+      "release": "v1.8.7",
+      "date": "2026-08-10",
+      "title": "Renforcement du lance-roquettes et de l'ogive nucléaire, refonte des effets sonores des armes",
+      "summary": "La puissance du lance-roquettes est multipliée par 8, et le rayon d'explosion de l'ogive nucléaire est lui aussi fortement agrandi. Par ailleurs, le ressenti de la lunette de visée et du verrouillage de cible, qui fonctionnait déjà correctement mais restait difficile à percevoir, est rendu plus clair grâce à de nouveaux effets sonores. L'ogive nucléaire peut désormais aussi servir de nouveau combustible haut de gamme pour le MOD électricité.",
+      "highlights": [
+        "Les dégâts du lance-roquettes passent de 40 à 320 (×8).",
+        "Les dégâts d'impact direct de l'ogive nucléaire sont renforcés à 320 × 70 = 22 400. Le rayon d'explosion est lui aussi fortement agrandi, mais la conception reste sûre : le bedrock et le terrain non chargé ne sont jamais détruits.",
+        "Les effets sonores joués pendant la visée à la lunette et au moment où le verrouillage de cible se déclenche ont été entièrement refaits. Auparavant, un simple son d'interface vanilla générique était utilisé, ce qui rendait la fonction difficile à remarquer alors qu'elle fonctionnait déjà correctement.",
+        "L'ogive nucléaire peut désormais servir de combustible au MOD électricité : une source d'énergie environ 100 fois plus puissante et avec un temps de combustion 144 fois plus long (environ 1 heure) qu'un seau de lave vanilla."
+      ],
+      "balance_changes": [
+        "Puissance du lance-roquettes : 40 → 320 (×8)",
+        "Dégâts d'impact direct de l'ogive nucléaire : 22 400 (320 × 70)"
+      ],
+      "warnings": [
+        "Aucune suppression de la config n'est nécessaire. La valeur par défaut est automatiquement mise à jour.",
+        "Le lance-missiles lui-même n'a encore aucun moyen de se protéger de sa propre explosion. Comme le rayon d'explosion de l'ogive nucléaire (64 blocs) dépasse la portée minimale du lance-missiles (24 blocs), viser une cible trop proche peut détruire le lance-missiles avec elle."
+      ],
+      "known_limitations": [
+        "L'apparence de l'explosion nucléaire (particules, tremblement d'écran) et les nouveaux effets sonores n'ont pas encore été vérifiés en jeu réel.",
+        "L'impact sur les FPS et les éventuels ralentissements lors d'une explosion nucléaire de grande ampleur avec un joueur présent n'ont pas été vérifiés."
+      ]
+    },
+    {
+      "release": "v1.8.8",
+      "date": "2026-08-10",
+      "title": "Nouveau renforcement de l'ogive nucléaire, ajout de la batterie au MOD électricité",
+      "summary": "Les dégâts d'impact direct de l'ogive nucléaire sont à nouveau triplés, et le son de l'impact porte désormais beaucoup plus loin. Le MOD électricité reçoit un nouveau bloc, la « batterie », qui change la façon dont l'électricité des générateurs est reçue.",
+      "highlights": [
+        "Les dégâts d'impact direct de l'ogive nucléaire passent de 22 400 à 67 200 (×3).",
+        "Le son de l'impact est désormais audible jusqu'à 20 000 blocs de distance. Le son du lancement est lui aussi devenu plus assourdissant.",
+        "Le lance-missiles est agrandi, et l'impact de l'ogive nucléaire s'accompagne désormais d'une destruction qui se propage progressivement, ainsi que d'un flash lumineux.",
+        "Ajout d'un nouveau bloc au MOD électricité : la « batterie ». L'électricité produite par les générateurs et la centrale nucléaire est désormais d'abord stockée dans la batterie, qui produit des cellules d'énergie une fois pleine. Il faut ensuite récupérer ces cellules d'énergie et les insérer dans l'emplacement de combustible du tableau électrique pour les utiliser."
+      ],
+      "balance_changes": [
+        "Dégâts d'impact direct de l'ogive nucléaire : 22 400 → 67 200 (×3)"
+      ],
+      "warnings": [
+        "[Important] Les générateurs et la centrale nucléaire ne peuvent plus fournir d'électricité au tableau électrique sans passer par une batterie. Le câblage précédent « générateur → câble → tableau électrique » seul ne suffit plus à faire arriver le courant. Le solaire, l'éolien et l'hydraulique continuent, eux, à alimenter directement comme avant.",
+        "Aucune suppression de la config n'est nécessaire."
+      ],
+      "known_limitations": [
+        "2 des tests liés à l'ogive nucléaire n'ont pas pu être vérifiés jusqu'au bout lorsque l'environnement de développement était très sollicité (le déclenchement et la destruction de l'ogive nucléaire elle-même ont bien été confirmés lors d'un test de mise à feu sur un serveur réel).",
+        "L'apparence de l'animation d'ouverture et de fermeture du couvercle de la batterie n'a pas été vérifiée."
       ]
     }
   ],

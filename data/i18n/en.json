@@ -612,7 +612,7 @@
       "release": "v1.7.0",
       "date": "2026-08-01",
       "title": "All 7 Mods Updated Together, Hidden Content Unlocked",
-      "summary": "All 7 mods fell into step for the first time, now shipping under the same version number (v1.7.0). Fixing a bug in the recipe reference sheet also brought a lot of previously hidden content to light — things like the 300 grocery items and facility items from the sky-bound city-state of \"Singapore.\" The Vehicles mod also gained a first-person (cockpit) view.",
+      "summary": "All 7 mods fell into step for the first time, now shipping under the same version number (v1.7.0). Fixing a bug in the recipe reference sheet also brought a lot of previously hidden content to light — things like the grocery items and facility items from the sky-bound city-state of \"Singapore\" that hadn't been showing up before. The Vehicles mod also gained a new first-person view (cockpit view).",
       "highlights": [
         "This is the first time all 7 mods have shipped under the same version number. Before this, each mod's version had drifted independently.",
         "Fixing a bug in the recipe reference sheet means it now shows the 300 grocery items purchasable in the sky-bound city-state of \"Singapore,\" along with items like the siege ram, property deed, real estate ledger, and grocery shelf. These are all store-bought items and can't be crafted.",
@@ -621,14 +621,13 @@
         "Redrew the item icons for all 113 vehicles, 35 train variants, and 3 guns.",
         "Removed the bank (ATM) deposit balance cap (previously 100,000) — you can now deposit without limit.",
         "Added a recipe to turn a Block of Amethyst back into Amethyst Shards.",
-        "Enabled a change raising the natural hostile mob spawn cap to 5x normal, and a change significantly raising the enchantment level cap (normally 30) — both from the Survival mod."
+        "Enabled a change significantly raising the enchantment level cap (normally 30) (Survival mod)."
       ],
       "balance_changes": [
         "Laser Gun: damage 160 → 200, fire rate 6 → 10 rounds/sec, magazine size 100 → 200 rounds.",
         "Drill: mining speed 12.0 → 24.0, durability 2,048 → 10,240.",
         "Significantly raised the population caps of the Sky Kingdom and Angel City (e.g. the Kingdom's merchants 16 → 48, citizens 64 → 192).",
-        "Security camera default video resolution changed 192 → 768.",
-        "Natural hostile mob spawn cap raised to 5x normal. However, at this point there's a bug where it was meant to apply to the Overworld only but mistakenly also applied the same multiplier to the Nether and the End (a fix is planned for a later update)."
+        "Security camera default video resolution changed 192 → 768."
       ],
       "warnings": [
         "For the Guns mod (sorakaze_guns) and Sky mod (sorakaze_sky), you must delete `config/sorakaze_guns.json` and `config/sorakaze_sky.json` after updating or the numeric changes above won't take effect.",
@@ -671,13 +670,13 @@
         "Fixed a bug where sitting in any of the train's 8 car types (driver seat or passenger seats) mostly showed the wall below the window instead of the outside. You can now properly see forward and to the sides.",
         "Fixed bugs in the sky-bound city-state of \"Singapore\" where buildings wouldn't generate at all, the same hotel would keep getting built over and over, and trees or villages would remain floating in midair. However, this only fixes newly generated land after the update. For terrain that's already generated and broken, we've included a recovery tool for admins that regenerates just the affected areas.",
         "Added config options to the Boss mod for adjusting the Plague Doctor's spawning.",
-        "Halved the Wyvern's breath attack damage."
+        "Halved the Wyvern's breath attack damage.",
+        "Fixed a bug where the natural hostile mob spawn cap was mistakenly also applying to the Nether and the End — it's now Overworld-only (Survival mod)."
       ],
       "balance_changes": [
         "Minigun damage reduced 75%.",
         "Assault Rifle damage increased 25%. Measured per-second damage output now ranks Assault Rifle 3,750 > Laser Gun 2,000 > Minigun 250.",
         "The Universal Harvester (the boss-drop mining tool) changed from a durability system to a use-count system — it breaks after 5 uses. It can no longer be given Mending or Unbreaking at an anvil, but Efficiency, Fortune, and Silk Touch can still be applied.",
-        "Raised the natural hostile mob spawn cap multiplier from 5x → 15x. Also fixed a bug where this multiplier was mistakenly also applying to the Nether and the End — it's now Overworld-only.",
         "Adjusted the default enchantment level cap from 255 → 20 (the configurable maximum also shrunk from 255 → 32). This eliminates the bizarre \"enchantment level 255\"-style numbers some players reported."
       ],
       "warnings": [
@@ -942,9 +941,7 @@
         "Reverted the Firework Doll's appearance from the 3D \"plush toy\" look added in v1.8.4 back to the flat art style it had through v1.8.3 (per the owner's request). No changes to functionality like the use-count limit.",
         "Changed the Overworld hostile mob spawn cap from the previous \"15x vanilla\" (roughly 1,050 mobs) to a flat 150 mobs. Doesn't affect the Nether, the End, or the Sky (also fixed the earlier bug where this mistakenly applied to every dimension)."
       ],
-      "balance_changes": [
-        "Hostile mob spawn cap (Overworld only): 15x vanilla (roughly 1,050 mobs) → a flat 150 mobs"
-      ],
+      "balance_changes": [],
       "warnings": [
         "No config deletion or editing needed. The spawn cap value updates to the new default automatically."
       ],
@@ -974,6 +971,53 @@
         "The \"Lookup\" app's 3×3 recipe screen can't receive grid-placement data for ingredients from the server, so it falls back to a simplified display that packs ingredients in order from the top-left (the ingredient types and quantities themselves are correct).",
         "The warheads' new icons, the control panel's translations, and the phone app's new screens are all still unconfirmed on the actual in-game screen.",
         "16 of the 17 Reinforced Glass Pane colors still don't have names set, a carryover issue from earlier versions."
+      ]
+    },
+    {
+      "release": "v1.8.7",
+      "date": "2026-08-10",
+      "title": "Rocket Launcher & Nuclear Warhead Buffed, Gun Sound Effects Overhauled",
+      "summary": "Raised the Rocket Launcher's power 8x and significantly widened the Nuclear Warhead's blast radius. Also gave the scope and lock-on — which were already working correctly but easy to miss — new sound effects that make them much easier to notice. The Nuclear Warhead can now also be used as the Power mod's new top-tier fuel.",
+      "highlights": [
+        "Rocket Launcher damage increased 40 → 320 (8x).",
+        "Nuclear Warhead direct-hit damage buffed to 320 × 70 = 22,400. Its blast radius was also significantly widened, but it's designed to be safe — it won't destroy bedrock or unloaded terrain.",
+        "Created new sound effects for while you're aiming down the scope and for the instant a lock-on completes. Previously these used vanilla's generic UI sound, so even though the features themselves worked fine, they were easy to miss.",
+        "The Nuclear Warhead can now be used as fuel for the Power mod — an energy source with roughly 100x the output and 144x the burn time (about 1 hour) of a vanilla bucket of lava."
+      ],
+      "balance_changes": [
+        "Rocket Launcher power: 40 → 320 (8x)",
+        "Nuclear Warhead direct-hit damage: 22,400 (320 × 70)"
+      ],
+      "warnings": [
+        "No config deletion needed. The defaults update automatically.",
+        "The Missile Launcher itself still has no way to protect against its own explosion. Its minimum range (24 blocks) is smaller than the Nuclear Warhead's blast radius (64 blocks), so aiming at a nearby target can destroy the launcher along with it."
+      ],
+      "known_limitations": [
+        "The look of the nuclear explosion (particles, screen shake) and the new sound effects haven't been confirmed in actual play yet.",
+        "FPS and lag during a large-scale nuclear explosion with players present haven't been verified."
+      ]
+    },
+    {
+      "release": "v1.8.8",
+      "date": "2026-08-10",
+      "title": "Nuclear Warhead Buffed Again, Battery Added to the Power Mod",
+      "summary": "Buffed the Nuclear Warhead's direct-hit damage another 3x, and its impact sound now carries much farther. The Power mod also gained a new block, the Battery, changing how generator power gets delivered.",
+      "highlights": [
+        "Nuclear Warhead direct-hit damage increased 22,400 → 67,200 (3x).",
+        "The impact sound now carries out to a 20,000-block radius. The launch sound is also much louder now.",
+        "The Missile Launcher was made larger, and a staged, spreading destruction effect plus a flash were added for Nuclear Warhead impacts.",
+        "Added a new block, the Battery, to the Power mod. Power from generators and nuclear plants is now first stored in a Battery, which produces Energy Cells once it's charged up. You take the resulting Energy Cells and plug them into a Breaker Panel's fuel slot to use them."
+      ],
+      "balance_changes": [
+        "Nuclear Warhead direct-hit damage: 22,400 → 67,200 (3x)"
+      ],
+      "warnings": [
+        "[Important] Generators and nuclear plants can no longer deliver power to a Breaker Panel without going through a Battery. Wiring them the old way — \"generator → cable → breaker panel\" — by itself no longer delivers electricity. Solar Panels, Wind Turbines, and Water Flow Generators still deliver power directly, as before.",
+        "No config deletion needed."
+      ],
+      "known_limitations": [
+        "2 of the Nuclear Warhead-related tests couldn't be fully confirmed when run under heavy load in the dev environment (the warhead's detonation and destruction themselves have been confirmed working via live detonation tests on a real server).",
+        "The look of the Battery's lid open/close animation hasn't been confirmed."
       ]
     }
   ],
