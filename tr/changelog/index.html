@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Güncelleme Geçmişi | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha (eski adıyla Sorakaze) MOD paketinin tüm güncelleme geçmişi. İlk sürümden bugüne kadarki değişiklikler ve dikkat edilmesi gerekenler bir arada.">
+<meta property="og:title" content="Güncelleme Geçmişi | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha (eski adıyla Sorakaze) MOD paketinin tüm güncelleme geçmişi. İlk sürümden bugüne kadarki değişiklikler ve dikkat edilmesi gerekenler bir arada.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/changelog.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menüyü aç">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Ana Sayfa</a></li>
+        <li><a href="../changelog/" class="active">Güncelleme Geçmişi</a></li>
+        <li><a href="../recipes/">Tarif Rehberi</a></li>
+        <li><a href="../guide/">Kurulum Rehberi</a></li>
+        <li><a href="../roadmap/">Yol Haritası</a></li>
+        <li><a href="../known-issues/">Bilinen Sorunlar</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Dil / Language">
+          🌐 <span>Türkçe</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../changelog/">日本語</a></li>
+        <li><a href="../../en/changelog/">English</a></li>
+        <li><a href="../../es/changelog/">Español</a></li>
+        <li><a href="../../fr/changelog/">Français</a></li>
+        <li><a href="../../zh/changelog/">简体中文</a></li>
+        <li><a href="../../ko/changelog/">한국어</a></li>
+        <li><a href="../../pt-br/changelog/">Português (Brasil)</a></li>
+        <li><a href="../../it/changelog/">Italiano</a></li>
+        <li><a href="../../ar/changelog/">العربية</a></li>
+        <li><a href="../../ru/changelog/">Русский</a></li>
+        <li><a href="../../id/changelog/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/changelog/">Deutsch</a></li>
+        <li><a href="../../tr/changelog/" class="active" aria-current="true">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Renk temasını değiştir" title="Renk temasını değiştir">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Güncelleme Geçmişi</span>
+  <h1>Güncelleme Geçmişi</h1>
+  <p class="lede">İlk sürümden (v1.0.0, 2026-07-15) bugüne (2026-08-09 itibarıyla, toplam 36 güncelleme) kadar yapılan tüm güncellemeler en yeniden en eskiye doğru listelenmiştir. Geliştirme sürecindeki iç test adımları gibi ayrıntılar çıkarılmış; yalnızca sunucuda gerçekten neyin değiştiği ve nelere dikkat edilmesi gerektiği özetlenmiştir.</p>
+  <p class="callout callout--info">Gösterilen hasar, hız gibi değerler MOD&#x27;un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.</p>
+</div>
+
+<div class="filter-bar" role="group">
+  <input type="search" id="changelogSearch" placeholder="MOD, sürüm veya anahtar kelimeyle ara…" aria-label="MOD, sürüm veya anahtar kelimeyle ara…">
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">MOD:</span>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">Silahlar</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">Demiryolu</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">Yapı ve Dekorasyon</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">Gökyüzü</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">Hayatta Kalma</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Araçlar</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">Elektrik</button>
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">Tür:</span>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">Yeni Özellik</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">Hata Düzeltmesi</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">Görsel Güncelleme</button>
+</div>
+
+<p id="changelogEmpty" class="empty-state" hidden>Bu koşullara uyan bir güncelleme bulunamadı.</p>
+<div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="visual-update" data-mods="guns deco">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.6</span> — Füze savaş başlığı ve cep telefonu uygulama simgeleri eklendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Görsel Güncelleme</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span></div>
+      <p>Görünüm ve bulunabilirlikle ilgili 2 düzeltme. Füze ve nükleer savaş başlığına hiç doku hazırlanmamış sorunu giderildi; özel simgeler yeni çizilerek yapılabilir hale de getirildi. Ayrıca bulunamadığı bildirilen Roketatar yaratıcılık sekmesine eklendi, görünen adı ve kontrol ekranının çevirisi de tamamlandı. Cep telefonu ve bilgisayardaki 7 uygulamaya da özel simgeler eklendi.</p>
+      <ul><li>Füze ve nükleer savaş başlığına özel 128px&#x27;lik simgeler yeni çizildi (önceden hiç resmi olmadığından, envanterde Minecraft&#x27;ın standart &quot;mor-siyah dama deseni&quot; ile görünüyordu).</li><li>Füze savaş başlığı (demir külçesi ×5 + TNT ×1 + kızıltaş bloğu ×1) ve nükleer savaş başlığı (demir bloğu ×4 + TNT ×4 + Nether yıldızı ×1) yeni olarak yapılabilir hale getirildi.</li><li>Roketatar yaratıcılık sekmesine eklendi (önceden kendisi yapılabiliyordu ama sekmede görünmediği için bulunamıyordu). Görünen ad ile hedef koordinat girişi, 9 çeşit durum gösterimi, 8 yön, güvenlik kilidi gibi kontrol paneli ekranının çevirisi (Japonca ve İngilizce toplam 54&#x27;er adet) yeni eklendi.</li><li>Cep telefonu ve bilgisayardaki 7 uygulamanın (kamera görüntüsü, mesajlar, araştır, hava durumu, hesap makinesi, telefon, fotoğraf çekme) hepsine özel simgeler yeni çizildi (önceden yalnızca renkli kareler diziliyordu). Hava durumu uygulamasındaki yağış simgesi ve büyük saat, hesap makinesi uygulamasındaki gömük LCD tarzı tasarım, telefon uygulamasındaki pusula göstergesi, kamera görüntüsü uygulamasındaki güvenlik monitörü tarzı tasarım gibi uygulamaya özgü süslemeler de eklendi.</li><li>Bir uygulama açıldığında, ekranın üst kısmında o an açık olan uygulamanın simgesi ve adının sürekli gösterilmesi sağlandı.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Füze ve nükleer savaş başlığının yapılabilir hale getirilmesi geliştirme ekibinin kararıdır (sahibinden açık bir istek değildir). Dengenin fazla güçlü veya aşırı olduğunu düşünüyorsanız yönetimle görüşün.</li><li>Bu sefer de config silme veya değiştirme gerekmiyor.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>&quot;Araştır&quot; uygulamasındaki 3×3 tarif ekranı, malzemelerin hangi hücreye konulacağı bilgisini sunucudan alamadığından, malzemeleri baştan sıraya dizen basit bir gösterim kullanıyor (malzeme türü ve miktarı doğru).</li><li>Savaş başlıklarının yeni simgeleri, kontrol panelinin çevirisi ve cep telefonu uygulamalarının yeni ekranları henüz gerçek oyun ekranında doğrulanmadı.</li><li>Güçlendirilmiş cam pencerelerin (17 renk) 16&#x27;sında hâlâ isim tanımlanmamış durumu devam ediyor (önceki sürümden beri).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.5</span> — Su borusu, Güçlendirilmiş İşaret Feneri, gaz maskesi hataları düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>v1.8.4&#x27;te bildirilen birden fazla hata düzeltildi. Su borusunun kırılamama sorunu, Güçlendirilmiş İşaret Feneri α ve β&#x27;da yetenek seçilememesi sorunu, gaz maskesinin başın üzerinde havada görünmesi sorunu çözüldü. Ayrıca düşman canlıların doğma üst sınırı yalnızca normal dünyaya doğru şekilde uygulanacak şekilde düzeltildi ve başlangıç değeri gerçek sayı olarak 150&#x27;ye ayarlandı.</p>
+      <ul><li>Su borusunun kırılamama hatası düzeltildi. Çarpışma kutusunun birimi karıştırılmış olduğundan, görünürdeki kalınlığın 1/32&#x27;si kadar aşırı küçük bir çarpışma kutusu oluşmuştu (sertlik ve alet ayarı zaten baştan beri doğruydu).</li><li>Nehre tek başına yerleştirilen su alma ağzının, su akıntısıyla sürüklenip kaybolma hatası da düzeltildi (su altında kalabilen bir blok olarak yeniden tasarlandı).</li><li>Güçlendirilmiş İşaret Feneri α ve β&#x27;da yetenek seçilememesi hatası düzeltildi. Ekran açılınca bir sonraki tick&#x27;te otomatik olarak kapanıyor ve seçilen içerik de kaydedilmiyordu (standart Güçlendirilmiş İşaret Feneri&#x27;ne etkisi yoktu).</li><li>Gaz maskesinin başın üzerinde havada görünme hatası düzeltildi. Özel bir üç boyutlu model yeni oluşturuldu ve yüze oturan bir konuma değiştirildi.</li><li>Havai Fişek Bebeği&#x27;nin görünümü, v1.8.4&#x27;te eklenen üç boyutlu &quot;peluş oyuncak&quot; halinden, v1.8.3&#x27;e kadar olan düz resim haline geri döndürüldü (sahibin isteğiyle). Kullanım sayısı sınırı gibi işlevlerde değişiklik yok.</li><li>Normal dünyadaki düşman canlı doğma üst sınırı, önceki &quot;vanilla&#x27;nın 15 katı&quot; (yaklaşık 1050 canlı değerinde) değerinden gerçek sayı olarak 150 canlıya değiştirildi. Nether, End ve Gökyüzü&#x27;nü etkilemiyor (önceden yanlışlıkla tüm boyutlara uygulanan hata da aynı anda düzeltildi).</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Düşman canlı doğma üst sınırı (yalnızca normal dünya): Vanilla&#x27;nın 15 katı (yaklaşık 1050 canlı değerinde) → gerçek sayı olarak 150 canlı</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Config silme veya değiştirme gerekmiyor. Doğma üst sınırı değeri otomatik olarak yeni başlangıç değerine güncelleniyor.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Su borusu ve gaz maskesinin yeni görünümü ile Güçlendirilmiş İşaret Feneri arayüzünün kullanım hissi gerçek oyunda henüz doğrulanmadı.</li><li>150 canlılık yeni doğma yoğunluğunun gerçekte oynanırken uygun olup olmadığı henüz test edilmedi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss deco guns power sky survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.4</span> — Yeni silahlar, cep telefonu işletim sistemi, su borusu, mevsimler ve Gökyüzü&#x27;nün genişletilmesi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>Tabanca ve hafif makineli tüfek olmak üzere 2 yeni silah, Roketatar ile füze ve nükleer savaş başlığı, cep telefonu/bilgisayar için gerçek bir işletim sistemi, su borusu, gerçekten çalışan bir asansör, ilkbahar-yaz-sonbahar-kış mevsim sistemi gibi birçok özellik toplu olarak eklendi. Aynı zamanda normal dünyada inşa edilebilen yükseklik üst sınırı artırıldı (yeraltı değişmedi) ve elektrik gerektiren ayrıştırma blokları ile huni türlerinin kapsamı büyük ölçüde daraltıldı.</p>
+      <ul><li>2 yeni silah eklendi: Tabanca (saniyede 200, şarjör 12, yarı otomatik), Hafif Makineli Tüfek (saniyede 450, şarjör 40, tam otomatik). İkisi de mevcut küçük çaplı mermiyi kullandığından yeni bir mermi türü eklenmedi.</li><li>Roketatar (sabit tip silah) ile füze ve nükleer savaş başlığı eklendi (nükleer savaş başlığının tahrip edebileceği blok sayısı sınırlı; yalnızca Roketatar&#x27;la kullanılır, elde tutularak atılamaz).</li><li>Roketatar&#x27;a 2 kat yakınlaştıran bir dürbün ve kilitlenme özelliği eklendi (1 saniye nişan aldığında kilitleniyor. Koşan bir hedefe isabet etmez).</li><li>Cep telefonu ve bilgisayara gerçek bir işletim sistemi eklendi (kamera görüntüsü, mesajlar, araştır, hava durumu, hesap makinesi, telefon, fotoğraf çekme olmak üzere 7 uygulama). Elde tutarak sağ tıkla veya H tuşuyla açılabiliyor, fotoğraf çekip mesajla gönderilebiliyor.</li><li>Su borusu eklendi (nehir veya denizden kazana ya da tarlaya su taşıyor). Gerçekten sepetin inip çıktığı hareketli bir asansör de eklendi.</li><li>Elektrik MOD&#x27;una kalın kablo (normalin 4 katı mesafeye elektrik ulaştırır), zırhlı kablo (8 katı) ve LED panel eklendi.</li><li>Cevherlerin görünümü baştan sona yenilendi. Yeni malzeme &quot;Lavanta Yeşimi&quot; (yakuttan da daha nadir), gaz maskesi, aero kalkan eklendi.</li><li>Mevsim sistemi eklendi (1 mevsim 8 gün, 1 yıl 32 gün). Yazın çölü ve kışın kar tundrası önceye göre daha zorlu hale geliyor.</li><li>Güçlendirilmiş İşaret Feneri α ve β (Boss MOD&#x27;u) yapılabilir hale geldi. Ayrıca Güçlendirilmiş İşaret Feneri&#x27;nin kendisi artık elektrik gerektirmiyor (v1.8.1&#x27;de bir kez elektrik gerektirmeye başlamıştı, bu geri alındı).</li><li>Normal dünyada inşa edilebilen yükseklik üst sınırı y=319&#x27;dan y=1023&#x27;e genişletildi (yeraltı ve dünyanın tabanı değişmedi).</li><li>Elektrik gerektiren cihaz sayısı 17&#x27;den 3&#x27;e (çöp imha ünitesi, lazer vericisi, otomatik taret) büyük ölçüde azaltıldı. Huni, otomatik ayrıştırma blokları (8 tür), konveyör bandı, 2 tür trafik ışığı, tren otomatik durdurma bloğu gibi cihazlar artık elektriksiz çalışıyor.</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Saldırı Tüfeği: Gerçek saniyede 4.500 → 5.850</li><li>Minigun: Gerçek saniyede 250 → 50 (büyük ölçüde zayıflatıldı. Elmas kılıçtan bile zayıf hale geldi)</li><li>Keskin Nişancı Tüfeği ve Ağır Keskin Nişancı&#x27;nın hasarı da arttı. Keskin nişancı silahlarının dayanıklılık hesap katsayısı da 0,5&#x27;ten 0,6&#x27;ya değişti</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Roketatar&#x27;la atılan roket mermisi, mobGriefing false yapılsa bile arazi tahribatını durdurmuyor. Yalnızca arazi tahribatını durdurmak isterseniz config&#x27;teki rocketDestroysTerrain değerini false yapın.</li><li>Normal dünyada inşa edilebilen yükseklik y=1023&#x27;e genişletildi. Gökyüzü&#x27;nü kullanmayanları da etkiliyor (yeraltı değişmedi).</li><li>Elektrik gerektiren ayrıştırma blokları ve huninin kapsamı büyük ölçüde daraltıldığından, önceden duran cihazlar otomatik olarak tekrar çalışmaya başlıyor. Uzun süre bırakılan yerlerde beklenmedik şekilde tekrar çalışmaya dikkat edin.</li><li>Yukarıdaki silah hasarı değişiklikleri otomatik olarak uygulanır. Config silmenize veya değiştirmenize gerek yok; ama geri almak isterseniz config üzerinden ayrı ayrı değer belirtebilirsiniz.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Eklendiği sırada Güçlendirilmiş İşaret Feneri α ve β&#x27;da yetenek seçimi yapılamıyordu (sonraki güncellemede düzeltildi).</li><li>Eklendiği sırada Roketatar yaratıcılık sekmesinde görünmüyordu, ayrıca görüntülenen adı da ayarlanmamıştı. 2 savaş başlığının simgesi de hazırlanmamıştı (sonraki güncellemede giderildi).</li><li>Cep telefonu ve bilgisayarın uygulamalarının henüz özel bir simge resmi yoktu, sadece renkli kareler diziliyordu (sonraki güncellemede iyileştirildi).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.3</span> — Ev aletlerinin elektrikli hale gelmesi ve makinelerin ısınması
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>Güvenlik kamerası, asansör, yürüyen merdiven, otomatik kapı ve ATM olmak üzere 5 yapı malzemesi cihazı artık elektrik gerektiriyor. Ayrıca jeneratör ve nükleer santral gibi çalışan makineler çevredeki odayı ısıtmaya başladı; havalandırma veya soğutma yapılmazsa sıcaklıktan hasar alınabilir.</p>
+      <ul><li>Güvenlik kamerası, asansör, yürüyen merdiven, otomatik kapı ve ATM elektrik gerektiren cihazlar oldu (zaten yerleştirilmiş olanlar da bir sonraki açılıştan itibaren kapsama giriyor). Asansör, elektrik olmasa bile &quot;iniş&quot; yönünde çalışmaya devam ediyor (mahsur kalmayı önlemek için).</li><li>Çalışan jeneratör ve nükleer santral gibi makineler artık çevreyi ısıtıyor. Soğutulmadan 8 makine çalıştırılmaya devam edilirse oda sıcaklığı yaklaşık 77,8°C&#x27;ye çıkıyor ve yaklaşık 14 saniye içinde hasar başlıyor.</li><li>Klima artık elektriği gerçekten tüketecek şekilde düzeltildi (önceden elektrik tüketmiyor kabul ediliyordu).</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Makinelerin ısınması: Soğutulmayan 8 makine sürekli çalıştırıldığında oda sıcaklığı yaklaşık 77,8°C&#x27;ye çıkıyor ve yaklaşık 14 saniyede sıcaklık hasarı oluşuyor</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Güvenlik kamerası, asansör, yürüyen merdiven, otomatik kapı ve ATM&#x27;ye kablo çekilmesi gerekiyor. Zaten yerleştirilmiş tesisler de bir sonraki açılıştan itibaren duracak.</li><li>Jeneratör gibi ısı yayan makinelerin çevresi, havalandırma veya klimayla soğutulmazsa yüksek sıcaklığa çıkarak tehlikeli hale gelir.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Elektrikli hale gelen 5 cihazın (güvenlik kamerası, asansör, yürüyen merdiven, otomatik kapı, ATM) gerçek çalışması (elektrikli/elektriksiz her ikisi de) henüz doğrulanmadı.</li><li>Yeni 3 jeneratör türünün ve yakıt yuvalarının görünümü ile kullanım hissi henüz doğrulanmadı.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.2</span> — Klimanın büyütülmesi ve elektrik cihazlarının kolay kurulumu
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>Klimanın boyutu büyük ölçüde genişletildi, gerçekten bir odada göze çarpan bir büyüklük kazandı. Ayrıca Elektrik MOD&#x27;undaki her cihaz, &quot;tek bir eşyayı yerleştirmek&quot; ile tamamlanacak şekilde düzenlendi ve kar tundrası biyomunda şöminenin hiç etkili olmama hatası düzeltildi.</p>
+      <ul><li>Klimanın gövde boyutu büyütüldü (3,1×2,0×2,1 blok değerinde). Yuvarlak bir fan ve bobin kanatları, ışıklı bir kontrol paneli olan dış üniteyle, öne uzanan 3 kanatlı iç üniteden oluşan, Elektrik MOD&#x27;unun en büyük cihazlarından biri haline geldi.</li><li>Elektrik MOD&#x27;undaki cihazlar, birden fazla bloğu birleştirmek zorunda kalmadan, tek bir eşyayı yerleştirmekle tamamlanan bir yönteme birleştirildi.</li><li>Şöminenin kar tundrası biyomunda hiç etkili olmama hatası düzeltildi. Arazinin soğukluğu ile tesisin sıcaklığı ayrı ayrı hesaplanacak şekilde iyileştirildi.</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Kar tundrasında, kendi yaktığınız şöminenin yanında: hissedilen sıcaklık -24,0°C (donma hasarı) → +2,4°C (güvenli)</li><li>Çatılı üs, gece, kar yağışı, şömine varken: -18,6°C → +7,9°C</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Kar fırtınası gecesinde dışarıda sürekli durursanız, tek bir şömine yetmeyebilir (çatı, zırh, ikinci bir şömine gibi önlemleri birleştirin).</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Sıcaklık dengesinin gerçekte oynanırken uygun olup olmadığı henüz test edilmedi.</li><li>Otomatik ayrıştırma bloklarının (9 tür) yeni üç boyutlu görünümü henüz doğrulanmadı.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power boss deco guns rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-05</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.1</span> — Elektrik MOD&#x27;u eklendi — Kızıltaşın çalışması için elektrik gerekiyor
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>8. MOD olan &quot;Elektrik&quot; yeni katıldı. Bu projedeki en büyük değişikliklerden biri olarak, vanilla kızıltaş devreleri (kızıltaş tozu, tekrarlayıcı, karşılaştırıcı, kızıltaş bloğu, kızıltaş meşalesi) artık jeneratörden gelen elektriğe ihtiyaç duyuyor. Mevcut otomatik çiftlikler, istasyonlar, otomatik kapılar gibi kızıltaş düzenekleri bir kez duracağından, elektrik şebekesinin kablolanması gerekiyor.</p>
+      <ul><li>8. MOD olan &quot;Elektrik&quot; yeni katıldı. Jeneratör, nükleer santral, dağıtım panosu, kablo gibi eşyalarla elektrik şebekesi kurulabiliyor.</li><li>Kaldıraç, buton, basınç plakası, tuzak teli kancası, gözlemci, gün ışığı sensörü, sculk sensörü, hedef tahtası, tuzak sandığı, dedektör rayı, kürsü, müzik kutusu, paratoner gibi 17 tür eşya, elektrik olmadan da her zamanki gibi çalışıyor (kapı açma-kapama gibi işlemler eskisi gibi devam ediyor).</li><li>Kızıltaş bloğu yerleştirildikten yaklaşık 10 dakika sonra kendiliğinden kırılıp eşya olarak geri geliyor (elektrik gerektirmeyen &quot;bedava kaynak&quot;ın öylece bırakılmasını önlemek için).</li><li>Yalnızca çöp imha ünitesi, lazer vericisi ve otomatik taretin üçü, elektriğin olmadığı yerlerde tam tersine &quot;çalışır durumda&quot; kalan özel bir güvenlik önlemine tabi (önemli eşyaları veya canlıları yanlışlıkla kaybetmemek için).</li><li>Keskin Nişancı Tüfeği, Ağır Keskin Nişancı ve Lazer Silahı&#x27;nın mermi hızı, aslında amaçlanan gerçek değere düzeltildi (hasar, atış hızı, şarjör, dayanıklılık, menzil değişmedi).</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Keskin Nişancı Tüfeği ve Ağır Keskin Nişancı&#x27;nın mermi hızı: 16.0 → 24.0 (1,5 kat)</li><li>Lazer Silahı&#x27;nın mermi hızı: 16.0 → 48.0 (3 kat)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Mevcut otomatik çiftlikler, istasyonlar, otomatik kapılar gibi kızıltaş devresi kullanan tesislerin hepsi bir kez duracak. Elektrik şebekesini (jeneratör ve kablo) yeniden kablolamanız gerekiyor.</li><li>Bu değişikliğin tamamını geri almak isterseniz config/sorakaze_power.json dosyasındaki powerEnabled değerini false yapın; yalnızca kızıltaşı eski haline getirmek isterseniz aynı dosyadaki redstoneRequiresPower değerini false yapın.</li><li>Gözlemci ve gün ışığı sensörü, elektriğin kesildiği bir üssü oyun içinden onarabilme yolunu korumak amacıyla, bilinçli olarak elektriksiz çalışmaya devam ediyor.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Kızıltaşın durduğu bir dünyanın gerçek oynanış hissi ile çiftlik/istasyonların ne ölçüde durduğu henüz test edilmedi.</li><li>Kablonun ışıması, dağıtım panosunun ekranı, jeneratör ve nükleer santralin görünümü gerçek cihazda henüz doğrulanmadı.</li><li>Elektriği kapatıp tekrar açtığınızda, dağıtım panosuna bağlı olmayan bağlantısız kablolar yanık kalabiliyor (kırıp yeniden yerleştirirseniz düzelir).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco guns sky survival">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Config dosyalarının otomatik onarımı (v1.8.0 yeniden dağıtım sürümü)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>Aynı gün içinde yeniden dağıtılan düzeltme sürümü. İlk v1.8.0&#x27;da, önceki sürümlerin config dosyalarında kalan eski değerler yeni başlangıç değerlerinin üzerine yazılıyordu; bu yüzden güvenlik kamerasının çözünürlüğü, Excalibur&#x27;un performansı, Roketatar&#x27;ın arazi tahribatı gibi değişiklikler yansımıyordu. Artık her güncellemede config dosyalarını elle silmeye gerek kalmayacak; açılışta &quot;önceki sürümün ayarladığı eski değerleri&quot; otomatik olarak yeni başlangıç değerlerine güncelleyen bir sistem eklendi.</p>
+      <ul><li>Önceki sürümden kalan &quot;fosil&quot; ayar değerlerini otomatik tespit edip mevcut başlangıç değerine yeniden yazan bir sistem eklendi. Bundan sonraki güncellemelerde config dosyasını elle silmeye gerek kalmadı.</li><li>Kendinizin ayarladığı değerlere hiç dokunulmuyor (kaydedilen değer önceki bir başlangıç değeriyle eşleştiği zaman güncelleniyor).</li><li>Bu düzeltmeyle, güvenlik kamerasının çözünürlüğü (768 → 3840), Excalibur&#x27;un performansı (saldırı gücü 12 → 75, saldırı hızı 1,8 → 0,6), Roketatar&#x27;ın arazi tahribatı gibi değişiklikler artık gerçek oyunda da doğru şekilde yansıyor.</li><li>Bu sefer güncellenenler boss, yapı malzemeleri, silahlar, gökyüzü ve hayatta kalma olmak üzere 5 MOD. Demiryolu ve araçlar bu sefer değişmedi.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Bu yeniden dağıtım sürümü, ilk v1.8.0 ile aynı sürüm numarası ve dosya adıyla dağıtılıyor. Elinizde ilk v1.8.0 varsa onu atıp bu sürümle değiştirin.</li><li>Bundan sonra her güncellemede yapılan &quot;config dosyasını silin&quot; uyarısı artık gereksiz hale geldi.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Excalibur&#x27;un yeni performansı ve Roketatar&#x27;ın arazi tahribat etkisi gerçek oyunda henüz doğrulanmadı.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Config dosyalarının otomatik onarımı (v1.8.0 yeniden dağıtım sürümü)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>Aynı gün içinde yeniden dağıtılan düzeltme sürümü. İlk v1.8.0&#x27;da, önceki sürümlerin config dosyalarında kalan eski değerler yeni başlangıç değerlerinin üzerine yazılıyordu; bu yüzden güvenlik kamerasının çözünürlüğü, Excalibur&#x27;un performansı, Roketatar&#x27;ın arazi tahribatı gibi değişiklikler yansımıyordu. Artık her güncellemede config dosyalarını elle silmeye gerek kalmayacak; açılışta &quot;önceki sürümün ayarladığı eski değerleri&quot; otomatik olarak yeni başlangıç değerlerine güncelleyen bir sistem eklendi.</p>
+      <ul><li>Önceki sürümden kalan &quot;fosil&quot; ayar değerlerini otomatik tespit edip mevcut başlangıç değerine yeniden yazan bir sistem eklendi. Bundan sonraki güncellemelerde config dosyasını elle silmeye gerek kalmadı.</li><li>Kendinizin ayarladığı değerlere hiç dokunulmuyor (kaydedilen değer önceki bir başlangıç değeriyle eşleştiği zaman güncelleniyor).</li><li>Bu düzeltmeyle, güvenlik kamerasının çözünürlüğü (768 → 3840), Excalibur&#x27;un performansı (saldırı gücü 12 → 75, saldırı hızı 1,8 → 0,6), Roketatar&#x27;ın arazi tahribatı gibi değişiklikler artık gerçek oyunda da doğru şekilde yansıyor.</li><li>Bu sefer güncellenenler boss, yapı malzemeleri, silahlar, gökyüzü ve hayatta kalma olmak üzere 5 MOD. Demiryolu ve araçlar bu sefer değişmedi.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Bu yeniden dağıtım sürümü, ilk v1.8.0 ile aynı sürüm numarası ve dosya adıyla dağıtılıyor. Elinizde ilk v1.8.0 varsa onu atıp bu sürümle değiştirin.</li><li>Bundan sonra her güncellemede yapılan &quot;config dosyasını silin&quot; uyarısı artık gereksiz hale geldi.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Excalibur&#x27;un yeni performansı ve Roketatar&#x27;ın arazi tahribat etkisi gerçek oyunda henüz doğrulanmadı.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.7</span> — 7 MOD&#x27;un tamamı birlikte güncellendi, silahlar gerçek mermi yöntemine döndü
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>7 MOD&#x27;un tamamı aynı anda v1.7.7&#x27;ye güncellendi. Silahların mermileri, isabet-taramalı (anında isabet eden) yöntemden gerçekten uçan mermi yöntemine geri döndü (hasar miktarı değiştirilmedi). Yeni silah &quot;Roketatar&quot;, trenin otomatik durdurma bloğu, havai fişek bebeği gibi her MOD&#x27;a birçok yeni unsur eklendi.</p>
+      <ul><li>[Silahlar] Mermiler &quot;gerçekten uçan&quot; yönteme geri döndü. Görsel his değişiyor ama her silahın hasar miktarı değiştirilmedi.</li><li>[Silahlar] Yeni silah &quot;Roketatar&quot; ve özel mermisi eklendi. Doğrudan isabet + patlama hasarı var; arazi tahribatı başlangıçta kapalı.</li><li>[Yapı Malzemeleri] Kapılar, &quot;biri sıkışmış olsa bile kapanan&quot; bir yapıya değiştirildi. Kapanırken çarpışma kutusu oluşmayacak şekilde tasarlandığı için sıkışıp hasar alma olmuyor.</li><li>[Yapı Malzemeleri] Renkli güçlendirilmiş cam pencereler (17 renk), 5 çeşit dekoratif blok (akıllı telefon türü, dizüstü bilgisayar türü, masaüstü bilgisayar türü), kasa kapısı eklendi. Güvenlik kamerasının görüntü çözünürlüğünün üst sınırı genişletildi (başlangıç değeri değişmedi).</li><li>[Boss] Güçlendirilmiş İşaret Feneri&#x27;nde aynı anda seçilebilen özel efekt sayısı 3&#x27;ten 5&#x27;e çıktı.</li><li>[Boss] Rock Lock&#x27;tan düşen &quot;Excalibur&quot;, büyük kılıç olarak yeniden tasarlandı. Özel bir 3D modele kavuştu ve performansı da güçlendirildi.</li><li>[Gökyüzü] Ejderhaya binildiğinde ilerleme yönü ile vücut yönünün ters olması hatası düzeltildi.</li><li>[Gökyüzü] Meleğin Asası güçlendirildi. Kralın Kılıcı ve melek donanımı takımının görünümü de daha üç boyutlu bir modele yenilendi (performans değişmedi).</li><li>[Demiryolu] Otomatik Tren Durdurma Bloğu yeni eklendi. Rayın altına yerleştirildiğinde yaklaşan treni otomatik ve pürüzsüzce durduruyor.</li><li>[Araçlar] Birinci şahıs (kokpit) görünümü bir kez kullanılınca gövdenin bir kısmının kaybolmuş kalması hatası düzeltildi. 11 aracın dış görünümü yeniden tasarlandı.</li><li>[Hayatta Kalma] İnci cevheri ve yakut cevherinin oluşma miktarı yaklaşık 2 katına çıktı (yalnızca yeni oluşan arazilerde). İnci bloğu ve yakut bloğu eklendi.</li><li>[Hayatta Kalma] Yeni eşya &quot;Havai Fişek Bebeği&quot; eklendi. Totem of Undying gibi ölümü 1 kez engelleyen bir tılsım ama etkisi daha güçlü ve 3 kez kullanılabiliyor. Yerleştirip süs olarak da kullanılabiliyor.</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Excalibur (boss&#x27;tan düşen): Hasar 12.0 → 36.0 (3 kat), saldırı hızı yarıya düştü, menzil 3.0 → 4.0 bloğa genişledi, yeni olarak geri tepme kazandı. Ancak düşme oranı %100&#x27;den %70&#x27;e değişti.</li><li>Meleğin Asası: Hasar 12 → 20, menzil 48m → 64m, bekleme süresi kısaldı, yakın dövüş bonusu 7.0 → 10.0 (bu değişiklikle ilk kez Meleğin Kılıcı&#x27;nın yakın dövüş bonusunu geçti).</li><li>Roketatar: Doğrudan isabet 40.0 + patlama hasarı (patlama gücü bir Creeper düzeyinde). Şarjör 1, mermi hızı tüm silahlar arasında en yavaş.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Silinmesi gereken config&#x27;ler: `sorakaze_boss.json` (Excalibur&#x27;un değerleri), `sorakaze_sky.json` (Meleğin Asası&#x27;nın değerleri). Silinmezse yeni değerler yansımaz.</li><li>`sorakaze_guns.json` dosyasının da silinmesi önerilir. Silinmezse, yeni eklenen &quot;mermi hızı&quot; ayar öğesi tüm silahlarda ortak olarak anormal derecede yavaş bir değerde sabit kalır (hasar gibi güç değerlerine etkisi yok).</li><li>5 çeşit dekoratif bloktan akıllı telefon, dizüstü bilgisayar ve masaüstü bilgisayar türleri gerçek ürünlerden esinlenmiştir; ancak oyun içi görünüm ve rehberde yalnızca şekil üzerinden anlatılmakta, marka adı kullanılmamaktadır.</li><li>[Denge] Bu noktada bile Saldırı Tüfeği saniyede 3750 hasar değerinde çok güçlü; Güçlendirilmiş İşaret Feneri, Excalibur ve Meleğin Asası güçlendirilmiş olsa bile boss&#x27;ların çoğu birkaç saniyede yenilebiliyor. Silaha da boss&#x27;a da direnç eklenmedi.</li><li>Ayrıca 1.4.3, 1.6.x, 1.7.2, 1.7.6 sürüm numaraları geliştirme sırasında kullanılan iç numaralardır, gerçekte hiç dağıtılmamıştır.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Kapıların &quot;biri olsa bile kapanması&quot;nın hissi, Roketatar&#x27;ın ateşleme/isabet hissi, Güçlendirilmiş İşaret Feneri&#x27;nin yeni arayüzünün kullanışlılığı henüz gerçek cihazda doğrulanmadı.</li><li>Excalibur ve Meleğin Asası&#x27;nın yeni 3D modelinin görünümü ile ejderha yönü düzeltmesinin gerçekte nasıl göründüğü de doğrulanmadı.</li><li>Havai Fişek Bebeği, inci/yakut bloğu, tren otomatik durdurma bloğunun görünümü ile güvenlik kamerasının yüksek çözünürlük ayarının bilgisayar performansına etkisi de test edilmedi.</li><li>Kraken ve Titan&#x27;ın saldırı animasyonları hâlâ tasarlandığı gibi eklenmedi (sunucu sahibinin onayı bekleniyor).</li><li>v1.7.3&#x27;te bulunan Gökyüzü MOD&#x27;undaki 2 sorun (baskın sırasında performans düşüşü, evcilleştirilen ejderhanın kaybolması), bu seferki Gökyüzü MOD&#x27;u değişiklikleriyle ilgisiz olduğundan hâlâ çözülmedi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.5</span> — Güçlendirilmiş cam ve çift kanatlı kapı hataları düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span></div>
+      <p>Yalnızca Yapı Malzemeleri MOD&#x27;unda bir güncelleme. Güçlendirilmiş camın (17 renk) hangi aletle kazılırsa kazılsın sabit 75 saniye sürme hatası ile v1.5.0&#x27;da eklenen çift kanat açılan büyük kapıların (50 tür) görünürde tam açılmama hatası düzeltildi.</p>
+      <ul><li>Güçlendirilmiş cam artık çapayla kazılabiliyor. Aletin türüne (ahşap-netherite) ve kazı hızı büyüsüne göre kazı hızı değişiyor. Önceden hangi aletle olursa olsun sabit 75 saniye süren bir hata vardı.</li><li>Güçlendirilmiş cam artık Wither ve Ender Ejderhası tarafından kırılamıyor.</li><li>Çift kanat açılan büyük kapılar (50 tür, 3×3 ve 3×4 boyutlarında) artık görünürde de düzgün şekilde geniş açılıyor. Önceden normal kapılarla aynı dar kayma hareketini yapıyordu ve kapı yeterince açık görünmüyordu.</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Güçlendirilmiş camın kazılma süresi tahminleri: ahşap çapa yaklaşık 37,5 saniye, taş çapa yaklaşık 18,8 saniye, demir çapa yaklaşık 12,5 saniye, altın çapa yaklaşık 6,25 saniye, elmas çapa yaklaşık 9,4 saniye, netherite çapa yaklaşık 8,4 saniye (kazı hızı V büyülü elmas çapayla yaklaşık 2,25 saniye). Çıplak el, kazma, balta, kürek, kılıçla hâlâ sabit 75 saniye.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>[Sınırlama] Başlangıçta &quot;yalnızca özel bir baltayla hızlı kazılabilsin&quot; hedeflenmişti, ancak vanilla&#x27;nın yapısı gereği ahşap çapa dahil her çapayla (kendi seviyesine göre) hızlı kazılabilen bir hale geldi. Belirli bir alete özgü hale getirilemedi.</li><li>Config silmenize gerek yok. Bu düzeltme config değerlerini kullanmıyor.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Güçlendirilmiş camın çapayla gerçekten kazılma hissi ve çift kanat açılan büyük kapının ekranda gerçekten açılırken nasıl göründüğü henüz gerçek cihazda doğrulanmadı.</li><li>Kraken ve Titan&#x27;ın saldırı animasyonları hâlâ tasarlandığı gibi eklenmedi.</li><li>v1.7.3&#x27;te bulunan Gökyüzü MOD&#x27;undaki 2 sorun (baskın sırasında performans düşüşü, evcilleştirilen ejderhanın kaybolması), Gökyüzü MOD&#x27;u bu sefer değiştirilmediği için hâlâ çözülmedi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.4</span> — Veba Doktoru&#x27;nun ortaya çıkış yöntemi sadece çağırma taşına bağlandı
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>Yalnızca Boss MOD&#x27;unda bir güncelleme. Veba Doktoru&#x27;nun kötü havada rastgele ortaya çıkma mekanizması kaldırıldı; artık diğer 10 boss gibi yalnızca özel çağırma taşıyla çağrılabiliyor.</p>
+      <ul><li>Veba Doktoru boss&#x27;unun ortaya çıkış yöntemi değiştirildi. Önceki &quot;kötü havada rastgele ortaya çıkma&quot; mekanizması kaldırılarak, yeni bir çağırma taşı olan &quot;Veba Doktoru&#x27;nun Çağırma Taşı&quot; yerleştirilip çağrılan bir yönteme birleştirildi. Diğer 10 boss ile aynı şekilde, dört köşeye wither gülü, kenarlara hayalet zarı, ortaya Nether yıldızı konan 3×3&#x27;lük bir yerleşim düzeni.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Kötü havayı bekleyerek Veba Doktoru&#x27;nu arıyorsanız, artık ortaya çıkmayacak. Çağırma taşı yapıp çağırın.</li><li>Config silmenize gerek yok. Kaldırılan ayar öğeleri yalnızca doğal doğmayla ilgili olanlar; kalan ayar değerlerine bir etkisi yok.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Çağırma taşı kullanıldığındaki efekt ile Veba Doktoru&#x27;nun kendi görünümü, özel sesi ve kurban sunma efekti bu sefer değiştirilmedi, hâlâ gerçek cihazda doğrulanmadı.</li><li>Yapı Malzemeleri MOD&#x27;u bu güncellemenin kapsamı dışında. Ayrıca güçlendirilmiş cam ve kapı düzeltmeleri ayrıca ilerliyor, sonraki güncellemelere yansıtılması planlanıyor.</li><li>v1.7.3&#x27;te bulunan Gökyüzü MOD&#x27;undaki 2 sorun (baskın sırasında performans düşüşü, evcilleştirilen ejderhanın kaybolması) bu sefer de kapsam dışında kaldı.</li><li>Kraken ve Titan&#x27;ın saldırı animasyonları hâlâ tasarlandığı gibi eklenmedi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss sky guns survival rail">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.3</span> — Trenin cam görüşü ve Singapur&#x27;daki hatalar düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>Trenin sürücü ve yolcu koltuklarından dışarısının düzgün görünmediği hata ile gökteki şehir devleti &quot;Singapur&quot;da binaların oluşmaması, harabelerin havada asılı kalması gibi hatalar düzeltildi. Aynı zamanda düşman canlıların doğma üst sınırı sadece normal dünyaya özgü hale getirildi ve büyünün seviye üst sınırı uygun bir değere ayarlandı.</p>
+      <ul><li>Trene (8 araç türünün tamamına) binip sürücü veya yolcu koltuğuna oturulduğunda, dışarının çoğunlukla pencerenin altındaki duvar gibi görünüp neredeyse hiç görülememesi hatası düzeltildi. Artık ön ve yanlar düzgün şekilde görünüyor.</li><li>Gökteki şehir devleti &quot;Singapur&quot;da binaların hiç oluşmaması, aynı otelin defalarca yapılması, ağaç ve köylerin havada asılı kalması gibi hatalar düzeltildi. Ancak düzelme yalnızca düzeltmeden sonra yeni oluşan arazilerde geçerli; zaten oluşmuş bozuk arazi için yöneticilere yönelik, ilgili bölgeyi yeniden oluşturan bir onarım aracı da eklendi.</li><li>Boss MOD&#x27;una, Veba Doktoru&#x27;nun ortaya çıkışıyla ilgili ayar öğeleri config üzerinden ayarlanabilir hale geldi.</li><li>Wyvern&#x27;ın nefes saldırısının gücü yarıya indi.</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Minigun&#x27;un hasarı %75 azaltıldı.</li><li>Saldırı Tüfeği&#x27;nin hasarı %25 artırıldı. Gerçek hasar verimliliği saniye başına Saldırı Tüfeği 3750 &gt; Lazer Silahı 2000 &gt; Minigun 250.</li><li>Evrensel Toplayıcı (boss&#x27;tan düşen kazı aleti) dayanıklılık sisteminden &quot;5 kez kullanınca kırılan&quot; sayaçlı bir sisteme geçirildi. Örse ile Onarım/Kırılmazlık büyüsü eklenemez oldu, ama kazı hızı, şans ve ipeksi dokunuş büyüleri eklenebilmeye devam ediyor.</li><li>Düşman canlıların doğal doğma üst sınırının çarpanı 5 kattan 15 kata çıkarıldı. Aynı zamanda bu çarpanın hatalı biçimde Nether ve End&#x27;e de uygulanması düzeltilerek yalnızca normal dünyaya özgü hale getirildi.</li><li>Büyünün seviye üst sınırının başlangıç değeri 255&#x27;ten 20&#x27;ye ayarlandı (ayarlanabilir üst sınır da 255&#x27;ten 32&#x27;ye küçültüldü). Bazı oyuncuların bildirdiği &quot;255 gibi anormal bir büyü seviyesi&quot; artık çıkmayacak.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Silinmesi gereken 3 config dosyası: `sorakaze_guns.json`, `sorakaze_sky.json`, `sorakaze_survival.json`. Silinmezse bu sürümdeki sayısal değişiklikler yansımaz. `sorakaze_boss.json` dosyasının silinmesine gerek yok.</li><li>[Önemli] Gökyüzü MOD&#x27;unu büyük ölçekte ve uzun süre çalıştıran kapsamlı bir testte, henüz düzeltilmemiş 2 yeni sorun tespit edildi: (1) Büyük ölçekli bir baskın olayı sırasında performans düşüşü yaşanabiliyor. (2) Evcilleştirilen bir Ender Ejderhası zamanla kaybolabiliyor (evcilleştirilen wyvern&#x27;da sorun yok).</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Yukarıdaki baskın sırasındaki performans düşüşü ve evcilleştirilen ejderhanın kaybolması sorunları hâlâ çözülmedi.</li><li>Veba Doktoru&#x27;nun görünümü, doğma şekli ve Evrensel Toplayıcı&#x27;nın 5 kullanımda kırılmasının kullanım hissi henüz gerçek cihazda doğrulanmadı.</li><li>Kraken ve Titan&#x27;ın saldırı animasyonları hâlâ tasarlandığı gibi eklenmedi (sunucu sahibinin onayı bekleniyor).</li><li>Singapur onarım aracının yalnızca test verileriyle çalışma doğrulaması tamamlandı; gerçek dünya verisiyle çalışma doğrulaması henüz yapılmadı.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.1</span> — v1.7.0 kurulduktan sonra açılmama hatası acil olarak düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>v1.7.0 kurulduğunda oyun her açılışta kesinlikle çöküyordu. Sebep Araçlar MOD&#x27;undaki tuş atamalarının (iniş takımı, flap, kapı vb.) kayıt işleminde bulunuyordu; yalnızca Araçlar MOD&#x27;u v1.7.1&#x27;e güncellenerek sorun giderildi.</p>
+      <ul><li>Yalnızca Araçlar MOD&#x27;u (sorakaze_vehicles) güncellendi. Diğer 6 MOD v1.7.0&#x27;da kalmaya devam edebilir.</li><li>Yeni eşya veya blok eklenmedi. Bu sefer sadece açılış çökmesi düzeltmesi yapıldı.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>v1.7.0&#x27;ı kurduktan sonra &quot;her açılışta çöküyor&quot; durumu yaşıyorsanız, Araçlar MOD&#x27;unun jar dosyasını mutlaka bu v1.7.1 sürümüyle değiştirin.</li><li>Diğer 6 MOD (silahlar, demiryolu, yapı malzemeleri, boss, gökyüzü, hayatta kalma) v1.7.0&#x27;da kalarak çalışır. Değiştirmeniz gerekmez.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>v1.7.0&#x27;da eklenen araçların birinci şahıs (kokpit) görünümü gibi yeni unsurların görünümü ve kullanım hissi, çökme sorunu yüzünden hâlâ hiç kimse tarafından doğrulanamadı.</li><li>İki oyuncunun aynı anda oynamasındaki senkronizasyon ve tüm MOD&#x27;lar birlikte çalışırken sunucu yükü hâlâ doğrulanmadı.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.0</span> — 7 MOD&#x27;un aynı anda güncellenmesi ve gizli içeriklerin ortaya çıkması
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>7 MOD ilk kez aynı hizada buluştu ve hepsi aynı sürüm numarasıyla (v1.7.0) dağıtılmaya başlandı. Tarif rehberindeki bir hata düzeltilince, önceden tabloda görünmeyen gökteki şehir devleti &quot;Singapur&quot;un gıda ürünleri ve tesis eşyaları gibi gizli kalmış birçok içerik ortaya çıktı. Araçlar MOD&#x27;una yeni olarak birinci şahıs (kokpit) görünümü eklendi.</p>
+      <ul><li>7 MOD&#x27;un tamamının aynı sürüm numarasıyla dağıtılması ilk kez bu sefer oldu. O zamana kadar MOD&#x27;a göre sürüm numaraları dağınıktı.</li><li>Tarif rehberindeki bir hata düzeltilince, gökteki şehir devleti &quot;Singapur&quot;da satın alınabilen 300 çeşit gıda ürünü ile kuşatma topuzu, tapu senedi, emlak defteri, market rafı gibi eşyalar rehberde görünmeye başladı. Bunlar dükkândan satın alınan eşyalar olup yapılamaz.</li><li>Boss&#x27;tan düşen &quot;Evrensel Toplayıcı&quot; ve Singapur&#x27;a yerleştirilen &quot;Özel ATM&quot; (yapılamaz) de rehberde görünür oldu.</li><li>Araçlar MOD&#x27;una birinci şahıs (kokpit) görünümü eklendi; sürüş sırasında aracın tavanı ve direkleri artık görüşü engellemiyor. Ayarlardan kapatılabiliyor.</li><li>113 araç, 35 tren ve 3 silahın eşya simgeleri yeniden çizildi.</li><li>Bankanın (ATM) mevduat üst sınırı (önceden 100 bin) kaldırıldı, artık sınırsız para biriktirilebiliyor.</li><li>Ametist bloğunu ametist parçasına geri döndüren tarif eklendi.</li><li>Düşman canlıların doğal doğma üst sınırını standardın 5 katına çıkaran değişiklik ve büyünün seviye üst sınırını (normalde 30) büyük ölçüde artıran değişiklik etkinleştirildi (ikisi de Hayatta Kalma MOD&#x27;unda).</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Lazer Silahı: Hasar 160 → 200, atış hızı 6 atış/saniye → 10 atış/saniye, şarjör 100 → 200 atış.</li><li>Matkap: Kazma hızı 12.0 → 24.0, dayanıklılık 2048 → 10240.</li><li>Gökyüzü Krallığı ve Melek Şehri&#x27;nin nüfus üst sınırı büyük ölçüde artırıldı (örneğin: krallığın tüccarları 16 → 48, sakinleri 64 → 192).</li><li>Güvenlik kamerasının görüntü çözünürlüğünün başlangıç değeri 192 → 768 olarak değiştirildi.</li><li>Düşman canlıların doğal doğma üst sınırı standardın 5 katına çıktı. Ancak bu noktada aslında yalnızca normal dünyada geçerli olması gerekirken, hatalı biçimde Nether ve End&#x27;e de aynı çarpan uygulanıyor (sonraki bir güncellemede düzeltilmesi planlanıyor).</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Silahlar MOD&#x27;u (sorakaze_guns) ve Gökyüzü MOD&#x27;u (sorakaze_sky), güncellemeden sonra `config/sorakaze_guns.json` ve `config/sorakaze_sky.json` dosyaları silinmezse yukarıdaki sayısal değişiklikler yansımaz.</li><li>Yapı Malzemeleri MOD&#x27;unun (sorakaze_deco) config dosyasını silmeyin, yalnızca `cameraFeedResolution` değerini değiştirin. Silerseniz trafik ışığı süreleri gibi diğer ayarlar da başlangıç değerine döner.</li><li>Silahların şu anki gerçek hasar verimliliği çok yüksek: Saldırı Tüfeği saniyede 3000, Lazer Silahı saniyede 2000, Minigun saniyede 1000 değerinde; boss&#x27;ların çoğu birkaç saniyede yenilebiliyor.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Yeni gelen istila boss&#x27;u &quot;Zırhlı İstilacı&quot;nın görünümü henüz &quot;zırh&quot; gibi görünmeyebilir, ileride ayarlanması bekleniyor.</li><li>Trenin gövdesi hâlâ gerçek arabanın yaklaşık 1/3&#x27;ü ölçeğinde. Ayrıca çarpışma kutusunun genişliği 1,8&#x27;den 2,0 bloğa büyüdüğü için mevcut 2 blok genişliğindeki tünellerden geçilemeyebilir. Eski 3 araç türünde (tren/yolcu vagonu/yük vagonu) pencere, iç dizayn veya kapı bulunmuyor.</li><li>Araçların birinci şahıs görünümünde azami dönüş hızı saniyede 36 derece; hissedilir olarak fazla hızlı olabilir.</li><li>Tarif rehberinin dosya boyutu büyük ölçüde arttı (gıda ürünlerinin resimleri çoğaldığı için). Bazı ortamlarda görüntüleme ağır hissedilebilir.</li><li>İki oyuncunun aynı anda oynamasındaki senkronizasyon ve tüm MOD&#x27;lar birlikte çalışırken sunucu yükü henüz test edilmedi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns rail">
+      <div class="timeline-entry__date">2026-07-30</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.7</span> — Kralın Kılıcı ve Kralın Yayı düzeltildi, Minigun zayıflatıldı
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>Kralın Yayı&#x27;nın ters görünme hatası ve v1.5.6&#x27;daki yenilemeden kaçmış 2 süper ekspres tren vagonunun görünümü düzeltildi. Aynı zamanda Kralın Kılıcı ve Minigun zayıflatıldı; Matkap, hücresi bittiğinde envanterden otomatik olarak dolduruluyor.</p>
+      <ul><li>Melekle ilgili 13 eşyanın simgesi 128px olarak daha detaylı yeniden çizildi</li><li>Kralın Yayı&#x27;nın ters yönde görünme hatası düzeltildi</li><li>v1.5.6&#x27;daki tren yenilemesinden kaçmış 2 süper ekspres tren vagonunun dış görünümü yenilendi</li><li>Matkap, hücresi bittiğinde envanterdeki yedek hücrelerden otomatik olarak dolduruluyor</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Minigun: Gerçek gücü saniyede yaklaşık 2.000&#x27;den yaklaşık 1.000 hasara düşürüldü</li><li>Kralın Kılıcı: Saldırı hızı dahil zayıflatıldı. Gerçek DPS 84,80&#x27;den 21,60&#x27;a düştü (-%74,5). Sonuç olarak Meleğin Kılıcı&#x27;nın (22,40) hafifçe altında bir performans</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Bu değişikliğin yansıması için config/sorakaze_guns.json dosyasının silinmesi gerekiyor</li><li>v1.5.5 veya öncesinden doğrudan güncelleme yapıyorsanız config/sorakaze_sky.json dosyasını da silin</li><li>Kralın Kılıcı&#x27;nın zayıflatılması programın içindeki sabit değerlerden kaynaklanıyor; config dosyasıyla geri alınamaz</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Süper ekspres trenin eşya simgesi hâlâ eski tasarımda (gövde yenilendi ama simgeyle görünüm uyuşmuyor)</li><li>Sculk Golemi, Rock Lock, Kraken ve Titan&#x27;a henüz özel saldırı animasyonu eklenmedi</li><li>Yıldırım Mızrağı henüz fırlatma saldırısını desteklemiyor, sadece yakın dövüşte kullanılabiliyor</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky guns deco rail boss">
+      <div class="timeline-entry__date">2026-07-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.6</span> — Gökyüzü Krallığı eklendi, Azrail boss&#x27;u da büyük ölçüde yenilendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>Gökyüzü MOD&#x27;una devasa bir &quot;Gökyüzü Krallığı&quot; ve sadece satın alınabilen &quot;Kraliyet Donanımı&quot; (7 tür) eklendi. Azrail boss&#x27;una özel saldırı animasyonu geldi ve özellikleri baştan yenilendi. Silahların güç dengesi büyük ölçüde gözden geçirildi; Saldırı Tüfeği en güçlü sınıf silahlardan biri oldu. Trenin 6 ailesinin tamamının görünümü de yenilendi.</p>
+      <ul><li>Gökyüzü Krallığı (çapı 1.001 blok olan devasa, İngiliz tarzı bir ülke) yeni eklendi. 64 sakin, 16 tüccar, 65 hazine sandığı</li><li>Sadece Gökyüzü Krallığı&#x27;nda bulunan &quot;Kraliyet Donanımı&quot; (7 tür) ortaya çıktı (sadece satın alınabilir, melek donanımının üst sürümü)</li><li>Yeni yaratık &quot;REX&quot; eklendi. Yumurtadan çıkarılıp binilebiliyor</li><li>&quot;Kuley Pot&quot; ile evcil hayvan bir bütün olarak taşınabiliyor</li><li>Azrail boss&#x27;una 6 çeşit özel saldırı animasyonu yeni eklendi. Can puanı %50&#x27;nin altına düşünce 3 Wither çağıran yeni bir teknik de eklendi</li><li>Trenin 6 ailesinin tamamının dış görünümü yenilendi (yuvarlak hatlı üç boyutlu pencereler, kapılar, ön yüz, gidilecek yer göstergesi, aydınlatma vb.)</li><li>Dizüstü bilgisayar yerleştirilebilen bir bloğa dönüştürüldü. Güvenlik kamerası 3D modele geçti ve baş çevirme özelliği kazandı; görüntü, menzil içinde gerçek zamanlı, menzil dışında ise &quot;SİNYAL YOK&quot; gösteriyor</li><li>Silahların güç dengesi baştan sona gözden geçirildi (ayrıntılar için denge ayarlarına bakın)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Saldırı Tüfeği: Tek bir hedefe karşı gerçek gücü yaklaşık 400&#x27;den yaklaşık 3.000 hasar/saniyeye büyük ölçüde güçlendirildi (tüm mermilerin kesinlikle hasar olarak geçmesi sağlandığı için)</li><li>Minigun: Gerçek gücü saniyede yaklaşık 4.000&#x27;den yaklaşık 2.000 hasara düşürüldü</li><li>Pompalı Tüfek: Gücü 3 kat artırıldı (yakın mesafede tek tetikte yaklaşık 150 hasar)</li><li>2 keskin nişancı silahı (normal/ağır): Dayanıklılık, yayın 1/3&#x27;ü olan 128&#x27;e düşürüldü (dayanıksız ama yüksek güçlü bir özellik haline geldi)</li><li>Azrail boss&#x27;u: Can puanı 6.000-9.000 arası rastgeleden sabit 3.000&#x27;e, saldırı gücü 16&#x27;dan 32&#x27;ye değişti</li><li>Wyvern: Nefes hasarı 10&#x27;dan 7,5&#x27;e, yumurta düşme oranı %100&#x27;den %20&#x27;ye düşürüldü (zayıflatıldı)</li><li>Baş Melek boss&#x27;u: Can puanı 1,5 kat artırılarak 3.000&#x27;e güçlendirildi</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Silah gücü değişikliğinin yansıması için config/sorakaze_guns.json dosyasının silinmesi gerekiyor (keskin nişancı dayanıklılık ayarı yeni bir öğe olduğundan otomatik yansır)</li><li>Sürüm numarası v1.5.1&#x27;den v1.5.6&#x27;ya atladı; bu, maske ayarları ve Wyvern zayıflatması gibi birkaç küçük güncellemenin tek seferde toplu dağıtılmasından kaynaklanıyor, atlanan sürüm değil</li><li>İnci cevheri ve yakut cevheri, MOD kurulmadan önce oluşmuş arazilerde bulunmaz. Yapılan ölçümde, elmasın yaklaşık 1/32&#x27;si, kadim enkazın ise yaklaşık yarısı kadar nadir olduğu ortaya çıktı</li><li>Zaten kısmen oluşmuş bir şehir veya kale Gökyüzü Krallığı&#x27;na yakınsa, kalan kısmı oluşmayıp eksik kalabilir (veri bozulmaz, yalnızca görünüm sorunu)</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Sculk Golemi, Rock Lock, Kraken ve Titan&#x27;a henüz özel saldırı animasyonu eklenmedi (Azrail bu güncellemeyle çözüldü)</li><li>Yıldırım Mızrağı henüz fırlatma saldırısını desteklemiyor, sadece yakın dövüşte kullanılabiliyor</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="survival">
+      <div class="timeline-entry__date">2026-07-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.1</span> — 2 maskenin görünümü baştan sona düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Görsel Güncelleme</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span></div>
+      <p>Hayatta Kalma Genişletmesi MOD&#x27;undaki 2 maskenin görünümü düzeltildi. Önceden düz bir resmin başın üzerinde havada durduğu bir sorun vardı; artık başa oturan üç boyutlu bir şekle (kulaklarla birlikte) yeniden tasarlandı. Zırh, dayanıklılık, tarif gibi özelliklerde değişiklik yok.</p>
+      <ul><li>2 maskenin görünümü baştan sona yeniden tasarlandı. Düz bir resmin başın üzerinde havada durma sorunu giderildi, başı saran üç boyutlu bir şekle geçildi</li><li>Işıltı Maskesi&#x27;ne tavşan kulağı, Sparxie Maskesi&#x27;ne tilki kulağı detayı eklendi</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Tarif rehberindeki simgeler hâlâ eski tasarımda (sonraki güncellemede yansıtılması planlanıyor)</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Maskelerin yan ve arka dokusu hâlâ sade. Tasarım ön yüz odaklı olduğundan, üçüncü şahıs görünümünde yandan veya arkadan bakıldığında neredeyse tek renk görünebilir</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="survival guns deco rail vehicles sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.0</span> — Tarihin en büyük güncellemesi, 7. MOD &quot;Hayatta Kalma Genişletmesi&quot; eklendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>Bu projenin tarihindeki en büyük güncelleme. 7. MOD olan &quot;Hayatta Kalma Genişletmesi&quot; yeni katıldı; inci ve yakut cevheri, maskeler, büyük kalkan, susuzluk göstergesi gibi hayatta kalma unsurları eklendi. Aynı zamanda mevcut 6 MOD&#x27;un tamamına büyük içerikler eklendi; tren 30 türe, araçlar 100 türe, Yapı Malzemeleri MOD&#x27;undaki kapılar 101 türe çıktı.</p>
+      <ul><li>7. MOD olarak &quot;Hayatta Kalma Genişletmesi&quot; yeni katıldı. İnci cevheri, yakut cevheri, 2 maske türü (ARMOR +50, dayanıklılık 814), büyük kalkan, susuzluk göstergesi (30 dakikada tükeniyor) eklendi</li><li>Ustalık seviyesindeki kütüphanecilerden Keskinlik X kitabı satın alınabilir hale geldi (64 zümrüt)</li><li>Silahlar MOD&#x27;una yeni silahlar &quot;Minigun&quot;, &quot;Matkap&quot; (bakış yönünde 3×3 bloğu bir kerede kazıyor) ve &quot;Örümcek Tareti&quot; eklendi</li><li>Tren 6 aile × 5 boyama olmak üzere toplam 30 türe çıktı (önceden yalnızca 1 tür vardı)</li><li>Araçlar 25 taban model × 4 renk olmak üzere toplam 100 türe çıktı, tüm araçlara yuvarlak hatlı bir stil uygulandı</li><li>Yapı Malzemeleri MOD&#x27;una 50 çift kanatlı büyük kapı (kapı toplamı 101 türe çıktı), güvenlik kamerası, dizüstü bilgisayar, bileşik faizle biriktirilebilen bir ATM eklendi</li><li>Gökyüzü MOD&#x27;una yumurta kuluçka makinesi eklendi. Kuluçkadan çıkan wyvern/ejderhalar evcilleşiyor ve özel bir eyerle binilebiliyor</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>[Düzeltme] Şimdiye kadar &quot;Saldırı Tüfeği tek bir hedefe karşı saniyede yaklaşık 2.000 hasar veriyor&quot; olarak bildirmiştik, ancak gerçek ölçümde saniyede yaklaşık 400 hasar olduğu ortaya çıktı (önceki kayıtlar gücü büyük ölçüde fazla tahmin etmişti)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Yeni silah &quot;Minigun&quot;ın gerçek gücü saniyede yaklaşık 4.000 hasar değerinde; bu projedeki en güçlü silah. Mevcut boss&#x27;ların çoğunu birkaç saniye içinde yenebildiğinden, zorluk korumak isteyenler config&#x27;teki `minigun.damage` değerini düşürerek ayarlayabilir</li><li>Bu güncelleme için config dosyalarını silmeniz gerekmiyor (yeni ayar öğeleri başlangıçta otomatik olarak eklenir)</li><li>İnci cevheri ve yakut cevheri, MOD kurulmadan önce oluşmuş arazilerde bulunmaz. Bulamıyorsanız yeni araziler keşfedin</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Güvenlik kamerasının başını çevirme animasyonu henüz eklenmedi, şu an sabit bir görüş açısı var</li><li>Sculk Golemi, Rock Lock, Azrail, Kraken ve Titan&#x27;a henüz özel saldırı animasyonu eklenmedi; özel saldırı habercisi de yalnızca parçacık efekti ve işaretçilerden ibaret</li><li>Yıldırım Mızrağı henüz fırlatma saldırısını desteklemiyor, sadece yakın dövüşte kullanılabiliyor</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.8</span> — Gökyüzü Şehri yoğunlaştırıldı, yeni yaratık &quot;Wyvern&quot; eklendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>Gökyüzü Şehri&#x27;nin ölçeği gözden geçirilerek daha yoğun bir yüksek katlı şehre dönüştürüldü. Merkezinde 300 blok yüksekliğe ulaşan 4 devasa kule yeni bir simge olarak beliriyor. Aynı zamanda gökte uçan yeni bir düşman olan &quot;Kristal Wyvern&quot; eklendi.</p>
+      <ul><li>Gökyüzü Şehri&#x27;nin alanı küçültülerek daha yoğun bir şehre dönüştürüldü (yükseklik semte göre değişiyor)</li><li>Şehir merkezindeki 4 kule 300 blok yüksekliğinde devasa gökdelenlere dönüştürüldü</li><li>Alt katlardaki girişler, saçaklar, çatı donanımları, yol ve kaldırım ayrımı gibi sokak detayları eklendi</li><li>Çatı, ofis, depo olmak üzere 3 türde toplam 16 hazine sandığı şehir içine yerleştirildi</li><li>Yeni yaratık &quot;Kristal Wyvern&quot; eklendi. Gökte uçarak ateş topu nefesiyle saldırıyor (sadece oyuncuları hedef alıyor, şehir sakinlerine saldırmıyor)</li><li>Gökyüzü Kalesi&#x27;nin çıkma aralığı ayarlandı (önceki önerilen ayarda kalenin neredeyse hiç çıkmadığı bir hata vardı)</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Saldırı Tüfeği&#x27;nin gücü karşısında Kristal Wyvern (200 HP) bir anda yenilebiliyor. Zorluk isteyenler silahın hasar ayarını değiştirebilir</li><li>Şehrin küçültülmesi yalnızca yeni oluşan arazilere uygulanır. Mevcut Gökyüzü Şehirleri eski boyutunda kalır; bitişik olduklarında boyut farkı doğal görünmeyebilir</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.7</span> — Gökyüzü Şehri&#x27;nin oluşma yöntemi yenilendi, sakin çoğalma hatası düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>Gökyüzü Şehri ve Gökyüzü Kalesi&#x27;nin oluşma mekanizması içeriden yeniden yapılarak daha kararlı hale getirildi; ayrıca sunucu her yeniden başlatıldığında Gökyüzü Şehri sakinlerinin yavaş yavaş üst sınırı aşarak artmaya devam etmesi hatası düzeltildi.</p>
+      <ul><li>Sunucu tekrar tekrar yeniden başlatıldığında Gökyüzü Şehri sakinlerinin üst sınırı aşarak artmaya devam etmesi hatası düzeltildi</li><li>Gökyüzü Şehri ve Gökyüzü Kalesi&#x27;nin oluşma işlemi içeriden verimli hale getirildi (oluşma yükü aksine hafifledi)</li><li>Gökyüzü Şehri ve Gökyüzü Kalesi&#x27;nin yerleşim aralığı ayarlandı</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Oluşma yöntemindeki değişiklik yalnızca yeni oluşan arazilere uygulanır. Mevcut Gökyüzü Şehri ve Gökyüzü Kalesi&#x27;nin görünümü olduğu gibi kalır</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.6</span> — Gökyüzü Şehri yakın gelecek şehrine dönüştürüldü, yeni boss eklendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>Gökyüzü MOD&#x27;undaki &quot;Gökyüzü Şehri&quot;, yakın gelecek temalı yüksek katlı bir şehre baştan sona yenilendi; yeni olarak &quot;Gökyüzü Kalesi&quot; ve yeni boss &quot;Gök Baş Meleği&quot; eklendi. Şehirde dolaşan yeni bir yaratık olan &quot;sıradan melek&quot; ve donanım satın alma ödeme yönteminde değişiklik de yapıldı.</p>
+      <ul><li>Gökyüzü Şehri, yakın gelecek temalı yüksek katlı bir şehre yenilendi (20 gökdelen, yol ağı, yaya köprüleri, merkez meydan eklendi)</li><li>Yeni yaratık &quot;sıradan melek&quot;, 4 farklı görünümle şehirde dolaşıyor</li><li>&quot;Gökyüzü Kalesi&quot; yeni eklendi (kale surları, 8 yuvarlak kule, büyük salon, merkez şato kulesi, yeraltı hazine odası, 6 hazine sandığı)</li><li>Yeni boss &quot;Gök Baş Meleği&quot; Gökyüzü Kalesi&#x27;nde ortaya çıkıyor. Kale başına 1 tane; yenildikten sonra tekrar çıkmıyor</li><li>Boss&#x27;un kesin düşen eşyası &quot;Meleğin Asası&quot; eklendi (havada 1,5 kat güç, yarı bekleme süresi özelliğiyle)</li><li>Gökyüzü portalının görünümü altın + ışıktaşı çerçevesine yenilendi, yanma animasyonu eklendi</li><li>Gökyüzü donanımı satın alınırken ödeme zümrüt + elmas olmak üzere 2 türe çıktı</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Gökyüzü portalının doğal oluşma oranı 1/340 → 1/1200&#x27;e düştü (bulunması oldukça zorlaştı)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Portalların bulunması büyük ölçüde zorlaştı. Mevcut bir dünyada bulunamıyorsa yönetici config üzerinden oluşma oranını düşürebilir veya `allowPlayerBuiltSkyPortals` seçeneğini etkinleştirerek oyuncuların elle kurmasına izin verebilir</li><li>Saldırı Tüfeği&#x27;nin gücü çok yüksek (saniyede 2.000 hasar değerinde); bu boss (2000 HP) yaklaşık 1 saniyede yenilebiliyor. Zorluk isteyenler silahın hasar ayarını değiştirebilir</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.5</span> — Gökyüzü boyutundaki çökme hatası düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>Gökyüzü boyutuna girildiğinde istemcinin kesinlikle çöktüğü ciddi bir hata düzeltildi (melekleri ve melek golemlerini çizen mekanizmanın hiç kaydedilmemiş olması nedeniyle). Aynı zamanda Ağır Keskin Nişancı Tüfeği&#x27;nin gücü artırıldı ve dürbüne yeni bir büyütme oranı eklendi.</p>
+      <ul><li>[Önemli] Gökyüzü boyutuna girildiğinde istemcinin kesinlikle çökmesi hatası düzeltildi (melek ve melek golemi çizim işleminin kaydedilmemiş olması nedeniyle). Gökyüzü taşınmadan önceki eski dünyalardaki meleklerde de aynı hata görülüyordu</li><li>Ağır Keskin Nişancı Tüfeği&#x27;nin hasarı normal keskin nişancının 4 katına çıkarıldı (40.0 → 80.0)</li><li>Keskin Nişancı Tüfeği&#x27;nin dürbününe yeni bir büyütme oranı olan &quot;×12&quot; eklendi (yalnızca Ağır Keskin Nişancı için)</li><li>Dürbün doğrultulmuşken fare tekerleği artık göz ardı ediliyor (istemeden hotbar&#x27;ın değişmesini önlemek için)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Ağır Keskin Nişancı Tüfeği hasarı 40.0 → 80.0 (normal keskin nişancının 4 katı)</li></ul>
+      
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Bu düzeltmenin Gökyüzü boyutundaki çökmeyi gerçekten giderip gidermediği henüz oyunla doğrulanamadı. Gökyüzü boyutuna girdiğinizde artık çökme olup olmadığını kontrol edin, hâlâ oluyorsa bildirin</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="deco guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.4</span> — Silah gücü büyük ölçüde artırıldı, 40 yeni kapı eklendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span></div>
+      <p>Lazer Silahı ve Saldırı Tüfeği&#x27;nin gücü sırasıyla 20 kat ve 10 kat artırıldı. Bu güç artışıyla mevcut boss&#x27;larla olan savaş dengesi büyük ölçüde bozuluyor. Aynı zamanda aslında hiç ateş etmemiş olan otomatik taret hatası, birbirine bağlanmayan bariyer ve doğu-batıda ters yöne dönen lazer hatası düzeltildi. Yapı Malzemeleri MOD&#x27;una 40 yeni kapı eklendi (v1.4.3 sürüm numarası atlanmıştır).</p>
+      <ul><li>Lazer Silahı hasarı 8.0 → 160.0 (20 kat, DPS 960), Saldırı Tüfeği hasarı 20.0 → 200.0 (10 kat, DPS 2000) olarak güçlendirildi</li><li>Otomatik taretin aslında hiç ateş etmediği hata düzeltildi (nişan alma ışını kendi çarpışma kutusunun içinden başlıyordu). Aynı zamanda hedef belirleme gözden geçirilerek boss ve Bekçi&#x27;nin (Warden) hedef alınmaması sağlandı</li><li>Bariyerlerin birbirine bağlanmama hatası düzeltildi</li><li>Lazerin doğu-batıda ters yöne dönme hatası düzeltildi</li><li>Lazer tuzağının erişim mesafesi 32 → 128 blok (config üst sınırı 256&#x27;ya kadar genişletildi). 26 yön (çapraz, yukarı-aşağı dahil) desteklenir hale geldi; çıplak elle sağ tık ile 45 derece yatay döndürme, eğilerek sağ tık ile açı değiştirme mümkün</li><li>Yapı Malzemeleri MOD&#x27;una 40 yeni kapı türü eklendi (mevcut 9 türle birlikte toplam 49 tür oldu)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Lazer Silahı hasarı 8.0 → 160.0 (20 kat)</li><li>Saldırı Tüfeği hasarı 20.0 → 200.0 (10 kat)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>[Önemli] Bu güç artışıyla mevcut boss&#x27;larla olan savaş dengesi büyük ölçüde bozuluyor (boss&#x27;lar birkaç saniyede yenilebiliyor). Boss tarafına direnç eklenmedi; rahatsız edici bulursanız config/sorakaze_guns.json üzerinden hasar miktarını ayarlayın</li><li>Silah güç artışının yansıması için config/sorakaze_guns.json dosyasının silinmesi gerekiyor</li><li>v1.4.3 sürüm numarası atlandığı için dağıtılmadı</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.2</span> — Melek donanımının görünüm hatası düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span></div>
+      <p>&quot;Melek donanımı&quot; gerçekten kuşanıldığında vücutta vanilla netherite zırhı, sırtta ise düz bir elytra görünme hatası düzeltildi. Envanterdeki simge doğru görünüyordu, bu yüzden fark edilmesi zor bir sorundu.</p>
+      <ul><li>Melek donanımı (zırh, Meleğin Kanatları) kuşanıldığında görünümü, kendine özgü gümüş ve altın tasarımla doğru şekilde gösterecek şekilde düzeltildi</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky boss deco vehicles guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.1</span> — Gökyüzü boyutu eklendi, boss&#x27;lara özel saldırı geldi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>Yeni bir boyut olan &quot;Gökyüzü&quot; eklendi; yeryüzünde nadiren oluşan bir portaldan gidilip gelinebiliyor. Melek tüccarlarla alışveriş ve planör donanımı mümkün hale geldi. Boss&#x27;ların tamamına (10 tanesine) özel saldırı eklendi ve çağırma taşlarıyla istenildiği zaman çağrılabiliyor. Yapı Malzemeleri tariflerine seçilebilir düğme, araçlara da lastik dönüşü eklendi.</p>
+      <ul><li>Yeni boyut &quot;Gökyüzü&quot; eklendi. Yeryüzünde nadiren oluşan ışıktaşı portalından gidip gelinebilir</li><li>Gökyüzü&#x27;nde melek tüccarlar yaşıyor; her biriyle farklı rastgele ürünlerle alışveriş yapılabilir. Planör gibi uçulabilen &quot;Meleğin Kanatları&quot; veya özel ok/yay elde edilebilir</li><li>Gökten düşülmesi durumunda kurtarma önlemi (Üst Dünya&#x27;nın gökyüzüne güvenle iniş) eklendi</li><li>Boss&#x27;ların tamamına (10 tanesine) çağırma taşı eklendi, yapılıp istenildiği zaman çağrılabiliyor. Tüm boss&#x27;lara özel saldırı eklendi (can puanı yarının altına düşünce tetiklenir, 4 saniyelik haberci var)</li><li>3 dev boss yenildiğinde gücü rastgele belirleniyor (Ender Ejderhası&#x27;nın 30-45 katı can puanı, sonrasında sabit kalıyor)</li><li>Yeni silahlar &quot;Azrail&#x27;in Tırpanı&quot;, &quot;Uçurum Zıpkını&quot;, &quot;Yıldırım Mızrağı&quot; ilgili boss&#x27;lardan düşüyor</li><li>Yapı Malzemeleri MOD&#x27;unun çalışma tezgahına, aynı yerleşimden birden fazla blok seçilebilen bir geçiş düğmesi eklendi (ahşap sütun blokları gibi)</li><li>Boss&#x27;a özel kürek ve çapayla gerçekten yol yapılabiliyor veya toprak sürülebiliyor</li><li>Araçların lastikleri görünürde de dönüyor (10 araç türü)</li></ul>
+      
+      
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Sculk Golemi ve Rock Lock&#x27;a henüz özel saldırı animasyonu eklenmedi (özel saldırı habercisi de yalnızca parçacık efekti)</li><li>Yıldırım Mızrağı henüz fırlatılamıyor (sadece yakın dövüş)</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Boss saldırı animasyonları ve aletlerin 3D hale gelmesi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Görsel Güncelleme</span></div>
+      <p>5 boss&#x27;un yakın dövüş, alan saldırısı ve ışın saldırısına özel animasyonlar eklendi. Düşen 5 çeşit alet (kazma, balta, çapa, mızrak, kürek) de düz simgeden üç boyutlu modele dönüştürüldü. Hasar, bekleme süresi gibi oyun içeriği değiştirilmedi.</p>
+      <ul><li>5 boss&#x27;un saldırılarına (yakın dövüş, 2 tür alan saldırısı, ışın saldırısı) özel animasyonlar eklendi; saldırı habercisi (hazırlık hareketi) daha anlaşılır hale geldi</li><li>Düşen 5 çeşit alet üç boyutlu modele dönüştürüldü. Arayüzdeki simgeler de 3D görünüme geçirildi</li></ul>
+      
+      
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Yakın dövüş saldırısına savurma gibi bir hazırlık hareketi eklenmedi. Vanilla&#x27;nın yakın dövüş saldırısı hasarı anında verdiği için, hazırlık hareketi eklenirse hasarın zamanlaması kayacaktı</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 5 boss&#x27;un görünümü baştan sona yenilendi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Görsel Güncelleme</span></div>
+      <p>&quot;Aynı canlının renk değişmiş hali gibi görünüyor&quot; geri bildirimi üzerine, yeni 5 boss&#x27;un yalnızca görünümü baştan sona yeniden tasarlandı. Güç, düşen eşyalar ve saldırı içeriği gibi oyun içeriği değiştirilmedi.</p>
+      <ul><li>Rün Çekirdekli Dev: Taş bir çekirdek üzerine bronz/altın zırh, gövdenin iki yanında süzülen 2 kılıç, kolu saran dönen rün halkaları</li><li>Kor Lordu: Gövdeyi delip geçen lav yarıkları, 4 parçaya ayrılıp kıvrılan 2 boynuz</li><li>Kadim Trent: Yönü ve kırılma şekli farklı 8 dal (3&#x27;ü ortadan kırık), gövdeye oyulmuş bir yüz</li><li>Boşluk Avcısı: İnsan biçimli tasarımdan vazgeçilip obsidyen kütlesi + mor portal + 8 dokunaç + 18 parlayan göz olan bir görünüme yenilendi</li><li>Buz Lich Kralı: 5 katmanlı cübbe, 9 sivri buz taçı, kaldırılan sol elde dönen bir buz nişanesi</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 5 yeni boss eklendi, can puanı sınırı aşıldı
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>Boss MOD&#x27;una 5 yeni dev boss eklendi. Şimdiye kadar Minecraft&#x27;ın kendi sistemi yüzünden can puanı en fazla 1024&#x27;e çıkabiliyordu; bu sınır kaldırıldı ve 2400-4000 can puanlı gerçek boss&#x27;lar eklendi. Yenildiklerinde özel güçlendirilmiş aletler (kazma, balta, çapa, yeni silah &quot;mızrak&quot;, kürek) kesin düşüyor.</p>
+      <ul><li>5 yeni boss eklendi (yapılabilen çağırma eşyalarıyla çağrılıyor): Rün Çekirdekli Dev (3000 HP), Kor Lordu (3400 HP), Kadim Trent (4000 HP), Boşluk Avcısı (2400 HP), Buz Lich Kralı (2800 HP)</li><li>Her boss yenildiğinde özel güçlendirilmiş bir alet kesin düşüyor: Rün Kazması, Kor Baltası, Orman Çapası, Boşluk Mızrağı (vanilla&#x27;da olmayan yeni bir silah), Buz Küreği. Hepsi yüksek dayanıklılıklı, çok sayıda büyü önceden eklenmiş ve yapılamaz durumda</li></ul>
+      
+      
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>5&#x27;inin de savaş zorluğu yüksek, solo oynanışta zorlanılması bekleniyor. Aşırı güçlü hissettirirse yönetici config üzerinden can puanı ve saldırı gücünü ayarlayabilir</li><li>Boşluk Avcısı&#x27;nın tasarımda havada süzülmesi planlanmıştı ama şu an yerde hareket edip ışınlanma yapan bir şekilde uygulandı</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 138 yeni yapı bloğu eklendi, silah dayanıklılığı hayata geçirildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span></div>
+      <p>v1.3.2 yayınlandıktan sonraki geri bildirimlere yanıt olarak yapılan ek düzenlemeler. 2 boss&#x27;un görünümü yenilendi ve şimdiye kadar sadece görünüp gerçekte azalmayan silah dayanıklılığı sonunda doğru şekilde çalışmaya başladı. Yapı Malzemeleri MOD&#x27;una 138 çeşit yeni yapı bloğu eklendi, tüm silahların menzili 5 kat uzatıldı.</p>
+      <ul><li>Sculk Golemi ve Rock Lock&#x27;un görünümü yenilendi (Sculk Golemi = Sculk&#x27;tan yapılmış demir golemi tarzı, Rock Lock = yakın gelecek temalı silahlı robot tarzı). Güç veya saldırı içeriğinde değişiklik yok</li><li>Silahların dayanıklılığı sonunda doğru şekilde azalmaya başladı (şimdiye kadar sadece dayanıklılık çubuğu görünüyor ama kırılmıyordu). Varsayılan dayanıklılık yaklaşık 1536 atış, Excalibur yaklaşık 6093 kullanım</li><li>Tüm silahların menzili 5 kat uzatıldı (Saldırı Tüfeği 60 → 300m, Pompalı Tüfek 24 → 120m, Keskin Nişancı 150 → 750m, Lazer 80 → 400m)</li><li>Yapı Malzemeleri MOD&#x27;una 138 çeşit yeni yapı bloğu eklendi (dikey yarım blok, sekizgen sütun, 8 basamaklı rampa × 46 malzeme)</li><li>Araçların tasarımının &quot;yuvarlak hatlı, gerçekçi bir şekle&quot; değiştirilmesi planı onaylandı; sedan ve pervaneli uçak için tasarım taslakları tamamlandı (13 türün tamamına yayılması ileriki güncellemelerde sırayla yapılacak)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Tüm silahların menzili 5 kat uzatıldı (Saldırı Tüfeği 60 → 300m / Pompalı Tüfek 24 → 120m / Keskin Nişancı 150 → 750m / Lazer 80 → 400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Menzil uzamasının yansıması için config/sorakaze_guns.json dosyasının silinmesi gerekiyor</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Araçların &quot;yuvarlak hatlı tasarımı&quot; şu an için yalnızca sedan ve pervaneli uçak taslaklarından ibaret; 13 türün tamamına yayılması ileriki güncellemelerde ele alınacak</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail vehicles boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 138 yeni yapı bloğu eklendi, silah dayanıklılığı hayata geçirildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>v1.3.2 yayınlandıktan sonraki geri bildirimlere yanıt olarak yapılan ek düzenlemeler. 2 boss&#x27;un görünümü yenilendi ve şimdiye kadar sadece görünüp gerçekte azalmayan silah dayanıklılığı sonunda doğru şekilde çalışmaya başladı. Yapı Malzemeleri MOD&#x27;una 138 çeşit yeni yapı bloğu eklendi, tüm silahların menzili 5 kat uzatıldı.</p>
+      <ul><li>Sculk Golemi ve Rock Lock&#x27;un görünümü yenilendi (Sculk Golemi = Sculk&#x27;tan yapılmış demir golemi tarzı, Rock Lock = yakın gelecek temalı silahlı robot tarzı). Güç veya saldırı içeriğinde değişiklik yok</li><li>Silahların dayanıklılığı sonunda doğru şekilde azalmaya başladı (şimdiye kadar sadece dayanıklılık çubuğu görünüyor ama kırılmıyordu). Varsayılan dayanıklılık yaklaşık 1536 atış, Excalibur yaklaşık 6093 kullanım</li><li>Tüm silahların menzili 5 kat uzatıldı (Saldırı Tüfeği 60 → 300m, Pompalı Tüfek 24 → 120m, Keskin Nişancı 150 → 750m, Lazer 80 → 400m)</li><li>Yapı Malzemeleri MOD&#x27;una 138 çeşit yeni yapı bloğu eklendi (dikey yarım blok, sekizgen sütun, 8 basamaklı rampa × 46 malzeme)</li><li>Araçların tasarımının &quot;yuvarlak hatlı, gerçekçi bir şekle&quot; değiştirilmesi planı onaylandı; sedan ve pervaneli uçak için tasarım taslakları tamamlandı (13 türün tamamına yayılması ileriki güncellemelerde sırayla yapılacak)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Tüm silahların menzili 5 kat uzatıldı (Saldırı Tüfeği 60 → 300m / Pompalı Tüfek 24 → 120m / Keskin Nişancı 150 → 750m / Lazer 80 → 400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Menzil uzamasının yansıması için config/sorakaze_guns.json dosyasının silinmesi gerekiyor</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Araçların &quot;yuvarlak hatlı tasarımı&quot; şu an için yalnızca sedan ve pervaneli uçak taslaklarından ibaret; 13 türün tamamına yayılması ileriki güncellemelerde ele alınacak</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-21</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.1</span> — Boss&#x27;un Bekçi (Warden) tarafından yenilme hatası düzeltildi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Hata Düzeltmesi</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>Şehir başına 1 tane, ömür boyu 1 tane olan değerli boss &quot;Sculk Golemi&quot;nin, karşılık veren Bekçi (Warden) tarafından yenilme hatası düzeltildi.</p>
+      <ul><li>Sculk Golemi artık Bekçi&#x27;den (Warden) hasar almıyor, Bekçi de artık Sculk Golemi&#x27;ne saldırmıyor veya onu hedef almıyor (oyuncular tarafından yenilme eskisi gibi mümkün)</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss vehicles">
+      <div class="timeline-entry__date">2026-07-20</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.0</span> — Boss ve Araçlar MOD&#x27;ları eklendi, toplam 5 MOD&#x27;a çıkıldı
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>Yeni olarak &quot;Boss&quot; ve &quot;Araçlar&quot; MOD&#x27;ları eklenerek toplam 5 MOD&#x27;a ulaşıldı. Antik şehirde Bekçi (Warden) yenilince ortaya çıkan &quot;Sculk Golemi&quot; boss savaşı, araba, kamyon, uçak gibi 13 yeni araç, lazer silahı ve lazer tuzağı geldi. Tren en fazla 15 vagonluk katarlara bağlanabiliyor.</p>
+      <ul><li>Yeni MOD &quot;Boss&quot; eklendi: Antik şehirde 3 Bekçi (Warden) yenildiğinde &quot;Sculk Golemi&quot; (900 HP) boss&#x27;u ortaya çıkıyor. Yenilince etki alanı 3 kat olan &quot;Güçlendirilmiş İşaret Feneri&quot; kesin düşüyor</li><li>Yeni MOD &quot;Araçlar&quot; eklendi: Araba, otobüs, kamyon, motosiklet gibi 10 kara aracı ve 3 uçak eklendi. Acil durum araçlarının tepe lambası ve sireni, kamyonların kasası gibi özellikler destekleniyor</li><li>Silahlara lazer silahı (1 enerji hücresiyle 100 atış) ve otomatik taret (sadece düşmanları hedef alır) eklendi</li><li>Yapı Malzemeleri MOD&#x27;una lazer vericisi/alıcısı ve masa eklendi</li><li>Trenin bağlanma yöntemi geliştirildi; yük vagonu ve yolcu vagonu dahil en fazla 15 vagonluk katarlar oluşturulabiliyor. Baş vagonu 75 m/s olan 2 tür süper ekspres tren de eklendi</li></ul>
+      
+      
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Uçakların uçuş hissi (kalkış/iniş, stall vb.) ileride ayar yapılacağı varsayımıyla tasarlandı. Ağır veya kullanışsız hissettirirse config üzerinden ayarlanabilir</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-19</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.1</span> — Silahlar isabet-taramalı hale geldi, kapı sabitleme düzeltmesi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span></div>
+      <p>Silahlar &quot;ateş edilen anda isabet eden&quot; isabet-taramalı (hitscan) yönteme çevrildi ve özel ateş sesleri eklendi. Trene 3D model ve bağlanma özelliği (yük vagonu, yolcu vagonu) eklendi; kapalı kapıların ufak titremeye devam etme hatası düzeltildi. Gizli kapılar ve 3 yeni kapı türü de eklendi.</p>
+      <ul><li>Silahlar, merminin uçmasını beklemeden isabet eden isabet-taramalı yönteme geçirildi (isabet mesafesi Saldırı Tüfeği 60m / Pompalı Tüfek 24m / Keskin Nişancı 150m)</li><li>Ateş etme, yeniden doldurma ve boş tetikleme sesleri yeni eklendi (kendi ses kaynağı)</li><li>Silah elde tutulduğunda boyutu büyütüldü, birinci ve üçüncü şahıs görünümlerinde daha net görünüyor</li><li>Trene 3D model (banliyö treni tarzı bir görünüm) eklendi. Yük vagonu (27 slotluk depolama) ve yolcu vagonu (2 kişilik) bağlanabiliyor (bağlıyken geri gidiş yok)</li><li>Kapalı kapıların ufak ufak titremeye devam etme hatası düzeltildi</li><li>Gizli kapılar (toprak, taş, nether taşı, end taşı gibi bloklara benzeyen) eklendi</li><li>3 yeni kapı türü eklendi (rulo kepenk, sürgülü tek kapı, kafesli demir kapı), kapı toplamı 9 türe çıktı</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.0</span> — Kapıda boğulma hatası düzeltildi, tren büyük ölçüde hızlandı
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span></div>
+      <p>Kapıdan geçerken hasar alma gibi ciddi bir hata düzeltildi. Trenin azami hızı 60 m/s&#x27;ye (config üst sınırı 80 m/s) yükseltildi; hareket halindeyken ilerleme yönündeki bölgeler otomatik olarak önceden yükleniyor. Asansör ve konveyör bandı gibi yeni bloklar eklendi; silahların kontrolleri sol tık ateş et, sağ tık doğrult, R tuşu yeniden doldur şeklinde birleştirildi.</p>
+      <ul><li>[Önemli] Kapıdan geçerken hasar alma hatası düzeltildi (otomatik kapı, fusuma, büyük kapı, hatch). Kapının yakınında biri varken artık otomatik kapanmıyor</li><li>Trenin azami hızı 20 → 60 m/s (config üst sınırı 80 m/s&#x27;ye kadar yükseltilebilir). Hareket halindeyken ilerleme yönündeki bölgeler otomatik önceden yükleniyor, yüksek hızda manzara kesilmesi azaltıldı</li><li>4 yeni blok: Asansör (zıplayınca yukarı / eğilince aşağı), yürüyen merdiven, 2 tür sandalye, konveyör bandı (eşya taşır, kızıltaşla durdurulabilir)</li><li>Silah kontrolleri yenilendi: sol tıkla ateş et, sağ tık basılı tutarak doğrult (Keskin Nişancı için dürbün), R tuşuyla yeniden doldur</li><li>Silah elde tutulduğunda 3D model olarak görünüyor (önceden yalnızca arayüzdeki gibi düz bir simgeydi)</li><li>Pompalı Tüfek yakın mesafede zırhsız bir düşmanı tek atışta öldürebiliyor (isabet sonrası dokunulmazlık süresi yüzünden birden fazla saçmanın birlikte etkisiz kaldığı hata da düzeltildi)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Pompalı Tüfek saçma hasarı 3.0 → 5.0 (10 tane, yakın mesafede tüm saçmalar isabet ederse 50.0)</li><li>Tren azami hız 20 → 60 m/s, config üst sınırı 25 → 80 m/s</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Trenin hız üst sınırının anlamı değiştiği için güncelleme sonrası config/sorakaze_rail.json dosyasının silinmesi önerilir (silinmezse eski ayar olan 20 m/s&#x27;de kalır)</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.1.0</span> — Tren davranışında iyileştirme ve silahlarda güçlendirme
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span></div>
+      <p>Trenin sarsak hareket etme sorunu ve &quot;W tuşuna basılı tutmadan ilerlememe&quot; sorunu giderildi. Silahların gücü artırıldı, Keskin Nişancı Tüfeği&#x27;ne özel dürbün görünümü ve sallanma efekti eklendi. Yapı Malzemeleri MOD&#x27;una otomatik kapı gibi 4 yeni kapı türü eklendi.</p>
+      <ul><li>Tren: Sarsak hareket etme sorunu giderildi, artık pürüzsüz ilerliyor</li><li>Tren: W tuşuna bir kez basıldığında artık tuşa basılı tutmadan otomatik hızlanıp seyrediyor (önceden tuşu basılı tutmak gerekiyordu). S tuşu ile fren, durduktan sonra tekrar S ile geri gidiş</li><li>Trenin azami hızı 15 → 20 m/s. Tren eşyasının simgesi yenilendi</li><li>Keskin Nişancı Tüfeği: &quot;Doğrult → bırak ve ateş et&quot; yöntemine geçildi; özel dürbün görünümü, ×4/×8 yakınlaştırma (tekerlekle değiştirilebilir) ve eğilince yarıya inen nişan sallanması eklendi</li><li>Saldırı Tüfeği: Hareket halindeyken ateş edildiğinde saçılmanın artması eklendi</li><li>Yapı Malzemeleri MOD&#x27;u: Otomatik kapı, fusuma, büyük kapı (demir/ahşap), hatch olmak üzere 4 yeni kapı türü eklendi (çok bloklu yapı; nereye vurulursa vurulsun 1 adet düşer)</li></ul>
+      <h4>Denge Ayarları</h4><ul><li>Saldırı Tüfeği hasarı 3.0 → 5.0, atış hızı 8 → 10 atış/saniye</li><li>Pompalı Tüfek saçma hasarı 2.0 → 3.0 (10 taneye çıktı), etkili menzil 12 → 16m</li></ul>
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-15</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.0.0</span> — İlk sürüm: Silahlar, Demiryolu ve Yapı Malzemeleri olmak üzere 3 MOD
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span></div>
+      <p>Sunucuya &quot;sorakaze_guns&quot; (silahlar), &quot;sorakaze_rail&quot; (demiryolu) ve &quot;sorakaze_deco&quot; (yapı malzemeleri) adlı 3 MOD ilk kez eklendi. Vanilla yay-ok ve maden arabaları olduğu gibi kalırken, hayatta kalma modunda yapılabilen yeni silahlar, araçlar ve şehir kurma blokları eklendi.</p>
+      <ul><li>Silahlar MOD&#x27;u: Saldırı Tüfeği, Pompalı Tüfek ve Keskin Nişancı Tüfeği olmak üzere 3 silah ile bunlara özel mermiler (Tüfek Mermisi / Pompalı Tüfek Fişeği / Keskin Nişancı Mermisi) hayatta kalma modunda yapılabilir hale geldi</li><li>Keskin Nişancı Tüfeği&#x27;ne dürbün yakınlaştırma özelliği eklendi</li><li>Demiryolu MOD&#x27;u: Raylara yerleştirilebilen yeni bir araç olan &quot;Tren&quot; eklendi (vanilla maden arabaları, raylar, yay-ok ve arbaletler değiştirilmedi). Hareket halindeyken döngüsel bir hareket sesi çalıyor</li><li>Yapı Malzemeleri MOD&#x27;u: Bariyer, elektrik direği, elektrik hattı, kabartmalı yol işareti (yönlendirme/uyarı), araç trafik ışığı, yaya trafik ışığı, uçak ikaz ışığı, ışıldak gibi 12 çeşit blok eklendi</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Sunucuyu MOD destekli hale getirmek için vanilla&#x27;dan Fabric&#x27;e geçiş gerekiyor. Ayrıca Minecraft 26.2&#x27;nin çalışması için Java 25 veya üzeri gerektiğinden, sunucu makinesindeki Java sürümünü kontrol edin (kurulum adımları için yönetici rehberine bakın)</li></ul>
+        </div>
+      
+    </article>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu Sunucusuna Kurulu MOD&#x27;lar İçin Resmî Olmayan Kaynak</p>
+    <p class="site-footer__note">Bu site resmî olmayan bir kaynaktır. MOD dosyalarının (jar) dağıtımı yapılmamaktadır. Tarifler ve değerler, kurulu sürüme ve sunucu tarafındaki config ayarlarına göre gerçek oyundakinden farklı olabilir.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

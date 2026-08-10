@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bug yang Diketahui | Glimpse Alpha Wiki</title>
+<meta name="description" content="Daftar bug yang diketahui dan elemen yang belum terkonfirmasi pada MOD pack Glimpse Alpha.">
+<meta property="og:title" content="Bug yang Diketahui | Glimpse Alpha Wiki">
+<meta property="og:description" content="Daftar bug yang diketahui dan elemen yang belum terkonfirmasi pada MOD pack Glimpse Alpha.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Lompat ke konten utama</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Beranda</a></li>
+        <li><a href="../changelog/">Riwayat Pembaruan</a></li>
+        <li><a href="../recipes/">Kumpulan Resep</a></li>
+        <li><a href="../guide/">Panduan Pemasangan</a></li>
+        <li><a href="../roadmap/">Rencana Mendatang</a></li>
+        <li><a href="../known-issues/" class="active">Bug yang Diketahui</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Bahasa / Language">
+          🌐 <span>Bahasa Indonesia</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/">Español</a></li>
+        <li><a href="../../fr/known-issues/">Français</a></li>
+        <li><a href="../../zh/known-issues/">简体中文</a></li>
+        <li><a href="../../ko/known-issues/">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/" class="active" aria-current="true">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema warna" title="Ganti tema warna">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Bug yang Diketahui</span>
+  <h1>Bug yang Diketahui</h1>
+  <p class="lede">Merangkum bug kecil yang sudah diketahui, serta elemen yang belum bisa dikonfirmasi di perangkat sungguhan karena keterbatasan lingkungan pengembangan. Bug serius akan segera diperbaiki dan didistribusikan begitu ditemukan, sebagaimana tercatat di riwayat pembaruan.</p>
+</div>
+
+<h2>Bug Kecil yang Sudah Diketahui</h2>
+<p class="section-lede">Bug yang diketahui ini tidak mengganggu fungsi, tetapi memengaruhi tampilan atau visual.</p>
+<h4>Tampilan Nama Panel Kaca Diperkuat (17 Warna) <span class="card__meta">(v1.7.7+)</span></h4><p>16 dari 17 warna belum memiliki nama Jepang/Inggris yang diatur, sehingga ID item ditampilkan apa adanya (hanya warna hitam yang menampilkan nama dengan benar). Tidak memengaruhi fungsi maupun performa.</p><h4>Kabel Terisolasi Sesaat Setelah Listrik Dimatikan lalu Dinyalakan Lagi <span class="card__meta">(v1.8.1+)</span></h4><p>Kabel yang tidak terhubung ke panel pemutus terkadang tetap menyala hanya sesaat setelah listrik dimatikan lalu dinyalakan kembali. Ini bisa diperbaiki dengan menghancurkan kabel tersebut lalu memasangnya kembali.</p><h4>Tampilan Resep di Aplikasi &quot;Cari Info&quot; <span class="card__meta">(v1.8.6+)</span></h4><p>Layar resep 3×3 yang bisa dilihat lewat aplikasi &quot;Cari Info&quot; di ponsel/komputer tidak menerima informasi penempatan bahan di petak mana, sehingga yang ditampilkan bukan tata letak sebenarnya, melainkan tampilan sederhana yang mengisi dari petak pertama secara berurutan. Jenis dan jumlah bahan itu sendiri ditampilkan dengan benar.</p>
+
+<h2>Elemen yang Sengaja Belum Ditangani</h2>
+<p class="section-lede">Ini bukan bug, melainkan hal yang penanganannya masih dipertimbangkan sebagai bagian dari desain ke depannya.</p>
+<h4>Motion Serangan Khusus Kraken &amp; Titan</h4><p>Kedua bos raksasa ini sudah menampilkan tanda peringatan jurus pamungkas lewat partikel, tetapi motion serangan khusus yang menggerakkan tubuhnya belum diimplementasikan. Ini adalah penundaan spesifikasi yang disengaja, dan keputusan apakah akan ditangani masih menunggu keputusan admin server.</p>
+
+<h2>Perubahan Terbaru yang Belum Dikonfirmasi di Perangkat Sungguhan</h2>
+<p class="callout callout--info">MOD pack ini dibuat di lingkungan pengembangan yang tidak bisa menjalankan klien Minecraft secara langsung. Proses server menyala dan integritas data sudah diverifikasi secara otomatis, tetapi tampilan, suara, dan rasa saat dimainkan baru bisa dipastikan lewat masukan dari pemain sungguhan. Berikut adalah hal-hal dari pembaruan terbaru yang belum sempat dikonfirmasi di perangkat sungguhan. Jika ada yang terasa aneh, mohon beri tahu admin server.</p>
+<ul><li><strong>Tampilan Pipa Air &amp; Masker Gas:</strong> Tampilan dan hitbox yang dibuat ulang di v1.8.5 belum dikonfirmasi bagaimana terlihatnya di layar sungguhan.</li><li><strong>Kenyamanan Penggunaan GUI Beacon Tingkat Lanjut:</strong> Kenyamanan penggunaan layar pemilihan kemampuan Beacon Tingkat Lanjut α/β belum dikonfirmasi.</li><li><strong>Kepadatan Spawn Musuh (Dunia Normal/Overworld):</strong> Belum diverifikasi apakah kepadatan spawn yang disesuaikan di v1.8.5 terasa pas saat benar-benar dimainkan.</li><li><strong>Ikon Baru Hulu Ledak &amp; Aplikasi Ponsel:</strong> Ikon Hulu Ledak Misil dan Hulu Ledak Nuklir yang ditambahkan di v1.8.6, serta desain layar baru aplikasi ponsel, belum dikonfirmasi tampilannya di layar permainan sungguhan.</li><li><strong>Perilaku Kamera CCTV, Lift, dan Lainnya Setelah Dielektrifikasi:</strong> Untuk 5 perangkat yang mulai membutuhkan listrik sejak v1.8.3 (Kamera CCTV, Lift, Eskalator, Pintu Otomatis, ATM), perilaku sebenarnya dalam kondisi ada listrik maupun tidak ada listrik belum dikonfirmasi.</li><li><strong>Rasa Bermain dengan Elektrifikasi Redstone (v1.8.1+):</strong> Seberapa besar otomatisasi ladang atau stasiun akan berhenti, dan seberapa merepotkan menata ulang kabelnya, baru bisa diketahui setelah benar-benar dimainkan.</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referensi Tidak Resmi MOD Server Sorakazekarasu</p>
+    <p class="site-footer__note">Situs ini adalah referensi tidak resmi. Kami tidak mendistribusikan file MOD (jar) itu sendiri. Resep dan angka yang ditampilkan bisa berbeda dari kondisi sebenarnya tergantung versi yang terpasang dan penyesuaian config di sisi server.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

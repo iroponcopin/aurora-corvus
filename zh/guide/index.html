@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>导入指南 | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha MOD 包的导入指南，汇总了服务器端的导入步骤与玩家端的加入设置。">
+<meta property="og:title" content="导入指南 | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha MOD 包的导入指南，汇总了服务器端的导入步骤与玩家端的加入设置。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">首页</a></li>
+        <li><a href="../changelog/">更新日志</a></li>
+        <li><a href="../recipes/">合成配方</a></li>
+        <li><a href="../guide/" class="active">导入指南</a></li>
+        <li><a href="../roadmap/">后续计划</a></li>
+        <li><a href="../known-issues/">已知问题</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="语言 / Language">
+          🌐 <span>简体中文</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../guide/">日本語</a></li>
+        <li><a href="../../en/guide/">English</a></li>
+        <li><a href="../../es/guide/">Español</a></li>
+        <li><a href="../../fr/guide/">Français</a></li>
+        <li><a href="../../zh/guide/" class="active" aria-current="true">简体中文</a></li>
+        <li><a href="../../ko/guide/">한국어</a></li>
+        <li><a href="../../pt-br/guide/">Português (Brasil)</a></li>
+        <li><a href="../../it/guide/">Italiano</a></li>
+        <li><a href="../../ar/guide/">العربية</a></li>
+        <li><a href="../../ru/guide/">Русский</a></li>
+        <li><a href="../../id/guide/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/guide/">Deutsch</a></li>
+        <li><a href="../../tr/guide/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换配色" title="切换配色">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">导入指南</span>
+  <h1>导入指南</h1>
+  <p class="lede">本页汇总了从启用 MOD 到开始游玩的完整步骤。如果只是作为玩家加入服务器，阅读「面向玩家」章节即可。</p>
+</div>
+<div class="toc"><div class="toc__title">目录</div><ol><li><a href="#overview">概述：关于 Glimpse Alpha 的导入</a></li><li><a href="#player-setup">面向玩家：加入服务器所需的设置</a></li><li><a href="#admin-prep">面向服务器管理员：前期准备（备份与版本确认）</a></li><li><a href="#admin-fabric-install">面向服务器管理员：导入 Fabric</a></li><li><a href="#admin-mods-and-verify">面向服务器管理员：导入 MOD 与启动确认</a></li><li><a href="#admin-upgrade">更换 MOD 新版本时</a></li><li><a href="#gameplay-notices">开始游玩前需要了解的注意事项</a></li><li><a href="#faq">常见问题与故障排除</a></li></ol></div>
+<div id="overview"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">概述：关于 Glimpse Alpha 的导入</h2>
+      
+<p>
+  <strong>Glimpse Alpha</strong>（旧称：Sorakaze）是导入在 Sorakazekarasu 服务器中的
+  Fabric MOD 群。由 8 个相互独立的 MOD 组成，可以分别单独导入、更新。
+  它不会替换或删除弓箭、矿车等原版（未安装 MOD 时的标准）要素，
+  而是以新增物品、方块、维度的形式来实现。
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>内容</th></tr>
+<tr><td>枪械</td><td>原版没有的远程武器（突击步枪、霰弹枪、狙击枪等）</td></tr>
+<tr><td>铁道</td><td>会逐渐加速的电车，以及可连结的客车厢、货运车厢</td></tr>
+<tr><td>建材、装饰</td><td>信号灯、护栏等城镇建材，以及监控摄像头、ATM、电梯等家电</td></tr>
+<tr><td>载具</td><td>汽车、巴士、航空器等</td></tr>
+<tr><td>Boss</td><td>强大的讨伐目标，以及专属的掉落装备</td></tr>
+<tr><td>天空</td><td>新维度「天空」，以及居住在那里的天使之城、王国</td></tr>
+<tr><td>生存</td><td>新矿石、护甲，以及气温、四季等生活要素</td></tr>
+<tr><td>电力</td><td>发电、输电网络，以及靠电力运作的设备</td></tr>
+</table>
+</div>
+<p>各 MOD 详细的物品与配方，请参阅<a href="../recipes/">合成配方</a>；此前的变更内容，请参阅
+<a href="../changelog/">更新日志</a>。</p>
+
+<h3>使用 MOD 需要「Fabric」</h3>
+<p>
+  <strong>Fabric</strong> 是让 Minecraft 能够读取 MOD 的基础平台。
+  可以理解为在游戏机上安装软件之前，需要先有主机系统一样，
+  在安装 MOD 本体之前，必须先在服务器和每位玩家的电脑上都导入 Fabric。
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">⚠ 最容易搞错的地方</div>
+  <p>
+    MOD 不仅需要安装在<strong>服务器上，还需要每一位游玩者的电脑上都安装相同的内容</strong>。
+    并不存在"只要装在服务器上，就会自动反映给所有人"这种情况。
+    服务器与全体玩家的 Minecraft 版本、Fabric、MOD 组合必须完全一致，
+    否则将无法加入服务器。
+  </p>
+</div>
+
+<h3>谁需要准备什么</h3>
+<ul>
+  <li><strong>服务器（Sorakazekarasu 服务器）</strong> — Fabric 服务端本体 + Fabric API + Glimpse Alpha 8 个 MOD</li>
+  <li><strong>每一位参与者的电脑</strong> — Fabric 客户端 + Fabric API + Glimpse Alpha 8 个 MOD（与服务器完全相同的组合）</li>
+</ul>
+
+<div class="callout callout--info">
+  <div class="callout__title">本站不提供 MOD 本体的下载</div>
+  <p>
+    本站只刊载配方表、更新日志、导入教程等「阅读内容」，
+    并不提供 MOD 本体（jar 文件）本身的下载。导入所需的完整 jar 文件，
+    请向服务器管理员索取。
+  </p>
+</div>
+
+<h3>本页的结构</h3>
+<p>
+  本指南按两种立场分别撰写。绝大多数人只需阅读
+  <a href="#player-setup">面向玩家的章节</a>即可加入。
+  如果您是自行运营、管理服务器的一方，请接着阅读
+  <a href="#admin-prep">面向服务器管理员的章节</a>。
+</p>
+
+<h3>目前对应的版本（参考）</h3>
+<p>
+  以下是本页撰写时的数值，实际数值会随每次更新而变化，请务必通过
+  <a href="../changelog/">更新日志</a>、<a href="../recipes/">合成配方</a>，
+  或服务器管理员的通知来确认准确的数值。
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>项目</th><th>目前的参考值</th></tr>
+<tr><td>Minecraft 版本</td><td><code>26.2</code></td></tr>
+<tr><td>所需 Java</td><td>Java 25（推荐 <a href="https://adoptium.net/">Temurin 25 (LTS)</a>）</td></tr>
+<tr><td>Fabric API</td><td>与 Minecraft 版本对应的版本（例：<code>fabric-api-0.154.2+26.2.jar</code>）</td></tr>
+<tr><td>MOD 构成</td><td>8 个（枪械、铁道、建材/装饰、载具、Boss、天空、生存、电力）</td></tr>
+</table>
+</div>
+
+    </div></div>
+<div id="player-setup"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">面向玩家</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">面向玩家：加入服务器所需的设置</h2>
+      
+<p>
+  这里说明的是<strong>准备加入服务器一方</strong>的设置方法，不需要任何高深的专业知识。
+  只要按顺序从上往下操作，大约 15〜20 分钟即可完成。
+</p>
+
+<div class="callout callout--info">
+  <div class="callout__title">要做的事情只有 3 件</div>
+  <ul>
+    <li>① 在自己的电脑上安装 Fabric（读取 MOD 的基础平台）</li>
+    <li>② 把从服务器管理员那里收到的整套 MOD 文件，放入指定的文件夹</li>
+    <li>③ 只需改变一处启动方式，即可加入服务器</li>
+  </ul>
+</div>
+
+<h3>需要准备的东西</h3>
+<ul>
+  <li>能运行 Minecraft Java 版的 Windows 或 Mac 电脑</li>
+  <li>从服务器管理员那里收到的 <strong>整套 MOD（共 9 个 jar 文件 = Fabric API 1 个 + Glimpse Alpha 的 8 个 MOD）</strong></li>
+</ul>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 非常重要</div>
+  <p>
+    必须与服务器的<strong>版本完全相同、MOD 文件完全相同</strong>才能加入。
+    本页以 Minecraft 版本 <code>26.2</code> 为例进行说明，
+    如果服务器管理员告知的是其他数字，请自行替换为该数字。
+    收到的 jar 文件请<strong>不要用双击打开</strong>，只需放入文件夹中即可使用。
+  </p>
+</div>
+
+<h3>预计会收到的文件（示例）</h3>
+<p>您将从服务器管理员那里收到大致如下的 9 个文件（版本号会随每次更新而变化）。</p>
+<div class="table-wrap">
+<table>
+<tr><th>文件名（示例）</th><th>内容</th></tr>
+<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>让 MOD 运作所需的公共组件</td></tr>
+<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>枪械 MOD</td></tr>
+<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>铁道 MOD</td></tr>
+<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>建材、装饰 MOD</td></tr>
+<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>载具 MOD</td></tr>
+<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss MOD</td></tr>
+<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>天空 MOD</td></tr>
+<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>生存 MOD</td></tr>
+<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>电力 MOD</td></tr>
+</table>
+</div>
+
+<h3>① 安装 Fabric</h3>
+<p>打开 <code>https://fabricmc.net/use/installer/</code>，获取安装程序。保持在「<strong>Client</strong>」标签页（不要切换到「Server」），在 Minecraft Version 中选择与服务器相同的数字，然后点击「Install」。</p>
+
+<h4>Windows 的情况</h4>
+<ol class="steps">
+  <li>点击页面上「Download installer (Windows/.exe)」这样的按钮下载安装程序，双击运行（如果出现「Windows 已保护你的电脑」，请点击「更多信息」→「仍要运行」）。</li>
+  <li>保持在「Client」标签页，Minecraft Version 选择 <code>26.2</code>（与服务器相同的数字），Loader Version 保持不变，点击「Install」。</li>
+</ol>
+
+<h4>Mac 的情况</h4>
+<ol class="steps">
+  <li>点击「Download universal jar」按钮下载安装程序（.jar）。没有 Mac 专用的可执行文件（.exe）。</li>
+  <li>对下载好的 <code>fabric-installer-〜.jar</code>，<strong>不要用普通的双击</strong>，而是右键点击（或按住 <code>control</code> 键点击），选择「打开」。如果出现警告，请再次点击「打开」。</li>
+  <li>保持在「Client」标签页，Minecraft Version 选择与服务器相同的数字，点击「Install」。</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 如果 Mac 提示「无法验证开发者」</div>
+  <p>在较新的 macOS 上，即使右键点击→「打开」也可能不会弹出按钮，
+  只会出现「无法验证"fabric-installer〜.jar"是否包含恶意软件」这样的警告。这种情况下可以按以下顺序打开。</p>
+  <ol class="steps">
+    <li>在警告框中点击「完成」（<strong>绝对不要点击「移到废纸篓」</strong>）</li>
+    <li>打开屏幕左上角的苹果菜单 →「系统设置」→「隐私与安全性」</li>
+    <li>下方会显示「"fabric-installer〜.jar" 的使用已被阻止」，点击旁边的「仍要打开」</li>
+    <li>如果再次询问，选择「仍要打开」→ 输入 Mac 密码（或使用 Touch ID）</li>
+  </ol>
+  <p>这是所有未在 Apple 注册的发布物都会出现的标准警告，只要是从 Fabric 官方网站获取的，就不必担心。允许一次之后，之后就能正常打开了。</p>
+</div>
+
+<div class="callout callout--info">
+  <div class="callout__title">如果 Mac 上安装程序毫无反应</div>
+  <p>
+    如果右键点击→「打开」后毫无反应，说明系统中没有安装 Java。
+    请打开 <a href="https://adoptium.net/">adoptium.net</a>，安装 macOS 版的「Temurin」安装程序（.pkg）后再试一次。
+    Apple 芯片（M1/M2/M3/M4 等）的 Mac 请选择「aarch64」，Intel 芯片的 Mac 请选择「x64」。
+    如果不确定，请查看屏幕左上角苹果菜单 →「关于本机」中的「芯片」一栏（如果显示「Apple M〜」则为 aarch64）。
+  </p>
+</div>
+
+<h3>② 把 MOD 文件放入 mods 文件夹</h3>
+
+<h4>Windows：<code>%appdata%\.minecraft\mods</code></h4>
+<ol class="steps">
+  <li>在资源管理器的地址栏中输入 <code>%appdata%\.minecraft</code>，然后按 Enter。</li>
+  <li>如果没有 <code>mods</code> 文件夹，请新建一个（全部小写）。</li>
+  <li>把收到的全部 9 个 jar 文件都复制到这个 <code>mods</code> 文件夹中（不需要解压，以 jar 文件形式放入即可）。</li>
+</ol>
+
+<h4>Mac：<code>~/Library/Application Support/minecraft/mods</code></h4>
+<ol class="steps">
+  <li>先点击一次桌面，然后同时按下 <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code>（或使用顶部菜单的「前往」→「前往文件夹…」）。</li>
+  <li>在弹出的输入框中直接粘贴 <code>~/Library/Application Support/minecraft</code>，然后按 Enter（不要忘记开头的「<code>~</code>」）。「Library」是 Finder 中平时不显示的文件夹，用这种方法打开最为可靠。</li>
+  <li>如果没有 <code>mods</code> 文件夹，请在当前位置右键点击→「新建文件夹」来创建。</li>
+  <li>把收到的全部 9 个 jar 文件，用拖放的方式放入这个 <code>mods</code> 文件夹。</li>
+</ol>
+
+<h3>③ 用 Fabric 启动并加入服务器</h3>
+<ol class="steps">
+  <li>打开 Minecraft 启动器，在「play」按钮附近的启动配置（配置文件）列表中，选择类似 <code>fabric-loader-26.2</code> 这样的名称（如果保持「最新版本」不变，将会以无 MOD 的状态启动）。</li>
+  <li>直接点击「play」启动。如果标题画面上出现了「Mods」按钮，就说明成功了，点击它可以确认 Glimpse Alpha 的 8 个 MOD 与 Fabric API。</li>
+  <li>之后照常从「多人游戏」连接到服务器即可。</li>
+</ol>
+
+<h3>当 MOD 更新时</h3>
+<p>如果服务器一侧的 MOD 更新了，所有参与者需要同时更新到相同的版本。</p>
+<ol class="steps">
+  <li>从服务器管理员那里收到新的 MOD 文件（请等待通知后再进行操作）。</li>
+  <li>打开 mods 文件夹，<strong>先删除此前放入的 Glimpse Alpha 的 jar 文件</strong>，再放入新文件（即使文件名有变化，内部也会被当作同一个 MOD 处理，如果旧文件残留，将无法启动）。</li>
+  <li>照常使用 fabric-loader 的配置文件启动。</li>
+</ol>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 注意</div>
+  <p>如果只有一方停留在新版本，将无法加入服务器。遇到困难时，请查阅<a href="#faq">常见问题</a>。</p>
+</div>
+
+<h3>Mac 上常见的问题</h3>
+<div class="table-wrap">
+<table>
+<tr><th>症状</th><th>解决方法</th></tr>
+<tr><td>提示「无法验证开发者」「无法验证是否包含恶意软件」</td><td>在警告框中点击「完成」（不要点击「移到废纸篓」）。接着打开系统设置→「隐私与安全性」并向下滚动，点击「已阻止」旁边的「仍要打开」，然后输入密码。</td></tr>
+<tr><td>双击安装程序毫无反应</td><td>说明没有安装 Java。请从 adoptium.net 安装 Temurin（macOS 版 .pkg）后重新尝试。</td></tr>
+<tr><td>找不到「Library」文件夹</td><td>不需要手动查找。使用 <code>⌘</code>+<code>⇧</code>+<code>G</code> 粘贴 <code>~/Library/Application Support/minecraft</code> 最为可靠（这是平时隐藏的文件夹）。</td></tr>
+<tr><td>尝试加入服务器时被提示版本不一致</td><td>请确认：①启动器中是否选择了正确的 fabric-loader 配置文件，②mods 文件夹中的内容是否与服务器一致。哪怕只有一处不同，都无法加入。</td></tr>
+<tr><td>启动瞬间就崩溃</td><td>请确认 mods 文件夹中是否混入了旧的 jar 文件或不相关的 jar 文件。如果仍未解决，请把 <code>logs/latest.log</code>（Mac 上为 <code>~/Library/Application Support/minecraft/logs/latest.log</code>）发送给服务器管理员。</td></tr>
+<tr><td>想恢复成没有 MOD 的普通 Minecraft</td><td>只需把启动器的启动配置改回「最新版本」即可，不需要删除 MOD 文件。</td></tr>
+</table>
+</div>
+<p>无论是 Apple 芯片（M1/M2/M3/M4 等）还是 Intel 芯片的 Mac，操作步骤都相同，唯一的区别只在于选择 Java（Temurin）时是 aarch64 还是 x64。</p>
+
+    </div></div>
+<div id="admin-prep"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">面向服务器管理员</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">面向服务器管理员：前期准备（备份与版本确认）</h2>
+      
+<p>
+  从这里开始是面向运营、管理服务器本体一方的章节。本章说明的是从已经运行着 Minecraft
+  服务器（原版、无 MOD 的标准服务器）的状态出发，添加 Fabric 与
+  Glimpse Alpha 8 个 MOD 的步骤，以 Windows 服务器为例进行说明。
+  如果您使用 Mac / Linux 运营服务器，请将文件夹位置与命令执行方式替换为自己的
+  环境，并参照相同的步骤（Fabric 官方网站的说明）进行操作。
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 作业前请务必执行</div>
+  <p>为了防止即使 MOD 导入失败也不会丢失世界，请务必先备份，再开始作业。</p>
+</div>
+
+<h3>1. 备份世界</h3>
+<p>打开服务器文件夹（例如 <code>C:\MinecraftServer</code>），执行平时使用的备份步骤（例如 <code>Backup-Server.bat</code> 这样的备份脚本）。如果没有专用脚本，只需在服务器停止的状态下，把整个 <code>world</code> 文件夹复制到别处即可。</p>
+
+<h3>2. 确认 Java 版本</h3>
+<ol class="steps">
+  <li>打开命令提示符（或任意终端）。</li>
+  <li>输入 <code>java -version</code> 并按 Enter。</li>
+  <li>确认显示的数字是否为 <strong>25</strong>（例如：<code>java version "25.0.3"</code>）。</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 非常重要</div>
+  <p>
+    运行 Minecraft <code>26.2</code> 需要 <strong>Java 25</strong>。旧的搭建步骤中有时会写着
+    「Java 21」，但这是过时的信息，如果保持 Java 21 不变，服务器将无法启动。
+    如果数字低于 25，请打开 <a href="https://adoptium.net/">adoptium.net</a>，
+    下载并安装「Temurin 25 (LTS)」，然后重启电脑再次确认。
+  </p>
+</div>
+
+<h3>3. 确认服务器的 Minecraft 版本</h3>
+<ol class="steps">
+  <li>用平时的方法（例如 <code>Start-Server.bat</code>）先启动一次服务器。</li>
+  <li>在控制台（黑色画面）开头附近寻找类似 <code>Starting minecraft server version X.Y</code> 的一行，记下其中的数字。</li>
+  <li>在控制台输入 <code>stop</code> 并按 Enter，安全地停止服务器。</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 注意</div>
+  <p>
+    本指南以「<code>26.2</code>」为例进行标注，如果您实际确认的数字不同，
+    请将后续所有步骤（Fabric、Fabric API、MOD 各版本的选择）都替换为该数字。
+    服务器、全体玩家、MOD 的版本哪怕只有一处不一致，都将完全无法运作。
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-fabric-install"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">面向服务器管理员</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">面向服务器管理员：导入 Fabric</h2>
+      
+<h3>安装 Fabric 服务端</h3>
+<ol class="steps">
+  <li>在浏览器中打开 <code>https://fabricmc.net/use/server/</code>，点击「Download installer (Windows/.exe)」这样的按钮下载安装程序。</li>
+  <li>双击下载好的 <code>fabric-installer〜.exe</code> 启动（如果出现「Windows 已保护你的电脑」，请点击「更多信息」→「仍要运行」）。</li>
+  <li>在安装程序的设置画面中确认以下 4 点。
+    <ul>
+      <li>标签页选择「<strong>Server</strong>」</li>
+      <li>Minecraft Version 选择与前期准备中确认的服务器版本相同的数字（例如 <code>26.2</code>）</li>
+      <li>Loader Version 保持不变即可</li>
+      <li>Install Location 指定为现有的服务器文件夹（例如 <code>C:\MinecraftServer</code>）</li>
+    </ul>
+  </li>
+  <li>点击「Install」。</li>
+  <li>如果服务器文件夹中生成了名为 <code>fabric-server-launch.jar</code> 的新文件，就说明成功了。</li>
+</ol>
+
+<h3>新建启动用文件（批处理文件）</h3>
+<p>
+  此前的启动用文件（例如 <code>Start-Server.bat</code>）是用来启动「无 MOD」状态的文件。
+  <strong>请不要删除它，将其保留下来</strong>（以便万一需要时能恢复无 MOD 状态）。
+  另外新建一个用于 Fabric 的启动文件。
+</p>
+<ol class="steps">
+  <li>打开记事本（Notepad）。</li>
+  <li>直接复制粘贴以下内容。
+<pre>@echo off
+cd /d "%~dp0"
+title Minecraft Fabric Server
+java -Xms2G -Xmx4G -jar fabric-server-launch.jar nogui
+echo 服务器已停止。
+pause</pre>
+  </li>
+  <li>选择「文件」→「另存为」，保存位置选择服务器文件夹（例如 <code>C:\MinecraftServer</code>），文件名设为 <code>Start-Fabric-Server.bat</code>，文件类型选择「<strong>所有文件</strong>」后保存。</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 注意</div>
+  <p>
+    如果不把「文件类型」设为「所有文件」，就会变成 <code>Start-Fabric-Server.bat.txt</code>
+    这种无法运行的文件。另外，如果搭建服务器时分配的内存（RAM）不是
+    4GB，请把 <code>-Xmx4G</code> 中的「4」改写为对应的数字。
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-mods-and-verify"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">面向服务器管理员</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">面向服务器管理员：导入 MOD 与启动确认</h2>
+      
+<p>MOD 本体是名为「jar 文件」的单个文件，只需将其放入服务器文件夹的
+<code>mods</code> 文件夹中即可完成导入。</p>
+
+<h3>1. 准备 mods 文件夹</h3>
+<p>确认服务器文件夹（例如 <code>C:\MinecraftServer</code>）中是否有名为 <code>mods</code> 的文件夹。如果没有，请右键点击→「新建」→「文件夹」，创建一个名为 <code>mods</code>（全部小写）的文件夹。</p>
+
+<h3>2. 获取 Fabric API</h3>
+<p>打开 <code>https://modrinth.com/mod/fabric-api/versions</code>，从列表中下载「Game version（游戏版本）与服务器相同数字」中排在最上方的那一个（例如 <code>fabric-api-0.154.2+26.2.jar</code>）。</p>
+
+<h3>3. 把整套 MOD 放入 mods 文件夹</h3>
+<p>
+  把 Fabric API 1 个 + Glimpse Alpha 的 8 个 MOD，合计 9 个 jar 文件，复制到 <code>mods</code>
+  文件夹中（不需要解压，以 jar 文件形式放入）。这 8 个 MOD 本体，请按照以往的
+  发布渠道获取。<strong>本站不提供 MOD 本体本身的下载。</strong>
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>文件名示例</th></tr>
+<tr><td>枪械</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>铁道</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>建材、装饰</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>载具</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>天空</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>生存</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>电力</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+</table>
+</div>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 注意</div>
+  <p>请不要双击 jar 文件（不需要打开），只需放入文件夹中即可。</p>
+</div>
+
+<h3>4. 启动服务器进行确认</h3>
+<ol class="steps">
+  <li>双击刚才创建的 <code>Start-Fabric-Server.bat</code>（不再使用此前的 <code>Start-Server.bat</code>）。</li>
+  <li>在控制台（黑色画面）中确认以下 2 点。
+    <ul>
+      <li>在读取 MOD 的那一行中，出现了已导入的 MOD 名称</li>
+      <li>最后显示了 <code>Done (…s)! For help, type "help"</code>，并持续运行、没有停止</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 出现 Java 错误无法启动时</div>
+  <p>
+    如果出现「class file version」「requires Java」这样的英文错误，Java 版本可能过旧。
+    请从 <a href="https://adoptium.net/">adoptium.net</a> 安装「Temurin 25 (LTS)」的 Windows 版（.msi），
+    重启电脑后再试一次。
+  </p>
+</div>
+
+<p>确认启动成功后，接下来请把<a href="#player-setup">面向玩家的章节</a>分享给所有参与者，
+让他们也在各自的电脑上导入相同的 Fabric、整套 MOD。</p>
+
+    </div></div>
+<div id="admin-upgrade"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">面向服务器管理员</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">更换 MOD 新版本时</h2>
+      
+<p>Glimpse Alpha 的 8 个 MOD 彼此完全独立，因此不一定每次更新都会同时替换全部 8 个。
+只需替换实际内容有变化的 MOD 即可
+（哪些 MOD 有变化，可以在发布时的说明或<a href="../changelog/">更新日志</a>中确认）。</p>
+
+<h3>更新步骤</h3>
+<ol class="steps">
+  <li>在服务器控制台输入 <code>stop</code>，停止服务器。</li>
+  <li>按照平时的备份步骤备份世界。</li>
+  <li>在服务器的 <code>mods</code> 文件夹中，<strong>删除更新对象 MOD 的旧 jar 文件</strong>，放入新的 jar 文件（如果同一个 MOD 的新旧文件都残留着，将无法启动）。</li>
+  <li>用 <code>Start-Fabric-Server.bat</code> 启动服务器，确认控制台中显示了更新后的版本。</li>
+  <li><strong>把新的 jar 文件分发给全体参与者</strong>，让他们也照样替换（参见<a href="#player-setup">面向玩家的章节</a>）。如果只有服务器一方、或只有玩家一方更新到新版本，将无法加入。</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 非常重要</div>
+  <p>
+    如果在完全移除某个 MOD（而非更新）的状态下启动服务器，该 MOD 所放置的方块与
+    持有的物品（信号灯等）都会消失。这是 Minecraft、Fabric 的规格所致，无法恢复。
+    移除之前请务必先进行备份。
+  </p>
+</div>
+
+<h3>关于 config 文件（自动修复机制）</h3>
+<p>
+  各个 MOD 会在启动时自动在 <code>config/</code> 文件夹中生成设置文件（例如 <code>sorakaze_guns.json</code>）。
+  威力、速度等数值可以在这里调整，原则上不需要在每次更新时手动删除或改写。
+</p>
+<div class="callout callout--info">
+  <div class="callout__title">💡 目前的机制</div>
+  <p>
+    在新版本中默认值发生变化的项目，<strong>仅限于尚未调整过（保持旧默认值）的项目</strong>，
+    才会自动更新为新的默认值。<strong>不会触碰您自己调整过的数值。</strong>
+    新增的设置项也会在启动时自动补充。哪些项目被更新过，
+    都会以「旧值 → 新值」的形式记录在 <code>logs/latest.log</code> 中。
+  </p>
+</div>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 编辑设置文件时的注意事项</div>
+  <p>
+    如果只手动删除设置文件中的一部分数值（例如：从某个武器的设置区块中
+    只删除伤害那一行），该项目有可能会被静默替换为 MOD 内部的另一个初始值
+    （不会报错）。想要调整特定数值时，请直接改写该项目的值。
+    如果想把设置整体恢复为初始状态，删除对应 MOD 的整个设置文件即可，下次启动时会以
+    默认值重新生成。
+  </p>
+</div>
+
+    </div></div>
+<div id="gameplay-notices"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">开始游玩前需要了解的注意事项</h2>
+      
+<p>
+  Glimpse Alpha 包含一些会影响原版行为的变更，本页汇总了其中特别容易被忽视的部分。
+  由于细节数值可能随每次更新而调整，请同时查阅
+  <a href="../changelog/">更新日志</a>与<a href="../known-issues/">已知问题</a>页面
+  以确认最新情况。config 的调整由服务器管理员进行。
+</p>
+
+<h3>红石需要「电力」</h3>
+<p>
+  由于导入了电力 MOD，原版红石的一部分将无法单独运作。
+</p>
+<ul>
+  <li><strong>变得需要电力的：</strong>红石粉、中继器、比较器、红石块、红石火把。这些装置在用电缆接通电力之前不会发出信号。自动农场、车站、自动门、漏斗队列，在布线之前都会保持停止状态。</li>
+  <li><strong>没有电力也能照常使用的：</strong>拉杆、按钮、压力板、绊线钩、侦测器、阳光传感器、幽匿感测体、标靶、陷阱箱、探测铁轨、讲台、唱片机、避雷针等。手动开关门与栅栏门的操作也能照常使用。</li>
+  <li>放置约 10 分钟后，红石块会自然损毁（以物品形式回到手中）。</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout__title">💡 恢复原状的方法（面向服务器管理员）</div>
+  <p>
+    把 <code>config/sorakaze_power.json</code> 中的 <code>powerEnabled</code> 设为 <code>false</code>，
+    即可整体禁用红石的电气化。
+  </p>
+</div>
+
+<h3>建材、装饰的部分设备也需要电力</h3>
+<p>
+  监控摄像头、电梯、扶梯、自动门、ATM 这 5 种设备，如果没有用电缆接通电力将无法运作
+  （电梯即使没有电力，也设计为只有「下降」能够运作）。
+  可以把 <code>config/sorakaze_deco.json</code> 中对应设备的项目设为 <code>false</code>，从而单独取消该设备的电力需求。
+</p>
+
+<h3>发电机会让房间变热</h3>
+<p>
+  运转中的发电机、核电站会提升同一空间的气温，唯一能够降温的是空调。
+  用墙壁和关闭的门把机械室隔开，热量就不会扩散到其他房间，是最简单的对策。
+  这项功能本身可以通过把 <code>config/sorakaze_survival.json</code> 中的
+  <code>temperatureMachineHeatEnabled</code> 设为 <code>false</code> 来禁用。
+</p>
+
+<h3>天空维度导致世界高度被扩展</h3>
+<p>
+  由于导入了天空 MOD，主世界（Overworld）可建造的高度上限被提升了。
+  变化的只是天空一侧的上限，地下深度（世界底部的高度）与既有地形均保持不变。
+</p>
+
+<h3>火箭筒会破坏地形</h3>
+<p>
+  枪械 MOD 中的火箭筒，在默认设置下会破坏命中地点的地形。
+  即使把原版游戏规则 <code>mobGriefing</code> 设为 <code>false</code> 也无法阻止。
+  要停止破坏，需要把 <code>config/sorakaze_guns.json</code> 中的 <code>rocketDestroysTerrain</code> 设为
+  <code>false</code>。请在据点附近格外注意。
+</p>
+
+<h3>关于枪械的火力</h3>
+<p>
+  枪械 MOD 的武器，特别是突击步枪，拥有非常高的火力，MOD 新增的许多 Boss
+  数秒内就会被打倒。如果想要更有挑战性，服务器管理员可以通过
+  调整 <code>config/sorakaze_guns.json</code> 中各武器的伤害数值来恢复难度。
+</p>
+
+<h3>移除 MOD 后，放置的方块、物品会消失</h3>
+<p>
+  这是 MOD 的通用规格，并非 Glimpse Alpha 特有的问题。在导入 MOD 的状态下
+  放置的方块或获得的物品，一旦移除该 MOD，就会从世界中消失。要恢复原状，
+  只能从备份中还原。
+</p>
+
+    </div></div>
+<div id="faq"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">常见问题与故障排除</h2>
+      
+<h3>常见问题</h3>
+<div class="table-wrap">
+<table>
+<tr><th>问题</th><th>回答</th></tr>
+<tr><td>世界不会消失吗？</td><td>不会消失。即使导入 Fabric，此前的世界也能照常使用。如果担心的话，导入前请务必先备份。</td></tr>
+<tr><td>没有安装 MOD 的朋友能加入吗？</td><td>无法加入。所有玩家都需要完成<a href="#player-setup">面向玩家的章节</a>中的设置。</td></tr>
+<tr><td>想恢复为没有 MOD（原版）的状态</td><td>服务器一侧只需用以前无 MOD 的启动文件启动，即可恢复为无 MOD 状态（MOD 新增的方块、物品会消失）。</td></tr>
+<tr><td>更新 MOD 后突然无法游玩了</td><td>请确认服务器与玩家一侧的 MOD 版本是否一致。只有一方是新版本的状态下无法加入。</td></tr>
+<tr><td>看不懂错误信息里的英文</td><td>看不懂也没关系。请直接把 <code>logs</code> 文件夹中名为 <code>latest.log</code> 的文件发送给服务器管理员。</td></tr>
+</table>
+</div>
+
+<h3>服务器无法启动时</h3>
+<ol class="steps">
+  <li>先把 <code>mods</code> 文件夹中的所有内容都转移到别处。</li>
+  <li>一次放回一个文件并反复启动，以确定是哪个文件导致的问题。</li>
+  <li>如果出现 Java 相关的错误，请参考<a href="#admin-prep">前期准备章节</a>确认 Java 版本。</li>
+</ol>
+
+<h3>能进入服务器控制台但无法连接时</h3>
+<ol class="steps">
+  <li>确认所有参与者的版本与 MOD 组合，是否与服务器完全一致。</li>
+  <li>特别是 Fabric API 的版本不一致很容易导致此问题，请优先确认。</li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 如果仍然无法解决</div>
+  <p>请把 <code>logs/latest.log</code> 发送给服务器管理员咨询。不用着急，只要有备份，随时都能恢复到原来的状态。</p>
+</div>
+
+<h3>从备份还原世界的方法（面向服务器管理员）</h3>
+<ol class="steps">
+  <li>在服务器控制台输入 <code>stop</code>，停止服务器。</li>
+  <li>从备份保存位置（例如 <code>C:\MinecraftServer\backups</code>）中取出最新的备份（如果是 zip 格式，右键点击→「全部解压」）。</li>
+  <li>用取出的 <code>world</code> 文件夹，替换服务器文件夹中的 <code>world</code> 文件夹（覆盖）。</li>
+  <li>启动服务器。</li>
+</ol>
+
+    </div></div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu 服务器导入 MOD 非官方参考手册</p>
+    <p class="site-footer__note">本站是非官方参考站点，不提供 MOD 本体（jar 文件）的下载。配方与数值可能因导入版本或服务器端 config 调整而与实际情况有出入。</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog | Glimpse Alpha Wiki</title>
+<meta name="description" content="The full update history of the Glimpse Alpha (formerly Sorakaze) mod pack. Covers what&#x27;s changed and what to watch out for, from the first release to now.">
+<meta property="og:title" content="Changelog | Glimpse Alpha Wiki">
+<meta property="og:description" content="The full update history of the Glimpse Alpha (formerly Sorakaze) mod pack. Covers what&#x27;s changed and what to watch out for, from the first release to now.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/changelog.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Home</a></li>
+        <li><a href="../changelog/" class="active">Changelog</a></li>
+        <li><a href="../recipes/">Recipes</a></li>
+        <li><a href="../guide/">Install Guide</a></li>
+        <li><a href="../roadmap/">Roadmap</a></li>
+        <li><a href="../known-issues/">Known Issues</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
+          🌐 <span>English</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../changelog/">日本語</a></li>
+        <li><a href="../../en/changelog/" class="active" aria-current="true">English</a></li>
+        <li><a href="../../es/changelog/">Español</a></li>
+        <li><a href="../../fr/changelog/">Français</a></li>
+        <li><a href="../../zh/changelog/">简体中文</a></li>
+        <li><a href="../../ko/changelog/">한국어</a></li>
+        <li><a href="../../pt-br/changelog/">Português (Brasil)</a></li>
+        <li><a href="../../it/changelog/">Italiano</a></li>
+        <li><a href="../../ar/changelog/">العربية</a></li>
+        <li><a href="../../ru/changelog/">Русский</a></li>
+        <li><a href="../../id/changelog/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/changelog/">Deutsch</a></li>
+        <li><a href="../../tr/changelog/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color scheme" title="Toggle color scheme">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Changelog</span>
+  <h1>Changelog</h1>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-09, 36 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
+</div>
+
+<div class="filter-bar" role="group">
+  <input type="search" id="changelogSearch" placeholder="Search by mod, version, or keyword…" aria-label="Search by mod, version, or keyword…">
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">Mod:</span>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">Guns</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">Rail</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">Building &amp; Decor</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">Sky</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">Survival</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Vehicles</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">Power</button>
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">Type:</span>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">New feature</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">Bug fix</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">Visual update</button>
+</div>
+
+<p id="changelogEmpty" class="empty-state" hidden>No updates match your filters.</p>
+<div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="visual-update" data-mods="guns deco">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.6</span> — Added Missile Warhead &amp; Phone App Icons
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Visual update</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span></div>
+      <p>Two fixes related to appearance and discoverability. Resolved the missile and nuclear warheads having zero textures by drawing dedicated icons from scratch and making them craftable. Also added the Missile Launcher, which players reported being unable to find, to the creative tab, and filled in the translations for its display name and control panel. The phone/computer&#x27;s 7 apps also got dedicated new icons.</p>
+      <ul><li>Drew dedicated 128px icons for the missile and nuclear warheads from scratch (previously there was no art at all — they showed up in your inventory as Minecraft&#x27;s standard &quot;purple-and-black checkerboard&quot; missing-texture pattern).</li><li>Made the missile warhead (5 Iron Ingots + 1 TNT + 1 Redstone Block) and nuclear warhead (4 Blocks of Iron + 4 TNT + 1 Nether Star) craftable for the first time.</li><li>Added the Missile Launcher to the creative tab (crafting it was already possible before, but it never appeared in the tab, so it couldn&#x27;t be found). Also added the display name and translations for its control panel screen — target coordinate entry, 9 status displays, 8 compass directions, the safety switch, and more (54 strings each in Japanese and English).</li><li>Drew dedicated new icons for all 7 phone/computer apps (camera feed, messages, lookup, weather, calculator, phone, camera) — previously it was just a row of colored squares. Also added per-app flourishes, like a precipitation icon and enlarged clock in the weather app, a recessed LCD-style design in the calculator app, a compass-needle display in the phone app, and a surveillance-monitor look for the camera feed app.</li><li>Improved it so opening an app now always shows that app&#x27;s icon and name at the top of the screen.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Making the missile and nuclear warheads craftable was a decision made by the dev team (not an explicit request from the owner). If the balance feels too strong or excessive, please talk to the admins.</li><li>No config deletion or editing needed this time either.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The &quot;Lookup&quot; app&#x27;s 3×3 recipe screen can&#x27;t receive grid-placement data for ingredients from the server, so it falls back to a simplified display that packs ingredients in order from the top-left (the ingredient types and quantities themselves are correct).</li><li>The warheads&#x27; new icons, the control panel&#x27;s translations, and the phone app&#x27;s new screens are all still unconfirmed on the actual in-game screen.</li><li>16 of the 17 Reinforced Glass Pane colors still don&#x27;t have names set, a carryover issue from earlier versions.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.5</span> — Fixed Water Pipe, Enhanced Beacon &amp; Gas Mask Bugs
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Fixed several bugs reported after v1.8.4: water pipes being unbreakable, the Enhanced Beacon Alpha/Beta not letting you pick abilities, and the gas mask appearing to float above the head. Also fixed the hostile mob spawn cap to correctly apply to the Overworld only, and changed the default to a flat 150 mobs.</p>
+      <ul><li>Fixed water pipes being unbreakable. A unit mix-up meant the hitbox was only 1/32nd the visual thickness (hardness and tool requirements themselves were correct from the start).</li><li>Also fixed water pipe intakes standing alone in a river getting swept away and disappearing (redesigned as a waterlogging-capable block).</li><li>Fixed the Enhanced Beacon Alpha/Beta not letting you pick abilities. The screen would auto-close the very next tick after opening, and selections weren&#x27;t being saved either (the standard Enhanced Beacon was unaffected).</li><li>Fixed the gas mask appearing to float above the head. Created a new dedicated 3D model and repositioned it to fit the face.</li><li>Reverted the Firework Doll&#x27;s appearance from the 3D &quot;plush toy&quot; look added in v1.8.4 back to the flat art style it had through v1.8.3 (per the owner&#x27;s request). No changes to functionality like the use-count limit.</li><li>Changed the Overworld hostile mob spawn cap from the previous &quot;15x vanilla&quot; (roughly 1,050 mobs) to a flat 150 mobs. Doesn&#x27;t affect the Nether, the End, or the Sky (also fixed the earlier bug where this mistakenly applied to every dimension).</li></ul>
+      <h4>Balance changes</h4><ul><li>Hostile mob spawn cap (Overworld only): 15x vanilla (roughly 1,050 mobs) → a flat 150 mobs</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>No config deletion or editing needed. The spawn cap value updates to the new default automatically.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The new appearance of the water pipe and gas mask, and how the Enhanced Beacon GUI feels to use, haven&#x27;t been confirmed in actual play yet.</li><li>Whether the new spawn density of 150 mobs feels right in actual play hasn&#x27;t been verified yet.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss deco guns power sky survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.4</span> — New Weapons, Phone OS, Water Pipes, Seasons &amp; Sky Expansion
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Added a big batch of features at once: 2 new weapons (Handgun and Submachine Gun), a Missile Launcher with 2 warhead types, real OS functionality for phones and computers, water pipes, an elevator that actually moves, and a spring/summer/fall/winter season system. Also raised the Overworld&#x27;s build height ceiling (no change underground), and drastically reduced the list of sorting blocks and hoppers that required electricity.</p>
+      <ul><li>Added 2 new weapons: the Handgun (200/sec, 12-round magazine, semi-auto) and Submachine Gun (450/sec, 40-round magazine, full-auto). Both use the existing small-caliber rounds, so no new ammo type was added.</li><li>Added the Missile Launcher (a placed weapon) along with Missile Warheads and Nuclear Warheads (the nuclear warhead has a cap on how many blocks it can destroy; both are Missile-Launcher-only and can&#x27;t be fired while held).</li><li>Added a 2x zoom sight and lock-on feature to the Rocket Launcher (locks on after aiming for 1 second continuously; won&#x27;t lock onto a target that&#x27;s running).</li><li>Added real OS functionality to phones and computers (7 apps: camera feed, messages, lookup, weather, calculator, phone, and camera). Launch it by holding it and right-clicking, or pressing H — you can even take a photo and send it via message.</li><li>Added water pipes (supply water from a river or ocean to a cauldron or farmland). Also added an elevator whose car actually moves up and down.</li><li>Added Heavy-gauge Cable (reaches 4x the distance of regular cable), Shielded Cable (8x), and the LED Panel to the Power mod.</li><li>Completely reworked ore textures. Added the new material &quot;Lavender Jade&quot; (even rarer than Ruby), the Gas Mask, and the Aero Shield.</li><li>Added a season system (8 days per season, 32 days per year). Deserts in summer and snowy plains in winter are now harsher than before.</li><li>The Enhanced Beacon&#x27;s Alpha and Beta tiers (Boss mod) are now craftable. Also, the base Enhanced Beacon no longer needs electricity (reverting the requirement added back in v1.8.1).</li><li>Raised the Overworld&#x27;s build height ceiling from y=319 to y=1023 (no change to underground or the bottom of the world).</li><li>Drastically shrank the list of devices requiring electricity from 17 down to 3 (Void Trash block, laser emitter, auto turret). Hoppers, the 8 auto-sorting blocks, the conveyor belt, both traffic light types, and the automatic train stop block now all work without electricity.</li></ul>
+      <h4>Balance changes</h4><ul><li>Assault Rifle: measured 4,500 → 5,850 damage/sec</li><li>Minigun: measured 250 → 50 damage/sec (a heavy nerf — now weaker than a diamond sword)</li><li>Sniper Rifle and Heavy Sniper Rifle damage also increased. The durability calculation factor for sniper-class weapons also changed 0.5 → 0.6</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Rockets fired from the Missile Launcher keep destroying terrain even with mobGriefing set to false. To stop only the terrain destruction, set rocketDestroysTerrain to false in the config.</li><li>The Overworld&#x27;s build height was extended to y=1023. This affects everyone, even if you never use the Sky dimension (no change underground).</li><li>Since the list of sorting blocks and hoppers requiring power was drastically shrunk, devices that had previously been stopped will automatically start working again. Watch out for unexpected reactivation in areas you haven&#x27;t touched in a while.</li><li>The gun damage changes above are applied automatically. No config deletion or editing is needed, but you can revert them individually by specifying values in the config.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Immediately after release, the Enhanced Beacon Alpha/Beta had a bug preventing ability selection (fixed in the next update).</li><li>Immediately after release, the Missile Launcher didn&#x27;t show up in the creative tab and had no display name set. Icons for both warhead types were also missing (resolved in the next update).</li><li>The phone/computer apps didn&#x27;t have dedicated icon art yet — just a row of colored squares (improved in the next update).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.3</span> — Appliances Go Electric, and Machines Generate Heat
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>5 Building Materials devices — the security camera, elevator, escalator, automatic door, and ATM — now require electricity. Also, running machines like generators and nuclear plants now heat up the surrounding room, and without ventilation or cooling, you can start taking heat damage.</p>
+      <ul><li>The security camera, elevator, escalator, automatic door, and ATM now require electricity (already-placed ones are affected starting from the next server start too). The elevator still works &quot;going down&quot; even without power, to prevent getting trapped.</li><li>Running machines like generators and nuclear plants now heat up their surroundings. Leave 8 machines running uncooled and the room temperature climbs to roughly 77.8°C, with damage starting after about 14 seconds.</li><li>Fixed the air conditioner to actually consume power properly (previously it was treated as consuming none).</li></ul>
+      <h4>Balance changes</h4><ul><li>Machine heat: leaving 8 uncooled machines running raises room temperature to roughly 77.8°C, with heat damage starting after about 14 seconds</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>You&#x27;ll need to wire cables to the security camera, elevator, escalator, automatic door, and ATM. Already-placed equipment will also stop working as of the next server start.</li><li>Areas around heat-generating machines like generators become dangerously hot without ventilation or air-conditioner cooling.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>How the 5 newly electrified devices (security camera, elevator, escalator, automatic door, ATM) actually behave — with or without power — is unconfirmed.</li><li>The appearance and usability of the 3 new generator types and their fuel slots are unconfirmed.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.2</span> — Bigger Air Conditioner &amp; Simplified Power Device Placement
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Significantly enlarged the air conditioner, giving it real presence in a room. Also streamlined the Power mod&#x27;s devices so each one is complete just by placing a single item, and fixed a bug where the fireplace had zero effect in snowy biomes.</p>
+      <ul><li>Enlarged the air conditioner (now roughly 3.1×2.0×2.1 blocks). It&#x27;s built from an outdoor unit with a round fan, coil fins, and a glowing control panel, plus an indoor unit with 3 louvers jutting outward — making it one of the largest devices in the Power mod.</li><li>Unified Power mod devices so you no longer need to assemble multiple blocks — placing a single item now completes the whole thing.</li><li>Fixed a bug where the fireplace had zero effect in snowy biomes. Terrain cold and equipment warmth are now calculated separately.</li></ul>
+      <h4>Balance changes</h4><ul><li>Snowy plains, standing next to your own lit fireplace: felt temperature -24.0°C (frostbite damage) → +2.4°C (safe)</li><li>Roofed base, nighttime, snowing, with a fireplace: -18.6°C → +7.9°C</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>If you&#x27;re standing outside in a blizzard at night, a single fireplace can still sometimes not be enough (combine it with a roof, armor, or an additional fireplace).</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Whether the temperature balance feels right in actual play hasn&#x27;t been verified yet.</li><li>The new 3D appearance of the 9 auto-sorting blocks is unconfirmed.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power boss deco guns rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-05</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.1</span> — Power Mod Added — Redstone Now Needs Electricity
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>The 8th mod, &quot;Power,&quot; joins the pack. In one of this project&#x27;s biggest changes yet, vanilla redstone circuitry — redstone dust, repeaters, comparators, redstone blocks, and redstone torches — now needs electricity from a generator to function. Every existing redstone contraption, from auto-farms to stations to automatic doors, will shut down until you wire up a power grid.</p>
+      <ul><li>The 8th mod, &quot;Power,&quot; joins the pack. You can now build out a power grid with generators, nuclear plants, breaker panels, cables, and more.</li><li>17 components — levers, buttons, pressure plates, tripwire hooks, observers, daylight sensors, sculk sensors, targets, trapped chests, detector rails, lecterns, jukeboxes, lightning rods, and more — still work without electricity, as before (manually opening/closing doors and gates works as usual too).</li><li>A redstone block will naturally break about 10 minutes after being placed, returning to your inventory as an item (this prevents a &quot;free power source&quot; that needs no electricity from just sitting around).</li><li>3 special exceptions — the Void Trash block, laser emitter, and auto turret — are designed the opposite way: without power, they stay &quot;active&quot; as a safety measure (so you don&#x27;t accidentally lose important items or mobs).</li><li>Fixed the Sniper Rifle, Heavy Sniper Rifle, and Laser Gun&#x27;s projectile speed to the intended value (no change to damage, fire rate, magazine size, durability, or range).</li></ul>
+      <h4>Balance changes</h4><ul><li>Sniper Rifle / Heavy Sniper Rifle projectile speed: 16.0 → 24.0 (1.5x)</li><li>Laser Gun projectile speed: 16.0 → 48.0 (3x)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Every existing setup that uses redstone circuitry — auto-farms, stations, automatic doors, and so on — will shut down. You&#x27;ll need to wire up a power grid (generators and cables) from scratch.</li><li>To fully revert this change, set powerEnabled to false in config/sorakaze_power.json. To revert redstone specifically while keeping the rest, set redstoneRequiresPower to false in the same file.</li><li>Observers and daylight sensors are intentionally left needing no electricity, so you retain an in-game way to recover a base that&#x27;s lost power.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>How it actually feels to play in a world where redstone stops working, and how thoroughly farms and stations end up shut down, are unverified.</li><li>The cables lighting up, the breaker panel&#x27;s screen, and the appearance of the generator and nuclear plant haven&#x27;t been confirmed on real hardware yet.</li><li>After switching power off and back on, an isolated cable not connected to a breaker panel can sometimes stay lit (breaking and replacing it fixes it).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco guns sky survival">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Config Auto-Repair (v1.8.0 Reissue)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>A fixed version reissued the same day. In the original v1.8.0, old values left over in earlier versions&#x27; config files were overwriting the new defaults, so things like the security camera&#x27;s resolution, Excalibur&#x27;s stats, and the Rocket Launcher&#x27;s terrain destruction weren&#x27;t taking effect. Going forward, you no longer need to manually delete config files with every update — a new mechanism automatically updates only &quot;stale values set by an earlier version&quot; to the current defaults on startup.</p>
+      <ul><li>Introduced a mechanism that automatically detects &quot;fossil&quot; values left over from an earlier version and rewrites them to the current defaults. You no longer need to manually delete config files for future updates.</li><li>It never touches values you&#x27;ve tuned yourself — a value only gets updated if it matches a past version&#x27;s default exactly.</li><li>With this fix, the security camera&#x27;s resolution (768 → 3840), Excalibur&#x27;s stats (attack power 12 → 75, attack speed 1.8 → 0.6), the Rocket Launcher&#x27;s terrain destruction, and more now correctly take effect in actual play.</li><li>5 mods were updated this time: Boss, Building Materials, Guns, Sky, and Survival. Rail and Vehicles are unchanged this time.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>This reissue ships under the same version number and filenames as the original v1.8.0. If you have the original v1.8.0, discard it and replace it with this version.</li><li>From now on, the &quot;please delete your config files&quot; step we used to mention with every update is no longer necessary.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Excalibur&#x27;s new stats and the Rocket Launcher&#x27;s terrain destruction effect haven&#x27;t been confirmed in actual play yet.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Config Auto-Repair (v1.8.0 Reissue)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>A fixed version reissued the same day. In the original v1.8.0, old values left over in earlier versions&#x27; config files were overwriting the new defaults, so things like the security camera&#x27;s resolution, Excalibur&#x27;s stats, and the Rocket Launcher&#x27;s terrain destruction weren&#x27;t taking effect. Going forward, you no longer need to manually delete config files with every update — a new mechanism automatically updates only &quot;stale values set by an earlier version&quot; to the current defaults on startup.</p>
+      <ul><li>Introduced a mechanism that automatically detects &quot;fossil&quot; values left over from an earlier version and rewrites them to the current defaults. You no longer need to manually delete config files for future updates.</li><li>It never touches values you&#x27;ve tuned yourself — a value only gets updated if it matches a past version&#x27;s default exactly.</li><li>With this fix, the security camera&#x27;s resolution (768 → 3840), Excalibur&#x27;s stats (attack power 12 → 75, attack speed 1.8 → 0.6), the Rocket Launcher&#x27;s terrain destruction, and more now correctly take effect in actual play.</li><li>5 mods were updated this time: Boss, Building Materials, Guns, Sky, and Survival. Rail and Vehicles are unchanged this time.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>This reissue ships under the same version number and filenames as the original v1.8.0. If you have the original v1.8.0, discard it and replace it with this version.</li><li>From now on, the &quot;please delete your config files&quot; step we used to mention with every update is no longer necessary.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Excalibur&#x27;s new stats and the Rocket Launcher&#x27;s terrain destruction effect haven&#x27;t been confirmed in actual play yet.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.7</span> — All 7 Mods Updated Together, Guns Return to Real Bullets
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>All 7 mods updated to v1.7.7 at the same time. Guns switched from hitscan (instant hit) back to actual traveling-projectile bullets (damage values themselves are unchanged). A new weapon, the &quot;Rocket Launcher,&quot; a train automatic stop block, the Firework Doll, and many other new features were added across the mods.</p>
+      <ul><li>[Guns] Bullets went back to actually traveling through the air. The visual feel changes, but each gun&#x27;s damage value itself is unchanged.</li><li>[Guns] Added the new weapon &quot;Rocket Launcher&quot; and its dedicated ammo. It deals direct-hit plus explosion damage, and terrain destruction is off by default.</li><li>[Building Materials] Doors now close even with someone standing in the doorway. They&#x27;re designed to have no hitbox while closing, so you won&#x27;t take damage from being caught in one.</li><li>[Building Materials] Added colored Reinforced Glass Panes (17 colors), 5 decorative blocks (smartphone-, laptop-, and desktop-shaped), and a vault door. Also expanded the security camera&#x27;s max video resolution (the default is unchanged).</li><li>[Boss] The number of special effects you can pick simultaneously on the Enhanced Beacon went from 3 to 5.</li><li>[Boss] &quot;Excalibur,&quot; the drop from defeating Rock Lock, was rebuilt as a greatsword. It now has a dedicated 3D model, and its stats were buffed too.</li><li>[Sky] Fixed a bug where a ridden Dragon&#x27;s body faced the opposite direction from its actual travel direction.</li><li>[Sky] Buffed Angel&#x27;s Staff. The Royal Sword and the full set of Angel Gear also got reworked into more three-dimensional models (no stat changes).</li><li>[Rail] Added the new Automatic Train Stop block. Place it under a rail, and it will smoothly and automatically stop any approaching train.</li><li>[Vehicles] Fixed a bug where part of the vehicle body would stay invisible after using the first-person cockpit view once. Also reworked the appearance of 11 vehicle types.</li><li>[Survival] Roughly doubled the generation rate of Pearl Ore and Ruby Ore (newly generated land only). Added Block of Pearl and Block of Ruby.</li><li>[Survival] Added the new item &quot;Firework Doll.&quot; Like a Totem of Undying, it&#x27;s a charm that prevents death once, but it&#x27;s more powerful and can be used up to 3 times. It can also be placed as decoration.</li></ul>
+      <h4>Balance changes</h4><ul><li>Excalibur (boss drop): damage 12.0 → 36.0 (3x), attack speed halved, reach 3.0 → 4.0 blocks, and it now applies knockback. However, its drop rate changed 100% → 70%.</li><li>Angel&#x27;s Staff: damage 12 → 20, range 48m → 64m, shortened cooldown, melee bonus 7.0 → 10.0 (this is the first time it&#x27;s surpassed Angel&#x27;s Sword&#x27;s melee bonus).</li><li>Rocket Launcher: 40.0 direct-hit damage plus explosion damage (explosion power equivalent to a creeper). Magazine size 1, and it has the slowest projectile speed of any gun.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Config deletion needed: `sorakaze_boss.json` (Excalibur&#x27;s stats), `sorakaze_sky.json` (Angel&#x27;s Staff&#x27;s stats). Without deleting them, the new numbers won&#x27;t take effect.</li><li>We also recommend deleting `sorakaze_guns.json`. Without deleting it, there&#x27;s a bug where the newly added &quot;projectile speed&quot; setting stays stuck at an abnormally slow value for every gun (this doesn&#x27;t affect damage or other power-related numbers).</li><li>Of the 5 new decorative blocks, the smartphone-, laptop-, and desktop-shaped ones are modeled after real-world products, but both the in-game display and the install guide describe them only by their shape — no brand names are used.</li><li>[Balance] Even at this point, the Assault Rifle is still extremely strong at roughly 3,750 damage/sec — even with the Enhanced Beacon, Excalibur, and Angel&#x27;s Staff all buffed, most bosses can still be killed in a few seconds. No resistance has been added to either guns or bosses.</li><li>Note: version numbers 1.4.3, 1.6.x, 1.7.2, and 1.7.6 were internal numbers used during development and were never actually distributed.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>How it feels for doors to now close even with someone standing there, how the Rocket Launcher&#x27;s firing and impact feels, and how usable the Enhanced Beacon&#x27;s new GUI is, are all unconfirmed on real hardware.</li><li>How Excalibur and Angel&#x27;s Staff&#x27;s new 3D models actually look, and how the Dragon&#x27;s direction fix actually looks, are also unconfirmed.</li><li>The appearance of the Firework Doll, Pearl/Ruby blocks, and the Automatic Train Stop block, plus the PC performance impact of the security camera&#x27;s higher resolution setting, are also unverified.</li><li>The Kraken and Titan&#x27;s attack animations are still not implemented as originally specced (pending confirmation from the owner).</li><li>The 2 Sky mod issues found in v1.7.3 (raid lag, tamed dragons disappearing) are a separate matter from this update&#x27;s Sky mod changes, and remain unresolved.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.5</span> — Fixed Reinforced Glass &amp; Double-Door Bugs
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span></div>
+      <p>This is a Building-Materials-mod-only update. Fixed a bug where Reinforced Glass (all 17 colors) took a flat 75 seconds to mine regardless of tool, and a bug where the 50 large center-opening double doors added in v1.5.0 didn&#x27;t visually swing all the way open.</p>
+      <ul><li>Reinforced Glass can now be mined with a hoe. Mining speed now varies with the tool&#x27;s tier (wood through netherite) and Efficiency enchantment. It previously had a bug that made it take a flat 75 seconds regardless of tool.</li><li>Reinforced Glass can no longer be destroyed by the Wither or Ender Dragon.</li><li>The 50 large center-opening double doors (3×3 and 3×4 sizes) now visually swing open properly. They previously had a bug where they only slid open the same small amount as a regular door, so the doorway never looked fully open.</li></ul>
+      <h4>Balance changes</h4><ul><li>Rough mining times for Reinforced Glass: wooden hoe ~37.5s, stone hoe ~18.8s, iron hoe ~12.5s, golden hoe ~6.25s, diamond hoe ~9.4s, netherite hoe ~8.4s (~2.25s with a diamond hoe and Efficiency V). Bare hands, pickaxes, axes, shovels, and swords still take 75 seconds.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>[Design limitation] The original goal was &quot;only a dedicated axe can mine this faster,&quot; but due to how vanilla&#x27;s systems work, it ended up so that any hoe — including a wooden one — mines it faster (scaled to its tier). We couldn&#x27;t restrict it to one specific tool.</li><li>No config deletion needed. This fix doesn&#x27;t use any config values.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>How it actually feels to mine Reinforced Glass with a hoe, and whether the double doors visually look properly open on screen, haven&#x27;t been confirmed on real hardware yet.</li><li>The Kraken and Titan&#x27;s attack animations are still not implemented as originally specced.</li><li>The 2 Sky mod issues found in v1.7.3 (raid lag, tamed dragons disappearing) remain unresolved, since the Sky mod wasn&#x27;t touched this time.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.4</span> — Restricted the Plague Doctor&#x27;s Spawning to Summoning Stones Only
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>This is a Boss-mod-only update. Removed the mechanic where the Plague Doctor could randomly spawn during bad weather — it can now only be summoned with a dedicated summoning stone, just like the other 10 bosses.</p>
+      <ul><li>Changed how the Plague Doctor boss spawns. The old &quot;randomly spawns during bad weather&quot; mechanic is gone, unified into placing a new &quot;Plague Doctor Summoning Stone&quot; to summon it — the same 3×3 layout as the other 10 bosses, with Wither Rose in the corners, Phantom Membrane on the edges, and a Nether Star in the center.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>If you were waiting for bad weather to find the Plague Doctor, it will no longer appear that way going forward. Craft a summoning stone and summon it instead.</li><li>No config deletion needed. The removed settings were only related to natural spawning and don&#x27;t affect the values that remain.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The summoning stone&#x27;s activation effect, the Plague Doctor&#x27;s own appearance and dedicated voice, and the sacrifice effect are unchanged this time and remain unconfirmed on real hardware.</li><li>The Building Materials mod is not part of this update. Fixes for reinforced glass and doors are in progress separately, and will be reflected in a future update.</li><li>The 2 Sky mod issues found in v1.7.3 (raid lag, tamed dragons disappearing) remain out of scope this time.</li><li>The Kraken and Titan&#x27;s attack animations are still not implemented as originally specced.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss sky guns survival rail">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.3</span> — Fixed the Train&#x27;s Windows &amp; Singapore Bugs
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Fixed a bug where you couldn&#x27;t properly see outside from the train&#x27;s driver seat or passenger seats, and fixed bugs in the sky-bound city-state of &quot;Singapore&quot; where buildings wouldn&#x27;t generate or ruins would remain floating in midair. Also fixed the hostile mob spawn cap to apply only to the Overworld, and adjusted the enchantment level cap to a sane value.</p>
+      <ul><li>Fixed a bug where sitting in any of the train&#x27;s 8 car types (driver seat or passenger seats) mostly showed the wall below the window instead of the outside. You can now properly see forward and to the sides.</li><li>Fixed bugs in the sky-bound city-state of &quot;Singapore&quot; where buildings wouldn&#x27;t generate at all, the same hotel would keep getting built over and over, and trees or villages would remain floating in midair. However, this only fixes newly generated land after the update. For terrain that&#x27;s already generated and broken, we&#x27;ve included a recovery tool for admins that regenerates just the affected areas.</li><li>Added config options to the Boss mod for adjusting the Plague Doctor&#x27;s spawning.</li><li>Halved the Wyvern&#x27;s breath attack damage.</li></ul>
+      <h4>Balance changes</h4><ul><li>Minigun damage reduced 75%.</li><li>Assault Rifle damage increased 25%. Measured per-second damage output now ranks Assault Rifle 3,750 &gt; Laser Gun 2,000 &gt; Minigun 250.</li><li>The Universal Harvester (the boss-drop mining tool) changed from a durability system to a use-count system — it breaks after 5 uses. It can no longer be given Mending or Unbreaking at an anvil, but Efficiency, Fortune, and Silk Touch can still be applied.</li><li>Raised the natural hostile mob spawn cap multiplier from 5x → 15x. Also fixed a bug where this multiplier was mistakenly also applying to the Nether and the End — it&#x27;s now Overworld-only.</li><li>Adjusted the default enchantment level cap from 255 → 20 (the configurable maximum also shrunk from 255 → 32). This eliminates the bizarre &quot;enchantment level 255&quot;-style numbers some players reported.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>3 configs need to be deleted: `sorakaze_guns.json`, `sorakaze_sky.json`, and `sorakaze_survival.json`. Without deleting them, this update&#x27;s numeric changes won&#x27;t take effect. `sorakaze_boss.json` does not need to be deleted.</li><li>[Important] Running a large-scale, long-duration integration test of the Sky mod turned up 2 new problems. Neither is fixed yet: (1) large raid events may cause lag/frame drops, and (2) a tamed Ender Dragon can sometimes disappear over time (tamed Wyverns are not affected).</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The raid lag and tamed-dragon-disappearing issues above remain unresolved.</li><li>The Plague Doctor&#x27;s appearance and spawning, and how it feels for the Universal Harvester to break after 5 uses, haven&#x27;t been confirmed on real hardware yet.</li><li>The Kraken and Titan&#x27;s attack animations are still not implemented as originally specced (pending confirmation from the owner).</li><li>The Singapore recovery tool has only been verified against test data — it hasn&#x27;t yet been verified against actual world data.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.1</span> — Emergency Fix for a Crash-on-Launch After Installing v1.7.0
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>Installing v1.7.0 caused the game to crash every single time it launched. The cause was in how the Vehicles mod registered its keybinds (landing gear, flaps, doors, and so on), and updating just the Vehicles mod to v1.7.1 resolves it.</p>
+      <ul><li>Only the Vehicles mod (sorakaze_vehicles) was updated. The other 6 mods stay at v1.7.0 and are fine as-is.</li><li>No new items or blocks this time — this is purely a launch-crash fix.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>If you installed v1.7.0 and the game &quot;crashes every time on launch,&quot; be sure to replace the Vehicles mod&#x27;s jar file with this v1.7.1 version.</li><li>The other 6 mods (Guns, Rail, Building Materials, Boss, Sky, Survival) work fine staying at v1.7.0 — there&#x27;s no need to replace them.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>How the new features added in v1.7.0 — like the vehicle first-person (cockpit) view — actually look and feel is still unconfirmed by anyone, since the crash prevented anyone from checking.</li><li>Two-player sync and server load with all mods running simultaneously remain unverified.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.0</span> — All 7 Mods Updated Together, Hidden Content Unlocked
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>All 7 mods fell into step for the first time, now shipping under the same version number (v1.7.0). Fixing a bug in the recipe reference sheet also brought a lot of previously hidden content to light — things like the 300 grocery items and facility items from the sky-bound city-state of &quot;Singapore.&quot; The Vehicles mod also gained a first-person (cockpit) view.</p>
+      <ul><li>This is the first time all 7 mods have shipped under the same version number. Before this, each mod&#x27;s version had drifted independently.</li><li>Fixing a bug in the recipe reference sheet means it now shows the 300 grocery items purchasable in the sky-bound city-state of &quot;Singapore,&quot; along with items like the siege ram, property deed, real estate ledger, and grocery shelf. These are all store-bought items and can&#x27;t be crafted.</li><li>The boss drop &quot;Universal Harvester&quot; and the &quot;Special ATM&quot; (uncraftable) installed in Singapore now also show up on the reference sheet.</li><li>Added a first-person (cockpit) view to the Vehicles mod — your own vehicle&#x27;s roof and pillars no longer block your view while driving. You can also switch it back off in the settings.</li><li>Redrew the item icons for all 113 vehicles, 35 train variants, and 3 guns.</li><li>Removed the bank (ATM) deposit balance cap (previously 100,000) — you can now deposit without limit.</li><li>Added a recipe to turn a Block of Amethyst back into Amethyst Shards.</li><li>Enabled a change raising the natural hostile mob spawn cap to 5x normal, and a change significantly raising the enchantment level cap (normally 30) — both from the Survival mod.</li></ul>
+      <h4>Balance changes</h4><ul><li>Laser Gun: damage 160 → 200, fire rate 6 → 10 rounds/sec, magazine size 100 → 200 rounds.</li><li>Drill: mining speed 12.0 → 24.0, durability 2,048 → 10,240.</li><li>Significantly raised the population caps of the Sky Kingdom and Angel City (e.g. the Kingdom&#x27;s merchants 16 → 48, citizens 64 → 192).</li><li>Security camera default video resolution changed 192 → 768.</li><li>Natural hostile mob spawn cap raised to 5x normal. However, at this point there&#x27;s a bug where it was meant to apply to the Overworld only but mistakenly also applied the same multiplier to the Nether and the End (a fix is planned for a later update).</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>For the Guns mod (sorakaze_guns) and Sky mod (sorakaze_sky), you must delete `config/sorakaze_guns.json` and `config/sorakaze_sky.json` after updating or the numeric changes above won&#x27;t take effect.</li><li>For the Building Materials mod (sorakaze_deco), don&#x27;t delete its config — just edit the `cameraFeedResolution` value. Deleting it would reset every other setting, like traffic light timings, back to default too.</li><li>Guns&#x27; measured damage output is now extremely high — roughly 3,000/sec for the Assault Rifle, 2,000/sec for the Laser Gun, and 1,000/sec for the Minigun — meaning most bosses can be killed within seconds.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The newly introduced raid boss &quot;Armored Invader&quot; may not look very &quot;armored&quot; yet — expect further tuning in the future.</li><li>Train cars are still scaled at roughly 1/3 of a real train&#x27;s size. Also, the hitbox width increased from 1.8 → 2.0 blocks, so existing 2-block-wide tunnels may no longer fit it. The original 3 car types (train, passenger car, freight car) still have no windows, interior, or doors.</li><li>The Vehicles first-person view has a max turn rate of 36°/sec, which may feel too fast.</li><li>The recipe reference sheet&#x27;s file size grew significantly (from adding a large number of grocery item images). It may feel sluggish to load depending on your setup.</li><li>Two-player sync and server load with all mods running simultaneously haven&#x27;t been verified.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns rail">
+      <div class="timeline-entry__date">2026-07-30</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.7</span> — Fixed the Royal Sword &amp; Royal Bow, Nerfed the Minigun
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>Fixed a bug where the Royal Bow looked upside down, and fixed the appearance of the 2 bullet-train cars that got missed by the v1.5.6 rework. Also nerfed the Royal Sword and Minigun, and the Drill now automatically refills from your inventory when it runs out of cells.</p>
+      <ul><li>Redrew the icons for all 13 angel-related items at a more detailed 128px</li><li>Fixed the Royal Bow appearing to face the wrong way</li><li>Reworked the appearance of the 2 bullet-train cars that were missed by v1.5.6&#x27;s train rework</li><li>The Drill now automatically refills from spare cells in your inventory when it runs out</li></ul>
+      <h4>Balance changes</h4><ul><li>Minigun: effective damage output lowered from roughly 2,000 → roughly 1,000 damage/sec</li><li>Royal Sword: nerfed, including attack speed. Measured DPS went from 84.80 → 21.60 (-74.5%), leaving it just slightly below Angel&#x27;s Sword (22.40)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>You need to delete config/sorakaze_guns.json for these changes to take effect</li><li>If you&#x27;re updating straight from v1.5.5 or earlier, also delete config/sorakaze_sky.json</li><li>The Royal Sword nerf comes from a value hardcoded in the program, so it can&#x27;t be reverted via a config file</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The bullet train&#x27;s item icons still show the old design (the car models were reworked, but the icons don&#x27;t match their new look)</li><li>The Sculk Golem, Rock Lock, Kraken, and Titan still don&#x27;t have dedicated attack animations</li><li>The Thunder Spear still doesn&#x27;t support throwing — melee attacks only</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky guns deco rail boss">
+      <div class="timeline-entry__date">2026-07-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.6</span> — Sky Kingdom Arrives, Major Grim Reaper Rework
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>Added a massive &quot;Sky Kingdom&quot; and 7 purchase-only &quot;Royal Gear&quot; items to the Sky mod. The Grim Reaper boss gained dedicated attack animations and an overall design overhaul. Guns had their damage balance significantly reworked, and the Assault Rifle became one of the strongest weapons in the pack. All 6 train families also got a visual rework.</p>
+      <ul><li>Added the &quot;Sky Kingdom,&quot; a massive British-styled nation 1,001 blocks across, with 64 citizens, 16 merchants, and 65 loot chests</li><li>7 &quot;Royal Gear&quot; items exclusive to the Sky Kingdom debut (purchase-only, upgraded versions of Angel Gear)</li><li>New mob &quot;REX&quot; debuts. Hatch it from an egg and ride it</li><li>The &quot;Kuley Pot&quot; lets you carry a pet around in its entirety</li><li>Implemented 6 new dedicated attack animations for the Grim Reaper boss. Also added a new move that summons 3 Withers below 50% HP</li><li>Reworked all 6 train families&#x27; appearance (rounded, three-dimensional windows, doors, fronts, destination signs, lights, and more)</li><li>The Laptop is now a placeable block. The security camera now has a 3D model with panning, and shows real-time footage within range or a &quot;NO SIGNAL&quot; display outside of it</li><li>Comprehensively reworked gun damage balance (see the balance changes below for details)</li></ul>
+      <h4>Balance changes</h4><ul><li>Assault Rifle: effective single-target damage output massively buffed from roughly 400 → roughly 3,000 damage/sec (fixed so every shot reliably deals damage)</li><li>Minigun: effective damage output lowered from roughly 4,000 → roughly 2,000 damage/sec</li><li>Shotgun: damage buffed 3x (roughly 150 damage per trigger pull at point-blank range)</li><li>Both Sniper Rifles (regular/Heavy): durability lowered to 128 — 1/3 that of a bow (glass-cannon territory: fragile, but hard-hitting)</li><li>Grim Reaper boss: HP changed from a random 6,000-9,000 to a fixed 3,000, attack power 16 → 32</li><li>Wyvern: nerfed — breath damage 10 → 7.5, egg drop rate 100% → 20%</li><li>Archangel boss: HP buffed 1.5x to 3,000</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>You need to delete config/sorakaze_guns.json for the gun damage changes to take effect (the sniper rifles&#x27; durability setting is a new field, so it takes effect automatically)</li><li>The version number jumps from v1.5.1 to v1.5.6, but that&#x27;s because several small updates — mask adjustments, the Wyvern nerf, and more — were bundled into one release; none of those numbers were skipped</li><li>Pearl Ore and Ruby Ore don&#x27;t appear in land generated before the mod was installed. Measurements show they&#x27;re roughly 1/32 as common as Diamond, and about half as common as Ancient Debris</li><li>If a city or castle that was already partially generated happens to be near the Sky Kingdom, the rest of it may fail to generate and remain incomplete (this doesn&#x27;t corrupt data — it&#x27;s purely a visual issue)</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The Sculk Golem, Rock Lock, Kraken, and Titan still don&#x27;t have dedicated attack animations (the Grim Reaper&#x27;s was addressed in this update)</li><li>The Thunder Spear still doesn&#x27;t support throwing — melee attacks only</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="survival">
+      <div class="timeline-entry__date">2026-07-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.1</span> — Complete Rework of Both Masks&#x27; Appearance
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Visual update</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Fixed the appearance of the Survival Expansion mod&#x27;s 2 masks. They previously had a bug where a flat image appeared floating above the head — now reworked into a proper 3D shape that fits the head, complete with ears. No changes to stats like armor, durability, or recipes.</p>
+      <ul><li>Completely reworked the appearance of both masks. Fixed the bug where a flat image floated above the head — they now have a proper 3D shape that covers the head</li><li>Added rabbit ears to the rabbit mask and fox ears to the harlequin mask</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>The recipe reference sheet&#x27;s icons still show the old design (planned to be updated next release)</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The masks&#x27; side and back textures are still plain. Since the design focuses on the front, they can look nearly solid-colored when viewed from the side or behind in third person</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="survival guns deco rail vehicles sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.0</span> — The Biggest Update Yet — 7th Mod &quot;Survival Expansion&quot; Arrives
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>The biggest update in this project&#x27;s history. The 7th mod, &quot;Survival Expansion,&quot; joins the pack, adding survival features like Pearl and Ruby ore, masks, a greatshield, and a hydration gauge. All 6 existing mods also got major content added — the train now has 30 variants, vehicles 100, and the Building Materials mod&#x27;s doors expanded to 101 types.</p>
+      <ul><li>The 7th mod, &quot;Survival Expansion,&quot; joins the pack. Added Pearl Ore and Ruby Ore, 2 masks (+50 armor, 814 durability), a Greatshield, and a hydration gauge (empties after 30 minutes)</li><li>You can now buy a Sharpness X book from a master-level Librarian (64 Emeralds)</li><li>Added new weapons to the Guns mod: the &quot;Minigun,&quot; the &quot;Drill&quot; (mines a 3×3 area in your look direction at once), and the &quot;Spider Turret&quot;</li><li>The train expanded to 30 variants total — 6 families × 5 liveries (previously just 1 type)</li><li>Vehicles expanded to 100 variants total — 25 base models × 4 liveries — and applied the rounded styling to every one of them</li><li>Added 50 large center-opening double doors to the Building Materials mod (bringing the total to 101 door types), plus a Security Camera, Laptop, and an ATM that pays compound interest on savings</li><li>Added an egg incubator to the Sky mod. Hatched Wyverns/Dragons will tame to you, and you can ride them with a dedicated saddle</li></ul>
+      <h4>Balance changes</h4><ul><li>[Correction] We previously described the Assault Rifle as dealing roughly 2,000 damage/sec against a single target, but actual measurement shows it&#x27;s really about 400 damage/sec (earlier notes had significantly overestimated its damage output)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>The new &quot;Minigun&quot; has an effective damage output of roughly 4,000/sec, making it the strongest weapon in this project. It can kill most existing bosses within a few seconds, so if you want to preserve some challenge, lower `minigun.damage` in the config</li><li>You don&#x27;t need to delete any config files for this update (new settings are automatically appended on startup)</li><li>Pearl Ore and Ruby Ore don&#x27;t appear in land generated before the mod was installed. If you can&#x27;t find any, explore newly generated land</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The security camera&#x27;s panning animation isn&#x27;t implemented yet — it currently has a fixed viewpoint</li><li>The Sculk Golem, Rock Lock, Grim Reaper, Kraken, and Titan still don&#x27;t have dedicated attack animations, and their signature-move telegraphs are particles and markers only</li><li>The Thunder Spear still doesn&#x27;t support throwing — melee attacks only</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.8</span> — Sky City Densified, New Mob &quot;Wyvern&quot; Arrives
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>Reworked Sky City&#x27;s scale into a denser, more high-rise metropolis. 4 towering 300-block-tall spires now serve as new landmarks at its center. Also added a new flying enemy, the &quot;Crystal Wyvern.&quot;</p>
+      <ul><li>Shrank Sky City&#x27;s footprint and rebuilt it as a denser city (heights now vary by district)</li><li>Just the 4 spires at the city center now reach 300 blocks tall</li><li>Added streetscape details like ground-floor entrances, awnings, rooftop equipment, and separated roads and sidewalks</li><li>Placed 16 loot chests around the city across 3 types: rooftop, office, and warehouse</li><li>New mob &quot;Crystal Wyvern&quot; debuts. It flies and attacks with a fireball breath (targets players only — it won&#x27;t attack city residents)</li><li>Adjusted Sky Castle&#x27;s spawn interval (the previously recommended settings had a bug that made castles essentially never appear)</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Against the Assault Rifle&#x27;s damage output, the Crystal Wyvern (200 HP) dies in an instant. If you want more of a challenge, adjust the gun damage settings</li><li>The city size reduction only applies to newly generated land. Existing Sky Cities keep their old size, so you may see an odd size mismatch where they&#x27;re adjacent to newer ones</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.7</span> — Sky City World Generation Reworked, Fixed Citizen Overpopulation Bug
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>Reworked how Sky City and Sky Castle generate internally to make it more stable, and fixed a bug where Sky City&#x27;s population would keep creeping past the cap with every server restart.</p>
+      <ul><li>Fixed a bug where Sky City&#x27;s population would keep growing past the cap across repeated server restarts</li><li>Internally streamlined how Sky City and Sky Castle generate (generation load actually went down)</li><li>Adjusted the spacing between Sky Cities and Sky Castles</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>The generation changes only apply to newly generated land. Existing Sky Cities and Sky Castles keep their current appearance</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.6</span> — Sky City Reworked into a Futuristic City, New Boss Arrives
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>The Sky mod&#x27;s &quot;Sky City&quot; got a complete overhaul into a futuristic high-rise metropolis, and a new &quot;Sky Castle&quot; plus new boss &quot;Sky Archangel&quot; made their debut. Also added: a new mob, &quot;Angel Citizen,&quot; walking the streets, and changes to how you pay for gear.</p>
+      <ul><li>Reworked Sky City into a futuristic high-rise city (added 20 skyscrapers, a road network, pedestrian bridges, and a central plaza)</li><li>The new &quot;Angel Citizen&quot; mob, with 4 different looks, now wanders the streets</li><li>&quot;Sky Castle&quot; debuts (castle walls, 8 round towers, a great hall, a central keep, an underground treasury, and 6 loot chests)</li><li>The new boss &quot;Sky Archangel&quot; now appears in Sky Castle — one per castle, and it won&#x27;t respawn once defeated</li><li>Added the boss&#x27;s guaranteed drop, &quot;Angel&#x27;s Staff&quot; (1.5x damage and half cooldown while airborne)</li><li>Reworked the Sky portal&#x27;s appearance into a gold-and-Glowstone frame, and added a lighting-up animation</li><li>Buying Sky gear now costs a mix of Emeralds and Diamonds</li></ul>
+      <h4>Balance changes</h4><ul><li>Sky portal natural spawn rate lowered from 1/340 → 1/1200 (they&#x27;re now considerably harder to find)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Portals are now much harder to find. If you can&#x27;t find one in an existing world, admins can lower the spawn rate via config, or enable `allowPlayerBuiltSkyPortals` to let players build portals manually</li><li>The Assault Rifle&#x27;s damage output is extremely strong (roughly 2,000 damage/sec), so this boss (2,000 HP) can be killed in about a second. If you want more of a challenge, adjust the gun damage settings</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.5</span> — Fixed the Sky Dimension Crash
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>Fixed a serious bug where the client would always crash on entering the Sky dimension (caused by the game having zero renderers registered for drawing Angels and Angel Golems). Also buffed the Heavy Sniper Rifle&#x27;s damage and added a new scope zoom level.</p>
+      <ul><li>[Important] Fixed a bug that always crashed the client on entering the Sky dimension (caused by Angel/Angel Golem rendering never being registered). The same bug also occurred with Angels left over in old worlds from before the Sky relocation</li><li>Changed the Heavy Sniper Rifle&#x27;s damage to 4x the regular Sniper Rifle&#x27;s (40.0 → 80.0)</li><li>Added a new &quot;×12&quot; scope zoom level (Heavy Sniper Rifle only)</li><li>Changed it so mouse-wheel input is ignored while looking through a scope (prevents accidentally switching hotbar slots)</li></ul>
+      <h4>Balance changes</h4><ul><li>Heavy Sniper Rifle: damage 40.0 → 80.0 (4x the regular Sniper Rifle)</li></ul>
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Whether this fix actually resolves the Sky dimension crash hasn&#x27;t been confirmed by actual play yet. Please check whether entering the Sky dimension no longer crashes, and report it if it still does</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="deco guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.4</span> — Major Gun Damage Buff &amp; 40 New Doors
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span></div>
+      <p>Massively buffed the Laser Gun and Assault Rifle&#x27;s damage — 20x and 10x respectively. This damage boost significantly throws off the combat balance against existing bosses. Also fixed a bug where the auto turret had actually never fired a single shot, guardrails that wouldn&#x27;t connect to each other, and lasers that pointed backward when facing east or west. The Building Materials mod also gained 40 new door types (version 1.4.3 was skipped).</p>
+      <ul><li>Laser Gun damage buffed 8.0 → 160.0 (20x, 960 DPS), Assault Rifle damage buffed 20.0 → 200.0 (10x, 2,000 DPS)</li><li>Fixed a bug where the auto turret had actually never fired a single shot (its aiming ray started from inside its own hitbox). Also reworked target detection so it no longer targets bosses or Wardens</li><li>Fixed guardrails not connecting to each other</li><li>Fixed lasers pointing backward when facing east or west</li><li>Laser trap range 32 → 128 blocks (config cap expanded to 256). It can now be aimed in 26 directions (including diagonals and up/down) — right-click empty-handed to rotate 45° horizontally, sneak+right-click to change the angle</li><li>Added 40 new door types to the Building Materials mod (49 total, including the existing 9)</li></ul>
+      <h4>Balance changes</h4><ul><li>Laser Gun: damage 8.0 → 160.0 (20x)</li><li>Assault Rifle: damage 20.0 → 200.0 (10x)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>[Important] This damage buff significantly throws off the combat balance against existing bosses (you can kill them in seconds). No resistance has been added to bosses, so if this bothers you, adjust the damage values in config/sorakaze_guns.json</li><li>You need to delete config/sorakaze_guns.json for the gun damage buff to take effect</li><li>v1.4.3 was skipped and was never distributed</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.2</span> — Fixed a Visual Bug with Worn Angel Gear
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span></div>
+      <p>Fixed a bug where actually equipping &quot;Angel Gear&quot; would show vanilla Netherite armor on your body and a plain Elytra on your back. It was an easy bug to miss since the inventory icons displayed correctly.</p>
+      <ul><li>Fixed Angel Gear (armor and Angel Wings) to correctly display its dedicated silver-and-gold design when worn</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky boss deco vehicles guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.1</span> — Sky Dimension Arrives, Bosses Get Signature Moves
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>Added a new dimension, &quot;Sky,&quot; reachable through portals that rarely generate on the overworld surface. You can now trade with Angel Merchants and equip glider gear. All 10 bosses now have signature moves, and can be summoned anytime with a summoning stone. Building Materials crafting also gained selectable recipe buttons, and vehicle tires now visibly rotate.</p>
+      <ul><li>New dimension &quot;Sky&quot; debuts, reachable through Glowstone portals that rarely generate on the overworld surface</li><li>Angel Merchants live in the Sky, each with a randomized selection of trades. You can obtain &quot;Angel Wings&quot; that let you glide, plus dedicated arrows and bows</li><li>Added a safety net for falling out of the sky (you land safely above the Overworld)</li><li>Added summoning stones for all 10 bosses, craftable so you can summon them anytime. All bosses gained a signature move (triggers below 50% HP, with a 4-second telegraph)</li><li>The 3 colossal bosses now have their power rolled randomly on spawn (30-45x the Ender Dragon&#x27;s HP, then fixed thereafter)</li><li>New weapons — &quot;Grim Reaper&#x27;s Scythe,&quot; &quot;Abyssal Trident,&quot; and &quot;Thunder Spear&quot; — now drop from their respective bosses</li><li>Added a toggle button to the Building Materials mod&#x27;s crafting bench, letting you pick between multiple blocks from the same layout (like wooden pillar blocks)</li><li>The boss-exclusive shovel and hoe can now actually make paths and till soil</li><li>Vehicle tires now visibly rotate as you drive (10 vehicle types)</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The Sculk Golem and Rock Lock still don&#x27;t have dedicated attack animations (their signature-move telegraph is particles only)</li><li>The Thunder Spear still can&#x27;t be thrown (melee only)</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Boss Attack Animations &amp; 3D Tool Models
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Visual update</span></div>
+      <p>Added dedicated animations for each of the 5 bosses&#x27; melee, AoE, and beam attacks. The 5 tools they drop (pickaxe, axe, hoe, spear, shovel) were also reworked from flat icons into proper 3D models. Gameplay — damage, cooldowns, and so on — is unchanged.</p>
+      <ul><li>Added dedicated animations for each of the 5 bosses&#x27; attacks (melee, 2 kinds of AoE, and beam), making attack telegraphs (windup motions) easier to read</li><li>Reworked the 5 droppable tools into proper 3D models. GUI icons now show the 3D render too</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Melee attacks don&#x27;t have a windup like a raised-arm animation. Since vanilla melee damage triggers instantly, adding a windup would throw off the timing of when damage actually lands</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Complete Visual Overhaul for All 5 Bosses
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Visual update</span></div>
+      <p>In response to feedback that they &quot;looked like palette-swaps of the same creature,&quot; we completely reworked the appearance of all 5 new bosses. Gameplay — strength, drops, attacks, and so on — is unchanged.</p>
+      <ul><li>Runecore Colossus: a stone core with bronze/gold armor plating, 2 swords floating at its sides, and rotating rune rings encircling its arms</li><li>Emberlord: lava veins running through its body, and 2 horns that curl upward in 4 jointed segments</li><li>Elder Treant: 8 branches, each angled and broken differently (3 of them snapped partway), and a face carved into its trunk</li><li>Void Stalker: abandoned its humanoid shape for a mass of obsidian, a purple portal, 8 tentacles, and 18 glowing eyes</li><li>Frost Lich King: a 5-tiered robe, a 9-spike jagged ice crown, and a rotating ice emblem hovering above its raised left hand</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 5 New Bosses Arrive, Breaking the HP Ceiling
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>Added 5 new colossal bosses to the Boss mod. We removed the vanilla Minecraft limitation that capped HP at 1024, so these are proper bosses with 2,400-4,000 HP. Defeating one guarantees a drop of a dedicated overpowered tool (pickaxe, axe, hoe, the new weapon &quot;Spear,&quot; or shovel).</p>
+      <ul><li>Added 5 new bosses, summoned with craftable summoning items: Runecore Colossus (3,000 HP), Emberlord (3,400 HP), Elder Treant (4,000 HP), Void Stalker (2,400 HP), and Frost Lich King (2,800 HP)</li><li>Defeating each boss guarantees a drop of a dedicated overpowered tool: Runecore Pickaxe, Ember Axe, Treant Hoe, Void Spear (a new weapon type vanilla doesn&#x27;t have), and Frost Shovel. All have high durability and come pre-enchanted with multiple enchantments, and can&#x27;t be crafted</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>All 5 are designed to be tough fights, expected to be a struggle solo. If they feel too strong, admins can adjust their HP and attack power via config</li><li>Void Stalker was designed to float in the air, but is currently implemented as moving on the ground plus teleporting</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — Added 138 Building Blocks &amp; Implemented Gun Durability
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span></div>
+      <p>A follow-up based on feedback after the v1.3.2 release. Reworked the appearance of 2 bosses, and fixed the gun durability bar, which had only ever been a display up to now, to finally actually decrease. The Building Materials mod gained 138 new building blocks, and every gun&#x27;s range was extended 5x.</p>
+      <ul><li>Reworked the appearance of the Sculk Golem and Rock Lock (Sculk Golem now looks like an Iron Golem made of sculk; Rock Lock now looks like a near-future armed robot). No changes to their strength or attacks</li><li>Fixed guns&#x27; durability to finally decrease properly (previously the durability bar just displayed without actually breaking). Default durability is now roughly 1,536 shots, and Excalibur&#x27;s is roughly 6,093 hits</li><li>Extended every gun&#x27;s range 5x (Assault Rifle 60 → 300m, Shotgun 24 → 120m, Sniper Rifle 150 → 750m, Laser Gun 80 → 400m)</li><li>Added 138 new building blocks to the Building Materials mod (vertical slabs, octagonal-pillar columns, and 8-step slopes, across 46 different materials)</li><li>Approved a plan to gradually redesign vehicles with &quot;rounded, realistic shapes,&quot; and finished design mockups for the sedan and propeller plane (rolling this out across all 13 vehicle types is planned for future updates)</li></ul>
+      <h4>Balance changes</h4><ul><li>Extended every gun&#x27;s range 5x (Assault Rifle 60 → 300m / Shotgun 24 → 120m / Sniper Rifle 150 → 750m / Laser Gun 80 → 400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>You need to delete config/sorakaze_guns.json for the range extension to take effect</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The &quot;rounded design&quot; for vehicles is currently just mockups for the sedan and propeller plane — rolling it out to all 13 types is planned for a future update</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail vehicles boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — Added 138 Building Blocks &amp; Implemented Gun Durability
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>A follow-up based on feedback after the v1.3.2 release. Reworked the appearance of 2 bosses, and fixed the gun durability bar, which had only ever been a display up to now, to finally actually decrease. The Building Materials mod gained 138 new building blocks, and every gun&#x27;s range was extended 5x.</p>
+      <ul><li>Reworked the appearance of the Sculk Golem and Rock Lock (Sculk Golem now looks like an Iron Golem made of sculk; Rock Lock now looks like a near-future armed robot). No changes to their strength or attacks</li><li>Fixed guns&#x27; durability to finally decrease properly (previously the durability bar just displayed without actually breaking). Default durability is now roughly 1,536 shots, and Excalibur&#x27;s is roughly 6,093 hits</li><li>Extended every gun&#x27;s range 5x (Assault Rifle 60 → 300m, Shotgun 24 → 120m, Sniper Rifle 150 → 750m, Laser Gun 80 → 400m)</li><li>Added 138 new building blocks to the Building Materials mod (vertical slabs, octagonal-pillar columns, and 8-step slopes, across 46 different materials)</li><li>Approved a plan to gradually redesign vehicles with &quot;rounded, realistic shapes,&quot; and finished design mockups for the sedan and propeller plane (rolling this out across all 13 vehicle types is planned for future updates)</li></ul>
+      <h4>Balance changes</h4><ul><li>Extended every gun&#x27;s range 5x (Assault Rifle 60 → 300m / Shotgun 24 → 120m / Sniper Rifle 150 → 750m / Laser Gun 80 → 400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>You need to delete config/sorakaze_guns.json for the range extension to take effect</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The &quot;rounded design&quot; for vehicles is currently just mockups for the sedan and propeller plane — rolling it out to all 13 types is planned for a future update</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-21</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.1</span> — Fixed the Boss Getting Killed by Wardens
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>Fixed a bug where the Sculk Golem — a precious boss limited to one per city and one per lifetime — could be killed by a retaliating Warden.</p>
+      <ul><li>The Sculk Golem no longer takes damage from Wardens, and Wardens no longer attack or hunt Sculk Golems (players can still defeat it as before)</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss vehicles">
+      <div class="timeline-entry__date">2026-07-20</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.0</span> — Boss &amp; Vehicles Mods Debut — Now 5 Mods Total
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>Two new mods, Boss and Vehicles, joined the lineup, bringing the total to 5 mods. Now featured: a boss fight where defeating a Warden in an Ancient City spawns the boss &quot;Sculk Golem,&quot; 13 vehicle types including cars, trucks, and planes, and new items like the Laser Gun and laser traps. The train also now supports coupling up to 15 cars into one train.</p>
+      <ul><li>New mod &quot;Boss&quot; debuts: defeating 3 Wardens in an Ancient City spawns the boss &quot;Sculk Golem&quot; (900 HP). Defeating it guarantees a drop of the &quot;Enhanced Beacon,&quot; which has 3x the effect range</li><li>New mod &quot;Vehicles&quot; debuts: adds 10 land vehicle types (cars, buses, trucks, motorcycles, and more) plus 3 aircraft types. Includes features like rotating beacons and sirens on emergency vehicles and truck beds</li><li>Added the Laser Gun (1 Energy Cell = 100 shots) and Auto Turret (only targets hostiles) to the Guns mod</li><li>Added Laser Emitters/Receivers and tables to the Building Materials mod</li><li>Improved the train coupling system to support trains of up to 15 cars, including freight and passenger cars. Also added 2 bullet-train types with a 75 m/s lead car</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Aircraft handling (takeoff, landing, stalling, etc.) is designed with future tuning in mind. If it feels heavy or hard to control, it can be adjusted via config</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-19</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.1</span> — Guns Switched to Hitscan &amp; Fixed Doors Not Staying Still
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span></div>
+      <p>Changed guns to a hitscan system where shots land the instant you fire, and added dedicated gunshot sounds. The train gained a 3D model and coupling (freight car, passenger car), and we fixed a bug where closed doors kept jittering. Hidden doors and 3 new door types make their debut too.</p>
+      <ul><li>Changed guns to a hitscan system so shots land without waiting for a bullet to travel (hit-detection range: 60m for the Assault Rifle, 24m for the Shotgun, 150m for the Sniper Rifle)</li><li>Added new gunshot, reload, and dry-fire sounds (custom-made audio)</li><li>Enlarged guns when held, adjusted to look better in both first- and third-person</li><li>Added a 3D model to the train (commuter-train styling). You can now couple a Freight Car (27-slot storage) and Passenger Car (2 riders) to it (can&#x27;t reverse while coupled)</li><li>Fixed closed doors continuously jittering</li><li>Added Hidden Doors (disguise themselves as dirt, stone, netherrack, end stone, and more)</li><li>Added 3 new door types (Roller Shutter, Sliding Door, Jail Bar Door), bringing the total to 9 door types</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.0</span> — Fixed Door Suffocation Bug &amp; Major Train Speed Boost
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span></div>
+      <p>Fixed a serious bug where you could take damage just from walking through a door. Raised the train&#x27;s top speed to 60 m/s (config cap 80 m/s), and it now automatically preloads chunks ahead in its direction of travel while running. Also added new blocks like the elevator and conveyor belt, and unified gun controls to left-click to fire, right-click to aim, and R to reload.</p>
+      <ul><li>[Important] Fixed a bug where you&#x27;d take damage just from passing through a door (automatic doors, fusuma, large doors, hatches). Improved so doors won&#x27;t auto-close while someone is nearby</li><li>Train top speed 20 → 60 m/s (config cap can be raised up to 80 m/s). It now auto-preloads chunks ahead of travel direction while moving, reducing scenery pop-in at high speed</li><li>4 new blocks: the Elevator (jump to go up / sneak to go down), Escalator, 2 kinds of chairs, and the Conveyor Belt (moves items, stoppable with redstone)</li><li>Overhauled gun controls: left-click to fire, hold right-click to aim (scope for the sniper), R to reload</li><li>Guns now render as 3D models when held (previously they were just the same flat icon as the GUI)</li><li>The shotgun can now one-shot an unarmored enemy at point-blank range (also fixed a bug where hit invincibility frames were nullifying multiple pellets at once)</li></ul>
+      <h4>Balance changes</h4><ul><li>Shotgun: pellet damage 3.0 → 5.0 (10 pellets; 50.0 total if every pellet lands at point-blank range)</li><li>Train: top speed 20 → 60 m/s, config cap 25 → 80 m/s</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>The meaning of the train&#x27;s speed cap has changed, so after updating we recommend deleting config/sorakaze_rail.json (otherwise it&#x27;ll stay at the old 20 m/s setting)</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.1.0</span> — Train Behavior Improvements &amp; Gun Buffs
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span></div>
+      <p>Fixed the choppy train movement and the issue where you had to keep holding W just to keep moving. Buffed gun damage, and added a dedicated scope overlay and aim sway to the Sniper Rifle. The Building Materials mod also gained 4 new door types, including an automatic door.</p>
+      <ul><li>Train: fixed choppy movement — it now runs smoothly</li><li>Train: pressing W once now locks in automatic acceleration and cruising with no further input needed (previously you had to hold it down). S brakes, and pressing S again after stopping reverses</li><li>Train top speed increased from 15 to 20 m/s. Reworked the train item&#x27;s icon</li><li>Sniper Rifle: changed to an &quot;aim, then release to fire&quot; system, and added a dedicated scope overlay, ×4/×8 zoom (switch with scroll), and aim sway that&#x27;s halved while sneaking</li><li>Assault Rifle: added increased spread while firing on the move</li><li>Building Materials mod: added 4 new door types — Automatic Door, Fusuma (sliding paper door), Large Door (iron/wood), and Hatch (multi-block structures that drop a single item no matter which part you break)</li></ul>
+      <h4>Balance changes</h4><ul><li>Assault Rifle: damage 3.0 → 5.0, fire rate 8 → 10 rounds/sec</li><li>Shotgun: pellet damage 2.0 → 3.0 (pellet count increased to 10), effective range 12 → 16m</li></ul>
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-15</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.0.0</span> — Initial Release: 3 Mods — Guns, Rail, and Building Materials
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span></div>
+      <p>The server got its first three mods: &quot;sorakaze_guns&quot; (Guns), &quot;sorakaze_rail&quot; (Rail), and &quot;sorakaze_deco&quot; (Building Materials). Vanilla bows and minecarts are untouched — you can now craft new weapons, vehicles, and city-building blocks in survival.</p>
+      <ul><li>Guns mod: the Assault Rifle, Shotgun, and Sniper Rifle, plus their dedicated ammo (rifle rounds, shotgun shells, sniper rounds), are now craftable</li><li>Added a scope zoom feature to the Sniper Rifle</li><li>Rail mod: added a new vehicle, the &quot;Train,&quot; that you can place on rails (vanilla minecarts, rails, bows, and crossbows are unchanged). A looping running sound plays while it&#x27;s moving</li><li>Building Materials mod: added 12 kinds of blocks, including guardrails, utility poles, power lines, tactile paving (directional/warning), vehicle traffic lights, pedestrian traffic lights, aircraft warning lights, and spotlights</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Making the server mod-capable requires migrating from vanilla to Fabric. Also, running Minecraft 26.2 requires Java 25 or later, so please check the Java version on the server machine (see the admin install guide for setup steps)</li></ul>
+        </div>
+      
+    </article>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Unofficial reference for mods installed on the Sorakazekarasu server</p>
+    <p class="site-footer__note">This site is an unofficial reference. It does not distribute the mod files (jars) themselves. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

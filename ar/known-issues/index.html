@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المشاكل المعروفة | Glimpse Alpha Wiki</title>
+<meta name="description" content="قائمة بالمشاكل المعروفة والعناصر غير المؤكدة في حزمة إضافات Glimpse Alpha.">
+<meta property="og:title" content="المشاكل المعروفة | Glimpse Alpha Wiki">
+<meta property="og:description" content="قائمة بالمشاكل المعروفة والعناصر غير المؤكدة في حزمة إضافات Glimpse Alpha.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="فتح القائمة">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">الرئيسية</a></li>
+        <li><a href="../changelog/">سجل التحديثات</a></li>
+        <li><a href="../recipes/">دليل الوصفات</a></li>
+        <li><a href="../guide/">دليل التثبيت</a></li>
+        <li><a href="../roadmap/">الخطة المستقبلية</a></li>
+        <li><a href="../known-issues/" class="active">المشاكل المعروفة</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="اللغة / Language">
+          🌐 <span>العربية</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/">Español</a></li>
+        <li><a href="../../fr/known-issues/">Français</a></li>
+        <li><a href="../../zh/known-issues/">简体中文</a></li>
+        <li><a href="../../ko/known-issues/">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/" class="active" aria-current="true">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="تبديل نمط الألوان" title="تبديل نمط الألوان">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">المشاكل المعروفة</span>
+  <h1>المشاكل المعروفة</h1>
+  <p class="lede">يجمع هذا الدليل المشاكل الصغيرة المعروفة حاليًا، والعناصر التي لم يتسنَّ التحقق منها فعليًا بعد بسبب طبيعة بيئة التطوير. عند اكتشاف أي مشكلة جسيمة، سيتم توزيع نسخة مُصححة فورًا كما هو موضح في سجل التحديثات.</p>
+</div>
+
+<h2>مشاكل صغيرة معروفة حاليًا</h2>
+<p class="section-lede">مشاكل معروفة لا تؤثر على سير اللعب، لكنها تؤثر على طريقة العرض أو المظهر.</p>
+<h4>عرض أسماء نوافذ الزجاج المقوى (17 لونًا) <span class="card__meta">(v1.7.7〜)</span></h4><p>لم يتم تعيين أسماء باللغتين اليابانية والإنجليزية لـ16 لونًا من أصل 17، مما يجعل معرّف العنصر يظهر كما هو بدلًا من الاسم (اللون الأسود فقط له اسم صحيح). لا يؤثر هذا على الأداء أو الوظيفة.</p><h4>الكابل المعزول فور إعادة تشغيل الكهرباء <span class="card__meta">(v1.8.1〜)</span></h4><p>قد يبقى كابل غير متصل بلوحة القواطع مضاءً لفترة وجيزة فور إيقاف الكهرباء ثم إعادة تشغيلها. يُحل ذلك بتكسير الكابل المعني وإعادة تركيبه.</p><h4>عرض الوصفات في تطبيق &quot;استعلام&quot; <span class="card__meta">(v1.8.6〜)</span></h4><p>شاشة وصفة 3×3 التي تظهر في تطبيق &quot;استعلام&quot; على الهاتف/الحاسوب لا تستقبل معلومات ترتيب وضع المكونات في الخانات، لذا تُعرض المكونات بترتيب تعبئة تلقائي من البداية بدلًا من الترتيب الفعلي. نوع وكمية المكونات نفسها تظهر بشكل صحيح.</p>
+
+<h2>عناصر متروكة عمدًا دون معالجة</h2>
+<p class="section-lede">هذه ليست أخطاء، بل عناصر قيد النظر ضمن التصميم لمعالجتها مستقبلًا.</p>
+<h4>حركات الهجوم المخصصة للكراكن والتايتن</h4><p>هذان الزعيمان الضخمان لا يمتلكان بعد حركات هجوم جسدية مخصصة، رغم ظهور تحذير الهجوم الخاص عبر الجسيمات (particles). هذا قرار تصميمي متروك عمدًا، وتحديد ما إذا كان سيتم تنفيذه متروك لتقدير مدير الخادم.</p>
+
+<h2>تغييرات حديثة لم يتم التحقق منها فعليًا بعد</h2>
+<p class="callout callout--info">تم تطوير حزمة الإضافات هذه في بيئة لا يمكن فيها تشغيل عميل Minecraft مباشرة. ورغم التحقق الآلي من تشغيل الخادم وسلامة البيانات، فإن المظهر والصوت والإحساس أثناء اللعب لا يمكن التأكد منها إلا من خلال ملاحظات اللاعبين الفعليين. القائمة التالية تضم عناصر من آخر التحديثات لم يتم التحقق منها فعليًا بعد على أرض الواقع. يُرجى إبلاغ مدير الخادم عند ملاحظة أي خلل.</p>
+<ul><li><strong>مظهر أنبوب المياه وقناع الغاز:</strong> لم يتم بعد التحقق فعليًا من كيفية ظهور المظهر ومنطقة الاصطدام الجديدين اللذين أُعيد تصميمهما في الإصدار v1.8.5 على الشاشة الفعلية.</li><li><strong>سهولة استخدام واجهة المنارة المعزّزة:</strong> لم يتم بعد التحقق من سهولة استخدام شاشة اختيار القدرات الخاصة بالمنارة المعزّزة ألفا/بيتا.</li><li><strong>كثافة ظهور الأعداء (العالم العادي):</strong> لم يتم بعد التحقق مما إذا كانت كثافة ظهور الأعداء التي تم تعديلها في الإصدار v1.8.5 مناسبة فعليًا أثناء اللعب.</li><li><strong>الأيقونات الجديدة للرؤوس الحربية وتطبيقات الهاتف:</strong> لم يتم بعد التحقق فعليًا على شاشة اللعبة من أيقونات الرأس الصاروخي والرأس النووي الجديدة، وتصميم الشاشات الجديدة لتطبيقات الهاتف، التي أُضيفت في الإصدار v1.8.6.</li><li><strong>تشغيل كاميرا المراقبة والمصعد وغيرهما بعد الكهربة:</strong> بخصوص الأجهزة الخمسة التي أصبحت تتطلب كهرباء في الإصدار v1.8.3 (كاميرا المراقبة، المصعد، السلم المتحرك، الباب الأوتوماتيكي، الصراف الآلي)، لم يتم بعد التحقق الفعلي من عملها في حالتي وجود الكهرباء وعدم وجودها.</li><li><strong>إحساس اللعب مع كهربة الحجر الأحمر (منذ v1.8.1):</strong> لا يمكن معرفة إلى أي درجة ستتوقف أتمتة المزارع والمحطات، ومقدار الجهد المطلوب لإعادة التوصيل، إلا من خلال اللعب الفعلي.</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — مرجع غير رسمي لإضافات (MOD) خادم Sorakazekarasu</p>
+    <p class="site-footer__note">هذا الموقع مرجع غير رسمي. لا يوفر هذا الموقع ملفات الإضافة (jar) نفسها. قد تختلف الوصفات والقيم المعروضة عن الواقع الفعلي حسب إصدار الإضافة المثبتة أو تعديلات إعدادات (config) الخادم.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>更新日志 | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha（原名 Sorakaze）MOD 包的完整更新历史，汇总了从初版到现在的所有变更内容与注意事项。">
+<meta property="og:title" content="更新日志 | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha（原名 Sorakaze）MOD 包的完整更新历史，汇总了从初版到现在的所有变更内容与注意事项。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/changelog.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">首页</a></li>
+        <li><a href="../changelog/" class="active">更新日志</a></li>
+        <li><a href="../recipes/">合成配方</a></li>
+        <li><a href="../guide/">导入指南</a></li>
+        <li><a href="../roadmap/">后续计划</a></li>
+        <li><a href="../known-issues/">已知问题</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="语言 / Language">
+          🌐 <span>简体中文</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../changelog/">日本語</a></li>
+        <li><a href="../../en/changelog/">English</a></li>
+        <li><a href="../../es/changelog/">Español</a></li>
+        <li><a href="../../fr/changelog/">Français</a></li>
+        <li><a href="../../zh/changelog/" class="active" aria-current="true">简体中文</a></li>
+        <li><a href="../../ko/changelog/">한국어</a></li>
+        <li><a href="../../pt-br/changelog/">Português (Brasil)</a></li>
+        <li><a href="../../it/changelog/">Italiano</a></li>
+        <li><a href="../../ar/changelog/">العربية</a></li>
+        <li><a href="../../ru/changelog/">Русский</a></li>
+        <li><a href="../../id/changelog/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/changelog/">Deutsch</a></li>
+        <li><a href="../../tr/changelog/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换配色" title="切换配色">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">更新日志</span>
+  <h1>更新日志</h1>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-09，共 36 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
+</div>
+
+<div class="filter-bar" role="group">
+  <input type="search" id="changelogSearch" placeholder="按 MOD、版本或关键词搜索…" aria-label="按 MOD、版本或关键词搜索…">
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">MOD：</span>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">枪械</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">铁道</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">建材、装饰</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">生存</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">载具</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">电力</button>
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">类型：</span>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">新功能</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">问题修复</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">外观更新</button>
+</div>
+
+<p id="changelogEmpty" class="empty-state" hidden>没有符合条件的更新记录。</p>
+<div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="visual-update" data-mods="guns deco">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.6</span> — 新增导弹弹头、手机 App 的图标
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">外观更新</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span></div>
+      <p>本次是与外观、可发现性相关的 2 项修复。解决了导弹弹头、核弹头没有准备任何材质的问题，新绘制了专属图标并使其可以合成。同时把此前有报告称找不到的导弹发射器加入了创造模式标签，也完善了显示名称与操作界面的翻译。还为手机、电脑的 7 个 App 新准备了专属图标。</p>
+      <ul><li>为导弹弹头、核弹头新绘制了专属的 128px 图标（此前没有任何图案，一直以 Minecraft 标准的「紫黑格纹」显示在物品栏中）。</li><li>新增了导弹弹头（铁锭×5 + TNT×1 + 红石块×1）、核弹头（铁块×4 + TNT×4 + 下界之星×1）的合成配方。</li><li>把导弹发射器加入了创造模式标签（此前虽然可以合成，但不会显示在标签中，导致找不到）。新增了显示名称，以及目标坐标输入、9 种状态显示、8 方位、保险装置等管制面板界面的翻译（日文、英文各 54 项）。</li><li>为手机、电脑的全部 7 个 App（摄像头画面、消息、查询、天气、计算器、电话、拍照）新绘制了专属图标（此前只是排列着彩色方块）。还为各个 App 新增了专属装饰，例如天气 App 的降水图标与放大时钟、计算器 App 的凹陷液晶风格设计、电话 App 的方位指针显示、摄像头画面 App 的监控屏幕风格设计等。</li><li>改进为打开 App 时，画面上方会一直显示当前所开启 App 的图标与名称。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>让导弹弹头、核弹头可以合成是开发方的判断（并非所有者的明确要求）。如果感觉平衡性过强、过剩，请与运营方商议。</li><li>本次同样不需要删除或改写 config。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>「查询」App 的 3×3 配方画面，由于无法从服务器获取材料应放置在哪个格子的位置信息，因此呈现为从头开始依次排列材料的简易显示（材料的种类与数量本身是正确的）。</li><li>弹头的新图标、管制面板的翻译、手机 App 的新界面，均尚未在实际游戏画面中确认。</li><li>强化玻璃窗 17 种颜色中有 16 种仍未设定名称的状态依然存在（从此前版本延续至今）。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.5</span> — 修复水管、强化信标、防毒面具的问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>修复了在 v1.8.4 中报告的多项问题，解决了水管无法破坏、强化信标 α、β 无法选择能力、防毒面具看起来悬浮在头顶上方等问题。同时修正了敌对生物的生成上限，使其正确地仅适用于主世界，并把默认值变更为实数 150 只。</p>
+      <ul><li>修复了水管无法被破坏的问题。原因是碰撞判定单位弄错了，导致判定范围只有外观粗细的 1/32 这样极小的程度（硬度与工具指定本身从一开始就是正常的）。</li><li>同时修复了单独设置在河流中的取水口会被水流冲走消失的问题（已重新设计为支持水下放置的方块）。</li><li>修复了强化信标 α、β 无法选择能力的问题。此前即使打开界面，也会在下一个 tick 自动关闭，选择内容也没有被保存（不影响标准强化信标）。</li><li>修复了防毒面具看起来悬浮在头顶上方的问题。新制作了专属的立体模型，并调整到了贴合面部的位置。</li><li>根据所有者的意愿，把烟花人偶的外观从 v1.8.4 中新增的立体「玩偶」造型，改回了 v1.8.3 之前的平面图案造型。使用次数限制等功能均无变化。</li><li>把主世界的敌对生物生成上限，从此前的「原版的 15 倍」（相当于约 1050 只）变更为了实数 150 只。不影响下界、末地、天空（同时也修复了此前错误应用到所有维度的问题）。</li></ul>
+      <h4>平衡性调整</h4><ul><li>敌对生物生成上限（仅限主世界）：原版的 15 倍（相当于约 1050 只） → 实数 150 只</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>不需要删除或改写 config，生成上限的数值会自动更新为新的默认值。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>水管、防毒面具的新外观，以及强化信标 GUI 的操作手感，均尚未在实际游玩中确认。</li><li>150 只这一新的生成密度，实际游玩时是否合适，尚未经过验证。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss deco guns power sky survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.4</span> — 新武器、手机操作系统、水管、四季、天空的扩展
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>一并新增了手枪与冲锋枪 2 种新武器、导弹发射器及 2 种弹头、手机与电脑的正式操作系统功能、水管、真正会移动的电梯、春夏秋冬的四季系统等内容。同时提升了主世界可建造高度的上限（地下无变化），并大幅缩减了需要电力的分拣方块与漏斗类设备的范围。</p>
+      <ul><li>新增 2 种武器：手枪（每秒 200、装弹 12、半自动），冲锋枪（每秒 450、装弹 40、全自动）。两者都使用现有的小口径子弹，因此没有增加新弹药。</li><li>新增了导弹发射器（放置型武器）及导弹弹头、核弹头（核弹头可破坏的方块数量有上限，为导弹发射器专用，无法手持发射）。</li><li>为火箭筒新增了 2 倍变焦瞄准镜与锁定功能（持续瞄准 1 秒即可锁定，无法命中正在奔跑的目标）。</li><li>为手机、电脑新增了正式的操作系统功能（摄像头画面、消息、查询、天气、计算器、电话、拍照共 7 个 App）。手持右键点击或按 H 键即可启动，还可以拍照并通过消息发送。</li><li>新增了水管（可从河流或海洋向炼药锅、农田供水）。还新增了轿厢真正会上下移动的移动式电梯。</li><li>电力 MOD 新增了粗径电缆（供电距离达普通电缆的 4 倍）、屏蔽电缆（8 倍）、LED 面板灯。</li><li>全面刷新了矿石的外观。新增了新素材「薰衣草翡翠」（比红宝石更加稀有）、防毒面具、气动护盾。</li><li>新增了四季系统（1 季 8 天，1 年 32 天）。夏季的沙漠、冬季的雪原都会比以往更加严酷。</li><li>强化信标 α、β（Boss MOD）现在可以合成了。同时强化信标本身也不再需要电力（撤销了 v1.8.1 中一度加入的电力需求）。</li><li>主世界可建造高度的上限从 y=319 扩展到了 y=1023（地下与世界底部无变化）。</li><li>需要电力的装置从 17 种大幅缩减至 3 种（虚空销毁方块、激光发射器、自动炮塔）。漏斗、8 种自动分拣方块、传送带、2 种信号灯、列车自动停止方块等，现在都不需要电力即可运作了。</li></ul>
+      <h4>平衡性调整</h4><ul><li>突击步枪：实测每秒 4,500 → 5,850</li><li>加特林机枪：实测每秒 250 → 50（大幅弱化，弱于钻石剑）</li><li>狙击步枪、重型狙击步枪的伤害也有所提升。狙击系耐久度的计算系数也从 0.5→0.6 有所变更</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>导弹发射器发射的火箭弹，即使把 mobGriefing 设为 false，地形破坏也不会停止。如果只想停止地形破坏，请把 config 中的 rocketDestroysTerrain 设为 false。</li><li>主世界的可建造高度已扩展至 y=1023，这也会影响到不使用天空维度的玩家（地下无变化）。</li><li>由于需要电力的分拣方块、漏斗范围大幅缩减，此前停摆的装置将会自动重新运作。请注意长期放置未管理的地点可能出现意料之外的重新启动。</li><li>上述枪械的伤害变更会自动生效，不需要删除或改写 config，但如果想恢复原状，可以在 config 中单独指定数值。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>刚新增时的强化信标 α、β 存在无法选择能力的问题（已在下次更新中修复）。</li><li>刚新增时的导弹发射器不会显示在创造模式标签中，也未设置显示名称。2 种弹头的图标也尚未准备（已在下次更新中解决）。</li><li>手机、电脑的 App 尚未准备专属图标，只是排列着彩色方块（已在下次更新中改善）。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.3</span> — 家电的电气化，与机械的发热
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>监控摄像头、电梯、扶梯、自动门、ATM 这 5 种建材设备变得需要电力才能运作。此外发电机、核电站等运转中的机械，会让周围房间发热，如果不进行通风或降温，可能会因高温而受到伤害。</p>
+      <ul><li>监控摄像头、电梯、扶梯、自动门、ATM 变为了需要电力的设备（已经设置好的设备也会从下次启动起纳入对象）。电梯即使没有电力，也只有「下降」能够运作（防止被困）。</li><li>运转中的发电机、核电站等机械会让周围发热。若不降温而持续运转 8 台机械，室温会上升到约 77.8℃，约 14 秒后开始造成伤害。</li><li>修复了空调也会正确消耗电力的问题（此前一直被当作不消耗电力处理）。</li></ul>
+      <h4>平衡性调整</h4><ul><li>机械发热：持续运转 8 台未降温的机械，室温会上升到约 77.8℃，约 14 秒后产生热量伤害</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>需要为监控摄像头、电梯、扶梯、自动门、ATM 铺设电缆。已经设置好的设备也会在下次启动时停止运作。</li><li>发电机等会发热的机械周围，如果不进行通风或用空调降温，会变得高温而危险。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>已电气化的 5 种设备（监控摄像头、电梯、扶梯、自动门、ATM）在有电／无电两种状态下的实际运作，均未确认。</li><li>新的 3 种发电机、燃料槽的外观与使用手感，均未确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.2</span> — 空调大型化与电力设备的简易化安装
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>空调的尺寸大幅扩大，在房间中真正拥有了存在感。同时把电力 MOD 中各设备都整理为「只需放置 1 个物品」即可完成的方式，也修复了壁炉在雪原生物群系中完全不起作用的问题。</p>
+      <ul><li>把空调本体的尺寸扩大到相当于 3.1×2.0×2.1 格。由带圆形送风风扇、盘管散热片、发光操作面板的室外机，以及带 3 片前伸百叶的室内机组成，成为电力 MOD 中数一数二大型的设备。</li><li>电力 MOD 的设备统一为不需要组合多个方块，只需放置 1 个物品即可完成的方式。</li><li>修复了壁炉在雪原生物群系中完全不起作用的问题，改进为分别计算地形的寒冷度与设备的温暖度。</li></ul>
+      <h4>平衡性调整</h4><ul><li>雪原、自己生的壁炉旁：体感温度 -24.0℃（冻伤伤害）→ +2.4℃（安全）</li><li>有屋顶的据点、夜间、降雪中、有壁炉：-18.6℃ → +7.9℃</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>在暴风雪的夜晚一直站在室外的话，仅靠 1 台壁炉有时还不够（请结合屋顶、护甲、增设壁炉等措施）。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>气温平衡是否达到恰到好处的游玩体验，尚未经过验证。</li><li>9 种自动分拣方块新的立体外观尚未确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power boss deco guns rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-05</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.1</span> — 新增电力 MOD——红石也需要电力了
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>第 8 个 MOD「电力」新加入。作为本项目中数一数二的重大变更，原版的红石电路（红石粉、中继器、比较器、红石块、红石火把）现在需要来自发电机的电力才能运作。现有的自动农场、车站、自动门等红石装置都会先全部停止运作，需要重新铺设电网。</p>
+      <ul><li>第 8 个 MOD「电力」新加入，现在可以用发电机、核电站、配电盘、电缆等搭建电网了。</li><li>拉杆、按钮、压力板、绊线钩、侦测器、阳光传感器、幽匿感测体、标靶、陷阱箱、探测铁轨、讲台、唱片机、避雷针等 17 种，依然和以往一样不需要电力即可运作（门的开关操作等也维持原样）。</li><li>红石块放置约 10 分钟后会自然损毁，以物品形式回到手中（为了防止不需要电力的「免费电源」被放任不管）。</li><li>只有虚空销毁方块、激光发射器、自动炮塔这 3 者，在没有电力的地方反而会保持「持续运作」这一特殊安全措施（为了防止不小心失去重要的物品或生物）。</li><li>狙击步枪、重型狙击步枪、激光枪的弹速被修正为了原本设想的数值（伤害、射速、装弹量、耐久度、射程均无变化）。</li></ul>
+      <h4>平衡性调整</h4><ul><li>狙击步枪、重型狙击步枪的弹速：16.0 → 24.0（1.5 倍）</li><li>激光枪的弹速：16.0 → 48.0（3 倍）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>现有的自动农场、车站、自动门等所有使用红石电路的设施都会先停止运作。需要重新铺设电网（发电机与电缆）。</li><li>如果想把这项变更完全恢复原状，请把 config/sorakaze_power.json 中的 powerEnabled 设为 false；如果只想让红石恢复原状，请把同一文件中的 redstoneRequiresPower 设为 false。</li><li>侦测器与阳光传感器被有意保留为不需要电力（是为了留下能在游戏内自行恢复断电据点的手段）。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>在红石会停止运作的世界中的实际游玩体验，以及农场、车站的停摆情况，均未经过验证。</li><li>电缆的发光效果、配电盘的界面、发电机与核电站的外观，尚未在实机上确认。</li><li>关闭电力再重新开启时，未连接配电盘的孤立电缆有时会保持点亮状态残留下来（破坏后重新放置即可修复）。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco guns sky survival">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — 配置文件自动修复（v1.8.0 重新发布版）
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>这是当天重新发布的修正版本。最初的 v1.8.0 存在一个问题：旧版本 config 文件中残留的旧数值会覆盖新的默认值，导致监控摄像头分辨率、圣剑性能、火箭筒地形破坏等变更均未生效。从今以后，不再需要在每次更新时手动删除 config 文件，而是引入了在启动时自动将「旧版本设置过的旧数值」更新为新默认值的机制。</p>
+      <ul><li>引入了自动检测停留在旧版本状态的「化石」设置值，并将其改写为当前默认值的机制。此后的更新将不再需要手动删除 config 文件。</li><li>完全不会改动玩家自己调整过的数值（只有当保存的数值与过去的默认值一致时才会被更新）。</li><li>通过这次修复，监控摄像头分辨率（768→3840）、圣剑性能（攻击力 12→75，攻击速度 1.8→0.6）、火箭筒地形破坏等，在实际游玩中也能正确生效了。</li><li>本次更新的是 Boss、建材、枪械、天空、生存这 5 个 MOD。铁道、载具本次未做变更。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>这个重新发布版本的版本号、文件名与最初的 v1.8.0 相同。如果您手头有最初的 v1.8.0，请将其丢弃，并替换为这个版本。</li><li>从此以后，此前每次更新都会提示的「请删除 config 文件」这项操作已经不再需要。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>圣剑的新性能与火箭筒的地形破坏效果，尚未在实际游玩中得到确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — 配置文件自动修复（v1.8.0 重新发布版）
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>这是当天重新发布的修正版本。最初的 v1.8.0 存在一个问题：旧版本 config 文件中残留的旧数值会覆盖新的默认值，导致监控摄像头分辨率、圣剑性能、火箭筒地形破坏等变更均未生效。从今以后，不再需要在每次更新时手动删除 config 文件，而是引入了在启动时自动将「旧版本设置过的旧数值」更新为新默认值的机制。</p>
+      <ul><li>引入了自动检测停留在旧版本状态的「化石」设置值，并将其改写为当前默认值的机制。此后的更新将不再需要手动删除 config 文件。</li><li>完全不会改动玩家自己调整过的数值（只有当保存的数值与过去的默认值一致时才会被更新）。</li><li>通过这次修复，监控摄像头分辨率（768→3840）、圣剑性能（攻击力 12→75，攻击速度 1.8→0.6）、火箭筒地形破坏等，在实际游玩中也能正确生效了。</li><li>本次更新的是 Boss、建材、枪械、天空、生存这 5 个 MOD。铁道、载具本次未做变更。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>这个重新发布版本的版本号、文件名与最初的 v1.8.0 相同。如果您手头有最初的 v1.8.0，请将其丢弃，并替换为这个版本。</li><li>从此以后，此前每次更新都会提示的「请删除 config 文件」这项操作已经不再需要。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>圣剑的新性能与火箭筒的地形破坏效果，尚未在实际游玩中得到确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.7</span> — 全 7 个 MOD 统一更新、枪械回归实弹方式
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>全部 7 个 MOD 同时更新到了 v1.7.7。枪械的子弹从瞬间命中（hitscan）方式，改回了实际会飞行的抛射体方式（伤害数值本身没有变化）。新武器「火箭筒」、电车自动停止方块、烟花人偶等，各个 MOD 都新增了大量要素。</p>
+      <ul><li>【枪械】子弹改回了「实际会飞行」的方式。视觉体验会有所变化，但各枪械自身的伤害数值并未改动。</li><li>【枪械】新增武器「火箭筒」及专属弹药，具有直击＋爆炸伤害，地形破坏在默认设置下为关闭状态。</li><li>【建材】门变更为「即使夹着人也会关闭」的规格。由于设计上关闭时不会产生碰撞判定，所以不会因为被夹住而受到伤害。</li><li>【建材】新增了彩色强化玻璃窗（17 种颜色）、5 种装饰方块（智能手机型、笔记本电脑型、台式机型）、金库门。监控摄像头影像分辨率的上限也得到了扩展（默认设置不变）。</li><li>【Boss】强化信标可同时选择的特殊效果从 3 种增加到了 5 种。</li><li>【Boss】讨伐洛克洛克掉落的「圣剑」被重做为了一把大剑，拥有了专属 3D 模型，性能也得到了强化。</li><li>【天空】修复了骑乘龙时，前进方向与身体朝向相反的问题。</li><li>【天空】强化了天使权杖。王者之剑与天使全套装备的外观也刷新为了更具立体感的模型（性能没有变化）。</li><li>【铁道】新增了列车自动停止方块。设置在铁轨下方后，会让靠近的电车自动平滑地停下。</li><li>【载具】修复了一旦使用过第一人称座舱视角，车体的一部分就会持续消失的问题。重做了 11 种车型的外观。</li><li>【生存】珍珠矿石、红宝石矿石的生成量约提升为 2 倍（仅限新生成的土地）。新增了珍珠块、红宝石块。</li><li>【生存】新增了物品「烟花人偶」。它和不死图腾一样是能防止一次死亡的护身符，但效果更强，最多可以使用 3 次，还可以放置作为装饰。</li></ul>
+      <h4>平衡性调整</h4><ul><li>圣剑（Boss 掉落）：伤害 12.0→36.0（3 倍），攻击速度降为一半，攻击距离扩大至 3.0→4.0 格，新增了击退效果。不过掉落率从 100%→70% 有所变更。</li><li>天使权杖：伤害 12→20，射程 48m→64m，冷却时间缩短，近战加成 7.0→10.0（这是首次超过天使之剑的近战加成）。</li><li>火箭筒：直击 40.0 + 爆炸伤害（爆炸威力相当于苦力怕）。弹匣容量 1，弹速是所有枪械中最慢的设定。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>需要删除 config：`sorakaze_boss.json`（圣剑的数值）、`sorakaze_sky.json`（天使权杖的数值）。不删除的话新数值将不会生效。</li><li>也建议删除 `sorakaze_guns.json`。不删除的话，新增的「弹速」设置项会在所有枪械上固定为异常缓慢的数值（不影响伤害等威力数值）。</li><li>5 种装饰方块中，智能手机型、笔记本电脑型、台式机型是以真实存在的产品为原型的，但无论是游戏内显示还是操作手册，都只以形状进行说明，未使用任何品牌名称。</li><li>【平衡性】截至目前，突击步枪依然强大到相当于每秒 3750 点伤害，即使强化信标、圣剑、天使权杖都得到了强化，绝大多数 Boss 依然数秒内即可被打倒。枪械与 Boss 双方均未追加任何抗性。</li><li>另外，版本号 1.4.3、1.6.x、1.7.2、1.7.6 是开发时使用的内部编号，从未实际发布过。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>门变为「即使有人也会关闭」的实际体感、火箭筒发射与命中的手感、强化信标新 GUI 的易用性，均未在实机上确认。</li><li>圣剑、天使权杖新 3D 模型的外观，以及龙的朝向修正在实际画面中的效果，也均未确认。</li><li>烟花人偶、珍珠／红宝石块、列车自动停止方块的外观，以及监控摄像头高分辨率设置对电脑负载的影响，均未经过验证。</li><li>克拉肯、泰坦的攻击动作依然没有按照规格实装（等待所有者确认）。</li><li>在 v1.7.3 中发现的天空 MOD 的 2 个问题（袭击时掉帧、驯服的龙消失），由于与本次天空 MOD 的改动内容无关，依然尚未解决。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.5</span> — 修复强化玻璃与对开门的问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span></div>
+      <p>本次仅更新建材 MOD。修复了强化玻璃（17 种颜色）无论用什么工具挖掘都统一需要 75 秒的问题，以及在 v1.5.0 中新增的对开大门（50 种）在外观上无法完全打开的问题。</p>
+      <ul><li>强化玻璃现在可以用锄头挖掘了。挖掘速度会根据工具种类（从木质到下界合金）以及效率附魔而变化。此前存在无论用什么工具都统一需要 75 秒的问题。</li><li>强化玻璃不会再被凋灵、末影龙破坏了。</li><li>对开大门（50 种，3×3 与 3×4 尺寸）现在在外观上也能确实大幅打开了。此前存在只会像普通门一样小幅滑动，看起来门口没有完全打开的问题。</li></ul>
+      <h4>平衡性调整</h4><ul><li>强化玻璃的挖掘时间参考：木锄约 37.5 秒，石锄约 18.8 秒，铁锄约 12.5 秒，金锄约 6.25 秒，钻石锄约 9.4 秒，下界合金锄约 8.4 秒（效率 V 的钻石锄约 2.25 秒）。空手、镐、斧、铲、剑依然维持 75 秒不变。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>【规格限制】原本的目标是「只有专属的斧头能快速挖掘」，但由于原版机制的限制，最终变成了包括木锄在内的任何锄头都能（按各自档位）快速挖掘。无法做到限定特定工具专用。</li><li>不需要删除 config。本次修复未使用 config 中的数值。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>用锄头实际挖掘强化玻璃时的手感，以及对开门在画面上是否确实能看到打开的效果，尚未在实机上确认。</li><li>克拉肯、泰坦的攻击动作依然没有按照规格实装。</li><li>在 v1.7.3 中发现的天空 MOD 的 2 个问题（袭击时掉帧、驯服的龙消失），由于本次未改动天空 MOD，依然尚未解决。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.4</span> — 把瘟疫医生的出现方式改为仅限召唤石
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>本次仅更新 Boss MOD。废除了瘟疫医生在恶劣天气时随机出现的机制，改为和其他 10 只 Boss 一样，只能使用专属召唤石来呼唤。</p>
+      <ul><li>变更了瘟疫医生 Boss 的出现方式。此前「恶劣天气时随机出现」的机制已被废除，统一改为放置新的召唤石「瘟疫医生的召唤石」来呼唤。摆放图案与其他 10 只 Boss 相同：四角放置凋灵玫瑰、四边放置幻翼膜、中央放置下界之星的 3×3 图案。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>如果一直等待恶劣天气来寻找瘟疫医生，今后将不会再出现。请合成召唤石来呼唤。</li><li>不需要删除 config。被删除的设置项只与自然出现相关，不影响其余保留的设置数值。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>使用召唤石时的演出效果，以及瘟疫医生本身的外观、专属语音、献祭演出，本次均未改动，依然尚未在实机上确认。</li><li>本次更新不包含建材 MOD。强化玻璃与门的修正正在另外进行中，预计将在下次及以后的更新中反映。</li><li>在 v1.7.3 中发现的天空 MOD 的 2 个问题（袭击时掉帧、驯服的龙消失）本次依然不在处理范围内。</li><li>克拉肯、泰坦的攻击动作依然没有按照规格实装。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss sky guns survival rail">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.3</span> — 修复电车车窗与新加坡的问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>修复了从电车的驾驶席、客席看不清外面的问题，以及空中城邦「新加坡」建筑不生成、废墟悬浮残留等问题。同时把敌对生物的生成上限修正为仅限主世界，并把附魔等级上限调整为了合适的数值。</p>
+      <ul><li>修复了坐在电车（全部 8 种车型）的驾驶席、客席时，只能看见窗户下方的墙壁、几乎看不见外面的问题。现在能够正常看清前方与两侧了。</li><li>修复了空中城邦「新加坡」中建筑完全不生成、同一间酒店反复建造、树木或村庄悬浮残留在空中等问题。不过只有在修复后新生成的土地才会被修正。对于已经生成的损坏地形，随附了供管理员使用的、可以只重新生成该区域的修复工具。</li><li>Boss MOD 新增了可以通过 config 调整瘟疫医生出现相关设置的功能。</li><li>双足飞龙吐息攻击的威力减半。</li></ul>
+      <h4>平衡性调整</h4><ul><li>加特林机枪的伤害降低 75%。</li><li>突击步枪的伤害提升 25%。实测每秒伤害效率为：突击步枪 3750 &gt; 激光枪 2000 &gt; 加特林机枪 250。</li><li>万能采集器（Boss 掉落的挖掘工具）从耐久度制改为了「使用 5 次即损坏」的次数制。已无法在铁砧上附加经验修补、耐久，但依然可以附加挖掘速度、时运、精准采集。</li><li>把敌对生物自然生成上限的倍率从 5 倍提高到 15 倍。同时修复了该倍率被错误应用到下界、末地的问题，改为仅限主世界。</li><li>把附魔等级上限的默认值从 255 调整为 20（可设置的上限也从 255 缩小为 32）。部分玩家报告的「附魔等级 255」这类异常数值将不再出现。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>需要删除的 3 个 config：`sorakaze_guns.json`、`sorakaze_sky.json`、`sorakaze_survival.json`。不删除的话本次数值变更将不会生效。`sorakaze_boss.json` 不需要删除。</li><li>【重要】在大规模配置、长时间运行的天空 MOD 综合测试中，新发现了 2 个问题，目前尚未修复。（1）大规模袭击事件发生时可能出现掉帧。（2）驯服的末影龙，经过一段时间后有可能消失（驯服的双足飞龙没有问题）。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>上述袭击时掉帧、驯服的龙消失的问题仍未解决。</li><li>瘟疫医生的外观与生成方式，以及万能采集器 5 次损坏的使用手感，尚未在实机上确认。</li><li>克拉肯、泰坦的攻击动作依然没有按照规格实装（等待所有者确认）。</li><li>新加坡的修复工具目前只完成了测试数据下的运作确认，尚未在实际的世界数据中进行确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.1</span> — 紧急修复 v1.7.0 导入后无法启动的问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>导入 v1.7.0 后，每次启动游戏都会必定崩溃。原因出在载具 MOD 按键绑定（起落架收放、襟翼、车门等）的注册处理上，通过只把载具 MOD 更新到 v1.7.1 解决了这个问题。</p>
+      <ul><li>本次只更新了载具 MOD（sorakaze_vehicles），其他 6 个 MOD 保持 v1.7.0 即可，没有问题。</li><li>没有新增任何物品或方块，本次仅修复了启动崩溃问题。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>如果导入 v1.7.0 后出现「每次启动都崩溃」的情况，请务必把载具 MOD 的 jar 文件替换为这个 v1.7.1 版本。</li><li>其他 6 个 MOD（枪械、铁道、建材、Boss、天空、生存）保持 v1.7.0 即可正常运作，不需要替换。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>v1.7.0 中新增的载具第一人称视角（座舱视角）等新要素的外观与使用手感，由于崩溃问题一直无人能够确认。</li><li>两人同时游玩时的同步情况，以及全部 MOD 同时运作时的服务器负载，依然未经过验证。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.0</span> — 全 7 个 MOD 同步更新，解锁隐藏内容
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>7 个 MOD 首次步调一致，全部以同一版本号（v1.7.0）发布。随着配方速查表问题的修复，此前一直没有显示出来的空中城邦「新加坡」的食品与设施类物品等大量隐藏内容都被揭示了出来。载具 MOD 还新增了第一人称视角（座舱视角）。</p>
+      <ul><li>这是 7 个 MOD 首次以同一版本号发布，此前各 MOD 的版本号一直各不相同。</li><li>修复配方速查表的问题后，空中城邦「新加坡」出售的 300 种食品，以及攻城巨锤、房产权状、地产账簿、食品货架等物品，都能在速查表中显示出来了。这些都是在商店购买的物品，无法合成。</li><li>Boss 掉落的「万能采集器」，以及设置在新加坡的「特别 ATM」（无法合成）也开始出现在速查表中了。</li><li>载具 MOD 新增了第一人称视角（座舱视角），驾驶时自己车辆的车顶与立柱不会再遮挡视野。也可以在设置中关闭这个功能。</li><li>重新绘制了 113 种载具、35 种电车、3 种枪械的物品图标。</li><li>撤销了银行（ATM）的存款余额上限（此前为 10 万），现在可以无上限存款。</li><li>新增了把紫水晶块还原为紫水晶碎片的配方。</li><li>启用了将敌对生物自然生成上限提升至标准 5 倍的变更，以及大幅提高附魔等级上限（通常为 30）的变更（均属于生存 MOD）。</li></ul>
+      <h4>平衡性调整</h4><ul><li>激光枪：伤害 160→200，射速 6 发/秒→10 发/秒，弹匣容量 100→200 发。</li><li>钻头：挖掘速度 12.0→24.0，耐久度 2048→10240。</li><li>大幅提高了天空王国、天使之城的人口上限（例如：王国商人 16→48 人，住民 64→192 人）。</li><li>监控摄像头影像分辨率的默认值从 192 变更为 768。</li><li>敌对生物的自然生成上限提升至标准的 5 倍。不过在这个阶段，本应仅限主世界的这项设置，却因为一个问题也被错误地应用到了下界与末地（预计在之后的更新中修复）。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>枪械 MOD（sorakaze_guns）与天空 MOD（sorakaze_sky）在更新后，如果不删除 `config/sorakaze_guns.json` 与 `config/sorakaze_sky.json`，上述数值变更将不会生效。</li><li>建材 MOD（sorakaze_deco）的 config 请不要删除，只需改写 `cameraFeedResolution` 的数值即可。删除的话，信号灯秒数等其他设置也会全部恢复为默认值。</li><li>目前枪械的实测伤害效率非常高：突击步枪相当于每秒 3000，激光枪每秒 2000，加特林机枪每秒 1000，绝大多数 Boss 数秒内即可被打倒。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>新登场的袭击 Boss「铠甲侵略者」外观可能还不太像「铠甲」，预计今后会进行调整。</li><li>电车车体目前仍维持约为实车三分之一的比例。此外由于碰撞体积的宽度从 1.8→2.0 格有所扩大，可能无法通过原有的 2 格宽隧道。旧有的 3 种车型（电车、客车厢、货车厢）没有车窗、内装和车门。</li><li>载具第一人称视角的最大转向速度为每秒 36 度，体感上可能过快。</li><li>配方速查表的文件体积大幅增加（因为新增了大量食品图片）。视环境而定，显示时可能会感觉较为卡顿。</li><li>两人同时游玩时的同步情况，以及全部 MOD 同时运作时的服务器负载，均未经过验证。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns rail">
+      <div class="timeline-entry__date">2026-07-30</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.7</span> — 修正王者之剑与王者之弓，弱化加特林机枪
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>修正了王者之弓看起来上下颠倒的问题，以及在 v1.5.6 翻新中被遗漏的子弹头列车 2 节车厢的外观。同时弱化了王者之剑与加特林机枪，钻头在电池耗尽时也能自动从物品栏补充了。</p>
+      <ul><li>把天使相关的 13 种物品图标以 128px 重新绘制得更加精细</li><li>修复了王者之弓看起来朝向相反的问题</li><li>刷新了在 v1.5.6 电车翻新中被遗漏的子弹头列车 2 节车厢的外观</li><li>钻头在电池耗尽时，会自动从物品栏中的备用电池补充</li></ul>
+      <h4>平衡性调整</h4><ul><li>加特林机枪：实际火力从每秒约 2,000 下调至约 1,000 伤害</li><li>王者之剑：连同攻击速度一起弱化。实测 DPS 从 84.80 降为 21.60（-74.5%）。结果性能略低于天使之剑（22.40）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>要让本次变更生效，需要删除 config/sorakaze_guns.json</li><li>如果从 v1.5.5 及更早版本一次性更新，请同时删除 config/sorakaze_sky.json</li><li>王者之剑的弱化是由程序内部数值决定的，无法通过 config 文件恢复</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>子弹头列车的物品图标仍是旧设计（车体虽已翻新，但与图标的外观并不一致）</li><li>幽匿傀儡、洛克洛克、克拉肯、泰坦尚未实装专属攻击动作</li><li>雷霆之枪尚未支持投掷攻击，目前只能使用近战攻击</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky guns deco rail boss">
+      <div class="timeline-entry__date">2026-07-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.6</span> — 天空王国登场，死神 Boss 也大幅刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空 MOD 新增了巨大的「天空王国」，以及限定购买的 7 种「王族装备」。死神 Boss 获得了专属攻击动作，规格也焕然一新。枪械大幅调整了威力平衡，突击步枪一跃成为最强档次的武器。电车全部 6 个系列的外观也进行了翻新。</p>
+      <ul><li>新增了天空王国（直径 1,001 格、英伦风格的巨大国度）。住民 64 人、商人 16 人、宝箱 65 个</li><li>天空王国限定的 7 种「王族装备」登场（限定购买、是天使装备的上位版本）</li><li>新生物「REX」登场，可以从蛋中孵化并骑乘</li><li>用「库雷罐」可以把宠物整只带走</li><li>为死神 Boss 新增实装了 6 种专属攻击动作。还新增了 HP 降至 50% 以下会召唤 3 只凋灵的新技能</li><li>刷新了电车全部 6 个系列的外观（圆润立体的车窗、车门、车头、目的地显示、灯具等）</li><li>笔记本电脑改为可放置的方块型物品。监控摄像头改用 3D 模型并支持转动，画面在范围内实时显示，范围外则显示「NO SIGNAL」</li><li>全面调整了枪械的威力平衡（详情请参见平衡性调整）</li></ul>
+      <h4>平衡性调整</h4><ul><li>突击步枪：对单体的实际火力从约 400 大幅强化至约 3,000 伤害/秒（因为修复了让每一发子弹都能确实造成伤害的问题）</li><li>加特林机枪：实际火力从每秒约 4,000 下调至约 2,000 伤害</li><li>霰弹枪：威力强化为 3 倍（近距离每扣一次扳机约造成 150 伤害）</li><li>2 种狙击枪（普通／重型）：耐久度下调至弓的 1/3，即 128（变为不耐用但高火力的性能）</li><li>死神 Boss：体力从 6,000〜9,000 随机改为固定 3,000，攻击力从 16 变为 32</li><li>双足飞龙：吐息伤害 10→7.5，蛋掉落率从 100%→20% 下调（弱化）</li><li>大天使 Boss：体力强化为 1.5 倍，达到 3,000</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>要让枪械的威力变更生效，需要删除 config/sorakaze_guns.json（狙击枪的耐久设置是新增项目，会自动生效）</li><li>版本号从 v1.5.1 跳到了 v1.5.6，这是因为把面具调整、双足飞龙弱化等多次小规模更新汇总发布，并非跳过的空号</li><li>珍珠矿石、红宝石矿石不会出现在安装 MOD 之前就已生成的土地上。实测结果显示其稀有度约为钻石的 1/32，约为远古残骸的一半</li><li>如果已经部分生成的都市或城堡靠近天空王国，剩余部分可能不会生成、维持残缺状态（不会造成数据损坏，仅是外观上的问题）</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>幽匿傀儡、洛克洛克、克拉肯、泰坦尚未实装专属攻击动作（死神在本次更新中已经解决）</li><li>雷霆之枪尚未支持投掷攻击，目前只能使用近战攻击</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="survival">
+      <div class="timeline-entry__date">2026-07-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.1</span> — 全面修正 2 种面具的外观
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">外观更新</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>修正了生存扩展 MOD 中两种面具的外观。此前存在平面图案悬浮在头顶上方的问题，现已重做为贴合头部的立体造型（附带耳朵）。防御力、耐久度、配方等性能均无变化。</p>
+      <ul><li>全面重做了 2 种面具的外观。解决了平面图案悬浮在头顶上方的问题，改为覆盖头部的立体造型</li><li>为兔面新增了兔耳细节，为小丑面具新增了狐耳细节</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>配方速查表中的图标目前仍是旧设计（预计在下次更新中反映）</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>面具的侧面、背面材质目前还比较简陋。由于设计以正面为主，第三人称视角下从侧面或背面看，可能几乎呈单色</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="survival guns deco rail vehicles sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.0</span> — 史上最大规模更新，第 7 个 MOD「生存扩展」登场
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>本项目史上最大规模的更新。第 7 个 MOD「生存扩展」新加入，新增了珍珠矿石、红宝石矿石、面具、巨盾、水分槽等生存要素。同时现有的 6 个 MOD 全部追加了大型内容，电车扩充到 30 种、载具扩充到 100 种、建材 MOD 的门扩充到 101 种。</p>
+      <ul><li>第 7 个 MOD「生存扩展」新加入。新增了珍珠矿石、红宝石矿石、2 种面具（护甲+50，耐久 814）、巨盾、水分槽（30 分钟耗尽）</li><li>现在可以从大师级图书管理员那里购买锋利 X 的附魔书了（64 个绿宝石）</li><li>枪械 MOD 新增了武器「加特林机枪」「钻头」（可沿视线方向一次性挖掘 3×3 方块）「驱蛛炮塔」</li><li>电车扩充为 6 个系列 × 5 种涂装共 30 种（此前只有 1 种）</li><li>载具扩充为 25 种基础车型 × 4 种涂装共 100 种，并为全部车型应用了圆润化的风格</li><li>建材 MOD 新增了 50 种对开大门（门的总数达到 101 种）、监控摄像头、笔记本电脑，以及可以复利存款的 ATM</li><li>天空 MOD 新增了蛋类孵化器。孵化出的双足飞龙／龙会被驯服，可以用专属龙鞍骑乘</li></ul>
+      <h4>平衡性调整</h4><ul><li>【订正】此前一直标注「突击步枪对单体每秒约造成 2,000 点伤害」，但实际测量后发现实际约为每秒 400 点伤害（过去的记载严重高估了火力）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>新武器「加特林机枪」的实际火力相当于每秒约 4,000 点伤害，是本项目中最强的武器。它能在数秒内打倒几乎所有现有 Boss，如果想保留挑战性，请调低 config 中的 `minigun.damage` 进行调整</li><li>本次更新不需要删除 config 文件（新增的设置项会在启动时自动补充）</li><li>珍珠矿石、红宝石矿石不会出现在安装 MOD 之前就已生成的土地上。如果找不到，请去探索新生成的土地</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>监控摄像头的转动动画尚未实装，目前是固定视角</li><li>幽匿傀儡、洛克洛克、死神、克拉肯、泰坦尚未实装专属攻击动作，必杀技的预告目前也只有粒子效果和标记</li><li>雷霆之枪尚未支持投掷攻击，目前只能使用近战攻击</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.8</span> — 天空都市高密度化，新生物「双足飞龙」登场
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>重新审视了天空都市的规模，将其改造为密度更高的高层都市。中心地带会出现 4 座高达 300 格的超高层尖塔，作为新的地标建筑。同时新增了在空中飞行的新敌人「水晶双足飞龙」。</p>
+      <ul><li>缩小了天空都市的面积，改造为密度更高的都市（高度按地区各有不同）</li><li>只有都市中心的 4 座尖塔达到 300 格高的超高层建筑</li><li>新增了低层入口、屋檐、屋顶设备，以及车道与人行道分离等街景细节</li><li>在都市内配置了屋顶、办公室、仓库这 3 类共 16 个宝箱</li><li>新生物「水晶双足飞龙」登场，会在空中飞行并用火球吐息袭击（只会瞄准玩家，不会袭击街道住民）</li><li>调整了天空城的出现间隔（因为之前推荐设置下，城堡实际上几乎完全不会出现）</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>在突击步枪的火力面前，水晶双足飞龙（HP200）转瞬即可击杀。如果想要更有挑战性，请调整枪械的伤害设置</li><li>都市缩小仅适用于新生成的土地。现有的天空都市会保留旧尺寸，若相邻可能会出现大小不自然的观感</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.7</span> — 刷新天空都市的生成机制，修复住民增殖 bug
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>对天空都市与天空城的内部生成机制进行了重做，使其更加稳定；同时修复了每次重启服务器时，天空都市的住民都会缓慢超出上限持续增加的 bug。</p>
+      <ul><li>修复了反复重启服务器会导致天空都市的住民持续超出上限增加的 bug</li><li>对天空都市与天空城的生成处理进行了内部效率优化（生成负载反而减轻了）</li><li>调整了天空都市与天空城的分布间隔</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>生成方式的变更仅适用于新生成的土地，现有的天空都市与天空城外观保持不变</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.6</span> — 天空都市翻新为近未来都市，新 Boss 登场
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空 MOD 中的「天空都市」全面翻新为近未来风格的高层都市，并新增了「天空城」与新 Boss「天空大天使」。此外还新增了在街上行走的新生物「普通天使」，以及装备购买支付方式的变更等内容。</p>
+      <ul><li>把天空都市翻新为近未来风格的高层都市（新增 20 栋高楼、路网、天桥、中央广场）</li><li>新生物「普通天使」会以 4 种外观在街上往来</li><li>「天空城」全新登场（城墙、8 座圆塔、大厅、中央天守、地下宝库、6 个宝箱）</li><li>新 Boss「天空大天使」出现在天空城。1 座城仅有 1 只，讨伐后不会再次出现</li><li>新增 Boss 必定掉落的「天使权杖」（附带空中威力 1.5 倍、冷却时间减半的特性）</li><li>把天空传送门的外观刷新为黄金＋发光石的边框，并新增了点亮动画</li><li>购买天空装备时的支付方式变为绿宝石＋钻石两种</li></ul>
+      <h4>平衡性调整</h4><ul><li>天空传送门的自然生成率从 1/340 降为 1/1200（变得相当难找）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>传送门变得非常难找。如果在现有世界中找不到，管理员可以通过 config 降低出现率，或者启用 `allowPlayerBuiltSkyPortals` 来允许玩家手动搭建传送门</li><li>突击步枪的火力非常强大（相当于每秒 2,000 点伤害），这只 Boss（HP2000）大约 1 秒就能被打倒。如果想要更有挑战性，请调整枪械的伤害设置</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.5</span> — 修复天空维度的崩溃问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>修复了进入天空维度后客户端必定崩溃的严重问题（原因是没有注册任何用于渲染天使和天使傀儡的机制）。同时强化了重型狙击步枪的威力，并为瞄准镜新增了倍率选项。</p>
+      <ul><li>【重要】修复了进入天空维度后客户端必定崩溃的问题（原因是没有注册天使、天使傀儡的渲染处理）。在天空迁移之前就存在的旧世界中的天使，也会引发同样的问题</li><li>把重型狙击步枪的伤害改为普通狙击步枪的 4 倍（40.0→80.0）</li><li>为狙击步枪的瞄准镜新增了「×12」倍率（仅限重型狙击步枪）</li><li>改为举起瞄准镜时忽略鼠标滚轮操作（防止意外切换快捷栏）</li></ul>
+      <h4>平衡性调整</h4><ul><li>重型狙击步枪 伤害 40.0→80.0（普通狙击步枪的 4 倍）</li></ul>
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>此次修复是否真正解决了天空维度的崩溃问题，尚未通过实际游玩确认。请确认进入天空维度后是否不再崩溃，如果仍然发生，请告知我们</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="deco guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.4</span> — 枪械火力大幅强化，新增 40 种门
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span></div>
+      <p>把激光枪与突击步枪的威力分别大幅强化为 20 倍与 10 倍。这次火力提升会让与现有 Boss 的战斗平衡大幅崩坏。同时修复了自动炮塔实际上从未开过火的问题、护栏无法互相连接的问题，以及激光在东西方向上朝向相反的问题。建材 MOD 新增了 40 种新门（版本号 1.4.3 为跳过的空号）。</p>
+      <ul><li>激光枪伤害 8.0→160.0（20 倍，DPS960），突击步枪伤害 20.0→200.0（10 倍，DPS2000）强化</li><li>修复了自动炮塔实际上从未开过火的问题（原因是瞄准射线的起点在自身碰撞体积的内部）。同时重新调整了目标判定，改为不再瞄准 Boss 与监守者</li><li>修复了护栏之间无法互相连接的问题</li><li>修复了激光在东西方向上朝向相反的问题</li><li>激光陷阱的有效距离 32→128 格（config 上限扩大至 256）。现在可以朝向 26 个方向（含斜向、上下），空手右键点击可水平旋转 45 度，蹲下＋右键点击可以调整仰角</li><li>建材 MOD 新增 40 种新门（加上原有的 9 种，合计达到 49 种）</li></ul>
+      <h4>平衡性调整</h4><ul><li>激光枪 伤害 8.0→160.0（20 倍）</li><li>突击步枪 伤害 20.0→200.0（10 倍）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>【重要】这次火力提升会让与现有 Boss 的战斗平衡大幅崩坏（Boss 几秒钟就能被打倒）。Boss 一侧没有追加任何抗性，如果在意的话请在 config/sorakaze_guns.json 中调整伤害数值</li><li>要让枪械的火力提升生效，需要删除 config/sorakaze_guns.json</li><li>v1.4.3 为跳过的空号，未曾发布</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.2</span> — 修复天使装备的外观问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>修复了实际穿戴「天使装备」时，身体上会显示成原版下界合金护甲、背后显示成素色鞘翅的问题。由于物品栏中的图标一直是正确显示的，这个问题很难被察觉。</p>
+      <ul><li>修复了穿戴天使装备（铠甲、天使之翼）时的外观，现在会正确显示为专属的白银与黄金设计</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky boss deco vehicles guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.1</span> — 天空维度登场，Boss 新增必杀技
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>新增了名为「天空」的新维度，可以通过地表偶尔生成的传送门往返。可以和天使商人交易，也能装备滑翔翼。全部 10 只 Boss 都实装了必杀技，并且都能用召唤石随时呼唤。建材的合成台新增了可切换的按钮，载具的轮胎也能转动了。</p>
+      <ul><li>新维度「天空」登场，可以通过地表偶尔生成的萤石传送门往返</li><li>天空中住着天使商人，每个个体的商品都是随机的。可以获得像滑翔翼一样能飞行的「天使之翼」，以及专属的箭与弓</li><li>新增了从空中坠落时的救济措施（会安全降落在主世界上空）</li><li>为全部 10 只 Boss 新增了召唤石，合成后可以随时呼唤。为所有 Boss 新增了必杀技（HP 降至一半以下时发动，有 4 秒的预告）</li><li>3 只巨型 Boss 在被召唤讨伐时会随机决定强度（HP 为末影龙的 30〜45 倍，此后固定不变）</li><li>新武器「死神的巨镰」「深渊三叉戟」「雷霆之枪」会由对应的 Boss 掉落</li><li>建材 MOD 的合成台新增了切换按钮，可以从相同的材料摆放中选择多种方块（例如木材柱状方块）</li><li>Boss 专属的铲与锄，现在真的可以铺路、耕地了</li><li>载具的轮胎外观上也会跟着转动了（10 种车型）</li></ul>
+      
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>幽匿傀儡与洛克洛克尚未实装专属的攻击动作（必杀技的预告目前也只有粒子效果）</li><li>雷霆之枪目前还不能投掷（仅支持近战攻击）</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Boss 攻击动作与工具 3D 化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">外观更新</span></div>
+      <p>为 5 只 Boss 的近战攻击、范围攻击、光束攻击分别新增了专属动作。掉落的 5 种工具（镐、斧、锄、枪矛、铲）也从平面图标重做为立体的 3D 模型。伤害、冷却时间等游戏内容均未改动。</p>
+      <ul><li>为 5 只 Boss 的攻击（近战、2 种范围攻击、光束攻击）分别新增了专属动作，攻击预告（蓄力动作）变得更容易辨识</li><li>把掉落的 5 种工具刷新为立体的 3D 模型，GUI 图标也改为 3D 显示</li></ul>
+      
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>近战攻击没有添加抡起武器等预备动作。因为原版近战攻击的伤害是即时生效的，添加预备动作会导致伤害判定时机发生偏差</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 全面翻新 5 只 Boss 的外观
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">外观更新</span></div>
+      <p>收到「看起来像是同一种生物的换色版」的反馈后，对新增的 5 只 Boss 的外观进行了全面重做。强度、掉落物、攻击内容等游戏内容均未改动。</p>
+      <ul><li>符文核心巨像：石质核心配青铜／黄金装甲，身体两侧漂浮着 2 把剑，环绕手臂旋转的符文光环</li><li>余烬领主：贯穿身体的熔岩沟壑，分成 4 节向上翘起的两只角</li><li>远古树精：方向与断裂方式各不相同的 8 根树枝（其中 3 根中途折断），刻在树干上的面孔</li><li>虚空潜行者：舍弃了人形造型，改为黑曜石块＋紫色传送门＋8 根触手＋18 只发光眼睛的全新形态</li><li>冰霜巫妖王：5 层长袍，9 根锯齿状的冰之王冠，高举的左手中旋转着冰之纹章</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 新增 5 只 Boss，突破 HP 上限
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>Boss MOD 新增了 5 只巨型 Boss。此前受 Minecraft 本体规格限制，HP 最多只能提升到 1024，这次解除了这个限制，实装了 HP 2400〜4000 的正规 Boss。击败后会必定掉落专属强化工具（镐、斧、锄、新武器「枪矛」、铲）。</p>
+      <ul><li>新增 5 只 Boss（用可合成的召唤道具呼唤）：符文核心巨像（HP3000）、余烬领主（HP3400）、远古树精（HP4000）、虚空潜行者（HP2400）、冰霜巫妖王（HP2800）</li><li>击败各只 Boss 都会必定掉落专属强化工具：符文核心镐、余烬之斧、树精之锄、虚空之枪（原版没有的新武器）、冰霜之铲。均为高耐久且已附加多项附魔，无法合成</li></ul>
+      
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>5 只 Boss 的战斗难度都偏高，预计单人挑战会很吃力。如果感觉过强，管理员可以通过 config 调整 HP 与攻击力</li><li>虚空潜行者原本设定上应该悬浮在空中，但目前实装为在地面移动＋瞬间移动的形式</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 新增 138 种建材方块、实装枪械耐久度
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span></div>
+      <p>这是收到 v1.3.2 发布后的反馈而追加的应对。刷新了两只 Boss 的外观，并修复了此前只是显示、实际上并不会减少的枪械耐久度，使其终于能正常发挥作用。建材 MOD 新增了 138 种新建筑方块，并把所有枪械的射程都延长为 5 倍。</p>
+      <ul><li>刷新了幽匿傀儡与洛克洛克的外观（幽匿傀儡＝幽匿材质的铁傀儡风格，洛克洛克＝近未来武装机器人风格）。强度与攻击内容均无变化</li><li>修复了枪械耐久度终于能正常减少的问题（此前的问题是只显示耐久条但实际不会损坏）。默认耐久约为 1536 发，圣剑约为 6093 次</li><li>所有枪械的射程延长为 5 倍（突击步枪 60→300m、霰弹枪 24→120m、狙击步枪 150→750m、激光枪 80→400m）</li><li>建材 MOD 新增 138 种新建筑方块（竖直台阶、八角柱形圆柱、8 段斜面 × 46 种素材）</li><li>把载具设计逐步改为「更圆润、更写实的造型」的计划已获批准，轿车与螺旋桨飞机的设计方案已完成（推广到全部 13 种的工作预计在今后的更新中依次进行）</li></ul>
+      <h4>平衡性调整</h4><ul><li>所有枪械的射程延长为 5 倍（突击步枪 60→300m / 霰弹枪 24→120m / 狙击步枪 150→750m / 激光枪 80→400m）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>要让射程延长生效，需要删除 config/sorakaze_guns.json</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>载具的「圆润化设计」目前只完成了轿车与螺旋桨飞机的方案，推广到全部 13 种的工作预计在今后的更新中进行</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail vehicles boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 新增 138 种建材方块、实装枪械耐久度
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>这是收到 v1.3.2 发布后的反馈而追加的应对。刷新了两只 Boss 的外观，并修复了此前只是显示、实际上并不会减少的枪械耐久度，使其终于能正常发挥作用。建材 MOD 新增了 138 种新建筑方块，并把所有枪械的射程都延长为 5 倍。</p>
+      <ul><li>刷新了幽匿傀儡与洛克洛克的外观（幽匿傀儡＝幽匿材质的铁傀儡风格，洛克洛克＝近未来武装机器人风格）。强度与攻击内容均无变化</li><li>修复了枪械耐久度终于能正常减少的问题（此前的问题是只显示耐久条但实际不会损坏）。默认耐久约为 1536 发，圣剑约为 6093 次</li><li>所有枪械的射程延长为 5 倍（突击步枪 60→300m、霰弹枪 24→120m、狙击步枪 150→750m、激光枪 80→400m）</li><li>建材 MOD 新增 138 种新建筑方块（竖直台阶、八角柱形圆柱、8 段斜面 × 46 种素材）</li><li>把载具设计逐步改为「更圆润、更写实的造型」的计划已获批准，轿车与螺旋桨飞机的设计方案已完成（推广到全部 13 种的工作预计在今后的更新中依次进行）</li></ul>
+      <h4>平衡性调整</h4><ul><li>所有枪械的射程延长为 5 倍（突击步枪 60→300m / 霰弹枪 24→120m / 狙击步枪 150→750m / 激光枪 80→400m）</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>要让射程延长生效，需要删除 config/sorakaze_guns.json</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>载具的「圆润化设计」目前只完成了轿车与螺旋桨飞机的方案，推广到全部 13 种的工作预计在今后的更新中进行</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-21</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.1</span> — 修复 Boss 被监守者击杀的问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span></div>
+      <p>修复了极为珍贵的 Boss「幽匿傀儡」（1 座城市 1 只、一生仅能出现 1 只）被反击的监守者击杀的问题。</p>
+      <ul><li>幽匿傀儡不再受到监守者的伤害，监守者也不会再攻击、索敌幽匿傀儡了（玩家依然可以照常讨伐它）</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss vehicles">
+      <div class="timeline-entry__date">2026-07-20</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.0</span> — Boss、载具 MOD 新登场，扩大为全 5 个 MOD
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>新增了「Boss」与「载具」两个 MOD，合计扩大为 5 个 MOD。在远古城市击败监守者后会出现 Boss「幽匿傀儡」的 Boss 战、汽车/卡车/飞机等 13 种载具、激光枪与激光陷阱都在本次新登场。电车也支持最多连结 15 节车厢的编组了。</p>
+      <ul><li>新 MOD「Boss」登场：在远古城市击败 3 只监守者后，会出现 Boss「幽匿傀儡」（HP900）。讨伐后必定掉落效果范围 3 倍的「强化信标」</li><li>新 MOD「载具」登场：新增汽车、巴士、卡车、摩托车等陆上 10 种 + 航空器 3 种。支持紧急车辆的警示灯、警笛，以及卡车货斗等功能</li><li>枪械新增激光枪（1 个能量电池可发射 100 发）与自动炮塔（只瞄准敌人）</li><li>建材 MOD 新增激光发射器/接收器和桌子</li><li>改良了电车的连结方式，包含货运车厢、客车厢在内最多支持 15 节车厢编组。还新增了头车时速 75 m/s 的子弹头列车 2 种</li></ul>
+      
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>航空器的操控手感（起降、失速等）是以今后持续调整为前提设计的。如果感觉笨重、不好操作，可以通过 config 调整</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-19</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.1</span> — 枪械改为瞬间命中方式，并修复门的静止问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span></div>
+      <p>将枪械改为「射击瞬间即命中」的 hitscan 方式，并新增了专用的射击音效。电车新增了 3D 模型与连结功能（货车厢、客车厢），并修复了关闭的门会持续小幅晃动的问题。此外还新增了隐藏门以及 3 种新型门。</p>
+      <ul><li>枪械改为无需等待子弹飞行、即刻命中的 hitscan 方式（命中判定距离为突击步枪 60m / 霰弹枪 24m / 狙击步枪 150m）</li><li>新增射击音效、装填音效、空枪音效（均为自制音源）</li><li>放大了枪械握在手中时的显示尺寸，第一、第三人称视角都更容易看清</li><li>为电车新增 3D 模型（通勤电车风格外观）。可以连结货车厢（27 格收纳空间）与客车厢（可乘坐 2 人），连结期间无法倒车</li><li>修复了关闭的门会持续小幅晃动的问题</li><li>新增隐藏门（可伪装成泥土、石头、地狱岩、末地石等方块）</li><li>新增 3 种新门（卷帘门、单开推拉门、铁栅栏门），门的种类合计达到 9 种</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.0</span> — 修复门的窒息 bug 并大幅提升电车速度
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span></div>
+      <p>修复了穿过门时会受到伤害的重大问题。将电车最高速度提升至 60 m/s（config 上限为 80 m/s），行驶时会自动预加载前方区块。新增了电梯、传送带等新方块，并将枪械操作方式统一为左键射击、右键举枪瞄准、R 键装填。</p>
+      <ul><li>【重要】修复了穿过门（自动门、拉门、大型门、舱口盖）会受到伤害的问题。改良为门附近有人时不会自动关闭</li><li>电车最高速度 20→60 m/s（config 上限最高可提升至 80 m/s）。行驶时会自动预加载前方区块，减少高速行驶时的场景断层</li><li>新增 4 种方块：电梯（跳跃上升／下蹲下降）、扶梯、两种椅子、传送带（可搬运物品，红石信号可使其停止）</li><li>全新的枪械操作方式：左键射击，长按右键举枪瞄准（狙击枪为开镜），R 键装填</li><li>枪械握在手中时会显示为 3D 模型（此前只有和 GUI 相同的平面图标）</li><li>霰弹枪在近距离可以一击秒杀无护甲的敌人（同时修复了因受伤无敌时间导致多颗弹丸被一并抵消的问题）</li></ul>
+      <h4>平衡性调整</h4><ul><li>霰弹枪 弹丸伤害 3.0→5.0（10 粒，近距离全弹命中时合计 50.0）</li><li>电车 最高速度 20→60 m/s，config 上限 25→80 m/s</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>由于电车速度上限的含义已经改变，更新后建议删除 config/sorakaze_rail.json（不删除的话会保持旧设置的 20 m/s）</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.1.0</span> — 改善电车行驶表现并强化枪械
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span></div>
+      <p>修复了电车行驶时画面卡顿、以及「必须一直按住 W 键才能前进」的问题。强化了枪械的威力，为狙击步枪新增了专用瞄准镜画面与晃动表现。建材 MOD 中新增了自动门等 4 种新门。</p>
+      <ul><li>电车：修复了行驶画面卡顿的问题，现在能够平滑行驶</li><li>电车：改为只需按一次 W 键，之后无需持续按住即可自动加速、巡航（此前需要一直按住）。S 键刹车，停车后再按一次 S 即可倒车</li><li>电车最高速度 15→20 m/s。电车物品图标全新设计</li><li>狙击步枪：改为「举枪瞄准→松开射击」的方式，新增专用瞄准镜画面、×4/×8 变焦（滚轮切换），以及下蹲时减半的准星晃动</li><li>突击步枪：新增移动中射击时散布增加的表现</li><li>建材 MOD：新增自动门、拉门、大型门（铁/木）、舱口盖 4 种新门（多方块结构，破坏任意部位都只掉落 1 个）</li></ul>
+      <h4>平衡性调整</h4><ul><li>突击步枪 伤害 3.0→5.0，射速 8→10 发/秒</li><li>霰弹枪 弹丸伤害 2.0→3.0（弹丸数增至 10 粒），有效射程 12→16m</li></ul>
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-15</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.0.0</span> — 首个版本发布：枪械、铁道、建材三个 MOD
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span></div>
+      <p>服务器首次导入了「sorakaze_guns（枪械）」「sorakaze_rail（铁道）」「sorakaze_deco（建材）」三个 MOD。在保留原版弓箭、矿车的同时，新增了可以在生存模式中合成的武器、载具与城镇建材方块。</p>
+      <ul><li>枪械 MOD：可以合成突击步枪、霰弹枪、狙击步枪三种武器，以及各自专用的弹药（步枪弹/霰弹壳/狙击弹）</li><li>为狙击步枪实装了瞄准镜变焦功能</li><li>铁道 MOD：新增可放置在铁轨上的新载具「电车」（原版矿车、铁轨、弓箭、弩均未改动）。行驶过程中会循环播放行驶音效</li><li>建材 MOD：新增护栏、电线杆、电线、盲道砖（引导/警示）、车用信号灯、人行信号灯、航空障碍灯、聚光灯等共 12 种方块</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>要让服务器支持 MOD，需要从原版迁移到 Fabric。此外，运行 Minecraft 26.2 需要 Java 25 及以上版本，请检查服务器主机的 Java 版本（导入步骤请参阅管理员专用手册）</li></ul>
+        </div>
+      
+    </article>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu 服务器导入 MOD 非官方参考手册</p>
+    <p class="site-footer__note">本站是非官方参考站点，不提供 MOD 本体（jar 文件）的下载。配方与数值可能因导入版本或服务器端 config 调整而与实际情况有出入。</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

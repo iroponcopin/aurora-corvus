@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="id" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panduan Pemasangan | Glimpse Alpha Wiki</title>
+<meta name="description" content="Panduan pemasangan MOD pack Glimpse Alpha. Merangkum langkah pemasangan di server dan pengaturan untuk bergabung sebagai pemain.">
+<meta property="og:title" content="Panduan Pemasangan | Glimpse Alpha Wiki">
+<meta property="og:description" content="Panduan pemasangan MOD pack Glimpse Alpha. Merangkum langkah pemasangan di server dan pengaturan untuk bergabung sebagai pemain.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Lompat ke konten utama</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Beranda</a></li>
+        <li><a href="../changelog/">Riwayat Pembaruan</a></li>
+        <li><a href="../recipes/">Kumpulan Resep</a></li>
+        <li><a href="../guide/" class="active">Panduan Pemasangan</a></li>
+        <li><a href="../roadmap/">Rencana Mendatang</a></li>
+        <li><a href="../known-issues/">Bug yang Diketahui</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Bahasa / Language">
+          🌐 <span>Bahasa Indonesia</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../guide/">日本語</a></li>
+        <li><a href="../../en/guide/">English</a></li>
+        <li><a href="../../es/guide/">Español</a></li>
+        <li><a href="../../fr/guide/">Français</a></li>
+        <li><a href="../../zh/guide/">简体中文</a></li>
+        <li><a href="../../ko/guide/">한국어</a></li>
+        <li><a href="../../pt-br/guide/">Português (Brasil)</a></li>
+        <li><a href="../../it/guide/">Italiano</a></li>
+        <li><a href="../../ar/guide/">العربية</a></li>
+        <li><a href="../../ru/guide/">Русский</a></li>
+        <li><a href="../../id/guide/" class="active" aria-current="true">Bahasa Indonesia</a></li>
+        <li><a href="../../de/guide/">Deutsch</a></li>
+        <li><a href="../../tr/guide/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema warna" title="Ganti tema warna">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Panduan Pemasangan</span>
+  <h1>Panduan Pemasangan</h1>
+  <p class="lede">Merangkum langkah-langkah dari mengaktifkan MOD hingga mulai bermain. Jika kamu hanya ingin bergabung sebagai pemain, cukup baca bagian &quot;Untuk Pemain&quot; saja.</p>
+</div>
+<div class="toc"><div class="toc__title">Daftar Isi</div><ol><li><a href="#overview">Ringkasan: Tentang Pemasangan Glimpse Alpha</a></li><li><a href="#player-setup">Untuk Pemain: Pengaturan untuk Bergabung ke Server</a></li><li><a href="#admin-prep">Untuk Admin Server: Persiapan Awal (Backup dan Pemeriksaan Versi)</a></li><li><a href="#admin-fabric-install">Untuk Admin Server: Memasang Fabric</a></li><li><a href="#admin-mods-and-verify">Untuk Admin Server: Memasang MOD dan Memeriksa Server</a></li><li><a href="#admin-upgrade">Saat Mengganti MOD ke Versi Baru</a></li><li><a href="#gameplay-notices">Hal yang Perlu Diketahui Sebelum Bermain</a></li><li><a href="#faq">Pertanyaan Umum &amp; Pemecahan Masalah</a></li></ol></div>
+<div id="overview"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Ringkasan: Tentang Pemasangan Glimpse Alpha</h2>
+      
+<p>
+  <strong>Glimpse Alpha</strong> (dahulu bernama: Sorakaze) adalah kumpulan MOD Fabric yang
+  dipasang di Server Sorakazekarasu. Terdiri dari 8 MOD independen yang masing-masing bisa
+  dipasang dan diperbarui secara terpisah. Elemen vanilla (standar tanpa MOD) seperti busur
+  panah dan minecart tidak diganti atau dihapus — MOD ini hanya menambahkan item, blok, dan
+  dimensi baru.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>Isi</th></tr>
+<tr><td>Senjata Api</td><td>Senjata jarak jauh yang tidak ada di vanilla (Assault Rifle, Shotgun, Sniper, dll.)</td></tr>
+<tr><td>Kereta Api</td><td>Kereta yang makin lama makin cepat, beserta gerbong penumpang dan kargo yang bisa disambungkan</td></tr>
+<tr><td>Bahan Bangunan & Dekorasi</td><td>Bahan bangunan untuk membangun kota seperti lampu lalu lintas dan pagar pengaman, serta perkakas rumah seperti kamera CCTV, ATM, dan lift</td></tr>
+<tr><td>Kendaraan</td><td>Mobil, bus, pesawat, dan lainnya</td></tr>
+<tr><td>Bos</td><td>Musuh kuat untuk dikalahkan, beserta perlengkapan khusus hasil dropnya</td></tr>
+<tr><td>Langit</td><td>Dimensi baru "Langit", beserta kota dan kerajaan malaikat yang tinggal di sana</td></tr>
+<tr><td>Survival</td><td>Bijih dan zirah baru, serta elemen kehidupan seperti suhu dan 4 musim</td></tr>
+<tr><td>Listrik</td><td>Jaringan pembangkit dan distribusi listrik, beserta perangkat yang bertenaga listrik</td></tr>
+</table>
+</div>
+<p>Untuk item dan resep detail tiap MOD, lihat <a href="../recipes/">Kumpulan Resep</a>, dan untuk
+perubahan sejauh ini, lihat <a href="../changelog/">Riwayat Pembaruan</a>.</p>
+
+<h3>Untuk memakai MOD, dibutuhkan "Fabric"</h3>
+<p>
+  <strong>Fabric</strong> adalah fondasi yang memungkinkan Minecraft memuat MOD.
+  Bayangkan seperti sistem operasi yang dibutuhkan konsol game sebelum bisa memasang perangkat
+  lunak — sebelum memasang MOD itu sendiri, Fabric harus dipasang lebih dulu, baik di server
+  maupun di PC masing-masing pemain.
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">⚠ Poin yang paling sering salah</div>
+  <p>
+    MOD perlu dipasang <strong>bukan hanya di server, tetapi juga di PC semua orang yang ingin
+    bermain</strong>, dengan versi yang sama persis.
+    Tidak ada istilah "cukup dipasang di server, otomatis berlaku untuk semua orang".
+    Jika kombinasi versi Minecraft, Fabric, dan MOD antara server dan semua pemain tidak sama,
+    kamu tidak akan bisa bergabung ke server.
+  </p>
+</div>
+
+<h3>Siapa yang menyiapkan apa</h3>
+<ul>
+  <li><strong>Server (Server Sorakazekarasu)</strong> — Fabric Server + Fabric API + 8 MOD Glimpse Alpha</li>
+  <li><strong>PC setiap orang yang ingin bermain</strong> — Fabric Client + Fabric API + 8 MOD Glimpse Alpha (kombinasi yang sama persis dengan server)</li>
+</ul>
+
+<div class="callout callout--info">
+  <div class="callout__title">File MOD tidak didistribusikan di situs ini</div>
+  <p>
+    Situs ini hanya memuat "bacaan" seperti tabel resep, riwayat pembaruan, dan panduan pemasangan,
+    dan tidak mendistribusikan file MOD (jar) itu sendiri. Untuk mendapatkan seluruh file jar yang
+    dibutuhkan, silakan hubungi admin server.
+  </p>
+</div>
+
+<h3>Struktur halaman ini</h3>
+<p>
+  Panduan ini ditulis untuk 2 kelompok pembaca. Sebagian besar orang cukup membaca
+  <a href="#player-setup">bagian untuk pemain</a> saja untuk bisa bergabung.
+  Jika kamu adalah orang yang menjalankan dan mengelola server sendiri, lanjutkan membaca
+  <a href="#admin-prep">bagian untuk admin server</a> juga.
+</p>
+
+<h3>Versi yang didukung saat ini (perkiraan)</h3>
+<p>
+  Nilai di bawah ini adalah nilai pada saat halaman ini ditulis. Karena angka sebenarnya bisa
+  berubah setiap ada pembaruan, pastikan selalu memeriksa nilai yang akurat lewat
+  <a href="../changelog/">Riwayat Pembaruan</a>, <a href="../recipes/">Kumpulan Resep</a>,
+  atau informasi langsung dari admin server.
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Perkiraan Saat Ini</th></tr>
+<tr><td>Versi Minecraft</td><td><code>26.2</code></td></tr>
+<tr><td>Java yang dibutuhkan</td><td>Java 25 (disarankan <a href="https://adoptium.net/">Temurin 25 (LTS)</a>)</td></tr>
+<tr><td>Fabric API</td><td>Yang sesuai dengan versi Minecraft (contoh: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
+<tr><td>Susunan MOD</td><td>8 buah (Senjata Api, Kereta Api, Bahan Bangunan/Dekorasi, Kendaraan, Bos, Langit, Survival, Listrik)</td></tr>
+</table>
+</div>
+
+    </div></div>
+<div id="player-setup"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Untuk Pemain</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Untuk Pemain: Pengaturan untuk Bergabung ke Server</h2>
+      
+<p>
+  Di sini dijelaskan pengaturan untuk <strong>pihak yang ingin bergabung bermain ke server</strong>.
+  Tidak dibutuhkan pengetahuan teknis yang rumit.
+  Jika dikerjakan berurutan dari atas, biasanya selesai dalam 15–20 menit.
+</p>
+
+<div class="callout callout--info">
+  <div class="callout__title">Hanya ada 3 hal yang perlu dilakukan</div>
+  <ul>
+    <li>① Pasang Fabric (fondasi untuk memuat MOD) di PC kamu sendiri</li>
+    <li>② Masukkan seluruh file MOD yang diterima dari admin server ke folder yang sudah ditentukan</li>
+    <li>③ Ubah satu bagian saja cara menjalankan game, lalu bergabung ke server</li>
+  </ul>
+</div>
+
+<h3>Yang perlu disiapkan</h3>
+<ul>
+  <li>PC Windows atau Mac yang bisa menjalankan Minecraft Java Edition</li>
+  <li><strong>Seluruh MOD (9 file jar = 1 Fabric API + 8 MOD Glimpse Alpha)</strong> yang diterima dari admin server</li>
+</ul>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Sangat penting</div>
+  <p>
+    Kamu tidak akan bisa bergabung kecuali menggunakan <strong>versi dan file MOD yang sama persis</strong>
+    dengan server.
+    Sebagai contoh, halaman ini menuliskan versi Minecraft <code>26.2</code>, tetapi jika admin server
+    memberitahukan angka yang berbeda, gunakan angka tersebut.
+    <strong>Jangan membuka file jar yang kamu terima dengan cara diklik dua kali.</strong> Cukup letakkan
+    di dalam folder saja, sudah bisa langsung dipakai.
+  </p>
+</div>
+
+<h3>File yang akan diterima (contoh)</h3>
+<p>Kamu akan menerima kurang lebih 9 file berikut dari admin server (nomor versinya berubah setiap ada pembaruan).</p>
+<div class="table-wrap">
+<table>
+<tr><th>Nama File (contoh)</th><th>Isi</th></tr>
+<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Komponen bersama agar MOD bisa berjalan</td></tr>
+<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>MOD Senjata Api</td></tr>
+<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>MOD Kereta Api</td></tr>
+<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>MOD Bahan Bangunan & Dekorasi</td></tr>
+<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>MOD Kendaraan</td></tr>
+<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>MOD Bos</td></tr>
+<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>MOD Langit</td></tr>
+<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>MOD Survival</td></tr>
+<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>MOD Listrik</td></tr>
+</table>
+</div>
+
+<h3>① Memasang Fabric</h3>
+<p>Buka <code>https://fabricmc.net/use/installer/</code> dan unduh installer-nya. Tetap di tab "<strong>Client</strong>" (jangan pindah ke "Server"), pilih Minecraft Version dengan angka yang sama seperti server, lalu tekan "Install".</p>
+
+<h4>Untuk Windows</h4>
+<ol class="steps">
+  <li>Unduh installer lewat tombol seperti "Download installer (Windows/.exe)" di halaman tersebut, lalu jalankan dengan klik dua kali (jika muncul "Windows melindungi PC Anda", tekan "Info lebih lanjut" → "Jalankan saja").</li>
+  <li>Tetap di tab "Client", pilih <code>26.2</code> (angka yang sama seperti server) pada Minecraft Version, biarkan Loader Version apa adanya, lalu tekan "Install".</li>
+</ol>
+
+<h4>Untuk Mac</h4>
+<ol class="steps">
+  <li>Unduh installer (.jar) lewat tombol "Download universal jar". Tidak ada file executable (.exe) khusus Mac.</li>
+  <li>Untuk <code>fabric-installer-〜.jar</code> yang sudah diunduh, <strong>jangan klik dua kali seperti biasa</strong> — klik kanan (atau klik sambil menekan tombol <code>control</code>) lalu pilih "Buka". Jika muncul peringatan, tekan "Buka" sekali lagi.</li>
+  <li>Tetap di tab "Client", pilih angka yang sama seperti server pada Minecraft Version, lalu tekan "Install".</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Jika muncul "Tidak dapat memverifikasi pengembang" di Mac</div>
+  <p>Pada macOS versi terbaru, terkadang klik kanan → "Buka" tidak menampilkan tombol apa pun,
+  dan hanya muncul peringatan "'fabric-installer〜.jar' tidak dapat diverifikasi bebas dari malware".
+  Jika begitu, kamu tetap bisa membukanya dengan langkah berikut.</p>
+  <ol class="steps">
+    <li>Pada peringatan tersebut, tekan "Selesai" (<strong>jangan pernah menekan "Pindahkan ke Sampah"</strong>)</li>
+    <li>Buka menu Apple di kiri atas layar → "Pengaturan Sistem" → "Privasi & Keamanan"</li>
+    <li>Di bagian bawah akan ada tulisan "Penggunaan 'fabric-installer〜.jar' telah diblokir", tekan "Buka Saja" di sebelahnya</li>
+    <li>Jika ditanya sekali lagi, pilih "Buka Saja" → masukkan password Mac (atau Touch ID)</li>
+  </ol>
+  <p>Ini adalah peringatan standar yang muncul untuk semua distribusi yang tidak terdaftar di Apple, jadi tidak perlu khawatir selama kamu mendapatkannya dari situs resmi Fabric. Setelah diizinkan sekali, selanjutnya bisa dibuka dengan normal.</p>
+</div>
+
+<div class="callout callout--info">
+  <div class="callout__title">Jika installer tidak bereaksi apa pun di Mac</div>
+  <p>
+    Jika klik kanan → "Buka" tidak menghasilkan apa pun, berarti Java belum terpasang di sistemmu.
+    Buka <a href="https://adoptium.net/">adoptium.net</a>, pasang installer "Temurin" untuk macOS (.pkg),
+    lalu coba lagi.
+    Untuk Mac Apple Silicon (M1/M2/M3/M4, dll.) pilih "aarch64", untuk Mac Intel pilih "x64".
+    Jika tidak yakin, periksa kolom "Chip" pada menu Apple di kiri atas layar → "Tentang Mac Ini"
+    (jika tertulis "Apple M〜", berarti aarch64).
+  </p>
+</div>
+
+<h3>② Memasukkan file MOD ke folder mods</h3>
+
+<h4>Windows: <code>%appdata%\.minecraft\mods</code></h4>
+<ol class="steps">
+  <li>Ketik <code>%appdata%\.minecraft</code> di kolom alamat File Explorer lalu tekan Enter.</li>
+  <li>Buat folder <code>mods</code> baru jika belum ada (semua huruf kecil).</li>
+  <li>Salin seluruh 9 file jar yang kamu terima ke dalam folder <code>mods</code> ini (tidak perlu diekstrak, masukkan dalam bentuk jar apa adanya).</li>
+</ol>
+
+<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
+<ol class="steps">
+  <li>Klik desktop sekali, lalu tekan <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> secara bersamaan (atau lewat menu atas "Go" → "Go to Folder…").</li>
+  <li>Tempelkan <code>~/Library/Application Support/minecraft</code> apa adanya ke kolom yang muncul, lalu tekan Enter (jangan lupa tanda "<code>~</code>" di depan). "Library" adalah folder yang biasanya tersembunyi di Finder, jadi cara ini adalah yang paling pasti untuk membukanya.</li>
+  <li>Jika folder <code>mods</code> belum ada, klik kanan di situ → "New Folder" untuk membuatnya.</li>
+  <li>Seret dan letakkan (drag & drop) seluruh 9 file jar yang kamu terima ke dalam folder <code>mods</code> ini.</li>
+</ol>
+
+<h3>③ Menjalankan dengan Fabric dan bergabung ke server</h3>
+<ol class="steps">
+  <li>Buka launcher Minecraft, lalu pilih konfigurasi peluncuran (profile) dengan nama seperti <code>fabric-loader-26.2</code> dari daftar di dekat tombol "Play" (jika tetap di "Latest release", game akan berjalan tanpa MOD).</li>
+  <li>Tekan "Play" seperti biasa untuk menjalankan. Jika di layar judul muncul tambahan tombol "Mods", berarti berhasil. Tekan tombol itu untuk memastikan 8 MOD Glimpse Alpha dan Fabric API terdaftar.</li>
+  <li>Setelah itu, sambungkan ke server seperti biasa lewat "Multiplayer".</li>
+</ol>
+
+<h3>Saat MOD diperbarui</h3>
+<p>Jika MOD di sisi server diperbarui, semua orang yang bermain perlu memperbarui ke versi yang sama secara bersamaan.</p>
+<ol class="steps">
+  <li>Terima file MOD baru dari admin server (tunggu pemberitahuan sebelum mulai mengerjakan).</li>
+  <li>Buka folder mods, <strong>hapus dulu file jar Glimpse Alpha yang lama</strong>, baru masukkan file yang baru (meski nama filenya berubah, isinya tetap dianggap sebagai MOD yang sama, sehingga jika yang lama masih tersisa, game tidak akan bisa dijalankan).</li>
+  <li>Jalankan seperti biasa lewat profile fabric-loader.</li>
+</ol>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Perhatian</div>
+  <p>Jika hanya salah satu pihak (server atau kamu) yang menggunakan versi baru, kamu tidak akan bisa bergabung ke server. Jika bingung, periksa juga <a href="#faq">pertanyaan yang sering diajukan</a>.</p>
+</div>
+
+<h3>Kendala yang sering terjadi di Mac</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Gejala</th><th>Cara Mengatasi</th></tr>
+<tr><td>Muncul "Tidak dapat memverifikasi pengembang" atau "Tidak dapat diverifikasi bebas dari malware"</td><td>Pada peringatan tersebut, tekan "Selesai" (jangan tekan "Pindahkan ke Sampah"). Selanjutnya buka Pengaturan Sistem → "Privasi & Keamanan", scroll ke bawah, tekan "Buka Saja" di sebelah tulisan "diblokir", lalu masukkan password.</td></tr>
+<tr><td>Installer diklik dua kali tetapi tidak terjadi apa pun</td><td>Java belum terpasang. Pasang Temurin (.pkg untuk macOS) dari adoptium.net, lalu coba lagi.</td></tr>
+<tr><td>Folder "Library" tidak ditemukan</td><td>Tidak perlu mencarinya secara manual. Cara paling pasti adalah menekan <code>⌘</code>+<code>⇧</code>+<code>G</code> lalu menempelkan <code>~/Library/Application Support/minecraft</code> (folder ini memang tersembunyi secara default).</td></tr>
+<tr><td>Saat mencoba masuk ke server, muncul pesan versi berbeda</td><td>Periksa apakah ① kamu sudah memilih profile fabric-loader yang benar di launcher, dan ② isi folder mods sudah sama dengan server. Jika satu saja berbeda, kamu tidak akan bisa bergabung.</td></tr>
+<tr><td>Crash begitu game dijalankan</td><td>Periksa apakah ada jar lama atau jar yang tidak berhubungan yang tercampur di folder mods. Jika masih belum teratasi, kirimkan <code>logs/latest.log</code> (di Mac: <code>~/Library/Application Support/minecraft/logs/latest.log</code>) ke admin server.</td></tr>
+<tr><td>Ingin kembali ke Minecraft biasa tanpa MOD</td><td>Cukup kembalikan konfigurasi peluncuran launcher ke "Latest release". Tidak perlu menghapus file MOD.</td></tr>
+</table>
+</div>
+<p>Langkahnya sama saja baik untuk Mac Apple Silicon (M1/M2/M3/M4, dll.) maupun Mac Intel. Bedanya hanya pada pemilihan aarch64 atau x64 saat memilih Java (Temurin).</p>
+
+    </div></div>
+<div id="admin-prep"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Untuk Admin Server</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Untuk Admin Server: Persiapan Awal (Backup dan Pemeriksaan Versi)</h2>
+      
+<p>
+  Mulai dari sini adalah bagian untuk pihak yang menjalankan dan mengelola server itu sendiri.
+  Panduan ini menjelaskan langkah menambahkan Fabric dan 8 MOD Glimpse Alpha, dimulai dari kondisi
+  di mana server Minecraft (vanilla, server standar tanpa MOD) sudah berjalan. Bagian ini menggunakan
+  server Windows sebagai contoh.
+  Jika kamu menjalankan server di Mac / Linux, sesuaikan lokasi folder dan cara menjalankan perintah
+  dengan lingkunganmu sendiri, lalu ikuti langkah yang serupa (sesuai panduan situs resmi Fabric).
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Wajib dilakukan sebelum mulai</div>
+  <p>Agar tidak kehilangan world meski pemasangan MOD gagal, pastikan untuk membuat backup terlebih dahulu sebelum memulai pekerjaan.</p>
+</div>
+
+<h3>1. Membuat backup world</h3>
+<p>Buka folder server (contoh: <code>C:\MinecraftServer</code>), lalu jalankan langkah backup yang biasa digunakan (contoh: skrip backup seperti <code>Backup-Server.bat</code>). Jika tidak ada skrip khusus, cukup salin seluruh folder <code>world</code> ke lokasi lain saat server dalam keadaan berhenti.</p>
+
+<h3>2. Memeriksa versi Java</h3>
+<ol class="steps">
+  <li>Buka Command Prompt (atau terminal apa pun).</li>
+  <li>Ketik <code>java -version</code> lalu tekan Enter.</li>
+  <li>Periksa apakah angka yang ditampilkan adalah <strong>25</strong> (contoh: <code>java version "25.0.3"</code>).</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Sangat penting</div>
+  <p>
+    Untuk menjalankan Minecraft <code>26.2</code>, dibutuhkan <strong>Java 25</strong>. Terkadang panduan
+    setup lama menuliskan "Java 21", tetapi itu informasi lama — server tidak akan bisa dijalankan jika
+    tetap menggunakan Java 21.
+    Jika angkanya di bawah 25, buka <a href="https://adoptium.net/">adoptium.net</a>,
+    unduh dan pasang "Temurin 25 (LTS)", lalu restart komputer dan periksa lagi.
+  </p>
+</div>
+
+<h3>3. Memeriksa versi Minecraft di server</h3>
+<ol class="steps">
+  <li>Jalankan server terlebih dahulu dengan cara yang biasa digunakan (contoh: <code>Start-Server.bat</code>).</li>
+  <li>Cari baris seperti <code>Starting minecraft server version X.Y</code> yang muncul di awal konsol (layar hitam), lalu catat angkanya.</li>
+  <li>Ketik <code>stop</code> di konsol lalu tekan Enter untuk menghentikan server dengan aman.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Perhatian</div>
+  <p>
+    Panduan ini menuliskan "<code>26.2</code>" sebagai contoh, tetapi jika angka yang sebenarnya kamu
+    dapatkan berbeda, gunakan angka tersebut di semua langkah selanjutnya (pemilihan versi Fabric,
+    Fabric API, dan MOD).
+    Jika versi server, semua pemain, dan MOD tidak sama persis meski hanya satu saja, semuanya tidak akan berfungsi sama sekali.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-fabric-install"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Untuk Admin Server</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Untuk Admin Server: Memasang Fabric</h2>
+      
+<h3>Memasang Fabric Server</h3>
+<ol class="steps">
+  <li>Buka <code>https://fabricmc.net/use/server/</code> di browser, lalu unduh installer lewat tombol seperti "Download installer (Windows/.exe)".</li>
+  <li>Klik dua kali <code>fabric-installer〜.exe</code> yang sudah diunduh untuk menjalankannya (jika muncul "Windows melindungi PC Anda", tekan "Info lebih lanjut" → "Jalankan saja").</li>
+  <li>Pada layar pengaturan installer, periksa 4 hal berikut.
+    <ul>
+      <li>Pilih tab "<strong>Server</strong>"</li>
+      <li>Pilih Minecraft Version yang sama dengan versi server yang sudah diperiksa di langkah persiapan (contoh: <code>26.2</code>)</li>
+      <li>Loader Version boleh dibiarkan apa adanya</li>
+      <li>Tentukan Install Location ke folder server yang sudah ada (contoh: <code>C:\MinecraftServer</code>)</li>
+    </ul>
+  </li>
+  <li>Tekan "Install".</li>
+  <li>Jika file baru bernama <code>fabric-server-launch.jar</code> muncul di dalam folder server, berarti berhasil.</li>
+</ol>
+
+<h3>Membuat file peluncuran baru (file batch)</h3>
+<p>
+  File peluncuran yang selama ini digunakan (contoh: <code>Start-Server.bat</code>) adalah file untuk
+  menjalankan server "tanpa MOD".
+  <strong>Jangan dihapus, biarkan tetap ada</strong> (agar bisa kembali ke kondisi tanpa MOD jika
+  suatu saat dibutuhkan).
+  Sebagai gantinya, buat file peluncuran baru khusus untuk Fabric.
+</p>
+<ol class="steps">
+  <li>Buka Notepad.</li>
+  <li>Salin dan tempelkan isi berikut apa adanya.
+<pre>@echo off
+cd /d "%~dp0"
+title Minecraft Fabric Server
+java -Xms2G -Xmx4G -jar fabric-server-launch.jar nogui
+echo Server telah berhenti.
+pause</pre>
+  </li>
+  <li>Pilih "File" → "Save As", lalu simpan di folder server (contoh: <code>C:\MinecraftServer</code>) dengan nama file <code>Start-Fabric-Server.bat</code>, dan atur "Save as type" menjadi "<strong>All Files</strong>".</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Perhatian</div>
+  <p>
+    Jika "Save as type" tidak diatur ke "All Files", file akan tersimpan sebagai
+    <code>Start-Fabric-Server.bat.txt</code> yang tidak akan berfungsi. Selain itu, jika memori (RAM)
+    yang dialokasikan saat membangun server bukan 4GB, ubah angka "4" pada <code>-Xmx4G</code> sesuai
+    dengan angka tersebut.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-mods-and-verify"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Untuk Admin Server</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Untuk Admin Server: Memasang MOD dan Memeriksa Server</h2>
+      
+<p>File utama MOD berupa file "jar" tersendiri. Cukup letakkan file ini di dalam folder
+<code>mods</code> pada folder server untuk memasangnya.</p>
+
+<h3>1. Menyiapkan folder mods</h3>
+<p>Periksa apakah ada folder bernama <code>mods</code> di dalam folder server (contoh: <code>C:\MinecraftServer</code>). Jika belum ada, klik kanan → "New" → "Folder", lalu beri nama <code>mods</code> (semua huruf kecil).</p>
+
+<h3>2. Mendapatkan Fabric API</h3>
+<p>Buka <code>https://modrinth.com/mod/fabric-api/versions</code>, lalu unduh entri paling atas dalam daftar yang "Game version-nya sama dengan angka versi server" (contoh: <code>fabric-api-0.154.2+26.2.jar</code>).</p>
+
+<h3>3. Memasukkan seluruh MOD ke folder mods</h3>
+<p>
+  Salin total 9 file jar — 1 Fabric API + 8 MOD Glimpse Alpha — ke dalam folder <code>mods</code>
+  (tidak perlu diekstrak, masukkan dalam bentuk jar apa adanya). Untuk file utama 8 MOD ini, dapatkan
+  seperti biasa lewat jalur distribusi yang sudah ada. <strong>Situs ini tidak mendistribusikan file
+  MOD itu sendiri.</strong>
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>Contoh Nama File</th></tr>
+<tr><td>Senjata Api</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>Kereta Api</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>Bahan Bangunan & Dekorasi</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>Kendaraan</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Bos</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>Langit</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>Survival</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>Listrik</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+</table>
+</div>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Perhatian</div>
+  <p>Jangan klik dua kali file jar tersebut (tidak perlu dibuka). Cukup letakkan di dalam folder saja.</p>
+</div>
+
+<h3>4. Menjalankan server dan memeriksanya</h3>
+<ol class="steps">
+  <li>Klik dua kali <code>Start-Fabric-Server.bat</code> yang tadi sudah dibuat (jangan gunakan <code>Start-Server.bat</code> yang lama).</li>
+  <li>Periksa 2 hal berikut di konsol (layar hitam).
+    <ul>
+      <li>Pada baris yang memuat MOD, nama MOD yang dipasang muncul di sana</li>
+      <li>Pada akhirnya muncul <code>Done (…s)! For help, type "help"</code> dan server tetap berjalan tanpa berhenti</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 Jika muncul error Java dan server tidak bisa berjalan</div>
+  <p>
+    Jika muncul error berbahasa Inggris seperti "class file version" atau "requires Java", kemungkinan
+    versi Java-mu sudah usang.
+    Pasang "Temurin 25 (LTS)" versi Windows (.msi) dari <a href="https://adoptium.net/">adoptium.net</a>,
+    restart komputer, lalu coba lagi.
+  </p>
+</div>
+
+<p>Setelah server berhasil dijalankan, langkah selanjutnya adalah memberitahukan
+<a href="#player-setup">bagian untuk pemain</a> kepada semua orang yang ingin bergabung, dan minta
+mereka memasang Fabric serta seluruh MOD yang sama di PC masing-masing.</p>
+
+    </div></div>
+<div id="admin-upgrade"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Untuk Admin Server</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Saat Mengganti MOD ke Versi Baru</h2>
+      
+<p>Karena 8 MOD Glimpse Alpha masing-masing sepenuhnya independen, tidak semua 8 MOD perlu diganti
+setiap kali ada pembaruan. Cukup ganti MOD yang isinya benar-benar berubah saja
+(MOD mana yang berubah bisa diperiksa lewat pengumuman saat distribusi atau
+<a href="../changelog/">Riwayat Pembaruan</a>).</p>
+
+<h3>Langkah pembaruan</h3>
+<ol class="steps">
+  <li>Ketik <code>stop</code> di konsol server untuk menghentikannya.</li>
+  <li>Buat backup world dengan langkah backup yang biasa digunakan.</li>
+  <li>Di dalam folder <code>mods</code> server, <strong>hapus file jar lama dari MOD yang akan diperbarui</strong>, lalu masukkan file jar yang baru (jika versi lama dan baru dari MOD yang sama sama-sama tersisa, server tidak akan bisa dijalankan).</li>
+  <li>Jalankan server dengan <code>Start-Fabric-Server.bat</code>, lalu pastikan versi terbaru muncul di konsol.</li>
+  <li><strong>Bagikan juga file jar baru ke semua pemain</strong>, dan minta mereka menggantinya dengan cara yang sama (lihat <a href="#player-setup">bagian untuk pemain</a>). Jika hanya salah satu pihak (server atau pemain) yang menggunakan versi baru, mereka tidak akan bisa bergabung.</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Sangat penting</div>
+  <p>
+    Jika sebuah MOD dicabut sepenuhnya (bukan sekadar diperbarui) lalu server dijalankan, blok yang
+    dipasang atau item yang dimiliki dari MOD tersebut (misalnya lampu lalu lintas) akan hilang.
+    Ini adalah perilaku bawaan Minecraft dan Fabric, dan tidak bisa dikembalikan.
+    Pastikan selalu membuat backup sebelum mencabut sebuah MOD.
+  </p>
+</div>
+
+<h3>Tentang file config (mekanisme perbaikan otomatis)</h3>
+<p>
+  Setiap MOD secara otomatis membuat file pengaturan (contoh: <code>sorakaze_guns.json</code>) di dalam
+  folder <code>config/</code> saat dijalankan. Angka seperti kekuatan dan kecepatan bisa disesuaikan di
+  sini, dan pada dasarnya tidak perlu dihapus atau diubah secara manual setiap ada pembaruan.
+</p>
+<div class="callout callout--info">
+  <div class="callout__title">💡 Mekanisme saat ini</div>
+  <p>
+    Item pengaturan yang nilai bawaannya berubah di versi baru <strong>hanya akan diperbarui secara
+    otomatis ke nilai bawaan yang baru jika masih menggunakan nilai bawaan lama (belum pernah kamu
+    sesuaikan)</strong>. <strong>Nilai yang sudah kamu sesuaikan sendiri tidak akan disentuh sama sekali.</strong>
+    Item pengaturan baru yang ditambahkan juga akan otomatis dituliskan saat server dijalankan. Apa saja
+    yang diperbarui akan selalu tercatat di <code>logs/latest.log</code> dalam format "nilai lama → nilai baru".
+  </p>
+</div>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Perhatian saat mengedit file pengaturan</div>
+  <p>
+    Jika kamu menghapus sebagian nilai secara manual di dalam file pengaturan (contoh: menghapus hanya
+    baris damage dari sekelompok pengaturan sebuah senjata), item tersebut bisa saja diam-diam tergantikan
+    oleh nilai awal lain dari dalam MOD (tanpa muncul error).
+    Jika ingin menyesuaikan angka tertentu, ubah langsung nilai pada item tersebut.
+    Jika ingin mengembalikan seluruh pengaturan ke kondisi awal, hapus saja seluruh file pengaturan MOD
+    yang bersangkutan — file tersebut akan dibuat ulang dengan nilai bawaan pada saat server dijalankan
+    berikutnya.
+  </p>
+</div>
+
+    </div></div>
+<div id="gameplay-notices"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Hal yang Perlu Diketahui Sebelum Bermain</h2>
+      
+<p>
+  Glimpse Alpha juga mencakup beberapa perubahan yang memengaruhi perilaku vanilla. Berikut ini
+  merangkum hal-hal yang paling mudah terlewat. Karena angka detailnya bisa disesuaikan setiap ada
+  pembaruan, periksa juga <a href="../changelog/">Riwayat Pembaruan</a> dan halaman
+  <a href="../known-issues/">Bug yang Diketahui</a> untuk kondisi terbaru. Penyesuaian config
+  dilakukan oleh admin server.
+</p>
+
+<h3>Redstone kini membutuhkan "listrik"</h3>
+<p>
+  Dengan dipasangnya MOD Listrik, sebagian redstone vanilla tidak akan berfungsi sendiri.
+</p>
+<ul>
+  <li><strong>Yang membutuhkan listrik:</strong> Redstone Dust, Repeater, Comparator, Blok Redstone, Obor Redstone. Semua ini tidak akan mengeluarkan sinyal sampai listrik disambungkan lewat kabel. Ladang otomatis, stasiun, pintu otomatis, dan deretan Hopper akan tetap berhenti sampai kabelnya dipasang.</li>
+  <li><strong>Yang tetap berfungsi seperti biasa tanpa listrik:</strong> Tuas, tombol, pelat tekan, Kait Kawat Pemicu, Observer, Sensor Cahaya Matahari, Sculk Sensor, Target, Trapped Chest, Detector Rail, Lectern, Jukebox, penangkal petir, dan lainnya. Membuka pintu atau gerbang secara manual juga tetap bisa dilakukan seperti biasa.</li>
+  <li>Sekitar 10 menit setelah dipasang, Blok Redstone akan hancur secara alami (kembali menjadi item di tanganmu).</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout__title">💡 Cara mengembalikannya (untuk admin server)</div>
+  <p>
+    Mengubah <code>powerEnabled</code> di <code>config/sorakaze_power.json</code> menjadi
+    <code>false</code> akan menonaktifkan seluruh elektrifikasi redstone ini.
+  </p>
+</div>
+
+<h3>Sebagian perangkat bahan bangunan & dekorasi juga membutuhkan listrik</h3>
+<p>
+  Kamera CCTV, Lift, Eskalator, Pintu Otomatis, dan ATM — kelima perangkat ini tidak akan berfungsi
+  tanpa listrik yang disambungkan lewat kabel (khusus Lift, arah "turun" tetap berfungsi meski tanpa
+  listrik). Listrik bisa dinonaktifkan satu per satu untuk tiap perangkat dengan mengubah item
+  pengaturan yang sesuai di <code>config/sorakaze_deco.json</code> menjadi <code>false</code>.
+</p>
+
+<h3>Generator membuat ruangan menjadi panas</h3>
+<p>
+  Generator dan Pembangkit Nuklir yang sedang beroperasi akan menaikkan suhu di ruangan yang sama.
+  Satu-satunya yang bisa mendinginkannya adalah AC.
+  Memisahkan ruang mesin dengan dinding dan pintu tertutup adalah cara mudah agar panasnya tidak
+  menyebar ke ruangan lain.
+  Fitur ini sendiri bisa dinonaktifkan dengan mengubah <code>temperatureMachineHeatEnabled</code> di
+  <code>config/sorakaze_survival.json</code> menjadi <code>false</code>.
+</p>
+
+<h3>Batas tinggi dunia Langit diperluas</h3>
+<p>
+  Dengan dipasangnya MOD Langit, batas tinggi bangunan di dunia normal (Overworld) dinaikkan.
+  Yang berubah hanya batas atas ke arah langit — kedalaman bawah tanah (tinggi dasar dunia) dan
+  medan yang sudah ada tetap sama.
+</p>
+
+<h3>Peluncur Roket merusak medan</h3>
+<p>
+  Roket dari MOD Senjata Api, dengan pengaturan bawaan, akan merusak medan di titik jatuhnya.
+  Ini tidak berhenti meski game rule vanilla <code>mobGriefing</code> diatur ke <code>false</code>.
+  Untuk menghentikan perusakannya, <code>rocketDestroysTerrain</code> di
+  <code>config/sorakaze_guns.json</code> perlu diubah menjadi <code>false</code>. Berhati-hatilah
+  terutama di dekat markas.
+</p>
+
+<h3>Tentang kekuatan senjata</h3>
+<p>
+  Senjata dari MOD Senjata Api, terutama Assault Rifle, memiliki kekuatan yang sangat tinggi, dan
+  sebagian besar bos tambahan MOD bisa dikalahkan hanya dalam hitungan detik. Jika ingin tantangan
+  yang lebih terasa, admin server bisa mengembalikan tingkat kesulitannya dengan menyesuaikan nilai
+  damage tiap senjata di <code>config/sorakaze_guns.json</code>.
+</p>
+
+<h3>Jika MOD dicabut, blok dan item yang dipasang akan hilang</h3>
+<p>
+  Ini adalah perilaku umum MOD secara keseluruhan, bukan bug khusus Glimpse Alpha. Blok yang dipasang
+  atau item yang didapatkan saat sebuah MOD terpasang akan hilang dari world begitu MOD tersebut
+  dicabut. Satu-satunya cara mengembalikannya adalah memulihkan dari backup.
+</p>
+
+    </div></div>
+<div id="faq"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Pertanyaan Umum &amp; Pemecahan Masalah</h2>
+      
+<h3>Pertanyaan yang sering diajukan</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Pertanyaan</th><th>Jawaban</th></tr>
+<tr><td>Apakah world akan hilang?</td><td>Tidak akan hilang. Meski memasang Fabric, world yang sudah ada tetap bisa digunakan apa adanya. Jika khawatir, pastikan membuat backup sebelum memasangnya.</td></tr>
+<tr><td>Bisakah teman yang belum memasang MOD ikut bergabung?</td><td>Tidak bisa. Semua pemain perlu melakukan pengaturan di <a href="#player-setup">bagian untuk pemain</a>.</td></tr>
+<tr><td>Saya ingin kembali tanpa MOD (vanilla)</td><td>Di sisi server, kamu bisa kembali ke kondisi tanpa MOD dengan menjalankan file peluncuran lama yang tanpa MOD seperti biasa (blok dan item yang ditambahkan oleh MOD akan hilang).</td></tr>
+<tr><td>Setelah memperbarui MOD, tiba-tiba tidak bisa bermain lagi</td><td>Periksa apakah versi MOD di sisi server dan pemain sudah sama. Jika hanya salah satu pihak yang menggunakan versi baru, kamu tidak akan bisa bergabung.</td></tr>
+<tr><td>Saya tidak bisa membaca pesan error berbahasa Inggris</td><td>Tidak apa-apa jika tidak bisa membacanya. Kirimkan saja file <code>latest.log</code> di dalam folder <code>logs</code> apa adanya kepada admin server.</td></tr>
+</table>
+</div>
+
+<h3>Jika server tidak bisa dijalankan</h3>
+<ol class="steps">
+  <li>Pindahkan sementara seluruh isi folder <code>mods</code> ke lokasi lain.</li>
+  <li>Kembalikan satu per satu sambil mencoba menjalankan server berulang kali, untuk menentukan file mana yang menjadi penyebabnya.</li>
+  <li>Jika muncul error terkait Java, periksa versi Java dengan mengacu pada <a href="#admin-prep">bagian persiapan</a>.</li>
+</ol>
+
+<h3>Jika bisa masuk ke server tetapi tidak bisa terhubung</h3>
+<ol class="steps">
+  <li>Periksa apakah kombinasi versi dan MOD semua pemain sudah sama persis dengan server.</li>
+  <li>Perbedaan versi Fabric API khususnya sering menjadi penyebabnya, jadi periksa ini terlebih dahulu.</li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 Jika masih belum teratasi juga</div>
+  <p>Kirimkan <code>logs/latest.log</code> kepada admin server untuk berkonsultasi. Tidak perlu panik. Selama ada backup, kamu selalu bisa mengembalikan ke kondisi semula kapan saja.</p>
+</div>
+
+<h3>Cara mengembalikan world dari backup (untuk admin server)</h3>
+<ol class="steps">
+  <li>Ketik <code>stop</code> di konsol server untuk menghentikannya.</li>
+  <li>Ambil backup terbaru dari lokasi penyimpanan backup (contoh: <code>C:\MinecraftServer\backups</code>) (jika berbentuk zip, klik kanan → "Extract All").</li>
+  <li>Ganti (timpa) folder <code>world</code> di dalam folder server dengan folder <code>world</code> yang diambil dari backup tersebut.</li>
+  <li>Jalankan server.</li>
+</ol>
+
+    </div></div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referensi Tidak Resmi MOD Server Sorakazekarasu</p>
+    <p class="site-footer__note">Situs ini adalah referensi tidak resmi. Kami tidak mendistribusikan file MOD (jar) itu sendiri. Resep dan angka yang ditampilkan bisa berbeda dari kondisi sebenarnya tergantung versi yang terpasang dan penyesuaian config di sisi server.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

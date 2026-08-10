@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bugs conhecidos | Glimpse Alpha Wiki</title>
+<meta name="description" content="Lista de bugs conhecidos e elementos ainda não confirmados do pacote de MODs Glimpse Alpha.">
+<meta property="og:title" content="Bugs conhecidos | Glimpse Alpha Wiki">
+<meta property="og:description" content="Lista de bugs conhecidos e elementos ainda não confirmados do pacote de MODs Glimpse Alpha.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Início</a></li>
+        <li><a href="../changelog/">Histórico de atualizações</a></li>
+        <li><a href="../recipes/">Receitas</a></li>
+        <li><a href="../guide/">Guia de instalação</a></li>
+        <li><a href="../roadmap/">Próximas atualizações</a></li>
+        <li><a href="../known-issues/" class="active">Bugs conhecidos</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Idioma / Language">
+          🌐 <span>Português (Brasil)</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/">Español</a></li>
+        <li><a href="../../fr/known-issues/">Français</a></li>
+        <li><a href="../../zh/known-issues/">简体中文</a></li>
+        <li><a href="../../ko/known-issues/">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/" class="active" aria-current="true">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Bugs conhecidos</span>
+  <h1>Bugs conhecidos</h1>
+  <p class="lede">Aqui está um resumo dos pequenos bugs já conhecidos e dos elementos que ainda não puderam ser conferidos de fato, devido às limitações do ambiente de desenvolvimento. Assim que um bug sério for encontrado, a versão corrigida é distribuída e registrada no histórico de atualizações.</p>
+</div>
+
+<h2>Pequenos bugs conhecidos atualmente</h2>
+<p class="section-lede">São bugs conhecidos que não atrapalham o funcionamento, mas afetam a exibição ou a aparência.</p>
+<h4>Nome das janelas de vidro reforçado (17 cores) <span class="card__meta">(desde a v1.7.7)</span></h4><p>16 das 17 cores não têm nome definido em japonês/inglês, então aparece o ID do item mesmo (só a cor preta tem nome correto). Não afeta o funcionamento nem o desempenho.</p><h4>Cabo isolado logo após desligar e religar a energia <span class="card__meta">(desde a v1.8.1)</span></h4><p>Um cabo que não está ligado a nenhum quadro de distribuição pode ficar aceso mesmo depois de desligar e religar a energia. Basta quebrar o cabo em questão e colocá-lo de novo para corrigir.</p><h4>Exibição de receitas no app “Pesquisar” <span class="card__meta">(desde a v1.8.6)</span></h4><p>A tela de receita 3×3 do app “Pesquisar”, disponível no celular e no computador, não recebe a informação de em qual espaço cada ingrediente deve ficar. Por isso, em vez de mostrar o posicionamento real, ela apenas preenche os espaços em sequência a partir do primeiro. O tipo e a quantidade dos ingredientes continuam corretos.</p>
+
+<h2>Itens deixados de fora de propósito</h2>
+<p class="section-lede">Não são bugs — são itens cujo tratamento futuro ainda está em avaliação, por decisão de design.</p>
+<h4>Animações de ataque exclusivas do Kraken e do Titã</h4><p>Esses dois chefes gigantes já mostram o aviso do golpe especial em partículas, mas ainda não têm uma animação de ataque exclusiva que movimente o corpo. É uma decisão de design deixada em aberto de propósito — se isso vai ser implementado ainda depende da decisão da administração do servidor.</p>
+
+<h2>Mudanças recentes ainda não conferidas no jogo de verdade</h2>
+<p class="callout callout--info">Este pacote de MODs é desenvolvido em um ambiente sem acesso direto ao cliente do Minecraft. A inicialização do servidor e a integridade dos dados são verificadas de forma automatizada, mas a aparência, o som e a sensação de uso só podem ser confirmados de verdade com o feedback de quem realmente jogou. Os itens abaixo são de atualizações recentes que ainda não tiveram essa confirmação no jogo. Se encontrar algo estranho, avise a administração do servidor.</p>
+<ul><li><strong>Aparência do encanamento e da máscara de gás:</strong> A aparência e a colisão refeitas na v1.8.5 ainda não foram conferidas na tela de verdade.</li><li><strong>Usabilidade da interface do Farol Aprimorado:</strong> A facilidade de uso da tela de seleção de habilidades dos Faróis Aprimorados α/β ainda não foi conferida.</li><li><strong>Densidade de spawn de inimigos (mundo normal):</strong> Ainda não foi confirmado se a densidade de spawn ajustada na v1.8.5 fica boa mesmo jogando de verdade.</li><li><strong>Novos ícones das ogivas e dos apps do celular:</strong> Os ícones da ogiva de míssil e da ogiva nuclear, além do novo design das telas dos apps do celular, ambos adicionados na v1.8.6, ainda não foram conferidos na tela do jogo.</li><li><strong>Funcionamento das câmeras de segurança, elevadores etc. após virarem elétricos:</strong> Os 5 equipamentos que passaram a precisar de energia na v1.8.3 (câmera de segurança, elevador, escada rolante, porta automática e caixa eletrônico) ainda não tiveram seu funcionamento — com e sem energia — testado de fato.</li><li><strong>Sensação de jogo da eletrificação do redstone (desde a v1.8.1):</strong> Só jogando de verdade para saber o quanto isso trava fazendas e estações automatizadas, e o quanto dá trabalho refazer a fiação.</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referência não oficial dos MODs do Servidor Sorakazekarasu</p>
+    <p class="site-footer__note">Este site é uma referência não oficial. Não distribuímos os arquivos (jars) dos MODs. As receitas e os valores podem estar diferentes dos que você encontra no jogo, dependendo da versão instalada e dos ajustes de configuração feitos no servidor.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

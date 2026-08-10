@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problèmes connus | Glimpse Alpha Wiki</title>
+<meta name="description" content="Liste des bugs connus et des éléments non encore vérifiés du pack de MOD Glimpse Alpha.">
+<meta property="og:title" content="Problèmes connus | Glimpse Alpha Wiki">
+<meta property="og:description" content="Liste des bugs connus et des éléments non encore vérifiés du pack de MOD Glimpse Alpha.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../changelog/">Mises à jour</a></li>
+        <li><a href="../recipes/">Recettes</a></li>
+        <li><a href="../guide/">Guide d&#x27;installation</a></li>
+        <li><a href="../roadmap/">Feuille de route</a></li>
+        <li><a href="../known-issues/" class="active">Problèmes connus</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Langue / Language">
+          🌐 <span>Français</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/">Español</a></li>
+        <li><a href="../../fr/known-issues/" class="active" aria-current="true">Français</a></li>
+        <li><a href="../../zh/known-issues/">简体中文</a></li>
+        <li><a href="../../ko/known-issues/">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème" title="Changer de thème">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Problèmes connus</span>
+  <h1>Problèmes connus</h1>
+  <p class="lede">Cette page recense les petits bugs actuellement connus, ainsi que les éléments qui n&#x27;ont pas encore pu être vérifiés en conditions réelles à cause de contraintes propres à l&#x27;environnement de développement. Dès qu&#x27;un bug sérieux est identifié, un correctif est distribué, comme indiqué dans l&#x27;historique des mises à jour.</p>
+</div>
+
+<h2>Bugs mineurs actuellement connus</h2>
+<p class="section-lede">Ces bugs connus n&#x27;affectent pas le fonctionnement du jeu, mais ont un impact sur l&#x27;affichage ou l&#x27;apparence.</p>
+<h4>Affichage du nom des vitres en verre renforcé (17 couleurs) <span class="card__meta">(depuis v1.7.7)</span></h4><p>16 des 17 couleurs n&#x27;ont pas de nom japonais ni anglais défini : c&#x27;est l&#x27;identifiant de l&#x27;objet qui s&#x27;affiche tel quel (seul le noir a un nom correct). Cela n&#x27;a aucun impact sur le fonctionnement ou les performances.</p><h4>Câbles isolés juste après avoir coupé puis rétabli l&#x27;électricité <span class="card__meta">(depuis v1.8.1)</span></h4><p>Un câble non relié à un tableau électrique peut rester allumé juste après avoir coupé puis rétabli l&#x27;électricité. Il suffit de casser puis de reposer le câble concerné pour corriger le problème.</p><h4>Affichage des recettes dans l&#x27;appli « Recherche » <span class="card__meta">(depuis v1.8.6)</span></h4><p>L&#x27;écran de recette 3×3 affiché dans l&#x27;appli « Recherche » du téléphone et de l&#x27;ordinateur ne reçoit pas l&#x27;information sur l&#x27;emplacement exact de chaque ingrédient dans la grille : il affiche donc une version simplifiée où les ingrédients sont rangés à la suite depuis le début, plutôt que dans leur disposition réelle. Le type et la quantité des ingrédients, eux, restent corrects.</p>
+
+<h2>Éléments volontairement non traités</h2>
+<p class="section-lede">Il ne s&#x27;agit pas de bugs : ce sont des points pris en compte dans la conception, dont la prise en charge future est à l&#x27;étude.</p>
+<h4>Animations d&#x27;attaque dédiées pour le Kraken et le Titan</h4><p>Pour ces deux boss colossaux, l&#x27;avertissement précédant leur attaque spéciale est bien affiché sous forme de particules, mais l&#x27;animation de mouvement du corps propre à cette attaque n&#x27;est pas encore implémentée. Il s&#x27;agit d&#x27;un choix de conception volontaire ; la décision d&#x27;y remédier ou non appartient à l&#x27;administrateur du serveur.</p>
+
+<h2>Changements récents pas encore vérifiés en conditions réelles</h2>
+<p class="callout callout--info">Ce pack de MOD est développé dans un environnement où il n&#x27;est pas possible de piloter directement un client Minecraft. Le démarrage du serveur et la cohérence des données sont vérifiés de façon automatisée, mais l&#x27;apparence, les sons et le ressenti en jeu ne peuvent être confirmés que grâce aux retours des joueurs qui les ont réellement essayés. Voici les éléments des dernières mises à jour qui n&#x27;ont pas encore pu être vérifiés en conditions réelles. Si vous remarquez quelque chose d&#x27;anormal, merci d&#x27;en informer l&#x27;administrateur du serveur.</p>
+<ul><li><strong>Apparence des tuyaux d&#x27;eau et du masque à gaz:</strong> L&#x27;apparence et la zone de collision refaites en v1.8.5 n&#x27;ont pas encore été vérifiées à l&#x27;écran en conditions réelles.</li><li><strong>Ergonomie de l&#x27;interface des balises améliorées:</strong> La facilité d&#x27;utilisation de l&#x27;écran de sélection des capacités des balises améliorées α et β n&#x27;a pas encore été vérifiée.</li><li><strong>Densité d&#x27;apparition des ennemis (monde normal):</strong> Il reste à vérifier si la densité d&#x27;apparition ajustée en v1.8.5 est bien équilibrée une fois en jeu.</li><li><strong>Nouvelles icônes des ogives et des applis du téléphone:</strong> Les icônes de l&#x27;ogive de missile et de l&#x27;ogive nucléaire ajoutées en v1.8.6, ainsi que le nouveau design des écrans des applis du téléphone, n&#x27;ont pas encore été vérifiés à l&#x27;écran en jeu.</li><li><strong>Fonctionnement après électrification des caméras, ascenseurs, etc.:</strong> Pour les 5 appareils devenus dépendants de l&#x27;électricité en v1.8.3 (caméra de sécurité, ascenseur, escalator, porte automatique, DAB), le fonctionnement réel n&#x27;a pas encore été vérifié, ni avec ni sans électricité.</li><li><strong>Ressenti de l&#x27;électrification de la redstone (depuis v1.8.1):</strong> Il est impossible de savoir, sans jouer réellement, à quel point les automatisations des fermes et des gares seront bloquées, ni combien d&#x27;efforts il faudra pour refaire le câblage.</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Référence non officielle des MOD installés sur le serveur Sorakazekarasu</p>
+    <p class="site-footer__note">Ce site est une référence non officielle. Les fichiers des MOD (fichiers .jar) ne sont pas distribués ici. Les recettes et les valeurs affichées peuvent différer de la réalité selon la version installée et les réglages de configuration du serveur.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

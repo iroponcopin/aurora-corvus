@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glimpse Alpha Wiki</title>
+<meta name="description" content="Sorakazekarasu sunucusunda kullanılan Fabric MOD paketi Glimpse Alpha&#x27;nın (eski adıyla Sorakaze) tariflerini, güncelleme geçmişini ve kurulum adımlarını bir araya getiren resmî olmayan bir kaynak sitesidir.">
+<meta property="og:title" content="Glimpse Alpha Wiki">
+<meta property="og:description" content="Sorakazekarasu sunucusunda kullanılan Fabric MOD paketi Glimpse Alpha&#x27;nın (eski adıyla Sorakaze) tariflerini, güncelleme geçmişini ve kurulum adımlarını bir araya getiren resmî olmayan bir kaynak sitesidir.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="./">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menüyü aç">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="./" class="active">Ana Sayfa</a></li>
+        <li><a href="./changelog/">Güncelleme Geçmişi</a></li>
+        <li><a href="./recipes/">Tarif Rehberi</a></li>
+        <li><a href="./guide/">Kurulum Rehberi</a></li>
+        <li><a href="./roadmap/">Yol Haritası</a></li>
+        <li><a href="./known-issues/">Bilinen Sorunlar</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Dil / Language">
+          🌐 <span>Türkçe</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../">日本語</a></li>
+        <li><a href="../en/">English</a></li>
+        <li><a href="../es/">Español</a></li>
+        <li><a href="../fr/">Français</a></li>
+        <li><a href="../zh/">简体中文</a></li>
+        <li><a href="../ko/">한국어</a></li>
+        <li><a href="../pt-br/">Português (Brasil)</a></li>
+        <li><a href="../it/">Italiano</a></li>
+        <li><a href="../ar/">العربية</a></li>
+        <li><a href="../ru/">Русский</a></li>
+        <li><a href="../id/">Bahasa Indonesia</a></li>
+        <li><a href="../de/">Deutsch</a></li>
+        <li><a href="../tr/" class="active" aria-current="true">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Renk temasını değiştir" title="Renk temasını değiştir">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero">
+  <span class="hero__eyebrow">Sorakazekarasu Sunucusu Resmî Olmayan MOD Rehberi</span>
+  <h1>Glimpse Alpha Wiki</h1>
+  <p class="lede">
+    Sorakazekarasu sunucusunda kullanılan Fabric MOD paketi <strong>Glimpse Alpha</strong>&#x27;nın (eski adıyla Sorakaze) tariflerini, güncelleme geçmişini ve kurulum adımlarını bir araya getiren resmî olmayan bir kaynak sitesidir. Şu anda 
+    <strong>8 MOD&#x27;u</strong> (silahlar, demiryolu, yapı malzemeleri, boss, gökyüzü, hayatta kalma, araçlar, elektrik) Minecraft 
+    <strong>26.2</strong> üzerinde aynı anda çalıştırıyoruz.
+  </p>
+  <p class="callout callout--info">Bu site MOD dosyalarını (jar) dağıtmamaktadır. Burada yalnızca tarif tabloları, güncelleme geçmişi ve kurulum adımları gibi &quot;okuma&quot; içerikleri bulunur. MOD dosyalarını doğrudan sunucu yöneticinizden temin edin.</p>
+  <div class="tag-row" style="margin-top:20px;">
+    <a class="btn" href="recipes/">Tarif Rehberini Gör</a>
+    <a class="btn btn--ghost" href="changelog/">Güncelleme Geçmişini Gör</a>
+    <a class="btn btn--ghost" href="guide/">Kurulum Rehberini Gör</a>
+  </div>
+</section>
+
+    <div class="card" style="margin-top:28px;">
+      <div class="badge-row"><span class="type-badge type-visual">Görsel Güncelleme</span>
+        <span class="timeline-entry__release">v1.8.6</span>
+        <span class="card__meta">2026-08-09</span>
+      </div>
+      <h3 style="margin-top:0">Son güncelleme: Füze savaş başlığı ve cep telefonu uygulama simgeleri eklendi</h3>
+      <p>Görünüm ve bulunabilirlikle ilgili 2 düzeltme. Füze ve nükleer savaş başlığına hiç doku hazırlanmamış sorunu giderildi; özel simgeler yeni çizilerek yapılabilir hale de getirildi. Ayrıca bulunamadığı bildirilen Roketatar yaratıcılık sekmesine eklendi, görünen adı ve kontrol ekranının çevirisi de tamamlandı. Cep telefonu ve bilgisayardaki 7 uygulamaya da özel simgeler eklendi.</p>
+      <ul><li>Füze ve nükleer savaş başlığına özel 128px&#x27;lik simgeler yeni çizildi (önceden hiç resmi olmadığından, envanterde Minecraft&#x27;ın standart &quot;mor-siyah dama deseni&quot; ile görünüyordu).</li><li>Füze savaş başlığı (demir külçesi ×5 + TNT ×1 + kızıltaş bloğu ×1) ve nükleer savaş başlığı (demir bloğu ×4 + TNT ×4 + Nether yıldızı ×1) yeni olarak yapılabilir hale getirildi.</li><li>Roketatar yaratıcılık sekmesine eklendi (önceden kendisi yapılabiliyordu ama sekmede görünmediği için bulunamıyordu). Görünen ad ile hedef koordinat girişi, 9 çeşit durum gösterimi, 8 yön, güvenlik kilidi gibi kontrol paneli ekranının çevirisi (Japonca ve İngilizce toplam 54&#x27;er adet) yeni eklendi.</li><li>Cep telefonu ve bilgisayardaki 7 uygulamanın (kamera görüntüsü, mesajlar, araştır, hava durumu, hesap makinesi, telefon, fotoğraf çekme) hepsine özel simgeler yeni çizildi (önceden yalnızca renkli kareler diziliyordu). Hava durumu uygulamasındaki yağış simgesi ve büyük saat, hesap makinesi uygulamasındaki gömük LCD tarzı tasarım, telefon uygulamasındaki pusula göstergesi, kamera görüntüsü uygulamasındaki güvenlik monitörü tarzı tasarım gibi uygulamaya özgü süslemeler de eklendi.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span></div>
+      <p><a href="changelog/">Tüm güncelleme geçmişini gör →</a></p>
+    </div>
+
+<h2>Kurulu MOD&#x27;lar</h2>
+<p class="section-lede">Tıkladığınızda o MOD&#x27;un tarif listesine gidersiniz.</p>
+<div class="grid grid--mods">
+  <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
+      <h3>Silahlar</h3>
+      <p class="card__meta">Vanilla&#x27;da olmayan uzun menzilli silahlar</p>
+      <div class="card__meta">v1.8.6</div>
+    </a>
+      <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
+      <h3>Demiryolu</h3>
+      <p class="card__meta">Tren ve ray araçları</p>
+      <div class="card__meta">v1.8.1</div>
+    </a>
+      <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
+      <h3>Yapı ve Dekorasyon</h3>
+      <p class="card__meta">Şehir kurmak için yapı malzemeleri ve ev aletleri</p>
+      <div class="card__meta">v1.8.6</div>
+    </a>
+      <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
+      <h3>Boss</h3>
+      <p class="card__meta">Güçlü boss&#x27;lar ve onlardan düşen ekipmanlar</p>
+      <div class="card__meta">v1.8.5</div>
+    </a>
+      <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
+      <h3>Gökyüzü</h3>
+      <p class="card__meta">Yeni boyut ve meleklerin krallığı</p>
+      <div class="card__meta">v1.8.4</div>
+    </a>
+      <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
+      <h3>Hayatta Kalma</h3>
+      <p class="card__meta">Yeni cevherler, zırhlar ve hayatta kalma unsurları</p>
+      <div class="card__meta">v1.8.5</div>
+    </a>
+      <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
+      <h3>Araçlar</h3>
+      <p class="card__meta">Otomobiller, otobüsler, uçaklar</p>
+      <div class="card__meta">v1.8.1</div>
+    </a>
+      <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
+      <h3>Elektrik</h3>
+      <p class="card__meta">Elektrik üretimi, iletimi ve elektrikli cihazlar</p>
+      <div class="card__meta">v1.8.4</div>
+    </a>
+</div>
+
+<h2>Bu Sitede Neler Yapabilirsiniz</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));">
+  <a class="card" href="changelog/">
+      <h3>Güncelleme Geçmişi</h3>
+      <p>İlk sürümden bugüne kadarki tüm güncellemeleri kronolojik sırayla tanıtır. Nelerin değiştiğini ve nelere dikkat edilmesi gerektiğini bir bakışta görebilirsiniz.</p>
+      <p class="card__meta">Güncelleme Geçmişini Oku →</p>
+    </a>
+  <a class="card" href="recipes/">
+      <h3>Tarif Rehberi</h3>
+      <p>8 MOD&#x27;daki tüm eşyaların yapım tariflerini arayıp kategoriye göre filtreleyebileceğiniz bir tablo.</p>
+      <p class="card__meta">Tarif Ara →</p>
+    </a>
+  <a class="card" href="guide/">
+      <h3>Kurulum Rehberi</h3>
+      <p>MOD&#x27;ları etkinleştirmekten oyuna başlamaya kadar olan adımları Windows / Mac için ayrı ayrı anlatır.</p>
+      <p class="card__meta">Kurulum Adımlarını Gör →</p>
+    </a>
+  <a class="card" href="roadmap/">
+      <h3>Yol Haritası</h3>
+      <p>Şu anda hazırlanmakta olan yeni alanları ve yeni özellikleri bir araya getiren yol haritası (içerik değişebilir).</p>
+      <p class="card__meta">Yol Haritasını Gör →</p>
+    </a>
+  <a class="card" href="known-issues/">
+      <h3>Bilinen Sorunlar</h3>
+      <p>Şu anda bilinen hataları ve henüz doğrulanmamış unsurları bir araya getirir.</p>
+      <p class="card__meta">Bilinen Sorunları Gör →</p>
+    </a>
+</div>
+
+<h2>Bu Proje Hakkında</h2>
+<p>Proje başlangıçta &quot;Sorakaze&quot; adıyla, vanilla hayatta kalma deneyimini korurken silahlar, demiryolu ve yapı malzemeleri olmak üzere 3 MOD eklemekle başladı. Sonrasında yapılabilir eşyalar eklenerek genişlemeye devam etti ve v1.8.0&#x27;da &quot;Glimpse Alpha&quot; adını aldı. Şu anda boss&#x27;lar, yeni bir boyut, hayatta kalma unsurları, araçlar ve elektrik altyapısına kadar uzanan 8 MOD&#x27;luk bir yapıya sahip.</p>
+<p>Vanilla unsurları değiştirmemek veya kaldırmamak baştan beri sürdürülen bir ilke; bu yüzden yay-ok, maden arabası gibi mevcut unsurlar olduğu gibi duruyor. Gerçek silah, şirket veya marka isimleri kullanılmamıştır.</p>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu Sunucusuna Kurulu MOD&#x27;lar İçin Resmî Olmayan Kaynak</p>
+    <p class="site-footer__note">Bu site resmî olmayan bir kaynaktır. MOD dosyalarının (jar) dağıtımı yapılmamaktadır. Tarifler ve değerler, kurulu sürüme ve sunucu tarafındaki config ayarlarına göre gerçek oyundakinden farklı olabilir.</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

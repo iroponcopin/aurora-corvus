@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Histórico de atualizações | Glimpse Alpha Wiki</title>
+<meta name="description" content="Histórico completo de atualizações do pacote de MODs Glimpse Alpha (antigo Sorakaze). Um resumo do que mudou e dos pontos de atenção desde a primeira versão até hoje.">
+<meta property="og:title" content="Histórico de atualizações | Glimpse Alpha Wiki">
+<meta property="og:description" content="Histórico completo de atualizações do pacote de MODs Glimpse Alpha (antigo Sorakaze). Um resumo do que mudou e dos pontos de atenção desde a primeira versão até hoje.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/changelog.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Início</a></li>
+        <li><a href="../changelog/" class="active">Histórico de atualizações</a></li>
+        <li><a href="../recipes/">Receitas</a></li>
+        <li><a href="../guide/">Guia de instalação</a></li>
+        <li><a href="../roadmap/">Próximas atualizações</a></li>
+        <li><a href="../known-issues/">Bugs conhecidos</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Idioma / Language">
+          🌐 <span>Português (Brasil)</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../changelog/">日本語</a></li>
+        <li><a href="../../en/changelog/">English</a></li>
+        <li><a href="../../es/changelog/">Español</a></li>
+        <li><a href="../../fr/changelog/">Français</a></li>
+        <li><a href="../../zh/changelog/">简体中文</a></li>
+        <li><a href="../../ko/changelog/">한국어</a></li>
+        <li><a href="../../pt-br/changelog/" class="active" aria-current="true">Português (Brasil)</a></li>
+        <li><a href="../../it/changelog/">Italiano</a></li>
+        <li><a href="../../ar/changelog/">العربية</a></li>
+        <li><a href="../../ru/changelog/">Русский</a></li>
+        <li><a href="../../id/changelog/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/changelog/">Deutsch</a></li>
+        <li><a href="../../tr/changelog/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Histórico de atualizações</span>
+  <h1>Histórico de atualizações</h1>
+  <p class="lede">Aqui está tudo desde a primeira versão (v1.0.0, 15/07/2026) até hoje (09/08/2026, um total de 36 atualizações), listado do mais recente para o mais antigo. Os detalhes internos de teste e desenvolvimento ficam de fora — o foco é o que realmente mudou no servidor e o que você precisa saber.</p>
+  <p class="callout callout--info">Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.</p>
+</div>
+
+<div class="filter-bar" role="group">
+  <input type="search" id="changelogSearch" placeholder="Busque por MOD, versão ou palavra-chave…" aria-label="Busque por MOD, versão ou palavra-chave…">
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">MOD:</span>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">Armas de Fogo</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">Ferrovia</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">Materiais de Construção e Decoração</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Chefes</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">Céu</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">Sobrevivência</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Veículos</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">Energia</button>
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">Tipo:</span>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">Novidade</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">Correção de bug</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">Atualização visual</button>
+</div>
+
+<p id="changelogEmpty" class="empty-state" hidden>Nenhuma atualização corresponde aos filtros selecionados.</p>
+<div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="visual-update" data-mods="guns deco">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.6</span> — Adicionados ícones para a ogiva de míssil e para os apps do celular
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Atualização visual</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span></div>
+      <p>Duas correções relacionadas à aparência e à facilidade de encontrar os itens. Resolvemos o problema de a ogiva de míssil e a ogiva nuclear não terem nenhuma textura, desenhando ícones exclusivos do zero e deixando-as craftáveis. Também adicionamos o lança-mísseis, que estava sendo relatado como “não encontrado”, à aba criativa, e organizamos a tradução do nome e da tela de controle. Os 7 apps do celular e do computador também ganharam ícones exclusivos novos.</p>
+      <ul><li>Desenhamos do zero ícones exclusivos de 128px para a ogiva de míssil e a ogiva nuclear (antes elas não tinham nenhuma imagem e apareciam no inventário com o xadrez roxo e preto padrão do Minecraft para textura ausente).</li><li>A ogiva de míssil (5 lingotes de ferro + 1 TNT + 1 bloco de redstone) e a ogiva nuclear (4 blocos de ferro + 4 TNT + 1 estrela do Nether) agora podem ser craftadas.</li><li>Adicionamos o lança-mísseis à aba criativa (antes já dava para craftar, mas ele não aparecia na aba e ninguém conseguia encontrá-lo). Também adicionamos o nome de exibição e a tradução completa (54 termos em japonês e 54 em inglês) da tela do painel de controle, incluindo a inserção de coordenadas do alvo, os 9 status exibidos, as 8 direções e a trava de segurança.</li><li>Desenhamos ícones exclusivos novos para os 7 apps do celular e do computador (câmeras, mensagens, pesquisar, clima, calculadora, telefone e câmera fotográfica), que antes eram só quadrados coloridos. Também adicionamos detalhes visuais específicos de cada app, como o ícone de chuva e o relógio ampliado no app de clima, o visual de display de calculadora afundado no app de calculadora, a bússola no app de telefone e o visual de monitor de vigilância no app de câmeras.</li><li>Melhoramos para que, ao abrir um app, o ícone e o nome do app aberto no momento fiquem sempre visíveis no topo da tela.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>A decisão de deixar a ogiva de míssil e a ogiva nuclear craftáveis foi da equipe de desenvolvimento (não foi um pedido explícito do proprietário). Se achar o balanceamento forte demais ou exagerado, converse com a administração.</li><li>Também não é preciso apagar nem editar a configuração desta vez.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A tela de receita 3×3 do app “Pesquisar” não recebe do servidor a informação de em qual espaço cada ingrediente vai, então ela mostra uma versão simplificada, preenchendo os ingredientes em sequência a partir do primeiro espaço (o tipo e a quantidade dos ingredientes em si estão corretos).</li><li>Os novos ícones das ogivas, a tradução do painel de controle e as novas telas dos apps do celular ainda não foram conferidos na tela do jogo de verdade.</li><li>16 das 17 cores das janelas de vidro reforçado continuam sem nome (esse problema vem de versões anteriores).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.5</span> — Correção de bugs no encanamento, no Farol Aprimorado e na máscara de gás
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>Corrigimos vários bugs relatados na v1.8.4. Resolvemos o problema do encanamento não poder ser quebrado, o problema de não conseguir escolher habilidades nos Faróis Aprimorados α e β, e o problema da máscara de gás aparecer flutuando em cima da cabeça. Também corrigimos para que o limite de spawn de mobs hostis valha corretamente só no Mundo Normal, e mudamos o valor padrão para um número fixo de 150 mobs.</p>
+      <ul><li>Corrigido o bug em que não dava para quebrar o encanamento. A unidade da colisão estava trocada, deixando a área de acerto minúscula, 1/32 da largura visual (a dureza e a ferramenta exigida já estavam corretas desde o início).</li><li>Corrigido também o bug em que uma tomada d&#x27;água colocada sozinha em um rio era arrastada pela correnteza e desaparecia (redesenhada como um bloco compatível com submersão).</li><li>Corrigido o bug que impedia escolher habilidades nos Faróis Aprimorados α e β. A tela fechava sozinha logo depois de aberta, e a escolha nem era salva (o Farol Aprimorado padrão não era afetado).</li><li>Corrigido o bug em que a máscara de gás aparecia flutuando em cima da cabeça. Criamos um modelo tridimensional exclusivo e ajustamos a posição para encaixar no rosto.</li><li>A aparência do Boneco de Fogos voltou do visual tridimensional de “pelúcia”, adicionado na v1.8.4, para a imagem plana usada até a v1.8.3 (a pedido do proprietário). O limite de usos e as outras funções não mudaram.</li><li>O limite de spawn de mobs hostis no Mundo Normal, antes “15× o da vanilla” (o equivalente a cerca de 1050 mobs), mudou para um número fixo de 150 mobs. Não afeta o Nether, o End nem o Céu (também corrigimos, ao mesmo tempo, o bug em que isso era aplicado por engano a todas as dimensões).</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Limite de spawn de mobs hostis (só no Mundo Normal): 15× a vanilla (cerca de 1050 mobs) → número fixo de 150 mobs</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Não é preciso apagar nem editar a configuração. O valor do limite de spawn é atualizado automaticamente para o novo padrão.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A nova aparência do encanamento e da máscara de gás, além da sensação de uso da interface do Farol Aprimorado, ainda não foram conferidas jogando de verdade.</li><li>Ainda não foi confirmado se a nova densidade de 150 mobs fica boa jogando de verdade.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss deco guns power sky survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.4</span> — Novas armas, sistema do celular, encanamento, estações do ano e expansão do Céu
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>Adicionamos de uma vez 2 armas novas — pistola e submetralhadora —, o lança-mísseis com 2 tipos de ogiva, um sistema completo de aplicativos para celular e computador, encanamento, um elevador que realmente se move, e um sistema de estações do ano (primavera, verão, outono e inverno). Além disso, o limite de altura para construir no Mundo Normal foi ampliado (o subsolo não mudou), e reduzimos bastante a lista de blocos de separação e funis que precisavam de eletricidade.</p>
+      <ul><li>Adicionadas 2 armas novas: pistola (200 de dano por segundo, carregador de 12, semiautomática) e submetralhadora (450 de dano por segundo, carregador de 40, totalmente automática). As duas usam a munição de pequeno calibre já existente, então não surgiu nenhuma munição nova.</li><li>Adicionados o lança-mísseis (arma que se instala no chão), a ogiva de míssil e a ogiva nuclear (a ogiva nuclear tem um limite de blocos que pode destruir, e é exclusiva do lança-mísseis — não dá para disparar segurando na mão).</li><li>Adicionados ao lança-foguetes uma mira com zoom de 2× e um sistema de travamento de alvo (trava depois de 1 segundo mirando; não funciona contra um alvo que está correndo).</li><li>Adicionado um sistema completo de aplicativos ao celular e ao computador (7 apps: câmeras, mensagens, pesquisar, clima, calculadora, telefone e câmera fotográfica). Dá para abrir segurando o item e clicando com o botão direito, ou apertando H, e até tirar foto e mandar por mensagem.</li><li>Adicionado o encanamento (leva água de rios e mares até caldeirões e plantações). Também foi adicionado um elevador que realmente move a cabine para cima e para baixo.</li><li>Adicionados ao MOD de Energia o cabo grosso (alcança 4× mais longe que o normal), o cabo blindado (8×) e o painel de LED.</li><li>Renovamos totalmente a aparência dos minérios. Adicionados o novo material “Jade Lavanda” (ainda mais raro que o rubi), a máscara de gás e o escudo aéreo.</li><li>Adicionado o sistema de estações do ano (cada estação dura 8 dias, o ano inteiro tem 32 dias). O deserto no verão e os campos nevados no inverno ficam mais rigorosos do que antes.</li><li>Os Faróis Aprimorados α e β (do MOD de Chefes) agora podem ser craftados. Além disso, o Farol Aprimorado em si deixou de precisar de eletricidade (revertendo a exigência que tinha sido adicionada na v1.8.1).</li><li>O limite de altura para construir no Mundo Normal foi ampliado de y=319 para y=1023 (o subsolo e o fundo do mundo não mudaram).</li><li>A lista de aparelhos que precisam de eletricidade caiu bastante, de 17 para apenas 3 tipos (bloco de descarte, emissor de laser e torreta automática). Funil, os 8 blocos de separação automática, esteira transportadora, os 2 semáforos e o bloco de parada automática de trens, entre outros, agora funcionam sem eletricidade.</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Fuzil de assalto: medido de verdade em 4.500 → 5.850 de dano por segundo</li><li>Minigun: medido de verdade em 250 → 50 de dano por segundo (bem enfraquecida, ficou mais fraca até que a espada de diamante)</li><li>O dano do rifle sniper e do sniper pesado também aumentou. O fator de cálculo da durabilidade das armas de precisão também mudou de 0,5 para 0,6</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Os mísseis disparados pelo lança-mísseis continuam destruindo o terreno mesmo com mobGriefing definido como false. Se quiser impedir só a destruição de terreno, defina rocketDestroysTerrain como false na configuração.</li><li>A altura máxima de construção no Mundo Normal foi ampliada até y=1023. Isso afeta até quem não usa o Céu (o subsolo não mudou).</li><li>Como a lista de blocos de separação e funis que precisam de eletricidade diminuiu bastante, aparelhos que estavam parados voltam a funcionar sozinhos. Tome cuidado com reativações inesperadas em lugares que ficaram abandonados por muito tempo.</li><li>As mudanças de dano das armas acima são aplicadas automaticamente. Não é preciso apagar nem editar a configuração, mas, se quiser reverter, dá para especificar os valores individualmente na configuração.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Logo depois de adicionados, os Faróis Aprimorados α e β tinham um bug que impedia escolher habilidades (já corrigido na atualização seguinte).</li><li>Logo depois de adicionado, o lança-mísseis não aparecia na aba criativa e não tinha nem nome definido. Os ícones das 2 ogivas também não tinham sido preparados (resolvido na atualização seguinte).</li><li>Os apps do celular e do computador ainda não tinham ícones exclusivos, aparecendo só como quadrados coloridos (melhorado na atualização seguinte).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.3</span> — Eletrodomésticos passam a usar eletricidade, e as máquinas esquentam
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>5 equipamentos do MOD de materiais de construção — câmera de segurança, elevador, escada rolante, porta automática e caixa eletrônico — agora precisam de eletricidade para funcionar. Além disso, máquinas em funcionamento, como gerador e usina nuclear, passaram a esquentar o cômodo ao redor, e sem ventilação ou resfriamento você pode sofrer dano de calor.</p>
+      <ul><li>Câmera de segurança, elevador, escada rolante, porta automática e caixa eletrônico passaram a precisar de eletricidade (os que já estavam instalados também são afetados a partir do próximo início do servidor). O elevador continua funcionando “para descer” mesmo sem eletricidade (para evitar que alguém fique preso).</li><li>Máquinas em funcionamento, como gerador e usina nuclear, agora esquentam o ambiente ao redor. Manter 8 máquinas ligadas sem resfriamento faz a temperatura do cômodo subir a cerca de 77,8°C, começando a causar dano em cerca de 14 segundos.</li><li>Corrigido para que o ar-condicionado consuma eletricidade de verdade (antes era tratado como se não consumisse nada).</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Aquecimento das máquinas: manter 8 máquinas sem resfriamento ligadas faz a temperatura do cômodo subir a cerca de 77,8°C, causando dano de calor em cerca de 14 segundos</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Será preciso fazer a fiação com cabo até a câmera de segurança, o elevador, a escada rolante, a porta automática e o caixa eletrônico. Os equipamentos já instalados também vão parar de funcionar a partir do próximo início do servidor.</li><li>Ao redor de máquinas que esquentam, como o gerador, o ambiente fica quente e perigoso se não houver ventilação ou resfriamento por ar-condicionado.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O funcionamento real dos 5 equipamentos que passaram a usar eletricidade (câmera de segurança, elevador, escada rolante, porta automática e caixa eletrônico), tanto com quanto sem eletricidade, ainda não foi conferido.</li><li>A aparência e a praticidade dos 3 novos geradores e dos slots de combustível ainda não foram conferidas.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.2</span> — Ar-condicionado maior e instalação simplificada dos equipamentos elétricos
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>O tamanho do ar-condicionado aumentou bastante, ficando com uma presença de verdade dentro de um cômodo. Também simplificamos os equipamentos do MOD de Energia para que fiquem prontos “só de instalar 1 item”, e corrigimos o bug em que a lareira não fazia nenhum efeito no bioma de campos nevados.</p>
+      <ul><li>O corpo do ar-condicionado ficou maior (o equivalente a 3,1×2,0×2,1 blocos). Ele agora é um dos maiores equipamentos do MOD de Energia, com uma unidade externa com ventilador redondo, aletas de bobina e painel de controle luminoso, e uma unidade interna com 3 palhetas que se projetam para a frente.</li><li>Os equipamentos do MOD de Energia foram padronizados para não precisar mais combinar vários blocos — agora basta instalar 1 item para ficarem prontos.</li><li>Corrigido o bug em que a lareira não fazia nenhum efeito no bioma de campos nevados. Agora o frio do terreno e o calor dos equipamentos são calculados separadamente.</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Campos nevados, perto de uma lareira acesa por você: temperatura sentida -24,0°C (dano por congelamento) → +2,4°C (seguro)</li><li>Base com telhado, à noite, nevando, com lareira: -18,6°C → +7,9°C</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Se você ficar parado ao ar livre numa noite de nevasca, só 1 lareira ainda pode não ser suficiente (combine com telhado, armadura e mais lareiras).</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Ainda não foi confirmado se o balanceamento da temperatura fica bom jogando de verdade.</li><li>A nova aparência tridimensional dos 9 blocos de separação automática ainda não foi conferida.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power boss deco guns rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-05</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.1</span> — Chega o MOD de Energia — a redstone agora precisa de eletricidade
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Chega o 8º MOD, “Energia”. Em uma das maiores mudanças deste projeto, os circuitos de redstone da vanilla (pó de redstone, repetidor, comparador, bloco de redstone e tocha de redstone) agora precisam de eletricidade vinda de um gerador. Todos os mecanismos de redstone já existentes, como fazendas automáticas, estações e portas automáticas, vão parar de funcionar até você fazer a fiação da rede elétrica.</p>
+      <ul><li>Chega o 8º MOD, “Energia”. Agora dá para montar uma rede elétrica com gerador, usina nuclear, quadro de distribuição, cabo e outros itens.</li><li>17 tipos de blocos continuam funcionando sem eletricidade, como antes: alavanca, botão, placa de pressão, gancho de fio de gatilho, observador, sensor de luz do dia, sensor de sculk, alvo, baú-armadilha, trilho detector, estante de livros, jukebox e para-raios (abrir e fechar portas manualmente também continua igual).</li><li>O Bloco de Redstone se quebra sozinho cerca de 10 minutos depois de colocado, voltando para o inventário como item (isso evita que fiquem “fontes de energia grátis”, que não precisam de eletricidade, espalhadas por aí).</li><li>Só o bloco de descarte, o emissor de laser e a torreta automática têm uma medida de segurança especial: sem eletricidade, eles ficam “ligados” em vez de desligar (isso evita perder itens ou mobs importantes por acidente).</li><li>A velocidade do projétil do rifle sniper, do sniper pesado e da arma laser foi corrigida para o valor que realmente era pretendido (dano, cadência, capacidade do carregador, durabilidade e alcance não mudaram).</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Velocidade do projétil do rifle sniper e do sniper pesado: 16,0 → 24,0 (1,5×)</li><li>Velocidade do projétil da arma laser: 16,0 → 48,0 (3×)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Todas as estruturas que usam circuito de redstone, como fazendas automáticas, estações e portas automáticas já existentes, vão parar de funcionar. Você vai precisar fazer a fiação da rede elétrica (gerador e cabos) do zero.</li><li>Se quiser desfazer tudo isso, defina powerEnabled como false no config/sorakaze_power.json. Se quiser desfazer só a parte da redstone, defina redstoneRequiresPower como false no mesmo arquivo.</li><li>O observador e o sensor de luz do dia foram deixados sem precisar de eletricidade de propósito (para manter um jeito de restaurar uma base sem energia direto no jogo).</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Ainda não foi testada a sensação real de jogar em um mundo com a redstone travada, nem o quanto isso afeta fazendas e estações.</li><li>O brilho do cabo, a tela do quadro de distribuição, e a aparência do gerador e da usina nuclear ainda não foram conferidos no jogo de verdade.</li><li>Ao desligar e religar a energia, um cabo isolado, sem ligação com nenhum quadro de distribuição, pode ficar aceso mesmo assim (quebrar e recolocar resolve).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco guns sky survival">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Reparo automático dos arquivos de configuração (v1.8.0 redistribuída)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>Esta é a versão corrigida, redistribuída ainda no mesmo dia. Na primeira v1.8.0, valores antigos que tinham ficado no arquivo de configuração de versões anteriores acabavam sobrescrevendo os novos valores padrão, então coisas como a resolução da câmera de segurança, o desempenho da Excalibur e a destruição de terreno do lança-foguetes não estavam fazendo efeito. A partir de agora, não é mais preciso apagar manualmente o arquivo de configuração a cada atualização: foi introduzido um sistema que, ao iniciar o servidor, atualiza automaticamente para o novo valor padrão apenas os “valores antigos definidos por uma versão anterior”.</p>
+      <ul><li>Foi introduzido um sistema que detecta automaticamente valores de configuração “fósseis”, deixados por versões anteriores, e os atualiza para o padrão atual. A partir de agora, não é mais preciso apagar manualmente o arquivo de configuração a cada atualização.</li><li>Nenhum valor ajustado manualmente por você é alterado (a atualização só acontece quando o valor salvo é igual a um valor padrão antigo).</li><li>Com essa correção, a resolução da câmera de segurança (768 → 3840), o desempenho da Excalibur (ataque 12 → 75, velocidade de ataque 1,8 → 0,6) e a destruição de terreno do lança-foguetes, entre outros, agora fazem efeito corretamente no jogo de verdade.</li><li>Foram atualizados nesta versão os 5 MODs de Chefes, Materiais de Construção, Armas de Fogo, Céu e Sobrevivência. Ferrovia e Veículos não mudaram desta vez.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Esta versão redistribuída é lançada com o mesmo número de versão e nome de arquivo da primeira v1.8.0. Se você tiver a primeira v1.8.0 em mãos, descarte-a e substitua por esta versão.</li><li>A partir de agora, não é mais necessário aquele passo de “apagar o arquivo de configuração” que costumávamos pedir a cada atualização.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O novo desempenho da Excalibur e o efeito de destruição de terreno do lança-foguetes ainda não foram confirmados jogando de verdade.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Reparo automático dos arquivos de configuração (v1.8.0 redistribuída)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Esta é a versão corrigida, redistribuída ainda no mesmo dia. Na primeira v1.8.0, valores antigos que tinham ficado no arquivo de configuração de versões anteriores acabavam sobrescrevendo os novos valores padrão, então coisas como a resolução da câmera de segurança, o desempenho da Excalibur e a destruição de terreno do lança-foguetes não estavam fazendo efeito. A partir de agora, não é mais preciso apagar manualmente o arquivo de configuração a cada atualização: foi introduzido um sistema que, ao iniciar o servidor, atualiza automaticamente para o novo valor padrão apenas os “valores antigos definidos por uma versão anterior”.</p>
+      <ul><li>Foi introduzido um sistema que detecta automaticamente valores de configuração “fósseis”, deixados por versões anteriores, e os atualiza para o padrão atual. A partir de agora, não é mais preciso apagar manualmente o arquivo de configuração a cada atualização.</li><li>Nenhum valor ajustado manualmente por você é alterado (a atualização só acontece quando o valor salvo é igual a um valor padrão antigo).</li><li>Com essa correção, a resolução da câmera de segurança (768 → 3840), o desempenho da Excalibur (ataque 12 → 75, velocidade de ataque 1,8 → 0,6) e a destruição de terreno do lança-foguetes, entre outros, agora fazem efeito corretamente no jogo de verdade.</li><li>Foram atualizados nesta versão os 5 MODs de Chefes, Materiais de Construção, Armas de Fogo, Céu e Sobrevivência. Ferrovia e Veículos não mudaram desta vez.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Esta versão redistribuída é lançada com o mesmo número de versão e nome de arquivo da primeira v1.8.0. Se você tiver a primeira v1.8.0 em mãos, descarte-a e substitua por esta versão.</li><li>A partir de agora, não é mais necessário aquele passo de “apagar o arquivo de configuração” que costumávamos pedir a cada atualização.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O novo desempenho da Excalibur e o efeito de destruição de terreno do lança-foguetes ainda não foram confirmados jogando de verdade.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.7</span> — Atualização geral dos 7 MODs, e as armas voltam a usar balas de verdade
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Todos os 7 MODs foram atualizados juntos para a v1.7.7. As balas das armas voltaram do sistema hitscan (acerto instantâneo) para o sistema de projétil, em que a bala realmente viaja pelo ar (o valor do dano em si não mudou). Também chegaram vários elementos novos em cada MOD, como a nova arma “Lança-mísseis”, o bloco de parada automática de trens e o boneco de fogos.</p>
+      <ul><li>[Armas de fogo] As balas voltaram a “viajar de verdade” pelo ar. A sensação visual muda, mas o dano de cada arma continua o mesmo.</li><li>[Armas de fogo] Adicionada a nova arma “Lança-foguetes” com munição exclusiva. Ela causa dano de impacto direto + explosão, e a destruição de terreno vem desativada por padrão.</li><li>[Materiais de construção] As portas passaram a “fechar mesmo com alguém no meio”. Como o design garante que não há colisão no momento de fechar, ninguém sofre dano por ficar preso.</li><li>[Materiais de construção] Adicionadas janelas de vidro reforçado coloridas (17 cores), 5 blocos decorativos (formato de smartphone, de notebook e de computador de mesa) e a porta de cofre. O limite máximo da resolução de imagem da câmera de segurança foi ampliado (o valor padrão continua o mesmo).</li><li>[Chefes] O número de efeitos especiais que dá para escolher ao mesmo tempo no Farol Aprimorado subiu de 3 para 5.</li><li>[Chefes] A “Excalibur”, dropada ao derrotar o Rock Lock, foi refeita como uma espada grande de duas mãos. Ganhou um modelo 3D exclusivo e teve o desempenho reforçado.</li><li>[Céu] Corrigido o bug em que, ao montar no Dragão, o corpo dele ficava virado para o lado contrário ao da direção do movimento.</li><li>[Céu] O Cajado de Anjo foi reforçado. O visual da Espada Real e de todo o conjunto de equipamento de anjo também foi renovado, com modelos mais tridimensionais (o desempenho não mudou).</li><li>[Ferrovia] Adicionado o novo bloco de parada automática de trens. Instalado embaixo do trilho, ele para automaticamente e de forma suave qualquer trem que se aproximar.</li><li>[Veículos] Corrigido o bug em que, depois de usar a visão de cabine em primeira pessoa uma vez, parte da carroceria ficava invisível para sempre. O visual de 11 veículos foi refeito.</li><li>[Sobrevivência] A geração dos minérios de pérola e rubi dobrou aproximadamente (só em terrenos gerados a partir de agora). Adicionados o Bloco de Pérola e o Bloco de Rubi.</li><li>[Sobrevivência] Adicionado o novo item “Boneco de Fogos”. Assim como o Totem da Imortalidade, ele evita a morte, mas com efeito mais forte e podendo ser usado até 3 vezes. Também pode ser colocado como decoração.</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Excalibur (drop de chefe): dano 12,0 → 36,0 (3×), velocidade de ataque caiu pela metade, alcance 3,0 → 4,0 blocos, e ganhou efeito de repulsão. Porém, a taxa de drop mudou de 100% para 70%.</li><li>Cajado de Anjo: dano 12 → 20, alcance 48m → 64m, tempo de recarga reduzido, bônus corpo a corpo 7,0 → 10,0 (agora, pela primeira vez, ele supera o bônus corpo a corpo da Espada de Anjo).</li><li>Lança-foguetes: 40,0 de dano no impacto direto + dano de explosão (poder explosivo equivalente ao de um Creeper). Carregador de 1 tiro, e é a arma mais lenta entre todas.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Precisa apagar a configuração: `sorakaze_boss.json` (valores da Excalibur) e `sorakaze_sky.json` (valores do Cajado de Anjo). Sem isso, os novos valores não fazem efeito.</li><li>Também recomendamos apagar o `sorakaze_guns.json`. Sem isso, o novo item de configuração “velocidade do projétil” fica travado num valor anormalmente lento para todas as armas (isso não afeta o dano nem outros valores de poder de fogo).</li><li>Entre os 5 blocos decorativos, os formatos de smartphone, notebook e computador de mesa se inspiram em produtos reais, mas tanto no jogo quanto no manual eles são descritos apenas pelo formato, sem usar nenhuma marca.</li><li>[Balanceamento] Mesmo agora, o fuzil de assalto continua muito forte, com cerca de 3750 de dano por segundo. Mesmo com o reforço do Farol Aprimorado, da Excalibur e do Cajado de Anjo, quase todos os chefes ainda caem em poucos segundos. Não foi adicionada nenhuma resistência, nem do lado das armas nem do lado dos chefes.</li><li>Vale lembrar que os números de versão 1.4.3, 1.6.x, 1.7.2 e 1.7.6 foram usados internamente durante o desenvolvimento e nunca chegaram a ser distribuídos de verdade.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A sensação de as portas “fecharem mesmo com alguém por perto”, a sensação do disparo e do impacto do lança-foguetes, e a facilidade de uso da nova interface do Farol Aprimorado ainda não foram conferidas no jogo de verdade.</li><li>A aparência dos novos modelos 3D da Excalibur e do Cajado de Anjo, e como a correção da direção do dragão realmente aparece, também ainda não foram conferidas.</li><li>A aparência do Boneco de Fogos, dos blocos de pérola/rubi e do bloco de parada automática de trens, além do impacto da nova configuração de alta resolução da câmera de segurança no desempenho do PC, também ainda não foram testados.</li><li>As animações de ataque do Kraken e do Titã continuam sem ser implementadas conforme o planejado (aguardando confirmação do proprietário).</li><li>Os 2 problemas do MOD Céu encontrados na v1.7.3 (queda de desempenho durante invasões e desaparecimento do dragão domesticado) continuam sem solução, já que não têm relação com as mudanças feitas no MOD Céu nesta atualização.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.5</span> — Correção do vidro reforçado e das portas duplas
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span></div>
+      <p>Esta atualização é só do MOD de materiais de construção. Corrigimos o bug em que o vidro reforçado (17 cores) sempre demorava 75 segundos para ser minerado, não importa a ferramenta usada, e o bug em que as 50 portas duplas grandes adicionadas na v1.5.0 não abriam direito visualmente.</p>
+      <ul><li>Agora dá para minerar o vidro reforçado com enxada. A velocidade de mineração varia de acordo com o tipo de ferramenta (de madeira a netherite) e com o encantamento de Eficiência. Antes havia um bug em que qualquer ferramenta demorava sempre 75 segundos.</li><li>O vidro reforçado não é mais destruído pelo Wither nem pelo Dragão do End.</li><li>As 50 portas duplas grandes (tamanhos 3×3 e 3×4) agora abrem bem grande de verdade, visualmente. Antes havia um bug em que elas só deslizavam pouco, como uma porta comum, e o vão não parecia aberto o suficiente.</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Tempo aproximado de mineração do vidro reforçado: enxada de madeira ~37,5s, de pedra ~18,8s, de ferro ~12,5s, de ouro ~6,25s, de diamante ~9,4s, de netherite ~8,4s (com Eficiência V na enxada de diamante, ~2,25s). Com a mão, picareta, machado, pá ou espada, continua em 75 segundos.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>[Limitação técnica] A ideia inicial era “deixar só um machado exclusivo minerar rápido”, mas, por causa de como a vanilla funciona, o resultado foi que qualquer enxada — até a de madeira — mina mais rápido (de acordo com o nível dela). Não foi possível restringir a uma ferramenta específica.</li><li>Não é preciso apagar a configuração. Esta correção não depende de nenhum valor de configuração.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A sensação de minerar o vidro reforçado com enxada de verdade, e se as portas duplas realmente parecem abrir na tela, ainda não foram conferidas no jogo de verdade.</li><li>As animações de ataque do Kraken e do Titã continuam sem ser implementadas conforme o planejado.</li><li>Os 2 problemas do MOD Céu encontrados na v1.7.3 (queda de desempenho durante invasões e desaparecimento do dragão domesticado) continuam sem solução, já que o MOD Céu não foi alterado nesta atualização.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.4</span> — Surgimento do Médico da Peste agora depende só da pedra de invocação
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span></div>
+      <p>Esta atualização é só do MOD de Chefes. Removemos o sistema de surgimento aleatório do Médico da Peste durante mau tempo, e agora ele só pode ser invocado com uma pedra de invocação exclusiva, assim como os outros 10 chefes.</p>
+      <ul><li>A forma de surgimento do chefe Médico da Peste mudou. O sistema antigo, de “surgir aleatoriamente durante mau tempo”, foi removido, e agora ele é unificado no mesmo esquema dos outros chefes: colocar a nova “Pedra de Invocação do Médico da Peste”. É o mesmo padrão 3×3 dos outros 10 chefes: Rosa Wither nos 4 cantos, Membrana de Phantom nas laterais e Estrela do Nether no centro.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Se você ficava esperando o mau tempo para procurar o Médico da Peste, ele não vai mais aparecer assim. Faça a pedra de invocação e chame-o diretamente.</li><li>Não é preciso apagar a configuração. Os itens removidos eram só os relacionados ao surgimento natural, e isso não afeta os valores que continuam existindo.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A animação ao usar a pedra de invocação, a aparência do próprio Médico da Peste, sua voz exclusiva e a animação de sacrifício não mudaram nesta atualização, e continuam sem confirmação no jogo de verdade.</li><li>O MOD de materiais de construção não faz parte desta atualização. A correção do vidro reforçado e das portas está sendo feita à parte e deve entrar em uma atualização futura.</li><li>Os 2 problemas do MOD Céu encontrados na v1.7.3 (queda de desempenho durante invasões e desaparecimento do dragão domesticado) continuam fora do escopo desta atualização.</li><li>As animações de ataque do Kraken e do Titã continuam sem ser implementadas conforme o planejado.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss sky guns survival rail">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.3</span> — Correção da visão pela janela do trem e de bugs em Singapura
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>Corrigimos o bug em que quase não dava para ver nada do lado de fora pela cabine do maquinista ou pelos assentos de passageiros do trem, além dos bugs da cidade-estado “Singapura”, no céu, em que prédios não eram gerados e ruínas ficavam flutuando no ar. Também corrigimos o limite de spawn de mobs hostis para valer só no Mundo Normal, e ajustamos o nível máximo de encantamento para um valor mais adequado.</p>
+      <ul><li>Corrigimos o bug em que, ao sentar na cabine do maquinista ou nos assentos de passageiros dos 8 trens, a visão ficava presa na parede abaixo da janela, sem quase nada visível lá fora. Agora dá para ver direito para a frente e para os lados.</li><li>Corrigimos os bugs da cidade-estado “Singapura”, no céu: prédios que não eram gerados de jeito nenhum, o mesmo hotel sendo construído repetidas vezes, e árvores ou vilas ficando flutuando no ar. Só que a correção vale apenas para terrenos gerados a partir de agora. Para os terrenos já gerados com defeito, incluímos uma ferramenta de recuperação para a administração recriar só a área afetada.</li><li>No MOD de Chefes, os itens de configuração relacionados ao surgimento do Médico da Peste agora podem ser ajustados pela configuração.</li><li>O poder do ataque de sopro do Wyvern caiu pela metade.</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Dano da Minigun reduzido em 75%.</li><li>Dano do fuzil de assalto aumentado em 25%. Medindo de verdade, a eficiência de dano por segundo ficou assim: fuzil de assalto 3750 &gt; arma laser 2000 &gt; minigun 250.</li><li>O Coletor Universal (ferramenta de mineração dropada por chefe) deixou de funcionar por durabilidade e passou a quebrar depois de exatamente 5 usos. Não é mais possível aplicar Reparação ou Indestrutibilidade na bigorna, mas ainda dá para aplicar velocidade de mineração, sorte e toque suave.</li><li>O multiplicador do limite de spawn natural de mobs hostis subiu de 5× para 15×. Também corrigimos o bug em que esse multiplicador era aplicado por engano no Nether e no End: agora vale só para o Mundo Normal.</li><li>O valor padrão do nível máximo de encantamento foi ajustado de 255 para 20 (e o limite que pode ser configurado também caiu de 255 para 32). Isso acaba com números absurdos, como o “nível de encantamento 255” relatado por alguns jogadores.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>3 configurações precisam ser apagadas: `sorakaze_guns.json`, `sorakaze_sky.json` e `sorakaze_survival.json`. Sem isso, as mudanças de valores desta atualização não fazem efeito. Não é preciso apagar o `sorakaze_boss.json`.</li><li>[Importante] Um teste geral rodando o MOD Céu em escala grande e por muito tempo revelou 2 novos problemas, ainda não corrigidos: (1) pode haver queda de desempenho durante eventos de invasão em larga escala; (2) um Dragão do End domesticado pode desaparecer com o tempo (o Wyvern domesticado não tem esse problema).</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Os problemas acima — queda de desempenho durante invasões e o desaparecimento do dragão domesticado — continuam sem solução.</li><li>A aparência e a forma de surgimento do Médico da Peste, além da sensação de uso do Coletor Universal quebrando depois de 5 usos, ainda não foram conferidas no jogo de verdade.</li><li>As animações de ataque do Kraken e do Titã continuam sem ser implementadas conforme o planejado (aguardando confirmação do proprietário).</li><li>A ferramenta de recuperação de Singapura só foi testada com dados de teste; ainda não foi testada com dados de um mundo de verdade.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.1</span> — Correção emergencial para o jogo não abrir depois de instalar a v1.7.0
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Depois de instalar a v1.7.0, o jogo estava travando sempre, toda vez que era aberto. A causa era o registro das teclas do MOD de veículos (subir/descer o trem de pouso, flaps, portas etc.), e o problema foi resolvido atualizando só o MOD de veículos para a v1.7.1.</p>
+      <ul><li>Só o MOD de veículos (sorakaze_vehicles) foi atualizado. Os outros 6 MODs continuam na v1.7.0 sem problema.</li><li>Nenhum item ou bloco novo foi adicionado. Esta atualização é só a correção do travamento na inicialização.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Se, depois de instalar a v1.7.0, o jogo estiver “travando toda vez que abre”, troque o arquivo jar do MOD de veículos por esta versão v1.7.1.</li><li>Os outros 6 MODs (armas de fogo, ferrovia, materiais de construção, chefes, céu e sobrevivência) funcionam normalmente na v1.7.0. Não é preciso trocá-los.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Como o jogo estava travando, ninguém conseguiu conferir de verdade a aparência e a sensação de uso das novidades adicionadas na v1.7.0, como a visão em primeira pessoa (visão de cabine) dos veículos.</li><li>A sincronização com duas pessoas jogando ao mesmo tempo e a carga no servidor com todos os MODs juntos continuam sem testar.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.0</span> — Atualização simultânea dos 7 MODs e liberação de conteúdo escondido
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Pela primeira vez, os 7 MODs andaram juntos e passaram a ser distribuídos com o mesmo número de versão (v1.7.0). Com a correção de um bug na tabela de receitas, vieram à tona vários conteúdos que estavam escondidos, como os alimentos e itens de instalações da cidade-estado “Singapura”, que fica no céu. O MOD de veículos também ganhou a visão em primeira pessoa (visão de cabine).</p>
+      <ul><li>Esta é a primeira vez que os 7 MODs são distribuídos com o mesmo número de versão. Antes, cada MOD tinha sua própria versão, sem relação entre si.</li><li>Ao corrigir um bug na tabela de receitas, agora aparecem nela os 300 tipos de alimentos vendidos na cidade-estado “Singapura”, no céu, além de itens como aríete de cerco, escritura de propriedade, registro de imóveis e prateleira de alimentos. Todos esses são itens comprados em lojas e não podem ser craftados.</li><li>O “Coletor Universal” (drop de chefe) e o “Caixa Eletrônico Especial” instalado em Singapura (não craftável) também passaram a aparecer na tabela.</li><li>Adicionada a visão em primeira pessoa (visão de cabine) ao MOD de veículos: agora o teto e os pilares do seu próprio carro não atrapalham mais a visão enquanto você dirige. Também dá para desativar isso nas configurações.</li><li>Os ícones de item de 113 veículos, 35 trens e 3 armas foram redesenhados.</li><li>O limite de saldo do banco (caixa eletrônico), antes de 100 mil, foi removido — agora dá para depositar sem limite.</li><li>Adicionada a receita para transformar o Bloco de Ametista de volta em Fragmento de Ametista.</li><li>Foram ativadas as mudanças que multiplicam por 5 o limite de spawn natural de mobs hostis e que aumentam bastante o nível máximo de encantamento (normalmente 30) — ambas do MOD de Sobrevivência.</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Arma laser: dano 160 → 200, cadência de tiro 6 → 10 disparos/s, capacidade do carregador 100 → 200.</li><li>Broca: velocidade de mineração 12,0 → 24,0, durabilidade 2048 → 10240.</li><li>Aumentamos bastante o limite de população do Reino Celestial e da Cidade dos Anjos (por exemplo, mercadores do reino 16 → 48, moradores 64 → 192).</li><li>A resolução padrão da imagem da câmera de segurança mudou de 192 para 768.</li><li>O limite de spawn natural de mobs hostis subiu para 5× o padrão. Só que, nesta versão, existe um bug em que esse multiplicador — que deveria valer só para o Mundo Normal — acaba sendo aplicado também no Nether e no End por engano (correção prevista para uma atualização futura).</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>No MOD de armas de fogo (sorakaze_guns) e no MOD Céu (sorakaze_sky), as mudanças de valores acima só fazem efeito se você apagar `config/sorakaze_guns.json` e `config/sorakaze_sky.json` depois de atualizar.</li><li>No MOD de materiais de construção (sorakaze_deco), não apague a configuração — só altere o valor de `cameraFeedResolution`. Se apagar, outras configurações, como o tempo do semáforo, voltam todas ao padrão.</li><li>Atualmente, medindo de verdade, a eficiência de dano das armas é muito alta: fuzil de assalto cerca de 3000 por segundo, arma laser cerca de 2000 por segundo e minigun cerca de 1000 por segundo. Quase todos os chefes caem em poucos segundos.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O novo chefe de invasão “Invasor Blindado” pode não parecer muito com uma “armadura” ainda visualmente; um ajuste deve vir em uma atualização futura.</li><li>O corpo do trem ainda está em cerca de 1/3 da escala de um trem de verdade. Além disso, a largura da hitbox aumentou de 1,8 para 2,0 blocos, então túneis já existentes com 2 blocos de largura podem ficar bloqueados. Os 3 veículos antigos (trem, vagão de passageiros e vagão de carga) não têm janelas, interior nem portas.</li><li>A velocidade máxima de giro na visão em primeira pessoa dos veículos é de 36 graus por segundo, e pode parecer rápida demais na prática.</li><li>O tamanho do arquivo da tabela de receitas aumentou bastante (por causa das várias imagens de alimentos adicionadas). Dependendo do ambiente, a exibição pode ficar pesada.</li><li>Ainda não testamos a sincronização com duas pessoas jogando ao mesmo tempo, nem a carga no servidor com todos os MODs rodando juntos.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns rail">
+      <div class="timeline-entry__date">2026-07-30</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.7</span> — Correção da Espada e do Arco Real, e a Minigun foi enfraquecida
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>Corrigimos o bug em que o Arco Real aparecia de cabeça para baixo, além do visual dos 2 vagões do trem-bala que tinham ficado de fora da renovação da v1.5.6. Também enfraquecemos a Espada Real e a Minigun, e a Broca agora recarrega sozinha as células do inventário quando acabam.</p>
+      <ul><li>Redesenhamos com mais detalhe, em 128px, os ícones dos 13 itens relacionados a anjo</li><li>Corrigido o bug em que o Arco Real aparecia com a direção invertida</li><li>Renovamos o visual dos 2 vagões do trem-bala que tinham ficado de fora da renovação do trem na v1.5.6</li><li>Quando a célula da Broca acaba, agora ela recarrega automaticamente com uma célula reserva do inventário</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Minigun: poder de fogo real reduzido de cerca de 2.000 para cerca de 1.000 de dano por segundo</li><li>Espada Real: enfraquecida, incluindo a velocidade de ataque. O DPS medido de verdade caiu de 84,80 para 21,60 (-74,5%). Como resultado, ela ficou ligeiramente abaixo da Espada de Anjo (22,40)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Para as mudanças desta atualização fazerem efeito, é preciso apagar o config/sorakaze_guns.json</li><li>Se estiver atualizando de uma vez a partir da v1.5.5 ou anterior, apague também o config/sorakaze_sky.json</li><li>O enfraquecimento da Espada Real vem de um valor interno do programa e não pode ser revertido pelo arquivo de configuração</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O ícone do item do trem-bala continua com o design antigo (o corpo do trem foi renovado, mas o visual não bate mais com o do ícone)</li><li>O Golem de Sculk, o Rock Lock, o Kraken e o Titã ainda não têm animações de ataque exclusivas</li><li>A Lança do Trovão ainda não pode ser arremessada; só dá para usá-la corpo a corpo</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky guns deco rail boss">
+      <div class="timeline-entry__date">2026-07-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.6</span> — Chega o Reino Celestial, e o chefe Ceifador ganha uma reformulação e tanto
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>O MOD Céu ganhou o enorme “Reino Celestial” e 7 peças de “Equipamento Real”, exclusivas para compra. O chefe Ceifador ganhou animações de ataque exclusivas, e suas especificações foram totalmente revisadas. O balanceamento das armas de fogo passou por uma grande revisão, e o fuzil de assalto virou uma das armas mais fortes do jogo. O visual das 6 famílias de trem também foi renovado.</p>
+      <ul><li>Adicionado o Reino Celestial, um enorme reino de estilo britânico com 1.001 blocos de diâmetro. Conta com 64 moradores, 16 mercadores e 65 baús</li><li>Chegam as 7 peças do “Equipamento Real”, exclusivas do Reino Celestial (só por compra, uma versão superior do equipamento de anjo)</li><li>Chega o novo mob “REX”. Nasce de um ovo por incubação e pode ser montado</li><li>Agora dá para carregar um bicho de estimação inteiro dentro do “Pote Kule”</li><li>Implementadas 6 novas animações de ataque exclusivas para o chefe Ceifador. Também ganhou um novo golpe que invoca 3 Withers quando a vida cai abaixo de 50%</li><li>Visual renovado das 6 famílias de trem (janelas, portas, frente, painel de destino e luzes com formas mais arredondadas e tridimensionais)</li><li>O notebook virou um bloco que se instala no chão. A câmera de segurança agora tem modelo 3D e gira de verdade; a imagem mostra tempo real dentro do alcance e “SEM SINAL” fora dele</li><li>Revisão completa do balanceamento de poder das armas de fogo (veja os detalhes em Ajustes de balanceamento)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Fuzil de assalto: poder de fogo real contra um único alvo saltou de cerca de 400 para cerca de 3.000 de dano por segundo (porque agora todos os tiros causam dano de verdade, garantidamente)</li><li>Minigun: poder de fogo real reduzido de cerca de 4.000 para cerca de 2.000 de dano por segundo</li><li>Espingarda: poder triplicado (cerca de 150 de dano por gatilho à queima-roupa)</li><li>As 2 armas de precisão (sniper comum e pesado): durabilidade reduzida para 128, um terço da do arco (agora são armas frágeis, mas de altíssimo poder)</li><li>Chefe Ceifador: vida deixou de ser sorteada entre 6.000 e 9.000 e passou a ser fixa em 3.000; ataque 16 → 32</li><li>Wyvern: dano do sopro 10 → 7,5, taxa de drop do ovo 100% → 20% (enfraquecido)</li><li>Chefe Arcanjo: vida aumentada em 1,5×, chegando a 3.000</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Para as mudanças de poder das armas fazerem efeito, é preciso apagar o config/sorakaze_guns.json (a durabilidade das armas de precisão é um item novo, então já é aplicada automaticamente)</li><li>O número da versão pulou de v1.5.1 para v1.5.6, mas isso não é numeração faltando — é porque várias atualizações pequenas (como o ajuste das máscaras e o enfraquecimento do Wyvern) foram distribuídas juntas de uma vez</li><li>Os minérios de pérola e rubi não aparecem em terrenos gerados antes de o MOD ser instalado. Medindo de verdade, descobrimos que a raridade é de cerca de 1/32 da do diamante, ou aproximadamente metade da dos destroços antigos</li><li>Se uma cidade ou castelo que já estava parcialmente gerado ficar perto do Reino Celestial, o restante pode não ser gerado, ficando incompleto (não é uma corrupção de dados, é só um problema visual)</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O Golem de Sculk, o Rock Lock, o Kraken e o Titã ainda não têm animações de ataque exclusivas (o caso do Ceifador foi resolvido nesta atualização)</li><li>A Lança do Trovão ainda não pode ser arremessada; só dá para usá-la corpo a corpo</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="survival">
+      <div class="timeline-entry__date">2026-07-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.1</span> — Visual das 2 máscaras totalmente corrigido
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Atualização visual</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span></div>
+      <p>Corrigimos o visual das 2 máscaras do MOD de Expansão de Sobrevivência. Antes havia um bug em que a imagem plana ficava flutuando em cima da cabeça; agora foram refeitas com uma forma tridimensional que encaixa na cabeça (com orelhas). Defesa, durabilidade, receita e o resto continuam iguais.</p>
+      <ul><li>Refizemos totalmente o visual das 2 máscaras. Corrigimos o bug em que a imagem plana ficava flutuando em cima da cabeça, e agora elas têm uma forma tridimensional que cobre a cabeça de verdade</li><li>A Máscara de Coelho ganhou detalhes de orelhas de coelho, e a Máscara de Bobo da Corte, orelhas de raposa</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>O ícone na tabela de receitas ainda está com o design antigo (a atualização deve chegar na próxima versão)</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A textura das laterais e das costas da máscara ainda é bem simples. Como o foco foi o design da frente, olhando de lado ou por trás em terceira pessoa ela pode parecer quase uma cor só</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="survival guns deco rail vehicles sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.0</span> — A maior atualização da história, e chega o 7º MOD: “Expansão de Sobrevivência”
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>A maior atualização da história deste projeto. Chega o 7º MOD, “Expansão de Sobrevivência”, trazendo elementos de sobrevivência como os minérios de pérola e rubi, máscaras, escudo grande e um medidor de hidratação. Além disso, todos os 6 MODs já existentes ganharam conteúdo grande: o trem passou a ter 30 variações, os veículos 100, e as portas do MOD de materiais de construção chegaram a 101 tipos.</p>
+      <ul><li>Chega o 7º MOD, “Expansão de Sobrevivência”. Adiciona os minérios de pérola e rubi, 2 tipos de máscara (+50 de armadura, 814 de durabilidade), um escudo grande e um medidor de hidratação (que esvazia em 30 minutos)</li><li>Agora dá para comprar um livro de Afiação X com um Bibliotecário mestre (por 64 esmeraldas)</li><li>Adicionadas as novas armas “Minigun”, “Broca” (minera um bloco de 3×3 de uma vez, na direção do seu olhar) e “Torreta Antiaranha” ao MOD de armas de fogo</li><li>O trem passou a ter 30 variações no total (6 famílias × 5 pinturas), antes era só 1 tipo</li><li>Os veículos passaram a ter 100 variações no total (25 modelos-base × 4 pinturas), e todos ganharam o estilo arredondado</li><li>Adicionadas ao MOD de materiais de construção 50 portas duplas grandes (o total de portas chega a 101), câmera de segurança, notebook e um caixa eletrônico com juros compostos</li><li>Adicionamos uma incubadora de ovos ao MOD Céu. O Wyvern ou o Dragão que nascer da incubação fica domesticado e pode ser montado com uma sela exclusiva</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>[Correção] Até então dizíamos que “o fuzil de assalto causa cerca de 2.000 de dano por segundo contra um único alvo”, mas, ao medir de verdade, descobrimos que o valor real é de cerca de 400 de dano por segundo (os registros anteriores superestimaram bastante o poder de fogo)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>O poder de fogo real da nova arma “Minigun” é de cerca de 4.000 de dano por segundo, a arma mais forte deste projeto até agora. Como ela derruba quase todos os chefes em poucos segundos, se quiser manter o desafio, reduza o valor de `minigun.damage` na configuração</li><li>Não é preciso apagar nenhum arquivo de configuração para esta atualização (os novos itens de configuração são adicionados automaticamente ao iniciar o servidor)</li><li>Os minérios de pérola e rubi não aparecem em terrenos gerados antes de o MOD ser instalado. Se não encontrar, explore terrenos novos</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A animação de giro da câmera de segurança ainda não foi implementada; por enquanto a visão fica fixa</li><li>O Golem de Sculk, o Rock Lock, o Ceifador, o Kraken e o Titã ainda não têm animações de ataque exclusivas, e o aviso do golpe especial também é só com partículas e marcadores</li><li>A Lança do Trovão ainda não pode ser arremessada; só dá para usá-la corpo a corpo</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.8</span> — Cidade Celestial fica mais densa, e chega o novo mob “Wyvern”
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>Revisamos a escala da Cidade Celestial e a transformamos em uma metrópole mais densa. No centro, 4 torres altíssimas de 300 blocos de altura viram os novos marcos visuais da cidade. Também foi adicionado o novo inimigo voador “Wyvern de Cristal”.</p>
+      <ul><li>Reduzimos a área da Cidade Celestial e a tornamos mais densa (a altura varia de acordo com o distrito)</li><li>Só as 4 torres do centro da cidade chegam à altura extrema de 300 blocos</li><li>Adicionamos detalhes ao visual da cidade, como entradas e marquises nos andares baixos, equipamentos no topo dos prédios e a separação entre rua e calçada</li><li>16 baús no total foram espalhados pela cidade, em 3 tipos de local: telhado, escritório e depósito</li><li>Chega o novo mob “Wyvern de Cristal”. Ele voa e ataca com um sopro de bola de fogo (só mira em jogadores, não ataca os moradores da cidade)</li><li>Ajustado o espaçamento de geração do Castelo Celestial (com a configuração recomendada anterior, o castelo praticamente nunca aparecia)</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Diante do poder do fuzil de assalto, o Wyvern de Cristal (200 de vida) cai num piscar de olhos. Se quiser mais desafio, ajuste o dano das armas na configuração</li><li>A redução da cidade só vale para terrenos gerados a partir de agora. As cidades celestiais já existentes ficam com o tamanho antigo, então, se estiverem lado a lado, a diferença de tamanho pode parecer estranha</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.7</span> — Geração da Cidade Celestial reformulada, corrigido bug de proliferação de moradores
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>Refizemos internamente o sistema de geração da Cidade Celestial e do Castelo Celestial, deixando-o mais estável, e corrigimos o bug em que os moradores da Cidade Celestial iam ultrapassando aos poucos o limite máximo a cada reinicialização do servidor.</p>
+      <ul><li>Corrigido o bug em que reiniciar o servidor repetidamente fazia os moradores da Cidade Celestial ultrapassarem o limite máximo</li><li>O processamento de geração da Cidade Celestial e do Castelo Celestial ficou mais eficiente internamente (a carga de geração até diminuiu)</li><li>Ajustado o espaçamento entre a Cidade Celestial e o Castelo Celestial</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Essa mudança no sistema de geração só vale para terrenos gerados a partir de agora. A aparência das cidades e castelos celestiais já existentes continua igual</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.6</span> — Cidade Celestial vira metrópole futurista, e chega um novo chefe
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>A “Cidade Celestial” do MOD Céu foi totalmente redesenhada como uma metrópole futurista cheia de arranha-céus, e agora conta com o novo “Castelo Celestial” e o novo chefe “Arcanjo Celestial”. Também chegou o novo mob “Anjo Comum”, que caminha pelas ruas, e mudou a forma de pagamento para comprar equipamentos.</p>
+      <ul><li>A Cidade Celestial virou uma metrópole futurista cheia de arranha-céus (20 prédios altos, rede de ruas, passarelas e uma praça central)</li><li>O novo mob “Anjo Comum” agora circula pela cidade, com 4 aparências diferentes</li><li>Chega o “Castelo Celestial” (muralhas, 8 torres redondas, salão principal, torre central, tesouro subterrâneo e 6 baús)</li><li>O novo chefe “Arcanjo Celestial” aparece no Castelo Celestial. Só existe 1 por castelo, e ele não reaparece depois de derrotado</li><li>Adicionado o “Cajado de Anjo”, drop garantido do chefe (com o bônus de 1,5× de dano e metade do tempo de recarga quando usado no ar)</li><li>O visual do portal do Céu foi refeito com uma moldura de ouro e glowstone, e ganhou uma animação de acendimento</li><li>Agora dá para pagar os equipamentos do Céu com esmeralda + diamante</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Taxa de geração natural do portal do Céu: 1/340 → 1/1200 (ficou bem mais raro de encontrar)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Ficou muito mais difícil encontrar o portal. Se não conseguir achar em um mundo já existente, a administração pode reduzir a raridade pela configuração ou ativar `allowPlayerBuiltSkyPortals` para permitir que os jogadores montem o portal manualmente</li><li>O poder do fuzil de assalto é muito alto (cerca de 2.000 de dano por segundo), então esse chefe (2000 de vida) cai em cerca de 1 segundo. Se quiser mais desafio, ajuste o dano das armas na configuração</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.5</span> — Corrigido o crash na dimensão Céu
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>Corrigimos um bug grave que fazia o cliente travar toda vez que alguém entrava na dimensão Céu (a causa era que nenhum sistema de renderização do Anjo ou do Golem Anjo tinha sido registrado). Também reforçamos o poder do rifle sniper pesado e adicionamos um novo nível de zoom à mira telescópica.</p>
+      <ul><li>[Importante] Corrigimos o bug que travava o cliente toda vez que alguém entrava na dimensão Céu (a causa era que o processamento de renderização do Anjo e do Golem Anjo não tinha sido registrado). O mesmo bug também acontecia com anjos de mundos antigos, de antes da mudança do Céu para uma dimensão própria</li><li>Dano do rifle sniper pesado mudou para 4× o do sniper comum (40.0 → 80.0)</li><li>Adicionado o novo nível de zoom “×12” à mira telescópica do rifle sniper (exclusivo do sniper pesado)</li><li>A roda do mouse agora é ignorada enquanto você está mirando com a luneta (evitando trocar de item da hotbar sem querer)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Rifle sniper pesado: dano 40.0 → 80.0 (4× o sniper comum)</li></ul>
+      
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Ainda não confirmamos jogando de verdade se essa correção resolveu mesmo o crash na dimensão Céu. Verifique se entrar na dimensão Céu deixou de travar e, se ainda acontecer, avise a administração</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="deco guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.4</span> — Grande reforço no poder de fogo das armas e 40 novas portas
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span></div>
+      <p>Aumentamos bastante o poder da arma laser e do fuzil de assalto, multiplicando-os por 20× e 10× respectivamente. Esse aumento de poder de fogo desequilibra bastante o combate contra os chefes existentes. Também corrigimos o bug em que a torreta automática nunca tinha disparado sequer uma vez, o guard-rail que não se conectava entre si e o bug em que o laser saía invertido entre leste e oeste. O MOD de materiais de construção ganhou 40 novas portas (a versão 1.4.3 foi pulada de propósito).</p>
+      <ul><li>Dano da arma laser 8.0 → 160.0 (20×, 960 de dano por segundo), dano do fuzil de assalto 20.0 → 200.0 (10×, 2000 de dano por segundo)</li><li>Corrigimos o bug em que a torreta automática nunca havia disparado sequer uma vez (o raio de mira começava de dentro da própria hitbox dela). Também revisamos a lógica de alvo: agora ela não mira mais em chefes nem no Warden</li><li>Corrigido o bug em que os guard-rails não se conectavam entre si</li><li>Corrigido o bug em que o laser saía com a direção invertida entre leste e oeste</li><li>Alcance da armadilha de laser: 32 → 128 blocos (o limite de configuração foi ampliado para 256). Agora ela pode apontar em 26 direções (incluindo diagonais e para cima/baixo); clique direito com a mão vazia gira 45° na horizontal, e agachado + clique direito muda o ângulo</li><li>Adicionadas 40 novas portas ao MOD de materiais de construção (somando com as 9 já existentes, chega a 49 tipos no total)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Arma laser: dano 8.0 → 160.0 (20×)</li><li>Fuzil de assalto: dano 20.0 → 200.0 (10×)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>[Importante] Esse aumento de poder de fogo desequilibra bastante o combate contra os chefes existentes (eles caem em poucos segundos). Não adicionamos nenhuma resistência do lado dos chefes, então, se isso incomodar, ajuste o dano pelo config/sorakaze_guns.json</li><li>Para o aumento de poder de fogo das armas fazer efeito, é preciso apagar o config/sorakaze_guns.json</li><li>A versão 1.4.3 foi pulada de propósito e nunca foi distribuída</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.2</span> — Corrigido o bug visual do equipamento de anjo
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span></div>
+      <p>Corrigimos o bug em que vestir o “Equipamento de Anjo” de verdade fazia aparecer a armadura de netherite comum da vanilla no corpo e um elytra liso nas costas. Como o ícone no inventário aparecia certinho, era um problema fácil de passar despercebido.</p>
+      <ul><li>Corrigimos para que o Equipamento de Anjo (armadura e Asa de Anjo) mostre corretamente o visual exclusivo em prata e dourado ao ser vestido</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky boss deco vehicles guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.1</span> — Chega a dimensão Céu, e os chefes ganham golpes especiais
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Chegou a nova dimensão “Céu”, acessível por portais que geram raramente no mundo normal. Agora dá para negociar com o Mercador Anjo e usar equipamentos planadores. Todos os 10 chefes ganharam golpes especiais, e agora podem ser invocados a qualquer momento usando pedras de invocação. A bancada de materiais de construção ganhou um botão para escolher entre receitas diferentes, e os pneus dos veículos agora giram de verdade.</p>
+      <ul><li>Chega a nova dimensão “Céu”. Dá para ir e voltar por um portal de glowstone que gera raramente no mundo normal</li><li>O Mercador Anjo mora no Céu e cada um tem um estoque diferente, sorteado aleatoriamente. Dá para conseguir a “Asa de Anjo”, que permite planar como um glider, além de flecha e arco exclusivos</li><li>Adicionado um resgate para quem cai do Céu (você pousa em segurança no céu do mundo normal)</li><li>Todos os 10 chefes ganharam pedras de invocação, craftáveis, para poder chamá-los quando quiser. Todos também ganharam um golpe especial (ativado quando a vida cai pela metade, com 4 segundos de aviso antes)</li><li>Os 3 chefes gigantes agora têm sua força sorteada aleatoriamente no momento em que aparecem (vida entre 30× e 45× a do Dragão do End, fixada a partir daí)</li><li>As novas armas “Foice do Ceifador”, “Tridente do Abismo” e “Lança do Trovão” dropam dos respectivos chefes</li><li>Adicionamos um botão de alternância na bancada do MOD de materiais de construção, permitindo escolher entre vários blocos usando a mesma disposição de ingredientes (como os blocos de coluna de madeira)</li><li>A pá e a enxada exclusivas de chefe agora servem de verdade para fazer caminhos e arar a terra</li><li>Os pneus de 10 veículos agora giram visualmente de verdade</li></ul>
+      
+      
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O Golem de Sculk e o Rock Lock ainda não têm uma animação de ataque exclusiva (o aviso do golpe especial também é só com partículas)</li><li>A Lança do Trovão ainda não pode ser arremessada (só serve para ataque corpo a corpo)</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Animações de ataque dos chefes e ferramentas em 3D
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Atualização visual</span></div>
+      <p>Adicionamos animações exclusivas para os ataques corpo a corpo, em área e de raio dos 5 chefes. As 5 ferramentas que eles dropam (picareta, machado, enxada, lança e pá) também deixaram de ser ícones planos e agora têm modelos 3D. Dano, tempo de recarga e o resto da jogabilidade continuam os mesmos.</p>
+      <ul><li>Adicionamos animações exclusivas para os ataques dos 5 chefes (corpo a corpo, os 2 ataques em área e o de raio), deixando mais fácil perceber o aviso (movimento de preparação) antes do golpe</li><li>As 5 ferramentas dropadas agora têm modelos 3D. Os ícones no inventário também passaram a mostrar a versão 3D</li></ul>
+      
+      
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>O ataque corpo a corpo não tem um movimento de preparação, tipo levantar o braço antes de golpear. Isso porque na vanilla o dano do ataque corpo a corpo acontece na hora, e adicionar um movimento de preparação faria o dano sair fora do tempo certo</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Visual dos 5 chefes totalmente refeito
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Atualização visual</span></div>
+      <p>Depois do feedback de que “parecem a mesma criatura só com cores diferentes”, refizemos totalmente a aparência dos 5 novos chefes. Não mudamos nada da jogabilidade — força, drops, ataques etc. continuam os mesmos.</p>
+      <ul><li>Runecore Colossus: núcleo de pedra com armadura de bronze/ouro, duas espadas flutuando dos dois lados do corpo e um anel rúnico girando ao redor do braço</li><li>Ember Lord: sulcos de lava atravessando o corpo, e dois chifres curvados para trás, divididos em 4 segmentos</li><li>Elder Treant: 8 galhos, cada um apontando e quebrado de um jeito diferente (3 deles quebrados no meio), com um rosto esculpido no tronco</li><li>Void Stalker: abandonou a forma humanoide e virou um bloco de obsidiana com um portal roxo, 8 tentáculos e 18 olhos brilhantes</li><li>Frost Lich King: manto em 5 camadas, uma coroa de gelo denteada com 9 pontas e um emblema de gelo girando sobre a mão esquerda erguida</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Chegam 5 novos chefes: quebrando a barreira de vida
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span></div>
+      <p>Adicionamos 5 novos chefes gigantescos ao MOD de Chefes. Superamos o limite do próprio Minecraft, que travava a vida em 1024 no máximo, e agora temos chefes de verdade com 2400 a 4000 de vida. Derrotá-los sempre dropa uma ferramenta aprimorada exclusiva (picareta, machado, enxada, a nova arma “lança” e pá).</p>
+      <ul><li>Adicionados 5 novos chefes, invocados com itens craftáveis: Runecore Colossus (3000 de vida), Ember Lord (3400 de vida), Elder Treant (4000 de vida), Void Stalker (2400 de vida) e Frost Lich King (2800 de vida)</li><li>Derrotar cada chefe sempre dropa uma ferramenta aprimorada exclusiva: Picareta Rúnica, Machado Ardente, Enxada da Floresta, Lança do Vazio (uma arma nova que não existe na vanilla) e Pá Glacial. Todas têm alta durabilidade e já vêm com vários encantamentos, mas não podem ser craftadas</li></ul>
+      
+      
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Os 5 chefes têm dificuldade alta e devem ser difíceis de enfrentar sozinho. Se achar forte demais, a administração pode ajustar vida e ataque pela configuração</li><li>O Void Stalker deveria flutuar no ar segundo o design original, mas por enquanto foi implementado se movendo pelo chão e se teletransportando</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 138 novos blocos de construção e a durabilidade das armas finalmente funcionando
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span></div>
+      <p>Este é um complemento feito com base no feedback recebido após o lançamento da v1.3.2. Renovamos a aparência de 2 chefes e finalmente corrigimos a durabilidade das armas, que até então só era mostrada na barra, mas nunca diminuía de verdade. O MOD de materiais de construção ganhou 138 novos blocos de construção, e o alcance de todas as armas foi multiplicado por 5.</p>
+      <ul><li>Aparência do Golem de Sculk e do Rock Lock renovada (Golem de Sculk agora parece um Iron Golem feito de sculk; Rock Lock ganhou visual de robô de combate futurista). Não houve mudança na força nem nos ataques</li><li>Corrigido para que a durabilidade das armas finalmente diminua de verdade (antes, a barra de durabilidade só aparecia, mas a arma nunca quebrava). O padrão é de aproximadamente 1536 tiros, e a Excalibur, aproximadamente 6093 usos</li><li>Alcance de todas as armas multiplicado por 5 (fuzil de assalto 60 → 300m, espingarda 24 → 120m, sniper 150 → 750m, laser 80 → 400m)</li><li>Adicionados 138 novos blocos de construção ao MOD de materiais de construção (meio-bloco vertical, coluna octogonal e rampa de 8 degraus, cada um em 46 materiais diferentes)</li><li>Foi aprovado o plano de deixar o design dos veículos com “formas arredondadas e realistas”, e já estão prontos os modelos do sedã e do avião de hélice (a extensão para os outros 13 veículos está prevista para as próximas atualizações, aos poucos)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Alcance de todas as armas multiplicado por 5 (fuzil de assalto 60 → 300m / espingarda 24 → 120m / sniper 150 → 750m / laser 80 → 400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Para o aumento de alcance fazer efeito, é preciso apagar o config/sorakaze_guns.json</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Por enquanto, o “design arredondado” dos veículos só existe para o sedã e o avião de hélice — a extensão para os outros 13 veículos está prevista para futuras atualizações</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail vehicles boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 138 novos blocos de construção e a durabilidade das armas finalmente funcionando
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Este é um complemento feito com base no feedback recebido após o lançamento da v1.3.2. Renovamos a aparência de 2 chefes e finalmente corrigimos a durabilidade das armas, que até então só era mostrada na barra, mas nunca diminuía de verdade. O MOD de materiais de construção ganhou 138 novos blocos de construção, e o alcance de todas as armas foi multiplicado por 5.</p>
+      <ul><li>Aparência do Golem de Sculk e do Rock Lock renovada (Golem de Sculk agora parece um Iron Golem feito de sculk; Rock Lock ganhou visual de robô de combate futurista). Não houve mudança na força nem nos ataques</li><li>Corrigido para que a durabilidade das armas finalmente diminua de verdade (antes, a barra de durabilidade só aparecia, mas a arma nunca quebrava). O padrão é de aproximadamente 1536 tiros, e a Excalibur, aproximadamente 6093 usos</li><li>Alcance de todas as armas multiplicado por 5 (fuzil de assalto 60 → 300m, espingarda 24 → 120m, sniper 150 → 750m, laser 80 → 400m)</li><li>Adicionados 138 novos blocos de construção ao MOD de materiais de construção (meio-bloco vertical, coluna octogonal e rampa de 8 degraus, cada um em 46 materiais diferentes)</li><li>Foi aprovado o plano de deixar o design dos veículos com “formas arredondadas e realistas”, e já estão prontos os modelos do sedã e do avião de hélice (a extensão para os outros 13 veículos está prevista para as próximas atualizações, aos poucos)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Alcance de todas as armas multiplicado por 5 (fuzil de assalto 60 → 300m / espingarda 24 → 120m / sniper 150 → 750m / laser 80 → 400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Para o aumento de alcance fazer efeito, é preciso apagar o config/sorakaze_guns.json</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Por enquanto, o “design arredondado” dos veículos só existe para o sedã e o avião de hélice — a extensão para os outros 13 veículos está prevista para futuras atualizações</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-21</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.1</span> — Corrigido o bug em que o Warden derrotava o chefe
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Correção de bug</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span></div>
+      <p>Corrigimos o bug em que o precioso chefe “Golem de Sculk” — limitado a 1 por cidade e a apenas 1 durante toda a existência do mundo — acabava sendo derrotado pelo Warden quando ele revidava.</p>
+      <ul><li>O Golem de Sculk não sofre mais dano do Warden, e o Warden também parou de atacar e procurar o Golem de Sculk (os jogadores continuam podendo derrotá-lo normalmente)</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss vehicles">
+      <div class="timeline-entry__date">2026-07-20</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.0</span> — Chegam os MODs de Chefes e Veículos: agora são 5 MODs no total
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Chegaram dois MODs novos, “Chefes” e “Veículos”, totalizando agora 5 MODs. Derrotar 3 Wardens numa Cidade Antiga agora faz aparecer o chefe “Golem de Sculk” para uma luta de verdade, além de 13 tipos de veículos (carros, caminhões, aviões etc.) e a novidade da arma laser e da armadilha de laser. O trem agora também pode formar composições de até 15 vagões.</p>
+      <ul><li>Novo MOD “Chefes”: derrote 3 Wardens em uma Cidade Antiga e o chefe “Golem de Sculk” (900 de vida) aparece. Ao derrotá-lo, ele sempre dropa um “Farol Aprimorado” com área de efeito 3 vezes maior</li><li>Novo MOD “Veículos”: adicionados 10 veículos terrestres (carro, ônibus, caminhão, moto etc.) + 3 aeronaves. Inclui giroflex e sirene em veículos de emergência, caçamba de caminhão e mais</li><li>Adicionadas a arma laser (uma célula de energia dá 100 tiros) e a torreta automática (que mira só em inimigos) ao MOD de armas</li><li>Adicionados o emissor/receptor de laser e a mesa ao MOD de materiais de construção</li><li>Melhoramos o sistema de acoplamento do trem, permitindo composições de até 15 vagões, incluindo carga e passageiros. Também foram adicionados 2 modelos de trem-bala, com o vagão da frente chegando a 75 m/s</li></ul>
+      
+      
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>A sensação de pilotagem das aeronaves (decolagem, pouso, perda de sustentação etc.) já foi pensada para passar por ajustes futuros. Se achar pesada ou difícil de controlar, dá para ajustar pela configuração</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-19</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.1</span> — Armas viram hitscan e correção da trepidação das portas
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span></div>
+      <p>As armas passaram a usar o sistema hitscan — o tiro acerta no exato instante em que é disparado —, e adicionamos sons de disparo exclusivos. O trem ganhou modelo 3D e a possibilidade de acoplar vagões (vagão de carga e vagão de passageiros), e corrigimos o bug que fazia as portas fechadas ficarem tremendo sem parar. Também chegam a porta secreta e 3 novos tipos de porta.</p>
+      <ul><li>As armas mudaram para o sistema hitscan, em que o tiro acerta sem esperar a bala viajar (o alcance de acerto é 60m no fuzil de assalto, 24m na espingarda e 150m no sniper)</li><li>Adicionados sons novos de disparo, recarga e “clique a seco” (sons feitos do zero, criados internamente)</li><li>Aumentamos o tamanho das armas na mão, deixando-as mais fáceis de ver tanto em primeira quanto em terceira pessoa</li><li>Adicionado um modelo 3D para o trem, com visual de trem urbano de passageiros. Agora dá para acoplar o vagão de carga (27 slots de armazenamento) e o vagão de passageiros (2 lugares), embora não seja possível dar ré enquanto estiverem acoplados</li><li>Corrigido o bug em que as portas fechadas ficavam tremendo sem parar</li><li>Adicionada a porta secreta (que se camufla como terra, pedra, netherrack, pedra do End etc.)</li><li>Adicionados 3 novos tipos de porta (grade de enrolar, porta de correr simples e porta de grade de ferro), totalizando 9 tipos de porta</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.0</span> — Correção do bug de sufocamento nas portas e grande aumento de velocidade do trem
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span></div>
+      <p>Corrigimos um bug grave que causava dano ao atravessar portas. A velocidade máxima do trem subiu para 60 m/s (limite de configuração de 80 m/s), e agora ele carrega automaticamente os chunks à frente enquanto anda. Também foram adicionados novos blocos, como elevador e esteira transportadora, e os controles das armas foram unificados: clique esquerdo para atirar, clique direito para mirar e R para recarregar.</p>
+      <ul><li>[Importante] Corrigido o bug que causava dano ao atravessar portas (automática, fusuma, grande e escotilha). Melhoramos para que a porta não feche sozinha enquanto houver alguém por perto</li><li>Velocidade máxima do trem: 20 → 60 m/s (o limite de configuração pode ser aumentado até 80 m/s). Agora os chunks à frente são carregados automaticamente durante a viagem, reduzindo o corte de cenário em alta velocidade</li><li>4 blocos novos: elevador (pular para subir / agachar para descer), escada rolante, 2 tipos de cadeira e esteira transportadora (transporta itens, para com sinal de redstone)</li><li>Controles das armas totalmente reformulados: clique esquerdo para atirar, segurar o clique direito para mirar (no sniper, ativa a mira telescópica) e R para recarregar</li><li>As armas agora aparecem como modelo 3D quando seguradas na mão (antes só tinham o ícone plano, igual ao do inventário)</li><li>A espingarda agora derruba de um golpe só um inimigo sem armadura à queima-roupa (também corrigimos o bug em que vários chumbos eram anulados de uma vez por causa do tempo de invencibilidade após levar dano)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Espingarda: dano por chumbo 3.0 → 5.0 (10 chumbos, totalizando 50.0 se todos acertarem à queima-roupa)</li><li>Trem: velocidade máxima 20 → 60 m/s, limite de configuração 25 → 80 m/s</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Como o significado do limite de velocidade do trem mudou, recomendamos apagar o config/sorakaze_rail.json depois de atualizar (se não apagar, ele continua com o valor antigo de 20 m/s)</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.1.0</span> — Melhorias no comportamento do trem e reforço nas armas de fogo
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span></div>
+      <p>Corrigimos o bug que fazia o trem andar aos trancos e barrancos, além do problema de precisar segurar a tecla W o tempo todo para ele continuar andando. O poder de fogo das armas foi reforçado, e o rifle sniper ganhou uma mira telescópica exclusiva com efeito de balanço. O MOD de materiais de construção recebeu 4 novos tipos de porta, incluindo a porta automática.</p>
+      <ul><li>Trem: corrigido o bug que fazia o movimento ficar aos trancos, agora ele anda de forma suave</li><li>Trem: agora basta apertar W uma vez para ele acelerar e manter a velocidade de cruzeiro sozinho, sem precisar segurar a tecla (antes era preciso ficar segurando). A tecla S freia, e apertar S de novo depois de parado faz o trem dar ré</li><li>Velocidade máxima do trem: 15 → 20 m/s. Ícone do item do trem redesenhado</li><li>Rifle sniper: mudou para o esquema “mirar e soltar para atirar”, com uma mira telescópica exclusiva, zoom de ×4/×8 (trocado com a roda do mouse) e um balanço na mira que é reduzido pela metade ao agachar</li><li>Fuzil de assalto: adicionado um espalhamento maior dos tiros ao atirar em movimento</li><li>MOD de materiais de construção: adicionados 4 novos tipos de porta — porta automática, porta de correr (fusuma), porta grande (de ferro/madeira) e escotilha (todas em estrutura multibloco; quebrar qualquer parte solta 1 item)</li></ul>
+      <h4>Ajustes de balanceamento</h4><ul><li>Fuzil de assalto: dano 3.0 → 5.0, cadência de tiro 8 → 10 disparos/s</li><li>Espingarda: dano por chumbo 2.0 → 3.0 (aumentado para 10 chumbos), alcance efetivo 12 → 16m</li></ul>
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-15</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.0.0</span> — Lançamento inicial: os 3 MODs de armas de fogo, ferrovia e materiais de construção
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span></div>
+      <p>Os três MODs “sorakaze_guns” (armas de fogo), “sorakaze_rail” (ferrovia) e “sorakaze_deco” (materiais de construção) foram instalados no servidor pela primeira vez. O arco e flecha e o vagonete da vanilla continuam do mesmo jeito, mas agora dá para craftar novas armas, veículos e blocos para construir cidades direto na sobrevivência.</p>
+      <ul><li>MOD de armas de fogo: agora dá para craftar 3 armas (fuzil de assalto, espingarda e rifle sniper) e suas munições específicas (munição de fuzil, cartucho de espingarda e munição sniper)</li><li>Implementado o zoom da mira telescópica no rifle sniper</li><li>MOD de ferrovia: adicionado o “trem”, um novo veículo que pode ser colocado sobre trilhos (o vagonete, os trilhos, o arco e flecha e a besta da vanilla não foram alterados). Enquanto anda, toca um som de rodagem em loop</li><li>MOD de materiais de construção: adicionados 12 tipos de blocos, como guard-rail, poste de energia, fiação elétrica, piso tátil (direcional/de alerta), semáforo veicular, semáforo de pedestres, luz de obstrução aérea e holofote</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>Para deixar o servidor compatível com MODs, é preciso migrar da vanilla para o Fabric. Além disso, rodar o Minecraft 26.2 exige Java 25 ou mais recente, então confira a versão do Java na máquina do servidor (veja o passo a passo no guia de instalação para administradores)</li></ul>
+        </div>
+      
+    </article>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referência não oficial dos MODs do Servidor Sorakazekarasu</p>
+    <p class="site-footer__note">Este site é uma referência não oficial. Não distribuímos os arquivos (jars) dos MODs. As receitas e os valores podem estar diferentes dos que você encontra no jogo, dependendo da versão instalada e dos ajustes de configuração feitos no servidor.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

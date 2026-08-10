@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glimpse Alpha Wiki</title>
+<meta name="description" content="そらかぜからすサーバーで導入している Fabric MOD「Glimpse Alpha」(旧 Sorakaze)のレシピ・更新履歴・導入手順をまとめた非公式リファレンスサイトです。">
+<meta property="og:title" content="Glimpse Alpha Wiki">
+<meta property="og:description" content="そらかぜからすサーバーで導入している Fabric MOD「Glimpse Alpha」(旧 Sorakaze)のレシピ・更新履歴・導入手順をまとめた非公式リファレンスサイトです。">
+<meta property="og:type" content="website">
+<link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="./">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="./" class="active">ホーム</a></li>
+        <li><a href="./changelog/">更新履歴</a></li>
+        <li><a href="./recipes/">レシピ集</a></li>
+        <li><a href="./guide/">導入ガイド</a></li>
+        <li><a href="./roadmap/">今後の予定</a></li>
+        <li><a href="./known-issues/">既知の不具合</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
+          🌐 <span>日本語</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="./" class="active" aria-current="true">日本語</a></li>
+        <li><a href="./en/">English</a></li>
+        <li><a href="./es/">Español</a></li>
+        <li><a href="./fr/">Français</a></li>
+        <li><a href="./zh/">简体中文</a></li>
+        <li><a href="./ko/">한국어</a></li>
+        <li><a href="./pt-br/">Português (Brasil)</a></li>
+        <li><a href="./it/">Italiano</a></li>
+        <li><a href="./ar/">العربية</a></li>
+        <li><a href="./ru/">Русский</a></li>
+        <li><a href="./id/">Bahasa Indonesia</a></li>
+        <li><a href="./de/">Deutsch</a></li>
+        <li><a href="./tr/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="配色を切り替え" title="配色を切り替え">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero">
+  <span class="hero__eyebrow">そらかぜからす鯖 非公式 MOD リファレンス</span>
+  <h1>Glimpse Alpha Wiki</h1>
+  <p class="lede">
+    そらかぜからすサーバーに導入している Fabric MOD 群「<strong>Glimpse Alpha</strong>」(旧称: Sorakaze)のレシピ・更新履歴・導入手順をまとめた非公式のリファレンスサイトです。現在
+    <strong>8 個の MOD</strong>(銃火器・鉄道・建材・ボス・天空・サバイバル・乗り物・電力)を Minecraft
+    <strong>26.2</strong>上で同時に運用しています。
+  </p>
+  <p class="callout callout--info">このサイトは MOD 本体(jar ファイル)を配布していません。ここにあるのはレシピ表・更新履歴・導入手順などの「読みもの」だけです。MOD 本体はサーバー管理者から直接受け取ってください。</p>
+  <div class="tag-row" style="margin-top:20px;">
+    <a class="btn" href="recipes/">レシピ集を見る</a>
+    <a class="btn btn--ghost" href="changelog/">更新履歴を見る</a>
+    <a class="btn btn--ghost" href="guide/">導入ガイドを見る</a>
+  </div>
+</section>
+
+    <div class="card" style="margin-top:28px;">
+      <div class="badge-row"><span class="type-badge type-visual">見た目の更新</span>
+        <span class="timeline-entry__release">v1.8.6</span>
+        <span class="card__meta">2026-08-09</span>
+      </div>
+      <h3 style="margin-top:0">最新の更新: ミサイル弾頭・携帯電話アプリのアイコンを追加</h3>
+      <p>見た目と見つけやすさに関する2件の修正です。ミサイル弾頭・核弾頭にテクスチャが1枚も用意されていなかった問題を解消し、専用アイコンを新規に描き起こしてクラフトも可能にしました。また、見つからないと報告のあったミサイルランチャーをクリエイティブタブに追加し、表示名・操作画面の翻訳も整備しました。携帯電話・パソコンのアプリ7つにも専用アイコンを新たに用意しています。</p>
+      <ul><li>ミサイル弾頭・核弾頭に専用の128pxアイコンを新規に描き起こした(それまでは絵が1枚も無く、Minecraft標準の『紫と黒の市松模様』のまま持ち物欄に表示されていた)。</li><li>ミサイル弾頭(鉄インゴット×5+TNT×1+レッドストーンブロック×1)・核弾頭(鉄ブロック×4+TNT×4+ネザースター×1)を新たにクラフト可能にした。</li><li>ミサイルランチャーをクリエイティブタブに追加(以前はクラフト自体はできたが、タブに表示されず見つけられなかった)。表示名と、目標座標入力・9種類の状態表示・8方位・安全装置などの管制パネル画面の翻訳(日本語・英語それぞれ54個)を新規追加した。</li><li>携帯電話・パソコンのアプリ7つ(カメラ映像・メッセージ・調べもの・天気・電卓・電話・撮影)すべてに専用アイコンを新規に描画(以前は色付きの四角形が並ぶだけだった)。天気アプリの降水アイコンと拡大時計、電卓アプリのくぼんだ液晶風デザイン、電話アプリの方位針表示、カメラ映像アプリの監視モニタ風デザインなど、アプリごとの装飾も追加。</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">建材・装飾</span></div>
+      <p><a href="changelog/">更新履歴をすべて見る →</a></p>
+    </div>
+
+<h2>導入 MOD 一覧</h2>
+<p class="section-lede">クリックするとそのMODのレシピ一覧に移動します。</p>
+<div class="grid grid--mods">
+  <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
+      <h3>銃火器</h3>
+      <p class="card__meta">バニラにない遠距離武器</p>
+      <div class="card__meta">v1.8.6</div>
+    </a>
+      <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
+      <h3>鉄道</h3>
+      <p class="card__meta">電車と線路の乗り物</p>
+      <div class="card__meta">v1.8.1</div>
+    </a>
+      <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
+      <h3>建材・装飾</h3>
+      <p class="card__meta">街づくりの建材・家電</p>
+      <div class="card__meta">v1.8.6</div>
+    </a>
+      <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
+      <h3>ボス</h3>
+      <p class="card__meta">強力な討伐対象とドロップ装備</p>
+      <div class="card__meta">v1.8.5</div>
+    </a>
+      <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
+      <h3>天空</h3>
+      <p class="card__meta">新ディメンションと天使の王国</p>
+      <div class="card__meta">v1.8.4</div>
+    </a>
+      <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
+      <h3>サバイバル</h3>
+      <p class="card__meta">新鉱石・防具・生活要素</p>
+      <div class="card__meta">v1.8.5</div>
+    </a>
+      <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
+      <h3>乗り物</h3>
+      <p class="card__meta">自動車・バス・航空機</p>
+      <div class="card__meta">v1.8.1</div>
+    </a>
+      <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
+      <h3>電力</h3>
+      <p class="card__meta">発電・送電と電化機器</p>
+      <div class="card__meta">v1.8.4</div>
+    </a>
+</div>
+
+<h2>このサイトでできること</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));">
+  <a class="card" href="changelog/">
+      <h3>更新履歴</h3>
+      <p>初版から現在までの全アップデートを時系列で紹介。何が変わったか・注意点は何かが一目でわかります。</p>
+      <p class="card__meta">更新履歴を読む →</p>
+    </a>
+  <a class="card" href="recipes/">
+      <h3>レシピ集</h3>
+      <p>8 MOD 全アイテムのクラフトレシピを検索・絞り込みできる早見表です。</p>
+      <p class="card__meta">レシピを探す →</p>
+    </a>
+  <a class="card" href="guide/">
+      <h3>導入ガイド</h3>
+      <p>MOD を有効化してから遊び始めるまでの手順を、Windows / Mac 別に解説します。</p>
+      <p class="card__meta">導入手順を見る →</p>
+    </a>
+  <a class="card" href="roadmap/">
+      <h3>今後の予定</h3>
+      <p>現在準備中の新エリア・新要素をまとめたロードマップです(内容は変更される場合があります)。</p>
+      <p class="card__meta">ロードマップを見る →</p>
+    </a>
+  <a class="card" href="known-issues/">
+      <h3>既知の不具合</h3>
+      <p>現在分かっている不具合や未検証の要素をまとめています。</p>
+      <p class="card__meta">既知の不具合を見る →</p>
+    </a>
+</div>
+
+<h2>このプロジェクトについて</h2>
+<p>もとは「Sorakaze」という名前で、バニラのサバイバル体験を保ちながら銃火器・鉄道・建材の 3 つの MOD を追加するところから始まりました。以後クラフト可能なアイテムを追加する形で拡張が続き、v1.8.0 で「Glimpse Alpha」に改名。現在ではボス・新ディメンション・サバイバル要素・乗り物・電力インフラまでを含む 8 MOD 構成になっています。</p>
+<p>バニラ要素を置き換えたり削除したりしないことを一貫した方針としており、弓矢やトロッコなど既存の要素はそのまま残っています。実在の銃器・企業・商標名は使用していません。</p>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
+    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)の配布は行っていません。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
+  </div>
+</footer>
+<script src="./assets/js/main.js"></script>
+</body>
+</html>

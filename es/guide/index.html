@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de instalación | Glimpse Alpha Wiki</title>
+<meta name="description" content="Guía de instalación del pack de MOD Glimpse Alpha. Resume los pasos de instalación en el servidor y la configuración para participar como jugador.">
+<meta property="og:title" content="Guía de instalación | Glimpse Alpha Wiki">
+<meta property="og:description" content="Guía de instalación del pack de MOD Glimpse Alpha. Resume los pasos de instalación en el servidor y la configuración para participar como jugador.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Ir al contenido</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Inicio</a></li>
+        <li><a href="../changelog/">Historial</a></li>
+        <li><a href="../recipes/">Recetas</a></li>
+        <li><a href="../guide/" class="active">Guía de instalación</a></li>
+        <li><a href="../roadmap/">Próximamente</a></li>
+        <li><a href="../known-issues/">Problemas conocidos</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Idioma / Language">
+          🌐 <span>Español</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../guide/">日本語</a></li>
+        <li><a href="../../en/guide/">English</a></li>
+        <li><a href="../../es/guide/" class="active" aria-current="true">Español</a></li>
+        <li><a href="../../fr/guide/">Français</a></li>
+        <li><a href="../../zh/guide/">简体中文</a></li>
+        <li><a href="../../ko/guide/">한국어</a></li>
+        <li><a href="../../pt-br/guide/">Português (Brasil)</a></li>
+        <li><a href="../../it/guide/">Italiano</a></li>
+        <li><a href="../../ar/guide/">العربية</a></li>
+        <li><a href="../../ru/guide/">Русский</a></li>
+        <li><a href="../../id/guide/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/guide/">Deutsch</a></li>
+        <li><a href="../../tr/guide/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema de color" title="Cambiar tema de color">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Guía de instalación</span>
+  <h1>Guía de instalación</h1>
+  <p class="lede">Aquí se resumen los pasos desde que activas los MOD hasta que empiezas a jugar. Si solo vas a participar como jugador, te basta con el capítulo «Para jugadores».</p>
+</div>
+<div class="toc"><div class="toc__title">Índice</div><ol><li><a href="#overview">Resumen: sobre la instalación de Glimpse Alpha</a></li><li><a href="#player-setup">Para jugadores: configuración para entrar al servidor</a></li><li><a href="#admin-prep">Para administradores del servidor: preparación previa (copia de seguridad y comprobación de versión)</a></li><li><a href="#admin-fabric-install">Para administradores del servidor: instalación de Fabric</a></li><li><a href="#admin-mods-and-verify">Para administradores del servidor: instalación de los MOD y comprobación del arranque</a></li><li><a href="#admin-upgrade">Al reemplazar los MOD por una versión nueva</a></li><li><a href="#gameplay-notices">Cosas que conviene saber antes de jugar</a></li><li><a href="#faq">Preguntas frecuentes y solución de problemas</a></li></ol></div>
+<div id="overview"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Resumen: sobre la instalación de Glimpse Alpha</h2>
+      
+<p>
+  <strong>Glimpse Alpha</strong> (antes llamado Sorakaze) es el conjunto de MOD de Fabric
+  instalado en el servidor Sorakazekarasu. Está formado por 8 MOD independientes que se
+  pueden instalar y actualizar por separado. No sustituye ni elimina elementos vanilla
+  (el estándar sin MOD) como el arco y flecha o la vagoneta; se limita a añadir objetos,
+  bloques y dimensiones nuevas.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>Contenido</th></tr>
+<tr><td>Armas de fuego</td><td>Armas a distancia que la vanilla no tiene (rifle de asalto, escopeta, francotirador, etc.)</td></tr>
+<tr><td>Ferrocarril</td><td>Un tren que acelera poco a poco, y vagones de pasajeros/carga que se pueden enganchar</td></tr>
+<tr><td>Materiales y decoración</td><td>Materiales de construcción urbana como semáforos y guardarraíles, y electrodomésticos como la cámara de seguridad, el ATM o el ascensor</td></tr>
+<tr><td>Vehículos</td><td>Coches, autobuses, aeronaves, etc.</td></tr>
+<tr><td>Jefes</td><td>Poderosos objetivos de combate y su equipo exclusivo de botín</td></tr>
+<tr><td>Cielo</td><td>La nueva dimensión «Cielo» y la ciudad/el reino de los ángeles que vive allí</td></tr>
+<tr><td>Supervivencia</td><td>Nuevos minerales y armaduras, y elementos de vida cotidiana como la temperatura y las estaciones del año</td></tr>
+<tr><td>Electricidad</td><td>Redes de generación y distribución eléctrica, y aparatos que funcionan con electricidad</td></tr>
+</table>
+</div>
+<p>Para ver los objetos y recetas detallados de cada MOD, consulta la <a href="../recipes/">tabla de recetas</a>; para los cambios hasta ahora, consulta el <a href="../changelog/">historial de actualizaciones</a>.</p>
+
+<h3>Para usar los MOD hace falta «Fabric»</h3>
+<p>
+  <strong>Fabric</strong> es la base que permite que Minecraft cargue MOD. Es como la idea de
+  que una consola necesita su sistema antes de instalar software: antes de meter
+  los MOD en sí, hace falta instalar Fabric tanto en el servidor como en el PC de cada jugador.
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">⚠ El punto donde más se suele fallar</div>
+  <p>
+    Los MOD hay que instalarlos <strong>no solo en el servidor, sino en el PC de todas las
+    personas que vayan a jugar</strong>. No es cierto que «con instalarlo en el servidor
+    ya se aplica automáticamente a todos». Si la versión de Minecraft, Fabric y los MOD
+    del servidor y de todos los jugadores no coinciden exactamente, no se podrá entrar al servidor.
+  </p>
+</div>
+
+<h3>Quién prepara qué</h3>
+<ul>
+  <li><strong>El servidor (Sorakazekarasu)</strong> — el servidor de Fabric + Fabric API + los 8 MOD de Glimpse Alpha</li>
+  <li><strong>El PC de cada persona que participe</strong> — el cliente de Fabric + Fabric API + los 8 MOD de Glimpse Alpha (exactamente la misma combinación que el servidor)</li>
+</ul>
+
+<div class="callout callout--info">
+  <div class="callout__title">Este sitio no distribuye los MOD en sí</div>
+  <p>
+    Este sitio solo contiene material de lectura —tabla de recetas, historial de
+    actualizaciones, guía de instalación— y no distribuye los propios archivos jar de los MOD.
+    Consigue el conjunto de archivos jar necesarios directamente con el administrador del servidor.
+  </p>
+</div>
+
+<h3>Estructura de esta página</h3>
+<p>
+  Esta guía está dividida en dos perfiles. La mayoría de las personas solo necesitan leer el
+  <a href="#player-setup">capítulo para jugadores</a> para poder participar.
+  Si vas a operar o administrar tú mismo el servidor, revisa además el
+  <a href="#admin-prep">capítulo para administradores del servidor</a>.
+</p>
+
+<h3>Versiones compatibles actuales (orientativo)</h3>
+<p>
+  Los siguientes valores corresponden al momento en que se escribió esta página. Como los
+  números reales cambian con cada actualización, confirma siempre el valor exacto en el
+  <a href="../changelog/">historial de actualizaciones</a>, la <a href="../recipes/">tabla de recetas</a>
+  o el aviso del administrador del servidor.
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>Elemento</th><th>Valor orientativo actual</th></tr>
+<tr><td>Versión de Minecraft</td><td><code>26.2</code></td></tr>
+<tr><td>Java necesario</td><td>Java 25 (se recomienda <a href="https://adoptium.net/">Temurin 25 (LTS)</a>)</td></tr>
+<tr><td>Fabric API</td><td>La que corresponda a la versión de Minecraft (ejemplo: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
+<tr><td>Composición de MOD</td><td>8 (armas de fuego, ferrocarril, materiales/decoración, vehículos, jefes, cielo, supervivencia, electricidad)</td></tr>
+</table>
+</div>
+
+    </div></div>
+<div id="player-setup"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Para jugadores</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Para jugadores: configuración para entrar al servidor</h2>
+      
+<p>
+  Aquí se explica la configuración para <strong>quienes van a entrar a jugar al servidor</strong>.
+  No hace falta ningún conocimiento técnico complicado. Siguiendo los pasos de arriba a abajo,
+  se tarda entre 15 y 20 minutos en total.
+</p>
+
+<div class="callout callout--info">
+  <div class="callout__title">Solo hay que hacer 3 cosas</div>
+  <ul>
+    <li>① Instalar Fabric (la base que carga los MOD) en tu propio PC</li>
+    <li>② Poner el conjunto de archivos de MOD que te dio el administrador del servidor en la carpeta indicada</li>
+    <li>③ Cambiar solo un punto de cómo inicias el juego, y entrar al servidor</li>
+  </ul>
+</div>
+
+<h3>Lo que necesitas</h3>
+<ul>
+  <li>Un PC con Windows o Mac donde puedas jugar a Minecraft Java Edition</li>
+  <li>El <strong>conjunto de MOD (9 archivos jar = 1 de Fabric API + 8 MOD de Glimpse Alpha)</strong> que te dé el administrador del servidor</li>
+</ul>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Muy importante</div>
+  <p>
+    Solo se puede entrar si tienes <strong>exactamente la misma versión y exactamente los mismos
+    archivos de MOD</strong> que el servidor. En esta página se usa como ejemplo la versión de
+    Minecraft <code>26.2</code>, pero si el administrador del servidor te indica un número distinto,
+    léelo como ese número. <strong>No hagas doble clic</strong> en los archivos jar que recibas para
+    abrirlos: basta con ponerlos en la carpeta.
+  </p>
+</div>
+
+<h3>Archivos que vas a recibir (ejemplo)</h3>
+<p>Recibirás del administrador del servidor unos 9 archivos parecidos a estos (el número de versión cambia con cada actualización).</p>
+<div class="table-wrap">
+<table>
+<tr><th>Nombre de archivo (ejemplo)</th><th>Contenido</th></tr>
+<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Piezas comunes para que funcionen los MOD</td></tr>
+<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>MOD de armas de fuego</td></tr>
+<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>MOD de ferrocarril</td></tr>
+<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>MOD de materiales y decoración</td></tr>
+<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>MOD de vehículos</td></tr>
+<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>MOD de jefes</td></tr>
+<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>MOD de cielo</td></tr>
+<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>MOD de supervivencia</td></tr>
+<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>MOD de electricidad</td></tr>
+</table>
+</div>
+
+<h3>① Instalar Fabric</h3>
+<p>Abre <code>https://fabricmc.net/use/installer/</code> y descarga el instalador. Sin cambiar de la pestaña «<strong>Client</strong>» (no la cambies a «Server»), elige en Minecraft Version el mismo número que el servidor y pulsa «Install».</p>
+
+<h4>En Windows</h4>
+<ol class="steps">
+  <li>Descarga el instalador desde un botón del tipo «Download installer (Windows/.exe)» y ejecútalo con doble clic (si aparece «Windows protegió tu PC», pulsa «Más información» → «Ejecutar de todas formas»).</li>
+  <li>Sin cambiar de la pestaña «Client», elige <code>26.2</code> (el mismo número que el servidor) en Minecraft Version, deja Loader Version como está y pulsa «Install».</li>
+</ol>
+
+<h4>En Mac</h4>
+<ol class="steps">
+  <li>Descarga el instalador (.jar) desde el botón «Download universal jar». No hay un ejecutable (.exe) para Mac.</li>
+  <li>En el <code>fabric-installer-〜.jar</code> descargado, en lugar de <strong>un doble clic normal</strong>, haz clic derecho (o clic manteniendo pulsada la tecla <code>control</code>) y elige «Abrir». Si aparece una advertencia, pulsa «Abrir» de nuevo.</li>
+  <li>Sin cambiar de la pestaña «Client», elige en Minecraft Version el mismo número que el servidor y pulsa «Install».</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Si en Mac aparece «No se puede verificar el desarrollador»</div>
+  <p>En versiones recientes de macOS, puede que ni siquiera aparezca el botón al hacer clic derecho → «Abrir», y que solo salga el aviso «No se pudo verificar que "fabric-installer〜.jar" no contiene malware». En ese caso puedes abrirlo siguiendo estos pasos.</p>
+  <ol class="steps">
+    <li>En el aviso, pulsa «Listo» (<strong>nunca pulses «Mover a la papelera»</strong>)</li>
+    <li>Abre el menú Apple, arriba a la izquierda → «Ajustes del Sistema» → «Privacidad y seguridad»</li>
+    <li>Más abajo verás un mensaje del tipo «Se bloqueó el uso de "fabric-installer〜.jar"»; pulsa el botón «Abrir de todas formas» que hay al lado</li>
+    <li>Si te lo vuelve a preguntar, pulsa «Abrir de todas formas» → introduce la contraseña del Mac (o usa Touch ID)</li>
+  </ol>
+  <p>Es el aviso estándar que aparece con cualquier distribución no registrada ante Apple; si lo conseguiste del sitio oficial de Fabric, no hay de qué preocuparse. Una vez que lo permitas, las siguientes veces se abrirá con normalidad.</p>
+</div>
+
+<div class="callout callout--info">
+  <div class="callout__title">Si en Mac no pasa nada al abrir el instalador</div>
+  <p>
+    Si no ocurre nada al hacer clic derecho → «Abrir», es que el sistema no tiene Java instalado.
+    Abre <a href="https://adoptium.net/">adoptium.net</a>, instala el instalador de macOS (.pkg)
+    de «Temurin» y vuelve a intentarlo. En los Mac con Apple Silicon (M1/M2/M3/M4, etc.) elige
+    «aarch64», y en los Mac con Intel, «x64». Si no lo sabes, comprueba el campo «Chip» en el menú
+    Apple, arriba a la izquierda → «Acerca de este Mac» (si pone «Apple M〜», es aarch64).
+  </p>
+</div>
+
+<h3>② Poner los archivos de MOD en la carpeta mods</h3>
+
+<h4>Windows: <code>%appdata%\.minecraft\mods</code></h4>
+<ol class="steps">
+  <li>Escribe <code>%appdata%\.minecraft</code> en la barra de direcciones del Explorador y pulsa Intro.</li>
+  <li>Si no existe la carpeta <code>mods</code>, créala (todo en minúsculas).</li>
+  <li>Copia los 9 archivos jar que recibiste dentro de esta carpeta <code>mods</code> (no hace falta descomprimirlos; se ponen tal cual, como jar).</li>
+</ol>
+
+<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
+<ol class="steps">
+  <li>Haz clic una vez en el escritorio y pulsa a la vez <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> (o usa el menú superior «Ir» → «Ir a la carpeta…»).</li>
+  <li>Pega tal cual <code>~/Library/Application Support/minecraft</code> en el cuadro que aparece y pulsa Intro (no olvides la «<code>~</code>» inicial). «Library» es una carpeta que normalmente no se ve en el Finder, así que este método es el más seguro para abrirla.</li>
+  <li>Si no existe la carpeta <code>mods</code>, créala ahí mismo con clic derecho → «Nueva carpeta».</li>
+  <li>Arrastra y suelta los 9 archivos jar que recibiste dentro de esta carpeta <code>mods</code>.</li>
+</ol>
+
+<h3>③ Iniciar con Fabric y entrar al servidor</h3>
+<ol class="steps">
+  <li>Abre el launcher de Minecraft y, en la lista de perfiles de inicio cerca del botón «Jugar», elige uno con un nombre como <code>fabric-loader-26.2</code> (si dejas «Última versión», el juego se iniciará sin MOD).</li>
+  <li>Pulsa «Jugar» tal cual para iniciar. Si en la pantalla de título aparece un botón «Mods» nuevo, ha funcionado. Al pulsarlo podrás comprobar los 8 MOD de Glimpse Alpha y Fabric API.</li>
+  <li>Después, conéctate al servidor como siempre, desde «Multijugador».</li>
+</ol>
+
+<h3>Cuando se actualicen los MOD</h3>
+<p>Cuando se actualicen los MOD del lado del servidor, todos los participantes deben actualizar a la vez a la misma versión.</p>
+<ol class="steps">
+  <li>Recibe los nuevos archivos de MOD del administrador del servidor (espera el aviso antes de hacer el cambio).</li>
+  <li>Abre la carpeta mods y <strong>elimina los archivos jar de Glimpse Alpha que tenías antes</strong>, y después pon los nuevos (aunque el nombre del archivo cambie, se tratan como el mismo MOD por dentro, así que si queda uno antiguo, el juego no arrancará).</li>
+  <li>Inicia como siempre con el perfil de fabric-loader.</li>
+</ol>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Aviso</div>
+  <p>Si solo uno de los dos lados se queda con la versión nueva, no se podrá entrar al servidor. Si tienes problemas, revisa también las <a href="#faq">preguntas frecuentes</a>.</p>
+</div>
+
+<h3>Problemas típicos en Mac</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Síntoma</th><th>Cómo solucionarlo</th></tr>
+<tr><td>Aparece «No se puede verificar el desarrollador» o «No se pudo verificar que no contiene malware»</td><td>En el aviso, pulsa «Listo» (no pulses «Mover a la papelera»). Luego ve a Ajustes del Sistema → «Privacidad y seguridad», desplázate hacia abajo y pulsa «Abrir de todas formas» junto al mensaje de bloqueo, e introduce la contraseña.</td></tr>
+<tr><td>No pasa nada al hacer doble clic en el instalador</td><td>No tienes Java instalado. Instala Temurin (el .pkg para macOS) desde adoptium.net y vuelve a intentarlo.</td></tr>
+<tr><td>No encuentras la carpeta «Library»</td><td>No hace falta buscarla a mano. Lo más seguro es pegar <code>~/Library/Application Support/minecraft</code> con <code>⌘</code>+<code>⇧</code>+<code>G</code> (es una carpeta que normalmente está oculta).</td></tr>
+<tr><td>Al intentar entrar al servidor, dice que la versión no coincide</td><td>Comprueba ① si has elegido el perfil correcto de fabric-loader en el launcher, y ② si el contenido de la carpeta mods coincide con el del servidor. Si algo no coincide, aunque sea una sola cosa, no podrás entrar.</td></tr>
+<tr><td>El juego se cierra justo al iniciarse</td><td>Comprueba si en la carpeta mods se ha colado algún jar antiguo o que no tenga nada que ver. Si aún así no se soluciona, envía <code>logs/latest.log</code> (en Mac, <code>~/Library/Application Support/minecraft/logs/latest.log</code>) al administrador del servidor.</td></tr>
+<tr><td>Quiero volver al Minecraft normal, sin MOD</td><td>Basta con volver a poner el perfil de inicio del launcher en «Última versión». No hace falta borrar los archivos de MOD.</td></tr>
+</table>
+</div>
+<p>El procedimiento es el mismo tanto en Apple Silicon (M1/M2/M3/M4, etc.) como en Mac con Intel. Lo único que cambia es si eliges aarch64 o x64 al elegir Java (Temurin).</p>
+
+    </div></div>
+<div id="admin-prep"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Para administradores del servidor</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Para administradores del servidor: preparación previa (copia de seguridad y comprobación de versión)</h2>
+      
+<p>
+  A partir de aquí, el capítulo va dirigido a quienes operan y administran el servidor en sí.
+  Se explica el procedimiento para añadir Fabric y los 8 MOD de Glimpse Alpha partiendo de un
+  servidor de Minecraft ya en marcha (vanilla, el servidor estándar sin MOD). Este capítulo usa
+  como ejemplo un servidor en Windows. Si administras el servidor en Mac / Linux, adapta la
+  ubicación de las carpetas y la forma de ejecutar comandos a tu entorno, siguiendo un
+  procedimiento equivalente (las indicaciones del sitio oficial de Fabric).
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Antes de empezar, siempre</div>
+  <p>Haz siempre una copia de seguridad antes de empezar, para no perder el mundo aunque algo falle al instalar los MOD.</p>
+</div>
+
+<h3>1. Haz una copia de seguridad del mundo</h3>
+<p>Abre la carpeta del servidor (por ejemplo, <code>C:\MinecraftServer</code>) y ejecuta el procedimiento de copia de seguridad que uses normalmente (por ejemplo, un script como <code>Backup-Server.bat</code>). Si no tienes un script dedicado, basta con detener el servidor y copiar toda la carpeta <code>world</code> a otro lugar.</p>
+
+<h3>2. Comprueba la versión de Java</h3>
+<ol class="steps">
+  <li>Abre el símbolo del sistema (o cualquier terminal).</li>
+  <li>Escribe <code>java -version</code> y pulsa Intro.</li>
+  <li>Comprueba si el número que aparece es <strong>25</strong> (por ejemplo, <code>java version "25.0.3"</code>).</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Muy importante</div>
+  <p>
+    Para ejecutar Minecraft <code>26.2</code> hace falta <strong>Java 25</strong>. Algunos
+    procedimientos de configuración antiguos dicen «Java 21», pero esa información está
+    desactualizada: con Java 21 el servidor no arrancará. Si el número es menor que 25,
+    abre <a href="https://adoptium.net/">adoptium.net</a>, descarga e instala
+    «Temurin 25 (LTS)», reinicia el ordenador y vuelve a comprobarlo.
+  </p>
+</div>
+
+<h3>3. Comprueba la versión de Minecraft del servidor</h3>
+<ol class="steps">
+  <li>Inicia el servidor una vez, como haces normalmente (por ejemplo, con <code>Start-Server.bat</code>).</li>
+  <li>Busca una línea cerca del principio de la consola (la pantalla negra) parecida a <code>Starting minecraft server version X.Y</code>, y anota ese número.</li>
+  <li>Escribe <code>stop</code> en la consola y pulsa Intro para detener el servidor de forma segura.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Aviso</div>
+  <p>
+    Esta guía usa «<code>26.2</code>» como ejemplo, pero si el número que confirmaste
+    es distinto, léelo como ese número en todos los pasos siguientes (elección de versión
+    de Fabric, Fabric API y cada MOD). Si la versión del servidor, de todos los jugadores
+    y de los MOD no coincide en todo, ni un poco, nada funcionará.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-fabric-install"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Para administradores del servidor</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Para administradores del servidor: instalación de Fabric</h2>
+      
+<h3>Instalar el servidor de Fabric</h3>
+<ol class="steps">
+  <li>Abre <code>https://fabricmc.net/use/server/</code> en el navegador y descarga el instalador desde un botón del tipo «Download installer (Windows/.exe)».</li>
+  <li>Haz doble clic en el <code>fabric-installer〜.exe</code> descargado para iniciarlo (si aparece «Windows protegió tu PC», pulsa «Más información» → «Ejecutar de todas formas»).</li>
+  <li>En la pantalla de configuración del instalador, comprueba estos 4 puntos.
+    <ul>
+      <li>Elige la pestaña «<strong>Server</strong>»</li>
+      <li>En Minecraft Version, elige la misma versión del servidor que confirmaste antes (por ejemplo, <code>26.2</code>)</li>
+      <li>Deja Loader Version como está</li>
+      <li>En Install Location, indica la carpeta del servidor ya existente (por ejemplo, <code>C:\MinecraftServer</code>)</li>
+    </ul>
+  </li>
+  <li>Pulsa «Install».</li>
+  <li>Si aparece un nuevo archivo <code>fabric-server-launch.jar</code> dentro de la carpeta del servidor, ha funcionado.</li>
+</ol>
+
+<h3>Crea un nuevo archivo de inicio (archivo .bat)</h3>
+<p>
+  El archivo de inicio que usabas hasta ahora (por ejemplo, <code>Start-Server.bat</code>) inicia
+  el servidor «sin MOD». <strong>Déjalo tal cual, no lo borres</strong> (para poder volver a un
+  servidor sin MOD si hiciera falta). En su lugar, crea un nuevo archivo de inicio para Fabric.
+</p>
+<ol class="steps">
+  <li>Abre el Bloc de notas (Notepad).</li>
+  <li>Copia y pega tal cual el siguiente contenido.
+<pre>@echo off
+cd /d "%~dp0"
+title Minecraft Fabric Server
+java -Xms2G -Xmx4G -jar fabric-server-launch.jar nogui
+echo El servidor se ha detenido.
+pause</pre>
+  </li>
+  <li>Con «Archivo» → «Guardar como», elige como ubicación la carpeta del servidor (por ejemplo, <code>C:\MinecraftServer</code>), como nombre de archivo <code>Start-Fabric-Server.bat</code>, y como tipo de archivo «<strong>Todos los archivos</strong>», y guarda.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Aviso</div>
+  <p>
+    Si no eliges «Todos los archivos» como tipo de archivo, se creará un archivo que no
+    funciona llamado <code>Start-Fabric-Server.bat.txt</code>. Además, si la memoria (RAM)
+    que reservaste al montar el servidor no es de 4 GB, cambia el «4» de <code>-Xmx4G</code>
+    por ese número.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-mods-and-verify"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Para administradores del servidor</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Para administradores del servidor: instalación de los MOD y comprobación del arranque</h2>
+      
+<p>El propio MOD es un archivo llamado «jar», uno por cada MOD. Se instala simplemente poniéndolo en la carpeta
+<code>mods</code> de la carpeta del servidor.</p>
+
+<h3>1. Prepara la carpeta mods</h3>
+<p>Comprueba si dentro de la carpeta del servidor (por ejemplo, <code>C:\MinecraftServer</code>) hay una carpeta llamada <code>mods</code>. Si no existe, créala con clic derecho → «Nuevo» → «Carpeta», con el nombre <code>mods</code> (todo en minúsculas).</p>
+
+<h3>2. Consigue Fabric API</h3>
+<p>Abre <code>https://modrinth.com/mod/fabric-api/versions</code> y descarga la primera entrada de la lista cuya «Game version» (versión del juego) coincida con la del servidor (por ejemplo, <code>fabric-api-0.154.2+26.2.jar</code>).</p>
+
+<h3>3. Pon el conjunto de MOD en la carpeta mods</h3>
+<p>
+  Copia dentro de la carpeta <code>mods</code> los 9 archivos jar en total: 1 de Fabric API + 8 MOD de
+  Glimpse Alpha (no hace falta descomprimirlos; se ponen tal cual, como jar). Consigue estos 8 MOD
+  por la misma vía de distribución de siempre. <strong>Este sitio no distribuye los propios archivos
+  de los MOD.</strong>
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>Nombre de archivo (ejemplo)</th></tr>
+<tr><td>Armas de fuego</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>Ferrocarril</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>Materiales y decoración</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>Vehículos</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Jefes</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>Cielo</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>Supervivencia</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>Electricidad</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+</table>
+</div>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Aviso</div>
+  <p>No hagas doble clic en los archivos jar (no hace falta abrirlos). Basta con ponerlos en la carpeta.</p>
+</div>
+
+<h3>4. Inicia el servidor y compruébalo</h3>
+<ol class="steps">
+  <li>Haz doble clic en el <code>Start-Fabric-Server.bat</code> que creaste antes (no uses el <code>Start-Server.bat</code> de siempre).</li>
+  <li>En la consola (la pantalla negra), comprueba estos 2 puntos.
+    <ul>
+      <li>En la línea donde se cargan los MOD aparecen los nombres de los MOD instalados</li>
+      <li>Al final aparece <code>Done (…s)! For help, type "help"</code> y el servidor sigue en marcha sin detenerse</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 Si aparece un error de Java y no arranca</div>
+  <p>
+    Si aparece un error en inglés del tipo «class file version» o «requires Java», es posible
+    que tu Java esté desactualizado. Instala la versión para Windows (.msi) de «Temurin 25 (LTS)»
+    desde <a href="https://adoptium.net/">adoptium.net</a>, reinicia el ordenador y vuelve a intentarlo.
+  </p>
+</div>
+
+<p>Una vez confirmado el arranque, avisa a todos los participantes del <a href="#player-setup">capítulo para jugadores</a>
+para que instalen el mismo Fabric y el mismo conjunto de MOD en su propio PC.</p>
+
+    </div></div>
+<div id="admin-upgrade"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Para administradores del servidor</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Al reemplazar los MOD por una versión nueva</h2>
+      
+<p>Como los 8 MOD de Glimpse Alpha son completamente independientes entre sí, no todas las
+actualizaciones sustituyen los 8 a la vez. Basta con reemplazar solo los MOD cuyo contenido
+haya cambiado de verdad (puedes comprobar cuáles cambiaron en el aviso de distribución o en el
+<a href="../changelog/">historial de actualizaciones</a>).</p>
+
+<h3>Pasos para actualizar</h3>
+<ol class="steps">
+  <li>Escribe <code>stop</code> en la consola del servidor para detenerlo.</li>
+  <li>Haz una copia de seguridad del mundo con el procedimiento habitual.</li>
+  <li>Dentro de la carpeta <code>mods</code> del servidor, <strong>elimina el archivo jar antiguo del MOD que vayas a actualizar</strong> y pon el nuevo (si quedan la versión antigua y la nueva del mismo MOD a la vez, el servidor no arrancará).</li>
+  <li>Inicia el servidor con <code>Start-Fabric-Server.bat</code> y comprueba que en la consola aparece la versión actualizada.</li>
+  <li><strong>Distribuye también los nuevos archivos jar a todos los participantes</strong> para que hagan el mismo cambio (consulta el <a href="#player-setup">capítulo para jugadores</a>). Si solo el servidor o solo los jugadores tienen la versión nueva, no se podrá entrar.</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Muy importante</div>
+  <p>
+    Si inicias el servidor habiendo quitado del todo un MOD (en lugar de actualizarlo), los
+    bloques que hubieras colocado con ese MOD y los objetos que tuvieras (como los semáforos)
+    desaparecerán. Esto es una característica propia de Minecraft y Fabric, y no se puede deshacer.
+    Haz siempre una copia de seguridad antes de quitar un MOD.
+  </p>
+</div>
+
+<h3>Sobre los archivos de configuración (el sistema de reparación automática)</h3>
+<p>
+  Cada MOD genera automáticamente al iniciarse un archivo de configuración dentro de la carpeta
+  <code>config/</code> (por ejemplo, <code>sorakaze_guns.json</code>). Ahí se pueden ajustar
+  valores como la potencia o la velocidad, y básicamente no hace falta eliminarlos ni reescribirlos
+  a mano en cada actualización.
+</p>
+<div class="callout callout--info">
+  <div class="callout__title">💡 Cómo funciona actualmente</div>
+  <p>
+    Los elementos cuyo valor por defecto cambia en una versión nueva se actualizan automáticamente
+    al nuevo valor por defecto, <strong>pero solo si todavía no los habías ajustado (si siguen
+    con el valor por defecto antiguo)</strong>. <strong>Los valores que hayas ajustado tú mismo
+    no se tocan.</strong> Los ajustes nuevos que se añadan también se escriben automáticamente al
+    iniciar. Todo lo que se actualice queda registrado sin falta en <code>logs/latest.log</code>,
+    en formato «valor antiguo → valor nuevo».
+  </p>
+</div>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Aviso al editar los archivos de configuración</div>
+  <p>
+    Si borras a mano solo una parte de los valores del archivo de configuración (por ejemplo,
+    solo la línea de daño dentro del bloque de ajustes de un arma), es posible que ese elemento
+    se sustituya en silencio por otro valor inicial interno del MOD (sin que aparezca ningún
+    error). Si quieres ajustar un valor concreto, cambia directamente el valor de ese elemento.
+    Si quieres devolver toda la configuración a su estado inicial, elimina el archivo de
+    configuración completo de ese MOD: se volverá a crear con los valores por defecto en el
+    siguiente inicio.
+  </p>
+</div>
+
+    </div></div>
+<div id="gameplay-notices"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Cosas que conviene saber antes de jugar</h2>
+      
+<p>
+  Glimpse Alpha incluye varios cambios que afectan al comportamiento de vanilla. Aquí se
+  resumen los que más fácilmente se pasan por alto. Como los valores numéricos concretos
+  pueden ajustarse en cada actualización, consulta también el <a href="../changelog/">historial
+  de actualizaciones</a> y la página de <a href="../known-issues/">problemas conocidos</a> para
+  la información más reciente. Los ajustes de configuración los realiza el administrador del servidor.
+</p>
+
+<h3>La redstone necesita «electricidad»</h3>
+<p>
+  Con la instalación del MOD de Electricidad, parte de la redstone vanilla deja de funcionar
+  por sí sola.
+</p>
+<ul>
+  <li><strong>Lo que necesita electricidad:</strong> el polvo de redstone, el repetidor, el comparador, el bloque de redstone y la antorcha de redstone. No emiten señal hasta que se les conecta electricidad con un cable. Las granjas automáticas, las estaciones, las puertas automáticas y las filas de tolvas se quedan detenidas hasta que se cablean.</li>
+  <li><strong>Lo que sigue funcionando igual que siempre, sin electricidad:</strong> la palanca, el botón, la placa de presión, el gancho de cordel trampa, el observador, el sensor de luz diurna, el sensor de sculk, la diana, el cofre trampa, el raíl detector, el atril, la gramola, el pararrayos, etc. Abrir puertas y portones a mano también sigue funcionando igual.</li>
+  <li>Un bloque de redstone se desmorona de forma natural unos 10 minutos después de colocarse (vuelve a tus manos como objeto).</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout__title">💡 Cómo revertirlo (para administradores del servidor)</div>
+  <p>
+    Poniendo <code>powerEnabled</code> en <code>false</code> dentro de
+    <code>config/sorakaze_power.json</code>, se puede desactivar por completo la
+    electrificación de la redstone.
+  </p>
+</div>
+
+<h3>Algunos aparatos de materiales y decoración también necesitan electricidad</h3>
+<p>
+  La cámara de seguridad, el ascensor, la escalera mecánica, la puerta automática y el ATM
+  —esos 5— no funcionan si no se les lleva electricidad con un cable (el ascensor, aunque no
+  tenga electricidad, sigue pudiendo «bajar»). Poniendo en <code>false</code> la clave
+  correspondiente de <code>config/sorakaze_deco.json</code> para cada aparato, se puede
+  eliminar el requisito de electricidad de forma individual.
+</p>
+
+<h3>Los generadores calientan la habitación</h3>
+<p>
+  Un generador o una central nuclear en funcionamiento suben la temperatura del espacio donde
+  están. La única forma de enfriar es el aire acondicionado. Separar la sala de máquinas con
+  paredes y una puerta cerrada evita que el calor se propague a otras habitaciones, y es la
+  forma más sencilla de solucionarlo. Esta función en sí se puede desactivar poniendo
+  <code>temperatureMachineHeatEnabled</code> en <code>false</code> dentro de
+  <code>config/sorakaze_survival.json</code>.
+</p>
+
+<h3>Se amplió la altura del mundo del Cielo</h3>
+<p>
+  Con la instalación del MOD Cielo, se amplió el límite de altura de construcción en el
+  mundo normal (el mundo superior). Solo cambia el límite hacia arriba; la profundidad del
+  subsuelo (la altura del fondo) y el terreno ya existente no cambian.
+</p>
+
+<h3>El lanzacohetes destruye el terreno</h3>
+<p>
+  Con la configuración por defecto, el lanzacohetes del MOD de armas de fuego destruye el
+  terreno en el punto de impacto. No se detiene aunque pongas en <code>false</code> la regla
+  del juego vanilla <code>mobGriefing</code>. Para detener la destrucción, hay que poner
+  <code>rocketDestroysTerrain</code> en <code>false</code> dentro de
+  <code>config/sorakaze_guns.json</code>. Ten especial cuidado cerca de tu base.
+</p>
+
+<h3>Sobre la potencia de las armas</h3>
+<p>
+  Las armas del MOD de armas de fuego, en especial el rifle de asalto, tienen una potencia
+  muy alta, y con muchos de los jefes añadidos por el MOD se puede acabar en pocos segundos.
+  Si quieres más reto, el administrador del servidor puede recuperar la dificultad ajustando
+  el valor de daño de cada arma en <code>config/sorakaze_guns.json</code>.
+</p>
+
+<h3>Al quitar un MOD, los bloques y objetos colocados desaparecen</h3>
+<p>
+  Esto es una característica general de los MOD, no un fallo propio de Glimpse Alpha. Los
+  bloques colocados o los objetos obtenidos mientras un MOD estaba instalado se pierden del
+  mundo al quitar ese MOD. La única forma de recuperarlos es restaurar una copia de seguridad.
+</p>
+
+    </div></div>
+<div id="faq"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Preguntas frecuentes y solución de problemas</h2>
+      
+<h3>Preguntas frecuentes</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Pregunta</th><th>Respuesta</th></tr>
+<tr><td>¿No desaparece el mundo?</td><td>No desaparece. Aunque instales Fabric, el mundo que ya tenías se sigue usando tal cual. Si te preocupa, haz siempre una copia de seguridad antes de instalar.</td></tr>
+<tr><td>¿Puede entrar un amigo que no tenga los MOD instalados?</td><td>No puede entrar. Todos los jugadores deben hacer la configuración del <a href="#player-setup">capítulo para jugadores</a>.</td></tr>
+<tr><td>Quiero volver a como estaba sin MOD (vanilla)</td><td>En el servidor, basta con iniciarlo con el archivo de inicio sin MOD de siempre para volver a como estaba (los bloques y objetos añadidos por los MOD desaparecerán).</td></tr>
+<tr><td>De repente no puedo jugar tras actualizar los MOD</td><td>Comprueba si la versión de los MOD coincide entre el servidor y los jugadores. Si solo un lado tiene la versión nueva, no se podrá entrar.</td></tr>
+<tr><td>No entiendo el mensaje de error en inglés</td><td>No pasa nada si no lo entiendes. Envía tal cual al administrador del servidor el archivo <code>latest.log</code> que hay dentro de la carpeta <code>logs</code>.</td></tr>
+</table>
+</div>
+
+<h3>Si el servidor no arranca</h3>
+<ol class="steps">
+  <li>Saca temporalmente todo el contenido de la carpeta <code>mods</code> a otro lugar.</li>
+  <li>Vuelve a poner los archivos de uno en uno, iniciando el servidor cada vez, hasta identificar cuál es el causante.</li>
+  <li>Si aparecen errores relacionados con Java, comprueba la versión de Java consultando el <a href="#admin-prep">capítulo de preparación previa</a>.</li>
+</ol>
+
+<h3>Si puedes entrar al servidor pero no te puedes conectar</h3>
+<ol class="steps">
+  <li>Comprueba si la versión y la combinación de MOD de todos los participantes coincide exactamente con la del servidor.</li>
+  <li>La causa más habitual suele ser una diferencia en la versión de Fabric API, así que revísala primero.</li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 Si aun así no se soluciona</div>
+  <p>Envía <code>logs/latest.log</code> al administrador del servidor y consúltalo con calma. No hay prisa: si tienes una copia de seguridad, siempre puedes volver al estado anterior.</p>
+</div>
+
+<h3>Cómo restaurar el mundo desde una copia de seguridad (para administradores del servidor)</h3>
+<ol class="steps">
+  <li>Escribe <code>stop</code> en la consola del servidor para detenerlo.</li>
+  <li>Toma la copia de seguridad más reciente desde donde las guardes (por ejemplo, <code>C:\MinecraftServer\backups</code>) (si es un zip, haz clic derecho → «Extraer todo»).</li>
+  <li>Sustituye (sobrescribe) la carpeta <code>world</code> de dentro de la carpeta del servidor por la carpeta <code>world</code> que extrajiste.</li>
+  <li>Inicia el servidor.</li>
+</ol>
+
+    </div></div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referencia no oficial de MODs del servidor Sorakazekarasu</p>
+    <p class="site-footer__note">Este sitio es una referencia no oficial. No se distribuyen aquí los archivos jar de los MOD. Las recetas y los valores numéricos pueden diferir de los reales según la versión instalada y los ajustes de configuración del servidor.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>已知问题 | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha MOD 包的已知问题与未确认要素一览。">
+<meta property="og:title" content="已知问题 | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha MOD 包的已知问题与未确认要素一览。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">首页</a></li>
+        <li><a href="../changelog/">更新日志</a></li>
+        <li><a href="../recipes/">合成配方</a></li>
+        <li><a href="../guide/">导入指南</a></li>
+        <li><a href="../roadmap/">后续计划</a></li>
+        <li><a href="../known-issues/" class="active">已知问题</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="语言 / Language">
+          🌐 <span>简体中文</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/">Español</a></li>
+        <li><a href="../../fr/known-issues/">Français</a></li>
+        <li><a href="../../zh/known-issues/" class="active" aria-current="true">简体中文</a></li>
+        <li><a href="../../ko/known-issues/">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换配色" title="切换配色">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">已知问题</span>
+  <h1>已知问题</h1>
+  <p class="lede">本页汇总了目前已知的小问题，以及由于开发环境限制、尚未在实机上确认过的要素。一旦发现严重问题，会按照更新日志中记录的方式发布修复版本。</p>
+</div>
+
+<h2>目前已知的轻微问题</h2>
+<p class="section-lede">不影响正常使用，但会影响显示或外观的已知问题。</p>
+<h4>强化玻璃窗（17色）的名称显示 <span class="card__meta">(v1.7.7 起)</span></h4><p>17 种颜色中有 16 种未设置日文、英文名称，会直接显示物品 ID（只有黑色能正确显示名称）。不影响使用与性能。</p><h4>关闭电力后重新通电时的孤立电缆 <span class="card__meta">(v1.8.1 起)</span></h4><p>未连接到配电盘的电缆，有时会在电力关闭再打开后仍保持点亮状态。将对应电缆破坏后重新放置即可修复。</p><h4>「查询」App 的配方显示 <span class="card__meta">(v1.8.6 起)</span></h4><p>在手机、电脑的「查询」App 中可以看到的 3×3 配方画面，由于无法获取材料应放置在哪个格子的位置信息，因此并非按实际排列显示，而是从头开始依次排满的简易显示。材料的种类与数量本身是正确显示的。</p>
+
+<h2>有意保留未处理的要素</h2>
+<p class="section-lede">并非 bug，而是作为规格保留、今后再考虑是否处理的项目。</p>
+<h4>克拉肯、泰坦的专属攻击动作</h4><p>这两只巨大 Boss 虽然会用粒子效果预告必杀技，但尚未实装让身体真正动起来的专属攻击动作。这是有意保留的规格，是否处理要等待服务器管理员的判断。</p>
+
+<h2>最近变更中尚未在实机确认的内容</h2>
+<p class="callout callout--info">本 MOD 包是在无法直接操作 Minecraft 客户端的开发环境中制作的。服务器启动与数据完整性已经过机械化验证，但外观、音效以及实际操作时的手感，只有通过实际游玩玩家的反馈才能确认。以下是最近更新中尚未经过实机确认的项目，如果发现异常，请告知服务器管理员。</p>
+<ul><li><strong>水管、防毒面具的外观:</strong> v1.8.5 中重新制作的外观与碰撞体积，在实际画面中呈现的效果尚未确认。</li><li><strong>强化信标 GUI 的操作手感:</strong> α / β 强化信标能力选择界面的易用性尚未确认。</li><li><strong>敌怪生成密度（主世界）:</strong> v1.8.5 中调整过的生成密度，实际游玩时是否合适尚未验证。</li><li><strong>弹头、手机 App 的新图标:</strong> v1.8.6 中新增的导弹弹头、核弹头图标，以及手机 App 的新界面设计，尚未在实际游戏画面中确认过。</li><li><strong>监控摄像头、电梯等电气化后的运作:</strong> v1.8.3 中开始需要电力才能运作的 5 种设备（监控摄像头、电梯、扶梯、自动门、ATM），在有电、无电两种状态下的实际运作情况尚未确认。</li><li><strong>红石电气化（v1.8.1 起）的游玩体验:</strong> 农场、车站的自动化装置会停摆到什么程度，重新布线需要花多少功夫，都要实际游玩后才能知道。</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu 服务器导入 MOD 非官方参考手册</p>
+    <p class="site-footer__note">本站是非官方参考站点，不提供 MOD 本体（jar 文件）的下载。配方与数值可能因导入版本或服务器端 config 调整而与实际情况有出入。</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

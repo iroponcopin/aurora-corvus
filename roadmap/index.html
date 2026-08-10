@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今後の予定 | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha MOD パックの今後の開発予定・ロードマップ。バックルームエリア、鉄道MOD強化、UI改善などを予定。">
+<meta property="og:title" content="今後の予定 | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha MOD パックの今後の開発予定・ロードマップ。バックルームエリア、鉄道MOD強化、UI改善などを予定。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">ホーム</a></li>
+        <li><a href="../changelog/">更新履歴</a></li>
+        <li><a href="../recipes/">レシピ集</a></li>
+        <li><a href="../guide/">導入ガイド</a></li>
+        <li><a href="../roadmap/" class="active">今後の予定</a></li>
+        <li><a href="../known-issues/">既知の不具合</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
+          🌐 <span>日本語</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../roadmap/" class="active" aria-current="true">日本語</a></li>
+        <li><a href="../en/roadmap/">English</a></li>
+        <li><a href="../es/roadmap/">Español</a></li>
+        <li><a href="../fr/roadmap/">Français</a></li>
+        <li><a href="../zh/roadmap/">简体中文</a></li>
+        <li><a href="../ko/roadmap/">한국어</a></li>
+        <li><a href="../pt-br/roadmap/">Português (Brasil)</a></li>
+        <li><a href="../it/roadmap/">Italiano</a></li>
+        <li><a href="../ar/roadmap/">العربية</a></li>
+        <li><a href="../ru/roadmap/">Русский</a></li>
+        <li><a href="../id/roadmap/">Bahasa Indonesia</a></li>
+        <li><a href="../de/roadmap/">Deutsch</a></li>
+        <li><a href="../tr/roadmap/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="配色を切り替え" title="配色を切り替え">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">今後の予定</span>
+  <h1>今後の予定</h1>
+  <p class="lede">開発側の発注ドキュメントをもとに、現在計画されている次期アップデートの内容を紹介します。</p>
+  <p class="callout callout--warn">このページの内容はまだ実装・配布されていません。社内の企画メモをもとにしたご紹介であり、実際に実装される内容・時期・仕様は変更・中止される可能性があります。確定した内容は「更新履歴」ページに反映されます。</p>
+</div>
+<div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">計画中</span>
+        <span class="timeline-entry__release">v1.9.0</span></div>
+      <h3 style="margin-top:0">新エリア「バックルームからの脱出」・ウィザーストーム統合</h3>
+      <h4>新エリア「バックルームからの脱出」</h4><ul><li>原作を忠実に再現した専用マップを新規追加。</li><li>エリア内滞在中は「正気度(サニティ)」のステータスが導入され、エリア内でドロップする「アーモンドウォーター」等で回復できる予定。</li><li>エリア内はブロックの設置・破壊ができない特殊ルール。</li><li>戦利品入りのチェストを各所に配置。</li><li>原作を再現したモンスター・ギミックが登場。</li><li>入口はエンドシティ内にランダム生成される予定。</li><li>進行状況は画面左側にテキストで常時表示される想定。</li></ul><h4>ウィザーストーム統合</h4><ul><li>外部の「Wither Storm」MODをmodフォルダーに同梱する形で統合予定。</li><li>ペスト医師がウィザーストームを召喚するようになる。</li><li>討伐報酬として「万物採集機α」「火花人形α」(既存の万物採集器・火花人形の上位版)がドロップ予定。</li><li>万物採集機αは金のツルハシ相当の耐久・エンチャント不可。</li><li>火花人形αは使用回数無制限・クールダウン3分という、既存の火花人形(使用3回制)とは異なる仕様が検討されている。</li></ul>
+    </div>
+<div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">計画中</span>
+        <span class="timeline-entry__release">v1.9.1</span></div>
+      <h3 style="margin-top:0">鉄道MODの大幅強化</h3>
+      <h4>運行の自動化</h4><ul><li>列車自動停止ブロックに自動発車機能を追加予定。</li><li>プレイヤーが乗っていなくても走る「自動運転モード」を検討中。</li><li>走行音の追加。</li></ul><h4>新しい車両・設備</h4><ul><li>グリーン車・グランクラスなど上位クラスの車両を追加予定。</li><li>架線(電車の上に張る電線)を設置アイテムとして追加。</li><li>車内外の照明で夜間走行を明るく。</li><li>トロッコ同士の連結に対応。</li><li>バニラのレールを完全3Dモデル化。</li><li>スマートフォン風の次駅・発車案内UIを追加予定。</li></ul>
+    </div>
+<div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">計画中</span>
+        <span class="timeline-entry__release">v1.9.3</span></div>
+      <h3 style="margin-top:0">核弾頭エネルギー・座標表示・UI改善</h3>
+      <h4>新機能</h4><ul><li>核弾頭を電力MODのエネルギー源として使用できるようにする予定(v1.8.4で先行実装されたミサイル弾頭・核弾頭とは別の使い道)。</li><li>常時表示の座標UIを追加予定。</li></ul><h4>改善</h4><ul><li>TPS・pingを表示するUIの改善。</li></ul><h4>さらにその先の構想(このアップデートにはまだ含まれない)</h4><ul><li>「高性能コア」: 作業台でメイスと組み合わせ、メイスの性能を20倍にする構想があるとのこと。</li></ul>
+    </div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
+    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)の配布は行っていません。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

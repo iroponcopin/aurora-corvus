@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problemas conocidos | Glimpse Alpha Wiki</title>
+<meta name="description" content="Lista de fallos conocidos y elementos sin confirmar del pack de MOD Glimpse Alpha.">
+<meta property="og:title" content="Problemas conocidos | Glimpse Alpha Wiki">
+<meta property="og:description" content="Lista de fallos conocidos y elementos sin confirmar del pack de MOD Glimpse Alpha.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Ir al contenido</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Inicio</a></li>
+        <li><a href="../changelog/">Historial</a></li>
+        <li><a href="../recipes/">Recetas</a></li>
+        <li><a href="../guide/">Guía de instalación</a></li>
+        <li><a href="../roadmap/">Próximamente</a></li>
+        <li><a href="../known-issues/" class="active">Problemas conocidos</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Idioma / Language">
+          🌐 <span>Español</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/" class="active" aria-current="true">Español</a></li>
+        <li><a href="../../fr/known-issues/">Français</a></li>
+        <li><a href="../../zh/known-issues/">简体中文</a></li>
+        <li><a href="../../ko/known-issues/">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema de color" title="Cambiar tema de color">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Problemas conocidos</span>
+  <h1>Problemas conocidos</h1>
+  <p class="lede">Aquí se resumen los pequeños fallos conocidos actualmente y los elementos que, por las limitaciones del entorno de desarrollo, aún no se han podido comprobar en un juego real. En cuanto se detecta un problema grave, se distribuye una versión corregida según se indica en el historial de actualizaciones.</p>
+</div>
+
+<h2>Fallos menores conocidos actualmente</h2>
+<p class="section-lede">Son fallos conocidos que no afectan al funcionamiento, pero sí a la visualización o al aspecto.</p>
+<h4>Nombres de las ventanas de vidrio reforzado (17 colores) <span class="card__meta">(desde v1.7.7)</span></h4><p>16 de los 17 colores no tienen configurado un nombre en japonés ni en inglés, así que se muestra directamente el identificador del objeto (solo el negro tiene el nombre correcto). No afecta al funcionamiento ni al rendimiento.</p><h4>Cables aislados justo después de cortar y volver a dar la corriente <span class="card__meta">(desde v1.8.1)</span></h4><p>Un cable que no está conectado a ningún panel de disyuntores puede quedarse encendido justo después de apagar y volver a encender la electricidad. Se soluciona rompiendo ese cable y volviéndolo a colocar.</p><h4>Visualización de recetas en la app «Consultas» <span class="card__meta">(desde v1.8.6)</span></h4><p>La pantalla de receta 3×3 que se ve en la app «Consultas» del teléfono y el ordenador no puede recibir la información de en qué casilla va cada ingrediente, así que se muestra en una disposición simplificada que los va colocando en orden desde el principio, en lugar de la disposición real. El tipo y la cantidad de los ingredientes sí se muestran correctamente.</p>
+
+<h2>Elementos sin resolver de forma intencionada</h2>
+<p class="section-lede">No son errores, sino puntos que se mantienen así por diseño y cuya resolución se está evaluando.</p>
+<h4>Animaciones de ataque propias del Kraken y el Titán</h4><p>Estos dos jefes colosales muestran con partículas el aviso de su técnica especial, pero todavía no tienen implementada una animación de ataque propia que mueva el cuerpo. Es una limitación de diseño intencionada; si se aborda o no queda a criterio del administrador del servidor.</p>
+
+<h2>Cambios recientes aún sin confirmar en un juego real</h2>
+<p class="callout callout--info">Este pack de MOD se desarrolla en un entorno donde no se puede manejar directamente un cliente de Minecraft. El arranque del servidor y la integridad de los datos se verifican de forma mecánica, pero el aspecto, el sonido y la sensación al jugar solo se pueden confirmar con la retroalimentación de quienes realmente juegan. A continuación se listan los elementos de las actualizaciones más recientes que todavía no se han podido confirmar en un juego real. Si notas algo raro, avisa al administrador del servidor.</p>
+<ul><li><strong>Aspecto de la tubería de agua y la máscara de gas:</strong> No se ha confirmado cómo se ven en pantalla el aspecto y la caja de colisión rediseñados en la v1.8.5.</li><li><strong>Sensación de uso de la interfaz de la Baliza Mejorada:</strong> No se ha verificado la usabilidad de la pantalla de selección de habilidades de las Balizas Mejoradas α/β.</li><li><strong>Densidad de aparición de enemigos (mundo normal):</strong> No se ha comprobado si la densidad de aparición ajustada en la v1.8.5 resulta adecuada al jugar de verdad.</li><li><strong>Nuevos iconos de las ojivas y de la app del teléfono:</strong> Los iconos de la ojiva de misil y la ojiva nuclear añadidos en la v1.8.6, así como el nuevo diseño de pantalla de la app del teléfono, aún no se han comprobado en la pantalla real del juego.</li><li><strong>Funcionamiento tras electrificar la cámara de seguridad, el ascensor y similares:</strong> Todavía no se ha comprobado el funcionamiento real, con y sin electricidad, de los cinco aparatos que empezaron a necesitar electricidad en la v1.8.3 (cámara de seguridad, ascensor, escalera mecánica, puerta automática y ATM).</li><li><strong>Cómo se siente jugar con la electrificación de la redstone (desde v1.8.1):</strong> Cuánto se detienen las automatizaciones de granjas y estaciones, y cuánto trabajo cuesta volver a cablearlas, son cosas que solo se sabrán jugando de verdad.</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referencia no oficial de MODs del servidor Sorakazekarasu</p>
+    <p class="site-footer__note">Este sitio es una referencia no oficial. No se distribuyen aquí los archivos jar de los MOD. Las recetas y los valores numéricos pueden diferir de los reales según la versión instalada y los ajustes de configuración del servidor.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

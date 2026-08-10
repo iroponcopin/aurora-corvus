@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>알려진 문제 | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha MOD 팩의 알려진 문제·미확인 요소 목록.">
+<meta property="og:title" content="알려진 문제 | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha MOD 팩의 알려진 문제·미확인 요소 목록.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 이동</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">홈</a></li>
+        <li><a href="../changelog/">업데이트 기록</a></li>
+        <li><a href="../recipes/">레시피 모음</a></li>
+        <li><a href="../guide/">설치 가이드</a></li>
+        <li><a href="../roadmap/">향후 계획</a></li>
+        <li><a href="../known-issues/" class="active">알려진 문제</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="언어 / Language">
+          🌐 <span>한국어</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../known-issues/">日本語</a></li>
+        <li><a href="../../en/known-issues/">English</a></li>
+        <li><a href="../../es/known-issues/">Español</a></li>
+        <li><a href="../../fr/known-issues/">Français</a></li>
+        <li><a href="../../zh/known-issues/">简体中文</a></li>
+        <li><a href="../../ko/known-issues/" class="active" aria-current="true">한국어</a></li>
+        <li><a href="../../pt-br/known-issues/">Português (Brasil)</a></li>
+        <li><a href="../../it/known-issues/">Italiano</a></li>
+        <li><a href="../../ar/known-issues/">العربية</a></li>
+        <li><a href="../../ru/known-issues/">Русский</a></li>
+        <li><a href="../../id/known-issues/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/known-issues/">Deutsch</a></li>
+        <li><a href="../../tr/known-issues/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="색상 테마 전환" title="색상 테마 전환">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">알려진 문제</span>
+  <h1>알려진 문제</h1>
+  <p class="lede">현재 파악된 사소한 문제와, 개발 환경 특성상 아직 실기에서 확인하지 못한 요소를 정리했습니다. 심각한 문제는 발견되는 대로 업데이트 기록과 같이 수정판이 배포됩니다.</p>
+</div>
+
+<h2>현재 파악된 사소한 문제</h2>
+<p class="section-lede">작동에는 지장이 없지만, 표시나 외형에 영향을 주는 알려진 문제입니다.</p>
+<h4>강화유리 창(17색)의 이름 표시 <span class="card__meta">(v1.7.7부터)</span></h4><p>17색 중 16색에 한국어·일본어·영어 이름이 설정되어 있지 않아, 아이템 ID가 그대로 표시됩니다(검은색만 이름이 올바르게 표시됨). 동작·성능에는 영향이 없습니다.</p><h4>전기를 껐다가 다시 켠 직후의 고립 케이블 <span class="card__meta">(v1.8.1부터)</span></h4><p>분전반에 연결되지 않은 케이블이, 전력을 껐다가 켠 직후에만 켜진 채로 남는 경우가 있습니다. 해당 케이블을 한 번 부수고 다시 놓으면 해결됩니다.</p><h4>&quot;검색&quot; 앱의 레시피 표시 <span class="card__meta">(v1.8.6부터)</span></h4><p>휴대폰·컴퓨터의 &quot;검색&quot; 앱에서 볼 수 있는 3×3 레시피 화면은, 재료를 어느 칸에 놓을지에 대한 배치 정보를 받아올 수 없어, 실제 배치가 아니라 앞에서부터 순서대로 채운 간이 표시로 되어 있습니다. 재료의 종류·개수 자체는 정확히 표시됩니다.</p>
+
+<h2>의도적으로 대응하지 않은 요소</h2>
+<p class="section-lede">버그가 아니라, 사양으로서 향후 대응이 검토되고 있는 항목입니다.</p>
+<h4>크라켄·타이탄의 전용 공격 모션</h4><p>이 두 거대 보스는 필살기 예고는 파티클로 표시되지만, 몸을 움직이는 전용 공격 모션은 아직 구현되지 않았습니다. 의도적으로 보류된 사양이며, 대응 여부는 서버 관리자의 판단을 기다리고 있습니다.</p>
+
+<h2>실기에서 아직 확인하지 못한 최근 변경 사항</h2>
+<p class="callout callout--info">이 MOD 팩은 개발 시 Minecraft 클라이언트를 직접 조작할 수 없는 환경에서 제작되었습니다. 서버 구동과 데이터 정합성은 기계적으로 검증되었지만, 외형·소리·조작 시 느낌은 실제로 플레이한 사람의 피드백을 통해서만 확인할 수 있습니다. 아래는 최근 업데이트 중 아직 실기 확인이 되지 않은 항목입니다. 이상한 점이 있다면 서버 관리자에게 알려 주세요.</p>
+<ul><li><strong>수도관·방독면의 외형:</strong> v1.8.5에서 새로 만든 외형·충돌 판정이 실제 화면에서 어떻게 보이는지는 미확인입니다.</li><li><strong>강화 비콘 GUI의 조작감:</strong> 알파/베타 강화 비콘의 능력 선택 화면 사용 편의성은 미확인입니다.</li><li><strong>적 스폰 밀도(오버월드):</strong> v1.8.5에서 조정된 스폰 밀도가 실제로 플레이하기에 딱 좋은지는 미검증입니다.</li><li><strong>탄두·휴대폰 앱의 새 아이콘:</strong> v1.8.6에서 추가된 미사일 탄두·핵탄두 아이콘과 휴대폰 앱의 새로운 화면 디자인은, 실제 게임 화면에서는 아직 확인되지 않았습니다.</li><li><strong>방범 카메라·엘리베이터 등 전기화 이후의 동작:</strong> v1.8.3에서 전기가 필요해진 5가지 기기(방범 카메라·엘리베이터·에스컬레이터·자동문·ATM)에 대해, 전기가 있는/없는 상태 각각에서의 실제 동작 확인은 아직 이루어지지 않았습니다.</li><li><strong>레드스톤 전기화(v1.8.1~)의 플레이 감각:</strong> 농장이나 역의 자동화가 어느 정도 멈추는지, 다시 배선하는 수고가 얼마나 드는지는 실제로 플레이해 보지 않으면 알 수 없습니다.</li></ul>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — 소라카제카라스 서버 도입 MOD 비공식 레퍼런스</p>
+    <p class="site-footer__note">본 사이트는 비공식 레퍼런스입니다. MOD 본체(jar 파일)는 배포하지 않습니다. 레시피·수치는 설치된 버전이나 서버 측 config 조정에 따라 실제와 다를 수 있습니다.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

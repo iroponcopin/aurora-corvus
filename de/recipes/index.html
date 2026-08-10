@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezeptsammlung | Glimpse Alpha Wiki</title>
+<meta name="description" content="Rezeptübersicht für alle Gegenstände des Glimpse Alpha MOD-Pakets. Mit Such- und Kategoriefilter.">
+<meta property="og:title" content="Rezeptsammlung | Glimpse Alpha Wiki">
+<meta property="og:description" content="Rezeptübersicht für alle Gegenstände des Glimpse Alpha MOD-Pakets. Mit Such- und Kategoriefilter.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/recipes.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Startseite</a></li>
+        <li><a href="../changelog/">Änderungsprotokoll</a></li>
+        <li><a href="../recipes/" class="active">Rezeptsammlung</a></li>
+        <li><a href="../guide/">Installationsanleitung</a></li>
+        <li><a href="../roadmap/">Geplante Updates</a></li>
+        <li><a href="../known-issues/">Bekannte Probleme</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Sprache / Language">
+          🌐 <span>Deutsch</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../recipes/">日本語</a></li>
+        <li><a href="../../en/recipes/">English</a></li>
+        <li><a href="../../es/recipes/">Español</a></li>
+        <li><a href="../../fr/recipes/">Français</a></li>
+        <li><a href="../../zh/recipes/">简体中文</a></li>
+        <li><a href="../../ko/recipes/">한국어</a></li>
+        <li><a href="../../pt-br/recipes/">Português (Brasil)</a></li>
+        <li><a href="../../it/recipes/">Italiano</a></li>
+        <li><a href="../../ar/recipes/">العربية</a></li>
+        <li><a href="../../ru/recipes/">Русский</a></li>
+        <li><a href="../../id/recipes/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/recipes/" class="active" aria-current="true">Deutsch</a></li>
+        <li><a href="../../tr/recipes/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Farbschema wechseln" title="Farbschema wechseln">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Rezeptsammlung</span>
+  <h1>Rezeptsammlung</h1>
+  <p class="lede">Eine Übersicht der Crafting-Rezepte aller Gegenstände und Blöcke aus den 8 installierten MODs (insgesamt 928 Stück). Klicke auf einen Gegenstand, um das Rezept im selben 3×3-Raster wie am echten Werktisch zu sehen. Im Reiter „Anleitung“ oben rechts findest du außerdem Erklärungen zu Dingen mit Verkabelung, etwa der automatischen Sortierung oder der Strominfrastruktur.</p>
+</div>
+
+<noscript>
+  <p class="callout callout--warn">Für die Anzeige dieser Seite wird JavaScript benötigt. Bitte überprüfe deine Browser-Einstellungen.</p>
+</noscript>
+
+<div id="recipeApp" hidden>
+  <div class="filter-bar">
+    <input type="search" id="recipeSearch" placeholder="Nach Gegenstandsname suchen…" aria-label="Nach Gegenstandsname suchen…">
+  </div>
+  <div class="tab-bar" id="recipeTabs" role="tablist"></div>
+  <p class="recipe-count" id="recipeCount"></p>
+  <p id="recipeEmpty" class="empty-state" hidden>Keine passenden Gegenstände gefunden.</p>
+  <div class="grid grid--recipes" id="recipeGrid"></div>
+  <div id="guidePane" hidden></div>
+</div>
+
+<div class="recipe-modal-backdrop" id="recipeModalBackdrop">
+  <div class="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="recipeModalTitle">
+    <button class="recipe-modal__close" id="recipeModalClose" aria-label="Schließen">&times;</button>
+    <div id="recipeModalBody"></div>
+  </div>
+</div>
+<script>
+  window.SITE_LANG = "de";
+  window.SITE_STRINGS = {"tabAll": "Alle", "tabGuides": "Anleitung", "howToObtain": "So bekommst du es:", "noRecipeInfo": "Keine Rezeptinformationen vorhanden.", "countSuffix": "Treffer", "loadError": "Die Rezeptdaten konnten nicht geladen werden.", "ioIn": "Eingabe", "ioOut": "Ausgabe"};
+</script>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu-Server – inoffizielle Referenz zu den installierten MODs</p>
+    <p class="site-footer__note">Diese Seite ist eine inoffizielle Referenz. Die MOD-Dateien (jar-Dateien) selbst werden hier nicht verteilt. Rezepte und Werte können je nach installierter Version und serverseitigen Config-Anpassungen von den tatsächlichen Werten abweichen.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

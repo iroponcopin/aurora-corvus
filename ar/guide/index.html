@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل التثبيت | Glimpse Alpha Wiki</title>
+<meta name="description" content="دليل تثبيت حزمة إضافات Glimpse Alpha. يجمع خطوات التثبيت على الخادم وإعدادات المشاركة من جهة اللاعب.">
+<meta property="og:title" content="دليل التثبيت | Glimpse Alpha Wiki">
+<meta property="og:description" content="دليل تثبيت حزمة إضافات Glimpse Alpha. يجمع خطوات التثبيت على الخادم وإعدادات المشاركة من جهة اللاعب.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="فتح القائمة">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">الرئيسية</a></li>
+        <li><a href="../changelog/">سجل التحديثات</a></li>
+        <li><a href="../recipes/">دليل الوصفات</a></li>
+        <li><a href="../guide/" class="active">دليل التثبيت</a></li>
+        <li><a href="../roadmap/">الخطة المستقبلية</a></li>
+        <li><a href="../known-issues/">المشاكل المعروفة</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="اللغة / Language">
+          🌐 <span>العربية</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../guide/">日本語</a></li>
+        <li><a href="../../en/guide/">English</a></li>
+        <li><a href="../../es/guide/">Español</a></li>
+        <li><a href="../../fr/guide/">Français</a></li>
+        <li><a href="../../zh/guide/">简体中文</a></li>
+        <li><a href="../../ko/guide/">한국어</a></li>
+        <li><a href="../../pt-br/guide/">Português (Brasil)</a></li>
+        <li><a href="../../it/guide/">Italiano</a></li>
+        <li><a href="../../ar/guide/" class="active" aria-current="true">العربية</a></li>
+        <li><a href="../../ru/guide/">Русский</a></li>
+        <li><a href="../../id/guide/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/guide/">Deutsch</a></li>
+        <li><a href="../../tr/guide/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="تبديل نمط الألوان" title="تبديل نمط الألوان">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">دليل التثبيت</span>
+  <h1>دليل التثبيت</h1>
+  <p class="lede">يجمع هذا الدليل خطوات تفعيل الإضافات حتى بدء اللعب. إذا كنت ستنضم كلاعب فقط، فيكفيك قراءة فصل &quot;للاعبين&quot;.</p>
+</div>
+<div class="toc"><div class="toc__title">الفهرس</div><ol><li><a href="#overview">نظرة عامة: عن تثبيت Glimpse Alpha</a></li><li><a href="#player-setup">للاعبين: إعدادات الانضمام إلى الخادم</a></li><li><a href="#admin-prep">لمديري الخادم: التحضير المسبق (النسخ الاحتياطي والتحقق من الإصدار)</a></li><li><a href="#admin-fabric-install">لمديري الخادم: تثبيت Fabric</a></li><li><a href="#admin-mods-and-verify">لمديري الخادم: تثبيت الإضافات والتحقق من التشغيل</a></li><li><a href="#admin-upgrade">عند استبدال الإضافات بإصدار جديد</a></li><li><a href="#gameplay-notices">ملاحظات مهمة قبل اللعب</a></li><li><a href="#faq">الأسئلة الشائعة وحل المشاكل</a></li></ol></div>
+<div id="overview"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">نظرة عامة: عن تثبيت Glimpse Alpha</h2>
+      
+<p>
+  <strong>Glimpse Alpha</strong>‏ (المعروفة سابقًا باسم: Sorakaze) هي مجموعة إضافات
+  Fabric مُثبَّتة على خادم Sorakazekarasu. تتكوّن من 8 إضافات مستقلة، يمكن تثبيت وتحديث كل واحدة منها بشكل منفصل.
+  لا تستبدل أو تحذف هذه الإضافات عناصر اللعبة الأصلية (Vanilla) مثل القوس والسهم أو العربات المتحركة (Minecart)،
+  بل تضيف عناصر وكتلًا وأبعادًا جديدة فقط.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>الإضافة</th><th>المحتوى</th></tr>
+<tr><td>الأسلحة النارية</td><td>أسلحة بعيدة المدى غير موجودة في اللعبة الأصلية (البندقية الهجومية، بندقية الخرطوش، بندقية القنص، وغيرها)</td></tr>
+<tr><td>السكك الحديدية</td><td>قطار يتسارع تدريجيًا، وعربات ركاب وشحن يمكن ربطها به</td></tr>
+<tr><td>مواد البناء والديكور</td><td>مواد بناء لتشييد المدن مثل إشارات المرور والحواجز الإرشادية، وأجهزة منزلية مثل كاميرا المراقبة والصراف الآلي والمصعد</td></tr>
+<tr><td>المركبات</td><td>سيارات وحافلات وطائرات وغيرها</td></tr>
+<tr><td>الزعماء</td><td>أهداف قتال قوية، ومعدات مخصصة تسقط منها</td></tr>
+<tr><td>السماء</td><td>بُعد جديد باسم "السماء"، ومدينة ومملكة الملائكة التي تسكنه</td></tr>
+<tr><td>البقاء</td><td>خامات ودروع جديدة، وعناصر معيشية مثل درجة الحرارة والفصول الأربعة</td></tr>
+<tr><td>الكهرباء</td><td>شبكة توليد ونقل الكهرباء، وأجهزة تعمل بالكهرباء</td></tr>
+</table>
+</div>
+<p>للاطلاع على العناصر والوصفات التفصيلية لكل إضافة، راجع <a href="../recipes/">دليل الوصفات</a>، ولمعرفة التغييرات حتى الآن راجع
+<a href="../changelog/">سجل التحديثات</a>.</p>
+
+<h3>تحتاج الإضافات إلى "Fabric"</h3>
+<p>
+  <strong>Fabric (فابريك)</strong> هو الأساس الذي يتيح لـ Minecraft تحميل الإضافات (MOD).
+  تمامًا كما تحتاج أجهزة الألعاب إلى نظام تشغيل قبل تثبيت البرامج، يجب تثبيت Fabric أولًا
+  على كل من الخادم وأجهزة اللاعبين قبل تثبيت الإضافات نفسها.
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">⚠ النقطة الأكثر شيوعًا للخطأ</div>
+  <p>
+    يجب تثبيت الإضافات <strong>ليس فقط على الخادم، بل على أجهزة جميع من سيلعبون أيضًا</strong>.
+    لا يوجد "تثبيت على الخادم يكفي وينعكس تلقائيًا على الجميع".
+    يجب أن تتطابق نسخة Minecraft وFabric والإضافات بين الخادم وجميع اللاعبين تمامًا،
+    وإلا لن يتمكن أحد من الانضمام إلى الخادم.
+  </p>
+</div>
+
+<h3>من يجهّز ماذا</h3>
+<ul>
+  <li><strong>الخادم (سيرفر Sorakazekarasu)</strong> — خادم Fabric + Fabric API + إضافات Glimpse Alpha الثماني</li>
+  <li><strong>جهاز كل لاعب مشارك</strong> — عميل Fabric + Fabric API + إضافات Glimpse Alpha الثماني (نفس مجموعة الخادم تمامًا)</li>
+</ul>
+
+<div class="callout callout--info">
+  <div class="callout__title">لا يوزّع هذا الموقع ملفات الإضافة نفسها</div>
+  <p>
+    يوفّر هذا الموقع فقط مواد للقراءة مثل جداول الوصفات وسجل التحديثات وخطوات التثبيت،
+    ولا يوزّع ملفات الإضافة (jar) نفسها. يُرجى الحصول على مجموعة ملفات jar اللازمة للتثبيت
+    من مدير الخادم مباشرة.
+  </p>
+</div>
+
+<h3>تنظيم هذه الصفحة</h3>
+<p>
+  ينقسم هذا الدليل إلى قسمين حسب الفئة. يكفي معظم القراء الاطلاع على
+  <a href="#player-setup">فصل الإعداد للاعبين</a> فقط للانضمام إلى الخادم.
+  أما من سيقوم بتشغيل وإدارة الخادم بنفسه، فيُرجى الاطلاع أيضًا على
+  <a href="#admin-prep">فصل الإعداد لمديري الخادم</a>.
+</p>
+
+<h3>الإصدارات المدعومة حاليًا (تقريبية)</h3>
+<p>
+  القيم التالية صحيحة وقت كتابة هذه الصفحة. تتغيّر الأرقام الفعلية مع كل تحديث، لذا يُرجى دائمًا التحقق
+  من القيم الدقيقة عبر <a href="../changelog/">سجل التحديثات</a> أو
+  <a href="../recipes/">دليل الوصفات</a>، أو من إرشادات مدير الخادم.
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>البند</th><th>القيمة التقريبية الحالية</th></tr>
+<tr><td>إصدار Minecraft</td><td><code>26.2</code></td></tr>
+<tr><td>إصدار Java المطلوب</td><td>Java 25 (يُنصح بـ<a href="https://adoptium.net/">Temurin 25 (LTS)</a>)</td></tr>
+<tr><td>Fabric API</td><td>النسخة المطابقة لإصدار Minecraft (مثال: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
+<tr><td>مكونات الإضافات</td><td>8 إضافات (الأسلحة النارية، السكك الحديدية، مواد البناء/الديكور، المركبات، الزعماء، السماء، البقاء، الكهرباء)</td></tr>
+</table>
+</div>
+
+    </div></div>
+<div id="player-setup"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">للاعبين</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">للاعبين: إعدادات الانضمام إلى الخادم</h2>
+      
+<p>
+  سنشرح هنا إعدادات <strong>الطرف الذي سينضم إلى الخادم للعب</strong>. لا حاجة لأي معرفة تقنية معقدة.
+  باتباع الخطوات بالترتيب من الأعلى، ستنتهي العملية خلال 15 إلى 20 دقيقة تقريبًا.
+</p>
+
+<div class="callout callout--info">
+  <div class="callout__title">لا يوجد سوى 3 أمور يجب فعلها</div>
+  <ul>
+    <li>① تثبيت Fabric (الأساس الذي يقرأ الإضافات) على جهازك</li>
+    <li>② وضع مجموعة ملفات الإضافة التي استلمتها من مدير الخادم في المجلد المخصص</li>
+    <li>③ تغيير طريقة التشغيل في مكان واحد فقط، ثم الانضمام إلى الخادم</li>
+  </ul>
+</div>
+
+<h3>ما تحتاجه</h3>
+<ul>
+  <li>جهاز Windows أو Mac يمكنه تشغيل نسخة Minecraft Java</li>
+  <li><strong>مجموعة ملفات الإضافة (9 ملفات jar = ملف Fabric API واحد + 8 ملفات إضافات Glimpse Alpha)</strong> المستلمة من مدير الخادم</li>
+</ul>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 مهم جدًا</div>
+  <p>
+    لن تتمكن من الانضمام إلا إذا كانت لديك <strong>نفس نسخة اللعبة ونفس ملفات الإضافات تمامًا</strong> التي على الخادم.
+    نستخدم في هذه الصفحة الرقم <code>26.2</code> كمثال لإصدار Minecraft، لكن إذا أخبرك مدير الخادم برقم مختلف،
+    فاستبدله بذلك الرقم في جميع الخطوات. <strong>لا تفتح</strong> ملفات jar المستلمة بالنقر المزدوج عليها؛ يكفي وضعها في المجلد المخصص لتعمل.
+  </p>
+</div>
+
+<h3>الملفات المتوقع استلامها (مثال)</h3>
+<p>ستستلم من مدير الخادم تقريبًا 9 ملفات كالتالي (تتغيّر أرقام الإصدارات مع كل تحديث).</p>
+<div class="table-wrap">
+<table>
+<tr><th>اسم الملف (مثال)</th><th>المحتوى</th></tr>
+<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>مكوّن مشترك لتشغيل الإضافات</td></tr>
+<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>إضافة الأسلحة النارية</td></tr>
+<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>إضافة السكك الحديدية</td></tr>
+<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>إضافة مواد البناء والديكور</td></tr>
+<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>إضافة المركبات</td></tr>
+<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>إضافة الزعماء</td></tr>
+<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>إضافة السماء</td></tr>
+<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>إضافة البقاء</td></tr>
+<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>إضافة الكهرباء</td></tr>
+</table>
+</div>
+
+<h3>① تثبيت Fabric</h3>
+<p>افتح <code>https://fabricmc.net/use/installer/</code> واحصل منه على برنامج التثبيت. اترك التبويب على "<strong>Client</strong>" (لا تبدّله إلى "Server")، واختر من قائمة "Minecraft Version" نفس رقم إصدار الخادم، ثم اضغط "Install".</p>
+
+<h4>على Windows</h4>
+<ol class="steps">
+  <li>نزّل برنامج التثبيت من زر مثل "Download installer (Windows/.exe)" على الصفحة، ثم شغّله بالنقر المزدوج عليه (إذا ظهرت رسالة "تمت حماية الكمبيوتر بواسطة Windows"، اضغط "معلومات إضافية" ثم "تشغيل على أي حال").</li>
+  <li>اترك التبويب على "Client"، واختر <code>26.2</code> (نفس رقم إصدار الخادم) من "Minecraft Version"، واترك "Loader Version" كما هو، ثم اضغط "Install".</li>
+</ol>
+
+<h4>على Mac</h4>
+<ol class="steps">
+  <li>نزّل برنامج التثبيت (.jar) من زر "Download universal jar". لا يوجد ملف تنفيذي (.exe) لنظام Mac.</li>
+  <li>لا تنقر نقرًا مزدوجًا على الملف الذي نزّلته <code>fabric-installer-〜.jar</code>، بل <strong>انقر بزر الفأرة الأيمن</strong> (أو اضغط مع الاستمرار على مفتاح <code>control</code> ثم انقر) واختر "فتح". إذا ظهر تحذير، اضغط "فتح" مرة أخرى.</li>
+  <li>اترك التبويب على "Client"، واختر نفس رقم إصدار الخادم من "Minecraft Version"، ثم اضغط "Install".</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ إذا ظهرت رسالة "تعذّر التحقق من المطوّر" على Mac</div>
+  <p>في إصدارات macOS الحديثة، قد لا يظهر أي زر حتى مع النقر بزر الفأرة الأيمن → "فتح"، بل يظهر فقط تحذير
+  "تعذّر التحقق من خلو "fabric-installer〜.jar" من البرمجيات الخبيثة". في هذه الحالة يمكن فتحه بالخطوات التالية.</p>
+  <ol class="steps">
+    <li>اضغط "تم" في نافذة التحذير (<strong>لا تضغط أبدًا على "نقل إلى المهملات"</strong>)</li>
+    <li>افتح قائمة Apple أعلى يسار الشاشة ← "إعدادات النظام" ← "الخصوصية والأمان"</li>
+    <li>سيظهر في الأسفل عبارة "تم حظر استخدام "fabric-installer〜.jar""، اضغط "فتح على أي حال" بجانبها</li>
+    <li>عند سؤالك مرة أخرى، اضغط "فتح على أي حال" ← أدخل كلمة مرور Mac (أو استخدم Touch ID)</li>
+  </ol>
+  <p>هذا تحذير قياسي يظهر لأي برنامج غير مسجّل لدى Apple، ولا داعي للقلق إذا كنت قد حصلت عليه من موقع Fabric الرسمي. بعد السماح مرة واحدة، سيفتح البرنامج بشكل عادي في المرات القادمة.</p>
+</div>
+
+<div class="callout callout--info">
+  <div class="callout__title">إذا لم يحدث شيء عند تشغيل برنامج التثبيت على Mac</div>
+  <p>
+    إذا لم يحدث شيء عند النقر بزر الفأرة الأيمن ← "فتح"، فهذا يعني عدم وجود Java على نظامك.
+    افتح <a href="https://adoptium.net/">adoptium.net</a> وثبّت برنامج تثبيت "Temurin" لنظام macOS (بصيغة .pkg)، ثم أعد المحاولة.
+    اختر "aarch64" لأجهزة Mac ذات شريحة Apple (M1/M2/M3/M4 وغيرها)، و"x64" لأجهزة Mac ذات معالج Intel.
+    إذا لم تكن متأكدًا، تحقق من حقل "الشريحة" في قائمة Apple أعلى يسار الشاشة ← "عن هذا الـMac" (إذا ظهرت "Apple M〜" فهذا يعني aarch64).
+  </p>
+</div>
+
+<h3>② وضع ملفات الإضافة في مجلد mods</h3>
+
+<h4>Windows: <code>%appdata%\.minecraft\mods</code></h4>
+<ol class="steps">
+  <li>اكتب <code>%appdata%\.minecraft</code> في شريط عنوان مستكشف الملفات واضغط Enter.</li>
+  <li>إذا لم يوجد مجلد <code>mods</code>، أنشئه (بحروف صغيرة بالكامل).</li>
+  <li>انسخ جميع ملفات jar التسعة التي استلمتها إلى داخل مجلد <code>mods</code> هذا (لا حاجة لفك الضغط، ضعها كما هي بصيغة jar).</li>
+</ol>
+
+<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
+<ol class="steps">
+  <li>انقر على سطح المكتب مرة واحدة، ثم اضغط في آن واحد على <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> (أو من القائمة العلوية "Go" ← "Go to Folder…").</li>
+  <li>الصق <code>~/Library/Application Support/minecraft</code> كما هو في مربع الإدخال الذي يظهر، ثم اضغط Enter (لا تنسَ رمز "<code>~</code>" في البداية). مجلد "Library" مخفي عادة في Finder، لذا هذه هي الطريقة المضمونة لفتحه.</li>
+  <li>إذا لم يوجد مجلد <code>mods</code>، انقر بزر الفأرة الأيمن في المكان الفارغ واختر "مجلد جديد" لإنشائه.</li>
+  <li>اسحب جميع ملفات jar التسعة التي استلمتها وأفلتها داخل مجلد <code>mods</code> هذا.</li>
+</ol>
+
+<h3>③ التشغيل عبر Fabric والانضمام إلى الخادم</h3>
+<ol class="steps">
+  <li>افتح مشغّل Minecraft، واختر من قائمة إعدادات التشغيل (Profile) القريبة من زر "Play" اسمًا مثل <code>fabric-loader-26.2</code> (إذا تركته على "أحدث إصدار"، سيبدأ التشغيل دون إضافات).</li>
+  <li>اضغط "Play" للتشغيل مباشرة. إذا ظهر زر "Mods" جديد في شاشة العنوان الرئيسية، فقد نجحت العملية. اضغط عليه للتحقق من ظهور إضافات Glimpse Alpha الثماني وFabric API.</li>
+  <li>بعد ذلك، اتصل بالخادم كالمعتاد من قائمة "لعب متعدد" (Multiplayer).</li>
+</ol>
+
+<h3>عند تحديث الإضافات</h3>
+<p>عند تحديث الإضافات على جانب الخادم، يجب على جميع المشاركين التحديث إلى نفس الإصدار في آن واحد.</p>
+<ol class="steps">
+  <li>استلم ملفات الإضافة الجديدة من مدير الخادم (انتظر الإشعار قبل البدء بالعمل).</li>
+  <li>افتح مجلد mods، <strong>احذف ملفات jar الخاصة بـGlimpse Alpha الموجودة سابقًا</strong> ثم ضع الملفات الجديدة (حتى لو تغيّر اسم الملف، تُعامَل كنفس الإضافة، لذا إذا بقي ملف قديم فلن يبدأ التشغيل).</li>
+  <li>شغّل اللعبة كالمعتاد باستخدام إعداد fabric-loader.</li>
+</ol>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ تنبيه</div>
+  <p>لن تتمكن من الانضمام إلى الخادم إذا بقي طرف واحد فقط (أنت أو الخادم) على الإصدار الجديد دون الآخر. عند مواجهة مشكلة، راجع أيضًا <a href="#faq">الأسئلة الشائعة</a>.</p>
+</div>
+
+<h3>مشاكل شائعة على Mac</h3>
+<div class="table-wrap">
+<table>
+<tr><th>العرض (الأعراض)</th><th>طريقة الحل</th></tr>
+<tr><td>تظهر رسالة "تعذّر التحقق من المطوّر" أو "تعذّر التحقق من خلو الملف من البرمجيات الخبيثة"</td><td>اضغط "تم" في نافذة التحذير (لا تضغط "نقل إلى المهملات"). بعد ذلك، اذهب إلى إعدادات النظام ← "الخصوصية والأمان" وانزل للأسفل، ثم اضغط "فتح على أي حال" بجانب عبارة "تم حظره" وأدخل كلمة المرور.</td></tr>
+<tr><td>لا يحدث شيء عند النقر المزدوج على برنامج التثبيت</td><td>Java غير مثبت. ثبّت Temurin (نسخة .pkg لنظام macOS) من adoptium.net وأعد المحاولة.</td></tr>
+<tr><td>لا يمكن إيجاد مجلد "Library"</td><td>لا داعي للبحث عنه يدويًا. الطريقة المضمونة هي الضغط على <code>⌘</code>+<code>⇧</code>+<code>G</code> ولصق <code>~/Library/Application Support/minecraft</code> (هذا مجلد مخفي في العادة).</td></tr>
+<tr><td>عند محاولة الانضمام إلى الخادم، تظهر رسالة اختلاف الإصدار</td><td>تحقق من ① اختيار إعداد fabric-loader الصحيح في المشغّل، ② تطابق محتوى مجلد mods مع الخادم تمامًا. اختلاف عنصر واحد فقط يمنع الانضمام.</td></tr>
+<tr><td>تتعطّل اللعبة فور بدء التشغيل</td><td>تحقق من عدم اختلاط ملفات jar قديمة أو غير ذات صلة في مجلد mods. إذا لم يُحل المشكلة، أرسل ملف <code>logs/latest.log</code> (على Mac: <code>~/Library/Application Support/minecraft/logs/latest.log</code>) إلى مدير الخادم.</td></tr>
+<tr><td>الرغبة في العودة إلى Minecraft العادي دون إضافات</td><td>يكفي إعادة إعداد التشغيل في المشغّل إلى "أحدث إصدار". لا حاجة لحذف ملفات الإضافة.</td></tr>
+</table>
+</div>
+<p>الخطوات نفسها سواء كان جهازك يعمل بشريحة Apple (M1/M2/M3/M4 وغيرها) أو بمعالج Intel. الفرق الوحيد هو اختيار aarch64 أو x64 عند اختيار Java (Temurin).</p>
+
+    </div></div>
+<div id="admin-prep"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">لمديري الخادم</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">لمديري الخادم: التحضير المسبق (النسخ الاحتياطي والتحقق من الإصدار)</h2>
+      
+<p>
+  من هنا فصاعدًا، هذا الفصل موجّه لمن سيدير ويشغّل الخادم نفسه. سنشرح خطوات إضافة Fabric و8 إضافات
+  Glimpse Alpha انطلاقًا من حالة تشغيل خادم Minecraft الأصلي (بدون إضافات). يستخدم هذا الفصل خادم Windows كمثال.
+  إذا كنت تدير الخادم على Mac / Linux، يُرجى ترجمة مواقع المجلدات وطريقة تنفيذ الأوامر إلى بيئتك،
+  مع اتباع خطوات مماثلة (إرشادات موقع Fabric الرسمي).
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 قبل البدء بالعمل، احرص دائمًا على</div>
+  <p>حتى إذا فشل تثبيت الإضافات، يجب ألا تفقد عالمك (World). لذا احرص دائمًا على أخذ نسخة احتياطية قبل بدء العمل.</p>
+</div>
+
+<h3>1. أخذ نسخة احتياطية من العالم</h3>
+<p>افتح مجلد الخادم (مثال: <code>C:\MinecraftServer</code>)، ونفّذ إجراء النسخ الاحتياطي المعتاد لديك (مثل سكربت نسخ احتياطي باسم <code>Backup-Server.bat</code>). إذا لم يكن لديك سكربت مخصص، يكفي إيقاف الخادم ثم نسخ مجلد <code>world</code> بالكامل إلى مكان آخر.</p>
+
+<h3>2. التحقق من إصدار Java</h3>
+<ol class="steps">
+  <li>افتح موجّه الأوامر (Command Prompt) أو أي طرفية (Terminal).</li>
+  <li>اكتب <code>java -version</code> واضغط Enter.</li>
+  <li>تحقق مما إذا كان الرقم الظاهر هو <strong>25</strong> (مثال: <code>java version "25.0.3"</code>).</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 مهم جدًا</div>
+  <p>
+    يتطلب تشغيل Minecraft <code>26.2</code> إصدار <strong>Java 25</strong>. قد تجد في بعض دلائل الإعداد القديمة
+    عبارة "Java 21"، لكن هذه معلومة قديمة، ولن يبدأ تشغيل الخادم مع Java 21.
+    إذا كان الرقم أقل من 25، افتح <a href="https://adoptium.net/">adoptium.net</a> ونزّل وثبّت
+    "Temurin 25 (LTS)"، ثم أعد تشغيل الحاسوب وتحقق مرة أخرى.
+  </p>
+</div>
+
+<h3>3. التحقق من إصدار Minecraft على الخادم</h3>
+<ol class="steps">
+  <li>شغّل الخادم مرة واحدة بالطريقة المعتادة (مثال: <code>Start-Server.bat</code>).</li>
+  <li>ابحث في بداية شاشة الطرفية (النافذة السوداء) عن سطر مثل <code>Starting minecraft server version X.Y</code> ودوّن الرقم الظاهر.</li>
+  <li>اكتب <code>stop</code> في الطرفية واضغط Enter لإيقاف الخادم بأمان.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ تنبيه</div>
+  <p>
+    نستخدم في هذا الدليل "<code>26.2</code>" كمثال، لكن إذا كان الرقم الذي تحققت منه فعليًا مختلفًا،
+    استبدل جميع الخطوات التالية (اختيار إصدارات Fabric وFabric API والإضافات) بذلك الرقم.
+    إذا اختلف إصدار واحد فقط بين الخادم وأي لاعب أو أي إضافة، فلن يعمل شيء إطلاقًا.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-fabric-install"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">لمديري الخادم</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">لمديري الخادم: تثبيت Fabric</h2>
+      
+<h3>تثبيت خادم Fabric</h3>
+<ol class="steps">
+  <li>افتح <code>https://fabricmc.net/use/server/</code> في المتصفح، ونزّل برنامج التثبيت من زر مثل "Download installer (Windows/.exe)".</li>
+  <li>شغّل الملف الذي نزّلته <code>fabric-installer〜.exe</code> بالنقر المزدوج عليه (إذا ظهرت رسالة "تمت حماية الكمبيوتر بواسطة Windows"، اضغط "معلومات إضافية" ← "تشغيل على أي حال").</li>
+  <li>في شاشة إعدادات برنامج التثبيت، تحقق من النقاط الأربع التالية.
+    <ul>
+      <li>اختر التبويب "<strong>Server</strong>"</li>
+      <li>اختر في "Minecraft Version" نفس إصدار الخادم الذي تحققت منه في التحضير المسبق (مثال: <code>26.2</code>)</li>
+      <li>اترك "Loader Version" كما هو</li>
+      <li>حدد في "Install Location" مجلد الخادم الحالي (مثال: <code>C:\MinecraftServer</code>)</li>
+    </ul>
+  </li>
+  <li>اضغط "Install".</li>
+  <li>إذا ظهر ملف جديد باسم <code>fabric-server-launch.jar</code> داخل مجلد الخادم، فهذا يعني نجاح العملية.</li>
+</ol>
+
+<h3>إنشاء ملف تشغيل جديد (ملف دفعي)</h3>
+<p>
+  ملف التشغيل الحالي (مثال: <code>Start-Server.bat</code>) هو ملف يشغّل الخادم "بدون إضافات".
+  <strong>لا تحذفه، بل أبقه كما هو</strong> (حتى تتمكن من العودة إلى الوضع بدون إضافات عند الحاجة).
+  بدلًا من ذلك، سنُنشئ ملف تشغيل جديدًا مخصصًا لـFabric.
+</p>
+<ol class="steps">
+  <li>افتح Notepad (المفكرة).</li>
+  <li>انسخ المحتوى التالي والصقه كما هو.
+<pre>@echo off
+cd /d "%~dp0"
+title Minecraft Fabric Server
+java -Xms2G -Xmx4G -jar fabric-server-launch.jar nogui
+echo توقف الخادم عن العمل.
+pause</pre>
+  </li>
+  <li>من "File" ← "Save As"، احفظ الملف في مجلد الخادم (مثال: <code>C:\MinecraftServer</code>) باسم <code>Start-Fabric-Server.bat</code>، مع تحديد نوع الملف على "<strong>All Files</strong>".</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ تنبيه</div>
+  <p>
+    إذا لم تحدد نوع الملف على "All Files"، سيتحوّل إلى ملف غير قابل للتشغيل باسم
+    <code>Start-Fabric-Server.bat.txt</code>. كذلك، إذا كانت الذاكرة (RAM) المخصصة للخادم مختلفة عن 4 غيغابايت،
+    استبدل الرقم "4" في <code>-Xmx4G</code> بالرقم المناسب.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-mods-and-verify"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">لمديري الخادم</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">لمديري الخادم: تثبيت الإضافات والتحقق من التشغيل</h2>
+      
+<p>ملف الإضافة نفسه هو ملف واحد يسمى "jar". يكفي وضعه داخل مجلد <code>mods</code> في مجلد الخادم لتثبيته.</p>
+
+<h3>1. تجهيز مجلد mods</h3>
+<p>تحقق من وجود مجلد باسم <code>mods</code> داخل مجلد الخادم (مثال: <code>C:\MinecraftServer</code>). إذا لم يكن موجودًا، انقر بزر الفأرة الأيمن ← "جديد" ← "مجلد" وأنشئه باسم <code>mods</code> (بحروف صغيرة بالكامل).</p>
+
+<h3>2. الحصول على Fabric API</h3>
+<p>افتح <code>https://modrinth.com/mod/fabric-api/versions</code>، ونزّل أول عنصر تظهر فيه "Game version" (إصدار اللعبة) مطابقًا لإصدار الخادم (مثال: <code>fabric-api-0.154.2+26.2.jar</code>).</p>
+
+<h3>3. وضع مجموعة الإضافات في مجلد mods</h3>
+<p>
+  انسخ ملف Fabric API الواحد + 8 ملفات إضافات Glimpse Alpha، أي 9 ملفات jar بالإجمالي، إلى داخل مجلد
+  <code>mods</code> (لا حاجة لفك الضغط، ضعها كما هي بصيغة jar). احصل على هذه الإضافات الثماني عبر
+  نفس قناة التوزيع المعتادة. <strong>هذا الموقع لا يوزّع ملفات الإضافة نفسها.</strong>
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>الإضافة</th><th>مثال على اسم الملف</th></tr>
+<tr><td>الأسلحة النارية</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>السكك الحديدية</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>مواد البناء والديكور</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>المركبات</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>الزعماء</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>السماء</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>البقاء</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>الكهرباء</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+</table>
+</div>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ تنبيه</div>
+  <p>لا تنقر نقرًا مزدوجًا على ملفات jar (لا حاجة لفتحها). يكفي وضعها في المجلد فقط.</p>
+</div>
+
+<h3>4. تشغيل الخادم والتحقق</h3>
+<ol class="steps">
+  <li>انقر نقرًا مزدوجًا على <code>Start-Fabric-Server.bat</code> الذي أنشأته سابقًا (لا تستخدم <code>Start-Server.bat</code> القديم).</li>
+  <li>تحقق من النقطتين التاليتين في شاشة الطرفية (النافذة السوداء).
+    <ul>
+      <li>ظهور أسماء الإضافات التي ثبّتها في سطر تحميل الإضافات</li>
+      <li>ظهور عبارة <code>Done (…s)! For help, type "help"</code> في النهاية، واستمرار عمل الخادم دون توقف</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 إذا ظهر خطأ متعلق بـJava ولم يبدأ التشغيل</div>
+  <p>
+    إذا ظهر خطأ بالإنجليزية مثل "class file version" أو "requires Java"، فمن المحتمل أن إصدار Java قديم.
+    ثبّت النسخة الخاصة بـWindows (.msi) من "Temurin 25 (LTS)" من
+    <a href="https://adoptium.net/">adoptium.net</a>، وأعد تشغيل الحاسوب ثم أعد المحاولة.
+  </p>
+</div>
+
+<p>بعد التأكد من نجاح التشغيل، يُرجى إرشاد جميع المشاركين إلى <a href="#player-setup">فصل الإعداد للاعبين</a>
+لتثبيت نفس مجموعة Fabric والإضافات على أجهزتهم.</p>
+
+    </div></div>
+<div id="admin-upgrade"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">لمديري الخادم</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">عند استبدال الإضافات بإصدار جديد</h2>
+      
+<p>بما أن الإضافات الثماني في Glimpse Alpha مستقلة تمامًا عن بعضها، فليس بالضرورة أن تُستبدل الإضافات الثماني جميعها
+مع كل تحديث. يكفي استبدال الإضافات التي تغيّر محتواها فعليًا فقط
+(يمكن معرفة أي الإضافات تغيّرت من إشعار التوزيع أو <a href="../changelog/">سجل التحديثات</a>).</p>
+
+<h3>خطوات التحديث</h3>
+<ol class="steps">
+  <li>اكتب <code>stop</code> في طرفية الخادم لإيقافه.</li>
+  <li>خذ نسخة احتياطية من العالم بالإجراء المعتاد.</li>
+  <li><strong>احذف ملف jar القديم للإضافة المراد تحديثها</strong> من مجلد <code>mods</code> الخاص بالخادم، وضع ملف jar الجديد (إذا بقي كل من الإصدار القديم والجديد لنفس الإضافة، فلن يبدأ التشغيل).</li>
+  <li>شغّل الخادم عبر <code>Start-Fabric-Server.bat</code>، وتحقق من ظهور رقم الإصدار الجديد في الطرفية.</li>
+  <li><strong>وزّع ملفات jar الجديدة على جميع المشاركين أيضًا</strong>، واطلب منهم استبدالها بنفس الطريقة (راجع <a href="#player-setup">فصل الإعداد للاعبين</a>). لن يتمكن أحد من الانضمام إذا كان الإصدار الجديد على جانب الخادم فقط أو جانب اللاعبين فقط.</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 مهم جدًا</div>
+  <p>
+    إذا شغّلت الخادم بعد إزالة إضافة ما بالكامل (وليس تحديثها)، فستختفي الكتل المُركَّبة والعناصر
+    (مثل إشارات المرور) التي وضعتها باستخدام تلك الإضافة. هذا سلوك متأصل في آلية Minecraft وFabric،
+    ولا يمكن التراجع عنه. احرص دائمًا على أخذ نسخة احتياطية قبل إزالة أي إضافة.
+  </p>
+</div>
+
+<h3>عن ملفات الإعدادات (config) (آلية الإصلاح التلقائي)</h3>
+<p>
+  تُنشئ كل إضافة تلقائيًا عند بدء التشغيل ملف إعدادات (مثال: <code>sorakaze_guns.json</code>) داخل مجلد
+  <code>config/</code>. يمكن ضبط قيم مثل القوة والسرعة من هنا، ولا حاجة أساسًا لحذفها أو تعديلها يدويًا
+  مع كل تحديث.
+</p>
+<div class="callout callout--info">
+  <div class="callout__title">💡 الآلية الحالية</div>
+  <p>
+    عند تغيّر القيمة الافتراضية لبند ما في إصدار جديد، تُحدَّث القيمة تلقائيًا إلى القيمة الافتراضية الجديدة
+    <strong>فقط إذا كانت لا تزال بالقيمة الافتراضية القديمة (أي لم تُعدَّل بعد)</strong>. <strong>لن تُمَس القيم التي عدّلتها بنفسك.</strong>
+    كما تُضاف البنود الجديدة تلقائيًا عند بدء التشغيل. يُسجَّل دائمًا ما تم تحديثه في ملف
+    <code>logs/latest.log</code> بصيغة "القيمة القديمة ← القيمة الجديدة".
+  </p>
+</div>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ تنبيه عند تعديل ملف الإعدادات</div>
+  <p>
+    إذا حذفت يدويًا جزءًا فقط من قيم ملف الإعدادات (مثال: حذف سطر الضرر فقط من مجموعة إعدادات سلاح معين)،
+    فقد يُستبدَل ذلك البند بصمت بقيمة ابتدائية أخرى داخلية في الإضافة (دون ظهور أي خطأ).
+    عند رغبتك في ضبط قيمة معينة، يُرجى تعديل قيمة ذلك البند مباشرة.
+    إذا أردت إعادة ضبط جميع الإعدادات إلى حالتها الافتراضية، يمكنك حذف ملف إعدادات الإضافة المعنية بالكامل،
+    وسيُعاد إنشاؤه بالقيم الافتراضية عند التشغيل التالي.
+  </p>
+</div>
+
+    </div></div>
+<div id="gameplay-notices"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">ملاحظات مهمة قبل اللعب</h2>
+      
+<p>
+  تحتوي Glimpse Alpha على بعض التغييرات التي تؤثر على سلوك اللعبة الأصلية (Vanilla). نجمع هنا
+  أبرز النقاط التي يسهل إغفالها. قد تُضبط بعض القيم الدقيقة مع كل تحديث، لذا يُرجى دائمًا مراجعة
+  <a href="../changelog/">سجل التحديثات</a> و<a href="../known-issues/">المشاكل المعروفة</a> للاطلاع على آخر المستجدات.
+  ضبط ملفات الإعدادات (config) هو مسؤولية مدير الخادم.
+</p>
+
+<h3>الحجر الأحمر بحاجة إلى "كهرباء"</h3>
+<p>
+  نتيجة تثبيت إضافة الكهرباء، لم يعد جزء من عناصر الحجر الأحمر الأصلية يعمل بمفرده.
+</p>
+<ul>
+  <li><strong>ما أصبح يحتاج إلى كهرباء:</strong> مسحوق الحجر الأحمر، والمكرر (Repeater)، والمقارن (Comparator)، وكتلة الحجر الأحمر، وشعلة الحجر الأحمر. لن تصدر هذه العناصر إشارة حتى تُوصَل بكابل كهربائي. ستبقى صفوف المزارع الآلية والمحطات والأبواب الأوتوماتيكية والأقماع متوقفة حتى يتم توصيل الأسلاك.</li>
+  <li><strong>ما يبقى يعمل كالمعتاد دون كهرباء:</strong> ذراع التحكم، والأزرار، وألواح الضغط، وخطاف السلك الشَّرَكي، والمراقب، ومستشعر ضوء النهار، ومستشعر السكالك، والهدف، وصندوق الفخ، وقضيب سكة الكشف، وحامل الكتب، وصندوق الموسيقى، وقضيب البرق، وغيرها. يبقى فتح الأبواب والبوابات يدويًا يعمل كذلك كالمعتاد.</li>
+  <li>بعد نحو 10 دقائق من وضعها، تتكسر كتلة الحجر الأحمر تلقائيًا (وتعود كعنصر إلى يدك).</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout__title">💡 طريقة التراجع عن هذا (لمديري الخادم)</div>
+  <p>
+    بضبط <code>powerEnabled</code> في ملف <code>config/sorakaze_power.json</code> على <code>false</code>،
+    يمكن إلغاء كهربة الحجر الأحمر بالكامل.
+  </p>
+</div>
+
+<h3>بعض أجهزة مواد البناء والديكور تحتاج أيضًا إلى كهرباء</h3>
+<p>
+  خمسة أجهزة — كاميرا المراقبة، والمصعد، والسلم المتحرك، والباب الأوتوماتيكي، والصراف الآلي — لن تعمل
+  ما لم تُوصَل بكابل كهربائي (يستمر المصعد بالعمل "نزولًا فقط" حتى دون كهرباء).
+  يمكن ضبط البند المخصص لكل جهاز في <code>config/sorakaze_deco.json</code> على <code>false</code>
+  لإلغاء الحاجة إلى الكهرباء لكل جهاز على حدة.
+</p>
+
+<h3>المولّدات تُسخّن الغرفة</h3>
+<p>
+  ترفع المولّدات والمحطة النووية العاملة درجة حرارة الفضاء المحيط بها. الجهاز الوحيد القادر على التبريد
+  هو مكيف الهواء. يمكن منع انتشار الحرارة إلى الغرف الأخرى بسهولة عبر فصل غرفة الآلات بجدران وباب مغلق.
+  يمكن تعطيل هذه الميزة نفسها بضبط
+  <code>temperatureMachineHeatEnabled</code> في ملف <code>config/sorakaze_survival.json</code>
+  على <code>false</code>.
+</p>
+
+<h3>تم توسيع ارتفاع بُعد السماء</h3>
+<p>
+  نتيجة تثبيت إضافة السماء، رُفع الحد الأقصى لارتفاع البناء في العالم العادي (العالم العلوي).
+  التغيير يقتصر على الحد الأقصى العلوي فقط، ولا تتأثر أعماق باطن الأرض أو التضاريس الحالية.
+</p>
+
+<h3>قاذفة الصواريخ تدمّر التضاريس</h3>
+<p>
+  في الإعدادات الافتراضية، تدمّر قاذفة الصواريخ في إضافة الأسلحة النارية تضاريس نقطة الإصابة.
+  لا يتوقف هذا حتى مع تعطيل قاعدة اللعبة الأصلية <code>mobGriefing</code>. لإيقاف هذا التدمير،
+  يجب ضبط <code>rocketDestroysTerrain</code> في ملف <code>config/sorakaze_guns.json</code>
+  على <code>false</code>. يُرجى الانتباه بشكل خاص بالقرب من القواعد.
+</p>
+
+<h3>عن قوة الأسلحة</h3>
+<p>
+  أسلحة إضافة الأسلحة النارية، وخاصة البندقية الهجومية، تتمتع بقوة عالية جدًا، ويمكن هزيمة معظم
+  الزعماء المُضافين بالإضافة خلال ثوانٍ معدودة. إذا رغبت في تحدٍ أكبر، يمكن لمدير الخادم إعادة ضبط
+  مستوى الصعوبة عبر تعديل قيم ضرر كل سلاح في ملف <code>config/sorakaze_guns.json</code>.
+</p>
+
+<h3>عند إزالة إضافة، تختفي الكتل والعناصر التي وضعتها بها</h3>
+<p>
+  هذا سلوك عام لجميع الإضافات، وليس خللًا خاصًا بـGlimpse Alpha. الكتل المُركَّبة والعناصر المُكتسَبة
+  أثناء تثبيت إضافة ما، ستُفقَد من العالم عند إزالة تلك الإضافة. لا توجد طريقة لاستعادتها سوى
+  الاستعادة من نسخة احتياطية.
+</p>
+
+    </div></div>
+<div id="faq"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">الأسئلة الشائعة وحل المشاكل</h2>
+      
+<h3>الأسئلة الشائعة</h3>
+<div class="table-wrap">
+<table>
+<tr><th>السؤال</th><th>الإجابة</th></tr>
+<tr><td>هل سيختفي العالم (World)؟</td><td>لن يختفي. حتى بعد تثبيت Fabric، يمكن الاستمرار في استخدام عالمك الحالي كما هو. إذا كنت قلقًا، احرص على أخذ نسخة احتياطية قبل التثبيت.</td></tr>
+<tr><td>هل يمكن لصديق لم يثبّت الإضافات الانضمام؟</td><td>لا يمكنه ذلك. يجب على جميع اللاعبين إتمام إعدادات <a href="#player-setup">فصل الإعداد للاعبين</a>.</td></tr>
+<tr><td>أريد العودة إلى الوضع بدون إضافات (Vanilla)</td><td>يمكن للخادم العودة إلى وضع بدون إضافات بتشغيله بملف التشغيل الأصلي المعتاد بدون إضافات (ستختفي الكتل والعناصر المُضافة بالإضافات).</td></tr>
+<tr><td>لم أعد أستطيع اللعب فجأة بعد تحديث الإضافات</td><td>تحقق من تطابق إصدار الإضافات بين الخادم وجانب اللاعب. لن يتمكن أحد من الانضمام إذا كان الإصدار الجديد على جانب واحد فقط.</td></tr>
+<tr><td>لا أستطيع قراءة رسالة الخطأ بالإنجليزية</td><td>لا داعي للقلق بخصوص عدم فهمها. أرسل ملف <code>latest.log</code> الموجود داخل مجلد <code>logs</code> كما هو إلى مدير الخادم.</td></tr>
+</table>
+</div>
+
+<h3>إذا لم يبدأ تشغيل الخادم</h3>
+<ol class="steps">
+  <li>انقل جميع محتويات مجلد <code>mods</code> مؤقتًا إلى مكان آخر.</li>
+  <li>أعد الملفات واحدًا تلو الآخر مع تكرار محاولة التشغيل، لتحديد الملف المسبب للمشكلة.</li>
+  <li>إذا ظهر خطأ متعلق بـJava، راجع <a href="#admin-prep">فصل التحضير المسبق</a> للتحقق من إصدار Java.</li>
+</ol>
+
+<h3>إذا كان بالإمكان الدخول إلى الخادم لكن يتعذر الاتصال</h3>
+<ol class="steps">
+  <li>تحقق من تطابق إصدار جميع المشاركين ومجموعة الإضافات مع الخادم تمامًا.</li>
+  <li>غالبًا ما يكون السبب اختلاف إصدار Fabric API، لذا تحقق من ذلك أولًا.</li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 إذا لم تُحل المشكلة رغم ذلك</div>
+  <p>أرسل ملف <code>logs/latest.log</code> إلى مدير الخادم واستشره. لا داعي للقلق؛ إذا كانت لديك نسخة احتياطية، يمكن دائمًا العودة إلى الحالة الأصلية.</p>
+</div>
+
+<h3>طريقة استعادة العالم من نسخة احتياطية (لمديري الخادم)</h3>
+<ol class="steps">
+  <li>اكتب <code>stop</code> في طرفية الخادم لإيقافه.</li>
+  <li>أخرج أحدث نسخة احتياطية من مكان حفظ النسخ الاحتياطية (مثال: <code>C:\MinecraftServer\backups</code>) (إذا كانت بصيغة zip، انقر بزر الفأرة الأيمن ← "استخراج الكل").</li>
+  <li>استبدل مجلد <code>world</code> داخل مجلد الخادم بمجلد <code>world</code> الذي استخرجته (استبدال بالكتابة فوقه).</li>
+  <li>شغّل الخادم.</li>
+</ol>
+
+    </div></div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — مرجع غير رسمي لإضافات (MOD) خادم Sorakazekarasu</p>
+    <p class="site-footer__note">هذا الموقع مرجع غير رسمي. لا يوفر هذا الموقع ملفات الإضافة (jar) نفسها. قد تختلف الوصفات والقيم المعروضة عن الواقع الفعلي حسب إصدار الإضافة المثبتة أو تعديلات إعدادات (config) الخادم.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

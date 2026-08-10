@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>更新履歴 | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha (旧 Sorakaze) MOD パックの全アップデート履歴。初版から現在までの変更点・注意点をまとめています。">
+<meta property="og:title" content="更新履歴 | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha (旧 Sorakaze) MOD パックの全アップデート履歴。初版から現在までの変更点・注意点をまとめています。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script defer src="../assets/js/changelog.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">ホーム</a></li>
+        <li><a href="../changelog/" class="active">更新履歴</a></li>
+        <li><a href="../recipes/">レシピ集</a></li>
+        <li><a href="../guide/">導入ガイド</a></li>
+        <li><a href="../roadmap/">今後の予定</a></li>
+        <li><a href="../known-issues/">既知の不具合</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
+          🌐 <span>日本語</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../changelog/" class="active" aria-current="true">日本語</a></li>
+        <li><a href="../en/changelog/">English</a></li>
+        <li><a href="../es/changelog/">Español</a></li>
+        <li><a href="../fr/changelog/">Français</a></li>
+        <li><a href="../zh/changelog/">简体中文</a></li>
+        <li><a href="../ko/changelog/">한국어</a></li>
+        <li><a href="../pt-br/changelog/">Português (Brasil)</a></li>
+        <li><a href="../it/changelog/">Italiano</a></li>
+        <li><a href="../ar/changelog/">العربية</a></li>
+        <li><a href="../ru/changelog/">Русский</a></li>
+        <li><a href="../id/changelog/">Bahasa Indonesia</a></li>
+        <li><a href="../de/changelog/">Deutsch</a></li>
+        <li><a href="../tr/changelog/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="配色を切り替え" title="配色を切り替え">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">更新履歴</span>
+  <h1>更新履歴</h1>
+  <p class="lede">初版(v1.0.0、2026-07-15)から現在(2026-08-09 時点、全 36 回のアップデート)までを新しい順に掲載しています。開発時の内部検証手順などは省き、実際にサーバーで何が変わったか・何に注意すべきかだけをまとめています。</p>
+  <p class="callout callout--info">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
+</div>
+
+<div class="filter-bar" role="group">
+  <input type="search" id="changelogSearch" placeholder="MODやバージョン・キーワードで検索…" aria-label="MODやバージョン・キーワードで検索…">
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">MOD:</span>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">銃火器</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">鉄道</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">建材・装飾</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">ボス</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">サバイバル</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">乗り物</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">電力</button>
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">種類:</span>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">新機能</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">不具合修正</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">見た目の更新</button>
+</div>
+
+<p id="changelogEmpty" class="empty-state" hidden>条件に一致する更新はありません。</p>
+<div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="visual-update" data-mods="guns deco">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.6</span> — ミサイル弾頭・携帯電話アプリのアイコンを追加
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">見た目の更新</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span></div>
+      <p>見た目と見つけやすさに関する2件の修正です。ミサイル弾頭・核弾頭にテクスチャが1枚も用意されていなかった問題を解消し、専用アイコンを新規に描き起こしてクラフトも可能にしました。また、見つからないと報告のあったミサイルランチャーをクリエイティブタブに追加し、表示名・操作画面の翻訳も整備しました。携帯電話・パソコンのアプリ7つにも専用アイコンを新たに用意しています。</p>
+      <ul><li>ミサイル弾頭・核弾頭に専用の128pxアイコンを新規に描き起こした(それまでは絵が1枚も無く、Minecraft標準の『紫と黒の市松模様』のまま持ち物欄に表示されていた)。</li><li>ミサイル弾頭(鉄インゴット×5+TNT×1+レッドストーンブロック×1)・核弾頭(鉄ブロック×4+TNT×4+ネザースター×1)を新たにクラフト可能にした。</li><li>ミサイルランチャーをクリエイティブタブに追加(以前はクラフト自体はできたが、タブに表示されず見つけられなかった)。表示名と、目標座標入力・9種類の状態表示・8方位・安全装置などの管制パネル画面の翻訳(日本語・英語それぞれ54個)を新規追加した。</li><li>携帯電話・パソコンのアプリ7つ(カメラ映像・メッセージ・調べもの・天気・電卓・電話・撮影)すべてに専用アイコンを新規に描画(以前は色付きの四角形が並ぶだけだった)。天気アプリの降水アイコンと拡大時計、電卓アプリのくぼんだ液晶風デザイン、電話アプリの方位針表示、カメラ映像アプリの監視モニタ風デザインなど、アプリごとの装飾も追加。</li><li>アプリを開いた際、画面上部に現在開いているアプリのアイコンと名前が常時表示されるように改善。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>ミサイル弾頭・核弾頭をクラフト可能にしたのは開発側の判断です(所有者への明示の依頼ではありません)。バランスが強すぎる・過剰と感じた場合は運営に相談してください。</li><li>config の削除や書き換えは今回も不要です。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>「調べもの」アプリの3×3レシピ画面は、材料をどのマスに置くかの配置情報をサーバーから受け取れないため、先頭から順に材料を詰める簡易的な表示になっている(材料の種類・個数自体は正しい)。</li><li>弾頭の新アイコン・管制パネルの翻訳・携帯電話アプリの新しい画面は、いずれも実際のゲーム画面ではまだ確認されていない。</li><li>強化ガラスの窓17色のうち16色に名前が付いていない状態が引き続き残っている(以前のバージョンから)。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.5</span> — 水道管・強化ビーコン・ガスマスクの不具合修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>v1.8.4で報告された複数の不具合を修正しました。水道管が壊せない問題、強化ビーコンのα・βで能力を選択できない問題、ガスマスクが頭の上に浮いて見える問題を解決しています。また敵モブの湧き上限がオーバーワールドだけに正しく適用されるよう修正し、既定値を実数150体に変更しました。</p>
+      <ul><li>水道管が壊せない不具合を修正。当たり判定の単位を取り違えていたため、見た目の太さの32分の1という極小の判定になっていた(硬さやツールの指定自体は最初から正常だった)。</li><li>川に単体で設置した取水口が水流に流されて消えてしまう不具合も修正(水没対応ブロックとして再設計)。</li><li>強化ビーコンのα・βで能力の選択ができない不具合を修正。画面を開いても次のティックで自動的に閉じてしまい、選択内容も保存されていなかった(標準の強化ビーコンには影響なし)。</li><li>ガスマスクが頭の上に浮いて見える不具合を修正。専用の立体モデルを新規に作成し、顔にフィットする位置に変更した。</li><li>花火人形の見た目を、v1.8.4で追加された立体の『ぬいぐるみ』姿から、v1.8.3までの平らな絵の姿に戻した(所有者の希望による)。回数制限などの機能は変更なし。</li><li>オーバーワールドの敵モブ湧き上限を、これまでの『バニラの15倍』(約1050体相当)から実数150体に変更。ネザー・ジ・エンド・天空には影響しない(以前は誤って全ディメンションに適用されていた不具合も同時に修正)。</li></ul>
+      <h4>バランス調整</h4><ul><li>敵モブ湧き上限(オーバーワールドのみ): バニラの15倍(約1050体相当) → 実数150体</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>config の削除や書き換えは不要です。湧き上限の数値は自動的に新しい既定値へ更新されます。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>水道管・ガスマスクの新しい見た目や、強化ビーコンGUIの操作感は実際のプレイではまだ確認されていない。</li><li>150体という新しい湧き密度が実際に遊んでちょうど良いかはまだ検証されていない。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss deco guns power sky survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.4</span> — 新武器・携帯電話OS・水道管・四季・天空の拡張
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#d4b32e">電力</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>ハンドガンとサブマシンガンの新武器2種、ミサイルランチャーと弾頭2種、携帯電話・パソコンの本格的なOS機能、水道管、実際に動くエレベーター、春夏秋冬の四季システムなどをまとめて追加しました。あわせて通常世界で建築できる高さの上限が引き上げられ(地下は変更なし)、電気を必要としていた仕分けブロックやホッパー類の対象が大幅に縮小されました。</p>
+      <ul><li>新武器2種を追加: ハンドガン(毎秒200・装弾12・セミオート)、サブマシンガン(毎秒450・装弾40・フルオート)。どちらも既存の小口径弾を使用するため、新しい弾薬は増えていない。</li><li>ミサイルランチャー(設置型兵器)とミサイル弾頭・核弾頭を追加(核弾頭は破壊できるブロック数に上限あり、ミサイルランチャー専用で手持ちでは撃てない)。</li><li>ロケットランチャーに2倍ズームの照準器とロックオン機能を追加(1秒狙い続けると成立。走っている相手には当たらない)。</li><li>携帯電話・パソコンに本格的なOS機能を追加(カメラ映像・メッセージ・調べもの・天気・電卓・電話・撮影の7アプリ)。手に持って右クリックまたはHキーで起動でき、写真を撮ってメッセージで送ることもできる。</li><li>水道管を追加(川や海から大釜や畑へ水を供給)。実際にかごが上下する移動式エレベーターも追加。</li><li>電力MODに太径ケーブル(通常の4倍の距離まで電気が届く)・遮蔽ケーブル(8倍)・LEDパネルを追加。</li><li>鉱石の見た目を全面刷新。新素材『ラベンダーヒスイ』(ルビーよりさらに希少)、ガスマスク、エアロシールドを追加。</li><li>四季システムを追加(1季節8日、1年32日)。夏の砂漠・冬の雪原はこれまでより厳しくなる。</li><li>強化ビーコンのα・β(ボスMOD)がクラフト可能に。あわせて強化ビーコン自体は電気が要らなくなった(v1.8.1で一度電気が必要になっていたのを撤回)。</li><li>通常世界で建築できる高さの上限がy=319からy=1023に拡張(地下やワールドの底には変更なし)。</li><li>電気を必要とする装置を17種類から3種類(廃棄ブロック・レーザー発信機・自動タレット)に大幅縮小。ホッパー・自動仕分けブロック8種・コンベアベルト・信号機2種・列車自動停止ブロックなどは電気なしで動作するようになった。</li></ul>
+      <h4>バランス調整</h4><ul><li>アサルトライフル: 実測毎秒4,500 → 5,850</li><li>ミニガン: 実測毎秒250 → 50(大幅弱体化。ダイヤの剣より弱くなった)</li><li>スナイパーライフル・ヘビースナイパーのダメージも上昇。スナイパー系耐久の計算係数も0.5→0.6に変更</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>ミサイルランチャーで撃つロケット弾は、mobGriefingをfalseにしても地形破壊が止まりません。地形破壊だけを止めたい場合はconfigのrocketDestroysTerrainをfalseにしてください。</li><li>通常世界の建築可能高さがy=1023まで拡張されました。天空を利用しない方にも影響します(地下は変更なし)。</li><li>電気が必要な仕分けブロック・ホッパーの対象が大幅に縮小されたため、これまで止まっていた装置が自動的に再び動き出します。長期間放置していた場所では思わぬ動作再開に注意してください。</li><li>上記の銃火器のダメージ変更は自動的に適用されます。configの削除や書き換えは不要ですが、戻したい場合はconfigで個別に数値を指定できます。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>追加直後の強化ビーコンα・βは能力の選択ができない不具合があった(次のアップデートで修正済み)。</li><li>追加直後のミサイルランチャーはクリエイティブタブに表示されず、表示名も未設定だった。弾頭2種のアイコンも用意されていなかった(次のアップデートで解消)。</li><li>携帯電話・パソコンのアプリには専用のアイコン絵がまだ用意されておらず、色付きの四角形が並ぶだけだった(次のアップデートで改善)。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.3</span> — 家電の電化と、機械の発熱
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#d4b32e">電力</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>防犯カメラ・エレベーター・エスカレーター・自動ドア・ATMの5つの建材機器が電気を必要とするようになりました。また、発電機や原子力発電所など稼働中の機械は周囲の部屋を発熱させるようになり、換気や冷却をしないと熱でダメージを受けることがあります。</p>
+      <ul><li>防犯カメラ・エレベーター・エスカレーター・自動ドア・ATMが電気を必要とする機器に(すでに設置済みのものも次回起動時から対象)。エレベーターは電気が無くても『下り』だけは動作する(閉じ込め防止)。</li><li>稼働中の発電機・原子力発電所などの機械は周囲を発熱させるようになった。冷やさずに機械8台を稼働させ続けると室温が約77.8℃まで上昇し、約14秒でダメージが始まる。</li><li>エアコンが電力もきちんと消費するように修正(以前は電力を消費しない扱いだった)。</li></ul>
+      <h4>バランス調整</h4><ul><li>機械の発熱: 未冷却の機械を8台稼働させ続けると室温が約77.8℃まで上昇し、約14秒で熱ダメージが発生</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>防犯カメラ・エレベーター・エスカレーター・自動ドア・ATMへのケーブル配線が必要になります。すでに設置済みの設備も次回起動時点で止まります。</li><li>発電機など発熱する機械の周囲は、換気やエアコンによる冷却をしないと高温になり危険です。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>電化された5つの機器(防犯カメラ・エレベーター・エスカレーター・自動ドア・ATM)の実際の動作(電気あり/なしどちらも)は未確認。</li><li>新しい発電機3種・燃料スロットの見た目や使い勝手は未確認。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.2</span> — エアコンの大型化と電力機器の簡易設置化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#d4b32e">電力</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>エアコンのサイズが大幅に拡大され、実際に部屋の中で存在感のある大きさになりました。また電力MODの各機器を『1個のアイテムを設置するだけ』で完成するように整理し、雪原バイオームで暖炉がまったく効いていなかった不具合も修正しました。</p>
+      <ul><li>エアコンの本体サイズを拡大(3.1×2.0×2.1ブロック相当)。丸い送風ファンとコイルフィン・光る操作盤を持つ室外機と、前に張り出すルーバー3枚を持つ室内機からなる、電力MODの中でも屈指の大きさの機器に。</li><li>電力MODの機器は、複数のブロックを組み合わせて作る必要がなく、1個のアイテムを設置するだけで完成する方式に統一。</li><li>暖炉が雪原バイオームでまったく効いていなかった不具合を修正。地形の寒さと設備の暖かさを別々に計算するよう改善した。</li></ul>
+      <h4>バランス調整</h4><ul><li>雪原・自分で焚いた暖炉のそば: 体感温度 -24.0℃(凍傷ダメージ) → +2.4℃(安全)</li><li>屋根付き拠点・夜間・降雪中・暖炉あり: -18.6℃ → +7.9℃</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>吹雪の夜に屋外に立ちっぱなしの場合、暖炉1台だけではまだ不十分なことがあります(屋根・防具・暖炉の追加設置などを組み合わせてください)。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>気温バランスが遊んでちょうど良いかどうかはまだ検証されていない。</li><li>自動仕分けブロック9種の新しい立体の見た目は未確認。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power boss deco guns rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-05</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.1</span> — 電力MOD追加 — レッドストーンに電気が必要に
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#d4b32e">電力</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>8つ目のMOD「電力」が新規参入しました。本プロジェクトでも最大級の変更として、バニラのレッドストーン回路(レッドストーンの粉・リピーター・コンパレーター・レッドストーンブロック・レッドストーントーチ)が発電機からの電気を必要とするようになります。既存の自動農場・駅・自動ドアなどのレッドストーン仕掛けはすべて一度止まるため、電力網の配線が必要になります。</p>
+      <ul><li>8つ目のMOD「電力」が新規参入。発電機・原子力発電所・分電盤・ケーブルなどで電力網を組み立てられるようになった。</li><li>レバー・ボタン・感圧板・トリップワイヤーフック・オブザーバー・日照センサー・スカルクセンサー・的(ターゲット)・トラップチェスト・ディテクターレール・書見台・ジュークボックス・避雷針など17種類は、今までどおり電気なしで動作する(ドアの開閉操作などはこれまでどおり)。</li><li>レッドストーンブロックは設置から約10分で自然に壊れ、アイテムとして手元に戻る(電気の要らない『タダの電源』が放置されるのを防ぐため)。</li><li>廃棄ブロック・レーザー発信機・自動タレットの3つだけは、電気が無い場所では逆に『動いたまま』になる特殊な安全策(大切なアイテムやモブを誤って失わないため)。</li><li>スナイパーライフル・ヘビースナイパー・レーザーガンの弾速が、意図していた本来の値に修正された(ダメージ・連射・装弾数・耐久・射程は変更なし)。</li></ul>
+      <h4>バランス調整</h4><ul><li>スナイパーライフル・ヘビースナイパーの弾速: 16.0 → 24.0(1.5倍)</li><li>レーザーガンの弾速: 16.0 → 48.0(3倍)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>既存の自動農場・駅・自動ドアなど、レッドストーン回路を使う設備はすべて一度停止します。電力網(発電機とケーブル)を新たに配線する必要があります。</li><li>この変更をすべて元に戻したい場合はconfig/sorakaze_power.jsonのpowerEnabledをfalseに、レッドストーンだけ元に戻したい場合は同ファイルのredstoneRequiresPowerをfalseに設定してください。</li><li>オブザーバーと日照センサーは意図的に電気不要のまま残されています(電気が切れた拠点をゲーム内で復旧する手段を残すため)。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>レッドストーンが止まる世界での実際の遊び心地や、農場・駅の停止具合は未検証。</li><li>ケーブルの発光・分電盤の画面・発電機や原子力発電所の見た目は実機でまだ確認されていない。</li><li>電気を切ってから入れ直した際、分電盤につながっていない孤立したケーブルが点灯したまま残ることがある(壊して置き直せば直る)。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco guns sky survival">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — 設定ファイルの自動修復(v1.8.0 再配布版)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>同日中に配布し直した修正版です。最初のv1.8.0では、以前のバージョンのconfigファイルに残っていた古い数値が新しい既定値を上書きしてしまい、防犯カメラの解像度やエクスカリバーの性能、ロケットランチャーの地形破壊などが反映されない不具合がありました。今後はアップデートのたびにconfigファイルを手動で削除する必要がなくなり、起動時に「以前のバージョンが設定した古い数値」だけを自動的に新しい既定値へ更新する仕組みが導入されました。</p>
+      <ul><li>以前のバージョンのまま残っていた「化石」設定値を自動検出し、現在の既定値に書き換える仕組みを導入。以後のアップデートではconfigファイルを手動削除する必要がなくなった。</li><li>自分で調整した数値には一切手を加えない(保存されている値が過去の既定値と一致する場合のみ更新される)。</li><li>この修正により、防犯カメラの解像度(768→3840)・エクスカリバーの性能(攻撃力12→75、攻撃速度1.8→0.6)・ロケットランチャーの地形破壊などが、実際のプレイでも正しく反映されるようになった。</li><li>今回更新されたのはボス・建材・銃火器・天空・サバイバルの5MOD。鉄道・乗り物は今回変更なし。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>この再配布版は最初のv1.8.0と同じバージョン番号・ファイル名で配布されています。お手元に最初のv1.8.0がある場合は破棄し、この版に差し替えてください。</li><li>これ以降、アップデートのたびに案内していた「configファイルを削除してください」という作業は不要になりました。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>エクスカリバーの新しい性能やロケットランチャーの地形破壊効果は、実際のプレイではまだ確認されていない。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — 設定ファイルの自動修復(v1.8.0 再配布版)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>同日中に配布し直した修正版です。最初のv1.8.0では、以前のバージョンのconfigファイルに残っていた古い数値が新しい既定値を上書きしてしまい、防犯カメラの解像度やエクスカリバーの性能、ロケットランチャーの地形破壊などが反映されない不具合がありました。今後はアップデートのたびにconfigファイルを手動で削除する必要がなくなり、起動時に「以前のバージョンが設定した古い数値」だけを自動的に新しい既定値へ更新する仕組みが導入されました。</p>
+      <ul><li>以前のバージョンのまま残っていた「化石」設定値を自動検出し、現在の既定値に書き換える仕組みを導入。以後のアップデートではconfigファイルを手動削除する必要がなくなった。</li><li>自分で調整した数値には一切手を加えない(保存されている値が過去の既定値と一致する場合のみ更新される)。</li><li>この修正により、防犯カメラの解像度(768→3840)・エクスカリバーの性能(攻撃力12→75、攻撃速度1.8→0.6)・ロケットランチャーの地形破壊などが、実際のプレイでも正しく反映されるようになった。</li><li>今回更新されたのはボス・建材・銃火器・天空・サバイバルの5MOD。鉄道・乗り物は今回変更なし。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>この再配布版は最初のv1.8.0と同じバージョン番号・ファイル名で配布されています。お手元に最初のv1.8.0がある場合は破棄し、この版に差し替えてください。</li><li>これ以降、アップデートのたびに案内していた「configファイルを削除してください」という作業は不要になりました。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>エクスカリバーの新しい性能やロケットランチャーの地形破壊効果は、実際のプレイではまだ確認されていない。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.7</span> — 全7MOD一斉更新・銃が実弾方式に回帰
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>7つのMODすべてが同時にv1.7.7へアップデートされました。銃の弾がヒットスキャン(即着弾)方式から、実際に弾丸が飛んでいく発射体方式に戻りました(ダメージ量そのものは変えていません)。新武器「ロケットランチャー」、電車の自動停止ブロック、花火人形など、各MODに多数の新要素が追加されています。</p>
+      <ul><li>【銃火器】弾が「実際に飛んでいく」方式に戻りました。見た目の体感は変わりますが、各銃のダメージ量自体は変更していません。</li><li>【銃火器】新武器「ロケットランチャー」と専用弾を追加。直撃+爆発ダメージがあり、地形破壊は初期設定でオフになっています。</li><li>【建材】ドアが「人が挟まっていても閉まる」仕様に変更されました。閉まる際は当たり判定が発生しないよう設計されているため、挟まれてダメージを受けることはありません。</li><li>【建材】色つきの強化ガラスの窓(17色)、装飾ブロック5種(スマートフォン型・ノートPC型・デスクトップ型)、金庫ドアを追加。防犯カメラの映像解像度の上限が拡張されました(初期設定は変わりません)。</li><li>【ボス】強化ビーコンで同時に選べる特殊効果が3種類から5種類に増えました。</li><li>【ボス】ロックロック討伐でドロップする「エクスカリバー」が大剣として作り直されました。専用の3Dモデルになり、性能も強化されています。</li><li>【天空】ドラゴンに騎乗した際、進行方向と体の向きが逆になっていた不具合を修正しました。</li><li>【天空】天使の杖を強化。王の剣・天使の装備一式の見た目も、より立体感のあるモデルに刷新されました(性能は変更ありません)。</li><li>【鉄道】列車自動停止ブロックを新規追加。レール下に設置しておくと、近づく電車を自動でなめらかに停止させます。</li><li>【乗り物】一人称のコックピット視点を一度使うと車体の一部が消えたままになる不具合を修正。11車種の外観を作り直しました。</li><li>【サバイバル】真珠鉱石・ルビー鉱石の生成量が約2倍になりました(新しく生成される土地のみ)。真珠ブロック・ルビーブロックを追加。</li><li>【サバイバル】新アイテム「花火人形」を追加。トーテム・オブ・アンダイイングと同じように死亡を1回防ぐお守りですが、効果はより強力で、3回まで使用できます。設置して飾ることもできます。</li></ul>
+      <h4>バランス調整</h4><ul><li>エクスカリバー(ボスドロップ): ダメージ12.0→36.0(3倍)、攻撃速度は半分に低下、間合い3.0→4.0ブロックに拡大、ノックバックを新たに付与。ただしドロップ率が100%→70%に変更されました。</li><li>天使の杖: ダメージ12→20、射程48m→64m、クールダウン短縮、近接ボーナス7.0→10.0(これで初めて天使の剣の近接ボーナスを上回りました)。</li><li>ロケットランチャー: 直撃40.0+爆発ダメージ(爆発威力はクリーパー相当)。装弾数1、弾速は全銃中最も遅い設定です。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>config削除が必要: `sorakaze_boss.json`(エクスカリバーの数値)、`sorakaze_sky.json`(天使の杖の数値)。削除しないと新しい数値が反映されません。</li><li>`sorakaze_guns.json`も削除を推奨します。削除しないと、新しく追加された「弾速」の設定項目が全銃共通で異常に遅い値のまま固定される不具合があります(ダメージなど威力の数値には影響しません)。</li><li>装飾ブロック5種のうち、スマートフォン型・ノートPC型・デスクトップ型は実在する製品をモチーフにしていますが、ゲーム内表示・手順書とも形状のみで説明しており、ブランド名は使用していません。</li><li>【バランス】この時点でもアサルトライフルは毎秒3750ダメージ相当と非常に強く、強化ビーコンやエクスカリバー・天使の杖が強化されてもなお、ほとんどのボスは数秒で倒せてしまいます。銃・ボスのどちらにも耐性は追加されていません。</li><li>なお、バージョン番号1.4.3・1.6.x・1.7.2・1.7.6は開発時に使われた内部の番号で、実際に配布されたことはありません。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>ドアが「人がいても閉まる」ようになった体感、ロケットランチャーの発射・着弾の感触、強化ビーコンの新しいGUIの使いやすさは実機で未確認です。</li><li>エクスカリバー・天使の杖の新しい3Dモデルの見た目や、ドラゴンの向き修正が実際どう見えるかも未確認です。</li><li>花火人形・真珠/ルビーブロック・列車自動停止ブロックの見た目、防犯カメラの高解像度設定によるPC負荷への影響も未検証です。</li><li>クラーケン・タイタンの攻撃モーションは、引き続き仕様どおりには実装されていません(所有者の確認待ち)。</li><li>v1.7.3で見つかった天空MODの2つの問題(襲撃時の処理落ち・テイムしたドラゴンの消失)は、今回の天空MODの変更内容とは別件のため、まだ解決していません。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.5</span> — 強化ガラス・両開き扉の不具合を修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span></div>
+      <p>建材MODのみの更新です。強化ガラス(17色)がどんな道具で掘っても一律75秒かかっていた不具合と、v1.5.0で追加された観音開きの大扉(50種)が見た目上きちんと開ききらなかった不具合を修正しました。</p>
+      <ul><li>強化ガラスがクワで掘れるようになりました。道具の種類(木〜ネザライト)や効率エンチャントに応じて採掘速度が変わります。これまではどんな道具でも一律75秒かかる不具合がありました。</li><li>強化ガラスがウィザー・エンダードラゴンに破壊されなくなりました。</li><li>観音開きの大扉(50種、3×3・3×4サイズ)が、見た目上もきちんと大きく開くようになりました。これまでは通常の扉と同じ狭いスライドしかせず、戸口が十分に開いて見えない不具合がありました。</li></ul>
+      <h4>バランス調整</h4><ul><li>強化ガラスの採掘時間の目安: 木のクワ約37.5秒、石のクワ約18.8秒、鉄のクワ約12.5秒、金のクワ約6.25秒、ダイヤのクワ約9.4秒、ネザライトのクワ約8.4秒(効率Vのダイヤのクワなら約2.25秒)。素手・つるはし・斧・シャベル・剣では引き続き75秒のままです。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>【仕様の制限】当初は「専用の斧でだけ速く掘れるようにする」ことを目指していましたが、バニラ側の仕組み上、木のクワを含めどのクワでも(段位なりに)速く掘れる形になりました。特定の道具専用にすることはできませんでした。</li><li>config削除は不要です。今回の修正はconfigの値を使っていません。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>強化ガラスをクワで実際に掘ったときの体感、観音開きの扉が画面上で実際に開いて見えるかどうかは、まだ実機で確認されていません。</li><li>クラーケン・タイタンの攻撃モーションは、引き続き仕様どおりには実装されていません。</li><li>v1.7.3で見つかった天空MODの2つの問題(襲撃時の処理落ち・テイムしたドラゴンの消失)は、天空MODが今回変更されていないため、まだ解決していません。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.4</span> — ペスト医師の出現方法を召喚石限定に変更
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span></div>
+      <p>ボスMODのみの更新です。ペスト医師が悪天候時にランダムで出現する仕組みを廃止し、他の10体のボスと同じように専用の召喚石を使ってのみ呼び出せるように変更されました。</p>
+      <ul><li>ペスト医師ボスの出現方法が変更されました。これまでの「悪天候時にランダムで出現」という仕組みは廃止され、新しい召喚石「ペスト医師の召喚石」を設置して呼び出す方式に統一されました。他の10体のボスと同じ、四隅にウィザーローズ・辺にファントムの膜・中央にネザースターを置く3×3の設置パターンです。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>悪天候を待ってペスト医師を探していた場合、今後は出現しなくなります。召喚石を作って呼び出してください。</li><li>config削除は不要です。削除された設定項目は自然出現に関するものだけで、残っている設定値には影響ありません。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>召喚石を使ったときの演出や、ペスト医師自体の見た目・専用ボイス、生け贄の演出は今回変更されておらず、引き続き実機で未確認です。</li><li>建材MODは今回のアップデート対象外です。別途、強化ガラスと扉の修正が進行中で、次回以降のアップデートに反映される予定です。</li><li>v1.7.3で見つかった天空MODの2つの問題(襲撃時の処理落ち・テイムしたドラゴンの消失)は今回は対象外のままです。</li><li>クラーケン・タイタンの攻撃モーションは、引き続き仕様どおりには実装されていません。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss sky guns survival rail">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.3</span> — 電車の車窓・シンガポールの不具合を修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>電車の運転席・客席から外がまともに見えなかった不具合と、空の都市国家「シンガポール」で建物が生成されない・廃墟が浮いたまま残るといった不具合を修正しました。あわせて敵モブの湧き上限をオーバーワールド限定に修正し、エンチャントのレベル上限も適正な値に調整しています。</p>
+      <ul><li>電車(全8車種)の運転席・客席に座ったとき、窓の下の壁ばかりが見えて外がほとんど見えなかった不具合を修正しました。前や横がきちんと見えるようになります。</li><li>空にある都市国家「シンガポール」で、建物がまったく生成されない・同じホテルが何度も建つ・木や村が空中に浮いたまま残る、といった不具合を修正しました。ただし直るのは修正後に新しく生成される土地だけです。既に生成済みの壊れた地形については、管理者向けに該当エリアだけを作り直す復旧ツールを同梱しています。</li><li>ボスMODに、ペスト医師の出現に関する設定項目がconfigで調整できるようになりました。</li><li>ワイバーンのブレス攻撃の威力が半分になりました。</li></ul>
+      <h4>バランス調整</h4><ul><li>ミニガンのダメージを75%減。</li><li>アサルトライフルのダメージを25%増加。実測ダメージ効率は毎秒換算でアサルトライフル3750 &gt; レーザーガン2000 &gt; ミニガン250。</li><li>万物採集器(ボスドロップの採掘ツール)が耐久制から「5回使うと壊れる」回数制に変更されました。金床でのMending・Unbreaking付与はできなくなりましたが、採掘速度・幸運・シルクタッチの付与は引き続き可能です。</li><li>敵モブの自然湧き上限の倍率を5倍→15倍に引き上げ。あわせて、この倍率が誤ってネザー・ジ・エンドにも掛かっていた不具合を修正し、オーバーワールド限定になりました。</li><li>エンチャントのレベル上限の初期値を255→20に調整(設定できる上限も255→32に縮小)。一部プレイヤーから報告のあった「エンチャントレベル255」のような異常な数値が出なくなります。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>config削除が必要な3つ: `sorakaze_guns.json`・`sorakaze_sky.json`・`sorakaze_survival.json`。削除しないと今回の数値変更が反映されません。`sorakaze_boss.json`は削除不要です。</li><li>【重要】天空MODを大規模構成・長時間で動かす総合テストで、新たに2つの問題が見つかっています。まだ修正されていません。(1) 大規模な襲撃イベント発生時に処理落ちする可能性がある。(2) テイムしたエンダードラゴンが、時間が経つと消えてしまう場合がある(テイムしたワイバーンは問題ありません)。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>上記の襲撃時の処理落ち・テイムしたドラゴンの消失問題は未解決のままです。</li><li>ペスト医師の見た目や湧き方、万物採集器が5回で壊れる際の使用感は、まだ実機で確認されていません。</li><li>クラーケン・タイタンの攻撃モーションは、引き続き仕様どおりには実装されていません(所有者の確認待ち)。</li><li>シンガポールの復旧ツールはテストデータでの動作確認のみ完了しており、実際のワールドデータでの動作確認はまだ行われていません。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.1</span> — v1.7.0導入後に起動しない不具合を緊急修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>v1.7.0を導入すると、ゲームが起動するたびに必ずクラッシュしてしまう不具合が発生していました。原因は乗り物MODのキー割り当て(脚の上げ下げ・フラップ・ドアなど)の登録処理にあり、乗り物MODのみをv1.7.1に更新することで解消しています。</p>
+      <ul><li>乗り物MOD(sorakaze_vehicles)のみが更新されました。他の6つのMODはv1.7.0のままで問題ありません。</li><li>新しいアイテムやブロックの追加はありません。今回は起動クラッシュの修正のみです。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>v1.7.0を導入して「毎回起動時にクラッシュする」場合は、乗り物MODのjarファイルを必ずこのv1.7.1版に差し替えてください。</li><li>他の6つのMOD(銃火器・鉄道・建材・ボス・天空・サバイバル)はv1.7.0のままで動作します。差し替える必要はありません。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>v1.7.0で追加された乗り物の一人称視点(コックピット視点)など新要素の見た目や使用感は、クラッシュにより誰も確認できていない状態が続いています。</li><li>2人同時プレイでの同期、全MOD同時稼働時のサーバー負荷は引き続き未検証です。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.0</span> — 全7MOD同時アップデートと隠しコンテンツ解禁
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>7つのMODが初めて足並みを揃え、すべて同じバージョン番号(v1.7.0)で配布されるようになりました。レシピ早見表の不具合修正にともない、これまで表に出ていなかった空の都市国家「シンガポール」の食料品や施設アイテムなど、隠れていたコンテンツが多数明らかになっています。乗り物MODには一人称視点(コックピット視点)が新しく追加されました。</p>
+      <ul><li>7つのMODがすべて同じバージョン番号で配布されるのは今回が初めてです。それまではMODごとにバージョンがバラバラでした。</li><li>レシピ早見表の不具合を修正した結果、空にある都市国家「シンガポール」で購入できる食料品300種のほか、攻城の大槌・物件の権利証書・不動産台帳・食料品の棚などのアイテムが早見表に表示されるようになりました。これらは店で購入するアイテムで、クラフトはできません。</li><li>ボスドロップの「万物採集器」や、シンガポールに設置されている「特別ATM」(クラフト不可)も早見表に載るようになりました。</li><li>乗り物MODに一人称視点(コックピット視点)が追加され、運転中は自分の車の屋根やピラーが視界を遮らなくなりました。設定でオフに戻すこともできます。</li><li>乗り物113種・電車35種・銃3種のアイテムアイコンが新しく描き直されました。</li><li>銀行(ATM)の預金残高上限(これまで10万)が撤廃され、上限なく預金できるようになりました。</li><li>アメジストのブロックをアメジストの欠片に戻すレシピが追加されました。</li><li>敵モブの自然湧き上限を標準の5倍にする変更、エンチャントのレベル上限(通常30)を大きく引き上げる変更が有効になりました(いずれもサバイバルMOD)。</li></ul>
+      <h4>バランス調整</h4><ul><li>レーザーガン: ダメージ160→200、連射速度6発/秒→10発/秒、装弾数100→200発。</li><li>ドリル: 採掘速度12.0→24.0、耐久2048→10240。</li><li>天空王国・エンジェルシティの人口上限を大幅に引き上げ(例: 王国の商人16→48人、住民64→192人)。</li><li>防犯カメラの映像解像度の初期値が192→768に変更。</li><li>敵モブの自然湧き上限が標準比5倍に。ただしこの時点では本来オーバーワールド限定のはずが、誤ってネザー・ジ・エンドにも同じ倍率がかかってしまう不具合があります(後日のアップデートで修正予定)。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>銃火器MOD(sorakaze_guns)と天空MOD(sorakaze_sky)は、アップデート後に`config/sorakaze_guns.json`と`config/sorakaze_sky.json`を削除しないと、上記の数値変更が反映されません。</li><li>建材MOD(sorakaze_deco)のconfigは削除せず、`cameraFeedResolution`の値だけ書き換えてください。削除すると信号機の秒数など他の設定もすべて初期値に戻ってしまいます。</li><li>現在の銃の実測ダメージ効率は、アサルトライフルが毎秒3000、レーザーガンが毎秒2000、ミニガンが毎秒1000相当と非常に高く、ほとんどのボスは数秒で倒せてしまいます。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>新しく登場した襲撃ボス「鎧の侵略者」は見た目がまだ「鎧」らしく見えない可能性があり、今後調整される見込みです。</li><li>電車の車体はまだ実車の約3分の1のスケールのままです。また当たり判定の横幅が1.8→2.0ブロックに拡大されたため、既存の2ブロック幅トンネルを通れなくなる場合があります。旧来の3車種(電車・客車・貨車)には窓や内装、ドアがありません。</li><li>乗り物の一人称視点は最大旋回速度が36度/秒で、体感としては速すぎる可能性があります。</li><li>レシピ早見表のファイルサイズが大幅に増加しました(食料品の画像を多数追加したため)。環境によっては表示が重く感じられる可能性があります。</li><li>2人同時プレイでの同期、全MOD同時稼働時のサーバー負荷は未検証です。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns rail">
+      <div class="timeline-entry__date">2026-07-30</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.7</span> — 王の剣・王の弓を修正、ミニガンを弱体化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>王の弓が逆さまに見える不具合と、v1.5.6のリニューアルから漏れていた超特急列車2両の見た目を修正。あわせて王の剣とミニガンを弱体化し、ドリルはセル切れ時にインベントリから自動補充されるようになった。</p>
+      <ul><li>天使関連アイテム13種のアイコンを128pxでより精細に描き直し</li><li>王の弓が逆向きに見える不具合を修正</li><li>v1.5.6の電車リニューアルから漏れていた超特急列車2両の外観を刷新</li><li>ドリルがセル切れ時にインベントリ内の予備セルから自動補充されるように</li></ul>
+      <h4>バランス調整</h4><ul><li>ミニガン: 実効火力を秒間約2,000→約1,000ダメージに引き下げ</li><li>王の剣: 攻撃速度を含めて弱体化。実測DPSは84.80→21.60(-74.5%)。結果として天使の剣(22.40)をわずかに下回る性能になりました</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>今回の変更を反映するには config/sorakaze_guns.json の削除が必要です</li><li>v1.5.5以前のバージョンから一気にアップデートする場合は config/sorakaze_sky.json も削除してください</li><li>王の剣の弱体化はプログラム内部の値によるもので、config ファイルでは戻せません</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>超特急列車のアイテムアイコンは旧デザインのままです(車体は一新されましたが、アイコンとは見た目が揃っていません)</li><li>スカルクゴーレム・ロックロック・クラーケン・タイタンには専用の攻撃モーションがまだ実装されていません</li><li>雷の槍はまだ投擲攻撃に対応しておらず、近接攻撃のみ使用できます</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky guns deco rail boss">
+      <div class="timeline-entry__date">2026-07-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.6</span> — 天空王国が登場、死神ボスも大幅刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空MODに巨大な「天空王国」と購入限定の「王族装備」7種が追加された。死神ボスは専用の攻撃モーションを得て仕様も一新。銃火器は威力バランスを大きく見直し、アサルトライフルが最強クラスの武器になった。電車全6家族の見た目も刷新されている。</p>
+      <ul><li>天空王国(直径1,001ブロックの巨大な英国風の国)が新規追加。住民64人・商人16人、宝箱65個</li><li>天空王国限定の「王族装備」7種が登場(購入限定、天使装備の上位版)</li><li>新モブ「REX」登場。卵から孵化させて騎乗できるように</li><li>「クーレーポット」でペットを丸ごと持ち運べるように</li><li>死神ボスの専用攻撃モーション6種を新規実装。HP50%以下でウィザー3体を召喚する新技も追加</li><li>電車全6家族の外観を刷新(丸みのある立体的な窓・ドア・前面・行先表示・灯具など)</li><li>ノートPCが設置型ブロックに変更。防犯カメラは3Dモデル+首振りに対応し、映像は範囲内リアルタイム/範囲外は「NO SIGNAL」表示に</li><li>銃火器の威力バランスを全面的に見直し(詳細はバランス変更を参照)</li></ul>
+      <h4>バランス調整</h4><ul><li>アサルトライフル: 対1体への実効火力が約400→約3,000ダメージ/秒に大幅強化(弾がすべて確実にダメージとして通るよう修正されたため)</li><li>ミニガン: 実効火力を秒間約4,000→約2,000ダメージに引き下げ</li><li>ショットガン: 威力を3倍に強化(至近距離で1トリガーあたり約150ダメージ)</li><li>狙撃銃2種(通常/ヘビー): 耐久力を弓の1/3にあたる128まで引き下げ(打たれ弱いが高火力な性能に)</li><li>死神ボス: 体力が6,000〜9,000のランダムから固定3,000に、攻撃力が16→32に変更</li><li>ワイバーン: ブレスダメージ10→7.5、卵ドロップ率100%→20%に低下(弱体化)</li><li>大天使ボス: 体力を1.5倍の3,000に強化</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>銃の威力変更を反映するには config/sorakaze_guns.json の削除が必要です(狙撃銃の耐久設定は新規項目なので自動で反映されます)</li><li>バージョン番号が v1.5.1 から v1.5.6 に飛んでいますが、これは仮面調整やワイバーン弱体化など複数回の小規模更新をまとめて配布したためで欠番ではありません</li><li>真珠鉱石・ルビー鉱石は、MOD導入より前に生成された土地には出現しません。実測の結果、ダイヤの約1/32、古代の残骸のおよそ半分というレア度と判明しました</li><li>既に一部生成されていた都市・城が天空王国の近くにあった場合、残りの部分が生成されず欠けたまま残ることがあります(データが壊れるわけではなく見た目のみの問題です)</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>スカルクゴーレム・ロックロック・クラーケン・タイタンには専用の攻撃モーションがまだ実装されていません(死神は今回のアップデートで解消)</li><li>雷の槍はまだ投擲攻撃に対応しておらず、近接攻撃のみ使用できます</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="survival">
+      <div class="timeline-entry__date">2026-07-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.1</span> — 仮面2種の見た目を全面的に修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">見た目の更新</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span></div>
+      <p>サバイバル拡張MODの仮面2種の見た目を修正。以前は平たい絵が頭の上に浮いて見える不具合があったが、頭にフィットする立体的な形状(耳付き)に作り直された。防御力・耐久・レシピなどの性能は変更なし。</p>
+      <ul><li>仮面2種の見た目を全面的に作り直し。頭の上に平たい絵が浮いて見える不具合を解消し、頭を覆う立体的な形状に</li><li>兎面にはウサギ耳、道化の仮面にはキツネ耳のディテールを追加</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>レシピ早見表のアイコンはまだ旧デザインのままです(次回の更新で反映予定)</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>仮面の側面・背面のテクスチャはまだ簡素です。正面のデザインが中心のため、三人称視点で横や後ろから見るとほぼ単色に見える場合があります</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="survival guns deco rail vehicles sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.0</span> — 史上最大の更新、7つ目のMOD「サバイバル拡張」登場
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>本プロジェクト史上最大のアップデート。7つ目のMOD「サバイバル拡張」が新規参入し、真珠・ルビー鉱石や仮面、大盾、水分ゲージなどのサバイバル要素が追加された。あわせて既存6MODすべてに大型のコンテンツが追加され、電車は30種、乗り物は100種、建材MODのドアは101種に拡大している。</p>
+      <ul><li>7つ目のMOD「サバイバル拡張」が新規参入。真珠鉱石・ルビー鉱石、仮面2種(ARMOR+50、耐久814)、大盾、水分ゲージ(30分で空になる)を追加</li><li>司書(達人)からシャープネスXの本を購入できるように(64エメラルド)</li><li>銃火器MODに新武器「ミニガン」「ドリル」(視線方向に3×3ブロックを一気に採掘)「クモ除けタレット」を追加</li><li>電車が6家族×5塗装の全30種に拡大(これまでは1種類のみ)</li><li>乗り物が25ベース×4塗装の全100種に拡大し、全機に丸みのあるスタイルを適用</li><li>建材MODに観音開きの大型ドア50種(ドア総数は101種に)、防犯カメラ、ノートPC、複利で貯金できるATMを追加</li><li>天空MODに卵の孵化装置を追加。孵化させたワイバーン/ドラゴンになつかれ、専用サドルで騎乗できるように</li></ul>
+      <h4>バランス調整</h4><ul><li>【訂正】これまで「アサルトライフルは対1体で秒間約2,000ダメージ」と案内していましたが、実際に計測したところ秒間約400ダメージであることが判明しました(過去の記載は火力を大きく見積もりすぎていました)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>新武器「ミニガン」の実効火力は秒間約4,000ダメージ相当で、本プロジェクトで最も強力な武器です。既存のボスのほとんどを数秒以内に倒せてしまうため、歯ごたえを保ちたい場合は config の `minigun.damage` を下げて調整してください</li><li>このアップデートに際して config ファイルを削除する必要はありません(新規の設定項目は起動時に自動で追記されます)</li><li>真珠鉱石・ルビー鉱石は、MOD導入より前に生成された土地には出現しません。見つからない場合は新しい土地を探索してください</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>防犯カメラの首振りアニメーションは未実装で、現在は固定視点です</li><li>スカルクゴーレム・ロックロック・死神・クラーケン・タイタンには専用の攻撃モーションがまだ実装されておらず、必殺技の予告もパーティクルとマーカーのみです</li><li>雷の槍はまだ投擲攻撃に対応しておらず、近接攻撃のみ使用できます</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.8</span> — 天空都市を高密度化、新モブ「ワイバーン」登場
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空都市の規模を見直し、より密度の高い高層都市に作り替えた。中心部には高さ300ブロックに達する超高層の尖塔4本が新たなランドマークとして出現する。あわせて空を飛ぶ新たな敵「クリスタル・ワイバーン」が追加された。</p>
+      <ul><li>天空都市の面積を縮小し、より密度の高い都市に作り替え(高さは地区ごとに変化)</li><li>都市中心部の尖塔4本だけは高さ300ブロックに達する超高層ビルに</li><li>低層階の入口・庇・屋上設備、車道と歩道の分離など街並みのディテールを追加</li><li>屋上・オフィス・倉庫の3種、計16個の宝箱を都市内に配置</li><li>新モブ「クリスタル・ワイバーン」が登場。空を飛び、火球のブレスで襲ってくる(プレイヤーのみを狙い、街の住人は襲わない)</li><li>天空城の出現間隔を調整(以前の推奨設定では城が事実上まったく出現しない不具合があったため)</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>アサルトライフルの火力の前では、クリスタル・ワイバーン(HP200)は一瞬で倒せてしまいます。歯ごたえを求める場合は銃のダメージ設定を調整してください</li><li>都市の縮小は新しく生成される土地にのみ適用されます。既存の天空都市は旧サイズのまま残るため、隣接すると大きさが不自然に見える場合があります</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.7</span> — 天空都市の生成刷新、住民増殖バグを修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空都市・天空城の生成の仕組みを内部的に作り直してより安定させたほか、サーバーを再起動するたびに天空都市の住民がじわじわ上限を超えて増え続けてしまうバグを修正した。</p>
+      <ul><li>サーバー再起動を繰り返すと天空都市の住民が上限を超えて増え続けてしまうバグを修正</li><li>天空都市・天空城の生成処理を内部的に効率化(生成負荷はむしろ軽減)</li><li>天空都市・天空城の配置間隔を調整</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>生成方式の変更は新しく生成される土地にのみ適用されます。既存の天空都市・天空城の見た目はそのままです</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.6</span> — 天空都市を近未来都市に刷新、新ボス登場
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空MODの「天空都市」が近未来的な高層都市へと全面刷新され、新たに「天空城」と新ボス「スカイ・アークエンジェル」が登場した。街を歩く新モブ「一般エンジェル」や、装備購入の支払い方法の変更なども行われている。</p>
+      <ul><li>天空都市を近未来的な高層都市に刷新(高層ビル20棟、道路網、歩道橋、中央広場を追加)</li><li>新モブ「一般エンジェル」が4種の見た目で街を行き交うように</li><li>「天空城」が新規登場(城壁、8本の円塔、大広間、中央天守、地下宝物庫、宝箱6個)</li><li>新ボス「スカイ・アークエンジェル」が天空城に出現。1城につき1体で、討伐後は再出現しない</li><li>ボスの確定ドロップ「エンジェルの杖」を追加(空中で威力1.5倍・クールダウン半減の特性つき)</li><li>天空ポータルの見た目を金+発光石の枠に刷新し、点灯アニメーションを追加</li><li>天空装備の購入時の支払いがエメラルド+ダイヤの2種類になった</li></ul>
+      <h4>バランス調整</h4><ul><li>天空ポータルの自然出現率が 1/340 → 1/1200 に低下(かなり見つかりにくくなりました)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>ポータルが大幅に見つかりにくくなりました。既存のワールドで見つからない場合、管理者は config で出現率を下げるか、`allowPlayerBuiltSkyPortals` を有効にすることでプレイヤーによる手動設置を許可できます</li><li>アサルトライフルの火力は非常に強力(秒間2,000ダメージ相当)で、このボス(HP2000)は約1秒で倒せてしまいます。歯ごたえを求める場合は銃のダメージ設定を調整してください</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.5</span> — 天空ディメンションのクラッシュを修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>天空ディメンションに入るとクライアントが必ずクラッシュしてしまう重大な不具合を修正しました(エンジェルやエンジェルゴーレムを描画する仕組みが1つも登録されていなかったことが原因)。あわせてヘビースナイパーライフルの威力を強化し、スコープに新しい倍率を追加しています。</p>
+      <ul><li>【重要】天空ディメンションに入ると必ずクライアントがクラッシュしてしまう不具合を修正(エンジェル・エンジェルゴーレムの描画処理が登録されていなかったことが原因)。天空移設前からいた古いワールドのエンジェルでも同様の不具合が起きていました</li><li>ヘビースナイパーライフルのダメージを通常スナイパーの4倍に変更(40.0→80.0)</li><li>スナイパーライフルのスコープに新しい倍率「×12」を追加(ヘビースナイパーのみ)</li><li>スコープを構えている間はマウスホイール操作を無視するように変更(意図せずホットバーが切り替わるのを防止)</li></ul>
+      <h4>バランス調整</h4><ul><li>ヘビースナイパーライフル ダメージ 40.0→80.0(通常スナイパーの4倍)</li></ul>
+      
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>この修正で天空ディメンションのクラッシュが実際に解消されたかどうかは、プレイでの確認がまだ取れていません。天空ディメンションに入ってもクラッシュしなくなったかご確認いただき、まだ発生する場合はご報告ください</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="deco guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.4</span> — 銃火力を大幅強化、新ドア40種追加
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span></div>
+      <p>レーザーガンとアサルトライフルの威力をそれぞれ20倍・10倍に大幅強化しました。この火力アップにより既存ボスとの戦闘バランスは大きく崩れます。あわせて、実は一度も発砲していなかった自動タレットの不具合、繋がらないガードレール、東西で向きが逆になるレーザーの不具合を修正。建材MODには新しいドアが40種類追加されました(バージョン1.4.3は欠番です)。</p>
+      <ul><li>レーザーガンのダメージ 8.0→160.0(20倍、DPS960)、アサルトライフルのダメージ 20.0→200.0(10倍、DPS2000)に強化</li><li>自動タレットが実は一度も発砲していなかった不具合を修正(狙いのレイが自分自身の当たり判定の内側から始まっていたため)。あわせて標的の判定を見直し、ボスとウォーデンは狙わないように変更</li><li>ガードレール同士が繋がらない不具合を修正</li><li>レーザーの向きが東西で逆になっていた不具合を修正</li><li>レーザートラップの届く距離 32→128ブロック(config上限は256まで拡大)。26方向(斜め・上下含む)を向けるようになり、素手右クリックで水平45度回転、しゃがみ+右クリックで角度変更が可能に</li><li>建材MODに新しいドア40種類を追加(既存9種と合わせて合計49種類に)</li></ul>
+      <h4>バランス調整</h4><ul><li>レーザーガン ダメージ 8.0→160.0(20倍)</li><li>アサルトライフル ダメージ 20.0→200.0(10倍)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>【重要】この火力アップにより既存のボスとの戦闘バランスが大きく崩れます(ボスが数秒で倒せてしまいます)。ボス側の耐性は追加していないため、気になる場合は config/sorakaze_guns.json でダメージ量を調整してください</li><li>銃の火力アップを反映するには config/sorakaze_guns.json の削除が必要です</li><li>v1.4.3は欠番のため配布されていません</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.2</span> — エンジェル装備の見た目不具合を修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span></div>
+      <p>「エンジェル装備」を実際に装備すると、体にバニラのネザライト防具、背中に無地のエリトラが表示されてしまう不具合を修正しました。インベントリのアイコンは正しく表示されていたため気づきにくい問題でした。</p>
+      <ul><li>エンジェル装備(鎧・エンジェルウィング)を装備した際の見た目を、専用の白銀と金のデザインで正しく表示するように修正</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky boss deco vehicles guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.1</span> — 天空ディメンション登場、ボスに必殺技追加
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>新しいディメンション「天空」が追加され、地上にまれに生成するポータルから行き来できるようになりました。エンジェル商人との取引やグライダー装備が可能に。ボスは全10体に必殺技が実装され、召喚石でいつでも呼び出せるようになりました。建材のレシピには選べるボタンが、乗り物にはタイヤの回転が追加されています。</p>
+      <ul><li>新ディメンション「天空」が登場。地上にまれに生成するグロウストーンのポータルから行き来可能</li><li>天空にエンジェル商人が住み、個体ごとにランダムな品揃えで取引できます。グライダーのように飛べる「エンジェルウィング」や専用の矢・弓を入手可能</li><li>空から落下してしまった場合の救済処置(オーバーワールド上空に安全に着地)を追加</li><li>ボス全10体に召喚石を追加し、クラフトしていつでも呼び出せるように。全ボスに必殺技(HPが半分以下になると発動、4秒の予告あり)を追加</li><li>巨大ボス3体は討伐時に強さがランダムに決まるように(エンダードラゴンの30〜45倍のHP、以後固定)</li><li>新武器「死神の大鎌」「深淵のトライデント」「雷の槍」が対応するボスからドロップ</li><li>建材MODのクラフト台に、同じ配置から複数のブロックを選べる切替ボタンを追加(木材の柱ブロックなど)</li><li>ボス専用のシャベル・クワで、実際に道を作ったり土を耕したりできるように</li><li>乗り物のタイヤが見た目そのまま回転するように(10車種)</li></ul>
+      
+      
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>スカルクゴーレムとロックロックには、まだ専用の攻撃モーションが実装されていません(必殺技の予告もパーティクルのみです)</li><li>雷の槍はまだ投げることができません(近接攻撃のみです)</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — ボスの攻撃モーションとツール3D化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">見た目の更新</span></div>
+      <p>5体のボスの近接攻撃・範囲攻撃・ビーム攻撃に、それぞれ専用のモーションを追加しました。ドロップする5種のツール(ツルハシ・斧・クワ・スピア・シャベル)も、平らなアイコンから立体的な3Dモデルに作り直しています。ダメージやクールダウンなどのゲーム内容は変更していません。</p>
+      <ul><li>ボス5体の攻撃(近接・範囲攻撃2種・ビーム攻撃)にそれぞれ専用のモーションを追加し、攻撃の予告(溜め動作)がわかりやすくなりました</li><li>ドロップする5種のツールを立体的な3Dモデルに刷新。GUIのアイコンも3D表示に変更</li></ul>
+      
+      
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>近接攻撃には振りかぶりなどの予備動作を付けていません。バニラの近接攻撃はダメージが即座に発生する仕様のため、予備動作を付けるとダメージのタイミングがずれてしまうためです</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — ボス5体の見た目を全面刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">見た目の更新</span></div>
+      <p>「同じ生物の色違いに見える」というフィードバックを受け、新ボス5体の見た目だけを全面的に作り直しました。強さやドロップ、攻撃内容などのゲーム内容は変更していません。</p>
+      <ul><li>ルーンコア・コロッサス: 石の芯に青銅/金の装甲、体の両脇に浮かぶ2本の剣、腕を囲んで回転するルーンの輪</li><li>エンバーロード: 体を貫く溶岩の溝、4節に分かれて反り上がる2本の角</li><li>エルダー・トレント: 向きも折れ方も異なる8本の枝(うち3本は途中で折れている)、幹に彫り込まれた顔</li><li>ヴォイド・ストーカー: 人型をやめ、黒曜石の塊+紫のポータル+8本の触手+18個の光る目という姿に一新</li><li>フロスト・リッチ・キング: 5段のローブ、9本のギザギザの氷の王冠、掲げた左手に回転する氷の紋章</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 新ボス5体登場、HPの壁を突破
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span></div>
+      <p>ボスMODに新たな巨大ボス5体を追加しました。これまでMinecraft本体の仕様でHPが1024までしか上がらなかった制限を解消し、HP2400〜4000の本格的なボスが実装されています。倒すと専用の強化ツール(ツルハシ・斧・クワ・新武器「スピア」・シャベル)が確定ドロップします。</p>
+      <ul><li>新ボス5体を追加(クラフトできる召喚アイテムで呼び出し): ルーンコア・コロッサス(HP3000)、エンバーロード(HP3400)、エルダー・トレント(HP4000)、ヴォイド・ストーカー(HP2400)、フロスト・リッチ・キング(HP2800)</li><li>各ボスを倒すと専用の強化ツールが確定ドロップ: ルーンのツルハシ・灼熱の斧・森のクワ・虚無のスピア(バニラにない新武器)・氷のシャベル。いずれも高耐久でエンチャント多数付与済み、クラフト不可</li></ul>
+      
+      
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>5体とも戦闘難易度は高めで、ソロでは苦戦する想定です。強すぎると感じた場合は管理者がconfigでHP・攻撃力を調整できます</li><li>ヴォイド・ストーカーは設定上は宙に浮く予定でしたが、現状は地上を移動+瞬間移動する形で実装されています</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 建材ブロック138種追加・銃の耐久実装
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span></div>
+      <p>v1.3.2公開後のフィードバックを受けた追加対応です。ボス2体の見た目を刷新し、これまで表示だけで実際には減らなかった銃の耐久値がようやく正しく機能するように修正。建材MODには138種類の新しい建築ブロックが加わり、全ての銃の射程を5倍に伸ばしました。</p>
+      <ul><li>スカルクゴーレムとロックロックの見た目を刷新(スカルクゴーレム=スカルク製アイアンゴーレム風、ロックロック=近未来の武装ロボット風)。強さや攻撃内容の変更はありません</li><li>銃の耐久値がようやく正しく減るように修正(これまでは耐久バーが表示されるだけで壊れなかった不具合)。既定の耐久はおよそ1536発、エクスカリバーはおよそ6093回</li><li>全ての銃の射程を5倍に延長(アサルト60→300m、ショットガン24→120m、スナイパー150→750m、レーザー80→400m)</li><li>建材MODに138種類の新しい建築用ブロック(縦ハーフブロック・八角柱の円柱・8段スロープ×46種の素材)を追加</li><li>乗り物のデザインを「丸みのある現実的な形」に変えていく計画が承認され、セダンとプロペラ機のデザイン案が完成(全13種への展開は今後のアップデートで順次実施予定)</li></ul>
+      <h4>バランス調整</h4><ul><li>全銃の射程を5倍に延長(アサルト60→300m/ショットガン24→120m/スナイパー150→750m/レーザー80→400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>射程延長を反映するには config/sorakaze_guns.json の削除が必要です</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>乗り物の「丸みのあるデザイン」は現時点でセダンとプロペラ機の案のみで、全13種への展開は今後のアップデートで対応予定です</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail vehicles boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — 建材ブロック138種追加・銃の耐久実装
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>v1.3.2公開後のフィードバックを受けた追加対応です。ボス2体の見た目を刷新し、これまで表示だけで実際には減らなかった銃の耐久値がようやく正しく機能するように修正。建材MODには138種類の新しい建築ブロックが加わり、全ての銃の射程を5倍に伸ばしました。</p>
+      <ul><li>スカルクゴーレムとロックロックの見た目を刷新(スカルクゴーレム=スカルク製アイアンゴーレム風、ロックロック=近未来の武装ロボット風)。強さや攻撃内容の変更はありません</li><li>銃の耐久値がようやく正しく減るように修正(これまでは耐久バーが表示されるだけで壊れなかった不具合)。既定の耐久はおよそ1536発、エクスカリバーはおよそ6093回</li><li>全ての銃の射程を5倍に延長(アサルト60→300m、ショットガン24→120m、スナイパー150→750m、レーザー80→400m)</li><li>建材MODに138種類の新しい建築用ブロック(縦ハーフブロック・八角柱の円柱・8段スロープ×46種の素材)を追加</li><li>乗り物のデザインを「丸みのある現実的な形」に変えていく計画が承認され、セダンとプロペラ機のデザイン案が完成(全13種への展開は今後のアップデートで順次実施予定)</li></ul>
+      <h4>バランス調整</h4><ul><li>全銃の射程を5倍に延長(アサルト60→300m/ショットガン24→120m/スナイパー150→750m/レーザー80→400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>射程延長を反映するには config/sorakaze_guns.json の削除が必要です</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>乗り物の「丸みのあるデザイン」は現時点でセダンとプロペラ機の案のみで、全13種への展開は今後のアップデートで対応予定です</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-21</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.1</span> — ウォーデンにボスが倒される不具合を修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">不具合修正</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span></div>
+      <p>1都市1体・生涯1体という貴重なボス「スカルクゴーレム」が、反撃してきたウォーデンに倒されてしまう不具合を修正しました。</p>
+      <ul><li>スカルクゴーレムがウォーデンからのダメージを受けなくなり、ウォーデンもスカルクゴーレムを攻撃・索敵しなくなりました(プレイヤーによる討伐は従来どおり可能です)</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss vehicles">
+      <div class="timeline-entry__date">2026-07-20</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.0</span> — ボス・乗り物MODが新登場、全5 MODに拡大
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>新たに「ボス」と「乗り物」の2つのMODが加わり、合計5 MODに拡大しました。古代都市でウォーデンを倒すとボス「スカルクゴーレム」が出現するボス戦、車・トラック・飛行機など13種の乗り物、レーザーガンやレーザートラップが新登場します。電車は最大15両編成の連結にも対応しました。</p>
+      <ul><li>新MOD「ボス」登場: 古代都市でウォーデンを3体倒すとボス「スカルクゴーレム」(HP900)が出現。討伐すると効果範囲3倍の「強化ビーコン」を確定ドロップ</li><li>新MOD「乗り物」登場: 車・バス・トラック・バイクなど陸上10種+航空機3種を追加。緊急車両の回転灯・サイレン、トラックの荷台などに対応</li><li>銃にレーザーガン(エネルギーセル1個で100発)と自動タレット(敵だけを狙う)を追加</li><li>建材MODにレーザー発信機/受信機とテーブルを追加</li><li>電車の連結方式を改良し、貨物車・客車を含め最大15両編成に対応。先頭車75 m/sの超特急列車2種も追加</li></ul>
+      
+      
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>航空機の操縦感覚(離着陸・失速など)は今後の調整が前提の設計です。重い・扱いにくいと感じた場合はconfigで調整できます</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-19</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.1</span> — 銃のヒットスキャン化とドアの静止修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span></div>
+      <p>銃を「発射した瞬間に着弾する」ヒットスキャン方式に変更し、専用の発砲音を追加しました。電車には3Dモデルと連結機能(貨物車・客車)が加わり、閉じたドアが小刻みに揺れ続ける不具合を修正。隠しドアや新型ドア3種も登場します。</p>
+      <ul><li>銃が弾の飛翔を待たずに着弾するヒットスキャン方式に変更(着弾判定距離はアサルト60m/ショットガン24m/スナイパー150m)</li><li>発砲音・リロード音・空撃ち音を新規に追加(自作音源)</li><li>銃を手に持った時のサイズを拡大し、一人称・三人称とも見やすく調整</li><li>電車に3Dモデル(通勤電車風の外観)を追加。貨物車(27スロットの収納)・客車(2人乗り)を連結可能に(連結中は後退不可)</li><li>閉じたドアが小刻みに揺れ続ける不具合を修正</li><li>隠しドア(土・石・ネザーラック・エンドストーンなどに擬態)を追加</li><li>新規ドア3種(巻き上げシャッター・片引き戸・鉄格子ドア)を追加し、ドア合計9種類に</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.0</span> — ドアの窒息バグ修正と電車の大幅高速化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span></div>
+      <p>ドアを通過する際にダメージを受けてしまう重大な不具合を修正しました。電車の最高速度を60 m/s(config上限80 m/s)まで引き上げ、走行中は進行方向のチャンクを自動で先読みするように。エレベーターやコンベアベルトなど新ブロックも追加し、銃の操作方法を左クリック発射・右クリック構え・Rリロードに統一しました。</p>
+      <ul><li>【重要】ドアを通過するとダメージを受ける不具合を修正(自動ドア・ふすま・大型ドア・ハッチ)。ドアの近くに人がいる間は自動で閉じないように改良</li><li>電車の最高速度 20→60 m/s(config上限は80 m/sまで引き上げ可能)。走行中は進行方向のチャンクを自動で先読みし、高速走行時の景色切れを軽減</li><li>新規ブロック4種: エレベーター(ジャンプで上昇/しゃがみで下降)・エスカレーター・椅子2種・コンベアベルト(アイテム搬送、レッドストーンで停止)</li><li>銃の操作方法を一新: 左クリックで発射、右クリック長押しで構え(スナイパーはスコープ)、Rキーでリロード</li><li>銃を手に持った時に3Dモデルで表示されるように(それまではGUIと同じ平面アイコンのみ)</li><li>ショットガンが至近距離で無防具の敵を一撃で倒せるように(被弾無敵時間の影響で複数ペレットがまとめて無効化されていた不具合も修正)</li></ul>
+      <h4>バランス調整</h4><ul><li>ショットガン ペレットダメージ 3.0→5.0(10粒、至近距離で全弾命中時50.0)</li><li>電車 最高速度 20→60 m/s、config上限 25→80 m/s</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>電車の速度上限の意味が変わったため、更新後は config/sorakaze_rail.json の削除を推奨します(削除しないと旧設定の20 m/sのまま)</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.1.0</span> — 電車の挙動改善と銃火器の強化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span></div>
+      <p>電車の動きがガクガクする不具合と「Wキーを押し続けないと進まない」問題を解消しました。銃器の威力を強化し、スナイパーライフルには専用のスコープ表示と揺れの表現を追加。建材MODには自動ドアなど新しいドア4種が加わりました。</p>
+      <ul><li>電車: 動きがガクガクする不具合を修正し、なめらかに走行するように</li><li>電車: Wキーを一度押せば以後は入力なしで自動加速・巡航するように変更(それまでは押しっぱなしが必要だった)。Sキーでブレーキ、停車後にもう一度Sで後退</li><li>電車の最高速度 15→20 m/s。電車アイテムのアイコンを刷新</li><li>スナイパーライフル: 「構えて→離して発射」方式に変更し、専用スコープオーバーレイと×4/×8ズーム(スクロールで切替)、しゃがみで半減する照準の揺れを追加</li><li>アサルトライフル: 移動中に発砲すると拡散が増える挙動を追加</li><li>建材MOD: 自動ドア・ふすま・大型ドア(鉄/木)・ハッチの新規ドア4種を追加(マルチブロック構造でどこを壊しても1個ドロップ)</li></ul>
+      <h4>バランス調整</h4><ul><li>アサルトライフル ダメージ 3.0→5.0、連射 8→10発/秒</li><li>ショットガン ペレットダメージ 2.0→3.0(10粒に増加)、有効射程 12→16m</li></ul>
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-15</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.0.0</span> — 初版リリース:銃火器・鉄道・建材の3 MOD
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span></div>
+      <p>サーバーに「sorakaze_guns(銃火器)」「sorakaze_rail(鉄道)」「sorakaze_deco(建材)」の3つのMODが初めて導入されました。バニラの弓矢やトロッコはそのままに、新しい武器・乗り物・街づくり用ブロックがサバイバルでクラフトできるようになります。</p>
+      <ul><li>銃火器MOD: アサルトライフル・ショットガン・スナイパーライフルの3種と専用弾薬(ライフル弾/散弾シェル/スナイパー弾)がクラフト可能に</li><li>スナイパーライフルにスコープのズーム機能を実装</li><li>鉄道MOD: レールに設置できる新しい乗り物「電車」を追加(バニラのトロッコ・レール・弓矢・クロスボウは無改変)。走行中はループ走行音が流れる</li><li>建材MOD: ガードレール・電柱・電線・点字ブロック(誘導/警告)・車両用信号機・歩行者用信号機・航空障害灯・スポットライトなど12種類のブロックを追加</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>サーバーをMOD対応にするにはバニラからFabricへの移行が必要です。また、Minecraft 26.2の実行にはJava 25以降が必要になるため、サーバー機のJavaバージョンを確認してください(導入手順は管理者向け手順書を参照)</li></ul>
+        </div>
+      
+    </article>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
+    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)の配布は行っていません。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

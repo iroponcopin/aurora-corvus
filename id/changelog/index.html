@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="id" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riwayat Pembaruan | Glimpse Alpha Wiki</title>
+<meta name="description" content="Seluruh riwayat pembaruan MOD pack Glimpse Alpha (dahulu Sorakaze). Merangkum perubahan dan catatan penting dari versi pertama hingga sekarang.">
+<meta property="og:title" content="Riwayat Pembaruan | Glimpse Alpha Wiki">
+<meta property="og:description" content="Seluruh riwayat pembaruan MOD pack Glimpse Alpha (dahulu Sorakaze). Merangkum perubahan dan catatan penting dari versi pertama hingga sekarang.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/changelog.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Lompat ke konten utama</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Beranda</a></li>
+        <li><a href="../changelog/" class="active">Riwayat Pembaruan</a></li>
+        <li><a href="../recipes/">Kumpulan Resep</a></li>
+        <li><a href="../guide/">Panduan Pemasangan</a></li>
+        <li><a href="../roadmap/">Rencana Mendatang</a></li>
+        <li><a href="../known-issues/">Bug yang Diketahui</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Bahasa / Language">
+          🌐 <span>Bahasa Indonesia</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../changelog/">日本語</a></li>
+        <li><a href="../../en/changelog/">English</a></li>
+        <li><a href="../../es/changelog/">Español</a></li>
+        <li><a href="../../fr/changelog/">Français</a></li>
+        <li><a href="../../zh/changelog/">简体中文</a></li>
+        <li><a href="../../ko/changelog/">한국어</a></li>
+        <li><a href="../../pt-br/changelog/">Português (Brasil)</a></li>
+        <li><a href="../../it/changelog/">Italiano</a></li>
+        <li><a href="../../ar/changelog/">العربية</a></li>
+        <li><a href="../../ru/changelog/">Русский</a></li>
+        <li><a href="../../id/changelog/" class="active" aria-current="true">Bahasa Indonesia</a></li>
+        <li><a href="../../de/changelog/">Deutsch</a></li>
+        <li><a href="../../tr/changelog/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema warna" title="Ganti tema warna">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Riwayat Pembaruan</span>
+  <h1>Riwayat Pembaruan</h1>
+  <p class="lede">Menampilkan riwayat dari versi pertama (v1.0.0, 2026-07-15) hingga sekarang (per 2026-08-09, total 36 kali pembaruan), diurutkan dari yang terbaru. Prosedur verifikasi internal saat pengembangan tidak dicantumkan di sini — hanya merangkum apa yang benar-benar berubah di server dan apa yang perlu diperhatikan pemain.</p>
+  <p class="callout callout--info">Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.</p>
+</div>
+
+<div class="filter-bar" role="group">
+  <input type="search" id="changelogSearch" placeholder="Cari berdasarkan MOD, versi, atau kata kunci…" aria-label="Cari berdasarkan MOD, versi, atau kata kunci…">
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">MOD:</span>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">Senjata Api</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">Kereta Api</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">Bahan Bangunan &amp; Dekorasi</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Bos</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">Langit</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">Survival</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Kendaraan</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">Listrik</button>
+</div>
+<div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
+  <span class="card__meta" style="align-self:center;">Jenis:</span>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">Fitur Baru</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">Perbaikan Bug</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">Pembaruan Tampilan</button>
+</div>
+
+<p id="changelogEmpty" class="empty-state" hidden>Tidak ada pembaruan yang cocok dengan kriteria ini.</p>
+<div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="visual-update" data-mods="guns deco">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.6</span> — Menambahkan Ikon Hulu Ledak Misil dan Aplikasi Ponsel
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Pembaruan Tampilan</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span></div>
+      <p>2 perbaikan terkait tampilan dan kemudahan menemukan item. Masalah Hulu Ledak Misil dan Hulu Ledak Nuklir yang sama sekali belum memiliki tekstur sudah diatasi, dengan ikon khusus yang baru digambar dan kini bisa di-craft. Selain itu, Peluncur Misil yang dilaporkan sulit ditemukan kini ditambahkan ke tab kreatif, dengan terjemahan nama tampilan dan layar kontrolnya juga dilengkapi. 7 aplikasi ponsel dan komputer juga mendapat ikon khusus yang baru.</p>
+      <ul><li>Menggambar ikon khusus beresolusi 128px yang baru untuk Hulu Ledak Misil dan Hulu Ledak Nuklir (sebelumnya sama sekali tidak ada gambar, dan keduanya tampil sebagai &#x27;kotak-kotak ungu-hitam&#x27; standar Minecraft di inventori).</li><li>Hulu Ledak Misil (5 Ingot Besi + 1 TNT + 1 Blok Redstone) dan Hulu Ledak Nuklir (4 Blok Besi + 4 TNT + 1 Nether Star) kini bisa di-craft.</li><li>Menambahkan Peluncur Misil ke tab kreatif (sebelumnya sebenarnya sudah bisa di-craft, tetapi tidak muncul di tab sehingga sulit ditemukan). Menambahkan terjemahan baru untuk nama tampilan, serta layar panel kontrol yang mencakup input koordinat target, 9 jenis indikator status, 8 arah mata angin, dan pengaman (masing-masing 54 entri dalam bahasa Jepang dan Inggris).</li><li>Menggambar ikon khusus yang baru untuk seluruh 7 aplikasi ponsel/komputer (video kamera, pesan, cari info, cuaca, kalkulator, telepon, kamera foto) — sebelumnya hanya berupa kotak-kotak berwarna berjajar. Juga menambahkan dekorasi khusus tiap aplikasi, seperti ikon curah hujan dan jam besar pada aplikasi cuaca, tampilan LCD cekung pada aplikasi kalkulator, tampilan kompas pada aplikasi telepon, dan tampilan monitor pengawas pada aplikasi video kamera.</li><li>Saat aplikasi dibuka, ikon dan nama aplikasi yang sedang aktif kini selalu ditampilkan di bagian atas layar.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Keputusan membuat Hulu Ledak Misil dan Hulu Ledak Nuklir bisa di-craft adalah keputusan dari pihak pengembang (bukan permintaan eksplisit dari pemilik proyek). Jika terasa terlalu kuat atau berlebihan, silakan sampaikan kepada pengelola server.</li><li>Tidak perlu menghapus atau mengubah config kali ini juga.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Layar resep 3×3 pada aplikasi &#x27;Cari Info&#x27; menampilkan tata letak sederhana yang mengisi bahan secara berurutan dari awal, karena informasi penempatan bahan di petak mana tidak bisa diterima dari server (jenis dan jumlah bahan itu sendiri tetap benar).</li><li>Ikon baru hulu ledak, terjemahan panel kontrol, dan tampilan layar baru aplikasi ponsel semuanya belum dikonfirmasi di layar permainan sungguhan.</li><li>16 dari 17 warna Panel Kaca Diperkuat masih belum memiliki nama (sejak versi sebelumnya).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.5</span> — Perbaikan Bug Pipa Air, Beacon Tingkat Lanjut, dan Masker Gas
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Memperbaiki beberapa bug yang dilaporkan di v1.8.4. Masalah Pipa Air yang tidak bisa dihancurkan, Beacon Tingkat Lanjut α/β yang kemampuannya tidak bisa dipilih, dan Masker Gas yang terlihat melayang di atas kepala kini sudah diatasi. Batas spawn mob musuh juga diperbaiki agar hanya berlaku di Overworld, dengan nilai bawaan diubah menjadi 150 ekor secara pasti.</p>
+      <ul><li>Memperbaiki bug Pipa Air yang tidak bisa dihancurkan. Satuan hitbox-nya salah dihitung, sehingga ukurannya menjadi sangat kecil, hanya 1/32 dari ketebalan visualnya (kekerasan dan jenis alat yang dibutuhkan sebenarnya sudah benar sejak awal).</li><li>Memperbaiki juga bug di mana Pipa Air pengambil air yang dipasang sendirian di sungai hanyut terbawa arus dan hilang (dirancang ulang sebagai blok yang mendukung genangan air).</li><li>Memperbaiki bug Beacon Tingkat Lanjut α/β di mana kemampuan tidak bisa dipilih. Layar akan otomatis tertutup pada tick berikutnya setiap kali dibuka, dan pilihan yang dibuat juga tidak tersimpan (Beacon Tingkat Lanjut standar tidak terpengaruh).</li><li>Memperbaiki bug Masker Gas yang terlihat melayang di atas kepala. Model 3D khusus baru dibuat dan posisinya diubah agar pas di wajah.</li><li>Tampilan Boneka Kembang Api dikembalikan dari sosok &#x27;boneka mainan&#x27; tiga dimensi yang ditambahkan di v1.8.4 menjadi gambar datar seperti sebelum v1.8.3 (sesuai permintaan pemilik proyek). Fitur seperti batas pemakaian tidak berubah.</li><li>Batas spawn mob musuh di Overworld diubah dari &#x27;kelipatan 15 vanilla&#x27; (setara sekitar 1050 ekor) menjadi angka pasti 150 ekor. Tidak berdampak pada Nether, End, atau Langit (sekaligus memperbaiki bug sebelumnya di mana kelipatan ini secara keliru berlaku di semua dimensi).</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Batas spawn mob musuh (hanya Overworld): kelipatan 15 vanilla (setara sekitar 1050 ekor) → angka pasti 150 ekor</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Tidak perlu menghapus atau mengubah config. Angka batas spawn akan otomatis diperbarui ke nilai bawaan yang baru.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Tampilan baru Pipa Air dan Masker Gas, serta kenyamanan penggunaan GUI Beacon Tingkat Lanjut, belum dikonfirmasi dalam permainan sungguhan.</li><li>Belum diuji apakah kepadatan spawn baru sebanyak 150 ekor terasa pas untuk dimainkan.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss deco guns power sky survival">
+      <div class="timeline-entry__date">2026-08-09</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.4</span> — Senjata Baru, OS Ponsel, Pipa Air, 4 Musim, dan Ekspansi Langit
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Menambahkan 2 senjata baru (Pistol dan Submachine Gun), Peluncur Misil beserta 2 jenis hulu ledak, fitur OS penuh untuk ponsel dan komputer, Pipa Air, Lift yang benar-benar bergerak, sistem 4 musim, dan masih banyak lagi sekaligus. Selain itu, batas tinggi bangunan di dunia normal dinaikkan (bawah tanah tidak berubah), dan jumlah blok penyortir serta Hopper yang membutuhkan listrik dipangkas besar-besaran.</p>
+      <ul><li>Menambahkan 2 senjata baru: Pistol (200/detik, kapasitas 12, semi-otomatis), Submachine Gun (450/detik, kapasitas 40, full-otomatis). Keduanya menggunakan Peluru Kaliber Kecil yang sudah ada, jadi tidak ada amunisi baru.</li><li>Menambahkan Peluncur Misil (senjata yang dipasang) beserta Hulu Ledak Misil dan Hulu Ledak Nuklir (Hulu Ledak Nuklir memiliki batas jumlah blok yang bisa dihancurkan, dan hanya bisa ditembakkan lewat Peluncur Misil, tidak bisa dipegang tangan).</li><li>Menambahkan pembidik zoom 2× dan fitur lock-on pada Peluncur Roket (terkunci setelah membidik terus selama 1 detik; tidak mengenai target yang sedang berlari).</li><li>Menambahkan fitur OS penuh pada ponsel dan komputer (7 aplikasi: video kamera, pesan, cari info, cuaca, kalkulator, telepon, dan kamera foto). Bisa dijalankan dengan memegangnya lalu klik kanan atau tombol H, dan bisa memotret foto lalu mengirimkannya lewat pesan.</li><li>Menambahkan Pipa Air (mengalirkan air dari sungai/laut ke cauldron atau ladang). Juga menambahkan Lift jenis kabin bergerak yang sungguhan naik-turun.</li><li>MOD Listrik mendapat Kabel Tebal (jangkauan 4 kali lipat kabel biasa) dan Kabel Berpelindung (8 kali lipat), serta Panel LED.</li><li>Tampilan bijih dirombak total. Menambahkan material baru &#x27;Giok Lavender&#x27; (lebih langka dari Ruby), Masker Gas, dan Alat Suntik Perisai Aero.</li><li>Menambahkan sistem 4 musim (1 musim 8 hari, 1 tahun 32 hari). Gurun di musim panas dan dataran salju di musim dingin kini lebih keras dari sebelumnya.</li><li>Beacon Tingkat Lanjut α dan β (MOD Bos) kini bisa di-craft. Beacon Tingkat Lanjut sendiri juga tidak lagi membutuhkan listrik (mencabut kebutuhan listrik yang sempat ditambahkan di v1.8.1).</li><li>Batas tinggi bangunan di dunia normal diperluas dari y=319 menjadi y=1023 (bawah tanah dan dasar dunia tidak berubah).</li><li>Jumlah alat yang membutuhkan listrik dipangkas besar-besaran dari 17 jenis menjadi 3 jenis (Pemusnah Sampah, Pemancar Laser, Turret Otomatis). Hopper, 8 blok penyortir otomatis, Ban Berjalan, 2 lampu lalu lintas, Blok Henti Otomatis Kereta, dan lainnya kini berfungsi tanpa listrik.</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Assault Rifle: terukur per detik 4.500 → 5.850</li><li>Minigun: terukur per detik 250 → 50 (dilemahkan besar-besaran, kini lebih lemah dari Pedang Diamond)</li><li>Damage Sniper Rifle dan Heavy Sniper juga naik. Koefisien perhitungan daya tahan senapan sniper juga berubah dari 0,5→0,6</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Roket yang ditembakkan Peluncur Misil tidak berhenti merusak medan meski mobGriefing diatur ke false. Jika hanya ingin menghentikan perusakan medan, ubah `rocketDestroysTerrain` di config menjadi false.</li><li>Batas tinggi bangunan di dunia normal diperluas hingga y=1023. Ini juga berdampak bagi yang tidak menggunakan Langit (bawah tanah tidak berubah).</li><li>Karena jumlah blok penyortir dan Hopper yang membutuhkan listrik dipangkas besar-besaran, perangkat yang sebelumnya berhenti kini akan otomatis mulai berfungsi kembali. Hati-hati pada area yang dibiarkan lama tanpa pengawasan, karena bisa tiba-tiba aktif kembali secara tak terduga.</li><li>Perubahan damage senjata api di atas diterapkan secara otomatis. Tidak perlu menghapus atau mengubah config, tetapi jika ingin mengembalikannya, angkanya bisa diatur satu per satu lewat config.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Beacon Tingkat Lanjut α/β versi awal memiliki bug di mana kemampuan tidak bisa dipilih (sudah diperbaiki di update berikutnya).</li><li>Peluncur Misil versi awal tidak muncul di tab kreatif dan belum memiliki nama tampilan. Ikon untuk 2 jenis hulu ledaknya juga belum disiapkan (sudah teratasi di update berikutnya).</li><li>Aplikasi ponsel dan komputer masih belum memiliki gambar ikon khusus, hanya menampilkan kotak-kotak berwarna berjajar (sudah diperbaiki di update berikutnya).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.3</span> — Elektrifikasi Perangkat Rumah Tangga, dan Panas dari Mesin
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>5 perangkat MOD bahan bangunan — Kamera CCTV, Lift, Eskalator, Pintu Otomatis, dan ATM — kini membutuhkan listrik. Selain itu, mesin yang sedang beroperasi seperti Generator dan Pembangkit Nuklir kini membuat ruangan di sekitarnya menjadi panas, dan bisa menyebabkan damage akibat panas jika tidak diberi ventilasi atau pendinginan.</p>
+      <ul><li>Kamera CCTV, Lift, Eskalator, Pintu Otomatis, dan ATM kini menjadi perangkat yang membutuhkan listrik (yang sudah terpasang pun akan terdampak mulai start berikutnya). Lift tetap bisa &#x27;turun&#x27; meski tanpa listrik (mencegah terjebak).</li><li>Mesin yang sedang beroperasi seperti Generator dan Pembangkit Nuklir kini membuat sekitarnya menjadi panas. Jika 8 mesin dijalankan terus tanpa pendinginan, suhu ruangan naik hingga sekitar 77,8°C, dan damage mulai muncul setelah sekitar 14 detik.</li><li>Memperbaiki bug agar AC benar-benar mengonsumsi listrik dengan semestinya (sebelumnya dianggap tidak mengonsumsi listrik sama sekali).</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Panas mesin: jika 8 mesin yang belum didinginkan dijalankan terus, suhu ruangan naik hingga sekitar 77,8°C, dan damage panas muncul setelah sekitar 14 detik</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Kamera CCTV, Lift, Eskalator, Pintu Otomatis, dan ATM perlu disambungkan dengan kabel. Fasilitas yang sudah terpasang pun akan berhenti pada start berikutnya.</li><li>Sekitar mesin yang menghasilkan panas seperti Generator akan menjadi berbahaya jika tidak diberi ventilasi atau pendinginan dengan AC.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Perilaku sebenarnya dari 5 perangkat yang dielektrifikasi (Kamera CCTV, Lift, Eskalator, Pintu Otomatis, ATM), baik dengan maupun tanpa listrik, belum dikonfirmasi.</li><li>Tampilan dan kenyamanan penggunaan 3 jenis generator baru serta slot bahan bakarnya belum dikonfirmasi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power deco survival">
+      <div class="timeline-entry__date">2026-08-06</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.2</span> — AC Diperbesar dan Perangkat Listrik Dibuat Lebih Mudah Dipasang
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Ukuran AC diperbesar secara signifikan sehingga kini benar-benar terasa kehadirannya di dalam ruangan. Selain itu, setiap perangkat MOD Listrik disederhanakan agar cukup &#x27;memasang satu item saja&#x27; untuk selesai, dan bug Perapian yang sama sekali tidak berfungsi di bioma dataran salju juga diperbaiki.</p>
+      <ul><li>Ukuran badan AC diperbesar (setara 3,1×2,0×2,1 blok). Kini menjadi salah satu perangkat terbesar di MOD Listrik, dengan unit outdoor berkipas bundar + sirip koil + panel kontrol yang menyala, serta unit indoor dengan 3 kisi louver yang menonjol ke depan.</li><li>Perangkat MOD Listrik kini disatukan menjadi metode &#x27;cukup pasang 1 item saja&#x27; tanpa perlu menggabungkan beberapa blok lagi.</li><li>Memperbaiki bug Perapian yang sama sekali tidak berfungsi di bioma dataran salju. Kini hawa dingin medan dan kehangatan perangkat dihitung secara terpisah.</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Dataran salju, di dekat Perapian sendiri: suhu terasa -24,0°C (damage radang dingin) → +2,4°C (aman)</li><li>Markas beratap, malam hari, hujan salju, ada Perapian: -18,6°C → +7,9°C</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Jika berdiri di luar terus-menerus saat badai salju malam hari, 1 Perapian saja terkadang belum cukup (kombinasikan dengan atap, zirah, atau Perapian tambahan).</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Belum diuji apakah keseimbangan suhu sudah terasa pas untuk dimainkan.</li><li>Tampilan tiga dimensi baru dari 9 blok penyortir otomatis belum dikonfirmasi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="power boss deco guns rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-05</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.1</span> — MOD Listrik Ditambahkan — Redstone Kini Membutuhkan Listrik
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>MOD ke-8, &quot;Listrik&quot;, bergabung sebagai anggota baru. Sebagai salah satu perubahan terbesar dalam proyek ini, sirkuit redstone vanilla (Redstone Dust, Repeater, Comparator, Blok Redstone, Obor Redstone) kini membutuhkan listrik dari generator. Ladang otomatis, stasiun, pintu otomatis, dan mekanisme redstone lainnya yang sudah ada akan berhenti sementara, dan memerlukan pemasangan jaringan listrik.</p>
+      <ul><li>MOD ke-8, &quot;Listrik&quot;, bergabung sebagai anggota baru. Kini bisa membangun jaringan listrik menggunakan Generator, Pembangkit Nuklir, Panel Pemutus, Kabel, dan lainnya.</li><li>17 jenis alat seperti Tuas, tombol, pelat tekan, Kait Kawat Pemicu, Observer, Sensor Cahaya Matahari, Sculk Sensor, Target, Trapped Chest, Detector Rail, Lectern, Jukebox, dan penangkal petir tetap berfungsi tanpa listrik seperti biasa (buka-tutup pintu juga tetap seperti sebelumnya).</li><li>Blok Redstone akan hancur secara alami sekitar 10 menit setelah dipasang dan kembali menjadi item di tanganmu (untuk mencegah adanya &#x27;sumber listrik gratis&#x27; yang ditinggalkan begitu saja).</li><li>Hanya 3 hal — Pemusnah Sampah, Pemancar Laser, dan Turret Otomatis — yang justru punya langkah pengaman khusus: tetap &#x27;berfungsi&#x27; di tempat tanpa listrik (agar tidak sengaja kehilangan item atau mob berharga).</li><li>Kecepatan peluru Sniper Rifle, Heavy Sniper, dan Laser Gun diperbaiki ke nilai yang sebenarnya dimaksudkan (damage, laju tembak, kapasitas magasin, daya tahan, dan jangkauan tidak berubah).</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Kecepatan peluru Sniper Rifle &amp; Heavy Sniper: 16,0 → 24,0 (1,5 kali lipat)</li><li>Kecepatan peluru Laser Gun: 16,0 → 48,0 (3 kali lipat)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Semua fasilitas yang sudah ada dan menggunakan sirkuit redstone — seperti ladang otomatis, stasiun, dan pintu otomatis — akan berhenti sementara. Jaringan listrik (generator dan kabel) perlu dipasang ulang.</li><li>Untuk mengembalikan semua perubahan ini seperti semula, ubah `powerEnabled` di config/sorakaze_power.json menjadi false. Jika hanya ingin mengembalikan redstone saja, ubah `redstoneRequiresPower` di file yang sama menjadi false.</li><li>Observer dan Sensor Cahaya Matahari sengaja dibiarkan tidak membutuhkan listrik (agar tetap ada cara memperbaiki markas yang listriknya mati dari dalam game).</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Rasa bermain sebenarnya di dunia dengan redstone yang mati, serta seberapa besar ladang dan stasiun akan berhenti, belum diuji.</li><li>Kabel yang menyala, layar Panel Pemutus, serta tampilan Generator dan Pembangkit Nuklir belum dikonfirmasi di perangkat sungguhan.</li><li>Setelah mematikan lalu menyalakan kembali listrik, kabel yang terisolasi (tidak terhubung ke Panel Pemutus) terkadang tetap menyala (bisa diperbaiki dengan menghancurkan lalu memasangnya kembali).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss deco guns sky survival">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Perbaikan Otomatis File Config (v1.8.0 Versi Rilis Ulang)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Ini adalah versi perbaikan yang dirilis ulang pada hari yang sama. Pada v1.8.0 pertama, angka lama yang masih tersisa di config dari versi sebelumnya menimpa nilai bawaan yang baru, sehingga resolusi Kamera CCTV, performa Excalibur, dan perusakan medan oleh Peluncur Roket tidak diterapkan. Kini, tidak perlu lagi menghapus file config secara manual setiap update — sebuah mekanisme baru diperkenalkan untuk secara otomatis memperbarui hanya &quot;angka lama dari versi sebelumnya&quot; menjadi nilai bawaan yang baru saat server dijalankan.</p>
+      <ul><li>Memperkenalkan mekanisme yang secara otomatis mendeteksi nilai pengaturan &quot;fosil&quot; yang masih tersisa dari versi sebelumnya, lalu menuliskan ulang menjadi nilai bawaan saat ini. Mulai sekarang, tidak perlu lagi menghapus file config secara manual di update-update berikutnya.</li><li>Nilai yang sudah kamu sesuaikan sendiri sama sekali tidak akan disentuh (hanya diperbarui jika nilai yang tersimpan sama persis dengan nilai bawaan versi lama).</li><li>Berkat perbaikan ini, resolusi Kamera CCTV (768→3840), performa Excalibur (attack power 12→75, kecepatan serangan 1,8→0,6), dan perusakan medan oleh Peluncur Roket kini benar-benar diterapkan saat bermain.</li><li>Yang diperbarui kali ini adalah 5 MOD: Bos, Bahan Bangunan, Senjata Api, Langit, dan Survival. Kereta Api dan Kendaraan tidak berubah kali ini.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Versi rilis ulang ini didistribusikan dengan nomor versi dan nama file yang sama seperti v1.8.0 pertama. Jika kamu masih memiliki v1.8.0 pertama, buang dan ganti dengan versi ini.</li><li>Mulai sekarang, langkah &quot;hapus file config&quot; yang selalu diinformasikan di setiap update tidak lagi diperlukan.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Performa baru Excalibur dan efek perusakan medan Peluncur Roket masih belum dikonfirmasi dalam permainan sungguhan.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.8.0</span> — Perbaikan Otomatis File Config (v1.8.0 Versi Rilis Ulang)
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Ini adalah versi perbaikan yang dirilis ulang pada hari yang sama. Pada v1.8.0 pertama, angka lama yang masih tersisa di config dari versi sebelumnya menimpa nilai bawaan yang baru, sehingga resolusi Kamera CCTV, performa Excalibur, dan perusakan medan oleh Peluncur Roket tidak diterapkan. Kini, tidak perlu lagi menghapus file config secara manual setiap update — sebuah mekanisme baru diperkenalkan untuk secara otomatis memperbarui hanya &quot;angka lama dari versi sebelumnya&quot; menjadi nilai bawaan yang baru saat server dijalankan.</p>
+      <ul><li>Memperkenalkan mekanisme yang secara otomatis mendeteksi nilai pengaturan &quot;fosil&quot; yang masih tersisa dari versi sebelumnya, lalu menuliskan ulang menjadi nilai bawaan saat ini. Mulai sekarang, tidak perlu lagi menghapus file config secara manual di update-update berikutnya.</li><li>Nilai yang sudah kamu sesuaikan sendiri sama sekali tidak akan disentuh (hanya diperbarui jika nilai yang tersimpan sama persis dengan nilai bawaan versi lama).</li><li>Berkat perbaikan ini, resolusi Kamera CCTV (768→3840), performa Excalibur (attack power 12→75, kecepatan serangan 1,8→0,6), dan perusakan medan oleh Peluncur Roket kini benar-benar diterapkan saat bermain.</li><li>Yang diperbarui kali ini adalah 5 MOD: Bos, Bahan Bangunan, Senjata Api, Langit, dan Survival. Kereta Api dan Kendaraan tidak berubah kali ini.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Versi rilis ulang ini didistribusikan dengan nomor versi dan nama file yang sama seperti v1.8.0 pertama. Jika kamu masih memiliki v1.8.0 pertama, buang dan ganti dengan versi ini.</li><li>Mulai sekarang, langkah &quot;hapus file config&quot; yang selalu diinformasikan di setiap update tidak lagi diperlukan.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Performa baru Excalibur dan efek perusakan medan Peluncur Roket masih belum dikonfirmasi dalam permainan sungguhan.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-04</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.7</span> — Update Serentak 7 MOD &amp; Senjata Kembali ke Metode Peluru Sungguhan
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Ketujuh MOD diperbarui bersamaan ke v1.7.7. Peluru senjata kembali dari metode hitscan (langsung mengenai target) menjadi metode proyektil di mana peluru benar-benar melayang (jumlah damage itu sendiri tidak diubah). Senjata baru &quot;Roket Peluncur&quot;, blok henti otomatis kereta, boneka kembang api, dan berbagai elemen baru lainnya ditambahkan ke masing-masing MOD.</p>
+      <ul><li>【Senjata Api】Peluru kembali ke metode &quot;benar-benar melayang&quot;. Rasa visualnya berubah, tetapi jumlah damage tiap senjata tidak diubah.</li><li>【Senjata Api】Menambahkan senjata baru &quot;Peluncur Roket&quot; beserta pelurunya. Memiliki damage langsung + damage ledakan, dengan perusakan medan dinonaktifkan secara default.</li><li>【Bahan Bangunan】Pintu kini bisa &quot;menutup meski ada orang yang terjepit&quot;. Dirancang agar hitbox tidak muncul saat menutup, sehingga tidak akan ada damage akibat terjepit.</li><li>【Bahan Bangunan】Menambahkan Panel Kaca Diperkuat berwarna (17 warna), 5 jenis blok dekoratif (bergaya smartphone, laptop, desktop), dan Pintu Brankas. Batas atas resolusi video Kamera CCTV diperluas (nilai bawaan tidak berubah).</li><li>【Bos】Jumlah efek khusus yang bisa dipilih sekaligus pada Beacon Tingkat Lanjut bertambah dari 3 menjadi 5 jenis.</li><li>【Bos】&quot;Excalibur&quot; yang dijatuhkan Rock Lock kini dibuat ulang sebagai pedang besar (greatsword). Kini memiliki model 3D khusus, dan performanya juga ditingkatkan.</li><li>【Langit】Memperbaiki bug di mana arah tubuh berlawanan dengan arah laju saat menunggangi naga.</li><li>【Langit】Memperkuat Tongkat Malaikat. Tampilan Pedang Raja dan seluruh perlengkapan malaikat juga dirombak menjadi model yang lebih tiga dimensi (performa tidak berubah).</li><li>【Kereta Api】Menambahkan Blok Henti Otomatis Kereta. Jika dipasang di bawah rel, akan menghentikan kereta yang mendekat secara otomatis dan mulus.</li><li>【Kendaraan】Memperbaiki bug di mana sebagian badan kendaraan tetap hilang setelah sekali menggunakan sudut pandang kokpit orang pertama. Tampilan 11 jenis kendaraan dibuat ulang.</li><li>【Survival】Jumlah generasi Bijih Mutiara dan Bijih Ruby menjadi sekitar 2 kali lipat (hanya di area yang baru tergenerasi). Menambahkan Blok Mutiara dan Blok Ruby.</li><li>【Survival】Menambahkan item baru &quot;Boneka Kembang Api&quot;. Sama seperti Totem of Undying, berfungsi sebagai jimat yang mencegah kematian sekali, tetapi efeknya lebih kuat dan bisa digunakan hingga 3 kali. Juga bisa dipasang sebagai hiasan.</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Excalibur (drop bos): Damage 12,0→36,0 (3 kali lipat), kecepatan serangan turun setengah, jangkauan 3,0→4,0 blok, ditambah knockback baru. Namun peluang drop berubah dari 100%→70%.</li><li>Tongkat Malaikat: Damage 12→20, jangkauan 48m→64m, cooldown dipersingkat, bonus melee 7,0→10,0 (untuk pertama kalinya melampaui bonus melee Pedang Malaikat).</li><li>Peluncur Roket: damage langsung 40,0 + damage ledakan (kekuatan ledakan setara Creeper). Kapasitas magasin 1, kecepatan peluru paling lambat dari semua senjata.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Config yang perlu dihapus: `sorakaze_boss.json` (angka Excalibur), `sorakaze_sky.json` (angka Tongkat Malaikat). Jika tidak dihapus, angka baru tidak akan diterapkan.</li><li>Disarankan juga menghapus `sorakaze_guns.json`. Jika tidak dihapus, ada bug di mana item pengaturan &quot;kecepatan peluru&quot; yang baru ditambahkan akan terkunci pada nilai yang sangat lambat untuk semua senjata (tidak memengaruhi angka kekuatan seperti damage).</li><li>Dari 5 jenis blok dekoratif, yang bergaya smartphone, laptop, dan desktop terinspirasi dari produk yang benar-benar ada, tetapi baik di dalam game maupun buku panduan hanya dijelaskan berdasarkan bentuknya saja, tanpa menggunakan nama merek.</li><li>【Balance】Pada titik ini Assault Rifle masih sangat kuat, setara 3750 damage per detik, sehingga meski Beacon Tingkat Lanjut, Excalibur, dan Tongkat Malaikat diperkuat, hampir semua bos tetap bisa dikalahkan dalam hitungan detik. Tidak ada resistensi tambahan di sisi senjata maupun bos.</li><li>Sebagai catatan, nomor versi 1.4.3, 1.6.x, 1.7.2, dan 1.7.6 adalah nomor internal yang digunakan saat pengembangan dan tidak pernah benar-benar didistribusikan.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Rasa pintu yang kini &quot;menutup meski ada orang&quot;, sensasi menembak dan mengenai target dengan Peluncur Roket, serta kemudahan pemakaian GUI baru Beacon Tingkat Lanjut, masih belum dikonfirmasi di perangkat sungguhan.</li><li>Tampilan model 3D baru Excalibur dan Tongkat Malaikat, serta bagaimana perbaikan arah naga terlihat sebenarnya, juga masih belum dikonfirmasi.</li><li>Tampilan Boneka Kembang Api, Blok Mutiara/Ruby, Blok Henti Otomatis Kereta, serta dampak pengaturan resolusi tinggi Kamera CCTV terhadap performa PC juga belum diuji.</li><li>Motion serangan Kraken dan Titan masih belum diimplementasikan sesuai spesifikasi (menunggu konfirmasi pemilik proyek).</li><li>2 masalah MOD Langit yang ditemukan di v1.7.3 (penurunan performa saat raid, hilangnya naga yang dijinakkan) belum terselesaikan karena tidak terkait dengan perubahan MOD Langit kali ini.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.5</span> — Perbaikan Bug Kaca Diperkuat dan Pintu Ganda
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span></div>
+      <p>Update ini hanya untuk MOD Bahan Bangunan. Memperbaiki bug Kaca Diperkuat (17 warna) yang selalu membutuhkan 75 detik untuk digali dengan alat apa pun, dan bug Pintu Ganda Besar (50 jenis, ditambahkan di v1.5.0) yang secara visual tidak terbuka dengan sempurna.</p>
+      <ul><li>Kaca Diperkuat kini bisa digali dengan Cangkul. Kecepatan menambang berubah sesuai jenis alat (kayu hingga Netherite) dan enchant Efficiency. Sebelumnya ada bug di mana alat jenis apa pun selalu membutuhkan 75 detik.</li><li>Kaca Diperkuat kini tidak lagi dihancurkan oleh Wither dan Ender Dragon.</li><li>Pintu Ganda Besar (50 jenis, ukuran 3×3 dan 3×4) kini terbuka lebar secara visual dengan benar. Sebelumnya ada bug di mana pintu hanya bergeser sempit seperti pintu biasa, sehingga terlihat seperti belum terbuka sepenuhnya.</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Perkiraan waktu menambang Kaca Diperkuat: Cangkul kayu sekitar 37,5 detik, Cangkul batu sekitar 18,8 detik, Cangkul besi sekitar 12,5 detik, Cangkul emas sekitar 6,25 detik, Cangkul diamond sekitar 9,4 detik, Cangkul Netherite sekitar 8,4 detik (Cangkul diamond dengan Efficiency V sekitar 2,25 detik). Tangan kosong, Pickaxe, Kapak, Sekop, dan Pedang tetap 75 detik seperti sebelumnya.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>【Batasan spesifikasi】Awalnya kami bertujuan membuat &quot;hanya bisa digali cepat dengan kapak khusus&quot;, tetapi karena mekanisme vanilla, semua jenis Cangkul (termasuk kayu) menjadi bisa menggali dengan cepat sesuai tingkatannya masing-masing. Tidak memungkinkan untuk membatasinya hanya pada satu alat tertentu.</li><li>Tidak perlu menghapus config. Perbaikan kali ini tidak menggunakan nilai apa pun dari config.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Rasa nyata menggali Kaca Diperkuat dengan Cangkul, dan apakah Pintu Ganda Besar benar-benar terlihat terbuka di layar, masih belum dikonfirmasi di perangkat sungguhan.</li><li>Motion serangan Kraken dan Titan masih belum diimplementasikan sesuai spesifikasi.</li><li>2 masalah MOD Langit yang ditemukan di v1.7.3 (penurunan performa saat raid, hilangnya naga yang dijinakkan) masih belum terselesaikan karena MOD Langit tidak diubah kali ini.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.4</span> — Metode Kemunculan Plague Doctor Diubah Menjadi Khusus Batu Pemanggil
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span></div>
+      <p>Update ini hanya untuk MOD Bos. Mekanisme kemunculan acak Plague Doctor saat cuaca buruk dihapus, dan kini hanya bisa dipanggil menggunakan batu pemanggil khusus, sama seperti 10 bos lainnya.</p>
+      <ul><li>Metode kemunculan bos Plague Doctor diubah. Mekanisme lama &quot;muncul acak saat cuaca buruk&quot; dihapus, dan kini disatukan menjadi metode memasang batu pemanggil baru &quot;Batu Pemanggil Plague Doctor&quot; untuk memanggilnya. Pola pemasangan 3×3-nya sama seperti 10 bos lainnya: Wither Rose di 4 sudut, Phantom Membrane di sisi tengah, dan Nether Star di tengah.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Jika sebelumnya kamu menunggu cuaca buruk untuk mencari Plague Doctor, mulai sekarang ia tidak akan muncul lagi dengan cara itu. Buat batu pemanggil dan panggil ia secara langsung.</li><li>Tidak perlu menghapus config. Item pengaturan yang dihapus hanya terkait kemunculan alami, dan tidak memengaruhi nilai pengaturan lain yang masih ada.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Efek visual saat menggunakan batu pemanggil, serta tampilan Plague Doctor itu sendiri, suara khususnya, dan efek visual pengorbanan, tidak diubah kali ini dan masih belum dikonfirmasi di perangkat sungguhan.</li><li>MOD Bahan Bangunan tidak termasuk dalam update kali ini. Perbaikan kaca diperkuat dan pintu sedang dikerjakan secara terpisah dan direncanakan masuk ke update berikutnya.</li><li>2 masalah MOD Langit yang ditemukan di v1.7.3 (penurunan performa saat raid, hilangnya naga yang dijinakkan) masih belum ditangani kali ini.</li><li>Motion serangan Kraken dan Titan masih belum diimplementasikan sesuai spesifikasi.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss sky guns survival rail">
+      <div class="timeline-entry__date">2026-08-02</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.3</span> — Perbaikan Pemandangan Jendela Kereta &amp; Bug Singapura
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Memperbaiki bug di mana pemandangan luar tidak terlihat dengan benar dari kursi masinis/penumpang kereta, serta bug di negara kota &quot;Singapura&quot; di langit di mana bangunan tidak tergenerasi atau reruntuhan tertinggal melayang. Sekaligus memperbaiki batas spawn mob musuh agar hanya berlaku di Overworld, dan menyesuaikan batas level enchant ke nilai yang sewajarnya.</p>
+      <ul><li>Memperbaiki bug di mana saat duduk di kursi masinis/penumpang kereta (seluruh 8 jenis), pandangan hanya terisi dinding di bawah jendela dan luar hampir tidak terlihat. Kini pandangan ke depan dan samping terlihat dengan benar.</li><li>Memperbaiki bug di negara kota &quot;Singapura&quot; di langit di mana bangunan sama sekali tidak tergenerasi, hotel yang sama dibangun berulang kali, atau pohon dan desa tertinggal melayang di udara. Namun perbaikan ini hanya berlaku untuk area yang baru tergenerasi setelah update. Untuk medan yang sudah rusak dan tergenerasi sebelumnya, disertakan alat pemulihan khusus admin untuk membangun ulang hanya area yang terdampak.</li><li>MOD Bos kini memiliki item pengaturan config yang bisa disesuaikan terkait kemunculan Plague Doctor.</li><li>Kekuatan serangan napas Wyvern menjadi setengahnya.</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Damage Minigun berkurang 75%.</li><li>Damage Assault Rifle naik 25%. Efisiensi damage terukur per detik: Assault Rifle 3750 &gt; Laser Gun 2000 &gt; Minigun 250.</li><li>Alat Panen Serbaguna (alat tambang drop bos) diubah dari sistem daya tahan menjadi sistem hitungan pemakaian, yaitu &quot;rusak setelah 5 kali pakai&quot;. Enchant Mending dan Unbreaking di anvil sudah tidak bisa lagi diterapkan, tetapi Efficiency, Fortune, dan Silk Touch masih bisa diterapkan.</li><li>Kelipatan batas spawn alami mob musuh dinaikkan dari 5 kali menjadi 15 kali. Sekaligus memperbaiki bug di mana kelipatan ini secara tidak sengaja juga berlaku di Nether dan End, kini hanya berlaku di Overworld.</li><li>Nilai awal batas level enchant disesuaikan dari 255→20 (batas yang bisa diatur juga diperkecil dari 255→32). Angka aneh seperti &quot;level enchant 255&quot; yang dilaporkan sejumlah pemain tidak akan muncul lagi.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>3 config yang perlu dihapus: `sorakaze_guns.json`, `sorakaze_sky.json`, dan `sorakaze_survival.json`. Jika tidak dihapus, perubahan angka kali ini tidak akan diterapkan. `sorakaze_boss.json` tidak perlu dihapus.</li><li>【Penting】Pengujian menyeluruh dengan menjalankan MOD Langit dalam skala besar dan durasi panjang menemukan 2 masalah baru. Belum diperbaiki. (1) Kemungkinan terjadi penurunan performa saat event raid besar-besaran. (2) Ender Dragon yang sudah dijinakkan terkadang menghilang seiring waktu (Wyvern yang dijinakkan tidak bermasalah).</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Masalah penurunan performa saat raid dan hilangnya naga yang dijinakkan di atas masih belum terselesaikan.</li><li>Tampilan dan cara munculnya Plague Doctor, serta rasa penggunaan Alat Panen Serbaguna yang rusak setelah 5 kali pakai, masih belum dikonfirmasi di perangkat sungguhan.</li><li>Motion serangan Kraken dan Titan masih belum diimplementasikan sesuai spesifikasi (menunggu konfirmasi pemilik proyek).</li><li>Alat pemulihan Singapura baru diuji dengan data uji coba saja; belum diuji dengan data world yang sesungguhnya.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.1</span> — Perbaikan Darurat Bug Tidak Bisa Start Setelah Memasang v1.7.0
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Setelah memasang v1.7.0, terjadi bug di mana game selalu crash setiap kali dijalankan. Penyebabnya ada pada proses pendaftaran key binding MOD Kendaraan (naik/turun kaki, flap, pintu, dll.), dan masalah ini teratasi dengan memperbarui hanya MOD Kendaraan ke v1.7.1.</p>
+      <ul><li>Hanya MOD Kendaraan (sorakaze_vehicles) yang diperbarui. 6 MOD lainnya tetap di v1.7.0 tanpa masalah.</li><li>Tidak ada item atau blok baru yang ditambahkan. Update kali ini murni perbaikan crash saat start.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Jika memasang v1.7.0 dan mengalami &quot;crash setiap kali start&quot;, pastikan mengganti file jar MOD Kendaraan dengan versi v1.7.1 ini.</li><li>6 MOD lainnya (senjata api, kereta api, bahan bangunan, bos, langit, survival) tetap berfungsi dengan v1.7.0. Tidak perlu diganti.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Karena crash yang terjadi, tampilan dan rasa penggunaan fitur baru dari v1.7.0 seperti sudut pandang orang pertama (kokpit) pada kendaraan masih belum ada yang bisa mengonfirmasinya.</li><li>Sinkronisasi 2 pemain bersamaan dan beban server saat semua MOD berjalan bersamaan masih belum diuji.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-01</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.7.0</span> — Update Serentak Seluruh 7 MOD dan Pembukaan Konten Tersembunyi
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Untuk pertama kalinya, seluruh 7 MOD melangkah bersamaan dan didistribusikan dengan nomor versi yang sama (v1.7.0). Seiring perbaikan bug pada tabel resep, banyak konten tersembunyi yang sebelumnya tidak muncul di tabel — seperti bahan makanan dan item fasilitas dari negara kota &quot;Singapura&quot; di langit — kini terungkap. MOD Kendaraan juga mendapat sudut pandang orang pertama (sudut pandang kokpit) yang baru.</p>
+      <ul><li>Untuk pertama kalinya, ketujuh MOD didistribusikan dengan nomor versi yang sama. Sebelumnya, nomor versi tiap MOD tidak seragam.</li><li>Setelah bug pada tabel resep diperbaiki, 300 jenis bahan makanan yang bisa dibeli di negara kota &quot;Singapura&quot; di langit, serta item seperti Godam Pengepungan, Sertifikat Hak Properti, Buku Besar Properti, dan Rak Bahan Makanan, kini muncul di tabel resep. Item-item ini dibeli di toko dan tidak bisa di-craft.</li><li>&quot;Alat Panen Serbaguna&quot; (drop bos) dan &quot;ATM Khusus&quot; (dipasang di Singapura, tidak bisa di-craft) juga kini muncul di tabel resep.</li><li>MOD Kendaraan mendapat sudut pandang orang pertama (sudut pandang kokpit); atap dan pilar mobil sendiri tidak lagi menghalangi pandangan saat mengemudi. Bisa dimatikan kembali lewat pengaturan.</li><li>Ikon item untuk 113 kendaraan, 35 kereta, dan 3 senjata digambar ulang.</li><li>Batas atas saldo tabungan bank (ATM) yang sebelumnya 100.000 dihapus, kini bisa menabung tanpa batas.</li><li>Menambahkan resep untuk mengubah kembali Blok Ametis menjadi Pecahan Ametis.</li><li>Perubahan yang menaikkan batas spawn alami mob musuh menjadi 5 kali lipat standar, serta batas level enchant (biasanya 30) dinaikkan cukup besar, kini diaktifkan (keduanya di MOD Survival).</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Laser Gun: Damage 160→200, laju tembak 6 tembakan/detik→10 tembakan/detik, kapasitas magasin 100→200 peluru.</li><li>Bor: kecepatan menambang 12,0→24,0, daya tahan 2048→10240.</li><li>Batas populasi Kerajaan Langit dan Kota Malaikat dinaikkan besar-besaran (contoh: pedagang kerajaan 16→48 orang, warga 64→192 orang).</li><li>Nilai awal resolusi video Kamera CCTV berubah dari 192→768.</li><li>Batas spawn alami mob musuh menjadi 5 kali lipat standar. Namun pada titik ini seharusnya hanya berlaku untuk Overworld, tetapi ada bug di mana kelipatan yang sama secara tidak sengaja juga berlaku di Nether dan End (direncanakan diperbaiki di update mendatang).</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>MOD Senjata Api (sorakaze_guns) dan MOD Langit (sorakaze_sky) memerlukan penghapusan `config/sorakaze_guns.json` dan `config/sorakaze_sky.json` setelah update, jika tidak, perubahan angka di atas tidak akan diterapkan.</li><li>Config MOD Bahan Bangunan (sorakaze_deco) jangan dihapus, cukup ubah nilai `cameraFeedResolution` saja. Jika dihapus, pengaturan lain seperti durasi lampu lalu lintas juga akan kembali ke nilai awal.</li><li>Efisiensi damage senjata terukur saat ini sangat tinggi: Assault Rifle sekitar 3000/detik, Laser Gun sekitar 2000/detik, Minigun sekitar 1000/detik, sehingga hampir semua bos bisa dikalahkan dalam hitungan detik.</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Bos raid baru &quot;Penyerbu Berzirah&quot; mungkin belum terlihat cukup seperti &quot;berzirah&quot; dan diperkirakan akan disesuaikan lebih lanjut.</li><li>Badan kereta masih berskala sekitar 1/3 dari kereta sungguhan. Selain itu, lebar hitbox diperbesar dari 1,8→2,0 blok, sehingga mungkin tidak lagi bisa melewati terowongan lebar 2 blok yang sudah ada. 3 jenis kereta lama (Kereta, Gerbong Penumpang, Gerbong Kargo) belum memiliki jendela, interior, atau pintu.</li><li>Sudut pandang orang pertama kendaraan memiliki kecepatan belok maksimum 36 derajat/detik, yang mungkin terasa terlalu cepat.</li><li>Ukuran file tabel resep meningkat besar-besaran (karena banyaknya gambar bahan makanan baru). Di sejumlah perangkat, tampilannya mungkin terasa berat.</li><li>Sinkronisasi 2 pemain bersamaan dan beban server saat semua MOD berjalan bersamaan belum diuji.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns rail">
+      <div class="timeline-entry__date">2026-07-30</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.7</span> — Memperbaiki Pedang Raja &amp; Busur Raja, Melemahkan Minigun
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>Memperbaiki bug Busur Raja yang terlihat terbalik, dan tampilan 2 gerbong Kereta Peluru yang terlewat dari perombakan v1.5.6. Sekaligus melemahkan Pedang Raja dan Minigun, dan Bor kini otomatis mengisi ulang sel dari inventori saat kehabisan.</p>
+      <ul><li>Menggambar ulang ikon 13 item bertema malaikat dengan resolusi 128px yang lebih detail</li><li>Memperbaiki bug Busur Raja yang terlihat terbalik</li><li>Merombak tampilan 2 gerbong Kereta Peluru yang terlewat dari perombakan kereta di v1.5.6</li><li>Bor kini otomatis mengisi ulang dari sel cadangan di inventori saat kehabisan sel</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Minigun: kekuatan efektif diturunkan dari sekitar 2.000 menjadi sekitar 1.000 damage per detik</li><li>Pedang Raja: dilemahkan termasuk kecepatan serangannya. DPS terukur turun dari 84,80 menjadi 21,60 (-74,5%). Hasilnya kini sedikit di bawah Pedang Malaikat (22,40)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Untuk menerapkan perubahan kali ini, config/sorakaze_guns.json perlu dihapus</li><li>Jika melakukan update besar dari versi v1.5.5 atau lebih lama, hapus juga config/sorakaze_sky.json</li><li>Pelemahan Pedang Raja berasal dari nilai internal program dan tidak bisa dikembalikan lewat file config</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Ikon item Kereta Peluru masih menggunakan desain lama (badan kereta sudah dirombak, tetapi ikonnya belum selaras)</li><li>Sculk Golem, Rock Lock, Kraken, dan Titan masih belum memiliki motion serangan khusus</li><li>Tombak Petir belum mendukung serangan lempar, hanya bisa digunakan sebagai serangan melee</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky guns deco rail boss">
+      <div class="timeline-entry__date">2026-07-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.6</span> — Kerajaan Langit Hadir, Bos Grim Reaper Juga Dirombak Besar-besaran
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>&quot;Kerajaan Langit&quot; yang luas beserta 7 jenis &quot;Perlengkapan Kerajaan&quot; (khusus pembelian) ditambahkan ke MOD Langit. Bos Grim Reaper mendapat motion serangan khusus dan spesifikasinya dirombak total. Senjata api mendapat penyesuaian besar-besaran pada keseimbangan kekuatan, dengan Assault Rifle menjadi senjata paling kuat. Tampilan seluruh 6 keluarga kereta juga dirombak.</p>
+      <ul><li>Kerajaan Langit (negara bergaya Britania raksasa berdiameter 1.001 blok) ditambahkan. 64 warga, 16 pedagang, 65 peti harta</li><li>7 jenis &quot;Perlengkapan Kerajaan&quot; eksklusif Kerajaan Langit hadir (khusus pembelian, versi lebih tinggi dari perlengkapan malaikat)</li><li>Mob baru &quot;REX&quot; hadir. Bisa ditetaskan dari telur dan ditunggangi</li><li>Kini bisa membawa peliharaan secara utuh dengan &quot;Kuley Pot&quot;</li><li>Menambahkan 6 jenis motion serangan khusus baru untuk bos Grim Reaper. Juga menambahkan jurus baru yang memanggil 3 Wither saat HP di bawah 50%</li><li>Merombak tampilan seluruh 6 keluarga kereta (jendela, pintu, bagian depan, papan tujuan, dan lampu yang lebih membulat dan tiga dimensi)</li><li>Laptop kini menjadi blok yang dipasang. Kamera CCTV mendukung model 3D + gerakan menoleh, dan tampilan videonya kini real-time dalam jangkauan / menampilkan &quot;NO SIGNAL&quot; di luar jangkauan</li><li>Meninjau ulang keseimbangan kekuatan senjata api secara menyeluruh (lihat bagian penyesuaian balance untuk detailnya)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Assault Rifle: kekuatan efektif terhadap satu musuh diperkuat besar-besaran dari sekitar 400 menjadi sekitar 3.000 damage/detik (karena diperbaiki agar semua peluru benar-benar tercatat sebagai damage)</li><li>Minigun: kekuatan efektif diturunkan dari sekitar 4.000 menjadi sekitar 2.000 damage per detik</li><li>Shotgun: kekuatan diperkuat 3 kali lipat (sekitar 150 damage per satu kali tarikan pelatuk pada jarak sangat dekat)</li><li>2 jenis senapan sniper (biasa/heavy): daya tahan diturunkan menjadi 128, sepertiga dari busur (menjadi rapuh tetapi berkekuatan tinggi)</li><li>Bos Grim Reaper: HP diubah dari acak 6.000–9.000 menjadi tetap 3.000, attack power dari 16 menjadi 32</li><li>Wyvern: damage napas 10→7,5, peluang drop telur 100%→20% (diperlemah)</li><li>Bos Arcangel: HP diperkuat 1,5 kali menjadi 3.000</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Untuk menerapkan perubahan kekuatan senjata, config/sorakaze_guns.json perlu dihapus (pengaturan daya tahan senapan sniper adalah item baru sehingga otomatis diterapkan)</li><li>Nomor versi meloncat dari v1.5.1 ke v1.5.6, tetapi ini bukan karena ada nomor yang dilewati — ini adalah gabungan dari beberapa update kecil (penyesuaian topeng, pelemahan Wyvern, dll.) yang didistribusikan sekaligus</li><li>Bijih Mutiara dan Bijih Ruby tidak akan muncul di area yang sudah tergenerasi sebelum MOD ini dipasang. Hasil pengukuran menunjukkan kelangkaannya sekitar 1/32 dari Diamond, atau sekitar setengah dari Ancient Debris</li><li>Jika kota atau kastil yang sebagian sudah tergenerasi berada di dekat Kerajaan Langit, bagian sisanya mungkin tidak tergenerasi dan tertinggal dalam keadaan tidak lengkap (data tidak rusak, ini hanya masalah tampilan)</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Sculk Golem, Rock Lock, Kraken, dan Titan masih belum memiliki motion serangan khusus (Grim Reaper sudah teratasi di update ini)</li><li>Tombak Petir belum mendukung serangan lempar, hanya bisa digunakan sebagai serangan melee</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="survival">
+      <div class="timeline-entry__date">2026-07-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.1</span> — Perbaikan Total Tampilan 2 Topeng
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Pembaruan Tampilan</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span></div>
+      <p>Memperbaiki tampilan 2 topeng pada MOD Ekspansi Survival. Sebelumnya ada bug di mana gambar datar terlihat melayang di atas kepala, kini dibuat ulang menjadi bentuk 3D yang pas di kepala (dengan telinga). Performa seperti pertahanan, daya tahan, dan resep tidak berubah.</p>
+      <ul><li>Tampilan 2 topeng dibuat ulang sepenuhnya. Bug gambar datar yang terlihat melayang di atas kepala sudah diatasi, kini berbentuk 3D yang menutupi kepala</li><li>Menambahkan detail telinga kelinci pada topeng kelinci, dan telinga rubah pada topeng badut</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Ikon di tabel resep masih menggunakan desain lama (akan diperbarui di update berikutnya)</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Tekstur sisi dan belakang topeng masih sederhana. Karena desain berfokus pada bagian depan, dilihat dari samping atau belakang pada sudut pandang orang ketiga bisa terlihat hampir polos satu warna</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="survival guns deco rail vehicles sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.5.0</span> — Update Terbesar Sepanjang Sejarah, MOD ke-7 &quot;Ekspansi Survival&quot; Hadir
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Update terbesar sepanjang sejarah proyek ini. MOD ke-7, &quot;Ekspansi Survival&quot;, bergabung sebagai anggota baru, menambahkan elemen survival seperti Bijih Mutiara/Ruby, topeng, Greatshield, dan gauge hidrasi. Seluruh 6 MOD yang sudah ada juga mendapat konten besar, dengan kereta bertambah menjadi 30 jenis, kendaraan 100 jenis, dan pintu MOD bahan bangunan menjadi 101 jenis.</p>
+      <ul><li>MOD ke-7 &quot;Ekspansi Survival&quot; bergabung sebagai anggota baru. Menambahkan Bijih Mutiara, Bijih Ruby, 2 jenis topeng (ARMOR +50, daya tahan 814), Greatshield, dan gauge hidrasi (habis dalam 30 menit)</li><li>Kini bisa membeli buku Sharpness X dari Pustakawan (ahli) seharga 64 Emerald</li><li>Menambahkan senjata baru ke MOD Senjata Api: &quot;Minigun&quot;, &quot;Bor&quot; (menambang 3×3 blok sekaligus ke arah pandang), dan &quot;Turret Pengusir Laba-laba&quot;</li><li>Kereta bertambah menjadi total 30 jenis dari 6 keluarga × 5 warna cat (sebelumnya hanya 1 jenis)</li><li>Kendaraan bertambah menjadi total 100 jenis dari 25 model dasar × 4 warna cat, dan seluruh unit kini memiliki gaya yang membulat</li><li>MOD bahan bangunan mendapat 50 jenis pintu ganda besar (total pintu menjadi 101 jenis), Kamera CCTV, Laptop, dan ATM yang bisa menabung dengan bunga majemuk</li><li>MOD Langit mendapat Alat Penetas Telur. Wyvern/naga yang menetas akan jinak pada pemain dan bisa ditunggangi dengan sadel khusus</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>【Koreksi】Sebelumnya kami menginformasikan &quot;Assault Rifle menghasilkan sekitar 2.000 damage per detik terhadap satu musuh&quot;, tetapi pengukuran sebenarnya menunjukkan angka tersebut sekitar 400 damage per detik (catatan sebelumnya terlalu melebih-lebihkan kekuatannya)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Kekuatan efektif senjata baru &quot;Minigun&quot; setara sekitar 4.000 damage per detik, menjadikannya senjata terkuat di proyek ini. Hampir semua bos yang ada bisa dikalahkan dalam hitungan detik, jadi jika ingin mempertahankan tantangan, turunkan nilai `minigun.damage` di config</li><li>Tidak perlu menghapus file config untuk update ini (item pengaturan baru akan otomatis ditambahkan saat server dijalankan)</li><li>Bijih Mutiara dan Bijih Ruby tidak akan muncul di area yang sudah tergenerasi sebelum MOD ini dipasang. Jika tidak ditemukan, jelajahi area yang baru</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Animasi menoleh Kamera CCTV belum diimplementasikan; saat ini sudut pandangnya masih tetap</li><li>Sculk Golem, Rock Lock, Grim Reaper, Kraken, dan Titan belum memiliki motion serangan khusus, dan tanda ancang-ancang jurus pamungkasnya juga baru berupa partikel dan marker saja</li><li>Tombak Petir belum mendukung serangan lempar, hanya bisa digunakan sebagai serangan melee</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.8</span> — Kota Langit Menjadi Lebih Padat, Mob Baru &quot;Wyvern&quot; Hadir
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>Skala Kota Langit ditinjau ulang dan dibuat menjadi kota bertingkat dengan kepadatan lebih tinggi. Di bagian tengah, 4 menara superjulang setinggi 300 blok muncul sebagai landmark baru. Selain itu, musuh terbang baru &quot;Crystal Wyvern&quot; ditambahkan.</p>
+      <ul><li>Luas Kota Langit diperkecil dan dibuat menjadi kota dengan kepadatan lebih tinggi (tinggi bangunan bervariasi per distrik)</li><li>Hanya 4 menara di pusat kota yang mencapai gedung superjulang setinggi 300 blok</li><li>Menambahkan detail suasana kota seperti pintu masuk lantai bawah, kanopi, peralatan atap, serta pemisahan jalan raya dan trotoar</li><li>Menempatkan 16 peti harta (3 jenis: atap, kantor, gudang) di dalam kota</li><li>Mob baru &quot;Crystal Wyvern&quot; hadir. Terbang di udara dan menyerang dengan napas bola api (hanya menyasar pemain, tidak menyerang warga kota)</li><li>Menyesuaikan interval kemunculan Kastil Langit (karena pengaturan yang direkomendasikan sebelumnya membuat kastil nyaris tidak pernah muncul)</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Di hadapan kekuatan Assault Rifle, Crystal Wyvern (HP 200) bisa dikalahkan dalam sekejap. Jika ingin tantangan yang lebih terasa, sesuaikan pengaturan damage senjata</li><li>Pengecilan kota hanya berlaku untuk area yang baru tergenerasi. Kota Langit yang sudah ada tetap berukuran lama, sehingga bisa terlihat tidak wajar jika berdekatan dengan yang baru</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.7</span> — Perombakan Generasi Kota Langit, Perbaikan Bug Populasi Warga
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>Mekanisme generasi Kota Langit dan Kastil Langit dibuat ulang secara internal agar lebih stabil, sekaligus memperbaiki bug di mana populasi warga Kota Langit terus bertambah melewati batas setiap kali server di-restart.</p>
+      <ul><li>Memperbaiki bug di mana populasi warga Kota Langit terus bertambah melewati batas setiap kali server di-restart berulang kali</li><li>Mengefisienkan proses generasi Kota Langit dan Kastil Langit secara internal (beban generasi justru berkurang)</li><li>Menyesuaikan jarak penempatan Kota Langit dan Kastil Langit</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Perubahan metode generasi ini hanya berlaku untuk area yang baru tergenerasi. Tampilan Kota Langit dan Kastil Langit yang sudah ada tetap sama</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.6</span> — Kota Langit Dirombak Menjadi Kota Futuristik, Bos Baru Hadir
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>&quot;Kota Langit&quot; pada MOD Langit dirombak total menjadi kota bertingkat futuristik, dan &quot;Kastil Langit&quot; beserta bos baru &quot;Sky Arcangel&quot; hadir untuk pertama kalinya. Mob baru &quot;Malaikat Warga&quot; yang berjalan-jalan di kota, serta perubahan metode pembayaran untuk membeli perlengkapan, juga ditambahkan.</p>
+      <ul><li>Kota Langit dirombak menjadi kota bertingkat futuristik (menambahkan 20 gedung tinggi, jaringan jalan, jembatan penyeberangan, dan alun-alun pusat)</li><li>Mob baru &quot;Malaikat Warga&quot; kini berlalu-lalang di kota dengan 4 varian tampilan</li><li>&quot;Kastil Langit&quot; hadir untuk pertama kalinya (tembok kastil, 8 menara bundar, aula besar, menara utama, ruang harta bawah tanah, 6 peti harta)</li><li>Bos baru &quot;Sky Arcangel&quot; muncul di Kastil Langit. Hanya 1 ekor per kastil, tidak muncul lagi setelah dikalahkan</li><li>Menambahkan drop pasti bos &quot;Tongkat Malaikat&quot; (memiliki sifat khusus: kekuatan ×1,5 dan cooldown setengah saat digunakan di udara)</li><li>Tampilan Portal Langit dirombak dengan bingkai emas + batu bercahaya, ditambah animasi menyala</li><li>Pembayaran untuk membeli perlengkapan Langit kini menggunakan 2 jenis: Emerald + Diamond</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Peluang munculnya Portal Langit secara alami turun dari 1/340 → 1/1200 (menjadi jauh lebih sulit ditemukan)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Portal menjadi jauh lebih sulit ditemukan. Jika tidak ditemukan di world yang sudah ada, admin bisa menurunkan peluang kemunculannya lewat config, atau mengaktifkan `allowPlayerBuiltSkyPortals` untuk mengizinkan pemain memasang portal secara manual</li><li>Kekuatan Assault Rifle sangat besar (setara 2.000 damage per detik), sehingga bos ini (HP 2000) bisa dikalahkan hanya dalam sekitar 1 detik. Jika ingin tantangan yang lebih terasa, sesuaikan pengaturan damage senjata</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.5</span> — Memperbaiki Crash di Dimensi Langit
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>Memperbaiki bug serius yang membuat klien selalu crash saat memasuki Dimensi Langit (disebabkan oleh belum terdaftarnya satu pun mekanisme untuk menggambar Malaikat dan Golem Malaikat). Sekaligus memperkuat Heavy Sniper Rifle dan menambahkan tingkat zoom baru pada scope.</p>
+      <ul><li>【Penting】Memperbaiki bug yang membuat klien selalu crash saat memasuki Dimensi Langit (disebabkan belum terdaftarnya proses penggambaran Malaikat dan Golem Malaikat). Malaikat di world lama yang ada sejak sebelum Langit dipindahkan juga mengalami bug yang sama</li><li>Damage Heavy Sniper Rifle diubah menjadi 4 kali lipat Sniper biasa (40.0→80.0)</li><li>Menambahkan tingkat zoom baru &quot;×12&quot; pada scope Sniper Rifle (khusus Heavy Sniper)</li><li>Scroll mouse kini diabaikan saat sedang membidik dengan scope (mencegah hotbar berganti tanpa sengaja)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Heavy Sniper Rifle: Damage 40.0→80.0 (4 kali lipat Sniper biasa)</li></ul>
+      
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Belum ada konfirmasi lewat bermain langsung apakah perbaikan ini benar-benar menyelesaikan crash di Dimensi Langit. Mohon periksa apakah memasuki Dimensi Langit sudah tidak crash lagi, dan laporkan jika masih terjadi</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="deco guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.4</span> — Penguatan Besar Senjata Api, Menambahkan 40 Pintu Baru
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span></div>
+      <p>Kekuatan Laser Gun dan Assault Rifle masing-masing ditingkatkan 20 kali dan 10 kali lipat. Kenaikan kekuatan ini akan sangat mengganggu keseimbangan pertarungan melawan bos yang sudah ada. Selain itu, memperbaiki bug Turret Otomatis yang ternyata tidak pernah menembak sama sekali, Pagar Pengaman yang tidak bisa tersambung, dan arah laser yang terbalik di timur-barat. MOD bahan bangunan mendapat 40 jenis pintu baru (versi 1.4.3 sengaja dilewati).</p>
+      <ul><li>Damage Laser Gun 8.0→160.0 (20 kali lipat, DPS 960), Assault Rifle 20.0→200.0 (10 kali lipat, DPS 2000)</li><li>Memperbaiki bug Turret Otomatis yang ternyata tidak pernah menembak sama sekali (karena ray bidikan dimulai dari dalam hitbox-nya sendiri). Sekaligus meninjau ulang penargetan agar tidak menyasar bos dan Warden</li><li>Memperbaiki bug Pagar Pengaman yang tidak bisa tersambung satu sama lain</li><li>Memperbaiki bug arah Laser yang terbalik di timur-barat</li><li>Jangkauan jebakan laser 32→128 blok (batas config diperluas hingga 256). Kini bisa diarahkan ke 26 arah (termasuk diagonal dan atas-bawah); klik kanan tangan kosong untuk memutar 45 derajat horizontal, sneak + klik kanan untuk mengubah sudut</li><li>Menambahkan 40 jenis pintu baru ke MOD bahan bangunan (total menjadi 49 jenis bersama 9 pintu yang sudah ada)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Laser Gun: Damage 8.0→160.0 (20 kali lipat)</li><li>Assault Rifle: Damage 20.0→200.0 (10 kali lipat)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>【Penting】Kenaikan kekuatan ini akan sangat mengganggu keseimbangan pertarungan melawan bos yang sudah ada (bos bisa dikalahkan dalam hitungan detik). Tidak ada resistensi tambahan di sisi bos, jadi jika ini mengganggu, sesuaikan jumlah damage lewat config/sorakaze_guns.json</li><li>Untuk menerapkan kenaikan kekuatan senjata, config/sorakaze_guns.json perlu dihapus</li><li>v1.4.3 sengaja dilewati dan tidak didistribusikan</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="sky">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.2</span> — Memperbaiki Bug Tampilan Perlengkapan Malaikat
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span></div>
+      <p>Memperbaiki bug di mana mengenakan &quot;perlengkapan malaikat&quot; justru menampilkan zirah Netherite vanilla di tubuh dan Elytra polos di punggung. Ikon di inventori sudah tampil benar, sehingga masalah ini sulit disadari.</p>
+      <ul><li>Memperbaiki tampilan saat mengenakan perlengkapan malaikat (zirah, Sayap Malaikat) agar benar-benar tampil dengan desain perak-putih dan emas yang khusus</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="sky boss deco vehicles guns">
+      <div class="timeline-entry__date">2026-07-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.1</span> — Dimensi Langit Hadir, Bos Mendapat Jurus Pamungkas
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Dimensi baru &quot;Langit&quot; ditambahkan, bisa diakses lewat portal yang jarang tergenerasi di permukaan tanah. Kini bisa berdagang dengan pedagang malaikat dan mengenakan perlengkapan glider. Seluruh 10 bos mendapat jurus pamungkas dan kini bisa dipanggil kapan saja dengan batu pemanggil. Resep bahan bangunan mendapat tombol pilihan, dan roda kendaraan kini berputar.</p>
+      <ul><li>Dimensi baru &quot;Langit&quot; hadir. Bisa diakses lewat portal Glowstone yang jarang tergenerasi di permukaan tanah</li><li>Pedagang malaikat tinggal di Langit dan menawarkan barang dagangan acak per individu. &quot;Sayap Malaikat&quot; yang bisa terbang seperti glider, serta panah dan busur khusus, bisa didapatkan</li><li>Menambahkan penyelamatan jika terjatuh dari langit (mendarat dengan aman di atas Overworld)</li><li>Menambahkan batu pemanggil untuk seluruh 10 bos, bisa di-craft dan dipanggil kapan saja. Semua bos kini punya jurus pamungkas (aktif saat HP di bawah setengah, dengan tanda ancang-ancang 4 detik)</li><li>3 bos raksasa kini mendapat kekuatan acak saat dikalahkan (HP 30–45 kali Ender Dragon, tetap sama setelahnya)</li><li>Senjata baru &quot;Sabit Malaikat Maut&quot;, &quot;Trisula Abyssal&quot;, dan &quot;Tombak Petir&quot; dijatuhkan oleh bos yang sesuai</li><li>Menambahkan tombol pilihan di crafting table bahan bangunan, memungkinkan memilih beberapa blok dari susunan resep yang sama (misalnya blok pilar kayu)</li><li>Sekop dan Cangkul khusus bos kini bisa benar-benar membuat jalan dan membajak tanah</li><li>Roda kendaraan kini benar-benar berputar sesuai tampilannya (10 jenis kendaraan)</li></ul>
+      
+      
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Sculk Golem dan Rock Lock belum memiliki motion serangan khusus (tanda ancang-ancang jurus pamungkas juga baru berupa partikel saja)</li><li>Tombak Petir belum bisa dilempar (hanya bisa serangan melee)</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Motion Serangan Bos dan Alat Menjadi 3D
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Pembaruan Tampilan</span></div>
+      <p>Menambahkan motion khusus untuk serangan melee, serangan area, dan serangan beam pada masing-masing dari 5 bos. 5 alat yang dijatuhkan (Pickaxe, Kapak, Cangkul, Spear, Sekop) juga dibuat ulang dari ikon datar menjadi model 3D yang solid. Damage, cooldown, dan konten permainan lainnya tidak diubah.</p>
+      <ul><li>Menambahkan motion khusus untuk serangan (melee, 2 jenis serangan area, serangan beam) pada masing-masing dari 5 bos, membuat tanda ancang-ancang serangan lebih mudah dibaca</li><li>5 alat yang dijatuhkan dirombak menjadi model 3D yang solid. Ikon GUI juga diubah menjadi tampilan 3D</li></ul>
+      
+      
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Serangan melee tidak diberi gerakan ancang-ancang seperti ayunan. Ini karena serangan melee vanilla menghasilkan damage secara instan, sehingga menambahkan ancang-ancang akan membuat waktu damage tidak sinkron</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="">
+      <div class="timeline-entry__date">2026-07-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — Perombakan Total Tampilan 5 Bos
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Pembaruan Tampilan</span></div>
+      <p>Berdasarkan masukan bahwa &quot;terlihat seperti makhluk yang sama dengan warna berbeda&quot;, tampilan 5 bos baru dibuat ulang sepenuhnya. Kekuatan, drop, jenis serangan, dan konten permainan lainnya tidak diubah.</p>
+      <ul><li>Runecore Colossus: inti batu dengan zirah perunggu/emas, 2 pedang yang melayang di kedua sisi tubuh, cincin rune yang berputar mengelilingi lengan</li><li>Emberlord: alur lava yang menembus tubuh, 2 tanduk yang melengkung ke atas terbagi 4 ruas</li><li>Elder Treant: 8 cabang dengan arah dan bentuk patahan yang berbeda-beda (3 di antaranya patah di tengah), wajah yang terukir di batang pohon</li><li>Void Stalker: tidak lagi berbentuk humanoid, kini berupa bongkahan obsidian + portal ungu + 8 tentakel + 18 mata bercahaya</li><li>Frost Lich King: jubah 5 lapis, mahkota es bergerigi 9 buah, lambang es berputar di tangan kiri yang terangkat</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.4.0</span> — 5 Bos Baru Hadir, Menembus Batas HP
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span></div>
+      <p>Menambahkan 5 bos raksasa baru ke MOD Bos. Batasan bawaan Minecraft yang sebelumnya hanya mengizinkan HP naik hingga 1024 kini teratasi, sehingga bos-bos serius dengan HP 2400–4000 bisa diimplementasikan. Mengalahkannya akan pasti menjatuhkan alat berkekuatan tinggi khusus (Pickaxe, Kapak, Cangkul, senjata baru &quot;Spear&quot;, dan Sekop).</p>
+      <ul><li>Menambahkan 5 bos baru (dipanggil dengan item panggilan yang bisa di-craft): Runecore Colossus (HP 3000), Emberlord (HP 3400), Elder Treant (HP 4000), Void Stalker (HP 2400), Frost Lich King (HP 2800)</li><li>Mengalahkan masing-masing bos akan pasti menjatuhkan alat khusus berkekuatan tinggi: Pickaxe Runecore, Kapak Ember, Cangkul Treant, Tombak Void (senjata baru yang tidak ada di vanilla), Sekop Frost. Semuanya berdaya tahan tinggi dengan banyak enchant terpasang, dan tidak bisa di-craft</li></ul>
+      
+      
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Kelima bos ini dirancang cukup sulit, dan diperkirakan akan berat jika dilawan sendirian. Jika terasa terlalu kuat, admin bisa menyesuaikan HP dan attack power lewat config</li><li>Void Stalker sebenarnya dirancang untuk melayang di udara, tetapi saat ini diimplementasikan sebagai bergerak di darat + teleportasi</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — Menambahkan 138 Blok Bahan Bangunan, Implementasi Daya Tahan Senjata
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span></div>
+      <p>Ini adalah tindak lanjut berdasarkan masukan setelah v1.3.2 dirilis. Tampilan 2 bos dirombak, dan daya tahan senjata — yang sebelumnya hanya tampil di layar tanpa benar-benar berkurang — akhirnya berfungsi dengan semestinya. MOD bahan bangunan mendapat 138 jenis blok bangunan baru, dan jangkauan semua senjata diperpanjang 5 kali lipat.</p>
+      <ul><li>Tampilan Sculk Golem dan Rock Lock dirombak (Sculk Golem = bergaya Iron Golem berbahan Sculk, Rock Lock = bergaya robot bersenjata futuristik). Kekuatan dan jenis serangan tidak berubah</li><li>Daya tahan senjata akhirnya benar-benar berkurang sebagaimana mestinya (sebelumnya hanya bar daya tahan yang tampil tanpa benar-benar rusak). Daya tahan bawaan sekitar 1536 tembakan, Excalibur sekitar 6093 kali</li><li>Jangkauan semua senjata diperpanjang 5 kali lipat (Assault Rifle 60→300m, Shotgun 24→120m, Sniper 150→750m, Laser 80→400m)</li><li>Menambahkan 138 jenis blok bangunan baru ke MOD bahan bangunan (Slab Vertikal, Pilar berbentuk oktagon, Tanjakan 8 tingkat × 46 jenis bahan)</li><li>Rencana mengubah desain kendaraan menjadi &quot;bentuk realistis yang membulat&quot; telah disetujui, dan rancangan desain Sedan serta Pesawat Baling-baling telah selesai (penerapan ke seluruh 13 jenis akan dilakukan bertahap di update mendatang)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Jangkauan semua senjata diperpanjang 5 kali lipat (Assault Rifle 60→300m / Shotgun 24→120m / Sniper 150→750m / Laser 80→400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Untuk menerapkan perpanjangan jangkauan, config/sorakaze_guns.json perlu dihapus</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>&quot;Desain yang membulat&quot; untuk kendaraan saat ini baru berupa rancangan Sedan dan Pesawat Baling-baling saja; penerapan ke seluruh 13 jenis akan dilakukan di update mendatang</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail vehicles boss">
+      <div class="timeline-entry__date">2026-07-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.2</span> — Menambahkan 138 Blok Bahan Bangunan, Implementasi Daya Tahan Senjata
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>Ini adalah tindak lanjut berdasarkan masukan setelah v1.3.2 dirilis. Tampilan 2 bos dirombak, dan daya tahan senjata — yang sebelumnya hanya tampil di layar tanpa benar-benar berkurang — akhirnya berfungsi dengan semestinya. MOD bahan bangunan mendapat 138 jenis blok bangunan baru, dan jangkauan semua senjata diperpanjang 5 kali lipat.</p>
+      <ul><li>Tampilan Sculk Golem dan Rock Lock dirombak (Sculk Golem = bergaya Iron Golem berbahan Sculk, Rock Lock = bergaya robot bersenjata futuristik). Kekuatan dan jenis serangan tidak berubah</li><li>Daya tahan senjata akhirnya benar-benar berkurang sebagaimana mestinya (sebelumnya hanya bar daya tahan yang tampil tanpa benar-benar rusak). Daya tahan bawaan sekitar 1536 tembakan, Excalibur sekitar 6093 kali</li><li>Jangkauan semua senjata diperpanjang 5 kali lipat (Assault Rifle 60→300m, Shotgun 24→120m, Sniper 150→750m, Laser 80→400m)</li><li>Menambahkan 138 jenis blok bangunan baru ke MOD bahan bangunan (Slab Vertikal, Pilar berbentuk oktagon, Tanjakan 8 tingkat × 46 jenis bahan)</li><li>Rencana mengubah desain kendaraan menjadi &quot;bentuk realistis yang membulat&quot; telah disetujui, dan rancangan desain Sedan serta Pesawat Baling-baling telah selesai (penerapan ke seluruh 13 jenis akan dilakukan bertahap di update mendatang)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Jangkauan semua senjata diperpanjang 5 kali lipat (Assault Rifle 60→300m / Shotgun 24→120m / Sniper 150→750m / Laser 80→400m)</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Untuk menerapkan perpanjangan jangkauan, config/sorakaze_guns.json perlu dihapus</li></ul>
+        </div>
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>&quot;Desain yang membulat&quot; untuk kendaraan saat ini baru berupa rancangan Sedan dan Pesawat Baling-baling saja; penerapan ke seluruh 13 jenis akan dilakukan di update mendatang</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="boss">
+      <div class="timeline-entry__date">2026-07-21</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.1</span> — Memperbaiki Bug Bos Dikalahkan oleh Warden
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span></div>
+      <p>Memperbaiki bug di mana bos berharga &quot;Sculk Golem&quot; (1 per kota, 1 seumur hidup) bisa dikalahkan oleh Warden yang membalas serangan.</p>
+      <ul><li>Sculk Golem kini tidak lagi menerima damage dari Warden, dan Warden juga tidak lagi menyerang atau mencari Sculk Golem (Sculk Golem tetap bisa dikalahkan oleh pemain seperti biasa)</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco boss vehicles">
+      <div class="timeline-entry__date">2026-07-20</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.3.0</span> — MOD Bos dan Kendaraan Hadir, Total Menjadi 5 MOD
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>2 MOD baru, &quot;Bos&quot; dan &quot;Kendaraan&quot;, bergabung sehingga totalnya menjadi 5 MOD. Mengalahkan 3 Warden di Ancient City akan memunculkan bos &quot;Sculk Golem&quot;, 13 jenis kendaraan (mobil, truk, pesawat, dll.) hadir, dan Laser Gun serta jebakan laser diperkenalkan. Kereta kini juga bisa menyambung hingga 15 gerbong.</p>
+      <ul><li>MOD baru &quot;Bos&quot; hadir: mengalahkan 3 Warden di Ancient City akan memunculkan bos &quot;Sculk Golem&quot; (HP 900). Mengalahkannya pasti menjatuhkan &quot;Beacon Tingkat Lanjut&quot; dengan radius efek 3 kali lipat</li><li>MOD baru &quot;Kendaraan&quot; hadir: menambahkan 10 kendaraan darat (mobil, bus, truk, motor, dll.) + 3 pesawat. Mendukung lampu rotator/sirene kendaraan darurat dan bak truk</li><li>Menambahkan Laser Gun (1 Sel Energi = 100 tembakan) dan Turret Otomatis (hanya menargetkan musuh) ke senjata api</li><li>Menambahkan Pemancar/Penerima Laser dan Meja ke MOD bahan bangunan</li><li>Metode penyambungan kereta diperbaiki, kini bisa menyambung hingga 15 gerbong termasuk Gerbong Kargo dan Gerbong Penumpang. 2 jenis Kereta Peluru dengan gerbong depan berkecepatan 75 m/s juga ditambahkan</li></ul>
+      
+      
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>Rasa kendali pesawat (lepas landas/mendarat, stall, dll.) memang dirancang untuk masih perlu penyesuaian ke depannya. Jika terasa berat atau sulit dikendalikan, bisa disesuaikan lewat config</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-19</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.1</span> — Senjata Menjadi Hitscan dan Perbaikan Pintu yang Bergetar
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span></div>
+      <p>Mengubah senjata menjadi metode hitscan yang &quot;langsung mengenai target begitu ditembakkan&quot;, serta menambahkan suara tembakan khusus. Kereta kini punya model 3D dan fitur penyambungan (Gerbong Kargo, Gerbong Penumpang), dan bug pintu tertutup yang terus bergetar kecil-kecil sudah diperbaiki. 3 jenis pintu baru dan pintu tersembunyi juga hadir.</p>
+      <ul><li>Senjata diubah menjadi metode hitscan yang langsung mengenai target tanpa menunggu peluru melayang (jarak deteksi kena: Assault Rifle 60m / Shotgun 24m / Sniper 150m)</li><li>Menambahkan suara tembakan, suara reload, dan suara tembakan kosong yang baru (sumber suara buatan sendiri)</li><li>Memperbesar ukuran senjata saat dipegang, disesuaikan agar lebih jelas dilihat baik dari sudut pandang orang pertama maupun ketiga</li><li>Menambahkan model 3D untuk kereta (tampilan bergaya kereta komuter). Gerbong Kargo (penyimpanan 27 slot) dan Gerbong Penumpang (2 tempat duduk) kini bisa disambungkan (tidak bisa mundur saat tersambung)</li><li>Memperbaiki bug pintu tertutup yang terus bergetar kecil-kecil</li><li>Menambahkan Pintu Tersembunyi (menyamar sebagai tanah, batu, netherrack, end stone, dan lainnya)</li><li>Menambahkan 3 jenis pintu baru (Rolling Door, Pintu Geser Tunggal, Pintu Jeruji Besi), sehingga total pintu menjadi 9 jenis</li></ul>
+      
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.2.0</span> — Perbaikan Bug Sesak Napas di Pintu dan Percepatan Besar Kereta
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span></div>
+      <p>Memperbaiki bug serius yang membuat pemain menerima damage saat melewati pintu. Kecepatan maksimum kereta dinaikkan menjadi 60 m/s (batas config 80 m/s), dan chunk di arah laju kereta kini dimuat lebih awal secara otomatis. Blok baru seperti lift dan ban berjalan ditambahkan, dan kontrol senjata disatukan menjadi klik kiri untuk menembak, klik kanan untuk membidik, dan R untuk reload.</p>
+      <ul><li>【Penting】Memperbaiki bug pemain menerima damage saat melewati pintu (Pintu Otomatis, Fusuma, Pintu Besar, Palka). Pintu kini tidak akan menutup otomatis selama masih ada orang di dekatnya</li><li>Kecepatan maksimum kereta 20→60 m/s (batas config bisa dinaikkan hingga 80 m/s). Saat berjalan, chunk di arah laju kereta akan dimuat lebih awal secara otomatis, mengurangi pemandangan yang terpotong saat melaju kencang</li><li>4 blok baru: Lift (naik dengan lompat/turun dengan sneak), Eskalator, 2 jenis kursi, Ban Berjalan (mengangkut item, berhenti dengan redstone)</li><li>Kontrol senjata dirombak total: klik kiri untuk menembak, tahan klik kanan untuk membidik (sniper masuk mode scope), tombol R untuk reload</li><li>Senjata kini ditampilkan sebagai model 3D saat dipegang (sebelumnya hanya ikon datar seperti di GUI)</li><li>Shotgun kini bisa membunuh musuh tanpa zirah dengan satu tembakan pada jarak sangat dekat (juga memperbaiki bug di mana beberapa pelet saling meniadakan akibat invincibility frame)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Shotgun: Damage per pelet 3.0→5.0 (10 pelet, total 50.0 jika semua kena pada jarak sangat dekat)</li><li>Kereta: Kecepatan maksimum 20→60 m/s, batas config 25→80 m/s</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Karena arti batas kecepatan kereta berubah, disarankan menghapus config/sorakaze_rail.json setelah update (jika tidak dihapus, kecepatan tetap 20 m/s seperti pengaturan lama)</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.1.0</span> — Perbaikan Perilaku Kereta dan Penguatan Senjata Api
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span></div>
+      <p>Memperbaiki gerakan kereta yang tersendat-sendat dan masalah &quot;harus terus menekan tombol W agar kereta jalan&quot;. Kekuatan senjata ditingkatkan, dan Sniper Rifle mendapat tampilan scope khusus beserta efek goyangan. MOD bahan bangunan bertambah 4 jenis pintu baru, termasuk pintu otomatis.</p>
+      <ul><li>Kereta: memperbaiki gerakan yang tersendat-sendat sehingga kini melaju dengan mulus</li><li>Kereta: setelah menekan tombol W sekali, kereta akan otomatis berakselerasi dan melaju tanpa perlu terus ditekan (sebelumnya harus ditahan terus). Tombol S untuk mengerem, tekan S sekali lagi setelah berhenti untuk mundur</li><li>Kecepatan maksimum kereta 15→20 m/s. Ikon item kereta diperbarui</li><li>Sniper Rifle: diubah menjadi metode &quot;bidik → lepas untuk menembak&quot;, ditambah overlay scope khusus dan zoom ×4/×8 (ganti dengan scroll), serta goyangan bidikan yang berkurang setengah saat sneak</li><li>Assault Rifle: menambahkan perilaku sebaran yang meningkat saat menembak sambil bergerak</li><li>MOD Bahan Bangunan: menambahkan 4 jenis pintu baru — Pintu Otomatis, Fusuma, Pintu Besar (Besi/Kayu), dan Palka (struktur multi-blok, drop 1 buah dari mana pun dihancurkan)</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>Assault Rifle: Damage 3.0→5.0, laju tembak 8→10 tembakan/detik</li><li>Shotgun: Damage per pelet 2.0→3.0 (bertambah menjadi 10 pelet), jangkauan efektif 12→16m</li></ul>
+      
+      
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="guns rail deco">
+      <div class="timeline-entry__date">2026-07-15</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.0.0</span> — Rilis Perdana: 3 MOD Senjata Api, Kereta Api, dan Bahan Bangunan
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span></div>
+      <p>Untuk pertama kalinya, 3 MOD dipasang di server: &quot;sorakaze_guns&quot; (senjata api), &quot;sorakaze_rail&quot; (kereta api), dan &quot;sorakaze_deco&quot; (bahan bangunan). Busur panah dan minecart vanilla tetap ada seperti biasa, sementara senjata, kendaraan, dan blok baru untuk membangun kota kini bisa di-craft dalam mode survival.</p>
+      <ul><li>MOD Senjata Api: Assault Rifle, Shotgun, dan Sniper Rifle beserta amunisi khususnya (Peluru Senapan/Peluru Shotgun/Peluru Sniper) kini bisa di-craft</li><li>Fitur zoom scope diimplementasikan pada Sniper Rifle</li><li>MOD Kereta Api: menambahkan kendaraan baru &quot;Kereta&quot; yang bisa dipasang di rel (minecart, rel, busur panah, dan crossbow vanilla tidak diubah). Suara berjalan diputar berulang saat kereta melaju</li><li>MOD Bahan Bangunan: menambahkan 12 jenis blok baru seperti Pagar Pengaman, Tiang Listrik, Kabel Listrik, Ubin Pemandu (Pengarah/Peringatan), Lampu Lalu Lintas Kendaraan, Lampu Lalu Lintas Pejalan Kaki, Lampu Peringatan Penerbangan, dan Lampu Sorot</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Catatan Penting</div>
+          <ul><li>Server perlu dimigrasikan dari vanilla ke Fabric agar bisa mendukung MOD. Selain itu, menjalankan Minecraft 26.2 membutuhkan Java 25 ke atas, jadi periksa versi Java di server Anda (lihat buku panduan untuk admin untuk langkah pemasangannya)</li></ul>
+        </div>
+      
+    </article>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Referensi Tidak Resmi MOD Server Sorakazekarasu</p>
+    <p class="site-footer__note">Situs ini adalah referensi tidak resmi. Kami tidak mendistribusikan file MOD (jar) itu sendiri. Resep dan angka yang ditampilkan bisa berbeda dari kondisi sebenarnya tergantung versi yang terpasang dan penyesuaian config di sisi server.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

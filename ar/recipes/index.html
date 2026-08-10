@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل الوصفات | Glimpse Alpha Wiki</title>
+<meta name="description" content="دليل سريع لوصفات صناعة جميع عناصر حزمة إضافات Glimpse Alpha، مع دعم البحث والتصفية حسب الفئة.">
+<meta property="og:title" content="دليل الوصفات | Glimpse Alpha Wiki">
+<meta property="og:description" content="دليل سريع لوصفات صناعة جميع عناصر حزمة إضافات Glimpse Alpha، مع دعم البحث والتصفية حسب الفئة.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/recipes.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="فتح القائمة">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">الرئيسية</a></li>
+        <li><a href="../changelog/">سجل التحديثات</a></li>
+        <li><a href="../recipes/" class="active">دليل الوصفات</a></li>
+        <li><a href="../guide/">دليل التثبيت</a></li>
+        <li><a href="../roadmap/">الخطة المستقبلية</a></li>
+        <li><a href="../known-issues/">المشاكل المعروفة</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="اللغة / Language">
+          🌐 <span>العربية</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../recipes/">日本語</a></li>
+        <li><a href="../../en/recipes/">English</a></li>
+        <li><a href="../../es/recipes/">Español</a></li>
+        <li><a href="../../fr/recipes/">Français</a></li>
+        <li><a href="../../zh/recipes/">简体中文</a></li>
+        <li><a href="../../ko/recipes/">한국어</a></li>
+        <li><a href="../../pt-br/recipes/">Português (Brasil)</a></li>
+        <li><a href="../../it/recipes/">Italiano</a></li>
+        <li><a href="../../ar/recipes/" class="active" aria-current="true">العربية</a></li>
+        <li><a href="../../ru/recipes/">Русский</a></li>
+        <li><a href="../../id/recipes/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/recipes/">Deutsch</a></li>
+        <li><a href="../../tr/recipes/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="تبديل نمط الألوان" title="تبديل نمط الألوان">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">دليل الوصفات</span>
+  <h1>دليل الوصفات</h1>
+  <p class="lede">يجمع هذا الدليل وصفات صناعة جميع العناصر والكتل ضمن الإضافات الثماني المثبتة، بإجمالي 928 عنصر. اضغط على أي عنصر لعرض وصفته بنفس تخطيط طاولة الصناعة الحقيقية (3×3). في تبويب &quot;طريقة الاستخدام&quot; أعلى الصفحة، ستجد شرحًا لاستخدام العناصر التي تتطلب توصيلات، مثل الفرز الآلي والبنية التحتية الكهربائية.</p>
+</div>
+
+<noscript>
+  <p class="callout callout--warn">يتطلب عرض هذه الصفحة تفعيل JavaScript. يُرجى مراجعة إعدادات المتصفح.</p>
+</noscript>
+
+<div id="recipeApp" hidden>
+  <div class="filter-bar">
+    <input type="search" id="recipeSearch" placeholder="ابحث باسم العنصر…" aria-label="ابحث باسم العنصر…">
+  </div>
+  <div class="tab-bar" id="recipeTabs" role="tablist"></div>
+  <p class="recipe-count" id="recipeCount"></p>
+  <p id="recipeEmpty" class="empty-state" hidden>لم يتم العثور على عنصر مطابق.</p>
+  <div class="grid grid--recipes" id="recipeGrid"></div>
+  <div id="guidePane" hidden></div>
+</div>
+
+<div class="recipe-modal-backdrop" id="recipeModalBackdrop">
+  <div class="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="recipeModalTitle">
+    <button class="recipe-modal__close" id="recipeModalClose" aria-label="إغلاق">&times;</button>
+    <div id="recipeModalBody"></div>
+  </div>
+</div>
+<script>
+  window.SITE_LANG = "ar";
+  window.SITE_STRINGS = {"tabAll": "الكل", "tabGuides": "طريقة الاستخدام", "howToObtain": "طريقة الحصول عليه:", "noRecipeInfo": "لا توجد معلومات وصفة لهذا العنصر.", "countSuffix": "عنصر", "loadError": "فشل تحميل بيانات الوصفات.", "ioIn": "المدخلات", "ioOut": "المخرجات"};
+</script>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — مرجع غير رسمي لإضافات (MOD) خادم Sorakazekarasu</p>
+    <p class="site-footer__note">هذا الموقع مرجع غير رسمي. لا يوفر هذا الموقع ملفات الإضافة (jar) نفسها. قد تختلف الوصفات والقيم المعروضة عن الواقع الفعلي حسب إصدار الإضافة المثبتة أو تعديلات إعدادات (config) الخادم.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

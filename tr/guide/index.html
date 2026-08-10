@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kurulum Rehberi | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha MOD paketi kurulum rehberi. Sunucuya kurulum adımları ve oyuncu tarafındaki katılım ayarları bir arada.">
+<meta property="og:title" content="Kurulum Rehberi | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha MOD paketi kurulum rehberi. Sunucuya kurulum adımları ve oyuncu tarafındaki katılım ayarları bir arada.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menüyü aç">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Ana Sayfa</a></li>
+        <li><a href="../changelog/">Güncelleme Geçmişi</a></li>
+        <li><a href="../recipes/">Tarif Rehberi</a></li>
+        <li><a href="../guide/" class="active">Kurulum Rehberi</a></li>
+        <li><a href="../roadmap/">Yol Haritası</a></li>
+        <li><a href="../known-issues/">Bilinen Sorunlar</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Dil / Language">
+          🌐 <span>Türkçe</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../guide/">日本語</a></li>
+        <li><a href="../../en/guide/">English</a></li>
+        <li><a href="../../es/guide/">Español</a></li>
+        <li><a href="../../fr/guide/">Français</a></li>
+        <li><a href="../../zh/guide/">简体中文</a></li>
+        <li><a href="../../ko/guide/">한국어</a></li>
+        <li><a href="../../pt-br/guide/">Português (Brasil)</a></li>
+        <li><a href="../../it/guide/">Italiano</a></li>
+        <li><a href="../../ar/guide/">العربية</a></li>
+        <li><a href="../../ru/guide/">Русский</a></li>
+        <li><a href="../../id/guide/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/guide/">Deutsch</a></li>
+        <li><a href="../../tr/guide/" class="active" aria-current="true">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Renk temasını değiştir" title="Renk temasını değiştir">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Kurulum Rehberi</span>
+  <h1>Kurulum Rehberi</h1>
+  <p class="lede">MOD&#x27;ları etkinleştirmekten oyuna başlamaya kadar olan adımları bir araya getirdik. Sadece oyuncu olarak katılacaksanız &quot;Oyuncular İçin&quot; bölümü yeterlidir.</p>
+</div>
+<div class="toc"><div class="toc__title">İçindekiler</div><ol><li><a href="#overview">Genel Bakış: Glimpse Alpha Kurulumu Hakkında</a></li><li><a href="#player-setup">Oyuncular İçin: Sunucuya Katılmak İçin Ayarlar</a></li><li><a href="#admin-prep">Sunucu Yöneticileri İçin: Ön Hazırlık (Yedekleme ve Sürüm Kontrolü)</a></li><li><a href="#admin-fabric-install">Sunucu Yöneticileri İçin: Fabric Kurulumu</a></li><li><a href="#admin-mods-and-verify">Sunucu Yöneticileri İçin: MOD Kurulumu ve Başlatma Kontrolü</a></li><li><a href="#admin-upgrade">MOD&#x27;ları Yeni Sürümle Değiştirirken</a></li><li><a href="#gameplay-notices">Oynamadan Önce Bilinmesi Gereken Noktalar</a></li><li><a href="#faq">Sık Sorulan Sorular ve Sorun Giderme</a></li></ol></div>
+<div id="overview"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Genel Bakış: Glimpse Alpha Kurulumu Hakkında</h2>
+      
+<p>
+  <strong>Glimpse Alpha</strong> (eski adıyla: Sorakaze), Sorakazekarasu sunucusuna kurulu
+  Fabric MOD paketidir. 8 bağımsız MOD'dan oluşur ve her biri ayrı ayrı kurulup güncellenebilir.
+  Yay-ok ve maden arabası gibi vanilla (MOD'suz standart) unsurları değiştirmez veya kaldırmaz;
+  bunun yerine yeni eşyalar, bloklar ve boyutlar ekler.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>İçerik</th></tr>
+<tr><td>Silahlar</td><td>Vanilla'da olmayan uzun menzilli silahlar (Saldırı Tüfeği, Pompalı Tüfek, Keskin Nişancı Tüfeği vb.)</td></tr>
+<tr><td>Demiryolu</td><td>Giderek hızlanan trenler ve bağlanabilen yolcu/yük vagonları</td></tr>
+<tr><td>Yapı ve Dekorasyon</td><td>Trafik ışığı, bariyer gibi şehir kurma malzemeleri ve güvenlik kamerası, ATM, asansör gibi ev aletleri</td></tr>
+<tr><td>Araçlar</td><td>Otomobil, otobüs, uçak vb.</td></tr>
+<tr><td>Boss</td><td>Güçlü boss'lar ve onlara özel düşen ekipmanlar</td></tr>
+<tr><td>Gökyüzü</td><td>Yeni bir boyut olan "Gökyüzü" ve orada yaşayan meleklerin şehri/krallığı</td></tr>
+<tr><td>Hayatta Kalma</td><td>Yeni cevherler, zırhlar ve sıcaklık, mevsim gibi hayatta kalma unsurları</td></tr>
+<tr><td>Elektrik</td><td>Elektrik üretim-iletim şebekesi ve elektrikle çalışan cihazlar</td></tr>
+</table>
+</div>
+<p>Her MOD'un ayrıntılı eşya ve tarifleri için <a href="../recipes/">Tarif Rehberi</a>'ne,
+şimdiye kadarki değişiklikler için <a href="../changelog/">Güncelleme Geçmişi</a>'ne bakın.</p>
+
+<h3>MOD kullanmak için "Fabric" gerekir</h3>
+<p>
+  <strong>Fabric</strong>, Minecraft'ın MOD'ları okuyabilmesi için gereken bir alt yapıdır.
+  Bir oyun konsoluna yazılım yüklemeden önce sistemin kendisinin gerekli olması gibi düşünebilirsiniz;
+  MOD dosyalarını yüklemeden önce hem sunucuya hem de her oyuncunun bilgisayarına Fabric'in kurulması gerekir.
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">⚠ En sık yapılan hata</div>
+  <p>
+    MOD'lar <strong>yalnızca sunucuya değil, oynayacak herkesin bilgisayarına da</strong> aynı şekilde
+    kurulmalıdır. "Sunucuya kurarsam herkese otomatik yansır" diye bir şey yoktur.
+    Sunucu ile tüm oyuncuların Minecraft sürümü, Fabric ve MOD kombinasyonu birbiriyle uyuşmazsa
+    sunucuya katılamazsınız.
+  </p>
+</div>
+
+<h3>Kim neyi hazırlayacak</h3>
+<ul>
+  <li><strong>Sunucu (Sorakazekarasu sunucusu)</strong> — Fabric sunucusu + Fabric API + Glimpse Alpha 8 MOD</li>
+  <li><strong>Katılacak her kişinin bilgisayarı</strong> — Fabric istemcisi + Fabric API + Glimpse Alpha 8 MOD (sunucuyla tamamen aynı kombinasyon)</li>
+</ul>
+
+<div class="callout callout--info">
+  <div class="callout__title">MOD dosyaları bu sitede dağıtılmıyor</div>
+  <p>
+    Bu sitede yalnızca tarif tabloları, güncelleme geçmişi ve kurulum adımları gibi "okuma" içerikleri
+    bulunur; MOD dosyaları (jar) burada dağıtılmaz. Kurulum için gereken jar dosyalarını
+    sunucu yöneticinizden temin edin.
+  </p>
+</div>
+
+<h3>Bu sayfanın içeriği</h3>
+<p>
+  Bu rehber iki gruba ayrılarak yazılmıştır. Çoğu kişi için
+  <a href="#player-setup">Oyuncular İçin</a> bölümünü okumak katılmaya yeterlidir.
+  Sunucuyu kendisi işleten/yöneten kişiler ayrıca
+  <a href="#admin-prep">Sunucu Yöneticileri İçin</a> bölümüne de bakmalıdır.
+</p>
+
+<h3>Şu anki desteklenen sürüm (referans)</h3>
+<p>
+  Aşağıdaki değerler bu sayfanın yazıldığı andaki değerlerdir. Gerçek değerler güncellemelerle
+  değişebileceğinden, kesin değeri mutlaka
+  <a href="../changelog/">Güncelleme Geçmişi</a>, <a href="../recipes/">Tarif Rehberi</a>
+  veya sunucu yöneticinizin bilgilendirmesinden kontrol edin.
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>Öğe</th><th>Şu anki referans değer</th></tr>
+<tr><td>Minecraft sürümü</td><td><code>26.2</code></td></tr>
+<tr><td>Gereken Java</td><td>Java 25 (<a href="https://adoptium.net/">Temurin 25 (LTS)</a> önerilir)</td></tr>
+<tr><td>Fabric API</td><td>Minecraft sürümüne uygun olan (örnek: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
+<tr><td>MOD yapısı</td><td>8 adet (silahlar, demiryolu, yapı/dekorasyon, araçlar, boss, gökyüzü, hayatta kalma, elektrik)</td></tr>
+</table>
+</div>
+
+    </div></div>
+<div id="player-setup"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Oyuncular İçin</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Oyuncular İçin: Sunucuya Katılmak İçin Ayarlar</h2>
+      
+<p>
+  Burada <strong>sunucuya oynamaya gidecek taraf</strong>ın ayarları anlatılıyor. Zor bir uzmanlık bilgisi gerekmez.
+  Yukarıdan aşağı sırayla yaparsanız yaklaşık 15-20 dakikada biter.
+</p>
+
+<div class="callout callout--info">
+  <div class="callout__title">Yapılacak yalnızca 3 şey var</div>
+  <ul>
+    <li>① Fabric'i (MOD'ları okuyan alt yapı) kendi bilgisayarınıza kurun</li>
+    <li>② Sunucu yöneticisinden aldığınız MOD dosyalarının tamamını belirlenmiş klasöre koyun</li>
+    <li>③ Başlatma şeklini 1 yerden değiştirip sunucuya katılın</li>
+  </ul>
+</div>
+
+<h3>Gerekenler</h3>
+<ul>
+  <li>Minecraft Java sürümünü oynatabilen bir Windows veya Mac bilgisayar</li>
+  <li>Sunucu yöneticisinden alınan <strong>MOD paketi (9 jar dosyası = Fabric API 1 + Glimpse Alpha'nın 8 MOD'u)</strong></li>
+</ul>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Çok önemli</div>
+  <p>
+    Sunucuyla <strong>tamamen aynı sürüm, tamamen aynı MOD dosyaları</strong> olmadan katılamazsınız.
+    Bu sayfada örnek olarak Minecraft sürümü <code>26.2</code> yazıyoruz; sunucu yöneticinizden
+    farklı bir sayı bildirilmişse o sayıyı kullanın.
+    Aldığınız jar dosyalarını <strong>çift tıklayarak açmayın</strong>. Sadece klasöre koymanız yeterlidir.
+  </p>
+</div>
+
+<h3>Alacağınız dosyalar (örnek)</h3>
+<p>Sunucu yöneticisinden aşağıdaki gibi yaklaşık 9 dosya alırsınız (sürüm numaraları her güncellemede değişir).</p>
+<div class="table-wrap">
+<table>
+<tr><th>Dosya adı (örnek)</th><th>İçerik</th></tr>
+<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>MOD'ları çalıştırmak için ortak bileşen</td></tr>
+<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Silahlar MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Demiryolu MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Yapı ve Dekorasyon MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Araçlar MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Gökyüzü MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Hayatta Kalma MOD'u</td></tr>
+<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Elektrik MOD'u</td></tr>
+</table>
+</div>
+
+<h3>① Fabric'i kurun</h3>
+<p><code>https://fabricmc.net/use/installer/</code> adresini açıp kurulum dosyasını indirin. "<strong>Client</strong>" sekmesinde kalarak ("Server"a geçmeden), Minecraft Version kısmından sunucuyla aynı sayıyı seçip "Install" butonuna basın.</p>
+
+<h4>Windows için</h4>
+<ol class="steps">
+  <li>Sayfadaki "Download installer (Windows/.exe)" gibi bir butondan kurulum dosyasını indirip çift tıklayarak çalıştırın ("Windows bilgisayarınızı korudu" gibi bir uyarı çıkarsa "Ayrıntılı bilgi" → "Yine de çalıştır"a basın).</li>
+  <li>"Client" sekmesinde kalarak, Minecraft Version kısmından <code>26.2</code> (sunucuyla aynı sayı) seçin, Loader Version'ı olduğu gibi bırakıp "Install"a basın.</li>
+</ol>
+
+<h4>Mac için</h4>
+<ol class="steps">
+  <li>"Download universal jar" butonundan kurulum dosyasını (.jar) indirin. Mac için çalıştırılabilir dosya (.exe) yoktur.</li>
+  <li>İndirdiğiniz <code>fabric-installer-〜.jar</code> dosyasını <strong>normal çift tıklama yerine</strong>, sağ tıklayarak (veya <code>control</code> tuşunu basılı tutarak tıklayarak) "Aç"ı seçin. Uyarı çıkarsa tekrar "Aç"a basın.</li>
+  <li>"Client" sekmesinde kalarak, Minecraft Version kısmından sunucuyla aynı sayıyı seçip "Install"a basın.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Mac'te "geliştirici doğrulanamıyor" çıkarsa</div>
+  <p>Son macOS sürümlerinde, sağ tık → "Aç" yaptığınızda bile buton çıkmayıp
+  "'fabric-installer〜.jar' kötü amaçlı yazılım içermediği doğrulanamadı" gibi bir uyarı çıkabilir. Bu durumda şu sırayla açabilirsiniz.</p>
+  <ol class="steps">
+    <li>Uyarıda "Tamam"a basın (<strong>kesinlikle "Çöp Kutusuna Taşı"ya basmayın</strong>)</li>
+    <li>Ekranın sol üstündeki Apple menüsü → "Sistem Ayarları" → "Gizlilik ve Güvenlik"i açın</li>
+    <li>Aşağıya doğru "'fabric-installer〜.jar' kullanımı engellendi" gibi bir yazı olacak, yanındaki "Yine de Aç"a basın</li>
+    <li>Tekrar sorulursa "Yine de Aç" → Mac'in şifresini (veya Touch ID) girin</li>
+  </ol>
+  <p>Bu, Apple'a kaydedilmemiş tüm dağıtımlarda çıkan standart bir uyarıdır; Fabric'in resmî sitesinden indirdiyseniz endişelenmenize gerek yok. Bir kez izin verirseniz sonraki seferlerde normal şekilde açılır.</p>
+</div>
+
+<div class="callout callout--info">
+  <div class="callout__title">Mac'te kurulum dosyası hiçbir şey yapmıyorsa</div>
+  <p>
+    Sağ tık → "Aç" yaptığınızda hiçbir şey olmuyorsa, sisteminizde Java kurulu değildir.
+    <a href="https://adoptium.net/">adoptium.net</a> adresini açıp "Temurin"in macOS için kurulum dosyasını (.pkg) kurduktan sonra tekrar deneyin.
+    Apple silikon (M1/M2/M3/M4 vb.) Mac'lerde "aarch64", Intel Mac'lerde "x64" seçilmelidir.
+    Emin değilseniz ekranın sol üstündeki Apple menüsü → "Bu Mac Hakkında"daki "Çip" alanını kontrol edin ("Apple M〜" yazıyorsa aarch64'tür).
+  </p>
+</div>
+
+<h3>② MOD dosyalarını mods klasörüne koyun</h3>
+
+<h4>Windows: <code>%appdata%\.minecraft\mods</code></h4>
+<ol class="steps">
+  <li>Gezgin'in adres çubuğuna <code>%appdata%\.minecraft</code> yazıp Enter'a basın.</li>
+  <li><code>mods</code> klasörü yoksa yeni oluşturun (tamamı küçük harf).</li>
+  <li>Aldığınız 9 jar dosyasının tamamını bu <code>mods</code> klasörünün içine kopyalayın (arşivden çıkarmaya gerek yok, jar olarak koyun).</li>
+</ol>
+
+<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
+<ol class="steps">
+  <li>Masaüstüne bir kez tıkladıktan sonra <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> tuşlarına aynı anda basın (veya üst menüdeki "Git" → "Klasöre Git…").</li>
+  <li>Çıkan giriş kutusuna <code>~/Library/Application Support/minecraft</code> yazısını olduğu gibi yapıştırıp Enter'a basın (başındaki "<code>~</code>" işaretini de unutmayın). "Library" Finder'da normalde görünmeyen bir klasör olduğundan, bu yöntemle açmak en kesin yoldur.</li>
+  <li><code>mods</code> klasörü yoksa, olduğu yerde sağ tık → "Yeni Klasör" ile oluşturun.</li>
+  <li>Aldığınız 9 jar dosyasının tamamını sürükle-bırak yöntemiyle bu <code>mods</code> klasörüne koyun.</li>
+</ol>
+
+<h3>③ Fabric ile başlatıp sunucuya katılın</h3>
+<ol class="steps">
+  <li>Minecraft başlatıcısını açın, "Oyna" butonunun yakınındaki başlatma profili listesinden <code>fabric-loader-26.2</code> gibi bir isim seçin ("En Son Sürüm" olarak bırakırsanız MOD'suz başlar).</li>
+  <li>Öylece "Oyna"ya basıp başlatın. Ana ekranda "Mods" butonu artmışsa başarılı demektir. Basınca Glimpse Alpha'nın 8 MOD'unu ve Fabric API'yi görebilirsiniz.</li>
+  <li>Sonrasında her zamanki gibi "Çok Oyunculu"dan sunucuya bağlanın.</li>
+</ol>
+
+<h3>MOD'lar güncellendiğinde</h3>
+<p>Sunucu tarafındaki MOD'lar güncellendiğinde, tüm katılımcıların aynı anda aynı sürüme güncellenmesi gerekir.</p>
+<ol class="steps">
+  <li>Sunucu yöneticisinden yeni MOD dosyalarını alın (bildirimi bekleyip sonra işlem yapın).</li>
+  <li>mods klasörünü açıp, <strong>şimdiye kadar içinde olan Glimpse Alpha jar dosyalarını silin</strong>, ardından yeni dosyaları koyun (dosya adı değişmiş olsa da içerik aynı MOD olarak kabul edildiğinden, eskisi kalırsa başlatılamaz).</li>
+  <li>Her zamanki gibi fabric-loader profiliyle başlatın.</li>
+</ol>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Dikkat</div>
+  <p>Yalnızca bir taraf yeni sürümde kalırsa sunucuya katılamazsınız. Sorun yaşarsanız <a href="#faq">Sık Sorulan Sorular</a>'a da bakın.</p>
+</div>
+
+<h3>Mac'te sık karşılaşılan sorunlar</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Belirti</th><th>Çözüm</th></tr>
+<tr><td>"Geliştirici doğrulanamıyor", "kötü amaçlı yazılım içermediği doğrulanamadı" çıkıyor</td><td>Uyarıda "Tamam"a basın ("Çöp Kutusuna Taşı"ya basmayın). Ardından Sistem Ayarları → "Gizlilik ve Güvenlik"i aşağı kaydırıp "Engellendi" yazısının yanındaki "Yine de Aç"a basıp şifrenizi girin.</td></tr>
+<tr><td>Kurulum dosyasını çift tıklayınca hiçbir şey olmuyor</td><td>Java kurulu değildir. adoptium.net'ten Temurin'i (macOS için .pkg) kurup tekrar deneyin.</td></tr>
+<tr><td>"Library" klasörü bulunamıyor</td><td>Elle aramanıza gerek yok. <code>⌘</code>+<code>⇧</code>+<code>G</code> ile <code>~/Library/Application Support/minecraft</code> yapıştırmak en kesin yoldur (normalde gizli bir klasördür).</td></tr>
+<tr><td>Sunucuya girmeye çalışınca sürüm farklı deniyor</td><td>① Başlatıcıda doğru fabric-loader profilini seçtiğinizi, ② mods klasörünün içeriğinin sunucuyla aynı olduğunu kontrol edin. Birinde bile fark varsa katılamazsınız.</td></tr>
+<tr><td>Başlar başlamaz çöküyor</td><td>mods klasöründe eski veya ilgisiz jar dosyası karışmış mı kontrol edin. Yine de düzelmezse <code>logs/latest.log</code> dosyasını (Mac'te <code>~/Library/Application Support/minecraft/logs/latest.log</code>) sunucu yöneticinize gönderin.</td></tr>
+<tr><td>MOD'suz normal Minecraft'a dönmek istiyorum</td><td>Başlatıcının başlatma profilini "En Son Sürüm"e geri döndürmeniz yeterli. MOD dosyalarını silmenize gerek yok.</td></tr>
+</table>
+</div>
+<p>Apple silikon (M1/M2/M3/M4 vb.) veya Intel Mac fark etmeksizin adımlar aynıdır. Farklı olan tek şey Java'yı (Temurin) seçerken aarch64 mi x64 mü seçileceğidir.</p>
+
+    </div></div>
+<div id="admin-prep"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Sunucu Yöneticileri İçin</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Sunucu Yöneticileri İçin: Ön Hazırlık (Yedekleme ve Sürüm Kontrolü)</h2>
+      
+<p>
+  Buradan itibaren sunucu makinesini işleten/yöneten kişilere yönelik bölüm başlıyor. Zaten çalışmakta olan bir
+  Minecraft sunucusundan (vanilla, MOD'suz standart sunucu) yola çıkarak, Fabric ve
+  Glimpse Alpha'nın 8 MOD'unu ekleme adımları anlatılıyor. Bu bölümde örnek olarak Windows sunucusu kullanılıyor.
+  Mac / Linux üzerinde sunucu işletiyorsanız, klasör konumlarını ve komut çalıştırma yöntemini kendi
+  ortamınıza göre uyarlayarak benzer adımları (Fabric'in resmî sitesindeki talimatlar) izleyin.
+</p>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 İşe başlamadan önce mutlaka</div>
+  <p>MOD kurulumu başarısız olsa bile dünyanızı kaybetmemek için, işe başlamadan önce mutlaka yedek alın.</p>
+</div>
+
+<h3>1. Dünyanın yedeğini alın</h3>
+<p>Sunucunun klasörünü (örnek: <code>C:\MinecraftServer</code>) açıp, her zaman kullandığınız yedekleme yöntemini (örnek: <code>Backup-Server.bat</code> gibi bir yedekleme betiği) çalıştırın. Özel bir betiğiniz yoksa, sunucuyu durdurmuş halde <code>world</code> klasörünü başka bir yere kopyalamanız da yeterlidir.</p>
+
+<h3>2. Java sürümünü kontrol edin</h3>
+<ol class="steps">
+  <li>Komut istemini (veya istediğiniz bir terminali) açın.</li>
+  <li><code>java -version</code> yazıp Enter'a basın.</li>
+  <li>Görüntülenen sayının <strong>25</strong> olup olmadığını kontrol edin (örnek: <code>java version "25.0.3"</code>).</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Çok önemli</div>
+  <p>
+    Minecraft <code>26.2</code>'yi çalıştırmak için <strong>Java 25</strong> gerekir. Eski kurulum talimatlarında
+    "Java 21" yazabilir; bu eski bir bilgidir, Java 21'de kalırsanız sunucu başlamaz.
+    Sayı 25'in altındaysa <a href="https://adoptium.net/">adoptium.net</a> adresini açıp
+    "Temurin 25 (LTS)"i indirip kurduktan sonra bilgisayarı yeniden başlatıp tekrar kontrol edin.
+  </p>
+</div>
+
+<h3>3. Sunucunun Minecraft sürümünü kontrol edin</h3>
+<ol class="steps">
+  <li>Her zamanki yöntemle (örnek: <code>Start-Server.bat</code>) sunucuyu bir kez başlatın.</li>
+  <li>Konsolun (siyah ekran) en başında çıkan <code>Starting minecraft server version X.Y</code> gibi bir satırı bulup o sayıyı not edin.</li>
+  <li>Konsola <code>stop</code> yazıp Enter'a basarak sunucuyu güvenli şekilde durdurun.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Dikkat</div>
+  <p>
+    Bu rehberde örnek olarak "<code>26.2</code>" yazıyoruz; kontrol ettiğiniz gerçek sayı farklıysa,
+    bundan sonraki tüm adımlarda (Fabric, Fabric API, MOD sürüm seçimleri) o sayıyı kullanın.
+    Sunucu, tüm oyuncular ve MOD'ların sürümlerinden bir tanesi bile uyuşmazsa hiç çalışmaz.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-fabric-install"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Sunucu Yöneticileri İçin</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Sunucu Yöneticileri İçin: Fabric Kurulumu</h2>
+      
+<h3>Fabric sunucusunu kurun</h3>
+<ol class="steps">
+  <li>Tarayıcıda <code>https://fabricmc.net/use/server/</code> adresini açıp "Download installer (Windows/.exe)" gibi bir butondan kurulum dosyasını indirin.</li>
+  <li>İndirdiğiniz <code>fabric-installer〜.exe</code> dosyasını çift tıklayarak başlatın ("Windows bilgisayarınızı korudu" çıkarsa "Ayrıntılı bilgi" → "Yine de çalıştır").</li>
+  <li>Kurulum ekranında şu 4 noktayı kontrol edin.
+    <ul>
+      <li>Sekme olarak "<strong>Server</strong>" seçilmeli</li>
+      <li>Minecraft Version, ön hazırlıkta kontrol ettiğiniz sunucu sürümüyle (örnek: <code>26.2</code>) aynı olmalı</li>
+      <li>Loader Version olduğu gibi bırakılabilir</li>
+      <li>Install Location, mevcut sunucu klasörünü (örnek: <code>C:\MinecraftServer</code>) göstermeli</li>
+    </ul>
+  </li>
+  <li>"Install"e basın.</li>
+  <li>Sunucu klasörünün içinde <code>fabric-server-launch.jar</code> adlı yeni bir dosya oluştuysa başarılı demektir.</li>
+</ol>
+
+<h3>Yeni bir başlatma dosyası (batch dosyası) oluşturun</h3>
+<p>
+  Şimdiye kadarki başlatma dosyası (örnek: <code>Start-Server.bat</code>) "MOD'suz" başlatan bir dosyadır.
+  <strong>Bunu silmeyip saklayın</strong> (gerekirse MOD'suz haline dönebilmek için).
+  Bunun yerine Fabric için yeni bir başlatma dosyası oluşturacağız.
+</p>
+<ol class="steps">
+  <li>Not Defteri'ni (Notepad) açın.</li>
+  <li>Aşağıdaki içeriği olduğu gibi kopyalayıp yapıştırın.
+<pre>@echo off
+cd /d "%~dp0"
+title Minecraft Fabric Server
+java -Xms2G -Xmx4G -jar fabric-server-launch.jar nogui
+echo Sunucu durdu.
+pause</pre>
+  </li>
+  <li>"Dosya" → "Farklı Kaydet" ile kaydedilecek yeri sunucu klasörü (örnek: <code>C:\MinecraftServer</code>), dosya adını <code>Start-Fabric-Server.bat</code>, dosya türünü "<strong>Tüm Dosyalar</strong>" yaparak kaydedin.</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Dikkat</div>
+  <p>
+    "Dosya türü"nü "Tüm Dosyalar" yapmazsanız, çalışmayan bir <code>Start-Fabric-Server.bat.txt</code>
+    dosyası oluşur. Ayrıca sunucu kurulumu sırasında ayrılan bellek (RAM) 4GB'den farklıysa,
+    <code>-Xmx4G</code> içindeki "4"ü o sayıya göre değiştirin.
+  </p>
+</div>
+
+    </div></div>
+<div id="admin-mods-and-verify"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Sunucu Yöneticileri İçin</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Sunucu Yöneticileri İçin: MOD Kurulumu ve Başlatma Kontrolü</h2>
+      
+<p>MOD'un kendisi "jar (car)" dosyası denen tek tek dosyalardır. Bunları sunucu klasöründeki
+<code>mods</code> klasörüne koymanız kurulum için yeterlidir.</p>
+
+<h3>1. mods klasörünü hazırlayın</h3>
+<p>Sunucu klasöründe (örnek: <code>C:\MinecraftServer</code>) <code>mods</code> adlı bir klasör olup olmadığını kontrol edin. Yoksa sağ tık → "Yeni" → "Klasör" ile <code>mods</code> (tamamı küçük harf) adında bir klasör oluşturun.</p>
+
+<h3>2. Fabric API'yi edinin</h3>
+<p><code>https://modrinth.com/mod/fabric-api/versions</code> adresini açıp, listeden "Game version (oyun sürümü) sunucuyla aynı sayı" olan en üstteki sürümü indirin (örnek: <code>fabric-api-0.154.2+26.2.jar</code>).</p>
+
+<h3>3. MOD paketini mods klasörüne koyun</h3>
+<p>
+  Fabric API 1 + Glimpse Alpha'nın 8 MOD'u olmak üzere toplam 9 jar dosyasını <code>mods</code> klasörünün
+  içine kopyalayın (arşivden çıkarmaya gerek yok, jar dosyası olarak koyun). Bu 8 MOD'un kendisini,
+  şimdiye kadarki dağıtım yolundan temin edin. <strong>Bu sitede MOD dosyalarının kendisi dağıtılmıyor.</strong>
+</p>
+<div class="table-wrap">
+<table>
+<tr><th>MOD</th><th>Örnek dosya adı</th></tr>
+<tr><td>Silahlar</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>Demiryolu</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>Yapı ve Dekorasyon</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>Araçlar</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>Gökyüzü</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>Hayatta Kalma</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>Elektrik</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+</table>
+</div>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Dikkat</div>
+  <p>jar dosyalarını çift tıklamayın (açmanıza gerek yok). Sadece klasöre koymanız yeterlidir.</p>
+</div>
+
+<h3>4. Sunucuyu başlatıp kontrol edin</h3>
+<ol class="steps">
+  <li>Az önce oluşturduğunuz <code>Start-Fabric-Server.bat</code> dosyasını çift tıklayın (eskiden kullandığınız <code>Start-Server.bat</code> artık kullanılmıyor).</li>
+  <li>Konsolda (siyah ekran) şu 2 noktayı kontrol edin.
+    <ul>
+      <li>MOD'ları okuduğu satırda, kurduğunuz MOD'ların adı çıkıyor</li>
+      <li>En sonunda <code>Done (…s)! For help, type "help"</code> yazısı görünüp, durmadan çalışmaya devam ediyor</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 Java hatası çıkıp başlamıyorsa</div>
+  <p>
+    "class file version", "requires Java" gibi İngilizce bir hata çıkıyorsa, Java eski olabilir.
+    <a href="https://adoptium.net/">adoptium.net</a>'ten "Temurin 25 (LTS)"in Windows sürümünü (.msi)
+    kurup bilgisayarı yeniden başlattıktan sonra tekrar deneyin.
+  </p>
+</div>
+
+<p>Başlatma doğrulandıktan sonra, sırada <a href="#player-setup">Oyuncular İçin</a> bölümünü tüm katılımcılara
+iletip, herkesin kendi bilgisayarına aynı Fabric ve MOD paketini kurmasını sağlayın.</p>
+
+    </div></div>
+<div id="admin-upgrade"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Sunucu Yöneticileri İçin</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">MOD&#x27;ları Yeni Sürümle Değiştirirken</h2>
+      
+<p>Glimpse Alpha'daki 8 MOD birbirinden tamamen bağımsız olduğundan, her güncellemede 8'inin de
+birden değişeceği anlamına gelmez. Gerçekten içeriği değişen MOD'u değiştirmeniz yeterlidir
+(hangi MOD'un değiştiğini dağıtım sırasındaki bilgilendirmeden veya <a href="../changelog/">Güncelleme Geçmişi</a>'nden kontrol edebilirsiniz).</p>
+
+<h3>Güncelleme adımları</h3>
+<ol class="steps">
+  <li>Sunucunun konsoluna <code>stop</code> yazıp sunucuyu durdurun.</li>
+  <li>Her zamanki yedekleme yöntemiyle dünyanın yedeğini alın.</li>
+  <li>Sunucunun <code>mods</code> klasöründeki, <strong>güncellenecek MOD'un eski jar dosyasını silip</strong>, yeni jar dosyasını koyun (aynı MOD'un eskisi ve yenisi birlikte kalırsa başlatılamaz).</li>
+  <li><code>Start-Fabric-Server.bat</code> ile sunucuyu başlatıp, konsolda güncellenmiş sürümün göründüğünü kontrol edin.</li>
+  <li><strong>Tüm katılımcılara da yeni jar dosyalarını dağıtıp</strong>, aynı şekilde değiştirmelerini sağlayın (<a href="#player-setup">Oyuncular İçin</a> bölümüne bakın). Yalnızca sunucu tarafı veya yalnızca oyuncu tarafı yeni sürümde olursa katılınamaz.</li>
+</ol>
+
+<div class="callout callout--danger">
+  <div class="callout__title">🛑 Çok önemli</div>
+  <p>
+    Bir MOD'u (güncelleme değil) tamamen kaldırılmış halde sunucuyu başlatırsanız, o MOD ile
+    yerleştirilen bloklar veya sahip olunan eşyalar (trafik ışığı vb.) kaybolur. Bu Minecraft ve Fabric'in
+    kendi yapısıdır, geri alınamaz. Kaldırmadan önce mutlaka yedek alın.
+  </p>
+</div>
+
+<h3>config dosyaları hakkında (otomatik onarım mekanizması)</h3>
+<p>
+  Her MOD, başlatıldığında <code>config/</code> klasörünün içinde bir ayar dosyası (örnek: <code>sorakaze_guns.json</code>)
+  otomatik olarak oluşturur. Güç ve hız gibi değerler burada ayarlanabilir; her güncellemede elle silmenize
+  veya değiştirmenize temelde gerek yoktur.
+</p>
+<div class="callout callout--info">
+  <div class="callout__title">💡 Şu anki mekanizma</div>
+  <p>
+    Yeni sürümde başlangıç değeri değişen öğeler, <strong>yalnızca henüz ayarlanmamış (eski başlangıç değerinde kalan) öğeler için</strong>
+    otomatik olarak yeni başlangıç değerine güncellenir. <strong>Kendinizin ayarladığı değerlere dokunulmaz.</strong>
+    Yeni eklenen ayar öğeleri de başlatıldığında otomatik olarak eklenir. Neyin güncellendiği
+    <code>logs/latest.log</code> dosyasına "eski değer → yeni değer" şeklinde mutlaka kaydedilir.
+  </p>
+</div>
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ Ayar dosyasını düzenlerken dikkat</div>
+  <p>
+    Ayar dosyasındaki değerlerden yalnızca bir kısmını elle silerseniz (örnek: bir silahın ayar
+    grubundan yalnızca hasar satırını silmek), o öğe sessizce MOD'un içindeki başka bir başlangıç
+    değerine dönüşebilir (hata çıkmaz). Belirli bir değeri ayarlamak istiyorsanız, o öğenin değerini
+    doğrudan değiştirin. Ayarları tamamen başlangıç durumuna döndürmek isterseniz, ilgili MOD'un
+    ayar dosyasını komple silin; bir sonraki başlatmada başlangıç değerleriyle yeniden oluşturulur.
+  </p>
+</div>
+
+    </div></div>
+<div id="gameplay-notices"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Oynamadan Önce Bilinmesi Gereken Noktalar</h2>
+      
+<p>
+  Glimpse Alpha, vanilla davranışını etkileyen birkaç değişiklik de içeriyor. Burada özellikle gözden
+  kaçırılabilecek noktalar bir araya getirildi. Ayrıntılı değerler her güncellemede ayarlanabildiğinden,
+  en güncel durumu <a href="../changelog/">Güncelleme Geçmişi</a> veya
+  <a href="../known-issues/">Bilinen Sorunlar</a> sayfasından da kontrol edin. config ayarları
+  sunucu yöneticisi tarafından yapılır.
+</p>
+
+<h3>Kızıltaş için "elektrik" gerekiyor</h3>
+<p>
+  Elektrik MOD'unun kurulmasıyla, vanilla kızıltaşın bir kısmı tek başına çalışmaz hale geliyor.
+</p>
+<ul>
+  <li><strong>Elektrik gerektirenler:</strong> Kızıltaş tozu, tekrarlayıcı, karşılaştırıcı, kızıltaş bloğu, kızıltaş meşalesi. Bunlar kabloyla elektrik bağlanana kadar sinyal vermez. Otomatik çiftlik, istasyon, otomatik kapı, huni sıraları kablolanana kadar durmuş kalır.</li>
+  <li><strong>Elektrik olmadan da eskisi gibi kullanılabilenler:</strong> Kaldıraç, buton, basınç plakası, tuzak teli kancası, gözlemci, gün ışığı sensörü, sculk sensörü, hedef tahtası, tuzak sandığı, dedektör rayı, kürsü, müzik kutusu, paratoner vb. Kapı ve kapağı elle açma işlemi de eskisi gibi kullanılabilir.</li>
+  <li>Yerleştirildikten yaklaşık 10 dakika sonra kızıltaş bloğu kendiliğinden kırılır (eşya olarak elinize geri döner).</li>
+</ul>
+<div class="callout callout--info">
+  <div class="callout__title">💡 Eski haline döndürme yöntemi (sunucu yöneticileri için)</div>
+  <p>
+    <code>config/sorakaze_power.json</code> dosyasındaki <code>powerEnabled</code> değerini
+    <code>false</code> yaparak, kızıltaşın elektrikli hale gelmesini tamamen devre dışı bırakabilirsiniz.
+  </p>
+</div>
+
+<h3>Yapı Malzemeleri'ndeki bazı cihazlar da elektrik gerektiriyor</h3>
+<p>
+  Güvenlik kamerası, asansör, yürüyen merdiven, otomatik kapı ve ATM olmak üzere 5 cihaz, kabloyla
+  elektrik çekilmediğinde çalışmaz (asansör, elektrik olmasa bile yalnızca "iniş" yönünde çalışmaya
+  devam eder). Her cihaz için <code>config/sorakaze_deco.json</code> dosyasındaki ilgili öğeyi
+  <code>false</code> yaparak, tek tek elektrik gereksinimini kaldırabilirsiniz.
+</p>
+
+<h3>Jeneratör, odayı ısıtır</h3>
+<p>
+  Çalışan jeneratör ve nükleer santral, aynı mekânın sıcaklığını yükseltir. Soğutabilen tek şey
+  klimadır. Makine odasını duvar ve kapalı bir kapıyla ayırırsanız, ısı diğer odalara yayılmaz ve
+  kolayca önlem alınmış olur. Bu özelliğin kendisi
+  <code>config/sorakaze_survival.json</code> dosyasındaki
+  <code>temperatureMachineHeatEnabled</code> değeri <code>false</code> yapılarak devre dışı bırakılabilir.
+</p>
+
+<h3>Gökyüzü'nün dünyasının yüksekliği genişletildi</h3>
+<p>
+  Gökyüzü MOD'unun kurulmasıyla, normal dünyada (Üst Dünya) inşa edilebilen yükseklik üst sınırı
+  yükseltildi. Değişen yalnızca gökyüzü tarafındaki üst sınır; yeraltının derinliği (tabanın yüksekliği) ve
+  mevcut arazi olduğu gibi kalıyor.
+</p>
+
+<h3>Roketatar araziyi tahrip ediyor</h3>
+<p>
+  Silahlar MOD'undaki Roketatar, varsayılan ayarlarda isabet ettiği noktadaki araziyi tahrip ediyor.
+  Vanilla oyun kuralı <code>mobGriefing</code> <code>false</code> yapılsa bile durmuyor.
+  Tahribatı durdurmak için <code>config/sorakaze_guns.json</code> dosyasındaki <code>rocketDestroysTerrain</code>
+  değerini <code>false</code> yapmanız gerekiyor. Üssünüzün yakınında özellikle dikkatli olun.
+</p>
+
+<h3>Silahların gücü hakkında</h3>
+<p>
+  Silahlar MOD'undaki silahlar, özellikle Saldırı Tüfeği, çok yüksek bir güce sahip; MOD ile eklenen
+  boss'ların çoğu birkaç saniyede yenilebiliyor. Zorluk isteniyorsa, sunucu yöneticisi
+  <code>config/sorakaze_guns.json</code> dosyasındaki her silahın hasar değerini ayarlayarak zorluğu geri getirebilir.
+</p>
+
+<h3>Bir MOD kaldırılırsa, yerleştirilen blok ve eşyalar kaybolur</h3>
+<p>
+  Bu, MOD'ların genel bir özelliğidir; Glimpse Alpha'ya özgü bir hata değildir. MOD kuruluyken
+  yerleştirilen bloklar veya elde edilen eşyalar, o MOD kaldırıldığında dünyadan kaybolur.
+  Geri getirmenin tek yolu yedekten geri yüklemektir.
+</p>
+
+    </div></div>
+<div id="faq"><div class="card" style="margin-bottom:20px;">
+      
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Sık Sorulan Sorular ve Sorun Giderme</h2>
+      
+<h3>Sık Sorulan Sorular</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Soru</th><th>Cevap</th></tr>
+<tr><td>Dünya kaybolmaz mı?</td><td>Kaybolmaz. Fabric kurulsa bile, şimdiye kadarki dünyanız olduğu gibi kullanılabilir. Endişeleniyorsanız kurulumdan önce mutlaka yedek alın.</td></tr>
+<tr><td>MOD kurmamış arkadaşım katılabilir mi?</td><td>Katılamaz. Tüm oyuncuların <a href="#player-setup">Oyuncular İçin</a> bölümündeki ayarları yapması gerekir.</td></tr>
+<tr><td>MOD'suz (vanilla) haline dönmek istiyorum</td><td>Sunucu tarafı, şimdiye kadarki MOD'suz başlatma dosyasıyla başlatılırsa MOD'suz hale dönebilir (MOD ile eklenen blok/eşyalar kaybolur).</td></tr>
+<tr><td>MOD güncelledikten sonra birden oynanamaz hale geldi</td><td>Sunucu ve oyuncu tarafında MOD sürümlerinin eşleştiğini kontrol edin. Yalnızca bir tarafı yeni durumdaysa katılınamaz.</td></tr>
+<tr><td>Hata mesajının İngilizcesini okuyamıyorum</td><td>Okuyamamanız sorun değil. <code>logs</code> klasörü içindeki <code>latest.log</code> adlı dosyayı olduğu gibi sunucu yöneticinize gönderin.</td></tr>
+</table>
+</div>
+
+<h3>Sunucu başlamıyorsa</h3>
+<ol class="steps">
+  <li><code>mods</code> klasörünün içindekilerin tamamını geçici olarak başka bir yere taşıyın.</li>
+  <li>Birer birer geri koyup başlatmayı tekrarlayarak, hangi dosyanın sorunlu olduğunu belirleyin.</li>
+  <li>Java ile ilgili bir hata çıkıyorsa, <a href="#admin-prep">Ön Hazırlık</a> bölümüne bakarak Java sürümünü kontrol edin.</li>
+</ol>
+
+<h3>Sunucuya girilebiliyor ama bağlanılamıyorsa</h3>
+<ol class="steps">
+  <li>Tüm katılımcıların sürüm ve MOD kombinasyonunun sunucuyla tamamen aynı olduğunu kontrol edin.</li>
+  <li>Özellikle Fabric API sürüm farkı sık görülen bir sebep olduğundan öncelikle onu kontrol edin.</li>
+</ol>
+
+<div class="callout callout--info">
+  <div class="callout__title">💡 Yine de düzelmiyorsa</div>
+  <p><code>logs/latest.log</code> dosyasını sunucu yöneticinize gönderip danışın. Telaşlanmanıza gerek yok; yedeğiniz varsa her zaman eski haline dönebilirsiniz.</p>
+</div>
+
+<h3>Yedekten dünyayı geri yükleme yöntemi (sunucu yöneticileri için)</h3>
+<ol class="steps">
+  <li>Sunucunun konsoluna <code>stop</code> yazıp sunucuyu durdurun.</li>
+  <li>Yedeğin saklandığı yerden (örnek: <code>C:\MinecraftServer\backups</code>) en yeni yedeği çıkarın (zip formatındaysa sağ tık → "Tümünü Ayıkla").</li>
+  <li>Çıkardığınız <code>world</code> klasörünü, sunucu klasöründeki <code>world</code> klasörüyle değiştirin (üzerine yazın).</li>
+  <li>Sunucuyu başlatın.</li>
+</ol>
+
+    </div></div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu Sunucusuna Kurulu MOD&#x27;lar İçin Resmî Olmayan Kaynak</p>
+    <p class="site-footer__note">Bu site resmî olmayan bir kaynaktır. MOD dosyalarının (jar) dağıtımı yapılmamaktadır. Tarifler ve değerler, kurulu sürüme ve sunucu tarafındaki config ayarlarına göre gerçek oyundakinden farklı olabilir.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

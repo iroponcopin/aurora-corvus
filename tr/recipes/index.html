@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarif Rehberi | Glimpse Alpha Wiki</title>
+<meta name="description" content="Glimpse Alpha MOD paketindeki tüm eşyaların yapım tarifleri bir arada. Arama ve kategoriye göre filtreleme destekli.">
+<meta property="og:title" content="Tarif Rehberi | Glimpse Alpha Wiki">
+<meta property="og:description" content="Glimpse Alpha MOD paketindeki tüm eşyaların yapım tarifleri bir arada. Arama ve kategoriye göre filtreleme destekli.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../assets/js/recipes.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menüyü aç">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">Ana Sayfa</a></li>
+        <li><a href="../changelog/">Güncelleme Geçmişi</a></li>
+        <li><a href="../recipes/" class="active">Tarif Rehberi</a></li>
+        <li><a href="../guide/">Kurulum Rehberi</a></li>
+        <li><a href="../roadmap/">Yol Haritası</a></li>
+        <li><a href="../known-issues/">Bilinen Sorunlar</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Dil / Language">
+          🌐 <span>Türkçe</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../recipes/">日本語</a></li>
+        <li><a href="../../en/recipes/">English</a></li>
+        <li><a href="../../es/recipes/">Español</a></li>
+        <li><a href="../../fr/recipes/">Français</a></li>
+        <li><a href="../../zh/recipes/">简体中文</a></li>
+        <li><a href="../../ko/recipes/">한국어</a></li>
+        <li><a href="../../pt-br/recipes/">Português (Brasil)</a></li>
+        <li><a href="../../it/recipes/">Italiano</a></li>
+        <li><a href="../../ar/recipes/">العربية</a></li>
+        <li><a href="../../ru/recipes/">Русский</a></li>
+        <li><a href="../../id/recipes/">Bahasa Indonesia</a></li>
+        <li><a href="../../de/recipes/">Deutsch</a></li>
+        <li><a href="../../tr/recipes/" class="active" aria-current="true">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Renk temasını değiştir" title="Renk temasını değiştir">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">Tarif Rehberi</span>
+  <h1>Tarif Rehberi</h1>
+  <p class="lede">Kurulu 8 MOD&#x27;daki toplam 928 çeşit eşya ve bloğun yapım tariflerini bir araya getirdik. Bir eşyaya tıkladığınızda, gerçek çalışma tezgahındaki gibi 3×3 düzende tarifi görebilirsiniz. Sağ üstteki &quot;Nasıl Kullanılır&quot; sekmesinde otomatik ayrıştırma veya elektrik altyapısı gibi kablolama gerektiren özelliklerin kullanımı da anlatılıyor.</p>
+</div>
+
+<noscript>
+  <p class="callout callout--warn">Bu sayfanın görüntülenmesi için JavaScript gereklidir. Lütfen tarayıcı ayarlarınızı kontrol edin.</p>
+</noscript>
+
+<div id="recipeApp" hidden>
+  <div class="filter-bar">
+    <input type="search" id="recipeSearch" placeholder="Eşya adıyla ara…" aria-label="Eşya adıyla ara…">
+  </div>
+  <div class="tab-bar" id="recipeTabs" role="tablist"></div>
+  <p class="recipe-count" id="recipeCount"></p>
+  <p id="recipeEmpty" class="empty-state" hidden>Eşleşen bir eşya bulunamadı.</p>
+  <div class="grid grid--recipes" id="recipeGrid"></div>
+  <div id="guidePane" hidden></div>
+</div>
+
+<div class="recipe-modal-backdrop" id="recipeModalBackdrop">
+  <div class="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="recipeModalTitle">
+    <button class="recipe-modal__close" id="recipeModalClose" aria-label="Kapat">&times;</button>
+    <div id="recipeModalBody"></div>
+  </div>
+</div>
+<script>
+  window.SITE_LANG = "tr";
+  window.SITE_STRINGS = {"tabAll": "Tümü", "tabGuides": "Nasıl Kullanılır", "howToObtain": "Nasıl elde edilir:", "noRecipeInfo": "Tarif bilgisi bulunmuyor.", "countSuffix": " sonuç", "loadError": "Tarif verileri yüklenemedi.", "ioIn": "Girdi", "ioOut": "Çıktı"};
+</script>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — Sorakazekarasu Sunucusuna Kurulu MOD&#x27;lar İçin Resmî Olmayan Kaynak</p>
+    <p class="site-footer__note">Bu site resmî olmayan bir kaynaktır. MOD dosyalarının (jar) dağıtımı yapılmamaktadır. Tarifler ve değerler, kurulu sürüme ve sunucu tarafındaki config ayarlarına göre gerçek oyundakinden farklı olabilir.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
