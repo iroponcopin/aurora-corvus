@@ -147,7 +147,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 .brand:hover { opacity: 1; }
 .brand__mark { color: var(--accent); font-size: 1.1em; }
 .site-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
-.site-nav ul { list-style: none; display: flex; gap: 2px; margin: 0; padding: 0; }
+.site-nav > ul { list-style: none; display: flex; gap: 2px; margin: 0; padding: 0; }
 .site-nav a {
   display: inline-block; padding: 8px 12px; border-radius: 999px; color: var(--text-muted);
   text-decoration: none; font-size: 0.92rem; font-weight: 600; white-space: nowrap;
@@ -196,7 +196,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
     transition: opacity 0.15s ease, transform 0.15s ease; overflow-y: auto;
   }
   .site-nav.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .site-nav ul { flex-direction: column; gap: 4px; }
+  .site-nav > ul { flex-direction: column; gap: 4px; }
   .site-nav a { padding: 14px 12px; font-size: 1.05rem; }
   .lang-switch { margin: 8px 0 0; align-self: stretch; width: 100%; }
   .lang-switch__toggle { width: 100%; justify-content: space-between; }

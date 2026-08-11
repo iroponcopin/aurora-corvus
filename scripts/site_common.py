@@ -44,6 +44,9 @@ LANG_DIR = {c: d for c, n, d in LANGUAGES}
 # across nav tags, recipe category tabs, and changelog mod badges. cat_index
 # is this mod's primary category tab index in data/recipes.json's "cats"
 # array (0=銃 1=電車 2=建材 3=ドア 4=乗り物 5=ボス 6=天空 7=サバイバル 8=電力) —
+# backrooms has 0 recipes so far, so its cat_index (9) intentionally points at
+# a tab that doesn't exist yet; recipes.js's hash-guard falls back to "all"
+# safely (see init()'s `state.master.cats[parseInt(h, 10)]` check) —
 # used for recipes/#<n> deep links from the home page's mod cards. deco also
 # has a secondary "ドア" (3) category, not linked here for simplicity.
 # Names/taglines are looked up per-language from the bundle's ui.mods; "key"
@@ -57,6 +60,7 @@ MOD_ORDER = [
     {"id": "sorakaze_survival", "key": "survival", "color": "#c19a2e", "cat_index": 7},
     {"id": "sorakaze_vehicles", "key": "vehicles", "color": "#d17a34", "cat_index": 4},
     {"id": "sorakaze_power", "key": "power", "color": "#d4b32e", "cat_index": 8},
+    {"id": "sorakaze_backrooms", "key": "backrooms", "color": "#7d7d52", "cat_index": 9},
 ]
 MODS_BY_ID = {m["id"]: m for m in MOD_ORDER}
 MODS_BY_KEY = {m["key"]: m for m in MOD_ORDER}

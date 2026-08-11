@@ -69,7 +69,7 @@
       
 <p>
   <strong>Glimpse Alpha</strong> (formerly known as Sorakaze) is the group of Fabric mods
-  installed on the Sorakazekarasu server. It's made up of 8 independent mods, each of which
+  installed on the Sorakazekarasu server. It's made up of 9 independent mods, each of which
   can be installed and updated separately. It doesn't replace or remove vanilla (unmodded)
   content like bows or minecarts — instead, it adds new items, blocks, and dimensions.
 </p>
@@ -85,6 +85,7 @@
 <tr><td>Sky</td><td>A new dimension called "Sky," and the angel city and kingdom that live there</td></tr>
 <tr><td>Survival</td><td>New ores, armor, and life-support features like temperature and the seasons</td></tr>
 <tr><td>Power</td><td>Power generation and transmission networks, plus electric devices</td></tr>
+<tr><td>Backrooms</td><td>Sanity-driven exploration of a hidden liminal area, reached through a rift near End Cities</td></tr>
 </table>
 </div>
 <p>For a detailed list of each mod's items and recipes, see the <a href="../recipes/">Recipes</a> page;
@@ -110,8 +111,8 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 
 <h3>Who needs to set up what</h3>
 <ul>
-  <li><strong>The server (the Sorakazekarasu server)</strong> — Fabric server + Fabric API + the 8 Glimpse Alpha mods</li>
-  <li><strong>Each individual player's PC</strong> — Fabric client + Fabric API + the 8 Glimpse Alpha mods (must exactly match the server's combination)</li>
+  <li><strong>The server (the Sorakazekarasu server)</strong> — Fabric server + Fabric API + the 9 Glimpse Alpha mods</li>
+  <li><strong>Each individual player's PC</strong> — Fabric client + Fabric API + the 9 Glimpse Alpha mods (must exactly match the server's combination)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -143,7 +144,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <tr><td>Minecraft version</td><td><code>26.2</code></td></tr>
 <tr><td>Required Java</td><td>Java 25 (<a href="https://adoptium.net/">Temurin 25 (LTS)</a> recommended)</td></tr>
 <tr><td>Fabric API</td><td>Whichever build matches your Minecraft version (e.g. <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
-<tr><td>Mod lineup</td><td>8 mods (Guns, Rail, Building/Decor, Vehicles, Boss, Sky, Survival, Power)</td></tr>
+<tr><td>Mod lineup</td><td>9 mods (Guns, Rail, Building/Decor, Vehicles, Boss, Sky, Survival, Power, Backrooms)</td></tr>
 </table>
 </div>
 
@@ -169,7 +170,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <h3>What you'll need</h3>
 <ul>
   <li>A Windows or Mac PC that can run Minecraft: Java Edition</li>
-  <li>The <strong>full mod set from your server admin (9 jar files = 1 Fabric API + the 8 Glimpse Alpha mods)</strong></li>
+  <li>The <strong>full mod set from your server admin (10 jar files = 1 Fabric API + the 9 Glimpse Alpha mods)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -184,7 +185,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 </div>
 
 <h3>Files you'll likely receive (example)</h3>
-<p>You'll get roughly these 9 files from your server admin (the version numbers change with every update).</p>
+<p>You'll get roughly these 10 files from your server admin (the version numbers change with every update).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Filename (example)</th><th>What it is</th></tr>
@@ -197,6 +198,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Sky mod</td></tr>
 <tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Survival mod</td></tr>
 <tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Power mod</td></tr>
+<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms mod</td></tr>
 </table>
 </div>
 
@@ -249,7 +251,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <ol class="steps">
   <li>Type <code>%appdata%\.minecraft</code> into File Explorer's address bar and press Enter.</li>
   <li>If there's no <code>mods</code> folder, create one (all lowercase).</li>
-  <li>Copy all 9 jar files you received into this <code>mods</code> folder (no need to unzip — drop the jars in as-is).</li>
+  <li>Copy all 10 jar files you received into this <code>mods</code> folder (no need to unzip — drop the jars in as-is).</li>
 </ol>
 
 <h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
@@ -257,13 +259,13 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
   <li>Click the desktop once, then press <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> together (or use the menu bar's "Go" → "Go to Folder…").</li>
   <li>Paste <code>~/Library/Application Support/minecraft</code> exactly as-is into the box that appears and press Enter (don't forget the leading "<code>~</code>"). "Library" is normally hidden in Finder, so this is the reliable way to get there.</li>
   <li>If there's no <code>mods</code> folder, right-click in that window and choose "New Folder" to create one.</li>
-  <li>Drag and drop all 9 jar files you received into this <code>mods</code> folder.</li>
+  <li>Drag and drop all 10 jar files you received into this <code>mods</code> folder.</li>
 </ol>
 
 <h3>③ Launch with Fabric and join the server</h3>
 <ol class="steps">
   <li>Open the Minecraft launcher and, from the list of launch profiles near the "Play" button, pick something named like <code>fabric-loader-26.2</code> (staying on "Latest Release" will launch without any mods).</li>
-  <li>Click "Play" to launch as usual. If a "Mods" button has appeared on the title screen, it worked — clicking it will show all 8 Glimpse Alpha mods plus Fabric API.</li>
+  <li>Click "Play" to launch as usual. If a "Mods" button has appeared on the title screen, it worked — clicking it will show all 9 Glimpse Alpha mods plus Fabric API.</li>
   <li>From there, connect to the server through "Multiplayer" as usual.</li>
 </ol>
 
@@ -300,7 +302,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
       
 <p>
   From here on, this chapter is for whoever runs and administers the server itself. It walks
-  through adding Fabric and the 8 Glimpse Alpha mods to a Minecraft server that's already
+  through adding Fabric and the 9 Glimpse Alpha mods to a Minecraft server that's already
   running vanilla (a standard, unmodded server). This chapter uses a Windows server as its
   example. If you're running your server on Mac / Linux, translate the folder locations and
   command steps to your own environment and follow the same general process (per the official
@@ -413,8 +415,8 @@ pause</pre>
 
 <h3>3. Put the full mod set in the mods folder</h3>
 <p>
-  Copy all 9 jar files — 1 Fabric API + the 8 Glimpse Alpha mods — into the <code>mods</code> folder
-  (no need to unzip — drop the jars in as-is). Get the 8 mods themselves through whatever
+  Copy all 10 jar files — 1 Fabric API + the 9 Glimpse Alpha mods — into the <code>mods</code> folder
+  (no need to unzip — drop the jars in as-is). Get the 9 mods themselves through whatever
   distribution channel you've been using. <strong>This site does not distribute the mods
   themselves.</strong>
 </p>
@@ -429,6 +431,7 @@ pause</pre>
 <tr><td>Sky</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
 <tr><td>Survival</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
 <tr><td>Power</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -466,8 +469,8 @@ on their own PCs.</p>
       <div class="badge-row"><span class="type-badge type-visual">For Server Admins</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Updating to a New Mod Version</h2>
       
-<p>Since Glimpse Alpha's 8 mods are each fully independent, an update doesn't necessarily mean
-all 8 get replaced. You only need to swap out the mods whose contents actually changed
+<p>Since Glimpse Alpha's 9 mods are each fully independent, an update doesn't necessarily mean
+all 9 get replaced. You only need to swap out the mods whose contents actually changed
 (check the distribution notes or the <a href="../changelog/">Changelog</a> to see which mods
 were touched).</p>
 

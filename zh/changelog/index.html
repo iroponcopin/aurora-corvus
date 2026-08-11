@@ -61,7 +61,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新日志</span>
   <h1>更新日志</h1>
-  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-09，共 38 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 39 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
   <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
 </div>
 
@@ -70,7 +70,7 @@
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">MOD：</span>
-  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">枪械</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">铁道</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">建材、装饰</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">生存</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">载具</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">电力</button>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">枪械</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">铁道</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">建材、装饰</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">生存</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">载具</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">电力</button><button class="chip" type="button" data-filter-mod="backrooms" aria-pressed="false">后室</button>
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">类型：</span>
@@ -79,6 +79,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>没有符合条件的更新记录。</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="boss survival backrooms">
+      <div class="timeline-entry__date">2026-08-11</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.9.0</span> — 新增 MOD「后室」，凋灵风暴全面刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>第 9 个 MOD「后室」正式加入。这是一项带有理智值机制的探索内容，玩家会从末地城生成的裂缝中误入其中。Boss MOD 的凋灵风暴迎来全面刷新，涵盖外观、成长阶段与全新的异常状态，还新增了确定掉落物。建材、枪械、电力、天空、铁道、载具这 6 个 MOD 均无变化。</p>
+      <ul><li>第 9 个 MOD「后室」(sorakaze_backrooms) 正式加入。每当生成一座末地城，都会在其附近的安全地点必定生成 1 处裂缝（祭坛）（已生成的末地城不会补加）。</li><li>搭载了理智值（Sanity）系统。上限为 100，放任不管的话约 18 分钟会归零。饮用宝箱中找到的恢复道具可恢复 35 点。约每 30 秒有 12% 的概率发生「停电」，理智值低于 20 后周围景象会开始变化。</li><li>在迷宫内无法放置方块，墙壁、地板、天花板（包括箱子在内）一律无法破坏。不会影响其他维度。</li><li>怪异「空寂聆听者」会四处徘徊（HP40，攻击力 6。被注视时会停止不动，视线一移开又会重新行动）。同时最多出现 3 只。</li><li>画面上会常驻显示三阶段的进度任务（①确认生存 → ②收集痕迹 → ③逃离此地）。</li><li>凋灵风暴（Boss）的外观进行了全面重做。从固定 HP、单体形态的规格，刷新为成长阶段系统（S0 胚胎 → S1 蚕食 → S2 狩猎 → S3 蹂躏 → S4 风暴 → S5 极限，HP 从 600 到 24,000）。会根据吞噬的物品与生物量而进阶，S2 阶段起会悬浮并产生吸引周围物体的重力场。</li><li>新增状态异常「凋灵症」。反复暴露在牵引光束、重力场下会诱发（默认每秒伤害为原版凋灵效果的一半，喝牛奶即可像其他状态异常一样治愈）。</li><li>新增管理员专用指令 /glimpse storm restore [radius]，可以把凋灵风暴啃食掉的地形从记录中写回复原。</li><li>凋灵风暴新增了 2 种确定掉落物：「万能采集器α」（耐久与金镐相同为 32，无法附魔，与现有的「万能采集器」是不同的物品）和「烟花人偶α」（可无限次使用，但每次使用后有 3 分钟冷却，是现有烟花人偶的上位版）。</li><li>此前一直随附的「レシピ早見表.html」（合成配方速查表）已停止分发。合成方法的参考位置已转移到本站点。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>所有者提出的委托中曾使用「杏仁水」这一名称，本次并未采用。这是因为判断该名称在 Backrooms 系创作社区中，是与理智值恢复道具本身绑定的专属名词。功能（恢复理智值、由宝箱产出、一次性饮用）没有变化，只是把名字改成了「静谧之滴」。</li><li>手持方块类物品时右键点击宝箱，会因放置判定优先生效而无法打开。请先清空手持物，或换成其他物品后再打开。</li><li>不需要删除或改写 config。本次新增的只是新的设置项，现有设置的默认值没有任何变化。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>后室的整体外观（迷宫墙纸、灯光氛围，怪异的外观与静止演出，停电演出，进度任务 HUD 的显示，宝箱内容物的观感）尚未在实机游玩中确认。</li><li>凋灵风暴的新外观、各成长阶段的造型变化、重力场演出、啃食地形的视觉效果也均未确认。</li><li>感染凋灵症时的外观与音效，以及万能采集器α、烟花人偶α的外观（图标、手持模型）也均未确认。</li><li>后室专用的启动验证（runBackroomsBoot）尚未作为专用服务器上的单独测试执行（在 9 MOD 同时启动测试中已确认到维度加载这一步）。</li><li>2 人同时游玩时的同步情况、9 MOD 同时运行时的服务器负载均未验证。</li><li>幽匿傀儡、洛克洛克、克拉肯、泰坦的攻击动作，以及雷霆之枪的投掷功能，本次仍未实装，继续留到下次处理。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="guns power">
       <div class="timeline-entry__date">2026-08-10</div>
       <h3 class="timeline-entry__title">

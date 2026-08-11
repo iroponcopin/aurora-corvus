@@ -69,7 +69,7 @@
       
 <p>
   <strong>Glimpse Alpha</strong> (antes llamado Sorakaze) es el conjunto de MOD de Fabric
-  instalado en el servidor Sorakazekarasu. Está formado por 8 MOD independientes que se
+  instalado en el servidor Sorakazekarasu. Está formado por 9 MOD independientes que se
   pueden instalar y actualizar por separado. No sustituye ni elimina elementos vanilla
   (el estándar sin MOD) como el arco y flecha o la vagoneta; se limita a añadir objetos,
   bloques y dimensiones nuevas.
@@ -86,6 +86,7 @@
 <tr><td>Cielo</td><td>La nueva dimensión «Cielo» y la ciudad/el reino de los ángeles que vive allí</td></tr>
 <tr><td>Supervivencia</td><td>Nuevos minerales y armaduras, y elementos de vida cotidiana como la temperatura y las estaciones del año</td></tr>
 <tr><td>Electricidad</td><td>Redes de generación y distribución eléctrica, y aparatos que funcionan con electricidad</td></tr>
+<tr><td>Backrooms</td><td>Exploración liminal con medidor de cordura</td></tr>
 </table>
 </div>
 <p>Para ver los objetos y recetas detallados de cada MOD, consulta la <a href="../recipes/">tabla de recetas</a>; para los cambios hasta ahora, consulta el <a href="../changelog/">historial de actualizaciones</a>.</p>
@@ -109,8 +110,8 @@
 
 <h3>Quién prepara qué</h3>
 <ul>
-  <li><strong>El servidor (Sorakazekarasu)</strong> — el servidor de Fabric + Fabric API + los 8 MOD de Glimpse Alpha</li>
-  <li><strong>El PC de cada persona que participe</strong> — el cliente de Fabric + Fabric API + los 8 MOD de Glimpse Alpha (exactamente la misma combinación que el servidor)</li>
+  <li><strong>El servidor (Sorakazekarasu)</strong> — el servidor de Fabric + Fabric API + los 9 MOD de Glimpse Alpha</li>
+  <li><strong>El PC de cada persona que participe</strong> — el cliente de Fabric + Fabric API + los 9 MOD de Glimpse Alpha (exactamente la misma combinación que el servidor)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -143,7 +144,7 @@
 <tr><td>Versión de Minecraft</td><td><code>26.2</code></td></tr>
 <tr><td>Java necesario</td><td>Java 25 (se recomienda <a href="https://adoptium.net/">Temurin 25 (LTS)</a>)</td></tr>
 <tr><td>Fabric API</td><td>La que corresponda a la versión de Minecraft (ejemplo: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
-<tr><td>Composición de MOD</td><td>8 (armas de fuego, ferrocarril, materiales/decoración, vehículos, jefes, cielo, supervivencia, electricidad)</td></tr>
+<tr><td>Composición de MOD</td><td>9 (armas de fuego, ferrocarril, materiales/decoración, vehículos, jefes, cielo, supervivencia, electricidad, Backrooms)</td></tr>
 </table>
 </div>
 
@@ -170,7 +171,7 @@
 <h3>Lo que necesitas</h3>
 <ul>
   <li>Un PC con Windows o Mac donde puedas jugar a Minecraft Java Edition</li>
-  <li>El <strong>conjunto de MOD (9 archivos jar = 1 de Fabric API + 8 MOD de Glimpse Alpha)</strong> que te dé el administrador del servidor</li>
+  <li>El <strong>conjunto de MOD (10 archivos jar = 1 de Fabric API + 9 MOD de Glimpse Alpha)</strong> que te dé el administrador del servidor</li>
 </ul>
 
 <div class="callout callout--danger">
@@ -185,7 +186,7 @@
 </div>
 
 <h3>Archivos que vas a recibir (ejemplo)</h3>
-<p>Recibirás del administrador del servidor unos 9 archivos parecidos a estos (el número de versión cambia con cada actualización).</p>
+<p>Recibirás del administrador del servidor unos 10 archivos parecidos a estos (el número de versión cambia con cada actualización).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Nombre de archivo (ejemplo)</th><th>Contenido</th></tr>
@@ -198,6 +199,7 @@
 <tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>MOD de cielo</td></tr>
 <tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>MOD de supervivencia</td></tr>
 <tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>MOD de electricidad</td></tr>
+<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>MOD de Backrooms</td></tr>
 </table>
 </div>
 
@@ -246,7 +248,7 @@
 <ol class="steps">
   <li>Escribe <code>%appdata%\.minecraft</code> en la barra de direcciones del Explorador y pulsa Intro.</li>
   <li>Si no existe la carpeta <code>mods</code>, créala (todo en minúsculas).</li>
-  <li>Copia los 9 archivos jar que recibiste dentro de esta carpeta <code>mods</code> (no hace falta descomprimirlos; se ponen tal cual, como jar).</li>
+  <li>Copia los 10 archivos jar que recibiste dentro de esta carpeta <code>mods</code> (no hace falta descomprimirlos; se ponen tal cual, como jar).</li>
 </ol>
 
 <h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
@@ -254,13 +256,13 @@
   <li>Haz clic una vez en el escritorio y pulsa a la vez <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> (o usa el menú superior «Ir» → «Ir a la carpeta…»).</li>
   <li>Pega tal cual <code>~/Library/Application Support/minecraft</code> en el cuadro que aparece y pulsa Intro (no olvides la «<code>~</code>» inicial). «Library» es una carpeta que normalmente no se ve en el Finder, así que este método es el más seguro para abrirla.</li>
   <li>Si no existe la carpeta <code>mods</code>, créala ahí mismo con clic derecho → «Nueva carpeta».</li>
-  <li>Arrastra y suelta los 9 archivos jar que recibiste dentro de esta carpeta <code>mods</code>.</li>
+  <li>Arrastra y suelta los 10 archivos jar que recibiste dentro de esta carpeta <code>mods</code>.</li>
 </ol>
 
 <h3>③ Iniciar con Fabric y entrar al servidor</h3>
 <ol class="steps">
   <li>Abre el launcher de Minecraft y, en la lista de perfiles de inicio cerca del botón «Jugar», elige uno con un nombre como <code>fabric-loader-26.2</code> (si dejas «Última versión», el juego se iniciará sin MOD).</li>
-  <li>Pulsa «Jugar» tal cual para iniciar. Si en la pantalla de título aparece un botón «Mods» nuevo, ha funcionado. Al pulsarlo podrás comprobar los 8 MOD de Glimpse Alpha y Fabric API.</li>
+  <li>Pulsa «Jugar» tal cual para iniciar. Si en la pantalla de título aparece un botón «Mods» nuevo, ha funcionado. Al pulsarlo podrás comprobar los 9 MOD de Glimpse Alpha y Fabric API.</li>
   <li>Después, conéctate al servidor como siempre, desde «Multijugador».</li>
 </ol>
 
@@ -297,7 +299,7 @@
       
 <p>
   A partir de aquí, el capítulo va dirigido a quienes operan y administran el servidor en sí.
-  Se explica el procedimiento para añadir Fabric y los 8 MOD de Glimpse Alpha partiendo de un
+  Se explica el procedimiento para añadir Fabric y los 9 MOD de Glimpse Alpha partiendo de un
   servidor de Minecraft ya en marcha (vanilla, el servidor estándar sin MOD). Este capítulo usa
   como ejemplo un servidor en Windows. Si administras el servidor en Mac / Linux, adapta la
   ubicación de las carpetas y la forma de ejecutar comandos a tu entorno, siguiendo un
@@ -413,8 +415,8 @@ pause</pre>
 
 <h3>3. Pon el conjunto de MOD en la carpeta mods</h3>
 <p>
-  Copia dentro de la carpeta <code>mods</code> los 9 archivos jar en total: 1 de Fabric API + 8 MOD de
-  Glimpse Alpha (no hace falta descomprimirlos; se ponen tal cual, como jar). Consigue estos 8 MOD
+  Copia dentro de la carpeta <code>mods</code> los 10 archivos jar en total: 1 de Fabric API + 9 MOD de
+  Glimpse Alpha (no hace falta descomprimirlos; se ponen tal cual, como jar). Consigue estos 9 MOD
   por la misma vía de distribución de siempre. <strong>Este sitio no distribuye los propios archivos
   de los MOD.</strong>
 </p>
@@ -429,6 +431,7 @@ pause</pre>
 <tr><td>Cielo</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
 <tr><td>Supervivencia</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
 <tr><td>Electricidad</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
+<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -465,8 +468,8 @@ para que instalen el mismo Fabric y el mismo conjunto de MOD en su propio PC.</p
       <div class="badge-row"><span class="type-badge type-visual">Para administradores del servidor</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Al reemplazar los MOD por una versión nueva</h2>
       
-<p>Como los 8 MOD de Glimpse Alpha son completamente independientes entre sí, no todas las
-actualizaciones sustituyen los 8 a la vez. Basta con reemplazar solo los MOD cuyo contenido
+<p>Como los 9 MOD de Glimpse Alpha son completamente independientes entre sí, no todas las
+actualizaciones sustituyen los 9 a la vez. Basta con reemplazar solo los MOD cuyo contenido
 haya cambiado de verdad (puedes comprobar cuáles cambiaron en el aviso de distribución o en el
 <a href="../changelog/">historial de actualizaciones</a>).</p>
 
