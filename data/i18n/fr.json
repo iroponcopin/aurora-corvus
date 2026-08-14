@@ -75,7 +75,7 @@
       "changelog_balance_label": "Ajustements d'équilibrage",
       "changelog_warnings_label": "Points d'attention",
       "changelog_limitations_label": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
-      "recipes_intro": "Ce recueil regroupe les recettes de fabrication de {count} objets et blocs, toutes catégories confondues, pour les 8 MOD installés. Cliquez sur un objet pour afficher sa recette dans une grille 3×3 identique à celle de l'établi. L'onglet « Utilisation », en haut à droite, explique aussi le fonctionnement des éléments qui demandent du câblage, comme le tri automatique ou le réseau électrique.",
+      "recipes_intro": "Ce recueil regroupe les recettes de fabrication de {count} objets et blocs, toutes catégories confondues, pour les 9 MOD installés. Cliquez sur un objet pour afficher sa recette dans une grille 3×3 identique à celle de l'établi. L'onglet « Utilisation », en haut à droite, explique aussi le fonctionnement des éléments qui demandent du câblage, comme le tri automatique ou le réseau électrique.",
       "guide_intro": "Ce guide récapitule toutes les étapes, de l'activation des MOD jusqu'au moment où vous pouvez enfin jouer. Si vous rejoignez simplement en tant que joueur, le chapitre « Pour les joueurs » suffit amplement.",
       "audience_player": "Pour les joueurs",
       "audience_admin": "Pour les administrateurs du serveur",
@@ -1062,83 +1062,161 @@
         "La synchronisation en jeu à deux et la charge serveur lors du fonctionnement simultané des 9 MOD n'ont pas été testées.",
         "Les animations d'attaque du Golem sculk, de Rock Lock, du Kraken et du Titan, ainsi que le lancer de la Lance de foudre, restent reportées cette fois encore."
       ]
-    }
-  ],
-  "roadmap": [
+    },
     {
-      "release": "v1.9.0",
-      "title": "Nouvelle zone « L'évasion des Backrooms » et intégration de la Wither Storm",
-      "groups": [
-        {
-          "subtitle": "Nouvelle zone « L'évasion des Backrooms »",
-          "bullets": [
-            "Ajout d'une carte dédiée reproduisant fidèlement l'œuvre originale.",
-            "Un statut de « santé mentale » (sanité) sera introduit pendant le séjour dans la zone ; il devrait pouvoir être restauré grâce à des objets comme l'« eau d'amande » obtenue sur place.",
-            "Règle spéciale : impossible de poser ou de détruire des blocs à l'intérieur de la zone.",
-            "Des coffres contenant du butin seront placés un peu partout.",
-            "Des monstres et des mécanismes fidèles à l'œuvre originale feront leur apparition.",
-            "L'entrée devrait être générée aléatoirement à l'intérieur des cités de l'End.",
-            "La progression devrait être affichée en permanence sous forme de texte sur le côté gauche de l'écran."
-          ]
-        },
-        {
-          "subtitle": "Intégration de la Wither Storm",
-          "bullets": [
-            "Le MOD externe « Wither Storm » devrait être intégré en l'ajoutant directement dans le dossier des MOD.",
-            "Le médecin de la peste pourra désormais invoquer la Wither Storm.",
-            "En récompense de sa défaite, il devrait laisser tomber le « Récolteur universel α » et la « Poupée d'artifice α » (des versions supérieures du récolteur universel et de la poupée d'artifice existants).",
-            "Le Récolteur universel α aurait une durabilité équivalente à celle d'une pioche en or et ne pourrait pas être enchanté.",
-            "Pour la Poupée d'artifice α, un fonctionnement différent de la poupée existante (limitée à 3 utilisations) est à l'étude : utilisations illimitées avec un temps de recharge de 3 minutes."
-          ]
-        }
+      "release": "v1.9.0.1",
+      "date": "2026-08-11",
+      "title": "Correction de la faille des cités de l'End et du vol de la Wither Storm, ajout de l'application Vidéo",
+      "summary": "Correction du bug qui faisait que la faille des Backrooms ajoutée en v1.9.0 n'était, dans les faits, quasiment jamais générée, ainsi que du bug laissant le vol des stades en lévitation de la Wither Storm non implémenté. Le MOD matériaux reçoit une application « Vidéo » pour le téléphone et l'ordinateur, avec des écrans façon OS propres à chaque modèle, et l'apparence de la Poupée Spark α (MOD survie) a été arrêtée.",
+      "highlights": [
+        "Backrooms : correction d'un bug qui faisait que la faille des cités de l'End n'était, en pratique, quasiment jamais générée (un taux d'échec proche de 100 % en conditions réelles). La vérification portait sur la hauteur (coordonnée Y), mais la coordonnée réellement transmise valait toujours 0, si bien que le test concluait systématiquement à l'absence de faille. Sur les terres nouvellement générées, chaque cité de l'End reçoit désormais à coup sûr une faille (les terres déjà existantes n'en sont pas dotées rétroactivement). Les icônes de la Goutte d'Accalmie, de la lampe de poche et de la note déchirée ont également été redessinées.",
+        "Wither Storm : implémentation d'un véritable vol en 3D pour les stades en lévitation (S3 à S5) — approche en cercles, piqué pour attaquer, puis retrait. Les stades au sol (S0 à S2), l'attaque au corps à corps, la salve simultanée des têtes, le rayon tracteur et la formule de dégâts du grand tourbillon restent inchangés.",
+        "Matériaux : ajout de l'application « Vidéo » au téléphone et à l'ordinateur (elle intègre un véritable moteur de navigateur ; un téléchargement supplémentaire, à effectuer une seule fois, se lance sur le PC du joueur qui l'ouvre pour la première fois). Selon le modèle, l'écran prend désormais l'apparence d'iOS pour l'iPhone, ou celle de Macintosh (barre de menus, Dock) pour le MacBook et le Mac Studio.",
+        "Survie : l'apparence de la Poupée Spark α a été arrêtée (changement purement visuel, aucune fonctionnalité modifiée)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "La taille du premier téléchargement de l'application Vidéo avait été annoncée dans cette version comme étant d'« environ 140 à 175 Mo » : il s'agissait en réalité de la taille compressée, une indication erronée (corrigée en v1.9.0.3 après mesure réelle, à environ 300 Mo).",
+        "Aucune suppression ni modification de la config n'est nécessaire. Seuls de nouveaux paramètres ont été ajoutés cette fois-ci."
+      ],
+      "known_limitations": [
+        "À ce stade, la faille des Backrooms elle-même était corrigée, mais un autre bug subsistait : le labyrinthe qui devait s'y trouver n'était pas généré (découvert et corrigé en v1.9.0.2).",
+        "Ni le bon affichage réel des pages web dans l'application Vidéo, ni l'apparence des nouveaux écrans façon iPhone/macOS n'avaient été vérifiés.",
+        "Le naturel du vol des stades en lévitation de la Wither Storm (ressenti des cercles et des piqués) restait lui aussi à vérifier."
       ]
     },
     {
-      "release": "v1.9.1",
-      "title": "Renforcement majeur du MOD ferroviaire",
-      "groups": [
-        {
-          "subtitle": "Automatisation de l'exploitation",
-          "bullets": [
-            "Une fonction de départ automatique devrait être ajoutée au bloc d'arrêt automatique des trains.",
-            "Un « mode de conduite automatique » permettant au train de rouler même sans joueur à bord est à l'étude.",
-            "Ajout d'un bruit de roulement."
-          ]
-        },
-        {
-          "subtitle": "Nouveaux véhicules et équipements",
-          "bullets": [
-            "Ajout prévu de voitures de classes supérieures, telles que la « Green Car » et la « Gran Class ».",
-            "Ajout de la caténaire (le câble électrique tendu au-dessus des voies) en tant qu'objet à poser.",
-            "Un éclairage intérieur et extérieur pour mieux voir lors des trajets de nuit.",
-            "Prise en charge de l'attelage entre wagonnets.",
-            "Modélisation entièrement en 3D des rails vanilla.",
-            "Ajout prévu d'une interface façon smartphone annonçant la prochaine gare et l'heure de départ."
-          ]
-        }
+      "release": "v1.9.0.2",
+      "date": "2026-08-12",
+      "title": "Correction du bug empêchant la génération du labyrinthe des Backrooms (manipulation du monde requise)",
+      "summary": "La v1.9.0.1 avait corrigé la faille elle-même, mais un bug est apparu : le monde des Backrooms qui s'y trouvait restait entièrement vide (le vide du néant). Il a été corrigé. Sur tout monde ayant déjà accueilli une visite des Backrooms, la suppression du dossier de dimension est nécessaire. Le bug d'apparence de 3 objets a également été corrigé, et la Poupée Spark α (MOD survie) a été remplacée par un dessin représentant le propriétaire lui-même.",
+      "highlights": [
+        "Backrooms : correction d'un bug où, même après avoir franchi la faille, le labyrinthe n'existait nulle part, provoquant une mort immédiate même en créatif. La génération butait sur les deux filtres du système de génération de « monde plat » de Minecraft, si bien qu'aucun chunk n'avait jamais vu de labyrinthe se créer. Le sol a désormais été remplacé par du bedrock, et un dispositif de secours a été ajouté au cas où un joueur tomberait malgré tout.",
+        "Backrooms : correction d'un bug où les 3 objets Goutte d'Accalmie, lampe de poche et note déchirée s'affichaient dans l'inventaire avec le damier violet et noir standard de Minecraft signalant une texture manquante. Le fichier de définition déterminant leur apparence était entièrement absent.",
+        "Survie : le dessin de la Poupée Spark α a été remplacé par un pixel art représentant le propriétaire lui-même. Aucun aspect fonctionnel (mécanisme, recette, butin, config) n'a été modifié."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "[Important] Sur tout monde ayant déjà accueilli une visite des Backrooms, arrêtez le serveur puis supprimez le dossier <nom_du_monde>/dimensions/sorakaze_backrooms/backrooms/. Au prochain passage de la faille par un joueur, un nouveau labyrinthe correctement généré sera recréé. Les Backrooms étant un monde où il est impossible de poser ou de casser des blocs, cette suppression ne fait rien perdre (les objets comme la Goutte d'Accalmie, la lampe de poche ou la note déchirée restent dans l'inventaire). Si le dossier est introuvable, c'est qu'aucun joueur n'y est encore jamais entré : il n'y a rien à faire.",
+        "Aucune suppression ni modification de la config n'est nécessaire (seuls 2 nouveaux paramètres sont ajoutés, et ils sont pris en compte automatiquement)."
+      ],
+      "known_limitations": [
+        "L'apparence réelle du labyrinthe corrigé (ambiance du papier peint jaune, etc.), le dessin des 3 objets corrigés et le rendu du dessin de la Poupée Spark α n'avaient, à ce stade, pas encore pu être vérifiés en jeu réel."
+      ]
+    },
+    {
+      "release": "v1.9.0.3",
+      "date": "2026-08-13",
+      "title": "Refonte complète de l'écran « Mine OS » du téléphone et de l'ordinateur, correction du bug des icônes",
+      "summary": "Mise à jour concernant uniquement le MOD matériaux. L'apparence de l'écran « Mine OS » du téléphone et de l'ordinateur a été entièrement repensée, avec l'ajout de 3 nouvelles applications : Réglages, Terminal et Musique. Le bug des icônes d'applications, présent depuis la v1.8.6, a également été corrigé. Par ailleurs, la taille du premier téléchargement de l'application Vidéo a été corrigée, et il s'est avéré qu'elle ne fonctionne pas sous macOS.",
+      "highlights": [
+        "Refonte complète de l'écran du téléphone et de l'ordinateur : ajout de panneaux semi-transparents façon verre dépoli, de coins arrondis et d'ombres portées. L'ordinateur reçoit trois pastilles colorées en haut à gauche (façon macOS), un fil d'Ariane « Mine OS ▸ nom de l'application » en haut de l'écran et un Dock en bas ; le téléphone reçoit une barre d'état, un indicateur d'accueil (Home) et un écran de verrouillage. L'application Messages adopte désormais des bulles façon discussion, avec l'icône de tête du correspondant.",
+        "Ajout de 3 nouvelles applications (8 → 11) : « Réglages » (informations sur l'appareil et le serveur, activation/désactivation du son), « Terminal » (les 5 commandes help, about, ping, tps et cls répondent directement ; toutes les autres sont envoyées comme commande de chat) et « Musique » (lecture des morceaux des disques présents sur ce serveur).",
+        "Correction d'un bug présent depuis la v1.8.6, où les icônes des applications restaient cachées derrière une plaque grise. La cause : l'arrière-plan opaque du bouton vanilla venait se redessiner par-dessus l'icône juste après que celle-ci avait été affichée (le dessin lui-même était correct depuis le début).",
+        "Correction des bugs de texte qui débordait de l'écran ou était coupé en cours de mot, avec la mise en place d'une vérification automatique pour empêcher toute récidive (4 773 emplacements mesurés sur 2 langues × 23 tailles d'écran, avec confirmation d'aucun débordement)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "⚠ L'application Vidéo ne fonctionne pas sur Minecraft pour macOS (confirmé par des tests réels ; Windows et Linux restent pris en charge). À partir de cette version, au lieu de rester bloquée silencieusement, l'application affiche désormais sur macOS le message « Non disponible sur cet OS » avant de se fermer.",
+        "[Correctif] Le premier téléchargement de l'application Vidéo ne pèse pas « environ 140 à 175 Mo », mais bien environ 300 Mo d'après une mesure réelle (l'indication donnée en v1.9.0.1 était erronée ; ceci la corrige).",
+        "Aucune suppression ni modification de la config n'est nécessaire (seuls 4 nouveaux paramètres sont ajoutés, tous réglés par défaut sur « affiché »)."
+      ],
+      "known_limitations": [
+        "La nouvelle apparence de Mine OS, le ressenti d'utilisation des 3 nouvelles applications (Réglages, Terminal, Musique) et le fait que l'application Musique produise effectivement du son n'avaient, à ce stade, pas encore été vérifiés en jeu réel.",
+        "La résolution effective du bug des icônes n'avait pas pu être vérifiée visuellement ; elle reposait uniquement sur l'analyse de l'ordre de dessin.",
+        "L'affichage réel des pages web par l'application Vidéo sur des installations Windows et Linux réelles restait, lui aussi, non vérifié."
       ]
     },
     {
       "release": "v1.9.3",
-      "title": "Énergie des ogives nucléaires, affichage des coordonnées et améliorations de l'interface",
+      "date": "2026-08-13",
+      "title": "Preuve du fonctionnement de l'ogive nucléaire comme combustible, grande mise à jour du chemin de fer, nouveau design d'écran, coordonnées affichées en permanence",
+      "summary": "5 MOD ont été mis à jour simultanément (les versions V1.9.1 et V1.9.2 n'existent pas : la grande mise à jour du chemin de fer et les demandes autour de la production d'électricité par ogive nucléaire ont été regroupées et livrées sous le nom V1.9.3). Le dessin de la Poupée Spark α, corrigé depuis deux versions mais jamais livré jusqu'ici, arrive enfin. Ont également été corrigés : le bug qui abîmait une batterie laissée pleine trop longtemps, la mise en place (non encore exécutée) d'une vérification sur un vrai serveur de l'utilisation de l'ogive nucléaire comme combustible, et le bug de la lunette du lance-roquettes. Le chemin de fer reçoit une grande mise à jour (départ automatique, conduite automatique, etc.), les écrans des MOD électricité, armes à feu et boss adoptent le nouveau design « Glimpse Glass », et les coordonnées ainsi qu'un indicateur TPS/ping s'affichent désormais en permanence.",
+      "highlights": [
+        "[Important] Le bug d'apparence de la Poupée Spark α (une partie de l'oreille droite semblait disparaître) avait en réalité déjà été corrigé après la v1.9.0.2, mais une faille dans le mécanisme de comparaison entre versions livrées avait empêché cette correction d'être répercutée, ne serait-ce qu'une seule fois, dans les fichiers distribués. Le dessin enfin corrigé arrive avec cette version. Pour empêcher ce bug de se reproduire, une nouvelle vérification (check_dist_drift.py) confrontant directement les ressources sources et les fichiers distribués a été mise en place.",
+        "[Important] Électricité : correction d'un bug où une batterie pleine, laissée telle quelle pendant environ 18,6 heures, cessait définitivement de produire des cellules d'énergie. La cause était un dépassement de capacité lors d'une addition, un symptôme qui apparaissait d'autant plus vite que le combustible était puissant (comme l'ogive nucléaire). Les batteries déjà touchées par ce bug seront automatiquement réparées par cette mise à jour.",
+        "Électricité : le mécanisme permettant d'utiliser l'ogive nucléaire comme combustible existe depuis la v1.8.7, mais cette fois-ci, une méthode de vérification sur un vrai serveur dédié a été mise en place pour la première fois (cependant, l'environnement de test a été perdu pendant ce cycle de packaging, donc cette vérification n'a pas encore pu être exécutée — voir l'avertissement ci-dessous pour plus de détails). Correction également d'un bug où l'indicateur de qualité du combustible restait bloqué sur la chaîne non traduite « sorakaze_power.fuel_quality.nuclear ».",
+        "Armes à feu : la lunette de visée du lance-roquettes s'affiche enfin à l'écran (corrigé après 2 signalements). Le grossissement passe également de ×2 à ×4. L'apparence des 2 fusils de précision n'a pas changé.",
+        "Grande mise à jour du chemin de fer : ajout du départ automatique, de la conduite automatique, du bruit de roulement, de la caténaire (décorative uniquement), de l'éclairage intérieur et des phares avant, de l'affichage des annonces d'arrivée, de la possibilité de se déplacer à l'intérieur des voitures et de s'asseoir sur les sièges. Le compteur de vitesse a été déplacé en haut de l'écran et ne s'affiche plus que pour le conducteur (les passagers ne le voient plus).",
+        "Les écrans des MOD électricité, armes à feu et boss (batterie, tableau électrique, lance-missiles, balise améliorée, etc.) adoptent le nouveau design semi-transparent « Glimpse Glass ». Il prend également en charge le flou d'arrière-plan à l'ouverture de l'inventaire ou d'un coffre. Un pack de ressources à installation facultative, appliquant cet effet vitré même aux écrans vanilla (Glimpse_Alpha_Glass_UI_Pack.zip), est désormais fourni.",
+        "Les coordonnées s'affichent désormais en permanence à l'écran (avec l'orientation du regard). L'indicateur TPS/ping a lui aussi été refait, et son comportement par défaut passe de « affiché seulement en maintenant la touche Tab » à « affichage permanent » (la config permet de retrouver l'ancien comportement)."
+      ],
+      "balance_changes": [
+        "Grossissement de la lunette du lance-roquettes : ×2 → ×4"
+      ],
+      "warnings": [
+        "Dans la grande mise à jour du chemin de fer, l'ajout de voitures haut de gamme et l'attelage avec les wagonnets vanilla ont été reportés cette fois-ci (seul un document de conception a été rédigé). L'attelage avec les wagonnets vanilla touchant à la politique du projet consistant à « ne pas remplacer ni supprimer les éléments vanilla », la décision sera prise après concertation séparée.",
+        "La vérification du fonctionnement de l'ogive nucléaire comme combustible sur un serveur dédié n'a pas pu être réexécutée cette fois-ci, l'environnement de test ayant été perdu pendant les opérations d'empaquetage (le mécanisme permettant d'utiliser l'ogive nucléaire comme combustible n'a lui-même pas changé depuis la v1.8.7).",
+        "Si vous n'avez pas encore effectué la suppression du dossier de monde des Backrooms (changement de la v1.9.0.2), veillez impérativement à le faire également.",
+        "Aucune suppression ni modification de la config n'est nécessaire. Tout ce qui a été ajouté cette fois-ci se limite à de nouveaux paramètres."
+      ],
+      "known_limitations": [
+        "Les nouvelles fonctionnalités du chemin de fer (départ automatique, conduite automatique, bruit de roulement, caténaire, éclairage intérieur, annonces d'arrivée, déplacement à l'intérieur des voitures) n'avaient, presque toutes, pas encore été vérifiées en jeu réel à ce stade.",
+        "L'apparence du nouveau design d'écran « Glimpse Glass » et celle du nouveau pack de ressources restaient elles aussi non vérifiées.",
+        "L'aspect réel des coordonnées et de l'indicateur TPS/ping affichés en permanence n'avait pas non plus été vérifié.",
+        "Parmi les tests automatisés, 3 concernant les armes à feu et 1 concernant l'électricité restent instables, avec des résultats qui varient d'une exécution à l'autre. Il a été confirmé que tous portent sur du code existant, non modifié cette fois-ci."
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "release": "V2",
+      "title": "Mise à jour V2 (concept et spécifications arrêtés, implémentation à venir)",
       "groups": [
         {
-          "subtitle": "Nouvelles fonctionnalités",
+          "subtitle": "MOD matériaux de construction : correction des bugs de l'application vidéo, refonte visuelle des terminaux",
           "bullets": [
-            "Il devrait être possible d'utiliser l'ogive nucléaire comme source d'énergie pour le MOD électrique (un usage distinct de l'ogive de missile et de l'ogive nucléaire déjà implémentées en v1.8.4).",
-            "Ajout prévu d'un affichage permanent des coordonnées."
+            "Correction prévue des commandes de lecture, pause et avance/retour rapide de l'application vidéo, qui ne fonctionnent pas correctement actuellement (correctif prioritaire).",
+            "Correction prévue d'un bug faisant que le son continue de jouer après avoir quitté le serveur ou changé de monde.",
+            "Correction prévue d'un bug où le son est audible mais l'image ne s'affiche pas (écran noir persistant).",
+            "Refonte complète envisagée de l'apparence de l'iPhone, du MacBook et de la batterie portable, sur la base d'une nouvelle proposition de design."
           ]
         },
         {
-          "subtitle": "Améliorations",
+          "subtitle": "Refonte de la gestion de l'eau et des infrastructures de vie",
           "bullets": [
-            "Amélioration de l'interface affichant le TPS et le ping."
+            "Concept visant à remplacer le comportement de l'eau vanilla par un écoulement physique naturel des points hauts vers les points bas (fin de l'expansion horizontale illimitée en terrain plat, l'eau s'accumulant désormais dans les creux).",
+            "Ajout prévu d'un ensemble complet d'infrastructures hydrauliques (canalisations, pompes, robinets, etc.) reliant les sources d'eau aux points de puisage.",
+            "Capacité de la gourde multipliée par 4. La soif diminuerait un peu plus vite que la faim, et après 10 minutes de soif continue, des dégâts cumulatifs pouvant devenir mortels seraient infligés en l'absence d'effet de régénération.",
+            "Ajout prévu d'une fonction de sauvegarde automatique, permettant aux administrateurs de configurer l'intervalle, le nombre de sauvegardes conservées et leur emplacement via une interface (un guide sera également publié sur ce site)."
           ]
         },
         {
-          "subtitle": "Idées pour plus tard (pas encore incluses dans cette mise à jour)",
+          "subtitle": "MOD armes à feu : équilibrage et refonte sonore",
           "bullets": [
-            "« Noyau haute performance » : l'idée serait de le combiner avec une masse d'armes sur l'établi pour multiplier les performances de cette dernière par 20."
+            "Ajustements à l'étude : minigun +50 %, fusil d'assaut +75 %, pistolet x1,5 en puissance, SMG avec dégâts divisés par deux mais +30 % de capacité de chargeur, lance-roquettes avec dégâts et puissance d'explosion x3, et tourelle avec dégâts x4 et durabilité +70 %.",
+            "Concept d'ogive nucléaire capable de détruire jusqu'à 10 millions de blocs, et d'ogive de missile avec puissance d'explosion et rayon d'action x3 (la puissance de l'ogive nucléaire elle-même resterait basée sur le niveau actuel, soit 67 200 en tir direct à la version v1.8.8).",
+            "Correction également prévue d'un bug où le modèle du lance-roquettes obstrue la vue lors de l'utilisation de la lunette.",
+            "Refonte complète envisagée des bruitages d'armes à feu (les sons ne reprendraient pas directement ceux d'un jeu existant, mais seraient recréés dans un esprit similaire).",
+            "Concept d'ajout de 3 nouveaux designs de lance-missiles, tous pilotables par le joueur."
+          ]
+        },
+        {
+          "subtitle": "MOD boss : 4 nouveaux boss et ajustement des boss existants",
+          "bullets": [
+            "Ajout prévu de 4 nouveaux boss : « Roi Golem Volcanique » (600 PV), « Gardien Kraken Abyssal » (800 PV), « Dragon Phénix de Glace Prismatique » (750 PV) et « Seigneur Démon de la Tempête de Wither » (1200 PV, dont l'invocation nécessite d'avoir vaincu les trois boss précédents). Chacun disposerait d'un objet d'invocation dédié et d'un combat à phases.",
+            "Pour le Docteur de la Peste : à l'étude, un délai de 20 secondes entre le premier coup porté et l'invocation de la Wither Storm ; le vaincre dans ce délai (ou en un coup) empêcherait l'invocation, mais sans obtenir de butin.",
+            "Pour le boss Faucheur (Grim Reaper) : à sa défaite, il aurait une faible chance de laisser tomber son arme signature, la « Faux Faucheuse d'Âmes », qui offrirait elle-même une faible chance d'obtenir un œuf d'invocation en tuant des ennemis. La puissance du boss lui-même serait augmentée de 15 %, avec 3 nouveaux schémas d'attaque prévus.",
+            "Concept de renforcement supplémentaire de la Wither Storm, avec l'ajout d'une deuxième forme (phase)."
+          ]
+        },
+        {
+          "subtitle": "Survie et électricité : système de contamination et nouvelles actions de transport",
+          "bullets": [
+            "Un point d'impact d'ogive nucléaire resterait « contaminé » pendant 20 jours Minecraft. Le port simultané d'un masque à gaz et d'une combinaison de protection permettrait, selon ce concept, de neutraliser le danger.",
+            "À l'étude : faire fonctionner un générateur nucléaire contaminerait l'air environnant, affectant la santé de quiconque y reste longtemps sans protection. Un nouveau bloc « purificateur d'air », activable et pouvant fonctionner à plusieurs exemplaires simultanément, purifierait la contamination alentour.",
+            "Possibilité prévue de transporter à la main de petites mobs comme les villageois ou les poules.",
+            "À l'étude : transporter un coffre à deux mains sans le casser (le contenu resterait intact ; un coffre double nécessiterait deux joueurs pour être transporté).",
+            "Ajout prévu d'un nouvel objet (nom provisoire) avec 32 de durabilité et 200 de puissance d'attaque. Une attaque à distance fonctionnant sur le même principe que la baguette magique est à l'étude."
+          ]
+        },
+        {
+          "subtitle": "Interface bancaire, Backrooms et intégration au site",
+          "bullets": [
+            "Plafond de dépôt de l'ATM et de la MineBank relevé à 10 millions d'émeraudes. L'écran de l'ATM adopterait le motif du « Glimpse Alpha Glass », dans le cadre d'une refonte complète de l'interface.",
+            "Ajout prévu d'une nouvelle « interface MineBank », avec une proposition de design incluant une sélection rapide en fonction du solde (25 %/50 %/75 %/MAX) et un curseur ajustable par pas de 1/10/100/1k, à ce qu'il paraît.",
+            "Refonte complète envisagée de l'apparence des entités des Backrooms, sur la base de nouvelles images de référence.",
+            "Concept visant à mettre en place un système qui répercuterait automatiquement le contenu des futures mises à jour, une fois confirmé, dans l'historique des mises à jour de ce site (ceci concerne le fonctionnement du site lui-même)."
           ]
         }
       ]
@@ -2370,7 +2448,12 @@
       "sorakaze_vehicles:wagon_azure": "Break (Azur)",
       "sorakaze_vehicles:wagon_graphite": "Break (Graphite)",
       "sorakaze_vehicles:wagon_pearl": "Break (Nacré)",
-      "sorakaze_vehicles:wagon_scarlet": "Break (Écarlate)"
+      "sorakaze_vehicles:wagon_scarlet": "Break (Écarlate)",
+      "sorakaze_boss:universal_harvester_alpha": "Récolteur universel α",
+      "sorakaze_survival:spark_doll_alpha": "Poupée d'artifice α",
+      "sorakaze_power:battery": "Batterie",
+      "sorakaze_rail:catenary_wire": "Caténaire",
+      "sorakaze_boss:wither_storm_summon": "Pierre d'invocation du Wither Storm"
     },
     "howto": [
       {

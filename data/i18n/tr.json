@@ -75,7 +75,7 @@
       "changelog_balance_label": "Denge Ayarları",
       "changelog_warnings_label": "Dikkat Edilmesi Gerekenler",
       "changelog_limitations_label": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
-      "recipes_intro": "Kurulu 8 MOD'daki toplam {count} çeşit eşya ve bloğun yapım tariflerini bir araya getirdik. Bir eşyaya tıkladığınızda, gerçek çalışma tezgahındaki gibi 3×3 düzende tarifi görebilirsiniz. Sağ üstteki \"Nasıl Kullanılır\" sekmesinde otomatik ayrıştırma veya elektrik altyapısı gibi kablolama gerektiren özelliklerin kullanımı da anlatılıyor.",
+      "recipes_intro": "Kurulu 9 MOD'daki toplam {count} çeşit eşya ve bloğun yapım tariflerini bir araya getirdik. Bir eşyaya tıkladığınızda, gerçek çalışma tezgahındaki gibi 3×3 düzende tarifi görebilirsiniz. Sağ üstteki \"Nasıl Kullanılır\" sekmesinde otomatik ayrıştırma veya elektrik altyapısı gibi kablolama gerektiren özelliklerin kullanımı da anlatılıyor.",
       "guide_intro": "MOD'ları etkinleştirmekten oyuna başlamaya kadar olan adımları bir araya getirdik. Sadece oyuncu olarak katılacaksanız \"Oyuncular İçin\" bölümü yeterlidir.",
       "audience_player": "Oyuncular İçin",
       "audience_admin": "Sunucu Yöneticileri İçin",
@@ -1060,83 +1060,161 @@
         "2 oyuncunun aynı anda oynamasındaki senkronizasyon ile 9 MOD'un aynı anda çalıştığı durumdaki sunucu yükü test edilmedi.",
         "Sculk Golemi, Rock Lock, Kraken ve Titan'ın saldırı animasyonları ile Yıldırım Mızrağı'nın fırlatma saldırısı, bu sefer de ertelendi."
       ]
-    }
-  ],
-  "roadmap": [
+    },
     {
-      "release": "v1.9.0",
-      "title": "Yeni Alan: \"Backrooms'tan Kaçış\" ve Wither Storm Entegrasyonu",
-      "groups": [
-        {
-          "subtitle": "Yeni Alan: \"Backrooms'tan Kaçış\"",
-          "bullets": [
-            "Orijinaline sadık şekilde yeniden oluşturulmuş özel bir harita eklenecek.",
-            "Alan içindeyken \"akıl sağlığı (sanity)\" durumu devreye girecek; alanda düşen \"badem suyu\" gibi eşyalarla bu durumun iyileştirilmesi planlanıyor.",
-            "Alan içinde blok yerleştirme ve kırma yapılamayan özel bir kural geçerli olacak.",
-            "Çeşitli yerlere ganimet dolu sandıklar yerleştirilecek.",
-            "Orijinalini yansıtan canavarlar ve mekanikler eklenecek.",
-            "Girişin End şehirlerinin içinde rastgele oluşturulması planlanıyor.",
-            "İlerleme durumunun ekranın sol tarafında sürekli metin olarak gösterilmesi düşünülüyor."
-          ]
-        },
-        {
-          "subtitle": "Wither Storm Entegrasyonu",
-          "bullets": [
-            "Harici \"Wither Storm\" MOD'unun mods klasörüne dahil edilerek entegre edilmesi planlanıyor.",
-            "Veba Doktoru artık Wither Storm çağırabilecek.",
-            "Yenilme ödülü olarak \"Evrensel Toplayıcı α\" ve \"Havai Fişek Bebeği α\" (mevcut Evrensel Toplayıcı ve Havai Fişek Bebeği'nin üst sürümleri) düşmesi planlanıyor.",
-            "Evrensel Toplayıcı α, altın kazma düzeyinde dayanıklılığa sahip olacak ve büyü eklenemeyecek.",
-            "Havai Fişek Bebeği α için, mevcut Havai Fişek Bebeği'nden (3 kullanımla sınırlı) farklı olarak sınırsız kullanım ve 3 dakikalık bekleme süresi gibi bir tasarım değerlendiriliyor."
-          ]
-        }
+      "release": "v1.9.0.1",
+      "date": "2026-08-11",
+      "title": "End şehri yarıkları ve Wither Storm uçuşu düzeltildi, \"Video\" uygulaması eklendi",
+      "summary": "v1.9.0'da eklenen Backrooms yarıklarının fiilen hiç oluşmadığı hata ile Wither Storm'un havada süzülen aşamalarındaki uçuşun hiç uygulanmamış olduğu hata düzeltildi. Yapı Malzemeleri MOD'una cep telefonu ve bilgisayarlar için \"Video\" uygulaması ile cihaz türüne göre değişen OS tarzı ekranlar eklendi; Hayatta Kalma MOD'undaki Havai Fişek Bebeği α'nın görünümü de kesinleşti.",
+      "highlights": [
+        "Backrooms: End şehri yarıklarının, ölçülen pratikte neredeyse hiç oluşmadığı hata düzeltildi. Kontrol yüksekliğe (Y koordinatına) bakıyordu, ama gerçekte gelen koordinatın yüksekliği her zaman 0 olduğundan, sistem sürekli \"yok\" diye yanlış karar veriyordu. Yeni oluşturulan arazilerde artık her End şehri için kesinlikle 1 yarık oluşuyor (mevcut arazilere geriye dönük eklenmiyor). Sükûnet Damlası, El Feneri ve Yırtık Not'un simge resimleri de yeniden çizildi.",
+        "Wither Storm: Havada süzülen aşamalara (S3-S5) gerçek bir 3D uçuş (dönerek yaklaşma → dalış yaparak saldırma → uzaklaşma) uygulandı. Yerde duran aşamaların (S0-S2), yakın dövüş saldırısının, başların toplu ateşinin, çekme ışınının ve Büyük Girdap'ın hasar hesaplama formülleri değiştirilmedi.",
+        "Yapı Malzemeleri: Cep telefonu ve bilgisayarlara \"Video\" uygulaması eklendi (gerçek bir tarayıcı motoru içeriyor; bir oyuncu ilk açtığında bilgisayarına bir kerelik ek bir indirme yapılıyor). Cihaz modeline göre iPhone iOS tarzı, MacBook ve Mac Studio ise macintosh tarzı (menü çubuğu, Dock) bir ekrana kavuştu.",
+        "Hayatta Kalma: Havai Fişek Bebeği α'nın görünümü kesinleştirildi (yalnızca görünümde değişiklik; işlev değişmedi)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "\"Video\" uygulamasının ilk indirme boyutu bu sürümde \"yaklaşık 140-175MB\" olarak duyurulmuştu, ancak bu sıkıştırılmış boyuttu ve hatalıydı (v1.9.0.3'te gerçek ölçümle \"yaklaşık 300MB\" olarak düzeltildi).",
+        "Config silmenize gerek yok. Bu güncellemede yalnızca yeni ayar öğeleri eklendi."
+      ],
+      "known_limitations": [
+        "Bu noktada Backrooms yarıklarının kendisi düzelmişti, ancak ötesindeki labirentin hiç oluşmadığı ayrı bir hata hâlâ mevcuttu (v1.9.0.2'de fark edilip düzeltildi).",
+        "\"Video\" uygulamasında web sayfalarının gerçekten görüntülenip görüntülenmediği ile iPhone/macOS tarzı yeni ekran tasarımlarının görünümü henüz doğrulanmamıştı.",
+        "Wither Storm'un havada süzülen aşamalardaki uçuşunun gerçekten doğal bir hareket gibi görünüp görünmediği (dönüş ve dalış hissi) de doğrulanmamıştı."
       ]
     },
     {
-      "release": "v1.9.1",
-      "title": "Demiryolu MOD'unda Büyük Güçlendirme",
-      "groups": [
-        {
-          "subtitle": "Sefer Otomasyonu",
-          "bullets": [
-            "Otomatik Tren Durdurma Bloğu'na otomatik kalkış özelliği eklenmesi planlanıyor.",
-            "Oyuncu binmeden de çalışabilen bir \"otomatik sürüş modu\" değerlendiriliyor.",
-            "Hareket sesi eklenecek."
-          ]
-        },
-        {
-          "subtitle": "Yeni Vagonlar ve Donanımlar",
-          "bullets": [
-            "Business sınıfı ve Gran Class gibi üst sınıf vagonlar eklenmesi planlanıyor.",
-            "Katener hattı (trenlerin üzerine gerilen elektrik hattı) yerleştirilebilir bir eşya olarak eklenecek.",
-            "İç ve dış aydınlatmayla gece seferleri daha aydınlık hale gelecek.",
-            "Maden arabalarının birbirine bağlanabilmesi sağlanacak.",
-            "Vanilla raylar tamamen 3D modele dönüştürülecek.",
-            "Akıllı telefon tarzı bir sonraki istasyon ve kalkış bildirimi arayüzü eklenmesi planlanıyor."
-          ]
-        }
+      "release": "v1.9.0.2",
+      "date": "2026-08-12",
+      "title": "Backrooms labirentinin oluşmadığı hata düzeltildi (dünya klasörü işlemi gerekiyor)",
+      "summary": "v1.9.0.1'de yarığın kendisi düzelmişti, ancak ötesindeki Backrooms dünyasının tamamen boş (Boşluk) kaldığı hata fark edilip düzeltildi. Backrooms'a daha önce en az bir kez girilmiş dünyalarda boyut klasörünün silinmesi gerekiyor. 3 eşyanın görünüm hatası da düzeltildi ve Hayatta Kalma MOD'undaki Havai Fişek Bebeği α, sahibinin kendi çizdiği bir resimle değiştirildi.",
+      "highlights": [
+        "Backrooms: Yarıktan geçildiğinde hiçbir yerde labirent olmadığı, Yaratıcılık modunda bile anında öldüğünüz bir durumla karşılaşılan hata düzeltildi. Sebep, Minecraft'ın \"düz dünya\" (superflat) oluşturma mekanizmasındaki iki filtrenin de aynı anda devreye girmesiydi; bu yüzden hiçbir chunk'ta labirent bir kez bile oluşturulmamıştı. Zeminin altına bedrock (ana kaya) yerleştirildi ve olur da düşülürse diye bir kurtarma mekanizması da eklendi.",
+        "Backrooms: Sükûnet Damlası, El Feneri ve Yırtık Not adlı 3 eşyanın, envanterde \"mor-siyah dama deseni\" (resim bulunamadığında gösterilen görünüm) ile göründüğü hata düzeltildi. Görselini belirleyen tanım dosyası baştan sona hiç yoktu.",
+        "Hayatta Kalma: Havai Fişek Bebeği α'nın resmi, sahibinin kendi çizdiği piksel sanatıyla değiştirildi. İşlevsel taraf (mekanizma, tarif, drop, config) değiştirilmedi."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "[Önemli] Backrooms'a daha önce en az bir kez girilmiş bir dünyada, sunucuyu durdurduktan sonra <dünya adı>/dimensions/sorakaze_backrooms/backrooms/ klasörünü silin. Bir sonraki sefer biri yarıktan geçtiğinde, yeni ve doğru bir labirent olarak yeniden oluşturulacaktır. Backrooms, blok yerleştirilemeyen ve kırılamayan bir boyut olduğundan, silmek hiçbir şey kaybettirmez (Sükûnet Damlası, El Feneri, Yırtık Not gibi envanterinizdeki eşyalar kaybolmaz). Klasörü bulamıyorsanız, o dünyaya henüz kimse girmemiş demektir; yapmanız gereken bir şey yok.",
+        "Config silmenize gerek yok (yalnızca 2 yeni ayar öğesi ekleniyor ve otomatik olarak yansıyor)."
+      ],
+      "known_limitations": [
+        "Düzelen labirentin gerçekte nasıl göründüğü (sarı duvar kağıdının atmosferi vb.), düzeltilen 3 eşyanın resimleri ve Havai Fişek Bebeği α'nın yeni resminin görünümü, bu noktada henüz gerçek cihazda doğrulanamamıştı."
+      ]
+    },
+    {
+      "release": "v1.9.0.3",
+      "date": "2026-08-13",
+      "title": "Cep telefonu ve bilgisayar ekranı \"Mine OS\" baştan sona yenilendi, simge hatası düzeltildi",
+      "summary": "Yalnızca Yapı Malzemeleri MOD'unu güncelleyen bir sürüm. Cep telefonu ve bilgisayar ekranı \"Mine OS\"un görünümü baştan sona yeniden tasarlandı ve Ayarlar, Terminal, Müzik adlı 3 yeni uygulama eklendi. v1.8.6'dan beri süregelen uygulama simgesi hatası da düzeltildi. Bunlara ek olarak, \"Video\" uygulamasının ilk indirme boyutu düzeltildi ve macOS'ta çalışmadığı ortaya çıktı.",
+      "highlights": [
+        "Cep telefonu ve bilgisayar ekranları baştan sona yenilendi. Buzlu cam gibi yarı saydam paneller, yuvarlatılmış köşeler ve gölgeler eklendi. Bilgisayarlarda sol üstte 3 trafik ışığı düğmesi, üstte \"Mine OS ▸ Uygulama Adı\" şeklinde bir yol haritası (breadcrumb) ve altta bir Dock; cep telefonlarında ise durum çubuğu, ana ekran göstergesi ve kilit ekranı eklendi. Mesajlar uygulaması artık sohbet tarzı konuşma balonları ve karşı tarafın baş simgesiyle gösteriliyor.",
+        "3 yeni uygulama eklendi (8 → 11 uygulama): \"Ayarlar\" (cihaz/sunucu bilgisi ve ses açma-kapama), \"Terminal\" (help, about, ping, tps ve cls komutlarına anında yanıt veriyor; diğer tüm komutlar sohbet komutu olarak gönderiliyor), \"Müzik\" (bu sunucuda bulunan plaklardaki şarkıları çalıyor).",
+        "v1.8.6'dan beri uygulama simgelerinin gri bir panelin arkasında saklanıp görünmediği hata düzeltildi. Sebep, vanilla düğmenin opak arka planının, simge çizildikten hemen sonra aynı konumun üzerine yeniden çizilmesiydi (görselin kendisi baştan beri doğruydu).",
+        "Yazıların ekrandan taşması veya yarıda kesilmesi sorunu düzeltildi ve bunun bir daha yaşanmaması için yeni bir otomatik denetim eklendi (4.773 noktayı 2 dil × 23 ekran boyutunda ölçüp 0 taşma olduğu doğrulandı)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "⚠ macOS'taki Minecraft'ta \"Video\" uygulaması çalışmıyor (gerçek testle doğrulandı; Windows ve Linux desteklenmeye devam ediyor). Bu sürümden itibaren macOS'ta sessizce donmak yerine \"Bu işletim sisteminde kullanılamaz\" mesajı gösterilip kapanıyor.",
+        "[Düzeltme] \"Video\" uygulamasının ilk indirmesi \"yaklaşık 140-175MB\" değil, gerçek ölçümde yaklaşık 300MB'tı (v1.9.0.1 sırasında verilen bilgi hatalıydı, bu nedenle düzeltiliyor).",
+        "Config silmenize gerek yok (yalnızca 4 yeni ayar öğesi ekleniyor, hepsinin başlangıç değeri \"gösterilsin\")."
+      ],
+      "known_limitations": [
+        "Mine OS'un yeni görünümü, 3 yeni uygulamanın (Ayarlar, Terminal, Müzik) kullanım hissi ve Müzik uygulamasının gerçekten ses çıkarıp çıkarmadığı, bu noktada henüz gerçek cihazda doğrulanamamıştı.",
+        "Simge hatasının gerçekten giderilip giderilmediği görsel olarak doğrulanamamıştı; dayanak yalnızca çizim sırası analiziydi.",
+        "\"Video\" uygulamasında gerçek Windows/Linux cihazlarında web sayfalarının gerçekten görüntülenip görüntülenmediği doğrulanmamış durumdaydı."
       ]
     },
     {
       "release": "v1.9.3",
-      "title": "Nükleer Savaş Başlığı Enerjisi, Koordinat Gösterimi ve Arayüz İyileştirmeleri",
+      "date": "2026-08-13",
+      "title": "Nükleer savaş başlığıyla enerji üretimi doğrulamasına hazırlık, büyük Demiryolu güncellemesi, yeni ekran tasarımı, sürekli koordinat gösterimi",
+      "summary": "5 MOD aynı anda güncellendi (V1.9.1 ve V1.9.2 diye bir sürüm yok; Demiryolu'ndaki büyük güncelleme ile nükleer savaş başlığıyla enerji üretimiyle ilgili talepler bir araya getirilip V1.9.3 olarak yayımlanıyor). İki sürüm önce zaten düzeltilmiş olduğu hâlde bir kez bile yayımlanan sürüme yansımamış olan Havai Fişek Bebeği α'nın resmi sonunda ulaştırıldı; ayrıca doluyken uzun süre bekletilen Akünün bozulması hatası, nükleer savaş başlığının yakıt olarak kullanılabildiği mekanizmanın gerçek sunucuda doğrulanmasına yönelik hazırlık ve Roketatar'ın dürbün hatası düzeltildi. Demiryolu'na otomatik kalkış ve otomatik sürüş gibi büyük bir güncelleme, Elektrik/Silahlar/Boss ekranlarına ise yeni bir \"Glimpse Glass\" tasarımı geldi; ayrıca sürekli görünen koordinat ve TPS/ping göstergeleri eklendi.",
+      "highlights": [
+        "[Önemli] Havai Fişek Bebeği α'nın resmindeki hata (sağ kulağın bir kısmının kaybolmuş görünmesi), aslında v1.9.0.2'nin ardından zaten düzeltilmişti; ama yayımlanan sürümleri birbiriyle karşılaştıran mekanizmadaki bir kusur yüzünden bu düzeltme bir kez bile dağıtılan sürüme yansımamıştı. Bu sürümle birlikte sonunda düzeltilmiş resim geliyor. Bu hatanın bir daha yaşanmaması için, kaynak varlıkları ile dağıtılan sürümü doğrudan karşılaştıran yeni bir denetim (check_dist_drift.py) eklendi.",
+        "[Önemli] Elektrik: Dolu bir Akü yaklaşık 18,6 saat boyunca bekletildiğinde bir daha hiç Enerji Hücresi üretmemeye başlaması hatası düzeltildi. Sebep, toplama işleminde yaşanan bir taşma (overflow) idi; yüksek çıkışlı yakıtlarda (nükleer savaş başlığı gibi) bu daha erken ortaya çıkıyordu. Bu hata yüzünden zaten bozulmuş Aküler de, bu sürümü kurduğunuzda otomatik olarak düzelecek.",
+        "Elektrik: Nükleer savaş başlığının yakıt olarak kullanılabilmesi mekanizması v1.8.7'den beri zaten mevcuttu, ancak bu sürümde ilk kez gerçek bir özel sunucuda bunu doğrulayacak bir yöntem hazırlandı (ne var ki bu paketleme sürecinde test ortamı kaybolduğundan, doğrulama fiilen çalıştırılamadı; ayrıntılar için aşağıdaki uyarıya bakın). Yakıt sınıfı göstergesinin \"sorakaze_power.fuel_quality.nuclear\" şeklinde çevrilmemiş bir metin olarak göründüğü hata da düzeltildi.",
+        "Silahlar: Roketatar'ın dürbünü sonunda ekranda görünür hale geldi (2 kez bildirilmesinin ardından düzeltildi). Büyütme oranı da ×2'den ×4'e çıkarıldı. İki keskin nişancı tüfeğinin görünümünde değişiklik yok.",
+        "Demiryolu'nda büyük güncelleme: Otomatik kalkış, otomatik sürüş, hareket sesi, Havai Hat (yalnızca dekoratif), vagon içi iç aydınlatma ve farlar, varış bildirim ekranı, tren içinde yürüyebilme özelliği ve koltuklara oturma eklendi. Hız göstergesi ekranın üst kısmına taşındı ve artık sürücü dışında (yolculara) gösterilmiyor.",
+        "Elektrik, Silahlar ve Boss ekranlarında (Akü, Dağıtım Panosu, Füze Fırlatıcı, Güçlendirilmiş İşaret Feneri vb.) yeni bir yarı saydam tasarım olan \"Glimpse Glass\" kullanılmaya başlandı. Envanter veya sandık açıldığında arka planın bulanıklaştırılması da desteklendi. Vanilla ekranları bile cam görünümüne kavuşturan, isteğe bağlı kurulabilen bir kaynak paketi (Glimpse_Alpha_Glass_UI_Pack.zip) de yeni olarak pakete eklendi.",
+        "Koordinatlar artık ekranda her zaman gösteriliyor (bakış yönü de dahil). TPS/ping göstergesi de yeniden tasarlandı ve varsayılan davranış \"yalnızca Tab tuşuna basılı tutulduğunda gösterilsin\"den \"her zaman gösterilsin\"e değişti (config üzerinden eski davranışa dönmek de mümkün)."
+      ],
+      "balance_changes": [
+        "Roketatar'ın dürbün büyütme oranı: ×2 → ×4"
+      ],
+      "warnings": [
+        "Demiryolu'ndaki büyük güncelleme kapsamında, üst sınıf vagonların eklenmesi ve vanilla maden arabalarıyla bağlanma bu sefer ertelendi (yalnızca tasarım belgesi hazırlandı). Vanilla maden arabalarıyla bağlanma, bu projenin \"vanilla unsurları değiştirmeme, kaldırmama\" ilkesini ilgilendirdiğinden, ayrıca görüşülüp karara bağlanacak.",
+        "Nükleer savaş başlığını yakıt olarak kullanmanın özel sunucuda gerçekten çalıştığının kanıtlanması, paketleme sürecinde test ortamının kaybolması nedeniyle bu sefer gerçekleştirilemedi (nükleer savaş başlığını yakıt olarak kullanma mekanizmasının kendisi v1.8.7'den beri değişmedi).",
+        "Backrooms dünya klasörünün silinmesi (v1.9.0.2'deki değişiklik) işlemini henüz yapmadıysanız, lütfen onu da mutlaka kontrol edin.",
+        "Config silmenize gerek yok. Bu sefer eklenenlerin tamamı yepyeni ayar öğeleri."
+      ],
+      "known_limitations": [
+        "Demiryolu'nun yeni özellikleri (otomatik kalkış, otomatik sürüş, hareket sesi, Havai Hat, iç aydınlatma, varış bildirimi, tren içinde yürüme), bu noktada neredeyse tamamıyla gerçek cihazda doğrulanamamıştı.",
+        "Yeni ekran tasarımı \"Glimpse Glass\"ın görünümü ile yeni kaynak paketinin görünümü de henüz doğrulanmamıştı.",
+        "Sürekli gösterilen koordinat ve TPS/ping göstergelerinin gerçek görünümü de doğrulanmamıştı.",
+        "Otomatik testlerden Silahlar'a ait 3 tanesi ve Elektrik'e ait 1 tanesi, her çalıştırmada sonucu değişen kararsız (flaky) testler olarak kalmaya devam ediyor. Bunların hepsinin, bu sürümde değiştirilmemiş mevcut kodla ilgili olduğu doğrulanmış durumda."
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "release": "V2",
+      "title": "V2 Güncellemesi (Konsept, Kapsam Belirlendi — Uygulama Henüz Başlamadı)",
       "groups": [
         {
-          "subtitle": "Yeni Özellikler",
+          "subtitle": "Yapı Malzemeleri MOD'u: Video Uygulaması Hata Düzeltmeleri ve Cihaz Görünümü Yenileme",
           "bullets": [
-            "Nükleer savaş başlığının elektrik MOD'unda bir enerji kaynağı olarak kullanılabilmesi planlanıyor (v1.8.4'te önceden eklenen füze ve nükleer savaş başlıklarından farklı bir kullanım alanı).",
-            "Her zaman görünen bir koordinat arayüzü eklenmesi planlanıyor."
+            "Video uygulamasındaki oynat, duraklat ve ileri/geri sarma işlemlerinin doğru çalışması için düzeltme yapılması planlanıyor (en yüksek öncelikli hata düzeltmesi).",
+            "Sunucudan çıkıldıktan veya başka bir dünyaya geçildikten sonra sesin çalmaya devam etmesi sorununun düzeltilmesi planlanıyor.",
+            "Ses çalınmasına rağmen görüntünün gösterilmemesi (ekranın siyah kalması) sorununun düzeltilmesi planlanıyor.",
+            "iPhone, MacBook ve akü biriminin görünümünün yeni tasarım taslaklarına dayanarak baştan sona yenilenmesi düşünülüyor."
           ]
         },
         {
-          "subtitle": "İyileştirmeler",
+          "subtitle": "Su Sistemlerinin Gözden Geçirilmesi ve Yaşam Altyapısı",
           "bullets": [
-            "TPS ve ping gösteren arayüzde iyileştirme."
+            "Vanilla su akışı davranışının kaldırılıp, suyun yüksek yerlerden alçak yerlere fiziksel olarak doğal bir şekilde akacağı bir sisteme geçilmesi düşünülüyor (düz zeminlerde sınırsız yatay yayılmanın kaldırılıp, suyun çukurlarda birikmesi hedefleniyor).",
+            "Su borusu, pompa ve su alma ağzı gibi, su kaynağından musluğa kadar bağlantıyı sağlayan yeni bir su altyapısı setinin eklenmesi planlanıyor.",
+            "Matara kapasitesinin mevcut değerin 4 katına çıkarılması planlanıyor. Susuzluğun doygunluktan biraz daha hızlı azalması ve 10 dakika boyunca susuz kalındığında, yenilenme (regenerasyon) etkisi olmadığı sürece hasarın birikerek ölümcül hale gelmesi öngörülüyor.",
+            "Yöneticilerin aralık, saklanacak yedek sayısı ve kayıt konumunu bir arayüz üzerinden ayarlayabileceği otomatik yedekleme özelliğinin eklenmesi planlanıyor (kullanım kılavuzunun da bu sitede yayınlanması planlanıyor)."
           ]
         },
         {
-          "subtitle": "Daha İleri Bir Fikir (bu güncellemeye henüz dahil değil)",
+          "subtitle": "Silahlar MOD'u: Denge Ayarlamaları ve Ses Yenileme",
           "bullets": [
-            "\"Yüksek Performanslı Çekirdek\": Çalışma tezgahında topuzla (mace) birleştirilerek topuzun performansını 20 kat artıracağı düşünülen bir fikir olduğu belirtiliyor."
+            "Minigun performansının %50, saldırı tüfeğinin %75 artırılması, tabanca gücünün 1,5 kat yükseltilmesi, SMG'nin hasarının yarıya indirilmesi karşılığında şarjör kapasitesinin %30 artırılması, roketatarın hem hasarının hem patlama gücünün 3 katına çıkarılması ve taretlerin hasarının 4 katına, dayanıklılığının ise %70 artırılması gibi ayarlamalar değerlendiriliyor.",
+            "Nükleer savaş başlığının en fazla 10 milyon bloğu yok edebilecek büyüklüğe getirilmesi, füze savaş başlıklarının ise hem patlama gücünün hem menzilinin 3 katına çıkarılması düşünülüyor (nükleer savaş başlığının kendi gücünün mevcut haliyle (v1.8.8 itibarıyla, doğrudan isabette 67.200) temel alınması bekleniyor).",
+            "Roketatarın dürbünü kullanılırken silah modelinin görüş alanını kapatması sorununun da düzeltilmesi planlanıyor.",
+            "Silah seslerinin baştan sona yeniden yapılması düşünülüyor (belirli bir mevcut oyunun ses kaynaklarının doğrudan kullanılmayacağı, bunun yerine benzer tarzda yeni seslerin üretileceği belirtiliyor).",
+            "3 yeni füze fırlatıcı tasarımının eklenmesi ve hepsinin oyuncular tarafından kumanda edilebilir olması düşünülüyor."
+          ]
+        },
+        {
+          "subtitle": "Boss MOD'u: 4 Yeni Boss ve Mevcut Boss'larda Ayarlamalar",
+          "bullets": [
+            "4 yeni boss'un eklenmesi planlanıyor: \"Volkanik Golem Kralı\" (Can Puanı: 600), \"Uçurum Kraken Bekçisi\" (Can Puanı: 800), \"Prizmatik Buz Zümrüdüanka Ejderi\" (Can Puanı: 750) ve \"Wither Storm İblis Efendisi\" (Can Puanı: 1200; çağrılabilmesi için yukarıdaki 3 boss'un yenilmiş olması gerekiyor). Hepsinin kendine özgü bir çağırma eşyasına ve evrelere (faz) ayrılmış bir savaş sistemine sahip olması düşünülüyor.",
+            "Veba Doktoru: Vurulmasından Wither Storm'u çağırmasına kadar 20 saniyelik bir süre tanınması, bu 20 saniye içinde (veya tek vuruşta) yenilirse çağırmanın engellenmesi fakat bu durumda ganimet de düşmemesi gibi bir sistem değerlendiriliyor.",
+            "Grim Reaper Boss'u: Yenildiğinde düşük bir ihtimalle kendine özgü silahı olan \"Ruh Biçen Tırpan\"ı düşürmesi ve bu tırpanla düşman öldürüldüğünde düşük ihtimalle spawn yumurtası elde edilebilmesi düşünülüyor. Boss'un kendi gücünün de %15 artırılması ve 3 yeni saldırı deseninin eklenmesi planlanıyor.",
+            "Wither Storm'un daha da güçlendirilmesi ve ikinci forma (faza) geçiş özelliğinin eklenmesi düşünülüyor."
+          ]
+        },
+        {
+          "subtitle": "Hayatta Kalma ve Elektrik MOD'ları: Kirlenme Sistemi ve Yeni Taşıma Eylemleri",
+          "bullets": [
+            "Nükleer savaş başlığının düştüğü bölgenin 20 Minecraft günü boyunca \"kirlenmiş\" durumda kalması öngörülüyor. Hem gaz maskesi hem koruyucu kıyafet takıldığında bu etkinin zararsız hale getirilebilmesi düşünülüyor.",
+            "Nükleer jeneratörün sürekli çalıştırılması durumunda çevredeki havanın kirlenmesi ve önlem alınmadan uzun süre orada kalınmasının sağlığı etkilemesi gibi bir sistem değerlendiriliyor. Çalıştırıldığında çevredeki kirliliği temizleyen yeni bir blok olan \"Hava Temizleyici\"nin de eklenmesi planlanıyor (birden fazla cihazın aynı anda çalıştırılmasını da destekleyecek).",
+            "Köylü ve tavuk gibi küçük mobların elle taşınabilmesi planlanıyor.",
+            "Sandıkların kırılmadan iki elle taşınabilmesi özelliği de değerlendiriliyor (içeriği korunmuş şekilde kalır; çift sandıkların ise iki oyuncu tarafından birlikte taşınması öngörülüyor).",
+            "Dayanıklılığı 32, saldırı gücü 200 olan yeni bir eşyanın (geçici adıyla) eklenmesi planlanıyor. Sihirli asayla aynı sistemde çalışan bir uzak mesafe saldırısı değerlendiriliyor."
+          ]
+        },
+        {
+          "subtitle": "Banka Arayüzü, Backrooms ve Site Entegrasyonu",
+          "bullets": [
+            "ATM ve MineBank'ın azami mevduat limitinin 10 milyon Zümrüt'e yükseltilmesi planlanıyor. ATM ekranına \"Glimpse Alpha Glass\" tasarımının uygulanması ve arayüzün tamamen yenilenmesi düşünülüyor.",
+            "Yeni bir \"MineBank Arayüzü\"nün eklenmesi planlanıyor (bakiyeye göre %25/%50/%75/MAKS hızlı seçim ve 1/10/100/1k artışlarla kaydırma çubuğu kontrolüne sahip bir tasarım taslağının bulunduğu belirtiliyor).",
+            "Backrooms'taki tuhaf varlıkların (canavarların) görünümünün yeni tasarım referans görselleri esas alınarak baştan sona yenilenmesi düşünülüyor.",
+            "Bundan sonra güncelleme içerikleri kesinleştiğinde bunların bu sitenin güncelleme geçmişine de otomatik olarak yansıtılmasını sağlayacak bir sistemin kurulması düşünülüyor (bu, sitenin kendi işleyişiyle ilgili bir konudur)."
           ]
         }
       ]
@@ -2368,7 +2446,12 @@
       "sorakaze_vehicles:wagon_azure": "Vagon (Azur)",
       "sorakaze_vehicles:wagon_graphite": "Vagon (Grafit)",
       "sorakaze_vehicles:wagon_pearl": "Vagon (Sedef)",
-      "sorakaze_vehicles:wagon_scarlet": "Vagon (Al Kırmızı)"
+      "sorakaze_vehicles:wagon_scarlet": "Vagon (Al Kırmızı)",
+      "sorakaze_boss:universal_harvester_alpha": "Evrensel Toplayıcı α",
+      "sorakaze_survival:spark_doll_alpha": "Havai Fişek Bebeği α",
+      "sorakaze_power:battery": "Akü",
+      "sorakaze_rail:catenary_wire": "Havai Hat",
+      "sorakaze_boss:wither_storm_summon": "Wither Storm Çağırma Taşı"
     },
     "howto": [
       {

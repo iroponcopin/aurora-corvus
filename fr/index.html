@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Nouveauté</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">Dernière mise à jour : Nouveau MOD « Backrooms », refonte complète de la Wither Storm</h3>
-      <p>Le 9ᵉ MOD, « Backrooms », fait son entrée : un contenu d&#x27;exploration avec jauge de santé mentale, où l&#x27;on s&#x27;égare en franchissant une faille générée près des cités de l&#x27;End. Dans le MOD boss, la Wither Storm a été entièrement refondue, avec une nouvelle apparence, des stades de croissance et un nouvel effet de statut, et se voit dotée de nouveaux butins garantis. Les 6 autres MOD — matériaux et décoration, armes à feu, électricité, ciel, chemin de fer et véhicules — restent inchangés.</p>
-      <ul><li>Le 9ᵉ MOD « Backrooms » (sorakaze_backrooms) fait son entrée. Chaque fois qu&#x27;une cité de l&#x27;End est générée, une faille (autel) apparaît systématiquement à proximité, dans un endroit sûr — une par cité (les cités de l&#x27;End déjà existantes n&#x27;en reçoivent pas).</li><li>Intègre un système de santé mentale (sanité). Elle plafonne à 100 et tombe à zéro en environ 18 minutes si l&#x27;on ne fait rien. Boire l&#x27;objet de restauration trouvé dans les coffres en récupère 35. Une « coupure de courant » a environ 12 % de chances de survenir toutes les 30 secondes environ, et les choses commencent à changer dès que la sanité passe sous 20.</li><li>Impossible de poser des blocs à l&#x27;intérieur du labyrinthe, et les murs, sols et plafonds — y compris les coffres — ne peuvent absolument pas être détruits. Les autres dimensions ne sont pas affectées.</li><li>L&#x27;entité « l&#x27;Écouteur vide » y rôde (40 PV, 6 en attaque ; elle s&#x27;immobilise tant qu&#x27;on la regarde, et ne se remet en mouvement que lorsqu&#x27;on détourne le regard). Trois individus au maximum peuvent être présents simultanément.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survie</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span></div>
+      <h3 style="margin-top:0">Dernière mise à jour : Preuve du fonctionnement de l&#x27;ogive nucléaire comme combustible, grande mise à jour du chemin de fer, nouveau design d&#x27;écran, coordonnées affichées en permanence</h3>
+      <p>5 MOD ont été mis à jour simultanément (les versions V1.9.1 et V1.9.2 n&#x27;existent pas : la grande mise à jour du chemin de fer et les demandes autour de la production d&#x27;électricité par ogive nucléaire ont été regroupées et livrées sous le nom V1.9.3). Le dessin de la Poupée Spark α, corrigé depuis deux versions mais jamais livré jusqu&#x27;ici, arrive enfin. Ont également été corrigés : le bug qui abîmait une batterie laissée pleine trop longtemps, la mise en place (non encore exécutée) d&#x27;une vérification sur un vrai serveur de l&#x27;utilisation de l&#x27;ogive nucléaire comme combustible, et le bug de la lunette du lance-roquettes. Le chemin de fer reçoit une grande mise à jour (départ automatique, conduite automatique, etc.), les écrans des MOD électricité, armes à feu et boss adoptent le nouveau design « Glimpse Glass », et les coordonnées ainsi qu&#x27;un indicateur TPS/ping s&#x27;affichent désormais en permanence.</p>
+      <ul><li>[Important] Le bug d&#x27;apparence de la Poupée Spark α (une partie de l&#x27;oreille droite semblait disparaître) avait en réalité déjà été corrigé après la v1.9.0.2, mais une faille dans le mécanisme de comparaison entre versions livrées avait empêché cette correction d&#x27;être répercutée, ne serait-ce qu&#x27;une seule fois, dans les fichiers distribués. Le dessin enfin corrigé arrive avec cette version. Pour empêcher ce bug de se reproduire, une nouvelle vérification (check_dist_drift.py) confrontant directement les ressources sources et les fichiers distribués a été mise en place.</li><li>[Important] Électricité : correction d&#x27;un bug où une batterie pleine, laissée telle quelle pendant environ 18,6 heures, cessait définitivement de produire des cellules d&#x27;énergie. La cause était un dépassement de capacité lors d&#x27;une addition, un symptôme qui apparaissait d&#x27;autant plus vite que le combustible était puissant (comme l&#x27;ogive nucléaire). Les batteries déjà touchées par ce bug seront automatiquement réparées par cette mise à jour.</li><li>Électricité : le mécanisme permettant d&#x27;utiliser l&#x27;ogive nucléaire comme combustible existe depuis la v1.8.7, mais cette fois-ci, une méthode de vérification sur un vrai serveur dédié a été mise en place pour la première fois (cependant, l&#x27;environnement de test a été perdu pendant ce cycle de packaging, donc cette vérification n&#x27;a pas encore pu être exécutée — voir l&#x27;avertissement ci-dessous pour plus de détails). Correction également d&#x27;un bug où l&#x27;indicateur de qualité du combustible restait bloqué sur la chaîne non traduite « sorakaze_power.fuel_quality.nuclear ».</li><li>Armes à feu : la lunette de visée du lance-roquettes s&#x27;affiche enfin à l&#x27;écran (corrigé après 2 signalements). Le grossissement passe également de ×2 à ×4. L&#x27;apparence des 2 fusils de précision n&#x27;a pas changé.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survie</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Électricité</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Armes à feu</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Chemin de fer</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span></div>
       <p><a href="changelog/">Voir tout l&#x27;historique des mises à jour →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Armes à feu</h3>
       <p class="card__meta">Des armes à distance absentes de la version vanilla</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Chemin de fer</h3>
       <p class="card__meta">Des trains et des engins sur rails</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Matériaux et décoration</h3>
       <p class="card__meta">Matériaux de construction et appareils électroménagers pour bâtir une ville</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Boss</h3>
       <p class="card__meta">Des adversaires redoutables et leur équipement à récupérer</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Ciel</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survie</h3>
       <p class="card__meta">Nouveaux minerais, armures et éléments de vie quotidienne</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Véhicules</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Électricité</h3>
       <p class="card__meta">Production, distribution d&#x27;électricité et appareils électriques</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Exploration d&#x27;un autre monde avec jauge de santé mentale</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

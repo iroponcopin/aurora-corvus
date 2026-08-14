@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">新功能</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">最新更新： 新增 MOD「后室」，凋灵风暴全面刷新</h3>
-      <p>第 9 个 MOD「后室」正式加入。这是一项带有理智值机制的探索内容，玩家会从末地城生成的裂缝中误入其中。Boss MOD 的凋灵风暴迎来全面刷新，涵盖外观、成长阶段与全新的异常状态，还新增了确定掉落物。建材、枪械、电力、天空、铁道、载具这 6 个 MOD 均无变化。</p>
-      <ul><li>第 9 个 MOD「后室」(sorakaze_backrooms) 正式加入。每当生成一座末地城，都会在其附近的安全地点必定生成 1 处裂缝（祭坛）（已生成的末地城不会补加）。</li><li>搭载了理智值（Sanity）系统。上限为 100，放任不管的话约 18 分钟会归零。饮用宝箱中找到的恢复道具可恢复 35 点。约每 30 秒有 12% 的概率发生「停电」，理智值低于 20 后周围景象会开始变化。</li><li>在迷宫内无法放置方块，墙壁、地板、天花板（包括箱子在内）一律无法破坏。不会影响其他维度。</li><li>怪异「空寂聆听者」会四处徘徊（HP40，攻击力 6。被注视时会停止不动，视线一移开又会重新行动）。同时最多出现 3 只。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">生存</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">后室</span></div>
+      <h3 style="margin-top:0">最新更新： 核弹头发电验证、铁道大型更新、全新界面设计与常驻显示坐标</h3>
+      <p>本次同时更新了 5 个 MOD（不存在 V1.9.1、V1.9.2 版本，铁道的大型更新与核弹头发电相关的委托一并整理后以 V1.9.3 出货）。终于交付了早在两个版本前就已修复、却一直未随发布物送出的烟花人偶α外观，并修复了蓄电池满电后长时间放置会损坏的问题、准备了在真实服务器上验证核弹头可作为燃料的方法（尚未执行），以及火箭筒瞄准镜的显示问题。铁道新增了自动发车、自动驾驶等大型更新，电力、枪械、Boss 的界面采用了全新的「Glimpse Glass」设计，并新增了常驻显示的坐标与 TPS/ping 显示牌。</p>
+      <ul><li>【重要】烟花人偶α外观的问题（右耳部分看起来像是缺了一块），其实早在 v1.9.0.2 之后就已经修复，但由于比对各次发布物的机制存在缺陷，始终未能反映到实际发布内容中。这次终于送达了修复后的外观。为避免此类问题再次发生，新增了直接比对源资产与发布物的检查工具（check_dist_drift.py）。</li><li>【重要】电力：修复了蓄电池充满后放置约 18.6 小时，就再也无法生成能量电池的问题。原因是加法运算发生数值溢出，燃料输出越高（如核弹头）症状出现得越快。已经损坏的蓄电池，只要更新到本版本即可自动修复。</li><li>电力：核弹头可作为燃料使用的机制自 v1.8.7 起就已存在，这次首次准备了在真实专用服务器上进行验证的方法(但由于本轮打包过程中测试环境丢失，本次尚未实际执行——详见下方注意事项)。同时修复了燃料等级显示一直停留在未翻译字符串「sorakaze_power.fuel_quality.nuclear」的问题。</li><li>枪械：火箭筒的瞄准镜终于能在画面上显示了（经过 2 次报告后修复）。倍率也从 ×2 提升到了 ×4。两把狙击步枪的外观未作变更。</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">生存</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">电力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">枪械</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span></div>
       <p><a href="changelog/">查看全部更新日志 →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>枪械</h3>
       <p class="card__meta">原版没有的远程武器</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>铁道</h3>
       <p class="card__meta">电车与铁轨载具</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>建材、装饰</h3>
       <p class="card__meta">建筑与家电，打造城镇</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Boss</h3>
       <p class="card__meta">强大的讨伐目标与掉落装备</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>天空</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>生存</h3>
       <p class="card__meta">新矿石、护甲与生活要素</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>载具</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>电力</h3>
       <p class="card__meta">发电、输电与电气化设备</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>后室</h3>
       <p class="card__meta">带理智值的异界探索</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

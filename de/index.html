@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Neue Funktion</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">Neuestes Update: Neue MOD „Backrooms“ hinzugekommen, Wither Storm komplett überarbeitet</h3>
-      <p>Die 9. MOD „Backrooms“ (sorakaze_backrooms) ist neu hinzugekommen: Erkundungsinhalte mit Sanity-System, in die man über einen an Endstädten generierten Riss hineingerät. Der Wither Storm der MOD sorakaze_boss wurde mit neuem Aussehen, Wachstumsstufen und einem neuen Statuseffekt komplett überarbeitet, außerdem kamen neue garantierte Drops hinzu. Die 6 MODs Baumaterial, Schusswaffen, Strom, Himmel, Schienenverkehr und Fahrzeuge bleiben unverändert.</p>
-      <ul><li>Die 9. MOD „Backrooms“ (sorakaze_backrooms) ist neu hinzugekommen. Bei jeder neu generierten Endstadt entsteht garantiert genau ein Riss (Altar) an einer nahegelegenen sicheren Stelle (bereits existierende Endstädte erhalten keinen).</li><li>Verfügt über ein „Sanity“-System (Geisteszustand). Der Wert beginnt bei maximal 100 und sinkt ohne Gegenmaßnahmen in etwa 18 Minuten auf null. Ein in Truhen zu findender Wiederherstellungstrank stellt 35 Punkte wieder her. Etwa alle 30 Sekunden tritt mit 12 % Wahrscheinlichkeit ein „Stromausfall“ ein, und unterhalb von 20 Punkten beginnt sich die Umgebung merklich zu verändern.</li><li>Im Labyrinth können keine Blöcke platziert werden, und Wände, Böden und Decken – einschließlich der Truhen – lassen sich nicht abbauen. Andere Dimensionen sind davon nicht betroffen.</li><li>Die Kreatur „Hohler Lauscher“ streift umher (40 HP, 6 Angriffskraft. Solange sie beobachtet wird, verharrt sie regungslos und bewegt sich erst wieder, wenn der Blick abgewendet wird). Es können höchstens 3 Exemplare gleichzeitig erscheinen.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bosse</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span></div>
+      <h3 style="margin-top:0">Neuestes Update: Testvorbereitung für Atomsprengkopf-Stromerzeugung, großes Schienen-Update, neues Bildschirmdesign, dauerhafte Koordinatenanzeige</h3>
+      <p>5 MODs wurden gleichzeitig aktualisiert (die Versionen V1.9.1 und V1.9.2 existieren nicht – das große Rail-Update und die Anliegen rund um die Atomsprengkopf-Stromerzeugung wurden gebündelt und als V1.9.3 ausgeliefert). Endlich kommt die Grafik der Feuerwerkspuppe α an, die zwar schon vor zwei Releases korrigiert worden war, aber nie in einen ausgelieferten Build gelangt ist. Außerdem wurden ein Fehler behoben, durch den ein voll geladener Akku bei längerem Stillstand kaputtgeht, die Vorbereitung einer Verifizierung auf einem echten Server für die Nutzung von Atomsprengköpfen als Brennstoff getroffen, sowie ein Fehler bei der Zielfernrohr-Anzeige des Raketenwerfers behoben. Rail erhielt ein großes Update mit automatischer Abfahrt, automatischem Fahrbetrieb und mehr, die Bildschirme von Strom, Schusswaffen und Bossen bekamen das neue Design „Glimpse Glass“, und es kamen dauerhaft angezeigte Koordinaten sowie eine TPS/Ping-Anzeige hinzu.</p>
+      <ul><li>[Wichtig] Der Grafikfehler der Feuerwerkspuppe α (ein Teil des rechten Ohrs schien zu verschwinden) war eigentlich schon nach v1.9.0.2 behoben worden, gelangte aber wegen eines Fehlers im Vergleichsmechanismus der ausgelieferten Builds nie in eine Distribution. Mit diesem Release kommt die korrigierte Grafik endlich an. Damit das nie wieder passiert, wurde eine neue Prüfung (check_dist_drift.py) eingeführt, die Quell-Assets direkt mit dem ausgelieferten Build abgleicht.</li><li>[Wichtig] Strom: Fehler behoben, durch den ein voll geladener Akku, der etwa 18,6 Stunden lang stehen gelassen wurde, für immer aufhörte, Energiezellen herzustellen. Ursache war ein Überlauf bei einer Addition, der bei leistungsstarken Brennstoffen (wie Atomsprengköpfen) schneller auftrat. Bereits betroffene Akkus reparieren sich mit diesem Release automatisch selbst.</li><li>Strom: Die Möglichkeit, Atomsprengköpfe als Brennstoff zu nutzen, besteht bereits seit v1.8.7, doch diesmal wurde erstmals eine Möglichkeit geschaffen, dies auf einem echten dedizierten Server zu verifizieren (die Testumgebung ging jedoch während dieser Paketierungsrunde verloren, sodass die Ausführung noch nicht stattgefunden hat – Details siehe Hinweise unten). Außerdem wurde ein Fehler behoben, bei dem die Anzeige der Brennstoffqualität als unübersetzte Zeichenkette „sorakaze_power.fuel_quality.nuclear“ erschien.</li><li>Schusswaffen: Das Zielfernrohr des Raketenwerfers ist endlich auf dem Bildschirm sichtbar (nach 2 Meldungen behoben). Der Zoomfaktor wurde außerdem von ×2 auf ×4 erhöht. Das Aussehen der beiden Scharfschützengewehre bleibt unverändert.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Strom</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Schusswaffen</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Schienenverkehr</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bosse</span></div>
       <p><a href="changelog/">Gesamtes Änderungsprotokoll ansehen →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Schusswaffen</h3>
       <p class="card__meta">Fernkampfwaffen, die es in Vanilla nicht gibt</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Schienenverkehr</h3>
       <p class="card__meta">Züge und andere Fahrzeuge auf Schienen</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Baumaterial &amp; Deko</h3>
       <p class="card__meta">Baumaterialien und Haushaltsgeräte für den Städtebau</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Bosse</h3>
       <p class="card__meta">Mächtige Gegner und ihre Drop-Ausrüstung</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Himmel</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survival</h3>
       <p class="card__meta">Neue Erze, Rüstungen und Alltagsgegenstände</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Fahrzeuge</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Strom</h3>
       <p class="card__meta">Stromerzeugung, -übertragung und elektrische Geräte</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Erkundung einer Zwischenwelt mit Sanity-System</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

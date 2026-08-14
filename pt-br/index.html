@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Novidade</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">Última atualização: Novo MOD “Backrooms” chega ao pacote, Wither Storm totalmente renovada</h3>
-      <p>Chegou o nono MOD, “Backrooms”. É um conteúdo de exploração com sistema de sanidade, no qual você acaba se perdendo ao entrar por uma fenda que surge em Cidades do Fim. A Wither Storm, do MOD de Chefes, foi totalmente renovada — com nova aparência, estágios de crescimento e um novo efeito negativo — e também ganhou novos drops garantidos. Os outros 6 MODs (Materiais de Construção, Armas de Fogo, Energia, Céu, Ferrovia e Veículos) não foram alterados.</p>
-      <ul><li>Chegou o nono MOD, “Backrooms” (sorakaze_backrooms). Toda vez que uma Cidade do Fim é gerada, é criada, sem falta, uma fenda (um altar) em um local seguro nas proximidades — uma para cada cidade (as Cidades do Fim já existentes não recebem essa fenda).</li><li>Adicionamos o sistema de sanidade. O máximo é 100 e, se nada for feito, ela chega a zero em cerca de 18 minutos. Beber o item de recuperação encontrado em baús restaura 35 pontos. A cada cerca de 30 segundos, há 12% de chance de ocorrer um “apagão”, e as coisas começam a mudar quando a sanidade cai abaixo de 20.</li><li>Dentro do labirinto não é possível colocar blocos, e paredes, piso e teto — incluindo os baús — não podem ser destruídos de forma alguma. Isso não afeta nenhuma outra dimensão.</li><li>A entidade “Ouvinte Oco” vagueia pelo labirinto (40 de HP, 6 de poder de ataque). Enquanto estiver sendo observada, ela para de se mover, voltando a se mexer assim que você desviar o olhar. No máximo 3 podem aparecer ao mesmo tempo.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span></div>
+      <h3 style="margin-top:0">Última atualização: Comprovada a ogiva nuclear como combustível, grande atualização da ferrovia, novo visual das telas e coordenadas sempre visíveis</h3>
+      <p>Atualizamos 5 MODs de uma só vez (não existem versões V1.9.1 nem V1.9.2 — reunimos a grande atualização da ferrovia e os pedidos relacionados à geração de energia com ogiva nuclear e lançamos tudo como V1.9.3). Finalmente entregamos a arte do Boneco de Fogos α, que já estava corrigida desde duas versões atrás mas nunca tinha sido incluída em um lançamento, corrigimos o bug pelo qual a Bateria quebrava se ficasse cheia e parada por muito tempo, preparamos (ainda sem executar) uma forma de comprovar em um servidor de verdade que a ogiva nuclear pode ser usada como combustível, e corrigimos o bug da mira do lança-foguetes. A ferrovia ganhou uma grande atualização, com partida automática, condução automática e outras novidades; as telas do MOD de Energia, de Armas de Fogo e de Chefes ganharam o novo visual “Glimpse Glass”; e as coordenadas, junto com o TPS/ping, passaram a ficar sempre visíveis na tela.</p>
+      <ul><li>[Importante] O bug na arte do Boneco de Fogos α (parte da orelha direita parecendo sumir) já tinha sido corrigido logo depois da v1.9.0.2, mas, por uma falha no mecanismo que compara os pacotes de distribuição entre si, essa correção nunca chegou a ser refletida nos arquivos distribuídos. Agora, finalmente, a arte corrigida chega até você. Para esse bug nunca mais acontecer, introduzimos uma nova verificação (check_dist_drift.py) que compara diretamente os recursos de origem com os arquivos distribuídos.</li><li>[Importante] Energia: corrigido o bug pelo qual uma Bateria cheia, deixada parada por cerca de 18,6 horas, parava de criar células de energia para sempre. A causa era um estouro (overflow) na soma interna, que aparecia mais rápido quanto mais potente fosse o combustível (como a ogiva nuclear). Baterias que já tinham quebrado também são corrigidas automaticamente ao instalar esta versão.</li><li>Energia: o mecanismo para usar a ogiva nuclear como combustível já existe desde a v1.8.7, mas desta vez preparamos, pela primeira vez, uma forma de verificar isso em um servidor dedicado de verdade (porém, o ambiente de teste foi perdido durante este ciclo de empacotamento, então essa verificação ainda não pôde ser executada -- veja o aviso abaixo para mais detalhes). Também corrigimos o bug pelo qual a exibição do grau do combustível aparecia como o texto não traduzido “sorakaze_power.fuel_quality.nuclear”.</li><li>Armas de fogo: a mira do lança-foguetes finalmente passou a aparecer na tela (corrigido depois de 2 relatos). O zoom também foi aumentado de ×2 para ×4. A aparência dos 2 fuzis sniper não foi alterada.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Chefes</span></div>
       <p><a href="changelog/">Ver todo o histórico de atualizações →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Armas de Fogo</h3>
       <p class="card__meta">Armas de longo alcance que não existem na vanilla</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Ferrovia</h3>
       <p class="card__meta">Trens e veículos sobre trilhos</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Materiais de Construção e Decoração</h3>
       <p class="card__meta">Materiais de construção e eletrodomésticos para montar sua cidade</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Chefes</h3>
       <p class="card__meta">Alvos poderosos para caçar e equipamentos exclusivos de drop</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Céu</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Sobrevivência</h3>
       <p class="card__meta">Novos minérios, armaduras e elementos do dia a dia</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Veículos</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Energia</h3>
       <p class="card__meta">Geração e transmissão de energia, além de aparelhos elétricos</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Exploração de um mundo liminar com medidor de sanidade</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

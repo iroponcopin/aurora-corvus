@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">New feature</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">Latest update: New Mod &quot;Backrooms&quot; Joins the Pack, Wither Storm Overhauled</h3>
-      <p>The 9th mod, &quot;Backrooms,&quot; has joined the pack — a sanity-driven exploration experience reached through rifts that spawn near End Cities. The boss mod&#x27;s Wither Storm has been completely overhauled with a new look, growth stages, and a new status effect, plus new guaranteed drops. The other 6 mods (building &amp; decor, guns, power, sky, rail, vehicles) are unchanged.</p>
-      <ul><li>The 9th mod, &quot;Backrooms&quot; (sorakaze_backrooms), has joined the pack. Every time an End City generates, exactly one rift (an altar) spawns nearby in a safe spot — one per City (existing End Cities don&#x27;t get one).</li><li>Features a sanity system. It maxes out at 100 and drains to zero in about 18 minutes if you do nothing. Drinking the restorative item found in chests recovers 35. Roughly every 30 seconds there&#x27;s a 12% chance of a &quot;blackout,&quot; and things start to change once sanity drops below 20.</li><li>You can&#x27;t place blocks inside the maze, and the walls, floor, and ceiling — including the chests — can&#x27;t be destroyed at all. Other dimensions are unaffected.</li><li>The entity &quot;Hollow Listener&quot; roams the maze (40 HP, 6 attack damage. It freezes while you&#x27;re looking at it and moves again once you look away). Up to 3 can be present at once.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span></div>
+      <h3 style="margin-top:0">Latest update: Verified Nuclear-Warhead Power Generation, Major Rail Update, New Screen Design, Always-On Coordinates</h3>
+      <p>Updated 5 mods at once (there are no v1.9.1 or v1.9.2 releases — the major rail update and the nuclear-warhead power generation requests are bundled together and shipped as v1.9.3). We&#x27;ve finally delivered Spark Doll α&#x27;s art, which had actually been fixed two releases ago but had never once made it into a shipped build, along with a fix for batteries breaking when left fully charged for a long time, a new (not-yet-run) way to verify on a real server that nuclear warheads can be used as fuel, and a fix for the Rocket Launcher&#x27;s scope bug. Rail gained a major update including automatic departure and automatic driving, Power/Guns/Boss screens got the new &quot;Glimpse Glass&quot; design, and always-on coordinate and TPS/ping displays were added.</p>
+      <ul><li>[Important] The Spark Doll α art bug (part of the right ear appearing to vanish) had actually already been fixed after v1.9.0.2, but a flaw in the mechanism that compares build outputs meant it never once made it into a distributed build. The fixed art finally arrives with this release. To make sure this never happens again, we&#x27;ve introduced a new check (check_dist_drift.py) that directly diffs source assets against the distributed build.</li><li>[Important] Power: Fixed a bug where a fully charged Battery, left alone for about 18.6 hours, would stop producing Energy Cells forever. The cause was an addition overflow, which showed up faster with higher-output fuels (like nuclear warheads). Batteries already broken by this bug will fix themselves automatically once you install this release.</li><li>Power: The mechanism for using nuclear warheads as fuel has existed since v1.8.7, but this round we set up a way to verify it on a real dedicated server for the first time (however, the test environment was lost during this packaging round, so it hasn&#x27;t actually been run yet -- see the warning below for details). Also fixed a bug where the fuel-grade display showed the raw, untranslated string &quot;sorakaze_power.fuel_quality.nuclear.&quot;</li><li>Guns: The Rocket Launcher&#x27;s scope is finally visible on screen (fixed after being reported twice). Its zoom level has also been raised from ×2 to ×4. The appearance of both sniper rifles is unchanged.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Power</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Guns</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span></div>
       <p><a href="changelog/">See the full changelog →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Guns</h3>
       <p class="card__meta">Ranged weapons vanilla doesn&#x27;t have</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Rail</h3>
       <p class="card__meta">Trains and other track-bound vehicles</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Building &amp; Decor</h3>
       <p class="card__meta">Building materials and appliances for city-building</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Boss</h3>
       <p class="card__meta">Powerful bosses and their drops</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Sky</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survival</h3>
       <p class="card__meta">New ores, armor, and life-support features</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Vehicles</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Power</h3>
       <p class="card__meta">Power generation, transmission, and electric devices</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Liminal exploration with a sanity meter</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

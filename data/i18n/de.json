@@ -75,7 +75,7 @@
       "changelog_balance_label": "Balance-Anpassungen",
       "changelog_warnings_label": "Hinweise",
       "changelog_limitations_label": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
-      "recipes_intro": "Eine Übersicht der Crafting-Rezepte aller Gegenstände und Blöcke aus den 8 installierten MODs (insgesamt {count} Stück). Klicke auf einen Gegenstand, um das Rezept im selben 3×3-Raster wie am echten Werktisch zu sehen. Im Reiter „Anleitung“ oben rechts findest du außerdem Erklärungen zu Dingen mit Verkabelung, etwa der automatischen Sortierung oder der Strominfrastruktur.",
+      "recipes_intro": "Eine Übersicht der Crafting-Rezepte aller Gegenstände und Blöcke aus den 9 installierten MODs (insgesamt {count} Stück). Klicke auf einen Gegenstand, um das Rezept im selben 3×3-Raster wie am echten Werktisch zu sehen. Im Reiter „Anleitung“ oben rechts findest du außerdem Erklärungen zu Dingen mit Verkabelung, etwa der automatischen Sortierung oder der Strominfrastruktur.",
       "guide_intro": "Hier sind alle Schritte von der Aktivierung der MODs bis zum Spielstart zusammengefasst. Wenn du nur als Spieler mitspielen willst, reicht das Kapitel „Für Spieler“ völlig aus.",
       "audience_player": "Für Spieler",
       "audience_admin": "Für Server-Administratoren",
@@ -1055,83 +1055,161 @@
         "Die Synchronisation bei gleichzeitigem Spiel zu zweit sowie die Serverlast beim gleichzeitigen Betrieb aller 9 MODs sind noch nicht getestet.",
         "Die Angriffsanimationen von Sculk-Golem, Rock Lock, Kraken und Titan sowie der Wurfangriff des Donnerspeers bleiben auch dieses Mal offen."
       ]
-    }
-  ],
-  "roadmap": [
+    },
     {
-      "release": "v1.9.0",
-      "title": "Neuer Bereich „Flucht aus den Backrooms“ & Integration des Wither Storm",
-      "groups": [
-        {
-          "subtitle": "Neuer Bereich „Flucht aus den Backrooms“",
-          "bullets": [
-            "Eine neue, dem Original originalgetreu nachempfundene Spezialkarte wird hinzugefügt.",
-            "Während des Aufenthalts im Bereich wird ein „Sanity“-Wert (Geisteszustand) eingeführt, der sich unter anderem mit dort droppendem „Mandelwasser“ wiederherstellen lassen soll.",
-            "Innerhalb des Bereichs gilt die besondere Regel, dass keine Blöcke platziert oder abgebaut werden können.",
-            "An verschiedenen Stellen werden Truhen mit Beute platziert.",
-            "Monster und Mechaniken aus dem Original werden nachgebildet.",
-            "Der Eingang soll zufällig in Endstädten generiert werden.",
-            "Der Fortschritt soll dauerhaft als Text am linken Bildschirmrand angezeigt werden."
-          ]
-        },
-        {
-          "subtitle": "Integration des Wither Storm",
-          "bullets": [
-            "Das externe MOD „Wither Storm“ soll im mods-Ordner mitgeliefert und integriert werden.",
-            "Der Pestdoktor wird künftig den Wither Storm beschwören können.",
-            "Als Beute für seine Bezwingung sollen der „Universalsammler α“ und die „Feuerwerkspuppe α“ droppen (verbesserte Versionen des bereits vorhandenen Universalsammlers bzw. der Feuerwerkspuppe).",
-            "Der Universalsammler α soll die Haltbarkeit einer goldenen Spitzhacke haben und nicht verzauberbar sein.",
-            "Für die Feuerwerkspuppe α wird eine unbegrenzte Nutzungszahl bei 3 Minuten Abklingzeit angedacht – anders als bei der bestehenden Feuerwerkspuppe, die auf 3 Anwendungen begrenzt ist."
-          ]
-        }
+      "release": "v1.9.0.1",
+      "date": "2026-08-11",
+      "title": "Riss in Endstädten und Flug des Wither Storm behoben, Video-App hinzugefügt",
+      "summary": "Behoben wurden ein Fehler, durch den die in v1.9.0 hinzugefügten Backrooms-Risse praktisch nie generiert wurden, sowie ein Fehler, durch den der Flug der schwebenden Wither-Storm-Stufen nie implementiert war. Der Baumaterial-MOD erhielt eine „Video“-App für Handy und PC sowie geräteabhängige, OS-artige Bildschirme, und das Aussehen von Survivals Feuerwerkspuppe α wurde festgelegt.",
+      "highlights": [
+        "Backrooms: Fehler behoben, durch den der Riss in Endstädten in der Praxis so gut wie nie generiert wurde. Die Prüfung schaute auf die Höhe (Y-Koordinate), die tatsächlich übergebene Koordinate hatte aber immer die Höhe 0, wodurch stets fälschlich „nicht vorhanden“ erkannt wurde. Auf neu generiertem Land entsteht nun garantiert genau ein Riss pro Endstadt (bereits existierendes Land erhält keinen rückwirkend). Auch die Icon-Grafiken von Ruhetropfen, Taschenlampe und zerrissener Notiz wurden neu gezeichnet.",
+        "Wither Storm: Echten 3D-Flug für die schwebenden Stufen (S3–S5) implementiert – Anflug im Kreisen, Sturzangriff, anschließendes Abdrehen. Die bodengebundenen Stufen (S0–S2), der Nahkampfangriff, die Kopf-Salve, der Zugstrahl und die Schadensformel des Großen Strudels bleiben unverändert.",
+        "Baumaterial: „Video“-App für Handy und PC hinzugefügt (mit eingebauter, echter Browser-Engine; beim ersten Öffnen läuft einmalig ein zusätzlicher Download auf dem PC des Spielers). Die Bildschirme unterscheiden sich nun je nach Gerät: iPhone erhält einen iOS-artigen Look, MacBook und Mac Studio einen macintosh-artigen Look (Menüleiste, Dock).",
+        "Survival: Das Aussehen der Feuerwerkspuppe α wurde festgelegt (rein optische Änderung, die Funktion bleibt unverändert)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "Die in diesem Release genannte Erstdownload-Größe der Video-App von „ca. 140–175 MB“ war die komprimierte Größe und damit fehlerhaft (in v1.9.0.3 gemessen und auf „ca. 300 MB“ korrigiert).",
+        "Eine Löschung oder Änderung der config ist nicht nötig. Diesmal kamen ausschließlich neue Einstellungsoptionen hinzu."
+      ],
+      "known_limitations": [
+        "Zu diesem Zeitpunkt war der Riss selbst zwar behoben, doch ein weiterer Fehler blieb bestehen, durch den das dahinterliegende Labyrinth überhaupt nicht generiert wurde (entdeckt und behoben in v1.9.0.2).",
+        "Ob die Video-App tatsächlich Webseiten anzeigt und wie die neuen iPhone-/macOS-artigen Bildschirmdesigns aussehen, war beides noch nicht überprüft.",
+        "Ob sich der Flug der schwebenden Wither-Storm-Stufen tatsächlich natürlich anfühlt (das Gefühl von Kreisen und Sturzangriff), war ebenfalls noch nicht überprüft."
       ]
     },
     {
-      "release": "v1.9.1",
-      "title": "Große Erweiterung des Schienen-MODs",
-      "groups": [
-        {
-          "subtitle": "Automatisierung des Betriebs",
-          "bullets": [
-            "Der automatische Zug-Halteblock soll eine automatische Abfahrtsfunktion erhalten.",
-            "Ein „Autopilot-Modus“, bei dem der Zug auch ohne Spieler an Bord fährt, wird geprüft.",
-            "Hinzufügen von Fahrgeräuschen."
-          ]
-        },
-        {
-          "subtitle": "Neue Wagen & Ausstattung",
-          "bullets": [
-            "Wagen höherer Klassen wie „Green Car“ und „Gran Class“ sollen hinzugefügt werden.",
-            "Oberleitungen (über den Gleisen gespannte Stromkabel) werden als platzierbares Element hinzugefügt.",
-            "Innen- und Außenbeleuchtung sollen nächtliche Fahrten heller machen.",
-            "Vanilla-Loren sollen sich künftig aneinanderkuppeln lassen.",
-            "Vanilla-Schienen erhalten ein vollständiges 3D-Modell.",
-            "Eine smartphone-artige Anzeige für den nächsten Halt und die Abfahrt soll ergänzt werden."
-          ]
-        }
+      "release": "v1.9.0.2",
+      "date": "2026-08-12",
+      "title": "Fehler behoben, durch den das Backrooms-Labyrinth nicht generiert wurde (Welt-Eingriff erforderlich)",
+      "summary": "In v1.9.0.1 wurde der Riss selbst behoben, doch es zeigte sich ein weiterer Fehler, durch den die dahinterliegende Backrooms-Welt selbst leer blieb (das Nichts) – dieser wurde nun behoben. In Welten, die schon einmal von einem Spieler in die Backrooms betreten wurden, muss der Dimensionsordner gelöscht werden. Außerdem wurde ein Aussehen-Fehler bei 3 Gegenständen behoben, und die Feuerwerkspuppe α aus Survival wurde durch eine vom Eigentümer selbst gezeichnete Grafik ersetzt.",
+      "highlights": [
+        "Backrooms: Fehler behoben, durch den nach dem Durchqueren des Risses nirgends ein Labyrinth vorhanden war und man selbst im Kreativmodus sofort starb. Ursache war, dass beide Filter im „Flachwelt“-Generierungssystem von Minecraft gleichzeitig griffen, wodurch in keinem einzigen Chunk je ein Labyrinth erzeugt wurde. Zusätzlich wurde unter dem Boden Grundgestein platziert und eine Rettungsroutine für den Fall eines Durchfallens hinzugefügt.",
+        "Backrooms: Fehler behoben, durch den Ruhetropfen, Taschenlampe und zerrissene Notiz im Inventar als „lila-schwarzes Schachbrettmuster“ (Anzeige bei fehlender Grafik) erschienen. Die Definitionsdatei, die das Aussehen festlegt, fehlte komplett.",
+        "Survival: Die Grafik der Feuerwerkspuppe α wurde durch ein vom Eigentümer selbst gezeichnetes Pixelbild ersetzt. Funktional (Mechanik, Rezept, Drops, config) ändert sich nichts."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "[Wichtig] Wurde in eurer Welt schon einmal von jemandem die Backrooms betreten, stoppt den Server und löscht den Ordner <Weltname>/dimensions/sorakaze_backrooms/backrooms/. Beim nächsten Durchqueren eines Risses wird ein neues, korrektes Labyrinth erzeugt. Da man in den Backrooms keine Blöcke setzen oder abbauen kann, geht durch das Löschen nichts verloren (Gegenstände wie Ruhetropfen, Taschenlampe und zerrissene Notiz im Inventar bleiben erhalten). Falls der Ordner nicht existiert, hat noch niemand diese Welt betreten – dann ist nichts zu tun.",
+        "Eine Löschung oder Änderung der config ist nicht nötig (es kommen lediglich 2 neue Einstellungsoptionen hinzu, die automatisch übernommen werden)."
+      ],
+      "known_limitations": [
+        "Wie das reparierte Labyrinth tatsächlich aussieht (etwa die Stimmung der gelben Tapete), wie die Grafiken der 3 korrigierten Gegenstände wirken und wie das neue Bild der Feuerwerkspuppe α aussieht, war zu diesem Zeitpunkt allesamt noch nicht auf einem echten Gerät überprüft."
+      ]
+    },
+    {
+      "release": "v1.9.0.3",
+      "date": "2026-08-13",
+      "title": "Bildschirm „Mine OS“ von Handy und PC komplett überarbeitet, Icon-Fehler behoben",
+      "summary": "Dieses Update betrifft ausschließlich den Baumaterial-MOD. Das Aussehen des Bildschirms „Mine OS“ von Handy und PC wurde komplett neu gestaltet, und die neuen Apps Einstellungen, Terminal und Musik kamen hinzu. Außerdem wurde der seit v1.8.6 bestehende Fehler bei den App-Icons behoben. Zusätzlich wurde die Erstdownload-Größe der Video-App korrigiert, und es stellte sich heraus, dass sie unter macOS nicht funktioniert.",
+      "highlights": [
+        "Die Bildschirme von Handy und PC wurden komplett neu gestaltet: halbtransparente, milchglasartige Panels, abgerundete Ecken und Schatten kamen hinzu. Der PC-Bildschirm erhielt oben links 3 Ampel-Buttons, oben eine „Mine OS ▸ App-Name“-Breadcrumb-Leiste und unten ein Dock; das Handy bekam eine Statusleiste, einen Home-Indikator und einen Sperrbildschirm. Die Nachrichten-App zeigt jetzt chatartige Sprechblasen mit dem Kopf-Icon des Gesprächspartners an.",
+        "3 neue Apps hinzugefügt (8 → 11 insgesamt): „Einstellungen“ (Geräte-/Serverinformationen und Ton-Umschaltung), „Terminal“ (die 5 Befehle help, about, ping, tps und cls antworten direkt, alles andere wird als Chat-Befehl gesendet) sowie „Musik“ (spielt Songs von Schallplatten ab, die auf diesem Server vorhanden sind).",
+        "Fehler behoben, durch den die App-Icons seit v1.8.6 durchgehend hinter einer grauen Fläche verborgen waren. Ursache war, dass der undurchsichtige Hintergrund des Vanilla-Buttons direkt nach dem Zeichnen des Icons an derselben Stelle erneut darübergezeichnet wurde (die Grafiken selbst waren von Anfang an korrekt vorhanden).",
+        "Fehler behoben, bei denen Text über den Bildschirmrand hinausragte oder abgeschnitten wurde, und eine automatische Prüfung eingeführt, damit das nicht wieder passiert (4.773 Stellen in 2 Sprachen × 23 Bildschirmgrößen gemessen, 0 Überläufe bestätigt)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "⚠ Unter macOS funktioniert die Video-App in Minecraft nicht (durch Tests bestätigt; Windows und Linux werden weiterhin unterstützt). Ab diesem Release friert macOS nicht mehr stillschweigend ein, sondern zeigt „Auf diesem Betriebssystem nicht verfügbar“ an und bricht ab.",
+        "[Korrektur] Der Erstdownload der Video-App beträgt nicht „ca. 140–175 MB“, sondern tatsächlich gemessen ca. 300 MB (die Angabe in v1.9.0.1 war fehlerhaft und wird hiermit korrigiert).",
+        "Eine Löschung oder Änderung der config ist nicht nötig (es kommen lediglich 4 neue Einstellungsoptionen hinzu, die alle standardmäßig auf „anzeigen“ stehen)."
+      ],
+      "known_limitations": [
+        "Das neue Aussehen von Mine OS, das Bedienungsgefühl der 3 neuen Apps (Einstellungen, Terminal, Musik) und ob die Musik-App tatsächlich Ton abspielt, war zu diesem Zeitpunkt allesamt noch nicht auf einem echten Gerät überprüft.",
+        "Ob der Icon-Fehler tatsächlich behoben ist, wurde nicht visuell bestätigt – die Grundlage war ausschließlich die Analyse der Zeichenreihenfolge.",
+        "Ob die Video-App auf echten Windows-/Linux-Geräten tatsächlich Webseiten anzeigt, blieb ebenfalls unbestätigt."
       ]
     },
     {
       "release": "v1.9.3",
-      "title": "Kernsprengkopf-Energie, Koordinatenanzeige & UI-Verbesserungen",
+      "date": "2026-08-13",
+      "title": "Testvorbereitung für Atomsprengkopf-Stromerzeugung, großes Schienen-Update, neues Bildschirmdesign, dauerhafte Koordinatenanzeige",
+      "summary": "5 MODs wurden gleichzeitig aktualisiert (die Versionen V1.9.1 und V1.9.2 existieren nicht – das große Rail-Update und die Anliegen rund um die Atomsprengkopf-Stromerzeugung wurden gebündelt und als V1.9.3 ausgeliefert). Endlich kommt die Grafik der Feuerwerkspuppe α an, die zwar schon vor zwei Releases korrigiert worden war, aber nie in einen ausgelieferten Build gelangt ist. Außerdem wurden ein Fehler behoben, durch den ein voll geladener Akku bei längerem Stillstand kaputtgeht, die Vorbereitung einer Verifizierung auf einem echten Server für die Nutzung von Atomsprengköpfen als Brennstoff getroffen, sowie ein Fehler bei der Zielfernrohr-Anzeige des Raketenwerfers behoben. Rail erhielt ein großes Update mit automatischer Abfahrt, automatischem Fahrbetrieb und mehr, die Bildschirme von Strom, Schusswaffen und Bossen bekamen das neue Design „Glimpse Glass“, und es kamen dauerhaft angezeigte Koordinaten sowie eine TPS/Ping-Anzeige hinzu.",
+      "highlights": [
+        "[Wichtig] Der Grafikfehler der Feuerwerkspuppe α (ein Teil des rechten Ohrs schien zu verschwinden) war eigentlich schon nach v1.9.0.2 behoben worden, gelangte aber wegen eines Fehlers im Vergleichsmechanismus der ausgelieferten Builds nie in eine Distribution. Mit diesem Release kommt die korrigierte Grafik endlich an. Damit das nie wieder passiert, wurde eine neue Prüfung (check_dist_drift.py) eingeführt, die Quell-Assets direkt mit dem ausgelieferten Build abgleicht.",
+        "[Wichtig] Strom: Fehler behoben, durch den ein voll geladener Akku, der etwa 18,6 Stunden lang stehen gelassen wurde, für immer aufhörte, Energiezellen herzustellen. Ursache war ein Überlauf bei einer Addition, der bei leistungsstarken Brennstoffen (wie Atomsprengköpfen) schneller auftrat. Bereits betroffene Akkus reparieren sich mit diesem Release automatisch selbst.",
+        "Strom: Die Möglichkeit, Atomsprengköpfe als Brennstoff zu nutzen, besteht bereits seit v1.8.7, doch diesmal wurde erstmals eine Möglichkeit geschaffen, dies auf einem echten dedizierten Server zu verifizieren (die Testumgebung ging jedoch während dieser Paketierungsrunde verloren, sodass die Ausführung noch nicht stattgefunden hat – Details siehe Hinweise unten). Außerdem wurde ein Fehler behoben, bei dem die Anzeige der Brennstoffqualität als unübersetzte Zeichenkette „sorakaze_power.fuel_quality.nuclear“ erschien.",
+        "Schusswaffen: Das Zielfernrohr des Raketenwerfers ist endlich auf dem Bildschirm sichtbar (nach 2 Meldungen behoben). Der Zoomfaktor wurde außerdem von ×2 auf ×4 erhöht. Das Aussehen der beiden Scharfschützengewehre bleibt unverändert.",
+        "Großes Rail-Update: Automatische Abfahrt, automatischer Fahrbetrieb, Fahrgeräusche, Oberleitungen (rein dekorativ), Innenbeleuchtung und Frontscheinwerfer, Ankunftsanzeigen, die Möglichkeit, im Zug herumzulaufen, sowie das Hinsetzen auf Sitzplätze wurden hinzugefügt. Der Tachometer wurde an den oberen Bildschirmrand verschoben und wird nur noch dem Fahrer angezeigt, nicht mehr den Fahrgästen.",
+        "Für die Bildschirme von Strom, Schusswaffen und Bossen (Akku, Sicherungskasten, Lenkraketenwerfer, Verstärktes Leuchtfeuer u. a.) wurde das neue halbtransparente Design „Glimpse Glass“ eingeführt. Auch beim Öffnen von Inventar oder Truhen wird der Hintergrund nun unscharf dargestellt. Zusätzlich liegt neu das optionale Resource Pack Glimpse_Alpha_Glass_UI_Pack.zip bei, das den Glas-Look sogar auf Vanilla-Bildschirme ausweitet.",
+        "Koordinaten (inklusive Blickrichtung) werden nun dauerhaft auf dem Bildschirm angezeigt. Auch die TPS/Ping-Anzeige wurde neu gestaltet, und die Voreinstellung wechselte von „nur bei gedrückter Tab-Taste“ zu „dauerhaft angezeigt“ (über die config lässt sich das bisherige Verhalten wiederherstellen)."
+      ],
+      "balance_changes": [
+        "Zoomfaktor des Raketenwerfer-Zielfernrohrs: ×2 → ×4"
+      ],
+      "warnings": [
+        "Innerhalb des großen Rail-Updates wurden das Hinzufügen höherwertiger Wagenklassen sowie die Kupplung mit Vanilla-Loren diesmal zurückgestellt (es wurde lediglich ein Konzeptdokument erstellt). Die Kupplung mit Vanilla-Loren berührt die Projektrichtlinie „Vanilla-Elemente werden nicht ersetzt oder entfernt“ und wird daher separat nach Rücksprache entschieden.",
+        "Der Nachweis des Betriebs auf einem dedizierten Server bei Verwendung von Atomsprengköpfen als Brennstoff konnte diesmal nicht erbracht werden, da die Testumgebung während der Paketierung verloren ging (der Mechanismus zur Nutzung von Atomsprengköpfen als Brennstoff selbst ist seit v1.8.7 unverändert).",
+        "Falls ihr den Backrooms-Weltordner (Änderung aus v1.9.0.2) noch nicht gelöscht habt, prüft dies bitte unbedingt ebenfalls.",
+        "Eine Löschung oder Änderung der config ist nicht nötig. Diesmal kamen ausschließlich neue Einstellungsoptionen hinzu."
+      ],
+      "known_limitations": [
+        "Nahezu alle neuen Rail-Funktionen (automatische Abfahrt, automatischer Fahrbetrieb, Fahrgeräusche, Oberleitungen, Innenbeleuchtung, Ankunftsanzeigen, Herumlaufen im Zug) waren zu diesem Zeitpunkt noch nicht auf einem echten Gerät überprüft.",
+        "Sowohl das Aussehen des neuen Bildschirmdesigns „Glimpse Glass“ als auch das des neuen Resource Packs waren ebenfalls noch nicht überprüft.",
+        "Auch das tatsächliche Aussehen der dauerhaft angezeigten Koordinaten- und TPS/Ping-Anzeige war noch nicht überprüft.",
+        "3 automatisierte Tests im Bereich Schusswaffen und 1 im Bereich Strom bleiben instabil, da ihre Ergebnisse von Durchlauf zu Durchlauf schwanken. Es wurde jedoch bestätigt, dass sie sich allesamt auf bestehenden Code beziehen, der in diesem Release nicht verändert wurde."
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "release": "V2",
+      "title": "V2-Update (Konzept & Spezifikation festgelegt, Umsetzung steht noch aus)",
       "groups": [
         {
-          "subtitle": "Neue Funktionen",
+          "subtitle": "Baumaterial-MOD: Fehlerbehebung bei der Videoapp, überarbeitetes Erscheinungsbild der Geräte",
           "bullets": [
-            "Der Nuklearsprengkopf soll als Energiequelle für den Strom-MOD nutzbar werden (eine andere Verwendung als bei den bereits in v1.8.4 eingeführten konventionellen und nuklearen Sprengköpfen).",
-            "Eine dauerhaft eingeblendete Koordinatenanzeige soll hinzugefügt werden."
+            "Wiedergabe, Pause und Vor-/Zurückspulen der Videoapp sollen korrekt funktionieren (Priorität-1-Bugfix, geplant).",
+            "Ein Fehler, bei dem der Ton nach Serververlassen oder Weltwechsel weiterläuft, soll behoben werden.",
+            "Ein Fehler, bei dem zwar Ton, aber kein Bild angezeigt wird (Bildschirm bleibt schwarz), soll behoben werden.",
+            "Das Erscheinungsbild von iPhone, MacBook und Akku soll auf Basis neuer Designentwürfe vollständig überarbeitet werden (Konzept)."
           ]
         },
         {
-          "subtitle": "Verbesserungen",
+          "subtitle": "Überarbeitung der Wasserversorgung & Lebensinfrastruktur",
           "bullets": [
-            "Verbesserung der Anzeige für TPS und Ping."
+            "Das Verhalten von Vanilla-Wasserströmen soll durch ein physikalisch natürlicheres System ersetzt werden, bei dem Wasser von hoch nach tief fließt (Konzept; keine endlose horizontale Ausbreitung auf ebenen Flächen mehr, stattdessen sammelt sich Wasser in Senken).",
+            "Eine komplette Wasserinfrastruktur — Wasserrohre, Pumpen, Wasserhähne usw. — soll neu hinzugefügt werden, um Wasserquellen mit Zapfstellen zu verbinden.",
+            "Die Kapazität der Feldflasche soll auf das Vierfache der aktuellen Menge erhöht werden. Durst soll etwas schneller sinken als die Sättigung; hält der Durst 10 Minuten an, soll ohne Regenerationseffekt kumulativer und potenziell tödlicher Schaden entstehen.",
+            "Eine automatische Backup-Funktion soll hinzugefügt werden, bei der Administratoren Intervall, Anzahl der Sicherungen und Speicherort über eine UI festlegen können (eine Anleitung dazu ist ebenfalls für diese Website geplant)."
           ]
         },
         {
-          "subtitle": "Ideen für noch weiter in der Zukunft (noch nicht Teil dieses Updates)",
+          "subtitle": "Schusswaffen-MOD: Balance-Anpassungen & überarbeitete Sounds",
           "bullets": [
-            "„Hochleistungskern“: Die Idee ist, ihn am Werktisch mit einem Streitkolben (Mace) zu kombinieren, um dessen Werte auf das 20-Fache zu steigern."
+            "Balance-Anpassungen in Prüfung: Minigun +50 % Leistung, Sturmgewehr +75 %, Pistole 1,5-fache Stärke, SMG halbierter Schaden dafür +30 % Magazinkapazität, Raketenwerfer 3-facher Schaden und 3-fache Explosionskraft, Geschützturm 4-facher Schaden und +70 % Haltbarkeit.",
+            "Der Atomsprengkopf soll bis zu 10 Millionen Blöcke zerstören können, Raketensprengköpfe sollen 3-fache Explosionskraft und 3-fache Reichweite erhalten (Konzept; die Basis bleibt voraussichtlich die aktuelle Sprengkraft des Atomsprengkopfs selbst — Stand v1.8.8, 67.200 bei Volltreffer).",
+            "Ein Fehler, bei dem das Raketenwerfer-Modell bei Zielfernrohrnutzung die Sicht blockiert, soll ebenfalls behoben werden.",
+            "Die Schusssounds sollen vollständig neu erstellt werden (Konzept; vorhandene Sounddateien aus bestimmten bestehenden Spielen werden dabei nicht übernommen, sondern es sollen neue, stilistisch ähnliche Sounds komponiert werden).",
+            "Drei neue Raketenwerfer-Designs sollen hinzugefügt werden, die alle von Spielern gesteuert werden können (Konzept)."
+          ]
+        },
+        {
+          "subtitle": "Boss-MOD: 4 neue Bosse & Anpassungen bestehender Bosse",
+          "bullets": [
+            "Vier neue Bosse sind geplant: „Vulkanischer Golem-König\" (HP 600), „Abgrund-Kraken-Wächter\" (HP 800), „Prismatischer Eisphönix-Drache\" (HP 750) und „Wither-Storm-Dämonenherrscher\" (HP 1200, Beschwörung erfordert das Besiegen der drei anderen Bosse). Für alle ist ein eigener Beschwörungsgegenstand und ein phasenbasierter Kampf als Konzept vorgesehen.",
+            "Pestarzt: In Prüfung ist eine Regel, wonach nach einem Treffer eine 20-sekündige Frist bis zur Beschwörung des Wither Storm besteht — wird der Boss innerhalb dieser 20 Sekunden (oder mit einem Volltreffer) besiegt, wird die Beschwörung zwar verhindert, es gibt dann aber auch keine Beute.",
+            "Sensenmann-Boss (Grim Reaper): Beim Besiegen soll er mit geringer Wahrscheinlichkeit die exklusive Waffe „Seelenschnitter-Sense\" fallen lassen; Gegner, die mit dieser Sense besiegt werden, sollen mit geringer Wahrscheinlichkeit ein Spawn-Ei liefern (Konzept). Die Stärke des Bosses selbst soll um +15 % steigen, zudem sind drei neue Angriffsmuster geplant.",
+            "Der Wither Storm soll weiter verstärkt werden, mit einer zusätzlichen zweiten Form (Phase) als Konzept."
+          ]
+        },
+        {
+          "subtitle": "Survival & Energie: Verseuchungssystem und neue Trage-Aktionen",
+          "bullets": [
+            "Der Einschlagsort eines Atomsprengkopfs soll für 20 Minecraft-Tage als „verseucht\" gelten (angedacht). Mit Gasmaske und Schutzanzug zusammen soll die Gefahr neutralisiert werden können (Konzept).",
+            "In Prüfung ist ein Mechanismus, bei dem der Dauerbetrieb eines Atomkraftgenerators die umgebende Luft verseucht und ein längerer Aufenthalt dort ohne Schutzmaßnahmen die Gesundheit beeinträchtigt. Geplant ist außerdem ein neuer Block „Luftreiniger\", der beim Betrieb die Verseuchung in der Umgebung beseitigt (auch mehrere Geräte gleichzeitig sollen möglich sein).",
+            "Dorfbewohner, Hühner und andere kleine Mobs sollen sich künftig von Hand tragen lassen.",
+            "Auch das Tragen einer Truhe mit beiden Händen, ohne sie zu zerstören, ist in Prüfung (der Inhalt bliebe erhalten; eine Doppeltruhe müsste voraussichtlich von zwei Spielern gemeinsam getragen werden).",
+            "Ein neuer Gegenstand (Arbeitstitel) mit 32 Haltbarkeit und 200 Angriffskraft ist geplant. Ein Fernkampfangriff nach demselben Prinzip wie der Zauberstab wird in Erwägung gezogen."
+          ]
+        },
+        {
+          "subtitle": "Bank-UI, Backrooms & Website-Anbindung",
+          "bullets": [
+            "Das Einlagenlimit von Geldautomat und MineBank soll auf 10 Millionen Smaragde angehoben werden. Der Geldautomaten-Bildschirm soll im Design von „Glimpse Alpha Glass\" gestaltet werden, wobei die gesamte UI überarbeitet werden soll (Konzept).",
+            "Eine neue „MineBank-UI\" ist geplant (Entwürfen zufolge mit Schnellauswahl 25 %/50 %/75 %/MAX je nach Kontostand sowie einem Schieberegler in 1er-/10er-/100er-/1000er-Schritten).",
+            "Das Erscheinungsbild der Backrooms-Kreaturen (Monster) soll auf Basis neuer Design-Referenzbilder vollständig überarbeitet werden (Konzept).",
+            "Sobald künftige Update-Inhalte feststehen, soll ein Mechanismus eingerichtet werden, der sie automatisch in den Änderungsverlauf dieser Website übernimmt (Konzept; betrifft den Betrieb dieser Website selbst)."
           ]
         }
       ]
@@ -2363,7 +2441,12 @@
       "sorakaze_sky:sky_white_stone_pillar": "Himmelsweißstein-Säule",
       "sorakaze_sky:sky_white_stone_slab": "Himmelsweißstein-Stufe",
       "sorakaze_sky:sky_white_stone_stairs": "Himmelsweißstein-Treppe",
-      "sorakaze_sky:warning_light": "Warnleuchte"
+      "sorakaze_sky:warning_light": "Warnleuchte",
+      "sorakaze_boss:universal_harvester_alpha": "Universalsammler α",
+      "sorakaze_survival:spark_doll_alpha": "Feuerwerkspuppe α",
+      "sorakaze_power:battery": "Akku",
+      "sorakaze_rail:catenary_wire": "Oberleitung",
+      "sorakaze_boss:wither_storm_summon": "Beschwörungsstein des Wither Storm"
     },
     "howto": [
       {

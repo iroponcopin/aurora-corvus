@@ -75,7 +75,7 @@
       "changelog_balance_label": "Penyesuaian Balance",
       "changelog_warnings_label": "Catatan Penting",
       "changelog_limitations_label": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
-      "recipes_intro": "Merangkum resep crafting untuk {count} jenis item dan blok dari 8 MOD yang terpasang. Klik sebuah item untuk melihat resepnya dalam tata letak 3×3, persis seperti di crafting table sungguhan. Tab \"Cara Pakai\" di kanan atas juga menjelaskan cara menggunakan elemen yang melibatkan pemasangan/pengaturan, seperti sistem penyortiran otomatis dan infrastruktur listrik.",
+      "recipes_intro": "Merangkum resep crafting untuk {count} jenis item dan blok dari 9 MOD yang terpasang. Klik sebuah item untuk melihat resepnya dalam tata letak 3×3, persis seperti di crafting table sungguhan. Tab \"Cara Pakai\" di kanan atas juga menjelaskan cara menggunakan elemen yang melibatkan pemasangan/pengaturan, seperti sistem penyortiran otomatis dan infrastruktur listrik.",
       "guide_intro": "Merangkum langkah-langkah dari mengaktifkan MOD hingga mulai bermain. Jika kamu hanya ingin bergabung sebagai pemain, cukup baca bagian \"Untuk Pemain\" saja.",
       "audience_player": "Untuk Pemain",
       "audience_admin": "Untuk Admin Server",
@@ -1055,83 +1055,165 @@
         "Sinkronisasi saat 2 orang bermain bersamaan, serta beban server saat 9 MOD berjalan bersamaan, belum diuji.",
         "Motion serangan khusus untuk Sculk Golem, Rock Lock, Kraken, dan Titan, serta kemampuan melempar Tombak Petir, masih menjadi PR yang dibawa lagi dari update-update sebelumnya kali ini."
       ]
-    }
-  ],
-  "roadmap": [
+    },
     {
-      "release": "v1.9.0",
-      "title": "Area Baru \"Melarikan Diri dari Backrooms\" & Integrasi Wither Storm",
-      "groups": [
-        {
-          "subtitle": "Area Baru \"Melarikan Diri dari Backrooms\"",
-          "bullets": [
-            "Menambahkan peta khusus baru yang mereplikasi karya aslinya secara setia.",
-            "Selama berada di area ini, status \"tingkat kewarasan (sanity)\" akan diperkenalkan, dan direncanakan bisa dipulihkan dengan item seperti \"Air Almond\" yang drop di dalam area.",
-            "Aturan khusus di dalam area: blok tidak bisa dipasang atau dihancurkan.",
-            "Peti berisi loot ditempatkan di berbagai titik.",
-            "Akan muncul monster dan gimmick yang mereplikasi karya aslinya.",
-            "Pintu masuknya direncanakan akan tergenerasi acak di dalam End City.",
-            "Progres direncanakan akan selalu ditampilkan dalam bentuk teks di sisi kiri layar."
-          ]
-        },
-        {
-          "subtitle": "Integrasi Wither Storm",
-          "bullets": [
-            "Direncanakan mengintegrasikan MOD eksternal \"Wither Storm\" dengan menyertakannya di dalam folder mods.",
-            "Plague Doctor akan bisa memanggil Wither Storm.",
-            "Direncanakan sebagai hadiah mengalahkannya akan drop \"Alat Panen Serbaguna α\" dan \"Boneka Kembang Api α\" (versi lebih tinggi dari Alat Panen Serbaguna dan Boneka Kembang Api yang sudah ada).",
-            "Alat Panen Serbaguna α memiliki daya tahan setara Pickaxe Emas dan tidak bisa di-enchant.",
-            "Untuk Boneka Kembang Api α sedang dipertimbangkan spesifikasi yang berbeda dari Boneka Kembang Api yang sudah ada (dibatasi 3 kali pakai), yaitu jumlah pemakaian tanpa batas dengan cooldown 3 menit."
-          ]
-        }
+      "release": "v1.9.0.1",
+      "date": "2026-08-11",
+      "title": "Memperbaiki Celah End City dan Penerbangan Wither Storm, Menambahkan Aplikasi Video",
+      "type": "hotfix",
+      "summary": "Memperbaiki bug di mana celah Backrooms yang ditambahkan pada v1.9.0 nyaris tidak pernah tergenerasi, serta bug di mana penerbangan tahap melayang Wither Storm ternyata belum diimplementasikan. MOD Bahan Bangunan mendapat aplikasi \"Video\" untuk ponsel dan komputer beserta tampilan layar bergaya OS sesuai jenis perangkat, dan tampilan final Boneka Kembang Api α pada Survival kini sudah ditetapkan.",
+      "highlights": [
+        "Backrooms: Memperbaiki bug di mana celah End City nyaris 100% (dari hasil pengukuran) tidak pernah tergenerasi. Pemeriksaan seharusnya melihat ketinggian (koordinat Y), tetapi koordinat yang benar-benar diterima selalu bernilai ketinggian 0, sehingga selalu salah dinilai sebagai \"tidak ada\". Pada tanah yang baru tergenerasi, setiap End City kini pasti mendapat tepat satu celah (tidak berlaku surut pada tanah yang sudah ada). Gambar ikon Tetesan Ketenangan, Senter, dan Catatan Robek juga digambar ulang.",
+        "Wither Storm: Menerapkan penerbangan 3D sungguhan (berputar mendekat → menukik menyerang → menjauh) pada tahap melayang (S3–S5). Rumus damage untuk tahap darat (S0–S2), serangan jarak dekat, tembakan serentak dari kepala, sinar penarik, dan Pusaran Besar tidak diubah.",
+        "Bahan Bangunan: Menambahkan aplikasi \"Video\" ke ponsel dan komputer (menyertakan mesin browser sungguhan; saat pertama kali dibuka, akan berjalan satu kali unduhan tambahan ke PC pemain). Tampilan kini berbeda sesuai jenis perangkat — iPhone bergaya iOS, sedangkan MacBook dan Mac Studio bergaya Macintosh (bar menu, Dock).",
+        "Survival: Menetapkan tampilan final Boneka Kembang Api α (hanya perubahan tampilan, fungsinya tidak diubah)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "Ukuran unduhan pertama aplikasi Video sempat diinformasikan sebagai \"sekitar 140–175MB\" pada versi ini, tetapi itu adalah ukuran saat terkompresi dan keliru (dikoreksi menjadi \"sekitar 300MB\" berdasarkan pengukuran sebenarnya di v1.9.0.3).",
+        "Tidak perlu menghapus atau mengubah config. Yang bertambah kali ini hanya item pengaturan baru."
+      ],
+      "known_limitations": [
+        "Pada tahap ini, celah Backrooms itu sendiri sudah diperbaiki, tetapi masih ada bug lain di mana labirin di baliknya sama sekali tidak tergenerasi (baru terungkap dan diperbaiki di v1.9.0.2).",
+        "Apakah aplikasi Video benar-benar bisa menampilkan halaman web, serta tampilan desain layar baru bergaya iPhone/macOS, keduanya belum dikonfirmasi.",
+        "Apakah penerbangan tahap melayang Wither Storm benar-benar terlihat alami (rasa saat berputar dan menukik) juga belum dikonfirmasi."
       ]
     },
     {
-      "release": "v1.9.1",
-      "title": "Penguatan Besar-besaran MOD Kereta Api",
-      "groups": [
-        {
-          "subtitle": "Otomatisasi Operasional",
-          "bullets": [
-            "Direncanakan menambahkan fitur keberangkatan otomatis pada Blok Henti Otomatis Kereta.",
-            "Sedang dipertimbangkan \"mode berkendara otomatis\" yang membuat kereta tetap berjalan meski tidak ada pemain yang menaikinya.",
-            "Penambahan suara saat berjalan."
-          ]
-        },
-        {
-          "subtitle": "Kendaraan & Fasilitas Baru",
-          "bullets": [
-            "Direncanakan menambahkan gerbong kelas atas seperti gerbong hijau (Green Car) dan Gran Class.",
-            "Menambahkan kabel listrik atas (overhead line, kabel yang direntangkan di atas kereta) sebagai item yang bisa dipasang.",
-            "Pencahayaan di dalam dan luar gerbong membuat perjalanan malam lebih terang.",
-            "Mendukung penyambungan antar-minecart.",
-            "Rel vanilla dibuat menjadi model 3D sepenuhnya.",
-            "Direncanakan menambahkan UI informasi stasiun berikutnya/keberangkatan bergaya smartphone."
-          ]
-        }
+      "release": "v1.9.0.2",
+      "date": "2026-08-12",
+      "title": "Memperbaiki Bug Labirin Backrooms Tidak Tergenerasi (Perlu Tindakan pada World)",
+      "type": "hotfix",
+      "summary": "v1.9.0.1 sudah memperbaiki celahnya sendiri, tetapi terungkap bug di mana dunia Backrooms di baliknya tetap kosong (void), dan kini sudah diperbaiki. Pada world yang pernah dikunjungi ke Backrooms sekali pun, folder dimensi perlu dihapus. Bug tampilan pada 3 jenis item juga diperbaiki, dan Boneka Kembang Api α pada Survival kini diganti dengan gambar buatan pemilik proyek sendiri.",
+      "highlights": [
+        "Backrooms: Memperbaiki bug di mana setelah menembus celah, labirin sama sekali tidak ada di mana pun, bahkan di Creative pun langsung mati. Penyebabnya adalah tersangkut pada kedua filter dalam mekanisme generasi \"world datar\" (superflat) milik Minecraft, sehingga labirin tidak pernah sekali pun terbentuk di chunk mana pun. Bagian bawah lantai kini dilapisi bedrock, dan ditambahkan pula penanganan penyelamatan untuk kasus terlanjur jatuh.",
+        "Backrooms: Memperbaiki bug di mana 3 item — Tetesan Ketenangan, Senter, dan Catatan Robek — muncul di inventori sebagai \"kotak-kotak ungu-hitam\" (tampilan saat gambar tidak ditemukan). Berkas definisi yang menentukan gambarnya ternyata sama sekali tidak ada.",
+        "Survival: Mengganti gambar Boneka Kembang Api α dengan pixel art yang digambar langsung oleh pemilik proyek. Sisi fungsional (mekanisme, resep, drop, config) tidak diubah."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "【Penting】Pada world yang pernah dikunjungi ke Backrooms sekali pun, hentikan server terlebih dahulu lalu hapus folder <nama world>/dimensions/sorakaze_backrooms/backrooms/. Saat berikutnya ada yang menembus celah, labirin baru yang benar akan dibuat ulang. Karena Backrooms adalah dunia yang tidak bisa dipasangi atau dihancurkan bloknya, menghapus folder ini tidak akan menghilangkan apa pun (barang bawaan seperti Tetesan Ketenangan, Senter, dan Catatan Robek tidak akan hilang). Jika foldernya tidak ditemukan, berarti belum ada yang pernah masuk ke world tersebut, jadi tidak perlu melakukan apa-apa.",
+        "Tidak perlu menghapus atau mengubah config (hanya bertambah 2 item pengaturan baru, dan akan otomatis diterapkan)."
+      ],
+      "known_limitations": [
+        "Bagaimana tampilan labirin yang sudah diperbaiki sebenarnya (suasana wallpaper kuning, dan lainnya), gambar 3 item yang diperbaiki, serta tampilan gambar Boneka Kembang Api α, semuanya belum bisa dikonfirmasi di perangkat sungguhan pada tahap ini."
+      ]
+    },
+    {
+      "release": "v1.9.0.3",
+      "date": "2026-08-13",
+      "title": "Merombak Total Layar \"Mine OS\" pada Ponsel dan Komputer, Memperbaiki Bug Ikon",
+      "type": "visual-update",
+      "summary": "Update ini hanya untuk MOD Bahan Bangunan. Tampilan layar \"Mine OS\" pada ponsel dan komputer dirombak total, dan ditambahkan 3 aplikasi baru: Pengaturan, Terminal, dan Musik. Bug ikon aplikasi yang sudah berlangsung sejak v1.8.6 juga diperbaiki. Selain itu, ukuran unduhan pertama aplikasi Video dikoreksi, dan terungkap bahwa aplikasi tersebut tidak berfungsi di macOS.",
+      "highlights": [
+        "Merombak total tampilan layar ponsel dan komputer. Menambahkan panel semi-transparan tembus pandang seperti kaca buram, sudut membulat, dan bayangan. Komputer kini punya 3 lampu sinyal di kiri atas, breadcrumb \"Mine OS ▸ Nama Aplikasi\" di bagian atas, dan Dock di bagian bawah; ponsel mendapat status bar, home indicator, dan lock screen. Aplikasi pesan kini menampilkan balon chat bergaya obrolan lengkap dengan ikon kepala lawan bicara.",
+        "Menambahkan 3 aplikasi baru (8 → 11 aplikasi): \"Pengaturan\" (info perangkat/server dan pengaturan suara), \"Terminal\" (5 perintah help, about, ping, tps, dan cls langsung dijawab di tempat, selebihnya dikirim sebagai perintah chat), dan \"Musik\" (memutar lagu dari rekaman piringan yang ada di server ini).",
+        "Memperbaiki bug yang sudah berlangsung sejak v1.8.6, di mana ikon aplikasi tersembunyi di balik panel abu-abu. Penyebabnya adalah latar belakang opak tombol vanilla yang tertimpa ulang tepat di lokasi yang sama segera setelah ikon digambar (gambarnya sendiri sudah benar sejak awal).",
+        "Memperbaiki bug teks yang meluber keluar layar atau terpotong di tengah, dan menambahkan pemeriksaan otomatis baru agar tidak terulang lagi (mengukur 4.773 titik pada 2 bahasa × 23 ukuran layar, dan memastikan nol kasus meluber)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "⚠ Aplikasi Video tidak berfungsi di Minecraft macOS (dipastikan lewat pengukuran sebenarnya; Windows dan Linux tetap didukung). Mulai versi ini, di macOS aplikasi tidak lagi diam-diam macet, melainkan menampilkan pesan \"Tidak bisa digunakan di OS ini\" lalu berhenti.",
+        "【Koreksi】Unduhan pertama aplikasi Video bukan \"sekitar 140–175MB\", melainkan sekitar 300MB berdasarkan pengukuran sebenarnya (mengoreksi informasi yang keliru pada v1.9.0.1).",
+        "Tidak perlu menghapus atau mengubah config (hanya bertambah 4 item pengaturan baru, dan semuanya default ke \"ditampilkan\")."
+      ],
+      "known_limitations": [
+        "Tampilan baru Mine OS, rasa penggunaan 3 aplikasi baru (Pengaturan, Terminal, Musik), dan apakah aplikasi Musik benar-benar mengeluarkan suara, semuanya belum bisa dikonfirmasi di perangkat sungguhan pada tahap ini.",
+        "Apakah bug ikon benar-benar sudah teratasi belum bisa dikonfirmasi secara visual, dan dasarnya hanya berupa analisis urutan penggambaran (draw order).",
+        "Apakah aplikasi Video benar-benar bisa menampilkan halaman web di perangkat Windows/Linux sungguhan juga masih belum dikonfirmasi."
       ]
     },
     {
       "release": "v1.9.3",
-      "title": "Energi Hulu Ledak Nuklir, Tampilan Koordinat, dan Perbaikan UI",
+      "date": "2026-08-13",
+      "title": "Verifikasi Pembangkit Listrik Hulu Ledak Nuklir, Update Besar Kereta Api, Desain Layar Baru, Koordinat Selalu Tampil",
+      "type": "release",
+      "summary": "Memperbarui 5 MOD sekaligus (versi V1.9.1 dan V1.9.2 tidak pernah ada — update besar Kereta Api dan permintaan seputar pembangkit listrik hulu ledak nuklir digabung dan dirilis sekaligus sebagai V1.9.3). Akhirnya mengantarkan gambar Boneka Kembang Api α yang sebenarnya sudah diperbaiki dua rilis lalu tetapi belum pernah sekali pun sampai ke distribusi, sekaligus memperbaiki bug baterai yang rusak jika dibiarkan penuh dalam waktu lama, menyiapkan cara (belum dijalankan) untuk memverifikasi di server sungguhan bahwa hulu ledak nuklir bisa dijadikan bahan bakar, dan memperbaiki bug scope Peluncur Roket. Kereta Api mendapat update besar seperti keberangkatan otomatis dan mengemudi otomatis, layar Listrik/Senjata Api/Bos mendapat desain baru \"Glimpse Glass\", dan ditambahkan pula papan koordinat serta TPS/ping yang selalu tampil.",
+      "highlights": [
+        "【Penting】Bug gambar Boneka Kembang Api α (sebagian telinga kanan tampak hilang) sebenarnya sudah diperbaiki setelah v1.9.0.2, tetapi karena cacat pada mekanisme pembanding antar hasil rilis, perbaikan itu tidak pernah sekali pun sampai ke distribusi. Kini gambar yang sudah diperbaiki akhirnya sampai. Agar bug ini tidak terulang lagi, diperkenalkan pemeriksaan baru (check_dist_drift.py) yang membandingkan langsung aset sumber dengan hasil distribusi.",
+        "【Penting】Listrik: Memperbaiki bug di mana Baterai yang dibiarkan penuh selama sekitar 18,6 jam akan berhenti menghasilkan Sel Energi selamanya. Penyebabnya adalah overflow pada operasi penjumlahan, yang muncul lebih cepat pada bahan bakar berdaya tinggi (seperti hulu ledak nuklir). Baterai yang sudah telanjur rusak pun akan otomatis diperbaiki begitu versi ini dipasang.",
+        "Listrik: Mekanisme untuk menjadikan hulu ledak nuklir sebagai bahan bakar sudah ada sejak v1.8.7, tapi kali ini untuk pertama kalinya disiapkan cara untuk memverifikasinya di dedicated server sungguhan (namun lingkungan pengujian hilang selama ronde pengemasan ini, sehingga verifikasi ini belum benar-benar dijalankan -- lihat peringatan di bawah untuk detailnya). Bug di mana tampilan tingkat bahan bakar masih menampilkan string mentah yang belum diterjemahkan, \"sorakaze_power.fuel_quality.nuclear\", juga diperbaiki.",
+        "Senjata Api: Scope Peluncur Roket akhirnya bisa terlihat di layar (diperbaiki setelah dilaporkan dua kali). Perbesarannya juga dinaikkan dari ×2 menjadi ×4. Tampilan kedua senapan sniper tidak diubah.",
+        "Update besar Kereta Api: menambahkan keberangkatan otomatis, mengemudi otomatis, suara berjalan, kabel listrik overhead (hanya dekorasi), lampu kabin dan lampu depan di dalam kereta, tampilan pengumuman kedatangan, kemampuan berjalan di dalam kereta, dan duduk di kursi. Speedometer dipindahkan ke bagian atas layar dan tidak lagi ditampilkan kepada penumpang — hanya masinis yang bisa melihatnya.",
+        "Menerapkan desain semi-transparan baru \"Glimpse Glass\" pada layar Listrik/Senjata Api/Bos (Baterai, Panel Pemutus, Peluncur Misil, Beacon yang Diperkuat, dan lainnya). Juga mendukung efek blur pada latar belakang saat membuka inventori atau chest. Turut disertakan resource pack opsional baru (Glimpse_Alpha_Glass_UI_Pack.zip) yang membuat layar vanilla pun bergaya kaca.",
+        "Koordinat kini selalu ditampilkan di layar (arah hadap juga ditampilkan). Papan TPS/ping juga dibuat ulang, dan pengaturan default berubah dari \"hanya tampil saat menekan tombol Tab\" menjadi \"selalu tampil\" (perilaku lama bisa dikembalikan lewat config)."
+      ],
+      "balance_changes": [
+        "Perbesaran scope Peluncur Roket: ×2 → ×4"
+      ],
+      "warnings": [
+        "Dari update besar Kereta Api, penambahan gerbong kelas atas dan penyambungan dengan minecart vanilla ditunda kali ini (hanya dokumen desain yang dibuat). Penyambungan dengan minecart vanilla menyangkut kebijakan proyek ini yaitu \"tidak menggantikan atau menghapus elemen vanilla\", sehingga akan diputuskan lewat diskusi terpisah.",
+        "Bukti verifikasi di dedicated server untuk penggunaan hulu ledak nuklir sebagai bahan bakar tidak bisa dijalankan kali ini karena lingkungan pengujian hilang saat proses pengemasan (mekanisme hulu ledak nuklir sebagai bahan bakar itu sendiri tidak berubah sejak v1.8.7).",
+        "Jika Anda belum menghapus folder world Backrooms (perubahan pada v1.9.0.2), pastikan untuk memeriksanya juga.",
+        "Tidak perlu menghapus atau mengubah config. Semua yang bertambah kali ini adalah item pengaturan baru."
+      ],
+      "known_limitations": [
+        "Hampir semua fitur baru Kereta Api (keberangkatan otomatis, mengemudi otomatis, suara berjalan, kabel overhead, lampu kabin, pengumuman kedatangan, berjalan di dalam kereta) belum bisa dikonfirmasi di perangkat sungguhan pada tahap ini.",
+        "Tampilan desain layar baru \"Glimpse Glass\" dan tampilan resource pack baru juga keduanya belum dikonfirmasi.",
+        "Tampilan sebenarnya dari papan koordinat dan TPS/ping yang selalu tampil juga belum dikonfirmasi.",
+        "Dari pengujian otomatis, 3 kasus di Senjata Api dan 1 kasus di Listrik masih tersisa sebagai item tidak stabil yang hasilnya berubah-ubah setiap dijalankan. Semuanya sudah dipastikan berkaitan dengan kode lama yang tidak diubah kali ini."
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "release": "V2",
+      "title": "Pembaruan V2 (konsep & spesifikasi ditetapkan, implementasi masih akan datang)",
       "groups": [
         {
-          "subtitle": "Fitur Baru",
+          "subtitle": "MOD Bahan Bangunan: Perbaikan Bug Aplikasi Video & Perombakan Tampilan Perangkat",
           "bullets": [
-            "Direncanakan agar Hulu Ledak Nuklir bisa digunakan sebagai sumber energi untuk MOD Listrik (kegunaan yang berbeda dari Hulu Ledak Misil/Hulu Ledak Nuklir yang sudah diimplementasikan lebih dulu di v1.8.4).",
-            "Direncanakan menambahkan UI koordinat yang selalu tampil."
+            "Direncanakan perbaikan agar operasi putar, jeda, dan maju/mundur cepat pada aplikasi video berfungsi dengan benar (perbaikan bug dengan prioritas tertinggi).",
+            "Direncanakan perbaikan bug di mana suara terus berbunyi meski sudah keluar dari server atau berpindah ke world lain.",
+            "Direncanakan perbaikan bug di mana suara terdengar tetapi video tidak tampil (layar tetap hitam).",
+            "Konsep untuk merombak total tampilan iPhone, MacBook, dan baterai cadangan (power bank) berdasarkan rancangan desain baru."
           ]
         },
         {
-          "subtitle": "Perbaikan",
+          "subtitle": "Peninjauan Ulang Sistem Air & Infrastruktur Kehidupan",
           "bullets": [
-            "Perbaikan pada UI yang menampilkan TPS dan ping."
+            "Konsep untuk menghentikan perilaku aliran air vanilla dan menggantinya dengan mekanisme yang mengalir secara fisik dan alami dari tempat tinggi ke tempat rendah (menghilangkan penyebaran horizontal tanpa batas di area datar, dan air akan menggenang di cekungan).",
+            "Direncanakan penambahan satu paket infrastruktur air baru yang menghubungkan sumber air hingga keran, seperti pipa air, pompa, dan saluran masuk air.",
+            "Kapasitas botol air akan menjadi 4 kali lipat dari sekarang. Rasa haus akan berkurang sedikit lebih cepat dibanding rasa lapar, dan jika dahaga berlangsung selama 10 menit, kerusakan akan terakumulasi hingga bisa berakibat fatal kecuali ada efek regenerasi.",
+            "Direncanakan penambahan fitur backup otomatis yang memungkinkan admin mengatur interval, jumlah penyimpanan, dan lokasi penyimpanan melalui UI (petunjuk penggunaannya juga direncanakan dimuat di situs ini)."
           ]
         },
         {
-          "subtitle": "Gagasan Lebih Jauh ke Depan (Belum Termasuk dalam Pembaruan Ini)",
+          "subtitle": "MOD Senjata Api: Penyesuaian Keseimbangan & Pembaruan Suara",
           "bullets": [
-            "\"Inti Berperforma Tinggi\": ada gagasan untuk menggabungkannya dengan Mace di crafting table sehingga performa Mace menjadi 20 kali lipat."
+            "Sedang dipertimbangkan penyesuaian: performa Minigun +50%, Assault Rifle +75%, daya serang Pistol 1,5x lipat, SMG mengalami pengurangan damage setengah sebagai gantinya kapasitas peluru +30%, Rocket Launcher damage dan daya ledaknya menjadi 3x lipat, serta Turret damage 4x lipat dan daya tahan +70%.",
+            "Konsep untuk menjadikan hulu ledak nuklir mampu menghancurkan hingga maksimal 10 juta blok, dan hulu ledak misil daya ledak serta jangkauannya menjadi 3x lipat (daya ledak hulu ledak nuklir itu sendiri diperkirakan akan tetap berdasarkan nilai saat ini (per v1.8.8, kena telak 67.200)).",
+            "Direncanakan juga perbaikan bug di mana model utama Rocket Launcher menghalangi pandangan saat menggunakan scope.",
+            "Konsep untuk merombak total suara tembakan (dikabarkan bukan mengambil langsung sumber suara dari game tertentu yang sudah ada, melainkan dibuat sebagai suara baru dengan arah yang serupa).",
+            "Konsep untuk menambahkan 3 desain Missile Launcher baru, yang semuanya bisa dikendalikan langsung oleh pemain."
+          ]
+        },
+        {
+          "subtitle": "MOD Boss: 4 Boss Baru & Penyesuaian Boss yang Sudah Ada",
+          "bullets": [
+            "Direncanakan penambahan 4 boss baru: \"Raja Golem Vulkanik\" (HP 600), \"Penjaga Kraken Kedalaman\" (HP 800), \"Naga Phoenix Es Prismatik\" (HP 750), dan \"Iblis Penguasa Wither Storm\" (HP 1200, syarat pemanggilannya adalah mengalahkan ketiga boss di atas). Semuanya direncanakan memiliki item pemanggil khusus dan pertarungan bersistem fase.",
+            "Plague Doctor: sedang dipertimbangkan jeda 20 detik antara terkena serangan hingga pemanggilan Wither Storm, di mana jika dikalahkan dalam 20 detik itu (atau dengan satu serangan), pemanggilan bisa dicegah, tetapi drop-nya juga tidak akan didapat.",
+            "Boss Grim Reaper (Dewa Kematian): konsep di mana saat dikalahkan ada kemungkinan kecil menjatuhkan senjata khusus \"Sabit Pemanen Jiwa\", dan mengalahkan musuh dengan sabit tersebut memberi kemungkinan kecil mendapatkan spawn egg. Kekuatan boss ini sendiri juga direncanakan naik +15% dengan tambahan 3 pola serangan baru.",
+            "Konsep untuk memperkuat lebih lanjut Wither Storm dengan menambahkan perubahan ke bentuk (fase) kedua."
+          ]
+        },
+        {
+          "subtitle": "Survival & Listrik: Sistem Kontaminasi dan Aksi Membawa Barang Baru",
+          "bullets": [
+            "Titik jatuhnya hulu ledak nuklir diperkirakan akan berstatus \"terkontaminasi\" selama 20 hari Minecraft. Konsep di mana kontaminasi ini bisa dinetralkan jika memakai masker gas dan pakaian pelindung sekaligus.",
+            "Sedang dipertimbangkan mekanisme di mana mengoperasikan generator nuklir secara terus-menerus akan mencemari udara di sekitarnya, dan berada di sana dalam waktu lama tanpa perlindungan akan memengaruhi kondisi tubuh. Direncanakan juga penambahan blok baru \"Pembersih Udara (Air Purifier)\" yang menetralkan kontaminasi di sekitarnya saat dioperasikan (mendukung pengoperasian beberapa unit sekaligus).",
+            "Direncanakan agar mob kecil seperti villager dan ayam bisa dibawa dengan tangan.",
+            "Sedang dipertimbangkan fitur membawa chest dengan kedua tangan tanpa perlu menghancurkannya (isinya tetap tersimpan; double chest diperkirakan memerlukan 2 pemain untuk membawanya).",
+            "Direncanakan penambahan item baru (nama sementara) dengan daya tahan 32 dan attack power 200. Sedang dipertimbangkan serangan jarak jauh dengan mekanisme yang sama seperti tongkat sihir (magic wand)."
+          ]
+        },
+        {
+          "subtitle": "UI Bank, Backrooms, dan Integrasi Situs",
+          "bullets": [
+            "Direncanakan menaikkan batas simpanan ATM dan Mine Bank menjadi 10 juta emerald. Konsep untuk menerapkan desain \"Glimpse Alpha Glass\" pada layar ATM dan merombak total UI secara keseluruhan.",
+            "Direncanakan penambahan \"UI Mine Bank\" baru (dikabarkan ada rancangan desain dengan pilihan cepat 25%/50%/75%/MAX sesuai saldo, serta operasi slider dengan kelipatan 1/10/100/1k).",
+            "Konsep untuk merombak total tampilan monster (hantu) Backrooms berdasarkan gambar referensi desain baru.",
+            "Konsep untuk menyiapkan mekanisme yang secara otomatis mencerminkan konten pembaruan ke riwayat pembaruan situs ini begitu sudah ditetapkan di kemudian hari (ini menyangkut operasional situs ini sendiri)."
           ]
         }
       ]
@@ -2363,7 +2445,12 @@
       "sorakaze_sky:red_date_box": "Kurma Merah",
       "sorakaze_sky:tapioca_flour_box": "Tepung Tapioka",
       "sorakaze_sky:shrimp_paste_block": "Terasi",
-      "sorakaze_sky:palm_sugar_block": "Gula Aren"
+      "sorakaze_sky:palm_sugar_block": "Gula Aren",
+      "sorakaze_boss:universal_harvester_alpha": "Alat Panen Serbaguna α",
+      "sorakaze_survival:spark_doll_alpha": "Boneka Kembang Api α",
+      "sorakaze_power:battery": "Baterai",
+      "sorakaze_rail:catenary_wire": "Kabel Listrik Overhead",
+      "sorakaze_boss:wither_storm_summon": "Batu Panggilan Wither Storm"
     },
     "howto": [
       {

@@ -61,7 +61,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新日志</span>
   <h1>更新日志</h1>
-  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 39 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 43 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
   <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
 </div>
 
@@ -79,6 +79,66 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>没有符合条件的更新记录。</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="survival power guns rail boss">
+      <div class="timeline-entry__date">2026-08-13</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.9.3</span> — 核弹头发电验证、铁道大型更新、全新界面设计与常驻显示坐标
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>本次同时更新了 5 个 MOD（不存在 V1.9.1、V1.9.2 版本，铁道的大型更新与核弹头发电相关的委托一并整理后以 V1.9.3 出货）。终于交付了早在两个版本前就已修复、却一直未随发布物送出的烟花人偶α外观，并修复了蓄电池满电后长时间放置会损坏的问题、准备了在真实服务器上验证核弹头可作为燃料的方法（尚未执行），以及火箭筒瞄准镜的显示问题。铁道新增了自动发车、自动驾驶等大型更新，电力、枪械、Boss 的界面采用了全新的「Glimpse Glass」设计，并新增了常驻显示的坐标与 TPS/ping 显示牌。</p>
+      <ul><li>【重要】烟花人偶α外观的问题（右耳部分看起来像是缺了一块），其实早在 v1.9.0.2 之后就已经修复，但由于比对各次发布物的机制存在缺陷，始终未能反映到实际发布内容中。这次终于送达了修复后的外观。为避免此类问题再次发生，新增了直接比对源资产与发布物的检查工具（check_dist_drift.py）。</li><li>【重要】电力：修复了蓄电池充满后放置约 18.6 小时，就再也无法生成能量电池的问题。原因是加法运算发生数值溢出，燃料输出越高（如核弹头）症状出现得越快。已经损坏的蓄电池，只要更新到本版本即可自动修复。</li><li>电力：核弹头可作为燃料使用的机制自 v1.8.7 起就已存在，这次首次准备了在真实专用服务器上进行验证的方法(但由于本轮打包过程中测试环境丢失，本次尚未实际执行——详见下方注意事项)。同时修复了燃料等级显示一直停留在未翻译字符串「sorakaze_power.fuel_quality.nuclear」的问题。</li><li>枪械：火箭筒的瞄准镜终于能在画面上显示了（经过 2 次报告后修复）。倍率也从 ×2 提升到了 ×4。两把狙击步枪的外观未作变更。</li><li>铁道大型更新：新增了自动发车、自动驾驶、行驶音效、架线（仅限装饰）、车厢内灯与前照灯、到站提示显示、可在车厢内行走、可以坐到座位上等功能。速度表移动到了画面上方，且不再向驾驶员以外的人员（乘客）显示。</li><li>电力、枪械、Boss 的界面（蓄电池、分电盘、导弹发射器、强化信标等）采用了全新的半透明设计「Glimpse Glass」。同时支持打开物品栏或箱子时的背景模糊效果。此外还新增随附了可选安装的资源包（Glimpse_Alpha_Glass_UI_Pack.zip），可以让原版界面也呈现玻璃质感。</li><li>坐标现在会常驻显示在画面上（同时显示朝向）。TPS/ping 显示牌也重新制作，默认设置从「仅在按住 Tab 键时显示」变更为了「常驻显示」（可以在 config 中恢复为原有行为）。</li></ul>
+      <h4>平衡性调整</h4><ul><li>火箭筒瞄准镜倍率：×2→×4</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>本次铁道大型更新中，高级车厢的追加以及与原版矿车的连结功能暂缓实装（仅完成了设计文档）。与原版矿车连结涉及本项目「不替换、不删除原版要素」的方针，将另行商议后再决定。</li><li>核弹头作为燃料时在专用服务器上的运行验证，因打包作业过程中测试环境丢失，本次未能执行（核弹头作为燃料的机制本身自 v1.8.7 起未曾变更）。</li><li>如果尚未执行后室世界文件夹的删除操作（v1.9.0.2 中的变更），请务必一并确认。</li><li>不需要删除或改写 config。本次新增的均为全新的设置项。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>铁道的新功能（自动发车、自动驾驶、行驶音效、架线、车厢内灯、到站提示、车厢内行走）在此时几乎全部尚未在实机上确认。</li><li>新界面设计「Glimpse Glass」的外观，以及新资源包的外观均未确认。</li><li>常驻显示的坐标、TPS/ping 显示牌的实际外观也未确认。</li><li>自动化测试中，枪械 3 项、电力 1 项的结果每次执行都会波动，属于不稳定项目，依然存在。均已确认与本次未变更的既有代码有关。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="visual-update" data-mods="deco">
+      <div class="timeline-entry__date">2026-08-13</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.9.0.3</span> — 全面翻新手机/电脑界面「Mine OS」，修复图标显示问题
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">外观更新</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span></div>
+      <p>本次仅更新了建材 MOD。手机/电脑界面「Mine OS」的外观已全面重做，并新增了「设置」「终端」「音乐」三个新 App。同时修复了自 v1.8.6 起就一直存在的 App 图标显示问题。此外还订正了视频App首次下载容量的数值，并确认该 App 在 macOS 上无法使用。</p>
+      <ul><li>全面翻新了手机、电脑界面。新增了如磨砂玻璃般透光的半透明面板、圆角与阴影效果。电脑界面左上角新增了 3 个信号灯按钮、上方新增了「Mine OS ▸ App 名称」的面包屑导航、下方新增了 Dock；手机界面新增了状态栏、主页指示器与锁屏界面。「消息」App 也变为了聊天气泡样式，并会显示对方的头像图标。</li><li>新增了 3 个 App（8 个→11 个）：「设置」（查看设备与服务器信息、切换音效）、「终端」（help、about、ping、tps、cls 这 5 个指令会即时响应，其余则作为聊天指令发送）、「音乐」（播放本服务器已有的唱片音乐）。</li><li>修复了自 v1.8.6 起 App 图标就一直被灰色板面遮住而无法看见的问题。原因是原版按钮不透明的背景，在图标绘制完成后又被原样覆盖到了同一位置（图标素材本身从一开始就是正确的）。</li><li>修复了文字超出画面、中途被截断的问题，并新增了自动检查以避免再次发生（对 4,773 处位置以 2 种语言 × 23 种屏幕尺寸进行测量，确认零溢出）。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>⚠ macOS 版 Minecraft 中视频App无法使用（已实测确认。Windows、Linux 不受影响，继续支持）。从本版本起，在 macOS 上不会再无声卡死，而是会显示「此系统不支持使用」后正常结束。</li><li>【订正】视频App首次下载容量并非「约 140〜175MB」，实测约为 300MB（v1.9.0.1 时的说明有误，特此订正）。</li><li>不需要删除或改写 config（只是新增了 4 个设置项，默认值均为「显示」）。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>Mine OS 的全新外观、3 个新 App（设置、终端、音乐）的操作手感，以及音乐 App 实际播放声音的效果，在此时均未在实机上确认。</li><li>图标问题实际上是否已经解决，尚未通过肉眼确认，判断依据仅为渲染顺序的分析。</li><li>视频App在 Windows、Linux 实机上是否真的能显示网页，也依然未经确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms survival">
+      <div class="timeline-entry__date">2026-08-12</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.9.0.2</span> — 修复后室迷宫无法生成的问题（需要操作世界文件）
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>v1.9.0.1 中裂缝本身已经修复，但发现裂缝之后的后室世界本身依然是空的（虚空），现已修复。凡是曾经进入过后室的世界，都需要删除对应的维度文件夹。同时修复了 3 种物品的外观问题，生存 MOD 的烟花人偶α也已替换为所有者本人绘制的外观。</p>
+      <ul><li>后室：修复了穿过裂缝后哪里都找不到迷宫、即使在创造模式下也会立即死亡的问题。原因是同时触发了 Minecraft「超平坦世界」生成机制中的两道过滤条件，导致所有区块从未生成过迷宫。现已将地板下方改为基岩，并新增了万一坠落时的救援处理。</li><li>后室：修复了静谧之滴、手电筒、破损的纸条这 3 种物品在物品栏中显示为「紫黑格纹」（找不到贴图时的显示）的问题。原因是决定外观的定义文件整个都不存在。</li><li>生存：将烟花人偶α的外观替换为所有者本人绘制的像素画。功能方面（机制、配方、掉落、config）均未变更。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>【重要】凡是曾经进入过后室的世界，请在停止服务器的状态下删除 &lt;世界名称&gt;/dimensions/sorakaze_backrooms/backrooms/ 文件夹。下次有人穿过裂缝时，系统就会重新生成正确的新迷宫。由于后室是无法放置或破坏方块的世界，删除该文件夹不会造成任何损失（静谧之滴、手电筒、破损的纸条等随身物品不会消失）。如果找不到该文件夹，说明这个世界还没有人进入过后室，无需进行任何操作。</li><li>不需要删除或改写 config（只是新增了 2 个设置项，会自动生效）。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>修复后的迷宫实际外观（黄色壁纸的氛围等）、修复的 3 种物品外观，以及烟花人偶α外观的实际显示效果，在此时均未在实机上确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco survival">
+      <div class="timeline-entry__date">2026-08-11</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">v1.9.0.1</span> — 修复末地城裂缝与凋灵风暴的飞行问题，新增视频App
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span></div>
+      <p>修复了 v1.9.0 中新增的后室裂缝实质上几乎不会生成的问题，以及凋灵风暴悬浮阶段飞行功能尚未实装的问题。建材 MOD 为手机、电脑新增了「视频」App，以及各机型专属的仿系统界面，生存 MOD 的烟花人偶α外观也已确定。</p>
+      <ul><li>后室：修复了末地城裂缝实测约 100% 概率不会生成的问题。判定逻辑原本检查的是高度（Y 坐标），但实际传入的坐标高度始终为 0，因此永远被误判为「不存在」。此后新生成的土地中，每座末地城都必定会生成 1 处裂缝（已生成的土地不会补加）。静谧之滴、手电筒、破损的纸条的图标也已重新绘制。</li><li>凋灵风暴：为悬浮阶段（S3〜S5）实装了真正的 3D 飞行（盘旋接近 → 俯冲攻击 → 脱离）。接地阶段（S0〜S2）、近战攻击、头部齐射、牵引光束、大漩涡的伤害计算公式均未变更。</li><li>建材：为手机、电脑新增了「视频」App（内置真实的浏览器引擎。玩家首次打开时，电脑会额外下载 1 次）。不同机型呈现不同风格：iPhone 为 iOS 风格，MacBook、Mac Studio 为 macintosh 风格（菜单栏、Dock）。</li><li>生存：烟花人偶α的外观已经确定（仅变更外观，功能未作改动）。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>本版中曾说明视频App首次下载容量为「约 140〜175MB」，但这是压缩后的体积，数据有误（已在 v1.9.0.3 中实测订正为「约 300MB」）。</li><li>不需要删除或改写 config。本次新增的只是新的设置项。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>此时后室裂缝本身虽已修复，但裂缝之后的迷宫本体尚未生成的另一个问题依然存在（已于 v1.9.0.2 中发现并修复）。</li><li>视频App是否真的能显示网页，以及 iPhone/macOS 风格新界面的实际外观，均未确认。</li><li>凋灵风暴悬浮阶段的飞行是否真的显得自然（盘旋、俯冲的实际手感）也未确认。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="boss survival backrooms">
       <div class="timeline-entry__date">2026-08-11</div>
       <h3 class="timeline-entry__title">

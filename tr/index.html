@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">Son güncelleme: Yeni MOD &quot;Backrooms&quot; katıldı, Wither Storm tamamen yenilendi</h3>
-      <p>9. MOD olan &quot;Backrooms&quot; yeni katıldı. End şehirlerinin yakınında oluşan yarıklardan girilen, akıl sağlığı (sanity) sistemine sahip bir keşif içeriği. Boss MOD&#x27;undaki Wither Storm; yeni görünüm, büyüme aşamaları ve yeni bir durum etkisiyle tamamen yenilendi, yeni kesin düşen eşyalar da eklendi. Yapı Malzemeleri, Silahlar, Elektrik, Gökyüzü, Demiryolu ve Araçlar olmak üzere 6 MOD değişmedi.</p>
-      <ul><li>9. MOD olan &quot;Backrooms&quot; (sorakaze_backrooms) yeni katıldı. Bir End şehri oluştuğunda, o şehir başına mutlaka 1 tane olacak şekilde yakınındaki güvenli bir konuma bir yarık (sunak) oluşuyor (mevcut End şehirlerine eklenmiyor).</li><li>[Backrooms] Akıl sağlığı (sanity) sistemi eklendi. En fazla 100 olup, hiçbir şey yapılmazsa yaklaşık 18 dakikada sıfıra iniyor. Sandıklarda bulunan iyileştirici eşyayı içince 35 puan geri geliyor. Yaklaşık her 30 saniyede bir %12 ihtimalle &quot;elektrik kesintisi&quot; yaşanıyor; akıl sağlığı 20&#x27;nin altına düştüğünde ortam değişmeye başlıyor.</li><li>[Backrooms] Labirentin içinde blok yerleştirilemiyor; duvarlar, zemin ve tavan (sandıklar dahil) hiçbir şekilde kırılamıyor. Diğer boyutları etkilemiyor.</li><li>[Backrooms] &quot;Boşluk Dinleyicisi&quot; adlı bir yaratık etrafta dolaşıyor (40 can puanı, 6 saldırı gücü. Ona bakıldığı sürece hareket etmiyor, bakışlar başka yöne çevrilince tekrar hareket etmeye başlıyor). Aynı anda en fazla 3 tane bulunabiliyor.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span></div>
+      <h3 style="margin-top:0">Son güncelleme: Nükleer savaş başlığıyla enerji üretimi doğrulamasına hazırlık, büyük Demiryolu güncellemesi, yeni ekran tasarımı, sürekli koordinat gösterimi</h3>
+      <p>5 MOD aynı anda güncellendi (V1.9.1 ve V1.9.2 diye bir sürüm yok; Demiryolu&#x27;ndaki büyük güncelleme ile nükleer savaş başlığıyla enerji üretimiyle ilgili talepler bir araya getirilip V1.9.3 olarak yayımlanıyor). İki sürüm önce zaten düzeltilmiş olduğu hâlde bir kez bile yayımlanan sürüme yansımamış olan Havai Fişek Bebeği α&#x27;nın resmi sonunda ulaştırıldı; ayrıca doluyken uzun süre bekletilen Akünün bozulması hatası, nükleer savaş başlığının yakıt olarak kullanılabildiği mekanizmanın gerçek sunucuda doğrulanmasına yönelik hazırlık ve Roketatar&#x27;ın dürbün hatası düzeltildi. Demiryolu&#x27;na otomatik kalkış ve otomatik sürüş gibi büyük bir güncelleme, Elektrik/Silahlar/Boss ekranlarına ise yeni bir &quot;Glimpse Glass&quot; tasarımı geldi; ayrıca sürekli görünen koordinat ve TPS/ping göstergeleri eklendi.</p>
+      <ul><li>[Önemli] Havai Fişek Bebeği α&#x27;nın resmindeki hata (sağ kulağın bir kısmının kaybolmuş görünmesi), aslında v1.9.0.2&#x27;nin ardından zaten düzeltilmişti; ama yayımlanan sürümleri birbiriyle karşılaştıran mekanizmadaki bir kusur yüzünden bu düzeltme bir kez bile dağıtılan sürüme yansımamıştı. Bu sürümle birlikte sonunda düzeltilmiş resim geliyor. Bu hatanın bir daha yaşanmaması için, kaynak varlıkları ile dağıtılan sürümü doğrudan karşılaştıran yeni bir denetim (check_dist_drift.py) eklendi.</li><li>[Önemli] Elektrik: Dolu bir Akü yaklaşık 18,6 saat boyunca bekletildiğinde bir daha hiç Enerji Hücresi üretmemeye başlaması hatası düzeltildi. Sebep, toplama işleminde yaşanan bir taşma (overflow) idi; yüksek çıkışlı yakıtlarda (nükleer savaş başlığı gibi) bu daha erken ortaya çıkıyordu. Bu hata yüzünden zaten bozulmuş Aküler de, bu sürümü kurduğunuzda otomatik olarak düzelecek.</li><li>Elektrik: Nükleer savaş başlığının yakıt olarak kullanılabilmesi mekanizması v1.8.7&#x27;den beri zaten mevcuttu, ancak bu sürümde ilk kez gerçek bir özel sunucuda bunu doğrulayacak bir yöntem hazırlandı (ne var ki bu paketleme sürecinde test ortamı kaybolduğundan, doğrulama fiilen çalıştırılamadı; ayrıntılar için aşağıdaki uyarıya bakın). Yakıt sınıfı göstergesinin &quot;sorakaze_power.fuel_quality.nuclear&quot; şeklinde çevrilmemiş bir metin olarak göründüğü hata da düzeltildi.</li><li>Silahlar: Roketatar&#x27;ın dürbünü sonunda ekranda görünür hale geldi (2 kez bildirilmesinin ardından düzeltildi). Büyütme oranı da ×2&#x27;den ×4&#x27;e çıkarıldı. İki keskin nişancı tüfeğinin görünümünde değişiklik yok.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span></div>
       <p><a href="changelog/">Tüm güncelleme geçmişini gör →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Silahlar</h3>
       <p class="card__meta">Vanilla&#x27;da olmayan uzun menzilli silahlar</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Demiryolu</h3>
       <p class="card__meta">Tren ve ray araçları</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Yapı ve Dekorasyon</h3>
       <p class="card__meta">Şehir kurmak için yapı malzemeleri ve ev aletleri</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Boss</h3>
       <p class="card__meta">Güçlü boss&#x27;lar ve onlardan düşen ekipmanlar</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Gökyüzü</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Hayatta Kalma</h3>
       <p class="card__meta">Yeni cevherler, zırhlar ve hayatta kalma unsurları</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Araçlar</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Elektrik</h3>
       <p class="card__meta">Elektrik üretimi, iletimi ve elektrikli cihazlar</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Akıl sağlığı ölçeriyle liminal keşif</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

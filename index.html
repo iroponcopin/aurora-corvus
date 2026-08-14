@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">新機能</span>
-        <span class="timeline-entry__release">v1.9.0</span>
-        <span class="card__meta">2026-08-11</span>
+        <span class="timeline-entry__release">v1.9.3</span>
+        <span class="card__meta">2026-08-13</span>
       </div>
-      <h3 style="margin-top:0">最新の更新: 新規MOD「バックルームズ」参入、ウィザーストーム全面刷新</h3>
-      <p>9つ目のMOD「バックルームズ」が新規参入しました。終末の都市に生成される裂け目から迷い込む、正気度つきの探索コンテンツです。ボスMODのウィザーストームは見た目・成長段階・新しい状態異常を備えて全面刷新され、新しい確定ドロップも追加されました。建材・銃火器・電力・天空・鉄道・乗り物の6MODは無変更です。</p>
-      <ul><li>9つ目のMOD「バックルームズ」(sorakaze_backrooms)が新規参入。終末の都市が生成されるたびに、その都市1つにつき必ず1つ、近くの安全な場所へ裂け目(祭壇)が生成されます(既存の終末の都市には付きません)。</li><li>正気度(サニティ)システムを搭載。最大100で、何もしなければ約18分でゼロになります。宝箱で見つかる回復アイテムを飲むと35回復。約30秒ごとに12%の確率で「停電」が発生し、正気度が20を切ると様子が変わり始めます。</li><li>迷路の中ではブロックの設置ができず、壁・床・天井は宝箱も含めて一切破壊できません。他のディメンションには影響しません。</li><li>怪異「うつろの聞き耳」が徘徊します(HP40・攻撃力6。見られている間は動きを止め、視線を切るとまた動き出します)。同時出現は最大3体まで。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">ボス</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">バックルームズ</span></div>
+      <h3 style="margin-top:0">最新の更新: 核弾頭発電の実証・鉄道大型更新・新しい画面意匠、常時表示の座標</h3>
+      <p>5つのMODを同時更新しました(V1.9.1・V1.9.2という版は存在せず、鉄道の大型更新と核弾頭発電まわりの依頼をまとめてV1.9.3として出荷しています)。前々回から修正済みだったのに一度も出荷されていなかったスパークドールαの絵をようやく届け、蓄電池が満タンのまま長時間放置すると壊れる不具合と、核弾頭を燃料にできる仕組みの実サーバー検証準備、ロケットランチャーのスコープ不具合を修正しました。鉄道には自動発車・自動運転などの大型更新、電力・銃火器・ボスの画面には新しい「グリンプス・グラス」意匠、そして常時表示の座標・TPS/pingの札が追加されています。</p>
+      <ul><li>【重要】スパークドールαの絵の不具合(右耳の一部が消えて見える)は、実はv1.9.0.2の後にすでに直っていましたが、出荷物どうしを比較する仕組みの欠陥により一度も配布物に反映されていませんでした。今回ようやく直った絵が届きます。この不具合を二度と起こさないよう、ソース資産と配布物を直接突き合わせる新しい検査(check_dist_drift.py)を導入しました。</li><li>【重要】電力: 満杯の蓄電池を約18.6時間放置すると、二度とエネルギーセルを作らなくなる不具合を修正しました。高出力な燃料(核弾頭など)ほど早く症状が出る、足し算の桁あふれが原因でした。既に壊れてしまった蓄電池も、この版を入れれば自動的に直ります。</li><li>電力: 核弾頭を燃料にできる仕組み自体はv1.8.7から存在していましたが、本物の専用サーバーで実際に検証する仕組みを今回初めて用意しました(ただし今回の梱包作業中にテスト環境が失われ、実行はできていません。詳しくは下記の注意点を参照)。燃料等級の表示が「sorakaze_power.fuel_quality.nuclear」という未翻訳の文字列のまま出ていた不具合も修正しています。</li><li>銃火器: ロケットランチャーのスコープが、ようやく画面に見えるようになりました(2度のご報告を経て修正)。倍率も×2から×4に引き上げています。狙撃銃2挺の見た目は変更していません。</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">電力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">ボス</span></div>
       <p><a href="changelog/">更新履歴をすべて見る →</a></p>
     </div>
 
@@ -91,22 +91,22 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>銃火器</h3>
       <p class="card__meta">バニラにない遠距離武器</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>鉄道</h3>
       <p class="card__meta">電車と線路の乗り物</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>建材・装飾</h3>
       <p class="card__meta">街づくりの建材・家電</p>
-      <div class="card__meta">v1.8.6</div>
+      <div class="card__meta">v1.9.0.3</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>ボス</h3>
       <p class="card__meta">強力な討伐対象とドロップ装備</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>天空</h3>
@@ -116,7 +116,7 @@
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>サバイバル</h3>
       <p class="card__meta">新鉱石・防具・生活要素</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>乗り物</h3>
@@ -126,12 +126,12 @@
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>電力</h3>
       <p class="card__meta">発電・送電と電化機器</p>
-      <div class="card__meta">v1.8.8</div>
+      <div class="card__meta">v1.9.3</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
       <h3>バックルームズ</h3>
       <p class="card__meta">正気度つきの異界探索</p>
-      <div class="card__meta">v1.9.0</div>
+      <div class="card__meta">v1.9.0.2</div>
     </a>
 </div>
 

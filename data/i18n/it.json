@@ -75,7 +75,7 @@
       "changelog_balance_label": "Bilanciamento",
       "changelog_warnings_label": "Avvertenze",
       "changelog_limitations_label": "Cosa non era ancora implementato o verificato a questo punto",
-      "recipes_intro": "Qui trovi le ricette di crafting di tutti gli oggetti e i blocchi delle 8 mod installate, {count} in totale. Clicca su un oggetto per vedere la ricetta nella stessa griglia 3×3 del banco da lavoro. La scheda «Guide» in alto a destra spiega anche l'uso degli elementi che richiedono collegamenti, come lo smistamento automatico o la rete elettrica.",
+      "recipes_intro": "Qui trovi le ricette di crafting di tutti gli oggetti e i blocchi delle 9 mod installate, {count} in totale. Clicca su un oggetto per vedere la ricetta nella stessa griglia 3×3 del banco da lavoro. La scheda «Guide» in alto a destra spiega anche l'uso degli elementi che richiedono collegamenti, come lo smistamento automatico o la rete elettrica.",
       "guide_intro": "Qui trovi tutti i passaggi, dall'attivazione delle mod fino all'inizio del gioco. Se vuoi solo partecipare come giocatore, ti basta leggere il capitolo «Per i giocatori».",
       "audience_player": "Per i giocatori",
       "audience_admin": "Per gli amministratori del server",
@@ -1060,83 +1060,165 @@
         "Non sono stati verificati la sincronizzazione tra due giocatori contemporanei né il carico sul server con tutte e 9 le mod attive insieme.",
         "Le animazioni d'attacco del Golem di Sculk, di Rock Lock, del Kraken dalla Corona Abissale e del Titano della Tempesta, così come il lancio della Lancia del Tuono, restano ancora una volta rimandate a un futuro aggiornamento."
       ]
-    }
-  ],
-  "roadmap": [
+    },
     {
-      "release": "v1.9.0",
-      "title": "Nuova area «Fuga dalle Backrooms» e integrazione di Wither Storm",
-      "groups": [
-        {
-          "subtitle": "Nuova area «Fuga dalle Backrooms»",
-          "bullets": [
-            "Aggiunta di una mappa dedicata che riproduce fedelmente l'opera originale.",
-            "Durante la permanenza nell'area verrà introdotta una statistica di «sanità mentale» (Sanity), recuperabile ad esempio con l'«Acqua di Mandorle» che si trova in drop all'interno dell'area.",
-            "Regola speciale dell'area: non sarà possibile piazzare né distruggere blocchi.",
-            "Casse con bottino disseminate in vari punti.",
-            "Compariranno mostri e meccaniche ispirati all'opera originale.",
-            "È previsto che l'ingresso si generi casualmente all'interno delle città dell'End.",
-            "È previsto che lo stato di avanzamento venga mostrato costantemente come testo sul lato sinistro dello schermo."
-          ]
-        },
-        {
-          "subtitle": "Integrazione di Wither Storm",
-          "bullets": [
-            "È prevista l'integrazione della mod esterna «Wither Storm», inclusa direttamente nella cartella delle mod.",
-            "Il Dottore della Peste inizierà a evocare Wither Storm.",
-            "Come ricompensa per l'abbattimento sono previsti in drop il «Raccoglitore Universale α» e la «Bambola Pirotecnica α» (versioni superiori del raccoglitore universale e della bambola pirotecnica già esistenti).",
-            "Il Raccoglitore Universale α avrà una durabilità equivalente a quella di un piccone d'oro e non potrà essere incantato.",
-            "Per la Bambola Pirotecnica α si sta valutando una specifica diversa da quella della bambola pirotecnica attuale (limitata a 3 utilizzi): utilizzi illimitati con un tempo di ricarica di 3 minuti."
-          ]
-        }
+      "release": "v1.9.0.1",
+      "date": "2026-08-11",
+      "title": "Corretti i bug della fenditura di Backrooms e del volo della Tempesta di Wither, aggiunta l'app «Video»",
+      "type": "hotfix",
+      "summary": "Corretto il bug per cui la fenditura di Backrooms aggiunta nella v1.9.0 non veniva praticamente mai generata, e il bug per cui il volo della fase fluttuante della Tempesta di Wither non era stato implementato. Alla mod Edilizia e arredamento sono state aggiunte l'app «Video» per cellulare e computer e schermate in stile OS specifiche per ogni modello, mentre l'aspetto della Bambola pirotecnica α della mod Sopravvivenza è stato reso definitivo.",
+      "highlights": [
+        "Backrooms: corretto il bug per cui la fenditura vicino alla Città dell'End non veniva generata in praticamente il 100% dei casi misurati. Il controllo verificava l'altezza (coordinata Y), ma la coordinata effettivamente ricevuta era sempre 0, per cui il gioco concludeva erroneamente che la fenditura «non c'era» ogni volta. Nei terreni generati da ora in poi, ogni Città dell'End riceverà con certezza esattamente una fenditura (non viene aggiunta retroattivamente ai terreni già esistenti). Sono state anche ridisegnate le icone di Goccia di Quiete, torcia elettrica e biglietto strappato.",
+        "Tempesta di Wither: implementato un vero volo 3D nelle fasi fluttuanti (S3-S5) — avvicinamento in volteggio, picchiata d'attacco e poi ritirata. Le fasi a terra (S0-S2), l'attacco in mischia, la raffica delle teste, il raggio traente e la formula di calcolo del danno del grande vortice restano invariati.",
+        "Edilizia e arredamento: aggiunta l'app «Video» a cellulare e computer (integra un vero motore browser; al primo avvio il PC del giocatore scarica un componente aggiuntivo una sola volta). In base al modello, l'iPhone ha ora una schermata in stile iOS, mentre MacBook e Mac Studio hanno una schermata in stile macintosh (barra dei menu e Dock).",
+        "Sopravvivenza: reso definitivo l'aspetto della Bambola pirotecnica α (modifica puramente estetica, le funzionalità restano invariate)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "In questa versione la dimensione del primo download dell'app «Video» era stata indicata come «circa 140-175 MB», ma si trattava di un valore errato riferito alla dimensione compressa (corretto in «circa 300 MB», valore misurato realmente, nella v1.9.0.3).",
+        "Non è necessario eliminare o modificare il config. Questa volta sono state aggiunte solo nuove voci di impostazione."
+      ],
+      "known_limitations": [
+        "A questo punto la fenditura di Backrooms in sé era stata corretta, ma restava un altro bug per cui il labirinto oltre di essa non veniva affatto generato (scoperto e corretto nella v1.9.0.2).",
+        "Non era ancora stato verificato se l'app «Video» mostrasse effettivamente le pagine web, né l'aspetto reale delle nuove schermate in stile iPhone/macOS.",
+        "Non era ancora stato verificato se il volo della fase fluttuante della Tempesta di Wither risultasse effettivamente naturale (la sensazione di volteggio e picchiata)."
       ]
     },
     {
-      "release": "v1.9.1",
-      "title": "Grande potenziamento della mod ferroviaria",
-      "groups": [
-        {
-          "subtitle": "Automazione del servizio",
-          "bullets": [
-            "È prevista l'aggiunta di una funzione di partenza automatica al blocco di arresto automatico dei treni.",
-            "È allo studio una «modalità di guida automatica» che permetta ai treni di viaggiare anche senza un giocatore a bordo.",
-            "Aggiunta di un suono di marcia."
-          ]
-        },
-        {
-          "subtitle": "Nuovi veicoli e strutture",
-          "bullets": [
-            "Sono previste carrozze di classe superiore, come vagoni di prima classe e Gran Classe.",
-            "Aggiunta della linea aerea (i cavi tesi sopra i binari) come elemento posizionabile.",
-            "Illuminazione interna ed esterna per rendere più luminosi i viaggi notturni.",
-            "Supporto all'agganciamento tra carrelli vanilla.",
-            "Le rotaie vanilla diventeranno modelli 3D completi.",
-            "È prevista l'aggiunta di un'interfaccia in stile smartphone per gli annunci della prossima fermata e della partenza."
-          ]
-        }
+      "release": "v1.9.0.2",
+      "date": "2026-08-12",
+      "title": "Corretto il bug che impediva la generazione del labirinto di Backrooms (richiede un intervento sul mondo)",
+      "type": "hotfix",
+      "summary": "Nella v1.9.0.1 la fenditura in sé era stata corretta, ma è stato scoperto e risolto un bug per cui il mondo di Backrooms oltre di essa restava completamente vuoto (il vuoto cosmico). Nei mondi in cui Backrooms è già stata visitata almeno una volta è necessario eliminare la cartella della dimensione. Sono stati corretti anche i bug grafici di 3 oggetti, e l'aspetto della Bambola pirotecnica α della mod Sopravvivenza è stato sostituito con un disegno realizzato dal proprietario stesso.",
+      "highlights": [
+        "Backrooms: corretto il bug per cui, attraversando la fenditura, il labirinto non si trovava da nessuna parte e si moriva immediatamente anche in modalità creativa. Il problema era dovuto al fatto che la generazione restava bloccata da entrambi i «filtri» del meccanismo di generazione dei «mondi piatti» di Minecraft, per cui il labirinto non veniva mai creato in nessun chunk. È stato inoltre posto un blocco di bedrock sotto il pavimento e aggiunta una procedura di salvataggio nel caso in cui si cada comunque nel vuoto.",
+        "Backrooms: corretto il bug per cui i 3 oggetti Goccia di Quiete, torcia elettrica e biglietto strappato comparivano nell'inventario come la «scacchiera viola e nero» (la texture mostrata quando l'immagine non viene trovata). Il file di definizione che stabilisce l'aspetto era del tutto assente.",
+        "Sopravvivenza: sostituito il disegno della Bambola pirotecnica α con un'immagine pixel art che ritrae il proprietario stesso. Nessuna modifica agli aspetti funzionali (meccaniche, ricetta, drop, config)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "【Importante】Nei mondi in cui Backrooms è stata visitata anche una sola volta, con il server fermo elimina la cartella <nome del mondo>/dimensions/sorakaze_backrooms/backrooms/. La prossima volta che qualcuno attraverserà la fenditura, il labirinto verrà ricreato correttamente da zero. Poiché a Backrooms non è possibile piazzare né distruggere blocchi, eliminando la cartella non si perde nulla (gli oggetti nell'inventario, come Goccia di Quiete, torcia elettrica e biglietto strappato, non scompaiono). Se la cartella non viene trovata, significa che nessuno vi è ancora entrato: in tal caso non è necessario fare nulla.",
+        "Non è necessario eliminare o modificare il config (vengono semplicemente aggiunte 2 nuove voci di impostazione, applicate automaticamente)."
+      ],
+      "known_limitations": [
+        "L'aspetto reale del labirinto corretto (l'atmosfera della carta da parati gialla e simili), le immagini dei 3 oggetti corretti e l'aspetto del disegno della Bambola pirotecnica α non erano ancora stati verificati su un client reale a questo punto."
+      ]
+    },
+    {
+      "release": "v1.9.0.3",
+      "date": "2026-08-13",
+      "title": "Rinnovata completamente la schermata «Mine OS» di cellulare e computer, corretto il bug delle icone",
+      "type": "visual-update",
+      "summary": "Aggiornamento riguardante solo la mod Edilizia e arredamento. L'aspetto della schermata «Mine OS» di cellulare e computer è stato completamente rifatto, con l'aggiunta delle nuove app Impostazioni, Terminale e Musica. È stato corretto anche il bug delle icone delle app presente fin dalla v1.8.6. Sono stati inoltre corretti i dati sulla dimensione del primo download dell'app «Video» ed è emerso che quest'ultima non funziona su macOS.",
+      "highlights": [
+        "Rinnovata completamente la schermata di cellulare e computer: aggiunti pannelli semitrasparenti come vetro smerigliato, angoli arrotondati e ombre. Il computer ha ora 3 semafori in alto a sinistra, un breadcrumb «Mine OS ▸ nome app» in alto e un Dock in basso; il cellulare ha una barra di stato, un indicatore home e una schermata di blocco. L'app Messaggi mostra ora fumetti in stile chat con l'icona della testa dell'interlocutore.",
+        "Aggiunte 3 nuove app (da 8 a 11): «Impostazioni» (informazioni sul dispositivo e sul server, attivazione/disattivazione dei suoni), «Terminale» (i 5 comandi help, about, ping, tps e cls rispondono sul posto, gli altri vengono inviati come comandi in chat) e «Musica» (riproduce i brani dei dischi presenti su questo server).",
+        "Corretto il bug, presente ininterrottamente dalla v1.8.6, per cui le icone delle app restavano nascoste dietro un riquadro grigio. La causa era lo sfondo opaco del pulsante vanilla, che veniva ridisegnato sopra l'icona subito dopo che questa era stata tracciata (le immagini stesse erano corrette fin dall'inizio).",
+        "Corretto il bug per cui il testo usciva dallo schermo o veniva troncato a metà, e introdotto un nuovo controllo automatico per evitare che si ripeta (misurati 4.773 punti su 2 lingue × 23 dimensioni di schermo, confermando zero casi di sconfinamento)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "⚠ Su Minecraft per macOS l'app «Video» non funziona (confermato con test reali; Windows e Linux restano supportati). Da questa versione, su macOS l'app non si blocca più silenziosamente ma mostra il messaggio «Non utilizzabile su questo sistema operativo» e si chiude.",
+        "【Correzione】Il primo download dell'app «Video» non è di «circa 140-175 MB», ma di circa 300 MB secondo le misurazioni reali (l'indicazione fornita al momento della v1.9.0.1 era errata ed è stata corretta).",
+        "Non è necessario eliminare o modificare il config (vengono semplicemente aggiunte 4 nuove voci di impostazione, tutte impostate su «mostra» come valore predefinito)."
+      ],
+      "known_limitations": [
+        "Il nuovo aspetto di Mine OS, la sensazione d'uso delle 3 nuove app (Impostazioni, Terminale, Musica) e il fatto che l'app Musica riproduca effettivamente l'audio non erano ancora stati verificati su un client reale a questo punto.",
+        "Non era ancora stato verificato visivamente se il bug delle icone fosse stato effettivamente risolto: la conferma si basava solo sull'analisi dell'ordine di disegno.",
+        "Restava inoltre da verificare se l'app «Video» mostrasse effettivamente le pagine web su client reali Windows e Linux."
       ]
     },
     {
       "release": "v1.9.3",
-      "title": "Energia da testate nucleari, visualizzazione delle coordinate e miglioramenti dell'interfaccia",
+      "date": "2026-08-13",
+      "title": "Testata nucleare come combustibile verificata su server reale, grande aggiornamento della Ferrovia, nuovo design delle schermate, coordinate sempre visibili",
+      "type": "release",
+      "summary": "Aggiornate contemporaneamente 5 mod (le versioni V1.9.1 e V1.9.2 non esistono: le richieste relative al grande aggiornamento della Ferrovia e alla testata nucleare come combustibile sono state riunite e distribuite come V1.9.3). Finalmente è stato consegnato il disegno della Bambola pirotecnica α, corretto già due versioni fa ma mai effettivamente distribuito, ed è stato corretto il bug per cui una batteria di accumulo lasciata piena a lungo si rompeva, oltre a essere stata predisposta (ma non ancora eseguita) una verifica su un server reale del fatto che la testata nucleare può essere usata come combustibile, e corretto il bug del mirino del Lanciarazzi. Alla Ferrovia sono stati aggiunti grandi aggiornamenti come la partenza automatica e la guida automatica, alle schermate di Elettricità, Armi da fuoco e Boss è stato applicato il nuovo design «Glimpse Glass», e sono state aggiunte le coordinate e il cartello TPS/ping sempre visibili.",
+      "highlights": [
+        "【Importante】Il bug del disegno della Bambola pirotecnica α (una parte dell'orecchio destro sembrava scomparsa) era in realtà già stato corretto subito dopo la v1.9.0.2, ma per un difetto nel meccanismo di confronto tra le distribuzioni non era mai stato effettivamente incluso nei pacchetti distribuiti. Questa volta arriva finalmente il disegno corretto. Per evitare che questo problema si ripeta, è stato introdotto un nuovo controllo (check_dist_drift.py) che confronta direttamente le risorse sorgente con i file distribuiti.",
+        "【Importante】Elettricità: corretto il bug per cui una batteria di accumulo piena, se lasciata inattiva per circa 18,6 ore, smetteva definitivamente di produrre celle energetiche. La causa era un overflow nella somma, che si manifestava tanto più rapidamente quanto più il combustibile era ad alta resa (come la testata nucleare). Anche le batterie di accumulo già danneggiate verranno corrette automaticamente installando questa versione.",
+        "Elettricità: il meccanismo che permette di usare la testata nucleare come combustibile esiste fin dalla v1.8.7, ma questa volta è stato predisposto per la prima volta un modo per verificarlo su un vero server dedicato (tuttavia l'ambiente di test è andato perso durante questo ciclo di pacchettizzazione, quindi non è stato ancora effettivamente eseguito — per i dettagli vedere l'avviso qui sotto). Corretto anche il bug per cui l'indicazione del livello di combustibile mostrava la stringa non tradotta «sorakaze_power.fuel_quality.nuclear».",
+        "Armi da fuoco: il mirino del Lanciarazzi è finalmente visibile a schermo (corretto dopo 2 segnalazioni). Anche l'ingrandimento è stato portato da ×2 a ×4. L'aspetto dei 2 fucili di precisione non è stato modificato.",
+        "Grande aggiornamento della Ferrovia: aggiunti partenza automatica, guida automatica, suono di marcia, linea aerea (solo decorativa), luci interne e fari anteriori, display degli annunci di arrivo, la possibilità di camminare all'interno del vagone e di sedersi sui sedili. Il tachimetro è stato spostato nella parte superiore dello schermo e non è più visibile ai passeggeri (solo al conducente).",
+        "Adottato il nuovo design semitrasparente «Glimpse Glass» per le schermate di Elettricità, Armi da fuoco e Boss (batteria di accumulo, quadro elettrico, Lanciamissili, Faro potenziato e altro). Aggiunto anche l'effetto di sfocatura dello sfondo quando si apre l'inventario o un forziere. È inoltre incluso, come nuovo componente opzionale, un pacchetto di risorse (Glimpse_Alpha_Glass_UI_Pack.zip) che estende lo stile a vetro anche alle schermate vanilla.",
+        "Le coordinate sono ora sempre visibili a schermo (viene mostrato anche l'orientamento). Rifatto anche il cartello TPS/ping: il comportamento predefinito è passato da «visibile solo tenendo premuto Tab» a «sempre visibile» (è possibile ripristinare il comportamento precedente tramite il config)."
+      ],
+      "balance_changes": [
+        "Ingrandimento del mirino del Lanciarazzi: ×2 → ×4"
+      ],
+      "warnings": [
+        "Nell'ambito del grande aggiornamento della Ferrovia, questa volta sono stati rimandati l'aggiunta di vagoni di classe superiore e l'aggancio con i carrelli vanilla (è stato redatto solo un documento di progettazione). L'aggancio con i carrelli vanilla riguarda la linea guida del progetto «non sostituire né rimuovere gli elementi vanilla», per cui la decisione verrà presa dopo un'ulteriore consultazione.",
+        "La verifica di funzionamento su un server dedicato dell'uso della testata nucleare come combustibile non è stata eseguita questa volta poiché l'ambiente di test è andato perso durante le operazioni di pacchettizzazione (il meccanismo stesso per usare la testata nucleare come combustibile non è cambiato dalla v1.8.7).",
+        "Se non hai ancora eliminato la cartella del mondo di Backrooms (la modifica introdotta nella v1.9.0.2), assicurati di farlo.",
+        "Non è necessario eliminare o modificare il config. Questa volta sono state aggiunte esclusivamente nuove voci di impostazione."
+      ],
+      "known_limitations": [
+        "Quasi tutte le nuove funzionalità della Ferrovia (partenza automatica, guida automatica, suono di marcia, linea aerea, luci interne, annunci di arrivo, possibilità di camminare all'interno del vagone) non erano ancora state verificate su un client reale a questo punto.",
+        "Non erano ancora stati verificati né l'aspetto del nuovo design delle schermate «Glimpse Glass» né quello del nuovo pacchetto di risorse.",
+        "Anche l'aspetto reale delle coordinate e del cartello TPS/ping sempre visibili non era ancora stato verificato.",
+        "Tra i test automatici, 3 relativi alle Armi da fuoco e 1 relativo all'Elettricità restano instabili, con risultati che variano a ogni esecuzione. È comunque stato confermato che riguardano tutti codice preesistente non modificato in questo aggiornamento."
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "release": "V2",
+      "title": "Aggiornamento V2 (concetto e specifiche definite, implementazione ancora da avviare)",
       "groups": [
         {
-          "subtitle": "Nuove funzionalità",
+          "subtitle": "Mod materiali edili: correzione dei bug dell'app video e rinnovo dell'aspetto dei dispositivi",
           "bullets": [
-            "È prevista la possibilità di usare le testate nucleari come fonte di energia per la mod elettricità (un utilizzo diverso da quello di missili e testate nucleari già introdotti in anteprima nella v1.8.4).",
-            "È prevista l'aggiunta di un'interfaccia con le coordinate sempre visibili."
+            "È prevista la correzione del funzionamento di riproduzione, pausa e avanzamento/riavvolgimento rapido dell'app video, affinché operino correttamente (correzione di bug con la massima priorità).",
+            "È prevista la correzione del bug per cui l'audio continua a riprodursi anche dopo l'uscita dal server o il passaggio a un altro mondo.",
+            "È prevista la correzione del bug per cui l'audio viene riprodotto ma il video non viene visualizzato (schermo che resta nero).",
+            "È allo studio un rifacimento completo dell'aspetto di iPhone, MacBook e batteria di accumulo, basato su nuove proposte di design."
           ]
         },
         {
-          "subtitle": "Miglioramenti",
+          "subtitle": "Revisione del sistema idrico e infrastrutture di vita quotidiana",
           "bullets": [
-            "Miglioramento dell'interfaccia che mostra TPS e ping."
+            "È allo studio l'abbandono del comportamento vanilla dei flussi d'acqua, a favore di un meccanismo che li faccia scorrere in modo fisicamente naturale dall'alto verso il basso (eliminando l'espansione orizzontale illimitata sulle superfici piatte, in modo che l'acqua si accumuli nelle cavità).",
+            "È prevista l'aggiunta di un intero sistema di infrastrutture idriche — tubature, pompe, prese d'acqua e così via — che collegano la fonte d'acqua fino al rubinetto.",
+            "La capacità della borraccia sarà quadruplicata rispetto a quella attuale. La sete diminuirà leggermente più in fretta della fame, e se persiste per 10 minuti, in assenza dell'effetto Rigenerazione, si prevede l'accumulo di danno fino a diventare letale.",
+            "È prevista l'aggiunta di una funzione di backup automatico che permetterà agli amministratori di configurare tramite interfaccia l'intervallo, il numero di copie conservate e la destinazione di salvataggio (anche la relativa guida sarà pubblicata su questo sito)."
           ]
         },
         {
-          "subtitle": "Idee per il futuro (non ancora incluse in questo aggiornamento)",
+          "subtitle": "Mod delle armi da fuoco: bilanciamento e rinnovo dei suoni",
           "bullets": [
-            "«Nucleo ad alte prestazioni»: pare si stia valutando l'idea di combinarlo con la mazza sul banco da lavoro per moltiplicare per 20 le prestazioni della mazza."
+            "Sono al vaglio le seguenti modifiche di bilanciamento: minigun +50% di prestazioni, fucile d'assalto +75%, pistola con potenza x1,5, SMG con danno dimezzato ma capacità del caricatore +30%, lanciarazzi con danno ed esplosione entrambi triplicati, torretta con danno x4 e durabilità +70%.",
+            "È allo studio l'idea di portare la testata nucleare a poter distruggere fino a 10 milioni di blocchi, e di triplicare sia la potenza esplosiva che il raggio delle testate missilistiche (la potenza della testata nucleare in sé dovrebbe restare quella attuale come base, ossia 67.200 in caso di colpo diretto, al livello della v1.8.8).",
+            "È prevista anche la correzione del bug per cui, durante l'uso del mirino del lanciarazzi, il modello dell'arma ostruisce la visuale.",
+            "È allo studio un rifacimento completo dei suoni degli spari (a quanto pare, invece di riutilizzare direttamente audio di giochi esistenti, verranno realizzati nuovi suoni originali dallo stile simile).",
+            "È allo studio l'aggiunta di tre nuovi modelli di lanciamissili, tutti pilotabili direttamente dal giocatore."
+          ]
+        },
+        {
+          "subtitle": "Mod dei boss: 4 nuovi boss e bilanciamento dei boss esistenti",
+          "bullets": [
+            "È prevista l'aggiunta di 4 nuovi boss: il «Re Golem Vulcanico» (600 HP), il «Guardiano Kraken Abissale» (800 HP), il «Drago Fenice di Ghiaccio Prismatico» (750 HP) e il «Signore Demone della Tempesta di Wither» (1200 HP, la cui evocazione richiede come condizione la sconfitta degli altri tre). Per tutti è allo studio un oggetto di evocazione dedicato e un combattimento strutturato a fasi.",
+            "Dottore della Peste: si sta valutando l'introduzione di un margine di 20 secondi tra il primo colpo subito e l'evocazione di Wither Storm — sconfiggendolo entro 20 secondi (o con un colpo solo) se ne impedirà l'evocazione, ma non si otterrà più alcun drop.",
+            "Boss Mietitore (Grim Reaper): è allo studio un drop, con bassa probabilità alla sconfitta, dell'arma dedicata «Falce Mietitrice d'Anime», con cui l'abbattimento di nemici potrebbe a sua volta far ottenere, con bassa probabilità, un uovo generatore. È inoltre prevista una potenza del boss stesso aumentata del +15% e l'aggiunta di 3 nuovi schemi d'attacco.",
+            "È allo studio un ulteriore potenziamento di Wither Storm, con l'aggiunta di una trasformazione in una seconda forma (fase)."
+          ]
+        },
+        {
+          "subtitle": "Sopravvivenza ed energia: sistema di contaminazione e nuove azioni di trasporto",
+          "bullets": [
+            "Si prevede che il punto di impatto di una testata nucleare rimanga in stato di «contaminazione» per 20 giorni di Minecraft. È allo studio la possibilità di renderlo innocuo indossando contemporaneamente maschera antigas e tuta protettiva.",
+            "Si sta valutando un meccanismo per cui il funzionamento prolungato di un generatore nucleare contamina l'aria circostante, con effetti sulla salute per chi vi resta a lungo senza protezione. È inoltre prevista l'aggiunta di un nuovo blocco, il «Purificatore d'Aria», che se attivato purifica la contaminazione nell'area circostante (con supporto al funzionamento simultaneo di più unità).",
+            "È prevista la possibilità di trasportare in mano piccoli mob come villici e galline.",
+            "È allo studio anche una funzione per trasportare le casse a due mani senza doverle distruggere (mantenendo il contenuto intatto; per le casse doppie si prevede che siano necessari due giocatori per il trasporto).",
+            "È prevista l'aggiunta di un nuovo oggetto (nome provvisorio) con 32 di durabilità e 200 di potere d'attacco. È allo studio un attacco a distanza basato sullo stesso meccanismo della bacchetta magica."
+          ]
+        },
+        {
+          "subtitle": "Interfaccia bancaria, Backrooms e integrazione con il sito",
+          "bullets": [
+            "È previsto l'innalzamento a 10 milioni di smeraldi del limite di deposito per ATM e MineBank. È allo studio l'applicazione dello stile «Glimpse Alpha Glass» alla schermata dell'ATM, con un rinnovamento completo dell'intera interfaccia.",
+            "È prevista l'aggiunta di una nuova «interfaccia MineBank» (a quanto pare esiste già una proposta di design dotata di selezione rapida al 25%/50%/75%/MAX in base al saldo, oltre a uno slider regolabile a incrementi di 1/10/100/1k).",
+            "È allo studio un rifacimento completo dell'aspetto delle entità (mostri) delle Backrooms, basato su nuove immagini di riferimento per il design.",
+            "È allo studio la predisposizione di un meccanismo che, una volta confermati in futuro i contenuti di un aggiornamento, li rifletta automaticamente anche nel registro delle modifiche di questo sito (si tratta di un aspetto relativo alla gestione del sito stesso)."
           ]
         }
       ]
@@ -2368,7 +2450,12 @@
       "minecraft:repeater": "Ripetitore di redstone",
       "minecraft:tripwire_hook": "Gancio per filo da inciampo",
       "minecraft:redstone_torch": "Torcia di redstone",
-      "minecraft:torch": "Torcia"
+      "minecraft:torch": "Torcia",
+      "sorakaze_boss:universal_harvester_alpha": "Raccoglitore Universale α",
+      "sorakaze_survival:spark_doll_alpha": "Bambola pirotecnica α",
+      "sorakaze_power:battery": "Batteria di Accumulo",
+      "sorakaze_rail:catenary_wire": "Linea Aerea",
+      "sorakaze_boss:wither_storm_summon": "Pietra di Evocazione della Tempesta di Wither"
     },
     "howto": [
       {

@@ -75,7 +75,7 @@
       "changelog_balance_label": "Balance changes",
       "changelog_warnings_label": "Warnings",
       "changelog_limitations_label": "Not yet implemented/confirmed at this point",
-      "recipes_intro": "Crafting recipes for every item and block across the 8 installed mods, {count} in total. Click an item to see its recipe laid out on the same 3×3 grid as an actual crafting table. The \"How-To\" tab in the top right also explains how to use wiring-heavy features like auto-sorting and the power infrastructure.",
+      "recipes_intro": "Crafting recipes for every item and block across the 9 installed mods, {count} in total. Click an item to see its recipe laid out on the same 3×3 grid as an actual crafting table. The \"How-To\" tab in the top right also explains how to use wiring-heavy features like auto-sorting and the power infrastructure.",
       "guide_intro": "A walkthrough covering everything from enabling the mods to actually starting to play. If you're just joining as a player, the \"For Players\" chapter alone is enough.",
       "audience_player": "For Players",
       "audience_admin": "For Server Admins",
@@ -1060,83 +1060,165 @@
         "Sync between two simultaneous players, and server load with all 9 mods running at once, are untested.",
         "The attack animations for the Sculk Golem, Rock Lock, Kraken, and Titan, and the ability to throw the Lightning Spear, are once again carried over to a future update."
       ]
-    }
-  ],
-  "roadmap": [
+    },
     {
-      "release": "v1.9.0",
-      "title": "New Area \"Escape from the Backrooms\" & Wither Storm Integration",
-      "groups": [
-        {
-          "subtitle": "New Area: \"Escape from the Backrooms\"",
-          "bullets": [
-            "A new dedicated map faithfully recreating the source material.",
-            "A \"Sanity\" stat will be introduced while inside the area, recoverable with items like \"Almond Water\" that drop within it.",
-            "A special rule inside the area prevents placing or breaking blocks.",
-            "Loot-filled chests placed throughout the area.",
-            "Monsters and gimmicks recreating the source material will appear.",
-            "The entrance is planned to generate randomly inside End Cities.",
-            "Progress is expected to be shown as text on the left side of the screen at all times."
-          ]
-        },
-        {
-          "subtitle": "Wither Storm Integration",
-          "bullets": [
-            "Plans to integrate the third-party \"Wither Storm\" mod by bundling it in the mods folder.",
-            "The Plague Doctor will start summoning Wither Storms.",
-            "Defeating it is planned to drop a \"Universal Harvester α\" and a \"Firework Doll α\" (upgraded versions of the existing Universal Harvester and Firework Doll) as rewards.",
-            "The Universal Harvester α has durability equivalent to a golden pickaxe and cannot be enchanted.",
-            "The Firework Doll α is being considered with unlimited uses and a 3-minute cooldown, a different design from the existing Firework Doll's 3-use limit."
-          ]
-        }
+      "release": "v1.9.0.1",
+      "date": "2026-08-11",
+      "title": "Fixed End City Rifts and Wither Storm Flight, Added a Video App",
+      "type": "hotfix",
+      "summary": "Fixed a bug where the Backrooms rifts added in v1.9.0 were effectively never generating, and a bug where the Wither Storm's airborne-stage flight had never actually been implemented. The building & decor mod gained a \"Video\" app for phones and computers, along with device-specific OS-style screens, and Survival's Spark Doll α now has its finalized appearance.",
+      "highlights": [
+        "Backrooms: Fixed a bug where End City rifts were, in measured practice, essentially never generating. The check was looking at the height (Y coordinate), but the coordinate it actually received always had a height of 0, so it was always misjudged as \"absent.\" On newly generated land, every End City is now guaranteed exactly one rift (this doesn't retroactively apply to existing land). Also redrew the icon art for the Drop of Calm, Flashlight, and Torn Note.",
+        "Wither Storm: Implemented genuine 3D flight for the airborne stages (S3–S5) — circling in, diving to attack, then peeling away. The grounded stages (S0–S2), melee attack, head barrage, tractor beam, and Great Vortex damage formulas are unchanged.",
+        "Building & decor: Added a \"Video\" app to phones and computers (it embeds an actual browser engine; the first time a player opens it, a one-time extra download runs on their PC). Screens now vary by device model — iPhone gets an iOS-style look, while MacBook and Mac Studio get a Macintosh-style look (menu bar, Dock).",
+        "Survival: Finalized Spark Doll α's appearance (a visual-only change; functionality is unchanged)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "This release listed the Video app's first-time download size as \"roughly 140–175MB,\" but that was the compressed size and was incorrect (corrected to a measured ~300MB in v1.9.0.3).",
+        "No config deletion or editing needed. This update only adds new settings."
+      ],
+      "known_limitations": [
+        "At this point, the Backrooms rifts themselves were fixed, but a separate bug remained where the maze beyond them wasn't generating at all (discovered and fixed in v1.9.0.2).",
+        "Whether the Video app actually displays web pages, and how the new iPhone/macOS-style screen designs look, were both still unconfirmed.",
+        "Whether the Wither Storm's airborne-stage flight actually looks natural in motion (the feel of the circling and diving) was also unconfirmed."
       ]
     },
     {
-      "release": "v1.9.1",
-      "title": "Major Rail Mod Enhancements",
-      "groups": [
-        {
-          "subtitle": "Operation automation",
-          "bullets": [
-            "Planned addition of an auto-departure feature to the train auto-stop block.",
-            "An \"autopilot mode\" that lets trains run without a player aboard is under consideration.",
-            "Added running sound effects."
-          ]
-        },
-        {
-          "subtitle": "New cars and equipment",
-          "bullets": [
-            "Higher-class cars, such as Green Car and Gran Class, are planned.",
-            "Overhead catenary wires (strung above the tracks) added as a placeable item.",
-            "Interior and exterior lighting to brighten up nighttime running.",
-            "Support for coupling minecarts to each other.",
-            "Fully 3D-modeled vanilla rails.",
-            "A smartphone-style next-station/departure info UI is planned."
-          ]
-        }
+      "release": "v1.9.0.2",
+      "date": "2026-08-12",
+      "title": "Fixed Backrooms Maze Not Generating (World Action Required)",
+      "type": "hotfix",
+      "summary": "v1.9.0.1 fixed the rifts themselves, but we discovered — and fixed — a bug where the Backrooms dimension beyond them stayed completely empty (the void). If your world has ever had a player visit Backrooms, you'll need to delete the dimension folder. Also fixed the appearance bug affecting 3 items, and Survival's Spark Doll α has been replaced with artwork drawn by the owner themselves.",
+      "highlights": [
+        "Backrooms: Fixed a bug where passing through a rift led nowhere — there was no maze anywhere, and even in Creative you'd die instantly. The cause was tripping both of two filters in Minecraft's \"superflat\" world-generation system, so the maze had never actually been built in any chunk. Also placed bedrock beneath the floor and added a rescue procedure in case you do fall through.",
+        "Backrooms: Fixed a bug where the Drop of Calm, Flashlight, and Torn Note all showed up in your inventory as the \"purple-and-black checkerboard\" missing-texture pattern. The definition file that determines their art was missing entirely.",
+        "Survival: Replaced Spark Doll α's art with pixel art drawn by the owner themselves. No functional changes (mechanics, recipe, drops, or config)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "[Important] If your world has ever had a player visit Backrooms, stop the server and delete the <world name>/dimensions/sorakaze_backrooms/backrooms/ folder. The next time someone passes through a rift, it will be rebuilt as a proper new maze. Backrooms is a dimension where you can't place or break blocks, so deleting it costs you nothing (items like the Drop of Calm, Flashlight, and Torn Note in your inventory won't disappear). If you can't find the folder, no one has entered that world yet, so there's nothing you need to do.",
+        "No config deletion or editing needed (just 2 new settings added, which take effect automatically)."
+      ],
+      "known_limitations": [
+        "How the fixed maze actually looks (the mood of the yellow wallpaper, etc.), the art for the 3 fixed items, and how Spark Doll α's new art looks were all still unconfirmed on an actual screen at this point."
+      ]
+    },
+    {
+      "release": "v1.9.0.3",
+      "date": "2026-08-13",
+      "title": "Completely Redesigned the Phone/Computer \"Mine OS\" Screens, Fixed Icon Bug",
+      "type": "visual-update",
+      "summary": "This update touches only the building & decor mod. Completely remade the look of the phone/computer \"Mine OS\" screens and added 3 new apps: Settings, Terminal, and Music. Also fixed the app icon bug that had persisted since v1.8.6. Additionally, we've corrected the Video app's first-time download size and discovered it doesn't work on macOS.",
+      "highlights": [
+        "Completely redesigned the phone/computer screens, adding frosted-glass-style translucent panels, rounded corners, and shadows. Computers now have 3 traffic-light buttons in the top-left, a \"Mine OS ▸ App Name\" breadcrumb up top, and a Dock at the bottom; phones gained a status bar, home indicator, and lock screen. The Messages app now shows chat-style speech bubbles with the other person's head icon.",
+        "Added 3 new apps (8 → 11 total): Settings (device/server info and a sound toggle), Terminal (help, about, ping, tps, and cls respond instantly; anything else is sent as a chat command), and Music (plays songs from music discs available on this server).",
+        "Fixed a bug, present since v1.8.6, where app icons were hidden behind a gray panel. The cause was vanilla's opaque button background getting drawn over the same spot right after the icon was rendered (the artwork itself had been correct from the start).",
+        "Fixed text overflowing or getting cut off on screen, and added a new automated check to keep it from happening again (measured 4,773 locations across 2 languages × 23 screen sizes, confirming zero overflows)."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "⚠ The Video app does not work on macOS Minecraft (confirmed by testing; Windows and Linux remain supported). Starting with this release, macOS no longer silently freezes — it now shows \"Not available on this OS\" and stops.",
+        "[Correction] The Video app's first-time download is not \"roughly 140–175MB\" — measured, it's about 300MB (correcting the inaccurate figure given as of v1.9.0.1).",
+        "No config deletion or editing needed (just 4 new settings added, all defaulting to \"shown\")."
+      ],
+      "known_limitations": [
+        "Mine OS's new look, the feel of using the 3 new apps (Settings, Terminal, Music), and whether the Music app actually plays sound were all still unconfirmed on an actual screen at this point.",
+        "Whether the icon bug was actually resolved hadn't been visually confirmed — the fix was based only on analysis of the draw order.",
+        "Whether the Video app actually displays web pages on real Windows/Linux machines remained unconfirmed."
       ]
     },
     {
       "release": "v1.9.3",
-      "title": "Nuclear Warhead Energy, Coordinate Display & UI Improvements",
+      "date": "2026-08-13",
+      "title": "Verified Nuclear-Warhead Power Generation, Major Rail Update, New Screen Design, Always-On Coordinates",
+      "type": "release",
+      "summary": "Updated 5 mods at once (there are no v1.9.1 or v1.9.2 releases — the major rail update and the nuclear-warhead power generation requests are bundled together and shipped as v1.9.3). We've finally delivered Spark Doll α's art, which had actually been fixed two releases ago but had never once made it into a shipped build, along with a fix for batteries breaking when left fully charged for a long time, a new (not-yet-run) way to verify on a real server that nuclear warheads can be used as fuel, and a fix for the Rocket Launcher's scope bug. Rail gained a major update including automatic departure and automatic driving, Power/Guns/Boss screens got the new \"Glimpse Glass\" design, and always-on coordinate and TPS/ping displays were added.",
+      "highlights": [
+        "[Important] The Spark Doll α art bug (part of the right ear appearing to vanish) had actually already been fixed after v1.9.0.2, but a flaw in the mechanism that compares build outputs meant it never once made it into a distributed build. The fixed art finally arrives with this release. To make sure this never happens again, we've introduced a new check (check_dist_drift.py) that directly diffs source assets against the distributed build.",
+        "[Important] Power: Fixed a bug where a fully charged Battery, left alone for about 18.6 hours, would stop producing Energy Cells forever. The cause was an addition overflow, which showed up faster with higher-output fuels (like nuclear warheads). Batteries already broken by this bug will fix themselves automatically once you install this release.",
+        "Power: The mechanism for using nuclear warheads as fuel has existed since v1.8.7, but this round we set up a way to verify it on a real dedicated server for the first time (however, the test environment was lost during this packaging round, so it hasn't actually been run yet -- see the warning below for details). Also fixed a bug where the fuel-grade display showed the raw, untranslated string \"sorakaze_power.fuel_quality.nuclear.\"",
+        "Guns: The Rocket Launcher's scope is finally visible on screen (fixed after being reported twice). Its zoom level has also been raised from ×2 to ×4. The appearance of both sniper rifles is unchanged.",
+        "Major Rail update: added automatic departure, automatic driving, running sound, overhead catenary wires (decorative only), interior cabin lights and headlights, arrival announcement displays, the ability to walk around inside the train, and the ability to sit in seats. The speedometer moved to the top of the screen and is no longer shown to passengers — only the driver sees it.",
+        "Adopted a new translucent design, \"Glimpse Glass,\" for Power/Guns/Boss screens (Battery, Breaker Panel, Missile Launcher, Enhanced Beacon, and more). Also added background blur for when you open your inventory or a chest. A new optional resource pack, Glimpse_Alpha_Glass_UI_Pack.zip, is now bundled as well, which extends the glass look to vanilla screens too.",
+        "Coordinates (including facing direction) are now always shown on screen. The TPS/ping display was also redesigned, and the default changed from \"only while holding Tab\" to \"always shown\" (you can restore the old behavior via config)."
+      ],
+      "balance_changes": [
+        "Rocket Launcher scope zoom: ×2 → ×4"
+      ],
+      "warnings": [
+        "Within the major Rail update, adding higher-tier train cars and coupling with vanilla minecarts were both deferred this time (only a design document was produced). Coupling with vanilla minecarts touches on this project's policy of \"never replacing or removing vanilla elements,\" so it will be decided separately after further discussion.",
+        "Proof of the dedicated-server verification for using nuclear warheads as fuel could not actually be carried out this time, since the test environment was lost during the packaging process (the mechanism itself for using nuclear warheads as fuel is unchanged since v1.8.7).",
+        "If you still haven't deleted the Backrooms world folder as described in the v1.9.0.2 change, please make sure to take care of that as well.",
+        "No config deletion or editing needed. Everything added this time is a brand-new setting."
+      ],
+      "known_limitations": [
+        "Nearly all of the new Rail features (automatic departure, automatic driving, running sound, catenary wires, cabin lights, arrival announcements, walking around inside the train) were still unconfirmed on real hardware at this point.",
+        "The look of the new \"Glimpse Glass\" screen design and the look of the new resource pack were both also unconfirmed.",
+        "The actual on-screen look of the always-on coordinate and TPS/ping displays was also unconfirmed.",
+        "3 automated tests in Guns and 1 in Power remain flaky, with results varying from run to run. All of them have been confirmed to concern existing code that wasn't changed in this release."
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "release": "V2",
+      "title": "V2 Update (Concept & Spec Finalized, Implementation Still Ahead)",
       "groups": [
         {
-          "subtitle": "New features",
+          "subtitle": "Building Materials Mod: Video App Bug Fixes & Device Redesign",
           "bullets": [
-            "Plans to let nuclear warheads be used as an energy source for the Power mod (a different use case from the missile/nuclear warheads already added in v1.8.4).",
-            "An always-on coordinate display UI is planned."
+            "Planned fix so that the video app's play, pause, and fast-forward/rewind controls work correctly (top-priority bug fix).",
+            "Planned fix for a bug where audio keeps playing after leaving the server or moving to another world.",
+            "Planned fix for a bug where audio plays but no video is shown (screen stays black).",
+            "Concept to completely redesign the appearance of the iPhone, MacBook, and battery pack based on new design proposals."
           ]
         },
         {
-          "subtitle": "Improvements",
+          "subtitle": "Water Systems Overhaul & Living Infrastructure",
           "bullets": [
-            "Improvements to the UI that shows TPS and ping."
+            "Concept to move away from vanilla water flow behavior toward a system where water physically and naturally flows from high ground to low ground (eliminating endless horizontal spread on flat ground, with water instead pooling in depressions).",
+            "Planned addition of a full water infrastructure set — pipes, pumps, faucets, and more — connecting water sources through to taps.",
+            "Water bottle capacity planned to quadruple. Thirst is expected to deplete slightly faster than hunger, and once thirst has persisted for 10 minutes it would start stacking damage — potentially fatal — unless a regeneration effect is active.",
+            "Planned automatic backup feature letting admins configure interval, retention count, and destination via a UI (setup instructions also planned for this site)."
           ]
         },
         {
-          "subtitle": "Further-out ideas (not yet part of this update)",
+          "subtitle": "Firearms Mod: Balance Adjustments & Sound Overhaul",
           "bullets": [
-            "\"High-Performance Core\": reportedly there's an idea to combine it with a mace at a crafting table to multiply the mace's performance by 20x."
+            "Under consideration: Minigun performance +50%, Assault Rifle +75%, Pistol power x1.5, SMG damage halved in exchange for +30% magazine capacity, Rocket Launcher damage and blast power both x3, and Turret damage x4 with durability +70%.",
+            "Concept to scale nuclear warheads up to destroying as many as 10 million blocks, and to triple both the blast power and radius of missile warheads (the nuclear warhead's own power is expected to stay based on its current value — a direct hit of 67,200 as of v1.8.8 — as the baseline).",
+            "Also planned: a fix for the Rocket Launcher's body model blocking the player's view while using the scope.",
+            "Concept to completely remake the gunfire sounds (reportedly not reusing audio from any specific existing game as-is, but producing new sounds in a similar style).",
+            "Concept to add 3 new missile launcher designs, all of which players would be able to pilot themselves."
+          ]
+        },
+        {
+          "subtitle": "Boss Mod: 4 New Bosses & Existing Boss Adjustments",
+          "bullets": [
+            "Planned addition of 4 new bosses: \"Volcanic Golem King\" (HP 600), \"Abyssal Kraken Warden\" (HP 800), \"Prismatic Ice Phoenix Dragon\" (HP 750), and \"Witherstorm Demon Overlord\" (HP 1200, whose summoning condition is defeating the above three). All are envisioned with their own summoning items and phase-based fights.",
+            "Under consideration for the Plague Doctor: a 20-second grace period between taking damage and the Wither Storm summon — defeating it within 20 seconds (or in one hit) would prevent the summon, but would also forfeit any drops.",
+            "Concept for the Grim Reaper boss: on defeat, a low chance to drop its signature weapon, the \"Soul-Reaping Scythe\"; killing enemies with that scythe would have a low chance of yielding a spawn egg. The boss itself is also planned to get +15% strength and 3 new attack patterns.",
+            "Concept to further strengthen the Wither Storm and add a second form (phase) transition."
+          ]
+        },
+        {
+          "subtitle": "Survival & Power: Contamination System and New Carrying Actions",
+          "bullets": [
+            "Nuclear warhead impact sites are expected to enter a \"contaminated\" state for 20 Minecraft days. Concept for this to be neutralized only by wearing both a gas mask and protective suit.",
+            "Under consideration: running a nuclear power generator continuously would contaminate the surrounding air, affecting players' health if they stay nearby too long without protection. A new \"Air Purifier\" block is also planned, which would cleanse contamination in its area while running (with support for multiple units operating at once).",
+            "Planned feature to let players pick up and carry small mobs, such as villagers and chickens, by hand.",
+            "Also under consideration: a two-handed carry action for chests, letting them be moved without breaking (contents would be preserved; double chests are envisioned as requiring two players to carry).",
+            "Planned addition of a new item (tentative name) with 32 durability and 200 attack power. A ranged attack using the same mechanism as the Magic Wand is under consideration."
+          ]
+        },
+        {
+          "subtitle": "Bank UI, Backrooms, and Site Integration",
+          "bullets": [
+            "Planned increase of the ATM/MineBank deposit cap to 10 million Emeralds. Concept to apply \"Glimpse Alpha Glass\" styling to the ATM screen and overhaul the UI as a whole.",
+            "Planned addition of a new \"MineBank UI\" (reportedly with a design proposal featuring 25%/50%/75%/MAX quick-select based on balance, plus slider controls in increments of 1/10/100/1k).",
+            "Concept to completely redesign the appearance of the Backrooms entities (monsters) based on new reference artwork.",
+            "Concept to build a system so that once future update details are finalized, they're automatically reflected in this site's changelog (this concerns the operation of this site itself)."
           ]
         }
       ]
@@ -2368,7 +2450,12 @@
       "minecraft:repeater": "Redstone Repeater",
       "minecraft:tripwire_hook": "Tripwire Hook",
       "minecraft:redstone_torch": "Redstone Torch",
-      "minecraft:torch": "Torch"
+      "minecraft:torch": "Torch",
+      "sorakaze_boss:universal_harvester_alpha": "Omnigatherer Alpha",
+      "sorakaze_survival:spark_doll_alpha": "Spark Doll Alpha",
+      "sorakaze_power:battery": "Battery",
+      "sorakaze_rail:catenary_wire": "Overhead Catenary Wire",
+      "sorakaze_boss:wither_storm_summon": "Wither Storm Summoning Stone"
     },
     "howto": [
       {
