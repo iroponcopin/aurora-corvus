@@ -62,7 +62,7 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     本站是关于 Sorakazekarasu 服务器所导入的 Fabric MOD 合集「<strong>Glimpse Alpha</strong>」（旧称：Sorakaze）的配方、更新日志与导入教程的非官方参考网站。目前共有 
-    <strong>9 个 MOD</strong>（枪械、铁道、建材、Boss、天空、生存、载具、电力、后室）正同时运行在 Minecraft
+    <strong>10 个 MOD</strong>（枪械、铁道、建材、Boss、天空、生存、载具、电力、后室、二相乐园）正同时运行在 Minecraft
     <strong>26.2</strong> 之上。
   </p>
   <p class="callout callout--info">本站不提供 MOD 本体（jar 文件）的下载，这里只有配方表、更新日志、导入教程等「阅读内容」。MOD 本体请直接向服务器管理员索取。</p>
@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">新功能</span>
-        <span class="timeline-entry__release">v1.9.3</span>
-        <span class="card__meta">2026-08-13</span>
+        <span class="timeline-entry__release">V2.1.0</span>
+        <span class="card__meta">2026-08-22</span>
       </div>
-      <h3 style="margin-top:0">最新更新： 核弹头发电验证、铁道大型更新、全新界面设计与常驻显示坐标</h3>
-      <p>本次同时更新了 5 个 MOD（不存在 V1.9.1、V1.9.2 版本，铁道的大型更新与核弹头发电相关的委托一并整理后以 V1.9.3 出货）。终于交付了早在两个版本前就已修复、却一直未随发布物送出的烟花人偶α外观，并修复了蓄电池满电后长时间放置会损坏的问题、准备了在真实服务器上验证核弹头可作为燃料的方法（尚未执行），以及火箭筒瞄准镜的显示问题。铁道新增了自动发车、自动驾驶等大型更新，电力、枪械、Boss 的界面采用了全新的「Glimpse Glass」设计，并新增了常驻显示的坐标与 TPS/ping 显示牌。</p>
-      <ul><li>【重要】烟花人偶α外观的问题（右耳部分看起来像是缺了一块），其实早在 v1.9.0.2 之后就已经修复，但由于比对各次发布物的机制存在缺陷，始终未能反映到实际发布内容中。这次终于送达了修复后的外观。为避免此类问题再次发生，新增了直接比对源资产与发布物的检查工具（check_dist_drift.py）。</li><li>【重要】电力：修复了蓄电池充满后放置约 18.6 小时，就再也无法生成能量电池的问题。原因是加法运算发生数值溢出，燃料输出越高（如核弹头）症状出现得越快。已经损坏的蓄电池，只要更新到本版本即可自动修复。</li><li>电力：核弹头可作为燃料使用的机制自 v1.8.7 起就已存在，这次首次准备了在真实专用服务器上进行验证的方法(但由于本轮打包过程中测试环境丢失，本次尚未实际执行——详见下方注意事项)。同时修复了燃料等级显示一直停留在未翻译字符串「sorakaze_power.fuel_quality.nuclear」的问题。</li><li>枪械：火箭筒的瞄准镜终于能在画面上显示了（经过 2 次报告后修复）。倍率也从 ×2 提升到了 ×4。两把狙击步枪的外观未作变更。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">生存</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">电力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">枪械</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span></div>
+      <h3 style="margin-top:0">最新更新： 后室层级 3〜8 成为真正的无限层级、电脑上新增服务器管理应用、Boss 召唤配方进入配方书</h3>
+      <p>本次最大的变更是后室的层级 3 到 8。以前它们只是 128 格见方的示范小岛，现在成了没有边界、可以真正步行探索的层级。建材 MOD 的电脑新增了服务器管理应用，Boss MOD 中召唤道具的配方终于出现在游戏内的配方书里。3 把数据定义枪械也终于各自拥有了专属的手持模型。</p>
+      <ul><li>实际内容发生变化的只有 4 个 MOD：后室、建材、Boss、枪械。其余 6 个（二相乐园、电力、铁道、天空、生存、载具）只是为了保持版本一致而升到 2.1.0 —— 它们的 jar 与 2.0.0 的差异仅有一处，即 fabric.mod.json 中的版本字符串。内容一个字节都没有改变。</li><li>后室的层级 3 到 8，从 128 格见方的示范小岛变成了真正的无限层级。每一层都没有边界，都可以步行探索。</li><li>层级 3「电气设备楼」。电流是带电的，触碰配电盘很危险。有 Hound 在巡逻，地下电缆室里则有 Smiler。</li><li>层级 4「无人办公室」。等级为安全 —— 但有 3% 的窗户正在看着你，而且外观与其他窗户完全一样。在这里理智值会缓慢恢复。杏仁水在休息室。</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">后室</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">枪械</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">电力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">天空</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">生存</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">载具</span></div>
       <p><a href="changelog/">查看全部更新日志 →</a></p>
     </div>
 
@@ -91,47 +91,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>枪械</h3>
       <p class="card__meta">原版没有的远程武器</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>铁道</h3>
       <p class="card__meta">电车与铁轨载具</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>建材、装饰</h3>
       <p class="card__meta">建筑与家电，打造城镇</p>
-      <div class="card__meta">v1.9.0.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Boss</h3>
       <p class="card__meta">强大的讨伐目标与掉落装备</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>天空</h3>
       <p class="card__meta">新维度与天使王国</p>
-      <div class="card__meta">v1.8.4</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>生存</h3>
       <p class="card__meta">新矿石、护甲与生活要素</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>载具</h3>
       <p class="card__meta">汽车、巴士与飞行器</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>电力</h3>
       <p class="card__meta">发电、输电与电气化设备</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
+      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>后室</h3>
       <p class="card__meta">带理智值的异界探索</p>
-      <div class="card__meta">v1.9.0.2</div>
+      <div class="card__meta">v2.1.0</div>
+    </a>
+      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
+      <h3>二相乐园</h3>
+      <p class="card__meta">以夜为主的娱乐世界与次元之门</p>
+      <div class="card__meta">v2.1.0</div>
     </a>
 </div>
 
@@ -165,7 +170,7 @@
 </div>
 
 <h2>关于本项目</h2>
-<p>本项目最初名为「Sorakaze」，从在保留原版生存体验的同时新增枪械、铁道、建材这三个 MOD 开始。此后不断以新增可合成物品的形式持续扩展，在 v1.8.0 时更名为「Glimpse Alpha」。如今已发展为包含 Boss、新维度、生存要素、载具、电力设施在内的 9 个 MOD 组合。</p>
+<p>本项目最初名为「Sorakaze」，从在保留原版生存体验的同时新增枪械、铁道、建材这三个 MOD 开始。此后不断以新增可合成物品的形式持续扩展，在 v1.8.0 时更名为「Glimpse Alpha」。如今已发展为包含 Boss、新维度、生存要素、载具、电力设施在内的 10 个 MOD 组合。</p>
 <p>本项目一贯坚持不替换、不删除原版要素的方针，弓箭、矿车等既有内容都被完整保留了下来。也不会使用真实存在的枪械、企业或商标名称。</p>
 
 </main>

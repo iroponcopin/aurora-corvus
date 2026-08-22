@@ -61,7 +61,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新日志</span>
   <h1>更新日志</h1>
-  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 43 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 45 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
   <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
 </div>
 
@@ -70,7 +70,7 @@
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">MOD：</span>
-  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">枪械</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">铁道</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">建材、装饰</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">生存</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">载具</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">电力</button><button class="chip" type="button" data-filter-mod="backrooms" aria-pressed="false">后室</button>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">枪械</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">铁道</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">建材、装饰</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">生存</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">载具</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">电力</button><button class="chip" type="button" data-filter-mod="backrooms" aria-pressed="false">后室</button><button class="chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">二相乐园</button>
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">类型：</span>
@@ -79,6 +79,36 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>没有符合条件的更新记录。</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.1.0</span> — 后室层级 3〜8 成为真正的无限层级、电脑上新增服务器管理应用、Boss 召唤配方进入配方书
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>本次最大的变更是后室的层级 3 到 8。以前它们只是 128 格见方的示范小岛，现在成了没有边界、可以真正步行探索的层级。建材 MOD 的电脑新增了服务器管理应用，Boss MOD 中召唤道具的配方终于出现在游戏内的配方书里。3 把数据定义枪械也终于各自拥有了专属的手持模型。</p>
+      <ul><li>实际内容发生变化的只有 4 个 MOD：后室、建材、Boss、枪械。其余 6 个（二相乐园、电力、铁道、天空、生存、载具）只是为了保持版本一致而升到 2.1.0 —— 它们的 jar 与 2.0.0 的差异仅有一处，即 fabric.mod.json 中的版本字符串。内容一个字节都没有改变。</li><li>后室的层级 3 到 8，从 128 格见方的示范小岛变成了真正的无限层级。每一层都没有边界，都可以步行探索。</li><li>层级 3「电气设备楼」。电流是带电的，触碰配电盘很危险。有 Hound 在巡逻，地下电缆室里则有 Smiler。</li><li>层级 4「无人办公室」。等级为安全 —— 但有 3% 的窗户正在看着你，而且外观与其他窗户完全一样。在这里理智值会缓慢恢复。杏仁水在休息室。</li><li>层级 5「恐怖旅馆」。编号门扉中有 80% 是上锁的。每一片连续区域中，恰好有一个房间在细节上与众不同。不要久留。</li><li>层级 6「熄灯」。手电筒在点亮后的 20 秒内正常工作，超过之后每秒只有约 15% 的概率生效。点亮期间怪异的察觉范围会变为 4 倍（光会招来它们），因此这是一个靠耳朵前进的层级。</li><li>层级 7「深海恐惧」。有一栋形状固定的房子，以及一片望不到对岸的海。请不要走到栈桥的尽头。</li><li>层级 8「洞窟系」。为人而开凿、随后被废弃的坑道，铁轨确实通向某处。还有一处深达 32 格的被水淹没的暗井。</li><li>游戏内的电脑新增了「服务器管理」应用。管理员无需打开配置文件，即可在画面上更改：手机的短信、通话、浏览器是否可用；监控摄像头的同时显示数量与是否允许实时画面；自动备份的开关、间隔与保存份数；以及若干 Boss 相关调整（瘟疫医生的自然生成及其概率、是否仅限雷雨、再出现间隔，瘟疫凋灵的生成数量上限，幽匿傀儡出现所需的 Warden 数量，收割者召唤凋灵的数量，洛克洛克刷怪笼是否在下界要塞生成，瘟疫医生的最大生命值，瘟疫凋灵的生命值倍率）。</li><li>打开管理应用需要管理员 ID 与密码。服务器管理员只会单独发放给自己选定的人。本站不会写出它们。登录有时效限制，输入失败也有次数限制。</li><li>Boss MOD 的召唤道具（锻造祭坛之核、熔融王冠、幽匿之心、声呐之眼、霜之祭坛、原初之卵、魂血祭坛）的配方，现在会出现在游戏内的配方书中。此前完全没有任何解锁途径，因此在游戏中根本无从得知它们的制作方法。</li><li>新增了 4 个作为召唤线索的进度：「灼热之钥」「深渊之钥」「冰结之钥」「祭坛已筑成」。当你拿到对应的召唤道具时便会触发。</li><li>瘟疫医生的自然生成通过管理员开关恢复了，但默认为「关」。在管理员明确开启之前，行为与 V2.0.0 完全一致。</li><li>枪械 MOD 的 3 把数据定义枪械（制式手枪、精确射手卡宾枪、破门霰弹枪）现在各自拥有了专属的手持模型。此前 3 把都借用突击步枪的模型，所以拿着手枪却看到的是步枪。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>层级 3 到 8 的生成方式发生了根本性变化。在 V2.0.0 时期访问过示范小岛的世界中，那一带的地形将与之前不一致。</li><li>服务器管理应用的管理员 ID 与密码绝不会刊登在本站。请直接向服务器管理员索取。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>札幌 MOD（sorakaze_sapporo）不包含在本次更新中，顺延至 V2.2。</li><li>截至本条目撰写时，层级 3〜8 的实际外观、音效与怪异行为尚未在实机通关中确认。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.0.0</span> — V2 更新 —— 第 10 个 MOD「二相乐园」、4 个新 Boss、自来水管道、汽油与食物腐坏
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>这就是 V2 本篇。第 10 个 MOD「二相乐园（Planarcadia）」在此首次发布。Boss MOD 新增了 4 个各自拥有专属召唤仪式的 Boss；生存 MOD 新增了自来水设施与冰箱；载具 MOD 新增了汽油；电力 MOD 新增了空气净化器。后室大幅扩充，建材 MOD 新增了 17 色的遮光强化玻璃。</p>
+      <ul><li>第 10 个 MOD「二相乐园（sorakaze_planarcadia）」首次随包发布。用传送门紫水晶方块按下界传送门的形状搭好框架并点燃，就会通往一个以夜为主的娱乐世界。它带来了自己的方块 —— LED 招牌、幻月、次元跳跃壁画、售货台等。它不依赖任何其他 Glimpse Alpha MOD。</li><li>Boss MOD 新增 4 个 Boss：火山傀儡王（锻造祭坛之核 + 熔融王冠）、深渊克拉肯守卫者（幽匿之心 + 声呐之眼）、棱彩冰霜凤凰龙（霜之祭坛 + 原初之卵），以及凋灵风暴恶魔霸主（魂血祭坛 + 3 个凋灵骷髅头颅 + 下界之星）。</li><li>在其余 3 体全部被击败之前，魂血祭坛会拒绝召唤凋灵风暴恶魔霸主。4 体各有必掉落物：火山之核、深渊之腱、棱彩之羽、霸主之心。</li><li>墓缚收割者现在有低概率掉落「收魂镰刀」。用这把镰刀击杀的生物，有低概率掉落自己的刷怪蛋。</li><li>生存 MOD 新增自来水设施：水管、水泵与水龙头。水泵抽水、水管输水、水龙头装水。同时新增了冰箱与「腐坏的食物」。</li><li>载具 MOD 新增汽油。手持汽油桶右键点击载具即可加油。空桶不会损坏 —— 在工作台上用 4 个煤炭或木炭即可重新装满。</li><li>电力 MOD 新增空气净化器。持续运转的核电站现在会污染周围的空气，站在污染空气中会依次受到缓慢、虚弱、中毒。通电的净化器会在通电期间持续在局部消除这些污染。</li><li>枪械 MOD 新增了以数据定义的枪械与配件系统。把枪与配件放入枪械工作台，取出枪的瞬间即完成安装；把已安装的枪放回去则会拆下。适用于 3 把枪（制式手枪、精确射手卡宾枪、破门霰弹枪）与 6 种配件（红点瞄准镜、消音器、扩容弹匣、斜角握把、重型枪托、激光指示器）。同时新增了可防核污染的防护服 —— 必须与防毒面具一同穿戴才有效。</li><li>后室大幅扩充：层级 0、1、2，泳池房间，会场层级，以及排列着编号门扉的大厅（枢纽），另有 12 种怪异（Hound、Smiler、Faceling、Skin Stealer、Peeling Colossus、Wailing Hulk、Pallid Runner、Partygoer、Deathmoth、Duller、活画、假水洼）与随身物品 —— 杏仁水、绷带、手电筒、血液检测套件、撬棍、火柴等。</li><li>建材 MOD 新增「遮光强化玻璃」：方块、玻璃板、板材 3 种形态 × 17 色。同时，自 v1.7.7 起一直没有名称就发布的 16 色强化玻璃板，终于补上了日文与英文名称。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>各 MOD 的版本号统一从 1.x 跳到 2.0.0。请把服务器与每位玩家电脑上的 10 个 jar 文件一起更换。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>当时本站并未发布 V2.0.0 的条目。本条目是在 V2.1.0 发布时，通过核对实际发布的 jar 文件内容补写的。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="survival power guns rail boss">
       <div class="timeline-entry__date">2026-08-13</div>
       <h3 class="timeline-entry__title">

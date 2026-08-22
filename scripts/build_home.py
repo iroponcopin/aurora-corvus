@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
     ROOT, MOD_ORDER, esc, page, write_page, load_bundle, available_langs,
+    recipe_cat_index,
 )
 
 
@@ -38,7 +39,9 @@ def mod_card(bundle, m, versions):
     ui_mod = bundle["ui"]["mods"].get(m["key"], {})
     v = versions["mods"].get(m["key"]) if versions else None
     ver_html = f'<div class="card__meta">v{esc(v)}</div>' if v else ""
-    return f"""<a class="card card--mod" href="recipes/#{m['cat_index']}" style="--mod-color:{m['color']}">
+    idx = recipe_cat_index(m.get("cat"))
+    href = "recipes/" if idx is None else f"recipes/#{idx}"
+    return f"""<a class="card card--mod" href="{href}" style="--mod-color:{m['color']}">
       <h3>{esc(ui_mod.get('name', m['key']))}</h3>
       <p class="card__meta">{esc(ui_mod.get('tagline', ''))}</p>
       {ver_html}

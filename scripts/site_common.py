@@ -40,30 +40,65 @@ LANG_CODES = [c for c, _, _ in LANGUAGES]
 LANG_NAME = {c: n for c, n, _ in LANGUAGES}
 LANG_DIR = {c: d for c, n, d in LANGUAGES}
 
-# 8 mods, in the order they were introduced. Colors are used as accent hues
-# across nav tags, recipe category tabs, and changelog mod badges. cat_index
-# is this mod's primary category tab index in data/recipes.json's "cats"
-# array (0=銃 1=電車 2=建材 3=ドア 4=乗り物 5=ボス 6=天空 7=サバイバル 8=電力) —
-# backrooms has 0 recipes so far, so its cat_index (9) intentionally points at
-# a tab that doesn't exist yet; recipes.js's hash-guard falls back to "all"
-# safely (see init()'s `state.master.cats[parseInt(h, 10)]` check) —
-# used for recipes/#<n> deep links from the home page's mod cards. deco also
-# has a secondary "ドア" (3) category, not linked here for simplicity.
-# Names/taglines are looked up per-language from the bundle's ui.mods; "key"
-# here is also the lookup key into that dict.
+# The 10 modules of the suite, in the order they were introduced. Colors are
+# used as accent hues across nav tags, recipe category tabs, and changelog mod
+# badges. Names/taglines are looked up per-language from the bundle's ui.mods;
+# "key" here is also the lookup key into that dict.
+#
+# "cat" is this module's primary recipe-category tab, **by name**, resolved
+# against data/recipes.json at build time by recipe_cat_index() below.
+# ⚠ It used to be a hard-typed integer, and that broke silently the moment a
+#   10th tab appeared: backrooms (0 recipes) carried cat_index 9 as a
+#   deliberate "points at a tab that does not exist", and when 二相楽園
+#   became tab 9 the backrooms card on the home page started deep-linking
+#   into Planarcadia's recipes. Nothing errored; the link just went somewhere
+#   wrong. Names are resolved, and an unknown name stops the build.
+#   cat=None means "this module has no recipe tab" -> the card links to the
+#   recipes page with no hash instead of to a wrong tab.
+# deco also has a secondary "ドア" category, not linked here for simplicity.
 MOD_ORDER = [
-    {"id": "sorakaze_guns", "key": "guns", "color": "#c0533a", "cat_index": 0},
-    {"id": "sorakaze_rail", "key": "rail", "color": "#3d7dc4", "cat_index": 1},
-    {"id": "sorakaze_deco", "key": "deco", "color": "#4f8f43", "cat_index": 2},
-    {"id": "sorakaze_boss", "key": "boss", "color": "#9349b8", "cat_index": 5},
-    {"id": "sorakaze_sky", "key": "sky", "color": "#3badc9", "cat_index": 6},
-    {"id": "sorakaze_survival", "key": "survival", "color": "#c19a2e", "cat_index": 7},
-    {"id": "sorakaze_vehicles", "key": "vehicles", "color": "#d17a34", "cat_index": 4},
-    {"id": "sorakaze_power", "key": "power", "color": "#d4b32e", "cat_index": 8},
-    {"id": "sorakaze_backrooms", "key": "backrooms", "color": "#7d7d52", "cat_index": 9},
+    {"id": "sorakaze_guns", "key": "guns", "color": "#c0533a", "cat": "銃"},
+    {"id": "sorakaze_rail", "key": "rail", "color": "#3d7dc4", "cat": "電車"},
+    {"id": "sorakaze_deco", "key": "deco", "color": "#4f8f43", "cat": "建材"},
+    {"id": "sorakaze_boss", "key": "boss", "color": "#9349b8", "cat": "ボス"},
+    {"id": "sorakaze_sky", "key": "sky", "color": "#3badc9", "cat": "天空"},
+    {"id": "sorakaze_survival", "key": "survival", "color": "#c19a2e", "cat": "サバイバル"},
+    {"id": "sorakaze_vehicles", "key": "vehicles", "color": "#d17a34", "cat": "乗り物"},
+    {"id": "sorakaze_power", "key": "power", "color": "#d4b32e", "cat": "電力"},
+    {"id": "sorakaze_backrooms", "key": "backrooms", "color": "#7d7d52", "cat": None},
+    # V2.0.0 で初出荷。V2.1.0 まで、このサイトのどこにも載っていなかった。
+    {"id": "sorakaze_planarcadia", "key": "planarcadia", "color": "#b0559b", "cat": "二相楽園"},
 ]
 MODS_BY_ID = {m["id"]: m for m in MOD_ORDER}
 MODS_BY_KEY = {m["key"]: m for m in MOD_ORDER}
+
+_cat_index_cache: dict | None = None
+
+
+def recipe_cat_index(cat_name):
+    """data/recipes.json の "cats" から、ジャンル名 -> タブ番号を引く。
+
+    番号を書き写さない。書き写した瞬間に、ジャンルが 1 つ増えた日に
+    どこかのリンクが黙って別のジャンルを指す(実際そうなった)。
+    知らない名前は **例外で止める** —— 静かに 0 番へ落とさない。
+    """
+    global _cat_index_cache
+    if cat_name is None:
+        return None
+    if _cat_index_cache is None:
+        p = ROOT / "data" / "recipes.json"
+        cats = json.loads(p.read_text(encoding="utf-8"))["cats"]
+        _cat_index_cache = {c[0]: i for i, c in enumerate(cats)}
+        if not _cat_index_cache:
+            raise SystemExit(f"ERROR: {p} lists no recipe categories at all - every deep link "
+                             f"below would resolve to nothing")
+    if cat_name not in _cat_index_cache:
+        raise SystemExit(
+            "ERROR: MOD_ORDER names recipe category %r, which is not a tab in data/recipes.json "
+            "(tabs: %s). Re-run scripts/extract_recipes.py, or fix the name - a deep link to a "
+            "non-existent tab fails silently in the browser."
+            % (cat_name, ", ".join(_cat_index_cache)))
+    return _cat_index_cache[cat_name]
 
 # slugs are relative to EACH LANGUAGE's own root (no leading slash!). GitHub
 # Pages serves this repo at https://<user>.github.io/glimpse-alpha-wiki/, not
@@ -85,10 +120,41 @@ def esc(s) -> str:
 _bundle_cache: dict[str, dict] = {}
 
 
+def module_counts() -> tuple[int, int]:
+    """(このスイートの MOD 数, 導入に要る jar の数)。出典は data/versions.json。
+
+    ⚠ 数を文章に**書かない**ための関数である。V2.0.0 で 10 個目(二相楽園)が
+      出荷されたのに、13 言語ぶんの本文・導入手引き・レシピ頁の見出しが
+      「9」と書いたまま公開され続けた。人が 13 言語を追いかけて直す作業に
+      なっているかぎり、11 個目でも同じことが起きる。
+    """
+    p = ROOT / "data" / "versions.json"
+    mods = json.loads(p.read_text(encoding="utf-8"))["mods"]
+    n = len(mods)
+    if n < 2:
+        raise SystemExit(
+            f"ERROR: {p} lists {n} module(s). That is not a small suite - it means "
+            f"scripts/extract_versions.py did not see the dist/ jars, and every page would "
+            f"publish a wrong module count with no error.")
+    return n, n + 1          # +1 = Fabric API
+
+
+def _fill_counts(node, mods: str, jars: str):
+    if isinstance(node, dict):
+        return {k: _fill_counts(v, mods, jars) for k, v in node.items()}
+    if isinstance(node, list):
+        return [_fill_counts(v, mods, jars) for v in node]
+    if isinstance(node, str):
+        return node.replace("{mod_count}", mods).replace("{jar_count}", jars)
+    return node
+
+
 def load_bundle(lang: str) -> dict:
     if lang not in _bundle_cache:
         p = I18N_DIR / f"{lang}.json"
-        _bundle_cache[lang] = json.loads(p.read_text(encoding="utf-8"))
+        n_mods, n_jars = module_counts()
+        _bundle_cache[lang] = _fill_counts(
+            json.loads(p.read_text(encoding="utf-8")), str(n_mods), str(n_jars))
     return _bundle_cache[lang]
 
 

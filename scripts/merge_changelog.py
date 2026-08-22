@@ -62,6 +62,30 @@ def main():
         print("cross-check OK: every mod's last-mentioned changelog version matches its shipped jar")
 
     out = ROOT / "data" / "changelog.json"
+
+    # ⚠ この script は **published なものを黙って消せる**。
+    #   実際 2026-08-22 の時点で、data/changelog.json には v1.8.7 〜 V2.1.0 の
+    #   9 件が載っているのに、その 9 件は raw チャンク A〜D のどこにも無い
+    #   (以後の版が raw を経由せず直接足されたため)。この script をそのまま
+    #   走らせていたら、公開済みの 9 件が黙って消えていた —— 出力は「43 entries,
+    #   cross-check OK」のように成功して見えたはずである。
+    #   だから **今ある changelog.json より少なくなる merge は拒否する**。
+    if out.exists():
+        existing = json.loads(out.read_text(encoding="utf-8"))
+        have = {(e["release"], e["date"]) for e in entries}
+        lost = [(e["release"], e["date"]) for e in existing
+                if (e["release"], e["date"]) not in have]
+        if lost:
+            raise SystemExit(
+                "ERROR: this merge would DROP %d already-published changelog entr(ies) that "
+                "exist in %s but in none of the raw chunks: %s. Add them to a raw chunk first "
+                "(or edit data/changelog.json directly); do not let a re-run delete released "
+                "history."
+                % (len(lost), out, ", ".join(f"{r} ({d})" for r, d in lost)))
+
+    if problems:
+        raise SystemExit("\n".join("PROBLEM: " + p for p in problems))
+
     out.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"wrote {out} ({len(entries)} entries)")
 

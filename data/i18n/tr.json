@@ -58,6 +58,10 @@
       "backrooms": {
         "name": "Backrooms",
         "tagline": "Akıl sağlığı ölçeriyle liminal keşif"
+      },
+      "planarcadia": {
+        "name": "Planarcadia",
+        "tagline": "Gecenin hüküm sürdüğü eğlence dünyası ve kapısı"
       }
     },
     "common": {
@@ -75,7 +79,7 @@
       "changelog_balance_label": "Denge Ayarları",
       "changelog_warnings_label": "Dikkat Edilmesi Gerekenler",
       "changelog_limitations_label": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
-      "recipes_intro": "Kurulu 9 MOD'daki toplam {count} çeşit eşya ve bloğun yapım tariflerini bir araya getirdik. Bir eşyaya tıkladığınızda, gerçek çalışma tezgahındaki gibi 3×3 düzende tarifi görebilirsiniz. Sağ üstteki \"Nasıl Kullanılır\" sekmesinde otomatik ayrıştırma veya elektrik altyapısı gibi kablolama gerektiren özelliklerin kullanımı da anlatılıyor.",
+      "recipes_intro": "Kurulu {mod_count} MOD'daki toplam {count} çeşit eşya ve bloğun yapım tariflerini bir araya getirdik. Bir eşyaya tıkladığınızda, gerçek çalışma tezgahındaki gibi 3×3 düzende tarifi görebilirsiniz. Sağ üstteki \"Nasıl Kullanılır\" sekmesinde otomatik ayrıştırma veya elektrik altyapısı gibi kablolama gerektiren özelliklerin kullanımı da anlatılıyor.",
       "guide_intro": "MOD'ları etkinleştirmekten oyuna başlamaya kadar olan adımları bir araya getirdik. Sadece oyuncu olarak katılacaksanız \"Oyuncular İçin\" bölümü yeterlidir.",
       "audience_player": "Oyuncular İçin",
       "audience_admin": "Sunucu Yöneticileri İçin",
@@ -124,8 +128,8 @@
     "hero_lede_1": "Sorakazekarasu sunucusunda kullanılan Fabric MOD paketi ",
     "hero_lede_pack_name": "Glimpse Alpha",
     "hero_lede_2": "'nın (eski adıyla Sorakaze) tariflerini, güncelleme geçmişini ve kurulum adımlarını bir araya getiren resmî olmayan bir kaynak sitesidir. Şu anda ",
-    "hero_lede_mod_count": "9 MOD'u",
-    "hero_lede_3": " (silahlar, demiryolu, yapı malzemeleri, boss, gökyüzü, hayatta kalma, araçlar, elektrik, Backrooms) Minecraft ",
+    "hero_lede_mod_count": "{mod_count} MOD'u",
+    "hero_lede_3": " (silahlar, demiryolu, yapı malzemeleri, boss, gökyüzü, hayatta kalma, araçlar, elektrik, Backrooms, Planarcadia) Minecraft ",
     "hero_lede_4": " üzerinde aynı anda çalıştırıyoruz.",
     "btn_recipes": "Tarif Rehberini Gör",
     "btn_changelog": "Güncelleme Geçmişini Gör",
@@ -166,7 +170,7 @@
       }
     ],
     "about_heading": "Bu Proje Hakkında",
-    "about_p1": "Proje başlangıçta \"Sorakaze\" adıyla, vanilla hayatta kalma deneyimini korurken silahlar, demiryolu ve yapı malzemeleri olmak üzere 3 MOD eklemekle başladı. Sonrasında yapılabilir eşyalar eklenerek genişlemeye devam etti ve v1.8.0'da \"Glimpse Alpha\" adını aldı. Şu anda boss'lar, yeni bir boyut, hayatta kalma unsurları, araçlar ve elektrik altyapısına kadar uzanan 9 MOD'luk bir yapıya sahip.",
+    "about_p1": "Proje başlangıçta \"Sorakaze\" adıyla, vanilla hayatta kalma deneyimini korurken silahlar, demiryolu ve yapı malzemeleri olmak üzere 3 MOD eklemekle başladı. Sonrasında yapılabilir eşyalar eklenerek genişlemeye devam etti ve v1.8.0'da \"Glimpse Alpha\" adını aldı. Şu anda boss'lar, yeni bir boyut, hayatta kalma unsurları, araçlar ve elektrik altyapısına kadar uzanan {mod_count} MOD'luk bir yapıya sahip.",
     "about_p2": "Vanilla unsurları değiştirmemek veya kaldırmamak baştan beri sürdürülen bir ilke; bu yüzden yay-ok, maden arabası gibi mevcut unsurlar olduğu gibi duruyor. Gerçek silah, şirket veya marka isimleri kullanılmamıştır.",
     "not_distributed_notice": "Bu site MOD dosyalarını (jar) dağıtmamaktadır. Burada yalnızca tarif tabloları, güncelleme geçmişi ve kurulum adımları gibi \"okuma\" içerikleri bulunur. MOD dosyalarını doğrudan sunucu yöneticinizden temin edin."
   },
@@ -1154,13 +1158,97 @@
         "Sürekli gösterilen koordinat ve TPS/ping göstergelerinin gerçek görünümü de doğrulanmamıştı.",
         "Otomatik testlerden Silahlar'a ait 3 tanesi ve Elektrik'e ait 1 tanesi, her çalıştırmada sonucu değişen kararsız (flaky) testler olarak kalmaya devam ediyor. Bunların hepsinin, bu sürümde değiştirilmemiş mevcut kodla ilgili olduğu doğrulanmış durumda."
       ]
+    },
+    {
+      "release": "V2.0.0",
+      "date": "2026-08-18",
+      "title": "V2 güncellemesi — 10. MOD «Planarcadia», dört yeni boss, su tesisatı, benzin ve bozulan yiyecek",
+      "summary": "Asıl V2 budur. 10. MOD olan Planarcadia ilk kez burada dağıtıldı. Boss MOD'una, her birinin kendi çağırma ritüeli olan dört yeni boss eklendi; Hayatta Kalma MOD'una su tesisatı ve buzdolabı, Araçlar MOD'una benzin, Elektrik MOD'una hava temizleyici geldi. Backrooms epeyce genişledi ve Yapı Malzemeleri MOD'una 17 renkte karartmalı güçlendirilmiş cam eklendi.",
+      "highlights": [
+        "10. MOD olan Planarcadia (sorakaze_planarcadia) ilk kez pakete dahil edildi. Portal Ametist Bloklarıyla Nether portalıyla aynı biçimde bir çerçeve kurup ateşlerseniz, gecenin hüküm sürdüğü bir eğlence dünyasına açılır. Kendi bloklarını getirir: LED tabelalar, hayalet ay, boyutlar arası sıçrayış duvar resmi, satış tezgâhı. Başka hiçbir Glimpse Alpha MOD'una bağlı değildir.",
+        "Boss MOD'una dört yeni boss katıldı: Volkanik Golem Kral (Demirhane Sunağı Çekirdeği + Erimiş Taç), Derinlik Kraken Muhafızı (Sculk Kalbi + Sonar Göz), Prizmatik Buz Anka Ejderi (Ayaz Sunağı + İlksel Yumurta) ve Witherstorm İblis Efendisi (Ruh Kanı Sunağı + 3 wither iskelet kafatası + bir nether yıldızı).",
+        "Ruh Kanı Sunağı, diğer üçü yenilene kadar Witherstorm İblis Efendisi'ni çağırmayı reddeder. Dördünün de garanti düşen bir eşyası var: Volkanik Çekirdek, Derinlik Kirişi, Prizmatik Tüy ve Efendi'nin Kalbi.",
+        "Mezara Bağlı Orakçı artık düşük olasılıkla Ruh Biçen Tırpan'ı düşürüyor. O tırpanla öldürdüğünüz her şey, düşük olasılıkla kendi spawn yumurtasını düşürür.",
+        "Hayatta Kalma MOD'una su tesisatı geldi: borular, bir pompa ve bir musluk. Pompa çeker, borular taşır, musluk doldurur. Yanında bir buzdolabı ve «Bozulmuş Yiyecek» de geldi.",
+        "Araçlar MOD'una benzin geldi. Elinizde Benzin Bidonu varken araca sağ tıklayarak yakıt doldurabilirsiniz. Boş bidon kırılmaz — çalışma tezgâhında 4 kömür ya da odun kömürüyle yeniden doldurun.",
+        "Elektrik MOD'una Hava Temizleyici eklendi. Çalışan bir nükleer santral artık çevresindeki havayı kirletiyor; kirli havada durmak önce yavaşlık, sonra güçsüzlük, en sonunda zehir veriyor. Elektriği olan bir temizleyici, elektrik geldiği sürece bu kirliliği yerel olarak temizlemeyi sürdürür.",
+        "Silahlar MOD'una veriyle tanımlanan silah ve aparat sistemi geldi. Silah Tezgâhı'na bir silahı ve aparatları koyun: silahı geri aldığınız anda takılırlar, takılı silahı geri koyarsanız çıkarlar. Üç silah (Hizmet Tabancası, Nişancı Karabinası, Kapı Kırma Pompalı) ve altı aparat (Kırmızı Nokta Dürbün, Susturucu, Uzatılmış Şarjör, Açılı Ön Kabza, Ağır Dipçik, Lazer İşaretleyici) bunu kullanıyor. Nükleer kirlenmeyi engelleyen bir koruyucu tulum da eklendi — yalnızca gaz maskesiyle birlikte korur.",
+        "Backrooms epeyce genişledi: Seviye 0, 1 ve 2, Havuz Odaları, parti seviyesi ve numaralı kapılarla çevrili bir hol; ayrıca on iki varlık (Hound, Smiler, Faceling, Skin Stealer, Peeling Colossus, Wailing Hulk, Pallid Runner, Partygoer, Deathmoth, Duller, Yaşayan Tablo, Sahte Su Birikintisi) ve yanınıza alacağınız şeyler: badem suyu, sargı bezi, el feneri, kan testi kiti, levye, kibrit.",
+        "Yapı Malzemeleri MOD'una «karartmalı güçlendirilmiş cam» eklendi: üç biçim (blok, panel, levha) ve 17 renk. Aynı zamanda v1.7.7'den beri isimsiz dağıtılan 16 güçlendirilmiş cam paneli sonunda Japonca ve İngilizce adlarına kavuştu."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "Sürüm numaraları topluca 1.x'ten 2.0.0'a geçti. On jar dosyasının hepsini birlikte değiştirin — hem sunucuda hem de her oyuncunun bilgisayarında."
+      ],
+      "known_limitations": [
+        "O sırada bu sitede V2.0.0 için bir kayıt yayımlanmadı. Bu kayıt, V2.1.0 yayımıyla birlikte, dağıtılan jar dosyalarının gerçek içeriği okunarak sonradan yazıldı."
+      ]
+    },
+    {
+      "release": "V2.1.0",
+      "date": "2026-08-22",
+      "title": "Backrooms Seviye 3–8 gerçek sonsuz seviyelere dönüştü; oyun içi bilgisayarda sunucu yönetim uygulaması; boss çağırma tarifleri tarif kitabına girdi",
+      "summary": "Bu turun en büyük değişikliği Backrooms'un 3 ile 8 arası seviyeleri. Eskiden 128 bloklık örnek adalardı; artık kenarı olmayan, gerçekten yürüyerek keşfedilebilen seviyeler. Yapı Malzemeleri MOD'undaki bilgisayara bir sunucu yönetim uygulaması eklendi ve Boss MOD'unda çağırma eşyalarının tarifleri nihayet oyun içi tarif kitabında görünüyor. Veriyle tanımlanan üç silahın da artık kendi elde görünüm modeli var.",
+      "highlights": [
+        "İçeriği gerçekten değişen yalnızca dört MOD: Backrooms, Yapı Malzemeleri, Boss ve Silahlar. Kalan altısı (Planarcadia, Elektrik, Demiryolu, Gökyüzü, Hayatta Kalma, Araçlar) yalnızca takım bütünlüğü için 2.1.0'a çıkarıldı — jar dosyaları 2.0.0'dakilerden tam olarak tek bir girdide, fabric.mod.json içindeki sürüm dizesinde ayrılıyor. İçeriklerinde tek bayt değişmedi.",
+        "Backrooms'un 3 ile 8 arası seviyeleri 128 bloklık örnek adalardan gerçek sonsuz seviyelere dönüştü. Hiçbirinin artık kenarı yok; hepsi yürüyerek keşfedilebiliyor.",
+        "Seviye 3, «Elektrik Tesisi Binası». Akım canlı ve panolara dokunmak tehlikeli. Bir Hound devriye geziyor, yeraltındaki kablo odasında da bir Smiler bekliyor.",
+        "Seviye 4, «Boş Ofisler». Güvenli olarak sınıflandırılmış — ama pencerelerin %3'ü size bakıyor ve diğerlerinden ayırt edilemiyorlar. Burada akıl sağlığı yavaşça toparlanıyor. Badem suyu dinlenme odasında.",
+        "Seviye 5, «Dehşet Oteli». Numaralı kapıların %80'i kilitli. Birbirine bağlı her bölgede tam olarak bir oda ayrıntılarıyla farklı. Oyalanmayın.",
+        "Seviye 6, «Işıklar Söndü». El feneri açıldıktan sonra 20 saniye düzgün çalışır; ondan sonra yalnızca her saniyenin yaklaşık %15'inde çalışır. Yanık olduğu sürece varlıklar sizi dört kat uzaktan fark eder — ışık onları çeker. Bu, kulakla ilerlenen bir seviyedir.",
+        "Seviye 7, «Talasofobi». Sabit biçimli tek bir ev ve karşı kıyısı olmayan bir okyanus. İskelenin ucuna kadar yürümeyin.",
+        "Seviye 8, «Mağara Sistemi». İnsanlar için kazılmış, sonra terk edilmiş galeriler; demir raylar gerçekten bir yere çıkıyor. 32 blok derinliğinde, su basmış bir kör kuyu var.",
+        "Oyun içi bilgisayara «Sunucu Yönetimi» uygulaması eklendi. Bir yönetici, yapılandırma dosyasını açmadan şunları değiştirebiliyor: telefonda mesajlaşma, arama ve tarayıcıya izin verilip verilmediği; güvenlik kameralarının aynı anda kaç tanesinin gösterilebileceği ve canlı yayına izin verilip verilmediği; otomatik yedeklemenin açık olup olmadığı, aralığı ve saklanan kopya sayısı; ayrıca bir dizi boss ayarı (Veba Doktoru'nun doğal doğuşu ve olasılığı, yalnızca fırtınada, yeniden doğma aralığı, Veba Wither'larının üst sınırı, Sculk Golem için gereken Warden sayısı, Orakçı'nın çağırdığı wither sayısı, Rock Lock çağırıcılarının Nether kalelerinde oluşup oluşmayacağı, Veba Doktoru'nun azami canı, Veba Wither'larının can çarpanı).",
+        "Yönetim uygulamasını açmak için bir yönetici kimliği ve parola gerekir. Sunucu yönetimi bunları yalnızca seçtiği kişilere tek tek verir. Bu sitede hiçbir yerde yazılı değildir. Oturum bir süre sonra sona erer ve hatalı denemeler sayıca sınırlıdır.",
+        "Boss MOD'undaki çağırma eşyalarının tarifleri (Demirhane Sunağı Çekirdeği, Erimiş Taç, Sculk Kalbi, Sonar Göz, Ayaz Sunağı, İlksel Yumurta, Ruh Kanı Sunağı) artık oyun içi tarif kitabında görünüyor. Şimdiye kadar hiçbir açılma yolu yoktu, yani oyunun içinden yapılışlarını öğrenmenin bir yolu da yoktu.",
+        "Çağırmaya işaret eden dört keşif ilerlemesi eklendi: «Kavurucu Anahtar», «Derinlik Anahtarı», «Ayaz Anahtarı» ve «Sunak Kuruldu». Her biri, karşılık gelen çağırma eşyasını elinize aldığınızda ortaya çıkar.",
+        "Veba Doktoru'nun doğal doğuşu bir yönetici anahtarının arkasında geri döndü — ama varsayılan olarak KAPALI. Bir yönetici açıkça açmadıkça davranış V2.0.0 ile birebir aynıdır.",
+        "Veriyle tanımlanan üç silahın (Hizmet Tabancası, Nişancı Karabinası, Kapı Kırma Pompalı) artık her birinin kendi elde görünüm modeli var. Üçü de saldırı tüfeğinin modelini ödünç alıyordu; yani elinizde tabanca varken bile tüfek görünüyordu."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "Seviye 3 ile 8 artık kökten farklı bir şekilde üretiliyor. V2.0.0 döneminde örnek adaları ziyaret ettiğiniz bir dünyada, o bölgedeki arazi eskisiyle örtüşmeyecek.",
+        "Sunucu Yönetimi uygulamasının yönetici kimliği ve parolası bu sitede asla yayımlanmaz. Doğrudan sunucu yöneticisinden alın."
+      ],
+      "known_limitations": [
+        "Sapporo MOD'u (sorakaze_sapporo) bu tura dahil değil. V2.2'ye ertelendi.",
+        "Seviye 3–8'in gerçek görünümü, sesi ve varlıkların davranışı bu yazının yazıldığı sırada gerçek bir oynanışta doğrulanmamıştı."
+      ]
     }
   ],
   "roadmap": [
     {
-      "release": "V2",
-      "title": "V2 Güncellemesi (Konsept, Kapsam Belirlendi — Uygulama Henüz Başlamadı)",
+      "release": "V2.2",
+      "title": "V2.2 (sıradaki tur — henüz başlanmadı; ne içeriği ne de tarihi kesinleşti)",
       "groups": [
+        {
+          "subtitle": "Sapporo MOD'u (V2.1.0'dan devredildi)",
+          "bullets": [
+            "Sapporo MOD'u (sorakaze_sapporo) V2.1.0 ile birlikte gelmiyor. V2.2'ye devredildi.",
+            "O yayımlanana kadar kurulacak jar sayısı değişmiyor. Şimdilik yine 1 Fabric API + Glimpse Alpha'nın {mod_count} MOD'u."
+          ]
+        },
+        {
+          "subtitle": "V2'den devredilenler",
+          "bullets": [
+            "Aşağıdaki «V2 güncellemesi» kartında hâlâ duran her şey — suyun akışının baştan yazılması, yeni hava olayları ve afetler, silah dengesi ve sesleri, para sistemleri, Backrooms varlıklarının yeniden çizilmesi — burada sürecek.",
+            "Hepsi henüz fikir aşamasında. Değişiklik günlüğüne yalnızca gerçekten yapılıp yayımlananlar girer."
+          ]
+        }
+      ]
+    },
+    {
+      "release": "V2",
+      "title": "V2 güncellemesi (bir kısmı V2.0.0 ve V2.1.0 ile yayımlandı — burada kalanlar henüz yayımlanmadı)",
+      "groups": [
+        {
+          "subtitle": "Bu plandan hâlihazırda yayımlanmış olanlar",
+          "bullets": [
+            "V2.0.0 (2026-08-18) ile yayımlandı: Planarcadia'ya giriş ve Portal Ametist Bloğu; dört yeni boss ve çağırma ritüelleri; Veba Doktoru ve Orakçı ayarlamaları; su tesisatı (borular, pompa, musluk); buzdolabı ve yiyeceklerin bozulması; benzin ve bidonlar; hava temizleyici ve nükleer santralin hava kirliliği; koruyucu tulum; kırılıp yalnızca bir kez kendini onaran maskeler.",
+            "V2.1.0 (2026-08-22) ile yayımlandı: Backrooms Seviye 3–8 (örnek adalardan gerçek sonsuz seviyelere); oyun içi bilgisayardaki sunucu yönetim uygulaması ve otomatik yedekleme ayarları; boss çağırma tariflerinin tarif kitabına girmesi ve dört keşif ilerlemesi; veriyle tanımlanan üç silahın kendi modelleri.",
+            "Ayrıntılar «Değişiklik Günlüğü» sayfasında. Aşağıda listelenenler, bu iki turun henüz yayımlamadıklarıdır."
+          ]
+        },
         {
           "subtitle": "Yapı Malzemeleri MOD'u: Video Uygulaması Hata Düzeltmeleri ve Cihaz Görünümü Yenileme",
           "bullets": [
@@ -1276,19 +1364,19 @@
       "id": "overview",
       "audience": "all",
       "title": "Genel Bakış: Glimpse Alpha Kurulumu Hakkında",
-      "body_html": "\n<p>\n  <strong>Glimpse Alpha</strong> (eski adıyla: Sorakaze), Sorakazekarasu sunucusuna kurulu\n  Fabric MOD paketidir. 9 bağımsız MOD'dan oluşur ve her biri ayrı ayrı kurulup güncellenebilir.\n  Yay-ok ve maden arabası gibi vanilla (MOD'suz standart) unsurları değiştirmez veya kaldırmaz;\n  bunun yerine yeni eşyalar, bloklar ve boyutlar ekler.\n</p>\n\n<div class=\"table-wrap\">\n<table>\n<tr><th>MOD</th><th>İçerik</th></tr>\n<tr><td>Silahlar</td><td>Vanilla'da olmayan uzun menzilli silahlar (Saldırı Tüfeği, Pompalı Tüfek, Keskin Nişancı Tüfeği vb.)</td></tr>\n<tr><td>Demiryolu</td><td>Giderek hızlanan trenler ve bağlanabilen yolcu/yük vagonları</td></tr>\n<tr><td>Yapı ve Dekorasyon</td><td>Trafik ışığı, bariyer gibi şehir kurma malzemeleri ve güvenlik kamerası, ATM, asansör gibi ev aletleri</td></tr>\n<tr><td>Araçlar</td><td>Otomobil, otobüs, uçak vb.</td></tr>\n<tr><td>Boss</td><td>Güçlü boss'lar ve onlara özel düşen ekipmanlar</td></tr>\n<tr><td>Gökyüzü</td><td>Yeni bir boyut olan \"Gökyüzü\" ve orada yaşayan meleklerin şehri/krallığı</td></tr>\n<tr><td>Hayatta Kalma</td><td>Yeni cevherler, zırhlar ve sıcaklık, mevsim gibi hayatta kalma unsurları</td></tr>\n<tr><td>Elektrik</td><td>Elektrik üretim-iletim şebekesi ve elektrikle çalışan cihazlar</td></tr>\n<tr><td>Backrooms</td><td>Akıl sağlığı ölçeriyle liminal keşif</td></tr>\n</table>\n</div>\n<p>Her MOD'un ayrıntılı eşya ve tarifleri için <a href=\"../recipes/\">Tarif Rehberi</a>'ne,\nşimdiye kadarki değişiklikler için <a href=\"../changelog/\">Güncelleme Geçmişi</a>'ne bakın.</p>\n\n<h3>MOD kullanmak için \"Fabric\" gerekir</h3>\n<p>\n  <strong>Fabric</strong>, Minecraft'ın MOD'ları okuyabilmesi için gereken bir alt yapıdır.\n  Bir oyun konsoluna yazılım yüklemeden önce sistemin kendisinin gerekli olması gibi düşünebilirsiniz;\n  MOD dosyalarını yüklemeden önce hem sunucuya hem de her oyuncunun bilgisayarına Fabric'in kurulması gerekir.\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">⚠ En sık yapılan hata</div>\n  <p>\n    MOD'lar <strong>yalnızca sunucuya değil, oynayacak herkesin bilgisayarına da</strong> aynı şekilde\n    kurulmalıdır. \"Sunucuya kurarsam herkese otomatik yansır\" diye bir şey yoktur.\n    Sunucu ile tüm oyuncuların Minecraft sürümü, Fabric ve MOD kombinasyonu birbiriyle uyuşmazsa\n    sunucuya katılamazsınız.\n  </p>\n</div>\n\n<h3>Kim neyi hazırlayacak</h3>\n<ul>\n  <li><strong>Sunucu (Sorakazekarasu sunucusu)</strong> — Fabric sunucusu + Fabric API + Glimpse Alpha 9 MOD</li>\n  <li><strong>Katılacak her kişinin bilgisayarı</strong> — Fabric istemcisi + Fabric API + Glimpse Alpha 9 MOD (sunucuyla tamamen aynı kombinasyon)</li>\n</ul>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">MOD dosyaları bu sitede dağıtılmıyor</div>\n  <p>\n    Bu sitede yalnızca tarif tabloları, güncelleme geçmişi ve kurulum adımları gibi \"okuma\" içerikleri\n    bulunur; MOD dosyaları (jar) burada dağıtılmaz. Kurulum için gereken jar dosyalarını\n    sunucu yöneticinizden temin edin.\n  </p>\n</div>\n\n<h3>Bu sayfanın içeriği</h3>\n<p>\n  Bu rehber iki gruba ayrılarak yazılmıştır. Çoğu kişi için\n  <a href=\"#player-setup\">Oyuncular İçin</a> bölümünü okumak katılmaya yeterlidir.\n  Sunucuyu kendisi işleten/yöneten kişiler ayrıca\n  <a href=\"#admin-prep\">Sunucu Yöneticileri İçin</a> bölümüne de bakmalıdır.\n</p>\n\n<h3>Şu anki desteklenen sürüm (referans)</h3>\n<p>\n  Aşağıdaki değerler bu sayfanın yazıldığı andaki değerlerdir. Gerçek değerler güncellemelerle\n  değişebileceğinden, kesin değeri mutlaka\n  <a href=\"../changelog/\">Güncelleme Geçmişi</a>, <a href=\"../recipes/\">Tarif Rehberi</a>\n  veya sunucu yöneticinizin bilgilendirmesinden kontrol edin.\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Öğe</th><th>Şu anki referans değer</th></tr>\n<tr><td>Minecraft sürümü</td><td><code>26.2</code></td></tr>\n<tr><td>Gereken Java</td><td>Java 25 (<a href=\"https://adoptium.net/\">Temurin 25 (LTS)</a> önerilir)</td></tr>\n<tr><td>Fabric API</td><td>Minecraft sürümüne uygun olan (örnek: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>\n<tr><td>MOD yapısı</td><td>9 adet (silahlar, demiryolu, yapı/dekorasyon, araçlar, boss, gökyüzü, hayatta kalma, elektrik, Backrooms)</td></tr>\n</table>\n</div>\n"
+      "body_html": "\n<p>\n  <strong>Glimpse Alpha</strong> (eski adıyla: Sorakaze), Sorakazekarasu sunucusuna kurulu\n  Fabric MOD paketidir. {mod_count} bağımsız MOD'dan oluşur ve her biri ayrı ayrı kurulup güncellenebilir.\n  Yay-ok ve maden arabası gibi vanilla (MOD'suz standart) unsurları değiştirmez veya kaldırmaz;\n  bunun yerine yeni eşyalar, bloklar ve boyutlar ekler.\n</p>\n\n<div class=\"table-wrap\">\n<table>\n<tr><th>MOD</th><th>İçerik</th></tr>\n<tr><td>Silahlar</td><td>Vanilla'da olmayan uzun menzilli silahlar (Saldırı Tüfeği, Pompalı Tüfek, Keskin Nişancı Tüfeği vb.)</td></tr>\n<tr><td>Demiryolu</td><td>Giderek hızlanan trenler ve bağlanabilen yolcu/yük vagonları</td></tr>\n<tr><td>Yapı ve Dekorasyon</td><td>Trafik ışığı, bariyer gibi şehir kurma malzemeleri ve güvenlik kamerası, ATM, asansör gibi ev aletleri</td></tr>\n<tr><td>Araçlar</td><td>Otomobil, otobüs, uçak vb.</td></tr>\n<tr><td>Boss</td><td>Güçlü boss'lar ve onlara özel düşen ekipmanlar</td></tr>\n<tr><td>Gökyüzü</td><td>Yeni bir boyut olan \"Gökyüzü\" ve orada yaşayan meleklerin şehri/krallığı</td></tr>\n<tr><td>Hayatta Kalma</td><td>Yeni cevherler, zırhlar ve sıcaklık, mevsim gibi hayatta kalma unsurları</td></tr>\n<tr><td>Elektrik</td><td>Elektrik üretim-iletim şebekesi ve elektrikle çalışan cihazlar</td></tr>\n<tr><td>Backrooms</td><td>Akıl sağlığı ölçeriyle liminal keşif</td></tr>\n</table>\n</div>\n<p>Her MOD'un ayrıntılı eşya ve tarifleri için <a href=\"../recipes/\">Tarif Rehberi</a>'ne,\nşimdiye kadarki değişiklikler için <a href=\"../changelog/\">Güncelleme Geçmişi</a>'ne bakın.</p>\n\n<h3>MOD kullanmak için \"Fabric\" gerekir</h3>\n<p>\n  <strong>Fabric</strong>, Minecraft'ın MOD'ları okuyabilmesi için gereken bir alt yapıdır.\n  Bir oyun konsoluna yazılım yüklemeden önce sistemin kendisinin gerekli olması gibi düşünebilirsiniz;\n  MOD dosyalarını yüklemeden önce hem sunucuya hem de her oyuncunun bilgisayarına Fabric'in kurulması gerekir.\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">⚠ En sık yapılan hata</div>\n  <p>\n    MOD'lar <strong>yalnızca sunucuya değil, oynayacak herkesin bilgisayarına da</strong> aynı şekilde\n    kurulmalıdır. \"Sunucuya kurarsam herkese otomatik yansır\" diye bir şey yoktur.\n    Sunucu ile tüm oyuncuların Minecraft sürümü, Fabric ve MOD kombinasyonu birbiriyle uyuşmazsa\n    sunucuya katılamazsınız.\n  </p>\n</div>\n\n<h3>Kim neyi hazırlayacak</h3>\n<ul>\n  <li><strong>Sunucu (Sorakazekarasu sunucusu)</strong> — Fabric sunucusu + Fabric API + Glimpse Alpha {mod_count} MOD</li>\n  <li><strong>Katılacak her kişinin bilgisayarı</strong> — Fabric istemcisi + Fabric API + Glimpse Alpha {mod_count} MOD (sunucuyla tamamen aynı kombinasyon)</li>\n</ul>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">MOD dosyaları bu sitede dağıtılmıyor</div>\n  <p>\n    Bu sitede yalnızca tarif tabloları, güncelleme geçmişi ve kurulum adımları gibi \"okuma\" içerikleri\n    bulunur; MOD dosyaları (jar) burada dağıtılmaz. Kurulum için gereken jar dosyalarını\n    sunucu yöneticinizden temin edin.\n  </p>\n</div>\n\n<h3>Bu sayfanın içeriği</h3>\n<p>\n  Bu rehber iki gruba ayrılarak yazılmıştır. Çoğu kişi için\n  <a href=\"#player-setup\">Oyuncular İçin</a> bölümünü okumak katılmaya yeterlidir.\n  Sunucuyu kendisi işleten/yöneten kişiler ayrıca\n  <a href=\"#admin-prep\">Sunucu Yöneticileri İçin</a> bölümüne de bakmalıdır.\n</p>\n\n<h3>Şu anki desteklenen sürüm (referans)</h3>\n<p>\n  Aşağıdaki değerler bu sayfanın yazıldığı andaki değerlerdir. Gerçek değerler güncellemelerle\n  değişebileceğinden, kesin değeri mutlaka\n  <a href=\"../changelog/\">Güncelleme Geçmişi</a>, <a href=\"../recipes/\">Tarif Rehberi</a>\n  veya sunucu yöneticinizin bilgilendirmesinden kontrol edin.\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Öğe</th><th>Şu anki referans değer</th></tr>\n<tr><td>Minecraft sürümü</td><td><code>26.2</code></td></tr>\n<tr><td>Gereken Java</td><td>Java 25 (<a href=\"https://adoptium.net/\">Temurin 25 (LTS)</a> önerilir)</td></tr>\n<tr><td>Fabric API</td><td>Minecraft sürümüne uygun olan (örnek: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>\n<tr><td>MOD yapısı</td><td>{mod_count} adet (silahlar, demiryolu, yapı/dekorasyon, araçlar, boss, gökyüzü, hayatta kalma, elektrik, Backrooms, Planarcadia)</td></tr>\n</table>\n</div>\n"
     },
     {
       "id": "player-setup",
       "audience": "player",
       "title": "Oyuncular İçin: Sunucuya Katılmak İçin Ayarlar",
-      "body_html": "\n<p>\n  Burada <strong>sunucuya oynamaya gidecek taraf</strong>ın ayarları anlatılıyor. Zor bir uzmanlık bilgisi gerekmez.\n  Yukarıdan aşağı sırayla yaparsanız yaklaşık 15-20 dakikada biter.\n</p>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">Yapılacak yalnızca 3 şey var</div>\n  <ul>\n    <li>① Fabric'i (MOD'ları okuyan alt yapı) kendi bilgisayarınıza kurun</li>\n    <li>② Sunucu yöneticisinden aldığınız MOD dosyalarının tamamını belirlenmiş klasöre koyun</li>\n    <li>③ Başlatma şeklini 1 yerden değiştirip sunucuya katılın</li>\n  </ul>\n</div>\n\n<h3>Gerekenler</h3>\n<ul>\n  <li>Minecraft Java sürümünü oynatabilen bir Windows veya Mac bilgisayar</li>\n  <li>Sunucu yöneticisinden alınan <strong>MOD paketi (10 jar dosyası = Fabric API 1 + Glimpse Alpha'nın 9 MOD'u)</strong></li>\n</ul>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Çok önemli</div>\n  <p>\n    Sunucuyla <strong>tamamen aynı sürüm, tamamen aynı MOD dosyaları</strong> olmadan katılamazsınız.\n    Bu sayfada örnek olarak Minecraft sürümü <code>26.2</code> yazıyoruz; sunucu yöneticinizden\n    farklı bir sayı bildirilmişse o sayıyı kullanın.\n    Aldığınız jar dosyalarını <strong>çift tıklayarak açmayın</strong>. Sadece klasöre koymanız yeterlidir.\n  </p>\n</div>\n\n<h3>Alacağınız dosyalar (örnek)</h3>\n<p>Sunucu yöneticisinden aşağıdaki gibi yaklaşık 10 dosya alırsınız (sürüm numaraları her güncellemede değişir).</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Dosya adı (örnek)</th><th>İçerik</th></tr>\n<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>MOD'ları çalıştırmak için ortak bileşen</td></tr>\n<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Silahlar MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Demiryolu MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Yapı ve Dekorasyon MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Araçlar MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Gökyüzü MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Hayatta Kalma MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Elektrik MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms MOD'u</td></tr>\n</table>\n</div>\n\n<h3>① Fabric'i kurun</h3>\n<p><code>https://fabricmc.net/use/installer/</code> adresini açıp kurulum dosyasını indirin. \"<strong>Client</strong>\" sekmesinde kalarak (\"Server\"a geçmeden), Minecraft Version kısmından sunucuyla aynı sayıyı seçip \"Install\" butonuna basın.</p>\n\n<h4>Windows için</h4>\n<ol class=\"steps\">\n  <li>Sayfadaki \"Download installer (Windows/.exe)\" gibi bir butondan kurulum dosyasını indirip çift tıklayarak çalıştırın (\"Windows bilgisayarınızı korudu\" gibi bir uyarı çıkarsa \"Ayrıntılı bilgi\" → \"Yine de çalıştır\"a basın).</li>\n  <li>\"Client\" sekmesinde kalarak, Minecraft Version kısmından <code>26.2</code> (sunucuyla aynı sayı) seçin, Loader Version'ı olduğu gibi bırakıp \"Install\"a basın.</li>\n</ol>\n\n<h4>Mac için</h4>\n<ol class=\"steps\">\n  <li>\"Download universal jar\" butonundan kurulum dosyasını (.jar) indirin. Mac için çalıştırılabilir dosya (.exe) yoktur.</li>\n  <li>İndirdiğiniz <code>fabric-installer-〜.jar</code> dosyasını <strong>normal çift tıklama yerine</strong>, sağ tıklayarak (veya <code>control</code> tuşunu basılı tutarak tıklayarak) \"Aç\"ı seçin. Uyarı çıkarsa tekrar \"Aç\"a basın.</li>\n  <li>\"Client\" sekmesinde kalarak, Minecraft Version kısmından sunucuyla aynı sayıyı seçip \"Install\"a basın.</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Mac'te \"geliştirici doğrulanamıyor\" çıkarsa</div>\n  <p>Son macOS sürümlerinde, sağ tık → \"Aç\" yaptığınızda bile buton çıkmayıp\n  \"'fabric-installer〜.jar' kötü amaçlı yazılım içermediği doğrulanamadı\" gibi bir uyarı çıkabilir. Bu durumda şu sırayla açabilirsiniz.</p>\n  <ol class=\"steps\">\n    <li>Uyarıda \"Tamam\"a basın (<strong>kesinlikle \"Çöp Kutusuna Taşı\"ya basmayın</strong>)</li>\n    <li>Ekranın sol üstündeki Apple menüsü → \"Sistem Ayarları\" → \"Gizlilik ve Güvenlik\"i açın</li>\n    <li>Aşağıya doğru \"'fabric-installer〜.jar' kullanımı engellendi\" gibi bir yazı olacak, yanındaki \"Yine de Aç\"a basın</li>\n    <li>Tekrar sorulursa \"Yine de Aç\" → Mac'in şifresini (veya Touch ID) girin</li>\n  </ol>\n  <p>Bu, Apple'a kaydedilmemiş tüm dağıtımlarda çıkan standart bir uyarıdır; Fabric'in resmî sitesinden indirdiyseniz endişelenmenize gerek yok. Bir kez izin verirseniz sonraki seferlerde normal şekilde açılır.</p>\n</div>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">Mac'te kurulum dosyası hiçbir şey yapmıyorsa</div>\n  <p>\n    Sağ tık → \"Aç\" yaptığınızda hiçbir şey olmuyorsa, sisteminizde Java kurulu değildir.\n    <a href=\"https://adoptium.net/\">adoptium.net</a> adresini açıp \"Temurin\"in macOS için kurulum dosyasını (.pkg) kurduktan sonra tekrar deneyin.\n    Apple silikon (M1/M2/M3/M4 vb.) Mac'lerde \"aarch64\", Intel Mac'lerde \"x64\" seçilmelidir.\n    Emin değilseniz ekranın sol üstündeki Apple menüsü → \"Bu Mac Hakkında\"daki \"Çip\" alanını kontrol edin (\"Apple M〜\" yazıyorsa aarch64'tür).\n  </p>\n</div>\n\n<h3>② MOD dosyalarını mods klasörüne koyun</h3>\n\n<h4>Windows: <code>%appdata%\\.minecraft\\mods</code></h4>\n<ol class=\"steps\">\n  <li>Gezgin'in adres çubuğuna <code>%appdata%\\.minecraft</code> yazıp Enter'a basın.</li>\n  <li><code>mods</code> klasörü yoksa yeni oluşturun (tamamı küçük harf).</li>\n  <li>Aldığınız 10 jar dosyasının tamamını bu <code>mods</code> klasörünün içine kopyalayın (arşivden çıkarmaya gerek yok, jar olarak koyun).</li>\n</ol>\n\n<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>\n<ol class=\"steps\">\n  <li>Masaüstüne bir kez tıkladıktan sonra <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> tuşlarına aynı anda basın (veya üst menüdeki \"Git\" → \"Klasöre Git…\").</li>\n  <li>Çıkan giriş kutusuna <code>~/Library/Application Support/minecraft</code> yazısını olduğu gibi yapıştırıp Enter'a basın (başındaki \"<code>~</code>\" işaretini de unutmayın). \"Library\" Finder'da normalde görünmeyen bir klasör olduğundan, bu yöntemle açmak en kesin yoldur.</li>\n  <li><code>mods</code> klasörü yoksa, olduğu yerde sağ tık → \"Yeni Klasör\" ile oluşturun.</li>\n  <li>Aldığınız 10 jar dosyasının tamamını sürükle-bırak yöntemiyle bu <code>mods</code> klasörüne koyun.</li>\n</ol>\n\n<h3>③ Fabric ile başlatıp sunucuya katılın</h3>\n<ol class=\"steps\">\n  <li>Minecraft başlatıcısını açın, \"Oyna\" butonunun yakınındaki başlatma profili listesinden <code>fabric-loader-26.2</code> gibi bir isim seçin (\"En Son Sürüm\" olarak bırakırsanız MOD'suz başlar).</li>\n  <li>Öylece \"Oyna\"ya basıp başlatın. Ana ekranda \"Mods\" butonu artmışsa başarılı demektir. Basınca Glimpse Alpha'nın 9 MOD'unu ve Fabric API'yi görebilirsiniz.</li>\n  <li>Sonrasında her zamanki gibi \"Çok Oyunculu\"dan sunucuya bağlanın.</li>\n</ol>\n\n<h3>MOD'lar güncellendiğinde</h3>\n<p>Sunucu tarafındaki MOD'lar güncellendiğinde, tüm katılımcıların aynı anda aynı sürüme güncellenmesi gerekir.</p>\n<ol class=\"steps\">\n  <li>Sunucu yöneticisinden yeni MOD dosyalarını alın (bildirimi bekleyip sonra işlem yapın).</li>\n  <li>mods klasörünü açıp, <strong>şimdiye kadar içinde olan Glimpse Alpha jar dosyalarını silin</strong>, ardından yeni dosyaları koyun (dosya adı değişmiş olsa da içerik aynı MOD olarak kabul edildiğinden, eskisi kalırsa başlatılamaz).</li>\n  <li>Her zamanki gibi fabric-loader profiliyle başlatın.</li>\n</ol>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Dikkat</div>\n  <p>Yalnızca bir taraf yeni sürümde kalırsa sunucuya katılamazsınız. Sorun yaşarsanız <a href=\"#faq\">Sık Sorulan Sorular</a>'a da bakın.</p>\n</div>\n\n<h3>Mac'te sık karşılaşılan sorunlar</h3>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Belirti</th><th>Çözüm</th></tr>\n<tr><td>\"Geliştirici doğrulanamıyor\", \"kötü amaçlı yazılım içermediği doğrulanamadı\" çıkıyor</td><td>Uyarıda \"Tamam\"a basın (\"Çöp Kutusuna Taşı\"ya basmayın). Ardından Sistem Ayarları → \"Gizlilik ve Güvenlik\"i aşağı kaydırıp \"Engellendi\" yazısının yanındaki \"Yine de Aç\"a basıp şifrenizi girin.</td></tr>\n<tr><td>Kurulum dosyasını çift tıklayınca hiçbir şey olmuyor</td><td>Java kurulu değildir. adoptium.net'ten Temurin'i (macOS için .pkg) kurup tekrar deneyin.</td></tr>\n<tr><td>\"Library\" klasörü bulunamıyor</td><td>Elle aramanıza gerek yok. <code>⌘</code>+<code>⇧</code>+<code>G</code> ile <code>~/Library/Application Support/minecraft</code> yapıştırmak en kesin yoldur (normalde gizli bir klasördür).</td></tr>\n<tr><td>Sunucuya girmeye çalışınca sürüm farklı deniyor</td><td>① Başlatıcıda doğru fabric-loader profilini seçtiğinizi, ② mods klasörünün içeriğinin sunucuyla aynı olduğunu kontrol edin. Birinde bile fark varsa katılamazsınız.</td></tr>\n<tr><td>Başlar başlamaz çöküyor</td><td>mods klasöründe eski veya ilgisiz jar dosyası karışmış mı kontrol edin. Yine de düzelmezse <code>logs/latest.log</code> dosyasını (Mac'te <code>~/Library/Application Support/minecraft/logs/latest.log</code>) sunucu yöneticinize gönderin.</td></tr>\n<tr><td>MOD'suz normal Minecraft'a dönmek istiyorum</td><td>Başlatıcının başlatma profilini \"En Son Sürüm\"e geri döndürmeniz yeterli. MOD dosyalarını silmenize gerek yok.</td></tr>\n</table>\n</div>\n<p>Apple silikon (M1/M2/M3/M4 vb.) veya Intel Mac fark etmeksizin adımlar aynıdır. Farklı olan tek şey Java'yı (Temurin) seçerken aarch64 mi x64 mü seçileceğidir.</p>\n"
+      "body_html": "\n<p>\n  Burada <strong>sunucuya oynamaya gidecek taraf</strong>ın ayarları anlatılıyor. Zor bir uzmanlık bilgisi gerekmez.\n  Yukarıdan aşağı sırayla yaparsanız yaklaşık 15-20 dakikada biter.\n</p>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">Yapılacak yalnızca 3 şey var</div>\n  <ul>\n    <li>① Fabric'i (MOD'ları okuyan alt yapı) kendi bilgisayarınıza kurun</li>\n    <li>② Sunucu yöneticisinden aldığınız MOD dosyalarının tamamını belirlenmiş klasöre koyun</li>\n    <li>③ Başlatma şeklini 1 yerden değiştirip sunucuya katılın</li>\n  </ul>\n</div>\n\n<h3>Gerekenler</h3>\n<ul>\n  <li>Minecraft Java sürümünü oynatabilen bir Windows veya Mac bilgisayar</li>\n  <li>Sunucu yöneticisinden alınan <strong>MOD paketi ({jar_count} jar dosyası = Fabric API 1 + Glimpse Alpha'nın {mod_count} MOD'u)</strong></li>\n</ul>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Çok önemli</div>\n  <p>\n    Sunucuyla <strong>tamamen aynı sürüm, tamamen aynı MOD dosyaları</strong> olmadan katılamazsınız.\n    Bu sayfada örnek olarak Minecraft sürümü <code>26.2</code> yazıyoruz; sunucu yöneticinizden\n    farklı bir sayı bildirilmişse o sayıyı kullanın.\n    Aldığınız jar dosyalarını <strong>çift tıklayarak açmayın</strong>. Sadece klasöre koymanız yeterlidir.\n  </p>\n</div>\n\n<h3>Alacağınız dosyalar (örnek)</h3>\n<p>Sunucu yöneticisinden aşağıdaki gibi yaklaşık {jar_count} dosya alırsınız (sürüm numaraları her güncellemede değişir).</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Dosya adı (örnek)</th><th>İçerik</th></tr>\n<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>MOD'ları çalıştırmak için ortak bileşen</td></tr>\n<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Silahlar MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Demiryolu MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Yapı ve Dekorasyon MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Araçlar MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Gökyüzü MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Hayatta Kalma MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Elektrik MOD'u</td></tr>\n<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms MOD'u</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>Planarcadia MOD'u</td></tr>\n</table>\n</div>\n\n<h3>① Fabric'i kurun</h3>\n<p><code>https://fabricmc.net/use/installer/</code> adresini açıp kurulum dosyasını indirin. \"<strong>Client</strong>\" sekmesinde kalarak (\"Server\"a geçmeden), Minecraft Version kısmından sunucuyla aynı sayıyı seçip \"Install\" butonuna basın.</p>\n\n<h4>Windows için</h4>\n<ol class=\"steps\">\n  <li>Sayfadaki \"Download installer (Windows/.exe)\" gibi bir butondan kurulum dosyasını indirip çift tıklayarak çalıştırın (\"Windows bilgisayarınızı korudu\" gibi bir uyarı çıkarsa \"Ayrıntılı bilgi\" → \"Yine de çalıştır\"a basın).</li>\n  <li>\"Client\" sekmesinde kalarak, Minecraft Version kısmından <code>26.2</code> (sunucuyla aynı sayı) seçin, Loader Version'ı olduğu gibi bırakıp \"Install\"a basın.</li>\n</ol>\n\n<h4>Mac için</h4>\n<ol class=\"steps\">\n  <li>\"Download universal jar\" butonundan kurulum dosyasını (.jar) indirin. Mac için çalıştırılabilir dosya (.exe) yoktur.</li>\n  <li>İndirdiğiniz <code>fabric-installer-〜.jar</code> dosyasını <strong>normal çift tıklama yerine</strong>, sağ tıklayarak (veya <code>control</code> tuşunu basılı tutarak tıklayarak) \"Aç\"ı seçin. Uyarı çıkarsa tekrar \"Aç\"a basın.</li>\n  <li>\"Client\" sekmesinde kalarak, Minecraft Version kısmından sunucuyla aynı sayıyı seçip \"Install\"a basın.</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Mac'te \"geliştirici doğrulanamıyor\" çıkarsa</div>\n  <p>Son macOS sürümlerinde, sağ tık → \"Aç\" yaptığınızda bile buton çıkmayıp\n  \"'fabric-installer〜.jar' kötü amaçlı yazılım içermediği doğrulanamadı\" gibi bir uyarı çıkabilir. Bu durumda şu sırayla açabilirsiniz.</p>\n  <ol class=\"steps\">\n    <li>Uyarıda \"Tamam\"a basın (<strong>kesinlikle \"Çöp Kutusuna Taşı\"ya basmayın</strong>)</li>\n    <li>Ekranın sol üstündeki Apple menüsü → \"Sistem Ayarları\" → \"Gizlilik ve Güvenlik\"i açın</li>\n    <li>Aşağıya doğru \"'fabric-installer〜.jar' kullanımı engellendi\" gibi bir yazı olacak, yanındaki \"Yine de Aç\"a basın</li>\n    <li>Tekrar sorulursa \"Yine de Aç\" → Mac'in şifresini (veya Touch ID) girin</li>\n  </ol>\n  <p>Bu, Apple'a kaydedilmemiş tüm dağıtımlarda çıkan standart bir uyarıdır; Fabric'in resmî sitesinden indirdiyseniz endişelenmenize gerek yok. Bir kez izin verirseniz sonraki seferlerde normal şekilde açılır.</p>\n</div>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">Mac'te kurulum dosyası hiçbir şey yapmıyorsa</div>\n  <p>\n    Sağ tık → \"Aç\" yaptığınızda hiçbir şey olmuyorsa, sisteminizde Java kurulu değildir.\n    <a href=\"https://adoptium.net/\">adoptium.net</a> adresini açıp \"Temurin\"in macOS için kurulum dosyasını (.pkg) kurduktan sonra tekrar deneyin.\n    Apple silikon (M1/M2/M3/M4 vb.) Mac'lerde \"aarch64\", Intel Mac'lerde \"x64\" seçilmelidir.\n    Emin değilseniz ekranın sol üstündeki Apple menüsü → \"Bu Mac Hakkında\"daki \"Çip\" alanını kontrol edin (\"Apple M〜\" yazıyorsa aarch64'tür).\n  </p>\n</div>\n\n<h3>② MOD dosyalarını mods klasörüne koyun</h3>\n\n<h4>Windows: <code>%appdata%\\.minecraft\\mods</code></h4>\n<ol class=\"steps\">\n  <li>Gezgin'in adres çubuğuna <code>%appdata%\\.minecraft</code> yazıp Enter'a basın.</li>\n  <li><code>mods</code> klasörü yoksa yeni oluşturun (tamamı küçük harf).</li>\n  <li>Aldığınız {jar_count} jar dosyasının tamamını bu <code>mods</code> klasörünün içine kopyalayın (arşivden çıkarmaya gerek yok, jar olarak koyun).</li>\n</ol>\n\n<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>\n<ol class=\"steps\">\n  <li>Masaüstüne bir kez tıkladıktan sonra <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> tuşlarına aynı anda basın (veya üst menüdeki \"Git\" → \"Klasöre Git…\").</li>\n  <li>Çıkan giriş kutusuna <code>~/Library/Application Support/minecraft</code> yazısını olduğu gibi yapıştırıp Enter'a basın (başındaki \"<code>~</code>\" işaretini de unutmayın). \"Library\" Finder'da normalde görünmeyen bir klasör olduğundan, bu yöntemle açmak en kesin yoldur.</li>\n  <li><code>mods</code> klasörü yoksa, olduğu yerde sağ tık → \"Yeni Klasör\" ile oluşturun.</li>\n  <li>Aldığınız {jar_count} jar dosyasının tamamını sürükle-bırak yöntemiyle bu <code>mods</code> klasörüne koyun.</li>\n</ol>\n\n<h3>③ Fabric ile başlatıp sunucuya katılın</h3>\n<ol class=\"steps\">\n  <li>Minecraft başlatıcısını açın, \"Oyna\" butonunun yakınındaki başlatma profili listesinden <code>fabric-loader-26.2</code> gibi bir isim seçin (\"En Son Sürüm\" olarak bırakırsanız MOD'suz başlar).</li>\n  <li>Öylece \"Oyna\"ya basıp başlatın. Ana ekranda \"Mods\" butonu artmışsa başarılı demektir. Basınca Glimpse Alpha'nın {mod_count} MOD'unu ve Fabric API'yi görebilirsiniz.</li>\n  <li>Sonrasında her zamanki gibi \"Çok Oyunculu\"dan sunucuya bağlanın.</li>\n</ol>\n\n<h3>MOD'lar güncellendiğinde</h3>\n<p>Sunucu tarafındaki MOD'lar güncellendiğinde, tüm katılımcıların aynı anda aynı sürüme güncellenmesi gerekir.</p>\n<ol class=\"steps\">\n  <li>Sunucu yöneticisinden yeni MOD dosyalarını alın (bildirimi bekleyip sonra işlem yapın).</li>\n  <li>mods klasörünü açıp, <strong>şimdiye kadar içinde olan Glimpse Alpha jar dosyalarını silin</strong>, ardından yeni dosyaları koyun (dosya adı değişmiş olsa da içerik aynı MOD olarak kabul edildiğinden, eskisi kalırsa başlatılamaz).</li>\n  <li>Her zamanki gibi fabric-loader profiliyle başlatın.</li>\n</ol>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Dikkat</div>\n  <p>Yalnızca bir taraf yeni sürümde kalırsa sunucuya katılamazsınız. Sorun yaşarsanız <a href=\"#faq\">Sık Sorulan Sorular</a>'a da bakın.</p>\n</div>\n\n<h3>Mac'te sık karşılaşılan sorunlar</h3>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Belirti</th><th>Çözüm</th></tr>\n<tr><td>\"Geliştirici doğrulanamıyor\", \"kötü amaçlı yazılım içermediği doğrulanamadı\" çıkıyor</td><td>Uyarıda \"Tamam\"a basın (\"Çöp Kutusuna Taşı\"ya basmayın). Ardından Sistem Ayarları → \"Gizlilik ve Güvenlik\"i aşağı kaydırıp \"Engellendi\" yazısının yanındaki \"Yine de Aç\"a basıp şifrenizi girin.</td></tr>\n<tr><td>Kurulum dosyasını çift tıklayınca hiçbir şey olmuyor</td><td>Java kurulu değildir. adoptium.net'ten Temurin'i (macOS için .pkg) kurup tekrar deneyin.</td></tr>\n<tr><td>\"Library\" klasörü bulunamıyor</td><td>Elle aramanıza gerek yok. <code>⌘</code>+<code>⇧</code>+<code>G</code> ile <code>~/Library/Application Support/minecraft</code> yapıştırmak en kesin yoldur (normalde gizli bir klasördür).</td></tr>\n<tr><td>Sunucuya girmeye çalışınca sürüm farklı deniyor</td><td>① Başlatıcıda doğru fabric-loader profilini seçtiğinizi, ② mods klasörünün içeriğinin sunucuyla aynı olduğunu kontrol edin. Birinde bile fark varsa katılamazsınız.</td></tr>\n<tr><td>Başlar başlamaz çöküyor</td><td>mods klasöründe eski veya ilgisiz jar dosyası karışmış mı kontrol edin. Yine de düzelmezse <code>logs/latest.log</code> dosyasını (Mac'te <code>~/Library/Application Support/minecraft/logs/latest.log</code>) sunucu yöneticinize gönderin.</td></tr>\n<tr><td>MOD'suz normal Minecraft'a dönmek istiyorum</td><td>Başlatıcının başlatma profilini \"En Son Sürüm\"e geri döndürmeniz yeterli. MOD dosyalarını silmenize gerek yok.</td></tr>\n</table>\n</div>\n<p>Apple silikon (M1/M2/M3/M4 vb.) veya Intel Mac fark etmeksizin adımlar aynıdır. Farklı olan tek şey Java'yı (Temurin) seçerken aarch64 mi x64 mü seçileceğidir.</p>\n"
     },
     {
       "id": "admin-prep",
       "audience": "admin",
       "title": "Sunucu Yöneticileri İçin: Ön Hazırlık (Yedekleme ve Sürüm Kontrolü)",
-      "body_html": "\n<p>\n  Buradan itibaren sunucu makinesini işleten/yöneten kişilere yönelik bölüm başlıyor. Zaten çalışmakta olan bir\n  Minecraft sunucusundan (vanilla, MOD'suz standart sunucu) yola çıkarak, Fabric ve\n  Glimpse Alpha'nın 9 MOD'unu ekleme adımları anlatılıyor. Bu bölümde örnek olarak Windows sunucusu kullanılıyor.\n  Mac / Linux üzerinde sunucu işletiyorsanız, klasör konumlarını ve komut çalıştırma yöntemini kendi\n  ortamınıza göre uyarlayarak benzer adımları (Fabric'in resmî sitesindeki talimatlar) izleyin.\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 İşe başlamadan önce mutlaka</div>\n  <p>MOD kurulumu başarısız olsa bile dünyanızı kaybetmemek için, işe başlamadan önce mutlaka yedek alın.</p>\n</div>\n\n<h3>1. Dünyanın yedeğini alın</h3>\n<p>Sunucunun klasörünü (örnek: <code>C:\\MinecraftServer</code>) açıp, her zaman kullandığınız yedekleme yöntemini (örnek: <code>Backup-Server.bat</code> gibi bir yedekleme betiği) çalıştırın. Özel bir betiğiniz yoksa, sunucuyu durdurmuş halde <code>world</code> klasörünü başka bir yere kopyalamanız da yeterlidir.</p>\n\n<h3>2. Java sürümünü kontrol edin</h3>\n<ol class=\"steps\">\n  <li>Komut istemini (veya istediğiniz bir terminali) açın.</li>\n  <li><code>java -version</code> yazıp Enter'a basın.</li>\n  <li>Görüntülenen sayının <strong>25</strong> olup olmadığını kontrol edin (örnek: <code>java version \"25.0.3\"</code>).</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Çok önemli</div>\n  <p>\n    Minecraft <code>26.2</code>'yi çalıştırmak için <strong>Java 25</strong> gerekir. Eski kurulum talimatlarında\n    \"Java 21\" yazabilir; bu eski bir bilgidir, Java 21'de kalırsanız sunucu başlamaz.\n    Sayı 25'in altındaysa <a href=\"https://adoptium.net/\">adoptium.net</a> adresini açıp\n    \"Temurin 25 (LTS)\"i indirip kurduktan sonra bilgisayarı yeniden başlatıp tekrar kontrol edin.\n  </p>\n</div>\n\n<h3>3. Sunucunun Minecraft sürümünü kontrol edin</h3>\n<ol class=\"steps\">\n  <li>Her zamanki yöntemle (örnek: <code>Start-Server.bat</code>) sunucuyu bir kez başlatın.</li>\n  <li>Konsolun (siyah ekran) en başında çıkan <code>Starting minecraft server version X.Y</code> gibi bir satırı bulup o sayıyı not edin.</li>\n  <li>Konsola <code>stop</code> yazıp Enter'a basarak sunucuyu güvenli şekilde durdurun.</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Dikkat</div>\n  <p>\n    Bu rehberde örnek olarak \"<code>26.2</code>\" yazıyoruz; kontrol ettiğiniz gerçek sayı farklıysa,\n    bundan sonraki tüm adımlarda (Fabric, Fabric API, MOD sürüm seçimleri) o sayıyı kullanın.\n    Sunucu, tüm oyuncular ve MOD'ların sürümlerinden bir tanesi bile uyuşmazsa hiç çalışmaz.\n  </p>\n</div>\n"
+      "body_html": "\n<p>\n  Buradan itibaren sunucu makinesini işleten/yöneten kişilere yönelik bölüm başlıyor. Zaten çalışmakta olan bir\n  Minecraft sunucusundan (vanilla, MOD'suz standart sunucu) yola çıkarak, Fabric ve\n  Glimpse Alpha'nın {mod_count} MOD'unu ekleme adımları anlatılıyor. Bu bölümde örnek olarak Windows sunucusu kullanılıyor.\n  Mac / Linux üzerinde sunucu işletiyorsanız, klasör konumlarını ve komut çalıştırma yöntemini kendi\n  ortamınıza göre uyarlayarak benzer adımları (Fabric'in resmî sitesindeki talimatlar) izleyin.\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 İşe başlamadan önce mutlaka</div>\n  <p>MOD kurulumu başarısız olsa bile dünyanızı kaybetmemek için, işe başlamadan önce mutlaka yedek alın.</p>\n</div>\n\n<h3>1. Dünyanın yedeğini alın</h3>\n<p>Sunucunun klasörünü (örnek: <code>C:\\MinecraftServer</code>) açıp, her zaman kullandığınız yedekleme yöntemini (örnek: <code>Backup-Server.bat</code> gibi bir yedekleme betiği) çalıştırın. Özel bir betiğiniz yoksa, sunucuyu durdurmuş halde <code>world</code> klasörünü başka bir yere kopyalamanız da yeterlidir.</p>\n\n<h3>2. Java sürümünü kontrol edin</h3>\n<ol class=\"steps\">\n  <li>Komut istemini (veya istediğiniz bir terminali) açın.</li>\n  <li><code>java -version</code> yazıp Enter'a basın.</li>\n  <li>Görüntülenen sayının <strong>25</strong> olup olmadığını kontrol edin (örnek: <code>java version \"25.0.3\"</code>).</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Çok önemli</div>\n  <p>\n    Minecraft <code>26.2</code>'yi çalıştırmak için <strong>Java 25</strong> gerekir. Eski kurulum talimatlarında\n    \"Java 21\" yazabilir; bu eski bir bilgidir, Java 21'de kalırsanız sunucu başlamaz.\n    Sayı 25'in altındaysa <a href=\"https://adoptium.net/\">adoptium.net</a> adresini açıp\n    \"Temurin 25 (LTS)\"i indirip kurduktan sonra bilgisayarı yeniden başlatıp tekrar kontrol edin.\n  </p>\n</div>\n\n<h3>3. Sunucunun Minecraft sürümünü kontrol edin</h3>\n<ol class=\"steps\">\n  <li>Her zamanki yöntemle (örnek: <code>Start-Server.bat</code>) sunucuyu bir kez başlatın.</li>\n  <li>Konsolun (siyah ekran) en başında çıkan <code>Starting minecraft server version X.Y</code> gibi bir satırı bulup o sayıyı not edin.</li>\n  <li>Konsola <code>stop</code> yazıp Enter'a basarak sunucuyu güvenli şekilde durdurun.</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Dikkat</div>\n  <p>\n    Bu rehberde örnek olarak \"<code>26.2</code>\" yazıyoruz; kontrol ettiğiniz gerçek sayı farklıysa,\n    bundan sonraki tüm adımlarda (Fabric, Fabric API, MOD sürüm seçimleri) o sayıyı kullanın.\n    Sunucu, tüm oyuncular ve MOD'ların sürümlerinden bir tanesi bile uyuşmazsa hiç çalışmaz.\n  </p>\n</div>\n"
     },
     {
       "id": "admin-fabric-install",
@@ -1300,13 +1388,13 @@
       "id": "admin-mods-and-verify",
       "audience": "admin",
       "title": "Sunucu Yöneticileri İçin: MOD Kurulumu ve Başlatma Kontrolü",
-      "body_html": "\n<p>MOD'un kendisi \"jar (car)\" dosyası denen tek tek dosyalardır. Bunları sunucu klasöründeki\n<code>mods</code> klasörüne koymanız kurulum için yeterlidir.</p>\n\n<h3>1. mods klasörünü hazırlayın</h3>\n<p>Sunucu klasöründe (örnek: <code>C:\\MinecraftServer</code>) <code>mods</code> adlı bir klasör olup olmadığını kontrol edin. Yoksa sağ tık → \"Yeni\" → \"Klasör\" ile <code>mods</code> (tamamı küçük harf) adında bir klasör oluşturun.</p>\n\n<h3>2. Fabric API'yi edinin</h3>\n<p><code>https://modrinth.com/mod/fabric-api/versions</code> adresini açıp, listeden \"Game version (oyun sürümü) sunucuyla aynı sayı\" olan en üstteki sürümü indirin (örnek: <code>fabric-api-0.154.2+26.2.jar</code>).</p>\n\n<h3>3. MOD paketini mods klasörüne koyun</h3>\n<p>\n  Fabric API 1 + Glimpse Alpha'nın 9 MOD'u olmak üzere toplam 10 jar dosyasını <code>mods</code> klasörünün\n  içine kopyalayın (arşivden çıkarmaya gerek yok, jar dosyası olarak koyun). Bu 9 MOD'un kendisini,\n  şimdiye kadarki dağıtım yolundan temin edin. <strong>Bu sitede MOD dosyalarının kendisi dağıtılmıyor.</strong>\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>MOD</th><th>Örnek dosya adı</th></tr>\n<tr><td>Silahlar</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>\n<tr><td>Demiryolu</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>\n<tr><td>Yapı ve Dekorasyon</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>\n<tr><td>Araçlar</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>\n<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>\n<tr><td>Gökyüzü</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>\n<tr><td>Hayatta Kalma</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>\n<tr><td>Elektrik</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>\n<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr>\n</table>\n</div>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Dikkat</div>\n  <p>jar dosyalarını çift tıklamayın (açmanıza gerek yok). Sadece klasöre koymanız yeterlidir.</p>\n</div>\n\n<h3>4. Sunucuyu başlatıp kontrol edin</h3>\n<ol class=\"steps\">\n  <li>Az önce oluşturduğunuz <code>Start-Fabric-Server.bat</code> dosyasını çift tıklayın (eskiden kullandığınız <code>Start-Server.bat</code> artık kullanılmıyor).</li>\n  <li>Konsolda (siyah ekran) şu 2 noktayı kontrol edin.\n    <ul>\n      <li>MOD'ları okuduğu satırda, kurduğunuz MOD'ların adı çıkıyor</li>\n      <li>En sonunda <code>Done (…s)! For help, type \"help\"</code> yazısı görünüp, durmadan çalışmaya devam ediyor</li>\n    </ul>\n  </li>\n</ol>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 Java hatası çıkıp başlamıyorsa</div>\n  <p>\n    \"class file version\", \"requires Java\" gibi İngilizce bir hata çıkıyorsa, Java eski olabilir.\n    <a href=\"https://adoptium.net/\">adoptium.net</a>'ten \"Temurin 25 (LTS)\"in Windows sürümünü (.msi)\n    kurup bilgisayarı yeniden başlattıktan sonra tekrar deneyin.\n  </p>\n</div>\n\n<p>Başlatma doğrulandıktan sonra, sırada <a href=\"#player-setup\">Oyuncular İçin</a> bölümünü tüm katılımcılara\niletip, herkesin kendi bilgisayarına aynı Fabric ve MOD paketini kurmasını sağlayın.</p>\n"
+      "body_html": "\n<p>MOD'un kendisi \"jar (car)\" dosyası denen tek tek dosyalardır. Bunları sunucu klasöründeki\n<code>mods</code> klasörüne koymanız kurulum için yeterlidir.</p>\n\n<h3>1. mods klasörünü hazırlayın</h3>\n<p>Sunucu klasöründe (örnek: <code>C:\\MinecraftServer</code>) <code>mods</code> adlı bir klasör olup olmadığını kontrol edin. Yoksa sağ tık → \"Yeni\" → \"Klasör\" ile <code>mods</code> (tamamı küçük harf) adında bir klasör oluşturun.</p>\n\n<h3>2. Fabric API'yi edinin</h3>\n<p><code>https://modrinth.com/mod/fabric-api/versions</code> adresini açıp, listeden \"Game version (oyun sürümü) sunucuyla aynı sayı\" olan en üstteki sürümü indirin (örnek: <code>fabric-api-0.154.2+26.2.jar</code>).</p>\n\n<h3>3. MOD paketini mods klasörüne koyun</h3>\n<p>\n  Fabric API 1 + Glimpse Alpha'nın {mod_count} MOD'u olmak üzere toplam {jar_count} jar dosyasını <code>mods</code> klasörünün\n  içine kopyalayın (arşivden çıkarmaya gerek yok, jar dosyası olarak koyun). Bu {mod_count} MOD'un kendisini,\n  şimdiye kadarki dağıtım yolundan temin edin. <strong>Bu sitede MOD dosyalarının kendisi dağıtılmıyor.</strong>\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>MOD</th><th>Örnek dosya adı</th></tr>\n<tr><td>Silahlar</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>\n<tr><td>Demiryolu</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>\n<tr><td>Yapı ve Dekorasyon</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>\n<tr><td>Araçlar</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>\n<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>\n<tr><td>Gökyüzü</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>\n<tr><td>Hayatta Kalma</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>\n<tr><td>Elektrik</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>\n<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>\n</table>\n</div>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Dikkat</div>\n  <p>jar dosyalarını çift tıklamayın (açmanıza gerek yok). Sadece klasöre koymanız yeterlidir.</p>\n</div>\n\n<h3>4. Sunucuyu başlatıp kontrol edin</h3>\n<ol class=\"steps\">\n  <li>Az önce oluşturduğunuz <code>Start-Fabric-Server.bat</code> dosyasını çift tıklayın (eskiden kullandığınız <code>Start-Server.bat</code> artık kullanılmıyor).</li>\n  <li>Konsolda (siyah ekran) şu 2 noktayı kontrol edin.\n    <ul>\n      <li>MOD'ları okuduğu satırda, kurduğunuz MOD'ların adı çıkıyor</li>\n      <li>En sonunda <code>Done (…s)! For help, type \"help\"</code> yazısı görünüp, durmadan çalışmaya devam ediyor</li>\n    </ul>\n  </li>\n</ol>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 Java hatası çıkıp başlamıyorsa</div>\n  <p>\n    \"class file version\", \"requires Java\" gibi İngilizce bir hata çıkıyorsa, Java eski olabilir.\n    <a href=\"https://adoptium.net/\">adoptium.net</a>'ten \"Temurin 25 (LTS)\"in Windows sürümünü (.msi)\n    kurup bilgisayarı yeniden başlattıktan sonra tekrar deneyin.\n  </p>\n</div>\n\n<p>Başlatma doğrulandıktan sonra, sırada <a href=\"#player-setup\">Oyuncular İçin</a> bölümünü tüm katılımcılara\niletip, herkesin kendi bilgisayarına aynı Fabric ve MOD paketini kurmasını sağlayın.</p>\n"
     },
     {
       "id": "admin-upgrade",
       "audience": "admin",
       "title": "MOD'ları Yeni Sürümle Değiştirirken",
-      "body_html": "\n<p>Glimpse Alpha'daki 9 MOD birbirinden tamamen bağımsız olduğundan, her güncellemede 9'unun da\nbirden değişeceği anlamına gelmez. Gerçekten içeriği değişen MOD'u değiştirmeniz yeterlidir\n(hangi MOD'un değiştiğini dağıtım sırasındaki bilgilendirmeden veya <a href=\"../changelog/\">Güncelleme Geçmişi</a>'nden kontrol edebilirsiniz).</p>\n\n<h3>Güncelleme adımları</h3>\n<ol class=\"steps\">\n  <li>Sunucunun konsoluna <code>stop</code> yazıp sunucuyu durdurun.</li>\n  <li>Her zamanki yedekleme yöntemiyle dünyanın yedeğini alın.</li>\n  <li>Sunucunun <code>mods</code> klasöründeki, <strong>güncellenecek MOD'un eski jar dosyasını silip</strong>, yeni jar dosyasını koyun (aynı MOD'un eskisi ve yenisi birlikte kalırsa başlatılamaz).</li>\n  <li><code>Start-Fabric-Server.bat</code> ile sunucuyu başlatıp, konsolda güncellenmiş sürümün göründüğünü kontrol edin.</li>\n  <li><strong>Tüm katılımcılara da yeni jar dosyalarını dağıtıp</strong>, aynı şekilde değiştirmelerini sağlayın (<a href=\"#player-setup\">Oyuncular İçin</a> bölümüne bakın). Yalnızca sunucu tarafı veya yalnızca oyuncu tarafı yeni sürümde olursa katılınamaz.</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Çok önemli</div>\n  <p>\n    Bir MOD'u (güncelleme değil) tamamen kaldırılmış halde sunucuyu başlatırsanız, o MOD ile\n    yerleştirilen bloklar veya sahip olunan eşyalar (trafik ışığı vb.) kaybolur. Bu Minecraft ve Fabric'in\n    kendi yapısıdır, geri alınamaz. Kaldırmadan önce mutlaka yedek alın.\n  </p>\n</div>\n\n<h3>config dosyaları hakkında (otomatik onarım mekanizması)</h3>\n<p>\n  Her MOD, başlatıldığında <code>config/</code> klasörünün içinde bir ayar dosyası (örnek: <code>sorakaze_guns.json</code>)\n  otomatik olarak oluşturur. Güç ve hız gibi değerler burada ayarlanabilir; her güncellemede elle silmenize\n  veya değiştirmenize temelde gerek yoktur.\n</p>\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 Şu anki mekanizma</div>\n  <p>\n    Yeni sürümde başlangıç değeri değişen öğeler, <strong>yalnızca henüz ayarlanmamış (eski başlangıç değerinde kalan) öğeler için</strong>\n    otomatik olarak yeni başlangıç değerine güncellenir. <strong>Kendinizin ayarladığı değerlere dokunulmaz.</strong>\n    Yeni eklenen ayar öğeleri de başlatıldığında otomatik olarak eklenir. Neyin güncellendiği\n    <code>logs/latest.log</code> dosyasına \"eski değer → yeni değer\" şeklinde mutlaka kaydedilir.\n  </p>\n</div>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Ayar dosyasını düzenlerken dikkat</div>\n  <p>\n    Ayar dosyasındaki değerlerden yalnızca bir kısmını elle silerseniz (örnek: bir silahın ayar\n    grubundan yalnızca hasar satırını silmek), o öğe sessizce MOD'un içindeki başka bir başlangıç\n    değerine dönüşebilir (hata çıkmaz). Belirli bir değeri ayarlamak istiyorsanız, o öğenin değerini\n    doğrudan değiştirin. Ayarları tamamen başlangıç durumuna döndürmek isterseniz, ilgili MOD'un\n    ayar dosyasını komple silin; bir sonraki başlatmada başlangıç değerleriyle yeniden oluşturulur.\n  </p>\n</div>\n"
+      "body_html": "\n<p>Glimpse Alpha'daki {mod_count} MOD birbirinden tamamen bağımsız olduğundan, her güncellemede {mod_count}'unun da\nbirden değişeceği anlamına gelmez. Gerçekten içeriği değişen MOD'u değiştirmeniz yeterlidir\n(hangi MOD'un değiştiğini dağıtım sırasındaki bilgilendirmeden veya <a href=\"../changelog/\">Güncelleme Geçmişi</a>'nden kontrol edebilirsiniz).</p>\n\n<h3>Güncelleme adımları</h3>\n<ol class=\"steps\">\n  <li>Sunucunun konsoluna <code>stop</code> yazıp sunucuyu durdurun.</li>\n  <li>Her zamanki yedekleme yöntemiyle dünyanın yedeğini alın.</li>\n  <li>Sunucunun <code>mods</code> klasöründeki, <strong>güncellenecek MOD'un eski jar dosyasını silip</strong>, yeni jar dosyasını koyun (aynı MOD'un eskisi ve yenisi birlikte kalırsa başlatılamaz).</li>\n  <li><code>Start-Fabric-Server.bat</code> ile sunucuyu başlatıp, konsolda güncellenmiş sürümün göründüğünü kontrol edin.</li>\n  <li><strong>Tüm katılımcılara da yeni jar dosyalarını dağıtıp</strong>, aynı şekilde değiştirmelerini sağlayın (<a href=\"#player-setup\">Oyuncular İçin</a> bölümüne bakın). Yalnızca sunucu tarafı veya yalnızca oyuncu tarafı yeni sürümde olursa katılınamaz.</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Çok önemli</div>\n  <p>\n    Bir MOD'u (güncelleme değil) tamamen kaldırılmış halde sunucuyu başlatırsanız, o MOD ile\n    yerleştirilen bloklar veya sahip olunan eşyalar (trafik ışığı vb.) kaybolur. Bu Minecraft ve Fabric'in\n    kendi yapısıdır, geri alınamaz. Kaldırmadan önce mutlaka yedek alın.\n  </p>\n</div>\n\n<h3>config dosyaları hakkında (otomatik onarım mekanizması)</h3>\n<p>\n  Her MOD, başlatıldığında <code>config/</code> klasörünün içinde bir ayar dosyası (örnek: <code>sorakaze_guns.json</code>)\n  otomatik olarak oluşturur. Güç ve hız gibi değerler burada ayarlanabilir; her güncellemede elle silmenize\n  veya değiştirmenize temelde gerek yoktur.\n</p>\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 Şu anki mekanizma</div>\n  <p>\n    Yeni sürümde başlangıç değeri değişen öğeler, <strong>yalnızca henüz ayarlanmamış (eski başlangıç değerinde kalan) öğeler için</strong>\n    otomatik olarak yeni başlangıç değerine güncellenir. <strong>Kendinizin ayarladığı değerlere dokunulmaz.</strong>\n    Yeni eklenen ayar öğeleri de başlatıldığında otomatik olarak eklenir. Neyin güncellendiği\n    <code>logs/latest.log</code> dosyasına \"eski değer → yeni değer\" şeklinde mutlaka kaydedilir.\n  </p>\n</div>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Ayar dosyasını düzenlerken dikkat</div>\n  <p>\n    Ayar dosyasındaki değerlerden yalnızca bir kısmını elle silerseniz (örnek: bir silahın ayar\n    grubundan yalnızca hasar satırını silmek), o öğe sessizce MOD'un içindeki başka bir başlangıç\n    değerine dönüşebilir (hata çıkmaz). Belirli bir değeri ayarlamak istiyorsanız, o öğenin değerini\n    doğrudan değiştirin. Ayarları tamamen başlangıç durumuna döndürmek isterseniz, ilgili MOD'un\n    ayar dosyasını komple silin; bir sonraki başlatmada başlangıç değerleriyle yeniden oluşturulur.\n  </p>\n</div>\n"
     },
     {
       "id": "gameplay-notices",
@@ -1331,7 +1419,8 @@
       "Boss",
       "Gökyüzü",
       "Hayatta Kalma",
-      "Elektrik"
+      "Elektrik",
+      "Planarcadia"
     ],
     "items": {
       "minecraft:acacia_planks": "Akasya Tahtası",
@@ -1575,7 +1664,7 @@
       "sorakaze_deco:blue_concrete_slope": "Mavi Beton Rampası",
       "sorakaze_deco:blue_concrete_vertical_slab": "Mavi Beton Dikey Yarım Bloğu",
       "sorakaze_deco:blue_reinforced_glass": "Mavi Güçlendirilmiş Cam",
-      "sorakaze_deco:blue_reinforced_glass_pane": "blue_reinforced_glass_pane",
+      "sorakaze_deco:blue_reinforced_glass_pane": "Mavi Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:blue_reinforced_glass_plate": "Mavi Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:blue_stained_glass_plate": "Mavi Renkli Cam Levhası",
       "sorakaze_deco:bone_door": "Kemik Kapı",
@@ -1591,7 +1680,7 @@
       "sorakaze_deco:brown_concrete_slope": "Kahverengi Beton Rampası",
       "sorakaze_deco:brown_concrete_vertical_slab": "Kahverengi Beton Dikey Yarım Bloğu",
       "sorakaze_deco:brown_reinforced_glass": "Kahverengi Güçlendirilmiş Cam",
-      "sorakaze_deco:brown_reinforced_glass_pane": "brown_reinforced_glass_pane",
+      "sorakaze_deco:brown_reinforced_glass_pane": "Kahverengi Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:brown_reinforced_glass_plate": "Kahverengi Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:brown_stained_glass_plate": "Kahverengi Renkli Cam Levhası",
       "sorakaze_deco:bulkhead_door": "Bölme Kapısı",
@@ -1613,7 +1702,7 @@
       "sorakaze_deco:cyan_concrete_slope": "Camgöbeği Beton Rampası",
       "sorakaze_deco:cyan_concrete_vertical_slab": "Camgöbeği Beton Dikey Yarım Bloğu",
       "sorakaze_deco:cyan_reinforced_glass": "Camgöbeği Güçlendirilmiş Cam",
-      "sorakaze_deco:cyan_reinforced_glass_pane": "cyan_reinforced_glass_pane",
+      "sorakaze_deco:cyan_reinforced_glass_pane": "Camgöbeği Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:cyan_reinforced_glass_plate": "Camgöbeği Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:cyan_stained_glass_plate": "Camgöbeği Renkli Cam Levhası",
       "sorakaze_deco:dark_oak_glazed_grand_door": "Kara Meşe Camlı Büyük Kapı (3×3)",
@@ -1660,14 +1749,14 @@
       "sorakaze_deco:gray_concrete_slope": "Gri Beton Rampası",
       "sorakaze_deco:gray_concrete_vertical_slab": "Gri Beton Dikey Yarım Bloğu",
       "sorakaze_deco:gray_reinforced_glass": "Gri Güçlendirilmiş Cam",
-      "sorakaze_deco:gray_reinforced_glass_pane": "gray_reinforced_glass_pane",
+      "sorakaze_deco:gray_reinforced_glass_pane": "Gri Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:gray_reinforced_glass_plate": "Gri Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:gray_stained_glass_plate": "Gri Renkli Cam Levhası",
       "sorakaze_deco:green_concrete_pillar": "Yeşil Beton Sütunu",
       "sorakaze_deco:green_concrete_slope": "Yeşil Beton Rampası",
       "sorakaze_deco:green_concrete_vertical_slab": "Yeşil Beton Dikey Yarım Bloğu",
       "sorakaze_deco:green_reinforced_glass": "Yeşil Güçlendirilmiş Cam",
-      "sorakaze_deco:green_reinforced_glass_pane": "green_reinforced_glass_pane",
+      "sorakaze_deco:green_reinforced_glass_pane": "Yeşil Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:green_reinforced_glass_plate": "Yeşil Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:green_stained_glass_plate": "Yeşil Renkli Cam Levhası",
       "sorakaze_deco:guardrail": "Bariyer",
@@ -1698,21 +1787,21 @@
       "sorakaze_deco:light_blue_concrete_slope": "Açık Mavi Beton Rampası",
       "sorakaze_deco:light_blue_concrete_vertical_slab": "Açık Mavi Beton Dikey Yarım Bloğu",
       "sorakaze_deco:light_blue_reinforced_glass": "Açık Mavi Güçlendirilmiş Cam",
-      "sorakaze_deco:light_blue_reinforced_glass_pane": "light_blue_reinforced_glass_pane",
+      "sorakaze_deco:light_blue_reinforced_glass_pane": "Açık Mavi Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:light_blue_reinforced_glass_plate": "Açık Mavi Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:light_blue_stained_glass_plate": "Açık Mavi Renkli Cam Levhası",
       "sorakaze_deco:light_gray_concrete_pillar": "Açık Gri Beton Sütunu",
       "sorakaze_deco:light_gray_concrete_slope": "Açık Gri Beton Rampası",
       "sorakaze_deco:light_gray_concrete_vertical_slab": "Açık Gri Beton Dikey Yarım Bloğu",
       "sorakaze_deco:light_gray_reinforced_glass": "Açık Gri Güçlendirilmiş Cam",
-      "sorakaze_deco:light_gray_reinforced_glass_pane": "light_gray_reinforced_glass_pane",
+      "sorakaze_deco:light_gray_reinforced_glass_pane": "Açık Gri Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:light_gray_reinforced_glass_plate": "Açık Gri Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:light_gray_stained_glass_plate": "Açık Gri Renkli Cam Levhası",
       "sorakaze_deco:lime_concrete_pillar": "Limon Yeşili Beton Sütunu",
       "sorakaze_deco:lime_concrete_slope": "Limon Yeşili Beton Rampası",
       "sorakaze_deco:lime_concrete_vertical_slab": "Limon Yeşili Beton Dikey Yarım Bloğu",
       "sorakaze_deco:lime_reinforced_glass": "Limon Yeşili Güçlendirilmiş Cam",
-      "sorakaze_deco:lime_reinforced_glass_pane": "lime_reinforced_glass_pane",
+      "sorakaze_deco:lime_reinforced_glass_pane": "Limon Yeşili Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:lime_reinforced_glass_plate": "Limon Yeşili Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:lime_stained_glass_plate": "Limon Yeşili Renkli Cam Levhası",
       "sorakaze_deco:mac_studio": "Mac Studio",
@@ -1723,7 +1812,7 @@
       "sorakaze_deco:magenta_concrete_slope": "Eflatun Beton Rampası",
       "sorakaze_deco:magenta_concrete_vertical_slab": "Eflatun Beton Dikey Yarım Bloğu",
       "sorakaze_deco:magenta_reinforced_glass": "Eflatun Güçlendirilmiş Cam",
-      "sorakaze_deco:magenta_reinforced_glass_pane": "magenta_reinforced_glass_pane",
+      "sorakaze_deco:magenta_reinforced_glass_pane": "Eflatun Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:magenta_reinforced_glass_plate": "Eflatun Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:magenta_stained_glass_plate": "Eflatun Renkli Cam Levhası",
       "sorakaze_deco:mangrove_lattice_door": "Mangrov Kafesli Kapı",
@@ -1753,7 +1842,7 @@
       "sorakaze_deco:orange_concrete_slope": "Turuncu Beton Rampası",
       "sorakaze_deco:orange_concrete_vertical_slab": "Turuncu Beton Dikey Yarım Bloğu",
       "sorakaze_deco:orange_reinforced_glass": "Turuncu Güçlendirilmiş Cam",
-      "sorakaze_deco:orange_reinforced_glass_pane": "orange_reinforced_glass_pane",
+      "sorakaze_deco:orange_reinforced_glass_pane": "Turuncu Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:orange_reinforced_glass_plate": "Turuncu Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:orange_stained_glass_plate": "Turuncu Renkli Cam Levhası",
       "sorakaze_deco:overflow_valve": "Taşma Önleyici Vana",
@@ -1762,7 +1851,7 @@
       "sorakaze_deco:pink_concrete_slope": "Pembe Beton Rampası",
       "sorakaze_deco:pink_concrete_vertical_slab": "Pembe Beton Dikey Yarım Bloğu",
       "sorakaze_deco:pink_reinforced_glass": "Pembe Güçlendirilmiş Cam",
-      "sorakaze_deco:pink_reinforced_glass_pane": "pink_reinforced_glass_pane",
+      "sorakaze_deco:pink_reinforced_glass_pane": "Pembe Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:pink_reinforced_glass_plate": "Pembe Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:pink_stained_glass_plate": "Pembe Renkli Cam Levhası",
       "sorakaze_deco:polished_andesite_pillar": "Cilalı Andezit Sütunu",
@@ -1789,7 +1878,7 @@
       "sorakaze_deco:purple_concrete_slope": "Mor Beton Rampası",
       "sorakaze_deco:purple_concrete_vertical_slab": "Mor Beton Dikey Yarım Bloğu",
       "sorakaze_deco:purple_reinforced_glass": "Mor Güçlendirilmiş Cam",
-      "sorakaze_deco:purple_reinforced_glass_pane": "purple_reinforced_glass_pane",
+      "sorakaze_deco:purple_reinforced_glass_pane": "Mor Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:purple_reinforced_glass_plate": "Mor Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:purple_stained_glass_plate": "Mor Renkli Cam Levhası",
       "sorakaze_deco:purpur_block_pillar": "Purpur Bloğu Sütunu",
@@ -1803,14 +1892,14 @@
       "sorakaze_deco:red_concrete_slope": "Kırmızı Beton Rampası",
       "sorakaze_deco:red_concrete_vertical_slab": "Kırmızı Beton Dikey Yarım Bloğu",
       "sorakaze_deco:red_reinforced_glass": "Kırmızı Güçlendirilmiş Cam",
-      "sorakaze_deco:red_reinforced_glass_pane": "red_reinforced_glass_pane",
+      "sorakaze_deco:red_reinforced_glass_pane": "Kırmızı Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:red_reinforced_glass_plate": "Kırmızı Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:red_sandstone_pillar": "Kırmızı Kumtaşı Sütunu",
       "sorakaze_deco:red_sandstone_slope": "Kırmızı Kumtaşı Rampası",
       "sorakaze_deco:red_sandstone_vertical_slab": "Kırmızı Kumtaşı Dikey Yarım Bloğu",
       "sorakaze_deco:red_stained_glass_plate": "Kırmızı Renkli Cam Levhası",
       "sorakaze_deco:reinforced_glass": "Güçlendirilmiş Cam",
-      "sorakaze_deco:reinforced_glass_pane": "reinforced_glass_pane",
+      "sorakaze_deco:reinforced_glass_pane": "Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:reinforced_glass_plate": "Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:revolving_door": "Döner Kapı Görünümlü Kapı",
       "sorakaze_deco:roller_shutter": "Rulo Kepenk",
@@ -1881,7 +1970,7 @@
       "sorakaze_deco:white_concrete_slope": "Beyaz Beton Rampası",
       "sorakaze_deco:white_concrete_vertical_slab": "Beyaz Beton Dikey Yarım Bloğu",
       "sorakaze_deco:white_reinforced_glass": "Beyaz Güçlendirilmiş Cam",
-      "sorakaze_deco:white_reinforced_glass_pane": "white_reinforced_glass_pane",
+      "sorakaze_deco:white_reinforced_glass_pane": "Beyaz Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:white_reinforced_glass_plate": "Beyaz Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:white_stained_glass_plate": "Beyaz Renkli Cam Levhası",
       "sorakaze_deco:wire_mesh_door": "Tel Örgü Kapı",
@@ -1890,7 +1979,7 @@
       "sorakaze_deco:yellow_concrete_slope": "Sarı Beton Rampası",
       "sorakaze_deco:yellow_concrete_vertical_slab": "Sarı Beton Dikey Yarım Bloğu",
       "sorakaze_deco:yellow_reinforced_glass": "Sarı Güçlendirilmiş Cam",
-      "sorakaze_deco:yellow_reinforced_glass_pane": "yellow_reinforced_glass_pane",
+      "sorakaze_deco:yellow_reinforced_glass_pane": "Sarı Güçlendirilmiş Cam Paneli",
       "sorakaze_deco:yellow_reinforced_glass_plate": "Sarı Güçlendirilmiş Cam Levhası",
       "sorakaze_deco:yellow_stained_glass_plate": "Sarı Renkli Cam Levhası",
       "sorakaze_guns:assault_rifle": "Saldırı Tüfeği",
@@ -2451,7 +2540,86 @@
       "sorakaze_survival:spark_doll_alpha": "Havai Fişek Bebeği α",
       "sorakaze_power:battery": "Akü",
       "sorakaze_rail:catenary_wire": "Havai Hat",
-      "sorakaze_boss:wither_storm_summon": "Wither Storm Çağırma Taşı"
+      "sorakaze_boss:wither_storm_summon": "Wither Storm Çağırma Taşı",
+      "sorakaze_deco:black_blackout_reinforced_glass": "Siyah Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:blackout_reinforced_glass": "Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:black_blackout_reinforced_glass_pane": "Siyah Karartmalı Güçlendirilmiş Cam Panel",
+      "sorakaze_deco:black_blackout_reinforced_glass_plate": "Siyah Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:blackout_reinforced_glass_pane": "Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:blackout_reinforced_glass_plate": "Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:blue_blackout_reinforced_glass": "Mavi Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:blue_blackout_reinforced_glass_pane": "Mavi Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:blue_blackout_reinforced_glass_plate": "Mavi Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:brown_blackout_reinforced_glass": "Kahverengi Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:brown_blackout_reinforced_glass_pane": "Kahverengi Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:brown_blackout_reinforced_glass_plate": "Kahverengi Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:cyan_blackout_reinforced_glass": "Camgöbeği Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:cyan_blackout_reinforced_glass_pane": "Camgöbeği Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:cyan_blackout_reinforced_glass_plate": "Camgöbeği Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:gray_blackout_reinforced_glass": "Gri Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:gray_blackout_reinforced_glass_pane": "Gri Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:gray_blackout_reinforced_glass_plate": "Gri Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:green_blackout_reinforced_glass": "Yeşil Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:green_blackout_reinforced_glass_pane": "Yeşil Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:green_blackout_reinforced_glass_plate": "Yeşil Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:light_blue_blackout_reinforced_glass": "Açık Mavi Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:light_blue_blackout_reinforced_glass_pane": "Açık Mavi Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:light_blue_blackout_reinforced_glass_plate": "Açık Mavi Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:light_gray_blackout_reinforced_glass": "Açık Gri Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:light_gray_blackout_reinforced_glass_pane": "Açık Gri Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:light_gray_blackout_reinforced_glass_plate": "Açık Gri Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:lime_blackout_reinforced_glass": "Limon Yeşili Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:lime_blackout_reinforced_glass_pane": "Limon Yeşili Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:lime_blackout_reinforced_glass_plate": "Limon Yeşili Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:magenta_blackout_reinforced_glass": "Eflatun Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:magenta_blackout_reinforced_glass_pane": "Eflatun Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:magenta_blackout_reinforced_glass_plate": "Eflatun Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:orange_blackout_reinforced_glass": "Turuncu Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:orange_blackout_reinforced_glass_pane": "Turuncu Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:orange_blackout_reinforced_glass_plate": "Turuncu Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:pink_blackout_reinforced_glass": "Pembe Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:pink_blackout_reinforced_glass_pane": "Pembe Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:pink_blackout_reinforced_glass_plate": "Pembe Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:purple_blackout_reinforced_glass": "Mor Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:purple_blackout_reinforced_glass_pane": "Mor Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:purple_blackout_reinforced_glass_plate": "Mor Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:red_blackout_reinforced_glass": "Kırmızı Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:red_blackout_reinforced_glass_pane": "Kırmızı Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:red_blackout_reinforced_glass_plate": "Kırmızı Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:white_blackout_reinforced_glass": "Beyaz Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:white_blackout_reinforced_glass_pane": "Beyaz Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:white_blackout_reinforced_glass_plate": "Beyaz Karartmalı Güçlendirilmiş Cam Levhası",
+      "sorakaze_deco:yellow_blackout_reinforced_glass": "Sarı Karartmalı Güçlendirilmiş Cam",
+      "sorakaze_deco:yellow_blackout_reinforced_glass_pane": "Sarı Karartmalı Güçlendirilmiş Cam Paneli",
+      "sorakaze_deco:yellow_blackout_reinforced_glass_plate": "Sarı Karartmalı Güçlendirilmiş Cam Levhası",
+      "#minecraft:coals": "Kömür veya odun kömürü",
+      "minecraft:packed_ice": "Sıkıştırılmış Buz",
+      "minecraft:prismarine_crystals": "Prizmarin Kristalleri",
+      "minecraft:sculk": "Sculk",
+      "minecraft:sculk_vein": "Sculk Damarları",
+      "minecraft:soul_sand": "Ruh Kumu",
+      "sorakaze_boss:abyssal_sinew": "Derinlik Kirişi",
+      "sorakaze_boss:forge_altar_core": "Demirhane Sunağı Çekirdeği",
+      "sorakaze_boss:frost_altar": "Ayaz Sunağı",
+      "sorakaze_boss:molten_crown": "Erimiş Taç",
+      "sorakaze_boss:primal_egg": "İlksel Yumurta",
+      "sorakaze_boss:sculk_heart": "Sculk Kalbi",
+      "sorakaze_boss:sonar_eye": "Sonar Göz",
+      "sorakaze_boss:soul_blood_altar": "Ruh Kanı Sunağı",
+      "sorakaze_boss:volcanic_core": "Volkanik Çekirdek",
+      "sorakaze_guns:data_attachment": "Aparat",
+      "sorakaze_guns:data_gun": "Veriyle Tanımlanan Silah",
+      "sorakaze_guns:gun_workbench": "Silah Tezgâhı",
+      "sorakaze_guns:hazmat_suit": "Koruyucu Tulum",
+      "sorakaze_planarcadia:interplanar_mural": "Boyutlar Arası Sıçrayış Duvar Resmi",
+      "sorakaze_planarcadia:portal_amethyst_block": "Portal Ametist Bloğu",
+      "sorakaze_power:air_purifier": "Hava Temizleyici",
+      "sorakaze_survival:refrigerator": "Buzdolabı",
+      "sorakaze_survival:water_pipe": "Su Borusu",
+      "sorakaze_survival:water_pump": "Su Pompası",
+      "sorakaze_survival:water_tap": "Musluk",
+      "sorakaze_vehicles:empty_canister": "Boş Bidon",
+      "sorakaze_vehicles:gasoline": "Benzin Bidonu"
     },
     "howto": [
       {

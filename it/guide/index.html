@@ -69,7 +69,7 @@
       
 <p>
   <strong>Glimpse Alpha</strong> (ex Sorakaze) è un gruppo di mod Fabric installate sul
-  server Sorakazekarasu. È composto da 9 mod indipendenti, ciascuna installabile e aggiornabile
+  server Sorakazekarasu. È composto da 10 mod indipendenti, ciascuna installabile e aggiornabile
   separatamente. Non sostituisce né rimuove elementi vanilla (lo standard senza mod) come archi
   e frecce o carrelli, ma si limita ad aggiungere nuovi oggetti, blocchi e dimensioni.
 </p>
@@ -113,8 +113,8 @@
 
 <h3>Chi deve preparare cosa</h3>
 <ul>
-  <li><strong>Il server (server Sorakazekarasu)</strong> — Fabric server + Fabric API + le 9 mod di Glimpse Alpha</li>
-  <li><strong>Il PC di ogni singolo giocatore che partecipa</strong> — Fabric client + Fabric API + le 9 mod di Glimpse Alpha (esattamente la stessa combinazione del server)</li>
+  <li><strong>Il server (server Sorakazekarasu)</strong> — Fabric server + Fabric API + le 10 mod di Glimpse Alpha</li>
+  <li><strong>Il PC di ogni singolo giocatore che partecipa</strong> — Fabric client + Fabric API + le 10 mod di Glimpse Alpha (esattamente la stessa combinazione del server)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -149,7 +149,7 @@
 <tr><td>Versione di Minecraft</td><td><code>26.2</code></td></tr>
 <tr><td>Java richiesto</td><td>Java 25 (consigliato <a href="https://adoptium.net/">Temurin 25 (LTS)</a>)</td></tr>
 <tr><td>Fabric API</td><td>La versione corrispondente alla versione di Minecraft (esempio: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
-<tr><td>Composizione delle mod</td><td>9 (Armi da fuoco, Ferrovia, Edilizia e arredamento, Veicoli, Boss, Cielo, Sopravvivenza, Elettricità, Backrooms)</td></tr>
+<tr><td>Composizione delle mod</td><td>10 (Armi da fuoco, Ferrovia, Edilizia e arredamento, Veicoli, Boss, Cielo, Sopravvivenza, Elettricità, Backrooms, Planarcadia)</td></tr>
 </table>
 </div>
 
@@ -176,7 +176,7 @@
 <h3>Cosa ti serve</h3>
 <ul>
   <li>Un PC Windows o Mac in grado di far girare Minecraft Java Edition</li>
-  <li>L'<strong>intero set di mod ricevuto dall'amministratore del server (10 file jar in totale = 1 Fabric API + 9 mod di Glimpse Alpha)</strong></li>
+  <li>L'<strong>intero set di mod ricevuto dall'amministratore del server (11 file jar in totale = 1 Fabric API + 10 mod di Glimpse Alpha)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -191,7 +191,7 @@
 </div>
 
 <h3>File che riceverai (esempio)</h3>
-<p>Dall'amministratore del server riceverai all'incirca questi 10 file (i numeri di versione cambiano a ogni aggiornamento).</p>
+<p>Dall'amministratore del server riceverai all'incirca questi 11 file (i numeri di versione cambiano a ogni aggiornamento).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Nome file (esempio)</th><th>Contenuto</th></tr>
@@ -204,7 +204,7 @@
 <tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Mod Cielo</td></tr>
 <tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Mod Sopravvivenza</td></tr>
 <tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Mod Elettricità</td></tr>
-<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Mod Backrooms</td></tr>
+<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Mod Backrooms</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>Mod Planarcadia</td></tr>
 </table>
 </div>
 
@@ -256,7 +256,7 @@
 <ol class="steps">
   <li>Nella barra degli indirizzi di Esplora file digita <code>%appdata%\.minecraft</code> e premi Invio.</li>
   <li>Se la cartella <code>mods</code> non esiste, creala (tutto in minuscolo).</li>
-  <li>Copia tutti e 10 i file jar ricevuti dentro questa cartella <code>mods</code> (non serve estrarli, vanno inseriti così come sono, in formato jar).</li>
+  <li>Copia tutti e 11 i file jar ricevuti dentro questa cartella <code>mods</code> (non serve estrarli, vanno inseriti così come sono, in formato jar).</li>
 </ol>
 
 <h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
@@ -264,13 +264,13 @@
   <li>Fai clic una volta sulla scrivania, poi premi contemporaneamente <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> (oppure usa il menu in alto «Vai» → «Vai alla cartella…»).</li>
   <li>Nel campo che compare, incolla esattamente <code>~/Library/Application Support/minecraft</code> e premi Invio (non dimenticare la «<code>~</code>» iniziale). «Library» è una cartella normalmente non visibile nel Finder, quindi questo metodo è il più affidabile per aprirla.</li>
   <li>Se la cartella <code>mods</code> non esiste, creala lì con clic destro → «Nuova cartella».</li>
-  <li>Trascina tutti e 10 i file jar ricevuti in questa cartella <code>mods</code>.</li>
+  <li>Trascina tutti e 11 i file jar ricevuti in questa cartella <code>mods</code>.</li>
 </ol>
 
 <h3>③ Avviare con Fabric e collegarsi al server</h3>
 <ol class="steps">
   <li>Apri il launcher di Minecraft e, dall'elenco dei profili di avvio vicino al pulsante «Gioca», scegli un nome del tipo <code>fabric-loader-26.2</code> (lasciando «Ultima versione», il gioco si avvia senza mod).</li>
-  <li>Premi «Gioca» così com'è per avviare il gioco. Se nella schermata del titolo è comparso in più il pulsante «Mods», l'operazione è riuscita: premendolo puoi verificare le 9 mod di Glimpse Alpha e Fabric API.</li>
+  <li>Premi «Gioca» così com'è per avviare il gioco. Se nella schermata del titolo è comparso in più il pulsante «Mods», l'operazione è riuscita: premendolo puoi verificare le 10 mod di Glimpse Alpha e Fabric API.</li>
   <li>Per il resto, collegati al server come al solito tramite «Multiplayer».</li>
 </ol>
 
@@ -308,7 +308,7 @@
 <p>
   Da qui in poi, questo capitolo è dedicato a chi gestisce e amministra il server vero e proprio.
   Partendo da un server Minecraft già funzionante (vanilla, cioè il server standard senza mod), spiegheremo
-  come aggiungere Fabric e le 9 mod di Glimpse Alpha. In questo capitolo useremo come esempio un server Windows.
+  come aggiungere Fabric e le 10 mod di Glimpse Alpha. In questo capitolo useremo come esempio un server Windows.
   Se gestisci il server su Mac / Linux, adatta i percorsi delle cartelle e il modo di eseguire i comandi al tuo
   ambiente, seguendo comunque la stessa procedura (le indicazioni ufficiali del sito di Fabric).
 </p>
@@ -419,8 +419,8 @@ pause</pre>
 
 <h3>3. Metti tutte le mod nella cartella mods</h3>
 <p>
-  Copia nella cartella <code>mods</code> 1 file di Fabric API più le 9 mod di Glimpse Alpha, per un totale
-  di 10 file jar (non serve estrarli: vanno inseriti così come sono, in formato jar). Procurati questi 9 file delle mod tramite lo stesso
+  Copia nella cartella <code>mods</code> 1 file di Fabric API più le 10 mod di Glimpse Alpha, per un totale
+  di 11 file jar (non serve estrarli: vanno inseriti così come sono, in formato jar). Procurati questi 10 file delle mod tramite lo stesso
   canale di distribuzione usato finora. <strong>Questo sito non distribuisce i file delle mod stesse.</strong>
 </p>
 <div class="table-wrap">
@@ -434,7 +434,7 @@ pause</pre>
 <tr><td>Cielo</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
 <tr><td>Sopravvivenza</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
 <tr><td>Elettricità</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
-<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr>
+<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -470,7 +470,7 @@ pause</pre>
       <div class="badge-row"><span class="type-badge type-visual">Per gli amministratori del server</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Come sostituire le mod con una versione più recente</h2>
       
-<p>Glimpse Alpha è composta da 9 mod completamente indipendenti l'una dall'altra, quindi non è detto che ad ogni aggiornamento debbano essere sostituite tutte e 9. È sufficiente sostituire solo le mod il cui contenuto è stato effettivamente modificato
+<p>Glimpse Alpha è composta da 10 mod completamente indipendenti l'una dall'altra, quindi non è detto che ad ogni aggiornamento debbano essere sostituite tutte e 9. È sufficiente sostituire solo le mod il cui contenuto è stato effettivamente modificato
 (per sapere quali mod sono cambiate, puoi controllare le note di distribuzione o lo <a href="../changelog/">storico degli aggiornamenti</a>).</p>
 
 <h3>Procedura di aggiornamento</h3>

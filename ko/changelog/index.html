@@ -61,7 +61,7 @@
 <div class="hero">
   <span class="hero__eyebrow">업데이트 기록</span>
   <h1>업데이트 기록</h1>
-  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 43회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
+  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 45회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
   <p class="callout callout--info">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
 </div>
 
@@ -70,7 +70,7 @@
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">MOD:</span>
-  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">총기</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">철도</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">건축자재·장식</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">보스</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">천공</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">서바이벌</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">탈것</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">전력</button><button class="chip" type="button" data-filter-mod="backrooms" aria-pressed="false">백룸즈</button>
+  <button class="chip" type="button" data-filter-mod="guns" aria-pressed="false">총기</button><button class="chip" type="button" data-filter-mod="rail" aria-pressed="false">철도</button><button class="chip" type="button" data-filter-mod="deco" aria-pressed="false">건축자재·장식</button><button class="chip" type="button" data-filter-mod="boss" aria-pressed="false">보스</button><button class="chip" type="button" data-filter-mod="sky" aria-pressed="false">천공</button><button class="chip" type="button" data-filter-mod="survival" aria-pressed="false">서바이벌</button><button class="chip" type="button" data-filter-mod="vehicles" aria-pressed="false">탈것</button><button class="chip" type="button" data-filter-mod="power" aria-pressed="false">전력</button><button class="chip" type="button" data-filter-mod="backrooms" aria-pressed="false">백룸즈</button><button class="chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">플라나르카디아</button>
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">종류:</span>
@@ -79,6 +79,36 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>조건에 맞는 업데이트가 없습니다.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-22</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.1.0</span> — 백룸즈 레벨 3〜8이 진짜 무한 레벨로, 컴퓨터에 서버 관리 앱, 보스 소환 레시피가 레시피북에
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">신규 기능</span><span class="mod-badge" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge" style="--mod-color:#9349b8">보스</span><span class="mod-badge" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge" style="--mod-color:#c0533a">총기</span><span class="mod-badge" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge" style="--mod-color:#d4b32e">전력</span><span class="mod-badge" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge" style="--mod-color:#3badc9">천공</span><span class="mod-badge" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge" style="--mod-color:#d17a34">탈것</span></div>
+      <p>이번 회차에서 가장 큰 변경은 백룸즈의 레벨 3부터 8까지입니다. 지금까지는 128블록짜리 견본 섬이었지만, 이제는 끝이 없고 걸어서 탐색할 수 있는 레벨이 되었습니다. 건축자재 MOD의 컴퓨터에는 서버 관리 앱이 추가되었고, 보스 MOD에서는 소환 아이템의 레시피가 레시피북에 실리게 되었습니다. 데이터로 정의된 총 3정에는 각각 전용 손에 든 모델이 마련되었습니다.</p>
+      <ul><li>내용이 바뀐 것은 백룸즈·건축자재·보스·총기 4개입니다. 나머지 6개(플라나르카디아·전력·철도·천공·서바이벌·탈것)는 버전을 맞추기 위해 2.1.0으로 올렸을 뿐이며, 2.0.0의 jar와의 차이는 fabric.mod.json의 버전 문자열 한 곳뿐입니다. 내용은 1바이트도 바뀌지 않았습니다.</li><li>백룸즈의 레벨 3〜8이 128블록짜리 견본 섬에서 진짜 무한 레벨이 되었습니다. 어느 레벨에도 끝이 없으며, 걸어서 탐색할 수 있습니다.</li><li>레벨 3「전기설비동」. 전류가 살아 있어 배전반을 만지면 위험합니다. Hound가 순찰하고, 지하 케이블실에는 Smiler가 있습니다.</li><li>레벨 4「무인 사무실」. 등급은 안전이지만, 창문의 3%는 이쪽을 보고 있습니다(겉모습으로는 구별되지 않습니다). 여기서는 정신력이 천천히 회복됩니다. 아몬드 워터는 휴게실에 있습니다.</li><li>레벨 5「공포의 호텔」. 번호가 붙은 문 중 80%는 잠겨 있습니다. 이어진 구역마다 정확히 한 방만 세부가 다릅니다. 머무르지 마십시오.</li><li>레벨 6「소등」. 손전등은 켠 뒤 20초까지는 제대로 작동하지만, 그 뒤로는 1초당 15% 확률로만 작동합니다. 켜 두는 동안 개체의 감지 범위가 4배가 되므로(빛은 불러들입니다), 귀로 나아가는 레벨입니다.</li><li>레벨 7「심해 공포」. 정해진 모양의 집 한 채와, 건너편이 없는 바다가 있습니다. 잔교 끝까지 걸어가지 마십시오.</li><li>레벨 8「동굴계」. 사람을 위해 파였다가 버려진 갱도이며, 철제 궤도는 실제로 어딘가로 이어집니다. 깊이 32블록의 물에 잠긴 수직갱이 있습니다.</li><li>게임 안의 컴퓨터에 「서버 관리」 앱이 추가되었습니다. 설정 파일을 열지 않고도 전화의 문자·통화·브라우저 허용 여부, 방범 카메라의 동시 표시 대수와 실시간 중계 허용 여부, 자동 백업의 유무·간격·보관 개수, 그리고 보스 관련 조정(페스트 의사의 자연 스폰과 그 확률·뇌우 한정·재출현 간격, 역병 위더의 스폰 수 상한, 스컬크 골렘 출현에 필요한 워든 수, 사신의 위더 소환 수, 록 록 소환 스포너의 네더 요새 생성, 페스트 의사의 최대 체력, 역병 위더의 체력 배율)을 화면에서 바꿀 수 있습니다.</li><li>서버 관리 앱을 열려면 관리자 ID와 비밀번호가 필요합니다. 서버 관리자가 맡길 사람에게만 개별적으로 전달합니다. 이 사이트에는 적지 않습니다. 로그인에는 시간 제한이 있고, 입력 실패에는 횟수 제한이 있습니다.</li><li>보스 MOD의 소환 아이템(대장간 제단의 핵·용융의 왕관·스컬크의 심장·소나 아이·서리의 제단·원초의 알·혼혈의 제단) 레시피가 게임 내 레시피북에 실리게 되었습니다. 지금까지는 해금되는 경로가 하나도 없어, 게임 안에서 만드는 법을 알 방법이 없었습니다.</li><li>소환의 실마리가 되는 발전 과제 4개를 추가했습니다. 「작열의 열쇠」「심연의 열쇠」「빙결의 열쇠」「제단은 세워졌다」입니다. 해당하는 소환 아이템을 손에 넣으면 나타납니다.</li><li>페스트 의사의 자연 스폰이 관리자 스위치로 되살아났습니다. 다만 기본값은 「꺼짐」입니다. 관리자가 명시적으로 켜기 전까지 동작은 V2.0.0과 같습니다.</li><li>총기 MOD의 데이터 정의 총 3정(서비스 피스톨, 마크스맨 카빈, 브리칭 샷건)에 각각 전용 손에 든 모델이 마련되었습니다. 지금까지는 3정 모두 돌격소총의 모델을 빌려 쓰고 있어, 권총을 들어도 소총이 보였습니다.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 주의 사항</div>
+          <ul><li>레벨 3〜8은 생성 방식이 근본적으로 바뀌었습니다. V2.0.0에서 견본 섬을 방문한 적이 있는 월드에서는, 그 일대의 지형이 이전과 일치하지 않습니다.</li><li>서버 관리 앱의 관리자 ID와 비밀번호는 이 사이트에 일절 게재하지 않습니다. 서버 관리자에게 직접 받으십시오.</li></ul>
+        </div>
+      <h4>이 시점에 미구현·미확인이었던 사항</h4><ul><li>삿포로 MOD(sorakaze_sapporo)는 이번 회차에 포함되지 않았습니다. V2.2로 넘어갑니다.</li><li>레벨 3〜8의 실제 겉모습·소리·개체의 움직임은 이 글을 쓴 시점에는 실제 플레이로 확인되지 않았습니다.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-18</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.0.0</span> — V2 업데이트 — 10번째 MOD「플라나르카디아」, 신규 보스 4종, 상수도·휘발유·음식 부패
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">신규 기능</span><span class="mod-badge" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge" style="--mod-color:#9349b8">보스</span><span class="mod-badge" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge" style="--mod-color:#c0533a">총기</span><span class="mod-badge" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge" style="--mod-color:#d4b32e">전력</span><span class="mod-badge" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge" style="--mod-color:#3badc9">천공</span><span class="mod-badge" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge" style="--mod-color:#d17a34">탈것</span></div>
+      <p>이것이 V2 본편입니다. 10번째 MOD「플라나르카디아(Planarcadia)」가 여기서 처음으로 배포되었습니다. 보스 MOD에는 각자 전용 소환 의식을 가진 보스 4종이 추가되었고, 서바이벌 MOD에는 상수도 설비와 냉장고, 탈것 MOD에는 휘발유, 전력 MOD에는 공기청정기가 들어왔습니다. 백룸즈는 크게 확장되었고, 건축자재 MOD에는 17색의 차광 강화유리가 추가되었습니다.</p>
+      <ul><li>10번째 MOD「플라나르카디아(sorakaze_planarcadia)」가 처음으로 함께 배포됩니다. 포털 자수정 블록으로 네더 포털과 같은 모양의 틀을 짜고 불을 붙이면, 밤이 주인인 유흥 세계로 이어집니다. LED 간판, 환월, 차원도약 벽화, 판매대 등 전용 블록이 들어 있습니다. 다른 Glimpse Alpha MOD에 의존하지 않습니다.</li><li>보스 MOD에 보스 4종이 추가되었습니다. 볼케이닉 골렘 킹(대장간 제단의 핵 + 용융의 왕관), 어비설 크라켄 워든(스컬크의 심장 + 소나 아이), 프리즈매틱 아이스 피닉스 드래곤(서리의 제단 + 원초의 알), 그리고 위더스톰 데몬 오버로드(혼혈의 제단 + 위더 스켈레톤 머리 3개 + 네더의 별)입니다.</li><li>혼혈의 제단은 앞의 세 보스를 모두 쓰러뜨릴 때까지 위더스톰 데몬 오버로드의 소환을 거부합니다. 네 보스 모두 확정 드롭이 있습니다: 화산의 핵, 심연의 힘줄, 무지갯빛 깃털, 오버로드의 심장.</li><li>무덤에 묶인 사신이 낮은 확률로 「영혼을 거두는 낫」을 떨어뜨리게 되었습니다. 그 낫으로 쓰러뜨린 적은 낮은 확률로 자신의 스폰 알을 떨어뜨립니다.</li><li>서바이벌 MOD에 상수도 설비(수도관·펌프·수도꼭지)가 들어왔습니다. 펌프로 끌어올리고, 관으로 잇고, 수도꼭지로 받는 방식입니다. 냉장고와 「상한 음식」도 함께 추가되었습니다.</li><li>탈것 MOD에 휘발유가 들어왔습니다. 휘발유통을 들고 탈것을 우클릭하면 급유할 수 있습니다. 빈 통은 부서지지 않으며, 작업대에서 석탄이나 목탄 4개와 함께 다시 채울 수 있습니다.</li><li>전력 MOD에 공기청정기가 추가되었습니다. 가동 중인 원자력 발전소는 주변 공기를 오염시키며, 오염된 공기 속에 있으면 이동 속도 저하 → 나약함 → 독 순으로 영향을 받습니다. 전기가 들어온 청정기는 통전되어 있는 동안 그 오염을 국소적으로 계속 제거합니다.</li><li>총기 MOD에 데이터로 정의되는 총기·부착물 시스템이 들어왔습니다. 총기 작업대에 총과 부착물을 넣고 총을 꺼내는 순간 장착되며, 장착된 총을 다시 넣으면 해제됩니다. 총 3정(서비스 피스톨, 마크스맨 카빈, 브리칭 샷건)과 부착물 6종(도트 사이트, 소음기, 확장 탄창, 앵글드 그립, 헤비 스톡, 레이저 포인터)이 대상입니다. 핵 오염을 막는 방호복도 추가되었습니다(방독면과 함께 착용해야 효과가 있습니다).</li><li>백룸즈가 크게 확장되었습니다. 레벨 0·1·2, 풀룸, 파티 레벨, 그리고 번호가 붙은 문이 늘어선 허브 홀이 들어왔고, 12종의 개체(Hound, Smiler, Faceling, Skin Stealer, Peeling Colossus, Wailing Hulk, Pallid Runner, Partygoer, Deathmoth, Duller, 살아 있는 그림, 가짜 웅덩이)와 아몬드 워터·붕대·손전등·혈액검사 키트·쇠지레·성냥 같은 소지품이 추가되었습니다.</li><li>건축자재 MOD에 「차광 강화유리」가 추가되었습니다. 블록·창·판의 3가지 형태 × 17색입니다. 아울러 v1.7.7부터 이름 없이 배포되던 강화유리 창 16색에 일본어와 영어 이름이 붙었습니다.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 주의 사항</div>
+          <ul><li>MOD 버전이 1.x에서 2.0.0으로 일제히 올라갔습니다. 서버와 참가자 전원의 jar 10개를 한꺼번에 교체해 주세요.</li></ul>
+        </div>
+      <h4>이 시점에 미구현·미확인이었던 사항</h4><ul><li>당시 이 사이트의 업데이트 기록에는 V2.0.0 항목이 실리지 않았습니다. 이 글은 V2.1.0 공개에 맞추어, 실제로 배포된 jar의 내용을 대조해 나중에 작성한 것입니다.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="survival power guns rail boss">
       <div class="timeline-entry__date">2026-08-13</div>
       <h3 class="timeline-entry__title">

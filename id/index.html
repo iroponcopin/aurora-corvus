@@ -62,7 +62,7 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     Ini adalah situs referensi tidak resmi yang merangkum resep, riwayat pembaruan, dan panduan pemasangan untuk kumpulan MOD Fabric 「<strong>Glimpse Alpha</strong>」(dahulu bernama: Sorakaze) yang dipasang di Server Sorakazekarasu. Saat ini terdapat 
-    <strong>9 MOD</strong> (Senjata Api, Kereta Api, Bahan Bangunan, Bos, Langit, Survival, Kendaraan, Listrik, Backrooms) yang berjalan bersamaan
+    <strong>10 MOD</strong> (Senjata Api, Kereta Api, Bahan Bangunan, Bos, Langit, Survival, Kendaraan, Listrik, Backrooms, Planarcadia) yang berjalan bersamaan
     <strong>26.2</strong> di Minecraft.
   </p>
   <p class="callout callout--info">Situs ini tidak mendistribusikan file MOD (jar) itu sendiri. Yang ada di sini hanya &quot;bacaan&quot; seperti tabel resep, riwayat pembaruan, dan panduan pemasangan. Untuk mendapatkan file MOD-nya, silakan hubungi langsung admin server.</p>
@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span>
-        <span class="timeline-entry__release">v1.9.3</span>
-        <span class="card__meta">2026-08-13</span>
+        <span class="timeline-entry__release">V2.1.0</span>
+        <span class="card__meta">2026-08-22</span>
       </div>
-      <h3 style="margin-top:0">Pembaruan terbaru: Verifikasi Pembangkit Listrik Hulu Ledak Nuklir, Update Besar Kereta Api, Desain Layar Baru, Koordinat Selalu Tampil</h3>
-      <p>Memperbarui 5 MOD sekaligus (versi V1.9.1 dan V1.9.2 tidak pernah ada — update besar Kereta Api dan permintaan seputar pembangkit listrik hulu ledak nuklir digabung dan dirilis sekaligus sebagai V1.9.3). Akhirnya mengantarkan gambar Boneka Kembang Api α yang sebenarnya sudah diperbaiki dua rilis lalu tetapi belum pernah sekali pun sampai ke distribusi, sekaligus memperbaiki bug baterai yang rusak jika dibiarkan penuh dalam waktu lama, menyiapkan cara (belum dijalankan) untuk memverifikasi di server sungguhan bahwa hulu ledak nuklir bisa dijadikan bahan bakar, dan memperbaiki bug scope Peluncur Roket. Kereta Api mendapat update besar seperti keberangkatan otomatis dan mengemudi otomatis, layar Listrik/Senjata Api/Bos mendapat desain baru &quot;Glimpse Glass&quot;, dan ditambahkan pula papan koordinat serta TPS/ping yang selalu tampil.</p>
-      <ul><li>【Penting】Bug gambar Boneka Kembang Api α (sebagian telinga kanan tampak hilang) sebenarnya sudah diperbaiki setelah v1.9.0.2, tetapi karena cacat pada mekanisme pembanding antar hasil rilis, perbaikan itu tidak pernah sekali pun sampai ke distribusi. Kini gambar yang sudah diperbaiki akhirnya sampai. Agar bug ini tidak terulang lagi, diperkenalkan pemeriksaan baru (check_dist_drift.py) yang membandingkan langsung aset sumber dengan hasil distribusi.</li><li>【Penting】Listrik: Memperbaiki bug di mana Baterai yang dibiarkan penuh selama sekitar 18,6 jam akan berhenti menghasilkan Sel Energi selamanya. Penyebabnya adalah overflow pada operasi penjumlahan, yang muncul lebih cepat pada bahan bakar berdaya tinggi (seperti hulu ledak nuklir). Baterai yang sudah telanjur rusak pun akan otomatis diperbaiki begitu versi ini dipasang.</li><li>Listrik: Mekanisme untuk menjadikan hulu ledak nuklir sebagai bahan bakar sudah ada sejak v1.8.7, tapi kali ini untuk pertama kalinya disiapkan cara untuk memverifikasinya di dedicated server sungguhan (namun lingkungan pengujian hilang selama ronde pengemasan ini, sehingga verifikasi ini belum benar-benar dijalankan -- lihat peringatan di bawah untuk detailnya). Bug di mana tampilan tingkat bahan bakar masih menampilkan string mentah yang belum diterjemahkan, &quot;sorakaze_power.fuel_quality.nuclear&quot;, juga diperbaiki.</li><li>Senjata Api: Scope Peluncur Roket akhirnya bisa terlihat di layar (diperbaiki setelah dilaporkan dua kali). Perbesarannya juga dinaikkan dari ×2 menjadi ×4. Tampilan kedua senapan sniper tidak diubah.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bos</span></div>
+      <h3 style="margin-top:0">Pembaruan terbaru: Backrooms Level 3–8 menjadi level tak terbatas yang sesungguhnya; aplikasi administrasi server di komputer dalam game; resep pemanggilan bos masuk ke buku resep</h3>
+      <p>Perubahan terbesar putaran ini adalah Backrooms Level 3 sampai 8. Dulu berupa pulau contoh berukuran 128 blok; kini menjadi level tanpa tepi yang benar-benar bisa dijelajahi dengan berjalan kaki. Komputer di MOD Bahan Bangunan mendapat aplikasi administrasi server, dan di MOD Bos resep item pemanggilan akhirnya muncul di buku resep dalam game. Tiga senjata berbasis data akhirnya masing-masing punya model di tangan sendiri.</p>
+      <ul><li>Yang benar-benar berubah isinya hanya empat MOD: Backrooms, Bahan Bangunan, Bos, dan Senjata Api. Enam sisanya (Planarcadia, Listrik, Kereta Api, Langit, Survival, Kendaraan) dinaikkan ke 2.1.0 hanya agar versinya seragam — berkas jar-nya berbeda dari versi 2.0.0 tepat pada satu entri, yaitu string versi di fabric.mod.json. Isinya tidak berubah satu byte pun.</li><li>Backrooms Level 3 sampai 8 berubah dari pulau contoh 128 blok menjadi level tak terbatas yang sesungguhnya. Tidak satu pun lagi punya tepi; semuanya bisa dijelajahi dengan berjalan kaki.</li><li>Level 3, «Gedung Instalasi Listrik». Arusnya hidup dan menyentuh panel itu berbahaya. Seekor Hound berpatroli, dan di ruang kabel bawah tanah menunggu seorang Smiler.</li><li>Level 4, «Kantor Kosong». Berperingkat aman — tetapi 3% jendelanya sedang memandangimu, dan bentuknya persis sama dengan yang lain. Di sini kewarasan pulih perlahan. Air almond ada di ruang istirahat.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bos</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Langit</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Kendaraan</span></div>
       <p><a href="changelog/">Lihat semua riwayat pembaruan →</a></p>
     </div>
 
@@ -91,47 +91,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Senjata Api</h3>
       <p class="card__meta">Senjata jarak jauh yang tidak ada di vanilla</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Kereta Api</h3>
       <p class="card__meta">Kendaraan kereta dan rel</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Bahan Bangunan &amp; Dekorasi</h3>
       <p class="card__meta">Bahan bangunan dan perkakas rumah untuk membangun kota</p>
-      <div class="card__meta">v1.9.0.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Bos</h3>
       <p class="card__meta">Musuh kuat untuk dikalahkan beserta perlengkapan hasil dropnya</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Langit</h3>
       <p class="card__meta">Dimensi baru dan kerajaan malaikat</p>
-      <div class="card__meta">v1.8.4</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survival</h3>
       <p class="card__meta">Bijih baru, zirah, dan elemen bertahan hidup</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Kendaraan</h3>
       <p class="card__meta">Mobil, bus, dan pesawat</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Listrik</h3>
       <p class="card__meta">Pembangkit listrik, jaringan distribusi, dan perangkat elektronik</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
+      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Labirin misterius dengan sistem tingkat kewarasan</p>
-      <div class="card__meta">v1.9.0.2</div>
+      <div class="card__meta">v2.1.0</div>
+    </a>
+      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
+      <h3>Planarcadia</h3>
+      <p class="card__meta">Dunia hiburan malam dan gerbang menuju ke sana</p>
+      <div class="card__meta">v2.1.0</div>
     </a>
 </div>
 
@@ -165,7 +170,7 @@
 </div>
 
 <h2>Tentang Proyek Ini</h2>
-<p>Proyek ini awalnya bernama &quot;Sorakaze&quot; dan dimulai dari penambahan 3 MOD — senjata api, kereta api, dan bahan bangunan — sambil tetap mempertahankan pengalaman survival vanilla. Sejak itu terus berkembang dengan menambahkan item yang bisa di-craft, hingga berganti nama menjadi &quot;Glimpse Alpha&quot; di versi v1.8.0. Saat ini sudah menjadi susunan 9 MOD yang mencakup bos, dimensi baru, elemen survival, kendaraan, hingga infrastruktur listrik.</p>
+<p>Proyek ini awalnya bernama &quot;Sorakaze&quot; dan dimulai dari penambahan 3 MOD — senjata api, kereta api, dan bahan bangunan — sambil tetap mempertahankan pengalaman survival vanilla. Sejak itu terus berkembang dengan menambahkan item yang bisa di-craft, hingga berganti nama menjadi &quot;Glimpse Alpha&quot; di versi v1.8.0. Saat ini sudah menjadi susunan 10 MOD yang mencakup bos, dimensi baru, elemen survival, kendaraan, hingga infrastruktur listrik.</p>
 <p>Kami secara konsisten berpegang pada prinsip untuk tidak mengganti atau menghapus elemen vanilla — busur panah, minecart, dan elemen lain yang sudah ada tetap dibiarkan apa adanya. Nama senjata api, perusahaan, atau merek dagang yang benar-benar ada tidak digunakan.</p>
 
 </main>

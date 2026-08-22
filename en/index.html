@@ -62,7 +62,7 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     This is an unofficial reference site for <strong>Glimpse Alpha</strong> (formerly known as Sorakaze), the Fabric mod group running on the Sorakazekarasu server — covering its recipes, changelog, and install instructions. We currently run
-    <strong>9 mods</strong> (guns, rail, building materials, boss, sky, survival, vehicles, power, and Backrooms) together on Minecraft
+    <strong>10 mods</strong> (guns, rail, building materials, boss, sky, survival, vehicles, power, Backrooms, and Planarcadia) together on Minecraft
     <strong>26.2</strong>.
   </p>
   <p class="callout callout--info">This site does not distribute the mods themselves (the jar files). What&#x27;s here is just &quot;reading material&quot; — recipe tables, changelogs, install instructions, and the like. Please get the mod files directly from your server admin.</p>
@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">New feature</span>
-        <span class="timeline-entry__release">v1.9.3</span>
-        <span class="card__meta">2026-08-13</span>
+        <span class="timeline-entry__release">V2.1.0</span>
+        <span class="card__meta">2026-08-22</span>
       </div>
-      <h3 style="margin-top:0">Latest update: Verified Nuclear-Warhead Power Generation, Major Rail Update, New Screen Design, Always-On Coordinates</h3>
-      <p>Updated 5 mods at once (there are no v1.9.1 or v1.9.2 releases — the major rail update and the nuclear-warhead power generation requests are bundled together and shipped as v1.9.3). We&#x27;ve finally delivered Spark Doll α&#x27;s art, which had actually been fixed two releases ago but had never once made it into a shipped build, along with a fix for batteries breaking when left fully charged for a long time, a new (not-yet-run) way to verify on a real server that nuclear warheads can be used as fuel, and a fix for the Rocket Launcher&#x27;s scope bug. Rail gained a major update including automatic departure and automatic driving, Power/Guns/Boss screens got the new &quot;Glimpse Glass&quot; design, and always-on coordinate and TPS/ping displays were added.</p>
-      <ul><li>[Important] The Spark Doll α art bug (part of the right ear appearing to vanish) had actually already been fixed after v1.9.0.2, but a flaw in the mechanism that compares build outputs meant it never once made it into a distributed build. The fixed art finally arrives with this release. To make sure this never happens again, we&#x27;ve introduced a new check (check_dist_drift.py) that directly diffs source assets against the distributed build.</li><li>[Important] Power: Fixed a bug where a fully charged Battery, left alone for about 18.6 hours, would stop producing Energy Cells forever. The cause was an addition overflow, which showed up faster with higher-output fuels (like nuclear warheads). Batteries already broken by this bug will fix themselves automatically once you install this release.</li><li>Power: The mechanism for using nuclear warheads as fuel has existed since v1.8.7, but this round we set up a way to verify it on a real dedicated server for the first time (however, the test environment was lost during this packaging round, so it hasn&#x27;t actually been run yet -- see the warning below for details). Also fixed a bug where the fuel-grade display showed the raw, untranslated string &quot;sorakaze_power.fuel_quality.nuclear.&quot;</li><li>Guns: The Rocket Launcher&#x27;s scope is finally visible on screen (fixed after being reported twice). Its zoom level has also been raised from ×2 to ×4. The appearance of both sniper rifles is unchanged.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Power</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Guns</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span></div>
+      <h3 style="margin-top:0">Latest update: Backrooms Levels 3–8 become real, endless levels; a server-admin app on the in-game PC; boss summon recipes reach the recipe book</h3>
+      <p>The largest change this round is Backrooms Levels 3 through 8. They used to be 128-block demo islands; they are now endless levels you can actually walk into and explore. The in-game PC in the Building &amp; Decor mod gained a server-administration app, and in the Boss mod the summoning items&#x27; recipes now appear in the in-game recipe book. The three data-driven guns each have their own in-hand model at last.</p>
+      <ul><li>Only four mods actually changed: Backrooms, Building &amp; Decor, Boss and Guns. The other six (Planarcadia, Power, Rail, Sky, Survival, Vehicles) were bumped to 2.1.0 only to keep the set consistent — their jars differ from the 2.0.0 ones in exactly one entry, the version string in fabric.mod.json. Not a byte of their content changed.</li><li>Backrooms Levels 3 to 8 went from 128-block demo islands to real, endless levels. None of them has an edge any more; all of them can be walked and explored.</li><li>Level 3, the Electrical Station. The current is live and touching a panel is dangerous. A Hound patrols, and a Smiler waits in the underground cable room.</li><li>Level 4, the Empty Offices. Rated safe — but 3% of the windows are watching you, and they look exactly like the rest. Sanity slowly recovers here. The almond water is in the break room.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Guns</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Power</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Sky</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Vehicles</span></div>
       <p><a href="changelog/">See the full changelog →</a></p>
     </div>
 
@@ -91,47 +91,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Guns</h3>
       <p class="card__meta">Ranged weapons vanilla doesn&#x27;t have</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Rail</h3>
       <p class="card__meta">Trains and other track-bound vehicles</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Building &amp; Decor</h3>
       <p class="card__meta">Building materials and appliances for city-building</p>
-      <div class="card__meta">v1.9.0.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Boss</h3>
       <p class="card__meta">Powerful bosses and their drops</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Sky</h3>
       <p class="card__meta">A new dimension and the angels&#x27; kingdom</p>
-      <div class="card__meta">v1.8.4</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survival</h3>
       <p class="card__meta">New ores, armor, and life-support features</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Vehicles</h3>
       <p class="card__meta">Cars, buses, and aircraft</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Power</h3>
       <p class="card__meta">Power generation, transmission, and electric devices</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
+      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Liminal exploration with a sanity meter</p>
-      <div class="card__meta">v1.9.0.2</div>
+      <div class="card__meta">v2.1.0</div>
+    </a>
+      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
+      <h3>Planarcadia</h3>
+      <p class="card__meta">A nightlife pleasure world and the gate to it</p>
+      <div class="card__meta">v2.1.0</div>
     </a>
 </div>
 
@@ -165,7 +170,7 @@
 </div>
 
 <h2>About this project</h2>
-<p>It started out under the name &quot;Sorakaze,&quot; adding three mods — guns, rail, and building materials — on top of an otherwise vanilla survival experience. From there it kept expanding with craftable items, and was renamed &quot;Glimpse Alpha&quot; in v1.8.0. It&#x27;s now a 9-mod pack that includes bosses, a new dimension, survival features, vehicles, and power infrastructure.</p>
+<p>It started out under the name &quot;Sorakaze,&quot; adding three mods — guns, rail, and building materials — on top of an otherwise vanilla survival experience. From there it kept expanding with craftable items, and was renamed &quot;Glimpse Alpha&quot; in v1.8.0. It&#x27;s now a 10-mod pack that includes bosses, a new dimension, survival features, vehicles, and power infrastructure.</p>
 <p>The consistent policy has been to never replace or remove vanilla content — things like bows and minecarts remain exactly as they were. No real-world firearm, company, or trademark names are used.</p>
 
 </main>

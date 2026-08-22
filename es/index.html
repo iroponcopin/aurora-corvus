@@ -62,7 +62,7 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     Sitio de referencia no oficial con las recetas, el historial de actualizaciones y la guía de instalación del conjunto de MOD de Fabric «<strong>Glimpse Alpha</strong>» (antes llamado Sorakaze) instalado en el servidor Sorakazekarasu. Actualmente se operan a la vez 
-    <strong>9 MOD</strong> (armas de fuego, ferrocarril, materiales de construcción, jefes, cielo, supervivencia, vehículos, electricidad y Backrooms) sobre Minecraft
+    <strong>10 MOD</strong> (armas de fuego, ferrocarril, materiales de construcción, jefes, cielo, supervivencia, vehículos, electricidad, Backrooms y Planarcadia) sobre Minecraft
     <strong>26.2</strong>.
   </p>
   <p class="callout callout--info">Este sitio no distribuye los archivos jar de los MOD. Aquí solo encontrarás material de lectura: tablas de recetas, historial de actualizaciones y guías de instalación. Consigue los archivos del MOD directamente con el administrador del servidor.</p>
@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Novedad</span>
-        <span class="timeline-entry__release">v1.9.3</span>
-        <span class="card__meta">2026-08-13</span>
+        <span class="timeline-entry__release">V2.1.0</span>
+        <span class="card__meta">2026-08-22</span>
       </div>
-      <h3 style="margin-top:0">Última actualización: Se demuestra la generación eléctrica con ojivas nucleares, gran actualización del ferrocarril, nuevo diseño de pantalla y coordenadas siempre visibles</h3>
-      <p>Se actualizaron 5 MOD a la vez (no existen las versiones V1.9.1 ni V1.9.2: la gran actualización del ferrocarril y los encargos relacionados con la generación eléctrica con ojivas nucleares se agrupan y se publican juntos como V1.9.3). Por fin llega el dibujo del Muñeco de fuegos artificiales α, que ya estaba corregido desde hace dos versiones pero nunca había llegado a distribuirse. Se corrigió el fallo por el que la batería se rompía si se dejaba llena durante mucho tiempo, se preparó (aunque sin ejecutar todavía) una forma de verificar en un servidor real que la ojiva nuclear puede usarse como combustible, y se corrigió el fallo de la mira del lanzacohetes. El ferrocarril recibe una gran actualización con salida y conducción automáticas, entre otras cosas; las pantallas de Electricidad, Armas de fuego y Jefes estrenan el nuevo diseño «Glimpse Glass»; y se añadieron las tarjetas siempre visibles de coordenadas y de TPS/ping.</p>
-      <ul><li>[Importante] El fallo del dibujo del Muñeco de fuegos artificiales α (parte de la oreja derecha que parecía desaparecer) llevaba en realidad corregido desde después de la v1.9.0.2, pero, por un defecto en el mecanismo que compara una versión distribuida con la siguiente, nunca llegó a reflejarse en el archivo distribuido. Esta vez por fin llega el dibujo ya corregido. Para que este fallo no vuelva a ocurrir, se introdujo una nueva comprobación (check_dist_drift.py) que coteja directamente los recursos de origen con lo que se distribuye.</li><li>[Importante] Electricidad: se corrigió el fallo por el que, si se dejaba una batería llena durante unas 18,6 horas, dejaba de producir celdas de energía para siempre. La causa era un desbordamiento en una suma, que aparecía antes cuanto más potente era el combustible (como la ojiva nuclear). Las baterías que ya se hayan roto por este motivo se repararán automáticamente al instalar esta versión.</li><li>Electricidad: el mecanismo para usar la ojiva nuclear como combustible existe desde la v1.8.7, pero esta vez se preparó por primera vez una forma de verificarlo en un servidor dedicado real (sin embargo, el entorno de pruebas se perdió durante este ciclo de empaquetado, así que todavía no se ha podido ejecutar; véase la advertencia más abajo). También se corrigió el fallo por el que el grado de combustible se mostraba tal cual como la cadena sin traducir «sorakaze_power.fuel_quality.nuclear».</li><li>Armas de fuego: la mira del lanzacohetes por fin se ve en pantalla (se corrigió tras dos informes del problema). También se subió el aumento de ×2 a ×4. El aspecto de los 2 rifles francotiradores no se ha modificado.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Supervivencia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Electricidad</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Armas de fuego</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Ferrocarril</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Jefes</span></div>
+      <h3 style="margin-top:0">Última actualización: Los niveles 3 a 8 de los Backrooms pasan a ser niveles infinitos de verdad; una app de administración del servidor en el ordenador del juego; las recetas de invocación de jefes llegan al libro de recetas</h3>
+      <p>El cambio más grande de esta ronda son los niveles 3 a 8 de los Backrooms. Antes eran islas de demostración de 128 bloques; ahora son niveles sin borde por los que se puede caminar y explorar de verdad. El ordenador del MOD de materiales suma una app de administración del servidor, y en el MOD de jefes las recetas de los objetos de invocación aparecen por fin en el libro de recetas del juego. Las tres armas definidas por datos tienen por fin cada una su propio modelo en la mano.</p>
+      <ul><li>Solo cambiaron de contenido cuatro MOD: Backrooms, Materiales/Decoración, Jefes y Armas de fuego. Los otros seis (Planarcadia, Electricidad, Ferrocarril, Cielo, Supervivencia, Vehículos) subieron a 2.1.0 solo para mantener el conjunto coherente: sus jar se diferencian de los de 2.0.0 en una sola entrada, la cadena de versión de fabric.mod.json. No cambió ni un byte de su contenido.</li><li>Los niveles 3 a 8 de los Backrooms pasaron de islas de demostración de 128 bloques a niveles infinitos de verdad. Ninguno tiene ya borde; todos se pueden recorrer a pie.</li><li>Nivel 3, el edificio eléctrico. La corriente está viva y tocar un cuadro es peligroso. Un Hound patrulla, y en la sala de cables del sótano espera un Smiler.</li><li>Nivel 4, las oficinas vacías. Clasificado como seguro, pero el 3 % de las ventanas te está mirando, y son idénticas a las demás. Aquí la cordura se recupera despacio. El agua de almendra está en la sala de descanso.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Jefes</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Materiales y decoración</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Armas de fuego</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Electricidad</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Ferrocarril</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Cielo</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Supervivencia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Vehículos</span></div>
       <p><a href="changelog/">Ver todo el historial →</a></p>
     </div>
 
@@ -91,47 +91,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Armas de fuego</h3>
       <p class="card__meta">Armas a distancia que la vanilla no tiene</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Ferrocarril</h3>
       <p class="card__meta">Trenes y vehículos sobre raíles</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Materiales y decoración</h3>
       <p class="card__meta">Materiales de construcción y electrodomésticos para tu ciudad</p>
-      <div class="card__meta">v1.9.0.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Jefes</h3>
       <p class="card__meta">Poderosos objetivos de combate y su equipo exclusivo</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Cielo</h3>
       <p class="card__meta">Una nueva dimensión y el reino de los ángeles</p>
-      <div class="card__meta">v1.8.4</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Supervivencia</h3>
       <p class="card__meta">Nuevos minerales, armaduras y elementos de la vida cotidiana</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Vehículos</h3>
       <p class="card__meta">Coches, autobuses y aeronaves</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Electricidad</h3>
       <p class="card__meta">Generación y distribución eléctrica, y aparatos electrificados</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
+      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Exploración liminal con medidor de cordura</p>
-      <div class="card__meta">v1.9.0.2</div>
+      <div class="card__meta">v2.1.0</div>
+    </a>
+      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
+      <h3>Planarcadia</h3>
+      <p class="card__meta">Un mundo de ocio nocturno y su portal</p>
+      <div class="card__meta">v2.1.0</div>
     </a>
 </div>
 
@@ -165,7 +170,7 @@
 </div>
 
 <h2>Sobre este proyecto</h2>
-<p>El proyecto empezó bajo el nombre «Sorakaze», con tres MOD (armas de fuego, ferrocarril y materiales de construcción) que se añadieron manteniendo intacta la experiencia de supervivencia vanilla. Desde entonces ha seguido creciendo con nuevos objetos crafteables, y en la v1.8.0 pasó a llamarse «Glimpse Alpha». Hoy en día es un conjunto de 9 MOD que incluye jefes, nuevas dimensiones, elementos de supervivencia, vehículos e incluso infraestructura eléctrica.</p>
+<p>El proyecto empezó bajo el nombre «Sorakaze», con tres MOD (armas de fuego, ferrocarril y materiales de construcción) que se añadieron manteniendo intacta la experiencia de supervivencia vanilla. Desde entonces ha seguido creciendo con nuevos objetos crafteables, y en la v1.8.0 pasó a llamarse «Glimpse Alpha». Hoy en día es un conjunto de 10 MOD que incluye jefes, nuevas dimensiones, elementos de supervivencia, vehículos e incluso infraestructura eléctrica.</p>
 <p>Un principio que se ha mantenido en todo momento es no sustituir ni eliminar elementos vanilla: cosas como el arco y flecha o la vagoneta siguen ahí tal cual. No se usan nombres de armas, empresas ni marcas reales.</p>
 
 </main>

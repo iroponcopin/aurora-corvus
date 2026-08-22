@@ -63,7 +63,105 @@ MODS = [
     # **ここに足し忘れると 10 レシピが早見表から丸ごと落ちる**(§31.4 と同じ形の欠落。
     # 生成器はカテゴリが未知なら落ちるが、MODS に無いモジュールは黙って存在しないことになる)。
     ("sorakaze-power", "sorakaze_power", "電力"),
+    # V2.0.0: 二相楽園(Planarcadia)MOD。**V2.0.0 で初めて配布されたのに、ここに 2 度の
+    # ラウンドを跨いで足されないままだった** —— つまり 2 枚のレシピが V2.0.0・V2.1.0 の
+    # どちらの早見表にも一度も出ていない。§31.4 / §39 と同じ「MODS に無いものは黙って
+    # 存在しないことになる」欠落である。同じことを 3 度やらないために、この直後の
+    # `check_mods_roster()` が **一覧を手で信じるのをやめ、mods-src を数えて突き合わせる**。
+    ("sorakaze-planarcadia", "sorakaze_planarcadia", "二相楽園"),
 ]
+
+# ---------------------------------------------------------------------------
+# MODS の取りこぼし検出(V2.1.0 で新設)
+# ---------------------------------------------------------------------------
+# ⚠ **「無い」と宣言することが、無いことを検出する仕掛けを切る。**
+#    バックルームズは「レシピが 0 件だから MODS に要らない」と分かっていた。
+#    その判断は正しかったが、同じ判断の下で **本当にレシピを持つ二相楽園も**
+#    黙って外れていた。だから下の一覧は「免除リスト」ではなく **主張** であり、
+#    `check_mods_roster()` は毎回その主張を **実際に数え直して検証する**。
+#    ここに載っているモジュールが 1 件でもレシピを持ったら、生成は止まる。
+NO_RECIPE_MODULES = {
+    "sorakaze-backrooms": "階層そのものが中身で、クラフト可能なアイテムを 1 つも持たない",
+    "sorakaze-sapporo": "V2.1.0 には同梱されていない(V2.2 へ持ち越し)",
+}
+
+# 「今日 mods-src にレシピを持つモジュールがいくつあるか」の下限。
+# 数が減る = 数え方が壊れた(パスの構造が変わった等)ということなので、
+# **0 件や 1 件を『見つからなかった』ではなく『無い』と読んで素通りする**のを防ぐ。
+MODS_FLOOR = 9
+
+
+def check_mods_roster():
+    """mods-src を歩いて、レシピを持つモジュールが全部 MODS に載っているか確かめる。
+
+    出典は **ディスク上の mods-src ただ 1 つ**。ここに名前を書き写さない ——
+    書き写した瞬間に、次に増えるモジュールがまた黙って落ちる。
+    バックアップ用の複製(`sorakaze-boss.pre-...` のように名前に `.` を含む)は
+    出荷対象ではないので数えない。
+    """
+    src = ROOT / "mods-src"
+    if not src.is_dir():
+        raise SystemExit(f"ERROR: {src} is not a directory - the roster check cannot run, and "
+                         f"skipping it is exactly how sorakaze-planarcadia went missing")
+    found = {}          # mod_dir -> レシピ json の数
+    for d in sorted(src.iterdir()):
+        if not d.is_dir() or not d.name.startswith("sorakaze-") or "." in d.name:
+            continue
+        modid = "sorakaze_" + d.name[len("sorakaze-"):]
+        n = 0
+        for sub in ("recipe", "recipes"):
+            n += len(list((d / "src/main/resources/data" / modid / sub).glob("*.json")))
+        found[d.name] = n
+
+    if not found:
+        raise SystemExit(
+            f"ERROR: no sorakaze-* module directories found under {src}. That is not "
+            f"'the suite has no modules' - it means this walk is looking in the wrong place, "
+            f"and an empty roster would make every check below vacuously true.")
+
+    listed = {mod_dir for mod_dir, _, _ in MODS}
+    with_recipes = {name for name, n in found.items() if n > 0}
+
+    missing = sorted(with_recipes - listed)
+    if missing:
+        raise SystemExit(
+            "ERROR: %d module(s) ship craftable recipes but are not in MODS, so every one of "
+            "their recipes would be silently absent from the sheet: %s"
+            % (len(missing), ", ".join(f"{m} ({found[m]} recipe json)" for m in missing)))
+
+    # 「レシピが無い」という主張のほうを検証する。増えていたら止まる。
+    for name, why in sorted(NO_RECIPE_MODULES.items()):
+        if name not in found:
+            print(f"NOTE: NO_RECIPE_MODULES lists {name}, but it is not in mods-src any more "
+                  f"(claim: {why}) - remove the entry once that is intentional")
+            continue
+        if found[name] > 0:
+            raise SystemExit(
+                "ERROR: %s is declared recipe-less (%s) but now has %d recipe json(s). "
+                "The declaration is what switches off the missing-module detector, so it must "
+                "not be allowed to go stale: add %s to MODS (with a category, a cat_order entry "
+                "and a CATEGORY_TAB_ICON) instead."
+                % (name, why, found[name], name))
+
+    # 一覧に載っているのに mods-src に無いもの(名前の打ち間違い)も黙って通さない。
+    ghosts = sorted(listed - set(found))
+    if ghosts:
+        raise SystemExit(
+            "ERROR: MODS names %d directory(ies) that do not exist under mods-src: %s"
+            % (len(ghosts), ", ".join(ghosts)))
+
+    if len(found) < MODS_FLOOR:
+        raise SystemExit(
+            "ERROR: only %d sorakaze-* module(s) found under %s, below the floor of %d. "
+            "A count that shrank means the walk broke, not that modules were deleted."
+            % (len(found), src, MODS_FLOOR))
+
+    unlisted = sorted(set(found) - listed)
+    print("mods roster: %d module dir(s) in mods-src, %d in MODS, %d recipe json(s) total; "
+          "recipe-less and declared: %s"
+          % (len(found), len(listed), sum(found.values()), ", ".join(unlisted) or "(none)"))
+
+
 DOOR_IDS = {"auto_door", "fusuma", "large_door_iron", "large_door_wood", "hatch",
             "camo_door", "roller_shutter", "sliding_glass_door", "jail_bar_door"}
 
@@ -90,24 +188,18 @@ KNOWN_UNNAMED = frozenset({
     #    表示名・ツールチップ 4 行・パネルの 46 鍵をまとめて両言語に入れてある
     #    (所有者の「発射台はどこにあるんですか?」への対応)。この行を戻すと、
     #    上の規律どおり「直ったのに載っている」で生成が止まる。
-    # 建材 v1.7.7 の強化ガラスの窓。**17 色のうち黒だけ名前がある**ので、
-    # 「一括で入れ忘れた」ではなく「1 色だけ入れて残りを忘れた」形である。
-    "sorakaze_deco:reinforced_glass_pane",
-    "sorakaze_deco:blue_reinforced_glass_pane",
-    "sorakaze_deco:brown_reinforced_glass_pane",
-    "sorakaze_deco:cyan_reinforced_glass_pane",
-    "sorakaze_deco:gray_reinforced_glass_pane",
-    "sorakaze_deco:green_reinforced_glass_pane",
-    "sorakaze_deco:light_blue_reinforced_glass_pane",
-    "sorakaze_deco:light_gray_reinforced_glass_pane",
-    "sorakaze_deco:lime_reinforced_glass_pane",
-    "sorakaze_deco:magenta_reinforced_glass_pane",
-    "sorakaze_deco:orange_reinforced_glass_pane",
-    "sorakaze_deco:pink_reinforced_glass_pane",
-    "sorakaze_deco:purple_reinforced_glass_pane",
-    "sorakaze_deco:red_reinforced_glass_pane",
-    "sorakaze_deco:white_reinforced_glass_pane",
-    "sorakaze_deco:yellow_reinforced_glass_pane",
+    # ⚠ 建材 v1.7.7 の強化ガラスの窓 16 件(黒以外の全色 + 無色)は
+    #    **2026-08-17 に直ったので外した**。同日の「遮光付き強化ガラス」作業で
+    #    `block.sorakaze_deco.<色>_reinforced_glass_pane` が ja_jp / en_us の
+    #    両方に入り、この生成器が自分から
+    #      「ERROR: 16 id(s) in KNOWN_UNNAMED now have a proper name」
+    #    と言って **exit 1 で生成を拒んだ**(上の規律どおり)。だから消したので
+    #    あって、通すために消したのではない。1 件でも戻れば `regressions` 側で
+    #    また止まる。
+    #
+    # ここが空になった = 「名前の無いまま出荷されているものは 0 件」。
+    # 新しく名前を失ったものが出れば `regressions` で生成が止まる(空集合でも
+    # 検査は空虚にならない: 引き算の向きが逆なので下の `fixed` 検査だけが無効化される)。
 })
 
 # レシピを持たない(=クラフト不可の)特別入手アイテム。早見表には「入手方法」カードとして掲載する
@@ -398,6 +490,36 @@ YOMI = {
     "電車": "でんしゃ", "先頭車": "せんとうしゃ", "中間車": "ちゅうかんしゃ",
     # --- v1.9.3: 架線(装飾用の設置アイテム)---------------------------------
     "架線": "かせん",
+    # --- 2026-08-17: この日の作業で入った 67 枚のぶん ------------------------
+    # ここに足さないと **64 枚が五十音順の外へ落ちる**(警告は出るが生成は通るので、
+    # 黙って並びだけが壊れる形になる)。読みは複合語のまま登録する ——
+    # 「遮光」+「付き」に割ると「つき」が「月」と同じ扱いになり、色ちがい 51 枚が
+    # 「遮光付き〜」でまとまらなくなる。
+    "遮光付き": "しゃこうつき",              # 建材: 遮光付き強化ガラス 51 種
+    "防護服": "ぼうごふく",                   # 銃: Hazmat Suit
+    "定義": "ていぎ",                         # 銃: データ定義銃(Data-Defined Firearm)
+    "携行": "けいこう",                       # 乗り物: 携行缶(缶 は登録済み)
+    # ⚠ 「空」は 2 通りに読む。「空の携行缶」= そら、「空気清浄機」= くう。
+    #    1 文字の「空」を そら にしたうえで、**くう と読むほうを複合語で先に取る**。
+    #    (「空色」= そらいろ は既に上で複合語として登録済みなので影響しない。)
+    "空気清浄機": "くうきせいじょうき",        # 電力: Air Purifier(V2 §10)
+    "空": "そら",
+    "鍛冶": "かじ", "祭壇": "さいだん", "核": "かく",   # ボス: 鍛冶祭壇の核
+    "霜": "しも",                             # ボス: 霜の祭壇
+    "溶融": "ようゆう",                       # ボス: 溶融の王冠
+    "原初": "げんしょ",                       # ボス: 原初の卵
+    "心臓": "しんぞう",                       # ボス: スカルクの心臓
+    "魂血": "こんけつ",                       # ボス: 魂血の祭壇(Soul Blood Altar)
+    "冷蔵庫": "れいぞうこ",                    # サバイバル: Refrigerator
+    "蛇口": "じゃぐち",                        # サバイバル: Water Tap(口 は くち で登録済み)
+    # --- V2.1.0: この回で早見表に初めて出るぶん ------------------------------
+    # ⚠ 足さないと **警告は出るが生成は通り、並びだけが黙って壊れる**。
+    #    銃工作台は V2.0.0 の時点で jar に入っていたのに、MODS ではなく
+    #    再生成をしていなかったせいで今まで表に出ていなかった。
+    "工作台": "こうさくだい",                  # 銃: 銃工作台(銃 は じゅう で登録済み)
+    # 二相楽園(Planarcadia)。ジャンル名そのものと、その 2 枚のカード。
+    "二相楽園": "にそうらくえん",
+    "次元": "じげん", "跳躍": "ちょうやく", "壁画": "へきが",  # 次元跳躍の壁画
     # --- 乗り物 -------------------------------------------------------------
     "大型旅客機": "おおがたりょかくき", "大型": "おおがた", "小型": "こがた",
     "平床": "ひらゆか", "箱型": "はこがた", "農業用": "のうぎょうよう",
@@ -763,6 +885,53 @@ def vanilla_zip():
     if _VANILLA_ZIP is None:
         _VANILLA_ZIP = load_vanilla_zip()
     return _VANILLA_ZIP
+
+
+_VANILLA_ITEM_TAG_CACHE = {}
+
+
+def vanilla_item_tag(name, _seen=None):
+    """`#minecraft:<name>` を **公式 jar の中のタグ定義**から実アイテム id の並びに開く。
+
+    2026-08-17 に必要になった。`sorakaze_vehicles:gasoline` が材料に
+    `#minecraft:coals` を使いはじめ、`register()` の「未知の名前空間」の枝に落ちて
+    **カードの 4 マスが `#minecraft:coals` という生の文字とアイコン無しの空欄**になった
+    (生成は WARNING だけで通る = 黙って劣化する形。あの枝の注記が
+    「今は存在しないが、現れたら」と書いていた当のものが現れた)。
+
+    出典は**バニラの jar 1 つだけ**である。ここにタグの中身を書き写さない ——
+    写した瞬間に、Mojang がタグを変えた日に早見表だけが嘘になる。
+    入れ子の `#...` 参照は再帰で開く。**取れなければ生成を止める**:
+    材料の分からないレシピを出すより、生成を落としたほうがよい。
+    """
+    if name in _VANILLA_ITEM_TAG_CACHE:
+        return _VANILLA_ITEM_TAG_CACHE[name]
+    seen = _seen or set()
+    if name in seen:
+        raise SystemExit("ERROR: vanilla item tag #minecraft:%s refers to itself (cycle)" % name)
+    seen.add(name)
+    path = "data/minecraft/tags/item/%s.json" % name
+    try:
+        raw = vanilla_zip().read(path)
+    except KeyError:
+        raise SystemExit(
+            "ERROR: a recipe uses the vanilla item tag #minecraft:%s, but %s is not in the "
+            "client jar (%s). Either the tag was renamed in this Minecraft version or the "
+            "recipe has a typo - a card with an unresolvable ingredient must not ship."
+            % (name, path, VANILLA_CLIENT_JAR))
+    out = []
+    for v in json.loads(raw.decode("utf-8"))["values"]:
+        vid = v["id"] if isinstance(v, dict) else v
+        if vid.startswith("#"):
+            out.extend(vanilla_item_tag(vid.split(":", 1)[1], seen))
+        elif vid not in out:
+            out.append(vid)
+    if not out:
+        raise SystemExit(
+            "ERROR: vanilla item tag #minecraft:%s resolved to nothing - the card would show "
+            "an empty slot where an ingredient belongs" % name)
+    _VANILLA_ITEM_TAG_CACHE[name] = out
+    return out
 
 
 def crop_to_used_uv(assets, name, png_path):
@@ -1280,6 +1449,30 @@ class ItemRegistry:
                   or self.van_en.get(f"block.minecraft.{name}")
                   or name.replace("_", " ").title())
             b64 = vanilla_texture_b64(vanilla_zip(), name)
+        elif ns == "#minecraft":
+            # バニラのアイテムタグ(`#minecraft:coals` など)。**中身は jar から読む。**
+            # 見せかたは「代表 1 個のアイコン + どれでもよいことが分かる名前」。
+            # アイコンを最初の 1 個にするのは、タグの並びが**バニラ側の宣言順**
+            # だからで、こちらで選び直さない(選び直すと出典が 2 つになる)。
+            members = vanilla_item_tag(name)
+            mem_ja, mem_en = [], []
+            for mid in members:
+                mname = mid.split(":", 1)[1]
+                mem_ja.append(self.van_ja.get(f"item.minecraft.{mname}")
+                              or self.van_ja.get(f"block.minecraft.{mname}")
+                              or VANILLA_JA_NAMES.get(mname, mname))
+                mem_en.append(self.van_en.get(f"item.minecraft.{mname}")
+                              or self.van_en.get(f"block.minecraft.{mname}")
+                              or mname.replace("_", " ").title())
+            # 長いタグは全部並べても読めないので、4 個まで挙げて残りは数で言う。
+            # **黙って切らない** —— 「ほか N 種」と書けば、全部ではないことが分かる。
+            if len(members) > 4:
+                ja = "・".join(mem_ja[:4]) + f" ほか {len(members) - 4} 種のどれか"
+                en = ", ".join(mem_en[:4]) + f" or {len(members) - 4} more"
+            else:
+                ja = "・".join(mem_ja) + " のどれか" if len(members) > 1 else mem_ja[0]
+                en = " or ".join(mem_en)
+            b64 = vanilla_texture_b64(vanilla_zip(), members[0].split(":", 1)[1])
         else:
             for mod_dir, modid, _cat in MODS:
                 if modid == ns:
@@ -1288,7 +1481,7 @@ class ItemRegistry:
                     b64 = mod_texture_b64(mod_dir, modid, name)
                     break
             else:
-                # 未知の名前空間(タグ材料など)。今は存在しないが、現れたら黙って
+                # 未知の名前空間。バニラでない MOD のタグなど。現れたら黙って
                 # 空欄にせず名指しする(§20.6 系の「静かな劣化」を作らない)。
                 print(f"WARNING: unknown namespace in ingredient id {item_id}")
                 ja = en = item_id
@@ -1352,6 +1545,7 @@ CATEGORY_TAB_ICON = {
     "天空": "sorakaze_sky:angels_halo",
     "サバイバル": "sorakaze_survival:canteen",
     "電力": "sorakaze_power:breaker",
+    "二相楽園": "sorakaze_planarcadia:portal_amethyst_block",
 }
 ALL_TAB_ICON = "minecraft:crafting_table"
 
@@ -1704,7 +1898,14 @@ def read_power_facts():
                  "cellRuntimeTicks", "fireplaceTicksPerCoal",
                  "cableStandardOhmsPerBlock", "cableInsulatedOhmsPerBlock",
                  "lineLossBudgetFraction", "referenceBranchWatts",
-                 "transformerCrossoverBlocks", "deviceWatts"]
+                 "transformerCrossoverBlocks", "deviceWatts",
+                 # V2 §9.2/§10(2026-08-17): 大気汚染と空気清浄機。
+                 # `PowerConfig.PollutionSettings` の中の宣言だが、
+                 # `java_field_defaults` はファイル全体から `public <型> <名> =` を拾うので
+                 # 入れ子クラスでも同じに読める(名前はこのファイル内で一意であることを確認済み)。
+                 # ⚠ ここに数を書き写さない。書き写した瞬間に config と手引きの 2 つの出典ができる。
+                 "generatorRadiusBlocks", "purifierRadiusBlocks", "purifierClearSeconds",
+                 "lightThreshold", "heavyThreshold", "severeThreshold", "maxLevel"]
     raw_cfg = java_field_defaults(cfg_path, cfg_names)
     cfg = {n: _resolve_java_expr(raw_cfg[n], spec) for n in cfg_names}
 
@@ -1948,6 +2149,16 @@ def read_power_facts():
         "heat_2": _fmt(2 * temp["temperatureMachineHeatCelsius"]),
         "heat_4": _fmt(4 * temp["temperatureMachineHeatCelsius"]),
         "heat_8": _fmt(8 * temp["temperatureMachineHeatCelsius"]),
+        # --- 大気汚染と空気清浄機(V2 §9.2/§10)---
+        # ⚠ どれも `PowerConfig.PollutionSettings` から読んだ既定値である。
+        #    手で書いた数は 1 つも無い。所有者が config を変えたら手引きも一緒に変わる。
+        "pollution_radius": _fmt(cfg["generatorRadiusBlocks"]),
+        "purifier_radius": _fmt(cfg["purifierRadiusBlocks"]),
+        "purifier_seconds": _fmt(cfg["purifierClearSeconds"]),
+        "pollution_light": _fmt(cfg["lightThreshold"]),
+        "pollution_heavy": _fmt(cfg["heavyThreshold"]),
+        "pollution_severe": _fmt(cfg["severeThreshold"]),
+        "pollution_max": _fmt(cfg["maxLevel"]),
         # --- レッドストーン ---
         "decay_minutes": _fmt(cfg["redstoneBlockDecaySeconds"] / 60.0),
         "decay_drops": "アイテムとして落ちます" if cfg["redstoneBlockDecayDropsItem"]
@@ -2837,6 +3048,69 @@ GUIDES = [
                     "水に沈めても使えます(水没させても消えません)。",
                 ],
             },
+            {
+                # V2 §9.2/§10(2026-08-17 に出荷)。**空気清浄機を足したら、
+                # ここに書かないと生成が止まる**(検査⑤「電力 MOD のカードが全部
+                # どれかの図に出ていること」)。実際 2026-08-17 の再生成はここで止まった。
+                "title": "⑫ ⚠ 原子力発電所は空気を汚します(空気清浄機)",
+                "goal": "<b>動いている原子力発電所は、まわりの空気を汚します。</b>"
+                        "汚れた空気の中に立っていると、遅くなり・弱くなり・最後は毒を受けます。"
+                        "消す道具は<b>空気清浄機</b>だけです。",
+                "diagram": {
+                    "caption": "汚染度は 0 〜 {pollution_max}。{pollution_light} 未満なら何も起きません"
+                               "(原子力発電所を止めれば、時間とともに自分で下がります)",
+                    "rows": [
+                        [
+                            ("i", "sorakaze_power:reactor_controller", "原子力発電所"),
+                            ("a", "→"),
+                            ("n", "半径 {pollution_radius} ブロックが汚れる"),
+                            ("a", "→"),
+                            ("i", "sorakaze_power:air_purifier", "空気清浄機"),
+                            ("a", "→"),
+                            ("n", "半径 {purifier_radius} ブロックが {purifier_seconds} 秒で安全に"),
+                        ],
+                        [
+                            ("n", "{pollution_light} 以上"),
+                            ("n", "{pollution_heavy} 以上"),
+                            ("n", "{pollution_severe} 以上"),
+                            None, None, None, None,
+                        ],
+                        [
+                            ("n", "移動速度低下 I"),
+                            ("n", "+ 弱体化 I"),
+                            ("n", "+ 毒 I"),
+                            None, None, None, None,
+                        ],
+                    ],
+                },
+                "io": {
+                    "in": [("sorakaze_power:reactor_controller", "動かすと空気が汚れます")],
+                    "out": [("sorakaze_power:air_purifier", "通電しているあいだ消し続けます")],
+                },
+                "steps": [
+                    "<b>汚れるのは原子力発電所だけです。</b>石炭の発電機・太陽光・風力・水流は"
+                    "空気を汚しません(<b>暑くはします</b> —— ⑧を見てください)。",
+                    "<b>空気清浄機を置いて、ケーブルで分電盤につないでください。</b>"
+                    "ふつうの機器と同じで、<b>電気が来ていないと何もしません。</b>",
+                    "1 台で<b>半径 {purifier_radius} ブロック</b>を"
+                    "<b>{purifier_seconds} 秒</b>で安全なところまで下げます。"
+                    "広い拠点は<b>並べて増やしてください</b> —— 重なった所は効き目が足し算になります。",
+                    "素手で右クリックすると、<b>いまここの汚染度</b>と、"
+                    "電気が来ているかどうかが出ます。数字が {pollution_light} 未満なら安全です。",
+                ],
+                "notes": [
+                    "<b>いちばん重い段でも毒までです。</b>毒は体力を 1 未満にしないので、"
+                    "どれだけ濃くても<b>歩いて出れば必ず助かります</b>。"
+                    "効果は域外に出れば数秒で切れます(画面のアイコンで分かります)。",
+                    "<b>清浄機が無くても、原子力発電所を止めれば汚染は時間で 0 に戻ります。</b>"
+                    "上がりっぱなしにはなりません。清浄機はその減りを局所的に速くする道具です。",
+                    "<b>屋内・屋外の区別はありません</b>(気温と違うところです)。"
+                    "壁で囲っても汚れは入ってきます —— 距離だけが効きます。",
+                    "<b>丸ごと止めたいときは</b> <code>config/sorakaze_power.json</code> の "
+                    "<code>pollution.enabled</code> を <code>false</code> にしてください。"
+                    "半径や秒数も同じところで変えられます(変えると上の数字も一緒に変わります)。",
+                ],
+            },
         ],
     },
 ]
@@ -3686,6 +3960,9 @@ apply();
 
 
 def main():
+    # ⚠ いちばん先に走らせる。ここを通らないと「1 つのモジュールが丸ごと無い」ことに
+    #    誰も気づけない —— 出力は正常に見え、終了コードは 0 のままだからである。
+    check_mods_roster()
     zf = vanilla_zip()
     lang_by_modid = {modid: load_lang(mod_dir, modid) for mod_dir, modid, _ in MODS}
     lang_en_by_modid = {modid: load_lang(mod_dir, modid, "en_us") for mod_dir, modid, _ in MODS}
@@ -3734,7 +4011,8 @@ def main():
     # V1.4.1: 「天空」を追加。<b>この一覧に無いカテゴリのカードは黙って捨てられる。</b>
     # MODS に足すだけでは早見表に出ない(実際に天空 MOD が丸ごと欠落した)ので、
     # MOD を増やしたら必ずここにも足すこと。
-    cat_order = ["銃", "電車", "建材", "ドア", "乗り物", "ボス", "天空", "サバイバル", "電力"]
+    cat_order = ["銃", "電車", "建材", "ドア", "乗り物", "ボス", "天空", "サバイバル", "電力",
+                 "二相楽園"]
     missing = {c["cat"] for c in cards} - set(cat_order)
     if missing:
         raise SystemExit(

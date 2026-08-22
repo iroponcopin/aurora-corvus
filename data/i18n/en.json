@@ -58,6 +58,10 @@
       "backrooms": {
         "name": "Backrooms",
         "tagline": "Liminal exploration with a sanity meter"
+      },
+      "planarcadia": {
+        "name": "Planarcadia",
+        "tagline": "A nightlife pleasure world and the gate to it"
       }
     },
     "common": {
@@ -75,7 +79,7 @@
       "changelog_balance_label": "Balance changes",
       "changelog_warnings_label": "Warnings",
       "changelog_limitations_label": "Not yet implemented/confirmed at this point",
-      "recipes_intro": "Crafting recipes for every item and block across the 9 installed mods, {count} in total. Click an item to see its recipe laid out on the same 3×3 grid as an actual crafting table. The \"How-To\" tab in the top right also explains how to use wiring-heavy features like auto-sorting and the power infrastructure.",
+      "recipes_intro": "Crafting recipes for every item and block across the {mod_count} installed mods, {count} in total. Click an item to see its recipe laid out on the same 3×3 grid as an actual crafting table. The \"How-To\" tab in the top right also explains how to use wiring-heavy features like auto-sorting and the power infrastructure.",
       "guide_intro": "A walkthrough covering everything from enabling the mods to actually starting to play. If you're just joining as a player, the \"For Players\" chapter alone is enough.",
       "audience_player": "For Players",
       "audience_admin": "For Server Admins",
@@ -124,8 +128,8 @@
     "hero_lede_1": "This is an unofficial reference site for ",
     "hero_lede_pack_name": "Glimpse Alpha",
     "hero_lede_2": " (formerly known as Sorakaze), the Fabric mod group running on the Sorakazekarasu server — covering its recipes, changelog, and install instructions. We currently run",
-    "hero_lede_mod_count": "9 mods",
-    "hero_lede_3": " (guns, rail, building materials, boss, sky, survival, vehicles, power, and Backrooms) together on Minecraft",
+    "hero_lede_mod_count": "{mod_count} mods",
+    "hero_lede_3": " (guns, rail, building materials, boss, sky, survival, vehicles, power, Backrooms, and Planarcadia) together on Minecraft",
     "hero_lede_4": ".",
     "btn_recipes": "View recipes",
     "btn_changelog": "View changelog",
@@ -166,7 +170,7 @@
       }
     ],
     "about_heading": "About this project",
-    "about_p1": "It started out under the name \"Sorakaze,\" adding three mods — guns, rail, and building materials — on top of an otherwise vanilla survival experience. From there it kept expanding with craftable items, and was renamed \"Glimpse Alpha\" in v1.8.0. It's now a 9-mod pack that includes bosses, a new dimension, survival features, vehicles, and power infrastructure.",
+    "about_p1": "It started out under the name \"Sorakaze,\" adding three mods — guns, rail, and building materials — on top of an otherwise vanilla survival experience. From there it kept expanding with craftable items, and was renamed \"Glimpse Alpha\" in v1.8.0. It's now a {mod_count}-mod pack that includes bosses, a new dimension, survival features, vehicles, and power infrastructure.",
     "about_p2": "The consistent policy has been to never replace or remove vanilla content — things like bows and minecarts remain exactly as they were. No real-world firearm, company, or trademark names are used.",
     "not_distributed_notice": "This site does not distribute the mods themselves (the jar files). What's here is just \"reading material\" — recipe tables, changelogs, install instructions, and the like. Please get the mod files directly from your server admin."
   },
@@ -1158,67 +1162,222 @@
         "The actual on-screen look of the always-on coordinate and TPS/ping displays was also unconfirmed.",
         "3 automated tests in Guns and 1 in Power remain flaky, with results varying from run to run. All of them have been confirmed to concern existing code that wasn't changed in this release."
       ]
+    },
+    {
+      "release": "V2.0.0",
+      "date": "2026-08-18",
+      "title": "The V2 update — a 10th mod, Planarcadia; four new bosses; plumbing, gasoline and food spoilage",
+      "summary": "This is V2 proper. The 10th mod, Planarcadia, shipped here for the first time. The Boss mod gained four new bosses, each with its own summoning ritual; Survival gained water infrastructure and a refrigerator; Vehicles gained gasoline; Power gained an air purifier. The Backrooms grew a great deal, and Building & Decor gained blackout reinforced glass in every colour.",
+      "highlights": [
+        "A 10th mod, Planarcadia (sorakaze_planarcadia), is bundled for the first time. Build a frame out of Portal Amethyst Blocks in the same shape as a Nether portal, light it, and it opens onto a pleasure world where night rules. It brings its own blocks — LED signs, the phantom moon, the Interplanar Jump Mural, a shop counter. It does not depend on any other Glimpse Alpha mod.",
+        "Four new bosses joined the Boss mod: the Volcanic Golem King (Forge Altar Core + Molten Crown), the Abyssal Kraken Warden (Sculk Heart + Sonar Eye), the Prismatic Ice Phoenix Dragon (Frost Altar + Primal Egg), and the Witherstorm Demon Overlord (Soul Blood Altar + 3 wither skeleton skulls + a nether star).",
+        "The Soul Blood Altar refuses the Witherstorm Demon Overlord until all three of the others have been killed. Each of the four has a guaranteed drop: the Volcanic Core, the Abyssal Sinew, the Prismatic Plume and the Overlord's Heart.",
+        "The Gravebound Reaper now has a small chance of dropping the Soul-Reaping Scythe. Anything you kill with that scythe has a small chance of dropping its own spawn egg.",
+        "Survival gained water infrastructure: pipes, a pump and a tap. The pump draws, the pipes carry, the tap fills. A refrigerator and Spoiled Food arrived with it.",
+        "Vehicles gained gasoline. Right-click a vehicle while holding a Gasoline Canister to refuel it. The empty canister does not break — refill it at a crafting table with 4 coal or charcoal.",
+        "Power gained an Air Purifier. Running a nuclear plant now pollutes the air around it, and standing in polluted air gives you slowness, then weakness, then poison. A powered purifier clears that pollution locally for as long as it has electricity.",
+        "Guns gained a data-driven firearm and attachment system. Put a gun and its attachments into the Gun Workbench and they are fitted the moment you take the gun back out; put a fitted gun back in and they come off. Three guns (Service Pistol, Marksman Carbine, Breaching Shotgun) and six attachments (Red Dot Sight, Suppressor, Extended Magazine, Angled Foregrip, Heavy Stock, Laser Pointer) use it. A Hazmat Suit that blocks nuclear contamination was also added — you need it and the gas mask together.",
+        "The Backrooms grew a great deal: Levels 0, 1 and 2, the Poolrooms, the party level and a hub hall lined with numbered doors, plus twelve entities (Hound, Smiler, Faceling, Skin Stealer, Peeling Colossus, Wailing Hulk, Pallid Runner, Partygoer, Deathmoth, Duller, Living Painting, False Puddle) and things to carry — almond water, bandages, a flashlight, a blood test kit, a crowbar, matches.",
+        "Building & Decor gained blackout reinforced glass: three shapes (block, pane, plate) in 17 colours. At the same time, the 16 reinforced glass panes that had shipped without a name since v1.7.7 finally got Japanese and English names."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "Version numbers moved from 1.x to 2.0.0 across the board. Replace all ten jars on the server and on every player's PC together."
+      ],
+      "known_limitations": [
+        "No V2.0.0 entry was published on this site at the time. This one was written afterwards, alongside the V2.1.0 release, by reading what the shipped jars actually contain."
+      ]
+    },
+    {
+      "release": "V2.1.0",
+      "date": "2026-08-22",
+      "title": "Backrooms Levels 3–8 become real, endless levels; a server-admin app on the in-game PC; boss summon recipes reach the recipe book",
+      "summary": "The largest change this round is Backrooms Levels 3 through 8. They used to be 128-block demo islands; they are now endless levels you can actually walk into and explore. The in-game PC in the Building & Decor mod gained a server-administration app, and in the Boss mod the summoning items' recipes now appear in the in-game recipe book. The three data-driven guns each have their own in-hand model at last.",
+      "highlights": [
+        "Only four mods actually changed: Backrooms, Building & Decor, Boss and Guns. The other six (Planarcadia, Power, Rail, Sky, Survival, Vehicles) were bumped to 2.1.0 only to keep the set consistent — their jars differ from the 2.0.0 ones in exactly one entry, the version string in fabric.mod.json. Not a byte of their content changed.",
+        "Backrooms Levels 3 to 8 went from 128-block demo islands to real, endless levels. None of them has an edge any more; all of them can be walked and explored.",
+        "Level 3, the Electrical Station. The current is live and touching a panel is dangerous. A Hound patrols, and a Smiler waits in the underground cable room.",
+        "Level 4, the Empty Offices. Rated safe — but 3% of the windows are watching you, and they look exactly like the rest. Sanity slowly recovers here. The almond water is in the break room.",
+        "Level 5, the Terror Hotel. 80% of the numbered doors are locked. In each contiguous region exactly one room differs in its details. Do not linger.",
+        "Level 6, Lights Out. A flashlight works properly for 20 seconds; past that it only works about 15% of any given second. While it is lit, entities notice you from four times as far — light attracts. This is a level you navigate by ear.",
+        "Level 7, Thalassophobia. One house of fixed shape, and an ocean with no far shore. Do not walk to the end of the pier.",
+        "Level 8, the Cave System. Tunnels dug for people and then abandoned; the iron rails really do lead somewhere. There is a flooded winze 32 blocks deep.",
+        "The in-game PC gained a \"Server Admin\" app. Without opening a config file, an administrator can change: whether phone messaging, calls and the browser are allowed; how many camera feeds can be shown at once and whether live feeds are allowed; whether automatic backups run, how often, and how many are kept; and a set of boss knobs (Plague Doctor natural spawn and its chance, thunderstorm-only spawning, respawn cooldown, Plague Wither pack size, wardens required for the Sculk Golem, the Reaper's wither summon count, whether Rock Lock spawners generate in nether fortresses, Plague Doctor max health, Plague Wither health multiplier).",
+        "Opening the admin app needs an admin ID and a password. The server administrator hands those out individually, only to the people they choose. They are not written anywhere on this site. Sign-in expires after a while, and failed attempts are rate-limited.",
+        "The recipes for the Boss mod's summoning items (Forge Altar Core, Molten Crown, Sculk Heart, Sonar Eye, Frost Altar, Primal Egg, Soul Blood Altar) now appear in the in-game recipe book. Until now they had no unlock path at all, so there was no way to discover how to make them from inside the game.",
+        "Four discovery advancements were added as a hint toward summoning: The Scorching Key, The Fathom Key, The Frost Key and The Altar Is Built. Each fires when you hold the matching summoning item.",
+        "The Plague Doctor's natural spawn is available again, behind an administrator toggle — but it defaults to OFF. Until an administrator explicitly turns it on, behaviour is identical to V2.0.0.",
+        "The three data-driven guns (Service Pistol, Marksman Carbine, Breaching Shotgun) each have their own in-hand model now. All three had been borrowing the assault rifle's mesh, so holding a pistol showed you a rifle."
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "Levels 3 to 8 generate in a fundamentally different way now. In a world where you visited the demo islands under V2.0.0, the terrain in that area will not match what was there before.",
+        "The admin ID and password for the Server Admin app are never published on this site. Get them from the server administrator directly."
+      ],
+      "known_limitations": [
+        "The Sapporo mod (sorakaze_sapporo) is not part of this round. It is deferred to V2.2.",
+        "The actual look, sound and entity behaviour of Levels 3–8 had not been confirmed in a real play-through at the time of writing."
+      ]
     }
   ],
   "roadmap": [
     {
-      "release": "V2",
-      "title": "V2 Update (Concept & Spec Finalized, Implementation Still Ahead)",
+      "release": "V2.2",
+      "title": "V2.2 (next round — not started, and neither its contents nor its date is settled)",
       "groups": [
+        {
+          "subtitle": "The Sapporo mod (carried over from V2.1.0)",
+          "bullets": [
+            "The Sapporo mod (sorakaze_sapporo) is not bundled in V2.1.0. It is deferred to V2.2.",
+            "Until it ships, the number of jars you install does not change. For now it is still 1 Fabric API plus Glimpse Alpha's {mod_count}."
+          ]
+        },
+        {
+          "subtitle": "Carried over from V2",
+          "bullets": [
+            "Everything still listed on the \"V2 update\" card below — rebuilding how water itself flows, the new weather and disasters, the gun balance and sound work, the money systems, redrawing the Backrooms entities — carries on here.",
+            "All of it is still at the idea stage. Only what is actually built and shipped appears in the Changelog."
+          ]
+        }
+      ]
+    },
+    {
+      "release": "V2",
+      "title": "The V2 update (partly shipped in V2.0.0 and V2.1.0 — what remains here has not shipped yet)",
+      "groups": [
+        {
+          "subtitle": "Parts of this plan that have already shipped",
+          "bullets": [
+            "Shipped in V2.0.0 (2026-08-18): the entrance to Planarcadia and the Portal Amethyst Block; four new bosses and their summoning rituals; the Plague Doctor and Reaper adjustments; water infrastructure (pipes, pump, tap); the refrigerator and food spoilage; gasoline and canisters; the air purifier and nuclear-plant air pollution; the hazmat suit; masks that break and repair themselves once.",
+            "Shipped in V2.1.0 (2026-08-22): Backrooms Levels 3–8 (demo islands to real, endless levels); the server-administration app on the in-game PC, including the automatic-backup settings; boss summon recipes in the recipe book and four discovery advancements; the three data-driven guns' own models.",
+            "See the Changelog page for the details. What is listed below is what those two rounds have not shipped yet."
+          ]
+        },
         {
           "subtitle": "Building Materials Mod: Video App Bug Fixes & Device Redesign",
           "bullets": [
             "Planned fix so that the video app's play, pause, and fast-forward/rewind controls work correctly (top-priority bug fix).",
             "Planned fix for a bug where audio keeps playing after leaving the server or moving to another world.",
-            "Planned fix for a bug where audio plays but no video is shown (screen stays black).",
-            "Concept to completely redesign the appearance of the iPhone, MacBook, and battery pack based on new design proposals."
+            "Planned fix for a bug where audio plays but no video is shown (the screen stays black).",
+            "Concept to completely redesign the iPhone, MacBook, and battery pack based on new design art — the inventory icon, the in-hand look, and the placed-in-world look are all planned to be redrawn."
           ]
         },
         {
-          "subtitle": "Water Systems Overhaul & Living Infrastructure",
+          "subtitle": "Water Rework & Plumbing Infrastructure",
           "bullets": [
-            "Concept to move away from vanilla water flow behavior toward a system where water physically and naturally flows from high ground to low ground (eliminating endless horizontal spread on flat ground, with water instead pooling in depressions).",
-            "Planned addition of a full water infrastructure set — pipes, pumps, faucets, and more — connecting water sources through to taps.",
-            "Water bottle capacity planned to quadruple. Thirst is expected to deplete slightly faster than hunger, and once thirst has persisted for 10 minutes it would start stacking damage — potentially fatal — unless a regeneration effect is active.",
-            "Planned automatic backup feature letting admins configure interval, retention count, and destination via a UI (setup instructions also planned for this site)."
+            "Concept to drop vanilla water-flow behaviour and switch to water that runs physically downhill — no more endless horizontal spread on flat ground, and water pools in depressions instead.",
+            "Planned new plumbing set — pipes, a pump, and a tap — so you can run a line from a water source to wherever you need it: the pump draws from a well or river, pipes carry it, and the tap fills your containers.",
+            "Each plumbing part is planned to get its own 3D model, inventory icon, in-hand appearance, and placed-in-world appearance.",
+            "The canteen's capacity is planned to be 4× what it is now. Thirst will drain slightly faster than hunger, and staying dehydrated for 10 minutes is expected to escalate damage — fatal unless you have Regeneration active."
           ]
         },
         {
-          "subtitle": "Firearms Mod: Balance Adjustments & Sound Overhaul",
+          "subtitle": "Server Operations: Automatic Backups",
           "bullets": [
-            "Under consideration: Minigun performance +50%, Assault Rifle +75%, Pistol power x1.5, SMG damage halved in exchange for +30% magazine capacity, Rocket Launcher damage and blast power both x3, and Turret damage x4 with durability +70%.",
-            "Concept to scale nuclear warheads up to destroying as many as 10 million blocks, and to triple both the blast power and radius of missile warheads (the nuclear warhead's own power is expected to stay based on its current value — a direct hit of 67,200 as of v1.8.8 — as the baseline).",
-            "Also planned: a fix for the Rocket Launcher's body model blocking the player's view while using the scope.",
-            "Concept to completely remake the gunfire sounds (reportedly not reusing audio from any specific existing game as-is, but producing new sounds in a similar style).",
-            "Concept to add 3 new missile launcher designs, all of which players would be able to pilot themselves."
+            "Planned automatic backup feature with an admin UI for the interval, how many backups to keep, and where to put them — so an interval like every 30 minutes can be set from a screen instead of by editing config files.",
+            "World folders are planned to be snapshotted, compressed, and timestamped, with older backups rotated out according to the retention setting. A how-to manual is also planned for this site."
           ]
         },
         {
-          "subtitle": "Boss Mod: 4 New Bosses & Existing Boss Adjustments",
+          "subtitle": "New Weather & Disasters: Blizzards, Typhoons, Earthquakes, Tsunamis, Volcanoes",
           "bullets": [
-            "Planned addition of 4 new bosses: \"Volcanic Golem King\" (HP 600), \"Abyssal Kraken Warden\" (HP 800), \"Prismatic Ice Phoenix Dragon\" (HP 750), and \"Witherstorm Demon Overlord\" (HP 1200, whose summoning condition is defeating the above three). All are envisioned with their own summoning items and phase-based fights.",
-            "Under consideration for the Plague Doctor: a 20-second grace period between taking damage and the Wither Storm summon — defeating it within 20 seconds (or in one hit) would prevent the summon, but would also forfeit any drops.",
-            "Concept for the Grim Reaper boss: on defeat, a low chance to drop its signature weapon, the \"Soul-Reaping Scythe\"; killing enemies with that scythe would have a low chance of yielding a spawn egg. The boss itself is also planned to get +15% strength and 3 new attack patterns.",
-            "Concept to further strengthen the Wither Storm and add a second form (phase) transition."
+            "Concept for blizzards in cold biomes — they cut visibility and slow you down, but mainly they drive your body temperature down. The aim is a reason to head indoors rather than instant death, and shelter, light, and insulation are meant to take the edge off.",
+            "Concept for typhoons — directional high winds that travel over time, pushing on anything airborne, light, or falling, with heavier rain. Existing vehicles, trains, and flight are meant to keep working through them.",
+            "Concept for earthquakes — the screen shakes, things fall, and structures take localized damage. The damage radius is planned to be configurable down to zero, so servers with existing builds can still turn them on.",
+            "Concept for tsunamis — waves that push inland from the coast. They are built on the new finite-volume water, so the water that comes in actually goes back out. Linking them to earthquakes is under consideration.",
+            "All four are planned to be individually switchable in the config, and their frequency is to be published as measured numbers rather than \"occasionally\".",
+            "Concept for volcanoes that erupt with a low probability when an earthquake hits. The chance is planned to be configurable and published as a measured number, and there must always be a way out that avoids irreversibly wrecking an existing world."
           ]
         },
         {
-          "subtitle": "Survival & Power: Contamination System and New Carrying Actions",
+          "subtitle": "Everyday Systems: Food Spoilage, Refrigerators, and Gasoline",
           "bullets": [
-            "Nuclear warhead impact sites are expected to enter a \"contaminated\" state for 20 Minecraft days. Concept for this to be neutralized only by wearing both a gas mask and protective suit.",
-            "Under consideration: running a nuclear power generator continuously would contaminate the surrounding air, affecting players' health if they stay nearby too long without protection. A new \"Air Purifier\" block is also planned, which would cleanse contamination in its area while running (with support for multiple units operating at once).",
-            "Planned feature to let players pick up and carry small mobs, such as villagers and chickens, by hand.",
-            "Also under consideration: a two-handed carry action for chests, letting them be moved without breaking (contents would be preserved; double chests are envisioned as requiring two players to carry).",
-            "Planned addition of a new item (tentative name) with 32 durability and 200 attack power. A ranged attack using the same mechanism as the Magic Wand is under consideration."
+            "Concept to make all food spoil if left alone long enough (the same idea as ARK). Freshness is meant to be tracked per individual item.",
+            "A refrigerator is planned — food kept inside spoils more slowly, or not at all. The rollout is meant to be handled so that nobody's existing food stores rot overnight the moment it lands.",
+            "Concept to add gasoline — every vehicle will need it. Trains are excluded.",
+            "Refuelling, a fuel gauge, and what happens when you run dry are all to be settled before it ships. Existing vehicles must not seize up the moment it lands, and you should never burn fuel while a typhoon is holding you still."
           ]
         },
         {
-          "subtitle": "Bank UI, Backrooms, and Site Integration",
+          "subtitle": "Pollution & the Air Purifier",
           "bullets": [
-            "Planned increase of the ATM/MineBank deposit cap to 10 million Emeralds. Concept to apply \"Glimpse Alpha Glass\" styling to the ATM screen and overhaul the UI as a whole.",
-            "Planned addition of a new \"MineBank UI\" (reportedly with a design proposal featuring 25%/50%/75%/MAX quick-select based on balance, plus slider controls in increments of 1/10/100/1k).",
-            "Concept to completely redesign the appearance of the Backrooms entities (monsters) based on new reference artwork.",
-            "Concept to build a system so that once future update details are finalized, they're automatically reflected in this site's changelog (this concerns the operation of this site itself)."
+            "Concept for nuclear contamination — an area hit by a nuclear warhead stays contaminated for 20 in-game days. A gas mask and a hazmat suit together grant full immunity; missing either piece means damage and debuffs.",
+            "Concept for air pollution — running a nuclear generator continuously fouls the air over a wide radius, and players in it take debuffs. The radius and debuff interval are planned to be configurable.",
+            "A new Air Purifier block is planned — it prevents and clears air pollution within its effective radius. Several can run at once to cover a larger area, and a polluted area is expected to become safe in about 60 seconds by default.",
+            "The purifier is planned to require power or fuel consistent with the mod's existing energy system."
+          ]
+        },
+        {
+          "subtitle": "Guns Mod: Balance, New Audio, and Missile Launchers",
+          "bullets": [
+            "Under consideration: minigun +50%, assault rifle +75%, pistol ×1.5, SMG damage halved but magazine +30%, rocket launcher ×3 damage and explosion power, and turrets ×4 damage with +70% durability so mobs can't break them easily.",
+            "Concept to scale the nuclear warhead up to destroying as many as 10,000,000 blocks, and to triple both the explosion power and the radius of the warhead missile.",
+            "Planned fix for the rocket launcher blocking your own view with its model while scoped.",
+            "Concept to overhaul all gun audio. Existing game audio will not be reused as-is — original sounds in a similar style are to be produced instead.",
+            "Concept to add three new missile launcher designs, all of which a player can board, aim, and fire."
+          ]
+        },
+        {
+          "subtitle": "Boss Mod: Four New Bosses",
+          "bullets": [
+            "Volcanic Golem King (600 HP) is planned — summoned by using a molten crown on the forge altar core. It turns enraged at 66% health and enters its critical phase at 33%.",
+            "Abyssal Kraken Warden (800 HP) is planned — woken by using a sonar eye on the sculk heart, and it goes into a frenzy at 30% health.",
+            "Prismatic Ice Phoenix Dragon (750 HP) is planned — it appears when a primal egg is placed on the frost altar, moving from perched to flying, and ascending at 40% health.",
+            "Witherstorm Demon Overlord (1,200 HP) is planned — it needs a soul blood altar, a nether star, and three wither skulls, and all three of the other new bosses must already have been slain. It enters its final phase at 25% health.",
+            "Each of the four is planned to get its own loot table, advancements, attack patterns, and colour palette."
+          ]
+        },
+        {
+          "subtitle": "Boss Mod: Existing Boss Adjustments",
+          "bullets": [
+            "Concept to give the Plague Doctor a 20-second gap between taking damage and summoning the Witherstorm. Kill him in one hit, or inside 20 seconds, and no Witherstorm appears — but you lose the drops as well.",
+            "Under consideration for the Grim Reaper: a low chance to drop a Soul-Reaping Scythe on death, and a low chance for anything killed with that scythe to drop its spawn egg. The scythe is planned to be recoloured so it is easy to tell apart from the ordinary one.",
+            "The Grim Reaper itself is also slated for +15% strength and three new attack patterns.",
+            "Concept to buff the Witherstorm overall, adding destructive attacks and a second-phase form change."
+          ]
+        },
+        {
+          "subtitle": "Carrying Things: Villagers, Small Mobs, and Chests",
+          "bullets": [
+            "Concept to let you pick up and carry villagers, and to let chickens and other small mobs be picked up by hand. Setting them down again won't hurt them.",
+            "Concept to let chests be carried with both hands without breaking them, contents intact. Large (double) chests will need two players to lift."
+          ]
+        },
+        {
+          "subtitle": "Money: ATM, Mine Bank, Prices, and a Diamond Balance",
+          "bullets": [
+            "Concept to raise the interest cap to 10,000,000 emeralds.",
+            "Concept for a major ATM UI overhaul in the Glimpse Alpha Glass style.",
+            "Concept for a new Mine Bank screen: a netherite-blue dashboard with a glowing digit display, a deposit/withdraw toggle, quick-pick chips (25% / 50% / 75% / MAX) calculated from your balance, a vertical 1 / 10 / 100 / 1k stepper with a drag track, currency tabs, a fee preview, and confirm/cancel buttons.",
+            "Concept to raise prices everywhere by 10× to 100×. The multiplier is rolled once per product and then never moves, so prices won't shift on you right as you go to buy.",
+            "It applies to every price this mod pack sets. Vanilla villager trading is left alone, so the usual ways of earning emeralds stay as they are.",
+            "Singapore real estate (currently 1,000,000–10,000,000 emeralds) is included, which puts its effective price at 10,000,000–1,000,000,000 — above the interest cap, so interest alone will no longer get you there. The whole system is planned to be switchable off in the config.",
+            "Concept to add a diamond balance to the ATM. It is kept separate from the emerald balance, so an account has two lines — emeralds and diamonds. Diamonds are valued above emeralds, at some number of emeralds each.",
+            "Interest on the diamond balance, the per-withdrawal cap, and which account types (personal / shared / special) carry one are all to be decided from measurements and published. If exchange is offered, round-tripping emeralds to diamonds and back will not gain you a single one."
+          ]
+        },
+        {
+          "subtitle": "Planarcadia and the Sparxie Stick",
+          "bullets": [
+            "Concept for an entrance to Planarcadia — build a frame out of portal amethyst blocks in the same shape as a nether portal and light it. It is meant to be something players can make themselves, from obtainable materials.",
+            "Because it follows nether-portal conventions, the allowed frame dimensions, how it's lit, the way back, and how coordinates map across are all to be settled explicitly and published.",
+            "The Sparxie Downvote Stick is planned — 200 melee damage, and the same 32 uses of durability as a golden sword. Right-click fires a projectile, at a cost of 1 durability per shot.",
+            "The stick is to be sold in Planarcadia at a list price of 200,000 emeralds. It is subject to the 10×–100× price rise, though, so what you actually pay is expected to land between 2,000,000 and 20,000,000 emeralds."
+          ]
+        },
+        {
+          "subtitle": "The Backrooms",
+          "bullets": [
+            "Concept to completely redesign the Backrooms monsters from new design art, built with the pack's hybrid 3D-model-plus-pixel-art method and displayed in game at a 64×64 resolution.",
+            "The sickly-yellow palette is to be applied consistently, with an ambient particle layer over the top."
+          ]
+        },
+        {
+          "subtitle": "Fixes & Spec Changes: The Angel's Shield and the Masks",
+          "bullets": [
+            "Planned fix for the Angel's Shield not working as a shield — you can raise it but it doesn't block. The cause has been identified, and it is to be fixed in line with the angel gear's own multiplier conventions.",
+            "Concept to change how the Sparkle and Sparxie masks work: use up around 800 durability and the mask breaks, then becomes usable again 320 seconds later. That revival only happens once — the second break is permanent.",
+            "A broken mask isn't destroyed, and the fact that it has already come back once stays with that specific mask — across relogs, death, chests, and server restarts. Repairing it on an anvil won't get you around the one-time limit."
           ]
         }
       ]
@@ -1280,19 +1439,19 @@
       "id": "overview",
       "audience": "all",
       "title": "Overview: Installing Glimpse Alpha",
-      "body_html": "\n<p>\n  <strong>Glimpse Alpha</strong> (formerly known as Sorakaze) is the group of Fabric mods\n  installed on the Sorakazekarasu server. It's made up of 9 independent mods, each of which\n  can be installed and updated separately. It doesn't replace or remove vanilla (unmodded)\n  content like bows or minecarts — instead, it adds new items, blocks, and dimensions.\n</p>\n\n<div class=\"table-wrap\">\n<table>\n<tr><th>Mod</th><th>What it adds</th></tr>\n<tr><td>Guns</td><td>Ranged weapons vanilla doesn't have (Assault Rifle, Shotgun, Sniper Rifle, and more)</td></tr>\n<tr><td>Rail</td><td>A train that gradually speeds up, plus couplable passenger and freight cars</td></tr>\n<tr><td>Building & Decor</td><td>City-building materials like traffic lights and guardrails, plus appliances like security cameras, ATMs, and elevators</td></tr>\n<tr><td>Vehicles</td><td>Cars, buses, aircraft, and more</td></tr>\n<tr><td>Boss</td><td>Powerful bosses to fight, and their dedicated drops</td></tr>\n<tr><td>Sky</td><td>A new dimension called \"Sky,\" and the angel city and kingdom that live there</td></tr>\n<tr><td>Survival</td><td>New ores, armor, and life-support features like temperature and the seasons</td></tr>\n<tr><td>Power</td><td>Power generation and transmission networks, plus electric devices</td></tr>\n<tr><td>Backrooms</td><td>Sanity-driven exploration of a hidden liminal area, reached through a rift near End Cities</td></tr>\n</table>\n</div>\n<p>For a detailed list of each mod's items and recipes, see the <a href=\"../recipes/\">Recipes</a> page;\nfor what's changed so far, see the <a href=\"../changelog/\">Changelog</a>.</p>\n\n<h3>You need \"Fabric\" to use mods</h3>\n<p>\n  <strong>Fabric</strong> is the foundation that lets Minecraft load mods. Think of it like\n  needing a game console's base system before you can install any software on it —\n  before installing the mods themselves, you first need to install Fabric on both the server\n  and each player's PC.\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">⚠ The single easiest thing to get wrong</div>\n  <p>\n    Mods need to be installed <strong>not just on the server, but on the PC of every single\n    person playing</strong>. Installing them on the server does not automatically apply them to\n    everyone. Unless the server and every player have matching Minecraft versions, Fabric, and\n    mods, no one can join the server.\n  </p>\n</div>\n\n<h3>Who needs to set up what</h3>\n<ul>\n  <li><strong>The server (the Sorakazekarasu server)</strong> — Fabric server + Fabric API + the 9 Glimpse Alpha mods</li>\n  <li><strong>Each individual player's PC</strong> — Fabric client + Fabric API + the 9 Glimpse Alpha mods (must exactly match the server's combination)</li>\n</ul>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">This site doesn't distribute the mods themselves</div>\n  <p>\n    This site only hosts \"reading material\" — recipe tables, changelogs, install instructions,\n    and the like. It does not distribute the mods themselves (the jar files). Please get the\n    full set of jar files you need from your server admin.\n  </p>\n</div>\n\n<h3>How this page is organized</h3>\n<p>\n  This guide is split into two audiences. Most people only need to read the\n  <a href=\"#player-setup\">chapter for players</a> to be able to join.\n  If you're the one running or administering the server yourself, please also read on to the\n  <a href=\"#admin-prep\">chapter for server admins</a>.\n</p>\n\n<h3>Currently supported versions (as of writing)</h3>\n<p>\n  The values below reflect this page as of writing. The actual numbers change with every\n  update, so always check the <a href=\"../changelog/\">Changelog</a>, the\n  <a href=\"../recipes/\">Recipes</a> page, or your server admin for the current values.\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Item</th><th>Current value</th></tr>\n<tr><td>Minecraft version</td><td><code>26.2</code></td></tr>\n<tr><td>Required Java</td><td>Java 25 (<a href=\"https://adoptium.net/\">Temurin 25 (LTS)</a> recommended)</td></tr>\n<tr><td>Fabric API</td><td>Whichever build matches your Minecraft version (e.g. <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>\n<tr><td>Mod lineup</td><td>9 mods (Guns, Rail, Building/Decor, Vehicles, Boss, Sky, Survival, Power, Backrooms)</td></tr>\n</table>\n</div>\n"
+      "body_html": "\n<p>\n  <strong>Glimpse Alpha</strong> (formerly known as Sorakaze) is the group of Fabric mods\n  installed on the Sorakazekarasu server. It's made up of {mod_count} independent mods, each of which\n  can be installed and updated separately. It doesn't replace or remove vanilla (unmodded)\n  content like bows or minecarts — instead, it adds new items, blocks, and dimensions.\n</p>\n\n<div class=\"table-wrap\">\n<table>\n<tr><th>Mod</th><th>What it adds</th></tr>\n<tr><td>Guns</td><td>Ranged weapons vanilla doesn't have (Assault Rifle, Shotgun, Sniper Rifle, and more)</td></tr>\n<tr><td>Rail</td><td>A train that gradually speeds up, plus couplable passenger and freight cars</td></tr>\n<tr><td>Building & Decor</td><td>City-building materials like traffic lights and guardrails, plus appliances like security cameras, ATMs, and elevators</td></tr>\n<tr><td>Vehicles</td><td>Cars, buses, aircraft, and more</td></tr>\n<tr><td>Boss</td><td>Powerful bosses to fight, and their dedicated drops</td></tr>\n<tr><td>Sky</td><td>A new dimension called \"Sky,\" and the angel city and kingdom that live there</td></tr>\n<tr><td>Survival</td><td>New ores, armor, and life-support features like temperature and the seasons</td></tr>\n<tr><td>Power</td><td>Power generation and transmission networks, plus electric devices</td></tr>\n<tr><td>Backrooms</td><td>Sanity-driven exploration of a hidden liminal area, reached through a rift near End Cities</td></tr>\n</table>\n</div>\n<p>For a detailed list of each mod's items and recipes, see the <a href=\"../recipes/\">Recipes</a> page;\nfor what's changed so far, see the <a href=\"../changelog/\">Changelog</a>.</p>\n\n<h3>You need \"Fabric\" to use mods</h3>\n<p>\n  <strong>Fabric</strong> is the foundation that lets Minecraft load mods. Think of it like\n  needing a game console's base system before you can install any software on it —\n  before installing the mods themselves, you first need to install Fabric on both the server\n  and each player's PC.\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">⚠ The single easiest thing to get wrong</div>\n  <p>\n    Mods need to be installed <strong>not just on the server, but on the PC of every single\n    person playing</strong>. Installing them on the server does not automatically apply them to\n    everyone. Unless the server and every player have matching Minecraft versions, Fabric, and\n    mods, no one can join the server.\n  </p>\n</div>\n\n<h3>Who needs to set up what</h3>\n<ul>\n  <li><strong>The server (the Sorakazekarasu server)</strong> — Fabric server + Fabric API + the {mod_count} Glimpse Alpha mods</li>\n  <li><strong>Each individual player's PC</strong> — Fabric client + Fabric API + the {mod_count} Glimpse Alpha mods (must exactly match the server's combination)</li>\n</ul>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">This site doesn't distribute the mods themselves</div>\n  <p>\n    This site only hosts \"reading material\" — recipe tables, changelogs, install instructions,\n    and the like. It does not distribute the mods themselves (the jar files). Please get the\n    full set of jar files you need from your server admin.\n  </p>\n</div>\n\n<h3>How this page is organized</h3>\n<p>\n  This guide is split into two audiences. Most people only need to read the\n  <a href=\"#player-setup\">chapter for players</a> to be able to join.\n  If you're the one running or administering the server yourself, please also read on to the\n  <a href=\"#admin-prep\">chapter for server admins</a>.\n</p>\n\n<h3>Currently supported versions (as of writing)</h3>\n<p>\n  The values below reflect this page as of writing. The actual numbers change with every\n  update, so always check the <a href=\"../changelog/\">Changelog</a>, the\n  <a href=\"../recipes/\">Recipes</a> page, or your server admin for the current values.\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Item</th><th>Current value</th></tr>\n<tr><td>Minecraft version</td><td><code>26.2</code></td></tr>\n<tr><td>Required Java</td><td>Java 25 (<a href=\"https://adoptium.net/\">Temurin 25 (LTS)</a> recommended)</td></tr>\n<tr><td>Fabric API</td><td>Whichever build matches your Minecraft version (e.g. <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>\n<tr><td>Mod lineup</td><td>{mod_count} mods (Guns, Rail, Building/Decor, Vehicles, Boss, Sky, Survival, Power, Backrooms, Planarcadia)</td></tr>\n</table>\n</div>\n"
     },
     {
       "id": "player-setup",
       "audience": "player",
       "title": "For Players: Setting Up to Join the Server",
-      "body_html": "\n<p>\n  This covers what to set up if you're <strong>joining someone else's server</strong> to play.\n  No technical expertise required. Follow the steps in order and it should take about 15-20 minutes.\n</p>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">Only 3 things to do</div>\n  <ul>\n    <li>① Install Fabric (the foundation that loads mods) on your PC</li>\n    <li>② Put the set of mod files you got from the server admin into the right folder</li>\n    <li>③ Change one launch setting and join the server</li>\n  </ul>\n</div>\n\n<h3>What you'll need</h3>\n<ul>\n  <li>A Windows or Mac PC that can run Minecraft: Java Edition</li>\n  <li>The <strong>full mod set from your server admin (10 jar files = 1 Fabric API + the 9 Glimpse Alpha mods)</strong></li>\n</ul>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Very important</div>\n  <p>\n    You can't join unless you have <strong>the exact same version and exact same mod files</strong>\n    as the server. This page uses Minecraft version <code>26.2</code> as an example, but if your\n    server admin gave you a different number, use that instead. Please\n    <strong>don't double-click to open</strong> the jar files you received — just placing them in\n    the folder is all you need to do.\n  </p>\n</div>\n\n<h3>Files you'll likely receive (example)</h3>\n<p>You'll get roughly these 10 files from your server admin (the version numbers change with every update).</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Filename (example)</th><th>What it is</th></tr>\n<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Shared components that make the mods run</td></tr>\n<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Guns mod</td></tr>\n<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Rail mod</td></tr>\n<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Building & Decor mod</td></tr>\n<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Vehicles mod</td></tr>\n<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss mod</td></tr>\n<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Sky mod</td></tr>\n<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Survival mod</td></tr>\n<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Power mod</td></tr>\n<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms mod</td></tr>\n</table>\n</div>\n\n<h3>① Install Fabric</h3>\n<p>Open <code>https://fabricmc.net/use/installer/</code> and get the installer. Stay on the \"<strong>Client</strong>\" tab (don't switch to \"Server\"), pick the same Minecraft Version as your server, and click \"Install.\"</p>\n\n<h4>On Windows</h4>\n<ol class=\"steps\">\n  <li>Download the installer from a button like \"Download installer (Windows/.exe)\" on the page, then double-click it to run it (if you see \"Windows protected your PC,\" click \"More info\" → \"Run anyway\").</li>\n  <li>Staying on the \"Client\" tab, pick <code>26.2</code> (the same number as your server) for Minecraft Version, leave Loader Version as-is, and click \"Install.\"</li>\n</ol>\n\n<h4>On Mac</h4>\n<ol class=\"steps\">\n  <li>Download the installer (.jar) via the \"Download universal jar\" button. There's no Mac executable (.exe).</li>\n  <li>For the downloaded <code>fabric-installer-….jar</code>, <strong>don't just double-click it</strong> — right-click it (or <code>control</code>-click) and choose \"Open.\" If you get a warning, click \"Open\" again.</li>\n  <li>Staying on the \"Client\" tab, pick the same Minecraft Version as your server and click \"Install.\"</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ If your Mac says \"cannot verify the developer\"</div>\n  <p>On recent versions of macOS, even right-click → \"Open\" may not show a button, and you might just\n  see a warning saying \"'fabric-installer….jar' cannot be checked for malicious software.\" If that\n  happens, you can open it this way instead:</p>\n  <ol class=\"steps\">\n    <li>Click \"Done\" on the warning (<strong>never click \"Move to Trash\"</strong>)</li>\n    <li>Open the Apple menu (top left) → \"System Settings\" → \"Privacy & Security\"</li>\n    <li>Scroll down to find a message saying \"'fabric-installer….jar' was blocked,\" and click \"Open Anyway\" next to it</li>\n    <li>If asked again, click \"Open Anyway\" → enter your Mac password (or use Touch ID)</li>\n  </ol>\n  <p>This is the standard warning macOS shows for anything not registered with Apple, and it's nothing\n  to worry about as long as you got it from the official Fabric site. Once you allow it, it'll open\n  normally from then on.</p>\n</div>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">If nothing happens when you run the installer on Mac</div>\n  <p>\n    If right-click → \"Open\" does nothing at all, Java isn't installed on your system.\n    Go to <a href=\"https://adoptium.net/\">adoptium.net</a>, install the macOS installer (.pkg) for\n    \"Temurin,\" and try again. Choose \"aarch64\" for Apple Silicon Macs (M1/M2/M3/M4, etc.) or \"x64\"\n    for Intel Macs. If you're not sure which, check the \"Chip\" field under the Apple menu (top left) →\n    \"About This Mac\" (if it says \"Apple M…,\" you want aarch64).\n  </p>\n</div>\n\n<h3>② Put the mod files in the mods folder</h3>\n\n<h4>Windows: <code>%appdata%\\.minecraft\\mods</code></h4>\n<ol class=\"steps\">\n  <li>Type <code>%appdata%\\.minecraft</code> into File Explorer's address bar and press Enter.</li>\n  <li>If there's no <code>mods</code> folder, create one (all lowercase).</li>\n  <li>Copy all 10 jar files you received into this <code>mods</code> folder (no need to unzip — drop the jars in as-is).</li>\n</ol>\n\n<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>\n<ol class=\"steps\">\n  <li>Click the desktop once, then press <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> together (or use the menu bar's \"Go\" → \"Go to Folder…\").</li>\n  <li>Paste <code>~/Library/Application Support/minecraft</code> exactly as-is into the box that appears and press Enter (don't forget the leading \"<code>~</code>\"). \"Library\" is normally hidden in Finder, so this is the reliable way to get there.</li>\n  <li>If there's no <code>mods</code> folder, right-click in that window and choose \"New Folder\" to create one.</li>\n  <li>Drag and drop all 10 jar files you received into this <code>mods</code> folder.</li>\n</ol>\n\n<h3>③ Launch with Fabric and join the server</h3>\n<ol class=\"steps\">\n  <li>Open the Minecraft launcher and, from the list of launch profiles near the \"Play\" button, pick something named like <code>fabric-loader-26.2</code> (staying on \"Latest Release\" will launch without any mods).</li>\n  <li>Click \"Play\" to launch as usual. If a \"Mods\" button has appeared on the title screen, it worked — clicking it will show all 9 Glimpse Alpha mods plus Fabric API.</li>\n  <li>From there, connect to the server through \"Multiplayer\" as usual.</li>\n</ol>\n\n<h3>When the mods get updated</h3>\n<p>Whenever the server-side mods are updated, everyone joining needs to update to the same version at the same time.</p>\n<ol class=\"steps\">\n  <li>Get the new mod files from your server admin (wait for their announcement before doing this).</li>\n  <li>Open your mods folder, <strong>delete the Glimpse Alpha jar files that were there before</strong>, then add the new ones (even if the filenames changed, they're treated as the same mod — leaving old ones in place will prevent launch).</li>\n  <li>Launch with the fabric-loader profile as usual.</li>\n</ol>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note</div>\n  <p>If only one side is on the new version, you won't be able to join. If you get stuck, check the <a href=\"#faq\">FAQ</a> too.</p>\n</div>\n\n<h3>Common Mac hiccups</h3>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Symptom</th><th>Fix</th></tr>\n<tr><td>Says \"cannot verify the developer\" / \"cannot be checked for malicious software\"</td><td>Click \"Done\" on the warning (not \"Move to Trash\"). Then scroll down in System Settings → \"Privacy & Security\" and click \"Open Anyway\" next to the \"was blocked\" message, then enter your password.</td></tr>\n<tr><td>Nothing happens when double-clicking the installer</td><td>Java isn't installed. Get Temurin (macOS .pkg) from adoptium.net and try again.</td></tr>\n<tr><td>Can't find the \"Library\" folder</td><td>No need to hunt for it manually. Press <code>⌘</code>+<code>⇧</code>+<code>G</code> and paste in <code>~/Library/Application Support/minecraft</code> — this is the reliable way (it's normally a hidden folder).</td></tr>\n<tr><td>Told there's a version mismatch when trying to join the server</td><td>Check ① that you've selected the correct fabric-loader profile in the launcher, and ② that your mods folder matches the server's exactly. Even one mismatch will prevent you from joining.</td></tr>\n<tr><td>Crashes the instant it launches</td><td>Check your mods folder for old or unrelated jar files mixed in. If that doesn't fix it, send <code>logs/latest.log</code> (on Mac: <code>~/Library/Application Support/minecraft/logs/latest.log</code>) to your server admin.</td></tr>\n<tr><td>Want to go back to plain Minecraft with no mods</td><td>Just switch the launcher's profile back to \"Latest Release.\" No need to delete the mod files.</td></tr>\n</table>\n</div>\n<p>The steps are the same whether you're on Apple Silicon (M1/M2/M3/M4, etc.) or an Intel Mac — the only difference is picking aarch64 vs. x64 when choosing Java (Temurin).</p>\n"
+      "body_html": "\n<p>\n  This covers what to set up if you're <strong>joining someone else's server</strong> to play.\n  No technical expertise required. Follow the steps in order and it should take about 15-20 minutes.\n</p>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">Only 3 things to do</div>\n  <ul>\n    <li>① Install Fabric (the foundation that loads mods) on your PC</li>\n    <li>② Put the set of mod files you got from the server admin into the right folder</li>\n    <li>③ Change one launch setting and join the server</li>\n  </ul>\n</div>\n\n<h3>What you'll need</h3>\n<ul>\n  <li>A Windows or Mac PC that can run Minecraft: Java Edition</li>\n  <li>The <strong>full mod set from your server admin ({jar_count} jar files = 1 Fabric API + the {mod_count} Glimpse Alpha mods)</strong></li>\n</ul>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Very important</div>\n  <p>\n    You can't join unless you have <strong>the exact same version and exact same mod files</strong>\n    as the server. This page uses Minecraft version <code>26.2</code> as an example, but if your\n    server admin gave you a different number, use that instead. Please\n    <strong>don't double-click to open</strong> the jar files you received — just placing them in\n    the folder is all you need to do.\n  </p>\n</div>\n\n<h3>Files you'll likely receive (example)</h3>\n<p>You'll get roughly these {jar_count} files from your server admin (the version numbers change with every update).</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Filename (example)</th><th>What it is</th></tr>\n<tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Shared components that make the mods run</td></tr>\n<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Guns mod</td></tr>\n<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Rail mod</td></tr>\n<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Building & Decor mod</td></tr>\n<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Vehicles mod</td></tr>\n<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss mod</td></tr>\n<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Sky mod</td></tr>\n<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Survival mod</td></tr>\n<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Power mod</td></tr>\n<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms mod</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>Planarcadia mod</td></tr>\n</table>\n</div>\n\n<h3>① Install Fabric</h3>\n<p>Open <code>https://fabricmc.net/use/installer/</code> and get the installer. Stay on the \"<strong>Client</strong>\" tab (don't switch to \"Server\"), pick the same Minecraft Version as your server, and click \"Install.\"</p>\n\n<h4>On Windows</h4>\n<ol class=\"steps\">\n  <li>Download the installer from a button like \"Download installer (Windows/.exe)\" on the page, then double-click it to run it (if you see \"Windows protected your PC,\" click \"More info\" → \"Run anyway\").</li>\n  <li>Staying on the \"Client\" tab, pick <code>26.2</code> (the same number as your server) for Minecraft Version, leave Loader Version as-is, and click \"Install.\"</li>\n</ol>\n\n<h4>On Mac</h4>\n<ol class=\"steps\">\n  <li>Download the installer (.jar) via the \"Download universal jar\" button. There's no Mac executable (.exe).</li>\n  <li>For the downloaded <code>fabric-installer-….jar</code>, <strong>don't just double-click it</strong> — right-click it (or <code>control</code>-click) and choose \"Open.\" If you get a warning, click \"Open\" again.</li>\n  <li>Staying on the \"Client\" tab, pick the same Minecraft Version as your server and click \"Install.\"</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ If your Mac says \"cannot verify the developer\"</div>\n  <p>On recent versions of macOS, even right-click → \"Open\" may not show a button, and you might just\n  see a warning saying \"'fabric-installer….jar' cannot be checked for malicious software.\" If that\n  happens, you can open it this way instead:</p>\n  <ol class=\"steps\">\n    <li>Click \"Done\" on the warning (<strong>never click \"Move to Trash\"</strong>)</li>\n    <li>Open the Apple menu (top left) → \"System Settings\" → \"Privacy & Security\"</li>\n    <li>Scroll down to find a message saying \"'fabric-installer….jar' was blocked,\" and click \"Open Anyway\" next to it</li>\n    <li>If asked again, click \"Open Anyway\" → enter your Mac password (or use Touch ID)</li>\n  </ol>\n  <p>This is the standard warning macOS shows for anything not registered with Apple, and it's nothing\n  to worry about as long as you got it from the official Fabric site. Once you allow it, it'll open\n  normally from then on.</p>\n</div>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">If nothing happens when you run the installer on Mac</div>\n  <p>\n    If right-click → \"Open\" does nothing at all, Java isn't installed on your system.\n    Go to <a href=\"https://adoptium.net/\">adoptium.net</a>, install the macOS installer (.pkg) for\n    \"Temurin,\" and try again. Choose \"aarch64\" for Apple Silicon Macs (M1/M2/M3/M4, etc.) or \"x64\"\n    for Intel Macs. If you're not sure which, check the \"Chip\" field under the Apple menu (top left) →\n    \"About This Mac\" (if it says \"Apple M…,\" you want aarch64).\n  </p>\n</div>\n\n<h3>② Put the mod files in the mods folder</h3>\n\n<h4>Windows: <code>%appdata%\\.minecraft\\mods</code></h4>\n<ol class=\"steps\">\n  <li>Type <code>%appdata%\\.minecraft</code> into File Explorer's address bar and press Enter.</li>\n  <li>If there's no <code>mods</code> folder, create one (all lowercase).</li>\n  <li>Copy all {jar_count} jar files you received into this <code>mods</code> folder (no need to unzip — drop the jars in as-is).</li>\n</ol>\n\n<h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>\n<ol class=\"steps\">\n  <li>Click the desktop once, then press <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> together (or use the menu bar's \"Go\" → \"Go to Folder…\").</li>\n  <li>Paste <code>~/Library/Application Support/minecraft</code> exactly as-is into the box that appears and press Enter (don't forget the leading \"<code>~</code>\"). \"Library\" is normally hidden in Finder, so this is the reliable way to get there.</li>\n  <li>If there's no <code>mods</code> folder, right-click in that window and choose \"New Folder\" to create one.</li>\n  <li>Drag and drop all {jar_count} jar files you received into this <code>mods</code> folder.</li>\n</ol>\n\n<h3>③ Launch with Fabric and join the server</h3>\n<ol class=\"steps\">\n  <li>Open the Minecraft launcher and, from the list of launch profiles near the \"Play\" button, pick something named like <code>fabric-loader-26.2</code> (staying on \"Latest Release\" will launch without any mods).</li>\n  <li>Click \"Play\" to launch as usual. If a \"Mods\" button has appeared on the title screen, it worked — clicking it will show all {mod_count} Glimpse Alpha mods plus Fabric API.</li>\n  <li>From there, connect to the server through \"Multiplayer\" as usual.</li>\n</ol>\n\n<h3>When the mods get updated</h3>\n<p>Whenever the server-side mods are updated, everyone joining needs to update to the same version at the same time.</p>\n<ol class=\"steps\">\n  <li>Get the new mod files from your server admin (wait for their announcement before doing this).</li>\n  <li>Open your mods folder, <strong>delete the Glimpse Alpha jar files that were there before</strong>, then add the new ones (even if the filenames changed, they're treated as the same mod — leaving old ones in place will prevent launch).</li>\n  <li>Launch with the fabric-loader profile as usual.</li>\n</ol>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note</div>\n  <p>If only one side is on the new version, you won't be able to join. If you get stuck, check the <a href=\"#faq\">FAQ</a> too.</p>\n</div>\n\n<h3>Common Mac hiccups</h3>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Symptom</th><th>Fix</th></tr>\n<tr><td>Says \"cannot verify the developer\" / \"cannot be checked for malicious software\"</td><td>Click \"Done\" on the warning (not \"Move to Trash\"). Then scroll down in System Settings → \"Privacy & Security\" and click \"Open Anyway\" next to the \"was blocked\" message, then enter your password.</td></tr>\n<tr><td>Nothing happens when double-clicking the installer</td><td>Java isn't installed. Get Temurin (macOS .pkg) from adoptium.net and try again.</td></tr>\n<tr><td>Can't find the \"Library\" folder</td><td>No need to hunt for it manually. Press <code>⌘</code>+<code>⇧</code>+<code>G</code> and paste in <code>~/Library/Application Support/minecraft</code> — this is the reliable way (it's normally a hidden folder).</td></tr>\n<tr><td>Told there's a version mismatch when trying to join the server</td><td>Check ① that you've selected the correct fabric-loader profile in the launcher, and ② that your mods folder matches the server's exactly. Even one mismatch will prevent you from joining.</td></tr>\n<tr><td>Crashes the instant it launches</td><td>Check your mods folder for old or unrelated jar files mixed in. If that doesn't fix it, send <code>logs/latest.log</code> (on Mac: <code>~/Library/Application Support/minecraft/logs/latest.log</code>) to your server admin.</td></tr>\n<tr><td>Want to go back to plain Minecraft with no mods</td><td>Just switch the launcher's profile back to \"Latest Release.\" No need to delete the mod files.</td></tr>\n</table>\n</div>\n<p>The steps are the same whether you're on Apple Silicon (M1/M2/M3/M4, etc.) or an Intel Mac — the only difference is picking aarch64 vs. x64 when choosing Java (Temurin).</p>\n"
     },
     {
       "id": "admin-prep",
       "audience": "admin",
       "title": "For Server Admins: Preparation (Backup & Version Check)",
-      "body_html": "\n<p>\n  From here on, this chapter is for whoever runs and administers the server itself. It walks\n  through adding Fabric and the 9 Glimpse Alpha mods to a Minecraft server that's already\n  running vanilla (a standard, unmodded server). This chapter uses a Windows server as its\n  example. If you're running your server on Mac / Linux, translate the folder locations and\n  command steps to your own environment and follow the same general process (per the official\n  Fabric site's instructions).\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Before you do anything</div>\n  <p>Always take a backup before you start, so a failed mod install can't cost you your world.</p>\n</div>\n\n<h3>1. Back up your world</h3>\n<p>Open your server's folder (e.g. <code>C:\\MinecraftServer</code>) and run whatever backup process you normally use (e.g. a backup script like <code>Backup-Server.bat</code>). If you don't have a dedicated script, it's fine to just stop the server and copy the entire <code>world</code> folder somewhere else.</p>\n\n<h3>2. Check your Java version</h3>\n<ol class=\"steps\">\n  <li>Open Command Prompt (or any terminal).</li>\n  <li>Type <code>java -version</code> and press Enter.</li>\n  <li>Check whether the number shown is <strong>25</strong> (e.g. <code>java version \"25.0.3\"</code>).</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Very important</div>\n  <p>\n    Running Minecraft <code>26.2</code> requires <strong>Java 25</strong>. Older setup instructions\n    sometimes say \"Java 21,\" but that's outdated — the server won't start with Java 21. If your\n    number is below 25, go to <a href=\"https://adoptium.net/\">adoptium.net</a>, download and\n    install \"Temurin 25 (LTS),\" restart your computer, and check again.\n  </p>\n</div>\n\n<h3>3. Check the server's Minecraft version</h3>\n<ol class=\"steps\">\n  <li>Start the server up once, the way you normally would (e.g. <code>Start-Server.bat</code>).</li>\n  <li>Look near the top of the console (the black window) for a line like <code>Starting minecraft server version X.Y</code>, and note the number.</li>\n  <li>Type <code>stop</code> in the console and press Enter to safely shut the server down.</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note</div>\n  <p>\n    This guide uses \"<code>26.2</code>\" as its example, but if the number you actually found is\n    different, use that number in every step from here on (when selecting Fabric, Fabric API, and\n    mod versions). If the server, every player, and the mods don't all match on version, nothing\n    will work at all.\n  </p>\n</div>\n"
+      "body_html": "\n<p>\n  From here on, this chapter is for whoever runs and administers the server itself. It walks\n  through adding Fabric and the {mod_count} Glimpse Alpha mods to a Minecraft server that's already\n  running vanilla (a standard, unmodded server). This chapter uses a Windows server as its\n  example. If you're running your server on Mac / Linux, translate the folder locations and\n  command steps to your own environment and follow the same general process (per the official\n  Fabric site's instructions).\n</p>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Before you do anything</div>\n  <p>Always take a backup before you start, so a failed mod install can't cost you your world.</p>\n</div>\n\n<h3>1. Back up your world</h3>\n<p>Open your server's folder (e.g. <code>C:\\MinecraftServer</code>) and run whatever backup process you normally use (e.g. a backup script like <code>Backup-Server.bat</code>). If you don't have a dedicated script, it's fine to just stop the server and copy the entire <code>world</code> folder somewhere else.</p>\n\n<h3>2. Check your Java version</h3>\n<ol class=\"steps\">\n  <li>Open Command Prompt (or any terminal).</li>\n  <li>Type <code>java -version</code> and press Enter.</li>\n  <li>Check whether the number shown is <strong>25</strong> (e.g. <code>java version \"25.0.3\"</code>).</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Very important</div>\n  <p>\n    Running Minecraft <code>26.2</code> requires <strong>Java 25</strong>. Older setup instructions\n    sometimes say \"Java 21,\" but that's outdated — the server won't start with Java 21. If your\n    number is below 25, go to <a href=\"https://adoptium.net/\">adoptium.net</a>, download and\n    install \"Temurin 25 (LTS),\" restart your computer, and check again.\n  </p>\n</div>\n\n<h3>3. Check the server's Minecraft version</h3>\n<ol class=\"steps\">\n  <li>Start the server up once, the way you normally would (e.g. <code>Start-Server.bat</code>).</li>\n  <li>Look near the top of the console (the black window) for a line like <code>Starting minecraft server version X.Y</code>, and note the number.</li>\n  <li>Type <code>stop</code> in the console and press Enter to safely shut the server down.</li>\n</ol>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note</div>\n  <p>\n    This guide uses \"<code>26.2</code>\" as its example, but if the number you actually found is\n    different, use that number in every step from here on (when selecting Fabric, Fabric API, and\n    mod versions). If the server, every player, and the mods don't all match on version, nothing\n    will work at all.\n  </p>\n</div>\n"
     },
     {
       "id": "admin-fabric-install",
@@ -1304,13 +1463,13 @@
       "id": "admin-mods-and-verify",
       "audience": "admin",
       "title": "For Server Admins: Installing the Mods & Verifying Startup",
-      "body_html": "\n<p>Each mod is a single file called a \"jar\" file. You install it just by putting it in your server folder's <code>mods</code> folder.</p>\n\n<h3>1. Set up the mods folder</h3>\n<p>Check whether your server folder (e.g. <code>C:\\MinecraftServer</code>) has a folder named <code>mods</code>. If not, right-click → \"New\" → \"Folder\" and name it <code>mods</code> (all lowercase).</p>\n\n<h3>2. Get Fabric API</h3>\n<p>Open <code>https://modrinth.com/mod/fabric-api/versions</code> and download the topmost entry whose \"Game version\" matches your server (e.g. <code>fabric-api-0.154.2+26.2.jar</code>).</p>\n\n<h3>3. Put the full mod set in the mods folder</h3>\n<p>\n  Copy all 10 jar files — 1 Fabric API + the 9 Glimpse Alpha mods — into the <code>mods</code> folder\n  (no need to unzip — drop the jars in as-is). Get the 9 mods themselves through whatever\n  distribution channel you've been using. <strong>This site does not distribute the mods\n  themselves.</strong>\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Mod</th><th>Example filename</th></tr>\n<tr><td>Guns</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>\n<tr><td>Rail</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>\n<tr><td>Building & Decor</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>\n<tr><td>Vehicles</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>\n<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>\n<tr><td>Sky</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>\n<tr><td>Survival</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>\n<tr><td>Power</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>\n<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr>\n</table>\n</div>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note</div>\n  <p>Don't double-click the jar files (no need to open them). Just placing them in the folder is enough.</p>\n</div>\n\n<h3>4. Start the server and verify it</h3>\n<ol class=\"steps\">\n  <li>Double-click the <code>Start-Fabric-Server.bat</code> you just created (don't use the old <code>Start-Server.bat</code>).</li>\n  <li>In the console (the black window), check these 2 things:\n    <ul>\n      <li>The names of the mods you installed appear in the mod-loading lines</li>\n      <li>It ends with <code>Done (…s)! For help, type \"help\"</code> and keeps running without stopping</li>\n    </ul>\n  </li>\n</ol>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 If a Java error stops it from starting</div>\n  <p>\n    If you see an English error like \"class file version\" or \"requires Java,\" your Java may be too\n    old. Install the Windows version (.msi) of \"Temurin 25 (LTS)\" from\n    <a href=\"https://adoptium.net/\">adoptium.net</a>, restart your computer, and try again.\n  </p>\n</div>\n\n<p>Once you've confirmed it starts up, walk everyone joining through the\n<a href=\"#player-setup\">chapter for players</a> so they can install the same Fabric and mod set\non their own PCs.</p>\n"
+      "body_html": "\n<p>Each mod is a single file called a \"jar\" file. You install it just by putting it in your server folder's <code>mods</code> folder.</p>\n\n<h3>1. Set up the mods folder</h3>\n<p>Check whether your server folder (e.g. <code>C:\\MinecraftServer</code>) has a folder named <code>mods</code>. If not, right-click → \"New\" → \"Folder\" and name it <code>mods</code> (all lowercase).</p>\n\n<h3>2. Get Fabric API</h3>\n<p>Open <code>https://modrinth.com/mod/fabric-api/versions</code> and download the topmost entry whose \"Game version\" matches your server (e.g. <code>fabric-api-0.154.2+26.2.jar</code>).</p>\n\n<h3>3. Put the full mod set in the mods folder</h3>\n<p>\n  Copy all {jar_count} jar files — 1 Fabric API + the {mod_count} Glimpse Alpha mods — into the <code>mods</code> folder\n  (no need to unzip — drop the jars in as-is). Get the {mod_count} mods themselves through whatever\n  distribution channel you've been using. <strong>This site does not distribute the mods\n  themselves.</strong>\n</p>\n<div class=\"table-wrap\">\n<table>\n<tr><th>Mod</th><th>Example filename</th></tr>\n<tr><td>Guns</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>\n<tr><td>Rail</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>\n<tr><td>Building & Decor</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>\n<tr><td>Vehicles</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>\n<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>\n<tr><td>Sky</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>\n<tr><td>Survival</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>\n<tr><td>Power</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>\n<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>\n</table>\n</div>\n\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note</div>\n  <p>Don't double-click the jar files (no need to open them). Just placing them in the folder is enough.</p>\n</div>\n\n<h3>4. Start the server and verify it</h3>\n<ol class=\"steps\">\n  <li>Double-click the <code>Start-Fabric-Server.bat</code> you just created (don't use the old <code>Start-Server.bat</code>).</li>\n  <li>In the console (the black window), check these 2 things:\n    <ul>\n      <li>The names of the mods you installed appear in the mod-loading lines</li>\n      <li>It ends with <code>Done (…s)! For help, type \"help\"</code> and keeps running without stopping</li>\n    </ul>\n  </li>\n</ol>\n\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 If a Java error stops it from starting</div>\n  <p>\n    If you see an English error like \"class file version\" or \"requires Java,\" your Java may be too\n    old. Install the Windows version (.msi) of \"Temurin 25 (LTS)\" from\n    <a href=\"https://adoptium.net/\">adoptium.net</a>, restart your computer, and try again.\n  </p>\n</div>\n\n<p>Once you've confirmed it starts up, walk everyone joining through the\n<a href=\"#player-setup\">chapter for players</a> so they can install the same Fabric and mod set\non their own PCs.</p>\n"
     },
     {
       "id": "admin-upgrade",
       "audience": "admin",
       "title": "Updating to a New Mod Version",
-      "body_html": "\n<p>Since Glimpse Alpha's 9 mods are each fully independent, an update doesn't necessarily mean\nall 9 get replaced. You only need to swap out the mods whose contents actually changed\n(check the distribution notes or the <a href=\"../changelog/\">Changelog</a> to see which mods\nwere touched).</p>\n\n<h3>Update steps</h3>\n<ol class=\"steps\">\n  <li>Type <code>stop</code> in the server console to shut it down.</li>\n  <li>Back up your world using your usual backup process.</li>\n  <li>In the server's <code>mods</code> folder, <strong>delete the old jar file(s) for the mods being\n  updated</strong>, then add the new jar file(s) (having both old and new versions of the same mod\n  present will prevent startup).</li>\n  <li>Start the server with <code>Start-Fabric-Server.bat</code> and confirm the console shows the\n  updated version.</li>\n  <li><strong>Distribute the new jar files to everyone joining</strong> and have them swap them out\n  the same way (see the <a href=\"#player-setup\">chapter for players</a>). No one can join if only\n  the server or only players are on the new version.</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Very important</div>\n  <p>\n    If you start the server with a mod completely removed (rather than just updated), any blocks\n    placed or items held that belong to that mod (like traffic lights) will disappear. This is how\n    Minecraft and Fabric work, and it can't be undone. Always back up before removing a mod.\n  </p>\n</div>\n\n<h3>About config files (the auto-repair mechanism)</h3>\n<p>\n  Every mod automatically generates a config file (e.g. <code>sorakaze_guns.json</code>) inside the\n  <code>config/</code> folder on startup. You can adjust values like damage and speed there, and you\n  generally never need to manually delete or edit it with each update.\n</p>\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 How it currently works</div>\n  <p>\n    When a new release changes a default value, it's automatically updated to the new default\n    <strong>only for settings you haven't touched yet (ones still sitting at an old default)</strong>.\n    <strong>Values you've tuned yourself are never touched.</strong> Newly added settings are also\n    automatically appended on startup. Whatever gets updated is always logged in\n    <code>logs/latest.log</code> as \"old value → new value.\"\n  </p>\n</div>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note on editing config files by hand</div>\n  <p>\n    If you manually delete just part of a value inside a config file (e.g. removing only the damage\n    line from one weapon's settings block), that item can silently fall back to a different internal\n    default from inside the mod itself (with no error shown). If you want to adjust a specific number,\n    edit that value directly instead. If you want to reset a mod's settings to defaults entirely,\n    delete that mod's whole config file — it'll be rebuilt with defaults the next time the server\n    starts.\n  </p>\n</div>\n"
+      "body_html": "\n<p>Since Glimpse Alpha's {mod_count} mods are each fully independent, an update doesn't necessarily mean\nall {mod_count} get replaced. You only need to swap out the mods whose contents actually changed\n(check the distribution notes or the <a href=\"../changelog/\">Changelog</a> to see which mods\nwere touched).</p>\n\n<h3>Update steps</h3>\n<ol class=\"steps\">\n  <li>Type <code>stop</code> in the server console to shut it down.</li>\n  <li>Back up your world using your usual backup process.</li>\n  <li>In the server's <code>mods</code> folder, <strong>delete the old jar file(s) for the mods being\n  updated</strong>, then add the new jar file(s) (having both old and new versions of the same mod\n  present will prevent startup).</li>\n  <li>Start the server with <code>Start-Fabric-Server.bat</code> and confirm the console shows the\n  updated version.</li>\n  <li><strong>Distribute the new jar files to everyone joining</strong> and have them swap them out\n  the same way (see the <a href=\"#player-setup\">chapter for players</a>). No one can join if only\n  the server or only players are on the new version.</li>\n</ol>\n\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">🛑 Very important</div>\n  <p>\n    If you start the server with a mod completely removed (rather than just updated), any blocks\n    placed or items held that belong to that mod (like traffic lights) will disappear. This is how\n    Minecraft and Fabric work, and it can't be undone. Always back up before removing a mod.\n  </p>\n</div>\n\n<h3>About config files (the auto-repair mechanism)</h3>\n<p>\n  Every mod automatically generates a config file (e.g. <code>sorakaze_guns.json</code>) inside the\n  <code>config/</code> folder on startup. You can adjust values like damage and speed there, and you\n  generally never need to manually delete or edit it with each update.\n</p>\n<div class=\"callout callout--info\">\n  <div class=\"callout__title\">💡 How it currently works</div>\n  <p>\n    When a new release changes a default value, it's automatically updated to the new default\n    <strong>only for settings you haven't touched yet (ones still sitting at an old default)</strong>.\n    <strong>Values you've tuned yourself are never touched.</strong> Newly added settings are also\n    automatically appended on startup. Whatever gets updated is always logged in\n    <code>logs/latest.log</code> as \"old value → new value.\"\n  </p>\n</div>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Note on editing config files by hand</div>\n  <p>\n    If you manually delete just part of a value inside a config file (e.g. removing only the damage\n    line from one weapon's settings block), that item can silently fall back to a different internal\n    default from inside the mod itself (with no error shown). If you want to adjust a specific number,\n    edit that value directly instead. If you want to reset a mod's settings to defaults entirely,\n    delete that mod's whole config file — it'll be rebuilt with defaults the next time the server\n    starts.\n  </p>\n</div>\n"
     },
     {
       "id": "gameplay-notices",
@@ -1335,7 +1494,8 @@
       "Boss",
       "Sky",
       "Survival",
-      "Power"
+      "Power",
+      "Planarcadia"
     ],
     "items": {
       "sorakaze_guns:assault_rifle": "Assault Rifle",
@@ -1477,7 +1637,7 @@
       "sorakaze_deco:blue_concrete_slope": "Blue Concrete Slope",
       "sorakaze_deco:blue_concrete_vertical_slab": "Blue Concrete Vertical Slab",
       "sorakaze_deco:blue_reinforced_glass": "Blue Reinforced Glass",
-      "sorakaze_deco:blue_reinforced_glass_pane": "blue_reinforced_glass_pane",
+      "sorakaze_deco:blue_reinforced_glass_pane": "Blue Reinforced Glass Pane",
       "sorakaze_deco:blue_reinforced_glass_plate": "Blue Reinforced Glass Plate",
       "sorakaze_deco:blue_stained_glass_plate": "Blue Stained Glass Plate",
       "minecraft:blue_stained_glass": "Blue Stained Glass",
@@ -1503,7 +1663,7 @@
       "sorakaze_deco:brown_concrete_vertical_slab": "Brown Concrete Vertical Slab",
       "sorakaze_deco:brown_reinforced_glass": "Brown Reinforced Glass",
       "minecraft:brown_dye": "Brown Dye",
-      "sorakaze_deco:brown_reinforced_glass_pane": "brown_reinforced_glass_pane",
+      "sorakaze_deco:brown_reinforced_glass_pane": "Brown Reinforced Glass Pane",
       "sorakaze_deco:brown_reinforced_glass_plate": "Brown Reinforced Glass Plate",
       "sorakaze_deco:brown_stained_glass_plate": "Brown Stained Glass Plate",
       "minecraft:brown_stained_glass": "Brown Stained Glass",
@@ -1541,7 +1701,7 @@
       "sorakaze_deco:cyan_concrete_vertical_slab": "Cyan Concrete Vertical Slab",
       "sorakaze_deco:cyan_reinforced_glass": "Cyan Reinforced Glass",
       "minecraft:cyan_dye": "Cyan Dye",
-      "sorakaze_deco:cyan_reinforced_glass_pane": "cyan_reinforced_glass_pane",
+      "sorakaze_deco:cyan_reinforced_glass_pane": "Cyan Reinforced Glass Pane",
       "sorakaze_deco:cyan_reinforced_glass_plate": "Cyan Reinforced Glass Plate",
       "sorakaze_deco:cyan_stained_glass_plate": "Cyan Stained Glass Plate",
       "minecraft:cyan_stained_glass": "Cyan Stained Glass",
@@ -1596,7 +1756,7 @@
       "sorakaze_deco:gray_concrete_vertical_slab": "Gray Concrete Vertical Slab",
       "sorakaze_deco:gray_reinforced_glass": "Gray Reinforced Glass",
       "minecraft:gray_dye": "Gray Dye",
-      "sorakaze_deco:gray_reinforced_glass_pane": "gray_reinforced_glass_pane",
+      "sorakaze_deco:gray_reinforced_glass_pane": "Gray Reinforced Glass Pane",
       "sorakaze_deco:gray_reinforced_glass_plate": "Gray Reinforced Glass Plate",
       "sorakaze_deco:gray_stained_glass_plate": "Gray Stained Glass Plate",
       "minecraft:gray_stained_glass": "Gray Stained Glass",
@@ -1605,7 +1765,7 @@
       "sorakaze_deco:green_concrete_slope": "Green Concrete Slope",
       "sorakaze_deco:green_concrete_vertical_slab": "Green Concrete Vertical Slab",
       "sorakaze_deco:green_reinforced_glass": "Green Reinforced Glass",
-      "sorakaze_deco:green_reinforced_glass_pane": "green_reinforced_glass_pane",
+      "sorakaze_deco:green_reinforced_glass_pane": "Green Reinforced Glass Pane",
       "sorakaze_deco:green_reinforced_glass_plate": "Green Reinforced Glass Plate",
       "sorakaze_deco:green_stained_glass_plate": "Green Stained Glass Plate",
       "minecraft:green_stained_glass": "Green Stained Glass",
@@ -1644,7 +1804,7 @@
       "sorakaze_deco:light_blue_concrete_vertical_slab": "Light Blue Concrete Vertical Slab",
       "sorakaze_deco:light_blue_reinforced_glass": "Light Blue Reinforced Glass",
       "minecraft:light_blue_dye": "Light Blue Dye",
-      "sorakaze_deco:light_blue_reinforced_glass_pane": "light_blue_reinforced_glass_pane",
+      "sorakaze_deco:light_blue_reinforced_glass_pane": "Light Blue Reinforced Glass Pane",
       "sorakaze_deco:light_blue_reinforced_glass_plate": "Light Blue Reinforced Glass Plate",
       "sorakaze_deco:light_blue_stained_glass_plate": "Light Blue Stained Glass Plate",
       "minecraft:light_blue_stained_glass": "Light Blue Stained Glass",
@@ -1653,7 +1813,7 @@
       "sorakaze_deco:light_gray_concrete_slope": "Light Gray Concrete Slope",
       "sorakaze_deco:light_gray_concrete_vertical_slab": "Light Gray Concrete Vertical Slab",
       "sorakaze_deco:light_gray_reinforced_glass": "Light Gray Reinforced Glass",
-      "sorakaze_deco:light_gray_reinforced_glass_pane": "light_gray_reinforced_glass_pane",
+      "sorakaze_deco:light_gray_reinforced_glass_pane": "Light Gray Reinforced Glass Pane",
       "sorakaze_deco:light_gray_reinforced_glass_plate": "Light Gray Reinforced Glass Plate",
       "sorakaze_deco:light_gray_stained_glass_plate": "Light Gray Stained Glass Plate",
       "minecraft:light_gray_stained_glass": "Light Gray Stained Glass",
@@ -1663,7 +1823,7 @@
       "sorakaze_deco:lime_concrete_vertical_slab": "Lime Concrete Vertical Slab",
       "sorakaze_deco:lime_reinforced_glass": "Lime Reinforced Glass",
       "minecraft:lime_dye": "Lime Dye",
-      "sorakaze_deco:lime_reinforced_glass_pane": "lime_reinforced_glass_pane",
+      "sorakaze_deco:lime_reinforced_glass_pane": "Lime Reinforced Glass Pane",
       "sorakaze_deco:lime_reinforced_glass_plate": "Lime Reinforced Glass Plate",
       "sorakaze_deco:lime_stained_glass_plate": "Lime Stained Glass Plate",
       "minecraft:lime_stained_glass": "Lime Stained Glass",
@@ -1677,7 +1837,7 @@
       "sorakaze_deco:magenta_concrete_vertical_slab": "Magenta Concrete Vertical Slab",
       "sorakaze_deco:magenta_reinforced_glass": "Magenta Reinforced Glass",
       "minecraft:magenta_dye": "Magenta Dye",
-      "sorakaze_deco:magenta_reinforced_glass_pane": "magenta_reinforced_glass_pane",
+      "sorakaze_deco:magenta_reinforced_glass_pane": "Magenta Reinforced Glass Pane",
       "sorakaze_deco:magenta_reinforced_glass_plate": "Magenta Reinforced Glass Plate",
       "sorakaze_deco:magenta_stained_glass_plate": "Magenta Stained Glass Plate",
       "minecraft:magenta_stained_glass": "Magenta Stained Glass",
@@ -1714,7 +1874,7 @@
       "sorakaze_deco:orange_concrete_slope": "Orange Concrete Slope",
       "sorakaze_deco:orange_concrete_vertical_slab": "Orange Concrete Vertical Slab",
       "sorakaze_deco:orange_reinforced_glass": "Orange Reinforced Glass",
-      "sorakaze_deco:orange_reinforced_glass_pane": "orange_reinforced_glass_pane",
+      "sorakaze_deco:orange_reinforced_glass_pane": "Orange Reinforced Glass Pane",
       "sorakaze_deco:orange_reinforced_glass_plate": "Orange Reinforced Glass Plate",
       "sorakaze_deco:orange_stained_glass_plate": "Orange Stained Glass Plate",
       "minecraft:orange_stained_glass": "Orange Stained Glass",
@@ -1727,7 +1887,7 @@
       "sorakaze_deco:pink_concrete_vertical_slab": "Pink Concrete Vertical Slab",
       "sorakaze_deco:pink_reinforced_glass": "Pink Reinforced Glass",
       "minecraft:pink_dye": "Pink Dye",
-      "sorakaze_deco:pink_reinforced_glass_pane": "pink_reinforced_glass_pane",
+      "sorakaze_deco:pink_reinforced_glass_pane": "Pink Reinforced Glass Pane",
       "sorakaze_deco:pink_reinforced_glass_plate": "Pink Reinforced Glass Plate",
       "sorakaze_deco:pink_stained_glass_plate": "Pink Stained Glass Plate",
       "minecraft:pink_stained_glass": "Pink Stained Glass",
@@ -1763,7 +1923,7 @@
       "sorakaze_deco:purple_concrete_vertical_slab": "Purple Concrete Vertical Slab",
       "sorakaze_deco:purple_reinforced_glass": "Purple Reinforced Glass",
       "minecraft:purple_dye": "Purple Dye",
-      "sorakaze_deco:purple_reinforced_glass_pane": "purple_reinforced_glass_pane",
+      "sorakaze_deco:purple_reinforced_glass_pane": "Purple Reinforced Glass Pane",
       "sorakaze_deco:purple_reinforced_glass_plate": "Purple Reinforced Glass Plate",
       "sorakaze_deco:purple_stained_glass_plate": "Purple Stained Glass Plate",
       "minecraft:purple_stained_glass": "Purple Stained Glass",
@@ -1780,7 +1940,7 @@
       "sorakaze_deco:red_concrete_slope": "Red Concrete Slope",
       "sorakaze_deco:red_concrete_vertical_slab": "Red Concrete Vertical Slab",
       "sorakaze_deco:red_reinforced_glass": "Red Reinforced Glass",
-      "sorakaze_deco:red_reinforced_glass_pane": "red_reinforced_glass_pane",
+      "sorakaze_deco:red_reinforced_glass_pane": "Red Reinforced Glass Pane",
       "sorakaze_deco:red_reinforced_glass_plate": "Red Reinforced Glass Plate",
       "sorakaze_deco:red_sandstone_pillar": "Red Sandstone Pillar",
       "minecraft:red_sandstone": "Red Sandstone",
@@ -1788,7 +1948,7 @@
       "sorakaze_deco:red_sandstone_vertical_slab": "Red Sandstone Vertical Slab",
       "sorakaze_deco:red_stained_glass_plate": "Red Stained Glass Plate",
       "minecraft:red_stained_glass": "Red Stained Glass",
-      "sorakaze_deco:reinforced_glass_pane": "reinforced_glass_pane",
+      "sorakaze_deco:reinforced_glass_pane": "Reinforced Glass Pane",
       "sorakaze_deco:reinforced_glass_plate": "Reinforced Glass Plate",
       "sorakaze_deco:revolving_door": "Revolving-Style Door",
       "sorakaze_deco:roller_shutter": "Roller Shutter",
@@ -1869,7 +2029,7 @@
       "sorakaze_deco:white_concrete_slope": "White Concrete Slope",
       "sorakaze_deco:white_concrete_vertical_slab": "White Concrete Vertical Slab",
       "sorakaze_deco:white_reinforced_glass": "White Reinforced Glass",
-      "sorakaze_deco:white_reinforced_glass_pane": "white_reinforced_glass_pane",
+      "sorakaze_deco:white_reinforced_glass_pane": "White Reinforced Glass Pane",
       "sorakaze_deco:white_reinforced_glass_plate": "White Reinforced Glass Plate",
       "sorakaze_deco:white_stained_glass_plate": "White Stained Glass Plate",
       "minecraft:white_stained_glass": "White Stained Glass",
@@ -1880,7 +2040,7 @@
       "sorakaze_deco:yellow_concrete_vertical_slab": "Yellow Concrete Vertical Slab",
       "sorakaze_deco:yellow_reinforced_glass": "Yellow Reinforced Glass",
       "minecraft:yellow_dye": "Yellow Dye",
-      "sorakaze_deco:yellow_reinforced_glass_pane": "yellow_reinforced_glass_pane",
+      "sorakaze_deco:yellow_reinforced_glass_pane": "Yellow Reinforced Glass Pane",
       "sorakaze_deco:yellow_reinforced_glass_plate": "Yellow Reinforced Glass Plate",
       "sorakaze_deco:yellow_stained_glass_plate": "Yellow Stained Glass Plate",
       "minecraft:yellow_stained_glass": "Yellow Stained Glass",
@@ -2455,7 +2615,86 @@
       "sorakaze_survival:spark_doll_alpha": "Spark Doll Alpha",
       "sorakaze_power:battery": "Battery",
       "sorakaze_rail:catenary_wire": "Overhead Catenary Wire",
-      "sorakaze_boss:wither_storm_summon": "Wither Storm Summoning Stone"
+      "sorakaze_boss:wither_storm_summon": "Wither Storm Summoning Stone",
+      "sorakaze_guns:data_attachment": "Attachment",
+      "sorakaze_guns:data_gun": "Data-Defined Firearm",
+      "sorakaze_guns:gun_workbench": "Gun Workbench",
+      "sorakaze_guns:hazmat_suit": "Hazmat Suit",
+      "sorakaze_deco:black_blackout_reinforced_glass": "Black Blackout Reinforced Glass",
+      "sorakaze_deco:blackout_reinforced_glass": "Blackout Reinforced Glass",
+      "sorakaze_deco:black_blackout_reinforced_glass_pane": "Black Blackout Reinforced Glass Pane",
+      "sorakaze_deco:black_blackout_reinforced_glass_plate": "Black Blackout Reinforced Glass Plate",
+      "sorakaze_deco:blackout_reinforced_glass_pane": "Blackout Reinforced Glass Pane",
+      "sorakaze_deco:blackout_reinforced_glass_plate": "Blackout Reinforced Glass Plate",
+      "sorakaze_deco:blue_blackout_reinforced_glass": "Blue Blackout Reinforced Glass",
+      "sorakaze_deco:blue_blackout_reinforced_glass_pane": "Blue Blackout Reinforced Glass Pane",
+      "sorakaze_deco:blue_blackout_reinforced_glass_plate": "Blue Blackout Reinforced Glass Plate",
+      "sorakaze_deco:brown_blackout_reinforced_glass": "Brown Blackout Reinforced Glass",
+      "sorakaze_deco:brown_blackout_reinforced_glass_pane": "Brown Blackout Reinforced Glass Pane",
+      "sorakaze_deco:brown_blackout_reinforced_glass_plate": "Brown Blackout Reinforced Glass Plate",
+      "sorakaze_deco:cyan_blackout_reinforced_glass": "Cyan Blackout Reinforced Glass",
+      "sorakaze_deco:cyan_blackout_reinforced_glass_pane": "Cyan Blackout Reinforced Glass Pane",
+      "sorakaze_deco:cyan_blackout_reinforced_glass_plate": "Cyan Blackout Reinforced Glass Plate",
+      "sorakaze_deco:gray_blackout_reinforced_glass": "Gray Blackout Reinforced Glass",
+      "sorakaze_deco:gray_blackout_reinforced_glass_pane": "Gray Blackout Reinforced Glass Pane",
+      "sorakaze_deco:gray_blackout_reinforced_glass_plate": "Gray Blackout Reinforced Glass Plate",
+      "sorakaze_deco:green_blackout_reinforced_glass": "Green Blackout Reinforced Glass",
+      "sorakaze_deco:green_blackout_reinforced_glass_pane": "Green Blackout Reinforced Glass Pane",
+      "sorakaze_deco:green_blackout_reinforced_glass_plate": "Green Blackout Reinforced Glass Plate",
+      "sorakaze_deco:light_blue_blackout_reinforced_glass": "Light Blue Blackout Reinforced Glass",
+      "sorakaze_deco:light_blue_blackout_reinforced_glass_pane": "Light Blue Blackout Reinforced Glass Pane",
+      "sorakaze_deco:light_blue_blackout_reinforced_glass_plate": "Light Blue Blackout Reinforced Glass Plate",
+      "sorakaze_deco:light_gray_blackout_reinforced_glass": "Light Gray Blackout Reinforced Glass",
+      "sorakaze_deco:light_gray_blackout_reinforced_glass_pane": "Light Gray Blackout Reinforced Glass Pane",
+      "sorakaze_deco:light_gray_blackout_reinforced_glass_plate": "Light Gray Blackout Reinforced Glass Plate",
+      "sorakaze_deco:lime_blackout_reinforced_glass": "Lime Blackout Reinforced Glass",
+      "sorakaze_deco:lime_blackout_reinforced_glass_pane": "Lime Blackout Reinforced Glass Pane",
+      "sorakaze_deco:lime_blackout_reinforced_glass_plate": "Lime Blackout Reinforced Glass Plate",
+      "sorakaze_deco:magenta_blackout_reinforced_glass": "Magenta Blackout Reinforced Glass",
+      "sorakaze_deco:magenta_blackout_reinforced_glass_pane": "Magenta Blackout Reinforced Glass Pane",
+      "sorakaze_deco:magenta_blackout_reinforced_glass_plate": "Magenta Blackout Reinforced Glass Plate",
+      "sorakaze_deco:orange_blackout_reinforced_glass": "Orange Blackout Reinforced Glass",
+      "sorakaze_deco:orange_blackout_reinforced_glass_pane": "Orange Blackout Reinforced Glass Pane",
+      "sorakaze_deco:orange_blackout_reinforced_glass_plate": "Orange Blackout Reinforced Glass Plate",
+      "sorakaze_deco:pink_blackout_reinforced_glass": "Pink Blackout Reinforced Glass",
+      "sorakaze_deco:pink_blackout_reinforced_glass_pane": "Pink Blackout Reinforced Glass Pane",
+      "sorakaze_deco:pink_blackout_reinforced_glass_plate": "Pink Blackout Reinforced Glass Plate",
+      "sorakaze_deco:purple_blackout_reinforced_glass": "Purple Blackout Reinforced Glass",
+      "sorakaze_deco:purple_blackout_reinforced_glass_pane": "Purple Blackout Reinforced Glass Pane",
+      "sorakaze_deco:purple_blackout_reinforced_glass_plate": "Purple Blackout Reinforced Glass Plate",
+      "sorakaze_deco:red_blackout_reinforced_glass": "Red Blackout Reinforced Glass",
+      "sorakaze_deco:red_blackout_reinforced_glass_pane": "Red Blackout Reinforced Glass Pane",
+      "sorakaze_deco:red_blackout_reinforced_glass_plate": "Red Blackout Reinforced Glass Plate",
+      "sorakaze_deco:white_blackout_reinforced_glass": "White Blackout Reinforced Glass",
+      "sorakaze_deco:white_blackout_reinforced_glass_pane": "White Blackout Reinforced Glass Pane",
+      "sorakaze_deco:white_blackout_reinforced_glass_plate": "White Blackout Reinforced Glass Plate",
+      "sorakaze_deco:yellow_blackout_reinforced_glass": "Yellow Blackout Reinforced Glass",
+      "sorakaze_deco:yellow_blackout_reinforced_glass_pane": "Yellow Blackout Reinforced Glass Pane",
+      "sorakaze_deco:yellow_blackout_reinforced_glass_plate": "Yellow Blackout Reinforced Glass Plate",
+      "sorakaze_vehicles:empty_canister": "Empty Canister",
+      "sorakaze_vehicles:gasoline": "Gasoline Canister",
+      "#minecraft:coals": "Coal or Charcoal",
+      "sorakaze_boss:forge_altar_core": "Forge Altar Core",
+      "sorakaze_boss:frost_altar": "Frost Altar",
+      "minecraft:packed_ice": "Packed Ice",
+      "sorakaze_boss:molten_crown": "Molten Crown",
+      "sorakaze_boss:primal_egg": "Primal Egg",
+      "sorakaze_boss:abyssal_sinew": "Abyssal Sinew",
+      "sorakaze_boss:sculk_heart": "Sculk Heart",
+      "minecraft:sculk": "Sculk",
+      "minecraft:sculk_vein": "Sculk Vein",
+      "sorakaze_boss:sonar_eye": "Sonar Eye",
+      "minecraft:prismarine_crystals": "Prismarine Crystals",
+      "sorakaze_boss:volcanic_core": "Volcanic Core",
+      "sorakaze_boss:soul_blood_altar": "Soul Blood Altar",
+      "minecraft:soul_sand": "Soul Sand",
+      "sorakaze_survival:refrigerator": "Refrigerator",
+      "sorakaze_survival:water_pipe": "Water Pipe",
+      "sorakaze_survival:water_pump": "Water Pump",
+      "sorakaze_survival:water_tap": "Water Tap",
+      "sorakaze_power:air_purifier": "Air Purifier",
+      "sorakaze_planarcadia:interplanar_mural": "Interplanar Jump Mural",
+      "sorakaze_planarcadia:portal_amethyst_block": "Portal Amethyst Block"
     },
     "howto": [
       {

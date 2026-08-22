@@ -62,7 +62,7 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     Dies ist eine inoffizielle Referenzseite mit Rezepten, Änderungsprotokoll und Installationsanleitung für die Fabric-MOD-Sammlung „<strong>Glimpse Alpha</strong>“ (ehemals: Sorakaze) auf dem Sorakazekarasu-Server. Aktuell werden dort
-    <strong>9 MODs</strong> (Schusswaffen, Schienenverkehr, Baumaterial, Bosse, Himmel, Survival, Fahrzeuge, Strom, Backrooms) gleichzeitig auf Minecraft
+    <strong>10 MODs</strong> (Schusswaffen, Schienenverkehr, Baumaterial, Bosse, Himmel, Survival, Fahrzeuge, Strom, Backrooms, Planarcadia) gleichzeitig auf Minecraft
     <strong>26.2</strong> betrieben.
   </p>
   <p class="callout callout--info">Diese Seite verteilt die MOD-Dateien (jar-Dateien) selbst nicht. Hier gibt es nur „Lesestoff“ wie Rezepttabellen, Änderungsprotokoll und Installationsanleitung. Die MOD-Dateien erhältst du direkt vom Server-Administrator.</p>
@@ -75,13 +75,13 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">Neue Funktion</span>
-        <span class="timeline-entry__release">v1.9.3</span>
-        <span class="card__meta">2026-08-13</span>
+        <span class="timeline-entry__release">V2.1.0</span>
+        <span class="card__meta">2026-08-22</span>
       </div>
-      <h3 style="margin-top:0">Neuestes Update: Testvorbereitung für Atomsprengkopf-Stromerzeugung, großes Schienen-Update, neues Bildschirmdesign, dauerhafte Koordinatenanzeige</h3>
-      <p>5 MODs wurden gleichzeitig aktualisiert (die Versionen V1.9.1 und V1.9.2 existieren nicht – das große Rail-Update und die Anliegen rund um die Atomsprengkopf-Stromerzeugung wurden gebündelt und als V1.9.3 ausgeliefert). Endlich kommt die Grafik der Feuerwerkspuppe α an, die zwar schon vor zwei Releases korrigiert worden war, aber nie in einen ausgelieferten Build gelangt ist. Außerdem wurden ein Fehler behoben, durch den ein voll geladener Akku bei längerem Stillstand kaputtgeht, die Vorbereitung einer Verifizierung auf einem echten Server für die Nutzung von Atomsprengköpfen als Brennstoff getroffen, sowie ein Fehler bei der Zielfernrohr-Anzeige des Raketenwerfers behoben. Rail erhielt ein großes Update mit automatischer Abfahrt, automatischem Fahrbetrieb und mehr, die Bildschirme von Strom, Schusswaffen und Bossen bekamen das neue Design „Glimpse Glass“, und es kamen dauerhaft angezeigte Koordinaten sowie eine TPS/Ping-Anzeige hinzu.</p>
-      <ul><li>[Wichtig] Der Grafikfehler der Feuerwerkspuppe α (ein Teil des rechten Ohrs schien zu verschwinden) war eigentlich schon nach v1.9.0.2 behoben worden, gelangte aber wegen eines Fehlers im Vergleichsmechanismus der ausgelieferten Builds nie in eine Distribution. Mit diesem Release kommt die korrigierte Grafik endlich an. Damit das nie wieder passiert, wurde eine neue Prüfung (check_dist_drift.py) eingeführt, die Quell-Assets direkt mit dem ausgelieferten Build abgleicht.</li><li>[Wichtig] Strom: Fehler behoben, durch den ein voll geladener Akku, der etwa 18,6 Stunden lang stehen gelassen wurde, für immer aufhörte, Energiezellen herzustellen. Ursache war ein Überlauf bei einer Addition, der bei leistungsstarken Brennstoffen (wie Atomsprengköpfen) schneller auftrat. Bereits betroffene Akkus reparieren sich mit diesem Release automatisch selbst.</li><li>Strom: Die Möglichkeit, Atomsprengköpfe als Brennstoff zu nutzen, besteht bereits seit v1.8.7, doch diesmal wurde erstmals eine Möglichkeit geschaffen, dies auf einem echten dedizierten Server zu verifizieren (die Testumgebung ging jedoch während dieser Paketierungsrunde verloren, sodass die Ausführung noch nicht stattgefunden hat – Details siehe Hinweise unten). Außerdem wurde ein Fehler behoben, bei dem die Anzeige der Brennstoffqualität als unübersetzte Zeichenkette „sorakaze_power.fuel_quality.nuclear“ erschien.</li><li>Schusswaffen: Das Zielfernrohr des Raketenwerfers ist endlich auf dem Bildschirm sichtbar (nach 2 Meldungen behoben). Der Zoomfaktor wurde außerdem von ×2 auf ×4 erhöht. Das Aussehen der beiden Scharfschützengewehre bleibt unverändert.</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Strom</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Schusswaffen</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Schienenverkehr</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bosse</span></div>
+      <h3 style="margin-top:0">Neuestes Update: Backrooms-Ebenen 3–8 werden echte, endlose Ebenen; eine Server-Admin-App auf dem PC im Spiel; Boss-Beschwörungsrezepte im Rezeptbuch</h3>
+      <p>Die größte Änderung dieser Runde sind die Backrooms-Ebenen 3 bis 8. Früher waren das 128 Blöcke große Demo-Inseln; jetzt sind es endlose Ebenen, die man wirklich betreten und erkunden kann. Der PC im Baumaterial-MOD bekam eine Server-Verwaltungs-App, und im Boss-MOD stehen die Rezepte der Beschwörungsgegenstände nun im Rezeptbuch. Die drei datengetriebenen Waffen haben endlich jeweils ein eigenes Modell in der Hand.</p>
+      <ul><li>Inhaltlich geändert haben sich nur vier MODs: Backrooms, Baumaterial/Deko, Boss und Schusswaffen. Die übrigen sechs (Planarcadia, Strom, Schienenverkehr, Himmel, Survival, Fahrzeuge) wurden nur auf 2.1.0 gehoben, damit der Satz einheitlich bleibt — ihre jar-Dateien unterscheiden sich von denen aus 2.0.0 in genau einem Eintrag, der Versionszeichenkette in fabric.mod.json. An ihrem Inhalt hat sich kein einziges Byte geändert.</li><li>Die Backrooms-Ebenen 3 bis 8 sind von 128 Blöcke großen Demo-Inseln zu echten, endlosen Ebenen geworden. Keine davon hat noch einen Rand; alle lassen sich zu Fuß erkunden.</li><li>Ebene 3, das Elektrizitätsgebäude. Der Strom ist an, und eine Schalttafel zu berühren ist gefährlich. Ein Hound patrouilliert, und im Kabelraum im Untergeschoss wartet ein Smiler.</li><li>Ebene 4, die leeren Büros. Als sicher eingestuft — aber 3 % der Fenster beobachten dich, und sie sehen aus wie alle anderen. Hier erholt sich die geistige Gesundheit langsam wieder. Das Mandelwasser steht im Pausenraum.</li></ul>
+      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bosse</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Baumaterial &amp; Deko</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Schusswaffen</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Strom</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Schienenverkehr</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Himmel</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Fahrzeuge</span></div>
       <p><a href="changelog/">Gesamtes Änderungsprotokoll ansehen →</a></p>
     </div>
 
@@ -91,47 +91,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Schusswaffen</h3>
       <p class="card__meta">Fernkampfwaffen, die es in Vanilla nicht gibt</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Schienenverkehr</h3>
       <p class="card__meta">Züge und andere Fahrzeuge auf Schienen</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Baumaterial &amp; Deko</h3>
       <p class="card__meta">Baumaterialien und Haushaltsgeräte für den Städtebau</p>
-      <div class="card__meta">v1.9.0.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Bosse</h3>
       <p class="card__meta">Mächtige Gegner und ihre Drop-Ausrüstung</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Himmel</h3>
       <p class="card__meta">Neue Dimension und das Königreich der Engel</p>
-      <div class="card__meta">v1.8.4</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survival</h3>
       <p class="card__meta">Neue Erze, Rüstungen und Alltagsgegenstände</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Fahrzeuge</h3>
       <p class="card__meta">Autos, Busse und Flugzeuge</p>
-      <div class="card__meta">v1.8.1</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Strom</h3>
       <p class="card__meta">Stromerzeugung, -übertragung und elektrische Geräte</p>
-      <div class="card__meta">v1.9.3</div>
+      <div class="card__meta">v2.1.0</div>
     </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#7d7d52">
+      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Erkundung einer Zwischenwelt mit Sanity-System</p>
-      <div class="card__meta">v1.9.0.2</div>
+      <div class="card__meta">v2.1.0</div>
+    </a>
+      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
+      <h3>Planarcadia</h3>
+      <p class="card__meta">Eine nächtliche Vergnügungswelt und ihr Portal</p>
+      <div class="card__meta">v2.1.0</div>
     </a>
 </div>
 
@@ -165,7 +170,7 @@
 </div>
 
 <h2>Über dieses Projekt</h2>
-<p>Das Projekt begann unter dem Namen „Sorakaze“ mit drei MODs – Schusswaffen, Schienenverkehr und Baumaterial –, die das klassische Vanilla-Survival-Erlebnis um craftbare Inhalte ergänzten, ohne es zu ersetzen. Seitdem wuchs es kontinuierlich weiter, und mit v1.8.0 erfolgte die Umbenennung in „Glimpse Alpha“. Heute besteht es aus 9 MODs, die zusätzlich Bosse, eine neue Dimension, Survival-Elemente, Fahrzeuge und eine Strominfrastruktur umfassen.</p>
+<p>Das Projekt begann unter dem Namen „Sorakaze“ mit drei MODs – Schusswaffen, Schienenverkehr und Baumaterial –, die das klassische Vanilla-Survival-Erlebnis um craftbare Inhalte ergänzten, ohne es zu ersetzen. Seitdem wuchs es kontinuierlich weiter, und mit v1.8.0 erfolgte die Umbenennung in „Glimpse Alpha“. Heute besteht es aus 10 MODs, die zusätzlich Bosse, eine neue Dimension, Survival-Elemente, Fahrzeuge und eine Strominfrastruktur umfassen.</p>
 <p>Ein durchgehendes Grundprinzip ist, dass Vanilla-Inhalte weder ersetzt noch entfernt werden – Dinge wie Bogen und Pfeil oder die Lore bleiben unverändert erhalten. Namen realer Schusswaffen, Firmen oder Marken werden nicht verwendet.</p>
 
 </main>
