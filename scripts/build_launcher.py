@@ -53,10 +53,16 @@ _DEFAULT_SECTIONS = [
         "id": "installing",
         "title": "Installing Glimpse Launcher",
         "body_html": (
-            "<p>Once a build of Glimpse Launcher has been published, you'll be able to download "
-            "it from the Download page on this Wiki, the same place the mod pack ZIP itself is "
-            "distributed. Run the installer and follow the on-screen steps for your operating "
-            "system, then launch the app.</p>"
+            "<p>Glimpse Launcher is distributed as a single file, "
+            "<code>glimpse-launcher-1.0.0.jar</code>, from the Download page on this Wiki — the "
+            "same place the mod pack ZIP itself is distributed. The same file runs on Windows, "
+            "macOS, and Linux; there is no separate installer for each platform yet.</p>"
+            "<p>Running it needs Java 21 or newer installed on your computer (the same "
+            "requirement as the mod pack itself). If double-clicking the file doesn't open it, "
+            "open a terminal or command prompt in the folder you downloaded it to and run:</p>"
+            "<pre><code>java -jar glimpse-launcher-1.0.0.jar</code></pre>"
+            "<p>Native installers (a Windows .exe, a macOS .dmg, a Linux .AppImage) are planned "
+            "for a future version but are not part of this first release.</p>"
         ),
     },
     {

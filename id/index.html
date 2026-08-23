@@ -78,13 +78,13 @@
 </section>
 
     <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-hotfix">Perbaikan Bug</span>
-        <span class="timeline-entry__release">V2.2.1</span>
-        <span class="card__meta">2026-08-23</span>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span>
+        <span class="timeline-entry__release">V2.4.0</span>
+        <span class="card__meta">2026-08-24</span>
       </div>
-      <h3 style="margin-top:0">Pembaruan terbaru: ガラスランタンが本当に発光色で光るように、バックルームズ階層1の木箱ミッション修正</h3>
-      <p>プレイヤーからの報告を受けての修正版です。ガラスランタンは色ごとに白っぽく光っていた見た目を改め、透過するガラスの向こうに各色そのものがネオンのように光って見えるようになりました。バックルームズの階層1で「箱を4回開ける」という目標が達成できなかった不具合も直しました。</p>
-      <ul><li>ガラスランタンの見た目を修正しました。以前は色つきの光が白っぽい発光にほぼかき消されていましたが、いまは赤色なら赤色に、青色なら青色にというように、各色そのものがネオンのように発光して見えます。中心にだけ小さな白熱の芯が残ります。ガラスなので向こう側も透けて見えます。</li><li>バックルームズの階層1で「木箱を4回開ける」という目標が、木箱を開けても一切進まなかった不具合を修正しました。木箱をこじ開ける(またはしゃがんで素手で開ける)たびに、目標がきちんと進むようになりました。</li></ul>
+      <h3 style="margin-top:0">Pembaruan terbaru: ガラスランタンを本当の意味で修正、正気度が水分ゲージと重ならないように、砲台の武器が見えるように、そして「Glimpse Launcher」公開</h3>
+      <p>V2.2.1でのガラスランタン修正が実は不十分だった件を、実際のスクリーンショットの指摘を受けて根本から作り直しました。中心に残っていた白い光の芯を完全に廃止し、単一のなだらかな色のグラデーションに変更しています。バックルームズでは、正気度の代わりに表示され続けていた通常の水分ゲージを、正しく非表示にしました。砲台に据え付けた武器が画面上で見えなかった不具合も修正。管理者向けの設定コマンドの一部が実際には効かなかった不具合も直しました。そして、MODパックの更新を自動で確認・適用できる新しいデスクトップアプリ「Glimpse Launcher」を公開します。</p>
+      <ul><li>ガラスランタンの発光を再度作り直しました。V2.2.1で「中心に白熱の芯を残す」形に直しましたが、実機で見るとその芯がまだ白っぽく見えてしまうという指摘を実際のスクリーンショットとともにいただきました。芯という特別扱いの領域そのものを廃止し、中心から縁までなだらかに色が変化する単一のグラデーションに変更しました。ガラスなので引き続き透けて見えます。</li><li>バックルームズにいる間、通常の「のどの渇き」ゲージ(水分ゲージ)が正気度と一緒に表示され続けていた不具合を修正しました。バックルームズの中では水分ゲージは正しく隠れるようになります(仕様自体はそのまま残っており、いつでも復帰できます)。</li><li>砲台(タレット)に据え付けた銃や弓が、これまで画面上で見えなくなっていた不具合を修正しました。据え付けた武器がきちんと表示されます。</li><li>サーバー管理者向けの設定コマンドで、書類上は使えることになっていたのに実際には効かなかった項目を修正しました(村の襲撃の確率・波数、動画の解像度上限など)。バックルームズにも新しく管理設定の窓口を追加しました。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bos</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Langit</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Kendaraan</span></div>
       <p><a href="changelog/">Lihat semua riwayat pembaruan →</a></p>
     </div>
@@ -95,52 +95,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>Senjata Api</h3>
       <p class="card__meta">Senjata jarak jauh yang tidak ada di vanilla</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>Kereta Api</h3>
       <p class="card__meta">Kendaraan kereta dan rel</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>Bahan Bangunan &amp; Dekorasi</h3>
       <p class="card__meta">Bahan bangunan dan perkakas rumah untuk membangun kota</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>Bos</h3>
       <p class="card__meta">Musuh kuat untuk dikalahkan beserta perlengkapan hasil dropnya</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>Langit</h3>
       <p class="card__meta">Dimensi baru dan kerajaan malaikat</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>Survival</h3>
       <p class="card__meta">Bijih baru, zirah, dan elemen bertahan hidup</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>Kendaraan</h3>
       <p class="card__meta">Mobil, bus, dan pesawat</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>Listrik</h3>
       <p class="card__meta">Pembangkit listrik, jaringan distribusi, dan perangkat elektronik</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>Backrooms</h3>
       <p class="card__meta">Labirin misterius dengan sistem tingkat kewarasan</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
       <h3>Planarcadia</h3>
       <p class="card__meta">Dunia hiburan malam dan gerbang menuju ke sana</p>
-      <div class="card__meta">v2.2.1</div>
+      <div class="card__meta">v2.4.0</div>
     </a>
 </div>
 

@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 47 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 48 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -83,6 +83,18 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>No updates match your filters.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-24</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.0</span> — Glass lanterns properly fixed, sanity no longer shares the screen with thirst, turret weapons are visible, and Glimpse Launcher arrives
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>The V2.2.1 glass lantern fix turned out not to be enough — a player sent a real screenshot showing the lanterns still reading as washed-out and near-white. We&#x27;ve redesigned them properly this time, removing the leftover white-hot centre entirely in favour of a single smooth colour gradient. In the Backrooms, the ordinary thirst bar was still showing up alongside sanity; it&#x27;s now correctly hidden there. Weapons mounted on turrets were invisible even though they worked correctly; they now render. Several admin settings commands that were documented but didn&#x27;t actually do anything have been wired up properly. And we&#x27;re releasing a new desktop app, Glimpse Launcher, that checks for and applies pack updates automatically.</p>
+      <ul><li>Redesigned the glass lantern glow again. V2.2.1&#x27;s fix kept a small white-hot &quot;filament&quot; at the centre of each lantern, but in real play that filament still read as washed-out white regardless of colour — confirmed with a real in-game screenshot. The filament concept has been removed entirely in favour of a single smooth gradient from the centre to the edge. Still genuinely translucent glass.</li><li>Fixed the ordinary thirst bar showing up alongside sanity while inside the Backrooms. It&#x27;s now correctly hidden there (the feature itself is unaffected everywhere else).</li><li>Fixed weapons mounted on turrets being invisible. Turrets have always accepted, fired, and returned mounted weapons correctly — they just never rendered. They now do.</li><li>Fixed several server admin settings commands that were documented but had no effect (village raid chance and wave count, video resolution cap, and others). The Backrooms module also gained its own admin settings entry point, which it previously had none of.</li><li>Released Glimpse Launcher, a new desktop app that checks the Wiki for pack updates, verifies downloads by SHA-256, takes an automatic backup before applying an update, and can open the official Minecraft Launcher for you (you still choose the Fabric profile yourself, exactly as before). One file runs on Windows, macOS, and Linux (Java is required to run it). Get it from the Download page.</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>This is Glimpse Launcher&#x27;s first release. The launcher cannot yet update itself automatically — that&#x27;s planned for a future version.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-23</div>
       <h3 class="timeline-entry__title">

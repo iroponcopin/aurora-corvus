@@ -66,14 +66,14 @@
   <h1>Glimpse ランチャー</h1>
   <p class="lede">Glimpse ランチャーは、Glimpse Alpha MOD パックを自動で最新の状態に保つ、小さなデスクトップアプリです。この Wiki を見て最新リリースを確認し、更新分をダウンロードし、パックフォルダーに手を加える前にダウンロードしたファイルをすべてこの Wiki が公開する SHA-256 チェックサムと照合します。信頼する情報源はこの Wiki だけです。</p>
 </div>
-<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#what-it-is">Glimpse ランチャーとは何か、なぜ作られたのか</a></li><li><a href="#installing">Glimpse ランチャーの導入方法</a></li><li><a href="#pointing-at-existing-pack">既存の MOD パックフォルダーを指定する</a></li><li><a href="#update-modes">自動更新モードと手動更新モードの違い</a></li><li><a href="#restoring-from-backup">更新に失敗したときにバックアップから復元する</a></li></ol></div>
+<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#what-it-is">Glimpse ランチャーとは何か、なぜ作られたのか</a></li><li><a href="#installing">Glimpse Launcher の入れ方</a></li><li><a href="#pointing-at-existing-pack">既存の MOD パックフォルダーを指定する</a></li><li><a href="#update-modes">自動更新モードと手動更新モードの違い</a></li><li><a href="#restoring-from-backup">更新に失敗したときにバックアップから復元する</a></li></ol></div>
 <div id="what-it-is"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Glimpse ランチャーとは何か、なぜ作られたのか</h2>
       <p>大きな MOD パックを手動で最新に保つには、ダウンロードページを訪れてバージョン番号を見比べ、新しい ZIP をダウンロードし、リリースのたびに正しいフォルダーへ展開し直す必要があります。Glimpse ランチャーはこれを自動化します ―― この Wiki のリリース情報を読み取り、いま導入済みのパックと比較して、変更があった分だけを取得します。</p><p>ランチャーがダウンロードするファイルは、使用する前に必ずこの Wiki が公開する SHA-256 チェックサムと照合されます。一致しなければ、そのファイルは導入されません。「最新版とは何か」について、ランチャーが信頼する情報源はこの Wiki だけです。</p>
     </div></div>
 <div id="installing"><div class="card" style="margin-bottom:20px;">
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">Glimpse ランチャーの導入方法</h2>
-      <p>Glimpse ランチャーのビルドが公開されたら、MOD パックの ZIP と同じ、この Wiki のダウンロードページからランチャーをダウンロードできるようになります。インストーラーを実行し、お使いの OS の画面の指示に従って導入したのち、アプリを起動してください。</p>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Glimpse Launcher の入れ方</h2>
+      <p>Glimpse Launcher は、このWikiのダウンロードページから配布される単一のファイル <code>glimpse-launcher-1.0.0.jar</code> です(MODパックの配布ZIPと同じ場所にあります)。同じ1つのファイルが Windows・macOS・Linux のいずれでも動きます。現時点ではOSごとの専用インストーラーはありません。</p><p>実行には Java 21 以降が必要です(MODパック本体と同じ条件です)。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、次のコマンドを実行してください。</p><pre><code>java -jar glimpse-launcher-1.0.0.jar</code></pre><p>OSごとのネイティブインストーラー(Windows用 .exe・macOS用 .dmg・Linux用 .AppImage)は今後のバージョンで対応予定ですが、この最初のリリースにはまだ含まれていません。</p>
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">既存の MOD パックフォルダーを指定する</h2>
