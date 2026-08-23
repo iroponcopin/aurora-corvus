@@ -105,9 +105,12 @@ def recipe_cat_index(cat_name):
 # the domain root, so every link in this site is prefix-relative.
 NAV_SECTIONS = [
     ("home", ""),
+    ("download", "download/"),
     ("changelog", "changelog/"),
     ("recipes", "recipes/"),
     ("guide", "guide/"),
+    ("gates", "gates/"),
+    ("features", "features/"),
     ("roadmap", "roadmap/"),
     ("issues", "known-issues/"),
 ]

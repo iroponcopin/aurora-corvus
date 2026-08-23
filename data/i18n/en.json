@@ -9,14 +9,17 @@
       "recipes": "Recipes",
       "guide": "Install Guide",
       "roadmap": "Roadmap",
-      "issues": "Known Issues"
+      "issues": "Known Issues",
+      "gates": "Gates",
+      "features": "Features",
+      "download": "Download"
     },
     "skip_link": "Skip to content",
     "menu_toggle": "Open menu",
     "theme_toggle": "Toggle color scheme",
     "lang_switch_label": "言語 / Language",
-    "footer_note": "This site is an unofficial reference. It does not distribute the mod files (jars) themselves. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.",
-    "mods_not_distributed_notice": "This site does not distribute the mods themselves (the jar files). What's here is just \"reading material\" — recipe tables, changelogs, install instructions, and the like. Please get the mod files directly from your server admin.",
+    "footer_note": "This site is an unofficial reference. As of V2.2.0, the mod files (jars) are distributed directly from this site's \"Download\" page. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.",
+    "mods_not_distributed_notice": "As of V2.2.0, this site distributes the mod files (jars) directly via the \"Download\" page. It also has \"reading material\" — recipe tables, changelogs, install instructions, and the like. If you need a version older than V2.2.0, please get it directly from your server admin.",
     "type_badge": {
       "release": "New feature",
       "hotfix": "Bug fix",
@@ -105,7 +108,9 @@
       "issues_standing_heading": "Intentionally unaddressed items",
       "issues_standing_lede": "Not bugs — these are being considered as intentionally deferred, pending a design decision.",
       "issues_unconfirmed_heading": "Recent changes not yet confirmed on real hardware",
-      "issues_unconfirmed_note": "This mod pack is built in an environment where the developers cannot directly operate a Minecraft client. Server startup and data integrity are verified mechanically, but appearance, sound, and how things feel to actually play can only be confirmed through feedback from real players. The items below are recent updates that haven't been confirmed on real hardware yet. If you notice anything off, please let your server admin know."
+      "issues_unconfirmed_note": "This mod pack is built in an environment where the developers cannot directly operate a Minecraft client. Server startup and data integrity are verified mechanically, but appearance, sound, and how things feel to actually play can only be confirmed through feedback from real players. The items below are recent updates that haven't been confirmed on real hardware yet. If you notice anything off, please let your server admin know.",
+      "gates_intro": "Every gate you can actually walk through on this server, with how to build it, where it leads, and a diagram. This includes vanilla Nether and End alongside the pack's own gates.",
+      "features_intro": "A player-facing tour of what's new or changed in V2.2. This covers what you actually see and use in-game, not internal settings or admin-only tooling."
     },
     "page_titles": {
       "home": "",
@@ -113,14 +118,20 @@
       "recipes": "Recipes",
       "guide": "Install Guide",
       "roadmap": "Roadmap",
-      "issues": "Known Issues"
+      "issues": "Known Issues",
+      "gates": "Gates & Portals",
+      "features": "Feature Guide",
+      "download": "Download"
     },
     "page_descriptions": {
       "changelog": "The full update history of the Glimpse Alpha (formerly Sorakaze) mod pack. Covers what's changed and what to watch out for, from the first release to now.",
       "recipes": "A quick-reference table of crafting recipes for every item in the Glimpse Alpha mod pack. Supports search and category filtering.",
       "guide": "The install guide for the Glimpse Alpha mod pack. Covers server-side install steps and how players set things up to join.",
       "roadmap": "The roadmap and upcoming development plans for the Glimpse Alpha mod pack. Planned: a backrooms area, rail mod enhancements, UI improvements, and more.",
-      "issues": "A list of known issues and unconfirmed features in the Glimpse Alpha mod pack."
+      "issues": "A list of known issues and unconfirmed features in the Glimpse Alpha mod pack.",
+      "gates": "Every dimensional gate in Glimpse Alpha (Nether, End, Amethyst Gate, Heaven, Backrooms entrance) — how to build one, where it leads, with diagrams.",
+      "features": "A tour of the main features added or changed in V2.2: glass lanterns, Backrooms, overworld raids, turrets, video, the Sparxie staff, firearm rebalance, the drone, and the Sapporo reconstruction.",
+      "download": "Download the Glimpse Alpha mod pack (V2.2.0, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions."
     }
   },
   "home": {
@@ -172,7 +183,7 @@
     "about_heading": "About this project",
     "about_p1": "It started out under the name \"Sorakaze,\" adding three mods — guns, rail, and building materials — on top of an otherwise vanilla survival experience. From there it kept expanding with craftable items, and was renamed \"Glimpse Alpha\" in v1.8.0. It's now a {mod_count}-mod pack that includes bosses, a new dimension, survival features, vehicles, and power infrastructure.",
     "about_p2": "The consistent policy has been to never replace or remove vanilla content — things like bows and minecarts remain exactly as they were. No real-world firearm, company, or trademark names are used.",
-    "not_distributed_notice": "This site does not distribute the mods themselves (the jar files). What's here is just \"reading material\" — recipe tables, changelogs, install instructions, and the like. Please get the mod files directly from your server admin."
+    "not_distributed_notice": "As of V2.2.0, this site distributes the mod files (jars) directly via the \"Download\" page. It also has \"reading material\" — recipe tables, changelogs, install instructions, and the like. If you need a version older than V2.2.0, please get it directly from your server admin."
   },
   "changelog": [
     {
@@ -1217,6 +1228,52 @@
       "known_limitations": [
         "The Sapporo mod (sorakaze_sapporo) is not part of this round. It is deferred to V2.2.",
         "The actual look, sound and entity behaviour of Levels 3–8 had not been confirmed in a real play-through at the time of writing."
+      ]
+    },
+    {
+      "release": "V2.2.0",
+      "date": "2026-08-23",
+      "title": "52 new glass lanterns, a real Backrooms lobby, overworld raids, turrets, and a real reconstruction of Sapporo",
+      "summary": "This round adds an 11th mod, Sapporo — a dimension recreating the real city of Sapporo, Japan, from real survey data. Backrooms Level 1, \"The Lobby\", is now a real explorable space rather than a demo room, with a glass objective panel shown on the left of the screen at all times. Village raids can now trigger on pure chance without Bad Omen, turrets let you mount guns and bows, video now plays up to 4K and stops automatically when you walk away, the Sparxie staff gained a ranged attack alongside its melee one, the minigun and rocket launcher were rebalanced, a flyable camera drone and its own phone app arrived, and the Building & Decor mod gained 52 new glass lanterns. The Amethyst Gate now opens with plain vanilla amethyst blocks too.",
+      "mod_versions": {
+        "sorakaze_backrooms": "2.2.0",
+        "sorakaze_boss": "2.2.0",
+        "sorakaze_deco": "2.2.0",
+        "sorakaze_guns": "2.2.0",
+        "sorakaze_planarcadia": "2.2.0",
+        "sorakaze_power": "2.2.0",
+        "sorakaze_rail": "2.2.0",
+        "sorakaze_sky": "2.2.0",
+        "sorakaze_survival": "2.2.0",
+        "sorakaze_vehicles": "2.2.0",
+        "sorakaze_sapporo": "2.2.0"
+      },
+      "highlights": [
+        "The Sapporo mod (sorakaze_sapporo) has finally shipped. It's a dimension recreating the real city of Sapporo, Japan, from real geographic data. Building footprints and terrain are both 100% real survey data, but most building heights are currently a documented per-district statistical estimate — an honest gap while the more detailed 3D building dataset (Japan's PLATEAU) is still being obtained. Heights will be refined once that data is in hand.",
+        "Backrooms Level 1, \"The Lobby\", is now a real, walkable, explorable space rather than a small demo room. You reach it through a rift that generates naturally near an End City.",
+        "A glass objective panel is now shown on the left side of the screen at all times, showing your current level, sanity, and where to head next.",
+        "Inside the Backrooms, sanity now replaces thirst as the stat you're managing. Entities you meet there take no damage from ordinary weapons and cannot be defeated — this is a place for evasion, not combat.",
+        "The Amethyst Gate can now be built from plain vanilla amethyst blocks as well as Portal Amethyst Blocks — the two can even be mixed in the same frame.",
+        "Village raids can now start on pure chance just from being in a village, with no need for Bad Omen. 12 waves in total, with extra enemies from the Heaven mod on the final wave.",
+        "New turrets let you mount a gun, bow, or crossbow. A mounted weapon carries its own ammo store, and unmounting hands the weapon and remaining ammo back to you.",
+        "Video playback now supports up to 4K, always keeps a 16:9 aspect ratio, and stops automatically once you walk far enough away from the screen.",
+        "The Sparxie staff can now attack at range (a 24-block bolt) as well as in melee.",
+        "The minigun now hits roughly three times as hard, and the rocket launcher's blast is far more powerful than before.",
+        "A freely flyable camera drone was added, along with a dedicated Drone App on the in-game phone showing a live 16:9 feed from its point of view. Letting go leaves it hovering in place rather than auto-returning.",
+        "The Building & Decor mod gained 52 new glass lanterns (18 vanilla-glass, 17 reinforced, 17 blackout). Full light level 15, and measured brighter than the existing LED panel.",
+        "The admin app's PC screen gained a change-log view for the server administrator — a read-only view of past changes. Viewing it is not itself logged."
+      ],
+      "balance_changes": [
+        "Minigun damage roughly tripled.",
+        "Rocket launcher blast power greatly increased."
+      ],
+      "warnings": [
+        "Playing in the Sapporo dimension requires the server administrator to have installed a separate map data file on the server (not distributed on this site). Without it, that world simply isn't reachable.",
+        "Backrooms entities cannot be defeated. Don't try to fight them with ordinary weapons — evade instead."
+      ],
+      "known_limitations": [
+        "Most Sapporo building heights are still a district-level statistical estimate rather than real survey data. They'll be updated once more detailed 3D city data becomes available.",
+        "Whether players can build and light their own Heaven gate (glowstone portal) depends on a server-administrator setting, which defaults to off."
       ]
     }
   ],
@@ -4288,5 +4345,95 @@
         ]
       }
     ]
+  },
+  "gates": [
+    {
+      "id": "nether",
+      "title": "Nether Portal (vanilla, unmodified)",
+      "body_html": "\n<p><strong>Destination:</strong> Overworld &harr; the Nether. <strong>This pack makes no changes to it at all</strong> — it behaves exactly as vanilla.</p>\n<img src=\"{img_root}assets/img/gates/nether_portal.svg\" alt=\"Nether portal frame diagram — 2x3 interior minimum, corners not required\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<h3>Frame material and shape</h3>\n<ul>\n  <li>Obsidian only</li>\n  <li>Interior (the empty part): 2–21 blocks wide x 3–21 blocks tall. The classic 4x5 obsidian rectangle is the minimum size.</li>\n  <li><strong>Corners are not required</strong> — as long as the four sides are sealed, the four corner blocks can be left empty and the portal still lights.</li>\n</ul>\n<h3>How to light it</h3>\n<p>Flint and steel, or a fire charge, used on the empty interior.</p>\n<h3>Common mistakes</h3>\n<ul>\n  <li>An interior wider or taller than 21 blocks will never light.</li>\n  <li>Any non-obsidian block in the frame (e.g. basalt) stops it lighting.</li>\n</ul>\n"
+    },
+    {
+      "id": "end",
+      "title": "End Portal (vanilla, unmodified)",
+      "body_html": "\n<p><strong>Destination:</strong> Overworld &rarr; the End (one-way; return via an End Gateway or vanilla means such as a bed explosion). <strong>This pack makes no changes to it.</strong></p>\n<img src=\"{img_root}assets/img/gates/end_portal.svg\" alt=\"End portal frame diagram — 12 End Portal Frames in a ring, each needing an Eye of Ender\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<h3>Frame material and shape</h3>\n<ul>\n  <li>12 End Portal Frame blocks arranged in a 5x5 ring (generates naturally in strongholds).</li>\n  <li>All 12 frames must face inward.</li>\n</ul>\n<h3>How to light it</h3>\n<p>Fill all 12 frames with an Eye of Ender each. The portal opens automatically the moment the last one is placed — no separate ignition item is needed.</p>\n<h3>Common mistakes</h3>\n<ul>\n  <li>An incomplete stronghold generation leaves some frames missing — fill the gaps with Eyes of Ender.</li>\n  <li>A hand-placed frame in the wrong orientation won't work; normally you only ever fill in the naturally-generated ring.</li>\n</ul>\n"
+    },
+    {
+      "id": "amethyst",
+      "title": "Amethyst Gate",
+      "body_html": "\n<p><strong>Destination:</strong> Overworld &harr; Planarcadia.</p>\n<img src=\"{img_root}assets/img/gates/amethyst_gate.svg\" alt=\"Amethyst Gate frame diagram — Portal Amethyst Block and vanilla Amethyst Block can be mixed freely\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<h3>Frame material and shape</h3>\n<ul>\n  <li><strong>Portal Amethyst Block</strong>, or plain <strong>vanilla Amethyst Block</strong> (new as of V2.2). The two block types can be <strong>freely mixed</strong> in the same frame.</li>\n  <li>Exactly the same size rule as the Nether portal: 2–21 blocks wide x 3–21 blocks tall interior, <strong>corners not required</strong>.</li>\n  <li>Budding Amethyst, Amethyst Clusters and obsidian do not count as frame material.</li>\n</ul>\n<h3>How to light it</h3>\n<p>Flint and steel, or a fire charge.</p>\n<h3>Common mistakes</h3>\n<ul>\n  <li>Using Budding Amethyst or an Amethyst Cluster in the frame — neither is recognised as frame material.</li>\n  <li>Mixing in obsidian stops it lighting. Conversely, a Nether Portal will never open on this frame — the two gates never share stone.</li>\n</ul>\n"
+    },
+    {
+      "id": "heaven",
+      "title": "Heaven Gate (glowstone portal)",
+      "body_html": "\n<p><strong>Destination:</strong> Overworld &harr; Heaven (Sky) — home to the angel city and kingdom.</p>\n<img src=\"{img_root}assets/img/gates/heaven_gate.svg\" alt=\"Heaven gate frame diagram — fixed 4x5 outer rectangle in glowstone, corners included\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<h3>Frame material and shape</h3>\n<ul>\n  <li>Glowstone only.</li>\n  <li><strong>Fixed size: an outer rectangle 4 wide x 5 tall, corners included.</strong> The inner face is 2 wide x 3 tall. Unlike the Nether portal, you cannot resize this one.</li>\n</ul>\n<h3>How to light it</h3>\n<p>Flint and steel. A fire charge does nothing here.</p>\n<div class=\"callout callout--warn\">\n  <div class=\"callout__title\">⚠ Needs an admin setting</div>\n  <p>Lighting a player-built glowstone frame is <strong>disabled by default</strong> until a server administrator explicitly turns it on. If lighting it does nothing, check with your admin first.</p>\n</div>\n<h3>Common mistakes</h3>\n<ul>\n  <li>Building any size other than 4x5 — Nether-portal habits don't transfer.</li>\n  <li>Leaving the corners empty — this gate needs glowstone in all four corners too.</li>\n</ul>\n"
+    },
+    {
+      "id": "backrooms",
+      "title": "Backrooms Entrance (End City rift)",
+      "body_html": "\n<p><strong>Destination:</strong> the End &rarr; Backrooms Level 1, \"The Lobby\".</p>\n<img src=\"{img_root}assets/img/gates/backrooms_rift.svg\" alt=\"Diagram of a rift generated near an End City — a 3x3 pedestal with a 2-tall rift block\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<h3>This one isn't player-built</h3>\n<p>Unlike the other four gates, this entrance <strong>generates naturally</strong>. Near a naturally-spawned <strong>End City</strong>, an automatic 3x3 stone pedestal with a 2-block-tall \"rift\" is placed in open space. At most one rift per End City. No existing End City block is ever overwritten.</p>\n<h3>How to enter (in place of ignition)</h3>\n<p>Just step onto the rift block. No tool is required.</p>\n<h3>Common mistakes</h3>\n<ul>\n  <li>Not every End City has a visible rift — if the automatic placement search couldn't find clear open space near that particular city, that city is simply skipped (a safe-by-design choice; End Cities generate in large numbers, so this isn't fatal).</li>\n  <li>Level 1, \"The Lobby\", is a real, walkable, explorable room set — not a small demo box. There's no need to rush a wall-clip into a different level right away.</li>\n</ul>\n"
+    }
+  ],
+  "features": [
+    {
+      "id": "glass-lanterns",
+      "title": "Glass Lanterns (52 variants)",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/glass_lanterns.png\" alt=\"Preview sheet of the 52 glass lantern variants\" style=\"max-width:640px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>The Building &amp; Decor mod gained <strong>52 new glass lanterns</strong>: 18 in vanilla glass colours, 17 reinforced, and 17 blackout (dark) variants.</p>\n<ul>\n  <li>Full light level 15. Measured brighter than the existing LED panel's emissive texture.</li>\n  <li>Sits in the creative-inventory Functional Blocks tab, right next to the Sea Lantern.</li>\n</ul>\n"
+    },
+    {
+      "id": "backrooms",
+      "title": "Backrooms",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/backrooms_panel.svg\" alt=\"The left-hand glass objective panel and an impression of the Lobby\" style=\"max-width:640px;width:100%;border-radius:6px;margin:12px 0;\">\n<h3>On-screen UI</h3>\n<p>A glass objective panel is now shown on the left side of the screen at all times: your current level, sanity, and where to head next, at a glance.</p>\n<h3>Level 1, \"The Lobby\"</h3>\n<p>Not a small demo room — a real, walkable, explorable lobby. You enter it via the <a href=\"../gates/#backrooms\">End City rift</a>.</p>\n<h3>Sanity replaces thirst</h3>\n<p>Inside the Backrooms, the normal thirst stat is replaced by <strong>Sanity</strong> as the survival meter you're managing.</p>\n<div class=\"callout callout--danger\">\n  <div class=\"callout__title\">⚠ Ordinary weapons don't work here</div>\n  <p>Entities that appear inside the Backrooms take no damage from ordinary weapons. These entities <strong>cannot be defeated</strong>. This is a place built around evasion, not combat.</p>\n</div>\n"
+    },
+    {
+      "id": "overworld-raids",
+      "title": "Overworld Raids",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/overworld_raids.svg\" alt=\"Diagram of the 12-wave overworld raid\" style=\"max-width:640px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>Village raids used to need Bad Omen. As of V2.2, <strong>just being in a village can trigger a raid on pure chance</strong> — Bad Omen is no longer required.</p>\n<ul>\n  <li>While you're in a village, there's a periodic chance for a raid to start.</li>\n  <li>12 waves in total. The final wave brings extra enemies from the Heaven mod.</li>\n</ul>\n"
+    },
+    {
+      "id": "turrets",
+      "title": "Turrets",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/turret_mount.svg\" alt=\"Diagram of mounting a gun on a turret\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>Right-click a turret while holding a gun, bow, or crossbow to mount it. A mounted weapon has its own internal ammo store; unmounting hands the weapon and its remaining ammo straight back to you.</p>\n"
+    },
+    {
+      "id": "video",
+      "title": "Video (up to 4K, auto-stop)",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/video_screen.svg\" alt=\"Diagram of the video screen's 16:9 aspect ratio\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>Video playback resolution now supports <strong>up to 4K</strong>. The screen always keeps a <strong>16:9</strong> aspect ratio.</p>\n<p>Walk far enough away from the screen and playback <strong>stops automatically</strong>.</p>\n"
+    },
+    {
+      "id": "sparxie-staff",
+      "title": "Sparxie Staff",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/sparxie_staff.svg\" alt=\"Diagram of the Sparxie staff's melee and ranged attacks\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>Previously melee-only, the Sparxie staff now performs <strong>both melee and ranged attacks</strong>. The ranged attack fires a bolt with a 24-block range.</p>\n"
+    },
+    {
+      "id": "firearm-rebalance",
+      "title": "Firearm Rebalance",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/firearm_rebalance.svg\" alt=\"Diagram of the minigun and rocket launcher power changes\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<ul>\n  <li>The <strong>minigun</strong> now hits roughly <strong>three times as hard</strong>.</li>\n  <li>The <strong>rocket launcher's</strong> blast is <strong>far more powerful</strong> than before.</li>\n</ul>\n<p class=\"callout callout--info\">Internal tuning values aren't listed here — try it in-game to feel the difference.</p>\n"
+    },
+    {
+      "id": "drone",
+      "title": "Drone and Drone App",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/drone_app.svg\" alt=\"Diagram of a flyable camera drone and its dedicated phone app\" style=\"max-width:420px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>A freely flyable <strong>camera drone</strong> has been added. Its dedicated <strong>Drone App</strong> (on the in-game phone) shows a live 16:9 feed from the drone's point of view.</p>\n<p>Let go and it hovers in place where it is — it does not automatically fly back to you.</p>\n"
+    },
+    {
+      "id": "sapporo",
+      "title": "The Sapporo Reconstruction",
+      "body_html": "\n<img src=\"{img_root}assets/img/features/sapporo_honesty.svg\" alt=\"Diagram showing how much of the Sapporo reconstruction is real survey data\" style=\"max-width:520px;width:100%;border-radius:6px;margin:12px 0;\">\n<p>A dimension recreating the real city of Sapporo, Japan, built from real geographic survey data. Here is the honest breakdown, with nothing overstated:</p>\n<ul>\n  <li><strong>Building footprints: 100% real data</strong> (from OpenStreetMap — up from roughly 20% coverage before).</li>\n  <li><strong>Terrain: 100% real data</strong> (from a Japanese government digital elevation model).</li>\n  <li><strong>Building heights: only partly real.</strong> The detailed 3D-building-height dataset (Japan's PLATEAU) hasn't been downloaded yet, so most heights are a documented per-district statistical estimate rather than a survey. Heights will be updated once that data is available.</li>\n</ul>\n<p class=\"callout callout--info\">We're stating plainly that the heights are an estimate. The footprints and terrain are genuine survey data.</p>\n"
+    }
+  ],
+  "download": {
+    "version_label": "Version",
+    "size_label": "File size",
+    "sha_label": "SHA-256",
+    "primary_cta": "Download",
+    "intro": "Download the Glimpse Alpha mod pack (all 11 mods) directly from this page. The ZIP contains all 11 mod jars, the Sapporo module's data file, the install manuals, the README, and the resource pack.",
+    "server_note": "For server admins: extract the ZIP's jar files straight into your mods folder. The Sapporo mod additionally needs its bundled sapporo_mode_a.spro copied into the server's config/sorakaze_sapporo/data/ folder (see \"How to install\" below).",
+    "sapporo_note": "The Sapporo mod (sorakaze-sapporo) ships for the first time in V2.2.0. It's a city-generation world based on the real terrain and buildings of Sapporo, Japan (building heights are currently estimated pending real 3D building data; will be updated once that's available).",
+    "whats_new_heading": "What's new in V2.2.0",
+    "whats_new_body": "Glass lanterns, a real Backrooms lobby, ground-level raids, gun turrets, and the Sapporo city recreation, among other changes. See the changelog for the full list:",
+    "changelog_link_text": "View the changelog →",
+    "install_heading": "How to install",
+    "install_body": "Full install steps for both the server and players are in the install guide:",
+    "guide_link_text": "View the install guide →",
+    "older_versions_note": "This page always distributes the current release (V2.2.0). If you need an older version, please ask your server admin directly."
   }
 }

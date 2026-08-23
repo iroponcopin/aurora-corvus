@@ -2,18 +2,23 @@
 
 An unofficial reference site for **Glimpse Alpha** (formerly *Sorakaze*), a set of
 Fabric mods for a private Minecraft server. It documents the mod pack's crafting
-recipes, update history, and install instructions — it does **not** distribute the
-mod files themselves.
+recipes, update history, and install instructions. As of V2.2.0 it also hosts the
+current release ZIP directly (`downloads/`, linked from the `/download/` page) —
+earlier versions were owner-distributed only and are not archived here.
 
 Live site: served via GitHub Pages from this repository.
 
 ## What's here
 
-- `index.html`, `changelog/`, `recipes/`, `guide/`, `roadmap/`, `known-issues/` —
-  the Japanese (primary) site, generated as static HTML.
+- `index.html`, `download/`, `changelog/`, `recipes/`, `guide/`, `roadmap/`,
+  `known-issues/` — the Japanese (primary) site, generated as static HTML.
 - `en/`, `es/`, `fr/`, `zh/`, `ko/`, `pt-br/`, `it/`, `ar/`, `ru/`, `id/`, `de/`, `tr/` —
   the same site in 12 additional languages, one directory per
   [BCP-47-ish](https://en.wikipedia.org/wiki/IETF_language_tag) language code.
+- `downloads/` — the current release ZIP (`Glimpse_Alpha_MODs_v<version>+mc26.2.zip`),
+  assembled by `tools/build_dist_zip.py` at the repo root and copied here. Only the
+  current version is kept; `scripts/build_download.py` reads its real size/sha256/
+  version at build time rather than trusting a typed-in value.
 - `assets/` — shared CSS/JS and the recipe item icon images (908 PNGs extracted
   from the mod pack's own textures), reused by every language.
 - `data/` — the underlying JSON data (recipes, changelog, guide content, etc.)

@@ -13,9 +13,12 @@ HERE = Path(__file__).resolve().parent
 BUILD_SCRIPTS = [
     "build_recipe_overlays.py",
     "build_home.py",
+    "build_download.py",
     "build_changelog.py",
     "build_recipes.py",
     "build_guide.py",
+    "build_gates.py",
+    "build_features.py",
     "build_roadmap.py",
     "build_known_issues.py",
     "build_404.py",

@@ -26,9 +26,12 @@
     <nav class="site-nav" id="siteNav">
       <ul>
         <li><a href="../">Home</a></li>
+        <li><a href="../download/">Download</a></li>
         <li><a href="../changelog/" class="active">Changelog</a></li>
         <li><a href="../recipes/">Ricette</a></li>
         <li><a href="../guide/">Guida</a></li>
+        <li><a href="../gates/">Portali</a></li>
+        <li><a href="../features/">Novità</a></li>
         <li><a href="../roadmap/">Roadmap</a></li>
         <li><a href="../known-issues/">Problemi noti</a></li>
       </ul>
@@ -61,7 +64,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Qui sono elencati in ordine cronologico inverso tutti gli aggiornamenti, dalla prima versione (v1.0.0, 2026-07-15) a oggi (aggiornato al 2026-08-11, 45 aggiornamenti in totale). Sono stati omessi i passaggi di verifica interna della fase di sviluppo: trovi solo ciò che è cambiato realmente sul server e a cosa prestare attenzione.</p>
+  <p class="lede">Qui sono elencati in ordine cronologico inverso tutti gli aggiornamenti, dalla prima versione (v1.0.0, 2026-07-15) a oggi (aggiornato al 2026-08-11, 46 aggiornamenti in totale). Sono stati omessi i passaggi di verifica interna della fase di sviluppo: trovi solo ciò che è cambiato realmente sul server e a cosa prestare attenzione.</p>
   <p class="callout callout--info">I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell&#x27;introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.</p>
 </div>
 
@@ -79,6 +82,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>Nessun aggiornamento corrisponde ai criteri selezionati.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.2.0</span> — ガラスランタン52種、バックルームズが本物のロビーに、地上の襲撃、砲台、札幌の街を再現
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novità</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Edilizia e arredamento</span><span class="mod-badge" style="--mod-color:#c0533a">Armi da fuoco</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Elettricità</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Cielo</span><span class="mod-badge" style="--mod-color:#c19a2e">Sopravvivenza</span><span class="mod-badge" style="--mod-color:#d17a34">Veicoli</span></div>
+      <p>今回は11個目のMOD「札幌」がついに加わり、実在する札幌市を実測データから再現したディメンションが遊べるようになりました。バックルームズは階層1「ロビー」が見本の小部屋から本物の探索できる空間になり、画面左手にガラス製の目標パネルが常時表示されます。村の襲撃は「不吉な予感」なしでも純粋な確率で発生するようになり、銃や弓を据え付けられる砲台、最大4K・自動停止の動画、近接と遠隔の両方が使えるSparxieの杖、ミニガン・ロケットランチャーの威力調整、飛行可能なカメラドローンとその専用アプリ、そして建材MODに52種類のガラスランタンが加わりました。アメジストゲートはバニラのアメジストブロックだけでも開通するようになりました。</p>
+      <ul><li>MOD「札幌(sorakaze_sapporo)」がついに出荷されました。実在する北海道札幌市を、実際の地理データから再現したディメンションです。建物の輪郭(フットプリント)と地形はどちらも100%実測データにもとづきますが、建物の高さの大部分は地区ごとの統計にもとづく推定値です。より詳しい3D都市データ(PLATEAU)がまだ入手できていないための、正直な現状です。将来データが入手でき次第、より正確な高さに更新される予定です。</li><li>バックルームズの階層1「ロビー」が、見本の小部屋から実際に歩いて探索できる本物のロビーになりました。入口は終末の都市(End City)の近くに自然生成される裂け目です。</li><li>画面左手に、ガラス製の目標パネルが常時表示されるようになりました。現在の階層・正気度・次に向かう場所がひと目で分かります。</li><li>バックルームズの中では、通常の「のどの渇き」の代わりに正気度(サニティ)が生活の軸になります。また、中に出現する怪異は通常の武器が一切効かず、倒すこともできません。戦うのではなく避けて進む場所です。</li><li>アメジストゲートが、これまでのポータルアメジストブロックに加えて、バニラのアメジストブロックだけでも組んで開通できるようになりました。2種類を混在させて組むこともできます。</li><li>村の襲撃(レイド)が、「不吉な予感」の効果なしでも、村にいるだけで純粋な確率により発生するようになりました。全12波構成で、最終波には天界MOD由来の追加の敵が加わります。</li><li>銃・弓・クロスボウを据え付けられる砲台が追加されました。据え付けた武器には弾薬用の内部インベントリがあり、外すと武器と残弾がそのまま返ってきます。</li><li>動画の対応解像度が最大4Kまで引き上げられました。画面は常に16:9を保ち、画面から離れると自動的に再生が止まります。</li><li>Sparxieの杖が、これまでの近接攻撃に加えて遠隔攻撃(射程24ブロックのボルト)も使えるようになりました。</li><li>ミニガンの威力が約3倍になり、ロケットランチャーの爆発の威力が大幅に強化されました。</li><li>自由に飛ばせるカメラドローンと、専用のドローンアプリ(スマホ)が追加されました。ドローンの視点を16:9のライブ映像として見られます。手を離すとその場でホバリングして待機します。</li><li>建材MODに52種類のガラスランタン(バニラ色ガラス版18種+補強版17種+停電版17種)が追加されました。光レベルは最大の15で、既存のLEDパネルより明るい発光テクスチャです。</li><li>サーバー管理者向けのパソコン管理アプリに、変更履歴(ログ)を確認できる画面が追加されました。閲覧専用の画面で、この画面自体は操作記録に残りません。</li></ul>
+      <h4>Bilanciamento</h4><ul><li>ミニガンの与ダメージが約3倍に引き上げられました。</li><li>ロケットランチャーの爆発の威力が大幅に強化されました。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Avvertenze</div>
+          <ul><li>札幌ディメンションを遊ぶには、サーバー管理者が別途配布する地図データファイルをサーバーに設置している必要があります(このサイトでは配布していません)。設置されていない場合、対応するワールドには入れません。</li><li>バックルームズの怪異は倒せません。通常の武器で挑もうとせず、避けて進んでください。</li></ul>
+        </div>
+      <h4>Cosa non era ancora implementato o verificato a questo punto</h4><ul><li>札幌の建物の高さは、大部分がまだ実測ではなく地区ごとの統計による推定値です。より詳しい3D都市データが入手でき次第、更新される予定です。</li><li>天界ゲート(グロウストーンポータル)をプレイヤーが自作して着火できるかどうかは、サーバー管理者の設定次第です。既定では無効になっています。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-22</div>
       <h3 class="timeline-entry__title">
@@ -730,7 +748,7 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p>Glimpse Alpha Wiki — Guida non ufficiale alle mod del server Sorakazekarasu</p>
-    <p class="site-footer__note">Questo sito è un riferimento non ufficiale. Non distribuiamo i file jar delle mod. Ricette e valori numerici potrebbero differire da quelli reali in base alla versione installata e alle modifiche apportate alla configurazione del server.</p>
+    <p class="site-footer__note">Questo sito è un riferimento non ufficiale. A partire dalla V2.2.0, i file jar delle mod sono distribuiti direttamente dalla pagina &quot;Download&quot; di questo sito. Ricette e valori numerici potrebbero differire da quelli reali in base alla versione installata e alle modifiche apportate alla configurazione del server.</p>
   </div>
 </footer>
 <script src="../../assets/js/main.js"></script>

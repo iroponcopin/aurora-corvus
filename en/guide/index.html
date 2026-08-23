@@ -25,9 +25,12 @@
     <nav class="site-nav" id="siteNav">
       <ul>
         <li><a href="../">Home</a></li>
+        <li><a href="../download/">Download</a></li>
         <li><a href="../changelog/">Changelog</a></li>
         <li><a href="../recipes/">Recipes</a></li>
         <li><a href="../guide/" class="active">Install Guide</a></li>
+        <li><a href="../gates/">Gates</a></li>
+        <li><a href="../features/">Features</a></li>
         <li><a href="../roadmap/">Roadmap</a></li>
         <li><a href="../known-issues/">Known Issues</a></li>
       </ul>
@@ -69,7 +72,7 @@
       
 <p>
   <strong>Glimpse Alpha</strong> (formerly known as Sorakaze) is the group of Fabric mods
-  installed on the Sorakazekarasu server. It's made up of 10 independent mods, each of which
+  installed on the Sorakazekarasu server. It's made up of 11 independent mods, each of which
   can be installed and updated separately. It doesn't replace or remove vanilla (unmodded)
   content like bows or minecarts — instead, it adds new items, blocks, and dimensions.
 </p>
@@ -111,8 +114,8 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 
 <h3>Who needs to set up what</h3>
 <ul>
-  <li><strong>The server (the Sorakazekarasu server)</strong> — Fabric server + Fabric API + the 10 Glimpse Alpha mods</li>
-  <li><strong>Each individual player's PC</strong> — Fabric client + Fabric API + the 10 Glimpse Alpha mods (must exactly match the server's combination)</li>
+  <li><strong>The server (the Sorakazekarasu server)</strong> — Fabric server + Fabric API + the 11 Glimpse Alpha mods</li>
+  <li><strong>Each individual player's PC</strong> — Fabric client + Fabric API + the 11 Glimpse Alpha mods (must exactly match the server's combination)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -144,7 +147,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <tr><td>Minecraft version</td><td><code>26.2</code></td></tr>
 <tr><td>Required Java</td><td>Java 25 (<a href="https://adoptium.net/">Temurin 25 (LTS)</a> recommended)</td></tr>
 <tr><td>Fabric API</td><td>Whichever build matches your Minecraft version (e.g. <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
-<tr><td>Mod lineup</td><td>10 mods (Guns, Rail, Building/Decor, Vehicles, Boss, Sky, Survival, Power, Backrooms, Planarcadia)</td></tr>
+<tr><td>Mod lineup</td><td>11 mods (Guns, Rail, Building/Decor, Vehicles, Boss, Sky, Survival, Power, Backrooms, Planarcadia)</td></tr>
 </table>
 </div>
 
@@ -170,7 +173,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <h3>What you'll need</h3>
 <ul>
   <li>A Windows or Mac PC that can run Minecraft: Java Edition</li>
-  <li>The <strong>full mod set from your server admin (11 jar files = 1 Fabric API + the 10 Glimpse Alpha mods)</strong></li>
+  <li>The <strong>full mod set from your server admin (12 jar files = 1 Fabric API + the 11 Glimpse Alpha mods)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -185,7 +188,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 </div>
 
 <h3>Files you'll likely receive (example)</h3>
-<p>You'll get roughly these 11 files from your server admin (the version numbers change with every update).</p>
+<p>You'll get roughly these 12 files from your server admin (the version numbers change with every update).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Filename (example)</th><th>What it is</th></tr>
@@ -251,7 +254,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
 <ol class="steps">
   <li>Type <code>%appdata%\.minecraft</code> into File Explorer's address bar and press Enter.</li>
   <li>If there's no <code>mods</code> folder, create one (all lowercase).</li>
-  <li>Copy all 11 jar files you received into this <code>mods</code> folder (no need to unzip — drop the jars in as-is).</li>
+  <li>Copy all 12 jar files you received into this <code>mods</code> folder (no need to unzip — drop the jars in as-is).</li>
 </ol>
 
 <h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
@@ -259,13 +262,13 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
   <li>Click the desktop once, then press <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> together (or use the menu bar's "Go" → "Go to Folder…").</li>
   <li>Paste <code>~/Library/Application Support/minecraft</code> exactly as-is into the box that appears and press Enter (don't forget the leading "<code>~</code>"). "Library" is normally hidden in Finder, so this is the reliable way to get there.</li>
   <li>If there's no <code>mods</code> folder, right-click in that window and choose "New Folder" to create one.</li>
-  <li>Drag and drop all 11 jar files you received into this <code>mods</code> folder.</li>
+  <li>Drag and drop all 12 jar files you received into this <code>mods</code> folder.</li>
 </ol>
 
 <h3>③ Launch with Fabric and join the server</h3>
 <ol class="steps">
   <li>Open the Minecraft launcher and, from the list of launch profiles near the "Play" button, pick something named like <code>fabric-loader-26.2</code> (staying on "Latest Release" will launch without any mods).</li>
-  <li>Click "Play" to launch as usual. If a "Mods" button has appeared on the title screen, it worked — clicking it will show all 10 Glimpse Alpha mods plus Fabric API.</li>
+  <li>Click "Play" to launch as usual. If a "Mods" button has appeared on the title screen, it worked — clicking it will show all 11 Glimpse Alpha mods plus Fabric API.</li>
   <li>From there, connect to the server through "Multiplayer" as usual.</li>
 </ol>
 
@@ -302,7 +305,7 @@ for what's changed so far, see the <a href="../changelog/">Changelog</a>.</p>
       
 <p>
   From here on, this chapter is for whoever runs and administers the server itself. It walks
-  through adding Fabric and the 10 Glimpse Alpha mods to a Minecraft server that's already
+  through adding Fabric and the 11 Glimpse Alpha mods to a Minecraft server that's already
   running vanilla (a standard, unmodded server). This chapter uses a Windows server as its
   example. If you're running your server on Mac / Linux, translate the folder locations and
   command steps to your own environment and follow the same general process (per the official
@@ -415,8 +418,8 @@ pause</pre>
 
 <h3>3. Put the full mod set in the mods folder</h3>
 <p>
-  Copy all 11 jar files — 1 Fabric API + the 10 Glimpse Alpha mods — into the <code>mods</code> folder
-  (no need to unzip — drop the jars in as-is). Get the 10 mods themselves through whatever
+  Copy all 12 jar files — 1 Fabric API + the 11 Glimpse Alpha mods — into the <code>mods</code> folder
+  (no need to unzip — drop the jars in as-is). Get the 11 mods themselves through whatever
   distribution channel you've been using. <strong>This site does not distribute the mods
   themselves.</strong>
 </p>
@@ -469,8 +472,8 @@ on their own PCs.</p>
       <div class="badge-row"><span class="type-badge type-visual">For Server Admins</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Updating to a New Mod Version</h2>
       
-<p>Since Glimpse Alpha's 10 mods are each fully independent, an update doesn't necessarily mean
-all 10 get replaced. You only need to swap out the mods whose contents actually changed
+<p>Since Glimpse Alpha's 11 mods are each fully independent, an update doesn't necessarily mean
+all 11 get replaced. You only need to swap out the mods whose contents actually changed
 (check the distribution notes or the <a href="../changelog/">Changelog</a> to see which mods
 were touched).</p>
 
@@ -652,7 +655,7 @@ were touched).</p>
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p>Glimpse Alpha Wiki — Unofficial reference for mods installed on the Sorakazekarasu server</p>
-    <p class="site-footer__note">This site is an unofficial reference. It does not distribute the mod files (jars) themselves. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
+    <p class="site-footer__note">This site is an unofficial reference. As of V2.2.0, the mod files (jars) are distributed directly from this site&#x27;s &quot;Download&quot; page. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
   </div>
 </footer>
 <script src="../../assets/js/main.js"></script>

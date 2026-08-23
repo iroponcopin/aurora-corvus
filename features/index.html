@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>機能紹介 | Glimpse Alpha Wiki</title>
+<meta name="description" content="V2.2 で追加・変更された主な機能(ガラスランタン、バックルームズ、地上襲撃、砲台、動画、Sparxie の杖、銃火器調整、ドローン、札幌再現)の紹介。">
+<meta property="og:title" content="機能紹介 | Glimpse Alpha Wiki">
+<meta property="og:description" content="V2.2 で追加・変更された主な機能(ガラスランタン、バックルームズ、地上襲撃、砲台、動画、Sparxie の杖、銃火器調整、ドローン、札幌再現)の紹介。">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__text">Glimpse Alpha Wiki</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul>
+        <li><a href="../">ホーム</a></li>
+        <li><a href="../download/">ダウンロード</a></li>
+        <li><a href="../changelog/">更新履歴</a></li>
+        <li><a href="../recipes/">レシピ集</a></li>
+        <li><a href="../guide/">導入ガイド</a></li>
+        <li><a href="../gates/">ゲート</a></li>
+        <li><a href="../features/" class="active">特集</a></li>
+        <li><a href="../roadmap/">今後の予定</a></li>
+        <li><a href="../known-issues/">既知の不具合</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
+          🌐 <span>日本語</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../features/" class="active" aria-current="true">日本語</a></li>
+        <li><a href="../en/features/">English</a></li>
+        <li><a href="../es/features/">Español</a></li>
+        <li><a href="../fr/features/">Français</a></li>
+        <li><a href="../zh/features/">简体中文</a></li>
+        <li><a href="../ko/features/">한국어</a></li>
+        <li><a href="../pt-br/features/">Português (Brasil)</a></li>
+        <li><a href="../it/features/">Italiano</a></li>
+        <li><a href="../ar/features/">العربية</a></li>
+        <li><a href="../ru/features/">Русский</a></li>
+        <li><a href="../id/features/">Bahasa Indonesia</a></li>
+        <li><a href="../de/features/">Deutsch</a></li>
+        <li><a href="../tr/features/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="配色を切り替え" title="配色を切り替え">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="hero">
+  <span class="hero__eyebrow">機能紹介</span>
+  <h1>機能紹介</h1>
+  <p class="lede">V2.2 で追加・変更された主な機能を、プレイヤー目線でまとめました。内部の設定値や管理者専用の仕組みではなく、実際に見て触れる部分を中心に解説します。</p>
+</div>
+<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#glass-lanterns">ガラスランタン(52種)</a></li><li><a href="#backrooms">バックルームズ</a></li><li><a href="#overworld-raids">地上の襲撃</a></li><li><a href="#turrets">砲台(銃・弓を据え付ける)</a></li><li><a href="#video">動画(4K対応・自動停止)</a></li><li><a href="#sparxie-staff">Sparxie の杖</a></li><li><a href="#firearm-rebalance">銃火器の調整</a></li><li><a href="#drone">ドローンとドローンアプリ</a></li><li><a href="#sapporo">札幌再現(Sapporo)</a></li></ol></div>
+<div id="glass-lanterns"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">ガラスランタン(52種)</h2>
+      
+<img src="../assets/img/features/glass_lanterns.png" alt="ガラスランタン52種のプレビューシート" style="max-width:640px;width:100%;border-radius:6px;margin:12px 0;">
+<p>建材MODに新しく<strong>52種類のガラスランタン</strong>が追加されました。内訳は バニラ色ガラス版18種 + 補強版17種 + 停電(暗色)版17種です。</p>
+<ul>
+  <li>光レベルは最大の15。実測で、既存のLEDパネルより明るい発光テクスチャになっています</li>
+  <li>アイテムグループでは、機能ブロックタブの海のランタンの隣に並びます</li>
+</ul>
+
+    </div></div>
+<div id="backrooms"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">バックルームズ</h2>
+      
+<img src="../assets/img/features/backrooms_panel.svg" alt="左手側のガラス製目標パネルとロビーのイメージ図" style="max-width:640px;width:100%;border-radius:6px;margin:12px 0;">
+<h3>画面UI</h3>
+<p>画面左手にガラス製の目標パネルが常時表示されます。現在の階層・正気度・次に向かう場所などがひと目で分かります。</p>
+<h3>階層1「ロビー」</h3>
+<p>見本のような小部屋ではなく、実際に歩いて探索できる本物のロビーです。<a href="../gates/#backrooms">終末の都市の裂け目</a>から入ります。</p>
+<h3>正気度がのどの渇きの代わりに</h3>
+<p>バックルームズの中では、通常の「のどの渇き」ステータスの代わりに<strong>正気度(サニティ)</strong>が生活の軸になります。</p>
+<div class="callout callout--danger">
+  <div class="callout__title">⚠ 通常の武器は効きません</div>
+  <p>バックルームズの中に出現する怪異は、通常の武器での攻撃が一切効きません。また、これらの怪異は<strong>倒すことができません</strong>。戦うのではなく、避けて進むための場所です。</p>
+</div>
+
+    </div></div>
+<div id="overworld-raids"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">地上の襲撃</h2>
+      
+<img src="../assets/img/features/overworld_raids.svg" alt="12波構成の地上襲撃の図解" style="max-width:640px;width:100%;border-radius:6px;margin:12px 0;">
+<p>これまで村の襲撃には「不吉な予感」の効果が必要でしたが、V2.2からは<strong>「不吉な予感」なしでも、村にいるだけで純粋な確率により襲撃が発生する</strong>ようになりました。</p>
+<ul>
+  <li>村にいる間、一定時間ごとに一定確率で発生します</li>
+  <li>全12波構成。最終波には天界MOD由来の追加の敵が加わります</li>
+</ul>
+
+    </div></div>
+<div id="turrets"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">砲台(銃・弓を据え付ける)</h2>
+      
+<img src="../assets/img/features/turret_mount.svg" alt="砲台に銃を据え付ける図解" style="max-width:420px;width:100%;border-radius:6px;margin:12px 0;">
+<p>砲台を右クリックすると、手に持っている銃や弓・クロスボウをその場に据え付けられます。据え付けた武器には弾薬用の内部インベントリがあり、外すと武器と残弾がそのまま返ってきます。</p>
+
+    </div></div>
+<div id="video"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">動画(4K対応・自動停止)</h2>
+      
+<img src="../assets/img/features/video_screen.svg" alt="動画スクリーンの16:9アスペクト比の図解" style="max-width:420px;width:100%;border-radius:6px;margin:12px 0;">
+<p>動画再生の対応解像度がこれまでの上限から引き上げられ、<strong>最大4K</strong>まで再生できるようになりました。画面の縦横比は常に<strong>16:9</strong>に保たれます。</p>
+<p>画面から一定距離離れると、<strong>再生が自動的に停止</strong>します。</p>
+
+    </div></div>
+<div id="sparxie-staff"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Sparxie の杖</h2>
+      
+<img src="../assets/img/features/sparxie_staff.svg" alt="近接攻撃と遠隔攻撃の両方ができるSparxieの杖の図解" style="max-width:420px;width:100%;border-radius:6px;margin:12px 0;">
+<p>これまで近接攻撃のみでしたが、V2.2からは<strong>近接攻撃と遠隔攻撃の両方</strong>が使えるようになりました。遠隔攻撃では射程24ブロックのボルトを放ちます。</p>
+
+    </div></div>
+<div id="firearm-rebalance"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">銃火器の調整</h2>
+      
+<img src="../assets/img/features/firearm_rebalance.svg" alt="ミニガンとロケットランチャーの威力調整の図解" style="max-width:420px;width:100%;border-radius:6px;margin:12px 0;">
+<ul>
+  <li><strong>ミニガン</strong>の威力が約<strong>3倍</strong>になりました</li>
+  <li><strong>ロケットランチャー</strong>の爆発の威力が<strong>大幅に強化</strong>されました</li>
+</ul>
+<p class="callout callout--info">内部の設定値そのものはここには載せていません。実際の使用感で確かめてください。</p>
+
+    </div></div>
+<div id="drone"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">ドローンとドローンアプリ</h2>
+      
+<img src="../assets/img/features/drone_app.svg" alt="飛行可能なカメラドローンと専用のスマホアプリの図解" style="max-width:420px;width:100%;border-radius:6px;margin:12px 0;">
+<p>自由に飛ばせる<strong>カメラドローン</strong>が追加されました。専用の<strong>ドローンアプリ</strong>(スマホ)から、ドローンの視点を16:9のライブ映像として見られます。</p>
+<p>手を離すとその場でホバリングして待機します(自動で手元に戻ってくる仕様ではありません)。</p>
+
+    </div></div>
+<div id="sapporo"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">札幌再現(Sapporo)</h2>
+      
+<img src="../assets/img/features/sapporo_honesty.svg" alt="札幌再現の実データ率を示す図。建物の輪郭と地形は100%実測、建物の高さは一部のみ実測" style="max-width:520px;width:100%;border-radius:6px;margin:12px 0;">
+<p>実在する北海道札幌市を、実際の地理データから再現したディメンションです。誇張なく、正直な内訳は次のとおりです。</p>
+<ul>
+  <li><strong>建物の輪郭(フットプリント): 100% 実データ</strong>(OSM由来。以前は約20%のみでした)</li>
+  <li><strong>地形: 100% 実データ</strong>(国土地理院のDEM=数値標高モデル由来)</li>
+  <li><strong>建物の高さ: 一部のみ実データ。</strong>PLATEAU(国土交通省の3D都市モデル)のデータがまだ取得できていないため、高さの大部分は地区ごとの統計にもとづく推定値です。将来PLATEAUデータが入手でき次第、より正確な高さに更新される予定です</li>
+</ul>
+<p class="callout callout--info">「建物の高さが推定である」ことを隠さずに書いています。輪郭と地形は本物の測量データそのものです。</p>
+
+    </div></div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Glimpse Alpha Wiki — そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
+    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)は V2.2.0 からこの「ダウンロード」ページで直接配布しています。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

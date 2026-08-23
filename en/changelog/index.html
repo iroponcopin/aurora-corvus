@@ -26,9 +26,12 @@
     <nav class="site-nav" id="siteNav">
       <ul>
         <li><a href="../">Home</a></li>
+        <li><a href="../download/">Download</a></li>
         <li><a href="../changelog/" class="active">Changelog</a></li>
         <li><a href="../recipes/">Recipes</a></li>
         <li><a href="../guide/">Install Guide</a></li>
+        <li><a href="../gates/">Gates</a></li>
+        <li><a href="../features/">Features</a></li>
         <li><a href="../roadmap/">Roadmap</a></li>
         <li><a href="../known-issues/">Known Issues</a></li>
       </ul>
@@ -61,7 +64,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 45 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 46 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -79,6 +82,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>No updates match your filters.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-23</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.2.0</span> — 52 new glass lanterns, a real Backrooms lobby, overworld raids, turrets, and a real reconstruction of Sapporo
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>This round adds an 11th mod, Sapporo — a dimension recreating the real city of Sapporo, Japan, from real survey data. Backrooms Level 1, &quot;The Lobby&quot;, is now a real explorable space rather than a demo room, with a glass objective panel shown on the left of the screen at all times. Village raids can now trigger on pure chance without Bad Omen, turrets let you mount guns and bows, video now plays up to 4K and stops automatically when you walk away, the Sparxie staff gained a ranged attack alongside its melee one, the minigun and rocket launcher were rebalanced, a flyable camera drone and its own phone app arrived, and the Building &amp; Decor mod gained 52 new glass lanterns. The Amethyst Gate now opens with plain vanilla amethyst blocks too.</p>
+      <ul><li>The Sapporo mod (sorakaze_sapporo) has finally shipped. It&#x27;s a dimension recreating the real city of Sapporo, Japan, from real geographic data. Building footprints and terrain are both 100% real survey data, but most building heights are currently a documented per-district statistical estimate — an honest gap while the more detailed 3D building dataset (Japan&#x27;s PLATEAU) is still being obtained. Heights will be refined once that data is in hand.</li><li>Backrooms Level 1, &quot;The Lobby&quot;, is now a real, walkable, explorable space rather than a small demo room. You reach it through a rift that generates naturally near an End City.</li><li>A glass objective panel is now shown on the left side of the screen at all times, showing your current level, sanity, and where to head next.</li><li>Inside the Backrooms, sanity now replaces thirst as the stat you&#x27;re managing. Entities you meet there take no damage from ordinary weapons and cannot be defeated — this is a place for evasion, not combat.</li><li>The Amethyst Gate can now be built from plain vanilla amethyst blocks as well as Portal Amethyst Blocks — the two can even be mixed in the same frame.</li><li>Village raids can now start on pure chance just from being in a village, with no need for Bad Omen. 12 waves in total, with extra enemies from the Heaven mod on the final wave.</li><li>New turrets let you mount a gun, bow, or crossbow. A mounted weapon carries its own ammo store, and unmounting hands the weapon and remaining ammo back to you.</li><li>Video playback now supports up to 4K, always keeps a 16:9 aspect ratio, and stops automatically once you walk far enough away from the screen.</li><li>The Sparxie staff can now attack at range (a 24-block bolt) as well as in melee.</li><li>The minigun now hits roughly three times as hard, and the rocket launcher&#x27;s blast is far more powerful than before.</li><li>A freely flyable camera drone was added, along with a dedicated Drone App on the in-game phone showing a live 16:9 feed from its point of view. Letting go leaves it hovering in place rather than auto-returning.</li><li>The Building &amp; Decor mod gained 52 new glass lanterns (18 vanilla-glass, 17 reinforced, 17 blackout). Full light level 15, and measured brighter than the existing LED panel.</li><li>The admin app&#x27;s PC screen gained a change-log view for the server administrator — a read-only view of past changes. Viewing it is not itself logged.</li></ul>
+      <h4>Balance changes</h4><ul><li>Minigun damage roughly tripled.</li><li>Rocket launcher blast power greatly increased.</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Playing in the Sapporo dimension requires the server administrator to have installed a separate map data file on the server (not distributed on this site). Without it, that world simply isn&#x27;t reachable.</li><li>Backrooms entities cannot be defeated. Don&#x27;t try to fight them with ordinary weapons — evade instead.</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>Most Sapporo building heights are still a district-level statistical estimate rather than real survey data. They&#x27;ll be updated once more detailed 3D city data becomes available.</li><li>Whether players can build and light their own Heaven gate (glowstone portal) depends on a server-administrator setting, which defaults to off.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-22</div>
       <h3 class="timeline-entry__title">
@@ -730,7 +748,7 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p>Glimpse Alpha Wiki — Unofficial reference for mods installed on the Sorakazekarasu server</p>
-    <p class="site-footer__note">This site is an unofficial reference. It does not distribute the mod files (jars) themselves. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
+    <p class="site-footer__note">This site is an unofficial reference. As of V2.2.0, the mod files (jars) are distributed directly from this site&#x27;s &quot;Download&quot; page. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
   </div>
 </footer>
 <script src="../../assets/js/main.js"></script>

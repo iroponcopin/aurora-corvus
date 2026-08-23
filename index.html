@@ -25,9 +25,12 @@
     <nav class="site-nav" id="siteNav">
       <ul>
         <li><a href="./" class="active">ホーム</a></li>
+        <li><a href="./download/">ダウンロード</a></li>
         <li><a href="./changelog/">更新履歴</a></li>
         <li><a href="./recipes/">レシピ集</a></li>
         <li><a href="./guide/">導入ガイド</a></li>
+        <li><a href="./gates/">ゲート</a></li>
+        <li><a href="./features/">特集</a></li>
         <li><a href="./roadmap/">今後の予定</a></li>
         <li><a href="./known-issues/">既知の不具合</a></li>
       </ul>
@@ -62,10 +65,10 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     そらかぜからすサーバーに導入している Fabric MOD 群「<strong>Glimpse Alpha</strong>」(旧称: Sorakaze)のレシピ・更新履歴・導入手順をまとめた非公式のリファレンスサイトです。現在
-    <strong>10 個の MOD</strong>(銃火器・鉄道・建材・ボス・天空・サバイバル・乗り物・電力・バックルームズ・二相楽園)を Minecraft
+    <strong>11 個の MOD</strong>(銃火器・鉄道・建材・ボス・天空・サバイバル・乗り物・電力・バックルームズ・二相楽園)を Minecraft
     <strong>26.2</strong>上で同時に運用しています。
   </p>
-  <p class="callout callout--info">このサイトは MOD 本体(jar ファイル)を配布していません。ここにあるのはレシピ表・更新履歴・導入手順などの「読みもの」だけです。MOD 本体はサーバー管理者から直接受け取ってください。</p>
+  <p class="callout callout--info">このサイトは V2.2.0 から MOD 本体(jar ファイル)を「ダウンロード」ページで直接配布しています。ここにはほかにレシピ表・更新履歴・導入手順などの「読みもの」もあります。V2.2.0 より前のバージョンが必要な場合は、サーバー管理者から直接受け取ってください。</p>
   <div class="tag-row" style="margin-top:20px;">
     <a class="btn" href="recipes/">レシピ集を見る</a>
     <a class="btn btn--ghost" href="changelog/">更新履歴を見る</a>
@@ -75,12 +78,12 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">新機能</span>
-        <span class="timeline-entry__release">V2.1.0</span>
-        <span class="card__meta">2026-08-22</span>
+        <span class="timeline-entry__release">V2.2.0</span>
+        <span class="card__meta">2026-08-23</span>
       </div>
-      <h3 style="margin-top:0">最新の更新: バックルームズ 階層3〜8が本物の無限階層に、パソコンにサーバー管理アプリ、ボス召喚レシピがレシピ本に載る</h3>
-      <p>この回のいちばん大きな変更は、バックルームズの階層3〜8です。これまでは128ブロック四方の見本の島でしたが、端の無い、歩いて探索できる階層になりました。建材MODのパソコンにはサーバー管理アプリが加わり、ボスMODでは召喚アイテムのレシピがレシピ本に載るようになりました。銃火器MODのデータ定義の3挺には、それぞれ専用の持ち手モデルが用意されています。</p>
-      <ul><li>中身が変わったのは バックルームズ・建材・ボス・銃火器 の4つです。残る6つ(二相楽園・電力・鉄道・天空・サバイバル・乗り物)は、版を揃えるために 2.1.0 へ上げただけで、2.0.0 の jar との違いは fabric.mod.json の版番号1か所だけです。中身は1バイトも変わっていません。</li><li>バックルームズの階層3〜8が、128ブロック四方の見本の島から、本物の無限階層になりました。どの階層も端がなく、歩いて探索できます。</li><li>階層3「電気設備棟」。電流が生きていて、盤に触れると危険です。ハウンドが巡回し、地下のケーブル室にはスミラーが居ます。</li><li>階層4「無人の事務所」。等級は安全ですが、窓の3%はこちらを見ています(見た目では区別がつきません)。ここでは正気度がゆっくり回復します。アーモンドウォーターは休憩室にあります。</li></ul>
+      <h3 style="margin-top:0">最新の更新: ガラスランタン52種、バックルームズが本物のロビーに、地上の襲撃、砲台、札幌の街を再現</h3>
+      <p>今回は11個目のMOD「札幌」がついに加わり、実在する札幌市を実測データから再現したディメンションが遊べるようになりました。バックルームズは階層1「ロビー」が見本の小部屋から本物の探索できる空間になり、画面左手にガラス製の目標パネルが常時表示されます。村の襲撃は「不吉な予感」なしでも純粋な確率で発生するようになり、銃や弓を据え付けられる砲台、最大4K・自動停止の動画、近接と遠隔の両方が使えるSparxieの杖、ミニガン・ロケットランチャーの威力調整、飛行可能なカメラドローンとその専用アプリ、そして建材MODに52種類のガラスランタンが加わりました。アメジストゲートはバニラのアメジストブロックだけでも開通するようになりました。</p>
+      <ul><li>MOD「札幌(sorakaze_sapporo)」がついに出荷されました。実在する北海道札幌市を、実際の地理データから再現したディメンションです。建物の輪郭(フットプリント)と地形はどちらも100%実測データにもとづきますが、建物の高さの大部分は地区ごとの統計にもとづく推定値です。より詳しい3D都市データ(PLATEAU)がまだ入手できていないための、正直な現状です。将来データが入手でき次第、より正確な高さに更新される予定です。</li><li>バックルームズの階層1「ロビー」が、見本の小部屋から実際に歩いて探索できる本物のロビーになりました。入口は終末の都市(End City)の近くに自然生成される裂け目です。</li><li>画面左手に、ガラス製の目標パネルが常時表示されるようになりました。現在の階層・正気度・次に向かう場所がひと目で分かります。</li><li>バックルームズの中では、通常の「のどの渇き」の代わりに正気度(サニティ)が生活の軸になります。また、中に出現する怪異は通常の武器が一切効かず、倒すこともできません。戦うのではなく避けて進む場所です。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">バックルームズ</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">ボス</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">二相楽園</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">電力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">天空</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">乗り物</span></div>
       <p><a href="changelog/">更新履歴をすべて見る →</a></p>
     </div>
@@ -91,52 +94,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>銃火器</h3>
       <p class="card__meta">バニラにない遠距離武器</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>鉄道</h3>
       <p class="card__meta">電車と線路の乗り物</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>建材・装飾</h3>
       <p class="card__meta">街づくりの建材・家電</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>ボス</h3>
       <p class="card__meta">強力な討伐対象とドロップ装備</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>天空</h3>
       <p class="card__meta">新ディメンションと天使の王国</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>サバイバル</h3>
       <p class="card__meta">新鉱石・防具・生活要素</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>乗り物</h3>
       <p class="card__meta">自動車・バス・航空機</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>電力</h3>
       <p class="card__meta">発電・送電と電化機器</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>バックルームズ</h3>
       <p class="card__meta">正気度つきの異界探索</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
       <h3>二相楽園</h3>
       <p class="card__meta">夜が主の娯楽世界と次元の門</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
 </div>
 
@@ -170,14 +173,14 @@
 </div>
 
 <h2>このプロジェクトについて</h2>
-<p>もとは「Sorakaze」という名前で、バニラのサバイバル体験を保ちながら銃火器・鉄道・建材の 3 つの MOD を追加するところから始まりました。以後クラフト可能なアイテムを追加する形で拡張が続き、v1.8.0 で「Glimpse Alpha」に改名。現在ではボス・新ディメンション・サバイバル要素・乗り物・電力インフラまでを含む 10 MOD 構成になっています。</p>
+<p>もとは「Sorakaze」という名前で、バニラのサバイバル体験を保ちながら銃火器・鉄道・建材の 3 つの MOD を追加するところから始まりました。以後クラフト可能なアイテムを追加する形で拡張が続き、v1.8.0 で「Glimpse Alpha」に改名。現在ではボス・新ディメンション・サバイバル要素・乗り物・電力インフラまでを含む 11 MOD 構成になっています。</p>
 <p>バニラ要素を置き換えたり削除したりしないことを一貫した方針としており、弓矢やトロッコなど既存の要素はそのまま残っています。実在の銃器・企業・商標名は使用していません。</p>
 
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p>Glimpse Alpha Wiki — そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
-    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)の配布は行っていません。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
+    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)は V2.2.0 からこの「ダウンロード」ページで直接配布しています。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
   </div>
 </footer>
 <script src="./assets/js/main.js"></script>

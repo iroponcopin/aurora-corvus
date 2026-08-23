@@ -25,9 +25,12 @@
     <nav class="site-nav" id="siteNav">
       <ul>
         <li><a href="./" class="active">홈</a></li>
+        <li><a href="./download/">Download</a></li>
         <li><a href="./changelog/">업데이트 기록</a></li>
         <li><a href="./recipes/">레시피 모음</a></li>
         <li><a href="./guide/">설치 가이드</a></li>
+        <li><a href="./gates/">게이트</a></li>
+        <li><a href="./features/">기능 소개</a></li>
         <li><a href="./roadmap/">향후 계획</a></li>
         <li><a href="./known-issues/">알려진 문제</a></li>
       </ul>
@@ -62,10 +65,10 @@
   <h1>Glimpse Alpha Wiki</h1>
   <p class="lede">
     소라카제카라스 서버에 도입된 Fabric MOD 모음 &quot;<strong>Glimpse Alpha</strong>&quot;(구칭: Sorakaze)의 레시피·업데이트 기록·설치 방법을 정리한 비공식 레퍼런스 사이트입니다. 현재 
-    <strong>10개의 MOD</strong>(총기·철도·건축자재·보스·천공·서바이벌·탈것·전력·백룸즈·플라나르카디아)를 Minecraft
+    <strong>11개의 MOD</strong>(총기·철도·건축자재·보스·천공·서바이벌·탈것·전력·백룸즈·플라나르카디아)를 Minecraft
     <strong>26.2</strong> 위에서 동시에 운용하고 있습니다.
   </p>
-  <p class="callout callout--info">이 사이트는 MOD 본체(jar 파일)를 배포하지 않습니다. 여기 있는 것은 레시피표·업데이트 기록·설치 방법 등 &quot;읽는 자료&quot;뿐입니다. MOD 본체는 서버 관리자에게 직접 받아 주세요.</p>
+  <p class="callout callout--info">V2.2.0부터 이 사이트는 &quot;다운로드&quot; 페이지에서 MOD 본체(jar 파일)를 직접 배포합니다. 여기에는 레시피표·업데이트 기록·설치 방법 등 &quot;읽는 자료&quot;도 있습니다. V2.2.0 이전 버전이 필요하면 서버 관리자에게 직접 받아 주세요.</p>
   <div class="tag-row" style="margin-top:20px;">
     <a class="btn" href="recipes/">레시피 모음 보기</a>
     <a class="btn btn--ghost" href="changelog/">업데이트 기록 보기</a>
@@ -75,12 +78,12 @@
 
     <div class="card" style="margin-top:28px;">
       <div class="badge-row"><span class="type-badge type-release">신규 기능</span>
-        <span class="timeline-entry__release">V2.1.0</span>
-        <span class="card__meta">2026-08-22</span>
+        <span class="timeline-entry__release">V2.2.0</span>
+        <span class="card__meta">2026-08-23</span>
       </div>
-      <h3 style="margin-top:0">최신 업데이트: 백룸즈 레벨 3〜8이 진짜 무한 레벨로, 컴퓨터에 서버 관리 앱, 보스 소환 레시피가 레시피북에</h3>
-      <p>이번 회차에서 가장 큰 변경은 백룸즈의 레벨 3부터 8까지입니다. 지금까지는 128블록짜리 견본 섬이었지만, 이제는 끝이 없고 걸어서 탐색할 수 있는 레벨이 되었습니다. 건축자재 MOD의 컴퓨터에는 서버 관리 앱이 추가되었고, 보스 MOD에서는 소환 아이템의 레시피가 레시피북에 실리게 되었습니다. 데이터로 정의된 총 3정에는 각각 전용 손에 든 모델이 마련되었습니다.</p>
-      <ul><li>내용이 바뀐 것은 백룸즈·건축자재·보스·총기 4개입니다. 나머지 6개(플라나르카디아·전력·철도·천공·서바이벌·탈것)는 버전을 맞추기 위해 2.1.0으로 올렸을 뿐이며, 2.0.0의 jar와의 차이는 fabric.mod.json의 버전 문자열 한 곳뿐입니다. 내용은 1바이트도 바뀌지 않았습니다.</li><li>백룸즈의 레벨 3〜8이 128블록짜리 견본 섬에서 진짜 무한 레벨이 되었습니다. 어느 레벨에도 끝이 없으며, 걸어서 탐색할 수 있습니다.</li><li>레벨 3「전기설비동」. 전류가 살아 있어 배전반을 만지면 위험합니다. Hound가 순찰하고, 지하 케이블실에는 Smiler가 있습니다.</li><li>레벨 4「무인 사무실」. 등급은 안전이지만, 창문의 3%는 이쪽을 보고 있습니다(겉모습으로는 구별되지 않습니다). 여기서는 정신력이 천천히 회복됩니다. 아몬드 워터는 휴게실에 있습니다.</li></ul>
+      <h3 style="margin-top:0">최신 업데이트: ガラスランタン52種、バックルームズが本物のロビーに、地上の襲撃、砲台、札幌の街を再現</h3>
+      <p>今回は11個目のMOD「札幌」がついに加わり、実在する札幌市を実測データから再現したディメンションが遊べるようになりました。バックルームズは階層1「ロビー」が見本の小部屋から本物の探索できる空間になり、画面左手にガラス製の目標パネルが常時表示されます。村の襲撃は「不吉な予感」なしでも純粋な確率で発生するようになり、銃や弓を据え付けられる砲台、最大4K・自動停止の動画、近接と遠隔の両方が使えるSparxieの杖、ミニガン・ロケットランチャーの威力調整、飛行可能なカメラドローンとその専用アプリ、そして建材MODに52種類のガラスランタンが加わりました。アメジストゲートはバニラのアメジストブロックだけでも開通するようになりました。</p>
+      <ul><li>MOD「札幌(sorakaze_sapporo)」がついに出荷されました。実在する北海道札幌市を、実際の地理データから再現したディメンションです。建物の輪郭(フットプリント)と地形はどちらも100%実測データにもとづきますが、建物の高さの大部分は地区ごとの統計にもとづく推定値です。より詳しい3D都市データ(PLATEAU)がまだ入手できていないための、正直な現状です。将来データが入手でき次第、より正確な高さに更新される予定です。</li><li>バックルームズの階層1「ロビー」が、見本の小部屋から実際に歩いて探索できる本物のロビーになりました。入口は終末の都市(End City)の近くに自然生成される裂け目です。</li><li>画面左手に、ガラス製の目標パネルが常時表示されるようになりました。現在の階層・正気度・次に向かう場所がひと目で分かります。</li><li>バックルームズの中では、通常の「のどの渇き」の代わりに正気度(サニティ)が生活の軸になります。また、中に出現する怪異は通常の武器が一切効かず、倒すこともできません。戦うのではなく避けて進む場所です。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">보스</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">총기</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">전력</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">천공</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">탈것</span></div>
       <p><a href="changelog/">업데이트 기록 전체 보기 →</a></p>
     </div>
@@ -91,52 +94,52 @@
   <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
       <h3>총기</h3>
       <p class="card__meta">바닐라에 없는 원거리 무기</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
       <h3>철도</h3>
       <p class="card__meta">전철과 선로 탈것</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
       <h3>건축자재·장식</h3>
       <p class="card__meta">도시 건설용 건축자재·가전</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
       <h3>보스</h3>
       <p class="card__meta">강력한 토벌 대상과 드롭 장비</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
       <h3>천공</h3>
       <p class="card__meta">새로운 차원과 천사의 왕국</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
       <h3>서바이벌</h3>
       <p class="card__meta">새로운 광석·방어구·생활 요소</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
       <h3>탈것</h3>
       <p class="card__meta">자동차·버스·항공기</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
       <h3>전력</h3>
       <p class="card__meta">발전·송전과 전기 기기</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
       <h3>백룸즈</h3>
       <p class="card__meta">정신력 게이지로 버티는 이계 탐험</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
       <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
       <h3>플라나르카디아</h3>
       <p class="card__meta">밤이 주인인 유흥 세계와 그 차원문</p>
-      <div class="card__meta">v2.1.0</div>
+      <div class="card__meta">v2.2.0</div>
     </a>
 </div>
 
@@ -170,14 +173,14 @@
 </div>
 
 <h2>이 프로젝트에 대해</h2>
-<p>원래는 &quot;Sorakaze&quot;라는 이름으로, 바닐라 서바이벌 경험을 유지하면서 총기·철도·건축자재라는 세 가지 MOD를 추가하는 것에서 시작했습니다. 이후 제작 가능한 아이템을 추가하는 형태로 확장을 거듭했고, v1.8.0에서 &quot;Glimpse Alpha&quot;로 이름을 바꾸었습니다. 현재는 보스·새로운 차원·서바이벌 요소·탈것·전력 인프라까지 포함하는 10개 MOD 구성이 되었습니다.</p>
+<p>원래는 &quot;Sorakaze&quot;라는 이름으로, 바닐라 서바이벌 경험을 유지하면서 총기·철도·건축자재라는 세 가지 MOD를 추가하는 것에서 시작했습니다. 이후 제작 가능한 아이템을 추가하는 형태로 확장을 거듭했고, v1.8.0에서 &quot;Glimpse Alpha&quot;로 이름을 바꾸었습니다. 현재는 보스·새로운 차원·서바이벌 요소·탈것·전력 인프라까지 포함하는 11개 MOD 구성이 되었습니다.</p>
 <p>바닐라 요소를 대체하거나 삭제하지 않는다는 원칙을 일관되게 지키고 있으며, 활과 화살·광산 수레 등 기존 요소는 그대로 남아 있습니다. 실존하는 총기·기업·상표명은 사용하지 않습니다.</p>
 
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
     <p>Glimpse Alpha Wiki — 소라카제카라스 서버 도입 MOD 비공식 레퍼런스</p>
-    <p class="site-footer__note">본 사이트는 비공식 레퍼런스입니다. MOD 본체(jar 파일)는 배포하지 않습니다. 레시피·수치는 설치된 버전이나 서버 측 config 조정에 따라 실제와 다를 수 있습니다.</p>
+    <p class="site-footer__note">본 사이트는 비공식 레퍼런스입니다. V2.2.0부터 MOD 본체(jar 파일)는 이 사이트의 &quot;다운로드&quot; 페이지에서 직접 배포합니다. 레시피·수치는 설치된 버전이나 서버 측 config 조정에 따라 실제와 다를 수 있습니다.</p>
   </div>
 </footer>
 <script src="../assets/js/main.js"></script>

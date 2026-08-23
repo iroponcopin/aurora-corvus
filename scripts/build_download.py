@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+"""Builds download/index.html for every language that has a bundle.
+
+Design note: every fact on this page (version, file size, sha256, release
+date) is computed from the real shipped ZIP and data/*.json at build time —
+never typed as a literal in this script or in the i18n bundles. That mirrors
+this project's `module_counts()` discipline in site_common.py: a number typed
+by hand in 13 language files is a number that goes stale in 12 of them the
+next time only one file changes. If the ZIP or its changelog entry is
+missing, the build stops loudly instead of publishing an invented value.
+"""
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from site_common import esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix  # noqa: E402
+
+MC_VERSION = "26.2"
+DOWNLOAD_DIR = ROOT / "downloads"
+
+
+def _mod_version():
+    mods = json.loads((ROOT / "data" / "versions.json").read_text(encoding="utf-8"))["mods"]
+    versions = set(mods.values())
+    if len(versions) != 1:
+        raise SystemExit(
+            f"ERROR: data/versions.json lists more than one distinct version {sorted(versions)} "
+            f"across its mods - the Download page cannot say a single 'version 2.2.0' when the "
+            f"table itself disagrees. Fix versions.json (or teach this page to handle a mixed "
+            f"release) before building."
+        )
+    return versions.pop()
+
+
+def _zip_path(version):
+    name = f"Glimpse_Alpha_MODs_v{version}+mc{MC_VERSION}.zip"
+    p = DOWNLOAD_DIR / name
+    if not p.exists():
+        raise SystemExit(
+            f"ERROR: {p} does not exist. The Download page must not link to a file that isn't "
+            f"actually in the wiki's served tree - copy the real assembled ZIP "
+            f"(tools/build_dist_zip.py) to downloads/{name} before building this page."
+        )
+    return p
+
+
+def _sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _release_date(version):
+    """Pull the release date from the matching changelog entry rather than
+    typing "today" by hand - a build re-run on a later day must not silently
+    relabel an old release as freshly-dated."""
+    entries = json.loads((ROOT / "data" / "changelog.json").read_text(encoding="utf-8"))
+    for e in entries:
+        rel = str(e.get("release", "")).lstrip("vV")
+        if rel == version:
+            return e["date"]
+    raise SystemExit(
+        f"ERROR: data/changelog.json has no entry with release == V{version}. The Download page "
+        f"needs a real release date, not an invented one - add the changelog entry first "
+        f"(a concurrent pass owns data/changelog.json; re-read it fresh before building)."
+    )
+
+
+def _fmt_size(num_bytes):
+    mb = num_bytes / (1024 * 1024)
+    return f"{mb:.1f} MB"
+
+
+def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
+    bundle = load_bundle(lang)
+    ui = bundle["ui"]
+    c = ui["common"]
+    dl = bundle.get("download", {})
+
+    # downloads/ lives at the wiki repo root, *outside* every per-language
+    # directory - it needs the language-aware root prefix (asset_root_prefix),
+    # not the same-language section prefix ("../") used for changelog/guide/.
+    zip_href = f"{asset_root_prefix(1, lang)}downloads/{zip_name}"
+
+    body = f"""
+<div class="hero">
+  <span class="hero__eyebrow">{esc(ui['page_titles']['download'])}</span>
+  <h1>{esc(ui['page_titles']['download'])}</h1>
+  <p class="lede">{esc(dl.get('intro', ''))}</p>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">{esc(dl.get('version_label', 'Version'))} {esc(version)}</span>
+    <span class="timeline-entry__release">{esc(release_date)}</span>
+  </div>
+  <h3 style="margin-top:0">{esc(zip_name)}</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">{esc(dl.get('size_label', 'Size'))}</td>
+        <td><code>{esc(_fmt_size(size_bytes))}</code> ({size_bytes:,} bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">{esc(dl.get('sha_label', 'SHA-256'))}</td>
+        <td style="word-break:break-all"><code>{esc(sha256_hex)}</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="{esc(zip_href)}" download>{esc(dl.get('primary_cta', 'Download'))}</a>
+  </p>
+  <p class="callout callout--info">{esc(dl.get('server_note', ''))}</p>
+  <p class="callout callout--warn">{esc(dl.get('sapporo_note', ''))}</p>
+</div>
+
+<h2>{esc(dl.get('whats_new_heading', ''))}</h2>
+<p>{esc(dl.get('whats_new_body', ''))}
+  <a href="../changelog/">{esc(dl.get('changelog_link_text', ''))}</a>
+</p>
+
+<h2>{esc(dl.get('install_heading', ''))}</h2>
+<p>{esc(dl.get('install_body', ''))}
+  <a href="../guide/">{esc(dl.get('guide_link_text', ''))}</a>
+</p>
+
+<p class="callout callout--info">{esc(dl.get('older_versions_note', ''))}</p>
+"""
+    html = page(
+        lang=lang,
+        section="download/",
+        title=ui["page_titles"]["download"],
+        description=ui["page_descriptions"]["download"],
+        active="download",
+        body=body,
+        depth=1,
+    )
+    write_page(lang, "download/", html)
+
+
+def build():
+    version = _mod_version()
+    zpath = _zip_path(version)
+    size_bytes = zpath.stat().st_size
+    sha256_hex = _sha256(zpath)
+    release_date = _release_date(version)
+    for lang in available_langs():
+        build_lang(lang, version, zpath.name, size_bytes, sha256_hex, release_date)
+
+
+if __name__ == "__main__":
+    build()
