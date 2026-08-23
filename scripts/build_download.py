@@ -11,11 +11,14 @@ missing, the build stops loudly instead of publishing an invented value.
 """
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix  # noqa: E402
+
+_LAUNCHER_VERSION_RE = re.compile(r"^glimpse-launcher-(.+)\.jar$")
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
@@ -75,11 +78,101 @@ def _fmt_size(num_bytes):
     return f"{mb:.1f} MB"
 
 
+def _discord_invite():
+    """Reads data/discord.json. client_id is a placeholder until the server
+    owner registers a real Discord Application (an account-bound step this
+    build cannot do on their behalf - see discord-release-bot/README.md).
+    Returns (invite_url_or_None, is_configured)."""
+    cfg = json.loads((ROOT / "data" / "discord.json").read_text(encoding="utf-8"))
+    client_id = cfg.get("client_id", "")
+    permissions = cfg.get("permissions", "0")
+    configured = bool(client_id) and "REPLACE_WITH" not in client_id
+    if not configured:
+        return None, False
+    url = (
+        "https://discord.com/oauth2/authorize"
+        f"?client_id={client_id}&scope=bot%20applications.commands&permissions={permissions}"
+    )
+    return url, True
+
+
+def _launcher_facts():
+    """Looks directly at downloads/glimpse-launcher-*.jar for the real
+    facts about a published launcher build, the same way _zip_path()/
+    _sha256() do for the pack ZIP - computed straight from the file on
+    disk rather than read back out of glimpse_manifest.json, so this page
+    doesn't depend on build.py's script ordering. Returns None if no
+    launcher build has been published yet (the current real state)."""
+    candidates = sorted(DOWNLOAD_DIR.glob("glimpse-launcher-*.jar"))
+    if not candidates:
+        return None
+    jar_path = candidates[0]
+    m = _LAUNCHER_VERSION_RE.match(jar_path.name)
+    if not m:
+        raise SystemExit(
+            f"ERROR: {jar_path} does not match the expected glimpse-launcher-<version>.jar "
+            f"naming pattern - cannot determine its version without guessing."
+        )
+    return {
+        "version": m.group(1),
+        "file_name": jar_path.name,
+        "size_bytes": jar_path.stat().st_size,
+        "sha256": _sha256(jar_path),
+    }
+
+
+def _launcher_section_html(dl, lang, launcher):
+    if launcher is None:
+        pending = esc(dl.get(
+            'launcher_pending',
+            'Glimpse Launcher is not yet available for download - no build has been '
+            'published to the Wiki yet.'
+        ))
+        return f'<p class="callout callout--info">{pending}</p>'
+
+    jar_href = f"{asset_root_prefix(1, lang)}downloads/{launcher['file_name']}"
+    version_label = esc(dl.get('launcher_version_label', 'Version'))
+    size_label = esc(dl.get('size_label', 'File size'))
+    sha_label = esc(dl.get('sha_label', 'SHA-256'))
+    cta = esc(dl.get('launcher_cta', 'Download Glimpse Launcher'))
+    return f"""<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">{version_label} {esc(launcher['version'])}</span>
+  </div>
+  <h3 style="margin-top:0">{esc(launcher['file_name'])}</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">{size_label}</td>
+        <td><code>{esc(_fmt_size(launcher['size_bytes']))}</code> ({launcher['size_bytes']:,} bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">{sha_label}</td>
+        <td style="word-break:break-all"><code>{esc(launcher['sha256'])}</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="{esc(jar_href)}" download>{cta}</a>
+  </p>
+</div>"""
+
+
+def _discord_section_html(dl, invite_url, discord_configured):
+    if discord_configured:
+        cta = esc(dl.get('discord_invite_cta', 'Invite release bot'))
+        body = esc(dl.get('discord_body', 'Add the release bot to your Discord server to get a '
+                                           'message posted automatically whenever a new update ships. '
+                                           'After inviting it, run /release channel in your server to '
+                                           'choose where announcements go.'))
+        return f"""<p class="callout callout--info">{body}</p>
+<p><a class="btn" href="{esc(invite_url)}" target="_blank" rel="noopener">{cta}</a></p>"""
+    pending = esc(dl.get('discord_pending', 'The Discord release bot is not yet available for this '
+                                             'server - the invite link has not been published yet.'))
+    return f'<p class="callout callout--info">{pending}</p>'
+
+
 def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
     c = ui["common"]
     dl = bundle.get("download", {})
+    invite_url, discord_configured = _discord_invite()
+    launcher = _launcher_facts()
 
     # downloads/ lives at the wiki repo root, *outside* every per-language
     # directory - it needs the language-aware root prefix (asset_root_prefix),
@@ -123,6 +216,15 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
 </p>
 
 <p class="callout callout--info">{esc(dl.get('older_versions_note', ''))}</p>
+
+<h2>{esc(dl.get('launcher_heading', 'Glimpse Launcher'))}</h2>
+<p>{esc(dl.get('launcher_body', 'Glimpse Launcher is a desktop app that keeps your Glimpse Alpha '
+                                'mod pack up to date automatically, verifying every download against '
+                                'this Wiki by SHA-256.'))}</p>
+{_launcher_section_html(dl, lang, launcher)}
+
+<h2>{esc(dl.get('discord_heading', 'Discord release notifications'))}</h2>
+{_discord_section_html(dl, invite_url, discord_configured)}
 """
     html = page(
         lang=lang,

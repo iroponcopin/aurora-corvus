@@ -109,11 +109,22 @@ NAV_SECTIONS = [
     ("changelog", "changelog/"),
     ("recipes", "recipes/"),
     ("guide", "guide/"),
+    ("launcher", "launcher/"),
     ("gates", "gates/"),
     ("features", "features/"),
     ("roadmap", "roadmap/"),
     ("issues", "known-issues/"),
 ]
+
+# English fallback nav labels, used only when a language bundle doesn't
+# (yet) carry a translated ui.nav[key] entry. All 13 languages have had
+# full nav translations since launch, but a newly-added section (like
+# "launcher") lands in en/ja first — see load_bundle()/available_langs()
+# for the equivalent "English default" convention used throughout the
+# per-page build scripts (e.g. build_download.py's dl.get(key, "...")).
+NAV_LABEL_FALLBACK = {
+    "launcher": "Glimpse Launcher",
+}
 
 
 def esc(s) -> str:
@@ -204,7 +215,7 @@ def asset_root_prefix(depth: int, lang: str) -> str:
 def _nav_html(bundle: dict, active: str, lang_prefix: str) -> str:
     items = []
     for key, slug in NAV_SECTIONS:
-        label = bundle["ui"]["nav"][key]
+        label = bundle["ui"]["nav"].get(key, NAV_LABEL_FALLBACK.get(key, key))
         cls = ' class="active"' if key == active else ""
         items.append(f'<li><a href="{lang_prefix}{slug}"{cls}>{esc(label)}</a></li>')
     return "\n        ".join(items)

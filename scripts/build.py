@@ -17,10 +17,13 @@ BUILD_SCRIPTS = [
     "build_changelog.py",
     "build_recipes.py",
     "build_guide.py",
+    "build_launcher.py",
     "build_gates.py",
     "build_features.py",
     "build_roadmap.py",
     "build_known_issues.py",
+    "build_releases_feed.py",
+    "build_glimpse_manifest.py",
     "build_404.py",
     "build_sitemap.py",  # must run last -- walks whatever pages exist on disk
 ]

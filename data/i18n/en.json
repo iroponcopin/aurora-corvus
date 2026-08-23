@@ -12,7 +12,8 @@
       "issues": "Known Issues",
       "gates": "Gates",
       "features": "Features",
-      "download": "Download"
+      "download": "Download",
+      "launcher": "Glimpse Launcher"
     },
     "skip_link": "Skip to content",
     "menu_toggle": "Open menu",
@@ -121,7 +122,8 @@
       "issues": "Known Issues",
       "gates": "Gates & Portals",
       "features": "Feature Guide",
-      "download": "Download"
+      "download": "Download",
+      "launcher": "Glimpse Launcher"
     },
     "page_descriptions": {
       "changelog": "The full update history of the Glimpse Alpha (formerly Sorakaze) mod pack. Covers what's changed and what to watch out for, from the first release to now.",
@@ -131,7 +133,8 @@
       "issues": "A list of known issues and unconfirmed features in the Glimpse Alpha mod pack.",
       "gates": "Every dimensional gate in Glimpse Alpha (Nether, End, Amethyst Gate, Heaven, Backrooms entrance) — how to build one, where it leads, with diagrams.",
       "features": "A tour of the main features added or changed in V2.2: glass lanterns, Backrooms, overworld raids, turrets, video, the Sparxie staff, firearm rebalance, the drone, and the Sapporo reconstruction.",
-      "download": "Download the Glimpse Alpha mod pack (V2.2.0, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions."
+      "download": "Download the Glimpse Alpha mod pack (V2.2.0, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.",
+      "launcher": "What Glimpse Launcher is, how to install it, point it at an existing pack folder, use automatic or manual update mode, and restore from a backup."
     }
   },
   "home": {
@@ -4461,6 +4464,45 @@
     "install_heading": "How to install",
     "install_body": "Full install steps for both the server and players are in the install guide:",
     "guide_link_text": "View the install guide →",
-    "older_versions_note": "This page always distributes the current release (V2.2.0). If you need an older version, please ask your server admin directly."
+    "older_versions_note": "This page always distributes the current release (V2.2.0). If you need an older version, please ask your server admin directly.",
+    "discord_heading": "Discord release notifications",
+    "discord_body": "Add the release bot to your Discord server to get a message posted automatically whenever a new update ships. After inviting it, run /release channel in your server to choose where announcements go.",
+    "discord_invite_cta": "Invite release bot",
+    "discord_pending": "The Discord release bot is not yet available for this server — the invite link has not been published yet.",
+    "launcher_heading": "Glimpse Launcher",
+    "launcher_body": "Glimpse Launcher is a desktop app that keeps your Glimpse Alpha mod pack up to date automatically, verifying every download against this Wiki by SHA-256 - the Wiki remains the only source it trusts.",
+    "launcher_version_label": "Version",
+    "launcher_cta": "Download Glimpse Launcher",
+    "launcher_pending": "Glimpse Launcher is not yet available for download - no build has been published to the Wiki yet. Check back soon, or continue installing the mod pack manually using the ZIP above."
+  },
+  "launcher_page": {
+    "intro": "Glimpse Launcher is a small desktop app that keeps your Glimpse Alpha mod pack up to date automatically. It checks this Wiki for the current release, downloads updates for you, and verifies every file it downloads against a SHA-256 checksum published here before it touches your pack folder. This Wiki is the only source it trusts.",
+    "sections": [
+      {
+        "id": "what-it-is",
+        "title": "What it is, and why it exists",
+        "body_html": "<p>Keeping a large mod pack up to date by hand means re-visiting the Download page, comparing version numbers, downloading a new ZIP, and re-extracting it into the right folder every time a release ships. Glimpse Launcher automates that: it reads this Wiki's release manifest, compares it against the pack you already have installed, and fetches only what's changed.</p><p>Every download the launcher makes is checked against a SHA-256 checksum published by this Wiki before it's used. If a downloaded file doesn't match, the launcher will not install it. The Wiki is the launcher's only source of truth for what the \"current\" release is.</p>"
+      },
+      {
+        "id": "installing",
+        "title": "Installing Glimpse Launcher",
+        "body_html": "<p>Once a build of Glimpse Launcher has been published, you'll be able to download it from the Download page on this Wiki, the same place the mod pack ZIP itself is distributed. Run the installer and follow the on-screen steps for your operating system, then launch the app.</p>"
+      },
+      {
+        "id": "pointing-at-existing-pack",
+        "title": "Pointing it at an existing pack folder",
+        "body_html": "<p>If you've already installed Glimpse Alpha manually, you don't need to start over. On first run, the launcher lets you choose the folder your mod pack already lives in instead of creating a new one. Point it at your existing mods folder and the launcher will treat that installation as the one it manages from then on.</p>"
+      },
+      {
+        "id": "update-modes",
+        "title": "Automatic vs. manual update mode",
+        "body_html": "<p>In <strong>automatic mode</strong>, the launcher checks this Wiki's release manifest on its own and installs new versions as soon as they're available, so your pack folder stays current without you having to do anything.</p><p>In <strong>manual mode</strong>, the launcher still checks for updates, but waits for you to review and confirm before it downloads or installs anything — useful if you'd rather choose exactly when an update lands, for example to avoid interrupting a play session.</p>"
+      },
+      {
+        "id": "restoring-from-backup",
+        "title": "Restoring from a backup if an update goes wrong",
+        "body_html": "<p>If an update leaves your pack in a state you don't want — a mod misbehaving, or an update you'd rather undo — the launcher keeps a backup of your previous pack state so you can restore it. Use the launcher's restore option to roll your pack folder back to the backed-up version rather than trying to fix files by hand.</p>"
+      }
+    ]
   }
 }
