@@ -8119,7 +8119,7 @@
       {
         "id": "installing",
         "title": "Glimpse Launcher の入れ方",
-        "body_html": "<p>Glimpse Launcher は、このWikiのダウンロードページから配布される単一のファイル <code>glimpse-launcher-1.0.0.jar</code> です(MODパックの配布ZIPと同じ場所にあります)。同じ1つのファイルが Windows・macOS・Linux のいずれでも動きます。現時点ではOSごとの専用インストーラーはありません。</p><p>実行には Java 21 以降が必要です(MODパック本体と同じ条件です)。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、次のコマンドを実行してください。</p><pre><code>java -jar glimpse-launcher-1.0.0.jar</code></pre><p>OSごとのネイティブインストーラー(Windows用 .exe・macOS用 .dmg・Linux用 .AppImage)は今後のバージョンで対応予定ですが、この最初のリリースにはまだ含まれていません。</p>"
+        "body_html": "<p>Glimpse Launcher は、このWikiのダウンロードページから配布される単一のファイル <code>glimpse-launcher-1.1.0.jar</code> です(MODパックの配布ZIPと同じ場所にあります)。同じ1つのファイルが Windows・macOS・Linux のいずれでも動きます。現時点ではOSごとの専用インストーラーはありません。</p><p>実行には Java 21 以降が必要です(MODパック本体と同じ条件です)。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、次のコマンドを実行してください。</p><pre><code>java -jar glimpse-launcher-1.1.0.jar</code></pre><p>OSごとのネイティブインストーラー(Windows用 .exe・macOS用 .dmg・Linux用 .AppImage)は今後のバージョンで対応予定ですが、この最初のリリースにはまだ含まれていません。</p>"
       },
       {
         "id": "pointing-at-existing-pack",
@@ -8130,6 +8130,11 @@
         "id": "update-modes",
         "title": "自動更新モードと手動更新モードの違い",
         "body_html": "<p><strong>自動更新モード</strong>では、ランチャーがこの Wiki のリリース情報を自ら確認し、新しいバージョンが公開され次第インストールします。何もしなくてもパックフォルダーは常に最新の状態に保たれます。</p><p><strong>手動更新モード</strong>では、ランチャーは更新の有無を確認しますが、ダウンロードやインストールを行う前にあなたの確認を待ちます。プレイ中に更新が割り込むのを避けたいときなど、更新のタイミングを自分で選びたい場合に便利です。</p>"
+      },
+      {
+        "id": "confirming-an-update-applied",
+        "title": "更新が本当に反映されたかの確認方法",
+        "body_html": "<p>バージョン1.1.0以降、Update を押すと新しいMODファイルがパックの <code>mods</code> フォルダーに直接書き込まれます。更新後にフォルダーの中身を 実際に再確認し、期待通りのファイルが存在することを確認できるまで「Update complete」とは表示されません。途中で何か失敗した場合は、偽の成功表示ではなく失敗として報告されます。</p><p>macOSで実際に確認する方法: 設定画面に表示されているフォルダーを開き(Finderで <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> を押してパスを貼り付け)、<code>mods</code> の中を見て、Update前後で各 <code>glimpse-alpha-*.jar</code> ファイル名内の版数を確認してください。</p><p class=\"callout callout--info\">1.1.0より前のバージョンのランチャーで最後に触られたパックフォルダーから更新する場合、最初の1回だけ、そのMODの古い版数の jar が新しい jar と並んで残ることがあります(それ以前のランチャーには、自分がどのファイルを配置したかの記録が無かったためです)。次回以降の更新からは自動的に解消します。すぐに気になる場合は、新しい方の存在を確認した上で、古い版数の <code>glimpse-alpha-*.jar</code> を手動で削除しても問題ありません。</p>"
       },
       {
         "id": "restoring-from-backup",

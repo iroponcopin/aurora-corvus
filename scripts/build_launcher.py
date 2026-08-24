@@ -54,13 +54,13 @@ _DEFAULT_SECTIONS = [
         "title": "Installing Glimpse Launcher",
         "body_html": (
             "<p>Glimpse Launcher is distributed as a single file, "
-            "<code>glimpse-launcher-1.0.0.jar</code>, from the Download page on this Wiki — the "
+            "<code>glimpse-launcher-1.1.0.jar</code>, from the Download page on this Wiki — the "
             "same place the mod pack ZIP itself is distributed. The same file runs on Windows, "
             "macOS, and Linux; there is no separate installer for each platform yet.</p>"
             "<p>Running it needs Java 21 or newer installed on your computer (the same "
             "requirement as the mod pack itself). If double-clicking the file doesn't open it, "
             "open a terminal or command prompt in the folder you downloaded it to and run:</p>"
-            "<pre><code>java -jar glimpse-launcher-1.0.0.jar</code></pre>"
+            "<pre><code>java -jar glimpse-launcher-1.1.0.jar</code></pre>"
             "<p>Native installers (a Windows .exe, a macOS .dmg, a Linux .AppImage) are planned "
             "for a future version but are not part of this first release.</p>"
         ),
@@ -86,6 +86,28 @@ _DEFAULT_SECTIONS = [
             "for you to review and confirm before it downloads or installs anything — useful if "
             "you'd rather choose exactly when an update lands, for example to avoid interrupting "
             "a play session.</p>"
+        ),
+    },
+    {
+        "id": "confirming-an-update-applied",
+        "title": "Confirming an update actually applied",
+        "body_html": (
+            "<p>As of version 1.1.0, clicking Update writes the new mod files directly into your "
+            "pack's <code>mods</code> folder, and the launcher will not show \"Update complete\" "
+            "unless it has re-checked the folder afterwards and confirmed the expected files are "
+            "really there. If something goes wrong partway through, it reports failure instead of "
+            "a false success.</p>"
+            "<p>To see the change for yourself on macOS: open the folder shown in Settings "
+            "(<kbd>&#8984;</kbd>+<kbd>&#8679;</kbd>+<kbd>G</kbd> in Finder, then paste the path), "
+            "look inside <code>mods</code>, and check the version number in each "
+            "<code>glimpse-alpha-*.jar</code> filename before and after clicking Update.</p>"
+            "<p class=\"callout callout--info\">If you're updating from a pack folder that was "
+            "last touched by a launcher older than 1.1.0, the very first update may leave one "
+            "old-versioned jar sitting alongside the new one for that mod (the launcher didn't "
+            "yet have a record of which files it had previously placed). This clears up on its "
+            "own from the next update onward. If it bothers you sooner, it's safe to delete the "
+            "older-numbered <code>glimpse-alpha-*.jar</code> by hand once the new one is "
+            "confirmed present.</p>"
         ),
     },
     {
