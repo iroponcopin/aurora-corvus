@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 49 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 50 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -778,6 +778,18 @@
           <ul><li>Making the server mod-capable requires migrating from vanilla to Fabric. Also, running Minecraft 26.2 requires Java 25 or later, so please check the Java version on the server machine (see the admin install guide for setup steps)</li></ul>
         </div>
       
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-25</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.3</span> — Server Admin login now distinguishes the real cause, plus 3 known issues fixed
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>A fix release for reports of &quot;I enter the admin ID and password and still can&#x27;t log in.&quot; No defect was found in the network path or the credential-verification logic itself, but the sign-in screen previously showed the exact same &quot;wrong ID or password&quot; message whether the server simply had zero admin accounts configured yet, or the entered credentials were genuinely wrong - there was no way to tell which. It now shows a distinct message for the former case, and login attempts made in that state no longer count against the anti-brute-force limiter. Also fixes 3 items that had been sitting on the Wiki&#x27;s Known Issues page: reinforced glass window colour names, a cable glow bug right after a power off/on toggle, and the &quot;Lookup&quot; app&#x27;s recipe grid layout.</p>
+      <ul><li>Server Admin app sign-in screen: when the server has zero valid admin accounts configured, it now shows a clear message saying so instead of the generic &quot;wrong ID or password&quot;. Login attempts made in this state are no longer counted toward the anti-brute-force lockout.</li><li>Fixed the reinforced glass window (17 colours) display names - every colour now shows its proper Japanese/English name.</li><li>Fixed cables that were disconnected from a breaker panel sometimes staying lit right after switching the main breaker off and back on.</li><li>Fixed the &quot;Lookup&quot; app&#x27;s 3x3 recipe grid to show ingredients in their real crafting-grid positions (including empty cells), instead of packing them in order from the top-left.</li><li>For server owners: clarified the check/recovery steps for when a missing or malformed admin_account.json turns out to be the actual login cause (private owner-facing documentation).</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The admin login fix addresses the &quot;zero accounts configured&quot; case specifically. If all 3 accounts are correctly configured but one specific account still can&#x27;t sign in, that is a different symptom - please report it separately.</li><li>The orphaned-cable fix takes full effect from an update correctly applied on this version onward. If you jump straight from V2.4.2 or earlier, one already-orphaned cable may still show live once; breaking and replacing it, or the next breaker toggle, clears it.</li></ul>
     </article>
 </div>
 

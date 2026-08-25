@@ -190,6 +190,39 @@
   },
   "changelog": [
     {
+      "release": "V2.4.3",
+      "date": "2026-08-25",
+      "type": "hotfix",
+      "title": "Server Admin login now distinguishes the real cause, plus 3 known issues fixed",
+      "summary": "A fix release for reports of \"I enter the admin ID and password and still can't log in.\" No defect was found in the network path or the credential-verification logic itself, but the sign-in screen previously showed the exact same \"wrong ID or password\" message whether the server simply had zero admin accounts configured yet, or the entered credentials were genuinely wrong - there was no way to tell which. It now shows a distinct message for the former case, and login attempts made in that state no longer count against the anti-brute-force limiter. Also fixes 3 items that had been sitting on the Wiki's Known Issues page: reinforced glass window colour names, a cable glow bug right after a power off/on toggle, and the \"Lookup\" app's recipe grid layout.",
+      "mod_versions": {
+        "sorakaze_backrooms": "2.4.3",
+        "sorakaze_boss": "2.4.3",
+        "sorakaze_deco": "2.4.3",
+        "sorakaze_guns": "2.4.3",
+        "sorakaze_planarcadia": "2.4.3",
+        "sorakaze_power": "2.4.3",
+        "sorakaze_rail": "2.4.3",
+        "sorakaze_sky": "2.4.3",
+        "sorakaze_survival": "2.4.3",
+        "sorakaze_vehicles": "2.4.3",
+        "sorakaze_sapporo": "2.4.3"
+      },
+      "highlights": [
+        "Server Admin app sign-in screen: when the server has zero valid admin accounts configured, it now shows a clear message saying so instead of the generic \"wrong ID or password\". Login attempts made in this state are no longer counted toward the anti-brute-force lockout.",
+        "Fixed the reinforced glass window (17 colours) display names - every colour now shows its proper Japanese/English name.",
+        "Fixed cables that were disconnected from a breaker panel sometimes staying lit right after switching the main breaker off and back on.",
+        "Fixed the \"Lookup\" app's 3x3 recipe grid to show ingredients in their real crafting-grid positions (including empty cells), instead of packing them in order from the top-left.",
+        "For server owners: clarified the check/recovery steps for when a missing or malformed admin_account.json turns out to be the actual login cause (private owner-facing documentation)."
+      ],
+      "balance_changes": [],
+      "warnings": [],
+      "known_limitations": [
+        "The admin login fix addresses the \"zero accounts configured\" case specifically. If all 3 accounts are correctly configured but one specific account still can't sign in, that is a different symptom - please report it separately.",
+        "The orphaned-cable fix takes full effect from an update correctly applied on this version onward. If you jump straight from V2.4.2 or earlier, one already-orphaned cable may still show live once; breaking and replacing it, or the next breaker toggle, clears it."
+      ]
+    },
+    {
       "release": "v1.0.0",
       "date": "2026-07-15",
       "title": "Initial Release: 3 Mods — Guns, Rail, and Building Materials",
@@ -1530,23 +1563,7 @@
     }
   ],
   "known_issues": {
-    "minor_bugs": [
-      {
-        "title": "Display names for reinforced glass windows (17 colors)",
-        "body": "16 of the 17 colors don't have Japanese/English display names set, so the raw item ID is shown instead (only black has a proper name). This doesn't affect function or performance.",
-        "since": "v1.7.7+"
-      },
-      {
-        "title": "Isolated cables right after cutting and restoring power",
-        "body": "Cables that aren't connected to a breaker panel can sometimes stay lit right after you switch power off and back on. Breaking and replacing the cable fixes it.",
-        "since": "v1.8.1+"
-      },
-      {
-        "title": "Recipe display in the \"Lookup\" app",
-        "body": "The 3×3 recipe screen shown in the phone/computer \"Lookup\" app can't receive the actual grid-placement data for ingredients, so it falls back to a simplified layout — ingredients packed in order from the top-left rather than their real positions. The ingredient types and quantities themselves are shown correctly.",
-        "since": "v1.8.6+"
-      }
-    ],
+    "minor_bugs": [],
     "standing_limitations": [
       {
         "title": "Dedicated attack animations for the Kraken and Titan",

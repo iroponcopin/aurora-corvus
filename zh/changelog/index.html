@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新日志</span>
   <h1>更新日志</h1>
-  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 49 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 50 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
   <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
 </div>
 
@@ -778,6 +778,18 @@
           <ul><li>要让服务器支持 MOD，需要从原版迁移到 Fabric。此外，运行 Minecraft 26.2 需要 Java 25 及以上版本，请检查服务器主机的 Java 版本（导入步骤请参阅管理员专用手册）</li></ul>
         </div>
       
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-25</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.3</span> — 管理者ログインの原因表示と、Wiki記載の既知の不具合3件を修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>「IDとパスワードを入力してもログインできない」という報告を受けての修正版です。サーバー配線・照合ロジック自体には欠陥が見つかりませんでしたが、サーバーに管理者アカウントが1件も設定されていない場合と、入力そのものが間違っている場合とで、これまで画面には常に同じ「IDまたはパスワードが違います」としか表示されず、本人には見分けがつきませんでした。今回、前者の場合は理由が分かる別の文面を表示するようにし、この状態が失敗回数として数えられない(総当たり対策で締め出されない)ようにもしました。あわせて、Wikiの既知の不具合ページに残っていた3件(強化ガラスの窓の名前表示、電力オフ→オン直後の孤立ケーブル、「調べもの」アプリのレシピ配置)を修正しました。</p>
+      <ul><li>管理者アプリのログイン画面: サーバーに有効な管理者アカウントが1件も設定されていない場合、これまでの「IDまたはパスワードが違います」ではなく、その旨が分かる文面を表示するようにしました。この状態でのログイン試行は、総当たり対策の失敗回数としては数えません。</li><li>強化ガラスの窓(17色)の名前表示を修正しました。すべての色で正しい日本語・英語名が表示されます。</li><li>分電盤の主幹を切って入れ直した直後、系統から外れたケーブルが点灯したまま残ることがある不具合を修正しました。</li><li>「調べもの」アプリの3×3レシピ表示を、実際の作業台の配置(材料の位置・空きマス)どおりに表示するよう修正しました。以前は空きマスを詰めて先頭から順に並べる簡易表示でした。</li><li>サーバー管理者向け: 管理者ログインが機能しない場合(admin_account.json が無い、または壊れている)の確認・復旧手順を整理しました(所有者向け非公開ドキュメント)。</li></ul>
+      
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>管理者ログインの修正は「サーバーに1件も設定されていない」場合の見分けを付けるものです。3件とも正しく設定されているのに特定の1件だけログインできない、という別の症状が残る場合は、改めてご報告ください。</li><li>孤立ケーブルの修正は、この版以降に正しく行われた更新から効果を発揮します。V2.4.2以前のランチャー/サーバーから直接V2.4.3に上げた場合、既存の孤立ケーブルが1本残っていれば、一度壊して置き直すか、次の主幹操作で解消します。</li></ul>
     </article>
 </div>
 
