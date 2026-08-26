@@ -190,6 +190,39 @@
   },
   "changelog": [
     {
+      "release": "V2.4.5",
+      "date": "2026-08-26",
+      "type": "release",
+      "title": "Missile launcher targeting redesigned: click a tactical map instead of typing coordinates",
+      "summary": "Missile launcher targeting has been redesigned from typed coordinates to a point-and-click tactical map. The map shows a range ring (2,000 blocks by default), and the selected point is colour-coded to show at a glance whether it's in range. The actual impact height is now determined automatically from the real ground surface at the selected point, computed by the server. Selecting an area that hasn't been loaded yet fails with a clear message instead of failing silently. Range checking now uses horizontal distance only, so terrain height differences can no longer make the map's range ring disagree with what the launcher will actually accept. Existing safety, firing, warhead, and cooldown systems are unchanged. The launcher's in-world 3D model has not been changed in this update.",
+      "mod_versions": {
+        "sorakaze_backrooms": "2.4.5",
+        "sorakaze_boss": "2.4.5",
+        "sorakaze_deco": "2.4.5",
+        "sorakaze_guns": "2.4.5",
+        "sorakaze_planarcadia": "2.4.5",
+        "sorakaze_power": "2.4.5",
+        "sorakaze_rail": "2.4.5",
+        "sorakaze_sky": "2.4.5",
+        "sorakaze_survival": "2.4.5",
+        "sorakaze_vehicles": "2.4.5",
+        "sorakaze_sapporo": "2.4.5"
+      },
+      "highlights": [
+        "Added an \"Open Map\" button to the missile launcher's control panel; the typed-coordinate fields have been removed.",
+        "Tactical map: shows the launcher centred, a range ring (2,000 blocks by default), your own position, and the selected pin. The pin is colour-coded (in range / out of range) with the distance shown as text.",
+        "Confirming sends only the selected XZ point to the server, which determines the real impact height from the ground surface itself. Confirming a point in an area that isn't loaded shows a clear \"area not loaded\" message and leaves the existing target unchanged.",
+        "Range checking changed from full 3D distance to horizontal distance only, so terrain height differences can no longer make the map's range ring and the actual firing gate disagree."
+      ],
+      "balance_changes": [],
+      "warnings": [],
+      "known_limitations": [
+        "The launcher's in-world 3D model (its appearance) has not been changed in this update - it keeps its existing look.",
+        "The map does not support zooming or panning yet - it always shows a fixed-scale view centred on the launcher.",
+        "The ground-height preview under the pin only works for areas already loaded on your own client, which is most of the time outside view distance for a 2,000-block range - it will usually show \"unknown until confirmed\" (the server always computes the real height correctly once you confirm)."
+      ]
+    },
+    {
       "release": "V2.4.4",
       "date": "2026-08-25",
       "type": "hotfix",

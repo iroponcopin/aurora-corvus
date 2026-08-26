@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Qui sono elencati in ordine cronologico inverso tutti gli aggiornamenti, dalla prima versione (v1.0.0, 2026-07-15) a oggi (aggiornato al 2026-08-11, 51 aggiornamenti in totale). Sono stati omessi i passaggi di verifica interna della fase di sviluppo: trovi solo ciò che è cambiato realmente sul server e a cosa prestare attenzione.</p>
+  <p class="lede">Qui sono elencati in ordine cronologico inverso tutti gli aggiornamenti, dalla prima versione (v1.0.0, 2026-07-15) a oggi (aggiornato al 2026-08-11, 52 aggiornamenti in totale). Sono stati omessi i passaggi di verifica interna della fase di sviluppo: trovi solo ciò che è cambiato realmente sul server e a cosa prestare attenzione.</p>
   <p class="callout callout--info">I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell&#x27;introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.</p>
 </div>
 
@@ -805,6 +805,18 @@
           <ul><li>この変更により、管理者アプリへのログインはもう個人ごとの資格情報ではなく、共有の1組のIDとパスワードになります。特定の1人だけのアクセスを取り消したい場合は、共有パスワードそのものを変更し、引き続き持つべき人にだけ配り直してください。</li></ul>
         </div>
       
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.5</span> — ミサイルランチャーの狙いを座標入力から戦術マップのクリック選択に刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novità</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Edilizia e arredamento</span><span class="mod-badge" style="--mod-color:#c0533a">Armi da fuoco</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Elettricità</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Cielo</span><span class="mod-badge" style="--mod-color:#c19a2e">Sopravvivenza</span><span class="mod-badge" style="--mod-color:#d17a34">Veicoli</span></div>
+      <p>ミサイルランチャーの目標指定を、座標を打ち込む方式から、戦術マップ上でクリックして選ぶ方式に作り直しました。マップには射程リング(既定2,000ブロック)が表示され、選んだ地点が射程内かどうかが色でひと目で分かります。実際の着弾高度は、選んだ地点の地表をサーバーが自動で求めます。読み込まれていない場所を選んだ場合は、静かに失敗させず理由を表示します。射程の判定は水平距離だけで行うようにし、地形の起伏でマップ上のリングと判定が食い違わないようにしました。安全装置・発射・弾頭・クールダウンなど既存の仕組みはそのままです。見た目(発射台本体の3Dモデル)は今回変更していません。</p>
+      <ul><li>ミサイルランチャーの管制盤に「マップを開く」ボタンを追加。座標を打ち込む入力欄は廃止しました。</li><li>戦術マップ: 発射機を中心に、射程リング(既定2,000ブロック)・自分の位置・選んだ地点(ピン)を表示。ピンは射程内なら通常色、射程外なら警告色になり、距離も文字で表示します。</li><li>確定を押すと、選んだ地点(XZ)だけをサーバーへ送り、実際の着弾高度(地表)はサーバー自身が求めます。読み込まれていない場所を選んで確定しようとした場合は、「その場所はまだ読み込まれていません」という文面を表示し、それまでの目標は変更しません。</li><li>射程の判定を、これまでの立体距離(高低差込み)から水平距離だけに変更しました。地形の起伏によって、マップ上のリングと実際に撃てるかどうかが食い違う不具合を防ぎます。</li></ul>
+      
+      
+      <h4>Cosa non era ancora implementato o verificato a questo punto</h4><ul><li>発射台本体の3Dモデル(外観)は今回のアップデートでは変更していません。既存の見た目のままです。</li><li>マップの拡大縮小・ドラッグでの視点移動は未対応です(常に発射機を中心にした固定倍率の表示になります)。</li><li>選んだ地点の地表プレビューは、クライアント側で既に読み込み済みの範囲でのみ表示されます。射程の大半は描画距離の外にあるため、多くの場合「確定するまで不明」と表示されます(実際の高度は確定した瞬間にサーバーが正しく求めます)。</li></ul>
     </article>
 </div>
 
