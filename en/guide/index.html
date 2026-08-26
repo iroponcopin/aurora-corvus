@@ -646,8 +646,8 @@ were touched).</p>
 <h3>Server Admin app: "wrong id or password" even though it should be right</h3>
 <p>The in-game PC's Server Admin app deliberately shows the exact same message for every reason a sign-in can fail, so it never hints to an attacker which part was wrong. That means a correct ID and password can still be refused if:</p>
 <ul>
-  <li><b>No admin accounts have been set up on the server yet.</b> By default, the app ships with zero admin accounts — nobody can sign in until the server admin creates exactly three accounts with <code>tools/make_admin_account.py</code> (from the mod's source repository) and places the result at <code>config/sorakaze_deco/admin_account.json</code> on the server, then restarts it.</li>
-  <li><b>Each account is locked to one exact, case-sensitive Minecraft username.</b> Signing in also requires connecting as that exact account — a correct ID and password will still be refused if you're connected as a different Minecraft account (or even the same name with different capitalisation) than the one that account was bound to.</li>
+  <li><b>No admin account has been set up on the server yet.</b> By default, the app ships with zero admin accounts — nobody can sign in until the server admin creates one with <code>tools/make_admin_account.py</code> (from the mod's source repository) and places the result at <code>config/sorakaze_deco/admin_account.json</code> on the server, then restarts it.</li>
+  <li><b>The ID or password itself is wrong.</b> As of V2.4.4, sign-in uses a single shared ID and password — anyone who knows both can sign in from any Minecraft account, so a per-player name mismatch is no longer a possible cause.</li>
 </ul>
 <p>If you're the server admin and sign-in still fails after checking both of the above, restart the server (this also signs everyone out, so old passwords stop working immediately) and check the server's log for a line starting with <code>ADMIN:</code> — it explains exactly why the account file couldn't be used, without ever printing the password itself.</p>
 <h3>How to restore a world from backup (for server admins)</h3>

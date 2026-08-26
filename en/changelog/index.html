@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 50 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 51 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -790,6 +790,21 @@
       
       
       <h4>Not yet implemented/confirmed at this point</h4><ul><li>The admin login fix addresses the &quot;zero accounts configured&quot; case specifically. If all 3 accounts are correctly configured but one specific account still can&#x27;t sign in, that is a different symptom - please report it separately.</li><li>The orphaned-cable fix takes full effect from an update correctly applied on this version onward. If you jump straight from V2.4.2 or earlier, one already-orphaned cable may still show live once; breaking and replacing it, or the next breaker toggle, clears it.</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-25</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.4</span> — Admin app login consolidated to a single shared credential; fixed operator permissions being wiped
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>Reports of &quot;I enter the admin ID and password and still can&#x27;t log in&quot; persisted, so the owner decided to redesign the admin app&#x27;s sign-in model itself. It no longer binds 3 separate accounts to 3 specific Minecraft names - there is now a single shared ID and password, and anyone who knows both can sign in from any Minecraft account. While investigating, a serious separate bug was found: when the admin account file is missing or broken, the server would automatically strip real operator (/op) permission from every player who had it - introduced in V2.4.0, this had been silently blocking command usage and things like the auto-backup toggle. That is also fixed in this release.</p>
+      <ul><li>Admin app sign-in changed from 3 name-locked accounts to a single shared ID and password. Anyone who knows both can sign in, regardless of which Minecraft account they&#x27;re connected as.</li><li>Fixed a serious bug where the automatic server-operator (/op) sync would strip operator permission from every existing operator whenever the admin account file was missing or broken. It now leaves existing operator status untouched until the file is properly configured.</li><li>For server owners: updated the credential-recovery steps for the new single-account model (private documentation).</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Admin app access is now a single shared credential rather than per-person. To revoke access from one specific person without affecting everyone else is no longer possible with this design - rotate the shared password instead and redistribute it only to who should keep access.</li></ul>
+        </div>
+      
     </article>
 </div>
 

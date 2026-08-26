@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">업데이트 기록</span>
   <h1>업데이트 기록</h1>
-  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 50회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
+  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 51회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
   <p class="callout callout--info">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
 </div>
 
@@ -790,6 +790,21 @@
       
       
       <h4>이 시점에 미구현·미확인이었던 사항</h4><ul><li>管理者ログインの修正は「サーバーに1件も設定されていない」場合の見分けを付けるものです。3件とも正しく設定されているのに特定の1件だけログインできない、という別の症状が残る場合は、改めてご報告ください。</li><li>孤立ケーブルの修正は、この版以降に正しく行われた更新から効果を発揮します。V2.4.2以前のランチャー/サーバーから直接V2.4.3に上げた場合、既存の孤立ケーブルが1本残っていれば、一度壊して置き直すか、次の主幹操作で解消します。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-25</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.4</span> — 管理者アプリのログインをID・パスワード1組に統合し、運営者権限が消える不具合を修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">버그 수정</span><span class="mod-badge" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge" style="--mod-color:#9349b8">보스</span><span class="mod-badge" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge" style="--mod-color:#c0533a">총기</span><span class="mod-badge" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge" style="--mod-color:#d4b32e">전력</span><span class="mod-badge" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge" style="--mod-color:#3badc9">천공</span><span class="mod-badge" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge" style="--mod-color:#d17a34">탈것</span></div>
+      <p>「管理者IDとパスワードを入力してもログインできない」という報告が解消しないため、所有者の判断により管理者アプリのログイン方式そのものを見直しました。3人それぞれに実名を縛る方式をやめ、共有のIDとパスワードを1組だけにし、それを知っている人なら誰でもログインできるようにしました。あわせて調査の過程で、管理者の設定ファイルが無い・壊れている場合に、実際にサーバー運営者権限(/op)を持っていた人たち全員の権限が自動的に剥奪されてしまう重大な不具合が見つかったため、これも修正しました(V2.4.0で導入された機構が原因で、コマンドの使用や自動バックアップの切り替えができなくなっていました)。</p>
+      <ul><li>管理者アプリのログインを、3人・実名縛り方式から、共有のIDとパスワード1組だけの方式に変更しました。それを知っている人であれば、どのMinecraftアカウントで接続してもログインできます。</li><li>サーバー運営者権限(/op)の自動同期機構が、管理者の設定ファイルが無い・壊れている場合に既存の運営者権限を全員分自動的に剥奪してしまう重大な不具合を修正しました。設定が整うまでは、今ある権限に一切手を出さないようにしました。</li><li>所有者向け: 資格情報の作り直し手順を新しい1アカウント方式に合わせて整理しました(非公開ドキュメント)。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 주의 사항</div>
+          <ul><li>この変更により、管理者アプリへのログインはもう個人ごとの資格情報ではなく、共有の1組のIDとパスワードになります。特定の1人だけのアクセスを取り消したい場合は、共有パスワードそのものを変更し、引き続き持つべき人にだけ配り直してください。</li></ul>
+        </div>
+      
     </article>
 </div>
 
