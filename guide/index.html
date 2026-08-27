@@ -66,7 +66,7 @@
   <h1>導入ガイド</h1>
   <p class="lede">MOD を有効化してから遊び始めるまでの手順をまとめています。プレイヤーとして参加するだけなら「プレイヤー向け」の章だけで十分です。</p>
 </div>
-<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#overview">概要:Glimpse Alpha の導入について</a></li><li><a href="#player-setup">プレイヤー向け:サーバーに参加するための設定</a></li><li><a href="#admin-prep">サーバー管理者向け:事前準備(バックアップとバージョン確認)</a></li><li><a href="#admin-fabric-install">サーバー管理者向け:Fabric の導入</a></li><li><a href="#admin-mods-and-verify">サーバー管理者向け:MOD の導入と起動確認</a></li><li><a href="#admin-upgrade">MOD を新しい版に入れかえるとき</a></li><li><a href="#gameplay-notices">遊ぶ前に知っておきたい注意点</a></li><li><a href="#faq">よくある質問・トラブルシューティング</a></li></ol></div>
+<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#overview">概要:Glimpse Alpha の導入について</a></li><li><a href="#player-setup">プレイヤー向け:サーバーに参加するための設定</a></li><li><a href="#admin-prep">サーバー管理者向け:事前準備(バックアップとバージョン確認)</a></li><li><a href="#admin-fabric-install">サーバー管理者向け:Fabric の導入</a></li><li><a href="#admin-mods-and-verify">サーバー管理者向け:MOD の導入と起動確認</a></li><li><a href="#admin-upgrade">MOD を新しい版に入れかえるとき</a></li><li><a href="#admin-app-credentials">ゲーム内「管理者アプリ」のID・パスワードを設定する</a></li><li><a href="#gameplay-notices">遊ぶ前に知っておきたい注意点</a></li><li><a href="#faq">よくある質問・トラブルシューティング</a></li></ol></div>
 <div id="overview"><div class="card" style="margin-bottom:20px;">
       
       <h2 style="margin-top:0;border-top:none;padding-top:0;">概要:Glimpse Alpha の導入について</h2>
@@ -513,6 +513,76 @@ pause</pre>
 </div>
 
     </div></div>
+<div id="admin-app-credentials"><div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">サーバー管理者向け</span></div>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">ゲーム内「管理者アプリ」のID・パスワードを設定する</h2>
+      
+<p>
+  Apple端末(<code>iPhone</code> / <code>MacBook</code> / <code>Mac Studio</code>)を右クリックして開く
+  <strong>Mine OS</strong> のホーム画面には、真鍮色の南京錠のアイコンをした<strong>「管理者」アプリ</strong>があります。
+  ここでは、そのアプリのID・パスワードを所有者(サーバー管理者)が自分で設定・変更する方法を説明します。
+</p>
+<div class="callout callout--info">
+  <div class="callout__title">💡 このページを読めることと、アプリに入れることは別です</div>
+  <p>
+    この手順を知っているだけでは管理者アプリにはログインできません。ログインには
+    <strong>あなたが実際に選んだIDとパスワード</strong>の両方が必要で、それは以下の手順で
+    <strong>あなた自身のサーバーの中だけ</strong>に置かれます。手順を公開しても、
+    実際のID・パスワードを知らない人がアクセスできるようになるわけではありません。
+  </p>
+</div>
+
+<h3>出荷時点の既定値</h3>
+<p>
+  何も設定していない場合、管理者アプリは出荷時点の既定のID・パスワードを使います。
+  <strong>実際に配布・運用する前に、必ず自分だけのID・パスワードへ変更してください。</strong>
+  MODの中に入っているのはパスワードそのものではなく、
+  <strong>照合用の記録</strong>(PBKDF2-HMAC-SHA256、210,000回、salt付き)だけです。
+  この記録から元のパスワードを逆算することはできません。
+</p>
+
+<h3>自分のID・パスワードに変更する手順</h3>
+<ol class="steps">
+  <li>
+    サーバーのソース一式(<code>mods-src</code>)がある環境で、次のコマンドを実行します
+    (<code>&lt;好きなID&gt;</code>は他で使っていない文字列に置きかえてください)。
+    <pre><code>python3 tools/make_admin_account.py --id &lt;好きなID&gt; --merge config/sorakaze_deco/admin_account.json</code></pre>
+  </li>
+  <li>
+    新しいパスワードを<strong>2回</strong>訊かれます(画面には表示されません)。
+    このパスワードはコマンド自身には一切書き込まれず、選んだ本人の頭の中とメモだけに残ります。
+  </li>
+  <li>
+    実行すると、照合用の記録(salt・反復回数・ハッシュのみ)が
+    <code>config/sorakaze_deco/admin_account.json</code> として書き出されます。
+  </li>
+  <li><strong>サーバーを再起動</strong>してください。このファイルが在れば必ずこちらが既定値に優先します。</li>
+</ol>
+
+<div class="callout callout--warn">
+  <div class="callout__title">⚠ 再起動すると、入っている管理者セッションは全部切れます</div>
+  <p>
+    古いID・パスワードでログインしていた人は、その時点で締め出されます。
+    管理者を選び直した・パスワードが漏れた、といった場面でそのまま使える安全装置です。
+  </p>
+</div>
+
+<h3>IDとパスワードの配布</h3>
+<p>
+  新しいIDとパスワードは、<strong>あなたが選んだ管理者にだけ、あなた自身の手で</strong>伝えてください。
+  「ゲーム内チャットで新しいパスワードを発行して表示する」ような機能は、この管理者アプリには
+  <strong>意図的に用意していません</strong>。ゲーム内チャットはサーバーのログに残り、ログは
+  多くの場合そのまま共有・保存されるため、パスワードをチャットに書いた時点でそれは漏洩したのと
+  同じ扱いになります。
+</p>
+
+<h3>既定値へ戻したいとき</h3>
+<p>
+  <code>config/sorakaze_deco/admin_account.json</code> を削除してサーバーを再起動すれば、
+  出荷時点の既定のID・パスワードへ戻ります。
+</p>
+
+    </div></div>
 <div id="gameplay-notices"><div class="card" style="margin-bottom:20px;">
       
       <h2 style="margin-top:0;border-top:none;padding-top:0;">遊ぶ前に知っておきたい注意点</h2>
@@ -619,14 +689,6 @@ pause</pre>
   <p><code>logs/latest.log</code> をサーバー管理者に送って相談してください。あわてなくても大丈夫です。バックアップがあればいつでも元の状態に戻せます。</p>
 </div>
 
-
-<h3>管理者アプリで「IDまたはパスワードが違います」と出て、正しいはずなのに入れない場合</h3>
-<p>PC の「管理者」アプリは、ログインに失敗する理由が何であっても<b>まったく同じ文面</b>をあえて表示します(攻撃者に「どこが間違っているか」のヒントを与えないための仕様です)。そのため、IDとパスワードが正しくても、次のいずれかに当てはまるとログインできません。</p>
-<ul>
-  <li><b>サーバーにまだ管理者アカウントが1つも設定されていない。</b> 出荷時点では管理者アカウントは0件で、誰もログインできません。サーバー管理者が MOD のソースに含まれる <code>tools/make_admin_account.py</code> を使ってアカウントを作成し、その結果をサーバー側の <code>config/sorakaze_deco/admin_account.json</code> に置いてから、サーバーを再起動する必要があります。</li>
-  <li><b>ID かパスワードそのものが間違っている。</b> V2.4.4 以降、ログインは共有の1組のIDとパスワードだけで判定されます。それを知っている人であれば、どのMinecraftアカウントで接続してもログインできるため、「接続者の名前が違う」ことはもうログイン失敗の原因にはなりません。</li>
-</ul>
-<p>サーバー管理者の方で、上の2点を確認してもログインできない場合は、サーバーを再起動し(これで全員が強制的にサインアウトされるため、古いパスワードもすぐ使えなくなります)、サーバーのログで <code>ADMIN:</code> から始まる行を確認してください。パスワードそのものを表示せずに、アカウントファイルが使えなかった具体的な理由が書かれています。</p>
 <h3>バックアップからワールドを戻す方法(サーバー管理者向け)</h3>
 <ol class="steps">
   <li>サーバーのコンソールに <code>stop</code> と入力してサーバーを止める。</li>
