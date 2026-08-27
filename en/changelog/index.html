@@ -10,11 +10,29 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 <script defer src="../../assets/js/changelog.js"></script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -85,6 +103,81 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>No updates match your filters.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.8</span> — ミサイルランチャーの脚・ミサイル管を実際に斜め・先細りする造形へ刷新、戦術マップを高解像度化+ドラッグ移動対応、弾薬庫・目標を50に拡張
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。</p>
+      <ul><li>ミサイルランチャーの脚を、直方体を積んだ見た目から、実際に外側の接地点から中心へ向かって先細りする脚(関節つき)へ作り直しました。ミサイル管も、直方体ではなく実際に先細りする八角形断面の砲身+先端へ刷新しました。どちらも自動タレットの回転ヘッドと同じ「毎フレーム直接描く」方式で描画しており、当たり判定はこれまでと変わりません。</li><li>脚・ミサイル管にteal色の発光ラインを追加しました。</li><li>戦術マップの地形描画を、画面4pxごとに1回だったサンプリングから、画面1pxごとに1回へ引き上げました(実質4倍の解像度)。</li><li>戦術マップで左クリックを押したまま動かすと、視点を微調整できるようになりました(ズームのカーソル追従とは別に、狙いたい場所を画面の好きな位置へ動かせます)。</li><li>ミサイルランチャーの弾薬庫を最大30発→50発、マップ上で指定できる目標を最大10箇所→50箇所に拡張しました(10発でのバースト発射テストが問題なかったことを受けて)。</li><li>Wikiの導入ガイドに、ゲーム内「管理者アプリ」自身のID・パスワードを所有者が設定する手順を追加しました(実際の資格情報は掲載していません — 手順を知っているだけではログインできません)。</li></ul>
+      <h4>Balance changes</h4><ul><li>ミサイルランチャーの弾薬庫容量: 30発 → 50発。マップ上で指定できる目標の上限: 10箇所 → 50箇所。</li></ul>
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>脚・ミサイル管のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません(V2.4.6からの既知の制限を継続)。</li><li>戦術マップのドラッグ移動は、視点の平行移動のみです(回転や3D的な傾きはありません)。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.7</span> — ミサイルランチャーを30発の混在弾薬庫・10箇所バースト発射に刷新、発射台の造形を作り直し、着弾音を強化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>所有者の参考デザインをあらためて見直し、ミサイルランチャーの発射台本体を単なる配色変更ではなく、実際に斜めへ広がる4本脚と、側面に戦術マップを表示するタブレット画面を持つ造形へ作り直しました。あわせて、弾薬庫を最大30発(ミサイル・核弾頭を混ぜて装填可能)に拡張し、戦術マップ上で最大10箇所まで目標を指定して、バーストライフルのように1回の操作で連続発射できるようにしました。ミサイル・核弾頭どちらの着弾音も、広域配信を追加または強化し、より大きくリアルな音になるようにしました。</p>
+      <ul><li>発射台本体の造形を作り直し: 四隅に実際に斜め方向へ広がって見える4本の脚(太く根を張り、上に向かってすぼまる階段状のシルエット)、側面に戦術マップを表示するタブレット画面(実際のマップ画面と同じ配色)を追加しました。</li><li>弾薬庫を最大30発に拡張。ミサイル弾頭・核弾頭を同じ弾薬庫に混ぜて装填でき、装填した順に発射されます。</li><li>戦術マップ上で最大10箇所まで目標を指定できるようになりました。マップをクリックするたびにその場で目標が追加され(「確定」操作は不要)、既存のピンをクリックすると取り除けます。</li><li>発射ボタンを押すと、指定した目標へ向けて1発ずつ、バーストライフルのように連続発射します(目標がキューから消費されるたびに次の弾が飛ぶ)。</li><li>ミサイル弾頭の着弾音に、新たに広域配信(最大6,000ブロック)を追加しました。これまでは至近距離でしか聞こえませんでした。</li><li>核弾頭・ミサイル弾頭どちらの着弾音も、低音を強化し、近接・広域配信の両方で音量を上げました。</li></ul>
+      <h4>Balance changes</h4><ul><li>ミサイルランチャーの弾薬庫容量: 4発 → 30発(混在装填)。</li></ul>
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>発射台のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません(V2.4.6からの既知の制限を継続)。</li><li>四隅の脚は、真に斜めのジオメトリではなく、軸に沿った箱を3段重ねた階段状のシルエットで「斜めに広がる脚」を近似しています(この一式の設計方針として、当たり判定の回転計算を増やさないための判断です)。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.6</span> — ミサイルランチャーの戦術マップに実地形とズームを追加、発射台本体の見た目も刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>V2.4.5で追加した戦術マップが「座標や記号だけで実際の場所が分からない」「射程2,000ブロックの縮尺では近距離の狙いが粗すぎて意図しない遠くに着弾する」という指摘を受けたため、マップにバニラの地図アイテムと同じ仕組みで実際の地形の色を描画し、マウスホイールでの拡大縮小(カーソル位置を中心にしたズーム)を追加しました。あわせて、前回のアップデートで見送っていた発射台本体の3Dモデルも、所有者の参考デザインに沿ってオリーブドラブとダークスチールを基調にした配色へ変更し、四隅に脚のような支柱、各所にteal(青緑)の発光ラインを追加しました。</p>
+      <ul><li>戦術マップに実地形を描画: バニラの地図アイテムと同じ「地表ブロックの色」を使い、隣接する地点との高低差で簡易な陰影も付けました。クライアント側で読み込み済みの範囲だけを対象にしています(未読み込みの範囲は今まで通りニュートラルな色で「不明」を表します)。</li><li>マウスホイールでのズームイン/ズームアウトを追加。カーソルの位置を中心に拡大縮小するため、狙いたい場所を画面の中心に置き直さなくても寄れます。「発射機に戻る」ボタンで元の縮尺・中心位置に戻せます。</li><li>発射台本体の3Dモデルを刷新: オリーブドラブ+ダークスチールの配色に変更し、四隅に脚のような支柱を追加、筐体・支柱・ミサイル筒にteal色の発光ラインを追加しました。</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>発射台本体のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません。</li><li>地形の実サンプリングは視点を動かす(拡大縮小・発射機に戻る)たびに再計算され、毎フレームは行いません。極端に低い性能の端末では、寄った直後に一瞬粗い表示が残ることがあります。</li><li>マップのドラッグでの視点移動(パン)は未対応です。視点の移動はズームイン/アウト時のカーソル追従と「発射機に戻る」ボタンのみです。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-26</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.5</span> — Missile launcher targeting redesigned: click a tactical map instead of typing coordinates
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>Missile launcher targeting has been redesigned from typed coordinates to a point-and-click tactical map. The map shows a range ring (2,000 blocks by default), and the selected point is colour-coded to show at a glance whether it&#x27;s in range. The actual impact height is now determined automatically from the real ground surface at the selected point, computed by the server. Selecting an area that hasn&#x27;t been loaded yet fails with a clear message instead of failing silently. Range checking now uses horizontal distance only, so terrain height differences can no longer make the map&#x27;s range ring disagree with what the launcher will actually accept. Existing safety, firing, warhead, and cooldown systems are unchanged. The launcher&#x27;s in-world 3D model has not been changed in this update.</p>
+      <ul><li>Added an &quot;Open Map&quot; button to the missile launcher&#x27;s control panel; the typed-coordinate fields have been removed.</li><li>Tactical map: shows the launcher centred, a range ring (2,000 blocks by default), your own position, and the selected pin. The pin is colour-coded (in range / out of range) with the distance shown as text.</li><li>Confirming sends only the selected XZ point to the server, which determines the real impact height from the ground surface itself. Confirming a point in an area that isn&#x27;t loaded shows a clear &quot;area not loaded&quot; message and leaves the existing target unchanged.</li><li>Range checking changed from full 3D distance to horizontal distance only, so terrain height differences can no longer make the map&#x27;s range ring and the actual firing gate disagree.</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The launcher&#x27;s in-world 3D model (its appearance) has not been changed in this update - it keeps its existing look.</li><li>The map does not support zooming or panning yet - it always shows a fixed-scale view centred on the launcher.</li><li>The ground-height preview under the pin only works for areas already loaded on your own client, which is most of the time outside view distance for a 2,000-block range - it will usually show &quot;unknown until confirmed&quot; (the server always computes the real height correctly once you confirm).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-25</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.4</span> — Admin app login consolidated to a single shared credential; fixed operator permissions being wiped
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>Reports of &quot;I enter the admin ID and password and still can&#x27;t log in&quot; persisted, so the owner decided to redesign the admin app&#x27;s sign-in model itself. It no longer binds 3 separate accounts to 3 specific Minecraft names - there is now a single shared ID and password, and anyone who knows both can sign in from any Minecraft account. While investigating, a serious separate bug was found: when the admin account file is missing or broken, the server would automatically strip real operator (/op) permission from every player who had it - introduced in V2.4.0, this had been silently blocking command usage and things like the auto-backup toggle. That is also fixed in this release.</p>
+      <ul><li>Admin app sign-in changed from 3 name-locked accounts to a single shared ID and password. Anyone who knows both can sign in, regardless of which Minecraft account they&#x27;re connected as.</li><li>Fixed a serious bug where the automatic server-operator (/op) sync would strip operator permission from every existing operator whenever the admin account file was missing or broken. It now leaves existing operator status untouched until the file is properly configured.</li><li>For server owners: updated the credential-recovery steps for the new single-account model (private documentation).</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>Admin app access is now a single shared credential rather than per-person. To revoke access from one specific person without affecting everyone else is no longer possible with this design - rotate the shared password instead and redistribute it only to who should keep access.</li></ul>
+        </div>
+      
+    </article>
+<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-25</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.3</span> — Server Admin login now distinguishes the real cause, plus 3 known issues fixed
+      </h3>
+      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>A fix release for reports of &quot;I enter the admin ID and password and still can&#x27;t log in.&quot; No defect was found in the network path or the credential-verification logic itself, but the sign-in screen previously showed the exact same &quot;wrong ID or password&quot; message whether the server simply had zero admin accounts configured yet, or the entered credentials were genuinely wrong - there was no way to tell which. It now shows a distinct message for the former case, and login attempts made in that state no longer count against the anti-brute-force limiter. Also fixes 3 items that had been sitting on the Wiki&#x27;s Known Issues page: reinforced glass window colour names, a cable glow bug right after a power off/on toggle, and the &quot;Lookup&quot; app&#x27;s recipe grid layout.</p>
+      <ul><li>Server Admin app sign-in screen: when the server has zero valid admin accounts configured, it now shows a clear message saying so instead of the generic &quot;wrong ID or password&quot;. Login attempts made in this state are no longer counted toward the anti-brute-force lockout.</li><li>Fixed the reinforced glass window (17 colours) display names - every colour now shows its proper Japanese/English name.</li><li>Fixed cables that were disconnected from a breaker panel sometimes staying lit right after switching the main breaker off and back on.</li><li>Fixed the &quot;Lookup&quot; app&#x27;s 3x3 recipe grid to show ingredients in their real crafting-grid positions (including empty cells), instead of packing them in order from the top-left.</li><li>For server owners: clarified the check/recovery steps for when a missing or malformed admin_account.json turns out to be the actual login cause (private owner-facing documentation).</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The admin login fix addresses the &quot;zero accounts configured&quot; case specifically. If all 3 accounts are correctly configured but one specific account still can&#x27;t sign in, that is a different symptom - please report it separately.</li><li>The orphaned-cable fix takes full effect from an update correctly applied on this version onward. If you jump straight from V2.4.2 or earlier, one already-orphaned cable may still show live once; breaking and replacing it, or the next breaker toggle, clears it.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-24</div>
       <h3 class="timeline-entry__title">
@@ -781,87 +874,13 @@
         </div>
       
     </article>
-<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
-      <div class="timeline-entry__date">2026-08-25</div>
-      <h3 class="timeline-entry__title">
-        <span class="timeline-entry__release">V2.4.3</span> — Server Admin login now distinguishes the real cause, plus 3 known issues fixed
-      </h3>
-      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
-      <p>A fix release for reports of &quot;I enter the admin ID and password and still can&#x27;t log in.&quot; No defect was found in the network path or the credential-verification logic itself, but the sign-in screen previously showed the exact same &quot;wrong ID or password&quot; message whether the server simply had zero admin accounts configured yet, or the entered credentials were genuinely wrong - there was no way to tell which. It now shows a distinct message for the former case, and login attempts made in that state no longer count against the anti-brute-force limiter. Also fixes 3 items that had been sitting on the Wiki&#x27;s Known Issues page: reinforced glass window colour names, a cable glow bug right after a power off/on toggle, and the &quot;Lookup&quot; app&#x27;s recipe grid layout.</p>
-      <ul><li>Server Admin app sign-in screen: when the server has zero valid admin accounts configured, it now shows a clear message saying so instead of the generic &quot;wrong ID or password&quot;. Login attempts made in this state are no longer counted toward the anti-brute-force lockout.</li><li>Fixed the reinforced glass window (17 colours) display names - every colour now shows its proper Japanese/English name.</li><li>Fixed cables that were disconnected from a breaker panel sometimes staying lit right after switching the main breaker off and back on.</li><li>Fixed the &quot;Lookup&quot; app&#x27;s 3x3 recipe grid to show ingredients in their real crafting-grid positions (including empty cells), instead of packing them in order from the top-left.</li><li>For server owners: clarified the check/recovery steps for when a missing or malformed admin_account.json turns out to be the actual login cause (private owner-facing documentation).</li></ul>
-      
-      
-      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The admin login fix addresses the &quot;zero accounts configured&quot; case specifically. If all 3 accounts are correctly configured but one specific account still can&#x27;t sign in, that is a different symptom - please report it separately.</li><li>The orphaned-cable fix takes full effect from an update correctly applied on this version onward. If you jump straight from V2.4.2 or earlier, one already-orphaned cable may still show live once; breaking and replacing it, or the next breaker toggle, clears it.</li></ul>
-    </article>
-<article class="timeline-entry" data-type="hotfix" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
-      <div class="timeline-entry__date">2026-08-25</div>
-      <h3 class="timeline-entry__title">
-        <span class="timeline-entry__release">V2.4.4</span> — Admin app login consolidated to a single shared credential; fixed operator permissions being wiped
-      </h3>
-      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
-      <p>Reports of &quot;I enter the admin ID and password and still can&#x27;t log in&quot; persisted, so the owner decided to redesign the admin app&#x27;s sign-in model itself. It no longer binds 3 separate accounts to 3 specific Minecraft names - there is now a single shared ID and password, and anyone who knows both can sign in from any Minecraft account. While investigating, a serious separate bug was found: when the admin account file is missing or broken, the server would automatically strip real operator (/op) permission from every player who had it - introduced in V2.4.0, this had been silently blocking command usage and things like the auto-backup toggle. That is also fixed in this release.</p>
-      <ul><li>Admin app sign-in changed from 3 name-locked accounts to a single shared ID and password. Anyone who knows both can sign in, regardless of which Minecraft account they&#x27;re connected as.</li><li>Fixed a serious bug where the automatic server-operator (/op) sync would strip operator permission from every existing operator whenever the admin account file was missing or broken. It now leaves existing operator status untouched until the file is properly configured.</li><li>For server owners: updated the credential-recovery steps for the new single-account model (private documentation).</li></ul>
-      
-      <div class="callout callout--warn">
-          <div class="callout__title">⚠ Warnings</div>
-          <ul><li>Admin app access is now a single shared credential rather than per-person. To revoke access from one specific person without affecting everyone else is no longer possible with this design - rotate the shared password instead and redistribute it only to who should keep access.</li></ul>
-        </div>
-      
-    </article>
-<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
-      <div class="timeline-entry__date">2026-08-26</div>
-      <h3 class="timeline-entry__title">
-        <span class="timeline-entry__release">V2.4.5</span> — Missile launcher targeting redesigned: click a tactical map instead of typing coordinates
-      </h3>
-      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
-      <p>Missile launcher targeting has been redesigned from typed coordinates to a point-and-click tactical map. The map shows a range ring (2,000 blocks by default), and the selected point is colour-coded to show at a glance whether it&#x27;s in range. The actual impact height is now determined automatically from the real ground surface at the selected point, computed by the server. Selecting an area that hasn&#x27;t been loaded yet fails with a clear message instead of failing silently. Range checking now uses horizontal distance only, so terrain height differences can no longer make the map&#x27;s range ring disagree with what the launcher will actually accept. Existing safety, firing, warhead, and cooldown systems are unchanged. The launcher&#x27;s in-world 3D model has not been changed in this update.</p>
-      <ul><li>Added an &quot;Open Map&quot; button to the missile launcher&#x27;s control panel; the typed-coordinate fields have been removed.</li><li>Tactical map: shows the launcher centred, a range ring (2,000 blocks by default), your own position, and the selected pin. The pin is colour-coded (in range / out of range) with the distance shown as text.</li><li>Confirming sends only the selected XZ point to the server, which determines the real impact height from the ground surface itself. Confirming a point in an area that isn&#x27;t loaded shows a clear &quot;area not loaded&quot; message and leaves the existing target unchanged.</li><li>Range checking changed from full 3D distance to horizontal distance only, so terrain height differences can no longer make the map&#x27;s range ring and the actual firing gate disagree.</li></ul>
-      
-      
-      <h4>Not yet implemented/confirmed at this point</h4><ul><li>The launcher&#x27;s in-world 3D model (its appearance) has not been changed in this update - it keeps its existing look.</li><li>The map does not support zooming or panning yet - it always shows a fixed-scale view centred on the launcher.</li><li>The ground-height preview under the pin only works for areas already loaded on your own client, which is most of the time outside view distance for a 2,000-block range - it will usually show &quot;unknown until confirmed&quot; (the server always computes the real height correctly once you confirm).</li></ul>
-    </article>
-<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
-      <div class="timeline-entry__date">2026-08-27</div>
-      <h3 class="timeline-entry__title">
-        <span class="timeline-entry__release">V2.4.6</span> — ミサイルランチャーの戦術マップに実地形とズームを追加、発射台本体の見た目も刷新
-      </h3>
-      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
-      <p>V2.4.5で追加した戦術マップが「座標や記号だけで実際の場所が分からない」「射程2,000ブロックの縮尺では近距離の狙いが粗すぎて意図しない遠くに着弾する」という指摘を受けたため、マップにバニラの地図アイテムと同じ仕組みで実際の地形の色を描画し、マウスホイールでの拡大縮小(カーソル位置を中心にしたズーム)を追加しました。あわせて、前回のアップデートで見送っていた発射台本体の3Dモデルも、所有者の参考デザインに沿ってオリーブドラブとダークスチールを基調にした配色へ変更し、四隅に脚のような支柱、各所にteal(青緑)の発光ラインを追加しました。</p>
-      <ul><li>戦術マップに実地形を描画: バニラの地図アイテムと同じ「地表ブロックの色」を使い、隣接する地点との高低差で簡易な陰影も付けました。クライアント側で読み込み済みの範囲だけを対象にしています(未読み込みの範囲は今まで通りニュートラルな色で「不明」を表します)。</li><li>マウスホイールでのズームイン/ズームアウトを追加。カーソルの位置を中心に拡大縮小するため、狙いたい場所を画面の中心に置き直さなくても寄れます。「発射機に戻る」ボタンで元の縮尺・中心位置に戻せます。</li><li>発射台本体の3Dモデルを刷新: オリーブドラブ+ダークスチールの配色に変更し、四隅に脚のような支柱を追加、筐体・支柱・ミサイル筒にteal色の発光ラインを追加しました。</li></ul>
-      
-      
-      <h4>Not yet implemented/confirmed at this point</h4><ul><li>発射台本体のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません。</li><li>地形の実サンプリングは視点を動かす(拡大縮小・発射機に戻る)たびに再計算され、毎フレームは行いません。極端に低い性能の端末では、寄った直後に一瞬粗い表示が残ることがあります。</li><li>マップのドラッグでの視点移動(パン)は未対応です。視点の移動はズームイン/アウト時のカーソル追従と「発射機に戻る」ボタンのみです。</li></ul>
-    </article>
-<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
-      <div class="timeline-entry__date">2026-08-27</div>
-      <h3 class="timeline-entry__title">
-        <span class="timeline-entry__release">V2.4.7</span> — ミサイルランチャーを30発の混在弾薬庫・10箇所バースト発射に刷新、発射台の造形を作り直し、着弾音を強化
-      </h3>
-      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
-      <p>所有者の参考デザインをあらためて見直し、ミサイルランチャーの発射台本体を単なる配色変更ではなく、実際に斜めへ広がる4本脚と、側面に戦術マップを表示するタブレット画面を持つ造形へ作り直しました。あわせて、弾薬庫を最大30発(ミサイル・核弾頭を混ぜて装填可能)に拡張し、戦術マップ上で最大10箇所まで目標を指定して、バーストライフルのように1回の操作で連続発射できるようにしました。ミサイル・核弾頭どちらの着弾音も、広域配信を追加または強化し、より大きくリアルな音になるようにしました。</p>
-      <ul><li>発射台本体の造形を作り直し: 四隅に実際に斜め方向へ広がって見える4本の脚(太く根を張り、上に向かってすぼまる階段状のシルエット)、側面に戦術マップを表示するタブレット画面(実際のマップ画面と同じ配色)を追加しました。</li><li>弾薬庫を最大30発に拡張。ミサイル弾頭・核弾頭を同じ弾薬庫に混ぜて装填でき、装填した順に発射されます。</li><li>戦術マップ上で最大10箇所まで目標を指定できるようになりました。マップをクリックするたびにその場で目標が追加され(「確定」操作は不要)、既存のピンをクリックすると取り除けます。</li><li>発射ボタンを押すと、指定した目標へ向けて1発ずつ、バーストライフルのように連続発射します(目標がキューから消費されるたびに次の弾が飛ぶ)。</li><li>ミサイル弾頭の着弾音に、新たに広域配信(最大6,000ブロック)を追加しました。これまでは至近距離でしか聞こえませんでした。</li><li>核弾頭・ミサイル弾頭どちらの着弾音も、低音を強化し、近接・広域配信の両方で音量を上げました。</li></ul>
-      <h4>Balance changes</h4><ul><li>ミサイルランチャーの弾薬庫容量: 4発 → 30発(混在装填)。</li></ul>
-      
-      <h4>Not yet implemented/confirmed at this point</h4><ul><li>発射台のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません(V2.4.6からの既知の制限を継続)。</li><li>四隅の脚は、真に斜めのジオメトリではなく、軸に沿った箱を3段重ねた階段状のシルエットで「斜めに広がる脚」を近似しています(この一式の設計方針として、当たり判定の回転計算を増やさないための判断です)。</li></ul>
-    </article>
-<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
-      <div class="timeline-entry__date">2026-08-27</div>
-      <h3 class="timeline-entry__title">
-        <span class="timeline-entry__release">V2.4.8</span> — ミサイルランチャーの脚・ミサイル管を実際に斜め・先細りする造形へ刷新、戦術マップを高解像度化+ドラッグ移動対応、弾薬庫・目標を50に拡張
-      </h3>
-      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
-      <p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。</p>
-      <ul><li>ミサイルランチャーの脚を、直方体を積んだ見た目から、実際に外側の接地点から中心へ向かって先細りする脚(関節つき)へ作り直しました。ミサイル管も、直方体ではなく実際に先細りする八角形断面の砲身+先端へ刷新しました。どちらも自動タレットの回転ヘッドと同じ「毎フレーム直接描く」方式で描画しており、当たり判定はこれまでと変わりません。</li><li>脚・ミサイル管にteal色の発光ラインを追加しました。</li><li>戦術マップの地形描画を、画面4pxごとに1回だったサンプリングから、画面1pxごとに1回へ引き上げました(実質4倍の解像度)。</li><li>戦術マップで左クリックを押したまま動かすと、視点を微調整できるようになりました(ズームのカーソル追従とは別に、狙いたい場所を画面の好きな位置へ動かせます)。</li><li>ミサイルランチャーの弾薬庫を最大30発→50発、マップ上で指定できる目標を最大10箇所→50箇所に拡張しました(10発でのバースト発射テストが問題なかったことを受けて)。</li><li>Wikiの導入ガイドに、ゲーム内「管理者アプリ」自身のID・パスワードを所有者が設定する手順を追加しました(実際の資格情報は掲載していません — 手順を知っているだけではログインできません)。</li></ul>
-      <h4>Balance changes</h4><ul><li>ミサイルランチャーの弾薬庫容量: 30発 → 50発。マップ上で指定できる目標の上限: 10箇所 → 50箇所。</li></ul>
-      
-      <h4>Not yet implemented/confirmed at this point</h4><ul><li>脚・ミサイル管のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません(V2.4.6からの既知の制限を継続)。</li><li>戦術マップのドラッグ移動は、視点の平行移動のみです(回転や3D的な傾きはありません)。</li></ul>
-    </article>
 </div>
 
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — Unofficial reference for mods installed on the Sorakazekarasu server</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>Unofficial reference for mods installed on the Sorakazekarasu server</p>
     <p class="site-footer__note">This site is an unofficial reference. As of V2.2.0, the mod files (jars) are distributed directly from this site&#x27;s &quot;Download&quot; page. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
   </div>
 </footer>

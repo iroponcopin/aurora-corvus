@@ -10,10 +10,28 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">본문으로 이동</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -63,30 +81,31 @@
 </header>
 <main id="main">
 
-<section class="hero">
+<section class="hero hero--cinema">
   <span class="hero__eyebrow">소라카제카라스 서버 비공식 MOD 레퍼런스</span>
-  <h1>Aurora Corvus</h1>
-  <p class="lede">
+  <h1 class="hero__title">Aurora Corvus</h1>
+  <p class="lede hero__lede">
     소라카제카라스 서버에 도입된 Fabric MOD 모음 &quot;<strong>Glimpse Alpha</strong>&quot;(구칭: Sorakaze)의 레시피·업데이트 기록·설치 방법을 정리한 비공식 레퍼런스 사이트입니다. 현재 
     <strong>11개의 MOD</strong>(총기·철도·건축자재·보스·천공·서바이벌·탈것·전력·백룸즈·플라나르카디아)를 Minecraft
     <strong>26.2</strong> 위에서 동시에 운용하고 있습니다.
   </p>
-  <p class="callout callout--info">V2.2.0부터 이 사이트는 &quot;다운로드&quot; 페이지에서 MOD 본체(jar 파일)를 직접 배포합니다. 여기에는 레시피표·업데이트 기록·설치 방법 등 &quot;읽는 자료&quot;도 있습니다. V2.2.0 이전 버전이 필요하면 서버 관리자에게 직접 받아 주세요.</p>
-  <div class="tag-row" style="margin-top:20px;">
+  <p class="callout callout--info hero__notice">V2.2.0부터 이 사이트는 &quot;다운로드&quot; 페이지에서 MOD 본체(jar 파일)를 직접 배포합니다. 여기에는 레시피표·업데이트 기록·설치 방법 등 &quot;읽는 자료&quot;도 있습니다. V2.2.0 이전 버전이 필요하면 서버 관리자에게 직접 받아 주세요.</p>
+  <div class="tag-row hero__cta">
     <a class="btn" href="recipes/">레시피 모음 보기</a>
     <a class="btn btn--ghost" href="changelog/">업데이트 기록 보기</a>
     <a class="btn btn--ghost" href="guide/">설치 가이드 보기</a>
   </div>
+  <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 
     <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-hotfix">버그 수정</span>
-        <span class="timeline-entry__release">V2.4.1</span>
-        <span class="card__meta">2026-08-24</span>
+      <div class="badge-row"><span class="type-badge type-release">신규 기능</span>
+        <span class="timeline-entry__release">V2.4.8</span>
+        <span class="card__meta">2026-08-27</span>
       </div>
-      <h3 style="margin-top:0">최신 업데이트: ドローンを出すとクライアントが落ちる不具合と、管理者アプリのログイン画面の不具合を修正</h3>
-      <p>プレイヤーからの報告を受けての修正版です。ドローンを展開すると必ずクライアントが落ちる不具合と、管理者アプリのログイン画面でIDを入力してもログイン失敗のたびに欄が空に戻ってしまう不具合を修正しました。</p>
-      <ul><li>ドローンを展開すると必ずクライアントが落ちる不具合を修正しました。ドローンの見た目(小型のクアッドコプター)が新しく描画されるようになります。</li><li>管理者アプリのログイン画面で、ログインに失敗するたびにID欄が空に戻ってしまい、入力し直しが必要になる不具合を修正しました。</li></ul>
+      <h3 style="margin-top:0">최신 업데이트: ミサイルランチャーの脚・ミサイル管を実際に斜め・先細りする造形へ刷新、戦術マップを高解像度化+ドラッグ移動対応、弾薬庫・目標を50に拡張</h3>
+      <p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。</p>
+      <ul><li>ミサイルランチャーの脚を、直方体を積んだ見た目から、実際に外側の接地点から中心へ向かって先細りする脚(関節つき)へ作り直しました。ミサイル管も、直方体ではなく実際に先細りする八角形断面の砲身+先端へ刷新しました。どちらも自動タレットの回転ヘッドと同じ「毎フレーム直接描く」方式で描画しており、当たり判定はこれまでと変わりません。</li><li>脚・ミサイル管にteal色の発光ラインを追加しました。</li><li>戦術マップの地形描画を、画面4pxごとに1回だったサンプリングから、画面1pxごとに1回へ引き上げました(実質4倍の解像度)。</li><li>戦術マップで左クリックを押したまま動かすと、視点を微調整できるようになりました(ズームのカーソル追従とは別に、狙いたい場所を画面の好きな位置へ動かせます)。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">보스</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">총기</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">전력</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">천공</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">탈것</span></div>
       <p><a href="changelog/">업데이트 기록 전체 보기 →</a></p>
     </div>
@@ -155,7 +174,7 @@
     </a>
   <a class="card" href="recipes/">
       <h3>레시피 모음</h3>
-      <p>8개 MOD의 모든 아이템 제작 레시피를 검색·필터링할 수 있는 모음표입니다.</p>
+      <p>11개 MOD의 모든 아이템 제작 레시피를 검색·필터링할 수 있는 모음표입니다.</p>
       <p class="card__meta">레시피 찾기 →</p>
     </a>
   <a class="card" href="guide/">
@@ -182,7 +201,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — 소라카제카라스 서버 도입 MOD 비공식 레퍼런스</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>소라카제카라스 서버 도입 MOD 비공식 레퍼런스</p>
     <p class="site-footer__note">본 사이트는 비공식 레퍼런스입니다. V2.2.0부터 MOD 본체(jar 파일)는 이 사이트의 &quot;다운로드&quot; 페이지에서 직접 배포합니다. 레시피·수치는 설치된 버전이나 서버 측 config 조정에 따라 실제와 다를 수 있습니다.</p>
   </div>
 </footer>

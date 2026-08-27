@@ -10,10 +10,28 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -97,7 +115,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — Unofficial reference for mods installed on the Sorakazekarasu server</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>Unofficial reference for mods installed on the Sorakazekarasu server</p>
     <p class="site-footer__note">This site is an unofficial reference. As of V2.2.0, the mod files (jars) are distributed directly from this site&#x27;s &quot;Download&quot; page. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
   </div>
 </footer>

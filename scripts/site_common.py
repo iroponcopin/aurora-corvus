@@ -156,13 +156,32 @@ def module_counts() -> tuple[int, int]:
     return n, n + 1          # +1 = Fabric API
 
 
-def _fill_counts(node, mods: str, jars: str):
+def pack_version() -> str:
+    """現在配布中のパックのバージョン(例 "2.4.8")。出典は data/versions.json。
+
+    module_counts() と同じ規律: バージョン番号を 13 言語の文面に**書かない**。
+    i18n 文字列側は {pack_version} プレースホルダを使う。ダウンロード頁が
+    2.4.8 の ZIP を配りながら本文が「最新版は V2.2.0」と言い続けた実績がある。
+    """
+    p = ROOT / "data" / "versions.json"
+    mods = json.loads(p.read_text(encoding="utf-8"))["mods"]
+    versions = set(mods.values())
+    if len(versions) != 1:
+        raise SystemExit(
+            f"ERROR: data/versions.json lists more than one distinct version {sorted(versions)} - "
+            f"a single {{pack_version}} placeholder cannot be filled from a mixed release.")
+    return versions.pop()
+
+
+def _fill_counts(node, mods: str, jars: str, ver: str):
     if isinstance(node, dict):
-        return {k: _fill_counts(v, mods, jars) for k, v in node.items()}
+        return {k: _fill_counts(v, mods, jars, ver) for k, v in node.items()}
     if isinstance(node, list):
-        return [_fill_counts(v, mods, jars) for v in node]
+        return [_fill_counts(v, mods, jars, ver) for v in node]
     if isinstance(node, str):
-        return node.replace("{mod_count}", mods).replace("{jar_count}", jars)
+        return (node.replace("{mod_count}", mods)
+                    .replace("{jar_count}", jars)
+                    .replace("{pack_version}", ver))
     return node
 
 
@@ -171,7 +190,8 @@ def load_bundle(lang: str) -> dict:
         p = I18N_DIR / f"{lang}.json"
         n_mods, n_jars = module_counts()
         _bundle_cache[lang] = _fill_counts(
-            json.loads(p.read_text(encoding="utf-8")), str(n_mods), str(n_jars))
+            json.loads(p.read_text(encoding="utf-8")), str(n_mods), str(n_jars),
+            pack_version())
     return _bundle_cache[lang]
 
 
@@ -287,10 +307,28 @@ def page(
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(SITE_TITLE)}">
 {og}<link rel="icon" href="{root_prefix}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="{root_prefix}assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {{
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {{
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  }} catch (e) {{ /* storage unavailable: stay dark */ }}
+  d.setAttribute("data-theme", t);
+}})();
+</script>
 {extra_head}</head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">{esc(ui['skip_link'])}</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -322,7 +360,8 @@ def page(
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>{esc(SITE_TITLE)} — {esc(ui['site_tagline'])}</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> {esc(SITE_TITLE)}</p>
+    <p>{esc(ui['site_tagline'])}</p>
     <p class="site-footer__note">{esc(ui['footer_note'])}</p>
   </div>
 </footer>

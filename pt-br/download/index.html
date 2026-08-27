@@ -4,16 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Download | Aurora Corvus</title>
-<meta name="description" content="Download the Glimpse Alpha mod pack (V2.2.0, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.">
+<meta name="description" content="Download the Glimpse Alpha mod pack (V2.4.8, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.">
 <meta property="og:title" content="Download | Aurora Corvus">
-<meta property="og:description" content="Download the Glimpse Alpha mod pack (V2.2.0, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.">
+<meta property="og:description" content="Download the Glimpse Alpha mod pack (V2.4.8, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">Pular para o conteúdo</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -88,8 +106,8 @@
   <p class="callout callout--warn">The Sapporo mod (sorakaze-sapporo) ships for the first time in V2.2.0. It&#x27;s a city-generation world based on the real terrain and buildings of Sapporo, Japan (building heights are currently estimated pending real 3D building data; will be updated once that&#x27;s available).</p>
 </div>
 
-<h2>What&#x27;s new in V2.2.0</h2>
-<p>Glass lanterns, a real Backrooms lobby, ground-level raids, gun turrets, and the Sapporo city recreation, among other changes. See the changelog for the full list:
+<h2>What&#x27;s new in V2.4.8</h2>
+<p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。
   <a href="../changelog/">View the changelog →</a>
 </p>
 
@@ -98,7 +116,7 @@
   <a href="../guide/">View the install guide →</a>
 </p>
 
-<p class="callout callout--info">This page always distributes the current release (V2.2.0). If you need an older version, please ask your server admin directly.</p>
+<p class="callout callout--info">This page always distributes the current release (V2.4.8). If you need an older version, please ask your server admin directly.</p>
 
 <h2>Glimpse Launcher</h2>
 <p>Glimpse Launcher is a desktop app that keeps your Glimpse Alpha mod pack up to date automatically, verifying every download against this Wiki by SHA-256.</p>
@@ -172,7 +190,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — Referência não oficial dos MODs do Servidor Sorakazekarasu</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>Referência não oficial dos MODs do Servidor Sorakazekarasu</p>
     <p class="site-footer__note">Este site é uma referência não oficial. A partir da V2.2.0, os arquivos (jars) dos MODs são distribuídos diretamente pela página &quot;Download&quot; deste site. As receitas e os valores podem estar diferentes dos que você encontra no jogo, dependendo da versão instalada e dos ajustes de configuração feitos no servidor.</p>
   </div>
 </footer>

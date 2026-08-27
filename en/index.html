@@ -10,10 +10,28 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -63,30 +81,31 @@
 </header>
 <main id="main">
 
-<section class="hero">
+<section class="hero hero--cinema">
   <span class="hero__eyebrow">Sorakazekarasu Server — Unofficial Mod Reference</span>
-  <h1>Aurora Corvus</h1>
-  <p class="lede">
+  <h1 class="hero__title">Aurora Corvus</h1>
+  <p class="lede hero__lede">
     This is an unofficial reference site for <strong>Glimpse Alpha</strong> (formerly known as Sorakaze), the Fabric mod group running on the Sorakazekarasu server — covering its recipes, changelog, and install instructions. We currently run
     <strong>11 mods</strong> (guns, rail, building materials, boss, sky, survival, vehicles, power, Backrooms, and Planarcadia) together on Minecraft
     <strong>26.2</strong>.
   </p>
-  <p class="callout callout--info">As of V2.2.0, this site distributes the mod files (jars) directly via the &quot;Download&quot; page. It also has &quot;reading material&quot; — recipe tables, changelogs, install instructions, and the like. If you need a version older than V2.2.0, please get it directly from your server admin.</p>
-  <div class="tag-row" style="margin-top:20px;">
+  <p class="callout callout--info hero__notice">As of V2.2.0, this site distributes the mod files (jars) directly via the &quot;Download&quot; page. It also has &quot;reading material&quot; — recipe tables, changelogs, install instructions, and the like. If you need a version older than V2.2.0, please get it directly from your server admin.</p>
+  <div class="tag-row hero__cta">
     <a class="btn" href="recipes/">View recipes</a>
     <a class="btn btn--ghost" href="changelog/">View changelog</a>
     <a class="btn btn--ghost" href="guide/">View install guide</a>
   </div>
+  <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 
     <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-hotfix">Bug fix</span>
-        <span class="timeline-entry__release">V2.4.1</span>
-        <span class="card__meta">2026-08-24</span>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span>
+        <span class="timeline-entry__release">V2.4.8</span>
+        <span class="card__meta">2026-08-27</span>
       </div>
-      <h3 style="margin-top:0">Latest update: Fixed a client crash when deploying a drone, and the Server Admin app&#x27;s sign-in screen</h3>
-      <p>A player-reported fix release. Deploying a drone previously crashed the client every time; it now works and renders a small quadcopter model. The Server Admin app&#x27;s sign-in screen also no longer clears the ID field after every failed login attempt.</p>
-      <ul><li>Fixed a client crash that happened every time a drone was deployed. Drones now render a small quadcopter model instead of crashing the client.</li><li>Fixed the Server Admin app&#x27;s sign-in screen resetting the ID field to empty after every failed login attempt, which made retyping it necessary each time.</li></ul>
+      <h3 style="margin-top:0">Latest update: ミサイルランチャーの脚・ミサイル管を実際に斜め・先細りする造形へ刷新、戦術マップを高解像度化+ドラッグ移動対応、弾薬庫・目標を50に拡張</h3>
+      <p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。</p>
+      <ul><li>ミサイルランチャーの脚を、直方体を積んだ見た目から、実際に外側の接地点から中心へ向かって先細りする脚(関節つき)へ作り直しました。ミサイル管も、直方体ではなく実際に先細りする八角形断面の砲身+先端へ刷新しました。どちらも自動タレットの回転ヘッドと同じ「毎フレーム直接描く」方式で描画しており、当たり判定はこれまでと変わりません。</li><li>脚・ミサイル管にteal色の発光ラインを追加しました。</li><li>戦術マップの地形描画を、画面4pxごとに1回だったサンプリングから、画面1pxごとに1回へ引き上げました(実質4倍の解像度)。</li><li>戦術マップで左クリックを押したまま動かすと、視点を微調整できるようになりました(ズームのカーソル追従とは別に、狙いたい場所を画面の好きな位置へ動かせます)。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Guns</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Power</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Sky</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Vehicles</span></div>
       <p><a href="changelog/">See the full changelog →</a></p>
     </div>
@@ -155,7 +174,7 @@
     </a>
   <a class="card" href="recipes/">
       <h3>Recipes</h3>
-      <p>A searchable, filterable quick-reference table for the crafting recipes of every item across all 8 mods.</p>
+      <p>A searchable, filterable quick-reference table for the crafting recipes of every item across all 11 mods.</p>
       <p class="card__meta">Find a recipe →</p>
     </a>
   <a class="card" href="guide/">
@@ -182,7 +201,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — Unofficial reference for mods installed on the Sorakazekarasu server</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>Unofficial reference for mods installed on the Sorakazekarasu server</p>
     <p class="site-footer__note">This site is an unofficial reference. As of V2.2.0, the mod files (jars) are distributed directly from this site&#x27;s &quot;Download&quot; page. Recipes and numbers may differ from what you see in-game depending on the installed version and server-side config adjustments.</p>
   </div>
 </footer>

@@ -40,24 +40,24 @@
     });
   }
 
-  // Theme toggle: light -> dark -> system, persisted in localStorage
+  // Theme toggle: dark (flagship default) <-> light, persisted in
+  // localStorage. The inline boot script in site_common.py's page() shell
+  // already applied the stored theme before first paint; this just handles
+  // the toggle itself. A legacy stored "system" value reads as dark.
   var themeToggle = document.getElementById("themeToggle");
   var root = document.documentElement;
   var STORAGE_KEY = "glimpse-alpha-wiki-theme";
 
   function applyTheme(mode) {
-    if (mode === "light" || mode === "dark") {
-      root.setAttribute("data-theme", mode);
-    } else {
-      root.removeAttribute("data-theme");
-    }
+    root.setAttribute("data-theme", mode === "light" ? "light" : "dark");
   }
 
   function currentMode() {
     try {
-      return localStorage.getItem(STORAGE_KEY) || "system";
+      var s = localStorage.getItem(STORAGE_KEY);
+      return s === "light" ? "light" : "dark";
     } catch (e) {
-      return "system";
+      return "dark";
     }
   }
 
@@ -65,19 +65,24 @@
 
   if (themeToggle) {
     themeToggle.addEventListener("click", function () {
-      var mode = currentMode();
-      var next = mode === "system" ? "dark" : mode === "dark" ? "light" : "system";
+      var next = currentMode() === "dark" ? "light" : "dark";
       try {
-        if (next === "system") {
-          localStorage.removeItem(STORAGE_KEY);
-        } else {
-          localStorage.setItem(STORAGE_KEY, next);
-        }
+        localStorage.setItem(STORAGE_KEY, next);
       } catch (e) {
         /* private browsing / storage disabled: theme just won't persist */
       }
       applyTheme(next);
     });
+  }
+
+  // Floating glass header condenses once the page starts scrolling.
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var syncHeader = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
+    };
+    window.addEventListener("scroll", syncHeader, { passive: true });
+    syncHeader();
   }
 
   // ---- Cinematic motion layer -----------------------------------------
@@ -100,8 +105,12 @@
     // guide panes) is intentionally not covered here - it renders straight
     // to its normal visible state, which is correct since it wasn't on
     // screen yet for a scroll-entrance to make sense of.
+    // .hero--cinema (home's full-bleed opening scene) is excluded: it has
+    // its own staged load entrance in CSS (hero-rise), and double-animating
+    // it via the scroll-reveal transition would fight that.
     var REVEAL_SELECTOR = [
-      "main > .hero", "main > section", "main > .card", "main > .toc",
+      "main > .hero:not(.hero--cinema)", "main > section:not(.hero--cinema)",
+      "main > .card", "main > .toc",
       ".grid > *", ".card-list > *", ".timeline-entry", ".callout",
       ".guide-section", ".steps > li", "main > .tab-bar", "main > h2"
     ].join(", ");

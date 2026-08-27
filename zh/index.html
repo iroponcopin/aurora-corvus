@@ -10,10 +10,28 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">跳转到正文</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -63,30 +81,31 @@
 </header>
 <main id="main">
 
-<section class="hero">
+<section class="hero hero--cinema">
   <span class="hero__eyebrow">Sorakazekarasu 服务器非官方 MOD 参考手册</span>
-  <h1>Aurora Corvus</h1>
-  <p class="lede">
+  <h1 class="hero__title">Aurora Corvus</h1>
+  <p class="lede hero__lede">
     本站是关于 Sorakazekarasu 服务器所导入的 Fabric MOD 合集「<strong>Glimpse Alpha</strong>」（旧称：Sorakaze）的配方、更新日志与导入教程的非官方参考网站。目前共有 
     <strong>11 个 MOD</strong>（枪械、铁道、建材、Boss、天空、生存、载具、电力、后室、二相乐园）正同时运行在 Minecraft
     <strong>26.2</strong> 之上。
   </p>
-  <p class="callout callout--info">自 V2.2.0 起，本站在「下载」页面直接提供 MOD 本体（jar 文件）。这里还有配方表、更新日志、导入教程等「阅读内容」。如需 V2.2.0 之前的版本，请直接向服务器管理员索取。</p>
-  <div class="tag-row" style="margin-top:20px;">
+  <p class="callout callout--info hero__notice">自 V2.2.0 起，本站在「下载」页面直接提供 MOD 本体（jar 文件）。这里还有配方表、更新日志、导入教程等「阅读内容」。如需 V2.2.0 之前的版本，请直接向服务器管理员索取。</p>
+  <div class="tag-row hero__cta">
     <a class="btn" href="recipes/">查看合成配方</a>
     <a class="btn btn--ghost" href="changelog/">查看更新日志</a>
     <a class="btn btn--ghost" href="guide/">查看导入指南</a>
   </div>
+  <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 
     <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-hotfix">问题修复</span>
-        <span class="timeline-entry__release">V2.4.1</span>
-        <span class="card__meta">2026-08-24</span>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span>
+        <span class="timeline-entry__release">V2.4.8</span>
+        <span class="card__meta">2026-08-27</span>
       </div>
-      <h3 style="margin-top:0">最新更新： ドローンを出すとクライアントが落ちる不具合と、管理者アプリのログイン画面の不具合を修正</h3>
-      <p>プレイヤーからの報告を受けての修正版です。ドローンを展開すると必ずクライアントが落ちる不具合と、管理者アプリのログイン画面でIDを入力してもログイン失敗のたびに欄が空に戻ってしまう不具合を修正しました。</p>
-      <ul><li>ドローンを展開すると必ずクライアントが落ちる不具合を修正しました。ドローンの見た目(小型のクアッドコプター)が新しく描画されるようになります。</li><li>管理者アプリのログイン画面で、ログインに失敗するたびにID欄が空に戻ってしまい、入力し直しが必要になる不具合を修正しました。</li></ul>
+      <h3 style="margin-top:0">最新更新： ミサイルランチャーの脚・ミサイル管を実際に斜め・先細りする造形へ刷新、戦術マップを高解像度化+ドラッグ移動対応、弾薬庫・目標を50に拡張</h3>
+      <p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。</p>
+      <ul><li>ミサイルランチャーの脚を、直方体を積んだ見た目から、実際に外側の接地点から中心へ向かって先細りする脚(関節つき)へ作り直しました。ミサイル管も、直方体ではなく実際に先細りする八角形断面の砲身+先端へ刷新しました。どちらも自動タレットの回転ヘッドと同じ「毎フレーム直接描く」方式で描画しており、当たり判定はこれまでと変わりません。</li><li>脚・ミサイル管にteal色の発光ラインを追加しました。</li><li>戦術マップの地形描画を、画面4pxごとに1回だったサンプリングから、画面1pxごとに1回へ引き上げました(実質4倍の解像度)。</li><li>戦術マップで左クリックを押したまま動かすと、視点を微調整できるようになりました(ズームのカーソル追従とは別に、狙いたい場所を画面の好きな位置へ動かせます)。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">后室</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">枪械</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">电力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">天空</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">生存</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">载具</span></div>
       <p><a href="changelog/">查看全部更新日志 →</a></p>
     </div>
@@ -155,7 +174,7 @@
     </a>
   <a class="card" href="recipes/">
       <h3>合成配方</h3>
-      <p>可搜索、可筛选的 8 个 MOD 全部物品合成配方速查表。</p>
+      <p>可搜索、可筛选的 11 个 MOD 全部物品合成配方速查表。</p>
       <p class="card__meta">查找配方 →</p>
     </a>
   <a class="card" href="guide/">
@@ -182,7 +201,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — Sorakazekarasu 服务器导入 MOD 非官方参考手册</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>Sorakazekarasu 服务器导入 MOD 非官方参考手册</p>
     <p class="site-footer__note">本站是非官方参考站点。自 V2.2.0 起，MOD 本体（jar 文件）已在本站的「下载」页面直接提供。配方与数值可能因导入版本或服务器端 config 调整而与实际情况有出入。</p>
   </div>
 </footer>

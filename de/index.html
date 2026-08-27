@@ -10,10 +10,28 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -63,30 +81,31 @@
 </header>
 <main id="main">
 
-<section class="hero">
+<section class="hero hero--cinema">
   <span class="hero__eyebrow">Sorakazekarasu-Server – inoffizielle MOD-Referenz</span>
-  <h1>Aurora Corvus</h1>
-  <p class="lede">
+  <h1 class="hero__title">Aurora Corvus</h1>
+  <p class="lede hero__lede">
     Dies ist eine inoffizielle Referenzseite mit Rezepten, Änderungsprotokoll und Installationsanleitung für die Fabric-MOD-Sammlung „<strong>Glimpse Alpha</strong>“ (ehemals: Sorakaze) auf dem Sorakazekarasu-Server. Aktuell werden dort
     <strong>11 MODs</strong> (Schusswaffen, Schienenverkehr, Baumaterial, Bosse, Himmel, Survival, Fahrzeuge, Strom, Backrooms, Planarcadia) gleichzeitig auf Minecraft
     <strong>26.2</strong> betrieben.
   </p>
-  <p class="callout callout--info">Ab V2.2.0 verteilt diese Website die MOD-Dateien (jar-Dateien) direkt über die Seite &quot;Download&quot;. Hier gibt es außerdem &quot;Lesestoff&quot; wie Rezepttabellen, Änderungsprotokoll und Installationsanleitung. Für eine Version vor V2.2.0 wende dich bitte direkt an deinen Server-Administrator.</p>
-  <div class="tag-row" style="margin-top:20px;">
+  <p class="callout callout--info hero__notice">Ab V2.2.0 verteilt diese Website die MOD-Dateien (jar-Dateien) direkt über die Seite &quot;Download&quot;. Hier gibt es außerdem &quot;Lesestoff&quot; wie Rezepttabellen, Änderungsprotokoll und Installationsanleitung. Für eine Version vor V2.2.0 wende dich bitte direkt an deinen Server-Administrator.</p>
+  <div class="tag-row hero__cta">
     <a class="btn" href="recipes/">Rezeptsammlung ansehen</a>
     <a class="btn btn--ghost" href="changelog/">Änderungsprotokoll ansehen</a>
     <a class="btn btn--ghost" href="guide/">Installationsanleitung ansehen</a>
   </div>
+  <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 
     <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-hotfix">Fehlerbehebung</span>
-        <span class="timeline-entry__release">V2.4.1</span>
-        <span class="card__meta">2026-08-24</span>
+      <div class="badge-row"><span class="type-badge type-release">Neue Funktion</span>
+        <span class="timeline-entry__release">V2.4.8</span>
+        <span class="card__meta">2026-08-27</span>
       </div>
-      <h3 style="margin-top:0">Neuestes Update: ドローンを出すとクライアントが落ちる不具合と、管理者アプリのログイン画面の不具合を修正</h3>
-      <p>プレイヤーからの報告を受けての修正版です。ドローンを展開すると必ずクライアントが落ちる不具合と、管理者アプリのログイン画面でIDを入力してもログイン失敗のたびに欄が空に戻ってしまう不具合を修正しました。</p>
-      <ul><li>ドローンを展開すると必ずクライアントが落ちる不具合を修正しました。ドローンの見た目(小型のクアッドコプター)が新しく描画されるようになります。</li><li>管理者アプリのログイン画面で、ログインに失敗するたびにID欄が空に戻ってしまい、入力し直しが必要になる不具合を修正しました。</li></ul>
+      <h3 style="margin-top:0">Neuestes Update: ミサイルランチャーの脚・ミサイル管を実際に斜め・先細りする造形へ刷新、戦術マップを高解像度化+ドラッグ移動対応、弾薬庫・目標を50に拡張</h3>
+      <p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。</p>
+      <ul><li>ミサイルランチャーの脚を、直方体を積んだ見た目から、実際に外側の接地点から中心へ向かって先細りする脚(関節つき)へ作り直しました。ミサイル管も、直方体ではなく実際に先細りする八角形断面の砲身+先端へ刷新しました。どちらも自動タレットの回転ヘッドと同じ「毎フレーム直接描く」方式で描画しており、当たり判定はこれまでと変わりません。</li><li>脚・ミサイル管にteal色の発光ラインを追加しました。</li><li>戦術マップの地形描画を、画面4pxごとに1回だったサンプリングから、画面1pxごとに1回へ引き上げました(実質4倍の解像度)。</li><li>戦術マップで左クリックを押したまま動かすと、視点を微調整できるようになりました(ズームのカーソル追従とは別に、狙いたい場所を画面の好きな位置へ動かせます)。</li></ul>
       <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Bosse</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Baumaterial &amp; Deko</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Schusswaffen</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Strom</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Schienenverkehr</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Himmel</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Fahrzeuge</span></div>
       <p><a href="changelog/">Gesamtes Änderungsprotokoll ansehen →</a></p>
     </div>
@@ -155,7 +174,7 @@
     </a>
   <a class="card" href="recipes/">
       <h3>Rezeptsammlung</h3>
-      <p>Eine durchsuch- und filterbare Übersicht der Crafting-Rezepte aller Gegenstände aus den 8 MODs.</p>
+      <p>Eine durchsuch- und filterbare Übersicht der Crafting-Rezepte aller Gegenstände aus den 11 MODs.</p>
       <p class="card__meta">Rezepte durchsuchen →</p>
     </a>
   <a class="card" href="guide/">
@@ -182,7 +201,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — Sorakazekarasu-Server – inoffizielle Referenz zu den installierten MODs</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>Sorakazekarasu-Server – inoffizielle Referenz zu den installierten MODs</p>
     <p class="site-footer__note">Diese Seite ist eine inoffizielle Referenz. Ab V2.2.0 werden die MOD-Dateien (jar-Dateien) direkt über die Seite &quot;Download&quot; dieser Website verteilt. Rezepte und Werte können je nach installierter Version und serverseitigen Config-Anpassungen von den tatsächlichen Werten abweichen.</p>
   </div>
 </footer>

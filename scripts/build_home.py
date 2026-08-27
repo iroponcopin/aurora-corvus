@@ -28,7 +28,17 @@ def load_latest_changelog_entry(lang, bundle):
         return None
     translated_list = bundle.get("changelog") or []
     by_release_date = {(t["release"], t["date"]): t for t in translated_list}
-    s = structural[-1]
+    # "Latest" is selected by (date, parsed release version), NOT by file
+    # position: data/changelog.json once had newer entries hand-prepended at
+    # the top, and structural[-1] silently promoted V2.4.1 to "latest update"
+    # on the home page while the download page shipped V2.4.8.
+    import re as _re
+
+    def _key(e):
+        return (e.get("date", ""),
+                tuple(int(n) for n in _re.findall(r"\d+", str(e.get("release", "")))))
+
+    s = max(structural, key=_key)
     t = by_release_date.get((s["release"], s["date"]), s)
     merged = dict(s)
     merged.update({k: t[k] for k in ("title", "summary", "highlights") if k in t})
@@ -89,20 +99,21 @@ def build_lang(lang):
     features_html = "\n  ".join(feature_card(f) for f in home["features"])
 
     body = f"""
-<section class="hero">
+<section class="hero hero--cinema">
   <span class="hero__eyebrow">{esc(home['hero_eyebrow'])}</span>
-  <h1>{esc(SITE_TITLE_FOR_H1)}</h1>
-  <p class="lede">
+  <h1 class="hero__title">{esc(SITE_TITLE_FOR_H1)}</h1>
+  <p class="lede hero__lede">
     {esc(home['hero_lede_1'])}<strong>{esc(home['hero_lede_pack_name'])}</strong>{esc(home['hero_lede_2'])}
     <strong>{esc(home['hero_lede_mod_count'])}</strong>{esc(home['hero_lede_3'])}
     <strong>{esc(mc)}</strong>{esc(home['hero_lede_4'])}
   </p>
-  <p class="callout callout--info">{esc(home['not_distributed_notice'])}</p>
-  <div class="tag-row" style="margin-top:20px;">
+  <p class="callout callout--info hero__notice">{esc(home['not_distributed_notice'])}</p>
+  <div class="tag-row hero__cta">
     <a class="btn" href="recipes/">{esc(home['btn_recipes'])}</a>
     <a class="btn btn--ghost" href="changelog/">{esc(home['btn_changelog'])}</a>
     <a class="btn btn--ghost" href="guide/">{esc(home['btn_guide'])}</a>
   </div>
+  <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 {latest_teaser(bundle, latest)}
 

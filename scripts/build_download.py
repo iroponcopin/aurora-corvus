@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix  # noqa: E402
+from build_home import load_latest_changelog_entry  # noqa: E402
 
 _LAUNCHER_VERSION_RE = re.compile(r"^glimpse-launcher-(.+)\.jar$")
 
@@ -231,6 +232,20 @@ def _discord_section_html(dl, invite_url, discord_configured):
     return f'<p class="callout callout--info">{pending}</p>'
 
 
+def _whats_new_body(lang, bundle, dl):
+    """The "what's new" paragraph is sourced from the newest changelog entry
+    (translated when the bundle has it, JA structural text otherwise) — the
+    same convention as the home page's latest-update teaser. It used to be a
+    hand-written i18n string, which described V2.2.0 forever while the page
+    itself shipped ever-newer ZIPs. The heading's version number comes from
+    the {pack_version} placeholder (site_common.load_bundle) for the same
+    reason."""
+    latest = load_latest_changelog_entry(lang, bundle)
+    if latest and latest.get("summary"):
+        return latest["summary"]
+    return dl.get("whats_new_body", "")
+
+
 def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
@@ -271,7 +286,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
 </div>
 
 <h2>{esc(dl.get('whats_new_heading', ''))}</h2>
-<p>{esc(dl.get('whats_new_body', ''))}
+<p>{esc(_whats_new_body(lang, bundle, dl))}
   <a href="../changelog/">{esc(dl.get('changelog_link_text', ''))}</a>
 </p>
 

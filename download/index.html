@@ -4,16 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ダウンロード | Aurora Corvus</title>
-<meta name="description" content="Glimpse Alpha MOD パック(V2.2.0・全11 MOD)の配布 ZIP をダウンロードできます。ファイルサイズ・SHA-256・導入手順つき。">
+<meta name="description" content="Glimpse Alpha MOD パック(V2.4.8・全11 MOD)の配布 ZIP をダウンロードできます。ファイルサイズ・SHA-256・導入手順つき。">
 <meta property="og:title" content="ダウンロード | Aurora Corvus">
-<meta property="og:description" content="Glimpse Alpha MOD パック(V2.2.0・全11 MOD)の配布 ZIP をダウンロードできます。ファイルサイズ・SHA-256・導入手順つき。">
+<meta property="og:description" content="Glimpse Alpha MOD パック(V2.4.8・全11 MOD)の配布 ZIP をダウンロードできます。ファイルサイズ・SHA-256・導入手順つき。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle). */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = "dark";
+  try {
+    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 </head>
 <body>
-<script>document.documentElement.classList.add("js");</script>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">本文へ移動</a>
 <header class="site-header">
   <div class="site-header__inner">
@@ -88,8 +106,8 @@
   <p class="callout callout--warn">札幌 MOD(sorakaze-sapporo)は V2.2.0 で初めて配布されます。実在の札幌市の地形・建物を元にした都市生成ワールドです(建物の高さは現在推定値。国土の3D建物データ入手後に更新予定)。</p>
 </div>
 
-<h2>V2.2.0 の変更内容</h2>
-<p>ガラスランタン・バックルームズのロビー化・地上襲撃・砲台・札幌の街の再現など。詳しくは更新履歴ページをご覧ください:
+<h2>V2.4.8 の変更内容</h2>
+<p>ミサイルランチャーの脚とミサイル管を、直方体を積み重ねた見た目から、実際に斜めに広がり・先細りする専用の描画(タレットの回転ヘッドと同じ「毎フレーム直接描く」方式)へ作り直しました。戦術マップは地形の解像度を大幅に上げ、マウスホイールでのズームに加えて左クリックを押したままドラッグして視点を微調整できるようにしました。あわせて、弾薬庫と目標指定を10箇所→最大50箇所・50発まで拡張し、Wikiに管理者アプリのID・パスワードの設定手順を追加しました。
   <a href="../changelog/">更新履歴を見る →</a>
 </p>
 
@@ -98,7 +116,7 @@
   <a href="../guide/">導入ガイドを見る →</a>
 </p>
 
-<p class="callout callout--info">このページで配布しているのは常に最新版(V2.2.0)です。過去のバージョンが必要な場合は、サーバー管理者に直接お問い合わせください。</p>
+<p class="callout callout--info">このページで配布しているのは常に最新版(V2.4.8)です。過去のバージョンが必要な場合は、サーバー管理者に直接お問い合わせください。</p>
 
 <h2>Glimpse ランチャー</h2>
 <p>Glimpse ランチャーは、Glimpse Alpha MOD パックを自動で最新版に保つデスクトップアプリです。ダウンロードするファイルはすべて SHA-256 でこの Wiki と照合されます―― 信頼する情報源はこの Wiki だけです。</p>
@@ -172,7 +190,8 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Aurora Corvus — そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p>そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
     <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)は V2.2.0 からこの「ダウンロード」ページで直接配布しています。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
   </div>
 </footer>
