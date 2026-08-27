@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/en/changelog/"
   },
   "launcher": {
-    "latest": "1.2.0",
-    "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.0.jar",
-    "file_name": "glimpse-launcher-1.2.0.jar",
-    "file_size": 1090821,
-    "sha256": "5ab895bc8b1a18dc8dc02ee4d969a0fd8fede028b5672fed93517e25dbc53d60",
-    "notes": "Fixes a bug where the \"Install updates automatically\" setting on the Settings screen was saved but never actually used — turning it on didn't change anything, and clicking Update by hand was still required every time. Automatic mode now really applies a pack update on its own once it's turned on and a pack folder is set (a launcher self-update still always has to be downloaded and installed by hand, the same as before). Also reworks the whole interface's look toward a lighter, glassier style — softer, more transparent cards and rounder buttons — with no changes to how updating, Play, or Settings actually work.",
+    "latest": "1.2.1",
+    "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.1.jar",
+    "file_name": "glimpse-launcher-1.2.1.jar",
+    "file_size": 1093395,
+    "sha256": "3aacb1b2e2c57ad8580383196a2135209de47f5ad4ac47a0ae56e81ce20cf1dd",
+    "notes": "Fixes a serious bug in backup retention: backups were sorted by folder name, so after a version-number digit change the launcher could delete its newest backups the moment they were created while keeping older ones — exactly the backups a rollback would need. Retention now sorts by timestamp. Also fixes a case where a failed launcher self-update download could still show \"Update complete\" (the pack result and the launcher-download result are now reported separately and honestly). Visually, the main Update/Play decision button is now a blue glass pill in the Apple system-blue style; nothing about how updating, Play, or Settings work has changed.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.0-macos.dmg",
-        "file_name": "glimpse-launcher-1.2.0-macos.dmg",
-        "file_size": 60994419,
-        "sha256": "0c81e377a3ddcdea49fd4b1c065bc7525d81e0bf65bd5c0938bbacffd9f7acdf"
+        "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.1-macos.dmg",
+        "file_name": "glimpse-launcher-1.2.1-macos.dmg",
+        "file_size": 60997273,
+        "sha256": "c77d953667a82256bac948536a2c444da98b308dd2bd54b2a27124c2d578db96"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.0-windows.msi",
-        "file_name": "glimpse-launcher-1.2.0-windows.msi",
-        "file_size": 57630172,
-        "sha256": "aff7a86cd17817339d767d854126fcb30ee82da317f32d920871aa17748ace9b"
+        "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.1-windows.msi",
+        "file_name": "glimpse-launcher-1.2.1-windows.msi",
+        "file_size": 57634268,
+        "sha256": "334360b06da70be51cfa89c2898c2aaf41a5f72230945a0045fbefeacfc96301"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.0-linux.deb",
-        "file_name": "glimpse-launcher-1.2.0-linux.deb",
-        "file_size": 40468346,
-        "sha256": "588e7fdb80511755ccd86971876ed78bd3e5aa31fbf593e8f445f43ba08ea4ec"
+        "download_url": "https://iroponcopin.github.io/glimpse-alpha-wiki/downloads/glimpse-launcher-1.2.1-linux.deb",
+        "file_name": "glimpse-launcher-1.2.1-linux.deb",
+        "file_size": 40473868,
+        "sha256": "4385367c5c9624be206cfd70c1ca8f01f89954477517c69709a913a0d7f435ac"
       }
     }
   }

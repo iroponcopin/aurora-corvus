@@ -61,10 +61,10 @@ _DEFAULT_SECTIONS = [
             "no Java required. These are not code-signed yet, so your OS will show a first-run "
             "warning: on macOS, right-click the app and choose Open instead of double-clicking; "
             "on Windows, click \"More info\" then \"Run anyway\" on the SmartScreen prompt.</li>"
-            "<li><strong>The cross-platform jar</strong>, <code>glimpse-launcher-1.2.0.jar</code> "
+            "<li><strong>The cross-platform jar</strong>, <code>glimpse-launcher-1.2.1.jar</code> "
             "— the same file runs on Windows, macOS, and Linux, but needs Java 21 or newer "
             "already installed. If double-clicking it doesn't open it, run "
-            "<code>java -jar glimpse-launcher-1.2.0.jar</code> from a terminal or command prompt "
+            "<code>java -jar glimpse-launcher-1.2.1.jar</code> from a terminal or command prompt "
             "in the folder you downloaded it to.</li>"
             "</ul>"
         ),
