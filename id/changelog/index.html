@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Riwayat Pembaruan</span>
   <h1>Riwayat Pembaruan</h1>
-  <p class="lede">Menampilkan riwayat dari versi pertama (v1.0.0, 2026-07-15) hingga sekarang (per 2026-08-11, total 53 kali pembaruan), diurutkan dari yang terbaru. Prosedur verifikasi internal saat pengembangan tidak dicantumkan di sini — hanya merangkum apa yang benar-benar berubah di server dan apa yang perlu diperhatikan pemain.</p>
+  <p class="lede">Menampilkan riwayat dari versi pertama (v1.0.0, 2026-07-15) hingga sekarang (per 2026-08-11, total 54 kali pembaruan), diurutkan dari yang terbaru. Prosedur verifikasi internal saat pengembangan tidak dicantumkan di sini — hanya merangkum apa yang benar-benar berubah di server dan apa yang perlu diperhatikan pemain.</p>
   <p class="callout callout--info">Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.</p>
 </div>
 
@@ -829,6 +829,18 @@
       
       
       <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>発射台本体のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません。</li><li>地形の実サンプリングは視点を動かす(拡大縮小・発射機に戻る)たびに再計算され、毎フレームは行いません。極端に低い性能の端末では、寄った直後に一瞬粗い表示が残ることがあります。</li><li>マップのドラッグでの視点移動(パン)は未対応です。視点の移動はズームイン/アウト時のカーソル追従と「発射機に戻る」ボタンのみです。</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.7</span> — ミサイルランチャーを30発の混在弾薬庫・10箇所バースト発射に刷新、発射台の造形を作り直し、着弾音を強化
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Fitur Baru</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Bos</span><span class="mod-badge" style="--mod-color:#4f8f43">Bahan Bangunan &amp; Dekorasi</span><span class="mod-badge" style="--mod-color:#c0533a">Senjata Api</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Listrik</span><span class="mod-badge" style="--mod-color:#3d7dc4">Kereta Api</span><span class="mod-badge" style="--mod-color:#3badc9">Langit</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Kendaraan</span></div>
+      <p>所有者の参考デザインをあらためて見直し、ミサイルランチャーの発射台本体を単なる配色変更ではなく、実際に斜めへ広がる4本脚と、側面に戦術マップを表示するタブレット画面を持つ造形へ作り直しました。あわせて、弾薬庫を最大30発(ミサイル・核弾頭を混ぜて装填可能)に拡張し、戦術マップ上で最大10箇所まで目標を指定して、バーストライフルのように1回の操作で連続発射できるようにしました。ミサイル・核弾頭どちらの着弾音も、広域配信を追加または強化し、より大きくリアルな音になるようにしました。</p>
+      <ul><li>発射台本体の造形を作り直し: 四隅に実際に斜め方向へ広がって見える4本の脚(太く根を張り、上に向かってすぼまる階段状のシルエット)、側面に戦術マップを表示するタブレット画面(実際のマップ画面と同じ配色)を追加しました。</li><li>弾薬庫を最大30発に拡張。ミサイル弾頭・核弾頭を同じ弾薬庫に混ぜて装填でき、装填した順に発射されます。</li><li>戦術マップ上で最大10箇所まで目標を指定できるようになりました。マップをクリックするたびにその場で目標が追加され(「確定」操作は不要)、既存のピンをクリックすると取り除けます。</li><li>発射ボタンを押すと、指定した目標へ向けて1発ずつ、バーストライフルのように連続発射します(目標がキューから消費されるたびに次の弾が飛ぶ)。</li><li>ミサイル弾頭の着弾音に、新たに広域配信(最大6,000ブロック)を追加しました。これまでは至近距離でしか聞こえませんでした。</li><li>核弾頭・ミサイル弾頭どちらの着弾音も、低音を強化し、近接・広域配信の両方で音量を上げました。</li></ul>
+      <h4>Penyesuaian Balance</h4><ul><li>ミサイルランチャーの弾薬庫容量: 4発 → 30発(混在装填)。</li></ul>
+      
+      <h4>Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu</h4><ul><li>発射台のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません(V2.4.6からの既知の制限を継続)。</li><li>四隅の脚は、真に斜めのジオメトリではなく、軸に沿った箱を3段重ねた階段状のシルエットで「斜めに広がる脚」を近似しています(この一式の設計方針として、当たり判定の回転計算を増やさないための判断です)。</li></ul>
     </article>
 </div>
 
