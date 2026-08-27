@@ -121,6 +121,39 @@ def _launcher_facts():
     }
 
 
+def _launcher_native_facts(version):
+    """Looks directly at downloads/glimpse-launcher-<version>-<platform>.<ext>
+    for published native (no-Java-required) installers, the same
+    read-straight-from-disk discipline _launcher_facts() uses for the jar.
+    Returns a list (possibly empty, possibly partial if only some platforms
+    have shipped) - never invents a platform that hasn't actually published
+    a file."""
+    out = []
+    for platform_id, ext, label in _NATIVE_LAUNCHER_PLATFORMS:
+        candidate = DOWNLOAD_DIR / f"glimpse-launcher-{version}-{platform_id}.{ext}"
+        if not candidate.exists():
+            continue
+        out.append({
+            "platform_id": platform_id,
+            "label": label,
+            "file_name": candidate.name,
+            "size_bytes": candidate.stat().st_size,
+            "sha256": _sha256(candidate),
+        })
+    return out
+
+
+# V1.1 native builds (2026-08-27): produced by glimpse-launcher's own GitHub
+# Actions CI (real macOS/Windows/Linux runners - jpackage is not a
+# cross-compiler, see that repo's ISSUES.md), copied here by hand from the
+# CI run's artifacts. Order controls display order on the page.
+_NATIVE_LAUNCHER_PLATFORMS = [
+    ("macos", "dmg", "macOS"),
+    ("windows", "msi", "Windows"),
+    ("linux", "deb", "Linux"),
+]
+
+
 def _launcher_section_html(dl, lang, launcher):
     if launcher is None:
         pending = esc(dl.get(
@@ -135,11 +168,13 @@ def _launcher_section_html(dl, lang, launcher):
     size_label = esc(dl.get('size_label', 'File size'))
     sha_label = esc(dl.get('sha_label', 'SHA-256'))
     cta = esc(dl.get('launcher_cta', 'Download Glimpse Launcher'))
-    return f"""<div class="card" style="margin-bottom:20px;">
+    jar_card = f"""<div class="card" style="margin-bottom:20px;">
   <div class="badge-row">
     <span class="type-badge type-release">{version_label} {esc(launcher['version'])}</span>
   </div>
   <h3 style="margin-top:0">{esc(launcher['file_name'])}</h3>
+  <p>{esc(dl.get('launcher_jar_note',
+        'Cross-platform (Windows, macOS, Linux) - needs Java 21 or newer already installed.'))}</p>
   <table style="width:100%; border-collapse:collapse;">
     <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">{size_label}</td>
         <td><code>{esc(_fmt_size(launcher['size_bytes']))}</code> ({launcher['size_bytes']:,} bytes)</td></tr>
@@ -150,6 +185,36 @@ def _launcher_section_html(dl, lang, launcher):
     <a class="btn" href="{esc(jar_href)}" download>{cta}</a>
   </p>
 </div>"""
+
+    natives = _launcher_native_facts(launcher['version'])
+    if not natives:
+        return jar_card
+
+    native_heading = esc(dl.get('launcher_native_heading', 'Native installers (no Java required)'))
+    native_note = esc(dl.get('launcher_native_note',
+        'These install like a normal desktop app and do not need Java installed separately. '
+        'They are not code-signed yet, so your OS will show a first-run warning - see the '
+        'install guide for how to proceed past it.'))
+    cards = "\n".join(f"""<div class="card" style="margin-bottom:12px;">
+  <div class="badge-row">
+    <span class="type-badge type-visual">{esc(n['label'])}</span>
+  </div>
+  <h4 style="margin-top:0">{esc(n['file_name'])}</h4>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">{size_label}</td>
+        <td><code>{esc(_fmt_size(n['size_bytes']))}</code> ({n['size_bytes']:,} bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">{sha_label}</td>
+        <td style="word-break:break-all"><code>{esc(n['sha256'])}</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="{esc(f"{asset_root_prefix(1, lang)}downloads/{n['file_name']}")}" download>{cta} ({esc(n['label'])})</a>
+  </p>
+</div>""" for n in natives)
+
+    return f"""{jar_card}
+<h3>{native_heading}</h3>
+<p>{native_note}</p>
+{cards}"""
 
 
 def _discord_section_html(dl, invite_url, discord_configured):

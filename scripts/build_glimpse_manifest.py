@@ -30,6 +30,15 @@ from site_common import ROOT  # noqa: E402
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
+
+# Keep in sync with build_download.py's _NATIVE_LAUNCHER_PLATFORMS (same
+# naming convention, deliberately not shared via an import since the two
+# scripts are independently invoked from build.py's own list).
+_NATIVE_LAUNCHER_PLATFORMS = [
+    ("macos", "dmg", "macOS"),
+    ("windows", "msi", "Windows"),
+    ("linux", "deb", "Linux"),
+]
 SITE_BASE_URL = "https://iroponcopin.github.io/glimpse-alpha-wiki"
 
 
@@ -118,7 +127,7 @@ def _launcher_block(jar_path):
             f"plain, honest, no invented features)."
         )
 
-    return {
+    block = {
         "latest": version,
         "download_url": f"{SITE_BASE_URL}/downloads/{jar_path.name}",
         "file_name": jar_path.name,
@@ -126,6 +135,26 @@ def _launcher_block(jar_path):
         "sha256": sha256_hex,
         "notes": notes_table[version],
     }
+
+    # V1.1 native builds (2026-08-27): produced by glimpse-launcher's own
+    # GitHub Actions CI (real macOS/Windows/Linux runners), copied here by
+    # hand from the CI run's artifacts. Included only for platforms that
+    # actually have a published file -- see build_download.py's
+    # _launcher_native_facts() for the same read-from-disk discipline.
+    native = {}
+    for platform_id, ext, _label in _NATIVE_LAUNCHER_PLATFORMS:
+        candidate = DOWNLOAD_DIR / f"glimpse-launcher-{version}-{platform_id}.{ext}"
+        if not candidate.exists():
+            continue
+        native[platform_id] = {
+            "download_url": f"{SITE_BASE_URL}/downloads/{candidate.name}",
+            "file_name": candidate.name,
+            "file_size": candidate.stat().st_size,
+            "sha256": _sha256(candidate),
+        }
+    if native:
+        block["native"] = native
+    return block
 
 
 def build():
