@@ -4235,7 +4235,7 @@ def main():
     items_map = {iid: [ja, en, tex] for iid, (ja, en, tex) in reg.items.items()}
     total = len(ordered)
 
-    # ---- Glimpse Alpha Wiki adaptation ------------------------------------
+    # ---- Aurora Corvus adaptation ------------------------------------------
     # Everything above this point (data assembly, every validation check) is
     # byte-identical to the original generator's main(). From here down,
     # instead of splicing everything into one self-contained HTML page

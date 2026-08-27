@@ -33,6 +33,20 @@
   --radius-sm: 6px;
   --header-h: 60px;
   color-scheme: light;
+
+  /* Cinematic motion tokens — reused by every transition/animation below. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.22s;
+  --dur-med: 0.5s;
+  --dur-slow: 0.9s;
+  --accent-rgb: 166, 98, 31;
+}
+
+:root[data-theme="dark"] { --accent-rgb: 224, 150, 77; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --accent-rgb: 224, 150, 77; }
 }
 
 :root[data-theme="dark"] {
@@ -145,14 +159,30 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 }
 .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.05rem; white-space: nowrap; }
 .brand:hover { opacity: 1; }
-.brand__mark { color: var(--accent); font-size: 1.1em; }
+.brand:hover .brand__mark { transform: rotate(180deg) scale(1.15); }
+.brand__mark {
+  color: var(--accent); font-size: 1.1em; display: inline-block;
+  transition: transform var(--dur-slow) var(--ease-out-expo);
+}
+.brand__text {
+  background: linear-gradient(100deg, var(--text) 0%, var(--text) 38%, var(--accent) 50%, var(--text) 62%, var(--text) 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: brand-sheen 7s var(--ease-in-out-soft) infinite;
+}
+@keyframes brand-sheen {
+  0%   { background-position: 100% 0; }
+  50%  { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
 .site-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .site-nav > ul { list-style: none; display: flex; gap: 2px; margin: 0; padding: 0; }
 .site-nav a {
   display: inline-block; padding: 8px 12px; border-radius: 999px; color: var(--text-muted);
   text-decoration: none; font-size: 0.92rem; font-weight: 600; white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-out-quart), color var(--dur-fast) var(--ease-out-quart), transform var(--dur-fast) var(--ease-out-quart);
 }
-.site-nav a:hover { background: var(--bg-sunken); color: var(--text); }
+.site-nav a:hover { background: var(--bg-sunken); color: var(--text); transform: translateY(-1px); }
 .site-nav a.active { background: var(--accent); color: var(--accent-contrast); }
 .lang-switch { position: relative; margin-left: 8px; }
 .lang-switch__toggle {
@@ -214,6 +244,25 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 /* ---------- Hero ---------- */
 .hero {
   padding: 12px 0 8px;
+  position: relative;
+  isolation: isolate;
+  transform: translate3d(0, calc(var(--parallax, 0) * 1px), 0);
+  will-change: transform;
+}
+.hero::before {
+  content: ""; position: absolute; z-index: -1; inset: -60px -20px auto -20px; height: 340px;
+  background:
+    radial-gradient(closest-side, rgba(var(--accent-rgb), 0.22), transparent 70%) 18% 30% / 55% 100% no-repeat,
+    radial-gradient(closest-side, rgba(var(--accent-rgb), 0.14), transparent 72%) 82% 60% / 45% 100% no-repeat;
+  filter: blur(6px);
+  opacity: 0.85;
+  transform: translate3d(0, calc(var(--parallax, 0) * -0.6px), 0) scale(1.02);
+  animation: hero-glow-drift 14s var(--ease-in-out-soft) infinite alternate;
+  pointer-events: none;
+}
+@keyframes hero-glow-drift {
+  0%   { opacity: 0.65; transform: translate3d(0, calc(var(--parallax, 0) * -0.6px), 0) scale(1); }
+  100% { opacity: 0.95; transform: translate3d(0, calc(var(--parallax, 0) * -0.6px - 6px), 0) scale(1.06); }
 }
 .hero__eyebrow {
   display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em;
@@ -228,9 +277,16 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 .card {
   background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 18px 20px; box-shadow: var(--shadow); text-decoration: none; color: var(--text);
-  display: block; transition: transform 0.12s ease, box-shadow 0.12s ease;
+  display: block;
+  transition: transform var(--dur-med) var(--ease-out-quart),
+              box-shadow var(--dur-med) var(--ease-out-quart),
+              border-color var(--dur-med) var(--ease-out-quart);
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.08), 0 10px 24px rgba(0,0,0,0.1); }
+.card:hover {
+  transform: translateY(-5px) scale(1.012);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1), 0 16px 36px rgba(var(--accent-rgb), 0.16);
+}
 .card--mod { border-top: 4px solid var(--mod-color, var(--accent)); }
 .card h3 { margin-top: 0; }
 .card__meta { font-size: 0.82rem; color: var(--text-muted); }
@@ -288,7 +344,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
   border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text-muted);
   padding: 7px 14px; border-radius: 999px; cursor: pointer; font-size: 0.86rem; font-weight: 700;
   white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-out-quart), color var(--dur-fast) var(--ease-out-quart),
+              border-color var(--dur-fast) var(--ease-out-quart), transform var(--dur-fast) var(--ease-out-quart);
 }
+.chip:hover { transform: translateY(-1px); border-color: var(--accent); }
 .chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
 
 /* ---------- Recipe cards ---------- */
@@ -296,8 +355,13 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 .recipe-card {
   background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 10px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  transition: transform var(--dur-fast) var(--ease-out-quart), border-color var(--dur-fast) var(--ease-out-quart),
+              box-shadow var(--dur-fast) var(--ease-out-quart);
 }
-.recipe-card:hover { border-color: var(--accent); }
+.recipe-card:hover {
+  border-color: var(--accent); transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(var(--accent-rgb), 0.18);
+}
 .recipe-card img, .slot img { image-rendering: pixelated; width: 32px; height: 32px; }
 .recipe-card__name { font-size: 0.8rem; font-weight: 600; line-height: 1.3; }
 .recipe-count { font-size: 0.85rem; color: var(--text-muted); margin: 6px 0 0; }
@@ -305,13 +369,17 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 /* Recipe modal / detail */
 .recipe-modal-backdrop {
   position: fixed; inset: 0; background: rgba(0,0,0,0.55); display: none; align-items: center; justify-content: center;
-  z-index: 200; padding: 20px;
+  z-index: 200; padding: 20px; opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-out-quart);
 }
-.recipe-modal-backdrop.open { display: flex; }
+.recipe-modal-backdrop.open { display: flex; opacity: 1; }
 .recipe-modal {
   background: var(--bg-elevated); border-radius: var(--radius); max-width: 420px; width: 100%;
   padding: 24px; box-shadow: var(--shadow); position: relative; max-height: 86vh; overflow-y: auto;
+  transform: translateY(16px) scale(0.97); opacity: 0;
+  transition: transform var(--dur-med) var(--ease-out-expo), opacity var(--dur-med) var(--ease-out-expo);
 }
+.recipe-modal-backdrop.open .recipe-modal { transform: translateY(0) scale(1); opacity: 1; }
 .recipe-modal__close { position: absolute; top: 12px; right: 14px; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-muted); }
 .craft-grid { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 4px; margin: 16px auto; }
 .slot { background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; position: relative; }
@@ -344,9 +412,15 @@ th { color: var(--text-muted); font-weight: 700; font-size: 0.82rem; text-transf
 .btn {
   display: inline-block; padding: 10px 18px; border-radius: 999px; background: var(--accent); color: var(--accent-contrast) !important;
   text-decoration: none; font-weight: 700; border: none; cursor: pointer; font-size: 0.95rem;
+  transition: transform var(--dur-fast) var(--ease-out-quart), box-shadow var(--dur-fast) var(--ease-out-quart), opacity var(--dur-fast) var(--ease-out-quart);
 }
-.btn:hover { opacity: 0.88; }
+.btn:hover {
+  opacity: 0.96; transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.35);
+}
+.btn:active { transform: translateY(0) scale(0.98); transition-duration: 0.08s; }
 .btn--ghost { background: transparent; color: var(--accent-strong) !important; border: 1px solid var(--border); }
+.btn--ghost:hover { box-shadow: 0 8px 20px rgba(var(--accent-rgb), 0.16); border-color: var(--accent); }
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
 .section-lead { color: var(--text-muted); margin-top: -8px; }
 .empty-state { text-align: center; color: var(--text-muted); padding: 40px 0; }
@@ -357,7 +431,10 @@ th { color: var(--text-muted); font-weight: 700; font-size: 0.82rem; text-transf
   border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text-muted);
   padding: 8px 14px; border-radius: 999px; cursor: pointer; font-size: 0.86rem; font-weight: 700;
   display: flex; align-items: center; gap: 6px;
+  transition: background var(--dur-fast) var(--ease-out-quart), color var(--dur-fast) var(--ease-out-quart),
+              border-color var(--dur-fast) var(--ease-out-quart), transform var(--dur-fast) var(--ease-out-quart);
 }
+.tab-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
 .tab-btn img { width: 18px; height: 18px; image-rendering: pixelated; }
 .tab-btn[aria-selected="true"] { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
 .tab-btn__count { opacity: 0.75; font-weight: 600; }
@@ -386,3 +463,44 @@ th { color: var(--text-muted); font-weight: 700; font-size: 0.82rem; text-transf
 .io-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px 4px 6px; font-size: 0.8rem; margin: 0 6px 6px 0; }
 .io-chip img { width: 18px; height: 18px; image-rendering: pixelated; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+/* ==========================================================================
+   Cinematic motion layer
+   Progressive enhancement: everything below only activates once main.js has
+   tagged <html class="js"> (see site_common.py's page()). With JS disabled
+   or failing, every element covered here stays at its normal, fully visible
+   layout — nothing here is load-bearing for content or accessibility.
+   ========================================================================== */
+html.js { scroll-behavior: smooth; }
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur-slow) var(--ease-out-expo),
+              transform var(--dur-slow) var(--ease-out-expo);
+  transition-delay: calc(min(var(--reveal-index, 0), 8) * 70ms);
+  will-change: opacity, transform;
+}
+html.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
+html.js .hero.reveal { transform: translateY(34px); }
+html.js .hero.reveal.is-visible { transform: translateY(0); }
+
+/* Respect the user's stated preference — this overrides every animation and
+   transition declared above, including the ones under html.js, and holds
+   even if JS never runs the reduced-motion check itself. */
+@media (prefers-reduced-motion: reduce) {
+  html.js { scroll-behavior: auto; }
+  html.js .reveal,
+  html.js .hero.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .brand__text { animation: none !important; background: none; -webkit-text-fill-color: currentColor; color: var(--text); }
+  .hero::before { animation: none !important; }
+  .card, .btn, .btn--ghost, .chip, .tab-btn, .recipe-card, .site-nav a,
+  .recipe-modal, .recipe-modal-backdrop, .brand__mark {
+    transition: none !important;
+    animation: none !important;
+  }
+}

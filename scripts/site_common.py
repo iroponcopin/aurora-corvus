@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Shared registry + page-shell template for the Glimpse Alpha Wiki static site.
+Shared registry + page-shell template for the Aurora Corvus static site.
 Plain Python string templates (no Jinja2 dependency) — every other generator
 script imports from here so the header/nav/footer never drifts between pages.
 
@@ -18,7 +18,10 @@ import html as _html
 ROOT = Path(__file__).resolve().parent.parent
 I18N_DIR = ROOT / "data" / "i18n"
 
-SITE_TITLE = "Glimpse Alpha Wiki"  # brand name, unchanged across languages
+# Site's own umbrella identity (nav/header/footer/<title>/OG tags). NOT the
+# same thing as "Glimpse Alpha", which is the mod pack product this site
+# documents — that product name is never renamed, see e.g. build_download.py.
+SITE_TITLE = "Aurora Corvus"  # brand name, unchanged across languages
 
 # (code, native display name, text direction). Order = language-switcher order.
 LANGUAGES = [
@@ -282,10 +285,12 @@ def page(
 <meta property="og:title" content="{esc(full_title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="{esc(SITE_TITLE)}">
 {og}<link rel="icon" href="{root_prefix}assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{root_prefix}assets/css/style.css">
 {extra_head}</head>
 <body>
+<script>document.documentElement.classList.add("js");</script>
 <a class="skip-link" href="#main">{esc(ui['skip_link'])}</a>
 <header class="site-header">
   <div class="site-header__inner">

@@ -1,4 +1,4 @@
-# Glimpse Alpha Wiki
+# Aurora Corvus
 
 An unofficial reference site for **Glimpse Alpha** (formerly *Sorakaze*), a set of
 Fabric mods for a private Minecraft server. It documents the mod pack's crafting

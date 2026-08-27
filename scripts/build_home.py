@@ -133,7 +133,7 @@ def build_lang(lang):
     write_page(lang, "", html)
 
 
-SITE_TITLE_FOR_H1 = "Glimpse Alpha Wiki"
+SITE_TITLE_FOR_H1 = "Aurora Corvus"
 
 
 def build():
