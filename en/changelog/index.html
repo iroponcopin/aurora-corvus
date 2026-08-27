@@ -65,7 +65,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 52 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 53 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -817,6 +817,18 @@
       
       
       <h4>Not yet implemented/confirmed at this point</h4><ul><li>The launcher&#x27;s in-world 3D model (its appearance) has not been changed in this update - it keeps its existing look.</li><li>The map does not support zooming or panning yet - it always shows a fixed-scale view centred on the launcher.</li><li>The ground-height preview under the pin only works for areas already loaded on your own client, which is most of the time outside view distance for a 2,000-block range - it will usually show &quot;unknown until confirmed&quot; (the server always computes the real height correctly once you confirm).</li></ul>
+    </article>
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-27</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.6</span> — ミサイルランチャーの戦術マップに実地形とズームを追加、発射台本体の見た目も刷新
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>V2.4.5で追加した戦術マップが「座標や記号だけで実際の場所が分からない」「射程2,000ブロックの縮尺では近距離の狙いが粗すぎて意図しない遠くに着弾する」という指摘を受けたため、マップにバニラの地図アイテムと同じ仕組みで実際の地形の色を描画し、マウスホイールでの拡大縮小(カーソル位置を中心にしたズーム)を追加しました。あわせて、前回のアップデートで見送っていた発射台本体の3Dモデルも、所有者の参考デザインに沿ってオリーブドラブとダークスチールを基調にした配色へ変更し、四隅に脚のような支柱、各所にteal(青緑)の発光ラインを追加しました。</p>
+      <ul><li>戦術マップに実地形を描画: バニラの地図アイテムと同じ「地表ブロックの色」を使い、隣接する地点との高低差で簡易な陰影も付けました。クライアント側で読み込み済みの範囲だけを対象にしています(未読み込みの範囲は今まで通りニュートラルな色で「不明」を表します)。</li><li>マウスホイールでのズームイン/ズームアウトを追加。カーソルの位置を中心に拡大縮小するため、狙いたい場所を画面の中心に置き直さなくても寄れます。「発射機に戻る」ボタンで元の縮尺・中心位置に戻せます。</li><li>発射台本体の3Dモデルを刷新: オリーブドラブ+ダークスチールの配色に変更し、四隅に脚のような支柱を追加、筐体・支柱・ミサイル筒にteal色の発光ラインを追加しました。</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>発射台本体のteal LEDラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて動的に点灯・消灯する機能ではありません。</li><li>地形の実サンプリングは視点を動かす(拡大縮小・発射機に戻る)たびに再計算され、毎フレームは行いません。極端に低い性能の端末では、寄った直後に一瞬粗い表示が残ることがあります。</li><li>マップのドラッグでの視点移動(パン)は未対応です。視点の移動はズームイン/アウト時のカーソル追従と「発射機に戻る」ボタンのみです。</li></ul>
     </article>
 </div>
 
