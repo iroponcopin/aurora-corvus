@@ -151,7 +151,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 55 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 56 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -169,6 +169,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>No updates match your filters.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.4.9</span> — ミサイルランチャーの見た目が二重になる不具合を修正、マップの移動を右ドラッグへ、一斉発射100発・弾薬庫200発の収納箱化。バックルームズでサーバーが落ちる不具合も修正
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">New feature</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#c0533a">Guns</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3d7dc4">Rail</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>ミサイルランチャーについて所有者から届いた4点の指摘に対応しました。見た目が「旧デザインと新デザインが融合した」状態になっていた不具合、戦術マップがクリックしただけで動いてしまう不具合を直し、一度に狙える目標を100箇所に、弾薬庫を200発の「収納箱」に作り直しました。あわせて、V2.4.x より前に作られたバックルームズ階層0の区画を読み込んだときにサーバーが強制終了することがある不具合も修正しています。こちらは新しく作ったワールドでは起きないため今まで見つかっていませんでした。すでに遊んでいるワールドをお持ちのサーバーでは、この修正がいちばん大事な変更です。</p>
+      <ul><li>【サーバーが落ちる不具合を修正】V2.4.x より前に作られたバックルームズ階層0の区画が読み込まれると、サーバーが応答しなくなり約60秒後に強制終了することがある不具合を修正しました。古い区画を新しい見た目へ描き直す処理を、区画の読み込み中ではなく読み込み後に行うようにしています。新しく作ったワールドでは一度も起きないため、これまでのテストでは見つけられませんでした。長く遊んでいるワールドをお持ちの場合だけ影響します。</li><li>ミサイルランチャーの見た目が「旧デザインと新デザインが融合した」状態になっていた不具合を修正しました。原因は2つあり、(1) 脚とミサイル管を描く向きが4方向すべてで180度ずれていたため、発射台の1ブロック手前にミサイル管が、4本の脚のうち2本が空中に描かれていたこと、(2) 旧デザインのブロック模型13個のうち7個がまだ一緒に描かれ続けていたこと、でした。両方を直し、地面のパッド以外は新しい造形だけが描かれるようになりました。</li><li>あわせて、V2.4.6以降、発射台の脚の当たり判定が4方向のうち3方向でずれていたことが分かり(報告はいただいていませんでした)、向きごとに正しい当たり判定を持つよう作り直しました。</li><li>戦術マップの視点移動を、左クリック長押しから右クリック長押しに変更しました。左クリックは目標の追加・削除だけになり、ただクリックしただけでマップが動くことはなくなりました。移動は押した場所から3ピクセル以上離れて初めて始まります(これまでは微小な手ぶれが積み重なって、止めているつもりでも動いていました)。操作方法はマップ画面の下部にも表示されます。</li><li>戦術マップ上で指定できる目標を50箇所→100箇所に拡張しました。発射数が増えても処理が重くならないよう、飛行中の軌跡の演出と着弾の処理に1tickあたりの上限を設け、順番に処理するようにしています。上限を超えた着弾は捨てずに次のtickへ回すので、撃った弾が消えることはありません。</li><li>弾薬庫を50発→200発に拡張し、チェストと同じ形の収納画面(6段×9列)に作り直しました。しゃがみながら右クリックで開きます(管制盤は今までどおり普通の右クリック)。管制盤にも「弾薬庫」ボタンを追加しました。弾頭を手に持って右クリックすれば、これまでどおりその場で1個ずつ装填することもできます。</li><li>発射台のどのブロック(3×4×3の36マスすべて)にホッパーを繋いでも弾薬庫へ補充できます。ミサイル弾頭と核弾頭を混ぜたまま入れておけますし、収納画面で好きな順に並べ替えられます。</li><li>V2.4.9より前に装填してあった弾薬庫の中身は、ワールドを読み込んだときに新しい形式へそのまま引き継がれます。失われる弾はありません。</li></ul>
+      <h4>Balance changes</h4><ul><li>ミサイルランチャーの弾薬庫容量: 50発 → 200発。マップ上で指定できる目標の上限: 50箇所 → 100箇所。</li></ul>
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Warnings</div>
+          <ul><li>戦術マップの操作が変わりました。視点の移動は「右クリック長押し」です。左クリック長押しでは動かなくなりました(左クリックは目標の追加・削除専用です)。</li><li>ホッパーで弾薬庫へ補充することはできますが、ホッパーで中身を抜き取ることは意図的にできないようにしてあります。補充した弾薬庫が、繋いだホッパーに知らないうちに吸い出されるのを防ぐためです。</li><li>config の削除・書きかえは不要です。弾薬庫と目標数の新しい既定値(200発・100箇所)は起動時に自動で反映されます。ご自分で書きかえた設定値はそのまま残ります。</li></ul>
+        </div>
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>「一度に100発」は、1tickあたりの処理量に上限を設けたうえでの設計上の上限です。実際に100発を同時に飛ばして負荷を計測したものではありません。</li><li>脚・ミサイル管のtealの発光ラインは常時明るい静的な配色表現であり、発射/待機などの状態に応じて点灯・消灯する機能ではありません(V2.4.6からの既知の制限を継続)。</li><li>戦術マップの右ドラッグは視点の平行移動のみです(回転や3D的な傾きはありません)。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-27</div>
       <h3 class="timeline-entry__title">
