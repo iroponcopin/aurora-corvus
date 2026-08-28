@@ -185,6 +185,13 @@ NAV_SECTIONS = [
     ("features", "features/"),
     ("roadmap", "roadmap/"),
     ("issues", "known-issues/"),
+    # Temporary — see scripts/build_v3_teaser.py's header comment for the
+    # full removal steps once V3 actually ships. Not filed under a
+    # NAV_GROUPS panel on purpose: this is a time-limited announcement the
+    # owner wants visible, not a permanent reference page, so it stands
+    # alone (NAV_SOLO below) at the same top-level tier as Home rather than
+    # being buried a click deep inside a mega-menu.
+    ("v3", "v3/"),
 ]
 
 # English fallback nav labels, used only when a language bundle doesn't
@@ -193,8 +200,17 @@ NAV_SECTIONS = [
 # "launcher") lands in en/ja first — see load_bundle()/available_langs()
 # for the equivalent "English default" convention used throughout the
 # per-page build scripts (e.g. build_download.py's dl.get(key, "...")).
+#
+# "v3" is deliberately NEVER translated per-language, same as "launcher"
+# above: it is a version codename (like "Corvus"), not a phrase, and this
+# entry is the ONLY place its nav label lives — scripts/build_v3_teaser.py's
+# content (data/v3_teaser.json) never touches data/i18n/*.json at all, so
+# deleting the teaser page never leaves an orphaned nav string behind in any
+# of the 13 language bundles. See build_v3_teaser.py's header comment for
+# the rest of the removal steps once V3 ships.
 NAV_LABEL_FALLBACK = {
     "launcher": LAUNCHER_APP_NAME,
+    "v3": "V3",
 }
 
 # --- Mega menu -------------------------------------------------------------
@@ -202,7 +218,7 @@ NAV_LABEL_FALLBACK = {
 # standalone Home link. Every section in NAV_SECTIONS must appear exactly
 # once here or in NAV_SOLO — _nav_html() asserts that, so adding an 11th page
 # without filing it can't silently drop it out of the navigation.
-NAV_SOLO = ["home"]
+NAV_SOLO = ["home", "v3"]
 NAV_GROUPS = [
     ("start", ["download", "launcher", "guide"]),
     ("reference", ["recipes", "gates", "features"]),

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>V3アップデート | Aurora Corvus</title>
+<meta name="description" content="次期メジャーアップデート「V3」の先行紹介。探索・防衛・貯蔵など50の新機能を予定しています。近日公開予定で、現在はまだ配信されていません。">
+<meta property="og:title" content="V3アップデート | Aurora Corvus">
+<meta property="og:description" content="次期メジャーアップデート「V3」の先行紹介。探索・防衛・貯蔵など50の新機能を予定しています。近日公開予定で、現在はまだ配信されていません。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aurora Corvus">
+<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/v3-teaser/og-v3-teaser.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aurora Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/brand/apple-touch-icon.png">
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script>
+/* Boot: tag JS availability for the motion layer, and apply the persisted
+   theme before first paint. Dark is the flagship default; "light" is the
+   secondary theme (see style.css + main.js theme toggle).
+
+   THE KEY NAME IS A CONTRACT with main.js. It was broken once: the site was
+   renamed glimpse-alpha-wiki -> aurora-corvus, this script was updated and
+   the toggle in main.js was not, so the toggle wrote one key and this read
+   another. Nothing errored — a visitor on light simply got a dark first
+   paint on every page load, i.e. exactly the flash this script exists to
+   prevent. Change one side and you must change the other; the constants are
+   named on both sides so a grep finds them together.
+
+   The legacy key is read once as a fallback and then migrated, because
+   anyone currently on light has their choice stored under the OLD name and
+   silently resetting them to the default would be a second bug on top of
+   the first. It is REMOVED after a successful write rather than left
+   behind: two keys holding a theme is how this went wrong in the first
+   place, and once the value is under the new name nothing reads the old
+   one. The remove only runs if the write did not throw, so a storage
+   failure can never drop the preference. */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var KEY = "aurora-corvus-theme";
+  var LEGACY_KEY = "glimpse-alpha-wiki-theme";
+  var t = "dark";
+  try {
+    var s = localStorage.getItem(KEY);
+    if (s !== "light" && s !== "dark") {
+      var legacy = localStorage.getItem(LEGACY_KEY);
+      if (legacy === "light" || legacy === "dark") {
+        s = legacy;
+        try {
+          localStorage.setItem(KEY, s);
+          localStorage.removeItem(LEGACY_KEY);
+        } catch (e) { /* read-only storage: still honour the value this load */ }
+      }
+    }
+    if (s === "light" || s === "dark") t = s;
+  } catch (e) { /* storage unavailable: stay dark */ }
+  d.setAttribute("data-theme", t);
+})();
+</script>
+<link rel="stylesheet" href="../assets/css/v3-teaser.css">
+<script defer src="../assets/js/v3-teaser.js"></script>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
+<a class="skip-link" href="#main">本文へ移動</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">Aurora Corvus</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">ホーム</a></li>
+        <li class="nav-item"><a class="nav-link nav-link--solo is-current" href="../v3/" aria-current="page">V3</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>はじめる</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="はじめる">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">はじめる</p>
+                <p class="mega-panel__lede">配布 ZIP のダウンロードから、サーバーへの導入手順、Corvus による自動更新まで。</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">ダウンロード</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">導入ガイド</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>資料</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="資料">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">資料</p>
+                <p class="mega-panel__lede">全アイテムのクラフトレシピ、各次元ゲートの作り方、追加機能の紹介。</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">レシピ集</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">ゲート</span><span class="mega-link__sub">ゲート・門一覧</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">特集</span><span class="mega-link__sub">機能紹介</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>開発状況</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="開発状況">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">開発状況</p>
+                <p class="mega-panel__lede">これまでの更新履歴、今後の開発予定、そして既知の不具合。</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">更新履歴</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">今後の予定</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">既知の不具合</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
+          🌐 <span>日本語</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../v3/" class="active" aria-current="true">日本語</a></li>
+        <li><a href="../en/v3/">English</a></li>
+        <li><a href="../es/v3/">Español</a></li>
+        <li><a href="../fr/v3/">Français</a></li>
+        <li><a href="../zh/v3/">简体中文</a></li>
+        <li><a href="../ko/v3/">한국어</a></li>
+        <li><a href="../pt-br/v3/">Português (Brasil)</a></li>
+        <li><a href="../it/v3/">Italiano</a></li>
+        <li><a href="../ar/v3/">العربية</a></li>
+        <li><a href="../ru/v3/">Русский</a></li>
+        <li><a href="../id/v3/">Bahasa Indonesia</a></li>
+        <li><a href="../de/v3/">Deutsch</a></li>
+        <li><a href="../tr/v3/">Türkçe</a></li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="配色を切り替え" title="配色を切り替え">🌓</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="v3t-hero-shell">
+  <section class="v3t-hero" aria-label="V3アップデート">
+    <div class="v3t-hero__track" id="v3tTrack">
+      <div class="v3t-hero__stage" id="v3tStage">
+
+        <div class="v3t-scene v3t-scene--title" data-v3t-scene="0">
+          <div class="v3t-scene__row">
+            <div class="v3t-scene__media"><img src="../assets/img/v3-teaser/hero-illustration.webp" width="488" height="784" alt="" decoding="async" fetchpriority="high" loading="eager"></div>
+            <div class="v3t-scene__text">
+              <span class="v3t-eyebrow">近日公開</span>
+              <h1 class="v3t-word">V3</h1>
+              <p class="v3t-subtitle">次のアップデート</p>
+              <p class="v3t-count"><span class="v3t-count__num-inline">50</span>の新機能</p>
+              <p class="v3t-lede">V3は本パックの次期メジャーアップデートです。マップ照準式のミサイルランチャーや、新しい貯蔵設備・探索ツールなど、内容は多岐にわたります。複数回のリリースに分けて、少しずつ実装を進めています。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="v3t-scene v3t-scene--flagship" data-v3t-scene="1">
+          <div class="v3t-scene__row">
+            <div class="v3t-scene__media"><img src="../assets/img/v3-teaser/launcher.webp" width="1118" height="759" alt="" decoding="async" fetchpriority="high" loading="eager"></div>
+            <div class="v3t-scene__text">
+              <span class="v3t-eyebrow">フラッグシップ機能</span>
+              <h2 class="v3t-flagship-title">マップ照準式<span style="white-space:nowrap">ミサイルランチャー</span></h2>
+              <p class="v3t-lede">戦術マップを開き、最大2,000ブロック先の目標にピンを立てて、ロックオンして発射。座標を手入力する必要はありません。射程・弾薬・クールダウンはすべて発射前にサーバー側で検証されます。</p>
+            </div>
+          </div>
+        </div>
+
+        <span class="v3t-cue" aria-hidden="true"></span>
+        <span class="v3t-progress" aria-hidden="true"><i></i></span>
+      </div>
+    </div>
+  </section>
+</div>
+<section class="v3t-cat">
+  <div class="v3t-grid-bg" aria-hidden="true"></div>
+  <div class="v3t-cat__inner">
+    <div class="v3t-cat__visual" aria-hidden="true">
+      <div class="v3t-motif v3t-motif--wire" style="width:72%;height:72%;top:0;left:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(0deg)">
+  <polygon points="100,18 170,60 170,140 100,182 30,140 30,60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polygon points="100,55 138,78 138,122 100,145 62,122 62,78" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="18" x2="100" y2="55" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="60" x2="138" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="140" x2="138" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="182" x2="100" y2="145" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="140" x2="62" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="60" x2="62" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <rect x="94" y="12" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="54" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="176" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="54" width="12" height="12" fill="currentColor"/>
+</svg></div>
+      <div class="v3t-motif v3t-motif--circuit" style="width:60%;height:60%;bottom:0;right:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(15deg)">
+  <path d="M20 170 L20 110 L80 110 L80 60 L150 60 L150 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M40 170 L40 130 L100 130 L100 90 L170 90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+  <rect x="14" y="164" width="12" height="12" fill="currentColor"/>
+  <rect x="74" y="104" width="12" height="12" fill="currentColor"/>
+  <rect x="144" y="24" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <rect x="164" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <circle cx="20" cy="170" r="4" fill="currentColor"/>
+  <circle cx="150" cy="30" r="4" fill="currentColor"/>
+</svg></div>
+    </div>
+    <div class="v3t-cat__text">
+      <p class="v3t-cat__phrase">拠点の規模に、ちゃんと追いついてくる貯蔵。</p>
+      <p class="v3t-cat__body">備蓄する資材専用の背の高いサイロ、水流から直接アイテムを濾しとるポンプ、そして中身の量が一目でわかるガラス製の貯蔵庫。</p>
+      <ul class="v3t-chip-row"><li class="v3t-chip">グレインサイロ</li><li class="v3t-chip">シルトフィルターポンプ</li><li class="v3t-chip">ガラスアンフォラ</li></ul>
+    </div>
+  </div>
+</section>
+<section class="v3t-cat">
+  <div class="v3t-grid-bg" aria-hidden="true"></div>
+  <div class="v3t-cat__inner">
+    <div class="v3t-cat__visual" aria-hidden="true">
+      <div class="v3t-motif v3t-motif--wire" style="width:72%;height:72%;top:0;right:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(47deg)">
+  <polygon points="100,18 170,60 170,140 100,182 30,140 30,60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polygon points="100,55 138,78 138,122 100,145 62,122 62,78" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="18" x2="100" y2="55" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="60" x2="138" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="140" x2="138" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="182" x2="100" y2="145" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="140" x2="62" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="60" x2="62" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <rect x="94" y="12" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="54" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="176" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="54" width="12" height="12" fill="currentColor"/>
+</svg></div>
+      <div class="v3t-motif v3t-motif--circuit" style="width:60%;height:60%;bottom:0;left:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(98deg)">
+  <path d="M20 170 L20 110 L80 110 L80 60 L150 60 L150 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M40 170 L40 130 L100 130 L100 90 L170 90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+  <rect x="14" y="164" width="12" height="12" fill="currentColor"/>
+  <rect x="74" y="104" width="12" height="12" fill="currentColor"/>
+  <rect x="144" y="24" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <rect x="164" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <circle cx="20" cy="170" r="4" fill="currentColor"/>
+  <circle cx="150" cy="30" r="4" fill="currentColor"/>
+</svg></div>
+    </div>
+    <div class="v3t-cat__text">
+      <p class="v3t-cat__phrase">歩いた場所を覚えている。見つけたものを覚えている。</p>
+      <p class="v3t-cat__body">歩くたびに埋まっていく生きた地図テーブル、景色をパノラマごと記録する三脚カメラ、そして今いる深さをそっと教えてくれるHUDチャーム。</p>
+      <ul class="v3t-chip-row"><li class="v3t-chip">リビングマップテーブル</li><li class="v3t-chip">三脚カメラ</li><li class="v3t-chip">深度計</li></ul>
+    </div>
+  </div>
+</section>
+<section class="v3t-cat">
+  <div class="v3t-grid-bg" aria-hidden="true"></div>
+  <div class="v3t-cat__inner">
+    <div class="v3t-cat__visual" aria-hidden="true">
+      <div class="v3t-motif v3t-motif--wire" style="width:72%;height:72%;top:0;left:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(94deg)">
+  <polygon points="100,18 170,60 170,140 100,182 30,140 30,60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polygon points="100,55 138,78 138,122 100,145 62,122 62,78" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="18" x2="100" y2="55" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="60" x2="138" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="140" x2="138" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="182" x2="100" y2="145" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="140" x2="62" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="60" x2="62" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <rect x="94" y="12" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="54" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="176" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="54" width="12" height="12" fill="currentColor"/>
+</svg></div>
+      <div class="v3t-motif v3t-motif--circuit" style="width:60%;height:60%;bottom:0;right:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(181deg)">
+  <path d="M20 170 L20 110 L80 110 L80 60 L150 60 L150 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M40 170 L40 130 L100 130 L100 90 L170 90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+  <rect x="14" y="164" width="12" height="12" fill="currentColor"/>
+  <rect x="74" y="104" width="12" height="12" fill="currentColor"/>
+  <rect x="144" y="24" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <rect x="164" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <circle cx="20" cy="170" r="4" fill="currentColor"/>
+  <circle cx="150" cy="30" r="4" fill="currentColor"/>
+</svg></div>
+    </div>
+    <div class="v3t-cat__text">
+      <p class="v3t-cat__phrase">新しい大地と、そこに育つ新しいもの。</p>
+      <p class="v3t-cat__body">砂漠の縁に風が削った砂丘、暗闇でしか咲かない作物、季節とともに実る果樹、そして水源を並べなくても水生植物を育てられるプランター。</p>
+      <ul class="v3t-chip-row"><li class="v3t-chip">デューン地形</li><li class="v3t-chip">ナイトブルームランタン</li><li class="v3t-chip">オーチャード</li><li class="v3t-chip">タイドプールプランター</li></ul>
+    </div>
+  </div>
+</section>
+<section class="v3t-cat">
+  <div class="v3t-grid-bg" aria-hidden="true"></div>
+  <div class="v3t-cat__inner">
+    <div class="v3t-cat__visual" aria-hidden="true">
+      <div class="v3t-motif v3t-motif--wire" style="width:72%;height:72%;top:0;right:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(141deg)">
+  <polygon points="100,18 170,60 170,140 100,182 30,140 30,60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polygon points="100,55 138,78 138,122 100,145 62,122 62,78" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="18" x2="100" y2="55" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="60" x2="138" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="140" x2="138" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="182" x2="100" y2="145" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="140" x2="62" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="60" x2="62" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <rect x="94" y="12" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="54" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="176" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="54" width="12" height="12" fill="currentColor"/>
+</svg></div>
+      <div class="v3t-motif v3t-motif--circuit" style="width:60%;height:60%;bottom:0;left:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(264deg)">
+  <path d="M20 170 L20 110 L80 110 L80 60 L150 60 L150 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M40 170 L40 130 L100 130 L100 90 L170 90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+  <rect x="14" y="164" width="12" height="12" fill="currentColor"/>
+  <rect x="74" y="104" width="12" height="12" fill="currentColor"/>
+  <rect x="144" y="24" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <rect x="164" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <circle cx="20" cy="170" r="4" fill="currentColor"/>
+  <circle cx="150" cy="30" r="4" fill="currentColor"/>
+</svg></div>
+    </div>
+    <div class="v3t-cat__text">
+      <p class="v3t-cat__phrase">信号を読み、拠点を守る。</p>
+      <p class="v3t-cat__body">拠点全体に響く警告のベル、レッドストーン信号の強さを時系列でグラフ化するオシロスコープ、レッドストーンダストなしで電力を通す銅グリッド、そして襲撃の発生率を静かに下げるジャマー。</p>
+      <ul class="v3t-chip-row"><li class="v3t-chip">レゾナントベル</li><li class="v3t-chip">オシロスコープ</li><li class="v3t-chip">銅グリッド</li><li class="v3t-chip">レイドジャマー</li></ul>
+    </div>
+  </div>
+</section>
+<section class="v3t-cat">
+  <div class="v3t-grid-bg" aria-hidden="true"></div>
+  <div class="v3t-cat__inner">
+    <div class="v3t-cat__visual" aria-hidden="true">
+      <div class="v3t-motif v3t-motif--wire" style="width:72%;height:72%;top:0;left:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(188deg)">
+  <polygon points="100,18 170,60 170,140 100,182 30,140 30,60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polygon points="100,55 138,78 138,122 100,145 62,122 62,78" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="18" x2="100" y2="55" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="60" x2="138" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="140" x2="138" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="182" x2="100" y2="145" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="140" x2="62" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="60" x2="62" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <rect x="94" y="12" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="54" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="176" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="54" width="12" height="12" fill="currentColor"/>
+</svg></div>
+      <div class="v3t-motif v3t-motif--circuit" style="width:60%;height:60%;bottom:0;right:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(347deg)">
+  <path d="M20 170 L20 110 L80 110 L80 60 L150 60 L150 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M40 170 L40 130 L100 130 L100 90 L170 90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+  <rect x="14" y="164" width="12" height="12" fill="currentColor"/>
+  <rect x="74" y="104" width="12" height="12" fill="currentColor"/>
+  <rect x="144" y="24" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <rect x="164" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <circle cx="20" cy="170" r="4" fill="currentColor"/>
+  <circle cx="150" cy="30" r="4" fill="currentColor"/>
+</svg></div>
+    </div>
+    <div class="v3t-cat__text">
+      <p class="v3t-cat__phrase">どの次元にも、その次元のための答えを。</p>
+      <p class="v3t-cat__body">エンドに固定した1つのリコールポイント、バックルームでプレイヤーを傷つけずに安定させるランプ、そしてエンドクリスタルの暴発を防ぎつつ任意のタイミングで武装できるラティス。</p>
+      <ul class="v3t-chip-row"><li class="v3t-chip">コーラスアンカー</li><li class="v3t-chip">バックルームランプ</li><li class="v3t-chip">クリスタルラティス</li></ul>
+    </div>
+  </div>
+</section>
+<section class="v3t-cat">
+  <div class="v3t-grid-bg" aria-hidden="true"></div>
+  <div class="v3t-cat__inner">
+    <div class="v3t-cat__visual" aria-hidden="true">
+      <div class="v3t-motif v3t-motif--wire" style="width:72%;height:72%;top:0;right:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(235deg)">
+  <polygon points="100,18 170,60 170,140 100,182 30,140 30,60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polygon points="100,55 138,78 138,122 100,145 62,122 62,78" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="18" x2="100" y2="55" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="60" x2="138" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="170" y1="140" x2="138" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="182" x2="100" y2="145" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="140" x2="62" y2="122" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="60" x2="62" y2="78" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <rect x="94" y="12" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="54" width="12" height="12" fill="currentColor"/>
+  <rect x="164" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="176" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="134" width="12" height="12" fill="currentColor"/>
+  <rect x="24" y="54" width="12" height="12" fill="currentColor"/>
+</svg></div>
+      <div class="v3t-motif v3t-motif--circuit" style="width:60%;height:60%;bottom:0;left:0;"><svg viewBox="0 0 200 200" aria-hidden="true" style="transform:rotate(70deg)">
+  <path d="M20 170 L20 110 L80 110 L80 60 L150 60 L150 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M40 170 L40 130 L100 130 L100 90 L170 90" fill="none" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+  <rect x="14" y="164" width="12" height="12" fill="currentColor"/>
+  <rect x="74" y="104" width="12" height="12" fill="currentColor"/>
+  <rect x="144" y="24" width="12" height="12" fill="currentColor"/>
+  <rect x="94" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <rect x="164" y="84" width="10" height="10" fill="currentColor" opacity="0.75"/>
+  <circle cx="20" cy="170" r="4" fill="currentColor"/>
+  <circle cx="150" cy="30" r="4" fill="currentColor"/>
+</svg></div>
+    </div>
+    <div class="v3t-cat__text">
+      <p class="v3t-cat__phrase">仕上げの細部が、全体を完成させる。</p>
+      <p class="v3t-cat__body">座席の位置がきちんと合った乗り物、生きた地図テーブルのために自律探索するドローン、そしてパック側のバージョン情報をツールチップに刻むスタンプ。</p>
+      <ul class="v3t-chip-row"><li class="v3t-chip">シートキット</li><li class="v3t-chip">ドローン調査</li><li class="v3t-chip">設計図スタンプ</li></ul>
+    </div>
+  </div>
+</section>
+<section class="v3t-closing">
+  <div class="v3t-closing__inner">
+    <p class="v3t-closing__quality">50の機能、ルールは1つ。配信前に、パック自身の整合性チェックですべて検証されます。</p>
+    <p class="v3t-closing__status">V3は現在も複数回のリリースに分けて開発中です。配信時期は未定です。実装が確定したものは「更新履歴」に反映されます。 <a href="../changelog/">更新履歴</a></p>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Aurora Corvus</p>
+    <p>そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
+    <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)は V2.2.0 からこの「ダウンロード」ページで直接配布しています。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。 Minecraft は Mojang Studios の商標です。本サイトおよびここで配布している MOD は公式のものではなく、Mojang Studios・Microsoft とは関係ありません。</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
