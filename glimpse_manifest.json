@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "1.5.1",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1.jar",
-    "file_name": "corvus-1.5.1.jar",
-    "file_size": 10569787,
-    "sha256": "ad2a179174b93e7f0e717ab17de768bd2d17be2e1a63316fc637668cc6f5ac11",
-    "notes": "Fixes a bug that could leave your Minecraft unable to start. If you installed the mod pack by hand before pointing Corvus at the folder — which the guide tells you is fine — the first update added the new mod files but could not remove the old ones, because it had no record of what was already there. Two copies of the same mod stops the game loading. Corvus now recognises the pack's own files by name, so superseded ones are removed whether or not it has a record, and it checks afterwards that only one copy of each mod is left. Your own mods are never touched: only files matching the pack's exact naming are removed, everything is backed up first, and each removal is written to the log.",
+    "latest": "1.5.2",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.2.jar",
+    "file_name": "corvus-1.5.2.jar",
+    "file_size": 10575016,
+    "sha256": "e701f54b61a57392ff516144cae9048736f5f58701cafa5f628b177dd706ed12",
+    "notes": "Corvus now reads the pack's name from what this site publishes, instead of having it written into the app. Until now it always said \"Glimpse Alpha\" on its main screen — which became wrong the moment the pack was renamed to \"Alpha\", and could only have been corrected by shipping a new launcher. It now follows the name published here, so a future rename needs no launcher update at all. Nothing about updating, Play or Settings has changed. This release also rewrites several log messages that were showing raw internal detail rather than a sentence — including one that reported a failure as simply \"null\", which told you nothing about what had gone wrong.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1-macos.dmg",
-        "file_name": "corvus-1.5.1-macos.dmg",
-        "file_size": 67947817,
-        "sha256": "cb42b2590571c0144a4c117db915f1f8c238a50eeebb0be951a01e7ea56414f5"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.2-macos.dmg",
+        "file_name": "corvus-1.5.2-macos.dmg",
+        "file_size": 67956481,
+        "sha256": "40b61797bcb1612d37aae7545857585e6b59aa5445624654fead718e25b2a126"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1-windows.msi",
-        "file_name": "corvus-1.5.1-windows.msi",
-        "file_size": 65343319,
-        "sha256": "41864df2e7a8a2c23085612e58929779067ed1a649e0a7aceafbed2a144a4b63"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.2-windows.msi",
+        "file_name": "corvus-1.5.2-windows.msi",
+        "file_size": 65351511,
+        "sha256": "bde40c4e81bdf85128ee898857f564b39b198a4dc925fbda793aa981c274323e"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1-linux.deb",
-        "file_name": "corvus-1.5.1-linux.deb",
-        "file_size": 46671462,
-        "sha256": "8489650a5c205d8b5746660289bac681c32db54b4c9e7e7b7f360fbc4b3e67f9"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.2-linux.deb",
+        "file_name": "corvus-1.5.2-linux.deb",
+        "file_size": 46673478,
+        "sha256": "abe25ac9fc20ca717ae66d1d7c62fc5b2ed6032b3935b42e91d5e61c12597c5d"
       }
     }
   }
