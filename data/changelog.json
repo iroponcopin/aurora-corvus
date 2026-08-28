@@ -1733,5 +1733,35 @@
       "ゲーム内のコマンド名(/glimpsebackup、/glimpse storm restore)と、管理者向けの記録ファイル(glimpse-admin/audit.log)には「glimpse」の名前が残ります。コマンド名を変えるとこれまでのスクリプトが動かなくなり、記録ファイルの名前を変えるとそれまでの記録が読めなくなるため、あえて変更していません。",
       "画面のデザインの名前である「Glimpse Glass」は、MOD の名前ではないため、そのままです。"
     ]
+  },
+  {
+    "release": "V2.5.1",
+    "date": "2026-08-28",
+    "type": "release",
+    "title": "ミサイルランチャーの戦術マップを軽く、Corvusランチャーの新しい「ソロプレイ調整」に対応するデータを追加",
+    "summary": "ミサイルランチャーの戦術マップで、目標を選ぶ操作(ドラッグ・ズーム)をしているときに重くなっていた問題を軽くしました。あわせて、サーバー管理者向けに導入内容を点検する /packintegrity コマンドを追加し、デスクトップアプリ「Corvus」の新しい「ソロプレイ調整」画面がシングルプレイヤーで使うためのデータをこの版から追加しています。",
+    "mod_versions": {
+      "sorakaze_backrooms": "2.5.1",
+      "sorakaze_boss": "2.5.1",
+      "sorakaze_deco": "2.5.1",
+      "sorakaze_guns": "2.5.1",
+      "sorakaze_planarcadia": "2.5.1",
+      "sorakaze_power": "2.5.1",
+      "sorakaze_rail": "2.5.1",
+      "sorakaze_sky": "2.5.1",
+      "sorakaze_survival": "2.5.1",
+      "sorakaze_vehicles": "2.5.1",
+      "sorakaze_sapporo": "2.5.1"
+    },
+    "highlights": [
+      "ミサイルランチャーの戦術マップで、地形を表示しながら目標を選ぶ操作をしているときに重くなっていた問題を軽くしました。見た目や操作方法は変わりません。",
+      "サーバー管理者向けに、MOD一式が正しくそろっているかを点検する /packintegrity コマンドを追加しました(結果は logs/pack_integrity.log にも記録されます)。プレイ内容には影響しません。",
+      "デスクトップアプリ「Corvus」に追加された「ソロプレイ調整」画面(設定 → ソロプレイ調整)が、シングルプレイヤーで管理者設定と同じ項目を直接調整できるようにするためのデータを、この版から追加しました。Corvusを最新版に更新するとお使いいただけます。"
+    ],
+    "balance_changes": [],
+    "warnings": [],
+    "known_limitations": [
+      "「ソロプレイ調整」画面の利用にはCorvus 1.7.0以降が必要です。それより前のCorvusには表示されません。"
+    ]
   }
 ]
