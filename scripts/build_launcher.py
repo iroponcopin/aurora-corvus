@@ -6,15 +6,14 @@ The app was called "Glimpse Launcher" up to 1.2.1 and was renamed to Corvus
 with 1.3.0. The mod pack was ALSO renamed since — "Glimpse Alpha" -> "Alpha"
 in V2.5.0 (2026-08-28), which this header used to say would never happen.
 
-⚠ The player-facing copy below, and the launcher_page/guide/download strings
-  in all 13 data/i18n bundles, still say "Glimpse Alpha" and still tell
-  players to look for `glimpse-alpha-*.jar`. From V2.5.0 those files are
-  named `alpha-*.jar`, so that instruction is now wrong. It was left in place
-  deliberately rather than half-fixed: the pack name appears ~350 times
-  across the 13 language bundles, and renaming it in the English fallbacks
-  alone would leave the site saying two different things in two different
-  languages. The site-wide copy rename is one job, and it needs a translator
-  pass, not an f-string edit. See the V2.5.0 release report.
+The site-wide copy rename that V2.5.0 deferred has since been done, in one
+pass across all 13 data/i18n bundles and the English fallbacks below, so the
+pack is called "Alpha" and the jars players are told to look for are
+`alpha-*.jar` everywhere at once. Changelog entries were deliberately left
+alone: the pack really was called Glimpse Alpha in those releases, and
+rewriting them would falsify the record. "Glimpse Alpha Glass" is also left
+alone — it names a UI design, and its resource pack still ships inside the
+V2.5.0 ZIP as Glimpse_Alpha_Glass_UI_Pack.zip.
 
 Follows the same pattern as build_guide.py: page()/write_page() from
 site_common.py, one page per available_langs() language. Real content is
@@ -47,7 +46,7 @@ from site_common import (  # noqa: E402
 # out here (and in the EN and JA bundles) as glimpse-launcher-1.2.1.jar,
 # which is precisely the copy the Corvus rename would have left lying.
 _DEFAULT_INTRO = (
-    f"{LAUNCHER_APP_NAME} is a small desktop app that keeps your Glimpse Alpha mod pack up to "
+    f"{LAUNCHER_APP_NAME} is a small desktop app that keeps your Alpha mod pack up to "
     "date automatically. It checks this Wiki for the current release, downloads updates for "
     "you, and verifies every file it downloads against a SHA-256 checksum published here "
     "before it touches your pack folder. This Wiki is the only source it trusts — it does not "
@@ -93,7 +92,7 @@ _DEFAULT_SECTIONS = [
         "id": "pointing-at-existing-pack",
         "title": "Pointing it at an existing pack folder",
         "body_html": (
-            "<p>If you've already installed Glimpse Alpha manually, you don't need to start "
+            "<p>If you've already installed the Alpha pack manually, you don't need to start "
             "over. On first run, the launcher lets you choose the folder your mod pack already "
             "lives in instead of creating a new one. Point it at your existing mods folder and "
             "the launcher will treat that installation as the one it manages from then on.</p>"
@@ -124,13 +123,13 @@ _DEFAULT_SECTIONS = [
             "<p>To see the change for yourself on macOS: open the folder shown in Settings "
             "(<kbd>&#8984;</kbd>+<kbd>&#8679;</kbd>+<kbd>G</kbd> in Finder, then paste the path), "
             "look inside <code>mods</code>, and check the version number in each "
-            "<code>glimpse-alpha-*.jar</code> filename before and after clicking Update.</p>"
+            "<code>alpha-*.jar</code> filename before and after clicking Update.</p>"
             "<p class=\"callout callout--info\">If you're updating from a pack folder that was "
             "last touched by a launcher older than 1.1.0, the very first update may leave one "
             "old-versioned jar sitting alongside the new one for that mod (the launcher didn't "
             "yet have a record of which files it had previously placed). This clears up on its "
             "own from the next update onward. If it bothers you sooner, it's safe to delete the "
-            "older-numbered <code>glimpse-alpha-*.jar</code> by hand once the new one is "
+            "older-numbered <code>alpha-*.jar</code> by hand once the new one is "
             "confirmed present.</p>"
         ),
     },

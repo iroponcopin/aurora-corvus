@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Installationsanleitung | Aurora Corvus</title>
-<meta name="description" content="Installationsanleitung für das Glimpse Alpha MOD-Paket. Enthält die Einrichtung auf dem Server sowie die Teilnahme-Einstellungen für Spieler.">
+<meta name="description" content="Installationsanleitung für das Alpha MOD-Paket. Enthält die Einrichtung auf dem Server sowie die Teilnahme-Einstellungen für Spieler.">
 <meta property="og:title" content="Installationsanleitung | Aurora Corvus">
-<meta property="og:description" content="Installationsanleitung für das Glimpse Alpha MOD-Paket. Enthält die Einrichtung auf dem Server sowie die Teilnahme-Einstellungen für Spieler.">
+<meta property="og:description" content="Installationsanleitung für das Alpha MOD-Paket. Enthält die Einrichtung auf dem Server sowie die Teilnahme-Einstellungen für Spieler.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -181,12 +181,12 @@
   <h1>Installationsanleitung</h1>
   <p class="lede">Hier sind alle Schritte von der Aktivierung der MODs bis zum Spielstart zusammengefasst. Wenn du nur als Spieler mitspielen willst, reicht das Kapitel „Für Spieler“ völlig aus.</p>
 </div>
-<div class="toc"><div class="toc__title">Inhaltsverzeichnis</div><ol><li><a href="#overview">Übersicht: Über die Installation von Glimpse Alpha</a></li><li><a href="#player-setup">Für Spieler: Einstellungen für die Teilnahme am Server</a></li><li><a href="#admin-prep">Für Server-Administratoren: Vorbereitung (Backup und Versionsprüfung)</a></li><li><a href="#admin-fabric-install">Für Server-Administratoren: Installation von Fabric</a></li><li><a href="#admin-mods-and-verify">Für Server-Administratoren: Installation der MODs und Startprüfung</a></li><li><a href="#admin-upgrade">Beim Austausch der MODs gegen eine neue Version</a></li><li><a href="#gameplay-notices">Wissenswertes vor dem Spielen</a></li><li><a href="#faq">Häufige Fragen &amp; Fehlerbehebung</a></li></ol></div>
+<div class="toc"><div class="toc__title">Inhaltsverzeichnis</div><ol><li><a href="#overview">Übersicht: Über die Installation des Alpha-Pakets</a></li><li><a href="#player-setup">Für Spieler: Einstellungen für die Teilnahme am Server</a></li><li><a href="#admin-prep">Für Server-Administratoren: Vorbereitung (Backup und Versionsprüfung)</a></li><li><a href="#admin-fabric-install">Für Server-Administratoren: Installation von Fabric</a></li><li><a href="#admin-mods-and-verify">Für Server-Administratoren: Installation der MODs und Startprüfung</a></li><li><a href="#admin-upgrade">Beim Austausch der MODs gegen eine neue Version</a></li><li><a href="#gameplay-notices">Wissenswertes vor dem Spielen</a></li><li><a href="#faq">Häufige Fragen &amp; Fehlerbehebung</a></li></ol></div>
 <div id="overview"><div class="card" style="margin-bottom:20px;">
       
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">Übersicht: Über die Installation von Glimpse Alpha</h2>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Übersicht: Über die Installation des Alpha-Pakets</h2>
       <p>
-  <strong>Glimpse Alpha</strong> (ehemals: Sorakaze) ist die Sammlung von Fabric-MODs,
+  <strong>Alpha</strong> (ehemals: Glimpse Alpha, davor Sorakaze) ist die Sammlung von Fabric-MODs,
   die auf dem Sorakazekarasu-Server installiert ist. Sie besteht aus 11 unabhängigen MODs,
   die sich jeweils einzeln installieren und aktualisieren lassen.
   Vanilla-Inhalte (der Standardumfang ohne MODs) wie Bogen und Pfeil oder Loren werden
@@ -230,8 +230,8 @@ alle bisherigen Änderungen im <a href="../changelog/">Änderungsprotokoll</a>.<
 
 <h3>Wer stellt was bereit?</h3>
 <ul>
-  <li><strong>Der Server (Sorakazekarasu-Server)</strong> — Fabric-Server + Fabric API + die 11 Glimpse-Alpha-MODs</li>
-  <li><strong>Der PC jeder teilnehmenden Person</strong> — Fabric-Client + Fabric API + die 11 Glimpse-Alpha-MODs (exakt dieselbe Kombination wie auf dem Server)</li>
+  <li><strong>Der Server (Sorakazekarasu-Server)</strong> — Fabric-Server + Fabric API + die 11 Alpha-MODs</li>
+  <li><strong>Der PC jeder teilnehmenden Person</strong> — Fabric-Client + Fabric API + die 11 Alpha-MODs (exakt dieselbe Kombination wie auf dem Server)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -289,7 +289,7 @@ alle bisherigen Änderungen im <a href="../changelog/">Änderungsprotokoll</a>.<
 <h3>Was du brauchst</h3>
 <ul>
   <li>Einen Windows- oder Mac-PC, auf dem Minecraft Java Edition läuft</li>
-  <li>Den vom Server-Administrator erhaltenen <strong>vollständigen MOD-Satz (12 jar-Dateien = 1 Fabric API + 11 Glimpse-Alpha-MODs)</strong></li>
+  <li>Den vom Server-Administrator erhaltenen <strong>vollständigen MOD-Satz (12 jar-Dateien = 1 Fabric API + 11 Alpha-MODs)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -308,15 +308,15 @@ alle bisherigen Änderungen im <a href="../changelog/">Änderungsprotokoll</a>.<
 <table>
 <tr><th>Dateiname (Beispiel)</th><th>Inhalt</th></tr>
 <tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Gemeinsame Bauteile, damit die MODs funktionieren</td></tr>
-<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Schusswaffen-MOD</td></tr>
-<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Schienenverkehr-MOD</td></tr>
-<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Baumaterial-&amp;-Deko-MOD</td></tr>
-<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Fahrzeuge-MOD</td></tr>
-<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Boss-MOD</td></tr>
-<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Himmel-MOD</td></tr>
-<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Survival-MOD</td></tr>
-<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Strom-MOD</td></tr>
-<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms-MOD</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>Planarcadia-MOD</td></tr>
+<tr><td><code>alpha-guns-…+mc26.2.jar</code></td><td>Schusswaffen-MOD</td></tr>
+<tr><td><code>alpha-rail-…+mc26.2.jar</code></td><td>Schienenverkehr-MOD</td></tr>
+<tr><td><code>alpha-deco-…+mc26.2.jar</code></td><td>Baumaterial-&amp;-Deko-MOD</td></tr>
+<tr><td><code>alpha-vehicles-…+mc26.2.jar</code></td><td>Fahrzeuge-MOD</td></tr>
+<tr><td><code>alpha-boss-…+mc26.2.jar</code></td><td>Boss-MOD</td></tr>
+<tr><td><code>alpha-sky-…+mc26.2.jar</code></td><td>Himmel-MOD</td></tr>
+<tr><td><code>alpha-survival-…+mc26.2.jar</code></td><td>Survival-MOD</td></tr>
+<tr><td><code>alpha-power-…+mc26.2.jar</code></td><td>Strom-MOD</td></tr>
+<tr><td><code>alpha-backrooms-…+mc26.2.jar</code></td><td>Backrooms-MOD</td></tr><tr><td><code>alpha-planarcadia-…+mc26.2.jar</code></td><td>Planarcadia-MOD</td></tr>
 </table>
 </div>
 
@@ -379,7 +379,7 @@ alle bisherigen Änderungen im <a href="../changelog/">Änderungsprotokoll</a>.<
 <h3>③ Mit Fabric starten und dem Server beitreten</h3>
 <ol class="steps">
   <li>Öffne den Minecraft-Launcher und wähle in der Liste der Startprofile in der Nähe des „Spielen“-Buttons ein Profil wie <code>fabric-loader-26.2</code> aus (bleibst du bei „Neuestes Release“, startet das Spiel ohne MODs).</li>
-  <li>Klicke dann auf „Spielen“, um zu starten. Erscheint auf dem Titelbildschirm zusätzlich ein „Mods“-Button, war es erfolgreich. Ein Klick darauf zeigt die 11 Glimpse-Alpha-MODs sowie die Fabric API an.</li>
+  <li>Klicke dann auf „Spielen“, um zu starten. Erscheint auf dem Titelbildschirm zusätzlich ein „Mods“-Button, war es erfolgreich. Ein Klick darauf zeigt die 11 Alpha-MODs sowie die Fabric API an.</li>
   <li>Verbinde dich anschließend wie gewohnt über „Mehrspieler“ mit dem Server.</li>
 </ol>
 
@@ -387,7 +387,7 @@ alle bisherigen Änderungen im <a href="../changelog/">Änderungsprotokoll</a>.<
 <p>Wird der MOD-Bestand auf dem Server aktualisiert, müssen alle Teilnehmenden gleichzeitig auf dieselbe neue Version wechseln.</p>
 <ol class="steps">
   <li>Erhalte die neuen MOD-Dateien vom Server-Administrator (warte auf die Ankündigung, bevor du beginnst).</li>
-  <li>Öffne den mods-Ordner, <strong>lösche zuerst die bisher vorhandenen Glimpse-Alpha-jar-Dateien</strong> und lege danach die neuen Dateien hinein (auch wenn sich der Dateiname ändert, gilt der Inhalt als derselbe MOD – bleiben alte Dateien liegen, startet das Spiel nicht).</li>
+  <li>Öffne den mods-Ordner, <strong>lösche zuerst die bisher vorhandenen Alpha-jar-Dateien</strong> und lege danach die neuen Dateien hinein (auch wenn sich der Dateiname ändert, gilt der Inhalt als derselbe MOD – bleiben alte Dateien liegen, startet das Spiel nicht).</li>
   <li>Starte wie gewohnt über das fabric-loader-Profil.</li>
 </ol>
 <div class="callout callout--warn">
@@ -416,7 +416,7 @@ alle bisherigen Änderungen im <a href="../changelog/">Änderungsprotokoll</a>.<
       <p>
   Ab hier richtet sich das Kapitel an alle, die den Server selbst betreiben und verwalten. Ausgehend von
   einem bereits laufenden Minecraft-Server (Vanilla, der MOD-lose Standardserver) wird hier erklärt, wie
-  Fabric und die 11 Glimpse-Alpha-MODs hinzugefügt werden. Dieses Kapitel verwendet als Beispiel einen
+  Fabric und die 11 Alpha-MODs hinzugefügt werden. Dieses Kapitel verwendet als Beispiel einen
   Windows-Server. Betreibst du den Server unter Mac/Linux, übertrage die Ordnerpfade und die Art der
   Befehlsausführung auf deine Umgebung und folge den entsprechenden Schritten (Anleitung der offiziellen
   Fabric-Website).
@@ -526,22 +526,22 @@ pause</pre>
 
 <h3>3. Den vollständigen MOD-Satz in den mods-Ordner legen</h3>
 <p>
-  Kopiere insgesamt 12 jar-Dateien – 1 Fabric API + 11 Glimpse-Alpha-MODs – in den <code>mods</code>-Ordner
+  Kopiere insgesamt 12 jar-Dateien – 1 Fabric API + 11 Alpha-MODs – in den <code>mods</code>-Ordner
   (kein Entpacken nötig, sie bleiben als jar-Dateien). Die 11 MOD-Dateien selbst besorgst du wie bisher über
   den gewohnten Verteilungsweg. <strong>Diese Seite verteilt die MOD-Dateien selbst nicht.</strong>
 </p>
 <div class="table-wrap">
 <table>
 <tr><th>MOD</th><th>Beispiel-Dateiname</th></tr>
-<tr><td>Schusswaffen</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
-<tr><td>Schienenverkehr</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
-<tr><td>Baumaterial &amp; Deko</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
-<tr><td>Fahrzeuge</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
-<tr><td>Bosse</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
-<tr><td>Himmel</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
-<tr><td>Survival</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
-<tr><td>Strom</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
-<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>
+<tr><td>Schusswaffen</td><td><code>alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>Schienenverkehr</td><td><code>alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>Baumaterial &amp; Deko</td><td><code>alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>Fahrzeuge</td><td><code>alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Bosse</td><td><code>alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>Himmel</td><td><code>alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>Survival</td><td><code>alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>Strom</td><td><code>alpha-power-…+mc26.2.jar</code></td></tr>
+<tr><td>Backrooms</td><td><code>alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>alpha-planarcadia-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -577,7 +577,7 @@ damit sie denselben Fabric- und MOD-Satz auch auf ihrem eigenen PC installieren.
 <div id="admin-upgrade"><div class="card" style="margin-bottom:20px;">
       <div class="badge-row"><span class="type-badge type-visual">Für Server-Administratoren</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Beim Austausch der MODs gegen eine neue Version</h2>
-      <p>Da bei Glimpse Alpha die 11 MODs jeweils vollständig unabhängig voneinander sind, werden bei einem Update
+      <p>Da im Alpha-Paket die 11 MODs jeweils vollständig unabhängig voneinander sind, werden bei einem Update
 nicht zwangsläufig alle 11 ausgetauscht. Es reicht, nur die MODs zu ersetzen, deren Inhalt sich tatsächlich
 geändert hat (welche MODs betroffen sind, erfährst du bei der Verteilung oder im <a href="../changelog/">Änderungsprotokoll</a>).</p>
 
@@ -631,7 +631,7 @@ geändert hat (welche MODs betroffen sind, erfährst du bei der Verteilung oder 
       
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Wissenswertes vor dem Spielen</h2>
       <p>
-  Glimpse Alpha enthält auch einige Änderungen, die sich auf Vanilla-Verhalten auswirken. Hier sind besonders
+  Das Alpha-Paket enthält auch einige Änderungen, die sich auf Vanilla-Verhalten auswirken. Hier sind besonders
   leicht zu übersehende Punkte zusammengefasst. Da sich einzelne Werte mit jedem Update anpassen können, prüfe
   für den aktuellen Stand zusätzlich das <a href="../changelog/">Änderungsprotokoll</a> und die Seite
   <a href="../known-issues/">Bekannte Probleme</a>. Config-Anpassungen nimmt der Server-Administrator vor.
@@ -696,7 +696,7 @@ geändert hat (welche MODs betroffen sind, erfährst du bei der Verteilung oder 
 
 <h3>Wird ein MOD entfernt, verschwinden platzierte Blöcke und Gegenstände</h3>
 <p>
-  Das ist ein allgemeines Verhalten von MODs und kein Glimpse-Alpha-spezifischer Fehler. Blöcke, die mit einem
+  Das ist ein allgemeines Verhalten von MODs und kein Alpha-spezifischer Fehler. Blöcke, die mit einem
   installierten MOD platziert wurden, sowie damit erhaltene Gegenstände gehen aus der Welt verloren, sobald der
   jeweilige MOD entfernt wird. Eine Wiederherstellung ist nur über ein Backup möglich.
 </p>

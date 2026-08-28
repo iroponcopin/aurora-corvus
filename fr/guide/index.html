@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guide d&#x27;installation | Aurora Corvus</title>
-<meta name="description" content="Guide d&#x27;installation du pack de MOD Glimpse Alpha : procédure d&#x27;installation côté serveur et réglages à effectuer côté joueur pour rejoindre la partie.">
+<meta name="description" content="Guide d&#x27;installation du pack de MOD Alpha : procédure d&#x27;installation côté serveur et réglages à effectuer côté joueur pour rejoindre la partie.">
 <meta property="og:title" content="Guide d&#x27;installation | Aurora Corvus">
-<meta property="og:description" content="Guide d&#x27;installation du pack de MOD Glimpse Alpha : procédure d&#x27;installation côté serveur et réglages à effectuer côté joueur pour rejoindre la partie.">
+<meta property="og:description" content="Guide d&#x27;installation du pack de MOD Alpha : procédure d&#x27;installation côté serveur et réglages à effectuer côté joueur pour rejoindre la partie.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -181,13 +181,13 @@
   <h1>Guide d&#x27;installation</h1>
   <p class="lede">Ce guide récapitule toutes les étapes, de l&#x27;activation des MOD jusqu&#x27;au moment où vous pouvez enfin jouer. Si vous rejoignez simplement en tant que joueur, le chapitre « Pour les joueurs » suffit amplement.</p>
 </div>
-<div class="toc"><div class="toc__title">Sommaire</div><ol><li><a href="#overview">Présentation : à propos de l&#x27;installation de Glimpse Alpha</a></li><li><a href="#player-setup">Pour les joueurs : configuration pour rejoindre le serveur</a></li><li><a href="#admin-prep">Pour les administrateurs du serveur : préparatifs (sauvegarde et vérification de version)</a></li><li><a href="#admin-fabric-install">Pour les administrateurs du serveur : installation de Fabric</a></li><li><a href="#admin-mods-and-verify">Pour les administrateurs du serveur : installation des MOD et vérification du démarrage</a></li><li><a href="#admin-upgrade">Lors du remplacement des MOD par une nouvelle version</a></li><li><a href="#gameplay-notices">Points à connaître avant de jouer</a></li><li><a href="#faq">Questions fréquentes et dépannage</a></li></ol></div>
+<div class="toc"><div class="toc__title">Sommaire</div><ol><li><a href="#overview">Présentation : à propos de l&#x27;installation du pack Alpha</a></li><li><a href="#player-setup">Pour les joueurs : configuration pour rejoindre le serveur</a></li><li><a href="#admin-prep">Pour les administrateurs du serveur : préparatifs (sauvegarde et vérification de version)</a></li><li><a href="#admin-fabric-install">Pour les administrateurs du serveur : installation de Fabric</a></li><li><a href="#admin-mods-and-verify">Pour les administrateurs du serveur : installation des MOD et vérification du démarrage</a></li><li><a href="#admin-upgrade">Lors du remplacement des MOD par une nouvelle version</a></li><li><a href="#gameplay-notices">Points à connaître avant de jouer</a></li><li><a href="#faq">Questions fréquentes et dépannage</a></li></ol></div>
 <div id="overview"><div class="card" style="margin-bottom:20px;">
       
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">Présentation : à propos de l&#x27;installation de Glimpse Alpha</h2>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Présentation : à propos de l&#x27;installation du pack Alpha</h2>
       
 <p>
-  <strong>Glimpse Alpha</strong> (anciennement Sorakaze) est un ensemble de MOD Fabric
+  <strong>Alpha</strong> (anciennement Glimpse Alpha, et Sorakaze avant cela) est un ensemble de MOD Fabric
   installés sur le serveur Sorakazekarasu. Il se compose de 11 MOD indépendants, chacun pouvant
   être installé et mis à jour séparément. Il ne remplace ni ne supprime les éléments vanilla
   (le standard sans MOD) comme les arcs et les wagonnets : il se contente d'ajouter de nouveaux
@@ -232,8 +232,8 @@
 
 <h3>Qui doit préparer quoi</h3>
 <ul>
-  <li><strong>Le serveur (serveur Sorakazekarasu)</strong> — Fabric (serveur) + Fabric API + les 11 MOD de Glimpse Alpha</li>
-  <li><strong>Le PC de chaque participant</strong> — Fabric (client) + Fabric API + les 11 MOD de Glimpse Alpha (exactement la même combinaison que le serveur)</li>
+  <li><strong>Le serveur (serveur Sorakazekarasu)</strong> — Fabric (serveur) + Fabric API + les 11 MOD d'Alpha</li>
+  <li><strong>Le PC de chaque participant</strong> — Fabric (client) + Fabric API + les 11 MOD d'Alpha (exactement la même combinaison que le serveur)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -294,7 +294,7 @@
 <h3>Ce qu'il vous faut</h3>
 <ul>
   <li>Un PC Windows ou Mac capable de faire tourner Minecraft Java Edition</li>
-  <li>L'<strong>ensemble des MOD (12 fichiers jar = 1 Fabric API + 11 MOD de Glimpse Alpha)</strong> reçu de l'administrateur du serveur</li>
+  <li>L'<strong>ensemble des MOD (12 fichiers jar = 1 Fabric API + 11 MOD d'Alpha)</strong> reçu de l'administrateur du serveur</li>
 </ul>
 
 <div class="callout callout--danger">
@@ -315,15 +315,15 @@
 <table>
 <tr><th>Nom de fichier (exemple)</th><th>Contenu</th></tr>
 <tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Composant commun nécessaire au fonctionnement des MOD</td></tr>
-<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>MOD Armes à feu</td></tr>
-<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>MOD Chemin de fer</td></tr>
-<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>MOD Matériaux et décoration</td></tr>
-<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>MOD Véhicules</td></tr>
-<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>MOD Boss</td></tr>
-<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>MOD Ciel</td></tr>
-<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>MOD Survie</td></tr>
-<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>MOD Électricité</td></tr>
-<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>MOD Backrooms</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>MOD Planarcadia</td></tr>
+<tr><td><code>alpha-guns-…+mc26.2.jar</code></td><td>MOD Armes à feu</td></tr>
+<tr><td><code>alpha-rail-…+mc26.2.jar</code></td><td>MOD Chemin de fer</td></tr>
+<tr><td><code>alpha-deco-…+mc26.2.jar</code></td><td>MOD Matériaux et décoration</td></tr>
+<tr><td><code>alpha-vehicles-…+mc26.2.jar</code></td><td>MOD Véhicules</td></tr>
+<tr><td><code>alpha-boss-…+mc26.2.jar</code></td><td>MOD Boss</td></tr>
+<tr><td><code>alpha-sky-…+mc26.2.jar</code></td><td>MOD Ciel</td></tr>
+<tr><td><code>alpha-survival-…+mc26.2.jar</code></td><td>MOD Survie</td></tr>
+<tr><td><code>alpha-power-…+mc26.2.jar</code></td><td>MOD Électricité</td></tr>
+<tr><td><code>alpha-backrooms-…+mc26.2.jar</code></td><td>MOD Backrooms</td></tr><tr><td><code>alpha-planarcadia-…+mc26.2.jar</code></td><td>MOD Planarcadia</td></tr>
 </table>
 </div>
 
@@ -391,7 +391,7 @@
 <h3>③ Démarrer avec Fabric et rejoindre le serveur</h3>
 <ol class="steps">
   <li>Ouvrez le launcher Minecraft, puis choisissez dans la liste des profils de démarrage (près du bouton « Jouer ») un nom du type <code>fabric-loader-26.2</code> (si vous restez sur « Dernière version », le jeu démarrera sans les MOD).</li>
-  <li>Cliquez sur « Jouer » pour démarrer. Si un bouton « Mods » est apparu sur l'écran-titre, c'est réussi. En cliquant dessus, vous pourrez vérifier que les 11 MOD de Glimpse Alpha et Fabric API sont bien présents.</li>
+  <li>Cliquez sur « Jouer » pour démarrer. Si un bouton « Mods » est apparu sur l'écran-titre, c'est réussi. En cliquant dessus, vous pourrez vérifier que les 11 MOD d'Alpha et Fabric API sont bien présents.</li>
   <li>Il ne reste plus qu'à vous connecter au serveur comme d'habitude, depuis « Multijoueur ».</li>
 </ol>
 
@@ -399,7 +399,7 @@
 <p>Lorsque les MOD du serveur sont mis à jour, tous les participants doivent passer à la même version en même temps.</p>
 <ol class="steps">
   <li>Récupérez les nouveaux fichiers MOD auprès de l'administrateur du serveur (attendez qu'il vous prévienne avant de commencer).</li>
-  <li>Ouvrez le dossier mods, <strong>supprimez les fichiers jar de Glimpse Alpha déjà présents</strong>, puis placez les nouveaux fichiers (même si le nom de fichier change, il s'agit toujours du même MOD en interne : si l'ancien fichier reste présent, le jeu ne pourra pas démarrer).</li>
+  <li>Ouvrez le dossier mods, <strong>supprimez les fichiers jar d'Alpha déjà présents</strong>, puis placez les nouveaux fichiers (même si le nom de fichier change, il s'agit toujours du même MOD en interne : si l'ancien fichier reste présent, le jeu ne pourra pas démarrer).</li>
   <li>Démarrez comme d'habitude avec le profil fabric-loader.</li>
 </ol>
 <div class="callout callout--warn">
@@ -430,7 +430,7 @@
   À partir d'ici, ce chapitre s'adresse aux personnes qui font tourner et administrent le
   serveur lui-même. Nous partons du principe qu'un serveur Minecraft (vanilla, le serveur
   standard sans MOD) fonctionne déjà, et nous expliquons la procédure pour y ajouter Fabric et
-  les 11 MOD de Glimpse Alpha. Ce chapitre prend un serveur Windows comme exemple.
+  les 11 MOD d'Alpha. Ce chapitre prend un serveur Windows comme exemple.
   Si vous administrez votre serveur sous Mac / Linux, adaptez l'emplacement des dossiers et la
   façon d'exécuter les commandes à votre environnement, en suivant la procédure équivalente
   (indications du site officiel de Fabric).
@@ -547,21 +547,21 @@ l'installer, il suffit de le placer dans le dossier <code>mods</code> du dossier
 <h3>3. Placer l'ensemble des MOD dans le dossier mods</h3>
 <p>
   Copiez dans le dossier <code>mods</code> l'ensemble des 12 fichiers jar : 1 Fabric API + 11 MOD
-  de Glimpse Alpha (inutile de les décompresser, placez-les tels quels). Procurez-vous ces 11 MOD
+  d'Alpha (inutile de les décompresser, placez-les tels quels). Procurez-vous ces 11 MOD
   par le canal de distribution habituel. <strong>Ce site ne distribue pas les MOD eux-mêmes.</strong>
 </p>
 <div class="table-wrap">
 <table>
 <tr><th>MOD</th><th>Exemple de nom de fichier</th></tr>
-<tr><td>Armes à feu</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
-<tr><td>Chemin de fer</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
-<tr><td>Matériaux et décoration</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
-<tr><td>Véhicules</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
-<tr><td>Boss</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
-<tr><td>Ciel</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
-<tr><td>Survie</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
-<tr><td>Électricité</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
-<tr><td>Backrooms</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>
+<tr><td>Armes à feu</td><td><code>alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>Chemin de fer</td><td><code>alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>Matériaux et décoration</td><td><code>alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>Véhicules</td><td><code>alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Boss</td><td><code>alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>Ciel</td><td><code>alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>Survie</td><td><code>alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>Électricité</td><td><code>alpha-power-…+mc26.2.jar</code></td></tr>
+<tr><td>Backrooms</td><td><code>alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Planarcadia</td><td><code>alpha-planarcadia-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -600,7 +600,7 @@ et le même ensemble de MOD sur leur propre PC.</p>
       <div class="badge-row"><span class="type-badge type-visual">Pour les administrateurs du serveur</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Lors du remplacement des MOD par une nouvelle version</h2>
       
-<p>Comme les 11 MOD de Glimpse Alpha sont entièrement indépendants les uns des autres, une mise
+<p>Comme les 11 MOD d'Alpha sont entièrement indépendants les uns des autres, une mise
 à jour ne remplace pas forcément les 11 en même temps. Il suffit de remplacer uniquement les MOD
 dont le contenu a réellement changé (vous pouvez vérifier lesquels ont changé dans les
 indications fournies avec la mise à jour ou dans le <a href="../changelog/">journal des mises à
@@ -663,7 +663,7 @@ jour</a>).</p>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Points à connaître avant de jouer</h2>
       
 <p>
-  Glimpse Alpha comporte aussi plusieurs modifications qui influencent le comportement de la
+  Le pack Alpha comporte aussi plusieurs modifications qui influencent le comportement de la
   vanilla. Voici un résumé des points les plus faciles à manquer. Les valeurs précises pouvant
   être ajustées à chaque mise à jour, consultez également le <a href="../changelog/">journal des
   mises à jour</a> et la page des <a href="../known-issues/">problèmes connus</a> pour les
@@ -736,7 +736,7 @@ jour</a>).</p>
 
 <h3>Retirer un MOD fait disparaître les blocs et objets posés</h3>
 <p>
-  Il s'agit d'un comportement général des MOD, et non d'un problème propre à Glimpse Alpha. Les
+  Il s'agit d'un comportement général des MOD, et non d'un problème propre au pack Alpha. Les
   blocs posés et les objets obtenus alors qu'un MOD était installé disparaissent du monde dès
   que ce MOD est retiré. La seule façon de les récupérer est de restaurer une sauvegarde.
 </p>

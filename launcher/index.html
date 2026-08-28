@@ -179,7 +179,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Corvus</span>
   <h1>Corvus</h1>
-  <p class="lede">Corvus は、Glimpse Alpha MOD パックを自動で最新の状態に保つ、小さなデスクトップアプリです。この Wiki を見て最新リリースを確認し、更新分をダウンロードし、パックフォルダーに手を加える前にダウンロードしたファイルをすべてこの Wiki が公開する SHA-256 チェックサムと照合します。信頼する情報源はこの Wiki だけです。</p>
+  <p class="lede">Corvus は、Alpha MOD パックを自動で最新の状態に保つ、小さなデスクトップアプリです。この Wiki を見て最新リリースを確認し、更新分をダウンロードし、パックフォルダーに手を加える前にダウンロードしたファイルをすべてこの Wiki が公開する SHA-256 チェックサムと照合します。信頼する情報源はこの Wiki だけです。</p>
 </div>
 <div class="toc"><div class="toc__title">目次</div><ol><li><a href="#what-it-is">Corvus とは何か、なぜ作られたのか</a></li><li><a href="#installing">Corvus の入れ方</a></li><li><a href="#pointing-at-existing-pack">既存の MOD パックフォルダーを指定する</a></li><li><a href="#update-modes">自動更新モードと手動更新モードの違い</a></li><li><a href="#confirming-an-update-applied">更新が本当に反映されたかの確認方法</a></li><li><a href="#restoring-from-backup">更新に失敗したときにバックアップから復元する</a></li></ol></div>
 <div id="what-it-is"><div class="card" style="margin-bottom:20px;">
@@ -192,7 +192,7 @@
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">既存の MOD パックフォルダーを指定する</h2>
-      <p>すでに Glimpse Alpha を手動で導入済みでも、最初からやり直す必要はありません。初回起動時に、新しくフォルダーを作る代わりに、既存の MOD パックが入っているフォルダーを選ぶことができます。既存の mods フォルダーを指定すれば、以降はその導入をランチャーが管理する対象として扱います。</p>
+      <p>すでに Alpha MOD パックを手動で導入済みでも、最初からやり直す必要はありません。初回起動時に、新しくフォルダーを作る代わりに、既存の MOD パックが入っているフォルダーを選ぶことができます。既存の mods フォルダーを指定すれば、以降はその導入をランチャーが管理する対象として扱います。</p>
     </div></div>
 <div id="update-modes"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">自動更新モードと手動更新モードの違い</h2>
@@ -200,7 +200,7 @@
     </div></div>
 <div id="confirming-an-update-applied"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">更新が本当に反映されたかの確認方法</h2>
-      <p>バージョン1.1.0以降、Update を押すと新しいMODファイルがパックの <code>mods</code> フォルダーに直接書き込まれます。更新後にフォルダーの中身を 実際に再確認し、期待通りのファイルが存在することを確認できるまで「Update complete」とは表示されません。途中で何か失敗した場合は、偽の成功表示ではなく失敗として報告されます。</p><p>macOSで実際に確認する方法: 設定画面に表示されているフォルダーを開き(Finderで <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> を押してパスを貼り付け)、<code>mods</code> の中を見て、Update前後で各 <code>glimpse-alpha-*.jar</code> ファイル名内の版数を確認してください。</p><p class="callout callout--info">1.1.0より前のバージョンのランチャーで最後に触られたパックフォルダーから更新する場合、最初の1回だけ、そのMODの古い版数の jar が新しい jar と並んで残ることがあります(それ以前のランチャーには、自分がどのファイルを配置したかの記録が無かったためです)。次回以降の更新からは自動的に解消します。すぐに気になる場合は、新しい方の存在を確認した上で、古い版数の <code>glimpse-alpha-*.jar</code> を手動で削除しても問題ありません。</p>
+      <p>バージョン1.1.0以降、Update を押すと新しいMODファイルがパックの <code>mods</code> フォルダーに直接書き込まれます。更新後にフォルダーの中身を 実際に再確認し、期待通りのファイルが存在することを確認できるまで「Update complete」とは表示されません。途中で何か失敗した場合は、偽の成功表示ではなく失敗として報告されます。</p><p>macOSで実際に確認する方法: 設定画面に表示されているフォルダーを開き(Finderで <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> を押してパスを貼り付け)、<code>mods</code> の中を見て、Update前後で各 <code>alpha-*.jar</code> ファイル名内の版数を確認してください。</p><p class="callout callout--info">1.1.0より前のバージョンのランチャーで最後に触られたパックフォルダーから更新する場合、最初の1回だけ、そのMODの古い版数の jar が新しい jar と並んで残ることがあります(それ以前のランチャーには、自分がどのファイルを配置したかの記録が無かったためです)。次回以降の更新からは自動的に解消します。すぐに気になる場合は、新しい方の存在を確認した上で、古い版数の <code>alpha-*.jar</code> を手動で削除しても問題ありません。</p>
     </div></div>
 <div id="restoring-from-backup"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">更新に失敗したときにバックアップから復元する</h2>

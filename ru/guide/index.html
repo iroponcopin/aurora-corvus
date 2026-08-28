@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Инструкция по установке | Aurora Corvus</title>
-<meta name="description" content="Инструкция по установке сборки модов Glimpse Alpha: как настроить сервер и как подключиться игроку.">
+<meta name="description" content="Инструкция по установке сборки модов Alpha: как настроить сервер и как подключиться игроку.">
 <meta property="og:title" content="Инструкция по установке | Aurora Corvus">
-<meta property="og:description" content="Инструкция по установке сборки модов Glimpse Alpha: как настроить сервер и как подключиться игроку.">
+<meta property="og:description" content="Инструкция по установке сборки модов Alpha: как настроить сервер и как подключиться игроку.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -181,13 +181,13 @@
   <h1>Инструкция по установке</h1>
   <p class="lede">Здесь собраны все шаги — от включения модов до начала игры. Если вы просто хотите играть на сервере, вам хватит главы «Для игроков».</p>
 </div>
-<div class="toc"><div class="toc__title">Содержание</div><ol><li><a href="#overview">Обзор: об установке Glimpse Alpha</a></li><li><a href="#player-setup">Для игроков: настройка для подключения к серверу</a></li><li><a href="#admin-prep">Для администратора сервера: подготовка (резервная копия и проверка версии)</a></li><li><a href="#admin-fabric-install">Для администратора сервера: установка Fabric</a></li><li><a href="#admin-mods-and-verify">Для администратора сервера: установка модов и проверка запуска</a></li><li><a href="#admin-upgrade">При замене модов на новую версию</a></li><li><a href="#gameplay-notices">Что нужно знать перед началом игры</a></li><li><a href="#faq">Частые вопросы и решение проблем</a></li></ol></div>
+<div class="toc"><div class="toc__title">Содержание</div><ol><li><a href="#overview">Обзор: об установке сборки Alpha</a></li><li><a href="#player-setup">Для игроков: настройка для подключения к серверу</a></li><li><a href="#admin-prep">Для администратора сервера: подготовка (резервная копия и проверка версии)</a></li><li><a href="#admin-fabric-install">Для администратора сервера: установка Fabric</a></li><li><a href="#admin-mods-and-verify">Для администратора сервера: установка модов и проверка запуска</a></li><li><a href="#admin-upgrade">При замене модов на новую версию</a></li><li><a href="#gameplay-notices">Что нужно знать перед началом игры</a></li><li><a href="#faq">Частые вопросы и решение проблем</a></li></ol></div>
 <div id="overview"><div class="card" style="margin-bottom:20px;">
       
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">Обзор: об установке Glimpse Alpha</h2>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Обзор: об установке сборки Alpha</h2>
       
 <p>
-  <strong>Glimpse Alpha</strong> (ранее: Sorakaze) — это группа Fabric-модов,
+  <strong>Alpha</strong> (ранее: Glimpse Alpha, до этого Sorakaze) — это группа Fabric-модов,
   установленных на сервере Sorakazekarasu. Она состоит из 11 независимых модов,
   каждый из которых можно устанавливать и обновлять по отдельности.
   Ванильные (стандартные, без модов) элементы вроде лука со стрелами или вагонеток
@@ -232,8 +232,8 @@
 
 <h3>Кто что готовит</h3>
 <ul>
-  <li><strong>Сервер (Sorakazekarasu)</strong> — сам сервер Fabric + Fabric API + 11 модов Glimpse Alpha</li>
-  <li><strong>Компьютер каждого игрока</strong> — клиент Fabric + Fabric API + 11 модов Glimpse Alpha (набор должен полностью совпадать с серверным)</li>
+  <li><strong>Сервер (Sorakazekarasu)</strong> — сам сервер Fabric + Fabric API + 11 модов Alpha</li>
+  <li><strong>Компьютер каждого игрока</strong> — клиент Fabric + Fabric API + 11 модов Alpha (набор должен полностью совпадать с серверным)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -293,7 +293,7 @@
 <h3>Что понадобится</h3>
 <ul>
   <li>Компьютер на Windows или Mac, на котором может работать Minecraft Java Edition</li>
-  <li><strong>Набор из 12 файлов модов</strong> (1 файл Fabric API + 11 модов Glimpse Alpha), полученный от администратора сервера</li>
+  <li><strong>Набор из 12 файлов модов</strong> (1 файл Fabric API + 11 модов Alpha), полученный от администратора сервера</li>
 </ul>
 
 <div class="callout callout--danger">
@@ -313,15 +313,15 @@
 <table>
 <tr><th>Имя файла (пример)</th><th>Содержание</th></tr>
 <tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>Общий компонент, необходимый для работы модов</td></tr>
-<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>Мод огнестрельного оружия</td></tr>
-<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>Мод железной дороги</td></tr>
-<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>Мод стройматериалов и декора</td></tr>
-<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>Мод транспорта</td></tr>
-<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>Мод боссов</td></tr>
-<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>Мод «Небеса»</td></tr>
-<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>Мод выживания</td></tr>
-<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>Мод электричества</td></tr>
-<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>Мод «Бэкрумс»</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>Мод «Планаркадия»</td></tr>
+<tr><td><code>alpha-guns-…+mc26.2.jar</code></td><td>Мод огнестрельного оружия</td></tr>
+<tr><td><code>alpha-rail-…+mc26.2.jar</code></td><td>Мод железной дороги</td></tr>
+<tr><td><code>alpha-deco-…+mc26.2.jar</code></td><td>Мод стройматериалов и декора</td></tr>
+<tr><td><code>alpha-vehicles-…+mc26.2.jar</code></td><td>Мод транспорта</td></tr>
+<tr><td><code>alpha-boss-…+mc26.2.jar</code></td><td>Мод боссов</td></tr>
+<tr><td><code>alpha-sky-…+mc26.2.jar</code></td><td>Мод «Небеса»</td></tr>
+<tr><td><code>alpha-survival-…+mc26.2.jar</code></td><td>Мод выживания</td></tr>
+<tr><td><code>alpha-power-…+mc26.2.jar</code></td><td>Мод электричества</td></tr>
+<tr><td><code>alpha-backrooms-…+mc26.2.jar</code></td><td>Мод «Бэкрумс»</td></tr><tr><td><code>alpha-planarcadia-…+mc26.2.jar</code></td><td>Мод «Планаркадия»</td></tr>
 </table>
 </div>
 
@@ -386,7 +386,7 @@
 <h3>③ Запуск через Fabric и подключение к серверу</h3>
 <ol class="steps">
   <li>Откройте лаунчер Minecraft и в списке конфигураций запуска рядом с кнопкой «Играть» выберите профиль вроде <code>fabric-loader-26.2</code> (если оставить «Последний релиз», игра запустится без модов).</li>
-  <li>Нажмите «Играть» и запустите игру. Если на титульном экране появилась кнопка «Mods» — всё получилось. Нажав на неё, можно увидеть 11 модов Glimpse Alpha и Fabric API.</li>
+  <li>Нажмите «Играть» и запустите игру. Если на титульном экране появилась кнопка «Mods» — всё получилось. Нажав на неё, можно увидеть 11 модов Alpha и Fabric API.</li>
   <li>Дальше подключайтесь к серверу как обычно, через «Мультиплеер».</li>
 </ol>
 
@@ -394,7 +394,7 @@
 <p>Когда моды на сервере обновляются, все участники должны обновиться до той же версии одновременно.</p>
 <ol class="steps">
   <li>Получите новые файлы модов от администратора сервера (дождитесь оповещения и только потом приступайте).</li>
-  <li>Откройте папку mods и <strong>удалите старые jar-файлы Glimpse Alpha</strong>, затем добавьте новые (даже если имя файла изменилось, это считается тем же самым модом — если оставить старый файл, игра не запустится).</li>
+  <li>Откройте папку mods и <strong>удалите старые jar-файлы Alpha</strong>, затем добавьте новые (даже если имя файла изменилось, это считается тем же самым модом — если оставить старый файл, игра не запустится).</li>
   <li>Запустите игру как обычно, через профиль fabric-loader.</li>
 </ol>
 <div class="callout callout--warn">
@@ -424,7 +424,7 @@
 <p>
   Начиная с этого раздела — главы для тех, кто сам администрирует и обслуживает сервер.
   Здесь описан переход от уже работающего сервера Minecraft (ванильного, стандартного,
-  без модов) к добавлению Fabric и 11 модов Glimpse Alpha. В качестве примера в этой главе
+  без модов) к добавлению Fabric и 11 модов Alpha. В качестве примера в этой главе
   используется сервер на Windows. Если вы администрируете сервер на Mac / Linux,
   адаптируйте расположение папок и способ выполнения команд под свою систему
   и следуйте той же процедуре (см. официальный сайт Fabric).
@@ -537,22 +537,22 @@ pause</pre>
 
 <h3>3. Размещение всех модов в папке mods</h3>
 <p>
-  Скопируйте в папку <code>mods</code> все 12 jar-файлов — 1 файл Fabric API и 11 модов Glimpse Alpha
+  Скопируйте в папку <code>mods</code> все 12 jar-файлов — 1 файл Fabric API и 11 модов Alpha
   (распаковывать не нужно, оставьте как jar-файлы). Сами 11 модов получите привычным для вас способом
   раздачи. <strong>Этот сайт сами файлы модов не распространяет.</strong>
 </p>
 <div class="table-wrap">
 <table>
 <tr><th>МОД</th><th>Пример имени файла</th></tr>
-<tr><td>Огнестрельное оружие</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
-<tr><td>Железная дорога</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
-<tr><td>Стройматериалы и декор</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
-<tr><td>Транспорт</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
-<tr><td>Боссы</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
-<tr><td>Небеса</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
-<tr><td>Выживание</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
-<tr><td>Электричество</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
-<tr><td>Бэкрумс</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Планаркадия</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>
+<tr><td>Огнестрельное оружие</td><td><code>alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>Железная дорога</td><td><code>alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>Стройматериалы и декор</td><td><code>alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>Транспорт</td><td><code>alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>Боссы</td><td><code>alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>Небеса</td><td><code>alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>Выживание</td><td><code>alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>Электричество</td><td><code>alpha-power-…+mc26.2.jar</code></td></tr>
+<tr><td>Бэкрумс</td><td><code>alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>Планаркадия</td><td><code>alpha-planarcadia-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -589,7 +589,7 @@ pause</pre>
       <div class="badge-row"><span class="type-badge type-visual">Для администратора сервера</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">При замене модов на новую версию</h2>
       
-<p>Все 11 модов Glimpse Alpha полностью независимы друг от друга, поэтому при каждом обновлении
+<p>Все 11 модов сборки Alpha полностью независимы друг от друга, поэтому при каждом обновлении
 не обязательно заменять все 11 сразу. Достаточно заменить только те моды, которые реально изменились
 (какие именно моды изменились, можно узнать из сопроводительной информации при раздаче или из
 <a href="../changelog/">истории обновлений</a>).</p>
@@ -647,7 +647,7 @@ pause</pre>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Что нужно знать перед началом игры</h2>
       
 <p>
-  Glimpse Alpha включает несколько изменений, влияющих на поведение ванильной игры.
+  Сборка Alpha включает несколько изменений, влияющих на поведение ванильной игры.
   Здесь собраны самые незаметные из них. Точные цифры могут корректироваться с каждым обновлением,
   поэтому актуальную информацию всегда сверяйте с <a href="../changelog/">историей обновлений</a>
   и страницей <a href="../known-issues/">известных проблем</a>. Настройку config выполняет
@@ -714,7 +714,7 @@ pause</pre>
 
 <h3>После удаления мода установленные блоки и предметы исчезают</h3>
 <p>
-  Это общая особенность модов, а не проблема, специфичная для Glimpse Alpha. Блоки, установленные,
+  Это общая особенность модов, а не проблема, специфичная для сборки Alpha. Блоки, установленные,
   и предметы, полученные благодаря моду, теряются из мира при удалении этого мода. Вернуть их
   можно только восстановлением из резервной копии.
 </p>

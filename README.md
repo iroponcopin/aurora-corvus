@@ -1,6 +1,7 @@
 # Aurora Corvus
 
-An unofficial reference site for **Glimpse Alpha** (formerly *Sorakaze*), a set of
+An unofficial reference site for **Alpha** (called *Glimpse Alpha* until V2.5.0,
+and *Sorakaze* before that), a set of
 Fabric mods for a private Minecraft server. It documents the mod pack's crafting
 recipes, update history, and install instructions. As of V2.2.0 it also hosts the
 current release ZIP directly (`downloads/`, linked from the `/download/` page) —
@@ -15,7 +16,8 @@ Live site: served via GitHub Pages from this repository.
 - `en/`, `es/`, `fr/`, `zh/`, `ko/`, `pt-br/`, `it/`, `ar/`, `ru/`, `id/`, `de/`, `tr/` —
   the same site in 12 additional languages, one directory per
   [BCP-47-ish](https://en.wikipedia.org/wiki/IETF_language_tag) language code.
-- `downloads/` — the current release ZIP (`Glimpse_Alpha_MODs_v<version>+mc26.2.zip`),
+- `downloads/` — the current release ZIP (`Alpha_MODs_v<version>+mc26.2.zip`; releases
+  before V2.5.0 are archived here under their pre-rename `Glimpse_Alpha_MODs_*` name),
   assembled by `tools/build_dist_zip.py` at the repo root and copied here. Only the
   current version is kept; `scripts/build_download.py` reads its real size/sha256/
   version at build time rather than trusting a typed-in value.

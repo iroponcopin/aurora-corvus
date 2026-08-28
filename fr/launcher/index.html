@@ -179,7 +179,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Corvus</span>
   <h1>Corvus</h1>
-  <p class="lede">Corvus is a small desktop app that keeps your Glimpse Alpha mod pack up to date automatically. It checks this Wiki for the current release, downloads updates for you, and verifies every file it downloads against a SHA-256 checksum published here before it touches your pack folder. This Wiki is the only source it trusts — it does not pull updates from anywhere else.</p>
+  <p class="lede">Corvus is a small desktop app that keeps your Alpha mod pack up to date automatically. It checks this Wiki for the current release, downloads updates for you, and verifies every file it downloads against a SHA-256 checksum published here before it touches your pack folder. This Wiki is the only source it trusts — it does not pull updates from anywhere else.</p>
 </div>
 <div class="toc"><div class="toc__title">Sommaire</div><ol><li><a href="#what-it-is">What it is, and why it exists</a></li><li><a href="#installing">Installing Corvus</a></li><li><a href="#pointing-at-existing-pack">Pointing it at an existing pack folder</a></li><li><a href="#update-modes">Automatic vs. manual update mode</a></li><li><a href="#confirming-an-update-applied">Confirming an update actually applied</a></li><li><a href="#restoring-from-backup">Restoring from a backup if an update goes wrong</a></li></ol></div>
 <div id="what-it-is"><div class="card" style="margin-bottom:20px;">
@@ -192,7 +192,7 @@
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Pointing it at an existing pack folder</h2>
-      <p>If you've already installed Glimpse Alpha manually, you don't need to start over. On first run, the launcher lets you choose the folder your mod pack already lives in instead of creating a new one. Point it at your existing mods folder and the launcher will treat that installation as the one it manages from then on.</p>
+      <p>If you've already installed the Alpha pack manually, you don't need to start over. On first run, the launcher lets you choose the folder your mod pack already lives in instead of creating a new one. Point it at your existing mods folder and the launcher will treat that installation as the one it manages from then on.</p>
     </div></div>
 <div id="update-modes"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Automatic vs. manual update mode</h2>
@@ -200,7 +200,7 @@
     </div></div>
 <div id="confirming-an-update-applied"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Confirming an update actually applied</h2>
-      <p>As of version 1.1.0, clicking Update writes the new mod files directly into your pack's <code>mods</code> folder, and the launcher will not show "Update complete" unless it has re-checked the folder afterwards and confirmed the expected files are really there. If something goes wrong partway through, it reports failure instead of a false success.</p><p>To see the change for yourself on macOS: open the folder shown in Settings (<kbd>&#8984;</kbd>+<kbd>&#8679;</kbd>+<kbd>G</kbd> in Finder, then paste the path), look inside <code>mods</code>, and check the version number in each <code>glimpse-alpha-*.jar</code> filename before and after clicking Update.</p><p class="callout callout--info">If you're updating from a pack folder that was last touched by a launcher older than 1.1.0, the very first update may leave one old-versioned jar sitting alongside the new one for that mod (the launcher didn't yet have a record of which files it had previously placed). This clears up on its own from the next update onward. If it bothers you sooner, it's safe to delete the older-numbered <code>glimpse-alpha-*.jar</code> by hand once the new one is confirmed present.</p>
+      <p>As of version 1.1.0, clicking Update writes the new mod files directly into your pack's <code>mods</code> folder, and the launcher will not show "Update complete" unless it has re-checked the folder afterwards and confirmed the expected files are really there. If something goes wrong partway through, it reports failure instead of a false success.</p><p>To see the change for yourself on macOS: open the folder shown in Settings (<kbd>&#8984;</kbd>+<kbd>&#8679;</kbd>+<kbd>G</kbd> in Finder, then paste the path), look inside <code>mods</code>, and check the version number in each <code>alpha-*.jar</code> filename before and after clicking Update.</p><p class="callout callout--info">If you're updating from a pack folder that was last touched by a launcher older than 1.1.0, the very first update may leave one old-versioned jar sitting alongside the new one for that mod (the launcher didn't yet have a record of which files it had previously placed). This clears up on its own from the next update onward. If it bothers you sooner, it's safe to delete the older-numbered <code>alpha-*.jar</code> by hand once the new one is confirmed present.</p>
     </div></div>
 <div id="restoring-from-backup"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Restoring from a backup if an update goes wrong</h2>

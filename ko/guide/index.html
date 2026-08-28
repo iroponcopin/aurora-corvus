@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>설치 가이드 | Aurora Corvus</title>
-<meta name="description" content="Glimpse Alpha MOD 팩 설치 가이드. 서버 설치 절차와 플레이어 참가 설정을 정리했습니다.">
+<meta name="description" content="Alpha MOD 팩 설치 가이드. 서버 설치 절차와 플레이어 참가 설정을 정리했습니다.">
 <meta property="og:title" content="설치 가이드 | Aurora Corvus">
-<meta property="og:description" content="Glimpse Alpha MOD 팩 설치 가이드. 서버 설치 절차와 플레이어 참가 설정을 정리했습니다.">
+<meta property="og:description" content="Alpha MOD 팩 설치 가이드. 서버 설치 절차와 플레이어 참가 설정을 정리했습니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -181,13 +181,13 @@
   <h1>설치 가이드</h1>
   <p class="lede">MOD를 활성화하고 플레이를 시작하기까지의 절차를 정리했습니다. 플레이어로 참가만 한다면 &quot;플레이어용&quot; 장만 보셔도 충분합니다.</p>
 </div>
-<div class="toc"><div class="toc__title">목차</div><ol><li><a href="#overview">개요: Glimpse Alpha 설치에 대해</a></li><li><a href="#player-setup">플레이어용: 서버에 참가하기 위한 설정</a></li><li><a href="#admin-prep">서버 관리자용: 사전 준비(백업과 버전 확인)</a></li><li><a href="#admin-fabric-install">서버 관리자용: Fabric 설치</a></li><li><a href="#admin-mods-and-verify">서버 관리자용: MOD 설치와 실행 확인</a></li><li><a href="#admin-upgrade">MOD를 새 버전으로 교체할 때</a></li><li><a href="#gameplay-notices">플레이 전에 알아두면 좋은 주의사항</a></li><li><a href="#faq">자주 묻는 질문·문제 해결</a></li></ol></div>
+<div class="toc"><div class="toc__title">목차</div><ol><li><a href="#overview">개요: Alpha MOD 팩 설치에 대해</a></li><li><a href="#player-setup">플레이어용: 서버에 참가하기 위한 설정</a></li><li><a href="#admin-prep">서버 관리자용: 사전 준비(백업과 버전 확인)</a></li><li><a href="#admin-fabric-install">서버 관리자용: Fabric 설치</a></li><li><a href="#admin-mods-and-verify">서버 관리자용: MOD 설치와 실행 확인</a></li><li><a href="#admin-upgrade">MOD를 새 버전으로 교체할 때</a></li><li><a href="#gameplay-notices">플레이 전에 알아두면 좋은 주의사항</a></li><li><a href="#faq">자주 묻는 질문·문제 해결</a></li></ol></div>
 <div id="overview"><div class="card" style="margin-bottom:20px;">
       
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">개요: Glimpse Alpha 설치에 대해</h2>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">개요: Alpha MOD 팩 설치에 대해</h2>
       
 <p>
-  <strong>Glimpse Alpha</strong>(구칭: Sorakaze)는 소라카제카라스 서버에 도입되어 있는
+  <strong>Alpha</strong>(구칭: Glimpse Alpha, 그 이전 Sorakaze)는 소라카제카라스 서버에 도입되어 있는
   Fabric MOD 모음입니다. 11개의 독립된 MOD로 구성되어 있으며, 각각 개별적으로 설치·업데이트할 수 있습니다.
   활과 화살, 광산 수레 등 바닐라(MOD 없는 표준) 요소를 대체하거나 삭제하지 않고,
   새로운 아이템·블록·차원을 추가하는 형태로 되어 있습니다.
@@ -229,8 +229,8 @@
 
 <h3>누가 무엇을 준비하는가</h3>
 <ul>
-  <li><strong>서버(소라카제카라스 서버)</strong> — Fabric 서버 본체 + Fabric API + Glimpse Alpha 11개 MOD</li>
-  <li><strong>참가하는 사람 각자의 PC</strong> — Fabric 클라이언트 + Fabric API + Glimpse Alpha 11개 MOD(서버와 완전히 동일한 조합)</li>
+  <li><strong>서버(소라카제카라스 서버)</strong> — Fabric 서버 본체 + Fabric API + Alpha 11개 MOD</li>
+  <li><strong>참가하는 사람 각자의 PC</strong> — Fabric 클라이언트 + Fabric API + Alpha 11개 MOD(서버와 완전히 동일한 조합)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -288,7 +288,7 @@
 <h3>준비물</h3>
 <ul>
   <li>Minecraft Java 에디션을 플레이할 수 있는 Windows 또는 Mac PC</li>
-  <li>서버 관리자에게 받은 <strong>MOD 일체(jar 파일 12개 = Fabric API 1개 + Glimpse Alpha MOD 11개)</strong></li>
+  <li>서버 관리자에게 받은 <strong>MOD 일체(jar 파일 12개 = Fabric API 1개 + Alpha MOD 11개)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -307,15 +307,15 @@
 <table>
 <tr><th>파일명(예시)</th><th>내용</th></tr>
 <tr><td><code>fabric-api-0.154.2+26.2.jar</code></td><td>MOD를 작동시키기 위한 공통 부품</td></tr>
-<tr><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td><td>총기 MOD</td></tr>
-<tr><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td><td>철도 MOD</td></tr>
-<tr><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td><td>건축자재·장식 MOD</td></tr>
-<tr><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td><td>탈것 MOD</td></tr>
-<tr><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td><td>보스 MOD</td></tr>
-<tr><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td><td>천공 MOD</td></tr>
-<tr><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td><td>서바이벌 MOD</td></tr>
-<tr><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td><td>전력 MOD</td></tr>
-<tr><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td><td>백룸즈 MOD</td></tr><tr><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td><td>플라나르카디아 MOD</td></tr>
+<tr><td><code>alpha-guns-…+mc26.2.jar</code></td><td>총기 MOD</td></tr>
+<tr><td><code>alpha-rail-…+mc26.2.jar</code></td><td>철도 MOD</td></tr>
+<tr><td><code>alpha-deco-…+mc26.2.jar</code></td><td>건축자재·장식 MOD</td></tr>
+<tr><td><code>alpha-vehicles-…+mc26.2.jar</code></td><td>탈것 MOD</td></tr>
+<tr><td><code>alpha-boss-…+mc26.2.jar</code></td><td>보스 MOD</td></tr>
+<tr><td><code>alpha-sky-…+mc26.2.jar</code></td><td>천공 MOD</td></tr>
+<tr><td><code>alpha-survival-…+mc26.2.jar</code></td><td>서바이벌 MOD</td></tr>
+<tr><td><code>alpha-power-…+mc26.2.jar</code></td><td>전력 MOD</td></tr>
+<tr><td><code>alpha-backrooms-…+mc26.2.jar</code></td><td>백룸즈 MOD</td></tr><tr><td><code>alpha-planarcadia-…+mc26.2.jar</code></td><td>플라나르카디아 MOD</td></tr>
 </table>
 </div>
 
@@ -378,7 +378,7 @@
 <h3>③ Fabric으로 실행해서 서버에 참가하기</h3>
 <ol class="steps">
   <li>Minecraft 런처를 열고, "플레이" 버튼 근처의 실행 구성(프로필) 목록에서 <code>fabric-loader-26.2</code> 같은 이름을 선택합니다("최신 릴리스" 상태로는 MOD 없이 실행되어 버립니다).</li>
-  <li>그대로 "플레이"를 눌러 실행합니다. 타이틀 화면에 "Mods" 버튼이 늘어나 있으면 성공입니다. 눌러 보면 Glimpse Alpha의 MOD 11개와 Fabric API를 확인할 수 있습니다.</li>
+  <li>그대로 "플레이"를 눌러 실행합니다. 타이틀 화면에 "Mods" 버튼이 늘어나 있으면 성공입니다. 눌러 보면 Alpha의 MOD 11개와 Fabric API를 확인할 수 있습니다.</li>
   <li>이후에는 평소처럼 "멀티플레이"에서 서버에 접속합니다.</li>
 </ol>
 
@@ -386,7 +386,7 @@
 <p>서버 측 MOD가 업데이트되면, 참가자 전원이 동시에 같은 버전으로 업데이트해야 합니다.</p>
 <ol class="steps">
   <li>서버 관리자에게 새 MOD 파일을 받습니다(공지를 기다린 뒤 작업해 주세요).</li>
-  <li>mods 폴더를 열고, <strong>지금까지 있던 Glimpse Alpha의 jar 파일을 삭제</strong>한 다음 새 파일을 넣습니다(파일명이 바뀌어도 내용은 같은 MOD로 취급되므로, 기존 것이 남아 있으면 실행할 수 없습니다).</li>
+  <li>mods 폴더를 열고, <strong>지금까지 있던 Alpha의 jar 파일을 삭제</strong>한 다음 새 파일을 넣습니다(파일명이 바뀌어도 내용은 같은 MOD로 취급되므로, 기존 것이 남아 있으면 실행할 수 없습니다).</li>
   <li>평소처럼 fabric-loader 프로필로 실행합니다.</li>
 </ol>
 <div class="callout callout--warn">
@@ -416,7 +416,7 @@
 <p>
   여기서부터는 서버 본체를 운영·관리하는 입장인 분들을 위한 장입니다. 이미 Minecraft
   서버(바닐라, MOD 없는 표준 서버)가 가동 중인 상태에서, Fabric과
-  Glimpse Alpha의 11개 MOD를 추가하는 절차를 설명합니다. 이 장에서는 Windows 서버를 예로 듭니다.
+  Alpha의 11개 MOD를 추가하는 절차를 설명합니다. 이 장에서는 Windows 서버를 예로 듭니다.
   Mac / Linux로 서버를 운영하는 경우에는 폴더 위치나 명령어 실행 방법을 각자의
   환경에 맞게 바꿔서, 동일한 절차(Fabric 공식 사이트의 안내)를 따라 주세요.
 </p>
@@ -527,22 +527,22 @@ pause</pre>
 
 <h3>3. MOD 일체를 mods 폴더에 넣기</h3>
 <p>
-  Fabric API 1개 + Glimpse Alpha MOD 11개, 총 12개의 jar 파일을 <code>mods</code> 폴더
+  Fabric API 1개 + Alpha MOD 11개, 총 12개의 jar 파일을 <code>mods</code> 폴더
   안에 복사합니다(압축을 풀 필요 없이 jar 파일 그대로 넣습니다). 이 11개 MOD 본체는 지금까지와
   같은 배포 경로로 받아 주세요. <strong>이 사이트에서는 MOD 본체 자체를 배포하지 않습니다.</strong>
 </p>
 <div class="table-wrap">
 <table>
 <tr><th>MOD</th><th>파일명 예시</th></tr>
-<tr><td>총기</td><td><code>glimpse-alpha-guns-…+mc26.2.jar</code></td></tr>
-<tr><td>철도</td><td><code>glimpse-alpha-rail-…+mc26.2.jar</code></td></tr>
-<tr><td>건축자재·장식</td><td><code>glimpse-alpha-deco-…+mc26.2.jar</code></td></tr>
-<tr><td>탈것</td><td><code>glimpse-alpha-vehicles-…+mc26.2.jar</code></td></tr>
-<tr><td>보스</td><td><code>glimpse-alpha-boss-…+mc26.2.jar</code></td></tr>
-<tr><td>천공</td><td><code>glimpse-alpha-sky-…+mc26.2.jar</code></td></tr>
-<tr><td>서바이벌</td><td><code>glimpse-alpha-survival-…+mc26.2.jar</code></td></tr>
-<tr><td>전력</td><td><code>glimpse-alpha-power-…+mc26.2.jar</code></td></tr>
-<tr><td>백룸즈</td><td><code>glimpse-alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>플라나르카디아</td><td><code>glimpse-alpha-planarcadia-…+mc26.2.jar</code></td></tr>
+<tr><td>총기</td><td><code>alpha-guns-…+mc26.2.jar</code></td></tr>
+<tr><td>철도</td><td><code>alpha-rail-…+mc26.2.jar</code></td></tr>
+<tr><td>건축자재·장식</td><td><code>alpha-deco-…+mc26.2.jar</code></td></tr>
+<tr><td>탈것</td><td><code>alpha-vehicles-…+mc26.2.jar</code></td></tr>
+<tr><td>보스</td><td><code>alpha-boss-…+mc26.2.jar</code></td></tr>
+<tr><td>천공</td><td><code>alpha-sky-…+mc26.2.jar</code></td></tr>
+<tr><td>서바이벌</td><td><code>alpha-survival-…+mc26.2.jar</code></td></tr>
+<tr><td>전력</td><td><code>alpha-power-…+mc26.2.jar</code></td></tr>
+<tr><td>백룸즈</td><td><code>alpha-backrooms-…+mc26.2.jar</code></td></tr><tr><td>플라나르카디아</td><td><code>alpha-planarcadia-…+mc26.2.jar</code></td></tr>
 </table>
 </div>
 
@@ -579,7 +579,7 @@ pause</pre>
       <div class="badge-row"><span class="type-badge type-visual">서버 관리자용</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">MOD를 새 버전으로 교체할 때</h2>
       
-<p>Glimpse Alpha는 11개의 MOD가 각각 완전히 독립되어 있으므로, 업데이트할 때마다 11개 전부가
+<p>Alpha MOD 팩은 11개의 MOD가 각각 완전히 독립되어 있으므로, 업데이트할 때마다 11개 전부가
 교체되는 것은 아닙니다. 실제로 내용이 바뀐 MOD만 교체하면 됩니다
 (어떤 MOD가 바뀌었는지는 배포 시 안내나 <a href="../changelog/">업데이트 기록</a>에서 확인할 수 있습니다).</p>
 
@@ -633,7 +633,7 @@ pause</pre>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">플레이 전에 알아두면 좋은 주의사항</h2>
       
 <p>
-  Glimpse Alpha는 바닐라 동작에 영향을 주는 변경도 몇 가지 포함하고 있습니다. 여기서는 특히 놓치기 쉬운
+  Alpha MOD 팩은 바닐라 동작에 영향을 주는 변경도 몇 가지 포함하고 있습니다. 여기서는 특히 놓치기 쉬운
   것들을 정리했습니다. 세부 수치는 업데이트마다 조정될 수 있으므로, 최신 상황은
   <a href="../changelog/">업데이트 기록</a>이나 <a href="../known-issues/">알려진 문제</a> 페이지도
   함께 확인해 주세요. config 조정은 서버 관리자가 수행하는 작업입니다.
@@ -694,7 +694,7 @@ pause</pre>
 
 <h3>MOD를 제거하면 설치한 블록·아이템은 사라집니다</h3>
 <p>
-  이는 MOD 전반의 사양이며, Glimpse Alpha만의 문제가 아닙니다. MOD를 설치한 상태에서
+  이는 MOD 전반의 사양이며, Alpha만의 문제가 아닙니다. MOD를 설치한 상태에서
   설치한 블록이나 입수한 아이템은 그 MOD를 제거하면 월드에서 사라집니다. 원래대로 되돌리려면
   백업에서 복원하는 수밖에 없습니다.
 </p>
