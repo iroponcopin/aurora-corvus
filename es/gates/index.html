@@ -34,13 +34,42 @@
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
    theme before first paint. Dark is the flagship default; "light" is the
-   secondary theme (see style.css + main.js theme toggle). */
+   secondary theme (see style.css + main.js theme toggle).
+
+   THE KEY NAME IS A CONTRACT with main.js. It was broken once: the site was
+   renamed glimpse-alpha-wiki -> aurora-corvus, this script was updated and
+   the toggle in main.js was not, so the toggle wrote one key and this read
+   another. Nothing errored — a visitor on light simply got a dark first
+   paint on every page load, i.e. exactly the flash this script exists to
+   prevent. Change one side and you must change the other; the constants are
+   named on both sides so a grep finds them together.
+
+   The legacy key is read once as a fallback and then migrated, because
+   anyone currently on light has their choice stored under the OLD name and
+   silently resetting them to the default would be a second bug on top of
+   the first. It is REMOVED after a successful write rather than left
+   behind: two keys holding a theme is how this went wrong in the first
+   place, and once the value is under the new name nothing reads the old
+   one. The remove only runs if the write did not throw, so a storage
+   failure can never drop the preference. */
 (function () {
   var d = document.documentElement;
   d.classList.add("js");
+  var KEY = "aurora-corvus-theme";
+  var LEGACY_KEY = "glimpse-alpha-wiki-theme";
   var t = "dark";
   try {
-    var s = localStorage.getItem("aurora-corvus-theme");
+    var s = localStorage.getItem(KEY);
+    if (s !== "light" && s !== "dark") {
+      var legacy = localStorage.getItem(LEGACY_KEY);
+      if (legacy === "light" || legacy === "dark") {
+        s = legacy;
+        try {
+          localStorage.setItem(KEY, s);
+          localStorage.removeItem(LEGACY_KEY);
+        } catch (e) { /* read-only storage: still honour the value this load */ }
+      }
+    }
     if (s === "light" || s === "dark") t = s;
   } catch (e) { /* storage unavailable: stay dark */ }
   d.setAttribute("data-theme", t);

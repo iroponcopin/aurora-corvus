@@ -263,21 +263,55 @@
   // localStorage. The inline boot script in site_common.py's page() shell
   // already applied the stored theme before first paint; this just handles
   // the toggle itself. A legacy stored "system" value reads as dark.
+  //
+  // STORAGE_KEY MUST MATCH the key that boot script reads. It did not, for
+  // as long as the aurora-corvus rename has been live: the boot script was
+  // renamed and this was left on the old name, so the toggle wrote a key
+  // nothing read back. A visitor who chose light got a dark flash on every
+  // single page load — the flash the boot script exists to prevent — and
+  // nothing anywhere errored. Both sides now name both constants, so
+  // grepping either one turns up the other.
+  //
+  // LEGACY_STORAGE_KEY is that old name. Anyone on light right now has
+  // their choice stored under it, so it is read as a fallback and migrated
+  // (write the new key, then drop the old one) rather than orphaned, which
+  // would silently reset them. The remove only runs if the write did not
+  // throw. Migration is idempotent and happens in whichever of the two
+  // scripts runs first — normally the boot script, one paint earlier.
   // =====================================================================
   var themeToggle = document.getElementById("themeToggle");
-  var STORAGE_KEY = "glimpse-alpha-wiki-theme";
+  var STORAGE_KEY = "aurora-corvus-theme";
+  var LEGACY_STORAGE_KEY = "glimpse-alpha-wiki-theme";
 
   function applyTheme(mode) {
     root.setAttribute("data-theme", mode === "light" ? "light" : "dark");
   }
 
-  function currentMode() {
+  /* The stored theme, "light"/"dark", or null when nothing valid is stored.
+     Every localStorage touch is guarded: Safari private mode and blocked
+     site data both THROW on access rather than returning null. */
+  function storedMode() {
     try {
       var s = localStorage.getItem(STORAGE_KEY);
-      return s === "light" ? "light" : "dark";
+      if (s === "light" || s === "dark") return s;
+      var legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (legacy === "light" || legacy === "dark") {
+        try {
+          localStorage.setItem(STORAGE_KEY, legacy);
+          localStorage.removeItem(LEGACY_STORAGE_KEY);
+        } catch (e) {
+          /* read-only storage: still honour the value for this page load */
+        }
+        return legacy;
+      }
     } catch (e) {
-      return "dark";
+      /* storage unavailable */
     }
+    return null;
+  }
+
+  function currentMode() {
+    return storedMode() === "light" ? "light" : "dark";
   }
 
   applyTheme(currentMode());

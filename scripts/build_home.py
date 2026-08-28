@@ -42,16 +42,24 @@ from site_common import (  # noqa: E402
     asset_root_prefix,
 )
 
-# Every frame is the real Corvus 1.4.0 app, cropped to the window (the macOS
+# Every frame is the real Corvus 1.5.1 app, cropped to the window (the macOS
 # desktop edge visible at the top/bottom of the raw captures is stripped) and
 # re-encoded to WebP. Natural size is 1196x824 for all five, which is what the
 # width/height attributes below advertise so nothing shifts while they load.
+#
+# The frames are shot against a THROWAWAY home directory, never the machine's
+# own: every path they render is on screen at readable size, so a capture made
+# against a real home publishes that home's layout to the world. The 2026-08-28
+# reshoot used /Users/Shared/player as $HOME with the pack at
+# <home>/Library/Application Support/minecraft, and pointed the app at the live
+# manifest so the URL in the Log frame is the real current one. Reshoot the
+# same way — the pack rename ("Glimpse Alpha" -> "Alpha") will need one.
 FRAME_W, FRAME_H = 1196, 824
 FRAMES = {
-    "home": "app-home.webp",          # "Update available", installed 2.4.6
+    "home": "app-home.webp",          # "Update available", installed 2.4.8
     "settings": "app-settings.webp",
     "log": "app-log.webp",
-    "updated": "app-updated.webp",    # "Up to date", installed 2.4.8
+    "updated": "app-updated.webp",    # "Up to date", installed 2.4.9
     "sheet": "app-sheet.webp",        # the detected-folder sheet, real blur
 }
 
