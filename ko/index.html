@@ -147,122 +147,56 @@
 </header>
 <main id="main">
 
-<section class="hero hero--cinema">
-  <span class="hero__eyebrow">소라카제카라스 서버 MOD 레퍼런스</span>
-  <h1 class="hero__title">Aurora Corvus</h1>
-  <p class="lede hero__lede">
-    소라카제카라스 서버에 도입된 Fabric MOD 모음 &quot;<strong>Glimpse Alpha</strong>&quot;(구칭: Sorakaze)의 레시피·업데이트 기록·설치 방법을 정리한 비공식 레퍼런스 사이트입니다. 현재 
-    <strong>11개의 MOD</strong>(총기·철도·건축자재·보스·천공·서바이벌·탈것·전력·백룸즈·플라나르카디아)를 Minecraft
-    <strong>26.2</strong> 위에서 동시에 운용하고 있습니다.
-  </p>
-  <p class="callout callout--info hero__notice">V2.2.0부터 이 사이트는 &quot;다운로드&quot; 페이지에서 MOD 본체(jar 파일)를 직접 배포합니다. 여기에는 레시피표·업데이트 기록·설치 방법 등 &quot;읽는 자료&quot;도 있습니다. V2.2.0 이전 버전이 필요하면 서버 관리자에게 직접 받아 주세요.</p>
-  <div class="tag-row hero__cta">
-    <a class="btn" href="recipes/">레시피 모음 보기</a>
-    <a class="btn btn--ghost" href="changelog/">업데이트 기록 보기</a>
-    <a class="btn btn--ghost" href="guide/">설치 가이드 보기</a>
-  </div>
-  <div class="hero__scroll" aria-hidden="true"></div>
-</section>
+<section class="film" aria-labelledby="filmWord">
+  <div class="film__track" id="filmTrack">
+    <div class="film__stage" id="filmStage">
 
-    <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-release">신규 기능</span>
-        <span class="timeline-entry__release">V2.4.9</span>
-        <span class="card__meta">2026-08-28</span>
+      <!-- 1. the mark and the name resolve out of the dark -->
+      <div class="film__scene film__scene--title" data-film-scene="0">
+        <span class="film__mark" aria-hidden="true"></span>
+        <h1 class="film__word" id="filmWord">Aurora Corvus</h1>
       </div>
-      <h3 style="margin-top:0">최신 업데이트: ミサイルランチャーの見た目が二重になる不具合を修正、マップの移動を右ドラッグへ、一斉発射100発・弾薬庫200発の収納箱化。バックルームズでサーバーが落ちる不具合も修正</h3>
-      <p>ミサイルランチャーについて所有者から届いた4点の指摘に対応しました。見た目が「旧デザインと新デザインが融合した」状態になっていた不具合、戦術マップがクリックしただけで動いてしまう不具合を直し、一度に狙える目標を100箇所に、弾薬庫を200発の「収納箱」に作り直しました。あわせて、V2.4.x より前に作られたバックルームズ階層0の区画を読み込んだときにサーバーが強制終了することがある不具合も修正しています。こちらは新しく作ったワールドでは起きないため今まで見つかっていませんでした。すでに遊んでいるワールドをお持ちのサーバーでは、この修正がいちばん大事な変更です。</p>
-      <ul><li>【サーバーが落ちる不具合を修正】V2.4.x より前に作られたバックルームズ階層0の区画が読み込まれると、サーバーが応答しなくなり約60秒後に強制終了することがある不具合を修正しました。古い区画を新しい見た目へ描き直す処理を、区画の読み込み中ではなく読み込み後に行うようにしています。新しく作ったワールドでは一度も起きないため、これまでのテストでは見つけられませんでした。長く遊んでいるワールドをお持ちの場合だけ影響します。</li><li>ミサイルランチャーの見た目が「旧デザインと新デザインが融合した」状態になっていた不具合を修正しました。原因は2つあり、(1) 脚とミサイル管を描く向きが4方向すべてで180度ずれていたため、発射台の1ブロック手前にミサイル管が、4本の脚のうち2本が空中に描かれていたこと、(2) 旧デザインのブロック模型13個のうち7個がまだ一緒に描かれ続けていたこと、でした。両方を直し、地面のパッド以外は新しい造形だけが描かれるようになりました。</li><li>あわせて、V2.4.6以降、発射台の脚の当たり判定が4方向のうち3方向でずれていたことが分かり(報告はいただいていませんでした)、向きごとに正しい当たり判定を持つよう作り直しました。</li><li>戦術マップの視点移動を、左クリック長押しから右クリック長押しに変更しました。左クリックは目標の追加・削除だけになり、ただクリックしただけでマップが動くことはなくなりました。移動は押した場所から3ピクセル以上離れて初めて始まります(これまでは微小な手ぶれが積み重なって、止めているつもりでも動いていました)。操作方法はマップ画面の下部にも表示されます。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">보스</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">총기</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">전력</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">천공</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">탈것</span></div>
-      <p><a href="changelog/">업데이트 기록 전체 보기 →</a></p>
+
+      <!-- 2. the app arrives, with weight -->
+      <div class="film__scene film__scene--arrive" data-film-scene="1">
+        <figure class="film__frame"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="eager" fetchpriority="high"></figure>
+      </div>
+
+      <!-- 3. its surfaces fan out: home, settings, log -->
+      <!-- DOM order is the order the STATIC (no-JS / reduced-motion) gallery
+           reads in; the pinned film sets its own z-index, so it is free. -->
+      <div class="film__scene film__scene--stack" data-film-scene="2">
+        <figure class="film__frame film__frame--front"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back1"><img src="../assets/img/film/app-settings.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back2"><img src="../assets/img/film/app-log.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 4. the update, told by a dissolve between two real states -->
+      <div class="film__scene film__scene--update" data-film-scene="3">
+        <div class="film__detail">
+          <div class="film__detail-layer film__detail-layer--a"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <div class="film__detail-layer film__detail-layer--b"><img src="../assets/img/film/app-updated.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <span class="film__sweep" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- 5. the sheet, and the app's real backdrop blur behind it -->
+      <div class="film__scene film__scene--sheet" data-film-scene="4">
+        <figure class="film__frame film__frame--sharp"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--blurred"><img src="../assets/img/film/app-sheet.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 6. sign-off -->
+      <div class="film__scene film__scene--sign" data-film-scene="5" aria-hidden="true">
+        <span class="film__mark film__mark--sign"></span>
+        <p class="film__word film__word--sign">Aurora Corvus</p>
+      </div>
+
+      <span class="film__cue" aria-hidden="true"></span>
+      <span class="film__progress" aria-hidden="true"><i></i></span>
     </div>
-
-<h2>도입된 MOD 목록</h2>
-<p class="section-lede">클릭하면 해당 MOD의 레시피 목록으로 이동합니다.</p>
-<div class="grid grid--mods">
-  <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
-      <h3>총기</h3>
-      <p class="card__meta">바닐라에 없는 원거리 무기</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
-      <h3>철도</h3>
-      <p class="card__meta">전철과 선로 탈것</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
-      <h3>건축자재·장식</h3>
-      <p class="card__meta">도시 건설용 건축자재·가전</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
-      <h3>보스</h3>
-      <p class="card__meta">강력한 토벌 대상과 드롭 장비</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
-      <h3>천공</h3>
-      <p class="card__meta">새로운 차원과 천사의 왕국</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
-      <h3>서바이벌</h3>
-      <p class="card__meta">새로운 광석·방어구·생활 요소</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
-      <h3>탈것</h3>
-      <p class="card__meta">자동차·버스·항공기</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
-      <h3>전력</h3>
-      <p class="card__meta">발전·송전과 전기 기기</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
-      <h3>백룸즈</h3>
-      <p class="card__meta">정신력 게이지로 버티는 이계 탐험</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
-      <h3>플라나르카디아</h3>
-      <p class="card__meta">밤이 주인인 유흥 세계와 그 차원문</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-</div>
-
-<h2>이 사이트에서 할 수 있는 것</h2>
-<div class="grid grid--cards">
-  <a class="card" href="changelog/">
-      <h3>업데이트 기록</h3>
-      <p>초판부터 현재까지의 모든 업데이트를 시간순으로 소개합니다. 무엇이 바뀌었는지, 주의할 점은 무엇인지 한눈에 알 수 있습니다.</p>
-      <p class="card__meta">업데이트 기록 읽기 →</p>
-    </a>
-  <a class="card" href="recipes/">
-      <h3>레시피 모음</h3>
-      <p>11개 MOD의 모든 아이템 제작 레시피를 검색·필터링할 수 있는 모음표입니다.</p>
-      <p class="card__meta">레시피 찾기 →</p>
-    </a>
-  <a class="card" href="guide/">
-      <h3>설치 가이드</h3>
-      <p>MOD를 활성화하고 플레이를 시작하기까지의 절차를 Windows / Mac 별로 설명합니다.</p>
-      <p class="card__meta">설치 방법 보기 →</p>
-    </a>
-  <a class="card" href="roadmap/">
-      <h3>향후 계획</h3>
-      <p>현재 준비 중인 새로운 지역·요소를 정리한 로드맵입니다(내용은 변경될 수 있습니다).</p>
-      <p class="card__meta">로드맵 보기 →</p>
-    </a>
-  <a class="card" href="known-issues/">
-      <h3>알려진 문제</h3>
-      <p>현재 파악된 문제나 미검증 요소를 정리했습니다.</p>
-      <p class="card__meta">알려진 문제 보기 →</p>
-    </a>
-</div>
-
-<h2>이 프로젝트에 대해</h2>
-<p>원래는 &quot;Sorakaze&quot;라는 이름으로, 바닐라 서바이벌 경험을 유지하면서 총기·철도·건축자재라는 세 가지 MOD를 추가하는 것에서 시작했습니다. 이후 제작 가능한 아이템을 추가하는 형태로 확장을 거듭했고, v1.8.0에서 &quot;Glimpse Alpha&quot;로 이름을 바꾸었습니다. 현재는 보스·새로운 차원·서바이벌 요소·탈것·전력 인프라까지 포함하는 11개 MOD 구성이 되었습니다.</p>
-<p>바닐라 요소를 대체하거나 삭제하지 않는다는 원칙을 일관되게 지키고 있으며, 활과 화살·광산 수레 등 기존 요소는 그대로 남아 있습니다. 실존하는 총기·기업·상표명은 사용하지 않습니다.</p>
+  </div>
+</section>
 
 </main>
 <footer class="site-footer">

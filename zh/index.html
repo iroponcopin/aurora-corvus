@@ -147,122 +147,56 @@
 </header>
 <main id="main">
 
-<section class="hero hero--cinema">
-  <span class="hero__eyebrow">Sorakazekarasu 服务器 MOD 参考手册</span>
-  <h1 class="hero__title">Aurora Corvus</h1>
-  <p class="lede hero__lede">
-    本站是关于 Sorakazekarasu 服务器所导入的 Fabric MOD 合集「<strong>Glimpse Alpha</strong>」（旧称：Sorakaze）的配方、更新日志与导入教程的非官方参考网站。目前共有 
-    <strong>11 个 MOD</strong>（枪械、铁道、建材、Boss、天空、生存、载具、电力、后室、二相乐园）正同时运行在 Minecraft
-    <strong>26.2</strong> 之上。
-  </p>
-  <p class="callout callout--info hero__notice">自 V2.2.0 起，本站在「下载」页面直接提供 MOD 本体（jar 文件）。这里还有配方表、更新日志、导入教程等「阅读内容」。如需 V2.2.0 之前的版本，请直接向服务器管理员索取。</p>
-  <div class="tag-row hero__cta">
-    <a class="btn" href="recipes/">查看合成配方</a>
-    <a class="btn btn--ghost" href="changelog/">查看更新日志</a>
-    <a class="btn btn--ghost" href="guide/">查看导入指南</a>
-  </div>
-  <div class="hero__scroll" aria-hidden="true"></div>
-</section>
+<section class="film" aria-labelledby="filmWord">
+  <div class="film__track" id="filmTrack">
+    <div class="film__stage" id="filmStage">
 
-    <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-release">新功能</span>
-        <span class="timeline-entry__release">V2.4.9</span>
-        <span class="card__meta">2026-08-28</span>
+      <!-- 1. the mark and the name resolve out of the dark -->
+      <div class="film__scene film__scene--title" data-film-scene="0">
+        <span class="film__mark" aria-hidden="true"></span>
+        <h1 class="film__word" id="filmWord">Aurora Corvus</h1>
       </div>
-      <h3 style="margin-top:0">最新更新： ミサイルランチャーの見た目が二重になる不具合を修正、マップの移動を右ドラッグへ、一斉発射100発・弾薬庫200発の収納箱化。バックルームズでサーバーが落ちる不具合も修正</h3>
-      <p>ミサイルランチャーについて所有者から届いた4点の指摘に対応しました。見た目が「旧デザインと新デザインが融合した」状態になっていた不具合、戦術マップがクリックしただけで動いてしまう不具合を直し、一度に狙える目標を100箇所に、弾薬庫を200発の「収納箱」に作り直しました。あわせて、V2.4.x より前に作られたバックルームズ階層0の区画を読み込んだときにサーバーが強制終了することがある不具合も修正しています。こちらは新しく作ったワールドでは起きないため今まで見つかっていませんでした。すでに遊んでいるワールドをお持ちのサーバーでは、この修正がいちばん大事な変更です。</p>
-      <ul><li>【サーバーが落ちる不具合を修正】V2.4.x より前に作られたバックルームズ階層0の区画が読み込まれると、サーバーが応答しなくなり約60秒後に強制終了することがある不具合を修正しました。古い区画を新しい見た目へ描き直す処理を、区画の読み込み中ではなく読み込み後に行うようにしています。新しく作ったワールドでは一度も起きないため、これまでのテストでは見つけられませんでした。長く遊んでいるワールドをお持ちの場合だけ影響します。</li><li>ミサイルランチャーの見た目が「旧デザインと新デザインが融合した」状態になっていた不具合を修正しました。原因は2つあり、(1) 脚とミサイル管を描く向きが4方向すべてで180度ずれていたため、発射台の1ブロック手前にミサイル管が、4本の脚のうち2本が空中に描かれていたこと、(2) 旧デザインのブロック模型13個のうち7個がまだ一緒に描かれ続けていたこと、でした。両方を直し、地面のパッド以外は新しい造形だけが描かれるようになりました。</li><li>あわせて、V2.4.6以降、発射台の脚の当たり判定が4方向のうち3方向でずれていたことが分かり(報告はいただいていませんでした)、向きごとに正しい当たり判定を持つよう作り直しました。</li><li>戦術マップの視点移動を、左クリック長押しから右クリック長押しに変更しました。左クリックは目標の追加・削除だけになり、ただクリックしただけでマップが動くことはなくなりました。移動は押した場所から3ピクセル以上離れて初めて始まります(これまでは微小な手ぶれが積み重なって、止めているつもりでも動いていました)。操作方法はマップ画面の下部にも表示されます。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">后室</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Boss</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">枪械</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">电力</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">天空</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">生存</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">载具</span></div>
-      <p><a href="changelog/">查看全部更新日志 →</a></p>
+
+      <!-- 2. the app arrives, with weight -->
+      <div class="film__scene film__scene--arrive" data-film-scene="1">
+        <figure class="film__frame"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="eager" fetchpriority="high"></figure>
+      </div>
+
+      <!-- 3. its surfaces fan out: home, settings, log -->
+      <!-- DOM order is the order the STATIC (no-JS / reduced-motion) gallery
+           reads in; the pinned film sets its own z-index, so it is free. -->
+      <div class="film__scene film__scene--stack" data-film-scene="2">
+        <figure class="film__frame film__frame--front"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back1"><img src="../assets/img/film/app-settings.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back2"><img src="../assets/img/film/app-log.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 4. the update, told by a dissolve between two real states -->
+      <div class="film__scene film__scene--update" data-film-scene="3">
+        <div class="film__detail">
+          <div class="film__detail-layer film__detail-layer--a"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <div class="film__detail-layer film__detail-layer--b"><img src="../assets/img/film/app-updated.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <span class="film__sweep" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- 5. the sheet, and the app's real backdrop blur behind it -->
+      <div class="film__scene film__scene--sheet" data-film-scene="4">
+        <figure class="film__frame film__frame--sharp"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--blurred"><img src="../assets/img/film/app-sheet.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 6. sign-off -->
+      <div class="film__scene film__scene--sign" data-film-scene="5" aria-hidden="true">
+        <span class="film__mark film__mark--sign"></span>
+        <p class="film__word film__word--sign">Aurora Corvus</p>
+      </div>
+
+      <span class="film__cue" aria-hidden="true"></span>
+      <span class="film__progress" aria-hidden="true"><i></i></span>
     </div>
-
-<h2>已导入 MOD 一览</h2>
-<p class="section-lede">点击即可跳转到对应 MOD 的配方列表。</p>
-<div class="grid grid--mods">
-  <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
-      <h3>枪械</h3>
-      <p class="card__meta">原版没有的远程武器</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
-      <h3>铁道</h3>
-      <p class="card__meta">电车与铁轨载具</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
-      <h3>建材、装饰</h3>
-      <p class="card__meta">建筑与家电，打造城镇</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
-      <h3>Boss</h3>
-      <p class="card__meta">强大的讨伐目标与掉落装备</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
-      <h3>天空</h3>
-      <p class="card__meta">新维度与天使王国</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
-      <h3>生存</h3>
-      <p class="card__meta">新矿石、护甲与生活要素</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
-      <h3>载具</h3>
-      <p class="card__meta">汽车、巴士与飞行器</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
-      <h3>电力</h3>
-      <p class="card__meta">发电、输电与电气化设备</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
-      <h3>后室</h3>
-      <p class="card__meta">带理智值的异界探索</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
-      <h3>二相乐园</h3>
-      <p class="card__meta">以夜为主的娱乐世界与次元之门</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-</div>
-
-<h2>本站能做什么</h2>
-<div class="grid grid--cards">
-  <a class="card" href="changelog/">
-      <h3>更新日志</h3>
-      <p>按时间顺序介绍从初版到现在的全部更新，一眼就能看清改动内容与注意事项。</p>
-      <p class="card__meta">阅读更新日志 →</p>
-    </a>
-  <a class="card" href="recipes/">
-      <h3>合成配方</h3>
-      <p>可搜索、可筛选的 11 个 MOD 全部物品合成配方速查表。</p>
-      <p class="card__meta">查找配方 →</p>
-    </a>
-  <a class="card" href="guide/">
-      <h3>导入指南</h3>
-      <p>分别针对 Windows / Mac，讲解从启用 MOD 到开始游玩的完整步骤。</p>
-      <p class="card__meta">查看导入步骤 →</p>
-    </a>
-  <a class="card" href="roadmap/">
-      <h3>后续计划</h3>
-      <p>汇总了正在筹备中的新区域、新要素的路线图（内容可能会有变动）。</p>
-      <p class="card__meta">查看路线图 →</p>
-    </a>
-  <a class="card" href="known-issues/">
-      <h3>已知问题</h3>
-      <p>汇总了目前已知的问题与尚未验证的要素。</p>
-      <p class="card__meta">查看已知问题 →</p>
-    </a>
-</div>
-
-<h2>关于本项目</h2>
-<p>本项目最初名为「Sorakaze」，从在保留原版生存体验的同时新增枪械、铁道、建材这三个 MOD 开始。此后不断以新增可合成物品的形式持续扩展，在 v1.8.0 时更名为「Glimpse Alpha」。如今已发展为包含 Boss、新维度、生存要素、载具、电力设施在内的 11 个 MOD 组合。</p>
-<p>本项目一贯坚持不替换、不删除原版要素的方针，弓箭、矿车等既有内容都被完整保留了下来。也不会使用真实存在的枪械、企业或商标名称。</p>
+  </div>
+</section>
 
 </main>
 <footer class="site-footer">

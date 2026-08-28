@@ -5,10 +5,16 @@ data/i18n/ja.translatable.json (JUST the strings a translator needs to
 produce, with structural data like dates/versions/ids/grids stripped out --
 this is what gets handed to each per-language translation agent).
 
-Sources: data/ui-strings.ja.json, data/home.ja.json, data/changelog.json,
-data/roadmap.ja.json, data/known-issues.ja.json, data/guide.json (install
-guide, written by a separate agent), data/recipes.json (cat names + item
-names + the recipe page's own "使い方" howto tab).
+Sources: data/ui-strings.ja.json, data/changelog.json, data/roadmap.ja.json,
+data/known-issues.ja.json, data/guide.json (install guide, written by a
+separate agent), data/recipes.json (cat names + item names + the recipe
+page's own "使い方" howto tab).
+
+There is deliberately no "home" section any more. The home page was reduced
+to the wordmark plus a wordless scroll-driven film (owner directive,
+2026-08), so data/home.ja.json and the `home` block of all 13 bundles were
+deleted rather than left behind as strings nothing renders. See
+scripts/build_home.py.
 
 Run this after any JA source file changes, before re-running translation.
 """
@@ -26,7 +32,6 @@ def load(name):
 
 def main():
     ui = load("ui-strings.ja.json")
-    home = load("home.ja.json")
     changelog = load("changelog.json")
     roadmap = load("roadmap.ja.json")
     known_issues = load("known-issues.ja.json")
@@ -60,7 +65,6 @@ def main():
     bundle = {
         "lang": "ja",
         "ui": ui,
-        "home": home,
         "changelog": changelog_strings,
         "roadmap": roadmap,
         "known_issues": known_issues,

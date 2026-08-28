@@ -147,122 +147,56 @@
 </header>
 <main id="main">
 
-<section class="hero hero--cinema">
-  <span class="hero__eyebrow">Справочник по модам сервера Sorakazekarasu</span>
-  <h1 class="hero__title">Aurora Corvus</h1>
-  <p class="lede hero__lede">
-    Неофициальный справочник по группе Fabric-модов «<strong>Glimpse Alpha</strong>» (ранее: Sorakaze), установленных на сервере Sorakazekarasu: рецепты, история обновлений и инструкция по установке. Сейчас на 
-    <strong>11 модов</strong>(огнестрельное оружие, железная дорога, стройматериалы, боссы, небеса, выживание, транспорт, электричество, Бэкрумс, Планаркадия) работают одновременно на Minecraft
-    <strong>26.2</strong>.
-  </p>
-  <p class="callout callout--info hero__notice">Начиная с V2.2.0, этот сайт распространяет файлы модов (jar) напрямую через страницу «Скачать». Здесь также есть справочные материалы — таблицы рецептов, история обновлений, инструкция по установке. Если нужна версия старше V2.2.0, получите её напрямую у администратора сервера.</p>
-  <div class="tag-row hero__cta">
-    <a class="btn" href="recipes/">Смотреть рецепты</a>
-    <a class="btn btn--ghost" href="changelog/">Смотреть историю обновлений</a>
-    <a class="btn btn--ghost" href="guide/">Смотреть инструкцию по установке</a>
-  </div>
-  <div class="hero__scroll" aria-hidden="true"></div>
-</section>
+<section class="film" aria-labelledby="filmWord">
+  <div class="film__track" id="filmTrack">
+    <div class="film__stage" id="filmStage">
 
-    <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-release">Новое</span>
-        <span class="timeline-entry__release">V2.4.9</span>
-        <span class="card__meta">2026-08-28</span>
+      <!-- 1. the mark and the name resolve out of the dark -->
+      <div class="film__scene film__scene--title" data-film-scene="0">
+        <span class="film__mark" aria-hidden="true"></span>
+        <h1 class="film__word" id="filmWord">Aurora Corvus</h1>
       </div>
-      <h3 style="margin-top:0">Последнее обновление: ミサイルランチャーの見た目が二重になる不具合を修正、マップの移動を右ドラッグへ、一斉発射100発・弾薬庫200発の収納箱化。バックルームズでサーバーが落ちる不具合も修正</h3>
-      <p>ミサイルランチャーについて所有者から届いた4点の指摘に対応しました。見た目が「旧デザインと新デザインが融合した」状態になっていた不具合、戦術マップがクリックしただけで動いてしまう不具合を直し、一度に狙える目標を100箇所に、弾薬庫を200発の「収納箱」に作り直しました。あわせて、V2.4.x より前に作られたバックルームズ階層0の区画を読み込んだときにサーバーが強制終了することがある不具合も修正しています。こちらは新しく作ったワールドでは起きないため今まで見つかっていませんでした。すでに遊んでいるワールドをお持ちのサーバーでは、この修正がいちばん大事な変更です。</p>
-      <ul><li>【サーバーが落ちる不具合を修正】V2.4.x より前に作られたバックルームズ階層0の区画が読み込まれると、サーバーが応答しなくなり約60秒後に強制終了することがある不具合を修正しました。古い区画を新しい見た目へ描き直す処理を、区画の読み込み中ではなく読み込み後に行うようにしています。新しく作ったワールドでは一度も起きないため、これまでのテストでは見つけられませんでした。長く遊んでいるワールドをお持ちの場合だけ影響します。</li><li>ミサイルランチャーの見た目が「旧デザインと新デザインが融合した」状態になっていた不具合を修正しました。原因は2つあり、(1) 脚とミサイル管を描く向きが4方向すべてで180度ずれていたため、発射台の1ブロック手前にミサイル管が、4本の脚のうち2本が空中に描かれていたこと、(2) 旧デザインのブロック模型13個のうち7個がまだ一緒に描かれ続けていたこと、でした。両方を直し、地面のパッド以外は新しい造形だけが描かれるようになりました。</li><li>あわせて、V2.4.6以降、発射台の脚の当たり判定が4方向のうち3方向でずれていたことが分かり(報告はいただいていませんでした)、向きごとに正しい当たり判定を持つよう作り直しました。</li><li>戦術マップの視点移動を、左クリック長押しから右クリック長押しに変更しました。左クリックは目標の追加・削除だけになり、ただクリックしただけでマップが動くことはなくなりました。移動は押した場所から3ピクセル以上離れて初めて始まります(これまでは微小な手ぶれが積み重なって、止めているつもりでも動いていました)。操作方法はマップ画面の下部にも表示されます。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Бэкрумс</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Боссы</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Стройматериалы и декор</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Огнестрельное оружие</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Планаркадия</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Электричество</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Железная дорога</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Небеса</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Выживание</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Транспорт</span></div>
-      <p><a href="changelog/">Вся история обновлений →</a></p>
+
+      <!-- 2. the app arrives, with weight -->
+      <div class="film__scene film__scene--arrive" data-film-scene="1">
+        <figure class="film__frame"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="eager" fetchpriority="high"></figure>
+      </div>
+
+      <!-- 3. its surfaces fan out: home, settings, log -->
+      <!-- DOM order is the order the STATIC (no-JS / reduced-motion) gallery
+           reads in; the pinned film sets its own z-index, so it is free. -->
+      <div class="film__scene film__scene--stack" data-film-scene="2">
+        <figure class="film__frame film__frame--front"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back1"><img src="../assets/img/film/app-settings.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back2"><img src="../assets/img/film/app-log.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 4. the update, told by a dissolve between two real states -->
+      <div class="film__scene film__scene--update" data-film-scene="3">
+        <div class="film__detail">
+          <div class="film__detail-layer film__detail-layer--a"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <div class="film__detail-layer film__detail-layer--b"><img src="../assets/img/film/app-updated.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <span class="film__sweep" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- 5. the sheet, and the app's real backdrop blur behind it -->
+      <div class="film__scene film__scene--sheet" data-film-scene="4">
+        <figure class="film__frame film__frame--sharp"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--blurred"><img src="../assets/img/film/app-sheet.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 6. sign-off -->
+      <div class="film__scene film__scene--sign" data-film-scene="5" aria-hidden="true">
+        <span class="film__mark film__mark--sign"></span>
+        <p class="film__word film__word--sign">Aurora Corvus</p>
+      </div>
+
+      <span class="film__cue" aria-hidden="true"></span>
+      <span class="film__progress" aria-hidden="true"><i></i></span>
     </div>
-
-<h2>Список установленных модов</h2>
-<p class="section-lede">Нажмите, чтобы перейти к рецептам этого мода.</p>
-<div class="grid grid--mods">
-  <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
-      <h3>Огнестрельное оружие</h3>
-      <p class="card__meta">Дальнобойное оружие, которого нет в ванильной игре</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
-      <h3>Железная дорога</h3>
-      <p class="card__meta">Поезда и рельсовый транспорт</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
-      <h3>Стройматериалы и декор</h3>
-      <p class="card__meta">Материалы для застройки города и бытовая техника</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
-      <h3>Боссы</h3>
-      <p class="card__meta">Могучие противники и уникальная экипировка с их дропа</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
-      <h3>Небеса</h3>
-      <p class="card__meta">Новое измерение и королевство ангелов</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
-      <h3>Выживание</h3>
-      <p class="card__meta">Новые руды, броня и элементы быта</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
-      <h3>Транспорт</h3>
-      <p class="card__meta">Автомобили, автобусы, авиатехника</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
-      <h3>Электричество</h3>
-      <p class="card__meta">Выработка и передача энергии, электроприборы</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
-      <h3>Бэкрумс</h3>
-      <p class="card__meta">Исследование изнанки мира со шкалой рассудка</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
-      <h3>Планаркадия</h3>
-      <p class="card__meta">Мир ночных развлечений и врата в него</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-</div>
-
-<h2>Что можно найти на этом сайте</h2>
-<div class="grid grid--cards">
-  <a class="card" href="changelog/">
-      <h3>История обновлений</h3>
-      <p>Все обновления от первой версии до текущей — в хронологическом порядке. Сразу видно, что изменилось и на что обратить внимание.</p>
-      <p class="card__meta">Читать историю обновлений →</p>
-    </a>
-  <a class="card" href="recipes/">
-      <h3>Рецепты</h3>
-      <p>Справочник рецептов крафта для всех предметов из 11 модов с поиском и фильтрацией.</p>
-      <p class="card__meta">Искать рецепты →</p>
-    </a>
-  <a class="card" href="guide/">
-      <h3>Инструкция по установке</h3>
-      <p>Все шаги от включения модов до начала игры — отдельно для Windows и Mac.</p>
-      <p class="card__meta">Смотреть инструкцию →</p>
-    </a>
-  <a class="card" href="roadmap/">
-      <h3>Планы на будущее</h3>
-      <p>Дорожная карта с новыми зонами и элементами, которые сейчас готовятся (содержание может измениться).</p>
-      <p class="card__meta">Смотреть дорожную карту →</p>
-    </a>
-  <a class="card" href="known-issues/">
-      <h3>Известные проблемы</h3>
-      <p>Собраны известные неполадки и элементы, которые пока не проверены.</p>
-      <p class="card__meta">Смотреть известные проблемы →</p>
-    </a>
-</div>
-
-<h2>Об этом проекте</h2>
-<p>Проект начинался под названием «Sorakaze» с трёх модов — огнестрельного оружия, железной дороги и стройматериалов, — которые добавлялись поверх ванильного выживания, не меняя его сути. Затем сборка постепенно расширялась новыми крафтимыми предметами, а в версии v1.8.0 была переименована в «Glimpse Alpha». Сейчас это уже 11 модов, включая боссов, новое измерение, элементы выживания, транспорт и энергетическую инфраструктуру.</p>
-<p>Неизменный принцип проекта — не заменять и не убирать ванильные элементы: лук со стрелами, вагонетки и всё остальное остаются на месте как есть. Названия настоящих образцов оружия, компаний и товарных знаков не используются.</p>
+  </div>
+</section>
 
 </main>
 <footer class="site-footer">

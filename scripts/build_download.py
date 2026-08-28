@@ -18,8 +18,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
     esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix,
     LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
+    load_latest_changelog_entry,
 )
-from build_home import load_latest_changelog_entry  # noqa: E402
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
@@ -227,7 +227,7 @@ def _whats_new_body(lang, bundle, dl):
     itself shipped ever-newer ZIPs. The heading's version number comes from
     the {pack_version} placeholder (site_common.load_bundle) for the same
     reason."""
-    latest = load_latest_changelog_entry(lang, bundle)
+    latest = load_latest_changelog_entry(bundle)
     if latest and latest.get("summary"):
         return latest["summary"]
     return dl.get("whats_new_body", "")

@@ -305,6 +305,8 @@
   var lastParallax = null;
   var framePending = false;
 
+  function clamp01(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
+
   function measureHero() {
     if (!hero) return;
     // The only layout read in this module, and it never happens inside the
@@ -312,6 +314,92 @@
     var rect = hero.getBoundingClientRect();
     heroTop = rect.top + (window.scrollY || window.pageYOffset || 0);
     heroHeight = rect.height;
+  }
+
+  // ---------------------------------------------------------------------
+  // Film (home page only): a pinned stage whose six scenes are driven by
+  // scroll position. Same contract as everything else in this file — the
+  // only thing written per frame is a handful of unitless custom properties,
+  // and every CSS rule that consumes them moves transform/opacity alone.
+  //
+  // The film is an ENHANCEMENT. When it does not run (JS off, reduced
+  // motion, markup absent) style.css lays the identical markup out as a
+  // static vertical gallery, so there is no state in which a visitor sees a
+  // sequence stuck on frame 0.
+  // ---------------------------------------------------------------------
+  var filmTrack = document.getElementById("filmTrack");
+  var filmStage = document.getElementById("filmStage");
+  var filmScenes = (filmTrack && filmStage && !reducedMotion)
+    ? Array.prototype.slice.call(filmStage.querySelectorAll("[data-film-scene]"))
+    : [];
+  var filmTop = 0;
+  var filmSpan = 1;
+  var filmStageH = 0;
+  var filmP = -1;
+  var filmLive = null;
+
+  // Per scene: [start, end] in overall film progress, plus the fade-in and
+  // fade-out lengths (also in progress units).
+  //
+  // The beats do NOT overlap. They were cross-dissolved at first and it
+  // looked wrong for a specific reason: every scene here carries type, so a
+  // 50/50 dissolve of two of them is a double exposure — the wordmark
+  // printed across the app's own UI — not a transition. Each beat now fades
+  // out completely before the next fades in, leaving a ~0.005 gap (about
+  // 25px of scroll) of plain night sky between them. That reads as a cut,
+  // which is what a product film actually does.
+  var FILM_BEATS = [
+    { a: 0.000, b: 0.110, fi: 0,     fo: 0.040 },  // 1 mark + wordmark
+    { a: 0.115, b: 0.320, fi: 0.040, fo: 0.035 },  // 2 the app arrives
+    { a: 0.325, b: 0.530, fi: 0.035, fo: 0.035 },  // 3 surfaces fan apart
+    { a: 0.535, b: 0.740, fi: 0.035, fo: 0.035 },  // 4 the update
+    { a: 0.745, b: 0.930, fi: 0.035, fo: 0.035 },  // 5 the sheet + its blur
+    { a: 0.935, b: 1.000, fi: 0.040, fo: 0     }   // 6 sign-off
+  ];
+
+  function measureFilm() {
+    if (!filmScenes.length) return;
+    var rect = filmTrack.getBoundingClientRect();
+    filmTop = rect.top + (window.scrollY || window.pageYOffset || 0);
+    filmStageH = filmStage.offsetHeight;
+    filmSpan = Math.max(1, rect.height - filmStageH);
+  }
+
+  // A ramp of length 0 means "no fade on this edge" rather than a divide by
+  // zero — that is what keeps the opening beat fully opaque at scroll 0.
+  function ramp(x, d) { return d > 0 ? clamp01(x / d) : 1; }
+
+  // Writes only when the value actually moved. Most frames touch two scenes;
+  // the other four are clamped at their end values and cost nothing.
+  function setSceneVar(el, name, key, value) {
+    if (el[key] !== undefined && Math.abs(el[key] - value) < 0.0015) return;
+    el[key] = value;
+    el.style.setProperty(name, value.toFixed(4));
+  }
+
+  function filmFrame(y, vh) {
+    if (!filmScenes.length) return;
+    var live = (filmTop - y) < vh &&
+               (filmTop + filmStageH + filmSpan - y) > 0;
+    if (live !== filmLive) {
+      filmLive = live;
+      filmStage.classList.toggle("is-live", live);
+    }
+    var p = clamp01((y - filmTop) / filmSpan);
+    if (p === filmP) return;
+    filmP = p;
+    setSceneVar(filmStage, "--p", "_filmP", p);
+    for (var i = 0; i < filmScenes.length; i++) {
+      var b = FILM_BEATS[i];
+      if (!b) continue;
+      var el = filmScenes[i];
+      var t = clamp01((p - b.a) / (b.b - b.a));
+      setSceneVar(el, "--t", "_filmT", t);
+      // easeOutExpo, for the beats that need to land with weight.
+      setSceneVar(el, "--e", "_filmE", t >= 1 ? 1 : 1 - Math.pow(2, -9 * t));
+      setSceneVar(el, "--o", "_filmO",
+                  Math.min(ramp(p - b.a, b.fi), ramp(b.b - p, b.fo)));
+    }
   }
 
   function frame() {
@@ -343,6 +431,8 @@
         }
       }
     }
+
+    filmFrame(y, vh);
   }
 
   function requestFrame() {
@@ -351,18 +441,30 @@
     window.requestAnimationFrame(frame);
   }
 
-  if (header || hero) {
+  function measureAll() {
     measureHero();
+    measureFilm();
+  }
+
+  if (header || hero || filmScenes.length) {
+    measureAll();
     frame();
     window.addEventListener("scroll", requestFrame, { passive: true });
     window.addEventListener("resize", function () {
-      measureHero();
+      measureAll();
       requestFrame();
     }, { passive: true });
     window.addEventListener("orientationchange", function () {
-      measureHero();
+      measureAll();
       requestFrame();
     }, { passive: true });
+    // The stage is sized in svh and the frames carry width/height, so nothing
+    // here reflows as images arrive — but re-measure once after load anyway,
+    // since web-font metrics can still nudge the document above the film.
+    window.addEventListener("load", function () {
+      measureAll();
+      requestFrame();
+    });
   }
 
   // =====================================================================
@@ -379,11 +481,11 @@
     // guide panes) is intentionally not covered here - it renders straight
     // to its normal visible state, which is correct since it wasn't on
     // screen yet for a scroll-entrance to make sense of.
-    // .hero--cinema (home's full-bleed opening scene) is excluded: it has
-    // its own staged load entrance in CSS (hero-rise), and double-animating
-    // it via the scroll-reveal transition would fight that.
+    // The home page's .film is excluded: it drives its own scenes from
+    // scroll position, and letting the reveal system park it at opacity 0
+    // until it intersects would leave the whole page blank on load.
     var REVEAL_SELECTOR = [
-      "main > .hero:not(.hero--cinema)", "main > section:not(.hero--cinema)",
+      "main > .hero", "main > section:not(.film)",
       "main > .card", "main > .toc",
       ".grid > *", ".card-list > *", ".timeline-entry", ".callout",
       ".guide-section", ".steps > li", "main > .tab-bar", "main > h2"

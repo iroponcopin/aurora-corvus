@@ -147,122 +147,56 @@
 </header>
 <main id="main">
 
-<section class="hero hero--cinema">
-  <span class="hero__eyebrow">Referência de MODs do Servidor Sorakazekarasu</span>
-  <h1 class="hero__title">Aurora Corvus</h1>
-  <p class="lede hero__lede">
-    Este é um site de referência não oficial com as receitas, o histórico de atualizações e o guia de instalação do conjunto de MODs Fabric “<strong>Glimpse Alpha</strong>” (antigo nome: Sorakaze), usado no Servidor Sorakazekarasu. Atualmente rodamos
-    <strong>11 MODs</strong>ao mesmo tempo (armas de fogo, ferrovia, materiais de construção, chefes, céu, sobrevivência, veículos, energia, Backrooms e Planarcadia) no Minecraft
-    <strong>26.2</strong>.
-  </p>
-  <p class="callout callout--info hero__notice">A partir da V2.2.0, este site distribui os arquivos (jars) dos MODs diretamente pela página &quot;Download&quot;. Aqui você também encontra material de leitura: tabelas de receitas, histórico de atualizações e guias de instalação. Se precisar de uma versão anterior à V2.2.0, fale diretamente com a administração do servidor.</p>
-  <div class="tag-row hero__cta">
-    <a class="btn" href="recipes/">Ver receitas</a>
-    <a class="btn btn--ghost" href="changelog/">Ver histórico de atualizações</a>
-    <a class="btn btn--ghost" href="guide/">Ver guia de instalação</a>
-  </div>
-  <div class="hero__scroll" aria-hidden="true"></div>
-</section>
+<section class="film" aria-labelledby="filmWord">
+  <div class="film__track" id="filmTrack">
+    <div class="film__stage" id="filmStage">
 
-    <div class="card" style="margin-top:28px;">
-      <div class="badge-row"><span class="type-badge type-release">Novidade</span>
-        <span class="timeline-entry__release">V2.4.9</span>
-        <span class="card__meta">2026-08-28</span>
+      <!-- 1. the mark and the name resolve out of the dark -->
+      <div class="film__scene film__scene--title" data-film-scene="0">
+        <span class="film__mark" aria-hidden="true"></span>
+        <h1 class="film__word" id="filmWord">Aurora Corvus</h1>
       </div>
-      <h3 style="margin-top:0">Última atualização: ミサイルランチャーの見た目が二重になる不具合を修正、マップの移動を右ドラッグへ、一斉発射100発・弾薬庫200発の収納箱化。バックルームズでサーバーが落ちる不具合も修正</h3>
-      <p>ミサイルランチャーについて所有者から届いた4点の指摘に対応しました。見た目が「旧デザインと新デザインが融合した」状態になっていた不具合、戦術マップがクリックしただけで動いてしまう不具合を直し、一度に狙える目標を100箇所に、弾薬庫を200発の「収納箱」に作り直しました。あわせて、V2.4.x より前に作られたバックルームズ階層0の区画を読み込んだときにサーバーが強制終了することがある不具合も修正しています。こちらは新しく作ったワールドでは起きないため今まで見つかっていませんでした。すでに遊んでいるワールドをお持ちのサーバーでは、この修正がいちばん大事な変更です。</p>
-      <ul><li>【サーバーが落ちる不具合を修正】V2.4.x より前に作られたバックルームズ階層0の区画が読み込まれると、サーバーが応答しなくなり約60秒後に強制終了することがある不具合を修正しました。古い区画を新しい見た目へ描き直す処理を、区画の読み込み中ではなく読み込み後に行うようにしています。新しく作ったワールドでは一度も起きないため、これまでのテストでは見つけられませんでした。長く遊んでいるワールドをお持ちの場合だけ影響します。</li><li>ミサイルランチャーの見た目が「旧デザインと新デザインが融合した」状態になっていた不具合を修正しました。原因は2つあり、(1) 脚とミサイル管を描く向きが4方向すべてで180度ずれていたため、発射台の1ブロック手前にミサイル管が、4本の脚のうち2本が空中に描かれていたこと、(2) 旧デザインのブロック模型13個のうち7個がまだ一緒に描かれ続けていたこと、でした。両方を直し、地面のパッド以外は新しい造形だけが描かれるようになりました。</li><li>あわせて、V2.4.6以降、発射台の脚の当たり判定が4方向のうち3方向でずれていたことが分かり(報告はいただいていませんでした)、向きごとに正しい当たり判定を持つよう作り直しました。</li><li>戦術マップの視点移動を、左クリック長押しから右クリック長押しに変更しました。左クリックは目標の追加・削除だけになり、ただクリックしただけでマップが動くことはなくなりました。移動は押した場所から3ピクセル以上離れて初めて始まります(これまでは微小な手ぶれが積み重なって、止めているつもりでも動いていました)。操作方法はマップ画面の下部にも表示されます。</li></ul>
-      <div class="badge-row"><span class="mod-badge mod-badge--sm" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge mod-badge--sm" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge mod-badge--sm" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge mod-badge--sm" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge mod-badge--sm" style="--mod-color:#3badc9">Céu</span><span class="mod-badge mod-badge--sm" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge mod-badge--sm" style="--mod-color:#d17a34">Veículos</span></div>
-      <p><a href="changelog/">Ver todo o histórico de atualizações →</a></p>
+
+      <!-- 2. the app arrives, with weight -->
+      <div class="film__scene film__scene--arrive" data-film-scene="1">
+        <figure class="film__frame"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="eager" fetchpriority="high"></figure>
+      </div>
+
+      <!-- 3. its surfaces fan out: home, settings, log -->
+      <!-- DOM order is the order the STATIC (no-JS / reduced-motion) gallery
+           reads in; the pinned film sets its own z-index, so it is free. -->
+      <div class="film__scene film__scene--stack" data-film-scene="2">
+        <figure class="film__frame film__frame--front"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back1"><img src="../assets/img/film/app-settings.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--back2"><img src="../assets/img/film/app-log.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 4. the update, told by a dissolve between two real states -->
+      <div class="film__scene film__scene--update" data-film-scene="3">
+        <div class="film__detail">
+          <div class="film__detail-layer film__detail-layer--a"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <div class="film__detail-layer film__detail-layer--b"><img src="../assets/img/film/app-updated.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></div>
+          <span class="film__sweep" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- 5. the sheet, and the app's real backdrop blur behind it -->
+      <div class="film__scene film__scene--sheet" data-film-scene="4">
+        <figure class="film__frame film__frame--sharp"><img src="../assets/img/film/app-home.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+        <figure class="film__frame film__frame--blurred"><img src="../assets/img/film/app-sheet.webp" alt="" width="1196" height="824" decoding="async" loading="lazy"></figure>
+      </div>
+
+      <!-- 6. sign-off -->
+      <div class="film__scene film__scene--sign" data-film-scene="5" aria-hidden="true">
+        <span class="film__mark film__mark--sign"></span>
+        <p class="film__word film__word--sign">Aurora Corvus</p>
+      </div>
+
+      <span class="film__cue" aria-hidden="true"></span>
+      <span class="film__progress" aria-hidden="true"><i></i></span>
     </div>
-
-<h2>MODs instalados</h2>
-<p class="section-lede">Clique em um MOD para ir direto à lista de receitas dele.</p>
-<div class="grid grid--mods">
-  <a class="card card--mod" href="recipes/#0" style="--mod-color:#c0533a">
-      <h3>Armas de Fogo</h3>
-      <p class="card__meta">Armas de longo alcance que não existem na vanilla</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#1" style="--mod-color:#3d7dc4">
-      <h3>Ferrovia</h3>
-      <p class="card__meta">Trens e veículos sobre trilhos</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#2" style="--mod-color:#4f8f43">
-      <h3>Materiais de Construção e Decoração</h3>
-      <p class="card__meta">Materiais de construção e eletrodomésticos para montar sua cidade</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#5" style="--mod-color:#9349b8">
-      <h3>Chefes</h3>
-      <p class="card__meta">Alvos poderosos para caçar e equipamentos exclusivos de drop</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#6" style="--mod-color:#3badc9">
-      <h3>Céu</h3>
-      <p class="card__meta">Uma nova dimensão e o reino dos anjos</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#7" style="--mod-color:#c19a2e">
-      <h3>Sobrevivência</h3>
-      <p class="card__meta">Novos minérios, armaduras e elementos do dia a dia</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#4" style="--mod-color:#d17a34">
-      <h3>Veículos</h3>
-      <p class="card__meta">Carros, ônibus e aeronaves</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#8" style="--mod-color:#d4b32e">
-      <h3>Energia</h3>
-      <p class="card__meta">Geração e transmissão de energia, além de aparelhos elétricos</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/" style="--mod-color:#7d7d52">
-      <h3>Backrooms</h3>
-      <p class="card__meta">Exploração de um mundo liminar com medidor de sanidade</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-      <a class="card card--mod" href="recipes/#9" style="--mod-color:#b0559b">
-      <h3>Planarcadia</h3>
-      <p class="card__meta">Um mundo de lazer noturno e o portal para ele</p>
-      <div class="card__meta">v2.4.9</div>
-    </a>
-</div>
-
-<h2>O que você encontra neste site</h2>
-<div class="grid grid--cards">
-  <a class="card" href="changelog/">
-      <h3>Histórico de atualizações</h3>
-      <p>Todas as atualizações, da primeira até a mais recente, em ordem cronológica. Dá para ver de cara o que mudou e o que ficar de olho.</p>
-      <p class="card__meta">Ler o histórico de atualizações →</p>
-    </a>
-  <a class="card" href="recipes/">
-      <h3>Receitas</h3>
-      <p>Uma tabela com busca e filtro para as receitas de todos os itens dos 11 MODs.</p>
-      <p class="card__meta">Procurar receitas →</p>
-    </a>
-  <a class="card" href="guide/">
-      <h3>Guia de instalação</h3>
-      <p>O passo a passo desde ativar os MODs até começar a jogar, com instruções separadas para Windows e Mac.</p>
-      <p class="card__meta">Ver o passo a passo →</p>
-    </a>
-  <a class="card" href="roadmap/">
-      <h3>Próximas atualizações</h3>
-      <p>Um roteiro com as novas áreas e novidades em preparação (o conteúdo pode mudar).</p>
-      <p class="card__meta">Ver o roteiro →</p>
-    </a>
-  <a class="card" href="known-issues/">
-      <h3>Bugs conhecidos</h3>
-      <p>Um resumo dos bugs conhecidos e dos elementos ainda não testados.</p>
-      <p class="card__meta">Ver os bugs conhecidos →</p>
-    </a>
-</div>
-
-<h2>Sobre este projeto</h2>
-<p>Tudo começou com o nome “Sorakaze”, adicionando três MODs — armas de fogo, ferrovia e materiais de construção — sem mexer na experiência vanilla de sobrevivência. Depois disso, o projeto foi crescendo com novos itens craftáveis até virar “Glimpse Alpha” na v1.8.0. Hoje a estrutura conta com 11 MODs, incluindo chefes, uma nova dimensão, elementos de sobrevivência, veículos e até infraestrutura de energia.</p>
-<p>A diretriz sempre foi não substituir nem remover elementos da vanilla, então coisas como arco e flecha ou vagonete continuam do jeitinho que sempre foram. Também não usamos nomes de armas, empresas ou marcas reais.</p>
+  </div>
+</section>
 
 </main>
 <footer class="site-footer">

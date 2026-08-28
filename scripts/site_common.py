@@ -408,6 +408,42 @@ def available_langs() -> list[str]:
     return [c for c in LANG_CODES if (I18N_DIR / f"{c}.json").exists()]
 
 
+def load_latest_changelog_entry(bundle: dict):
+    """The newest changelog entry, with translated strings merged in from the
+    bundle (falling back to the JA structural file for release/date/type/
+    mod_versions, which never need translation).
+
+    Lived in build_home.py until the home page was reduced to the wordmark +
+    film and stopped rendering a "latest update" teaser at all. It is here,
+    not in build_download.py, because a cross-import between two page
+    builders is exactly how a helper ends up deleted out from under its only
+    remaining caller.
+
+    ⚠ "Latest" is selected by (date, parsed release version), NOT by file
+      position: data/changelog.json once had newer entries hand-prepended at
+      the top, and structural[-1] silently promoted V2.4.1 to "latest update"
+      while the download page shipped V2.4.8.
+    """
+    p = ROOT / "data" / "changelog.json"
+    if not p.exists():
+        return None
+    structural = json.loads(p.read_text(encoding="utf-8"))
+    if not structural:
+        return None
+    by_release_date = {(t["release"], t["date"]): t
+                       for t in (bundle.get("changelog") or [])}
+
+    def _key(e):
+        return (e.get("date", ""),
+                tuple(int(n) for n in re.findall(r"\d+", str(e.get("release", "")))))
+
+    s = max(structural, key=_key)
+    t = by_release_date.get((s["release"], s["date"]), s)
+    merged = dict(s)
+    merged.update({k: t[k] for k in ("title", "summary", "highlights") if k in t})
+    return merged
+
+
 def mod_badge(bundle: dict, mod_id: str, small: bool = False) -> str:
     m = MODS_BY_ID.get(mod_id)
     if not m:
