@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
     esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix,
     LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
-    load_latest_changelog_entry,
+    load_latest_changelog_entry, PACK_NAME, pack_zip_path,
 )
 
 MC_VERSION = "26.2"
@@ -39,15 +39,10 @@ def _mod_version():
 
 
 def _zip_path(version):
-    name = f"Glimpse_Alpha_MODs_v{version}+mc{MC_VERSION}.zip"
-    p = DOWNLOAD_DIR / name
-    if not p.exists():
-        raise SystemExit(
-            f"ERROR: {p} does not exist. The Download page must not link to a file that isn't "
-            f"actually in the wiki's served tree - copy the real assembled ZIP "
-            f"(tools/build_dist_zip.py) to downloads/{name} before building this page."
-        )
-    return p
+    # The filename comes from site_common.pack_zip_name(), not an f-string
+    # here: the V2.5.0 rename (Glimpse_Alpha_MODs_* -> Alpha_MODs_*) had to be
+    # made in one place, not three.
+    return pack_zip_path(version, MC_VERSION, why="The Download page")
 
 
 def _sha256(path):
@@ -285,7 +280,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
 <p class="callout callout--info">{esc(dl.get('older_versions_note', ''))}</p>
 
 <h2>{esc(dl.get('launcher_heading', LAUNCHER_APP_NAME))}</h2>
-<p>{esc(dl.get('launcher_body', f'{LAUNCHER_APP_NAME} is a desktop app that keeps your Glimpse Alpha '
+<p>{esc(dl.get('launcher_body', f'{LAUNCHER_APP_NAME} is a desktop app that keeps your {PACK_NAME} '
                                 'mod pack up to date automatically, verifying every download against '
                                 'this Wiki by SHA-256.'))}</p>
 {_launcher_section_html(dl, lang, launcher)}

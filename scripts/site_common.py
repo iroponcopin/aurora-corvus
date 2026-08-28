@@ -22,11 +22,67 @@ DOWNLOADS_DIR = ROOT / "downloads"
 
 # Three distinct names, deliberately kept apart:
 #   SITE_TITLE          the website              -> "Aurora Corvus"
-#   "Glimpse Alpha"     the mod pack product     -> NEVER renamed
+#   PACK_NAME           the mod pack product     -> "Alpha" (was "Glimpse
+#                       Alpha" until the V2.5.0 rename; see below)
 #   LAUNCHER_APP_NAME   the desktop updater app  -> "Corvus" (was
 #                       "Glimpse Launcher" until the 1.3.0 rename)
 SITE_TITLE = "Aurora Corvus"  # brand name, unchanged across languages
 LAUNCHER_APP_NAME = "Corvus"
+
+# V2.5.0 renamed the pack "Glimpse Alpha" -> "Alpha" (the owner's instruction
+# was to drop "Glimpse"). The BRAND moved; no identifier did — the eleven mod
+# ids are still sorakaze_*, so worlds, configs and namespaces are untouched.
+#
+# This constant and the two helpers below exist because the old name was
+# duplicated as an f-string literal in three separate builders
+# (build_download.py, build_releases_feed.py, build_glimpse_manifest.py), each
+# of which independently reconstructed the ZIP filename. That is the same
+# shape of defect as the private find_launcher_jars() copies documented lower
+# in this file: three copies of one fact drift, and here they would have
+# drifted into *hard build failures* the moment the renamed ZIP landed in
+# downloads/ (each _zip_path() raises SystemExit when its guessed name is
+# missing). One definition, imported by all three.
+PACK_NAME = "Alpha"
+PACK_ZIP_STEM = "Alpha_MODs"
+LEGACY_PACK_ZIP_STEM = "Glimpse_Alpha_MODs"
+# The release the rename shipped in. Below it the pack ZIP legitimately still
+# carries the old name on disk (downloads/ keeps every past release), so a
+# rebuild of an older release must still find its file.
+PACK_RENAME_VERSION = (2, 5, 0)
+
+
+def _version_tuple(version: str) -> tuple:
+    return tuple(int(n) for n in re.findall(r"\d+", str(version)))
+
+
+def pack_zip_name(version: str, mc_version: str = "26.2") -> str:
+    """The pack ZIP's filename for `version`, derived from the version itself
+    rather than typed. Releases from V2.5.0 on are Alpha_MODs_*; older ones
+    keep the pre-rename Glimpse_Alpha_MODs_* name they were actually
+    published under."""
+    stem = (PACK_ZIP_STEM if _version_tuple(version) >= PACK_RENAME_VERSION
+            else LEGACY_PACK_ZIP_STEM)
+    return f"{stem}_v{version}+mc{mc_version}.zip"
+
+
+def pack_zip_path(version: str, mc_version: str = "26.2", *, why: str = "This page"):
+    """downloads/<the real ZIP for `version`>, or a loud stop.
+
+    Deliberately does NOT fall back to the other brand's filename when the
+    expected one is absent: a fallback would let a forgotten `cp` of the new
+    ZIP be papered over by a stale identically-versioned file under the old
+    name, which is exactly the silent-stale-artifact failure that
+    tools/build_dist_zip.py's detect_version() was written to end.
+    """
+    name = pack_zip_name(version, mc_version)
+    p = DOWNLOADS_DIR / name
+    if not p.exists():
+        raise SystemExit(
+            f"ERROR: {p} does not exist. {why} must not describe a file that isn't actually "
+            f"in the wiki's served tree - copy the real assembled ZIP "
+            f"(tools/build_dist_zip.py) to downloads/{name} before building."
+        )
+    return p
 
 # Absolute origin+path this site is published at. Needed because Open Graph
 # requires an ABSOLUTE og:image URL — a relative one is silently ignored by

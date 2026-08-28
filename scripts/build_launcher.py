@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
 """Builds launcher/index.html for every language that has a bundle — the
-player-facing guide to Corvus (the desktop auto-updater for the Glimpse
-Alpha mod pack, built by a separate project against glimpse_manifest.json).
+player-facing guide to Corvus (the desktop auto-updater for the Alpha mod
+pack, built by a separate project against glimpse_manifest.json).
 The app was called "Glimpse Launcher" up to 1.2.1 and was renamed to Corvus
-with 1.3.0; the mod pack itself is still "Glimpse Alpha" and is NOT renamed.
+with 1.3.0. The mod pack was ALSO renamed since — "Glimpse Alpha" -> "Alpha"
+in V2.5.0 (2026-08-28), which this header used to say would never happen.
+
+⚠ The player-facing copy below, and the launcher_page/guide/download strings
+  in all 13 data/i18n bundles, still say "Glimpse Alpha" and still tell
+  players to look for `glimpse-alpha-*.jar`. From V2.5.0 those files are
+  named `alpha-*.jar`, so that instruction is now wrong. It was left in place
+  deliberately rather than half-fixed: the pack name appears ~350 times
+  across the 13 language bundles, and renaming it in the English fallbacks
+  alone would leave the site saying two different things in two different
+  languages. The site-wide copy rename is one job, and it needs a translator
+  pass, not an f-string edit. See the V2.5.0 release report.
 
 Follows the same pattern as build_guide.py: page()/write_page() from
 site_common.py, one page per available_langs() language. Real content is

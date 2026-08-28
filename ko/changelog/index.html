@@ -180,7 +180,7 @@
 <div class="hero">
   <span class="hero__eyebrow">업데이트 기록</span>
   <h1>업데이트 기록</h1>
-  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 56회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
+  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 57회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
   <p class="callout callout--info">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
 </div>
 
@@ -198,6 +198,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>조건에 맞는 업데이트가 없습니다.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.5.0</span> — 【必ずお読みください】古い glimpse-alpha-*.jar を削除してから導入してください ─ MOD の名前が「Glimpse Alpha」から「Alpha」になりました
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">신규 기능</span><span class="mod-badge" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge" style="--mod-color:#9349b8">보스</span><span class="mod-badge" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge" style="--mod-color:#c0533a">총기</span><span class="mod-badge" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge" style="--mod-color:#d4b32e">전력</span><span class="mod-badge" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge" style="--mod-color:#3badc9">천공</span><span class="mod-badge" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge" style="--mod-color:#d17a34">탈것</span></div>
+      <p>⚠ この版を入れる前に、mods フォルダーの中にある「glimpse-alpha-」で始まる jar を、11 個すべて削除してください。削除しないと、Minecraft もサーバーも起動しなくなります。今回、MOD の名前を「Glimpse Alpha」から「Alpha」へ変えたため(所有者のご指示により「Glimpse」を廃止しました)、jar のファイル名が「glimpse-alpha-○○.jar」から「alpha-○○.jar」に変わりました。名前が違うだけで中身は同じ MOD として扱われるので、古いものが残っていると「同じ MOD が 2 つ入っている」状態になり、Fabric がそこで起動を止めます(Duplicate mod というエラーです)。消すのは「glimpse-alpha-」で始まる 11 個だけです ——「fabric-api」で始まる jar や、ご自分で入れたほかの MOD は消さないでください。変わったのは名前だけです。ブロック・アイテムの内部 ID は 1 文字も変えていないので、すでに建てた建物も、持っている道具も、ワールドも、config も、これまでどおりそのまま使えます。ランチャー Corvus をお使いの方は、古い jar の削除をアプリが自動で行うため、この作業は必要ありません。</p>
+      <ul><li>【最初にこれだけはお願いします】mods フォルダーを開き、「glimpse-alpha-」で始まる jar を 11 個すべて削除してから、新しい「alpha-」で始まる 11 個を入れてください。古いものを消さずに新しいものを足すと、Minecraft もサーバーも起動しません。新しいものを入れる「前」に消すのが、いちばん確実です。</li><li>消すのは「glimpse-alpha-」で始まるものだけです。「fabric-api-…jar」は Alpha が動くために必要なファイルなので、絶対に消さないでください。ご自分で入れたほかの MOD も、そのままで大丈夫です。</li><li>もし消し忘れて起動しなくなっても、ワールドが壊れたわけではありません。mods フォルダーから「glimpse-alpha-」で始まる jar を消せば、そのまま起動します。</li><li>MOD の名前を「Glimpse Alpha」から「Alpha」に変更しました。ゲーム内のクリエイティブタブの名前、キー設定の分類名、MOD 一覧に表示される名前から「Glimpse」が消えます。</li><li>jar のファイル名が「alpha-○○-2.5.0+mc26.2.jar」に、配布 ZIP の名前が「Alpha_MODs_v2.5.0+mc26.2.zip」になりました。</li><li>ブロック・アイテム・エンティティの内部 ID(sorakaze_guns など 11 個)は 1 文字も変えていません。そのため、すでに設置したブロックや、持っているアイテムが消えることはありません。ワールドを作り直す必要もありません。</li><li>config のファイル名も「config/sorakaze_*.json」のままです。ご自分で調整した数値は、そのまま引きつがれます。</li><li>サーバーの管理者向けのコマンド(/glimpsebackup、/glimpse storm restore)の名前は、これまでどおり変えていません。すでにスクリプトや操作に組みこまれているものを変えるのは、名前の変更ではなく動作の変更にあたるためです。</li><li>ランチャー Corvus 1.5.1 をお使いの場合、古い jar の削除はアプリが自動で行います。手で mods フォルダーに入れている方と、サーバーの管理者の方は、上のとおりご自分で削除してください。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 주의 사항</div>
+          <ul><li>この版を入れる前に、mods フォルダーの「glimpse-alpha-」で始まる jar を 11 個すべて削除してください。消し忘れると、同じ MOD が 2 つある状態になり、Minecraft もサーバーも起動しません。</li><li>「fabric-api」で始まる jar は消さないでください。これは Alpha が動くために必要なファイルです。</li><li>サーバーを運営している方は、サーバー側の mods フォルダーでも同じ削除作業が必要です。</li></ul>
+        </div>
+      <h4>이 시점에 미구현·미확인이었던 사항</h4><ul><li>ランチャー Corvus 1.5.1 の画面には、いまはまだ以前の名前(「Glimpse Alpha」)が表示されます。表示だけの問題で、更新の確認・ダウンロード・インストールの動作には影響ありません。次のランチャーの更新で、表示名は配信情報から読み取るようになり、この表示は解消される予定です。</li><li>この Wiki の各ページの説明文にも、まだ「Glimpse Alpha」という表記が残っている箇所があります。13 言語ぶんの文章の差し替えは、次回以降にまとめて行います。</li><li>ゲーム内のコマンド名(/glimpsebackup、/glimpse storm restore)と、管理者向けの記録ファイル(glimpse-admin/audit.log)には「glimpse」の名前が残ります。コマンド名を変えるとこれまでのスクリプトが動かなくなり、記録ファイルの名前を変えるとそれまでの記録が読めなくなるため、あえて変更していません。</li><li>画面のデザインの名前である「Glimpse Glass」は、MOD の名前ではないため、そのままです。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

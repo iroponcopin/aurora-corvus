@@ -36,6 +36,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
     ROOT, LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
+    PACK_NAME, pack_zip_path,
 )
 
 MC_VERSION = "26.2"
@@ -56,14 +57,11 @@ def _mod_version():
 
 
 def _zip_path(version):
-    name = f"Glimpse_Alpha_MODs_v{version}+mc{MC_VERSION}.zip"
-    p = DOWNLOAD_DIR / name
-    if not p.exists():
-        raise SystemExit(
-            f"ERROR: {p} does not exist. glimpse_manifest.json must not describe a file that "
-            f"isn't actually in the wiki's served tree."
-        )
-    return p
+    # Filename from site_common.pack_zip_name() — see the note there about the
+    # V2.5.0 Glimpse_Alpha_MODs_* -> Alpha_MODs_* rename. This one matters
+    # most of the three: Corvus downloads exactly the `file_name` this block
+    # publishes, so a name invented here is a 404 for every installed app.
+    return pack_zip_path(version, MC_VERSION, why="glimpse_manifest.json")
 
 
 def _sha256(path):
@@ -156,10 +154,14 @@ def build():
 
     manifest = {
         "pack": {
+            # `id` is a stable key, not a display name: Corvus keys its
+            # installed-pack record off it, so the V2.5.0 brand rename
+            # deliberately does NOT touch it. Renaming it would orphan every
+            # existing install's record. `title` below carries the new name.
             "id": "glimpse-pack",
             "latest": version,
             "published_at": published_at,
-            "title": f"Glimpse Alpha {entry['release']}",
+            "title": f"{PACK_NAME} {entry['release']}",
             "summary": _english_summary(entry),
             "download_url": f"{SITE_BASE_URL}/downloads/{zpath.name}",
             "file_name": zpath.name,

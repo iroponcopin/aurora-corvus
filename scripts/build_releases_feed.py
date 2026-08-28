@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from site_common import ROOT  # noqa: E402
+from site_common import ROOT, PACK_NAME, pack_zip_path  # noqa: E402
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
@@ -37,14 +37,11 @@ def _mod_version():
 
 
 def _zip_path(version):
-    name = f"Glimpse_Alpha_MODs_v{version}+mc{MC_VERSION}.zip"
-    p = DOWNLOAD_DIR / name
-    if not p.exists():
-        raise SystemExit(
-            f"ERROR: {p} does not exist. releases.json must not describe a file that isn't "
-            f"actually in the wiki's served tree."
-        )
-    return p
+    # Filename from site_common.pack_zip_name() — see the note there about the
+    # V2.5.0 Glimpse_Alpha_MODs_* -> Alpha_MODs_* rename being one fact, not
+    # three copies. `file_name` below is this real file's name, so the feed
+    # follows the rename without this script knowing about it.
+    return pack_zip_path(version, MC_VERSION, why="releases.json")
 
 
 def _sha256(path):
@@ -95,7 +92,7 @@ def build():
 
     feed = {
         "version": version,
-        "title": f"Glimpse Alpha {entry['release']}",
+        "title": f"{PACK_NAME} {entry['release']}",
         "summary": _english_summary(entry),
         "download_url": f"{SITE_BASE_URL}/downloads/{zpath.name}",
         "file_name": zpath.name,

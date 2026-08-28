@@ -180,7 +180,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Güncelleme Geçmişi</span>
   <h1>Güncelleme Geçmişi</h1>
-  <p class="lede">İlk sürümden (v1.0.0, 2026-07-15) bugüne (2026-08-11 itibarıyla, toplam 56 güncelleme) kadar yapılan tüm güncellemeler en yeniden en eskiye doğru listelenmiştir. Geliştirme sürecindeki iç test adımları gibi ayrıntılar çıkarılmış; yalnızca sunucuda gerçekten neyin değiştiği ve nelere dikkat edilmesi gerektiği özetlenmiştir.</p>
+  <p class="lede">İlk sürümden (v1.0.0, 2026-07-15) bugüne (2026-08-11 itibarıyla, toplam 57 güncelleme) kadar yapılan tüm güncellemeler en yeniden en eskiye doğru listelenmiştir. Geliştirme sürecindeki iç test adımları gibi ayrıntılar çıkarılmış; yalnızca sunucuda gerçekten neyin değiştiği ve nelere dikkat edilmesi gerektiği özetlenmiştir.</p>
   <p class="callout callout--info">Gösterilen hasar, hız gibi değerler MOD&#x27;un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.</p>
 </div>
 
@@ -198,6 +198,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>Bu koşullara uyan bir güncelleme bulunamadı.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V2.5.0</span> — 【必ずお読みください】古い glimpse-alpha-*.jar を削除してから導入してください ─ MOD の名前が「Glimpse Alpha」から「Alpha」になりました
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>⚠ この版を入れる前に、mods フォルダーの中にある「glimpse-alpha-」で始まる jar を、11 個すべて削除してください。削除しないと、Minecraft もサーバーも起動しなくなります。今回、MOD の名前を「Glimpse Alpha」から「Alpha」へ変えたため(所有者のご指示により「Glimpse」を廃止しました)、jar のファイル名が「glimpse-alpha-○○.jar」から「alpha-○○.jar」に変わりました。名前が違うだけで中身は同じ MOD として扱われるので、古いものが残っていると「同じ MOD が 2 つ入っている」状態になり、Fabric がそこで起動を止めます(Duplicate mod というエラーです)。消すのは「glimpse-alpha-」で始まる 11 個だけです ——「fabric-api」で始まる jar や、ご自分で入れたほかの MOD は消さないでください。変わったのは名前だけです。ブロック・アイテムの内部 ID は 1 文字も変えていないので、すでに建てた建物も、持っている道具も、ワールドも、config も、これまでどおりそのまま使えます。ランチャー Corvus をお使いの方は、古い jar の削除をアプリが自動で行うため、この作業は必要ありません。</p>
+      <ul><li>【最初にこれだけはお願いします】mods フォルダーを開き、「glimpse-alpha-」で始まる jar を 11 個すべて削除してから、新しい「alpha-」で始まる 11 個を入れてください。古いものを消さずに新しいものを足すと、Minecraft もサーバーも起動しません。新しいものを入れる「前」に消すのが、いちばん確実です。</li><li>消すのは「glimpse-alpha-」で始まるものだけです。「fabric-api-…jar」は Alpha が動くために必要なファイルなので、絶対に消さないでください。ご自分で入れたほかの MOD も、そのままで大丈夫です。</li><li>もし消し忘れて起動しなくなっても、ワールドが壊れたわけではありません。mods フォルダーから「glimpse-alpha-」で始まる jar を消せば、そのまま起動します。</li><li>MOD の名前を「Glimpse Alpha」から「Alpha」に変更しました。ゲーム内のクリエイティブタブの名前、キー設定の分類名、MOD 一覧に表示される名前から「Glimpse」が消えます。</li><li>jar のファイル名が「alpha-○○-2.5.0+mc26.2.jar」に、配布 ZIP の名前が「Alpha_MODs_v2.5.0+mc26.2.zip」になりました。</li><li>ブロック・アイテム・エンティティの内部 ID(sorakaze_guns など 11 個)は 1 文字も変えていません。そのため、すでに設置したブロックや、持っているアイテムが消えることはありません。ワールドを作り直す必要もありません。</li><li>config のファイル名も「config/sorakaze_*.json」のままです。ご自分で調整した数値は、そのまま引きつがれます。</li><li>サーバーの管理者向けのコマンド(/glimpsebackup、/glimpse storm restore)の名前は、これまでどおり変えていません。すでにスクリプトや操作に組みこまれているものを変えるのは、名前の変更ではなく動作の変更にあたるためです。</li><li>ランチャー Corvus 1.5.1 をお使いの場合、古い jar の削除はアプリが自動で行います。手で mods フォルダーに入れている方と、サーバーの管理者の方は、上のとおりご自分で削除してください。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>この版を入れる前に、mods フォルダーの「glimpse-alpha-」で始まる jar を 11 個すべて削除してください。消し忘れると、同じ MOD が 2 つある状態になり、Minecraft もサーバーも起動しません。</li><li>「fabric-api」で始まる jar は消さないでください。これは Alpha が動くために必要なファイルです。</li><li>サーバーを運営している方は、サーバー側の mods フォルダーでも同じ削除作業が必要です。</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>ランチャー Corvus 1.5.1 の画面には、いまはまだ以前の名前(「Glimpse Alpha」)が表示されます。表示だけの問題で、更新の確認・ダウンロード・インストールの動作には影響ありません。次のランチャーの更新で、表示名は配信情報から読み取るようになり、この表示は解消される予定です。</li><li>この Wiki の各ページの説明文にも、まだ「Glimpse Alpha」という表記が残っている箇所があります。13 言語ぶんの文章の差し替えは、次回以降にまとめて行います。</li><li>ゲーム内のコマンド名(/glimpsebackup、/glimpse storm restore)と、管理者向けの記録ファイル(glimpse-admin/audit.log)には「glimpse」の名前が残ります。コマンド名を変えるとこれまでのスクリプトが動かなくなり、記録ファイルの名前を変えるとそれまでの記録が読めなくなるため、あえて変更していません。</li><li>画面のデザインの名前である「Glimpse Glass」は、MOD の名前ではないため、そのままです。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">
