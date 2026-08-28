@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "1.5.0",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.0.jar",
-    "file_name": "corvus-1.5.0.jar",
-    "file_size": 10565656,
-    "sha256": "16d3c04758f745aad3d28b0495d8ec07c691eb94af59acbf62f5865aeb6c8676",
-    "notes": "Corvus can now update itself. From this version on you should not need to visit this site again: when a new Corvus is released it downloads it, checks it against the SHA-256 published here, replaces itself and reopens. It always asks first, even with automatic updates turned on — restarting the app while you are using it is not something it should decide on its own. If anything goes wrong the previous version is put back automatically: the new build has to actually start before the old one is discarded. Two honest limitations. On Linux the .deb needs administrator rights that Corvus cannot request, so it downloads and verifies the file and then shows you the exact command to run — it does not pretend to have installed it. On Windows the update reinstalls the MSI, which means Windows will show its usual permission prompt. This release also follows the site to its new address; if you are on 1.4.0 or earlier you need to download once from here by hand, because those versions are still looking for the old address and cannot be reached.",
+    "latest": "1.5.1",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1.jar",
+    "file_name": "corvus-1.5.1.jar",
+    "file_size": 10569787,
+    "sha256": "ad2a179174b93e7f0e717ab17de768bd2d17be2e1a63316fc637668cc6f5ac11",
+    "notes": "Fixes a bug that could leave your Minecraft unable to start. If you installed the mod pack by hand before pointing Corvus at the folder — which the guide tells you is fine — the first update added the new mod files but could not remove the old ones, because it had no record of what was already there. Two copies of the same mod stops the game loading. Corvus now recognises the pack's own files by name, so superseded ones are removed whether or not it has a record, and it checks afterwards that only one copy of each mod is left. Your own mods are never touched: only files matching the pack's exact naming are removed, everything is backed up first, and each removal is written to the log.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.0-macos.dmg",
-        "file_name": "corvus-1.5.0-macos.dmg",
-        "file_size": 67941222,
-        "sha256": "e1cb585cdf64bddee6cb3df7ae6c8822aa311cf563a8138efdddfcde393c4fac"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1-macos.dmg",
+        "file_name": "corvus-1.5.1-macos.dmg",
+        "file_size": 67947817,
+        "sha256": "cb42b2590571c0144a4c117db915f1f8c238a50eeebb0be951a01e7ea56414f5"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.0-windows.msi",
-        "file_name": "corvus-1.5.0-windows.msi",
-        "file_size": 65339223,
-        "sha256": "b19ab29e2ff85740da2a9872768b4bb50b5ddc58c5a4bfb4722b6d21d6a1eac6"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1-windows.msi",
+        "file_name": "corvus-1.5.1-windows.msi",
+        "file_size": 65343319,
+        "sha256": "41864df2e7a8a2c23085612e58929779067ed1a649e0a7aceafbed2a144a4b63"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.0-linux.deb",
-        "file_name": "corvus-1.5.0-linux.deb",
-        "file_size": 46664874,
-        "sha256": "5d75b23015889cd654134ac3a067aeea986302b7b347778393bfa92dd1f49e30"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.5.1-linux.deb",
+        "file_name": "corvus-1.5.1-linux.deb",
+        "file_size": 46671462,
+        "sha256": "8489650a5c205d8b5746660289bac681c32db54b4c9e7e7b7f360fbc4b3e67f9"
       }
     }
   }
