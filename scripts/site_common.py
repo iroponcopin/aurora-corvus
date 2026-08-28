@@ -527,7 +527,15 @@ def mod_badge(bundle: dict, mod_id: str, small: bool = False) -> str:
 
 def type_badge(bundle: dict, t: str) -> str:
     label = bundle["ui"]["type_badge"].get(t, t)
-    cls = {"release": "type-release", "hotfix": "type-hotfix", "visual-update": "type-visual"}.get(t, "type-release")
+    # "disclosure" (added for the "previously undocumented mechanics" changelog
+    # entry) reuses the neutral info style -- it isn't a new feature (green) or
+    # a fix (red), so it shouldn't read as either.
+    cls = {
+        "release": "type-release",
+        "hotfix": "type-hotfix",
+        "visual-update": "type-visual",
+        "disclosure": "type-visual",
+    }.get(t, "type-release")
     return f'<span class="type-badge {cls}">{esc(label)}</span>'
 
 

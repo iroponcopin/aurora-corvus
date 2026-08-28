@@ -84,9 +84,14 @@ def build_lang(lang):
         f'{esc(ui["mods"].get(m["key"], {}).get("name", m["key"]))}</button>'
         for m in MOD_ORDER
     )
+    # .get(t, t) (not [t]): "disclosure" was added for the "previously
+    # undocumented mechanics" entry (ja/en only, so far). A language bundle
+    # that hasn't translated ui.type_badge["disclosure"] yet falls back to
+    # the raw key instead of a KeyError -- same convention as type_badge()
+    # itself and as NAV_LABEL_FALLBACK elsewhere in site_common.py.
     type_chips = "".join(
-        f'<button class="chip" type="button" data-filter-type="{t}" aria-pressed="false">{esc(ui["type_badge"][t])}</button>'
-        for t in ("release", "hotfix", "visual-update")
+        f'<button class="chip" type="button" data-filter-type="{t}" aria-pressed="false">{esc(ui["type_badge"].get(t, t))}</button>'
+        for t in ("release", "hotfix", "visual-update", "disclosure")
     )
 
     items_html = "\n".join(entry_html(bundle, e) for e in entries_desc)

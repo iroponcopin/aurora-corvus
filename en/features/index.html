@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Feature Guide | Aurora Corvus</title>
-<meta name="description" content="A tour of the main features added or changed in V2.2: glass lanterns, Backrooms, overworld raids, turrets, video, the Sparxie staff, firearm rebalance, the drone, and the Sapporo reconstruction.">
+<meta name="description" content="A tour of the main features added or changed in V2.2 (glass lanterns, Backrooms, overworld raids, turrets, video, the Sparxie staff, firearm rebalance, the drone, and the Sapporo reconstruction), plus a rundown of previously undocumented mechanics.">
 <meta property="og:title" content="Feature Guide | Aurora Corvus">
-<meta property="og:description" content="A tour of the main features added or changed in V2.2: glass lanterns, Backrooms, overworld raids, turrets, video, the Sparxie staff, firearm rebalance, the drone, and the Sapporo reconstruction.">
+<meta property="og:description" content="A tour of the main features added or changed in V2.2 (glass lanterns, Backrooms, overworld raids, turrets, video, the Sparxie staff, firearm rebalance, the drone, and the Sapporo reconstruction), plus a rundown of previously undocumented mechanics.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -182,7 +182,7 @@
   <h1>Feature Guide</h1>
   <p class="lede">A player-facing tour of what&#x27;s new or changed in V2.2. This covers what you actually see and use in-game, not internal settings or admin-only tooling.</p>
 </div>
-<div class="toc"><div class="toc__title">Contents</div><ol><li><a href="#glass-lanterns">Glass Lanterns (52 variants)</a></li><li><a href="#backrooms">Backrooms</a></li><li><a href="#overworld-raids">Overworld Raids</a></li><li><a href="#turrets">Turrets</a></li><li><a href="#video">Video (up to 4K, auto-stop)</a></li><li><a href="#sparxie-staff">Sparxie Staff</a></li><li><a href="#firearm-rebalance">Firearm Rebalance</a></li><li><a href="#drone">Drone and Drone App</a></li><li><a href="#sapporo">The Sapporo Reconstruction</a></li></ol></div>
+<div class="toc"><div class="toc__title">Contents</div><ol><li><a href="#glass-lanterns">Glass Lanterns (52 variants)</a></li><li><a href="#backrooms">Backrooms</a></li><li><a href="#overworld-raids">Overworld Raids</a></li><li><a href="#turrets">Turrets</a></li><li><a href="#video">Video (up to 4K, auto-stop)</a></li><li><a href="#sparxie-staff">Sparxie Staff</a></li><li><a href="#firearm-rebalance">Firearm Rebalance</a></li><li><a href="#drone">Drone and Drone App</a></li><li><a href="#sapporo">The Sapporo Reconstruction</a></li><li><a href="#undocumented-mechanics">Previously Undocumented Mechanics</a></li></ol></div>
 <div id="glass-lanterns"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Glass Lanterns (52 variants)</h2>
       
@@ -273,6 +273,70 @@
   <li><strong>Building heights: only partly real.</strong> The detailed 3D-building-height dataset (Japan's PLATEAU) hasn't been downloaded yet, so most heights are a documented per-district statistical estimate rather than a survey. Heights will be updated once that data is available.</li>
 </ul>
 <p class="callout callout--info">We're stating plainly that the heights are an estimate. The footprints and terrain are genuine survey data.</p>
+
+    </div></div>
+<div id="undocumented-mechanics"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Previously Undocumented Mechanics</h2>
+      
+<p>The seven items below are all live in the currently distributed pack (V2.5.1), running on their default settings. None of this is new as of today. Two of them &mdash; vehicle gasoline and nuclear-plant air pollution &mdash; were mentioned when they first shipped, in the V2.0.0 changelog entry, but that entry never said they were on by default or how to turn them off. The other five (weather, the price multiplier, the diamond ATM balance, dehydration death, and mask durability) have never had a changelog write-up at all. This page checks each one directly against the shipped V2.5.1 code.</p>
+<p class="callout callout--info">Every number below was confirmed directly in the V2.5.1 mod code. Every item can be turned on or off, or tuned, from that mod's own server-side config file. If you'd like something here changed, ask your server admin.</p>
+
+<h3>Weather Systems (Blizzard, Typhoon, Earthquake, Tsunami, Volcano)</h3>
+<p>The Survival mod includes five weather/disaster systems: blizzard, typhoon, earthquake, tsunami, and volcano. All five are on by default (<code>blizzardEnabled</code> / <code>typhoonEnabled</code> / <code>earthquakeEnabled</code> / <code>tsunamiEnabled</code> / <code>volcanoEnabled</code>, all in <code>config/sorakaze_survival.json</code>).</p>
+<ul>
+<li>Blizzard, typhoon, and tsunami affect visibility/movement/body temperature (blizzard), loose objects and rainfall (typhoon), and push water inland on top of the pack's own finite-water system (tsunami) &mdash; none of these three ever breaks a block.</li>
+<li><strong>Earthquakes can break player-built structures by default, not just terrain.</strong> The <code>earthquakeDamagesPlayerBuilds</code> flag (off by default) only controls whether earthquakes can break materials beyond a specific list &mdash; it doesn't switch building damage off entirely. Blocks tagged <code>earthquake_fragile</code> break either way, and that list includes stone, cobblestone, mossy cobblestone, cobbled deepslate, sandstone, red sandstone, dirt, sand, gravel, and clay &mdash; ordinary building material. Blocks with a block entity (chests, furnaces, and the like) are never touched, regardless of this setting.</li>
+<li><strong>Volcanoes dig a real crater, but two separate checks exist specifically to keep that crater off built structures.</strong> Each earthquake has a 5% chance (<code>volcanoEruptionChancePerEarthquake = 0.05</code>) of triggering an eruption, which carves an actual crater &mdash; 6 blocks in radius, 4 blocks deep (<code>volcanoCraterRadiusBlocks</code> / <code>volcanoCraterDepthBlocks</code>) &mdash; out of the terrain at the eruption site, and fills it with lava by default (<code>volcanoLavaEnabled = true</code>). Before any of that happens: the eruption is cancelled outright, not relocated, if any block entity sits within 24 blocks of the vent (<code>volcanoVentClearanceBlocks = 24</code>); separately, if even one block anywhere in the dig area isn't on the volcano's own natural-terrain list, the whole eruption is cancelled rather than dug around. The mod's own tests confirm this with a floor of oak planks alone, which is enough to make the eruption refuse to happen. In practice, only a structure with no block entity within 24 blocks of the vent, built entirely from natural materials like stone, dirt, sand, or gravel, is at any real risk here.</li>
+</ul>
+
+<h3>The Price Multiplier (&times;10&ndash;&times;100)</h3>
+<p>In the Sky and Planarcadia mods, prices this mod suite defines itself (not vanilla villager trades) are randomly marked up between &times;10 and &times;100, per item. This is on by default (<code>priceMultiplierEnabled = true</code>, in <code>config/sorakaze_sky.json</code> / <code>config/sorakaze_planarcadia.json</code> respectively).</p>
+<ul>
+<li>The multiplier for each item is rolled once, from the world's seed, the first time that world looks up its price &mdash; it never changes after that. Buy the same item twice in the same world and you pay the same multiplier both times. This isn't a fluctuating market.</li>
+<li>Example: Sky's Singapore real estate lists for 1,000,000&ndash;10,000,000 emeralds; under this system, the price you actually pay is 10,000,000&ndash;1,000,000,000 emeralds.</li>
+<li>The same multiplier code is also copied into the Guns, Rail, Power, and Backrooms mods (a side effect of this suite's rule against mods referencing each other), but as of V2.5.1, nothing in those four mods actually reads it &mdash; no price there is affected by it.</li>
+<li>One exception to the &times;10&ndash;&times;100 range: a handful of cheap Sky-mod goods (food, royal arrows, sky blocks) are still sold through an actual vanilla trade slot, which can only hold 1,152 emeralds (two payment slots' worth). If the rolled multiplier would push the price above that, what you're actually charged is capped there instead, so the realized multiplier can land below what was rolled. Equipment and real estate &mdash; including the Singapore example above &mdash; are settled through the ATM/ledger rather than a trade slot, so this cap doesn't touch them.</li>
+</ul>
+
+<h3>Diamond ATM Balance</h3>
+<p>The Building &amp; Decor mod's ATM carries a separate diamond balance alongside the existing emerald balance, on by default (<code>atmDiamondBalanceEnabled</code> / <code>atmDiamondExchangeEnabled</code>, both true in <code>config/sorakaze_deco.json</code>). It uses the exact same account types (personal/shared/special) as the emerald balance, but not the same interest.</p>
+<ul>
+<li>The two balances never merge. Exchange happens through the ATM screen at a fixed rate &mdash; 1 diamond = 4 emeralds &mdash; derived from measured vanilla trade data, and not configurable.</li>
+<li><strong>Diamond balances earn no interest at all, by design.</strong> The emerald account stores a last-accrual timestamp to calculate interest against; the diamond balance's data format has no such field, on purpose, so there's no time reference for compound interest to run against even if someone tried to add it later. This protects a rule already in place on the emerald side: interest there stops accruing at exactly 10,000,000 emeralds, and a diamond balance that also earned interest would quietly raise that effective ceiling.</li>
+</ul>
+
+<h3>Nuclear-Plant Air Pollution (Retroactive)</h3>
+<p>The Power mod's nuclear generators pollute the surrounding air, and standing in a polluted area applies Slowness, then Weakness, then Poison in sequence &mdash; this was already mentioned when it shipped, in the V2.0.0 changelog. What that entry didn't say:</p>
+<ul>
+<li>It's <strong>on by default</strong> (<code>pollution.enabled = true</code>, in <code>config/sorakaze_power.json</code>).</li>
+<li>It's <strong>retroactive</strong>. A nuclear generator you built and ran before your server updated to a pack version with this mechanic starts polluting the moment that update happens &mdash; there's no grace period, and no setting that exempts existing generators.</li>
+</ul>
+<p>Running an Air Purifier clears a polluted area in about 60 seconds by design (measured at roughly 54 seconds in practice). Even at the worst tier, Poison won't take you below 1 HP, and the debuff wears off on its own roughly 6 seconds after you leave the polluted area.</p>
+
+<h3>Dehydration Death</h3>
+<p>The Survival mod tracks a hydration stat separately from your hunger bar, on by default (<code>hydrationEnabled = true</code>, in <code>config/sorakaze_survival.json</code>). It runs on a 0&ndash;20 scale and drops by 1 every 90 seconds (1,800 ticks) at rest, faster while sprinting or inside one of the pack's "hot" dimensions.</p>
+<ul>
+<li>At 0 hydration, damage starts under the same floor as vanilla starvation: 1 HP every 4 seconds, stopping at 10 HP on Easy and 1 HP on Normal, able to kill on Hard, and not depleting at all on Peaceful.</li>
+<li>If hydration stays at 0 for 10 straight minutes (<code>hydrationDehydrationEscalationTicks = 12000</code>), damage starts escalating &mdash; +0.1 every 30 seconds, capping at 1.4 every 4 seconds (0.35 HP/sec). From that point on, the Easy/Normal damage floor no longer applies (<code>hydrationDehydrationEscalationIgnoresDifficultyFloor = true</code>). In practice: on any difficulty except Peaceful, going 10 minutes without water can now actually kill you.</li>
+<li>Drinking a water bottle or a canteen restores it (+6 hydration per use).</li>
+</ul>
+
+<h3>Vehicle Gasoline</h3>
+<p>Vehicles needing gasoline was already announced in the V2.0.0 changelog. What that entry didn't say: that it can be switched off, and what happens to vehicles that already existed.</p>
+<ul>
+<li>Every vehicle except trains now consumes gasoline, on by default (<code>gasoline.enabled = true</code>, in <code>config/sorakaze_vehicles.json</code>). Setting it to false fully restores the pre-fuel behavior of unlimited fuel.</li>
+<li>A vehicle placed before this mechanic existed carries over with a full tank (<code>legacyVehicleFillFraction = 1.0</code>) &mdash; it doesn't go dead the moment your server updates.</li>
+</ul>
+
+<h3>Mask Durability</h3>
+<p>The Sparkle and Sparxie masks now have a durability system, on by default (<code>maskBreakRevivalEnabled = true</code>, in <code>config/sorakaze_survival.json</code>).</p>
+<ul>
+<li>Durability is 814 (<code>maskDurability</code> &mdash; the original spec called for "about 800"; the shipped value is 814). Once it runs out, the mask breaks.</li>
+<li>320 seconds (6,400 ticks, <code>maskRevivalCooldownTicks</code>) after breaking, it becomes usable again. But <strong>this revival only happens once</strong> &mdash; break it a second time and it's done for good.</li>
+<li>The fact that a mask has already broken once is recorded on that specific mask, and survives relogging, death, being stored in a chest, and server restarts. Repairing it on an anvil or grindstone does not clear this record &mdash; that's blocked on purpose.</li>
+</ul>
+
+<p class="callout callout--info">This entry doesn't add or change any mechanic, or move any default. It documents what's already running, filling in what earlier updates left out. Every config key listed above lives in that mod's own <code>config/sorakaze_*.json</code> file on the server; only a server admin can change them.</p>
 
     </div></div>
 

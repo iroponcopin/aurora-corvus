@@ -181,7 +181,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Changelog</span>
   <h1>Changelog</h1>
-  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 58 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
+  <p class="lede">Every update from the first release (v1.0.0, 2026-07-15) to now (as of 2026-08-11, 59 updates in total), listed newest first. Internal development/verification steps have been left out — this only covers what actually changed on the server and what you should watch out for.</p>
   <p class="callout callout--info">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
 </div>
 
@@ -194,11 +194,23 @@
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">Type:</span>
-  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">New feature</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">Bug fix</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">Visual update</button>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">New feature</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">Bug fix</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">Visual update</button><button class="chip" type="button" data-filter-type="disclosure" aria-pressed="false">Disclosure</button>
 </div>
 
 <p id="changelogEmpty" class="empty-state" hidden>No updates match your filters.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
+      <div class="timeline-entry__date">2026-08-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">Disclosure</span> — Seven previously undocumented mechanics, written up on the Feature Guide page
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">Disclosure</span><span class="mod-badge" style="--mod-color:#4f8f43">Building &amp; Decor</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Power</span><span class="mod-badge" style="--mod-color:#3badc9">Sky</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Vehicles</span></div>
+      <p>V2.5.1 already ships with seven mechanics, all on by default, that have never had a changelog write-up: weather systems, the price multiplier, the diamond ATM balance, retroactive nuclear-plant pollution, dehydration death, vehicle gasoline, and mask durability. We checked each one directly against the shipped mod code and wrote it up on the Feature Guide page. Nothing about any mechanic or its defaults changed to produce this entry.</p>
+      <ul><li>Weather systems (blizzard, typhoon, earthquake, tsunami, volcano) — all five on by default. Earthquakes can break structures built from stone, cobblestone, dirt, sand, or gravel even with the default settings; volcanoes erupt on a 5% chance per earthquake, carving a real 6-block-radius, 4-block-deep crater and filling it with lava (built structures usually stop this outright — see the Feature Guide for how).</li><li>The price multiplier (×10–×100) is on by default in Sky and Planarcadia (not vanilla villager trades). The same code is also copied into Guns, Rail, Power, and Backrooms, but nothing there currently reads it.</li><li>The diamond ATM balance is on by default in Building &amp; Decor — a second balance alongside emeralds, at a fixed 1 diamond = 4 emerald rate.</li><li>Nuclear-plant air pollution is on by default and retroactive. (The mechanic itself was mentioned in V2.0.0; the retroactivity and the default weren&#x27;t stated until now.)</li><li>Dehydration death: staying at 0 hydration for 10 minutes straight starts damage that can now actually kill you on any difficulty except Peaceful.</li><li>Vehicle gasoline is on by default, can be turned off in config, and existing vehicles carry over with a full tank. (Gasoline itself was announced in V2.0.0; the toggle and the legacy-vehicle handling weren&#x27;t.)</li><li>Masks (Sparkle/Sparxie) have 814 durability and revive once, 320 seconds after breaking.</li></ul>
+      
+      
+      <h4>Not yet implemented/confirmed at this point</h4><ul><li>This entry changes no mechanic and no default. It documents seven things that were already running, after checking each directly against the shipped mod code. Full detail and the exact config key for each is on the Feature Guide page.</li><li>We didn&#x27;t trace exactly which version first introduced the price multiplier or the diamond balance — only that both are confirmed live as of V2.5.1.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

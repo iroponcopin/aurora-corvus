@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>機能紹介 | Aurora Corvus</title>
-<meta name="description" content="V2.2 で追加・変更された主な機能(ガラスランタン、バックルームズ、地上襲撃、砲台、動画、Sparxie の杖、銃火器調整、ドローン、札幌再現)の紹介。">
+<meta name="description" content="V2.2 で追加・変更された主な機能(ガラスランタン、バックルームズ、地上襲撃、砲台、動画、Sparxie の杖、銃火器調整、ドローン、札幌再現)と、書かれていなかった仕様のまとめの紹介。">
 <meta property="og:title" content="機能紹介 | Aurora Corvus">
-<meta property="og:description" content="V2.2 で追加・変更された主な機能(ガラスランタン、バックルームズ、地上襲撃、砲台、動画、Sparxie の杖、銃火器調整、ドローン、札幌再現)の紹介。">
+<meta property="og:description" content="V2.2 で追加・変更された主な機能(ガラスランタン、バックルームズ、地上襲撃、砲台、動画、Sparxie の杖、銃火器調整、ドローン、札幌再現)と、書かれていなかった仕様のまとめの紹介。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -182,7 +182,7 @@
   <h1>機能紹介</h1>
   <p class="lede">V2.2 で追加・変更された主な機能を、プレイヤー目線でまとめました。内部の設定値や管理者専用の仕組みではなく、実際に見て触れる部分を中心に解説します。</p>
 </div>
-<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#glass-lanterns">ガラスランタン(52種)</a></li><li><a href="#backrooms">バックルームズ</a></li><li><a href="#overworld-raids">地上の襲撃</a></li><li><a href="#turrets">砲台(銃・弓を据え付ける)</a></li><li><a href="#video">動画(4K対応・自動停止)</a></li><li><a href="#sparxie-staff">Sparxie の杖</a></li><li><a href="#firearm-rebalance">銃火器の調整</a></li><li><a href="#drone">ドローンとドローンアプリ</a></li><li><a href="#sapporo">札幌再現(Sapporo)</a></li></ol></div>
+<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#glass-lanterns">ガラスランタン(52種)</a></li><li><a href="#backrooms">バックルームズ</a></li><li><a href="#overworld-raids">地上の襲撃</a></li><li><a href="#turrets">砲台(銃・弓を据え付ける)</a></li><li><a href="#video">動画(4K対応・自動停止)</a></li><li><a href="#sparxie-staff">Sparxie の杖</a></li><li><a href="#firearm-rebalance">銃火器の調整</a></li><li><a href="#drone">ドローンとドローンアプリ</a></li><li><a href="#sapporo">札幌再現(Sapporo)</a></li><li><a href="#undocumented-mechanics">書かれていなかった仕様</a></li></ol></div>
 <div id="glass-lanterns"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">ガラスランタン(52種)</h2>
       
@@ -273,6 +273,70 @@
   <li><strong>建物の高さ: 一部のみ実データ。</strong>PLATEAU(国土交通省の3D都市モデル)のデータがまだ取得できていないため、高さの大部分は地区ごとの統計にもとづく推定値です。将来PLATEAUデータが入手でき次第、より正確な高さに更新される予定です</li>
 </ul>
 <p class="callout callout--info">「建物の高さが推定である」ことを隠さずに書いています。輪郭と地形は本物の測量データそのものです。</p>
+
+    </div></div>
+<div id="undocumented-mechanics"><div class="card" style="margin-bottom:20px;">
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">書かれていなかった仕様</h2>
+      
+<p>ここに挙げる7つは、すべて現在配布中のバージョン(V2.5.1)のパックに実際に入っていて、既定で動いている仕組みです。今日から始まる新機能ではありません。ガソリンと原子力発電所の大気汚染は、追加されたこと自体はV2.0.0の更新履歴で触れていましたが、既定で有効なことや設定でオフにできることまでは書いていませんでした。残りの5つ(天候システム・物価倍率・ダイヤモンドATM・のどの渇きによる死亡・仮面の耐久システム)は、更新履歴に一度も載ったことがありません。今回、実際のMODのコードを1つずつ確認しながら、まとめて書き起こしました。</p>
+<p class="callout callout--info">ここに書いた数値はすべて、V2.5.1のMODのコードで直接確認したものです。どの項目も、サーバーの config ファイルでオン/オフや細かい数値を調整できます。設定を変えたい場合は、サーバー管理者にご相談ください。</p>
+
+<h3>天候システム(吹雪・台風・地震・津波・火山)</h3>
+<p>サバイバルMODに、5種類の天候・災害システムが入っています。吹雪・台風・地震・津波・火山で、いずれも既定で有効です(<code>blizzardEnabled</code> / <code>typhoonEnabled</code> / <code>earthquakeEnabled</code> / <code>tsunamiEnabled</code> / <code>volcanoEnabled</code>、すべて <code>config/sorakaze_survival.json</code>)。</p>
+<ul>
+<li>吹雪・台風・津波は、視界や移動・体温(吹雪)、飛翔物や降雨量(台風)、内陸への浸水(津波。パック独自の有限の水の仕組みの上で動きます)に影響しますが、この3つはブロックを一切壊しません。</li>
+<li><strong>地震は、既定のままでも一部のブロックを実際に壊します。</strong><code>earthquakeDamagesPlayerBuilds</code>(既定false)が切り替えるのは「それ以外の素材まで壊すかどうか」だけで、被害そのものを止める設定ではありません。earthquake_fragileタグに載っているブロック——石・丸石・苔むした丸石・深層岩の丸石・砂岩・赤砂岩・土・砂・砂利・粘土など、ごくふつうの建材——は、この設定に関係なく壊れます。チェスト・かまどなどブロックエンティティを持つブロックだけは、この設定に関係なく絶対に壊れません。</li>
+<li><strong>火山は実際にクレーターを掘りますが、建築物を巻き込まないための関門が2つ独立して働きます。</strong>地震が起きるたびに5%の確率(<code>volcanoEruptionChancePerEarthquake = 0.05</code>)で噴火し、噴火地点を中心に半径6ブロック・深さ4ブロック(<code>volcanoCraterRadiusBlocks</code> / <code>volcanoCraterDepthBlocks</code>)のクレーターを実際に地形ごと掘り、既定では溶岩で満たします(<code>volcanoLavaEnabled = true</code>)。ただしその前に、噴火地点から24ブロック以内にブロックエンティティが1つでもあれば、噴火は場所をずらさずまるごと中止されます(<code>volcanoVentClearanceBlocks = 24</code>)。さらに、掘る範囲に「掘ってよい自然地形」のリストに無いブロックが1つでも含まれていても、同じくまるごと中止されます。MOD自身のテストは、木の板を敷いた床だけでこの中止条件を確認しています。実際に巻き込まれるおそれがあるのは、周囲24ブロックにブロックエンティティが無く、かつ石・土・砂・砂利など自然素材だけでできた建物に限られます。</li>
+</ul>
+
+<h3>物価倍率(×10〜×100)</h3>
+<p>天空(Sky)と二相楽園(Planarcadia)の2つのMODで、このMODスイートが独自に定めている価格(バニラの村人取引は対象外)が、商品ごとに10倍から100倍のあいだでランダムに引き上げられています。既定で有効です(<code>priceMultiplierEnabled = true</code>、それぞれ <code>config/sorakaze_sky.json</code> / <code>config/sorakaze_planarcadia.json</code>)。</p>
+<ul>
+<li>倍率は商品ごとにワールドのseedから1回だけ決まり、以後は変わりません。同じワールドで同じ商品を2回買っても倍率は同じです。店やタイミングで動く「相場」ではありません。</li>
+<li>例:天空のシンガポール不動産は、定価100万〜1,000万エメラルドのところ、この仕組みにより実質1,000万〜10億エメラルドになります。</li>
+<li>銃火器・鉄道・電力・バックルームズの4つのMODにも、同じ倍率計算のコードが(MOD間で参照を持たない設計上の都合で)複製されていますが、V2.5.1時点ではどの価格からも呼び出されていません。この4つのMODでは、今のところこの仕組みは実際には何も変えていません。</li>
+<li>この×10〜×100には例外が1つあります。天空MODの安価な商品(食料・王族の矢・天空ブロック)の一部は、いまもバニラの取引画面で売買されており、この画面は一度に最大1,152エメラルド(支払い枠2つぶん)までしか受け取れません。抽選された倍率どおりの価格がこれを超える場合、実際に請求される額はこの上限で頭打ちになります——つまり実際に載る倍率が、抽選値より低くなることがあります。装備や不動産(上のシンガポールの例を含む)はATM・台帳を通した決済のため、この上限の影響を受けません。</li>
+</ul>
+
+<h3>ダイヤモンドATM(ダイヤ残高)</h3>
+<p>建材・装飾MODのATMに、エメラルド残高とは別の「ダイヤモンド残高」が既定で入っています(<code>atmDiamondBalanceEnabled</code> / <code>atmDiamondExchangeEnabled</code>、ともに既定 true、<code>config/sorakaze_deco.json</code>)。口座の種類(個人/共有/特別)は、既存のエメラルド口座とまったく同じものを使いますが、利息の仕組みは別です。</p>
+<ul>
+<li>ダイヤとエメラルドの残高は合流しません。両替はATMの画面から行い、レート(1ダイヤ=4エメラルド)はバニラの取引実績にもとづく固定値で、config からは変更できません。</li>
+<li><strong>ダイヤ残高には利息が一切つきません。これは意図的な設計です。</strong>エメラルド口座は利息を計算するための最終計算時刻をデータに持っていますが、ダイヤ残高のデータ形式にはこの時刻がそもそも存在せず、あとから複利を付けようとしても基準になる時刻がありません。これは、エメラルドATMの「利息は1,000万エメラルドちょうどで頭打ちになる」という既存の仕様を守るためのものです。ダイヤ残高にも利息がついてしまうと、この上限が静かに実質的な意味を失ってしまいます。</li>
+</ul>
+
+<h3>原子力発電所の大気汚染(遡及適用)</h3>
+<p>電力MODの原子力発電所が周囲の空気を汚し、汚染地域にいると鈍化→弱体化→毒の順でデバフを受ける仕組み自体は、V2.0.0の更新履歴で一度紹介しています。今回あらためて書くのは、次の2点です。</p>
+<ul>
+<li><strong>既定で有効</strong>です(<code>pollution.enabled = true</code>、<code>config/sorakaze_power.json</code>)。</li>
+<li><strong>遡及的に適用されます。</strong>この仕組みが入る前から建てて稼働させていた原子力発電所も、パックがこの仕組みを持つバージョンに更新された瞬間から汚染を始めます。移行期間や、既存の発電所だけを除外する設定はありません。</li>
+</ul>
+<p>空気清浄機を稼働させておけば、汚染地域は既定で60秒ほどで安全になる設計です(実測ではおよそ54秒)。最も重い毒の段でも体力が1未満になることはなく、汚染地域から出れば効果は既定で6秒ほどで自然に切れます。</p>
+
+<h3>のどの渇き(水分)による死亡</h3>
+<p>サバイバルMODには、満腹度とは別に「水分」ゲージがあり、既定で有効です(<code>hydrationEnabled = true</code>、<code>config/sorakaze_survival.json</code>)。水分は最大20で、じっとしていれば90秒(1,800tick)に1ずつ、走っている間やパック内の「暑いディメンション」にいる間はさらに早く減ります。</p>
+<ul>
+<li>水分が0になると、バニラの空腹と同じ条件でダメージが始まります(4秒ごとに1ずつ。イージーは体力10、ノーマルは体力1で止まり、ハードでは死ぬまで続きます。ピースフルでは水分自体が減りません)。</li>
+<li>水分が0のまま10分(<code>hydrationDehydrationEscalationTicks = 12000</code>)続くと、ダメージが30秒ごとに0.1ずつ増え、最大で4秒ごとに1.4(秒あたり0.35)まで上がります。さらにこの時点からは、イージー・ノーマルでもダメージが体力10や1で止まらなくなります(<code>hydrationDehydrationEscalationIgnoresDifficultyFloor = true</code>)。つまりピースフル以外のどの難易度でも、水を飲まないまま10分経つと、のどの渇きだけで実際に死ぬことがあります。</li>
+<li>水筒や水入りボトルを飲めば回復します(1回につき水分+6)。</li>
+</ul>
+
+<h3>車両のガソリン</h3>
+<p>乗り物MODにガソリンが必要になったこと自体は、V2.0.0の更新履歴で紹介済みです。今回あらためて書くのは、オン/オフを切り替えられることと、既存の乗り物の扱いです。</p>
+<ul>
+<li>電車を除くすべての乗り物がガソリンを消費します。既定で有効です(<code>gasoline.enabled = true</code>、<code>config/sorakaze_vehicles.json</code>)。false にすると、この仕組みが入る前と同じ「燃料無限」の挙動に完全に戻ります。</li>
+<li>この仕組みが入る前から置いてあった乗り物は、更新後も満タンの状態で引き継がれます(<code>legacyVehicleFillFraction = 1.0</code>)。置いた瞬間に動かなくなることはありません。</li>
+</ul>
+
+<h3>仮面(マスク)の耐久システム</h3>
+<p>Sparkleの仮面・Sparxieの仮面に、耐久システムが既定で入っています(<code>maskBreakRevivalEnabled = true</code>、<code>config/sorakaze_survival.json</code>)。</p>
+<ul>
+<li>耐久は814(<code>maskDurability</code>。当初の仕様書は「800程度」でしたが、実装値は814です)。使い切ると仮面が割れます。</li>
+<li>割れてから320秒(6,400tick、<code>maskRevivalCooldownTicks</code>)経つと、また使えるようになります。ただし<strong>この復活は一度限り</strong>です。2度目に割れたら、その仮面はそこで終わりです。</li>
+<li>「一度割れた」という記録は仮面本体に残り、再ログイン・死亡・チェストへの出し入れ・サーバー再起動をまたいでも消えません。金床や砥石で修理しても、この記録は消せません(意図的にブロックされています)。</li>
+</ul>
+
+<p class="callout callout--info">この記事自体は、どの仕組みも新しく追加したり、既定値を変えたりするものではありません。すでに動いている仕組みを、書き漏れていた分もあわせてまとめて書き起こしただけです。挙げた config キーは、すべてサーバー側の <code>config/sorakaze_*.json</code> の中にあります。書きかえられるのはサーバー管理者だけです。</p>
 
     </div></div>
 

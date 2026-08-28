@@ -181,7 +181,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新日志</span>
   <h1>更新日志</h1>
-  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 58 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 59 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
   <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
 </div>
 
@@ -194,11 +194,23 @@
 </div>
 <div class="filter-bar" role="group" style="top:auto;position:static;padding-top:0;">
   <span class="card__meta" style="align-self:center;">类型：</span>
-  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">新功能</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">问题修复</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">外观更新</button>
+  <button class="chip" type="button" data-filter-type="release" aria-pressed="false">新功能</button><button class="chip" type="button" data-filter-type="hotfix" aria-pressed="false">问题修复</button><button class="chip" type="button" data-filter-type="visual-update" aria-pressed="false">外观更新</button><button class="chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
 </div>
 
 <p id="changelogEmpty" class="empty-state" hidden>没有符合条件的更新记录。</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
+      <div class="timeline-entry__date">2026-08-28</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">Disclosure</span> — 書かれていなかった仕様7件を「機能紹介」ページに掲載
+      </h3>
+      <div class="badge-row"><span class="type-badge type-visual">disclosure</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>V2.5.1時点でパックにすでに入っていて、既定で動いている仕組みのうち、更新履歴に一度も載っていなかった7件(天候システム・物価倍率・ダイヤモンドATM・原子力発電所の大気汚染の遡及適用・のどの渇きによる死亡・車両のガソリン・仮面の耐久システム)を、実際のMODのコードを確認したうえで「機能紹介」ページにまとめました。この記事や公開作業で、ゲーム内の仕組みや既定値を変更したものは一切ありません。</p>
+      <ul><li>天候システム(吹雪・台風・地震・津波・火山)。5種類とも既定で有効。地震は既定のままでも石・丸石・土・砂・砂利など自然素材の建築物を壊すことがあり、火山は地震のたびに5%の確率で噴火して半径6・深さ4ブロックのクレーターを実際に掘り、溶岩で満たします(建物を巻き込まないための中止条件があります。詳しくは「機能紹介」ページ)。</li><li>物価倍率(×10〜×100)。天空・二相楽園の2MODで既定で有効(バニラの村人取引は対象外)。同じ仕組みのコードは銃火器・鉄道・電力・バックルームズにも複製されていますが、今のところどこからも呼び出されていません。</li><li>ダイヤモンドATM。建材・装飾MODのATMに、エメラルドとは別のダイヤ残高が既定で有効です。レートは1ダイヤ=4エメラルドで固定です。</li><li>原子力発電所の大気汚染は既定で有効かつ遡及適用です。パックの更新前から動いている発電所も、更新した瞬間から汚染を始めます(仕組み自体はV2.0.0で紹介済みで、遡及適用と既定値は今回が初出です)。</li><li>のどの渇き(水分)が0のまま10分続くとダメージが増えていき、ピースフル以外はこれだけで死ぬことがあります。サバイバルMODで既定で有効です。</li><li>車両のガソリンは既定で有効(電車を除く)。設定でオフにできることと、既存の車両は満タンで引き継がれることは今回が初出です(ガソリンが必要になったこと自体はV2.0.0で紹介済み)。</li><li>仮面(Sparkle/Sparxie)の耐久は814。割れてから320秒後に一度だけ復活します。</li></ul>
+      
+      
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>この記事はゲーム内の仕組みや既定値を1つも変更していません。すでに動いていた7つの仕組みを、実際のMODのコードを確認したうえで書き起こしたものです。詳しい内容と、それぞれのconfigキーは「機能紹介」ページに掲載しています。</li><li>物価倍率・ダイヤ残高がどのバージョンで最初に入ったかは、この記事の時点では特定していません。確認できているのは、V2.5.1時点で実際に動いているという事実だけです。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">
