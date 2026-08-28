@@ -2,17 +2,34 @@
 <html lang="tr" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Download | Aurora Corvus</title>
 <meta name="description" content="Download the Glimpse Alpha mod pack (V2.4.8, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.">
 <meta property="og:title" content="Download | Aurora Corvus">
 <meta property="og:description" content="Download the Glimpse Alpha mod pack (V2.4.8, all 11 mods) as a ZIP — with file size, SHA-256, and install instructions.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
-<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://iroponcopin.github.io/glimpse-alpha-wiki/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aurora Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
@@ -33,27 +50,76 @@
 <body>
 <div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">İçeriğe geç</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="../">
-      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__text">Aurora Corvus</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menüyü aç">
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" id="siteNav">
-      <ul>
-        <li><a href="../">Ana Sayfa</a></li>
-        <li><a href="../download/" class="active">Download</a></li>
-        <li><a href="../changelog/">Güncelleme Geçmişi</a></li>
-        <li><a href="../recipes/">Tarif Rehberi</a></li>
-        <li><a href="../guide/">Kurulum Rehberi</a></li>
-        <li><a href="../launcher/">Glimpse Launcher</a></li>
-        <li><a href="../gates/">Geçitler</a></li>
-        <li><a href="../features/">Özellikler</a></li>
-        <li><a href="../roadmap/">Yol Haritası</a></li>
-        <li><a href="../known-issues/">Bilinen Sorunlar</a></li>
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Ana Sayfa</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>Get started</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="Get started">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Get started</p>
+                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link is-current" href="../download/" aria-current="page"><span class="mega-link__label">Download</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Kurulum Rehberi</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>Reference</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="Reference">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Reference</p>
+                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">Tarif Rehberi</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">Geçitler</span><span class="mega-link__sub">Geçitler ve Portallar</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">Özellikler</span><span class="mega-link__sub">Özellik Rehberi</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>Status</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="Status">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Status</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Güncelleme Geçmişi</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">Yol Haritası</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Bilinen Sorunlar</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Dil / Language">
@@ -118,8 +184,8 @@
 
 <p class="callout callout--info">This page always distributes the current release (V2.4.8). If you need an older version, please ask your server admin directly.</p>
 
-<h2>Glimpse Launcher</h2>
-<p>Glimpse Launcher is a desktop app that keeps your Glimpse Alpha mod pack up to date automatically, verifying every download against this Wiki by SHA-256.</p>
+<h2>Corvus</h2>
+<p>Corvus is a desktop app that keeps your Glimpse Alpha mod pack up to date automatically, verifying every download against this Wiki by SHA-256.</p>
 <div class="card" style="margin-bottom:20px;">
   <div class="badge-row">
     <span class="type-badge type-release">Version 1.2.1</span>
@@ -133,7 +199,7 @@
         <td style="word-break:break-all"><code>3aacb1b2e2c57ad8580383196a2135209de47f5ad4ac47a0ae56e81ce20cf1dd</code></td></tr>
   </table>
   <p style="margin-top:16px">
-    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1.jar" download>Download Glimpse Launcher</a>
+    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1.jar" download>Download Corvus</a>
   </p>
 </div>
 <h3>Native installers (no Java required)</h3>
@@ -150,7 +216,7 @@
         <td style="word-break:break-all"><code>c77d953667a82256bac948536a2c444da98b308dd2bd54b2a27124c2d578db96</code></td></tr>
   </table>
   <p style="margin-top:16px">
-    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1-macos.dmg" download>Download Glimpse Launcher (macOS)</a>
+    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1-macos.dmg" download>Download Corvus (macOS)</a>
   </p>
 </div>
 <div class="card" style="margin-bottom:12px;">
@@ -165,7 +231,7 @@
         <td style="word-break:break-all"><code>334360b06da70be51cfa89c2898c2aaf41a5f72230945a0045fbefeacfc96301</code></td></tr>
   </table>
   <p style="margin-top:16px">
-    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1-windows.msi" download>Download Glimpse Launcher (Windows)</a>
+    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1-windows.msi" download>Download Corvus (Windows)</a>
   </p>
 </div>
 <div class="card" style="margin-bottom:12px;">
@@ -180,7 +246,7 @@
         <td style="word-break:break-all"><code>4385367c5c9624be206cfd70c1ca8f01f89954477517c69709a913a0d7f435ac</code></td></tr>
   </table>
   <p style="margin-top:16px">
-    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1-linux.deb" download>Download Glimpse Launcher (Linux)</a>
+    <a class="btn" href="../../downloads/glimpse-launcher-1.2.1-linux.deb" download>Download Corvus (Linux)</a>
   </p>
 </div>
 
@@ -190,7 +256,7 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Aurora Corvus</p>
     <p>Sorakazekarasu Sunucusuna Kurulu MOD&#x27;lar İçin Resmî Olmayan Kaynak</p>
     <p class="site-footer__note">Bu site resmî olmayan bir kaynaktır. V2.2.0&#x27;dan itibaren MOD dosyaları (jar), bu sitenin &quot;İndir&quot; sayfasından doğrudan dağıtılmaktadır. Tarifler ve değerler, kurulu sürüme ve sunucu tarafındaki config ayarlarına göre gerçek oyundakinden farklı olabilir.</p>
   </div>

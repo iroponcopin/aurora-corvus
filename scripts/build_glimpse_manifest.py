@@ -14,31 +14,32 @@ build time, never typed as a literal. If a fact is missing (no matching
 changelog entry, no ZIP on disk), the build stops loudly rather than
 inventing one.
 
-The "launcher" block is OMITTED entirely unless a real
-downloads/glimpse-launcher-*.jar exists on disk. We do not invent
-placeholder launcher facts just to keep the schema "complete" — an absent
-key is honest; a fabricated sha256 is not.
+The "launcher" block is OMITTED only when downloads/ has never held a
+launcher jar at all. We do not invent placeholder launcher facts just to
+keep the schema "complete" — an absent key is honest; a fabricated sha256 is
+not. But an absent key is only honest when the launcher really has not
+shipped: once data/launcher_notes.json lists released versions, a downloads/
+folder with no jar in it means the *lookup* broke, not that the product
+vanished, and build() now stops loudly instead of publishing a manifest that
+would switch off self-update for every installed launcher.
+
+Jar discovery and version ordering live in site_common (find_launcher_jars /
+newest_launcher_jar) so this script and build_download.py cannot drift apart
+about which file is "current" — see the comment there for the two bugs the
+old private copies shared.
 """
 import hashlib
 import json
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from site_common import ROOT  # noqa: E402
+from site_common import (  # noqa: E402
+    ROOT, LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
+)
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
-
-# Keep in sync with build_download.py's _NATIVE_LAUNCHER_PLATFORMS (same
-# naming convention, deliberately not shared via an import since the two
-# scripts are independently invoked from build.py's own list).
-_NATIVE_LAUNCHER_PLATFORMS = [
-    ("macos", "dmg", "macOS"),
-    ("windows", "msi", "Windows"),
-    ("linux", "deb", "Linux"),
-]
 SITE_BASE_URL = "https://iroponcopin.github.io/glimpse-alpha-wiki"
 
 
@@ -97,29 +98,21 @@ def _english_summary(entry):
     return f"{kind} {entry['release']}. See the full changelog on the Wiki for details."
 
 
-def _find_launcher_jar():
-    """Returns a Path to the real launcher jar if one has been published to
-    downloads/, else None. Does not invent one."""
-    candidates = sorted(DOWNLOAD_DIR.glob("glimpse-launcher-*.jar"))
-    return candidates[0] if candidates else None
+def _launcher_notes_table():
+    notes_path = ROOT / "data" / "launcher_notes.json"
+    if not notes_path.exists():
+        return notes_path, {}
+    return notes_path, json.loads(notes_path.read_text(encoding="utf-8"))
 
 
-_LAUNCHER_VERSION_RE = re.compile(r"^glimpse-launcher-(.+)\.jar$")
-
-
-def _launcher_block(jar_path):
-    m = _LAUNCHER_VERSION_RE.match(jar_path.name)
-    if not m:
-        raise SystemExit(
-            f"ERROR: {jar_path} does not match the expected glimpse-launcher-<version>.jar "
-            f"naming pattern - cannot determine its version without guessing."
-        )
-    version = m.group(1)
+def _launcher_block(release):
+    """release is a dict from site_common.newest_launcher_jar()."""
+    jar_path = release["path"]
+    version = release["version"]
     size_bytes = jar_path.stat().st_size
     sha256_hex = _sha256(jar_path)
 
-    notes_path = ROOT / "data" / "launcher_notes.json"
-    notes_table = json.loads(notes_path.read_text(encoding="utf-8")) if notes_path.exists() else {}
+    notes_path, notes_table = _launcher_notes_table()
     if version not in notes_table:
         raise SystemExit(
             f"ERROR: {notes_path} has no entry for launcher version {version!r} - add real release "
@@ -136,21 +129,17 @@ def _launcher_block(jar_path):
         "notes": notes_table[version],
     }
 
-    # V1.1 native builds (2026-08-27): produced by glimpse-launcher's own
-    # GitHub Actions CI (real macOS/Windows/Linux runners), copied here by
-    # hand from the CI run's artifacts. Included only for platforms that
-    # actually have a published file -- see build_download.py's
-    # _launcher_native_facts() for the same read-from-disk discipline.
+    # Native builds: produced by the launcher project's own GitHub Actions CI
+    # (real macOS/Windows/Linux runners), copied here by hand from the CI
+    # run's artifacts. Included only for platforms that actually have a
+    # published file -- read straight from disk, never assumed.
     native = {}
-    for platform_id, ext, _label in _NATIVE_LAUNCHER_PLATFORMS:
-        candidate = DOWNLOAD_DIR / f"glimpse-launcher-{version}-{platform_id}.{ext}"
-        if not candidate.exists():
-            continue
-        native[platform_id] = {
-            "download_url": f"{SITE_BASE_URL}/downloads/{candidate.name}",
-            "file_name": candidate.name,
-            "file_size": candidate.stat().st_size,
-            "sha256": _sha256(candidate),
+    for n in launcher_native_files(version, DOWNLOAD_DIR):
+        native[n["platform_id"]] = {
+            "download_url": f"{SITE_BASE_URL}/downloads/{n['file_name']}",
+            "file_name": n["file_name"],
+            "file_size": n["size_bytes"],
+            "sha256": _sha256(n["path"]),
         }
     if native:
         block["native"] = native
@@ -180,13 +169,26 @@ def build():
         }
     }
 
-    jar_path = _find_launcher_jar()
-    if jar_path is not None:
-        manifest["launcher"] = _launcher_block(jar_path)
-        print(f"glimpse_manifest.py: found launcher build {jar_path.name}, including 'launcher' block")
+    release = newest_launcher_jar(DOWNLOAD_DIR)
+    if release is not None:
+        manifest["launcher"] = _launcher_block(release)
+        print(f"glimpse_manifest.py: {LAUNCHER_APP_NAME} build {release['file_name']} "
+              f"(version {release['version']}) selected, including 'launcher' block")
     else:
-        print("glimpse_manifest.py: no downloads/glimpse-launcher-*.jar found yet - "
-              "writing manifest with 'pack' only (expected until a launcher build ships)")
+        # An empty result is only acceptable before the first launcher ever
+        # shipped. After that it means the discovery broke (a rename, a moved
+        # folder) and shipping a manifest without a launcher block would
+        # silently switch off self-update for everyone already running it.
+        _notes_path, notes_table = _launcher_notes_table()
+        if notes_table:
+            raise SystemExit(
+                "ERROR: no launcher jar found in %s, but %s already lists released versions "
+                "(%s). A manifest with no 'launcher' block would silently disable self-update "
+                "for every installed %s. Publish the jar, or fix the naming - do not ship this."
+                % (DOWNLOAD_DIR, _notes_path,
+                   ", ".join(sorted(notes_table)), LAUNCHER_APP_NAME))
+        print("glimpse_manifest.py: no launcher jar found yet - writing manifest with 'pack' "
+              "only (expected until the first launcher build ships)")
 
     out_path = ROOT / "glimpse_manifest.json"
     out_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

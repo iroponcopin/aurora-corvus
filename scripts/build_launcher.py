@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Builds launcher/index.html for every language that has a bundle — the
-player-facing guide to Glimpse Launcher (the desktop auto-updater for the
-Glimpse Alpha mod pack, built by a separate project against
-glimpse_manifest.json).
+player-facing guide to Corvus (the desktop auto-updater for the Glimpse
+Alpha mod pack, built by a separate project against glimpse_manifest.json).
+The app was called "Glimpse Launcher" up to 1.2.1 and was renamed to Corvus
+with 1.3.0; the mod pack itself is still "Glimpse Alpha" and is NOT renamed.
 
 Follows the same pattern as build_guide.py: page()/write_page() from
 site_common.py, one page per available_langs() language. Real content is
@@ -13,7 +14,7 @@ copy defined in _DEFAULT_SECTIONS below — the same "English default in the
 build script" convention build_download.py already uses via dl.get(key,
 "..."), rather than a half-translated or blank page.
 
-Content discipline: describes only what's specified for Glimpse Launcher —
+Content discipline: describes only what's specified for Corvus —
 keeping the pack up to date, verifying downloads by SHA-256 against this
 Wiki, pointing it at an existing pack folder, automatic vs manual update
 mode, and restoring from a backup. Nothing beyond that is claimed.
@@ -22,12 +23,20 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from site_common import esc, page, write_page, load_bundle, available_langs  # noqa: E402
+from site_common import (  # noqa: E402
+    esc, page, write_page, load_bundle, available_langs, LAUNCHER_APP_NAME,
+    fill_placeholders,
+)
 
 # English fallback content — used whenever a language bundle has no
 # "launcher_page" key of its own (currently: every language except en/ja).
+# {launcher_jar} / {launcher_version} are substituted by
+# site_common.bundle_placeholders() from the file actually sitting in
+# downloads/ — the same rule as {pack_version}. The jar name used to be typed
+# out here (and in the EN and JA bundles) as glimpse-launcher-1.2.1.jar,
+# which is precisely the copy the Corvus rename would have left lying.
 _DEFAULT_INTRO = (
-    "Glimpse Launcher is a small desktop app that keeps your Glimpse Alpha mod pack up to "
+    f"{LAUNCHER_APP_NAME} is a small desktop app that keeps your Glimpse Alpha mod pack up to "
     "date automatically. It checks this Wiki for the current release, downloads updates for "
     "you, and verifies every file it downloads against a SHA-256 checksum published here "
     "before it touches your pack folder. This Wiki is the only source it trusts — it does not "
@@ -40,7 +49,7 @@ _DEFAULT_SECTIONS = [
         "body_html": (
             "<p>Keeping a large mod pack up to date by hand means re-visiting the Download page, "
             "comparing version numbers, downloading a new ZIP, and re-extracting it into the "
-            "right folder every time a release ships. Glimpse Launcher automates that: it reads "
+            f"right folder every time a release ships. {LAUNCHER_APP_NAME} automates that: it reads "
             "this Wiki's release manifest, compares it against the pack you already have "
             "installed, and fetches only what's changed.</p>"
             "<p>Every download the launcher makes is checked against a SHA-256 checksum "
@@ -51,9 +60,9 @@ _DEFAULT_SECTIONS = [
     },
     {
         "id": "installing",
-        "title": "Installing Glimpse Launcher",
+        "title": f"Installing {LAUNCHER_APP_NAME}",
         "body_html": (
-            "<p>Glimpse Launcher is available from the Download page on this Wiki in two forms — "
+            f"<p>{LAUNCHER_APP_NAME} is available from the Download page on this Wiki in two forms - "
             "the same place the mod pack ZIP itself is distributed:</p>"
             "<ul>"
             "<li><strong>Native installers</strong> (a Windows <code>.msi</code>, a macOS "
@@ -61,10 +70,10 @@ _DEFAULT_SECTIONS = [
             "no Java required. These are not code-signed yet, so your OS will show a first-run "
             "warning: on macOS, right-click the app and choose Open instead of double-clicking; "
             "on Windows, click \"More info\" then \"Run anyway\" on the SmartScreen prompt.</li>"
-            "<li><strong>The cross-platform jar</strong>, <code>glimpse-launcher-1.2.1.jar</code> "
+            "<li><strong>The cross-platform jar</strong>, <code>{launcher_jar}</code> "
             "— the same file runs on Windows, macOS, and Linux, but needs Java 21 or newer "
             "already installed. If double-clicking it doesn't open it, run "
-            "<code>java -jar glimpse-launcher-1.2.1.jar</code> from a terminal or command prompt "
+            "<code>java -jar {launcher_jar}</code> from a terminal or command prompt "
             "in the folder you downloaded it to.</li>"
             "</ul>"
         ),
@@ -130,8 +139,10 @@ _DEFAULT_SECTIONS = [
 def _launcher_content(bundle):
     lp = bundle.get("launcher_page")
     if lp and lp.get("sections"):
-        return lp.get("intro", _DEFAULT_INTRO), lp["sections"]
-    return _DEFAULT_INTRO, _DEFAULT_SECTIONS
+        # bundle content already went through the placeholder pass in
+        # load_bundle(); only the inline English fallback still needs it.
+        return lp.get("intro", fill_placeholders(_DEFAULT_INTRO)), lp["sections"]
+    return fill_placeholders(_DEFAULT_INTRO), fill_placeholders(_DEFAULT_SECTIONS)
 
 
 def section_html(sec):
@@ -149,11 +160,11 @@ def build_lang(lang):
     toc_items = "".join(f'<li><a href="#{esc(s["id"])}">{esc(s["title"])}</a></li>' for s in sections)
     sections_html = "\n".join(f'<div id="{esc(s["id"])}">{section_html(s)}</div>' for s in sections)
 
-    title = ui["page_titles"].get("launcher", "Glimpse Launcher")
+    title = ui["page_titles"].get("launcher", LAUNCHER_APP_NAME)
     description = ui["page_descriptions"].get(
         "launcher",
-        "What Glimpse Launcher is, how to install it, point it at an existing pack folder, use "
-        "automatic or manual update mode, and restore from a backup."
+        f"What {LAUNCHER_APP_NAME} is, how to install it, point it at an existing pack folder, "
+        f"use automatic or manual update mode, and restore from a backup."
     )
 
     body = f"""

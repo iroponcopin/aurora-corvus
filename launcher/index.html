@@ -2,17 +2,34 @@
 <html lang="ja" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Glimpse ランチャー | Aurora Corvus</title>
-<meta name="description" content="Glimpse ランチャーとは何か、導入方法、既存の MOD パックフォルダーの指定方法、自動更新と手動更新の違い、更新に失敗したときのバックアップからの復元方法。">
-<meta property="og:title" content="Glimpse ランチャー | Aurora Corvus">
-<meta property="og:description" content="Glimpse ランチャーとは何か、導入方法、既存の MOD パックフォルダーの指定方法、自動更新と手動更新の違い、更新に失敗したときのバックアップからの復元方法。">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Corvus | Aurora Corvus</title>
+<meta name="description" content="Corvus とは何か、導入方法、既存の MOD パックフォルダーの指定方法、自動更新と手動更新の違い、更新に失敗したときのバックアップからの復元方法。">
+<meta property="og:title" content="Corvus | Aurora Corvus">
+<meta property="og:description" content="Corvus とは何か、導入方法、既存の MOD パックフォルダーの指定方法、自動更新と手動更新の違い、更新に失敗したときのバックアップからの復元方法。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
-<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://iroponcopin.github.io/glimpse-alpha-wiki/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aurora Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/brand/apple-touch-icon.png">
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
@@ -33,27 +50,76 @@
 <body>
 <div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">本文へ移動</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="../">
-      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__text">Aurora Corvus</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" id="siteNav">
-      <ul>
-        <li><a href="../">ホーム</a></li>
-        <li><a href="../download/">ダウンロード</a></li>
-        <li><a href="../changelog/">更新履歴</a></li>
-        <li><a href="../recipes/">レシピ集</a></li>
-        <li><a href="../guide/">導入ガイド</a></li>
-        <li><a href="../launcher/" class="active">ランチャー</a></li>
-        <li><a href="../gates/">ゲート</a></li>
-        <li><a href="../features/">特集</a></li>
-        <li><a href="../roadmap/">今後の予定</a></li>
-        <li><a href="../known-issues/">既知の不具合</a></li>
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">ホーム</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>はじめる</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="はじめる">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">はじめる</p>
+                <p class="mega-panel__lede">配布 ZIP のダウンロードから、サーバーへの導入手順、Corvus による自動更新まで。</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">ダウンロード</span></a></li>
+            <li><a class="mega-link is-current" href="../launcher/" aria-current="page"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">導入ガイド</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>資料</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="資料">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">資料</p>
+                <p class="mega-panel__lede">全アイテムのクラフトレシピ、各次元ゲートの作り方、追加機能の紹介。</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">レシピ集</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">ゲート</span><span class="mega-link__sub">ゲート・門一覧</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">特集</span><span class="mega-link__sub">機能紹介</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>開発状況</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="開発状況">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">開発状況</p>
+                <p class="mega-panel__lede">これまでの更新履歴、今後の開発予定、そして既知の不具合。</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">更新履歴</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">今後の予定</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">既知の不具合</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="言語 / Language">
@@ -82,18 +148,18 @@
 <main id="main">
 
 <div class="hero">
-  <span class="hero__eyebrow">Glimpse ランチャー</span>
-  <h1>Glimpse ランチャー</h1>
-  <p class="lede">Glimpse ランチャーは、Glimpse Alpha MOD パックを自動で最新の状態に保つ、小さなデスクトップアプリです。この Wiki を見て最新リリースを確認し、更新分をダウンロードし、パックフォルダーに手を加える前にダウンロードしたファイルをすべてこの Wiki が公開する SHA-256 チェックサムと照合します。信頼する情報源はこの Wiki だけです。</p>
+  <span class="hero__eyebrow">Corvus</span>
+  <h1>Corvus</h1>
+  <p class="lede">Corvus は、Glimpse Alpha MOD パックを自動で最新の状態に保つ、小さなデスクトップアプリです。この Wiki を見て最新リリースを確認し、更新分をダウンロードし、パックフォルダーに手を加える前にダウンロードしたファイルをすべてこの Wiki が公開する SHA-256 チェックサムと照合します。信頼する情報源はこの Wiki だけです。</p>
 </div>
-<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#what-it-is">Glimpse ランチャーとは何か、なぜ作られたのか</a></li><li><a href="#installing">Glimpse Launcher の入れ方</a></li><li><a href="#pointing-at-existing-pack">既存の MOD パックフォルダーを指定する</a></li><li><a href="#update-modes">自動更新モードと手動更新モードの違い</a></li><li><a href="#confirming-an-update-applied">更新が本当に反映されたかの確認方法</a></li><li><a href="#restoring-from-backup">更新に失敗したときにバックアップから復元する</a></li></ol></div>
+<div class="toc"><div class="toc__title">目次</div><ol><li><a href="#what-it-is">Corvus とは何か、なぜ作られたのか</a></li><li><a href="#installing">Corvus の入れ方</a></li><li><a href="#pointing-at-existing-pack">既存の MOD パックフォルダーを指定する</a></li><li><a href="#update-modes">自動更新モードと手動更新モードの違い</a></li><li><a href="#confirming-an-update-applied">更新が本当に反映されたかの確認方法</a></li><li><a href="#restoring-from-backup">更新に失敗したときにバックアップから復元する</a></li></ol></div>
 <div id="what-it-is"><div class="card" style="margin-bottom:20px;">
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">Glimpse ランチャーとは何か、なぜ作られたのか</h2>
-      <p>大きな MOD パックを手動で最新に保つには、ダウンロードページを訪れてバージョン番号を見比べ、新しい ZIP をダウンロードし、リリースのたびに正しいフォルダーへ展開し直す必要があります。Glimpse ランチャーはこれを自動化します ―― この Wiki のリリース情報を読み取り、いま導入済みのパックと比較して、変更があった分だけを取得します。</p><p>ランチャーがダウンロードするファイルは、使用する前に必ずこの Wiki が公開する SHA-256 チェックサムと照合されます。一致しなければ、そのファイルは導入されません。「最新版とは何か」について、ランチャーが信頼する情報源はこの Wiki だけです。</p>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Corvus とは何か、なぜ作られたのか</h2>
+      <p>大きな MOD パックを手動で最新に保つには、ダウンロードページを訪れてバージョン番号を見比べ、新しい ZIP をダウンロードし、リリースのたびに正しいフォルダーへ展開し直す必要があります。 Corvus はこれを自動化します ―― この Wiki のリリース情報を読み取り、いま導入済みのパックと比較して、変更があった分だけを取得します。</p><p>ランチャーがダウンロードするファイルは、使用する前に必ずこの Wiki が公開する SHA-256 チェックサムと照合されます。一致しなければ、そのファイルは導入されません。「最新版とは何か」について、ランチャーが信頼する情報源はこの Wiki だけです。</p>
     </div></div>
 <div id="installing"><div class="card" style="margin-bottom:20px;">
-      <h2 style="margin-top:0;border-top:none;padding-top:0;">Glimpse Launcher の入れ方</h2>
-      <p>Glimpse Launcher は、このWikiのダウンロードページから、MODパックのZIPと同じ場所に2つの形で配布されています。</p><ul><li><strong>OSごとのネイティブインストーラー</strong>(Windows用 <code>.msi</code>・macOS用 <code>.dmg</code>・Linux用 <code>.deb</code>) ―― 通常のデスクトップアプリと同じ手順で導入でき、Java は不要です。まだコード署名を行っていないため、初回起動時にOSから警告が表示されます。macOSでは、ダブルクリックの代わりにアプリを右クリックして「開く」を選んでください。Windowsでは、SmartScreenの警告で「詳細情報」→「実行」を選んでください。</li><li><strong>クロスプラットフォームのjar</strong> <code>glimpse-launcher-1.2.1.jar</code> ―― 同じ1つのファイルが Windows・macOS・Linux のいずれでも動きますが、あらかじめ Java 21 以降が導入されている必要があります。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、<code>java -jar glimpse-launcher-1.2.1.jar</code> を実行してください。</li></ul>
+      <h2 style="margin-top:0;border-top:none;padding-top:0;">Corvus の入れ方</h2>
+      <p>Corvus は、このWikiのダウンロードページから、MODパックのZIPと同じ場所に2つの形で配布されています。</p><ul><li><strong>OSごとのネイティブインストーラー</strong>(Windows用 <code>.msi</code>・macOS用 <code>.dmg</code>・Linux用 <code>.deb</code>) ―― 通常のデスクトップアプリと同じ手順で導入でき、Java は不要です。まだコード署名を行っていないため、初回起動時にOSから警告が表示されます。macOSでは、ダブルクリックの代わりにアプリを右クリックして「開く」を選んでください。Windowsでは、SmartScreenの警告で「詳細情報」→「実行」を選んでください。</li><li><strong>クロスプラットフォームのjar</strong> <code>glimpse-launcher-1.2.1.jar</code> ―― 同じ1つのファイルが Windows・macOS・Linux のいずれでも動きますが、あらかじめ Java 21 以降が導入されている必要があります。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、<code>java -jar glimpse-launcher-1.2.1.jar</code> を実行してください。</li></ul>
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">既存の MOD パックフォルダーを指定する</h2>
@@ -115,7 +181,7 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Aurora Corvus</p>
     <p>そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
     <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)は V2.2.0 からこの「ダウンロード」ページで直接配布しています。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。</p>
   </div>

@@ -2,17 +2,34 @@
 <html lang="id" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rencana Mendatang | Aurora Corvus</title>
 <meta name="description" content="Rencana pengembangan dan roadmap MOD pack Glimpse Alpha ke depannya. Direncanakan mencakup area backrooms, penguatan MOD kereta, perbaikan UI, dan lainnya.">
 <meta property="og:title" content="Rencana Mendatang | Aurora Corvus">
 <meta property="og:description" content="Rencana pengembangan dan roadmap MOD pack Glimpse Alpha ke depannya. Direncanakan mencakup area backrooms, penguatan MOD kereta, perbaikan UI, dan lainnya.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
-<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://iroponcopin.github.io/glimpse-alpha-wiki/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aurora Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
@@ -33,27 +50,76 @@
 <body>
 <div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">Lompat ke konten utama</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="../">
-      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__text">Aurora Corvus</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Buka menu">
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" id="siteNav">
-      <ul>
-        <li><a href="../">Beranda</a></li>
-        <li><a href="../download/">Download</a></li>
-        <li><a href="../changelog/">Riwayat Pembaruan</a></li>
-        <li><a href="../recipes/">Kumpulan Resep</a></li>
-        <li><a href="../guide/">Panduan Pemasangan</a></li>
-        <li><a href="../launcher/">Glimpse Launcher</a></li>
-        <li><a href="../gates/">Gerbang</a></li>
-        <li><a href="../features/">Fitur</a></li>
-        <li><a href="../roadmap/" class="active">Rencana Mendatang</a></li>
-        <li><a href="../known-issues/">Bug yang Diketahui</a></li>
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Beranda</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>Get started</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="Get started">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Get started</p>
+                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Download</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Panduan Pemasangan</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>Reference</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="Reference">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Reference</p>
+                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">Kumpulan Resep</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">Gerbang</span><span class="mega-link__sub">Gerbang &amp; Portal</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">Fitur</span><span class="mega-link__sub">Panduan Fitur</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>Status</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="Status">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Status</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Riwayat Pembaruan</span></a></li>
+            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">Rencana Mendatang</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Bug yang Diketahui</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Bahasa / Language">
@@ -103,7 +169,7 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> Aurora Corvus</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Aurora Corvus</p>
     <p>Referensi Tidak Resmi MOD Server Sorakazekarasu</p>
     <p class="site-footer__note">Situs ini adalah referensi tidak resmi. Mulai V2.2.0, file MOD (jar) didistribusikan langsung dari halaman &quot;Unduh&quot; situs ini. Resep dan angka yang ditampilkan bisa berbeda dari kondisi sebenarnya tergantung versi yang terpasang dan penyesuaian config di sisi server.</p>
   </div>

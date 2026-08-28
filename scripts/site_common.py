@@ -12,16 +12,28 @@ scripts/extract_bundle.py for ja and by translation agents for the rest).
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 import html as _html
 
 ROOT = Path(__file__).resolve().parent.parent
 I18N_DIR = ROOT / "data" / "i18n"
+DOWNLOADS_DIR = ROOT / "downloads"
 
-# Site's own umbrella identity (nav/header/footer/<title>/OG tags). NOT the
-# same thing as "Glimpse Alpha", which is the mod pack product this site
-# documents — that product name is never renamed, see e.g. build_download.py.
+# Three distinct names, deliberately kept apart:
+#   SITE_TITLE          the website              -> "Aurora Corvus"
+#   "Glimpse Alpha"     the mod pack product     -> NEVER renamed
+#   LAUNCHER_APP_NAME   the desktop updater app  -> "Corvus" (was
+#                       "Glimpse Launcher" until the 1.3.0 rename)
 SITE_TITLE = "Aurora Corvus"  # brand name, unchanged across languages
+LAUNCHER_APP_NAME = "Corvus"
+
+# Absolute origin+path this site is published at. Needed because Open Graph
+# requires an ABSOLUTE og:image URL — a relative one is silently ignored by
+# every scraper, which is how a site ends up with no share preview at all.
+# (build_glimpse_manifest.py keeps its own copy for the launcher manifest.)
+SITE_BASE_URL = "https://iroponcopin.github.io/glimpse-alpha-wiki"
+OG_IMAGE_URL = f"{SITE_BASE_URL}/assets/img/brand/og-image.png"
 
 # (code, native display name, text direction). Order = language-switcher order.
 LANGUAGES = [
@@ -126,7 +138,41 @@ NAV_SECTIONS = [
 # for the equivalent "English default" convention used throughout the
 # per-page build scripts (e.g. build_download.py's dl.get(key, "...")).
 NAV_LABEL_FALLBACK = {
-    "launcher": "Glimpse Launcher",
+    "launcher": LAUNCHER_APP_NAME,
+}
+
+# --- Mega menu -------------------------------------------------------------
+# The ten sections above are grouped into three hover-revealed panels plus a
+# standalone Home link. Every section in NAV_SECTIONS must appear exactly
+# once here or in NAV_SOLO — _nav_html() asserts that, so adding an 11th page
+# without filing it can't silently drop it out of the navigation.
+NAV_SOLO = ["home"]
+NAV_GROUPS = [
+    ("start", ["download", "launcher", "guide"]),
+    ("reference", ["recipes", "gates", "features"]),
+    ("status", ["changelog", "roadmap", "issues"]),
+]
+
+# English fallbacks for the group heading + one-line blurb shown in each
+# panel. Japanese lives in data/ui-strings.ja.json -> ui.nav_groups (and so
+# in data/i18n/ja.json); the other 11 languages fall back to English here,
+# exactly the way NAV_LABEL_FALLBACK["launcher"] already does.
+NAV_GROUP_FALLBACK = {
+    "start": {
+        "label": "Get started",
+        "lede": "Download the pack, install it on your server, and let %s "
+                "keep every module up to date." % LAUNCHER_APP_NAME,
+    },
+    "reference": {
+        "label": "Reference",
+        "lede": "Every crafting recipe, every dimensional gate, and a tour of what the "
+                "suite actually adds to the game.",
+    },
+    "status": {
+        "label": "Status",
+        "lede": "What shipped in each release, what is planned next, and what is still "
+                "known to be broken.",
+    },
 }
 
 
@@ -173,25 +219,186 @@ def pack_version() -> str:
     return versions.pop()
 
 
-def _fill_counts(node, mods: str, jars: str, ver: str):
+# ---------------------------------------------------------------------------
+# Launcher release discovery
+#
+# ⚠ This lives here, shared, on purpose. build_download.py and
+#   build_glimpse_manifest.py each used to carry their own private copy of
+#   "find the launcher jar", and both copies had the same two defects:
+#
+#     1. They globbed "glimpse-launcher-*.jar". The app was renamed to
+#        Corvus in 1.3.0 and its files became corvus-1.3.0.*, so the glob
+#        matched nothing — and because a missing jar is a *supported* state
+#        ("no launcher published yet"), the manifest would have quietly
+#        shipped with no "launcher" block at all and every installed
+#        launcher's self-update would have gone dark. No error, no warning.
+#     2. They took sorted(...)[0] — the lexicographically FIRST match, not
+#        the newest. That is correct only while exactly one jar sits in the
+#        folder. With two present it advertises the OLDER one, and by string
+#        order "1.10.0" < "1.2.1", so the first double-digit minor release
+#        would have silently downgraded every user.
+#
+#   Both names are matched (the pre-rename files are still served), and the
+#   winner is chosen by a parsed NUMERIC version tuple.
+# ---------------------------------------------------------------------------
+LAUNCHER_JAR_PREFIXES = ("corvus", "glimpse-launcher")
+_LAUNCHER_JAR_RE = re.compile(
+    r"^(?P<prefix>corvus|glimpse-launcher)-(?P<version>\d+(?:\.\d+)*)\.jar$")
+
+# Keep in sync with the platform table in build_download.py /
+# build_glimpse_manifest.py: (platform_id, extension, human label).
+NATIVE_LAUNCHER_PLATFORMS = [
+    ("macos", "dmg", "macOS"),
+    ("windows", "msi", "Windows"),
+    ("linux", "deb", "Linux"),
+]
+
+
+def launcher_version_key(version: str) -> tuple[int, ...]:
+    """"1.10.0" -> (1, 10, 0). Numeric, so 1.10.0 > 1.2.1 — which is exactly
+    what plain string sorting got wrong."""
+    return tuple(int(p) for p in version.split("."))
+
+
+def find_launcher_jars(download_dir: Path | None = None) -> list[dict]:
+    """Every published launcher jar, newest first."""
+    d = DOWNLOADS_DIR if download_dir is None else download_dir
+    if not d.is_dir():
+        return []
+    found = []
+    for p in d.iterdir():
+        if not p.name.endswith(".jar"):
+            continue
+        if not p.name.startswith(tuple(f"{x}-" for x in LAUNCHER_JAR_PREFIXES)):
+            continue
+        m = _LAUNCHER_JAR_RE.match(p.name)
+        if not m:
+            raise SystemExit(
+                f"ERROR: {p} looks like a launcher jar but does not match "
+                f"<{'|'.join(LAUNCHER_JAR_PREFIXES)}>-<numeric.version>.jar. Refusing to guess "
+                f"its version - rename it or the download page and the manifest would disagree "
+                f"about what the current release is.")
+        found.append({
+            "version": m.group("version"),
+            "key": launcher_version_key(m.group("version")),
+            "prefix": m.group("prefix"),
+            "path": p,
+            "file_name": p.name,
+        })
+    found.sort(key=lambda r: r["key"], reverse=True)
+    return found
+
+
+def newest_launcher_jar(download_dir: Path | None = None) -> dict | None:
+    """The launcher release this site currently advertises, or None if the
+    downloads folder holds no launcher jar at all.
+
+    Two files parsing to the SAME version (e.g. both a corvus-1.3.0.jar and a
+    leftover glimpse-launcher-1.3.0.jar) is refused rather than resolved by
+    coin-flip: which one wins would decide the download URL every installed
+    launcher polls for.
+    """
+    found = find_launcher_jars(download_dir)
+    if not found:
+        return None
+    top = [r for r in found if r["key"] == found[0]["key"]]
+    if len(top) > 1:
+        raise SystemExit(
+            "ERROR: downloads/ holds %d launcher jars that all parse to version %s (%s). "
+            "Exactly one file must be the current release - delete the stale one."
+            % (len(top), top[0]["version"], ", ".join(sorted(r["file_name"] for r in top))))
+    return found[0]
+
+
+def launcher_native_files(version: str, download_dir: Path | None = None) -> list[dict]:
+    """Native installers actually present on disk for `version`, in display
+    order. Matches whichever of the two name prefixes is really there, so a
+    half-migrated downloads/ folder still resolves instead of silently
+    reporting "no native builds"."""
+    d = DOWNLOADS_DIR if download_dir is None else download_dir
+    out = []
+    for platform_id, ext, label in NATIVE_LAUNCHER_PLATFORMS:
+        for prefix in LAUNCHER_JAR_PREFIXES:
+            candidate = d / f"{prefix}-{version}-{platform_id}.{ext}"
+            if candidate.exists():
+                out.append({
+                    "platform_id": platform_id,
+                    "label": label,
+                    "path": candidate,
+                    "file_name": candidate.name,
+                    "size_bytes": candidate.stat().st_size,
+                })
+                break
+    return out
+
+
+def _launcher_placeholders() -> tuple[str, str]:
+    """(jar file name, version) for the {launcher_jar}/{launcher_version}
+    placeholders. Same rule as {pack_version}: the number is NEVER typed into
+    a translated string, it is read off the file actually being served."""
+    rel = newest_launcher_jar()
+    if rel is None:
+        print("WARNING: downloads/ has no launcher jar - {launcher_jar}/{launcher_version} "
+              "fall back to a generic name. Publish a launcher build before relying on this copy.")
+        return f"{LAUNCHER_APP_NAME.lower()}.jar", "latest"
+    return rel["file_name"], rel["version"]
+
+
+def _fill_counts(node, subs: dict):
     if isinstance(node, dict):
-        return {k: _fill_counts(v, mods, jars, ver) for k, v in node.items()}
+        return {k: _fill_counts(v, subs) for k, v in node.items()}
     if isinstance(node, list):
-        return [_fill_counts(v, mods, jars, ver) for v in node]
+        return [_fill_counts(v, subs) for v in node]
     if isinstance(node, str):
-        return (node.replace("{mod_count}", mods)
-                    .replace("{jar_count}", jars)
-                    .replace("{pack_version}", ver))
+        for k, v in subs.items():
+            node = node.replace(k, v)
+        return node
     return node
+
+
+_placeholder_cache: dict | None = None
+
+
+def bundle_placeholders() -> dict:
+    """The values substituted into every translated string at load time.
+
+    Every entry here exists so a number or a file name is never typed into 13
+    language bundles by hand — the class of bug this codebase has already
+    been burned by twice (a "9 MODs" count that outlived the 10th module, and
+    a "latest is V2.2.0" line shipping next to a V2.4.8 ZIP). {launcher_jar}
+    and {launcher_version} joined for the same reason: the install
+    instructions used to spell out glimpse-launcher-1.2.1.jar in both the EN
+    and JA bundles, so the Corvus 1.3.0 rename would have left two languages
+    telling people to run a file that no longer exists.
+    """
+    global _placeholder_cache
+    if _placeholder_cache is None:
+        n_mods, n_jars = module_counts()
+        jar_name, jar_version = _launcher_placeholders()
+        _placeholder_cache = {
+            "{mod_count}": str(n_mods),
+            "{jar_count}": str(n_jars),
+            "{pack_version}": pack_version(),
+            "{launcher_app}": LAUNCHER_APP_NAME,
+            "{launcher_jar}": jar_name,
+            "{launcher_version}": jar_version,
+        }
+    return _placeholder_cache
+
+
+def fill_placeholders(node):
+    """Run the same {pack_version}/{launcher_jar}/... substitution over
+    content that did NOT come from a language bundle — specifically the
+    English fallback copy the per-page build scripts carry inline, which
+    must not be allowed to state a version the bundles no longer state."""
+    return _fill_counts(node, bundle_placeholders())
 
 
 def load_bundle(lang: str) -> dict:
     if lang not in _bundle_cache:
         p = I18N_DIR / f"{lang}.json"
-        n_mods, n_jars = module_counts()
         _bundle_cache[lang] = _fill_counts(
-            json.loads(p.read_text(encoding="utf-8")), str(n_mods), str(n_jars),
-            pack_version())
+            json.loads(p.read_text(encoding="utf-8")), bundle_placeholders())
     return _bundle_cache[lang]
 
 
@@ -235,12 +442,94 @@ def asset_root_prefix(depth: int, lang: str) -> str:
     return _prefix(_levels_to_root(depth, lang))
 
 
+def _nav_label(bundle: dict, key: str) -> str:
+    return bundle["ui"]["nav"].get(key, NAV_LABEL_FALLBACK.get(key, key))
+
+
+def _nav_group_strings(bundle: dict, gkey: str) -> dict:
+    """Group heading + blurb for one mega-menu panel.
+
+    Same English-default convention as NAV_LABEL_FALLBACK: a language that
+    has translated ui.nav_groups gets its own strings, everyone else gets
+    the English ones rather than a raw key.
+    """
+    fallback = NAV_GROUP_FALLBACK[gkey]
+    got = (bundle["ui"].get("nav_groups") or {}).get(gkey) or {}
+    return {
+        "label": got.get("label") or fallback["label"],
+        "lede": got.get("lede") or fallback["lede"],
+    }
+
+
+def _mega_link_html(bundle: dict, key: str, slug: str, lang_prefix: str, active: str) -> str:
+    """One two-line link inside a mega panel.
+
+    The second line reuses ui.page_titles[key] — the fuller name of the same
+    page ("ゲート" in the nav bar, "ゲート・門一覧" as the page title) — so the
+    panel reads like Apple's (label + short descriptor) without inventing a
+    new string that would need 13 translations. It is dropped when the two
+    are identical, which is what happens for the languages whose nav label
+    and page title are the same word.
+    """
+    label = _nav_label(bundle, key)
+    sub = (bundle["ui"].get("page_titles") or {}).get(key, "")
+    sub_html = f'<span class="mega-link__sub">{esc(sub)}</span>' if sub and sub != label else ""
+    is_cur = key == active
+    cls = "mega-link is-current" if is_cur else "mega-link"
+    cur = ' aria-current="page"' if is_cur else ""
+    return (f'<li><a class="{cls}" href="{lang_prefix}{slug}"{cur}>'
+            f'<span class="mega-link__label">{esc(label)}</span>{sub_html}</a></li>')
+
+
 def _nav_html(bundle: dict, active: str, lang_prefix: str) -> str:
+    """Top-level nav: standalone links + hover-revealed mega-menu panels.
+
+    Guards against a new NAV_SECTIONS entry going unfiled — an unreachable
+    page is exactly the kind of silent breakage this file exists to prevent.
+    """
+    slug_of = dict(NAV_SECTIONS)
+    filed = set(NAV_SOLO)
+    for _g, keys in NAV_GROUPS:
+        filed.update(keys)
+    missing = [k for k, _s in NAV_SECTIONS if k not in filed]
+    if missing:
+        raise SystemExit(
+            "ERROR: site_common.NAV_SECTIONS lists %s, which no NAV_GROUPS group and no "
+            "NAV_SOLO entry claims. Those pages would build but be unreachable from the "
+            "navigation on all 13 languages." % ", ".join(repr(m) for m in missing))
+
     items = []
-    for key, slug in NAV_SECTIONS:
-        label = bundle["ui"]["nav"].get(key, NAV_LABEL_FALLBACK.get(key, key))
-        cls = ' class="active"' if key == active else ""
-        items.append(f'<li><a href="{lang_prefix}{slug}"{cls}>{esc(label)}</a></li>')
+    for key in NAV_SOLO:
+        cls = "nav-link nav-link--solo" + (" is-current" if key == active else "")
+        cur = ' aria-current="page"' if key == active else ""
+        items.append(
+            f'<li class="nav-item">'
+            f'<a class="{cls}" href="{lang_prefix}{slug_of[key]}"{cur}>'
+            f'{esc(_nav_label(bundle, key))}</a></li>')
+
+    for gkey, keys in NAV_GROUPS:
+        g = _nav_group_strings(bundle, gkey)
+        panel_id = f"mega-{gkey}"
+        open_cls = " is-current" if active in keys else ""
+        links = "\n            ".join(
+            _mega_link_html(bundle, k, slug_of[k], lang_prefix, active) for k in keys)
+        items.append(f"""<li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega{open_cls}" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="{panel_id}">
+            <span>{esc(g['label'])}</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="{panel_id}" role="group" aria-label="{esc(g['label'])}">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">{esc(g['label'])}</p>
+                <p class="mega-panel__lede">{esc(g['lede'])}</p>
+              </div>
+              <ul class="mega-links">
+            {links}
+              </ul>
+            </div>
+          </div>
+        </li>""")
     return "\n        ".join(items)
 
 
@@ -292,24 +581,43 @@ def page(
     text_dir = LANG_DIR.get(lang, "ltr")
 
     full_title = f"{title} | {SITE_TITLE}" if title else SITE_TITLE
-    og = f'<meta property="og:image" content="{esc(og_image)}">\n    ' if og_image else ""
+    # Every page gets a share card. og_image may override it per page, but it
+    # must be absolute either way (see OG_IMAGE_URL).
+    og_src = og_image or OG_IMAGE_URL
+    og = (f'<meta property="og:image" content="{esc(og_src)}">\n'
+          f'<meta property="og:image:width" content="1200">\n'
+          f'<meta property="og:image:height" content="630">\n'
+          f'<meta property="og:image:alt" content="{esc(SITE_TITLE)}">\n'
+          f'<meta name="twitter:card" content="summary_large_image">\n    ')
     lang_switch = _lang_switcher_html(lang, section, root_prefix)
 
     return f"""<!doctype html>
 <html lang="{lang}" dir="{text_dir}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(full_title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta property="og:title" content="{esc(full_title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(SITE_TITLE)}">
-{og}<link rel="icon" href="{root_prefix}assets/img/favicon.svg" type="image/svg+xml">
+{og}<link rel="icon" href="{root_prefix}assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{root_prefix}assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{root_prefix}assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{root_prefix}assets/img/brand/apple-touch-icon.png">
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{root_prefix}assets/css/style.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
@@ -330,17 +638,18 @@ def page(
 <body>
 <div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
 <a class="skip-link" href="#main">{esc(ui['skip_link'])}</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="{lang_prefix}">
-      <span class="brand__mark" aria-hidden="true">◆</span>
+      <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__text">{esc(SITE_TITLE)}</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="{esc(ui['menu_toggle'])}">
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" id="siteNav">
-      <ul>
+      <ul class="nav-list">
         {_nav_html(bundle, active, lang_prefix)}
       </ul>
       <div class="lang-switch">
@@ -360,7 +669,7 @@ def page(
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true">◆</span> {esc(SITE_TITLE)}</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> {esc(SITE_TITLE)}</p>
     <p>{esc(ui['site_tagline'])}</p>
     <p class="site-footer__note">{esc(ui['footer_note'])}</p>
   </div>

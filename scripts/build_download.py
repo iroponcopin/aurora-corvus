@@ -11,15 +11,15 @@ missing, the build stops loudly instead of publishing an invented value.
 """
 import hashlib
 import json
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from site_common import esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix  # noqa: E402
+from site_common import (  # noqa: E402
+    esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix,
+    LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
+)
 from build_home import load_latest_changelog_entry  # noqa: E402
-
-_LAUNCHER_VERSION_RE = re.compile(r"^glimpse-launcher-(.+)\.jar$")
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
@@ -98,69 +98,56 @@ def _discord_invite():
 
 
 def _launcher_facts():
-    """Looks directly at downloads/glimpse-launcher-*.jar for the real
-    facts about a published launcher build, the same way _zip_path()/
-    _sha256() do for the pack ZIP - computed straight from the file on
-    disk rather than read back out of glimpse_manifest.json, so this page
-    doesn't depend on build.py's script ordering. Returns None if no
-    launcher build has been published yet (the current real state)."""
-    candidates = sorted(DOWNLOAD_DIR.glob("glimpse-launcher-*.jar"))
-    if not candidates:
+    """The real facts about the published launcher build, computed straight
+    from the file on disk the same way _zip_path()/_sha256() do for the pack
+    ZIP - never read back out of glimpse_manifest.json, so this page does not
+    depend on build.py's script ordering. Returns None if no launcher build
+    has been published yet.
+
+    Discovery and version ordering come from site_common so this page and
+    glimpse_manifest.json can never disagree about which jar is current; the
+    private copy that used to live here globbed the pre-rename name only and
+    picked the lexicographically first match (see site_common's comment).
+    """
+    release = newest_launcher_jar(DOWNLOAD_DIR)
+    if release is None:
         return None
-    jar_path = candidates[0]
-    m = _LAUNCHER_VERSION_RE.match(jar_path.name)
-    if not m:
-        raise SystemExit(
-            f"ERROR: {jar_path} does not match the expected glimpse-launcher-<version>.jar "
-            f"naming pattern - cannot determine its version without guessing."
-        )
     return {
-        "version": m.group(1),
-        "file_name": jar_path.name,
-        "size_bytes": jar_path.stat().st_size,
-        "sha256": _sha256(jar_path),
+        "version": release["version"],
+        "file_name": release["file_name"],
+        "size_bytes": release["path"].stat().st_size,
+        "sha256": _sha256(release["path"]),
     }
 
 
 def _launcher_native_facts(version):
-    """Looks directly at downloads/glimpse-launcher-<version>-<platform>.<ext>
-    for published native (no-Java-required) installers, the same
-    read-straight-from-disk discipline _launcher_facts() uses for the jar.
-    Returns a list (possibly empty, possibly partial if only some platforms
-    have shipped) - never invents a platform that hasn't actually published
-    a file."""
+    """Published native (no-Java-required) installers for `version`, read
+    straight from disk - possibly empty, possibly partial if only some
+    platforms have shipped. Never invents a platform that has not actually
+    published a file.
+
+    Native builds come from the launcher project's own GitHub Actions CI
+    (real macOS/Windows/Linux runners - jpackage is not a cross-compiler),
+    copied into downloads/ by hand from the CI run's artifacts.
+    """
     out = []
-    for platform_id, ext, label in _NATIVE_LAUNCHER_PLATFORMS:
-        candidate = DOWNLOAD_DIR / f"glimpse-launcher-{version}-{platform_id}.{ext}"
-        if not candidate.exists():
-            continue
+    for n in launcher_native_files(version, DOWNLOAD_DIR):
         out.append({
-            "platform_id": platform_id,
-            "label": label,
-            "file_name": candidate.name,
-            "size_bytes": candidate.stat().st_size,
-            "sha256": _sha256(candidate),
+            "platform_id": n["platform_id"],
+            "label": n["label"],
+            "file_name": n["file_name"],
+            "size_bytes": n["size_bytes"],
+            "sha256": _sha256(n["path"]),
         })
     return out
-
-
-# V1.1 native builds (2026-08-27): produced by glimpse-launcher's own GitHub
-# Actions CI (real macOS/Windows/Linux runners - jpackage is not a
-# cross-compiler, see that repo's ISSUES.md), copied here by hand from the
-# CI run's artifacts. Order controls display order on the page.
-_NATIVE_LAUNCHER_PLATFORMS = [
-    ("macos", "dmg", "macOS"),
-    ("windows", "msi", "Windows"),
-    ("linux", "deb", "Linux"),
-]
 
 
 def _launcher_section_html(dl, lang, launcher):
     if launcher is None:
         pending = esc(dl.get(
             'launcher_pending',
-            'Glimpse Launcher is not yet available for download - no build has been '
-            'published to the Wiki yet.'
+            f'{LAUNCHER_APP_NAME} is not yet available for download - no build has been '
+            f'published to the Wiki yet.'
         ))
         return f'<p class="callout callout--info">{pending}</p>'
 
@@ -168,7 +155,7 @@ def _launcher_section_html(dl, lang, launcher):
     version_label = esc(dl.get('launcher_version_label', 'Version'))
     size_label = esc(dl.get('size_label', 'File size'))
     sha_label = esc(dl.get('sha_label', 'SHA-256'))
-    cta = esc(dl.get('launcher_cta', 'Download Glimpse Launcher'))
+    cta = esc(dl.get('launcher_cta', f'Download {LAUNCHER_APP_NAME}'))
     jar_card = f"""<div class="card" style="margin-bottom:20px;">
   <div class="badge-row">
     <span class="type-badge type-release">{version_label} {esc(launcher['version'])}</span>
@@ -297,8 +284,8 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
 
 <p class="callout callout--info">{esc(dl.get('older_versions_note', ''))}</p>
 
-<h2>{esc(dl.get('launcher_heading', 'Glimpse Launcher'))}</h2>
-<p>{esc(dl.get('launcher_body', 'Glimpse Launcher is a desktop app that keeps your Glimpse Alpha '
+<h2>{esc(dl.get('launcher_heading', LAUNCHER_APP_NAME))}</h2>
+<p>{esc(dl.get('launcher_body', f'{LAUNCHER_APP_NAME} is a desktop app that keeps your Glimpse Alpha '
                                 'mod pack up to date automatically, verifying every download against '
                                 'this Wiki by SHA-256.'))}</p>
 {_launcher_section_html(dl, lang, launcher)}

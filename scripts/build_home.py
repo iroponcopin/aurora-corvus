@@ -124,7 +124,7 @@ def build_lang(lang):
 </div>
 
 <h2>{esc(home['features_heading'])}</h2>
-<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));">
+<div class="grid grid--cards">
   {features_html}
 </div>
 
