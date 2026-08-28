@@ -40,7 +40,7 @@ from site_common import (  # noqa: E402
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
-SITE_BASE_URL = "https://iroponcopin.github.io/glimpse-alpha-wiki"
+SITE_BASE_URL = "https://iroponcopin.github.io/aurora-corvus"
 
 
 def _mod_version():

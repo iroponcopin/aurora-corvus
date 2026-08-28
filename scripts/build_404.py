@@ -12,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import ROOT, page  # noqa: E402
 
-ABS_BASE = "/glimpse-alpha-wiki/"
+ABS_BASE = "/aurora-corvus/"
 
 
 def build():

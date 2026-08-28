@@ -32,7 +32,7 @@ LAUNCHER_APP_NAME = "Corvus"
 # requires an ABSOLUTE og:image URL — a relative one is silently ignored by
 # every scraper, which is how a site ends up with no share preview at all.
 # (build_glimpse_manifest.py keeps its own copy for the launcher manifest.)
-SITE_BASE_URL = "https://iroponcopin.github.io/glimpse-alpha-wiki"
+SITE_BASE_URL = "https://iroponcopin.github.io/aurora-corvus"
 OG_IMAGE_URL = f"{SITE_BASE_URL}/assets/img/brand/og-image.png"
 
 # (code, native display name, text direction). Order = language-switcher order.
@@ -116,7 +116,7 @@ def recipe_cat_index(cat_name):
     return _cat_index_cache[cat_name]
 
 # slugs are relative to EACH LANGUAGE's own root (no leading slash!). GitHub
-# Pages serves this repo at https://<user>.github.io/glimpse-alpha-wiki/, not
+# Pages serves this repo at https://<user>.github.io/aurora-corvus/, not
 # the domain root, so every link in this site is prefix-relative.
 NAV_SECTIONS = [
     ("home", ""),
@@ -567,7 +567,7 @@ def page(
         relative depth (the site-wide 404.html — GitHub Pages serves its
         *content* at whatever broken URL the visitor hit, at any depth, so
         relative asset/nav paths would resolve against the wrong base). Pass
-        e.g. "/glimpse-alpha-wiki/" to force every link/asset in the shell to
+        e.g. "/aurora-corvus/" to force every link/asset in the shell to
         an absolute path instead of a depth-relative one.
     """
     bundle = load_bundle(lang)
@@ -628,7 +628,7 @@ def page(
   d.classList.add("js");
   var t = "dark";
   try {{
-    var s = localStorage.getItem("glimpse-alpha-wiki-theme");
+    var s = localStorage.getItem("aurora-corvus-theme");
     if (s === "light" || s === "dark") t = s;
   }} catch (e) {{ /* storage unavailable: stay dark */ }}
   d.setAttribute("data-theme", t);

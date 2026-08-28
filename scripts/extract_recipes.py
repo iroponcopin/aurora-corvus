@@ -20,7 +20,7 @@ presentation/emission changed. Zero warnings on a healthy run is still the bar.
 Usage: python3 tools/gen_recipe_sheet.py
 
 ---------------------------------------------------------------------------
-ADAPTED FOR THE GLIMPSE ALPHA WIKI (glimpse-alpha-wiki repo).
+ADAPTED FOR THE GLIMPSE ALPHA WIKI (aurora-corvus repo).
 This is a copy of the mod pack's own tools/gen_recipe_sheet.py, kept
 byte-identical from the top of the file down through the end of main()'s
 data-assembly + validation logic (every hard-won bug fix / self-check stays
