@@ -206,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">سجل التحديثات</span>
   <h1>سجل التحديثات</h1>
-  <p class="lede">معروضة هنا من الأحدث إلى الأقدم، بدءًا من الإصدار الأول (v1.0.0، بتاريخ 2026-07-15) وحتى الآن (بتاريخ 2026-08-11، بإجمالي 60 تحديثًا). تم حذف تفاصيل خطوات التحقق الداخلية أثناء التطوير، والتركيز فقط على ما تغيّر فعليًا على الخادم وما يجب الانتباه إليه.</p>
+  <p class="lede">معروضة هنا من الأحدث إلى الأقدم، بدءًا من الإصدار الأول (v1.0.0، بتاريخ 2026-07-15) وحتى الآن (بتاريخ 2026-08-11، بإجمالي 61 تحديثًا). تم حذف تفاصيل خطوات التحقق الداخلية أثناء التطوير، والتركيز فقط على ما تغيّر فعليًا على الخادم وما يجب الانتباه إليه.</p>
   <p class="callout callout--info">قيم الضرر والسرعة وغيرها المعروضة هنا هي القيم الافتراضية عند إصدار التحديث. قد تختلف عن القيم التي تشعر بها فعليًا أثناء اللعب بسبب تعديلات إعدادات (config) الخادم.</p>
 </div>
 
@@ -224,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>لا توجد تحديثات مطابقة للشروط المحددة.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.2.0</span> — أُعيدت التسمية إلى Corvus OS، وأُعيد تصميم الشاشة بطابع لينكس، وأُعيد بناء الصرّاف الآلي مجسَّماً
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">ميزة جديدة</span><span class="mod-badge" style="--mod-color:#7d7d52">الغرف الخلفية</span><span class="mod-badge" style="--mod-color:#9349b8">الزعماء</span><span class="mod-badge" style="--mod-color:#4f8f43">مواد البناء والديكور</span><span class="mod-badge" style="--mod-color:#c0533a">الأسلحة النارية</span><span class="mod-badge" style="--mod-color:#b0559b">بلاناركاديا</span><span class="mod-badge" style="--mod-color:#d4b32e">الكهرباء</span><span class="mod-badge" style="--mod-color:#3d7dc4">السكك الحديدية</span><span class="mod-badge" style="--mod-color:#3badc9">السماء</span><span class="mod-badge" style="--mod-color:#c19a2e">البقاء</span><span class="mod-badge" style="--mod-color:#d17a34">المركبات</span></div>
+      <p>تغيّر اسم نظام الحاسوب والهاتف من Mine OS إلى Corvus OS، وشاشة المصرف من Mine Bank إلى Corvus Bank — وهو الاسم نفسه الذي يستخدمه تطبيق سطح المكتب وهذا الموقع أصلاً. وأُعيد تصميم مظهر النظام ليُقرأ كنظام لينكس، مع سجل إقلاع ولوحة ألوان أهدأ وعلامة على هيئة غراب. ولم تعد شاشة الحاسوب تُظهر العالم من خلفها؛ صارت معتمة كشاشة حقيقية. كما أُعيد بناء الصرّاف الآلي لتصبح فتحاته ولوحة مفاتيحه أشكالاً حقيقية لا صوراً مرسومة على صندوق.</p>
+      <ul><li>صار Mine OS يُسمّى Corvus OS، وصار Mine Bank يُسمّى Corvus Bank. هذا تغيير في الاسم المعروض فقط — ولم يتغيّر أي مُعرِّف لكتلة أو غرض أو إعداد.</li><li>أُعيد تصميم Corvus OS بطابع لينكس: سجل إقلاع من أسطر ‏[ OK ]‏ عند البدء، ولوحة ألوان فحمية أهدأ، وعلامة على هيئة غراب بدل المكعّب السابق.</li><li>لم تعد شاشة الحاسوب شفّافة. كان العالم يظهر من خلفها، أما الآن فهي معتمة وتُقرأ كشاشة حقيقية (ويحتفظ الهاتف بزجاجه المصنفر).</li><li>تكبير النافذة صار يُخفي شريط Dock ويمنح تلك المساحة للنافذة فعلاً؛ وبالاستعادة يعود الشريط. أما شريط الهاتف السفلي فلم يتغيّر.</li><li>أُعيد بناء الصرّاف الآلي مجسَّماً. فاللوحة الزرقاء، وشريط الإضاءة تحتها، والشاشة الغائرة، وفتحات البطاقة والإيصال والنقد، ورفّ لوحة المفاتيح، والأعمدة الجانبية، والقاعدة، صارت كلها هندسة حقيقية لا صندوقاً مرسوماً. وينال الصرّاف الخاص الشكل نفسه بطلائه الذهبي.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ ملاحظات هامة</div>
+          <ul><li>إعادة التسمية شكلية فقط. لم يتغيّر أي مُعرِّف لكتلة أو غرض أو إعداد، لذا تستمر العوالم وملفات الإعدادات الحالية في العمل كما كانت تماماً.</li></ul>
+        </div>
+      <h4>أمور لم تُنفَّذ أو لم يتم التحقق منها حتى هذه اللحظة</h4><ul><li>يأتي هذا الإصدار بعد 3.0.0. ولا يوجد إصدار 3.1 — فالميزات المخطط لها في V3.1 لم تدخل بعد.</li><li>لم يُتحقق من التغييرات المرئية على شاشة حقيقية، إذ لا يوجد عميل Minecraft في بيئة التطوير. أخبرنا إن بدا شيء غير سليم.</li><li>تفقد العلامة الجديدة تفاصيلها دون نحو 16 بكسل، وهو حدّ معروف ومقبول.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-29</div>
       <h3 class="timeline-entry__title">

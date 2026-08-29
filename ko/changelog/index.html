@@ -206,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">업데이트 기록</span>
   <h1>업데이트 기록</h1>
-  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 60회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
+  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 61회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
   <p class="callout callout--info">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
 </div>
 
@@ -224,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>조건에 맞는 업데이트가 없습니다.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.2.0</span> — Corvus OS로 이름을 바꾸고 화면을 Linux 풍으로 새단장, ATM을 입체로 재제작
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">신규 기능</span><span class="mod-badge" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge" style="--mod-color:#9349b8">보스</span><span class="mod-badge" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge" style="--mod-color:#c0533a">총기</span><span class="mod-badge" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge" style="--mod-color:#d4b32e">전력</span><span class="mod-badge" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge" style="--mod-color:#3badc9">천공</span><span class="mod-badge" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge" style="--mod-color:#d17a34">탈것</span></div>
+      <p>컴퓨터와 휴대전화의 운영체제를 Mine OS에서 Corvus OS로, 은행 화면을 Mine Bank에서 Corvus 뱅크로 변경했습니다. 데스크톱 앱과 이 사이트가 이미 쓰는 이름과 같아집니다. 운영체제의 외형은 Linux 풍으로 새단장하여 부팅 로그, 차분한 배색, 까마귀 모양의 마크를 넣었습니다. 컴퓨터 화면은 더 이상 뒤의 세계가 비쳐 보이지 않고 불투명해져 진짜 디스플레이처럼 보입니다. ATM도 투입구와 키패드가 그림이 아니라 실제 형태가 되도록 다시 만들었습니다.</p>
+      <ul><li>Mine OS를 Corvus OS로, Mine Bank를 Corvus 뱅크로 변경했습니다. 표시 이름만 바뀐 것이며 블록·아이템·설정의 내부 ID는 하나도 바뀌지 않았습니다.</li><li>Corvus OS의 외형을 Linux 풍으로 새단장했습니다. 시작할 때 「[ OK ]」가 늘어선 부팅 로그가 흐르고, 배색은 차분한 차콜 계열로, 마크는 까마귀 모양으로 바뀌었습니다.</li><li>컴퓨터 화면이 더 이상 비쳐 보이지 않습니다. 이전에는 화면 너머로 주변 풍경이 보였지만 이제 불투명해져 진짜 디스플레이처럼 보입니다(휴대전화의 젖빛 유리 표현은 그대로입니다).</li><li>창을 최대화하면 Dock이 숨겨지고 그만큼 창이 실제로 넓어집니다. 되돌리면 Dock도 돌아옵니다. 휴대전화의 홈 바는 그대로입니다.</li><li>ATM을 입체로 다시 만들었습니다. 파란 간판, 그 아래 조명, 오목한 화면, 카드·영수증·현금 투입구, 키패드 선반, 양옆 기둥, 받침대가 그려 넣은 그림이 아니라 실제 형태가 되었습니다. 특별 ATM도 같은 형태의 금색판이 되었습니다.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 주의 사항</div>
+          <ul><li>이름 변경은 표시에 한합니다. 블록·아이템·설정의 내부 ID는 하나도 바뀌지 않았으므로 기존 월드와 설정 파일은 그대로 사용할 수 있습니다.</li></ul>
+        </div>
+      <h4>이 시점에 미구현·미확인이었던 사항</h4><ul><li>이 버전은 3.0.0의 다음입니다. 3.1은 결번이며, V3.1에서 예정한 기능은 아직 들어 있지 않습니다.</li><li>개발 환경에 Minecraft 클라이언트가 없어 이번 외형 변경은 실제 화면에서 아직 확인하지 못했습니다. 이상한 점이 있으면 알려 주세요.</li><li>새 마크는 약 16px 이하에서 세부가 뭉갭니다. 알려진 한계이며 수용된 사항입니다.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
       <div class="timeline-entry__date">2026-08-29</div>
       <h3 class="timeline-entry__title">
