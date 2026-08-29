@@ -6,10 +6,10 @@
      iPhones; every edge-anchored surface (header, drawer, main, footer,
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>الخطة المستقبلية | Aurora Corvus</title>
-<meta name="description" content="الخطط المستقبلية وخارطة الطريق لتطوير حزمة إضافات Alpha، تشمل منطقة &quot;الغرف الخلفية&quot; وتعزيز إضافة السكك الحديدية وتحسينات الواجهة.">
-<meta property="og:title" content="الخطة المستقبلية | Aurora Corvus">
-<meta property="og:description" content="الخطط المستقبلية وخارطة الطريق لتطوير حزمة إضافات Alpha، تشمل منطقة &quot;الغرف الخلفية&quot; وتعزيز إضافة السكك الحديدية وتحسينات الواجهة.">
+<title>خارطة الطريق | Aurora Corvus</title>
+<meta name="description" content="خارطة طريق حزمة إضافات Alpha. ما صدر فعلًا بين V2.2.0 وV2.5.1، والتحديث الكبير التالي V3، وما لم يُصنع بعد — كلٌّ منها في قسم منفصل.">
+<meta property="og:title" content="خارطة الطريق | Aurora Corvus">
+<meta property="og:description" content="خارطة طريق حزمة إضافات Alpha. ما صدر فعلًا بين V2.2.0 وV2.5.1، والتحديث الكبير التالي V3، وما لم يُصنع بعد — كلٌّ منها في قسم منفصل.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -17,10 +17,31 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Aurora Corvus">
 <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/roadmap/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/roadmap/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/roadmap/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/roadmap/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/roadmap/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/roadmap/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/roadmap/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/roadmap/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/roadmap/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/roadmap/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/roadmap/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/roadmap/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/roadmap/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/roadmap/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"ar","h":{"ar":"../../ar/roadmap/","de":"../../de/roadmap/","en":"../../en/roadmap/","es":"../../es/roadmap/","fr":"../../fr/roadmap/","id":"../../id/roadmap/","it":"../../it/roadmap/","ja":"../../roadmap/","ko":"../../ko/roadmap/","pt-br":"../../pt-br/roadmap/","ru":"../../ru/roadmap/","tr":"../../tr/roadmap/","zh":"../../zh/roadmap/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"roadmap/"});</script>
 <!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
      for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
      were dropped on owner directive (hard to read), and their font request
@@ -31,6 +52,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
    theme before first paint. Dark is the flagship default; "light" is the
@@ -105,7 +131,7 @@
                 <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
               </div>
               <ul class="mega-links">
-            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Download</span></a></li>
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">التنزيل</span></a></li>
             <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
             <li><a class="mega-link" href="../guide/"><span class="mega-link__label">دليل التثبيت</span></a></li>
               </ul>
@@ -144,7 +170,7 @@
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">سجل التحديثات</span></a></li>
-            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">الخطة المستقبلية</span></a></li>
+            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">خارطة الطريق</span></a></li>
             <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">المشاكل المعروفة</span></a></li>
               </ul>
             </div>
@@ -153,22 +179,22 @@
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="اللغة / Language">
-          🌐 <span>العربية</span>
+          <span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span><span>العربية</span>
         </button>
         <ul class="lang-switch__menu" id="langMenu">
-          <li><a href="../../roadmap/">日本語</a></li>
-        <li><a href="../../en/roadmap/">English</a></li>
-        <li><a href="../../es/roadmap/">Español</a></li>
-        <li><a href="../../fr/roadmap/">Français</a></li>
-        <li><a href="../../zh/roadmap/">简体中文</a></li>
-        <li><a href="../../ko/roadmap/">한국어</a></li>
-        <li><a href="../../pt-br/roadmap/">Português (Brasil)</a></li>
-        <li><a href="../../it/roadmap/">Italiano</a></li>
-        <li><a href="../../ar/roadmap/" class="active" aria-current="true">العربية</a></li>
-        <li><a href="../../ru/roadmap/">Русский</a></li>
-        <li><a href="../../id/roadmap/">Bahasa Indonesia</a></li>
-        <li><a href="../../de/roadmap/">Deutsch</a></li>
-        <li><a href="../../tr/roadmap/">Türkçe</a></li>
+          <li><a href="../../roadmap/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/roadmap/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/roadmap/" data-lang="es" hreflang="es"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/roadmap/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/roadmap/" data-lang="zh" hreflang="zh"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/roadmap/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/roadmap/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/roadmap/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/roadmap/" data-lang="ar" hreflang="ar" class="active" aria-current="true"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/roadmap/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/roadmap/" data-lang="id" hreflang="id"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/roadmap/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/roadmap/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
         </ul>
       </div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="تبديل نمط الألوان" title="تبديل نمط الألوان">🌓</button>
@@ -178,22 +204,28 @@
 <main id="main">
 
 <div class="hero">
-  <span class="hero__eyebrow">الخطة المستقبلية</span>
-  <h1>الخطة المستقبلية</h1>
-  <p class="lede">استنادًا إلى وثائق طلب التطوير الداخلية، نعرض هنا محتوى التحديثات القادمة المخطط لها حاليًا.</p>
-  <p class="callout callout--warn">محتوى هذه الصفحة لم يُنفَّذ أو يُوزَّع بعد. هذا عرض تعريفي مبني على مذكرات تخطيط داخلية، وقد يتغيّر المحتوى الفعلي أو توقيته أو مواصفاته أو يُلغى بالكامل. سيتم تحديث صفحة &quot;سجل التحديثات&quot; بالمحتوى النهائي المؤكد فور تنفيذه.</p>
+  <span class="hero__eyebrow">خارطة الطريق</span>
+  <h1>خارطة الطريق</h1>
+  <p class="lede">تفصل هذه الصفحة بين ما صدر فعلًا وما لم يُصنع بعد. أغلب البنود التي كانت مدرجة هنا بوصفها «مخطَّطة» موجودة بالفعل داخل الحزمة الموزَّعة حاليًّا. يأتي أولًا ما صدر، ثم يليه ما لا يزال قيد الصنع.</p>
+  <p class="callout callout--warn">كل ما يرد في البطاقة الخضراء «صدر فعلًا» موجود حقًّا في الحزمة الموزَّعة الآن. أما ما يرد في البطاقتين الزرقاوين فلم يصل إلى لعبتك بعد. وقد يتغيّر التوقيت والمحتوى والمواصفات، وقد تُلغى كذلك. ولا يظهر في صفحة «سجل التحديثات» إلا ما صدر فعلًا.</p>
 </div>
 <div class="card" style="margin-bottom:20px;">
-      <div class="badge-row"><span class="type-badge type-visual">قيد التخطيط</span>
-        <span class="timeline-entry__release">V2.2</span></div>
-      <h3 style="margin-top:0">V2.2 (الجولة التالية — لم تبدأ بعد، ولا محتواها ولا تاريخها محدَّد)</h3>
-      <h4>إضافة سابورو (مؤجَّلة من V2.1.0)</h4><ul><li>إضافة سابورو (sorakaze_sapporo) غير مرفقة في V2.1.0. أُجّلت إلى V2.2.</li><li>وإلى أن تصدر، لا يزيد عدد ملفات jar التي تُثبَّت. وهو حاليًّا ملف Fabric API واحد + 11 من إضافات Alpha.</li></ul><h4>مؤجَّل من V2</h4><ul><li>كل ما لا يزال مذكورًا في بطاقة «تحديث V2» أدناه — إعادة بناء جريان الماء نفسه، والطقس والكوارث الجديدة، وتوازن الأسلحة النارية وأصواتها، وأنظمة المال، وإعادة رسم كائنات الغرف الخلفية — يتواصل هنا.</li><li>وكل ذلك ما زال في طور الفكرة. ولا يظهر في سجل التحديثات إلا ما يُصنع ويصدر فعلًا.</li></ul>
+      <div class="badge-row"><span class="type-badge type-release">صدر فعلًا</span>
+        <span class="timeline-entry__release">V2.2.0 – V2.5.1</span></div>
+      <h3 style="margin-top:0">ما كانت هذه الصفحة تدرجه بوصفه «مخطَّطًا» — وأغلبه صدر فعلًا</h3>
+      <h4>الصفحة نفسها هي التي كانت قديمة</h4><ul><li>ظلّت هذه الصفحة زمنًا طويلًا تقدّم V2.2 بوصفها الإصدار التالي الذي لم يبدأ العمل عليه بعد. وهذا مخالف للواقع. فكل ما بين V2.2.0 (2026-08-23) وV2.5.1 (2026-08-28) قد وُزّع بالفعل، والحزمة الموزَّعة الآن هي V2.5.1.</li><li>وكانت تذكر أيضًا أن إضافة سابورو (sorakaze_sapporo) لم تُرفَق بعد وأنها أُجّلت إلى V2.2. وهذا مخالف للواقع كذلك. فقد صدرت إضافة سابورو في V2.2.0 بوصفها الإضافة الحادية عشرة، وهي موجودة في ملف ZIP الموزَّع اليوم. أما ملفات jar التي تُثبَّت فهي ملف Fabric API واحد + 11 من إضافات Alpha.</li><li>ويجدر التوضيح أيضًا أنه لا وجود لإصدار يحمل الرقم V2.3. فبعد V2.2.1 جاء V2.4.0 مباشرة. الترقيم وحده هو الذي قفز خطوة، ولا يوجد تحديث ناقص.</li></ul><h4>ما كُتب هنا على أنه ما زال في طور التخطيط، بينما كان يعمل فعلًا</h4><ul><li>الطقس والكوارث (عاصفة ثلجية، إعصار، زلزال، تسونامي، بركان) مُنفَّذة كلها، وأنواعها الخمسة مفعَّلة افتراضيًّا. وحتى بالإعدادات الافتراضية، قد يحطّم الزلزال مواد بناء عادية تمامًا: الحجر، والحجر الخشن، والحجر الرملي، والتراب، والرمل، والحصى، والطين.</li><li>آلية رفع الأسعار إلى ما بين 10 و100 ضعف مفعَّلة افتراضيًّا في إضافة السماء وإضافة بلاناركاديا (ولا يشمل ذلك التجارة مع القرويين في اللعبة الأصلية).</li><li>رصيد الماس في الصرّاف الآلي مفعَّل افتراضيًّا. أما النقطة التي كانت هذه الصفحة تقول إنها «ستُحدَّد بناءً على قياس فعلي ثم تُعلَن»، فقد حُسمت بالفعل: سعر الصرف ثابت عند ماسة واحدة مقابل 4 زمردات، ولا يمكن تغييره من الإعدادات. ولا تُحتسب أي فائدة على رصيد الماس إطلاقًا.</li><li>كذلك طُبِّق فعلًا رفع سقف الفائدة إلى 10,000,000 زمردة. وهو على وجه الدقة سقف الرصيد الذي تُحتسب عليه فائدة، ويبلغ 50,000,000 زمردة في الحساب الخاص وحده.</li><li>كما تعمل افتراضيًّا: مواصفة تصاعد الضرر بعد عشر دقائق والعطش عند الصفر، وهي قد تقتل فعلًا في غير الوضع المسالم؛ وبنزين المركبات عدا القطارات؛ ومتانة القناع مع إحيائه لمرة واحدة فقط. ومتانة القناع هي 814 لا «نحو 800» كما ذُكر في البداية، والإحياء يستغرق 320 ثانية.</li><li>الأرقام التفصيلية لكل ما سبق، ومفتاح الإعداد الخاص بكل منها، مجموعة في قسم «مواصفات لم تُدوَّن من قبل» في صفحة «دليل الميزات». وقد كُتبت تلك القائمة بمراجعة شفرة الإضافات نفسها بندًا بندًا.</li></ul><h4>ما صدر فعلًا من خطة V2</h4><ul><li>مدخل بلاناركاديا وكتلة الجمشت البوابي؛ وأربعة زعماء جدد (بنقاط حياة 600 و800 و750 و1,200) وطقوس استدعائهم؛ وشبكة المياه (الأنابيب والمضخة والصنبور)؛ والثلاجة وفساد الطعام؛ والبنزين وصفائح الوقود؛ ومنقّي الهواء وتلوّث هواء المحطة النووية؛ وبذلة الوقاية — V2.0.0 (2026-08-18).</li><li>ونُفِّذت كذلك الآلية التي تُبقي موضع سقوط الرأس النووي ملوَّثًا عشرين يومًا داخل اللعبة. ويُبطِلها ارتداء القناع الواقي من الغازات وبذلة الوقاية معًا؛ فإن نقص أحدهما وقع عليك الضرر والتأثيرات السلبية.</li><li>صارت سعة القارورة أربعة أضعاف: من 8 جرعات إلى 32.</li><li>يمكن حمل القرويين والمخلوقات الصغيرة كالدجاج والصناديق دون تحطيمها. ويبقى المحتوى كما هو، أما الصندوق الكبير فيحتاج إلى شخصين.</li><li>فاصل العشرين ثانية قبل أن يستدعي طبيب الطاعون عاصفة الويذر، ومنجل الحاصد الذي يحصد الأرواح وبيضة استدعائه، وزيادة قوة الحاصد بنسبة 15% وإضافة ثلاثة أنماط هجوم، والطور الثاني لعاصفة الويذر بهجومها التدميري الجديد — كل ذلك مُنفَّذ.</li><li>أُصلح الخلل الذي كان يمنع درع الملاك من العمل كدرع. وهو الآن يصدّ الضربات فعلًا.</li><li>إعادة موازنة الأسلحة النارية (المدفع الدوّار، والبندقية الهجومية، والمسدس، والرشاش القصير، وقاذف الصواريخ، والبرج المدفعي)، وأصوات الطلقات المصنوعة من الصفر، وإصلاح الخلل الذي كان جسم قاذف الصواريخ نفسه يحجب به الرؤية أثناء التصويب، وتقوية الرؤوس النووية ورؤوس الصواريخ — كل ذلك صدر فعلًا.</li><li>أُضيفت ثلاث منصات صواريخ — MK-VII وVLS Mk-V وTEL-X3 — ويمكن للاعب أن يركبها جميعًا فيقودها ويصوّب ويطلق. وإلى جانبها منصة إطلاق ثابتة تُنصَب على الأرض ويُطلَق منها عبر الخريطة التكتيكية.</li><li>التشغيل والإيقاف المؤقت والتقديم والإرجاع في تطبيق الفيديو تعمل كلها. كما أُصلح الخلل الذي كان الصوت يستمر معه بعد مغادرة الخادم أو الانتقال بين الأبعاد، والخلل الذي كان الصوت يخرج معه بينما تبقى الشاشة سوداء.</li><li>أُعيد رسم مظهر iPhone وMacBook، مع تجهيز رسوم منفصلة لأيقونة المخزون ولهيئة الجهاز عند حمله في اليد أو وضعه على الأرض.</li><li>أُعيد رسم مظهر كائنات الغرف الخلفية. وهي تجمع بين نموذج مجسَّم ورسم بالبكسل، بألوان يغلب عليها الأصفر المريض، مع جسيمات تحوم حولها. وينبغي الانتباه إلى أن هذه الكائنات لا يمكن قتلها بأي هجوم.</li><li>النسخ الاحتياطي التلقائي مُنفَّذ أيضًا. ويستطيع مدير الخادم ضبط الفاصل الزمني وعدد النسخ المحفوظة ومكان الحفظ من واجهة عبر /glimpsebackup ui؛ وتُحفظ العوالم في ملفات ZIP تحمل التاريخ والوقت، وتُنظَّف القديمة تلقائيًّا بحسب عدد النسخ المحتفظ بها (الافتراضي: معطَّل، كل 30 دقيقة، 5 نسخ).</li><li>صدرت كذلك واجهة Mine Bank، وفتح الصرّاف الآلي يعرضها الآن افتراضيًّا. وفيها التبديل بين الإيداع والسحب، والاختيار السريع 25% و50% و75% والحد الأقصى، وأزرار الزيادة 1 و10 و100 و1k، ومعاينة الرسوم، والتأكيد والإلغاء. وينبغي الانتباه إلى أن تبويباتها تبدّل الحساب (شخصي / مشترك / خاص) لا العملة.</li><li>كما صدرت عصا Sparxie (بسعر معلن قدره 200,000 زمردة)، والأبراج المدفعية، و52 نوعًا من الفوانيس الزجاجية، وغارات السطح، والطائرة بدون طيار مع تطبيقها، وإعادة بناء مدينة سابورو. ولمعرفة تفاصيل كل إصدار على حدة، انظر صفحة «سجل التحديثات».</li></ul>
     </div>
 <div class="card" style="margin-bottom:20px;">
-      <div class="badge-row"><span class="type-badge type-visual">قيد التخطيط</span>
-        <span class="timeline-entry__release">V2</span></div>
-      <h3 style="margin-top:0">تحديث V2 (صدر جزء منه في V2.0.0 وV2.1.0 — وما بقي هنا لم يصدر بعد)</h3>
-      <h4>ما صدر فعلًا من هذه الخطة</h4><ul><li>صدر في V2.0.0 (2026-08-18): مدخل بلاناركاديا وكتلة الجمشت البوابي؛ وأربعة زعماء جدد وطقوس استدعائهم؛ وتعديلات طبيب الطاعون والحاصد؛ وشبكة المياه (الأنابيب والمضخة والصنبور)؛ والثلاجة وفساد الطعام؛ والبنزين والصفائح؛ ومنقّي الهواء وتلوّث هواء المحطة النووية؛ وبذلة الوقاية؛ والأقنعة التي تنكسر ثم تتعافى مرة واحدة فقط.</li><li>صدر في V2.1.0 (2026-08-22): مستويات الغرف الخلفية 3–8 (من جزر تجريبية إلى مستويات لا نهائية حقيقية)؛ وتطبيق إدارة الخادم على حاسوب اللعبة، بما فيه إعدادات النسخ الاحتياطي التلقائي؛ ووصفات استدعاء الزعماء في كتاب الوصفات وأربعة إنجازات اكتشاف؛ والنماذج الخاصة بالأسلحة الثلاثة المُعرَّفة بالبيانات.</li><li>التفاصيل في صفحة «سجل التحديثات». وما يرد أدناه هو ما لم تُصدره هاتان الجولتان بعد.</li></ul><h4>إضافة مواد البناء: إصلاح أخطاء تطبيق الفيديو وتجديد شكل الأجهزة</h4><ul><li>من المخطط إصلاح عمليات التشغيل والإيقاف المؤقت والتقديم السريع/الترجيع في تطبيق الفيديو لتعمل بشكل صحيح (إصلاح له الأولوية القصوى).</li><li>من المخطط إصلاح خلل يجعل الصوت يستمر في التشغيل حتى بعد مغادرة الخادم أو الانتقال إلى عالم آخر.</li><li>من المخطط إصلاح خلل يظهر فيه الصوت بينما لا يظهر الفيديو (تبقى الشاشة سوداء).</li><li>هناك تصور لإعادة تصميم شكل iPhone وMacBook وبطارية التخزين بالكامل استنادًا إلى تصاميم جديدة مقترحة.</li></ul><h4>إعادة النظر في نظام المياه والبنية التحتية للحياة اليومية</h4><ul><li>هناك تصور للتخلي عن سلوك تدفق المياه الأصلي في اللعبة (Vanilla) واستبداله بآلية أكثر واقعية فيزيائيًا تجعل الماء يتدفق من الأماكن المرتفعة إلى المنخفضة (بحيث ينتهي الانتشار الأفقي اللانهائي على الأسطح المستوية، ويتجمع الماء في المنخفضات بدلاً من ذلك).</li><li>من المخطط إضافة مجموعة كاملة جديدة من البنية التحتية للمياه، تشمل أنابيب المياه والمضخات ونقاط التزويد، لربط مصدر المياه بالحنفية.</li><li>من المخطط زيادة سعة زجاجة المياه إلى 4 أضعاف سعتها الحالية. ومن المتوقع أن ينخفض مقياس العطش بمعدل أسرع قليلًا من مقياس الشبع، وإذا استمر العطش لمدة 10 دقائق فسيبدأ الضرر بالتراكم وقد يصبح قاتلاً ما لم يكن هناك تأثير تجدد (Regeneration).</li><li>من المخطط إضافة ميزة نسخ احتياطي تلقائي تتيح للمشرفين ضبط الفاصل الزمني وعدد النسخ المحفوظة ووجهة الحفظ من خلال واجهة مستخدم (سيتم نشر دليل الاستخدام أيضًا على هذا الموقع).</li></ul><h4>إضافة الأسلحة النارية: ضبط التوازن وتجديد الأصوات</h4><ul><li>قيد الدراسة تعديلات على التوازن: رفع أداء المدفع الرشاش الدوار (Minigun) بنسبة 50%، وبندقية الهجوم بنسبة 75%، ورفع قوة المسدس إلى 1.5 ضعف، وتخفيض ضرر الرشاش الفرعي (SMG) إلى النصف مقابل زيادة سعة الذخيرة بنسبة 30%، ومضاعفة ضرر وقوة انفجار قاذفة الصواريخ 3 مرات، ومضاعفة ضرر البرج المدفعي (Turret) 4 مرات مع رفع متانته بنسبة 70%.</li><li>هناك تصور لجعل الرأس الحربي النووي قادرًا على تدمير ما يصل إلى 10 ملايين كتلة، ومضاعفة قوة انفجار ونطاق الرأس الحربي الصاروخي 3 مرات (من المتوقع أن تبقى قوة الرأس الحربي النووي نفسه كما هي حاليًا، أي 67,200 عند الإصابة المباشرة كما في الإصدار v1.8.8، كأساس لهذا التعديل).</li><li>من المخطط أيضًا إصلاح خلل يجعل نموذج قاذفة الصواريخ نفسه يحجب الرؤية عند استخدام المنظار (Scope).</li><li>هناك تصور لإعادة صنع أصوات إطلاق النار بالكامل (دون استخدام مقاطع صوتية من ألعاب معينة موجودة كما هي، بل صناعة أصوات جديدة بأسلوب مشابه، بحسب ما ورد).</li><li>هناك تصور لإضافة 3 تصاميم جديدة لقاذفات الصواريخ، بحيث يمكن للاعب التحكم في جميعها.</li></ul><h4>إضافة الزعماء: 4 زعماء جدد وتعديلات على الزعماء الحاليين</h4><ul><li>من المخطط إضافة 4 زعماء جدد: &quot;ملك الغولم البركاني&quot; (بصحة 600)، و&quot;حارس الكراكن السحيق&quot; (بصحة 800)، و&quot;تنين العنقاء الجليدي المنشوري&quot; (بصحة 750)، و&quot;سيد شياطين عاصفة الويذر&quot; (بصحة 1200، وشرط استدعائه هزيمة الزعماء الثلاثة السابقين). هناك تصور بأن يمتلك كل منهم عنصر استدعاء مخصصًا ونظام قتال متعدد المراحل.</li><li>طبيب الطاعون: قيد الدراسة نظام يمنح مهلة 20 ثانية بين إصابته واستدعائه لعاصفة الويذر، بحيث إذا تم القضاء عليه خلال هذه الـ20 ثانية (أو بضربة واحدة) يمكن منع الاستدعاء، لكن دون الحصول على أي غنائم منه.</li><li>زعيم الموت (الحاصد الرهيب): هناك تصور بأن يسقط عند هزيمته، وباحتمال منخفض، سلاحه المخصص &quot;منجل حصاد الأرواح&quot;، وأن يتيح استخدام هذا المنجل في قتل الأعداء الحصول على بيضة استدعاء (Spawn Egg) باحتمال منخفض. من المخطط أيضًا رفع قوة الزعيم نفسه بنسبة 15%، وإضافة 3 أنماط هجوم جديدة.</li><li>هناك تصور لتعزيز عاصفة الويذر أكثر، وإضافة تحول إلى شكل (مرحلة) ثانية.</li></ul><h4>البقاء والكهرباء: نظام التلوث وإجراءات حمل جديدة</h4><ul><li>من المتوقع أن تدخل المنطقة التي يسقط عليها الرأس الحربي النووي في حالة &quot;تلوث&quot; لمدة 20 يومًا من أيام ماينكرافت. وهناك تصور بأن ارتداء كل من قناع الغاز وبدلة الحماية معًا يجعل التلوث غير ضار.</li><li>قيد الدراسة آلية تجعل تشغيل المولد النووي بشكل مستمر يلوث الهواء المحيط، بحيث يؤثر البقاء هناك لفترة طويلة دون اتخاذ إجراءات وقائية على صحة اللاعب. ومن المخطط أيضًا إضافة كتلة جديدة باسم &quot;منقي الهواء&quot; تعمل على تنقية التلوث المحيط عند تشغيلها (مع دعم تشغيل عدة وحدات في آن واحد).</li><li>من المخطط إتاحة حمل الكائنات الصغيرة مثل القرويين والدجاج باليد.</li><li>قيد الدراسة أيضًا ميزة تتيح حمل الصندوق (Chest) باليدين دون كسره (مع الاحتفاظ بمحتوياته)، على أن يكون حمل الصندوق المزدوج (Double Chest) بحاجة إلى شخصين.</li><li>من المخطط إضافة عنصر جديد (باسم مؤقت) بمتانة 32 وقوة هجوم 200. وقيد الدراسة إمكانية الهجوم عن بُعد بنفس آلية عصا السحر.</li></ul><h4>واجهة البنك، الغرف الخلفية، والتكامل مع الموقع</h4><ul><li>من المخطط رفع الحد الأقصى للإيداع في أجهزة الصراف الآلي (ATM) وMine Bank إلى 10 ملايين زمردة. وهناك تصور لتطبيق تصميم &quot;Glimpse Alpha Glass&quot; على شاشة الصراف الآلي وتجديد الواجهة بالكامل.</li><li>من المخطط إضافة واجهة &quot;Mine Bank&quot; جديدة (وبحسب ما ورد، هناك تصميم مقترح يتضمن خيارات سريعة بنسب 25%/50%/75%/الحد الأقصى بحسب الرصيد، بالإضافة إلى شريط تمرير بخطوات 1/10/100/1000).</li><li>هناك تصور لإعادة تصميم شكل وحوش (كائنات) الغرف الخلفية بالكامل استنادًا إلى صور مرجعية تصميمية جديدة.</li><li>هناك تصور لإعداد آلية تعكس تلقائيًا محتوى التحديثات المستقبلية، بمجرد تأكيدها، في سجل التحديثات الخاص بهذا الموقع (وهذا يتعلق بتشغيل هذا الموقع نفسه).</li></ul>
+      <div class="badge-row"><span class="type-badge type-visual">التحديث التالي</span>
+        <span class="timeline-entry__release">V3</span></div>
+      <h3 style="margin-top:0">التحديث الكبير التالي هو V3</h3>
+      <h4>ما يجري العمل عليه الآن</h4><ul><li>التحديث الكبير التالي هو V3. ومن المقرَّر أن يضم 50 ميزة جديدة، تدور أساسًا حول الاستكشاف والدفاع والتخزين والتضاريس الجديدة.</li><li>ولا يصدر دفعة واحدة في إصدار واحد، بل يُبنى شيئًا فشيئًا عبر عدة إصدارات. ولذلك قد تصل ميزة من ميزات V3 في إصدار من سلسلة V2 أولًا. وبالفعل فإن منصة الصواريخ الموجَّهة عبر الخريطة، وهي واجهة V3، صدرت بالفعل موزَّعة على الإصدارات V2.4.5 إلى V2.4.9.</li><li>أما التعريف بالمحتوى فمجموع في صفحة «تحديث V3» المخصَّصة له، ولا يتكرَّر هنا.</li><li>لم يُحدَّد موعد الإصدار. وكل ما يتأكَّد تنفيذه يُدرَج أولًا بأول في صفحة «سجل التحديثات».</li></ul><p><a href="../v3/">اطّلع على المحتوى في صفحة V3</a></p>
+    </div>
+<div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">لم يُصنع بعد</span>
+        <span class="timeline-entry__release">غير محدَّد</span></div>
+      <h3 style="margin-top:0">ما لم يُصنع بعد (ما تبقّى في هذه الصفحة، بمعزل عن ميزات V3 الخمسين)</h3>
+      <h4>إعادة بناء جريان الماء نفسه</h4><ul><li>خطة استبدال سلوك الماء في اللعبة الأصلية لم تُنفَّذ بعد. فسلوك الماء الذي ينتشر جانبيًّا بلا حدّ على الأرض المستوية لم يتغيّر حتى الآن.</li><li>وللحزمة آليتها الخاصة بـ«الماء المحدود»، وعليها يعمل ماء الصنبور وماء التسونامي. غير أن هذه كتلة مختلفة عن ماء اللعبة الأصلية، وماء اللعبة الأصلية نفسه لم يُمَسّ إطلاقًا. ولا يوجد كذلك ماء محدود يمكن غرفه بالدلو.</li><li>أي أن شبكة المياه والتسونامي يعملان فعلًا، أما «إعادة بناء آلية الماء» نفسها فلا تزال أمامنا.</li></ul><h4>مظهر البطارية</h4><ul><li>من إعادة رسم مظهر الأجهزة، انتهى العمل على iPhone وMacBook. أما البطارية (إضافة الكهرباء) فلها نموذج مجسَّم، لكن لم تُجهَّز لها بعد أيقونة مسطَّحة للمخزون، فيظهر النموذج المجسَّم نفسه في كل الشاشات.</li></ul><h4>أرقام لم تُعلَن بعد</h4><ul><li>كانت هذه الصفحة تقول إن سياستها هي إعلان أرقام مقيسة لمعدَّل تكرار أنواع الطقس الخمسة (متوسط الفاصل الزمني)، غير أن تلك الأرقام لم تَرِد بعد في أي موضع من هذا الموقع. أما إمكان تعطيل كل نوع منها على حدة من الإعدادات فمُنفَّذة فعلًا.</li><li>ولم يُعلَن حتى الآن سوى احتمال ثوران البركان (5% مع كل زلزال) وحجم الفوهة (نصف قطر 6 وعمق 4 كتل)، وهما مذكوران في صفحة «دليل الميزات».</li></ul>
     </div>
 
 </main>

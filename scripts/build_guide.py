@@ -2,7 +2,14 @@
 """Builds guide/index.html for every language that has a bundle, from
 bundle["install_guide"] (a list of {id, audience, title, body_html} written
 by the guide-adaptation agent into data/guide.json, then folded into every
-language's bundle by scripts/extract_bundle.py / the translation agents)."""
+language's bundle by scripts/extract_bundle.py / the translation agents).
+
+⚠ An absent or empty `install_guide` stops the build. It used to render the
+  hardcoded Japanese string 「準備中です。」 -- in all thirteen languages --
+  and exit 0. Every one of the site's own install instructions would have
+  been replaced by two Japanese words with nothing going red. Same failure
+  shape as the "Coming soon." trap documented in scripts/build_features.py.
+"""
 import sys
 from pathlib import Path
 
@@ -27,21 +34,22 @@ def section_html(ui, sec):
 def build_lang(lang):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
-    sections = bundle.get("install_guide", [])
+    sections = bundle.get("install_guide") or []
 
     if not sections:
-        body = f"""
-<div class="hero">
-  <span class="hero__eyebrow">{esc(ui['page_titles']['guide'])}</span>
-  <h1>{esc(ui['page_titles']['guide'])}</h1>
-  <p class="callout callout--info">準備中です。</p>
-</div>"""
-    else:
-        toc_items = "".join(f'<li><a href="#{esc(s["id"])}">{esc(s["title"])}</a></li>' for s in sections)
-        sections_html = "\n".join(
-            f'<div id="{esc(s["id"])}">{section_html(ui, s)}</div>' for s in sections
-        )
-        body = f"""
+        raise SystemExit(
+            f"ERROR: data/i18n/{lang}.json has no 'install_guide' sections. This page used to "
+            f"publish the hardcoded Japanese placeholder 「準備中です。」 in whatever language "
+            f"you were building and exit 0 -- so the whole install guide could go missing without "
+            f"anything going red. The block is folded in from data/guide.json by "
+            f"scripts/extract_bundle.py; check that file exists and is non-empty, then re-run "
+            f"scripts/extract_bundle.py before building.")
+
+    toc_items = "".join(f'<li><a href="#{esc(s["id"])}">{esc(s["title"])}</a></li>' for s in sections)
+    sections_html = "\n".join(
+        f'<div id="{esc(s["id"])}">{section_html(ui, s)}</div>' for s in sections
+    )
+    body = f"""
 <div class="hero">
   <span class="hero__eyebrow">{esc(ui['page_titles']['guide'])}</span>
   <h1>{esc(ui['page_titles']['guide'])}</h1>

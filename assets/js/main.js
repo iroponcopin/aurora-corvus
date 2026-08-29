@@ -230,6 +230,32 @@
     });
   }
 
+  // ---- persist an explicit language choice ----------------------------
+  // THE KEY NAME IS A CONTRACT with the language detector loaded in the
+  // <head> (assets/js/lang.js, generated from scripts/lang_detect.py),
+  // exactly like the theme key above. Change one side and you must change
+  // the other; grep "aurora-corvus-lang" to find them together.
+  //
+  // The detector treats a stored value as the visitor's own decision and
+  // honours it over device language and region FOREVER, so it is written
+  // here and nowhere else. "auxclick" is not decoration: a middle-click
+  // opens the link in a new tab and never fires "click", so without it a
+  // middle-clicked language would not stick. (Right-click -> "open link in
+  // new tab" fires neither; that case is covered on the far side, where the
+  // detector refuses to redirect anything that arrived with a same-origin
+  // referrer.)
+  if (langSwitch) {
+    var rememberLang = function (e) {
+      var a = e.target && e.target.closest && e.target.closest("a[data-lang]");
+      if (!a) return;
+      try {
+        localStorage.setItem("aurora-corvus-lang", a.getAttribute("data-lang"));
+      } catch (err) { /* storage unavailable: the link still navigates */ }
+    };
+    langSwitch.addEventListener("click", rememberLang);
+    langSwitch.addEventListener("auxclick", rememberLang);
+  }
+
   // ---- one shared document-level dismissal path -----------------------
   document.addEventListener("click", function (e) {
     if (langSwitch && !langSwitch.contains(e.target)) closeLang();

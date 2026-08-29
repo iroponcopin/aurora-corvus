@@ -146,12 +146,30 @@ _DEFAULT_SECTIONS = [
 ]
 
 
-def _launcher_content(bundle):
+# The language this page's real content is authored in. `launcher_page` is
+# one of four blocks that live only in data/i18n/*.json with no source file
+# behind them, and until 2026-08-29 scripts/extract_bundle.py deleted all four
+# every time it ran (see the ⚠ block in scripts/build_features.py). Falling
+# back to English is the RIGHT behaviour for the eleven languages that have no
+# translation yet -- but for ja it would mean the Japanese launcher page had
+# silently turned English, which is content loss wearing a fallback's clothes.
+AUTHORING_LANG = "ja"
+
+
+def _launcher_content(bundle, lang):
     lp = bundle.get("launcher_page")
     if lp and lp.get("sections"):
         # bundle content already went through the placeholder pass in
         # load_bundle(); only the inline English fallback still needs it.
         return lp.get("intro", fill_placeholders(_DEFAULT_INTRO)), lp["sections"]
+    if lang == AUTHORING_LANG:
+        raise SystemExit(
+            f"ERROR: data/i18n/{lang}.json has no usable 'launcher_page' block, and {lang} is the "
+            f"language this page is authored in. Falling back to the English copy below would "
+            f"publish an English launcher page at /launcher/ with no error at all. Restore the "
+            f"block (git show HEAD:data/i18n/{lang}.json) before re-running.")
+    print(f"  NOTE [{lang}] no translated 'launcher_page' block -- using the English fallback "
+          f"copy from this script.")
     return fill_placeholders(_DEFAULT_INTRO), fill_placeholders(_DEFAULT_SECTIONS)
 
 
@@ -165,7 +183,7 @@ def section_html(sec):
 def build_lang(lang):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
-    intro, sections = _launcher_content(bundle)
+    intro, sections = _launcher_content(bundle, lang)
 
     toc_items = "".join(f'<li><a href="#{esc(s["id"])}">{esc(s["title"])}</a></li>' for s in sections)
     sections_html = "\n".join(f'<div id="{esc(s["id"])}">{section_html(s)}</div>' for s in sections)

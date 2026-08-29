@@ -13,8 +13,14 @@ from __future__ import annotations
 
 import json
 import re
+import sys
+from collections import Counter
 from pathlib import Path
 import html as _html
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lang_detect  # noqa: E402  (entry-time language detection)
+from flag_svgs import FLAG_EMOJI  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 I18N_DIR = ROOT / "data" / "i18n"
@@ -110,6 +116,18 @@ LANGUAGES = [
 LANG_CODES = [c for c, _, _ in LANGUAGES]
 LANG_NAME = {c: n for c, n, _ in LANGUAGES}
 LANG_DIR = {c: d for c, n, d in LANGUAGES}
+
+# The BCP-47 tag written into hreflang, which is NOT the same string as the
+# path segment. Path segments are lowercase because they are directory names;
+# hreflang wants a properly cased language-REGION tag, so /pt-br/ is advertised
+# as "pt-BR". Google is lenient about the casing but the spec is not, and the
+# validators the owner is likely to run flag it.
+#
+# zh is advertised as plain "zh", not "zh-Hans", ON PURPOSE: the bundle is
+# Simplified, but the site WANTS every Chinese reader on that page (there is no
+# Traditional version to send anyone to), and "zh-Hans" would tell a search
+# engine to withhold it from Traditional-preferring users.
+HREFLANG_TAG = dict({c: c for c in LANG_CODES}, **{"pt-br": "pt-BR"})
 
 # The 10 modules of the suite, in the order they were introduced. Colors are
 # used as accent hues across nav tags, recipe category tabs, and changelog mod
@@ -480,6 +498,83 @@ def available_langs() -> list[str]:
     return [c for c in LANG_CODES if (I18N_DIR / f"{c}.json").exists()]
 
 
+def load_changelog_structural(path=None) -> list:
+    """data/changelog.json, with the identity of every entry validated.
+
+    ⚠ `(release, date)` is NOT a unique key here and never was. Two pairs share
+      one — v1.3.2/2026-07-22 and v1.8.0/2026-08-04 — and a third label,
+      v1.4.0, carries three entries on three different dates. Both readers of
+      this file used to build `{(release, date): translation}` as a dict, so
+      for those two pairs the SECOND translation silently won and rendered
+      against BOTH structural entries. On all 13 published pages, v1.8.0's
+      "Renamed to Glimpse Alpha" entry — the one explaining why the jar
+      filenames changed — was replaced by a second copy of the config
+      auto-repair text, wearing the rename's release badge. Nothing went red:
+      the entry count was right, the badges were right, the dates were right,
+      and both entries were fluent prose in the reader's own language.
+
+      Every entry therefore carries an explicit `id`, assigned once and never
+      recomputed, and that — not (release, date) — is what a translation is
+      matched on. Appending a second entry for an existing release never
+      forces the first one to be renamed, so ids are stable across the file's
+      whole future.
+
+    Both consumers go through this function and index_bundle_changelog()
+    below, so there is exactly one place where an entry's identity is decided.
+    """
+    p = ROOT / "data" / "changelog.json" if path is None else Path(path)
+    if not p.exists():
+        return []
+    structural = json.loads(p.read_text(encoding="utf-8"))
+    missing = [f"{e.get('release')}({e.get('date')}) at index {i}"
+               for i, e in enumerate(structural) if not e.get("id")]
+    if missing:
+        raise SystemExit(
+            f"ERROR: {p} has {len(missing)} changelog entr(ies) with no 'id': "
+            + ", ".join(missing[:6])
+            + "\n  Every entry needs a stable unique id — it is what each language's "
+              "translation is matched on. (release, date) is NOT unique in this file and "
+              "keying on it published one entry twice under two different badges in all 13 "
+              "languages. Give the new entry an id: the release label lowercased, or "
+              "'<release>-<what-it-is>' if that label is already taken.")
+    dupes = sorted({i for i, c in Counter(e["id"] for e in structural).items() if c > 1})
+    if dupes:
+        raise SystemExit(
+            f"ERROR: {p} has duplicate changelog id(s): {', '.join(dupes)}.\n"
+            f"  Two entries sharing an id is the exact defect the id was introduced to "
+            f"remove: one of them would take the other's translation and both would render "
+            f"as the same text under different badges.")
+    return structural
+
+
+def index_bundle_changelog(bundle: dict, lang: str = None) -> dict:
+    """{id: translated entry} for one language bundle.
+
+    An entry with no id cannot be matched to anything and is skipped: the
+    structural entry it was meant for then falls back to the Japanese source,
+    which is VISIBLE on the page, rather than being paired with a neighbour's
+    prose, which is not. Duplicate ids stop the build for the same reason
+    load_changelog_structural() does.
+    """
+    entries = bundle.get("changelog") or []
+    by_id, keyless = {}, 0
+    for t in entries:
+        if not t.get("id"):
+            keyless += 1
+            continue
+        by_id.setdefault(t["id"], []).append(t)
+    dupes = sorted(i for i, group in by_id.items() if len(group) > 1)
+    if dupes:
+        raise SystemExit(
+            f"ERROR: data/i18n/{lang or bundle.get('lang')}.json has duplicate changelog "
+            f"id(s): {', '.join(dupes)}. One translation would silently replace the other.")
+    if keyless:
+        print(f"  NOTE [{lang or bundle.get('lang')}] {keyless} changelog entr(ies) carry no "
+              f"'id' and cannot be matched — they will render in Japanese. Re-run "
+              f"scripts/extract_bundle.py (ja) or re-key the translation.")
+    return {i: group[0] for i, group in by_id.items()}
+
+
 def load_latest_changelog_entry(bundle: dict):
     """The newest changelog entry, with translated strings merged in from the
     bundle (falling back to the JA structural file for release/date/type/
@@ -495,22 +590,25 @@ def load_latest_changelog_entry(bundle: dict):
       position: data/changelog.json once had newer entries hand-prepended at
       the top, and structural[-1] silently promoted V2.4.1 to "latest update"
       while the download page shipped V2.4.8.
+
+    ⚠ The translation is looked up by `id`, not by (release, date). This
+      function used to carry the identical dict-collapse build_changelog.py
+      did, and was harmless only because the two colliding pairs happen to be
+      old: the day a duplicate pair became the newest entry, the download
+      page's "what's new" teaser would have shown the wrong one's prose under
+      the right one's version number.
     """
-    p = ROOT / "data" / "changelog.json"
-    if not p.exists():
-        return None
-    structural = json.loads(p.read_text(encoding="utf-8"))
+    structural = load_changelog_structural()
     if not structural:
         return None
-    by_release_date = {(t["release"], t["date"]): t
-                       for t in (bundle.get("changelog") or [])}
+    by_id = index_bundle_changelog(bundle)
 
     def _key(e):
         return (e.get("date", ""),
                 tuple(int(n) for n in re.findall(r"\d+", str(e.get("release", "")))))
 
     s = max(structural, key=_key)
-    t = by_release_date.get((s["release"], s["date"]), s)
+    t = by_id.get(s["id"], s)
     merged = dict(s)
     merged.update({k: t[k] for k in ("title", "summary", "highlights") if k in t})
     return merged
@@ -649,15 +747,74 @@ def _nav_html(bundle: dict, active: str, lang_prefix: str) -> str:
     return "\n        ".join(items)
 
 
+def lang_hrefs(section: str, root_prefix: str) -> list:
+    """[(code, href)] for every language that has a bundle, in switcher order.
+
+    ONE definition, used by three things that must agree: the rendered <a href>
+    list, the head detector's redirect map, and the hreflang alternates. When
+    the detector sends someone to a URL that is not the URL the switcher would
+    have linked, you get a redirect loop; the cheapest way to make that
+    impossible is for there to be only one place the URL is built.
+    """
+    langs = available_langs()
+    return [(code, root_prefix + ("" if code == "ja" else f"{code}/") + section)
+            for code, _n, _d in LANGUAGES if not langs or code in langs]
+
+
+def _flag_html(code: str) -> str:
+    """The flag for one language: emoji primary, with the hook the fallback
+    stylesheet needs (see scripts/build_lang_assets.py). aria-hidden because
+    the language NAME sits right next to it — "flag of the United Kingdom
+    English" is noise in a screen reader."""
+    return (f'<span class="lang-flag lang-flag--{code}" aria-hidden="true">'
+            f'<span class="lang-flag__emoji">{FLAG_EMOJI[code]}</span></span>')
+
+
 def _lang_switcher_html(lang: str, section: str, root_prefix: str) -> str:
     items = []
-    for code, name, _dir in LANGUAGES:
-        if not available_langs() or code not in available_langs():
-            continue
-        target = root_prefix + ("" if code == "ja" else f"{code}/") + section
+    for code, target in lang_hrefs(section, root_prefix):
         cls = ' class="active" aria-current="true"' if code == lang else ""
-        items.append(f'<li><a href="{target}"{cls}>{esc(name)}</a></li>')
+        # data-lang is what main.js persists on click; hreflang is a correct
+        # (and free) hint to crawlers and assistive tech about what is on the
+        # other end of the link.
+        items.append(
+            f'<li><a href="{target}" data-lang="{code}" '
+            f'hreflang="{HREFLANG_TAG[code]}"{cls}>'
+            f'{_flag_html(code)}{esc(LANG_NAME[code])}</a></li>')
     return "\n        ".join(items)
+
+
+def _hreflang_html(section: str) -> str:
+    """rel=alternate hreflang for all 13 languages plus x-default.
+
+    Required here, not optional: the head detector can send a visitor from one
+    language to another, and a search engine that sees that without a declared
+    relationship between the URLs reads it as an ordinary redirect. The
+    alternates tell it these are the same page in different languages.
+
+    hreflang wants ABSOLUTE URLs — a relative href is silently ignored, which
+    is the failure mode where you ship an hreflang cluster that does nothing at
+    all. Every page emits the set for ITS OWN section, so /de/changelog/
+    advertises the other twelve changelogs, not the home pages.
+    """
+    out = []
+    for code, _n, _d in LANGUAGES:
+        if code not in available_langs():
+            continue
+        href = f"{SITE_BASE_URL}/" + ("" if code == "ja" else f"{code}/") + section
+        out.append(f'<link rel="alternate" hreflang="{HREFLANG_TAG[code]}" '
+                   f'href="{esc(href)}">')
+    # x-default is the URL for a visitor whose language we do not target. That
+    # is the Japanese root: the site's own default, and the only tree the bare
+    # domain resolves to.
+    out.append(f'<link rel="alternate" hreflang="x-default" '
+               f'href="{esc(SITE_BASE_URL)}/{esc(section)}">')
+    return "\n".join(out) + "\n"
+
+
+# The entry-time language detector lives in scripts/lang_detect.py (its
+# JavaScript, its resolution order, the argument for why it cannot loop, and
+# the SEO caveat about automatic redirection). page() only wires it in.
 
 
 def page(
@@ -707,6 +864,21 @@ def page(
           f'<meta name="twitter:card" content="summary_large_image">\n    ')
     lang_switch = _lang_switcher_html(lang, section, root_prefix)
 
+    # 404.html gets neither alternates nor the detector. Its content is served
+    # by GitHub Pages at whatever broken URL the visitor hit, so its "section"
+    # is a fiction: hreflang would advertise twelve URLs that are not
+    # translations of what the visitor is looking at, and the detector would
+    # bounce someone off an error page to a language home instead of showing
+    # them the error. absolute_base is set for exactly that one page.
+    if absolute_base is None:
+        alternates = _hreflang_html(section)
+        detect = lang_detect.head_html(lang, section,
+                                       lang_hrefs(section, root_prefix),
+                                       root_prefix)
+    else:
+        alternates = ""
+        detect = ""
+
     return f"""<!doctype html>
 <html lang="{lang}" dir="{text_dir}">
 <head>
@@ -721,11 +893,16 @@ def page(
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(SITE_TITLE)}">
-{og}<link rel="icon" href="{root_prefix}assets/img/brand/favicon.ico" sizes="any">
+{og}{alternates}<link rel="icon" href="{root_prefix}assets/img/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="{root_prefix}assets/img/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="{root_prefix}assets/img/brand/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="{root_prefix}assets/img/brand/apple-touch-icon.png">
-<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+{detect}<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
      for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
      were dropped on owner directive (hard to read), and their font request
      went with them rather than being left behind as a dead download. Inter is
@@ -735,6 +912,11 @@ def page(
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{root_prefix}assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="{root_prefix}assets/css/lang-flags.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
    theme before first paint. Dark is the flagship default; "light" is the
@@ -799,7 +981,7 @@ def page(
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="{esc(ui['lang_switch_label'])}">
-          🌐 <span>{esc(LANG_NAME.get(lang, lang))}</span>
+          {_flag_html(lang)}<span>{esc(LANG_NAME.get(lang, lang))}</span>
         </button>
         <ul class="lang-switch__menu" id="langMenu">
           {lang_switch}

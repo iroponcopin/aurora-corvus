@@ -4,28 +4,77 @@ Structural fields (release, date, type, mod_versions) come from
 data/changelog.json (never translated); prose fields (title, summary,
 highlights, ...) come from the language's bundle, matched by (release, date).
 """
-import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
-    ROOT, MODS_BY_ID, esc, page, write_page, mod_badge, type_badge,
+    MODS_BY_ID, esc, page, write_page, mod_badge, type_badge,
     load_bundle, available_langs, asset_root_prefix,
+    load_changelog_structural, index_bundle_changelog,
 )
 
+PROSE_KEYS = ("title", "summary", "highlights", "balance_changes", "warnings",
+              "known_limitations")
 
-def merged_entries(bundle):
-    structural = json.loads((ROOT / "data" / "changelog.json").read_text(encoding="utf-8"))
-    translated = {(t["release"], t["date"]): t for t in bundle.get("changelog", [])}
-    out = []
+
+def merged_entries(bundle, lang=None):
+    """Structural fields from data/changelog.json, prose from the bundle,
+    matched on the entry's `id`.
+
+    ⚠ (release, date) is NOT a unique key in data/changelog.json and is not
+      used as one any more. Two pairs share one:
+          v1.3.2 / 2026-07-22   "乗り物大型化…"  and  "建材ブロック138種追加…"
+          v1.8.0 / 2026-08-04   "「Glimpse Alpha」への名称変更"  and
+                                "設定ファイルの自動修復(v1.8.0 再配布版)"
+      This function used to build `{(release, date): t}` as a dict
+      comprehension, so for those two pairs the SECOND translation silently
+      won and was rendered against BOTH structural entries. On every one of
+      the 13 published pages that meant v1.8.0's rename announcement — the
+      entry that explains why the jar filenames changed — was replaced by a
+      second copy of the config-auto-repair text, wearing the rename's
+      "release" badge. Nothing went red: the count was right, the badges were
+      right, the dates were right, and both entries were fluent prose in the
+      reader's own language.
+
+      Consuming duplicates in order fixed the symptom but left the data
+      ambiguous, so the identity now lives in the data: every entry carries an
+      explicit `id`, validated unique by site_common.load_changelog_structural().
+      A structural entry whose id has no translation falls back to the
+      Japanese source — visible on the page — rather than borrowing a
+      neighbour's prose, which is not.
+
+      Both readers of data/changelog.json go through the same two helpers in
+      site_common.py, so there is exactly one place where identity is decided.
+    """
+    structural = load_changelog_structural()
+    by_id = index_bundle_changelog(bundle, lang)
+    stale = sorted(set(by_id) - {s["id"] for s in structural})
+    if stale and lang not in (None, "ja"):
+        print(f"  NOTE [{lang}] {len(stale)} translated changelog entr(ies) the structural "
+              f"file no longer has, dropped: {', '.join(stale[:6])}")
+
+    out, untranslated = [], []
     for s in structural:
-        t = translated.get((s["release"], s["date"]), s)
+        t = by_id.get(s["id"])
+        if t is None:
+            t = s
+            untranslated.append(f"{s['release']}({s['date']}) [{s['id']}]")
         merged = dict(s)
-        for k in ("title", "summary", "highlights", "balance_changes", "warnings", "known_limitations"):
+        for k in PROSE_KEYS:
             if k in t:
                 merged[k] = t[k]
         out.append(merged)
+
+    # Not fatal -- falling back to Japanese is the deliberate design (see the
+    # type_badge .get(t, t) comment below). But it must not be SILENT: 11
+    # bundles sat 14 entries behind for days while this build printed nothing
+    # and exited 0, so English and eleven other languages served Japanese
+    # prose for every release after V2.1.0.
+    if untranslated and lang not in (None, "ja"):
+        print(f"  WARNING: {lang}: {len(untranslated)}/{len(structural)} changelog "
+              f"entries have no translation and will render in Japanese: "
+              + ", ".join(untranslated))
     return out
 
 
@@ -75,7 +124,7 @@ def entry_html(bundle, e):
 def build_lang(lang):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
-    entries = merged_entries(bundle)
+    entries = merged_entries(bundle, lang)
     entries_desc = list(reversed(entries))
 
     from site_common import MOD_ORDER

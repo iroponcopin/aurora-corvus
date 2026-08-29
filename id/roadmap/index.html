@@ -6,10 +6,10 @@
      iPhones; every edge-anchored surface (header, drawer, main, footer,
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rencana Mendatang | Aurora Corvus</title>
-<meta name="description" content="Rencana pengembangan dan roadmap MOD pack Alpha ke depannya. Direncanakan mencakup area backrooms, penguatan MOD kereta, perbaikan UI, dan lainnya.">
-<meta property="og:title" content="Rencana Mendatang | Aurora Corvus">
-<meta property="og:description" content="Rencana pengembangan dan roadmap MOD pack Alpha ke depannya. Direncanakan mencakup area backrooms, penguatan MOD kereta, perbaikan UI, dan lainnya.">
+<title>Peta Jalan Pengembangan | Aurora Corvus</title>
+<meta name="description" content="Peta jalan pengembangan paket mod Alpha. Apa yang sudah dirilis dari V2.2.0 sampai V2.5.1, pembaruan besar berikutnya V3, dan apa yang belum dibuat, dipisahkan satu per satu.">
+<meta property="og:title" content="Peta Jalan Pengembangan | Aurora Corvus">
+<meta property="og:description" content="Peta jalan pengembangan paket mod Alpha. Apa yang sudah dirilis dari V2.2.0 sampai V2.5.1, pembaruan besar berikutnya V3, dan apa yang belum dibuat, dipisahkan satu per satu.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -17,10 +17,31 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Aurora Corvus">
 <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/roadmap/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/roadmap/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/roadmap/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/roadmap/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/roadmap/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/roadmap/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/roadmap/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/roadmap/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/roadmap/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/roadmap/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/roadmap/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/roadmap/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/roadmap/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/roadmap/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"id","h":{"ar":"../../ar/roadmap/","de":"../../de/roadmap/","en":"../../en/roadmap/","es":"../../es/roadmap/","fr":"../../fr/roadmap/","id":"../../id/roadmap/","it":"../../it/roadmap/","ja":"../../roadmap/","ko":"../../ko/roadmap/","pt-br":"../../pt-br/roadmap/","ru":"../../ru/roadmap/","tr":"../../tr/roadmap/","zh":"../../zh/roadmap/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"roadmap/"});</script>
 <!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
      for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
      were dropped on owner directive (hard to read), and their font request
@@ -31,6 +52,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
    theme before first paint. Dark is the flagship default; "light" is the
@@ -105,7 +131,7 @@
                 <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
               </div>
               <ul class="mega-links">
-            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Download</span></a></li>
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Unduh</span></a></li>
             <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
             <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Panduan Pemasangan</span></a></li>
               </ul>
@@ -144,7 +170,7 @@
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Riwayat Pembaruan</span></a></li>
-            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">Rencana Mendatang</span></a></li>
+            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">Peta Jalan Pengembangan</span></a></li>
             <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Bug yang Diketahui</span></a></li>
               </ul>
             </div>
@@ -153,22 +179,22 @@
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Bahasa / Language">
-          🌐 <span>Bahasa Indonesia</span>
+          <span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span><span>Bahasa Indonesia</span>
         </button>
         <ul class="lang-switch__menu" id="langMenu">
-          <li><a href="../../roadmap/">日本語</a></li>
-        <li><a href="../../en/roadmap/">English</a></li>
-        <li><a href="../../es/roadmap/">Español</a></li>
-        <li><a href="../../fr/roadmap/">Français</a></li>
-        <li><a href="../../zh/roadmap/">简体中文</a></li>
-        <li><a href="../../ko/roadmap/">한국어</a></li>
-        <li><a href="../../pt-br/roadmap/">Português (Brasil)</a></li>
-        <li><a href="../../it/roadmap/">Italiano</a></li>
-        <li><a href="../../ar/roadmap/">العربية</a></li>
-        <li><a href="../../ru/roadmap/">Русский</a></li>
-        <li><a href="../../id/roadmap/" class="active" aria-current="true">Bahasa Indonesia</a></li>
-        <li><a href="../../de/roadmap/">Deutsch</a></li>
-        <li><a href="../../tr/roadmap/">Türkçe</a></li>
+          <li><a href="../../roadmap/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/roadmap/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/roadmap/" data-lang="es" hreflang="es"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/roadmap/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/roadmap/" data-lang="zh" hreflang="zh"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/roadmap/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/roadmap/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/roadmap/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/roadmap/" data-lang="ar" hreflang="ar"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/roadmap/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/roadmap/" data-lang="id" hreflang="id" class="active" aria-current="true"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/roadmap/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/roadmap/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
         </ul>
       </div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema warna" title="Ganti tema warna">🌓</button>
@@ -178,22 +204,28 @@
 <main id="main">
 
 <div class="hero">
-  <span class="hero__eyebrow">Rencana Mendatang</span>
-  <h1>Rencana Mendatang</h1>
-  <p class="lede">Memperkenalkan isi pembaruan berikutnya yang sedang direncanakan, berdasarkan dokumen pemesanan dari pihak pengembang.</p>
-  <p class="callout callout--warn">Isi halaman ini belum diimplementasikan atau didistribusikan. Ini adalah pengenalan berdasarkan catatan perencanaan internal, sehingga konten, waktu, dan spesifikasi yang benar-benar diimplementasikan bisa berubah atau dibatalkan. Konten yang sudah pasti akan dicantumkan di halaman &quot;Riwayat Pembaruan&quot;.</p>
+  <span class="hero__eyebrow">Peta Jalan Pengembangan</span>
+  <h1>Peta Jalan Pengembangan</h1>
+  <p class="lede">Halaman ini memisahkan apa yang sudah dirilis dari apa yang masih akan dibuat. Sebagian besar butir yang dulu tercantum di sini sebagai «rencana» sebenarnya sudah ada di dalam paket yang sedang dibagikan. Yang sudah dirilis dirangkum lebih dulu, baru setelah itu apa yang masih akan dibuat.</p>
+  <p class="callout callout--warn">Semua yang ada di kartu hijau «Sudah dirilis» memang benar-benar ada di dalam paket yang sedang dibagikan sekarang. Semua yang ada di kartu biru belum masuk ke gimmu. Waktu, isi, dan spesifikasinya bisa berubah, bahkan bisa dibatalkan. Yang masuk ke halaman «Riwayat Pembaruan» hanyalah yang benar-benar sudah dirilis.</p>
 </div>
 <div class="card" style="margin-bottom:20px;">
-      <div class="badge-row"><span class="type-badge type-visual">Direncanakan</span>
-        <span class="timeline-entry__release">V2.2</span></div>
-      <h3 style="margin-top:0">V2.2 (putaran berikutnya — belum dimulai, isi maupun tanggalnya belum ditetapkan)</h3>
-      <h4>MOD Sapporo (ditunda dari V2.1.0)</h4><ul><li>MOD Sapporo (sorakaze_sapporo) tidak disertakan dalam V2.1.0. Ditunda ke V2.2.</li><li>Sampai ia dirilis, jumlah berkas jar yang perlu dipasang tidak bertambah. Untuk saat ini tetap 1 Fabric API + 11 MOD Alpha.</li></ul><h4>Yang ditunda dari V2</h4><ul><li>Semua yang masih tercantum di kartu «Pembaruan V2» di bawah — perombakan aliran air itu sendiri, cuaca dan bencana baru, penyeimbangan dan suara senjata api, sistem uang, penggambaran ulang entitas Backrooms — dilanjutkan di sini.</li><li>Semuanya masih berupa gagasan. Hanya yang benar-benar dibuat dan dirilis yang muncul di riwayat pembaruan.</li></ul>
+      <div class="badge-row"><span class="type-badge type-release">Sudah dirilis</span>
+        <span class="timeline-entry__release">V2.2.0 – V2.5.1</span></div>
+      <h3 style="margin-top:0">Yang dulu ditulis di halaman ini sebagai «rencana» — sebagian besarnya sudah dirilis</h3>
+      <h4>Halaman ini sendiri yang sudah usang</h4><ul><li>Sudah lama halaman ini terus menyebut V2.2 sebagai rilis berikutnya yang belum dikerjakan. Itu tidak benar. Semua rilis dari V2.2.0 (2026-08-23) sampai V2.5.1 (2026-08-28) sudah dibagikan, dan paket yang dibagikan sekarang adalah V2.5.1.</li><li>Di sini juga tertulis bahwa mod Sapporo (sorakaze_sapporo) belum disertakan dan ditunda ke V2.2. Itu juga tidak benar. Mod Sapporo dirilis pada V2.2.0 sebagai mod kesebelas dan sudah ada di dalam ZIP yang dibagikan hari ini. Jar yang perlu dipasang adalah satu Fabric API ditambah 11 mod Alpha.</li><li>Perlu diluruskan juga: rilis bernomor V2.3 tidak pernah ada. Setelah V2.2.1 langsung V2.4.0. Penomorannya hanya melompat; tidak ada pembaruan yang hilang.</li></ul><h4>Ditulis di sini seolah masih rencana, padahal sudah berjalan</h4><ul><li>Cuaca dan bencana (badai salju, topan, gempa bumi, tsunami, gunung berapi) kelimanya sudah diimplementasikan, dan kelimanya aktif secara bawaan. Bahkan dengan pengaturan bawaan, gempa bisa menghancurkan bahan bangunan yang biasa-biasa saja: batu, batu bulat, batu pasir, tanah, pasir, kerikil, dan tanah liat.</li><li>Mekanisme yang menaikkan harga menjadi 10 sampai 100 kali lipat aktif secara bawaan di mod Langit dan mod Planarcadia (perdagangan dengan penduduk desa vanilla tidak termasuk).</li><li>Saldo berlian pada ATM aktif secara bawaan. Hal yang dulu ditulis di halaman ini akan «ditentukan dari hasil pengukuran lalu diumumkan» sebenarnya sudah ditetapkan: kursnya tetap, 1 berlian = 4 zamrud, dan tidak bisa diubah lewat konfigurasi. Saldo berlian sama sekali tidak berbunga.</li><li>Kenaikan batas atas bunga menjadi 10.000.000 zamrud juga sudah diterapkan. Lebih tepatnya, itu batas atas saldo yang berbunga, dan khusus untuk rekening spesial batasnya 50.000.000 zamrud.</li><li>Sepuluh menit dengan haus di angka nol yang membuat kerusakan terus bertambah dan di luar mode Damai memang bisa mematikan, bensin untuk kendaraan selain kereta, serta ketahanan topeng dengan kebangkitannya yang hanya sekali, semuanya juga berjalan secara bawaan. Ketahanan topeng adalah 814, bukan «sekitar 800» seperti yang disebutkan semula, dan kebangkitannya butuh 320 detik.</li><li>Angka-angka pastinya dan kunci konfigurasi masing-masing dirangkum di bagian «Spesifikasi yang tidak pernah dituliskan» pada halaman «Panduan Fitur». Daftar itu disusun dengan memeriksa kode mod-nya sendiri, satu per satu.</li></ul><h4>Bagian dari rencana V2 yang sudah dirilis</h4><ul><li>Pintu masuk ke Planarcadia dan blok ametis portal; empat bos baru (600, 800, 750, dan 1.200 nyawa) beserta ritual pemanggilannya; infrastruktur air (pipa, pompa, keran); kulkas dan pembusukan makanan; bensin dan jeriken; pembersih udara dan polusi udara dari pembangkit listrik tenaga nuklir; pakaian pelindung — V2.0.0 (2026-08-18).</li><li>Mekanisme yang membuat lokasi jatuhnya hulu ledak nuklir tercemar selama 20 hari dalam gim juga sudah diimplementasikan. Memakai masker gas dan pakaian pelindung sekaligus akan menetralkannya; kalau salah satunya tidak ada, kamu akan terkena kerusakan dan efek negatif.</li><li>Kapasitas botol minum menjadi empat kali lipat: dari 8 tegukan menjadi 32.</li><li>Penduduk desa, mob kecil seperti ayam, dan peti bisa dibawa tanpa dihancurkan. Isinya tetap utuh, dan peti besar butuh dua orang.</li><li>Jeda 20 detik sebelum Dokter Wabah memanggil Wither Storm, sabit pemanen jiwa milik Reaper beserta telur pemunculnya, kekuatan Reaper +15 % dan tiga pola serangan tambahan, serta wujud kedua Wither Storm dengan serangan barunya yang merusak — semuanya sudah diimplementasikan.</li><li>Bug yang membuat perisai malaikat tidak berfungsi sebagai perisai sudah diperbaiki. Sekarang benar-benar bisa menangkis.</li><li>Penyeimbangan senjata api (minigun, senapan serbu, pistol, SMG, peluncur roket, taret), suara tembakan yang dibuat ulang dari nol, perbaikan bug yang membuat badan peluncur roket sendiri menghalangi pandangan saat membidik, serta penguatan hulu ledak nuklir dan hulu ledak rudal — semuanya sudah dirilis.</li><li>Tiga peluncur rudal ditambahkan — MK-VII, VLS Mk-V, dan TEL-X3 — dan ketiganya bisa dinaiki untuk dikemudikan, dibidikkan, dan ditembakkan. Selain itu ada pula landasan peluncur diam yang dipasang di tanah dan ditembakkan dari peta taktis.</li><li>Pemutaran, jeda, dan maju/mundur cepat di aplikasi video berfungsi. Bug yang membuat suara terus berbunyi setelah keluar dari server atau berpindah dimensi, dan bug yang membuat suara terdengar tetapi layar tetap hitam, juga sudah diperbaiki.</li><li>Tampilan iPhone dan MacBook sudah digambar ulang, dengan gambar terpisah untuk ikon inventaris dan untuk saat dipegang di tangan atau dipasang.</li><li>Makhluk Backrooms sudah digambar ulang. Bentuknya memadukan model tiga dimensi dengan seni piksel, memakai warna kuning yang terasa sakit, dan dikelilingi partikel yang melayang. Perlu dicatat: makhluk ini tidak bisa dibunuh dengan serangan apa pun.</li><li>Pencadangan otomatis sudah diimplementasikan. Admin server bisa mengatur selang waktu, jumlah cadangan yang disimpan, dan folder tujuannya lewat layar dengan /glimpsebackup ui; dunia disimpan sebagai ZIP bertanggal dan berwaktu, dan yang lama dibereskan otomatis sesuai jumlah yang disimpan (bawaannya: nonaktif, tiap 30 menit, 5 cadangan).</li><li>Layar Mine Bank juga sudah dirilis, dan sekarang membuka ATM akan menampilkan layar ini secara bawaan. Ada peralihan setor/tarik, pilihan cepat 25 %/50 %/75 %/MAKS, penambah 1/10/100/1k, pratinjau biaya, serta tombol konfirmasi dan batal. Perlu dicatat: tabnya mengganti rekening (pribadi / bersama / spesial), bukan mata uang.</li><li>Tongkat Sparxie (harga daftar 200.000 zamrud), taret, 52 jenis lentera kaca, serbuan di permukaan, drone dan aplikasi drone, serta rekonstruksi kota Sapporo juga sudah dirilis. Untuk isi tiap rilisnya, lihat halaman «Riwayat Pembaruan».</li></ul>
     </div>
 <div class="card" style="margin-bottom:20px;">
-      <div class="badge-row"><span class="type-badge type-visual">Direncanakan</span>
-        <span class="timeline-entry__release">V2</span></div>
-      <h3 style="margin-top:0">Pembaruan V2 (sebagian sudah dirilis di V2.0.0 dan V2.1.0 — yang tersisa di sini belum dirilis)</h3>
-      <h4>Bagian dari rencana ini yang sudah dirilis</h4><ul><li>Dirilis di V2.0.0 (2026-08-18): pintu masuk ke Planarcadia dan Blok Ametis Portal; empat bos baru dan ritual pemanggilannya; penyesuaian Plague Doctor dan Reaper; instalasi air (pipa, pompa, keran); kulkas dan pembusukan makanan; bensin dan jeriken; penjernih udara dan pencemaran udara dari PLTN; baju pelindung; topeng yang pecah lalu pulih satu kali saja.</li><li>Dirilis di V2.1.0 (2026-08-22): Backrooms Level 3–8 (dari pulau contoh menjadi level tak terbatas yang sesungguhnya); aplikasi administrasi server di komputer dalam game, termasuk pengaturan pencadangan otomatis; resep pemanggilan bos di buku resep dan empat kemajuan penemuan; model tersendiri untuk tiga senjata berbasis data.</li><li>Rinciannya ada di halaman «Riwayat Pembaruan». Yang tercantum di bawah ini adalah bagian yang belum dirilis oleh kedua putaran tersebut.</li></ul><h4>MOD Bahan Bangunan: Perbaikan Bug Aplikasi Video &amp; Perombakan Tampilan Perangkat</h4><ul><li>Direncanakan perbaikan agar operasi putar, jeda, dan maju/mundur cepat pada aplikasi video berfungsi dengan benar (perbaikan bug dengan prioritas tertinggi).</li><li>Direncanakan perbaikan bug di mana suara terus berbunyi meski sudah keluar dari server atau berpindah ke world lain.</li><li>Direncanakan perbaikan bug di mana suara terdengar tetapi video tidak tampil (layar tetap hitam).</li><li>Konsep untuk merombak total tampilan iPhone, MacBook, dan baterai cadangan (power bank) berdasarkan rancangan desain baru.</li></ul><h4>Peninjauan Ulang Sistem Air &amp; Infrastruktur Kehidupan</h4><ul><li>Konsep untuk menghentikan perilaku aliran air vanilla dan menggantinya dengan mekanisme yang mengalir secara fisik dan alami dari tempat tinggi ke tempat rendah (menghilangkan penyebaran horizontal tanpa batas di area datar, dan air akan menggenang di cekungan).</li><li>Direncanakan penambahan satu paket infrastruktur air baru yang menghubungkan sumber air hingga keran, seperti pipa air, pompa, dan saluran masuk air.</li><li>Kapasitas botol air akan menjadi 4 kali lipat dari sekarang. Rasa haus akan berkurang sedikit lebih cepat dibanding rasa lapar, dan jika dahaga berlangsung selama 10 menit, kerusakan akan terakumulasi hingga bisa berakibat fatal kecuali ada efek regenerasi.</li><li>Direncanakan penambahan fitur backup otomatis yang memungkinkan admin mengatur interval, jumlah penyimpanan, dan lokasi penyimpanan melalui UI (petunjuk penggunaannya juga direncanakan dimuat di situs ini).</li></ul><h4>MOD Senjata Api: Penyesuaian Keseimbangan &amp; Pembaruan Suara</h4><ul><li>Sedang dipertimbangkan penyesuaian: performa Minigun +50%, Assault Rifle +75%, daya serang Pistol 1,5x lipat, SMG mengalami pengurangan damage setengah sebagai gantinya kapasitas peluru +30%, Rocket Launcher damage dan daya ledaknya menjadi 3x lipat, serta Turret damage 4x lipat dan daya tahan +70%.</li><li>Konsep untuk menjadikan hulu ledak nuklir mampu menghancurkan hingga maksimal 10 juta blok, dan hulu ledak misil daya ledak serta jangkauannya menjadi 3x lipat (daya ledak hulu ledak nuklir itu sendiri diperkirakan akan tetap berdasarkan nilai saat ini (per v1.8.8, kena telak 67.200)).</li><li>Direncanakan juga perbaikan bug di mana model utama Rocket Launcher menghalangi pandangan saat menggunakan scope.</li><li>Konsep untuk merombak total suara tembakan (dikabarkan bukan mengambil langsung sumber suara dari game tertentu yang sudah ada, melainkan dibuat sebagai suara baru dengan arah yang serupa).</li><li>Konsep untuk menambahkan 3 desain Missile Launcher baru, yang semuanya bisa dikendalikan langsung oleh pemain.</li></ul><h4>MOD Boss: 4 Boss Baru &amp; Penyesuaian Boss yang Sudah Ada</h4><ul><li>Direncanakan penambahan 4 boss baru: &quot;Raja Golem Vulkanik&quot; (HP 600), &quot;Penjaga Kraken Kedalaman&quot; (HP 800), &quot;Naga Phoenix Es Prismatik&quot; (HP 750), dan &quot;Iblis Penguasa Wither Storm&quot; (HP 1200, syarat pemanggilannya adalah mengalahkan ketiga boss di atas). Semuanya direncanakan memiliki item pemanggil khusus dan pertarungan bersistem fase.</li><li>Plague Doctor: sedang dipertimbangkan jeda 20 detik antara terkena serangan hingga pemanggilan Wither Storm, di mana jika dikalahkan dalam 20 detik itu (atau dengan satu serangan), pemanggilan bisa dicegah, tetapi drop-nya juga tidak akan didapat.</li><li>Boss Grim Reaper (Dewa Kematian): konsep di mana saat dikalahkan ada kemungkinan kecil menjatuhkan senjata khusus &quot;Sabit Pemanen Jiwa&quot;, dan mengalahkan musuh dengan sabit tersebut memberi kemungkinan kecil mendapatkan spawn egg. Kekuatan boss ini sendiri juga direncanakan naik +15% dengan tambahan 3 pola serangan baru.</li><li>Konsep untuk memperkuat lebih lanjut Wither Storm dengan menambahkan perubahan ke bentuk (fase) kedua.</li></ul><h4>Survival &amp; Listrik: Sistem Kontaminasi dan Aksi Membawa Barang Baru</h4><ul><li>Titik jatuhnya hulu ledak nuklir diperkirakan akan berstatus &quot;terkontaminasi&quot; selama 20 hari Minecraft. Konsep di mana kontaminasi ini bisa dinetralkan jika memakai masker gas dan pakaian pelindung sekaligus.</li><li>Sedang dipertimbangkan mekanisme di mana mengoperasikan generator nuklir secara terus-menerus akan mencemari udara di sekitarnya, dan berada di sana dalam waktu lama tanpa perlindungan akan memengaruhi kondisi tubuh. Direncanakan juga penambahan blok baru &quot;Pembersih Udara (Air Purifier)&quot; yang menetralkan kontaminasi di sekitarnya saat dioperasikan (mendukung pengoperasian beberapa unit sekaligus).</li><li>Direncanakan agar mob kecil seperti villager dan ayam bisa dibawa dengan tangan.</li><li>Sedang dipertimbangkan fitur membawa chest dengan kedua tangan tanpa perlu menghancurkannya (isinya tetap tersimpan; double chest diperkirakan memerlukan 2 pemain untuk membawanya).</li><li>Direncanakan penambahan item baru (nama sementara) dengan daya tahan 32 dan attack power 200. Sedang dipertimbangkan serangan jarak jauh dengan mekanisme yang sama seperti tongkat sihir (magic wand).</li></ul><h4>UI Bank, Backrooms, dan Integrasi Situs</h4><ul><li>Direncanakan menaikkan batas simpanan ATM dan Mine Bank menjadi 10 juta emerald. Konsep untuk menerapkan desain &quot;Glimpse Alpha Glass&quot; pada layar ATM dan merombak total UI secara keseluruhan.</li><li>Direncanakan penambahan &quot;UI Mine Bank&quot; baru (dikabarkan ada rancangan desain dengan pilihan cepat 25%/50%/75%/MAX sesuai saldo, serta operasi slider dengan kelipatan 1/10/100/1k).</li><li>Konsep untuk merombak total tampilan monster (hantu) Backrooms berdasarkan gambar referensi desain baru.</li><li>Konsep untuk menyiapkan mekanisme yang secara otomatis mencerminkan konten pembaruan ke riwayat pembaruan situs ini begitu sudah ditetapkan di kemudian hari (ini menyangkut operasional situs ini sendiri).</li></ul>
+      <div class="badge-row"><span class="type-badge type-visual">Pembaruan berikutnya</span>
+        <span class="timeline-entry__release">V3</span></div>
+      <h3 style="margin-top:0">Pembaruan besar berikutnya adalah V3</h3>
+      <h4>Yang sedang dikerjakan</h4><ul><li>Pembaruan besar berikutnya adalah V3. Direncanakan 50 fitur baru, berpusat pada penjelajahan, pertahanan, penyimpanan, dan bentang alam baru.</li><li>Alih-alih dikeluarkan sekaligus dalam satu rilis, pengerjaannya dipecah ke beberapa rilis sedikit demi sedikit. Karena itu fitur V3 bisa lebih dulu masuk ke rilis seri V2. Nyatanya peluncur rudal berpengarah peta, andalan V3, sudah dirilis bertahap pada V2.4.5 sampai V2.4.9.</li><li>Penjelasan isinya dirangkum di halaman «Pembaruan V3» tersendiri. Di sini tidak diulang.</li><li>Tanggal rilisnya belum ditentukan. Apa pun yang sudah dipastikan terpasang akan muncul di halaman «Riwayat Pembaruan» setiap kalinya.</li></ul><p><a href="../v3/">Lihat isinya di halaman V3</a></p>
+    </div>
+<div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Belum dibuat</span>
+        <span class="timeline-entry__release">Belum ditentukan</span></div>
+      <h3 style="margin-top:0">Yang belum dibuat (sisa yang masih ada di halaman ini, terpisah dari 50 fitur V3)</h3>
+      <h4>Perombakan aliran airnya sendiri</h4><ul><li>Rencana mengganti perilaku air vanilla belum diimplementasikan. Di tanah datar, air masih menyebar ke samping tanpa batas, persis seperti sebelumnya.</li><li>Paket ini punya mekanisme «air terbatas» sendiri, dan air dari keran serta air tsunami berjalan dengan mekanisme itu. Namun itu blok yang berbeda dari air vanilla, dan air vanilla sendiri sama sekali tidak disentuh. Air terbatas yang bisa diciduk dengan ember pun tidak ada.</li><li>Jadi infrastruktur air dan tsunami memang berjalan, tetapi perombakan mekanisme airnya sendiri masih akan datang.</li></ul><h4>Tampilan baterai</h4><ul><li>Dari perombakan tampilan perangkat, iPhone dan MacBook sudah selesai. Baterai (mod Listrik) punya model tiga dimensi, tetapi ikon datar untuk inventaris belum dibuat, sehingga di layar mana pun yang tampil adalah model tiga dimensi yang sama.</li></ul><h4>Angka yang belum diumumkan</h4><ul><li>Halaman ini menulis bahwa frekuensi kemunculan kelima jenis cuaca (selang waktu rata-ratanya) akan diumumkan dengan angka hasil pengukuran, tetapi angka itu sampai sekarang belum ada di mana pun di situs ini. Yang sudah diimplementasikan adalah kemampuan mematikan masing-masing secara terpisah lewat konfigurasi.</li><li>Angka yang sudah bisa diumumkan sejauh ini hanya peluang letusan gunung berapi (5 % untuk tiap gempa) dan ukuran kawahnya (radius 6, kedalaman 4 blok), dan itu dimuat di halaman «Panduan Fitur».</li></ul>
     </div>
 
 </main>

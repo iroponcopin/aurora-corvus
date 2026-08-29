@@ -28,10 +28,33 @@ prefers-reduced-motion: reduce, the very same markup lays out as a static,
 complete, fully legible gallery (the CSS default; the pinned stage is an
 enhancement gated on `html.js` + `prefers-reduced-motion: no-preference`).
 
+SCENE 0 — the opening beat. Owner directive (2026-08):
+
+    「ホームではAurora Curvusのロゴを
+      Appleイベントの時の様にアニメーショングラフィックを加えてください」
+
+The mark and the name no longer merely fade up. A raked front of aurora light
+crosses the frame and DEPOSITS the mark behind it, beak first and the wing
+ribbons unfurling last; a blurred copy of the mark blooms and settles; a
+specular rake crosses once; and the wordmark resolves one glyph at a time.
+That is assets/css/hero-mark.css (all of the motion) plus
+assets/js/hero-mark.js (the wordmark's per-glyph gradient slicing, which is
+the one part that genuinely cannot be done in CSS — read either file's header
+for why). Both are linked from THIS page only, via extra_head.
+
+The extra markup below is inert everywhere the opening does not run: the
+layer spans are `display: none` by default and the glyph spans are ordinary
+inline text, so the no-JS and reduced-motion renderings are the same picture
+they were before this beat existed.
+
 NOTE ON WORDS: the only text nodes this page emits are the product names
 ("Aurora Corvus"). Every screenshot carries alt="" and the stage is labelled
 by the <h1>, so nothing here needs 13 translations — which is why the whole
 `home` section of the language bundles was deleted along with the old copy.
+Splitting the wordmark into glyph spans does not change that: the <h1>'s text
+content is still exactly "Aurora Corvus", and it carries an aria-label with
+the same string so that no assistive technology can be tempted to announce it
+one letter at a time.
 """
 import sys
 from pathlib import Path
@@ -39,7 +62,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
     SITE_TITLE, load_bundle, page, write_page, available_langs,
-    asset_root_prefix,
+    asset_root_prefix, esc,
 )
 
 # Every frame is the real Corvus 1.5.1 app, cropped to the window (the macOS
@@ -73,6 +96,60 @@ def frame_img(prefix: str, key: str, eager: bool = False) -> str:
             f'width="{FRAME_W}" height="{FRAME_H}" decoding="async" {loading}>')
 
 
+# --- scene 0 ---------------------------------------------------------------
+# The opening mark. `.film__mark` keeps every dimension, colour and scroll
+# transform style.css already gives it; the nested spans are the extra light
+# layers hero-mark.css composes the arrival out of, and they are display:none
+# unless that file's `html.js` + `prefers-reduced-motion: no-preference` gate
+# is satisfied. The three-deep halo is not over-engineering: CSS applies
+# filters BEFORE masking on the same element, so the blur has to sit on an
+# ancestor of the mask or the glow is clipped back to the mark's hard edge.
+OPENING_MARK = """<span class="film__mark hm" aria-hidden="true">
+          <span class="hm__bloom"></span>
+          <span class="hm__halo"><span class="hm__halo-b"><span class="hm__halo-i"></span></span></span>
+          <span class="hm__body">
+            <span class="hm__plate"></span>
+            <span class="hm__flow"></span>
+            <span class="hm__rake"></span>
+            <span class="hm__ambient"></span>
+          </span>
+        </span>"""
+
+
+def wordmark(text: str) -> str:
+    """The wordmark, one span per glyph, so the name can resolve letter by
+    letter instead of as one block.
+
+    Emitted at BUILD time rather than by hero-mark.js on purpose: the split
+    then exists in the served HTML, so there is no moment where the DOM is
+    rewritten under a running animation and nothing depends on a script to
+    produce readable markup. hero-mark.js only decorates what is already here.
+
+    Two details that are easy to get wrong:
+      * each WORD is wrapped as well, and hero-mark.css gives that wrapper
+        `white-space: nowrap`. Once the glyphs are inline-block, every glyph
+        is its own line-break opportunity, so without this "Aurora" can wrap
+        between the "r" and the "o" on a 375px phone.
+      * the space between the words consumes an index of its own, so the
+        stagger carries a beat of silence across the gap instead of running
+        the two words together at an even tempo.
+    """
+    out = []
+    i = 0
+    words = text.split(" ")
+    for w_index, w in enumerate(words):
+        glyphs = "".join(
+            f'<span class="hm-g" style="--i:{i + n}">{esc(ch)}</span>'
+            for n, ch in enumerate(w)
+        )
+        i += len(w)
+        out.append(f'<span class="hm-w">{glyphs}</span>')
+        if w_index < len(words) - 1:
+            out.append(" ")
+            i += 1
+    return "".join(out)
+
+
 def build_lang(lang):
     bundle = load_bundle(lang)
     p = asset_root_prefix(0, lang)
@@ -84,8 +161,8 @@ def build_lang(lang):
 
       <!-- 1. the mark and the name resolve out of the dark -->
       <div class="film__scene film__scene--title" data-film-scene="0">
-        <span class="film__mark" aria-hidden="true"></span>
-        <h1 class="film__word" id="filmWord">{SITE_TITLE}</h1>
+        {OPENING_MARK}
+        <h1 class="film__word" id="filmWord" aria-label="{esc(SITE_TITLE)}">{wordmark(SITE_TITLE)}</h1>
       </div>
 
       <!-- 2. the app arrives, with weight -->
@@ -129,6 +206,16 @@ def build_lang(lang):
   </div>
 </section>
 """
+    # Scene 0's opening beat, home page only. Same idiom as
+    # build_v3_teaser.py: a page-scoped stylesheet plus a deferred script,
+    # both addressed through asset_root_prefix() rather than a hardcoded
+    # "../" (non-ja languages sit one directory deeper — see the note on that
+    # helper for the 404 a hardcoded prefix caused last time).
+    extra_head = (
+        f'<link rel="stylesheet" href="{p}assets/css/hero-mark.css">\n'
+        f'<script defer src="{p}assets/js/hero-mark.js"></script>\n'
+    )
+
     html = page(
         lang=lang,
         section="",
@@ -137,6 +224,7 @@ def build_lang(lang):
         active="home",
         body=body,
         depth=0,
+        extra_head=extra_head,
     )
     write_page(lang, "", html)
 

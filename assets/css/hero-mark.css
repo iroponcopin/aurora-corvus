@@ -1,0 +1,475 @@
+/* ==========================================================================
+   Aurora Corvus — the opening beat of the home-page film
+   --------------------------------------------------------------------------
+   Loaded by build_home.py ONLY (extra_head), so nothing here can reach any
+   other page. Everything here is additive to the "Film" block in style.css;
+   it never replaces that block and never touches any other component. The
+   only style.css declarations it deliberately overrides are named and
+   justified inline (search "OVERRIDE").
+
+   THE IDEA — "the light becomes the bird".
+   The mark is a corvid whose five wing feathers dissolve into long trailing
+   ribbons: the same shape language as an aurora curtain, and the brand is
+   literally called Aurora Corvus. So the mark is not faded in. A raked front
+   of aurora light crosses the frame at 112deg — the SAME angle as the
+   wordmark's gradient in style.css, i.e. one light source across the whole
+   lockup — and the mark is *deposited* behind it: beak, then head, then
+   body, then the ribbons unfurling outward in order. The shape supplies the
+   choreography; there is no stagger table.
+
+   Then, overlapping rather than in sequence:
+     * a blurred copy of the mark blooms to full and settles to a resting
+       glow, so the mark sits in its own light instead of on flat ground;
+     * a thin specular rake crosses once, dark-fringed either side of a white
+       core, which is what a highlight travelling over a metal surface
+       actually looks like — a flat white band over an already near-white
+       mark would be invisible;
+     * the whole lockup lands from +0.2 mark-heights at 0.955 scale on
+       ease-out-expo, so the arrival has real deceleration;
+     * the wordmark resolves one glyph at a time, each out of blur.
+
+   WHY THE GLYPHS NEED JAVASCRIPT (see hero-mark.js):
+   style.css paints the wordmark by putting a gradient on the <h1> and
+   clipping it to the text (`background-clip: text`, `color: transparent`).
+   Under that model the ink belongs to the <h1>, not to the glyphs — and the
+   moment a glyph is TRANSFORMED, the parent's text clip and the glyph's own
+   position disagree, so the letter paints twice, offset, and unions into a
+   solid slab. (Observed, not assumed: with the <h1>'s background left in
+   place the "A" rendered as a white blob for the whole 0.8s of its
+   animation. The bisection is in this file's history and the fix is the
+   `background-image: none` on `.is-lit` further down.)
+
+   So per-glyph motion requires each glyph to own its own background — and
+   the gradient only stays continuous across the word if each glyph is handed
+   its own SLICE of it, sized to the whole wordmark and offset by that
+   glyph's position. hero-mark.js measures the slices and copies the
+   *computed* gradient off the <h1>, so style.css stays the single source of
+   truth for the wordmark's colour.
+
+   DEGRADATION (matching the film's own contract exactly):
+     * no JS            -> no `html.js`, so none of the enhancement block
+                           below applies. .film__mark keeps its own mask and
+                           background-color from style.css: today's mark,
+                           static and complete. The wordmark keeps its own
+                           continuous gradient and no animation.
+     * reduced motion   -> the whole enhancement lives inside
+                           `prefers-reduced-motion: no-preference`, so the
+                           result is identical to the no-JS result above.
+                           Nothing here needs !important to be beaten.
+     * JS on, hero-mark.js blocked/failing
+                        -> the mark still animates (it is pure CSS and needs
+                           no script at all); the wordmark falls back to
+                           style.css's own `film-in` fade, because every
+                           glyph rule below is gated on `.is-lit`, which only
+                           hero-mark.js can add.
+
+   PERFORMANCE CONTRACT (same as main.js's):
+     * Only transform / opacity / filter are animated. Nothing here animates
+       a layout or paint property, and there is no per-frame JavaScript at
+       all — the whole opening is declarative CSS the compositor owns.
+     * `filter: blur()` is STATIC everywhere it is combined with a mask (the
+       halo), so the blurred texture rasterises once and only its wrapper's
+       opacity moves. The one animated blur is on the glyphs: a compositable
+       filter animation on 13 small boxes for 0.8s.
+     * will-change is applied only for the ~2s the opening actually runs and
+       is dropped by hero-mark.js on the last animationend.
+     * No new network request. The mask URL below is the identical URL
+       style.css already uses for .brand__mark and .film__mark, so it is the
+       same cache entry: the opening ships zero new bytes of image.
+
+   A NOTE ON THEME SELECTORS: data-theme sits on <html> itself, the same
+   element that carries .js — so the light-theme rules below are written
+   `html.js[data-theme="light"]`, an attribute on the SAME element, never
+   `:root[data-theme="light"] html.js ...`, which cannot match anything.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DEFAULT (no JS / reduced motion): every added layer is simply absent, and
+   .film__mark itself is untouched, so it renders exactly as it does today.
+   -------------------------------------------------------------------------- */
+.hm__bloom,
+.hm__halo,
+.hm__body { display: none; }
+
+/* The word/glyph wrappers exist in the markup unconditionally so the
+   enhancement never has to rewrite the DOM. In the static state they must be
+   typographically invisible, which takes two rules:
+
+   1. .hm-w stops a line breaking INSIDE a word. Each glyph becomes its own
+      box once lit, so every letter boundary is a break opportunity, and
+      without this "Aurora" can wrap between the "r" and the "o" at 375px.
+
+   2. `direction: ltr` on the wordmark itself. THIS IS NOT COSMETIC. Arabic
+      is served with dir="rtl" on <html>, and an inline-block is a NEUTRAL
+      object to the bidi algorithm — so in an RTL paragraph the twelve glyph
+      boxes (and the two word boxes) lay out right-to-left and the brand name
+      renders "suvroC aroruA". Plain text does not have this problem, because
+      "Aurora Corvus" is strong-LTR and forms its own LTR run; splitting it
+      into boxes is what loses that. Forcing the base direction restores
+      exactly the pre-split rendering, and is a no-op in the twelve LTR
+      languages and in the static state.
+
+      It is deliberately OUTSIDE the enhancement gate: the glyph boxes exist
+      in the served markup whether or not the opening runs, so this has to
+      hold whether or not it does. */
+.film__word { direction: ltr; }
+.film__word .hm-w { white-space: nowrap; }
+
+/* ==========================================================================
+   THE OPENING — enhancement only. Gated exactly like the pinned film.
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* --- OVERRIDE 1 of 2, on .film__mark, scoped to scene 0 only -----------
+     style.css gives .film__mark its own mask + solid background-color and a
+     `film-in` fade. Scene 0's mark now composes itself out of the layers
+     below, so on THIS element the mask and the fill move down to .hm__body
+     and the fade is replaced by the lockup settle. Same specificity as
+     style.css's rule (html.js + 3 classes); this file is linked after
+     style.css, so it wins the tie. The sign-off mark in scene 5 is a
+     different element and is deliberately left alone.
+
+     The scroll-driven `translate:` and `scale:` style.css puts on this same
+     element are NOT touched: they are separate properties from `transform`
+     and compose after it, so the opening and the scroll co-exist. */
+  html.js .film__scene--title .film__mark.hm {
+    position: relative;
+    background-color: transparent;
+    -webkit-mask-image: none;
+            mask-image: none;
+    animation: hm-settle 1.45s var(--ease-out-expo) 0.02s both;
+
+    /* Motion tokens for this beat, kept local so nothing here can leak into
+       the site's motion scale. */
+    /* The front's curve is deliberately NOT one of the site's ease-out
+       tokens. An ease-out spends ~70% of its distance in the first 20% of
+       its time, which for a WIPE means the mark is simply there before the
+       eye can follow it — the first draft did exactly that and the whole
+       beat read as a hard cut. This one eases in, sweeps, and decelerates
+       hard into the last sliver, so 87% of the travel (the part that is
+       actually crossing the mark) occupies ~72% of the duration and the
+       ribbon tips arrive last and slowest. */
+    --hm-ease-front: cubic-bezier(0.5, 0.02, 0.16, 1);
+    --hm-ease-rake: cubic-bezier(0.36, 0, 0.24, 1);     /* the specular:
+                                                           whips through */
+  }
+
+  html.js .hm .hm__bloom,
+  html.js .hm .hm__halo,
+  html.js .hm .hm__body { display: block; }
+
+  @keyframes hm-settle {
+    from { transform: translate3d(0, calc(var(--mark-h) * 0.2), 0) scale(0.955); }
+    to   { transform: none; }
+  }
+
+  /* --- 0. the bloom seeds -------------------------------------------------
+     Unmasked aurora light behind the mark, pre-composed from soft radial
+     gradients rather than a blur — for the same reason .sky__aurora is (see
+     style.css): a blurred surface re-rasterised at a new scale every frame
+     is exactly what stops a page holding 120Hz. */
+  html.js .hm .hm__bloom {
+    position: absolute; z-index: 0;
+    left: -48%; right: -48%; top: -72%; bottom: -72%;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 38% at 40% 50%,
+        color-mix(in srgb, var(--aurora-green) 32%, transparent), transparent 70%),
+      radial-gradient(48% 42% at 64% 46%,
+        color-mix(in srgb, var(--aurora-violet) 28%, transparent), transparent 72%),
+      radial-gradient(58% 50% at 52% 56%,
+        color-mix(in srgb, var(--aurora-blue) 20%, transparent), transparent 74%);
+    opacity: 0;
+    animation: hm-bloom 2.1s var(--ease-out-quart) both;
+  }
+  @keyframes hm-bloom {
+    0%   { opacity: 0;    transform: scale(0.62); }
+    40%  { opacity: 1;    }
+    100% { opacity: 0.44; transform: scale(1); }
+  }
+
+  /* --- 1. the halo --------------------------------------------------------
+     A blurred copy of the mark ITSELF, which a radial gradient cannot fake:
+     the glow has the bird's shape, ribbons and all.
+
+     Three nested boxes on purpose. CSS applies filters BEFORE clipping and
+     masking on the same element, so blurring the masked box would clip the
+     glow straight back to the mark's own hard edge and produce no glow at
+     all. The blur therefore has to sit on an ancestor of the mask — and the
+     animated opacity sits on an ancestor of the blur, so the blurred texture
+     rasterises once and only its wrapper's opacity is touched per frame.
+     The radius is a fraction of --mark-h, so it is proportionally identical
+     at 66px (a 375px viewport) and at 150px (>=1500px). */
+  html.js .hm .hm__halo {
+    position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    animation: hm-halo 1.7s var(--ease-out-quart) 0.3s both;
+  }
+  html.js .hm .hm__halo-b {
+    display: block; position: absolute; inset: 0;
+    filter: blur(calc(var(--mark-h) * 0.085));
+  }
+  html.js .hm .hm__halo-i {
+    display: block; position: absolute; inset: 0;
+    background: linear-gradient(112deg,
+      var(--aurora-green), var(--aurora-blue) 52%, var(--aurora-violet));
+    -webkit-mask-image: url("../img/brand/corvus-mark.png");
+            mask-image: url("../img/brand/corvus-mark.png");
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: center;  mask-position: center;
+    -webkit-mask-size: contain;     mask-size: contain;
+  }
+  @keyframes hm-halo {
+    0%   { opacity: 0; }
+    44%  { opacity: 0.95; }
+    100% { opacity: 0.17; }
+  }
+
+  /* --- 2. the masked body -------------------------------------------------
+     Everything that happens *inside* the bird. The mask moved here off
+     .film__mark; overflow:hidden keeps the very wide travelling layers from
+     ever being rasterised outside the mark's own box. */
+  html.js .hm .hm__body {
+    position: absolute; inset: 0; z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: url("../img/brand/corvus-mark.png");
+            mask-image: url("../img/brand/corvus-mark.png");
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: center;  mask-position: center;
+    -webkit-mask-size: contain;     mask-size: contain;
+  }
+
+  /* Shared geometry for the four travelling layers, and the arithmetic every
+     keyframe below depends on. This is written out because getting it wrong
+     is silent: the first draft of this file used a 44% opaque stop, which
+     LOOKS right in motion and leaves the mark's lower-right ribbons parked
+     at 54% alpha forever. Nothing errors; you only see it if you blow the
+     mark up and look at the settled frame.
+
+       W = the mark's width, H its height, W = 1.332H (the PNG's aspect).
+       The layer is k=2.2 wide and m=1.24 tall, positioned left:-110% — so
+       its centre sits on the mark's LEFT EDGE, not on the mark's centre.
+
+       For a linear-gradient at angle T over a w x h box, the gradient line
+       is L = w*sin(T) + h*|cos(T)| long, and its horizontal reach is
+       A = L*sin(T). At T=112deg, k=2.2, m=1.24:
+         A = 2.950H = 2.215W          (425px when the mark is 192px wide)
+       A gradient stop p therefore paints at  x(p) = D + (p - 0.5)*A , where
+       D is the layer's translate in px.
+
+       The boundary is a LINE raked 22deg off vertical, so at the top and
+       bottom of the mark it sits +/- T_x = (H/2)*tan(22deg) = 0.202H away
+       from that centre value: 29px at 192px wide.
+
+       For the mark to be fully opaque at SOME translate, the opaque run of
+       the gradient must be longer than the mark plus both rake overhangs:
+         a * A  >=  W + 2*T_x   ->   a >= (W + 0.404H) / A = 0.588
+       With a = 0.72 (below) the window of translates that fully cover the
+       mark is D in [30.2%, 43.5%] of the layer's width, and the layer is
+       entirely clear of the mark below D = -41.2%. The keyframes use -46%
+       and 36%: outside on one side, mid-window on the other. */
+  html.js .hm .hm__plate,
+  html.js .hm .hm__flow,
+  html.js .hm .hm__rake,
+  html.js .hm .hm__ambient {
+    display: block; position: absolute;
+    top: -12%; bottom: -12%; left: -110%; width: 220%;
+  }
+
+  /* 2a. the plate — the mark's actual ink, wiped in behind the light front.
+         The opaque run is a flat var(--text), so the settled mark is the
+         SAME colour style.css paints it. That is what makes the end of the
+         animation and the reduced-motion state the same picture. */
+  html.js .hm .hm__plate {
+    z-index: 1;
+    background: linear-gradient(112deg, var(--text) 0 72%, transparent 84%);
+    will-change: transform;
+    animation: hm-wipe 1.15s var(--hm-ease-front) 0.06s both;
+  }
+  @keyframes hm-wipe {
+    from { transform: translate3d(-46%, 0, 0); }
+    to   { transform: translate3d(36%, 0, 0); }
+  }
+
+  /* 2b. the aurora front. It runs on the SAME hm-wipe keyframes as the
+         plate — one light, one motion — and gets its lead from where its
+         stops sit on the gradient line instead of from a second, separately
+         tuned translate: its core is at p=0.86 against the plate's edge at
+         p=0.78, i.e. 34px ahead at desktop size, and that lead stays
+         constant for the whole sweep because the transform is literally the
+         same animation. Its own opacity envelope is a second animation on
+         the same element, touching a property hm-wipe does not.
+
+         color-mix keeps --aurora-* in style.css as the single source of the
+         brand's colour; a browser without color-mix drops this one
+         declaration, loses the band, and still gets the whole mark. */
+  html.js .hm .hm__flow {
+    z-index: 2;
+    background: linear-gradient(112deg,
+      transparent 0 76%,
+      color-mix(in srgb, var(--aurora-violet) 38%, transparent) 80%,
+      color-mix(in srgb, var(--aurora-blue) 58%, transparent) 83.5%,
+      rgba(234, 255, 246, 0.92) 86%,
+      color-mix(in srgb, var(--aurora-green) 62%, transparent) 89%,
+      transparent 95%);
+    will-change: transform, opacity;
+    animation: hm-wipe 1.15s var(--hm-ease-front) 0.06s both,
+               hm-flow-fade 1.15s linear 0.06s both;
+  }
+  @keyframes hm-flow-fade {
+    0%   { opacity: 0; }
+    14%  { opacity: 1; }
+    76%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* 2c. the specular rake. Dark fringes either side of a white core: on dark
+         the mark is near-white, so a plain white band would be invisible and
+         it is the *shading* that makes the highlight read. On light the
+         fringes vanish into the near-black mark and the core reads as gloss.
+         One band, one pass, at a slightly different angle from the front — a
+         second light glancing off, not the same light twice. */
+  html.js .hm .hm__rake {
+    z-index: 3;
+    background: linear-gradient(104deg,
+      transparent 0 44%,
+      rgba(10, 15, 24, 0.30) 47.5%,
+      rgba(255, 255, 255, 0.98) 50.2%,
+      rgba(10, 15, 24, 0.20) 53%,
+      transparent 57.5%);
+    will-change: transform, opacity;
+    animation: hm-rake 0.78s var(--hm-ease-rake) 1.02s both;
+  }
+  /* 104deg, so A = 2.287W and the rake overhang is 0.124H: the band is clear
+     of the mark below -12.1% and past it above 56%. -16%/60% with margin. */
+  @keyframes hm-rake {
+    0%   { transform: translate3d(-16%, 0, 0); opacity: 0; }
+    16%  { opacity: 1; }
+    72%  { opacity: 1; }
+    100% { transform: translate3d(60%, 0, 0); opacity: 0; }
+  }
+
+  /* 2d. after the opening the surface stays faintly alive — the brand is an
+         aurora and this is the only object on the page. One composited quad
+         translating linearly: no repaint, no main-thread work. It is PAUSED
+         whenever the stage is off screen, using the `is-live` class main.js
+         already toggles for its own will-change management, so a page that
+         has been scrolled past is not paying for it. */
+  html.js .hm .hm__ambient {
+    z-index: 4;
+    background: linear-gradient(112deg,
+      transparent 0 30%,
+      color-mix(in srgb, var(--aurora-blue) 18%, transparent) 44%,
+      color-mix(in srgb, var(--aurora-green) 14%, transparent) 52%,
+      color-mix(in srgb, var(--aurora-violet) 20%, transparent) 60%,
+      transparent 74%);
+    opacity: 0;
+    animation: hm-ambient-in 1.6s linear 2.4s both,
+               hm-ambient 19s linear 2.4s infinite;
+  }
+  @keyframes hm-ambient-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes hm-ambient {
+    from { transform: translate3d(-24%, 0, 0); }
+    to   { transform: translate3d(62%, 0, 0); }
+  }
+  html.js .film__stage:not(.is-live) .hm__ambient { animation-play-state: paused; }
+
+  /* --- light theme --------------------------------------------------------
+     On light the ground is near-white and the mark near-black, so the same
+     bloom and halo read as haze rather than as light. Both are pulled well
+     back; the front and the rake are unchanged because they are *inside* the
+     dark mark, where they still read as light passing through it. */
+  html.js[data-theme="light"] .hm .hm__halo { animation-name: hm-halo-light; }
+  @keyframes hm-halo-light {
+    0%   { opacity: 0; }
+    44%  { opacity: 0.55; }
+    100% { opacity: 0.10; }
+  }
+  html.js[data-theme="light"] .hm .hm__bloom { animation-name: hm-bloom-light; }
+  @keyframes hm-bloom-light {
+    0%   { opacity: 0;    transform: scale(0.62); }
+    40%  { opacity: 0.60; }
+    100% { opacity: 0.24; transform: scale(1); }
+  }
+
+  /* --- 3. the wordmark, glyph by glyph ------------------------------------
+     OVERRIDE 2 of 2, gated on `.is-lit` so that it only replaces style.css's
+     `film-in` once hero-mark.js has actually handed every glyph its slice of
+     the gradient. If the script never runs, style.css's own fade stays in
+     charge and the wordmark behaves exactly as it does today. The swap
+     happens at DOMContentLoaded, ~0.2s before the first glyph is due, while
+     both states are still fully transparent — so there is nothing on screen
+     to flicker.
+
+     `background-image: none` here is NOT tidiness, and removing it does not
+     merely double up a paint. While the <h1> keeps its own gradient it goes
+     on clipping that gradient to the text of its descendants — and once a
+     glyph is transformed by the animation, the parent's clip and the glyph's
+     own painting disagree about where that glyph is, so the two copies union
+     into a solid dilated blob where the letter should be. It was shipped
+     missing for one round and the first glyph rendered as a white slab for
+     the whole 0.8s of its animation.
+
+     It is gated together with the per-glyph rules below on purpose: the two
+     halves must switch on and off as a pair, or an environment that matches
+     one and not the other gets a wordmark with no background at all. */
+  html.js .film__scene--title .film__word.is-lit {
+    animation: none;
+    background-image: none;
+  }
+
+  html.js .film__word.is-lit .hm-g {
+    display: inline-block;
+    /* --wm-grad is the <h1>'s OWN computed gradient, copied over by
+       hero-mark.js; --gx/--gy/--wm-w/--wm-h place this glyph's slice of it,
+       so the word still reads as ONE gradient rather than thirteen. */
+    background-image: var(--wm-grad);
+    background-size: var(--wm-w) var(--wm-h);
+    background-position: calc(-1 * var(--gx)) calc(-1 * var(--gy));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+            background-clip: text;
+    will-change: transform, opacity, filter;
+    animation: hm-glyph 0.8s var(--ease-out-expo) both;
+    animation-delay: calc(0.3s + var(--i, 0) * 0.028s);
+  }
+  @keyframes hm-glyph {
+    from { opacity: 0; transform: translate3d(0, 0.34em, 0) scale(0.92);
+           filter: blur(7px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+
+  /* Once the opening has landed, every promoted layer is released — added by
+     hero-mark.js on the last animationend, with a timer as a backstop — so
+     the rest of the film scrolls with no leftover compositor layers. The
+     glyphs' base state is the settled state, so dropping the animation here
+     is visually a no-op. */
+  html.js .hm.is-done .hm__bloom,
+  html.js .hm.is-done .hm__halo,
+  html.js .hm.is-done .hm__plate,
+  html.js .hm.is-done .hm__flow,
+  html.js .hm.is-done .hm__rake { will-change: auto; }
+  html.js .film__word.is-lit.is-done .hm-g { will-change: auto; animation: none; }
+
+  /* Phones: the mark is 66px tall, so the specular has to be relatively
+     wider or it is a sub-pixel line; and the glyph blur has to come down or
+     40px type resolves as a smear. */
+  @media (max-width: 700px) {
+    html.js .hm .hm__rake {
+      background: linear-gradient(104deg,
+        transparent 0 42%,
+        rgba(10, 15, 24, 0.28) 46.5%,
+        rgba(255, 255, 255, 0.98) 50.2%,
+        rgba(10, 15, 24, 0.18) 54%,
+        transparent 59%);
+    }
+    html.js .film__word.is-lit .hm-g { animation-name: hm-glyph-sm; }
+    @keyframes hm-glyph-sm {
+      from { opacity: 0; transform: translate3d(0, 0.3em, 0) scale(0.93);
+             filter: blur(4.5px); }
+      to   { opacity: 1; transform: none; filter: none; }
+    }
+  }
+}

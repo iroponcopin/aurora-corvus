@@ -71,6 +71,21 @@ OG_IMAGE = "og-v3-teaser.jpg"
 
 FEATURE_COUNT = "50"  # sourced from Update/V3_Update.md; never re-typed elsewhere
 
+# Prefix for links to ANOTHER PAGE OF THIS SITE, from a page at depth 1.
+# Language-RELATIVE: "../changelog/" from /v3/ reaches /changelog/, and from
+# /en/v3/ reaches /en/changelog/.
+#
+# ⚠ This is NOT asset_root_prefix(). That one resolves to the SITE root, which
+#   for a non-Japanese language is one level further up -- so using it for a
+#   page link sends every reader of the other twelve languages to the JAPANESE
+#   page. That is exactly what the closing section's "see the changelog" link
+#   did on all twelve non-JA V3 pages until 2026-08-29. Assets (CSS, JS,
+#   images) DO live at the site root and DO want asset_root_prefix; pages do
+#   not. Same convention as build_download.py's `<a href="../changelog/">` and
+#   build_roadmap.py's LANG_PREFIX, and the same thing site_common.page()
+#   computes for itself as lang_prefix = _prefix(depth) with depth=1.
+LANG_PREFIX = "../"
+
 # CJK text has no spaces, so EVERY character boundary is a valid line break
 # as far as the browser is concerned -- a <wbr> hint doesn't help, because it
 # only ever ADDS a break opportunity, never removes the others. Observed at
@@ -234,7 +249,7 @@ def build_lang(lang: str, all_data: dict):
     closing = f"""<section class="v3t-closing">
   <div class="v3t-closing__inner">
     <p class="v3t-closing__quality">{esc(d['closing']['quality_line'])}</p>
-    <p class="v3t-closing__status">{esc(d['closing']['status_line'])} <a href="{p}changelog/">{esc(d['closing']['changelog_label'])}</a></p>
+    <p class="v3t-closing__status">{esc(d['closing']['status_line'])} <a href="{LANG_PREFIX}changelog/">{esc(d['closing']['changelog_label'])}</a></p>
   </div>
 </section>"""
 

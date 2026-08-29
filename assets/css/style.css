@@ -537,6 +537,11 @@ html:not(.js) .nav-item--mega:focus-within > .mega-panel {
   display: none; z-index: 50;
 }
 .lang-switch.open .lang-switch__menu { display: block; }
+/* Without JS nothing ever adds .open, so these thirteen server-rendered links
+   could not be reached at all — the switcher looked present and was inert.
+   Same html:not(.js) affordance the mega-menu panels above already carry. */
+html:not(.js) .lang-switch:hover .lang-switch__menu,
+html:not(.js) .lang-switch:focus-within .lang-switch__menu { display: block; }
 .lang-switch__menu li { margin: 0; }
 .lang-switch__menu a {
   display: flex; align-items: center; padding: 9px 12px; border-radius: 9px; color: var(--text);
@@ -657,6 +662,9 @@ html:not(.js) .nav-item--mega:focus-within > .mega-panel {
   .lang-switch__toggle { width: 100%; justify-content: space-between; min-height: var(--tap); }
   .lang-switch__menu { position: static; box-shadow: none; display: none; width: 100%; margin-top: 8px; max-height: none; }
   .lang-switch.open .lang-switch__menu { display: block; }
+  /* In the drawer there is no hover to lean on, so without JS the menu is
+     simply always expanded — same as html:not(.js) .nav-item--mega above. */
+  html:not(.js) .lang-switch__menu { display: block; }
   .lang-switch__menu a { min-height: var(--tap); }
   .theme-toggle { margin: 10px 0 0; align-self: flex-start; width: var(--tap); height: var(--tap); }
 }

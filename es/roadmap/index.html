@@ -6,10 +6,10 @@
      iPhones; every edge-anchored surface (header, drawer, main, footer,
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Próximamente | Aurora Corvus</title>
-<meta name="description" content="Plan de desarrollo y hoja de ruta del pack de MOD Alpha. Se prevén una zona de Backrooms, mejoras al MOD de ferrocarril, mejoras de interfaz y más.">
-<meta property="og:title" content="Próximamente | Aurora Corvus">
-<meta property="og:description" content="Plan de desarrollo y hoja de ruta del pack de MOD Alpha. Se prevén una zona de Backrooms, mejoras al MOD de ferrocarril, mejoras de interfaz y más.">
+<title>Hoja de ruta | Aurora Corvus</title>
+<meta name="description" content="Hoja de ruta del pack de mods Alpha. Lo que se publicó entre la V2.2.0 y la V2.5.1, la próxima actualización mayor V3 y lo que aún no está hecho, presentados por separado.">
+<meta property="og:title" content="Hoja de ruta | Aurora Corvus">
+<meta property="og:description" content="Hoja de ruta del pack de mods Alpha. Lo que se publicó entre la V2.2.0 y la V2.5.1, la próxima actualización mayor V3 y lo que aún no está hecho, presentados por separado.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurora Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
@@ -17,10 +17,31 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Aurora Corvus">
 <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/roadmap/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/roadmap/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/roadmap/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/roadmap/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/roadmap/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/roadmap/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/roadmap/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/roadmap/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/roadmap/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/roadmap/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/roadmap/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/roadmap/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/roadmap/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/roadmap/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"es","h":{"ar":"../../ar/roadmap/","de":"../../de/roadmap/","en":"../../en/roadmap/","es":"../../es/roadmap/","fr":"../../fr/roadmap/","id":"../../id/roadmap/","it":"../../it/roadmap/","ja":"../../roadmap/","ko":"../../ko/roadmap/","pt-br":"../../pt-br/roadmap/","ru":"../../ru/roadmap/","tr":"../../tr/roadmap/","zh":"../../zh/roadmap/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"roadmap/"});</script>
 <!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
      for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
      were dropped on owner directive (hard to read), and their font request
@@ -31,6 +52,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
 <script>
 /* Boot: tag JS availability for the motion layer, and apply the persisted
    theme before first paint. Dark is the flagship default; "light" is the
@@ -105,7 +131,7 @@
                 <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
               </div>
               <ul class="mega-links">
-            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Download</span></a></li>
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Descargas</span></a></li>
             <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
             <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Guía de instalación</span></a></li>
               </ul>
@@ -144,7 +170,7 @@
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Historial</span><span class="mega-link__sub">Historial de actualizaciones</span></a></li>
-            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">Próximamente</span></a></li>
+            <li><a class="mega-link is-current" href="../roadmap/" aria-current="page"><span class="mega-link__label">Hoja de ruta</span></a></li>
             <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Problemas conocidos</span></a></li>
               </ul>
             </div>
@@ -153,22 +179,22 @@
       </ul>
       <div class="lang-switch">
         <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Idioma / Language">
-          🌐 <span>Español</span>
+          <span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span><span>Español</span>
         </button>
         <ul class="lang-switch__menu" id="langMenu">
-          <li><a href="../../roadmap/">日本語</a></li>
-        <li><a href="../../en/roadmap/">English</a></li>
-        <li><a href="../../es/roadmap/" class="active" aria-current="true">Español</a></li>
-        <li><a href="../../fr/roadmap/">Français</a></li>
-        <li><a href="../../zh/roadmap/">简体中文</a></li>
-        <li><a href="../../ko/roadmap/">한국어</a></li>
-        <li><a href="../../pt-br/roadmap/">Português (Brasil)</a></li>
-        <li><a href="../../it/roadmap/">Italiano</a></li>
-        <li><a href="../../ar/roadmap/">العربية</a></li>
-        <li><a href="../../ru/roadmap/">Русский</a></li>
-        <li><a href="../../id/roadmap/">Bahasa Indonesia</a></li>
-        <li><a href="../../de/roadmap/">Deutsch</a></li>
-        <li><a href="../../tr/roadmap/">Türkçe</a></li>
+          <li><a href="../../roadmap/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/roadmap/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/roadmap/" data-lang="es" hreflang="es" class="active" aria-current="true"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/roadmap/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/roadmap/" data-lang="zh" hreflang="zh"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/roadmap/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/roadmap/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/roadmap/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/roadmap/" data-lang="ar" hreflang="ar"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/roadmap/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/roadmap/" data-lang="id" hreflang="id"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/roadmap/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/roadmap/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
         </ul>
       </div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema de color" title="Cambiar tema de color">🌓</button>
@@ -178,22 +204,28 @@
 <main id="main">
 
 <div class="hero">
-  <span class="hero__eyebrow">Próximamente</span>
-  <h1>Próximamente</h1>
-  <p class="lede">Presenta el contenido de las próximas actualizaciones actualmente planificadas, basándose en los documentos de encargo del equipo de desarrollo.</p>
-  <p class="callout callout--warn">El contenido de esta página aún no se ha implementado ni distribuido. Es un adelanto basado en notas internas de planificación; el contenido, el momento y las especificaciones reales pueden cambiar o cancelarse. Lo que quede confirmado se reflejará en la página de «Historial».</p>
+  <span class="hero__eyebrow">Hoja de ruta</span>
+  <h1>Hoja de ruta</h1>
+  <p class="lede">Esta página separa lo que ya se ha publicado de lo que todavía está por hacer. La mayor parte de lo que aquí figuraba como «previsto» ya está dentro del pack que se distribuye actualmente. Primero se recoge lo ya publicado y, después, lo que queda por construir.</p>
+  <p class="callout callout--warn">Todo lo que aparece en la tarjeta verde «Publicado» está realmente dentro del pack que se distribuye ahora mismo. Todo lo que aparece en las tarjetas azules todavía no está en el juego. Las fechas, el contenido y las especificaciones pueden cambiar o cancelarse. En la página «Historial de actualizaciones» solo aparece lo que se ha publicado de verdad.</p>
 </div>
 <div class="card" style="margin-bottom:20px;">
-      <div class="badge-row"><span class="type-badge type-visual">En planificación</span>
-        <span class="timeline-entry__release">V2.2</span></div>
-      <h3 style="margin-top:0">V2.2 (la siguiente ronda: aún sin empezar, y ni su contenido ni su fecha están cerrados)</h3>
-      <h4>El MOD de Sapporo (aplazado desde V2.1.0)</h4><ul><li>El MOD de Sapporo (sorakaze_sapporo) no viene incluido en V2.1.0. Queda aplazado a V2.2.</li><li>Hasta que se distribuya, el número de archivos jar que hay que instalar no cambia. De momento sigue siendo 1 Fabric API más los 11 del pack Alpha.</li></ul><h4>Aplazado desde V2</h4><ul><li>Todo lo que sigue apareciendo en la tarjeta «Actualización V2» de más abajo — rehacer el propio flujo del agua, el nuevo clima y los desastres, el equilibrio y el sonido de las armas de fuego, los sistemas de dinero, el rediseño de las entidades de los Backrooms — continúa aquí.</li><li>Todo ello está en fase de idea. En el historial de cambios solo aparece lo que realmente se construye y se distribuye.</li></ul>
+      <div class="badge-row"><span class="type-badge type-release">Publicado</span>
+        <span class="timeline-entry__release">V2.2.0 – V2.5.1</span></div>
+      <h3 style="margin-top:0">Lo que esta página presentaba como «previsto»: la mayor parte ya está publicada</h3>
+      <h4>La propia página se había quedado desactualizada</h4><ul><li>Durante mucho tiempo esta página siguió presentando la V2.2 como la próxima versión, aún sin empezar. Eso no es cierto. Todo lo que va de la V2.2.0 (2026-08-23) a la V2.5.1 (2026-08-28) ya está distribuido, y el pack que se reparte ahora es la V2.5.1.</li><li>También decía que el mod de Sapporo (sorakaze_sapporo) todavía no venía incluido y se había aplazado a la V2.2. Eso tampoco es cierto. El mod de Sapporo se publicó en la V2.2.0 como undécimo mod y está en el ZIP que se distribuye hoy. Los jar que hay que instalar son un Fabric API más los 11 de Alpha.</li><li>Conviene aclarar además que no existe ninguna versión numerada V2.3. A la V2.2.1 le siguió la V2.4.0. La numeración simplemente salta un paso; no falta ninguna actualización.</li></ul><h4>Descrito aquí como algo todavía en proyecto, pero que ya funcionaba</h4><ul><li>El clima y los desastres (ventisca, tifón, terremoto, tsunami y volcán) están implementados los cinco, y los cinco vienen activados de forma predeterminada. Incluso con la configuración por defecto, un terremoto puede romper materiales de construcción totalmente corrientes: piedra, roca, arenisca, tierra, arena, grava y arcilla.</li><li>El mecanismo que multiplica los precios entre 10 y 100 veces está activado de forma predeterminada en el mod Cielo y en el mod Planarcadia (el comercio con aldeanos de vanilla queda al margen).</li><li>El saldo en diamantes del cajero está activado de forma predeterminada. El punto que esta página anunciaba como algo que «se decidiría a partir de mediciones y luego se publicaría» ya está decidido: la tasa es fija, 1 diamante = 4 esmeraldas, y no se puede cambiar en la configuración. El saldo en diamantes no genera ningún interés.</li><li>La subida del tope de intereses a 10.000.000 de esmeraldas también está ya aplicada. Con precisión, se trata del tope del saldo que genera intereses, y solo en la cuenta especial es de 50.000.000 de esmeraldas.</li><li>Los diez minutos con la sed a cero que hacen crecer el daño y que fuera del modo Pacífico pueden matar de verdad, la gasolina de los vehículos que no son trenes, y la durabilidad de la máscara con su única resurrección funcionan también de forma predeterminada. La durabilidad de la máscara es 814, no los «unos 800» que se dijeron al principio, y la resurrección tarda 320 segundos.</li><li>Las cifras exactas de todo lo anterior, y la clave de configuración de cada una, están recogidas en «Especificaciones que nunca se documentaron», dentro de la página «Guía de funciones». Esa lista se redactó revisando el código de los propios mods, elemento por elemento.</li></ul><h4>Las partes del plan de la V2 que sí se publicaron</h4><ul><li>La entrada a Planarcadia y el bloque de amatista del portal; cuatro jefes nuevos (600, 800, 750 y 1.200 de vida) y sus rituales de invocación; la infraestructura de agua (tuberías, bomba y grifo); el frigorífico y la caducidad de los alimentos; la gasolina y los bidones; el purificador de aire y la contaminación atmosférica de la central nuclear; el traje de protección — V2.0.0 (2026-08-18).</li><li>También está implementado el mecanismo que deja contaminado durante 20 días de juego el lugar donde impacta una ojiva nuclear. Llevar a la vez máscara antigás y traje de protección lo anula; si falta cualquiera de los dos, se recibe daño y efectos negativos.</li><li>La cantimplora tiene ahora cuatro veces más capacidad: de 8 tragos ha pasado a 32.</li><li>Aldeanos, criaturas pequeñas como las gallinas y los cofres se pueden transportar sin romperlos. El contenido se conserva tal cual, y un cofre grande requiere dos personas.</li><li>El intervalo de 20 segundos antes de que el médico de la peste invoque una Tormenta del Wither, la guadaña segadora de almas del Segador y su huevo generador, el +15 % de fuerza del Segador y sus tres patrones de ataque añadidos, y la segunda forma de la Tormenta del Wither con su nuevo ataque destructivo: todo ello está implementado.</li><li>El fallo que impedía que el escudo del ángel funcionase como escudo está corregido. Ahora para los golpes de verdad.</li><li>El reajuste de las armas de fuego (minigun, fusil de asalto, pistola, subfusil, lanzacohetes y torreta), los sonidos de disparo rehechos desde cero, la corrección del fallo por el que el propio cuerpo del lanzacohetes tapaba la vista al apuntar con mira, y el refuerzo de las ojivas nucleares y de misil: todo ello está publicado.</li><li>Se han añadido tres lanzamisiles —el MK-VII, el VLS Mk-V y el TEL-X3— y en los tres se puede subir a bordo para conducir, apuntar y disparar. Aparte de ellos existe además una plataforma de lanzamiento fija, que se coloca en el suelo y se dispara desde el mapa táctico.</li><li>La reproducción, la pausa y el avance/retroceso rápido de la aplicación de vídeo funcionan. También están corregidos el fallo por el que el audio seguía sonando tras salir del servidor o cambiar de dimensión, y aquel en el que se oía el sonido pero la pantalla se quedaba en negro.</li><li>El iPhone y el MacBook se han rediseñado, con ilustraciones distintas para el icono del inventario y para el objeto sostenido en la mano o colocado.</li><li>Las criaturas de los Backrooms se han rediseñado. Combinan un modelo tridimensional con arte de píxeles, sobre una paleta de amarillo enfermizo y con partículas flotando a su alrededor. Conviene saber que estas criaturas no se pueden matar con ningún ataque.</li><li>Las copias de seguridad automáticas están implementadas. El administrador del servidor puede fijar el intervalo, el número de copias que se conservan y la carpeta de destino desde una pantalla, con /glimpsebackup ui; los mundos se guardan en ZIP con fecha y hora, y los más antiguos se eliminan automáticamente según el número que se conserve (por defecto: desactivado, cada 30 minutos, 5 copias).</li><li>La pantalla del Mine Bank también está publicada, y ahora abrir un cajero muestra esta pantalla de forma predeterminada. Incluye el cambio entre ingreso y retirada, la selección rápida 25 %/50 %/75 %/MÁX, los pasos de 1/10/100/1k, una vista previa de la comisión y los botones de confirmar y cancelar. Conviene saber que sus pestañas cambian de cuenta (personal / compartida / especial), no de moneda.</li><li>El bastón de Sparxie (precio de catálogo: 200.000 esmeraldas), las torretas, los 52 tipos de farol de cristal, las incursiones en la superficie, el dron y su aplicación, y la reconstrucción de Sapporo también están publicados. Para el detalle de cada versión, consulta la página «Historial de actualizaciones».</li></ul>
     </div>
 <div class="card" style="margin-bottom:20px;">
-      <div class="badge-row"><span class="type-badge type-visual">En planificación</span>
-        <span class="timeline-entry__release">V2</span></div>
-      <h3 style="margin-top:0">Actualización V2 (parcialmente distribuida en V2.0.0 y V2.1.0; lo que queda aquí todavía no se ha distribuido)</h3>
-      <h4>Partes de este plan que ya se han distribuido</h4><ul><li>Distribuido en V2.0.0 (2026-08-18): la entrada a Planarcadia y el bloque de amatista de portal; cuatro jefes nuevos y sus rituales de invocación; los ajustes del Médico de la peste y del Segador; la red de agua (tuberías, bomba, grifo); el frigorífico y la comida que se pudre; la gasolina y las garrafas; el purificador de aire y la contaminación de la central nuclear; el traje de protección; las máscaras que se rompen y se recuperan una sola vez.</li><li>Distribuido en V2.1.0 (2026-08-22): los niveles 3 a 8 de los Backrooms (de islas de demostración a niveles infinitos de verdad); la app de administración del servidor en el ordenador del juego, incluidos los ajustes de copia de seguridad automática; las recetas de invocación de jefes en el libro de recetas y cuatro logros de descubrimiento; los modelos propios de las tres armas definidas por datos.</li><li>Los detalles están en la página «Historial de cambios». Lo que aparece más abajo es lo que esas dos rondas todavía no han distribuido.</li></ul><h4>MOD de materiales de construcción: corrección de fallos en la app de vídeo y renovación del aspecto de los dispositivos</h4><ul><li>Se prevé corregir el funcionamiento de reproducir, pausar y avanzar/retroceder rápido en la app de vídeo, para que operen correctamente (corrección de errores prioritaria).</li><li>Se prevé solucionar el fallo por el que el audio sigue sonando después de salir del servidor o de cambiar a otro mundo.</li><li>Se prevé corregir el fallo por el que se oye el audio pero no se muestra el vídeo (pantalla en negro).</li><li>Se plantea rediseñar por completo el aspecto del iPhone, el MacBook y la batería portátil, basándose en un nuevo boceto de diseño.</li></ul><h4>Revisión del sistema de agua e infraestructura de la vida cotidiana</h4><ul><li>Se plantea abandonar el comportamiento vanilla del flujo de agua y sustituirlo por un sistema que fluya de forma físicamente natural desde zonas altas a zonas bajas (eliminando la expansión horizontal indefinida en terrenos planos, de modo que el agua se acumule en las depresiones).</li><li>Se prevé añadir un conjunto completo de infraestructura hídrica —tuberías, bombas, grifos, etc.— que conecte la fuente de agua con el grifo.</li><li>La capacidad de la cantimplora se cuadruplicará respecto a la actual. La sed disminuirá algo más rápido que el hambre, y se prevé que, tras 10 minutos de sed continuada, se vaya acumulando daño (a menos que haya un efecto de regeneración) hasta poder llegar a ser mortal.</li><li>Se prevé añadir una función de copia de seguridad automática que permita a los administradores configurar desde la interfaz el intervalo, el número de copias guardadas y la ubicación de guardado (las instrucciones también se publicarán en este sitio).</li></ul><h4>MOD de armas de fuego: ajuste de equilibrio y renovación de sonidos</h4><ul><li>Se está estudiando ajustar el rendimiento de la minigun (+50%), el fusil de asalto (+75%), aumentar el poder de la pistola (x1,5), reducir a la mitad el daño del SMG a cambio de +30% de capacidad de munición, triplicar tanto el daño como el poder explosivo del lanzacohetes, y multiplicar por 4 el daño de las torretas junto con +70% de durabilidad.</li><li>Se plantea que la ojiva nuclear pueda llegar a destruir hasta un máximo de 10 millones de bloques, y que el poder explosivo y el radio de las ojivas de misil se tripliquen (se prevé que la potencia de la propia ojiva nuclear se mantenga como base la actual: 67.200 en impacto directo, a fecha de la v1.8.8).</li><li>También se prevé corregir el fallo por el que el modelo del arma obstruye la vista al usar la mira del lanzacohetes.</li><li>Se plantea rehacer por completo los sonidos de disparo (según parece, no se reutilizarán directamente sonidos de ningún juego existente, sino que se crearán sonidos nuevos con una orientación similar).</li><li>Se añadirán 3 nuevos diseños de lanzamisiles, todos ellos pensados para que el jugador pueda pilotarlos.</li></ul><h4>MOD de jefes: 4 nuevos jefes y ajustes a los existentes</h4><ul><li>Se prevé añadir 4 nuevos jefes: el «Rey Gólem Volcánico» (600 PV), el «Guardián Kraken Abisal» (800 PV), el «Dragón Fénix de Hielo Prismático» (750 PV) y el «Señor Demonio de la Tormenta de Wither» (1200 PV, cuya condición de invocación es derrotar a los tres anteriores). Todos ellos contarían con su propio objeto de invocación y combates por fases.</li><li>Médico de la Peste: se está estudiando un sistema en el que, tras recibir daño, haya un margen de 20 segundos antes de invocar a la Tormenta de Wither; si se le derrota dentro de esos 20 segundos (o de un solo golpe) se evitará la invocación, aunque tampoco se obtendrá el botín.</li><li>Jefe de la Muerte (Grim Reaper): al derrotarlo, con baja probabilidad soltará su arma exclusiva, la «Guadaña Segalmas», con la que, al derrotar enemigos, existe una baja probabilidad de obtener huevos generadores. También se prevé aumentar un +15% la fuerza del propio jefe y añadir 3 nuevos patrones de ataque.</li><li>Se plantea reforzar aún más a la Tormenta de Wither y añadirle un cambio a una segunda forma (fase).</li></ul><h4>Supervivencia y electricidad: sistema de contaminación y nuevas acciones para transportar cosas</h4><ul><li>Se prevé que el punto donde impacte una ojiva nuclear quede en estado de «contaminación» durante 20 días de Minecraft. Se plantea que pueda neutralizarse equipando a la vez una máscara de gas y un traje de protección.</li><li>Se está estudiando un sistema por el que mantener en funcionamiento el generador nuclear contamine el aire circundante, afectando a la salud si se permanece allí mucho tiempo sin protección. También se prevé añadir un nuevo bloque, el «Purificador de Aire», que al activarse limpie la contaminación de la zona (compatible con varias unidades funcionando a la vez).</li><li>Se prevé poder llevar en brazos a mobs pequeños, como aldeanos o gallinas.</li><li>También se está estudiando una función para transportar cofres con ambas manos sin romperlos (conservando su contenido; los cofres dobles se plantean como algo que requeriría dos jugadores para transportarlos).</li><li>Se prevé añadir un nuevo objeto (nombre provisional) con 32 de durabilidad y 200 de poder de ataque. Se está estudiando un ataque a distancia con el mismo sistema que la varita mágica.</li></ul><h4>Interfaz bancaria, los Backrooms e integración con el sitio web</h4><ul><li>Se prevé elevar el límite de depósito del cajero automático y de MineBank a 10 millones de esmeraldas. Se plantea aplicar el diseño del «Glimpse Alpha Glass» a la pantalla del cajero y renovar toda la interfaz.</li><li>Se prevé añadir una nueva «interfaz de MineBank» (según parece, hay un boceto de diseño con selección rápida de 25%/50%/75%/MAX según el saldo, además de un control deslizante con incrementos de 1/10/100/1k).</li><li>Se plantea rediseñar por completo el aspecto de los monstruos (entidades extrañas) de los Backrooms, a partir de nuevas imágenes de referencia de diseño.</li><li>Se plantea implementar un sistema para que, cuando se confirmen los contenidos de futuras actualizaciones, se reflejen automáticamente también en el historial de actualizaciones de este sitio (esto concierne al funcionamiento del propio sitio).</li></ul>
+      <div class="badge-row"><span class="type-badge type-visual">Próxima actualización</span>
+        <span class="timeline-entry__release">V3</span></div>
+      <h3 style="margin-top:0">La próxima actualización mayor es la V3</h3>
+      <h4>Lo que está en marcha</h4><ul><li>La próxima actualización mayor es la V3. Prevé 50 funciones nuevas, centradas en la exploración, la defensa, el almacenamiento y nuevos terrenos.</li><li>En lugar de sacarlo todo de golpe en una sola versión, se está construyendo poco a poco a lo largo de varias versiones. Por eso, una función de la V3 puede llegar antes en una versión de la serie V2. De hecho, el lanzamisiles con puntería sobre el mapa, la pieza estrella de la V3, ya se ha publicado repartido entre la V2.4.5 y la V2.4.9.</li><li>La presentación de su contenido está recogida en su propia página, «Actualización V3». Aquí no se repite.</li><li>No hay fecha de lanzamiento. Lo que se confirma como implementado aparece cada vez en la página «Historial de actualizaciones».</li></ul><p><a href="../v3/">Ver el contenido en la página de la V3</a></p>
+    </div>
+<div class="card" style="margin-bottom:20px;">
+      <div class="badge-row"><span class="type-badge type-visual">Aún sin hacer</span>
+        <span class="timeline-entry__release">Sin definir</span></div>
+      <h3 style="margin-top:0">Lo que aún no está hecho (lo que queda en esta página, al margen de las 50 funciones de la V3)</h3>
+      <h4>Rehacer el propio flujo del agua</h4><ul><li>El plan de sustituir el comportamiento del agua de vanilla no está implementado. En terreno llano el agua sigue extendiéndose de lado sin límite, igual que antes.</li><li>El pack tiene su propio mecanismo de «agua finita», y con él funcionan el agua que sale del grifo y la del tsunami. Pero ese es un bloque distinto del agua de vanilla, y al agua de vanilla no se le ha tocado absolutamente nada. Tampoco existe agua finita que se pueda recoger con un cubo.</li><li>Es decir: la infraestructura de agua y el tsunami funcionan, pero rehacer el mecanismo del agua en sí sigue pendiente.</li></ul><h4>El aspecto de la batería</h4><ul><li>Del rediseño del aspecto de los dispositivos, el iPhone y el MacBook están terminados. La batería (mod Electricidad) tiene modelo tridimensional, pero todavía no se ha preparado un icono plano de inventario, así que en todas las pantallas se muestra ese mismo modelo tridimensional.</li></ul><h4>Cifras que aún no se han publicado</h4><ul><li>Esta página decía que la frecuencia con la que aparece cada uno de los cinco tipos de clima (el intervalo medio) se publicaría con cifras medidas, pero esas cifras siguen sin aparecer en ninguna parte de este sitio. Lo que sí está implementado es poder desactivar cada uno de ellos por separado en la configuración.</li><li>Las únicas cifras publicadas hasta ahora son la probabilidad de erupción volcánica (5 % por cada terremoto) y el tamaño del cráter (radio 6, profundidad 4 bloques), y están en la página «Guía de funciones».</li></ul>
     </div>
 
 </main>

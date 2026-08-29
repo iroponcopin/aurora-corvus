@@ -11,6 +11,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 BUILD_SCRIPTS = [
+    # Writes assets/css/lang-flags.css and assets/js/lang.js, which every
+    # page's <head> links to. First so a flag/language mismatch stops the
+    # build before 143 pages are written against it.
+    "build_lang_assets.py",
     "build_recipe_overlays.py",
     "build_home.py",
     "build_download.py",

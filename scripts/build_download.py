@@ -8,6 +8,16 @@ this project's `module_counts()` discipline in site_common.py: a number typed
 by hand in 13 language files is a number that goes stale in 12 of them the
 next time only one file changes. If the ZIP or its changelog entry is
 missing, the build stops loudly instead of publishing an invented value.
+
+The same rule now covers the page's PROSE. `download` is one of four blocks
+that live only in data/i18n/*.json with no source file behind them, and until
+2026-08-29 scripts/extract_bundle.py deleted all four every time it ran (see
+the ⚠ block in scripts/build_features.py). Every one of this page's own
+strings was read with `dl.get(key, "")`, so losing the block published a
+download page with an empty lede, empty headings, an empty install note and
+an empty "do not put this on a server" warning — at exit 0. REQUIRED_KEYS
+below stops that. The discord_*/launcher_* keys are deliberately NOT in it:
+those genuinely exist in en/ja only and have real English defaults.
 """
 import hashlib
 import json
@@ -23,6 +33,35 @@ from site_common import (  # noqa: E402
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
+
+# bundle["download"] keys that are rendered with an EMPTY fallback, i.e. the
+# ones whose loss shows up as a blank on the page rather than as English. All
+# 13 bundles carry all of them.
+REQUIRED_KEYS = (
+    "intro", "server_note", "sapporo_note",
+    "whats_new_heading", "whats_new_body",
+    "install_heading", "install_body", "older_versions_note",
+    "changelog_link_text", "guide_link_text",
+    "version_label", "size_label", "sha_label", "primary_cta",
+)
+
+
+def _require_download_block(bundle, lang):
+    if "download" not in bundle:
+        raise SystemExit(
+            f"ERROR: data/i18n/{lang}.json has no 'download' block at all. It is hand-authored "
+            f"directly in the bundle -- there is no data/download.json to rebuild it from, so an "
+            f"absent key means the content was DELETED. Publishing this page anyway would put out "
+            f"a download page with a blank lede and a blank server warning at exit 0. Restore the "
+            f"block (git show HEAD:data/i18n/{lang}.json) before re-running.")
+    dl = bundle["download"]
+    missing = [k for k in REQUIRED_KEYS if not str(dl.get(k, "")).strip()]
+    if missing:
+        raise SystemExit(
+            f"ERROR: data/i18n/{lang}.json's 'download' block is missing or blank for: "
+            f"{', '.join(missing)}. These render with an empty fallback, so the page would "
+            f"publish with those paragraphs simply absent and no error.")
+    return dl
 
 
 def _mod_version():
@@ -232,7 +271,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
     c = ui["common"]
-    dl = bundle.get("download", {})
+    dl = _require_download_block(bundle, lang)
     invite_url, discord_configured = _discord_invite()
     launcher = _launcher_facts()
 
