@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Historique des mises à jour</span>
   <h1>Historique des mises à jour</h1>
-  <p class="lede">Toutes les mises à jour sont listées ici, de la plus récente à la plus ancienne, depuis la version initiale (v1.0.0, 2026-07-15) jusqu&#x27;à aujourd&#x27;hui (au 2026-08-11, soit 59 mises à jour au total). Les étapes de vérification interne réalisées pendant le développement sont omises : seuls les changements réellement appliqués sur le serveur et les points de vigilance sont résumés ici.</p>
+  <p class="lede">Toutes les mises à jour sont listées ici, de la plus récente à la plus ancienne, depuis la version initiale (v1.0.0, 2026-07-15) jusqu&#x27;à aujourd&#x27;hui (au 2026-08-11, soit 60 mises à jour au total). Les étapes de vérification interne réalisées pendant le développement sont omises : seuls les changements réellement appliqués sur le serveur et les points de vigilance sont résumés ici.</p>
   <p class="callout callout--info">Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>Aucune mise à jour ne correspond à ces critères.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3, première partie : trois blocs de stockage, le drone refait et la Meridian Store
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Nouveauté</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Matériaux et décoration</span><span class="mod-badge" style="--mod-color:#c0533a">Armes à feu</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Électricité</span><span class="mod-badge" style="--mod-color:#3d7dc4">Chemin de fer</span><span class="mod-badge" style="--mod-color:#3badc9">Ciel</span><span class="mod-badge" style="--mod-color:#c19a2e">Survie</span><span class="mod-badge" style="--mod-color:#d17a34">Véhicules</span></div>
+      <p>Cette version apporte les cinq premières fonctionnalités prévues pour la V3. Trois nouveaux blocs de stockage — la Pompe filtrante à limon, qui récupère les objets dans l&#x27;eau ; le Silo à grain, qui conserve une grande quantité d&#x27;un seul objet ; et l&#x27;Amphore de verre, qui stocke un fluide dont le niveau reste visible — arrivent avec un drone entièrement refait, désormais doté du pilotage à la première personne, du largage de charges et du transport de coffres. S&#x27;y ajoute la Meridian Store, une boutique en jeu qui vous livre votre commande par drone. Le paiement utilise les émeraudes que vous avez déjà (ou votre compte MineBank) ; aucune nouvelle monnaie n&#x27;est introduite.</p>
+      <ul><li>Ajout de la Pompe filtrante à limon. Toutes les 10 ticks, elle inspecte l&#x27;eau devant elle, en retire les objets tombés et les stocke à l&#x27;intérieur (5 piles). Placez des échantillons dans ses 5 emplacements de filtre et elle ne ramassera que ces types. Elle n&#x27;aspire pas à travers les blocs pleins, et un entonnoir peut puiser par le dessous.</li><li>Ajout du Silo à grain. Il se verrouille sur le premier type d&#x27;objet inséré et en conserve jusqu&#x27;à 128 piles (8 192 blés). Un comparateur lit la quantité, les entonnoirs font entrer et sortir les objets, et le type ne peut être réinitialisé que lorsque le silo est vide.</li><li>Ajout de l&#x27;Amphore de verre. Elle contient 8 seaux d&#x27;un seul fluide, le niveau étant visible de l&#x27;extérieur. Remplissez-la ou videz-la au seau, lisez la quantité au comparateur, et notez que les fluides ne peuvent pas être mélangés : videz-la d&#x27;abord. La casser avec Toucher de soie en conserve le contenu.</li><li>Le drone a été entièrement refait : nouveau modèle, pilotage à la première personne, transport et largage de charges, ramassage et transport de coffres. Le pilotage ne capture pas votre souris — le drone se dirige relativement au centre de l&#x27;écran, avec une zone morte au milieu. Un grand coffre est trop lourd pour un seul drone.</li><li>Ajout de la Meridian Store. Commandez depuis un terminal en jeu et un drone de livraison quittera le dépôt pour déposer votre colis à votre balise. Payez avec les émeraudes de votre inventaire ou depuis votre compte MineBank ; les remboursements reviennent par le moyen de paiement utilisé.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Points d&#x27;attention</div>
+          <ul><li>Le largage de charges ne fonctionne que si un module d&#x27;armes à feu est installé sur le serveur. À défaut, le drone l&#x27;indique clairement et rien ne se produit.</li><li>Le pilotage, les charges et le transport de coffres peuvent être désactivés séparément dans les réglages du serveur.</li></ul>
+        </div>
+      <h4>Ce qui n&#x27;était pas encore implémenté ou vérifié à ce stade</h4><ul><li>Cette version contient cinq des cinquante fonctionnalités prévues pour la V3 (#21, #22, #29, #38 et la première phase de #50). Les autres suivront dans des versions ultérieures : ceci n&#x27;est pas la V3 complète.</li><li>L&#x27;apparence et le ressenti de tout ce qui est ajouté ici n&#x27;ont pas encore été vérifiés sur un véritable écran, faute de client Minecraft dans l&#x27;environnement de développement. Signalez-nous tout ce qui semble anormal.</li><li>Le drone ne capture délibérément pas la souris. Dans Minecraft 26.2, il n&#x27;existe aucun moyen de récupérer une souris bloquée sans se reconnecter ; ce risque est donc évité par conception.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

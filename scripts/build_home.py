@@ -206,8 +206,8 @@ def build_lang(lang):
   </div>
 </section>
 """
-    # Scene 0's opening beat, home page only. Same idiom as
-    # build_v3_teaser.py: a page-scoped stylesheet plus a deferred script,
+    # Scene 0's opening beat, home page only. A page-scoped stylesheet
+    # plus a deferred script,
     # both addressed through asset_root_prefix() rather than a hardcoded
     # "../" (non-ja languages sit one directory deeper — see the note on that
     # helper for the 404 a hardcoded prefix caused last time).

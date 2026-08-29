@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Início</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Histórico de atualizações</span>
   <h1>Histórico de atualizações</h1>
-  <p class="lede">Aqui está tudo desde a primeira versão (v1.0.0, 15/07/2026) até hoje (11/08/2026, um total de 59 atualizações), listado do mais recente para o mais antigo. Os detalhes internos de teste e desenvolvimento ficam de fora — o foco é o que realmente mudou no servidor e o que você precisa saber.</p>
+  <p class="lede">Aqui está tudo desde a primeira versão (v1.0.0, 15/07/2026) até hoje (11/08/2026, um total de 60 atualizações), listado do mais recente para o mais antigo. Os detalhes internos de teste e desenvolvimento ficam de fora — o foco é o que realmente mudou no servidor e o que você precisa saber.</p>
   <p class="callout callout--info">Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>Nenhuma atualização corresponde aos filtros selecionados.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3, parte um: três blocos de armazenamento, o drone refeito e a Meridian Store
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Novidade</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Chefes</span><span class="mod-badge" style="--mod-color:#4f8f43">Materiais de Construção e Decoração</span><span class="mod-badge" style="--mod-color:#c0533a">Armas de Fogo</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Energia</span><span class="mod-badge" style="--mod-color:#3d7dc4">Ferrovia</span><span class="mod-badge" style="--mod-color:#3badc9">Céu</span><span class="mod-badge" style="--mod-color:#c19a2e">Sobrevivência</span><span class="mod-badge" style="--mod-color:#d17a34">Veículos</span></div>
+      <p>Esta versão traz as cinco primeiras funcionalidades previstas para a V3. Três novos blocos de armazenamento — a Bomba de Filtragem de Silte, que recolhe itens da água; o Silo de Grãos, que guarda grande quantidade de um único item; e a Ânfora de Vidro, que armazena um fluido e deixa o nível à vista — chegam junto de um drone refeito do zero, agora com pilotagem em primeira pessoa, lançamento de ogivas e transporte de baús. Há também a Meridian Store, uma loja dentro do jogo que entrega o seu pedido por drone. O pagamento usa as esmeraldas que você já tem (ou a sua conta do MineBank); nenhuma moeda nova é introduzida.</p>
+      <ul><li>Adicionada a Bomba de Filtragem de Silte. A cada 10 ticks ela examina a água à sua frente, recolhe os itens caídos e os guarda internamente (5 pilhas). Coloque amostras nas suas 5 casas de filtro e ela recolherá apenas esses tipos. Não puxa itens através de blocos sólidos, e um funil pode retirar por baixo.</li><li>Adicionado o Silo de Grãos. Ele se fixa no primeiro tipo de item colocado e guarda até 128 pilhas (8.192 de trigo). Um comparador lê a quantidade, funis movem itens nos dois sentidos, e o tipo só pode ser redefinido com o silo vazio.</li><li>Adicionada a Ânfora de Vidro. Guarda 8 baldes de um único fluido, com o nível visível por fora. Encha ou esvazie com um balde, leia a quantidade com um comparador, e note que fluidos não podem ser misturados: esvazie primeiro. Quebrá-la com Toque Suave preserva o conteúdo.</li><li>O drone foi refeito do zero: modelo novo, pilotagem em primeira pessoa, transporte e lançamento de ogivas, e a possibilidade de pegar e carregar baús. A pilotagem não captura o seu mouse — o drone é dirigido de forma relativa ao centro da tela, com uma zona morta no meio. Um baú grande é demais para um único drone.</li><li>Adicionada a Meridian Store. Faça o pedido num terminal do jogo e um drone de entrega sairá do depósito para deixar a sua encomenda no seu farol. Pague com as esmeraldas do inventário ou pela conta do MineBank; reembolsos voltam pelo mesmo meio do pagamento.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Pontos de atenção</div>
+          <ul><li>O lançamento de ogivas só funciona se houver um módulo de armas de fogo instalado no servidor. Sem ele, o drone avisa claramente e nada acontece.</li><li>Pilotagem, ogivas e transporte de baús podem ser desativados separadamente nas configurações do servidor.</li></ul>
+        </div>
+      <h4>O que ainda não estava implementado ou confirmado nesse momento</h4><ul><li>Esta versão contém cinco das cinquenta funcionalidades previstas para a V3 (#21, #22, #29, #38 e a primeira fase da #50). As demais virão em versões posteriores — esta não é a V3 completa.</li><li>A aparência e a jogabilidade de tudo o que foi adicionado aqui ainda não foram verificadas numa tela real, pois não há cliente do Minecraft no ambiente de desenvolvimento. Avise-nos se algo parecer errado.</li><li>O drone deliberadamente não captura o mouse. No Minecraft 26.2 não há como recuperar um mouse travado a não ser entrando novamente, então esse risco é evitado por projeto.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

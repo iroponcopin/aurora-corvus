@@ -1514,6 +1514,30 @@
         "Dieser Beitrag ändert keine einzige Spielmechanik und keinen einzigen Standardwert. Er schreibt sieben Dinge auf, die längst liefen, nachdem sie im echten MOD-Code nachgeprüft wurden. Die Einzelheiten und der jeweilige config-Schlüssel stehen auf der Seite „Funktionen“.",
         "In welcher Version Preismultiplikator und Diamantguthaben zuerst hinzukamen, ist zum Zeitpunkt dieses Beitrags nicht ermittelt. Bestätigt ist nur, dass beide zum Stand V2.5.1 tatsächlich laufen."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, Teil eins: drei Lagerblöcke, die neu gebaute Drohne und der Meridian Store",
+      "summary": "Diese Version bringt die ersten fünf der für V3 geplanten Funktionen. Drei neue Lagerblöcke – die Schlickfilterpumpe, die Gegenstände aus dem Wasser holt; das Getreidesilo, das große Mengen eines einzelnen Gegenstands fasst; und die Glasamphore, die eine Flüssigkeit speichert und den Füllstand sichtbar lässt – kommen zusammen mit einer von Grund auf neu gebauten Drohne, die nun Ich-Perspektive-Steuerung, Sprengkopfabwürfe und Truhentransport beherrscht. Hinzu kommt der Meridian Store, ein Laden im Spiel, der die Bestellung per Drohne liefert. Bezahlt wird mit den Smaragden, die Sie ohnehin haben (oder über Ihr MineBank-Konto); eine neue Währung gibt es nicht.",
+      "highlights": [
+        "Die Schlickfilterpumpe wurde hinzugefügt. Alle 10 Ticks durchsucht sie das Wasser vor sich, holt heruntergefallene Gegenstände heraus und lagert sie intern (5 Stapel). Legt man Proben in ihre 5 Filterplätze, sammelt sie nur diese Sorten. Durch feste Blöcke saugt sie nicht, und ein Trichter kann von unten entnehmen.",
+        "Das Getreidesilo wurde hinzugefügt. Es legt sich auf die zuerst eingefüllte Gegenstandssorte fest und fasst davon bis zu 128 Stapel (8.192 Weizen). Ein Komparator liest die Menge, Trichter befördern Gegenstände in beide Richtungen, und die Sorte lässt sich nur bei leerem Silo zurücksetzen.",
+        "Die Glasamphore wurde hinzugefügt. Sie fasst 8 Eimer einer einzelnen Flüssigkeit, der Füllstand ist von außen sichtbar. Mit einem Eimer füllen oder leeren, die Menge mit einem Komparator auslesen – Flüssigkeiten lassen sich nicht mischen, also vorher leeren. Wird sie mit Behutsamkeit abgebaut, bleibt der Inhalt erhalten.",
+        "Die Drohne wurde von Grund auf neu gebaut: neues Modell, Steuerung aus der Ich-Perspektive, Transport und Abwurf von Sprengköpfen sowie das Aufnehmen und Tragen von Truhen. Beim Steuern wird die Maus nicht eingefangen – die Drohne wird relativ zur Bildschirmmitte gelenkt, mit einer Totzone in der Mitte. Eine große Truhe ist für eine einzelne Drohne zu viel.",
+        "Der Meridian Store wurde hinzugefügt. Bestellen Sie an einem Terminal im Spiel, und eine Lieferdrohne fliegt vom Depot los und setzt das Paket an Ihrem Bake ab. Bezahlen Sie mit den Smaragden im Inventar oder über Ihr MineBank-Konto; Erstattungen kommen auf demselben Weg zurück, auf dem gezahlt wurde."
+      ],
+      "warnings": [
+        "Sprengkopfabwürfe funktionieren nur, wenn auf dem Server ein Schusswaffen-Modul installiert ist. Andernfalls sagt die Drohne das deutlich und es passiert nichts.",
+        "Steuerung, Sprengköpfe und Truhentransport lassen sich in den Servereinstellungen jeweils einzeln abschalten."
+      ],
+      "known_limitations": [
+        "Diese Version enthält fünf der fünfzig für V3 geplanten Funktionen (#21, #22, #29, #38 und die erste Phase von #50). Der Rest folgt in späteren Versionen – dies ist nicht das vollständige V3.",
+        "Aussehen und Handhabung der Neuerungen wurden noch nicht auf einem echten Bildschirm geprüft, da in der Entwicklungsumgebung kein Minecraft-Client vorhanden ist. Melden Sie uns bitte alles, was falsch aussieht.",
+        "Dass die Drohne die Maus nicht einfängt, ist Absicht. In Minecraft 26.2 lässt sich eine hängengebliebene Maus nur durch erneutes Anmelden lösen; dieses Risiko wird bewusst vermieden."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1570,21 +1594,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Nächstes Update",
-        "title": "Das nächste große Update ist V3",
+        "badge": "Wird ausgeliefert",
+        "title": "V3 wird jetzt ausgeliefert (5 von 50 Funktionen)",
         "groups": [
           {
-            "subtitle": "Woran gerade gearbeitet wird",
+            "subtitle": "Was gerade läuft",
             "bullets": [
-              "Das nächste große Update ist V3. Geplant sind 50 neue Funktionen, im Schwerpunkt rund um Erkundung, Verteidigung, Lagerung und neue Landschaftsformen.",
-              "Statt alles auf einmal in einer Version herauszubringen, wird es Stück für Stück über mehrere Versionen gebaut. Deshalb kann eine V3-Funktion zuerst in einer Version der V2-Reihe landen. Tatsächlich ist der kartengesteuerte Raketenwerfer, das Aushängeschild von V3, bereits über V2.4.5 bis V2.4.9 ausgeliefert worden.",
-              "Die Vorstellung der Inhalte ist auf der eigenen Seite „V3-Update\" gesammelt. Sie wird hier nicht wiederholt.",
-              "Ein Veröffentlichungstermin steht nicht fest. Was als umgesetzt bestätigt ist, erscheint jeweils auf der Seite „Änderungsprotokoll\"."
+              "V3 ist ein großes Update mit 50 geplanten neuen Funktionen rund um Erkundung, Verteidigung, Lagerung und neues Gelände. Die Auslieferung begann am 29. August 2026 mit V3.0.0.",
+              "Statt auf einmal zu erscheinen, entsteht es Stück für Stück über mehrere Versionen – deshalb sind V3-Funktionen auch schon in Versionen der V2-Reihe angekommen. Der kartengesteuerte Raketenwerfer erschien von V2.4.5 bis V2.4.9; die drei Lagerblöcke, die neu gebaute Drohne und der Meridian Store kamen mit V3.0.0.",
+              "Fünf der fünfzig sind bisher ausgeliefert. Für die verbleibenden fünfundvierzig gibt es keinen Termin. Was als gebaut bestätigt ist, erscheint jeweils auf der Seite Änderungsprotokoll."
             ]
           }
         ],
         "link": {
-          "label": "Die Inhalte auf der V3-Seite ansehen"
+          "label": "Inhalt von V3.0.0 im Änderungsprotokoll ansehen"
         }
       },
       {

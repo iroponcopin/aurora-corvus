@@ -1521,6 +1521,30 @@
         "Este artigo não muda nenhuma mecânica do jogo nem nenhum valor padrão. Ele documenta sete coisas que já estavam funcionando, depois de conferi-las no código real dos MODs. Os detalhes completos e a chave de configuração de cada uma estão na página de “Funcionalidades”.",
         "Em que versão o multiplicador de preços e o saldo em diamantes entraram pela primeira vez não foi determinado até a data deste artigo. A única coisa confirmada é que os dois estão mesmo funcionando na V2.5.1."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, parte um: três blocos de armazenamento, o drone refeito e a Meridian Store",
+      "summary": "Esta versão traz as cinco primeiras funcionalidades previstas para a V3. Três novos blocos de armazenamento — a Bomba de Filtragem de Silte, que recolhe itens da água; o Silo de Grãos, que guarda grande quantidade de um único item; e a Ânfora de Vidro, que armazena um fluido e deixa o nível à vista — chegam junto de um drone refeito do zero, agora com pilotagem em primeira pessoa, lançamento de ogivas e transporte de baús. Há também a Meridian Store, uma loja dentro do jogo que entrega o seu pedido por drone. O pagamento usa as esmeraldas que você já tem (ou a sua conta do MineBank); nenhuma moeda nova é introduzida.",
+      "highlights": [
+        "Adicionada a Bomba de Filtragem de Silte. A cada 10 ticks ela examina a água à sua frente, recolhe os itens caídos e os guarda internamente (5 pilhas). Coloque amostras nas suas 5 casas de filtro e ela recolherá apenas esses tipos. Não puxa itens através de blocos sólidos, e um funil pode retirar por baixo.",
+        "Adicionado o Silo de Grãos. Ele se fixa no primeiro tipo de item colocado e guarda até 128 pilhas (8.192 de trigo). Um comparador lê a quantidade, funis movem itens nos dois sentidos, e o tipo só pode ser redefinido com o silo vazio.",
+        "Adicionada a Ânfora de Vidro. Guarda 8 baldes de um único fluido, com o nível visível por fora. Encha ou esvazie com um balde, leia a quantidade com um comparador, e note que fluidos não podem ser misturados: esvazie primeiro. Quebrá-la com Toque Suave preserva o conteúdo.",
+        "O drone foi refeito do zero: modelo novo, pilotagem em primeira pessoa, transporte e lançamento de ogivas, e a possibilidade de pegar e carregar baús. A pilotagem não captura o seu mouse — o drone é dirigido de forma relativa ao centro da tela, com uma zona morta no meio. Um baú grande é demais para um único drone.",
+        "Adicionada a Meridian Store. Faça o pedido num terminal do jogo e um drone de entrega sairá do depósito para deixar a sua encomenda no seu farol. Pague com as esmeraldas do inventário ou pela conta do MineBank; reembolsos voltam pelo mesmo meio do pagamento."
+      ],
+      "warnings": [
+        "O lançamento de ogivas só funciona se houver um módulo de armas de fogo instalado no servidor. Sem ele, o drone avisa claramente e nada acontece.",
+        "Pilotagem, ogivas e transporte de baús podem ser desativados separadamente nas configurações do servidor."
+      ],
+      "known_limitations": [
+        "Esta versão contém cinco das cinquenta funcionalidades previstas para a V3 (#21, #22, #29, #38 e a primeira fase da #50). As demais virão em versões posteriores — esta não é a V3 completa.",
+        "A aparência e a jogabilidade de tudo o que foi adicionado aqui ainda não foram verificadas numa tela real, pois não há cliente do Minecraft no ambiente de desenvolvimento. Avise-nos se algo parecer errado.",
+        "O drone deliberadamente não captura o mouse. No Minecraft 26.2 não há como recuperar um mouse travado a não ser entrando novamente, então esse risco é evitado por projeto."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1577,21 +1601,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Próxima atualização",
-        "title": "A próxima atualização principal é a V3",
+        "badge": "Em distribuição",
+        "title": "A V3 começou a ser distribuída (5 de 50 funcionalidades)",
         "groups": [
           {
             "subtitle": "O que está em andamento",
             "bullets": [
-              "A próxima atualização principal é a V3. Estão previstas 50 funcionalidades novas, com foco em exploração, defesa, armazenamento e novos terrenos.",
-              "Em vez de sair tudo de uma vez numa única versão, ela está sendo construída aos poucos ao longo de várias versões. Por isso uma funcionalidade da V3 pode chegar antes numa versão da série V2. De fato, o lançador de mísseis com mira pelo mapa, o carro-chefe da V3, já foi lançado ao longo das versões V2.4.5 a V2.4.9.",
-              "A apresentação do conteúdo está reunida na página dedicada, «Atualização V3». Aqui ela não é repetida.",
-              "Não há data de lançamento. O que for confirmado como implementado aparece, a cada vez, na página «Histórico de atualizações»."
+              "A V3 é uma atualização importante que prevê 50 novas funcionalidades, centradas em exploração, defesa, armazenamento e novos terrenos. A distribuição começou com a V3.0.0 em 29 de agosto de 2026.",
+              "Em vez de chegar de uma só vez, ela é construída aos poucos ao longo de várias versões — por isso funcionalidades da V3 também chegaram em versões da série V2. O lançador de mísseis com mira no mapa saiu entre a V2.4.5 e a V2.4.9; os três blocos de armazenamento, o drone refeito e a Meridian Store saíram na V3.0.0.",
+              "Cinco das cinquenta foram distribuídas até agora. Não há data para as quarenta e cinco restantes. Tudo o que for confirmado como pronto vai para a página de Alterações conforme acontece."
             ]
           }
         ],
         "link": {
-          "label": "Ver o conteúdo na página da V3"
+          "label": "Veja o conteúdo da V3.0.0 na página de Alterações"
         }
       },
       {

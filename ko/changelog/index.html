@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">홈</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">업데이트 기록</span>
   <h1>업데이트 기록</h1>
-  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 59회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
+  <p class="lede">초판(v1.0.0, 2026-07-15)부터 현재(2026-08-11 기준, 총 60회 업데이트)까지 최신순으로 정리했습니다. 개발 시 내부 검증 절차 등은 생략하고, 실제로 서버에서 무엇이 바뀌었는지·무엇을 주의해야 하는지만 담았습니다.</p>
   <p class="callout callout--info">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>조건에 맞는 업데이트가 없습니다.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3 1차: 보관 블록 3종, 전면 재제작된 드론, 그리고 Meridian 상점
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">신규 기능</span><span class="mod-badge" style="--mod-color:#7d7d52">백룸즈</span><span class="mod-badge" style="--mod-color:#9349b8">보스</span><span class="mod-badge" style="--mod-color:#4f8f43">건축자재·장식</span><span class="mod-badge" style="--mod-color:#c0533a">총기</span><span class="mod-badge" style="--mod-color:#b0559b">플라나르카디아</span><span class="mod-badge" style="--mod-color:#d4b32e">전력</span><span class="mod-badge" style="--mod-color:#3d7dc4">철도</span><span class="mod-badge" style="--mod-color:#3badc9">천공</span><span class="mod-badge" style="--mod-color:#c19a2e">서바이벌</span><span class="mod-badge" style="--mod-color:#d17a34">탈것</span></div>
+      <p>이번 릴리스는 V3에 예정된 기능 중 처음 다섯 가지를 담고 있습니다. 물속의 아이템을 건져 올리는 침니 여과 펌프, 한 종류를 대량으로 보관하는 곡물 사일로, 액체를 담고 잔량이 비쳐 보이는 유리 암포라 — 이 세 가지 보관 블록과 함께, 처음부터 다시 만든 드론이 1인칭 조종, 탄두 투하, 상자 운반 기능을 갖추고 등장합니다. 게임 안에서 주문하면 드론이 배달해 주는 Meridian 상점도 추가되었습니다. 결제는 기존과 같이 에메랄드(또는 MineBank 개인 계좌)를 사용하며, 새로운 화폐는 추가되지 않습니다.</p>
+      <ul><li>침니 여과 펌프를 추가했습니다. 10틱마다 앞쪽 물속을 살펴 떨어진 아이템을 건져 내부(5스택)에 보관합니다. 5개의 필터 칸에 견본을 넣으면 그 종류만 수집합니다. 단단한 블록 너머로는 빨아들이지 않으며, 아래에서 깔때기로 꺼낼 수 있습니다.</li><li>곡물 사일로를 추가했습니다. 처음 넣은 아이템 한 종류만 최대 128스택까지 보관합니다(밀 기준 8,192개). 비교기로 수량을 읽을 수 있고 깔때기로 넣고 뺄 수 있으며, 종류 초기화는 사일로가 비었을 때만 가능합니다.</li><li>유리 암포라를 추가했습니다. 한 종류의 액체를 8양동이까지 담으며 잔량이 밖에서 보입니다. 양동이로 채우거나 비울 수 있고 수량은 비교기로 읽습니다. 서로 다른 액체는 섞을 수 없으니 먼저 비워 주세요. 섬세한 손길로 부수면 내용물이 유지됩니다.</li><li>드론을 처음부터 다시 만들었습니다. 새 모델과 함께 1인칭 조종, 탄두 적재 및 투하, 상자 들기와 운반이 가능합니다. 조종 중에는 마우스를 붙잡지 않고 화면 중앙을 기준으로 한 상대 조작을 사용하며, 중앙 부근에는 무반응 구간이 있습니다. 큰 상자는 드론 한 대로는 운반할 수 없습니다.</li><li>Meridian 상점을 추가했습니다. 게임 내 단말기에서 주문하면 배송 거점에서 배달 드론이 날아와 수령 비컨에 소포를 내려놓습니다. 인벤토리의 에메랄드 또는 MineBank 개인 계좌로 결제할 수 있으며, 환불은 결제한 경로 그대로 돌아갑니다.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 주의 사항</div>
+          <ul><li>드론의 탄두 투하는 서버에 화기 모듈이 설치된 경우에만 사용할 수 있습니다. 설치되어 있지 않으면 드론이 그 사실을 알리고 아무 일도 일어나지 않습니다.</li><li>드론의 조종, 탄두, 상자 운반은 각각 서버 설정에서 따로 끌 수 있습니다.</li></ul>
+        </div>
+      <h4>이 시점에 미구현·미확인이었던 사항</h4><ul><li>이번 릴리스는 V3에 예정된 50개 기능 중 5개(#21, #22, #29, #38 및 #50의 1단계)를 담고 있습니다. 나머지는 이후 릴리스에서 순차적으로 제공됩니다 — 완성된 V3가 아닙니다.</li><li>개발 환경에 Minecraft 클라이언트가 없어, 이번에 추가된 외형과 조작감은 아직 실제 화면에서 확인하지 못했습니다. 이상한 점이 있으면 알려 주세요.</li><li>드론이 마우스를 붙잡지 않는 것은 의도적입니다. Minecraft 26.2에서는 마우스가 붙잡힌 채 풀리지 않으면 재접속 외에 복구할 방법이 없어, 설계 단계에서 그 위험을 피했습니다.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

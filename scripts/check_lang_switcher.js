@@ -288,7 +288,7 @@ if (require.main === module) {
   note("=== D. loop proof: every language x every page x every device ===");
   {
     const SECTIONS = ["", "download/", "changelog/", "recipes/", "guide/",
-      "launcher/", "gates/", "features/", "roadmap/", "known-issues/", "v3/"];
+      "launcher/", "gates/", "features/", "roadmap/", "known-issues/"];
     const LANGS = ["ja", "en", "es", "fr", "zh", "ko", "pt-br", "it", "ar", "ru", "id", "de", "tr"];
     const DEVICES = [
       { languages: ["ja-JP"], timeZone: "Asia/Tokyo" },

@@ -1633,6 +1633,30 @@
       "known_limitations": [
         "The \"Solo Play Tuning\" screen requires Corvus 1.7.0 or newer. It does not appear in earlier versions of Corvus."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, part one: three storage blocks, a rebuilt drone, and the Meridian Store",
+      "summary": "This release brings the first five of the features planned for V3. Three new storage blocks — the Silt Filter Pump, which lifts items out of water; the Grain Silo, which holds a great deal of one item; and the Glass Amphora, which stores a fluid and shows the level through the glass — arrive alongside a drone rebuilt from scratch, now with first-person piloting, warhead drops and chest carrying. There is also the Meridian Store, an in-game shop that flies your order to you by drone. Payment uses the emeralds you already have (or your MineBank account); no new currency is introduced.",
+      "highlights": [
+        "Added the Silt Filter Pump. Every 10 ticks it searches the water in front of it, lifts out any dropped items and stores them internally (5 stacks). Put samples in its 5 filter slots and it collects only those kinds. It will not pull items through solid blocks, and a hopper can draw from underneath.",
+        "Added the Grain Silo. It locks to the first item kind put in and holds up to 128 stacks of it (8,192 wheat). A comparator reads the amount, hoppers move items in and out, and the kind can only be reset while the silo is empty.",
+        "Added the Glass Amphora. It holds 8 buckets of a single fluid with the level visible from outside. Fill or empty it with a bucket, read the amount with a comparator, and note that fluids cannot be mixed — empty it first. Breaking it with Silk Touch keeps the contents.",
+        "The drone has been rebuilt from the ground up: a new model, first-person piloting, warhead carriage and drops, and picking up and carrying chests. Piloting does not capture your mouse — the drone is steered relative to the centre of the screen, with a dead zone in the middle. A large chest is too much for a single drone.",
+        "Added the Meridian Store. Order from an in-game terminal and a delivery drone flies from the depot to drop your parcel at your beacon. Pay with the emeralds in your inventory or from your MineBank account; refunds return by whichever route you paid."
+      ],
+      "warnings": [
+        "Drone warhead drops only work if a firearms module is installed on the server. Without one the drone says so plainly and nothing happens.",
+        "Drone piloting, warheads and chest carriage can each be disabled independently in the server settings."
+      ],
+      "known_limitations": [
+        "This release contains five of the fifty features planned for V3 (#21, #22, #29, #38, and the first phase of #50). The rest will follow in later releases — this is not the complete V3.",
+        "The look and feel of everything added here has not yet been checked on a real screen, because there is no Minecraft client in the development environment. Please report anything that looks wrong.",
+        "The drone deliberately does not capture the mouse. In Minecraft 26.2 there is no way to recover a stuck mouse grab short of logging back in, so that risk is avoided by design."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1689,21 +1713,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Next update",
-        "title": "The next major update is V3",
+        "badge": "Now shipping",
+        "title": "V3 has started shipping (5 of 50 features)",
         "groups": [
           {
             "subtitle": "What is in progress",
             "bullets": [
-              "The next major update is V3. It plans 50 new features, centred on exploration, defence, storage and new terrain.",
-              "Rather than landing all at once in a single release, it is being built a piece at a time across several releases. That means a V3 feature can arrive in a V2-series release first. The map-targeted missile launcher, V3's flagship, has in fact already shipped across V2.4.5 to V2.4.9.",
-              "The tour of what it contains is collected on its own V3 page. It is not repeated here.",
-              "There is no release date. Whatever is confirmed as built goes onto the Changelog page as it happens."
+              "V3 is a major update planning 50 new features, centred on exploration, defence, storage and new terrain. Shipping began with V3.0.0 on 29 August 2026.",
+              "Rather than landing all at once, it is being built a piece at a time across several releases — so V3 features have arrived in V2-series releases too. The flagship map-targeted missile launcher shipped across V2.4.5 to V2.4.9; the three storage blocks, the rebuilt drone and the Meridian Store shipped in V3.0.0.",
+              "Five of the fifty have shipped so far. There is no date for the remaining forty-five. Whatever is confirmed as built goes onto the Changelog page as it happens."
             ]
           }
         ],
         "link": {
-          "label": "See what is in it on the V3 page"
+          "label": "See what V3.0.0 contains on the Changelog page"
         }
       },
       {

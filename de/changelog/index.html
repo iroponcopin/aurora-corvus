@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Startseite</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Änderungsprotokoll</span>
   <h1>Änderungsprotokoll</h1>
-  <p class="lede">Hier findest du alle Updates von der ersten Version (v1.0.0, 15.07.2026) bis heute (Stand 11.08.2026, insgesamt 59 Updates), neueste zuerst. Interne Testschritte aus der Entwicklung sind ausgelassen – zusammengefasst ist nur, was sich auf dem Server tatsächlich geändert hat und worauf du achten solltest.</p>
+  <p class="lede">Hier findest du alle Updates von der ersten Version (v1.0.0, 15.07.2026) bis heute (Stand 11.08.2026, insgesamt 60 Updates), neueste zuerst. Interne Testschritte aus der Entwicklung sind ausgelassen – zusammengefasst ist nur, was sich auf dem Server tatsächlich geändert hat und worauf du achten solltest.</p>
   <p class="callout callout--info">Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>Keine Updates gefunden, die den Kriterien entsprechen.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3, Teil eins: drei Lagerblöcke, die neu gebaute Drohne und der Meridian Store
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Neue Funktion</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Bosse</span><span class="mod-badge" style="--mod-color:#4f8f43">Baumaterial &amp; Deko</span><span class="mod-badge" style="--mod-color:#c0533a">Schusswaffen</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Strom</span><span class="mod-badge" style="--mod-color:#3d7dc4">Schienenverkehr</span><span class="mod-badge" style="--mod-color:#3badc9">Himmel</span><span class="mod-badge" style="--mod-color:#c19a2e">Survival</span><span class="mod-badge" style="--mod-color:#d17a34">Fahrzeuge</span></div>
+      <p>Diese Version bringt die ersten fünf der für V3 geplanten Funktionen. Drei neue Lagerblöcke – die Schlickfilterpumpe, die Gegenstände aus dem Wasser holt; das Getreidesilo, das große Mengen eines einzelnen Gegenstands fasst; und die Glasamphore, die eine Flüssigkeit speichert und den Füllstand sichtbar lässt – kommen zusammen mit einer von Grund auf neu gebauten Drohne, die nun Ich-Perspektive-Steuerung, Sprengkopfabwürfe und Truhentransport beherrscht. Hinzu kommt der Meridian Store, ein Laden im Spiel, der die Bestellung per Drohne liefert. Bezahlt wird mit den Smaragden, die Sie ohnehin haben (oder über Ihr MineBank-Konto); eine neue Währung gibt es nicht.</p>
+      <ul><li>Die Schlickfilterpumpe wurde hinzugefügt. Alle 10 Ticks durchsucht sie das Wasser vor sich, holt heruntergefallene Gegenstände heraus und lagert sie intern (5 Stapel). Legt man Proben in ihre 5 Filterplätze, sammelt sie nur diese Sorten. Durch feste Blöcke saugt sie nicht, und ein Trichter kann von unten entnehmen.</li><li>Das Getreidesilo wurde hinzugefügt. Es legt sich auf die zuerst eingefüllte Gegenstandssorte fest und fasst davon bis zu 128 Stapel (8.192 Weizen). Ein Komparator liest die Menge, Trichter befördern Gegenstände in beide Richtungen, und die Sorte lässt sich nur bei leerem Silo zurücksetzen.</li><li>Die Glasamphore wurde hinzugefügt. Sie fasst 8 Eimer einer einzelnen Flüssigkeit, der Füllstand ist von außen sichtbar. Mit einem Eimer füllen oder leeren, die Menge mit einem Komparator auslesen – Flüssigkeiten lassen sich nicht mischen, also vorher leeren. Wird sie mit Behutsamkeit abgebaut, bleibt der Inhalt erhalten.</li><li>Die Drohne wurde von Grund auf neu gebaut: neues Modell, Steuerung aus der Ich-Perspektive, Transport und Abwurf von Sprengköpfen sowie das Aufnehmen und Tragen von Truhen. Beim Steuern wird die Maus nicht eingefangen – die Drohne wird relativ zur Bildschirmmitte gelenkt, mit einer Totzone in der Mitte. Eine große Truhe ist für eine einzelne Drohne zu viel.</li><li>Der Meridian Store wurde hinzugefügt. Bestellen Sie an einem Terminal im Spiel, und eine Lieferdrohne fliegt vom Depot los und setzt das Paket an Ihrem Bake ab. Bezahlen Sie mit den Smaragden im Inventar oder über Ihr MineBank-Konto; Erstattungen kommen auf demselben Weg zurück, auf dem gezahlt wurde.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Hinweise</div>
+          <ul><li>Sprengkopfabwürfe funktionieren nur, wenn auf dem Server ein Schusswaffen-Modul installiert ist. Andernfalls sagt die Drohne das deutlich und es passiert nichts.</li><li>Steuerung, Sprengköpfe und Truhentransport lassen sich in den Servereinstellungen jeweils einzeln abschalten.</li></ul>
+        </div>
+      <h4>Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt</h4><ul><li>Diese Version enthält fünf der fünfzig für V3 geplanten Funktionen (#21, #22, #29, #38 und die erste Phase von #50). Der Rest folgt in späteren Versionen – dies ist nicht das vollständige V3.</li><li>Aussehen und Handhabung der Neuerungen wurden noch nicht auf einem echten Bildschirm geprüft, da in der Entwicklungsumgebung kein Minecraft-Client vorhanden ist. Melden Sie uns bitte alles, was falsch aussieht.</li><li>Dass die Drohne die Maus nicht einfängt, ist Absicht. In Minecraft 26.2 lässt sich eine hängengebliebene Maus nur durch erneutes Anmelden lösen; dieses Risiko wird bewusst vermieden.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

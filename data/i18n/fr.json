@@ -1521,6 +1521,30 @@
         "Cet article ne modifie aucune mécanique du jeu ni aucune valeur par défaut. Il documente sept choses qui fonctionnaient déjà, après vérification dans le code réel des MODs. Le détail complet et la clé de configuration de chacune figurent sur la page « Fonctionnalités ».",
         "La version dans laquelle sont apparus pour la première fois le multiplicateur de prix et le solde en diamants n'a pas été déterminée à la date de cet article. La seule chose confirmée est que les deux sont réellement actifs à la V2.5.1."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, première partie : trois blocs de stockage, le drone refait et la Meridian Store",
+      "summary": "Cette version apporte les cinq premières fonctionnalités prévues pour la V3. Trois nouveaux blocs de stockage — la Pompe filtrante à limon, qui récupère les objets dans l'eau ; le Silo à grain, qui conserve une grande quantité d'un seul objet ; et l'Amphore de verre, qui stocke un fluide dont le niveau reste visible — arrivent avec un drone entièrement refait, désormais doté du pilotage à la première personne, du largage de charges et du transport de coffres. S'y ajoute la Meridian Store, une boutique en jeu qui vous livre votre commande par drone. Le paiement utilise les émeraudes que vous avez déjà (ou votre compte MineBank) ; aucune nouvelle monnaie n'est introduite.",
+      "highlights": [
+        "Ajout de la Pompe filtrante à limon. Toutes les 10 ticks, elle inspecte l'eau devant elle, en retire les objets tombés et les stocke à l'intérieur (5 piles). Placez des échantillons dans ses 5 emplacements de filtre et elle ne ramassera que ces types. Elle n'aspire pas à travers les blocs pleins, et un entonnoir peut puiser par le dessous.",
+        "Ajout du Silo à grain. Il se verrouille sur le premier type d'objet inséré et en conserve jusqu'à 128 piles (8 192 blés). Un comparateur lit la quantité, les entonnoirs font entrer et sortir les objets, et le type ne peut être réinitialisé que lorsque le silo est vide.",
+        "Ajout de l'Amphore de verre. Elle contient 8 seaux d'un seul fluide, le niveau étant visible de l'extérieur. Remplissez-la ou videz-la au seau, lisez la quantité au comparateur, et notez que les fluides ne peuvent pas être mélangés : videz-la d'abord. La casser avec Toucher de soie en conserve le contenu.",
+        "Le drone a été entièrement refait : nouveau modèle, pilotage à la première personne, transport et largage de charges, ramassage et transport de coffres. Le pilotage ne capture pas votre souris — le drone se dirige relativement au centre de l'écran, avec une zone morte au milieu. Un grand coffre est trop lourd pour un seul drone.",
+        "Ajout de la Meridian Store. Commandez depuis un terminal en jeu et un drone de livraison quittera le dépôt pour déposer votre colis à votre balise. Payez avec les émeraudes de votre inventaire ou depuis votre compte MineBank ; les remboursements reviennent par le moyen de paiement utilisé."
+      ],
+      "warnings": [
+        "Le largage de charges ne fonctionne que si un module d'armes à feu est installé sur le serveur. À défaut, le drone l'indique clairement et rien ne se produit.",
+        "Le pilotage, les charges et le transport de coffres peuvent être désactivés séparément dans les réglages du serveur."
+      ],
+      "known_limitations": [
+        "Cette version contient cinq des cinquante fonctionnalités prévues pour la V3 (#21, #22, #29, #38 et la première phase de #50). Les autres suivront dans des versions ultérieures : ceci n'est pas la V3 complète.",
+        "L'apparence et le ressenti de tout ce qui est ajouté ici n'ont pas encore été vérifiés sur un véritable écran, faute de client Minecraft dans l'environnement de développement. Signalez-nous tout ce qui semble anormal.",
+        "Le drone ne capture délibérément pas la souris. Dans Minecraft 26.2, il n'existe aucun moyen de récupérer une souris bloquée sans se reconnecter ; ce risque est donc évité par conception."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1577,21 +1601,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Prochaine mise à jour",
-        "title": "La prochaine mise à jour majeure est la V3",
+        "badge": "En cours de diffusion",
+        "title": "La V3 a commencé à être diffusée (5 fonctionnalités sur 50)",
         "groups": [
           {
             "subtitle": "Ce qui est en cours",
             "bullets": [
-              "La prochaine mise à jour majeure est la V3. Elle prévoit 50 nouvelles fonctionnalités, centrées sur l'exploration, la défense, le stockage et de nouveaux reliefs.",
-              "Plutôt que de tout sortir d'un coup dans une seule version, elle est construite morceau par morceau sur plusieurs versions. Une fonctionnalité de la V3 peut donc arriver d'abord dans une version de la série V2. De fait, le lance-missiles à visée sur carte, la pièce maîtresse de la V3, est déjà livré, réparti sur les versions V2.4.5 à V2.4.9.",
-              "La présentation de son contenu est rassemblée sur la page « Mise à jour V3 » qui lui est consacrée. Elle n'est pas répétée ici.",
-              "Aucune date de sortie n'est fixée. Ce dont l'implémentation est confirmée est publié au fur et à mesure sur la page « Historique des mises à jour »."
+              "La V3 est une mise à jour majeure prévoyant 50 nouvelles fonctionnalités, axées sur l'exploration, la défense, le stockage et de nouveaux terrains. La diffusion a commencé avec la V3.0.0 le 29 août 2026.",
+              "Plutôt que d'arriver d'un seul bloc, elle est construite morceau par morceau sur plusieurs versions — des fonctionnalités V3 sont donc aussi arrivées dans des versions de la série V2. Le lance-missiles à visée cartographique a été diffusé de la V2.4.5 à la V2.4.9 ; les trois blocs de stockage, le drone refait et la Meridian Store sont arrivés en V3.0.0.",
+              "Cinq des cinquante ont été diffusées à ce jour. Aucune date n'est fixée pour les quarante-cinq restantes. Tout ce qui est confirmé comme construit paraît au fil de l'eau sur la page Journal des modifications."
             ]
           }
         ],
         "link": {
-          "label": "Voir le contenu sur la page V3"
+          "label": "Voir le contenu de la V3.0.0 dans le Journal des modifications"
         }
       },
       {

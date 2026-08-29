@@ -1522,6 +1522,30 @@
         "Este artículo no cambia ni una sola mecánica del juego ni ningún valor de fábrica. Documenta siete cosas que ya estaban funcionando, después de comprobarlas contra el código real de los MODs. El detalle completo y la clave de configuración de cada una están en la página de «Funciones».",
         "En qué versión aparecieron por primera vez el multiplicador de precios y el saldo en diamantes no se ha determinado a fecha de este artículo. Lo único confirmado es que ambos están realmente activos a fecha de la V2.5.1."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, primera parte: tres bloques de almacenamiento, el dron rehecho y la Meridian Store",
+      "summary": "Esta versión trae las cinco primeras funciones previstas para V3. Tres bloques de almacenamiento nuevos —la Bomba de Filtrado de Limo, que recoge objetos del agua; el Silo de Grano, que guarda gran cantidad de un solo objeto; y la Ánfora de Cristal, que almacena un fluido y deja ver el nivel— llegan junto a un dron rehecho desde cero, ahora con pilotaje en primera persona, lanzamiento de cabezas explosivas y transporte de cofres. También se añade la Meridian Store, una tienda dentro del juego que te envía el pedido por dron. El pago usa las esmeraldas que ya tienes (o tu cuenta de MineBank); no se introduce ninguna moneda nueva.",
+      "highlights": [
+        "Añadida la Bomba de Filtrado de Limo. Cada 10 ticks examina el agua que tiene delante, recoge los objetos caídos y los guarda dentro (5 pilas). Si pones muestras en sus 5 ranuras de filtro, solo recogerá esos tipos. No aspira a través de bloques sólidos y una tolva puede extraer por debajo.",
+        "Añadido el Silo de Grano. Se fija al primer tipo de objeto introducido y guarda hasta 128 pilas (8.192 de trigo). Un comparador lee la cantidad, las tolvas mueven objetos en ambos sentidos y el tipo solo puede reiniciarse con el silo vacío.",
+        "Añadida el Ánfora de Cristal. Guarda 8 cubos de un único fluido y el nivel se ve desde fuera. Se llena y vacía con un cubo, la cantidad se lee con un comparador y no se pueden mezclar fluidos: vacíala primero. Romperla con Toque de Seda conserva el contenido.",
+        "El dron se ha rehecho por completo: modelo nuevo, pilotaje en primera persona, transporte y lanzamiento de cabezas explosivas, y recogida y transporte de cofres. El pilotaje no captura el ratón: se dirige de forma relativa al centro de la pantalla, con una zona muerta en el medio. Un cofre grande es demasiado para un solo dron.",
+        "Añadida la Meridian Store. Haz el pedido desde un terminal del juego y un dron de reparto volará desde el almacén para dejar el paquete en tu baliza. Paga con las esmeraldas del inventario o desde tu cuenta de MineBank; los reembolsos vuelven por la misma vía del pago."
+      ],
+      "warnings": [
+        "El lanzamiento de cabezas explosivas solo funciona si hay un módulo de armas de fuego instalado en el servidor. Si no lo hay, el dron lo indica claramente y no ocurre nada.",
+        "El pilotaje, las cabezas explosivas y el transporte de cofres pueden desactivarse por separado en la configuración del servidor."
+      ],
+      "known_limitations": [
+        "Esta versión incluye cinco de las cincuenta funciones previstas para V3 (#21, #22, #29, #38 y la primera fase de #50). El resto llegará en versiones posteriores: esta no es la V3 completa.",
+        "El aspecto y el manejo de todo lo añadido aquí aún no se han comprobado en una pantalla real, porque no hay cliente de Minecraft en el entorno de desarrollo. Avísanos si algo se ve mal.",
+        "El dron no captura el ratón de forma deliberada. En Minecraft 26.2 no hay manera de recuperar un ratón bloqueado salvo volviendo a entrar, así que se evita ese riesgo por diseño."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1578,21 +1602,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Próxima actualización",
-        "title": "La próxima actualización mayor es la V3",
+        "badge": "En distribución",
+        "title": "V3 ha empezado a distribuirse (5 de 50 funciones)",
         "groups": [
           {
             "subtitle": "Lo que está en marcha",
             "bullets": [
-              "La próxima actualización mayor es la V3. Prevé 50 funciones nuevas, centradas en la exploración, la defensa, el almacenamiento y nuevos terrenos.",
-              "En lugar de sacarlo todo de golpe en una sola versión, se está construyendo poco a poco a lo largo de varias versiones. Por eso, una función de la V3 puede llegar antes en una versión de la serie V2. De hecho, el lanzamisiles con puntería sobre el mapa, la pieza estrella de la V3, ya se ha publicado repartido entre la V2.4.5 y la V2.4.9.",
-              "La presentación de su contenido está recogida en su propia página, «Actualización V3». Aquí no se repite.",
-              "No hay fecha de lanzamiento. Lo que se confirma como implementado aparece cada vez en la página «Historial de actualizaciones»."
+              "V3 es una actualización mayor que prevé 50 funciones nuevas, centradas en exploración, defensa, almacenamiento y terreno nuevo. La distribución comenzó con V3.0.0 el 29 de agosto de 2026.",
+              "En lugar de llegar de una sola vez, se construye por partes a lo largo de varias versiones, por lo que algunas funciones de V3 también han llegado en versiones de la serie V2. El lanzamisiles con puntería sobre mapa se distribuyó entre V2.4.5 y V2.4.9; los tres bloques de almacenamiento, el dron rehecho y la Meridian Store llegaron en V3.0.0.",
+              "Hasta ahora se han distribuido cinco de las cincuenta. No hay fecha para las cuarenta y cinco restantes. Todo lo que se confirme como construido aparecerá en la página del Registro de cambios."
             ]
           }
         ],
         "link": {
-          "label": "Ver el contenido en la página de la V3"
+          "label": "Ver el contenido de V3.0.0 en el Registro de cambios"
         }
       },
       {

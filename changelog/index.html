@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">ホーム</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新履歴</span>
   <h1>更新履歴</h1>
-  <p class="lede">初版(v1.0.0、2026-07-15)から現在(2026-08-13 時点、全 59 回のアップデート)までを新しい順に掲載しています。開発時の内部検証手順などは省き、実際にサーバーで何が変わったか・何に注意すべきかだけをまとめています。</p>
+  <p class="lede">初版(v1.0.0、2026-07-15)から現在(2026-08-13 時点、全 60 回のアップデート)までを新しい順に掲載しています。開発時の内部検証手順などは省き、実際にサーバーで何が変わったか・何に注意すべきかだけをまとめています。</p>
   <p class="callout callout--info">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>条件に一致する更新はありません。</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3 第1弾:収納ブロック3種、ドローンの全面刷新、店舗「Meridian Store」
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新機能</span><span class="mod-badge" style="--mod-color:#7d7d52">バックルームズ</span><span class="mod-badge" style="--mod-color:#9349b8">ボス</span><span class="mod-badge" style="--mod-color:#4f8f43">建材・装飾</span><span class="mod-badge" style="--mod-color:#c0533a">銃火器</span><span class="mod-badge" style="--mod-color:#b0559b">二相楽園</span><span class="mod-badge" style="--mod-color:#d4b32e">電力</span><span class="mod-badge" style="--mod-color:#3d7dc4">鉄道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">サバイバル</span><span class="mod-badge" style="--mod-color:#d17a34">乗り物</span></div>
+      <p>V3で予定している機能のうち、まず5件をこの版でお届けします。水中に落ちたアイテムを吸い上げる「砂泥ろ過ポンプ」、1種類だけを大量にためる「穀物サイロ」、液体をためて残量が透けて見える「ガラスのアンフォラ」の収納3種に加えて、ドローンを一から作り直し、一人称視点での操縦・弾頭の投下・チェストの運搬ができるようになりました。さらに、ゲーム内から注文するとドローンが届けてくれる店舗「Meridian Store」を追加しています。支払いはこれまでどおりエメラルド(またはMineBankの個人口座)で、新しい通貨は増えません。</p>
+      <ul><li>「砂泥ろ過ポンプ」を追加しました。向いている方向の水中を10tickごとに調べ、落ちているアイテムを吸い上げて内部(5スタック分)にためます。フィルター枠5つに見本を入れると、その種類だけを拾います。壁越しには吸いません。下からホッパーで取り出せます。</li><li>「穀物サイロ」を追加しました。最初に入れたアイテム1種類だけを、最大128スタックためます(小麦なら8,192個)。量はコンパレーターで読み取れ、ホッパーでの出し入れにも対応します。空のときだけ、ためる種類を選び直せます。</li><li>「ガラスのアンフォラ」を追加しました。1種類の液体を8バケツ分ためられ、外から残量が見えます。バケツで注ぐ・汲むができ、量はコンパレーターで読み取れます。違う液体は混ぜられません(先に空にしてください)。シルクタッチで壊すと中身を保ったまま回収できます。</li><li>ドローンを一から作り直しました。見た目を作り直したうえで、一人称視点での操縦、弾頭を積んでの投下、チェストの持ち上げと運搬ができます。操縦中はマウスを掴まず、画面中央からの相対操作で動かします(中央付近は不感帯)。ラージチェストは1機では運べません。</li><li>店舗「Meridian Store」を追加しました。ゲーム内の端末から注文すると、配送デポから配達ドローンが飛んできて、受取ビーコンに小包を届けます。支払いはインベントリのエメラルドか、MineBankの個人口座から選べます。返金は支払ったのと同じ方法で戻ります。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意点</div>
+          <ul><li>ドローンの弾頭投下は、サーバーに銃火器MODが入っている場合のみ使えます。入っていない場合はその旨を表示して何も起きません。</li><li>ドローンの操縦・弾頭・チェスト運搬は、いずれもサーバー設定で個別に無効にできます。</li></ul>
+        </div>
+      <h4>この時点で未実装・未確認だったこと</h4><ul><li>この版はV3で予定している50機能のうち5件(#21・#22・#29・#38、および#50の第1段階)を収録したものです。残りは今後の版で順次お届けします。V3の全機能が揃った版ではありません。</li><li>今回追加した見た目と操作感は、開発環境にMinecraftのクライアントが無いため、実際の画面ではまだ確認できていません。気になる点があればお知らせください。</li><li>ドローンの操縦がマウスを掴まない方式なのは意図的です。Minecraft 26.2ではマウスを掴んだまま解放できなくなると再ログイン以外に復帰手段が無いため、その危険を避けています。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

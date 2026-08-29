@@ -1519,6 +1519,30 @@
         "Bu yazı, oyun içindeki hiçbir düzeneği ve hiçbir varsayılan değeri değiştirmiyor. Zaten çalışmakta olan yedi düzeneği, gerçek MOD kodu incelenerek yazıya dökmektedir. Ayrıntılı içerik ve her birinin config anahtarı «Özellikler» sayfasında yer alıyor.",
         "Fiyat çarpanının ve elmas bakiyesinin hangi sürümde ilk kez eklendiği bu yazının hazırlandığı tarihte belirlenmedi. Doğrulanabilen tek şey, V2.5.1 itibarıyla ikisinin de gerçekten çalışıyor olduğudur."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, birinci bölüm: üç depolama bloğu, yeniden yapılan drone ve Meridian Store",
+      "summary": "Bu sürüm, V3 için planlanan özelliklerin ilk beşini getiriyor. Üç yeni depolama bloğu — sudaki eşyaları toplayan Silt Filtre Pompası, tek bir eşyayı büyük miktarda saklayan Tahıl Silosu ve içindeki sıvının seviyesi dışarıdan görünen Cam Amfora — sıfırdan yeniden yapılan, artık birinci şahıs kumandası, savaş başlığı bırakma ve sandık taşıma yeteneklerine sahip bir drone ile birlikte geliyor. Ayrıca siparişinizi drone ile getiren oyun içi mağaza Meridian Store eklendi. Ödeme, halihazırda sahip olduğunuz zümrütlerle (veya MineBank hesabınızla) yapılır; yeni bir para birimi eklenmez.",
+      "highlights": [
+        "Silt Filtre Pompası eklendi. Her 10 tick'te önündeki suyu tarar, düşmüş eşyaları çıkarır ve içinde saklar (5 yığın). 5 filtre yuvasına örnek koyarsanız yalnızca o türleri toplar. Katı blokların ardından çekmez; huni alttan alabilir.",
+        "Tahıl Silosu eklendi. İlk konulan eşya türüne kilitlenir ve o türden 128 yığına kadar saklar (8.192 buğday). Miktarı bir karşılaştırıcı okur, huniler eşyayı iki yönde taşır ve tür yalnızca silo boşken sıfırlanabilir.",
+        "Cam Amfora eklendi. Tek bir sıvıdan 8 kova alır ve seviye dışarıdan görünür. Kovayla doldurulup boşaltılır, miktarı karşılaştırıcıyla okunur; sıvılar karıştırılamaz, önce boşaltın. İpeksi Dokunuş ile kırıldığında içindekiler korunur.",
+        "Drone sıfırdan yeniden yapıldı: yeni model, birinci şahıs kumandası, savaş başlığı taşıma ve bırakma, sandık kaldırma ve taşıma. Kumanda sırasında fare yakalanmaz — drone ekranın merkezine göre yönlendirilir ve ortada bir ölü bölge vardır. Büyük sandık tek bir drone için fazla ağırdır.",
+        "Meridian Store eklendi. Oyun içi bir terminalden sipariş verin; teslimat dronu depodan havalanıp paketinizi işaret fenerinize bırakır. Envanterinizdeki zümrütlerle veya MineBank hesabınızdan ödeyin; iadeler ödemeyi yaptığınız yoldan geri döner."
+      ],
+      "warnings": [
+        "Savaş başlığı bırakma yalnızca sunucuda bir ateşli silah modülü kuruluysa çalışır. Kurulu değilse drone bunu açıkça bildirir ve hiçbir şey olmaz.",
+        "Drone kumandası, savaş başlıkları ve sandık taşıma sunucu ayarlarından ayrı ayrı kapatılabilir."
+      ],
+      "known_limitations": [
+        "Bu sürüm, V3 için planlanan elli özellikten beşini içerir (#21, #22, #29, #38 ve #50'nin ilk aşaması). Geri kalanı sonraki sürümlerde gelecek — bu, V3'ün tamamı değildir.",
+        "Burada eklenen her şeyin görünümü ve his olarak nasıl olduğu gerçek bir ekranda henüz denetlenmedi; çünkü geliştirme ortamında Minecraft istemcisi yok. Yanlış görünen bir şey olursa bize bildirin.",
+        "Drone'un fareyi yakalamaması bilinçli bir tercihtir. Minecraft 26.2'de takılı kalan bir fare yakalamasını yeniden giriş yapmadan çözmenin yolu yoktur; bu risk tasarım gereği önlenmiştir."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1575,21 +1599,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Sonraki güncelleme",
-        "title": "Bir sonraki büyük güncelleme V3",
+        "badge": "Yayında",
+        "title": "V3 yayınlanmaya başladı (50 özellikten 5'i)",
         "groups": [
           {
-            "subtitle": "Şu anda üzerinde çalışılanlar",
+            "subtitle": "Devam edenler",
             "bullets": [
-              "Bir sonraki büyük güncelleme V3. Keşif, savunma, depolama ve yeni arazi biçimleri ağırlıklı olmak üzere 50 yeni özellik planlanıyor.",
-              "Hepsi tek bir sürümde birden çıkmıyor; birden fazla sürüme bölünerek parça parça geliştiriliyor. Bu yüzden bir V3 özelliği önce V2 serisinden bir sürümde yer alabiliyor. Nitekim V3'ün en dikkat çekici parçası olan harita üzerinden nişan alınan füze rampası, V2.4.5 ile V2.4.9 arasına yayılarak çoktan yayımlandı.",
-              "İçeriğin tanıtımı, kendisine ayrılmış «V3 Güncellemesi» sayfasında toplanmıştır. Burada tekrarlanmıyor.",
-              "Yayın tarihi belirlenmedi. Eklendiği kesinleşen her şey, sırası geldikçe «Güncelleme Geçmişi» sayfasına işleniyor."
+              "V3, keşif, savunma, depolama ve yeni araziye odaklanan 50 yeni özellik planlayan büyük bir güncellemedir. Yayın 29 Ağustos 2026'da V3.0.0 ile başladı.",
+              "Hepsi bir anda gelmek yerine birkaç sürüme yayılarak parça parça inşa ediliyor; bu yüzden bazı V3 özellikleri V2 serisi sürümlerde de yer aldı. Harita nişanlı füze rampası V2.4.5 ile V2.4.9 arasında; üç depolama bloğu, yeniden yapılan drone ve Meridian Store ise V3.0.0'da yayınlandı.",
+              "Şu ana kadar ellide beşi yayınlandı. Kalan kırk beşi için bir tarih yok. Yapıldığı doğrulanan her şey, olduğu gibi Değişiklik Günlüğü sayfasına eklenir."
             ]
           }
         ],
         "link": {
-          "label": "İçeriği V3 sayfasında görün"
+          "label": "V3.0.0'ın içeriğini Değişiklik Günlüğü'nde görün"
         }
       },
       {

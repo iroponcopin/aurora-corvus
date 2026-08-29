@@ -1518,6 +1518,30 @@
         "Tulisan ini tidak mengubah satu pun mekanisme di dalam game maupun nilai bawaannya. Ia menuliskan tujuh mekanisme yang memang sudah berjalan, setelah diperiksa pada kode MOD yang sebenarnya. Rincian lengkap dan kunci config masing-masing dimuat di halaman «Fitur».",
         "Versi mana yang pertama kali memasukkan pengali harga dan saldo berlian belum ditentukan pada saat tulisan ini dibuat. Yang bisa dipastikan hanyalah bahwa keduanya memang benar-benar berjalan per V2.5.1."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, bagian satu: tiga blok penyimpanan, drone yang dibangun ulang, dan Meridian Store",
+      "summary": "Rilis ini membawa lima fitur pertama yang direncanakan untuk V3. Tiga blok penyimpanan baru — Pompa Penyaring Lumpur, yang mengangkat barang dari air; Silo Biji-bijian, yang menyimpan satu jenis barang dalam jumlah besar; dan Amfora Kaca, yang menyimpan cairan dengan ketinggian yang terlihat dari luar — hadir bersama drone yang dibangun ulang dari nol, kini dengan kendali sudut pandang orang pertama, penjatuhan hulu ledak, dan pengangkutan peti. Ada pula Meridian Store, toko dalam game yang mengantar pesanan Anda dengan drone. Pembayaran memakai zamrud yang sudah Anda miliki (atau rekening MineBank); tidak ada mata uang baru.",
+      "highlights": [
+        "Menambahkan Pompa Penyaring Lumpur. Setiap 10 tick ia memeriksa air di depannya, mengangkat barang yang jatuh, dan menyimpannya di dalam (5 tumpuk). Masukkan contoh ke 5 slot filternya dan ia hanya akan mengumpulkan jenis tersebut. Ia tidak menyedot menembus blok padat, dan hopper dapat mengambil dari bawah.",
+        "Menambahkan Silo Biji-bijian. Ia terkunci pada jenis barang yang pertama dimasukkan dan menampung hingga 128 tumpuk (8.192 gandum). Comparator membaca jumlahnya, hopper memindahkan barang ke dua arah, dan jenisnya hanya bisa diatur ulang saat silo kosong.",
+        "Menambahkan Amfora Kaca. Menampung 8 ember satu jenis cairan dengan ketinggian terlihat dari luar. Isi atau kosongkan dengan ember, baca jumlahnya dengan comparator, dan perhatikan bahwa cairan tidak bisa dicampur — kosongkan dulu. Menambangnya dengan Silk Touch mempertahankan isinya.",
+        "Drone dibangun ulang dari nol: model baru, kendali sudut pandang orang pertama, pengangkutan dan penjatuhan hulu ledak, serta mengangkat dan membawa peti. Saat dikendalikan, mouse tidak dikunci — drone diarahkan relatif terhadap pusat layar, dengan zona mati di tengah. Peti besar terlalu berat untuk satu drone.",
+        "Menambahkan Meridian Store. Pesan dari terminal dalam game dan drone pengantar akan terbang dari depot untuk menjatuhkan paket di beacon Anda. Bayar dengan zamrud di inventaris atau dari rekening MineBank; pengembalian dana kembali melalui jalur pembayaran yang sama."
+      ],
+      "warnings": [
+        "Penjatuhan hulu ledak hanya berfungsi jika modul senjata api terpasang di server. Tanpa itu, drone akan menyatakannya dengan jelas dan tidak terjadi apa-apa.",
+        "Kendali drone, hulu ledak, dan pengangkutan peti masing-masing dapat dinonaktifkan secara terpisah di pengaturan server."
+      ],
+      "known_limitations": [
+        "Rilis ini memuat lima dari lima puluh fitur yang direncanakan untuk V3 (#21, #22, #29, #38, dan tahap pertama #50). Sisanya menyusul pada rilis berikutnya — ini bukan V3 yang lengkap.",
+        "Tampilan dan rasa dari semua yang ditambahkan di sini belum diperiksa pada layar sungguhan, karena tidak ada klien Minecraft di lingkungan pengembangan. Beri tahu kami jika ada yang terlihat keliru.",
+        "Drone sengaja tidak mengunci mouse. Di Minecraft 26.2 tidak ada cara memulihkan kuncian mouse yang macet selain masuk kembali, jadi risiko itu dihindari sejak perancangan."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1574,21 +1598,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Pembaruan berikutnya",
-        "title": "Pembaruan besar berikutnya adalah V3",
+        "badge": "Sedang dirilis",
+        "title": "V3 mulai dirilis (5 dari 50 fitur)",
         "groups": [
           {
-            "subtitle": "Yang sedang dikerjakan",
+            "subtitle": "Yang sedang berjalan",
             "bullets": [
-              "Pembaruan besar berikutnya adalah V3. Direncanakan 50 fitur baru, berpusat pada penjelajahan, pertahanan, penyimpanan, dan bentang alam baru.",
-              "Alih-alih dikeluarkan sekaligus dalam satu rilis, pengerjaannya dipecah ke beberapa rilis sedikit demi sedikit. Karena itu fitur V3 bisa lebih dulu masuk ke rilis seri V2. Nyatanya peluncur rudal berpengarah peta, andalan V3, sudah dirilis bertahap pada V2.4.5 sampai V2.4.9.",
-              "Penjelasan isinya dirangkum di halaman «Pembaruan V3» tersendiri. Di sini tidak diulang.",
-              "Tanggal rilisnya belum ditentukan. Apa pun yang sudah dipastikan terpasang akan muncul di halaman «Riwayat Pembaruan» setiap kalinya."
+              "V3 adalah pembaruan besar yang merencanakan 50 fitur baru, berfokus pada penjelajahan, pertahanan, penyimpanan, dan medan baru. Perilisan dimulai dengan V3.0.0 pada 29 Agustus 2026.",
+              "Alih-alih hadir sekaligus, ia dibangun sedikit demi sedikit di beberapa rilis — sehingga fitur V3 juga sempat hadir lebih dulu di rilis seri V2. Peluncur rudal berpembidik peta dirilis pada V2.4.5 hingga V2.4.9; tiga blok penyimpanan, drone yang dibangun ulang, dan Meridian Store dirilis pada V3.0.0.",
+              "Sejauh ini lima dari lima puluh telah dirilis. Belum ada tanggal untuk empat puluh lima sisanya. Apa pun yang dipastikan selesai akan muncul di halaman Catatan Perubahan seiring waktu."
             ]
           }
         ],
         "link": {
-          "label": "Lihat isinya di halaman V3"
+          "label": "Lihat isi V3.0.0 di halaman Catatan Perubahan"
         }
       },
       {

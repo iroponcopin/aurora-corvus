@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">首页</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">更新日志</span>
   <h1>更新日志</h1>
-  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 59 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
+  <p class="lede">本页按时间倒序列出了从初版（v1.0.0，2026-07-15）到现在（截至 2026-08-11，共 60 次更新）的全部更新记录。开发过程中的内部验证步骤已省略，只保留了服务器中实际发生的变化以及需要注意的事项。</p>
   <p class="callout callout--info">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>没有符合条件的更新记录。</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3 第一批:三种存储方块、重制的无人机,以及 Meridian 商店
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">新功能</span><span class="mod-badge" style="--mod-color:#7d7d52">后室</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">建材、装饰</span><span class="mod-badge" style="--mod-color:#c0533a">枪械</span><span class="mod-badge" style="--mod-color:#b0559b">二相乐园</span><span class="mod-badge" style="--mod-color:#d4b32e">电力</span><span class="mod-badge" style="--mod-color:#3d7dc4">铁道</span><span class="mod-badge" style="--mod-color:#3badc9">天空</span><span class="mod-badge" style="--mod-color:#c19a2e">生存</span><span class="mod-badge" style="--mod-color:#d17a34">载具</span></div>
+      <p>本次更新带来 V3 计划中的前五项功能。三种新的存储方块——可从水中拾取掉落物的淤泥过滤泵、可大量存放单一物品的谷物筒仓,以及可存放液体并透过玻璃显示余量的玻璃双耳瓶——与完全重制的无人机一同登场。无人机现在支持第一人称操控、投放弹头与搬运箱子。此外还新增了 Meridian 商店:在游戏内下单后,由无人机将货物送到你手上。付款仍使用你已有的绿宝石(或 MineBank 账户),不会引入新的货币。</p>
+      <ul><li>新增淤泥过滤泵。每 10 刻检查一次前方水域,将掉落物吸入并存放于内部(5 组)。在 5 个过滤槽中放入样品后,将只收集对应种类。它不会隔着实心方块吸取,漏斗可从下方取出。</li><li>新增谷物筒仓。以首次放入的物品种类为准,最多存放 128 组(小麦为 8,192 个)。可用比较器读取数量,漏斗可进出物品;只有在筒仓为空时才能重置种类。</li><li>新增玻璃双耳瓶。可存放单一液体 8 桶,余量从外部可见。可用桶装入或取出,数量可用比较器读取;不同液体无法混合,请先清空。使用精准采集破坏可保留内容物。</li><li>无人机已彻底重制:全新模型、第一人称操控、弹头搭载与投放,以及箱子的拾取与搬运。操控时不会锁定鼠标——以屏幕中心为基准进行相对操控,中心附近设有盲区。大型箱子单机无法搬运。</li><li>新增 Meridian 商店。在游戏内终端下单后,配送无人机会从仓库起飞,将包裹投放至你的信标处。可选择使用背包中的绿宝石或 MineBank 账户付款;退款将按原付款方式退回。</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ 注意事项</div>
+          <ul><li>无人机投放弹头仅在服务器安装了枪械模块时可用。未安装时,无人机会明确提示且不会有任何动作。</li><li>无人机的操控、弹头与箱子搬运均可在服务器设置中分别停用。</li></ul>
+        </div>
+      <h4>截至当时尚未实现或未确认的内容</h4><ul><li>本版本包含 V3 计划的五十项功能中的五项(#21、#22、#29、#38,以及 #50 的第一阶段)。其余功能将在后续版本中陆续推出——这并非完整的 V3。</li><li>由于开发环境中没有 Minecraft 客户端,此次新增内容的外观与手感尚未在实际画面上确认。如发现异常请告知我们。</li><li>无人机刻意不锁定鼠标。在 Minecraft 26.2 中,鼠标一旦被锁死,除重新登录外没有其他恢复手段,因此在设计上规避了该风险。</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

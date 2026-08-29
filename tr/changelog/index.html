@@ -119,7 +119,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Ana Sayfa</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v3/">V3</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -207,7 +206,7 @@
 <div class="hero">
   <span class="hero__eyebrow">Güncelleme Geçmişi</span>
   <h1>Güncelleme Geçmişi</h1>
-  <p class="lede">İlk sürümden (v1.0.0, 2026-07-15) bugüne (2026-08-11 itibarıyla, toplam 59 güncelleme) kadar yapılan tüm güncellemeler en yeniden en eskiye doğru listelenmiştir. Geliştirme sürecindeki iç test adımları gibi ayrıntılar çıkarılmış; yalnızca sunucuda gerçekten neyin değiştiği ve nelere dikkat edilmesi gerektiği özetlenmiştir.</p>
+  <p class="lede">İlk sürümden (v1.0.0, 2026-07-15) bugüne (2026-08-11 itibarıyla, toplam 60 güncelleme) kadar yapılan tüm güncellemeler en yeniden en eskiye doğru listelenmiştir. Geliştirme sürecindeki iç test adımları gibi ayrıntılar çıkarılmış; yalnızca sunucuda gerçekten neyin değiştiği ve nelere dikkat edilmesi gerektiği özetlenmiştir.</p>
   <p class="callout callout--info">Gösterilen hasar, hız gibi değerler MOD&#x27;un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.</p>
 </div>
 
@@ -225,6 +224,21 @@
 
 <p id="changelogEmpty" class="empty-state" hidden>Bu koşullara uyan bir güncelleme bulunamadı.</p>
 <div class="timeline" id="changelogTimeline">
+<article class="timeline-entry" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles">
+      <div class="timeline-entry__date">2026-08-29</div>
+      <h3 class="timeline-entry__title">
+        <span class="timeline-entry__release">V3.0.0</span> — V3, birinci bölüm: üç depolama bloğu, yeniden yapılan drone ve Meridian Store
+      </h3>
+      <div class="badge-row"><span class="type-badge type-release">Yeni Özellik</span><span class="mod-badge" style="--mod-color:#7d7d52">Backrooms</span><span class="mod-badge" style="--mod-color:#9349b8">Boss</span><span class="mod-badge" style="--mod-color:#4f8f43">Yapı ve Dekorasyon</span><span class="mod-badge" style="--mod-color:#c0533a">Silahlar</span><span class="mod-badge" style="--mod-color:#b0559b">Planarcadia</span><span class="mod-badge" style="--mod-color:#d4b32e">Elektrik</span><span class="mod-badge" style="--mod-color:#3d7dc4">Demiryolu</span><span class="mod-badge" style="--mod-color:#3badc9">Gökyüzü</span><span class="mod-badge" style="--mod-color:#c19a2e">Hayatta Kalma</span><span class="mod-badge" style="--mod-color:#d17a34">Araçlar</span></div>
+      <p>Bu sürüm, V3 için planlanan özelliklerin ilk beşini getiriyor. Üç yeni depolama bloğu — sudaki eşyaları toplayan Silt Filtre Pompası, tek bir eşyayı büyük miktarda saklayan Tahıl Silosu ve içindeki sıvının seviyesi dışarıdan görünen Cam Amfora — sıfırdan yeniden yapılan, artık birinci şahıs kumandası, savaş başlığı bırakma ve sandık taşıma yeteneklerine sahip bir drone ile birlikte geliyor. Ayrıca siparişinizi drone ile getiren oyun içi mağaza Meridian Store eklendi. Ödeme, halihazırda sahip olduğunuz zümrütlerle (veya MineBank hesabınızla) yapılır; yeni bir para birimi eklenmez.</p>
+      <ul><li>Silt Filtre Pompası eklendi. Her 10 tick&#x27;te önündeki suyu tarar, düşmüş eşyaları çıkarır ve içinde saklar (5 yığın). 5 filtre yuvasına örnek koyarsanız yalnızca o türleri toplar. Katı blokların ardından çekmez; huni alttan alabilir.</li><li>Tahıl Silosu eklendi. İlk konulan eşya türüne kilitlenir ve o türden 128 yığına kadar saklar (8.192 buğday). Miktarı bir karşılaştırıcı okur, huniler eşyayı iki yönde taşır ve tür yalnızca silo boşken sıfırlanabilir.</li><li>Cam Amfora eklendi. Tek bir sıvıdan 8 kova alır ve seviye dışarıdan görünür. Kovayla doldurulup boşaltılır, miktarı karşılaştırıcıyla okunur; sıvılar karıştırılamaz, önce boşaltın. İpeksi Dokunuş ile kırıldığında içindekiler korunur.</li><li>Drone sıfırdan yeniden yapıldı: yeni model, birinci şahıs kumandası, savaş başlığı taşıma ve bırakma, sandık kaldırma ve taşıma. Kumanda sırasında fare yakalanmaz — drone ekranın merkezine göre yönlendirilir ve ortada bir ölü bölge vardır. Büyük sandık tek bir drone için fazla ağırdır.</li><li>Meridian Store eklendi. Oyun içi bir terminalden sipariş verin; teslimat dronu depodan havalanıp paketinizi işaret fenerinize bırakır. Envanterinizdeki zümrütlerle veya MineBank hesabınızdan ödeyin; iadeler ödemeyi yaptığınız yoldan geri döner.</li></ul>
+      
+      <div class="callout callout--warn">
+          <div class="callout__title">⚠ Dikkat Edilmesi Gerekenler</div>
+          <ul><li>Savaş başlığı bırakma yalnızca sunucuda bir ateşli silah modülü kuruluysa çalışır. Kurulu değilse drone bunu açıkça bildirir ve hiçbir şey olmaz.</li><li>Drone kumandası, savaş başlıkları ve sandık taşıma sunucu ayarlarından ayrı ayrı kapatılabilir.</li></ul>
+        </div>
+      <h4>Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar</h4><ul><li>Bu sürüm, V3 için planlanan elli özellikten beşini içerir (#21, #22, #29, #38 ve #50&#x27;nin ilk aşaması). Geri kalanı sonraki sürümlerde gelecek — bu, V3&#x27;ün tamamı değildir.</li><li>Burada eklenen her şeyin görünümü ve his olarak nasıl olduğu gerçek bir ekranda henüz denetlenmedi; çünkü geliştirme ortamında Minecraft istemcisi yok. Yanlış görünen bir şey olursa bize bildirin.</li><li>Drone&#x27;un fareyi yakalamaması bilinçli bir tercihtir. Minecraft 26.2&#x27;de takılı kalan bir fare yakalamasını yeniden giriş yapmadan çözmenin yolu yoktur; bu risk tasarım gereği önlenmiştir.</li></ul>
+    </article>
 <article class="timeline-entry" data-type="disclosure" data-mods="survival sky planarcadia deco power vehicles">
       <div class="timeline-entry__date">2026-08-28</div>
       <h3 class="timeline-entry__title">

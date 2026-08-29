@@ -1523,6 +1523,30 @@
         "Questo articolo non modifica nessuna meccanica di gioco e nessun valore predefinito. Documenta sette cose che erano già in funzione, dopo averle verificate sul codice reale delle mod. I dettagli completi e la chiave di configurazione di ciascuna sono sulla pagina «Funzionalità».",
         "In quale versione siano comparsi per la prima volta il moltiplicatore dei prezzi e il saldo in diamanti non è stato determinato alla data di questo articolo. L'unica cosa confermata è che entrambi risultano davvero attivi alla V2.5.1."
       ]
+    },
+    {
+      "id": "v3.0.0",
+      "release": "V3.0.0",
+      "date": "2026-08-29",
+      "title": "V3, parte prima: tre blocchi di stoccaggio, il drone rifatto e il Meridian Store",
+      "summary": "Questa versione porta le prime cinque funzionalità previste per la V3. Tre nuovi blocchi di stoccaggio — la Pompa Filtrante per Limo, che raccoglie gli oggetti dall'acqua; il Silo per Cereali, che conserva grandi quantità di un solo oggetto; e l'Anfora di Vetro, che immagazzina un fluido lasciandone vedere il livello — arrivano insieme a un drone ricostruito da zero, ora con pilotaggio in prima persona, sgancio di testate e trasporto di casse. C'è anche il Meridian Store, un negozio in gioco che ti consegna l'ordine con un drone. Il pagamento usa gli smeraldi che hai già (o il tuo conto MineBank); non viene introdotta alcuna nuova valuta.",
+      "highlights": [
+        "Aggiunta la Pompa Filtrante per Limo. Ogni 10 tick esamina l'acqua davanti a sé, raccoglie gli oggetti caduti e li conserva all'interno (5 pile). Mettendo dei campioni nelle sue 5 caselle filtro raccoglierà solo quei tipi. Non aspira attraverso i blocchi solidi e una tramoggia può prelevare da sotto.",
+        "Aggiunto il Silo per Cereali. Si blocca sul primo tipo di oggetto inserito e ne conserva fino a 128 pile (8.192 di grano). Un comparatore legge la quantità, le tramogge muovono gli oggetti in entrambe le direzioni e il tipo può essere reimpostato solo a silo vuoto.",
+        "Aggiunta l'Anfora di Vetro. Contiene 8 secchi di un solo fluido, con il livello visibile dall'esterno. Riempila o svuotala con un secchio, leggi la quantità con un comparatore e tieni presente che i fluidi non si possono mescolare: svuotala prima. Romperla con Tocco Lieve ne conserva il contenuto.",
+        "Il drone è stato ricostruito da zero: nuovo modello, pilotaggio in prima persona, trasporto e sgancio di testate, e la possibilità di sollevare e trasportare casse. Il pilotaggio non cattura il mouse — il drone si guida in modo relativo al centro dello schermo, con una zona morta al centro. Una cassa grande è troppo per un solo drone.",
+        "Aggiunto il Meridian Store. Ordina da un terminale in gioco e un drone di consegna partirà dal deposito per lasciare il pacco al tuo faro. Paga con gli smeraldi dell'inventario o dal conto MineBank; i rimborsi tornano con lo stesso mezzo con cui hai pagato."
+      ],
+      "warnings": [
+        "Lo sgancio di testate funziona solo se sul server è installato un modulo di armi da fuoco. In caso contrario il drone lo comunica chiaramente e non accade nulla.",
+        "Pilotaggio, testate e trasporto di casse possono essere disattivati separatamente nelle impostazioni del server."
+      ],
+      "known_limitations": [
+        "Questa versione contiene cinque delle cinquanta funzionalità previste per la V3 (#21, #22, #29, #38 e la prima fase della #50). Le altre arriveranno nelle versioni successive: questa non è la V3 completa.",
+        "L'aspetto e la resa di tutto ciò che è stato aggiunto non sono ancora stati verificati su uno schermo reale, perché nell'ambiente di sviluppo non c'è un client di Minecraft. Segnalaci qualunque cosa non torni.",
+        "Il drone deliberatamente non cattura il mouse. In Minecraft 26.2 non esiste modo di recuperare un mouse bloccato se non rientrando, quindi il rischio è evitato per scelta progettuale."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
@@ -1579,21 +1603,20 @@
       {
         "key": "next-v3",
         "release": "V3",
-        "badge": "Prossimo aggiornamento",
-        "title": "Il prossimo aggiornamento maggiore è la V3",
+        "badge": "In distribuzione",
+        "title": "La V3 ha iniziato a essere distribuita (5 funzionalità su 50)",
         "groups": [
           {
-            "subtitle": "Ciò su cui si sta lavorando",
+            "subtitle": "Cosa è in corso",
             "bullets": [
-              "Il prossimo aggiornamento maggiore è la V3. Prevede 50 nuove funzionalità, incentrate su esplorazione, difesa, immagazzinamento e nuovi terreni.",
-              "Invece di uscire tutto insieme in un'unica versione, viene costruito un pezzo alla volta lungo più versioni. Per questo una funzionalità della V3 può arrivare prima in una versione della serie V2. Di fatto il lanciamissili con puntamento sulla mappa, il pezzo forte della V3, è già stato rilasciato distribuito tra la V2.4.5 e la V2.4.9.",
-              "La presentazione dei contenuti è raccolta nella pagina dedicata «Aggiornamento V3». Qui non viene ripetuta.",
-              "Non c'è una data di uscita. Ciò che viene confermato come implementato compare di volta in volta sulla pagina «Changelog»."
+              "La V3 è un aggiornamento importante che prevede 50 nuove funzionalità, incentrate su esplorazione, difesa, stoccaggio e nuovi terreni. La distribuzione è iniziata con la V3.0.0 il 29 agosto 2026.",
+              "Anziché arrivare tutta insieme, viene costruita un pezzo alla volta su più versioni — perciò alcune funzionalità della V3 sono arrivate anche in versioni della serie V2. Il lanciamissili con puntamento sulla mappa è uscito tra la V2.4.5 e la V2.4.9; i tre blocchi di stoccaggio, il drone ricostruito e il Meridian Store sono usciti nella V3.0.0.",
+              "Finora ne sono state distribuite cinque su cinquanta. Non c'è una data per le restanti quarantacinque. Tutto ciò che viene confermato come realizzato compare via via sulla pagina del Registro delle modifiche."
             ]
           }
         ],
         "link": {
-          "label": "Vedere i contenuti nella pagina V3"
+          "label": "Vedi il contenuto della V3.0.0 nel Registro delle modifiche"
         }
       },
       {

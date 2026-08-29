@@ -41,7 +41,7 @@ HREFLANG = {c: c for c in ORDER}
 HREFLANG["pt-br"] = "pt-BR"
 BASE = "https://iroponcopin.github.io/aurora-corvus"
 SECTIONS = ["", "download/", "changelog/", "recipes/", "guide/", "launcher/",
-            "gates/", "features/", "roadmap/", "known-issues/", "v3/"]
+            "gates/", "features/", "roadmap/", "known-issues/"]
 
 problems = []
 checks = 0
