@@ -40,7 +40,7 @@ ORDER = ["ja", "en", "es", "fr", "zh", "ko", "pt-br", "it", "ar", "ru", "id", "d
 HREFLANG = {c: c for c in ORDER}
 HREFLANG["pt-br"] = "pt-BR"
 BASE = "https://iroponcopin.github.io/aurora-corvus"
-SECTIONS = ["", "download/", "changelog/", "recipes/", "guide/", "launcher/",
+SECTIONS = ["", "aureum/", "download/", "changelog/", "recipes/", "guide/", "launcher/",
             "gates/", "features/", "roadmap/", "known-issues/"]
 
 problems = []

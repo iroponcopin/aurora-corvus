@@ -194,6 +194,7 @@ def recipe_cat_index(cat_name):
 # the domain root, so every link in this site is prefix-relative.
 NAV_SECTIONS = [
     ("home", ""),
+    ("aureum", "aureum/"),
     ("download", "download/"),
     ("changelog", "changelog/"),
     ("recipes", "recipes/"),
@@ -213,6 +214,14 @@ NAV_SECTIONS = [
 # per-page build scripts (e.g. build_download.py's dl.get(key, "...")).
 NAV_LABEL_FALLBACK = {
     "launcher": LAUNCHER_APP_NAME,
+    # "Aureum" is a proper noun (the mod's own name, not a description of it),
+    # same category as LAUNCHER_APP_NAME above -- translating a brand name into
+    # 11 more scripts would not produce 11 more correct answers, it would
+    # produce 11 wrong ones. ui.nav.aureum is intentionally left unset in every
+    # language bundle; this is the ONE string on the new page that is allowed
+    # to fall back this way (see build_aureum.py's header for why every other
+    # string on that page has a real translation in all 13 languages).
+    "aureum": "Aureum",
 }
 
 # --- Mega menu -------------------------------------------------------------
@@ -220,7 +229,18 @@ NAV_LABEL_FALLBACK = {
 # standalone Home link. Every section in NAV_SECTIONS must appear exactly
 # once here or in NAV_SOLO — _nav_html() asserts that, so adding a new page
 # without filing it can't silently drop it out of the navigation.
-NAV_SOLO = ["home"]
+# "aureum" sits in NAV_SOLO, not in a mega-menu group, on purpose: Aureum is a
+# separate, independently-versioned product (its own repo, its own download,
+# reviewed as its own thing on the Download page) that this page exists to
+# showcase on its own terms -- exactly the same reasoning that put "home"
+# here instead of under a panel. Burying a dedicated premium landing page one
+# hover-menu level down would undercut the very thing the owner asked for
+# ("非常に洗練された状態" -- see build_aureum.py). It is NOT filed under the
+# "start" group's download/launcher/guide (that group is specifically the
+# Alpha pack's own get-started flow) nor under "reference" (Aureum has no
+# recipes/gates/features of its own) nor "status" (it has no changelog page
+# of its own yet) -- it simply does not belong to any of those three stories.
+NAV_SOLO = ["home", "aureum"]
 NAV_GROUPS = [
     ("start", ["download", "launcher", "guide"]),
     ("reference", ["recipes", "gates", "features"]),

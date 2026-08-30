@@ -323,8 +323,12 @@ def _aureum_section_html(dl, aureum):
     """
     if aureum is None:
         return ""
+    # id="aureum" added (2026-08, alongside the new /aureum/ landing page)
+    # SOLELY so that page's secondary CTA can deep-link back here for the
+    # full size/SHA-256 table -- this section's own content/markup below is
+    # otherwise untouched, per the review that already shipped it.
     return (
-        f'\n<h2>{esc(dl.get("aureum_heading", "Aureum"))}</h2>\n'
+        f'\n<h2 id="aureum">{esc(dl.get("aureum_heading", "Aureum"))}</h2>\n'
         f'<p>{esc(dl.get("aureum_body", ""))}</p>\n'
         f'<div class="card" style="margin-bottom:20px;">\n'
         f'  <div class="badge-row">\n'

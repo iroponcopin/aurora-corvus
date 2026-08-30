@@ -1,0 +1,449 @@
+/* ==========================================================================
+   Aureum landing page (/aureum/) — page-specific stylesheet
+   --------------------------------------------------------------------------
+   Aureum is a real, shipped, separately-versioned mod (its own repo, its own
+   download, already reviewed and shipped as a card on the Download page).
+   This page is its permanent showcase, NOT a "coming soon" teaser — unlike
+   scripts/build_v3_teaser.py (deleted once V3 shipped), nothing here is
+   scheduled for removal, and no cleanup checklist belongs in this header.
+
+   Colours below are measured, not guessed, from the owner's reference
+   artwork (Design/image.jpg) with a small Python/Pillow script sampling real
+   pixel values — see scripts/build_aureum.py's header for the exact sample
+   points and the resulting hex values, and for the contrast ratios computed
+   against this page's own #030201 background (all >= 6.3:1, most >= 16:1,
+   i.e. WCAG AA for every size and AAA for most of them).
+
+   This page is a DELIBERATE brand exception to the sitewide light/dark
+   toggle: Aureum's whole identity in the reference artwork IS "jet black +
+   gold", the same way a premium product microsite (a dedicated page for one
+   flagship item, not the general storefront) often keeps its own fixed dark
+   presentation regardless of the surrounding site's theme. The page
+   therefore defines its OWN colour tokens, scoped to
+   `main:has(> .au-film-shell)` rather than to style.css's :root (see the
+   scoping comment right below), and stays on them under BOTH
+   [data-theme="light"] and the bare (dark) root -- every au- rule below
+   reads var(--au-*), never var(--bg)/var(--text), so the site-wide theme
+   toggle still works correctly for the header/nav/footer chrome (page()
+   renders those separately) while this page's own body never goes
+   pale-on-white. The header/nav/footer remain fully theme-reactive; only
+   this page's own content opts out.
+
+   Motion: reuses the exact home-page "film" technique (site_common.py /
+   build_home.py / the "Film" block in assets/css/style.css) --  a pinned
+   (sticky) stage whose scenes are driven by scroll-linked CSS custom
+   properties (--t linear, --e eased, --o opacity ramp, --p overall progress)
+   written once per animation frame by assets/js/aureum.js. Rebuilt under its
+   own class names and its own script — same reasoning build_v3_teaser.py
+   gave for not folding into assets/js/main.js: main.js is shared by every
+   page on the site, and this page owns its motion stack independently so it
+   can never regress (or be regressed by) the home page's own film.
+   Transform/opacity ONLY are ever animated, matching the sitewide discipline
+   documented at the top of style.css.
+
+   Progressive enhancement, same contract as the home film and the (deleted)
+   V3 teaser: the DEFAULT rules below (outside the
+   `prefers-reduced-motion: no-preference` block) lay the identical markup
+   out as a plain static column -- full monogram, full wordmark, full
+   tagline, every stat tile visible, nothing pinned, nothing hidden. That is
+   what a visitor gets with JS disabled AND what `prefers-reduced-motion:
+   reduce` gets. The pinned stage only exists inside the `html.js` +
+   `no-preference` gate.
+   ========================================================================== */
+
+/* Scoped to `main:has(> .au-film-shell)` rather than to a wrapping div --
+   see build_aureum.py's body-assembly comment for why there is no
+   ".au-page" wrapper element: the site's scroll-entrance reveal system only
+   matches elements that are DIRECT children of <main>, and a wrapper would
+   have silently opted every section on this page out of it. Custom
+   properties defined here on <main> itself cascade to every one of its
+   children exactly the same as they would from a wrapper div -- CSS custom
+   property inheritance does not care whether the declaring element is an
+   ancestor two levels up or one, only that it IS an ancestor. */
+main:has(> .au-film-shell) {
+  /* --- Measured palette (Design/image.jpg) ------------------------------
+     --au-bg              background, averaged over ~1,270 sample points
+                           away from the beam/monogram (#030201)
+     --au-gold-shadow     monogram's own deep ambient shadow gold
+     --au-gold-dim        beam glow, sampled along the upper light column
+     --au-gold            monogram body midtone -- the page's primary accent
+     --au-gold-bright     monogram/wordmark specular highlight
+     --au-text            body copy: warm ivory, NOT the saturated gold
+                           (16.3:1 on --au-bg; the saturated gold reads as
+                           shouty across a full paragraph, so it is reserved
+                           for headings/emphasis/short labels instead)
+     --au-text-muted      secondary copy / captions (10.7:1 on --au-bg)
+     --au-contrast        text colour used ON FILLED gold surfaces (buttons)
+     ------------------------------------------------------------------------ */
+  --au-bg: #030201;
+  --au-bg-elevated: #0b0804;
+  --au-gold-shadow: #1a1106;
+  --au-gold-dim: #46331a;
+  --au-gold: #b08741;
+  --au-gold-rgb: 176, 135, 65;
+  --au-gold-bright: #f3e3a5;
+  --au-gold-bright-rgb: 243, 227, 165;
+  --au-text: #ece3d1;
+  --au-text-muted: #c9b98f;
+  --au-contrast: #0a0704;
+  --au-hairline: rgba(176, 135, 65, 0.22);
+  --au-glass: linear-gradient(160deg, rgba(176, 135, 65, 0.12), rgba(176, 135, 65, 0.04));
+
+  /* Elegant serif display type for headings ONLY -- paragraph copy stays on
+     the site's normal --font-body (sans). This mirrors the reason Cormorant
+     Garamond was pulled sitewide (owner directive, see style.css's header):
+     a serif reads as "premium" at display sizes and as "hard to read" once
+     you put a paragraph in it. ui-serif/Georgia/Cambria/Times are the actual
+     system serifs (no extra font request, no extra network round trip on
+     top of the Inter request site_common.page() already makes); the CJK
+     names cover the languages this site ships that have their own serif
+     tradition, so headings don't silently fall through to a generic sans on
+     platforms that lack ui-serif's CJK resolution. */
+  --au-font-serif: ui-serif, Georgia, Cambria, "Times New Roman", "Hiragino Mincho ProN",
+    "Yu Mincho", "Noto Serif JP", "Noto Serif SC", "Noto Serif KR", "Noto Serif", serif;
+
+  padding-block: 0;
+  background: var(--au-bg);
+  color: var(--au-text);
+}
+main:has(> .au-film-shell) a { color: var(--au-gold-bright); }
+main:has(> .au-film-shell) a:hover,
+main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
+
+/* .au-film-shell and every .au-section are full-bleed direct children of
+   <main> (see the comment above), so each one repeats this tiny recipe
+   instead of a single wrapper supplying it once. */
+.au-film-shell, .au-section {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background: var(--au-bg);
+}
+
+/* ==========================================================================
+   Hero — spotlight beam + the owner's own molten-gold monogram artwork.
+
+   Design choice, stated plainly: the monogram is the REAL reference image
+   (assets/img/aureum/monogram.webp — a tight alpha-cut crop of Design/
+   image.jpg's own "A" mark, its own beam rays and its own particle dust all
+   baked in, black background keyed to transparent by a brightness ramp, see
+   build_aureum.py's header for the exact crop box and alpha curve). It is
+   NOT redrawn in CSS/SVG: the artwork already has convincing liquid-metal
+   highlights and organic-curve shading that a from-scratch gradient/path
+   recreation would only approximate, and the owner's own directive was to
+   USE the reference art, not merely take inspiration from it. What IS
+   recreated in CSS below, deliberately, is everything ELSE: the ambient glow
+   wash (a plain radial-gradient, so it scales to any viewport without
+   banding or a hard raster edge), and the drifting particle dust that
+   extends past the image's own frame (a handful of generated dots — see
+   .au-hero__mote — so the sparkle isn't confined to a fixed-size rectangle).
+   ========================================================================== */
+.au-hero {
+  position: relative;
+  width: 100%;
+  padding-block: clamp(48px, 9vh, 108px) clamp(32px, 6vh, 72px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.au-hero__ambient {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(38% 42% at 50% 30%, rgba(var(--au-gold-bright-rgb), 0.22), transparent 68%),
+    radial-gradient(60% 50% at 50% 0%, rgba(var(--au-gold-rgb), 0.14), transparent 72%);
+}
+/* A handful of drifting motes, positioned by hand rather than generated by
+   script, so the markup stays plain HTML the static (no-JS) reading needs
+   nothing extra to render. Pure decoration: aria-hidden, never carries
+   information, and the page is fully legible with every one removed. */
+.au-hero__motes { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.au-hero__mote {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--au-gold-bright-rgb), 0.9), rgba(var(--au-gold-rgb), 0) 70%);
+  opacity: 0.55;
+}
+.au-hero__mote:nth-child(1) { width: 4px; height: 4px; top: 14%; left: 12%; }
+.au-hero__mote:nth-child(2) { width: 3px; height: 3px; top: 66%; left: 8%; }
+.au-hero__mote:nth-child(3) { width: 5px; height: 5px; top: 22%; left: 86%; }
+.au-hero__mote:nth-child(4) { width: 3px; height: 3px; top: 74%; left: 90%; }
+.au-hero__mote:nth-child(5) { width: 3px; height: 3px; top: 48%; left: 4%; }
+.au-hero__mote:nth-child(6) { width: 4px; height: 4px; top: 40%; left: 94%; }
+
+.au-hero__inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: clamp(14px, 2.4vh, 24px);
+  padding-inline: max(var(--gutter), env(safe-area-inset-left))
+                  max(var(--gutter), env(safe-area-inset-right));
+}
+.au-hero__monogram {
+  width: min(52vw, 360px);
+  filter: drop-shadow(0 18px 46px rgba(var(--au-gold-rgb), 0.28));
+}
+.au-hero__monogram img { display: block; width: 100%; height: auto; }
+
+.au-word {
+  font-family: var(--au-font-serif); font-weight: 600; line-height: 1.05;
+  letter-spacing: 0.22em;
+  margin: 0; font-size: clamp(2.6rem, 1.3rem + 5.6vw, 5.4rem);
+  background: linear-gradient(100deg, var(--au-gold) 8%, var(--au-gold-bright) 46%, var(--au-gold) 92%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-transform: uppercase;
+}
+/* Every WORD gets white-space:nowrap for the same reason build_home.py's
+   wordmark() gives: once each glyph is its own inline-block (the reveal
+   stagger below), every glyph boundary is a line-break opportunity, and a
+   narrow phone would otherwise wrap the wordmark mid-letter. */
+.au-word .au-g-word { white-space: nowrap; }
+.au-g { display: inline-block; }
+
+.au-tagline {
+  margin: 0; font-family: var(--au-font-serif); font-weight: 500;
+  font-size: clamp(0.72rem, 0.6rem + 0.5vw, 0.92rem);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--au-gold-bright);
+}
+
+/* ==========================================================================
+   Pinned two-beat film: (0) the hero above resolves out of the dark, then
+   (1) the headline stat lands with weight. Same custom-property contract as
+   the home page's .film / the (deleted) V3 teaser's .v3t-hero: --p overall,
+   --t linear per-scene, --e eased per-scene, --o per-scene opacity ramp.
+   ========================================================================== */
+.au-film-shell { width: 100%; }
+.au-film {
+  --au-scroll: 220vh;
+  width: 100%;
+}
+.au-film__stage {
+  display: flex; flex-direction: column; align-items: center;
+  gap: clamp(40px, 8vh, 96px);
+}
+.au-film__scene { width: 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .au-film__track { position: relative; height: calc(100svh + var(--au-scroll)); }
+  html.js .au-film__stage {
+    position: sticky; top: 0; height: 100svh;
+    display: block; gap: 0;
+    overflow: hidden;
+  }
+  html.js .au-film__scene {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: var(--o, 0);
+    pointer-events: none;
+    overflow-y: auto; scrollbar-width: none;   /* short-viewport safety net,
+      same reasoning as the V3 teaser's .v3t-scene -- see that file's comment */
+  }
+  html.js .au-film__scene::-webkit-scrollbar { display: none; }
+  html.js .au-film__scene--hero { --o: 1; }
+
+  /* beat 0 -- the hero resolves out of the dark, then recedes slightly */
+  html.js .au-film__scene--hero .au-hero__inner {
+    translate: 0 calc(-3vh * var(--t, 0));
+    animation: au-in 1.15s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+  }
+  html.js .au-film__scene--hero .au-hero__monogram { animation-delay: 0.05s; }
+  html.js .au-film__scene--hero .au-word { animation-delay: 0.22s; }
+  html.js .au-film__scene--hero .au-tagline { animation-delay: 0.38s; }
+  @keyframes au-in {
+    from { opacity: 0; transform: translate3d(0, 26px, 0) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* Per-glyph stagger for the wordmark -- same --i-driven delay recipe as
+     build_home.py's hero-mark.css, rebuilt locally so this page's motion
+     stack stays fully self-contained. */
+  html.js .au-g {
+    opacity: 0; transform: translate3d(0, 0.4em, 0);
+    animation: au-glyph-in 0.7s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+    animation-delay: calc(0.42s + var(--i, 0) * 0.045s);
+  }
+  @keyframes au-glyph-in { to { opacity: 1; transform: none; } }
+
+  /* the ambient glow breathes very slightly with scroll, never enough to be
+     distracting -- a still page would look identical for several seconds */
+  html.js .au-film__scene--hero .au-hero__ambient { scale: calc(1 + 0.08 * var(--t, 0)); }
+
+  /* beat 1 -- the headline stat arrives with weight (same rotateX/translate/
+     scale recipe as the home film's "app arrives" beat and the V3 teaser's
+     flagship beat) */
+  html.js .au-film__scene--stats { perspective: 1700px; }
+  html.js .au-film__scene--stats .au-stats {
+    transform-origin: 50% 85%;
+    transform: rotateX(calc(10deg * (1 - var(--e, 0))));
+    translate: 0 calc(8vh * (1 - var(--e, 0)));
+    scale: calc(0.92 + 0.08 * var(--e, 0));
+  }
+
+  html.js .au-film__stage.is-live .au-film__scene { will-change: opacity; }
+  html.js .au-film__stage.is-live .au-hero__inner,
+  html.js .au-film__stage.is-live .au-stats { will-change: transform; }
+
+  /* scroll affordance -- identical mechanism to the home film's / the V3
+     teaser's cue+rail, rebuilt locally so nothing here reaches into either
+     of their markup or CSS. */
+  html.js .au-cue {
+    display: block; position: absolute; z-index: 5;
+    bottom: calc(26px + env(safe-area-inset-bottom)); left: 50%;
+    width: 24px; height: 38px; border-radius: 999px;
+    border: 1.5px solid rgba(var(--au-gold-rgb), 0.5);
+    transform: translateX(-50%);
+    opacity: clamp(0, calc((0.06 - var(--p, 0)) / 0.03), 1);
+    pointer-events: none;
+  }
+  html.js .au-cue::after {
+    content: ""; position: absolute; left: 50%; top: 7px;
+    width: 4px; height: 7px; border-radius: 4px; background: var(--au-gold-bright);
+    animation: au-cue 2.1s var(--ease-in-out-soft, ease-in-out) infinite;
+  }
+  @keyframes au-cue {
+    0%   { opacity: 0; transform: translate(-50%, 0); }
+    30%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, 12px); }
+  }
+  html.js .au-progress {
+    display: block; position: absolute; z-index: 5;
+    inset-inline: 0; bottom: 0; height: 2px; background: var(--au-hairline); pointer-events: none;
+  }
+  html.js .au-progress i {
+    display: block; height: 100%; transform-origin: left center;
+    transform: scaleX(var(--p, 0));
+    background: linear-gradient(90deg, var(--au-gold), var(--au-gold-bright));
+  }
+  html.js[dir="rtl"] .au-progress i { transform-origin: right center; }
+}
+/* Motion affordances have no meaning in the static layout. */
+.au-cue, .au-progress { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .au-g { opacity: 1; }
+}
+
+/* ==========================================================================
+   Stats — "by the numbers". Three measured facts (see build_aureum.py /
+   data/i18n/*.json's aureum_page block), each a plain figure, never a claim
+   dressed up as one: the two memory deltas are exact reproduced numbers from
+   aureum-src's docs/BENCHMARKS.md, and the MSPT tile says "unchanged" rather
+   than inventing a speed claim the measurements do not support.
+   ========================================================================== */
+.au-stats {
+  display: grid; gap: clamp(16px, 2.4vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: min(100%, 860px); margin-inline: auto;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left))
+                  max(var(--gutter), env(safe-area-inset-right));
+}
+.au-stat {
+  padding: clamp(20px, 3vw, 30px) clamp(18px, 2.6vw, 26px);
+  border: 1px solid var(--au-hairline); border-radius: var(--radius, 16px);
+  background: var(--au-glass);
+  text-align: center;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.au-stat__value {
+  font-family: var(--au-font-serif); font-weight: 600;
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.6rem); line-height: 1;
+  background: linear-gradient(100deg, var(--au-gold) 10%, var(--au-gold-bright) 60%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.au-stat__label {
+  font-size: 0.9rem; color: var(--au-text-muted); letter-spacing: -0.006em;
+}
+
+/* ==========================================================================
+   Plain document-flow sections below the pinned film. DIRECT children of
+   <main> (no wrapping div -- see build_aureum.py's body-assembly comment for
+   why) so they pick up the site's existing
+   scroll-entrance reveal (main.js's REVEAL_SELECTOR + .reveal in style.css)
+   for free -- the same "reuse what the site already has" convention the
+   (deleted) V3 teaser used for its own category sections, rather than
+   inventing a second scroll-reveal mechanism.
+   ========================================================================== */
+.au-section {
+  /* full-bleed width + background come from the shared
+     ".au-film-shell, .au-section" rule above */
+  padding-block: clamp(48px, 8vh, 96px);
+  border-top: 1px solid var(--au-hairline);
+}
+.au-section__inner {
+  max-width: 46rem; margin-inline: auto;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left))
+                  max(var(--gutter), env(safe-area-inset-right));
+  display: flex; flex-direction: column; gap: 16px;
+  text-align: center; align-items: center;
+}
+.au-section__inner--wide { max-width: 58rem; }
+.au-section h2 {
+  font-family: var(--au-font-serif); font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  letter-spacing: 0.01em; text-wrap: balance;
+  margin: 0; color: var(--au-gold-bright);
+}
+.au-section p { margin: 0; color: var(--au-text); max-width: 62ch; }
+.au-section code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  color: var(--au-gold-bright); background: rgba(var(--au-gold-rgb), 0.12);
+  padding: 0.1em 0.4em; border-radius: 6px; font-size: 0.92em;
+}
+
+.au-note {
+  width: 100%; max-width: 62ch; margin-inline: auto;
+  padding: 16px 20px; border-radius: var(--radius-sm, 10px);
+  border: 1px solid var(--au-hairline); background: rgba(var(--au-gold-rgb), 0.07);
+  color: var(--au-text-muted); font-size: 0.94rem; text-align: start;
+}
+
+.au-requirements {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  list-style: none; margin: 0; padding: 0;
+}
+.au-requirements li {
+  border: 1px solid var(--au-hairline); background: var(--au-glass);
+  color: var(--au-text-muted); border-radius: 999px;
+  padding: 6px 14px; font-size: 0.86rem; white-space: nowrap;
+}
+
+/* ==========================================================================
+   CTA — the honest way in: straight to the published jar (SHA-256 verified,
+   same file the Download page's Aureum card links from) plus a link back to
+   that card for the full checksum/size table. Reusing .btn's box model
+   isn't done here (style.css's .btn is tuned for the theme-reactive
+   palette), so this is a small page-local button recipe on the SAME
+   measured colours as everything else on this page.
+   ========================================================================== */
+.au-cta-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+  margin-top: 6px;
+}
+.au-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--tap, 44px); padding: 12px 26px;
+  border-radius: 999px; font-weight: 600; font-size: 0.98rem;
+  letter-spacing: 0.01em; text-decoration: none;
+  transition: transform var(--dur-med, 0.2s) var(--ease-out-expo, ease), opacity var(--dur-med, 0.2s) ease;
+}
+.au-btn:hover, .au-btn:focus-visible { transform: translateY(-1px); }
+.au-btn--fill {
+  background: linear-gradient(100deg, var(--au-gold) 0%, var(--au-gold-bright) 100%);
+  color: var(--au-contrast) !important;
+  box-shadow: 0 10px 28px rgba(var(--au-gold-rgb), 0.28);
+}
+.au-btn--ghost {
+  background: transparent; color: var(--au-gold-bright) !important;
+  border: 1px solid rgba(var(--au-gold-rgb), 0.5);
+}
+.au-btn--ghost:hover, .au-btn--ghost:focus-visible { background: rgba(var(--au-gold-rgb), 0.1); }
+
+.au-closing { color: var(--au-text-muted); font-size: 0.95rem; max-width: 52ch; }
+
+/* ==========================================================================
+   Small screens: the hero image shrinks, the film runs a shorter scroll
+   distance (less empty scroll for a beat that is inherently simpler on a
+   narrow column), stat tiles stack to one column below 480px.
+   ========================================================================== */
+@media (max-width: 700px) {
+  .au-film { --au-scroll: 180vh; }
+  .au-hero__monogram { width: min(64vw, 280px); }
+}
+@media (max-width: 480px) {
+  .au-stats { grid-template-columns: 1fr; }
+}

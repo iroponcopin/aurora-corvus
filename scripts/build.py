@@ -18,6 +18,11 @@ BUILD_SCRIPTS = [
     "build_recipe_overlays.py",
     "build_home.py",
     "build_download.py",
+    # Right after build_download.py: build_aureum.py imports _aureum_facts()
+    # from it to discover the published jar (see build_aureum.py's header),
+    # and this page's download CTA is a companion to that page's Aureum
+    # section, not to anything below.
+    "build_aureum.py",
     "build_changelog.py",
     "build_recipes.py",
     "build_guide.py",
