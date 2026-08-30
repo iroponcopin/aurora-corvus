@@ -170,19 +170,22 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 .au-hero__inner {
   position: relative; z-index: 1;
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  /* vh-aware, not just vw-aware: a pinned scene is sized to the viewport's
-     HEIGHT (100svh), so a tall-but-not-especially-wide browser window (a
-     maximized desktop window, most obviously) left every dimension below
-     tied only to vw pinned to its width-derived cap, with a large empty
-     band above/below on tall viewports -- reported on the live page twice
-     (once for the stats beat, once, on a taller window, for this hero
-     beat). Every size below now grows with min(vw, vh) instead. */
-  gap: clamp(14px, 2vh + 1vw, 34px);
+  /* vmin-driven, not vw-driven: a pinned scene is sized to the viewport's
+     HEIGHT (100svh), and every monitor class the owner actually uses --
+     FHD/WQHD/4K -- is the same 16:9 shape, just scaled, so vmin (== vh at
+     16:9) is what keeps the hero's PROPORTION of the screen constant as
+     the screen itself grows. The first version of this fix mixed in a raw
+     vh term behind a fixed px ceiling, which looked right on the one
+     window it was tested against but actually made the fill ratio go
+     BACKWARDS from FHD to WQHD (measured 53% -> 41%) once the viewport
+     grew past that ceiling -- caught by testing the three concrete
+     resolutions the owner named, not by eyeballing one window. */
+  gap: clamp(14px, 3.2vmin, 56px);
   padding-inline: max(var(--gutter), env(safe-area-inset-left))
                   max(var(--gutter), env(safe-area-inset-right));
 }
 .au-hero__monogram {
-  width: min(52vw, 44vh, 460px);
+  width: min(36vmin, 56vw, 840px);
   filter: drop-shadow(0 18px 46px rgba(var(--au-gold-rgb), 0.28));
 }
 .au-hero__monogram img { display: block; width: 100%; height: auto; }
@@ -190,7 +193,7 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 .au-word {
   font-family: var(--au-font-serif); font-weight: 600; line-height: 1.05;
   letter-spacing: 0.22em;
-  margin: 0; font-size: clamp(2.6rem, 1.1rem + 4.2vw + 3.4vh, 6.8rem);
+  margin: 0; font-size: clamp(2.6rem, 9vmin, 11.5rem);
   background: linear-gradient(100deg, var(--au-gold) 8%, var(--au-gold-bright) 46%, var(--au-gold) 92%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   text-transform: uppercase;
@@ -204,7 +207,7 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 
 .au-tagline {
   margin: 0; font-family: var(--au-font-serif); font-weight: 500;
-  font-size: clamp(0.72rem, 0.5rem + 0.4vw + 0.5vh, 1.2rem);
+  font-size: clamp(0.72rem, 1.7vmin, 2rem);
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--au-gold-bright);
 }
@@ -348,17 +351,24 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 }
 .au-stats {
   position: relative; z-index: 1;
-  /* vh-aware for the same reason .au-hero__inner's gap is (see that
-     comment): this beat fills the same 100svh pinned stage the hero does,
-     so its sizing needs to grow with viewport HEIGHT too, not just width. */
-  display: grid; gap: clamp(20px, 2.4vh + 2vw, 64px);
+  /* vmin-driven for the same reason .au-hero__inner's gap is (see that
+     comment) -- and the same fixed-ceiling mistake that comment describes
+     applied here too (a 1040px width/64px gap cap that WQHD and 4K sail
+     past while the viewport keeps growing, shrinking the fill ratio
+     instead of holding it steady). */
+  display: grid; gap: clamp(20px, 4.4vmin, 96px);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  width: min(100%, 1040px); margin-inline: auto;
+  width: min(100%, 60vmin, 1500px); margin-inline: auto;
   padding-inline: max(var(--gutter), env(safe-area-inset-left))
                   max(var(--gutter), env(safe-area-inset-right));
 }
 .au-stat {
-  padding: clamp(30px, 3.4vh + 2.4vw, 76px) clamp(22px, 2.4vh + 1.8vw, 48px);
+  /* Ceilings deliberately sit well above what 6.2vmin/4vmin actually
+     compute to at 4K (2160 vmin -> ~134px/86px) -- the first pass at this
+     capped padding at 130px, just BELOW the 4K value, so the fill ratio
+     dropped at exactly the top of the resolution range the owner named
+     (FHD/WQHD/4K) instead of holding steady through it. */
+  padding: clamp(30px, 6.2vmin, 168px) clamp(22px, 4vmin, 100px);
   border: 1px solid var(--au-hairline); border-radius: var(--radius, 16px);
   background: var(--au-glass);
   text-align: center;
@@ -366,12 +376,12 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 }
 .au-stat__value {
   font-family: var(--au-font-serif); font-weight: 600;
-  font-size: clamp(2.3rem, 1rem + 2vw + 3.4vh, 5.2rem); line-height: 1;
+  font-size: clamp(2.3rem, 6.2vmin, 10rem); line-height: 1;
   background: linear-gradient(100deg, var(--au-gold) 10%, var(--au-gold-bright) 60%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .au-stat__label {
-  font-size: clamp(0.92rem, 0.7rem + 0.2vw + 0.5vh, 1.3rem); color: var(--au-text-muted); letter-spacing: -0.006em;
+  font-size: clamp(0.92rem, 1.5vmin, 2.5rem); color: var(--au-text-muted); letter-spacing: -0.006em;
 }
 
 /* ==========================================================================
