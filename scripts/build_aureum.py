@@ -202,6 +202,7 @@ def build_lang(lang: str, aureum):
         </div>
 
         <div class="au-film__scene au-film__scene--stats" data-au-scene="1">
+          <div class="au-stats__ambient" aria-hidden="true"></div>
           <div class="au-stats">
             {_stat(STAT_HEAP_VALUE, ap['stat_heap_label'])}
             {_stat(STAT_GEN_VALUE, ap['stat_gen_label'])}
