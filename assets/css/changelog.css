@@ -1,0 +1,387 @@
+/* Changelog — Alcove-style presentation.
+   =======================================================================
+   The owner asked for this page to look like https://tryalcove.com/changelog.
+   Every number below was MEASURED off that page's computed styles rather than
+   eyeballed, because "captures the vibe" is a rejection on this project:
+
+     page background   oklch(0.216 0.006 56.043)  = #1C1917
+     body text         rgb(255,240,223)           = #FFF0DF
+     muted / dates     rgb(141,136,129)           = #8D8881
+     font              system-ui, -apple-system, sans-serif
+     h1 "Changelog"    96px / 700
+     group heading     36px / 700
+     group summary     20px / 28px line-height / 400
+     version label     24px / 700 / opacity .75
+     date              18px / 400 / #8D8881 / nowrap
+     "Show more"       14px / 500 / muted / radius 12px / padding 8px 14px,
+                       centred, hover opacity .7, transition 300ms
+     detail bullets    20px, list-style none, padding 0, ~70% opacity
+     header            fixed, backdrop-filter: blur(24px), bg at 80% alpha
+
+   TWO DELIBERATE DEPARTURES, both stated rather than hidden:
+
+   1. Alcove is dark-only. This site has a light theme the owner built, and a
+      page that ignores the theme toggle would be a bug, not fidelity. So the
+      warm palette is expressed in BOTH themes -- warm dark as measured, and a
+      warm cream light counterpart -- instead of forcing dark on everyone.
+
+   2. Alcove has no search and no filters. It does not need them; this
+      changelog has 61 entries across 11 modules and the owner built both.
+      Deleting working features to match a reference would be destroying
+      content, so they are kept and restyled to sit quietly.
+   ======================================================================= */
+
+.cl {
+  /* Warm dark, as measured off the reference. */
+  --cl-bg: #1c1917;
+  --cl-ink: #fff0df;
+  --cl-muted: #8d8881;
+  --cl-hair: color-mix(in srgb, var(--cl-ink) 10%, transparent);
+  --cl-row-hover: color-mix(in srgb, var(--cl-ink) 5%, transparent);
+
+  color: var(--cl-ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* The warm light counterpart. Same hues, inverted: the reference's cream
+   becomes the ground and its ground becomes the ink, so the page still reads
+   as the same design rather than as a different one. */
+:root[data-theme="light"] .cl {
+  --cl-bg: #faf6f0;
+  --cl-ink: #1c1917;
+  --cl-muted: #6d675f;
+  --cl-hair: color-mix(in srgb, var(--cl-ink) 12%, transparent);
+  --cl-row-hover: color-mix(in srgb, var(--cl-ink) 5%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .cl {
+    --cl-bg: #faf6f0;
+    --cl-ink: #1c1917;
+    --cl-muted: #6d675f;
+    --cl-hair: color-mix(in srgb, var(--cl-ink) 12%, transparent);
+    --cl-row-hover: color-mix(in srgb, var(--cl-ink) 5%, transparent);
+  }
+}
+
+/* The ground has to reach the edges of the window, not just the content box,
+   or the site's own background shows as a frame around the page and the
+   resemblance is lost at the first glance. */
+body:has(.cl) {
+  background: #1c1917;
+}
+:root[data-theme="light"] body:has(.cl) {
+  background: #faf6f0;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) body:has(.cl) {
+    background: #faf6f0;
+  }
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.cl__head {
+  padding: clamp(56px, 9vw, 128px) 0 clamp(28px, 4vw, 56px);
+}
+
+.cl__title {
+  /* 96px on the reference. Clamped so it does not overflow a phone. */
+  font-size: clamp(48px, 11vw, 96px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--cl-ink);
+}
+
+.cl__updated {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 0;
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--cl-muted);
+}
+
+.cl__updated svg {
+  flex: 0 0 auto;
+  width: 1.1em;
+  height: 1.1em;
+  opacity: 0.9;
+}
+
+.cl__note {
+  margin: 22px 0 0;
+  max-width: 62ch;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.55;
+  color: var(--cl-muted);
+}
+
+/* ------------------------------------------------------------------ groups */
+
+.cl__group {
+  padding: clamp(30px, 4vw, 52px) 0 0;
+  scroll-margin-top: 96px;
+}
+
+.cl__group + .cl__group {
+  border-top: 1px solid var(--cl-hair);
+  margin-top: clamp(30px, 4vw, 52px);
+}
+
+/* The site gives every h2 a 56x2px accent bar via a global h2::before. The
+   reference has no such rule, and here it reads as a stray dash floating above
+   each version. Suppressed inside the changelog only -- the rest of the site
+   keeps it. */
+.cl .cl__groupTitle::before { content: none; }
+
+.cl__groupTitle {
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--cl-ink);
+}
+
+.cl__groupSummary {
+  margin: 12px 0 0;
+  max-width: 68ch;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--cl-ink);
+}
+
+.cl__releases {
+  margin: clamp(18px, 2.4vw, 32px) 0 0;
+}
+
+/* -------------------------------------------------------------------- rows */
+
+.cl__release {
+  border-radius: 12px;
+}
+
+.cl__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  background: none;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: start;
+  font: inherit;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.cl__row:hover { background: var(--cl-row-hover); }
+
+.cl__row:focus-visible {
+  outline: 2px solid var(--cl-ink);
+  outline-offset: 2px;
+}
+
+.cl__version {
+  font-size: clamp(19px, 2vw, 24px);
+  font-weight: 700;
+  opacity: 0.75;              /* the reference's own opacity-75 */
+  margin: 0;
+  color: var(--cl-ink);
+}
+
+.cl__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cl__date {
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 400;
+  color: var(--cl-muted);
+  white-space: nowrap;
+}
+
+/* The chevron is the only affordance that a row opens. Without it the rows
+   read as a plain list and nobody discovers the detail underneath. */
+.cl__chev {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--cl-muted);
+  transition: transform 0.25s ease;
+}
+
+.cl__row[aria-expanded="true"] .cl__chev { transform: rotate(90deg); }
+
+/* ------------------------------------------------------------------ detail */
+
+.cl__detail {
+  padding: 2px 0 18px;
+}
+
+.cl__detail[hidden] { display: none; }
+
+.cl__entryTitle {
+  margin: 0 0 8px;
+  max-width: 72ch;
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--cl-ink);
+}
+
+.cl__lede {
+  margin: 0 0 16px;
+  max-width: 72ch;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--cl-ink) 88%, transparent);
+}
+
+.cl__section + .cl__section { margin-top: 16px; }
+
+.cl__sectionTitle {
+  margin: 0 0 6px;
+  font-size: clamp(15px, 1.4vw, 17px);
+  font-weight: 600;
+  color: var(--cl-ink);
+}
+
+.cl__sectionTitle span {
+  font-weight: 400;
+  color: var(--cl-muted);
+}
+
+.cl__list {
+  margin: 0;
+  padding: 0;                 /* the reference strips the list entirely */
+  list-style: none;
+}
+
+.cl__list li {
+  position: relative;
+  padding-left: 18px;
+  margin: 0 0 6px;
+  max-width: 76ch;
+  font-size: clamp(15px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--cl-ink) 70%, transparent);
+}
+
+/* A hand-drawn marker, because list-style:none removes the real one and a
+   bullet list without bullets reads as a paragraph soup at this size. */
+.cl__list li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.cl__list--warn li::before { border-radius: 1px; }
+
+/* --------------------------------------------------------------- show more */
+
+.cl__more {
+  display: block;
+  margin: 20px auto 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cl-muted);
+  background: none;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.cl__more:hover { opacity: 0.7; }
+
+.cl__more:focus-visible {
+  outline: 2px solid var(--cl-ink);
+  outline-offset: 2px;
+}
+
+.cl__release[hidden] { display: none; }
+
+/* ------------------------------------------------------- kept site features */
+/* Search and filters are not on the reference. They are kept because this
+   changelog has 61 entries and they work; they are toned down so they read as
+   a utility strip rather than competing with the masthead. */
+
+.cl__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--cl-hair);
+}
+
+.cl__tools label {
+  font-size: 13px;
+  color: var(--cl-muted);
+}
+
+.cl__search {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 9px 12px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--cl-ink);
+  background: color-mix(in srgb, var(--cl-ink) 6%, transparent);
+  border: 1px solid var(--cl-hair);
+  border-radius: 10px;
+}
+
+.cl__search::placeholder { color: var(--cl-muted); }
+
+.cl__chip {
+  padding: 6px 11px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--cl-muted);
+  background: none;
+  border: 1px solid var(--cl-hair);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cl__chip[aria-pressed="true"] {
+  color: var(--cl-ink);
+  border-color: color-mix(in srgb, var(--cl-ink) 45%, transparent);
+}
+
+.cl__empty {
+  margin: 28px 0;
+  font-size: 17px;
+  color: var(--cl-muted);
+}
+
+.cl__empty[hidden] { display: none; }
+
+/* A filtered-out release must not leave its group heading stranded with an
+   empty list underneath -- the group hides too. */
+.cl__group[hidden] { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cl__row, .cl__chev, .cl__more { transition: none; }
+}

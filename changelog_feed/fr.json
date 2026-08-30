@@ -1,0 +1,2118 @@
+{
+ "lang": "fr",
+ "updated": "2026-08-29",
+ "title": "Historique des mises à jour",
+ "updated_label": "Mis à jour le 2026-08-29",
+ "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
+ "groups": [
+  {
+   "label": "V3.2",
+   "summary": "Renommé Corvus OS, écran restylé façon Linux, et distributeur reconstruit en trois dimensions",
+   "releases": [
+    {
+     "version": "V3.2.0",
+     "date": "2026-08-29",
+     "type": "release",
+     "title": "Renommé Corvus OS, écran restylé façon Linux, et distributeur reconstruit en trois dimensions",
+     "summary": "Le système de l'ordinateur et du téléphone passe de Mine OS à Corvus OS, et l'écran bancaire de Mine Bank à Corvus Bank — le nom qu'utilisent déjà l'application de bureau et ce site. Le système est restylé pour évoquer Linux, avec un journal de démarrage, une palette plus sobre et une marque de corvidé. L'écran de l'ordinateur ne laisse plus voir le monde au travers : il est désormais opaque, comme un véritable écran. Le distributeur a été reconstruit pour que ses fentes et son clavier soient de vraies formes plutôt que des dessins sur une boîte.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Mine OS devient Corvus OS, et Mine Bank devient Corvus Bank. Ce n'est qu'un changement de nom affiché : aucun identifiant de bloc, d'objet ou de configuration n'a changé.",
+        "Corvus OS est restylé façon Linux : un journal de démarrage en lignes [ OK ], une palette anthracite plus sobre, et une marque de corvidé à la place de l'ancien cube.",
+        "L'écran de l'ordinateur n'est plus translucide. Le monde se voyait au travers ; il est maintenant opaque et se lit comme un vrai écran. Le téléphone conserve son verre dépoli.",
+        "Agrandir une fenêtre masque désormais le Dock et donne réellement cet espace à la fenêtre ; la restauration le fait revenir. La barre d'accueil du téléphone est inchangée.",
+        "Le distributeur a été reconstruit en trois dimensions. L'enseigne bleue, le bandeau lumineux, l'écran en creux, les fentes carte, reçu et espèces, la tablette du clavier, les montants et le socle sont de la vraie géométrie et non une boîte peinte. Le distributeur spécial reçoit la même forme dans sa livrée dorée."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le renommage est cosmétique. Aucun identifiant de bloc, d'objet ou de configuration n'a changé : les mondes et fichiers de réglages existants continuent de fonctionner à l'identique."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Cette version suit la 3.0.0. Il n'y a pas de 3.1 — les fonctionnalités prévues en V3.1 ne sont pas encore là.",
+        "Les changements visuels n'ont pas été vérifiés sur un véritable écran, faute de client Minecraft dans l'environnement de développement. Signalez-nous ce qui semble anormal.",
+        "La nouvelle marque perd ses détails en dessous d'environ 16 px. Cette limite est connue et acceptée."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V3.0",
+   "summary": "V3, première partie : trois blocs de stockage, le drone refait et la Meridian Store",
+   "releases": [
+    {
+     "version": "V3.0.0",
+     "date": "2026-08-29",
+     "type": "release",
+     "title": "V3, première partie : trois blocs de stockage, le drone refait et la Meridian Store",
+     "summary": "Cette version apporte les cinq premières fonctionnalités prévues pour la V3. Trois nouveaux blocs de stockage — la Pompe filtrante à limon, qui récupère les objets dans l'eau ; le Silo à grain, qui conserve une grande quantité d'un seul objet ; et l'Amphore de verre, qui stocke un fluide dont le niveau reste visible — arrivent avec un drone entièrement refait, désormais doté du pilotage à la première personne, du largage de charges et du transport de coffres. S'y ajoute la Meridian Store, une boutique en jeu qui vous livre votre commande par drone. Le paiement utilise les émeraudes que vous avez déjà (ou votre compte MineBank) ; aucune nouvelle monnaie n'est introduite.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Ajout de la Pompe filtrante à limon. Toutes les 10 ticks, elle inspecte l'eau devant elle, en retire les objets tombés et les stocke à l'intérieur (5 piles). Placez des échantillons dans ses 5 emplacements de filtre et elle ne ramassera que ces types. Elle n'aspire pas à travers les blocs pleins, et un entonnoir peut puiser par le dessous.",
+        "Ajout du Silo à grain. Il se verrouille sur le premier type d'objet inséré et en conserve jusqu'à 128 piles (8 192 blés). Un comparateur lit la quantité, les entonnoirs font entrer et sortir les objets, et le type ne peut être réinitialisé que lorsque le silo est vide.",
+        "Ajout de l'Amphore de verre. Elle contient 8 seaux d'un seul fluide, le niveau étant visible de l'extérieur. Remplissez-la ou videz-la au seau, lisez la quantité au comparateur, et notez que les fluides ne peuvent pas être mélangés : videz-la d'abord. La casser avec Toucher de soie en conserve le contenu.",
+        "Le drone a été entièrement refait : nouveau modèle, pilotage à la première personne, transport et largage de charges, ramassage et transport de coffres. Le pilotage ne capture pas votre souris — le drone se dirige relativement au centre de l'écran, avec une zone morte au milieu. Un grand coffre est trop lourd pour un seul drone.",
+        "Ajout de la Meridian Store. Commandez depuis un terminal en jeu et un drone de livraison quittera le dépôt pour déposer votre colis à votre balise. Payez avec les émeraudes de votre inventaire ou depuis votre compte MineBank ; les remboursements reviennent par le moyen de paiement utilisé."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le largage de charges ne fonctionne que si un module d'armes à feu est installé sur le serveur. À défaut, le drone l'indique clairement et rien ne se produit.",
+        "Le pilotage, les charges et le transport de coffres peuvent être désactivés séparément dans les réglages du serveur."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Cette version contient cinq des cinquante fonctionnalités prévues pour la V3 (#21, #22, #29, #38 et la première phase de #50). Les autres suivront dans des versions ultérieures : ceci n'est pas la V3 complète.",
+        "L'apparence et le ressenti de tout ce qui est ajouté ici n'ont pas encore été vérifiés sur un véritable écran, faute de client Minecraft dans l'environnement de développement. Signalez-nous tout ce qui semble anormal.",
+        "Le drone ne capture délibérément pas la souris. Dans Minecraft 26.2, il n'existe aucun moyen de récupérer une souris bloquée sans se reconnecter ; ce risque est donc évité par conception."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.5",
+   "summary": "Carte tactique du lance-missiles allégée, et données pour le nouveau « Réglage solo » du launcher Corvus",
+   "releases": [
+    {
+     "version": "V2.5.1",
+     "date": "2026-08-28",
+     "type": "release",
+     "title": "Carte tactique du lance-missiles allégée, et données pour le nouveau « Réglage solo » du launcher Corvus",
+     "summary": "La carte tactique du lance-missiles, qui devenait lourde pendant la désignation des objectifs (glisser, zoom), a été allégée. S'y ajoutent la commande /packintegrity, qui permet aux administrateurs de serveur de contrôler ce qui est installé, et, à partir de cette version, les données dont le nouvel écran « Réglage solo » de l'application de bureau « Corvus » a besoin pour fonctionner en solo.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La carte tactique du lance-missiles, qui devenait lourde lors de la désignation d'objectifs avec le terrain affiché, a été allégée. Ni son aspect ni sa manipulation ne changent.",
+        "La commande /packintegrity a été ajoutée pour les administrateurs de serveur : elle vérifie que l'ensemble des MODs est complet et correct (le résultat est également consigné dans logs/pack_integrity.log). Elle n'a aucun effet sur la partie.",
+        "À partir de cette version sont ajoutées les données permettant au nouvel écran « Réglage solo » de l'application de bureau « Corvus » (Paramètres → Réglage solo) d'ajuster directement, en solo, les mêmes éléments que les réglages administrateur. Mettez Corvus à jour vers la dernière version pour en profiter."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'écran « Réglage solo » nécessite Corvus 1.7.0 ou une version ultérieure. Il n'apparaît pas dans les versions antérieures de Corvus."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "Disclosure",
+     "date": "2026-08-28",
+     "type": "disclosure",
+     "title": "Sept mécaniques jamais documentées, publiées sur la page « Fonctionnalités »",
+     "summary": "Sept mécaniques déjà présentes dans le pack à la V2.5.1, actives par défaut, n'avaient jamais figuré dans l'historique des mises à jour : le système météorologique, le multiplicateur de prix, le solde en diamants du distributeur, l'application rétroactive de la pollution de la centrale nucléaire, la mort par soif, l'essence des véhicules et le système de durabilité des masques. Nous les avons vérifiées une par une dans le code réel des MODs et rassemblées sur la page « Fonctionnalités ». Ni cet article ni sa publication n'ont modifié quoi que ce soit aux mécaniques du jeu ou à leurs valeurs par défaut.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Système météorologique (blizzard, typhon, séisme, tsunami, volcan). Les cinq sont actifs par défaut. Avec les réglages par défaut, un séisme peut détruire des constructions faites de matériaux naturels tels que la pierre, la roche, la terre, le sable ou le gravier ; et un volcan entre en éruption avec une probabilité de 5 % à chaque séisme, creusant réellement un cratère de 6 blocs de rayon et 4 de profondeur et le remplissant de lave (des conditions d'annulation évitent d'emporter les bâtiments ; le détail est sur la page « Fonctionnalités »).",
+        "Multiplicateur de prix (×10 à ×100). Actif par défaut dans 2 MODs, Ciel et Planarcadia (les échanges avec les villageois vanilla n'y sont pas soumis). Le même code est également recopié dans Armes à feu, Chemin de fer, Électricité et Backrooms, mais rien ne l'y appelle pour l'instant.",
+        "Distributeur à diamants. Le distributeur du MOD matériaux et décoration dispose, actif par défaut, d'un solde en diamants distinct de celui en émeraudes. Le taux est fixe : 1 diamant = 4 émeraudes.",
+        "La pollution atmosphérique de la centrale nucléaire est active par défaut et s'applique rétroactivement. Une centrale qui fonctionnait déjà avant la mise à jour du pack se met à polluer à l'instant même de la mise à jour (la mécanique elle-même avait été présentée en V2.0.0 ; ce qui est dit ici pour la première fois, c'est la rétroactivité et la valeur par défaut).",
+        "Si la soif (hydratation) reste à 0 pendant 10 minutes d'affilée, les dégâts augmentent progressivement et, en dehors du mode Paisible, cela seul peut vous tuer. Actif par défaut dans le MOD survie.",
+        "L'essence des véhicules est active par défaut (les trains n'y sont pas soumis). Qu'elle puisse être désactivée dans la configuration et que les véhicules existants soient repris avec le plein est dit ici pour la première fois (le fait que l'essence devienne nécessaire avait été présenté en V2.0.0).",
+        "La durabilité des masques (Sparkle/Sparxie) est de 814. Après s'être brisés, ils reviennent une seule fois, 320 secondes plus tard."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Cet article ne modifie aucune mécanique du jeu ni aucune valeur par défaut. Il documente sept choses qui fonctionnaient déjà, après vérification dans le code réel des MODs. Le détail complet et la clé de configuration de chacune figurent sur la page « Fonctionnalités ».",
+        "La version dans laquelle sont apparus pour la première fois le multiplicateur de prix et le solde en diamants n'a pas été déterminée à la date de cet article. La seule chose confirmée est que les deux sont réellement actifs à la V2.5.1."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.5.0",
+     "date": "2026-08-28",
+     "type": "release",
+     "title": "[À lire impérativement] Supprimez les anciens glimpse-alpha-*.jar avant d'installer : les MODs ne s'appellent plus « Glimpse Alpha » mais « Alpha »",
+     "summary": "⚠ Avant d'installer cette version, supprimez de votre dossier mods les 11 jar commençant par « glimpse-alpha- ». Sans cela, ni Minecraft ni le serveur ne démarreront. Les MODs ont été renommés de « Glimpse Alpha » en « Alpha » (sur consigne du propriétaire, « Glimpse » est abandonné), si bien que les noms de fichiers passent de « glimpse-alpha-quelquechose.jar » à « alpha-quelquechose.jar ». Seul le nom change : le jeu les considère comme les mêmes MODs, donc laisser les anciens revient à avoir « le même MOD installé deux fois » et Fabric interrompt le démarrage sur-le-champ (c'est l'erreur Duplicate mod). Ne supprimez que les 11 fichiers commençant par « glimpse-alpha- » — ne supprimez pas le jar commençant par « fabric-api », ni les autres MODs que vous avez installés vous-même. Rien d'autre que le nom n'a changé. Pas un seul caractère des identifiants internes des blocs et des objets n'a été touché : les bâtiments que vous avez déjà construits, les outils que vous portez, votre monde et votre config continuent de fonctionner exactement comme avant. Si vous utilisez le launcher Corvus, l'application supprime les anciens jar à votre place et vous n'avez rien de tout cela à faire.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "[La seule chose à faire en premier] Ouvrez votre dossier mods, supprimez les 11 jar commençant par « glimpse-alpha- », puis ajoutez les 11 nouveaux commençant par « alpha- ». Ajouter les nouveaux sans supprimer les anciens empêche Minecraft comme le serveur de démarrer. Le plus sûr est de supprimer « avant » d'ajouter quoi que ce soit.",
+        "Ne supprimez que les fichiers commençant par « glimpse-alpha- ». « fabric-api-….jar » est un fichier nécessaire au fonctionnement d'Alpha : ne le supprimez jamais. Les autres MODs que vous avez installés vous-même peuvent rester où ils sont.",
+        "Si vous oubliez et que le jeu ne démarre plus, votre monde n'est pas endommagé. Supprimez du dossier mods les jar commençant par « glimpse-alpha- » et tout démarrera normalement.",
+        "Les MODs ont été renommés de « Glimpse Alpha » en « Alpha ». « Glimpse » disparaît du nom des onglets créatifs en jeu, du nom de la catégorie des commandes et du nom affiché dans la liste des MODs.",
+        "Les noms de fichiers des jar deviennent « alpha-quelquechose-2.5.0+mc26.2.jar », et l'archive ZIP distribuée s'appelle désormais « Alpha_MODs_v2.5.0+mc26.2.zip ».",
+        "Pas un seul caractère des identifiants internes des blocs, objets et entités (les 11 : sorakaze_guns et les autres) n'a changé. Les blocs que vous avez déjà posés et les objets que vous possédez ne disparaîtront donc pas, et il n'y a pas besoin de refaire le monde.",
+        "Les noms de fichiers du config restent eux aussi « config/sorakaze_*.json ». Les valeurs que vous avez ajustées vous-même sont conservées telles quelles.",
+        "Les commandes destinées aux administrateurs de serveur (/glimpsebackup, /glimpse storm restore) conservent leur nom. Changer quelque chose de déjà intégré à des scripts et à des habitudes serait un changement de comportement, pas un changement de nom.",
+        "Si vous utilisez le launcher Corvus 1.5.1, l'application supprime les anciens jar à votre place. Les personnes qui déposent les fichiers à la main dans le dossier mods et les administrateurs de serveur doivent les supprimer eux-mêmes, comme indiqué ci-dessus."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Avant d'installer cette version, supprimez de votre dossier mods les 11 jar commençant par « glimpse-alpha- ». Si vous oubliez, les mêmes MODs seront présents en double et ni Minecraft ni le serveur ne démarreront.",
+        "Ne supprimez pas le jar commençant par « fabric-api ». C'est un fichier nécessaire au fonctionnement d'Alpha.",
+        "Si vous administrez un serveur, la même suppression doit être faite dans le dossier mods du serveur également."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le launcher Corvus 1.5.1 affiche encore l'ancien nom (« Glimpse Alpha ») à l'écran. C'est un problème d'affichage uniquement, sans effet sur la vérification des mises à jour, le téléchargement ni l'installation. À la prochaine mise à jour du launcher, le nom affiché sera lu depuis les informations de publication et cela disparaîtra.",
+        "Les textes de description des pages de ce Wiki sont déjà passés à « Alpha » dans les 13 langues. En revanche, les anciennes entrées de l'historique des mises à jour indiquent toujours « Glimpse Alpha » telles qu'elles ont été écrites : c'était réellement le nom à l'époque, et elles sont conservées comme trace.",
+        "Les noms des commandes en jeu (/glimpsebackup, /glimpse storm restore) et le fichier de journalisation destiné aux administrateurs (glimpse-admin/audit.log) conservent le nom « glimpse ». Renommer une commande casserait les scripts existants et renommer le fichier de journal rendrait illisible ce qui y est déjà consigné : les deux ont donc été délibérément laissés en l'état.",
+        "« Glimpse Glass », qui est le nom du langage visuel des écrans, n'est pas un nom de MOD et reste tel quel."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.4",
+   "summary": "Correction du lance-missiles dessiné en double, déplacement de la carte au clic droit, 100 objectifs par salve et magasin de 200 transformé en coffre. Correction aussi d'un plantage serveur dans les Backrooms",
+   "releases": [
+    {
+     "version": "V2.4.9",
+     "date": "2026-08-28",
+     "type": "release",
+     "title": "Correction du lance-missiles dessiné en double, déplacement de la carte au clic droit, 100 objectifs par salve et magasin de 200 transformé en coffre. Correction aussi d'un plantage serveur dans les Backrooms",
+     "summary": "Cette version répond aux 4 remarques du propriétaire concernant le lance-missiles. Le défaut par lequel l'aspect était « une fusion de l'ancien et du nouveau design » et celui par lequel la carte tactique se déplaçait au moindre clic sont corrigés ; le nombre d'objectifs visables en une fois passe à 100 et le magasin est refait en « coffre » de 200 coups. Par ailleurs, le défaut par lequel le serveur pouvait s'arrêter en chargeant des secteurs du niveau 0 des Backrooms générés avant la V2.4.x est corrigé. Comme cela ne se produit pas dans un monde fraîchement créé, il était passé inaperçu jusqu'ici. Si votre serveur possède un monde dans lequel on joue déjà, c'est le changement le plus important de tous.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "[Correction d'un plantage serveur] Le défaut par lequel le chargement d'un secteur du niveau 0 des Backrooms généré avant la V2.4.x pouvait rendre le serveur non réactif puis provoquer son arrêt forcé environ 60 secondes plus tard a été corrigé. Le traitement qui redessine les anciens secteurs à la nouvelle allure s'exécute désormais après le chargement du secteur, et non pendant. Comme cela ne se produit jamais dans un monde fraîchement créé, nos tests ne l'ont pas détecté. Seuls les mondes dans lesquels on joue depuis longtemps sont concernés.",
+        "Le défaut par lequel le lance-missiles apparaissait comme « une fusion de l'ancien et du nouveau design » a été corrigé. Il y avait deux causes : (1) les pieds et le tube de missile étaient dessinés à 180 degrés près dans les quatre orientations, si bien que le tube se retrouvait un bloc devant la rampe et que 2 des 4 pieds étaient dessinés dans le vide, et (2) 7 des 13 modèles de bloc de l'ancien design continuaient d'être dessinés en même temps. Les deux sont corrigés et, hormis la plateforme au sol, seule la nouvelle forme est désormais dessinée.",
+        "À cette occasion, il est apparu que depuis la V2.4.6 la boîte de collision des pieds de la rampe était décalée dans 3 des 4 orientations (aucun signalement ne nous était parvenu). Elle a été refaite pour être correcte dans chaque orientation.",
+        "Le déplacement de la vue de la carte tactique passe du maintien du clic gauche au maintien du clic droit. Le clic gauche ne sert plus qu'à ajouter et retirer des objectifs, et la carte ne bouge donc plus au simple clic. Le déplacement ne commence qu'une fois le pointeur éloigné d'au moins 3 pixels du point d'appui (auparavant, les micro-tremblements de la main s'accumulaient et la vue dérivait alors qu'on la croyait immobile). Les commandes sont également affichées en bas de l'écran de carte.",
+        "Le nombre d'objectifs désignables sur la carte tactique passe de 50 à 100. Pour qu'un tir plus nourri n'alourdisse pas les performances, l'effet de traînée en vol et le traitement des impacts disposent désormais d'un budget par tick et sont traités dans l'ordre. Les impacts dépassant ce budget ne sont pas jetés : ils passent au tick suivant, si bien qu'aucun coup tiré ne disparaît.",
+        "Le magasin passe de 50 à 200 coups et est refait en écran de rangement en forme de coffre (6 rangées × 9 colonnes). Il s'ouvre accroupi avec un clic droit (le clic droit normal ouvre toujours le pupitre de commande, comme auparavant). Le pupitre de commande gagne également un bouton « Magasin ». Et vous pouvez toujours charger les ogives une à une sur place, en les tenant en main et en faisant un clic droit.",
+        "Une trémie raccordée à n'importe quel bloc de la rampe (les 36 cases de son volume de 3×4×3) réapprovisionne le magasin. Vous pouvez y laisser mélangées ogives de missile et ogives nucléaires, et les réordonner comme bon vous semble dans l'écran de rangement.",
+        "Le contenu chargé dans le magasin avant la V2.4.9 est repris tel quel dans le nouveau format au chargement du monde. Aucun coup n'est perdu."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Capacité du magasin du lance-missiles : 50 → 200 coups. Nombre maximal d'objectifs désignables sur la carte : 50 → 100."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Les commandes de la carte tactique ont changé. Le déplacement de la vue se fait en maintenant le CLIC DROIT. Le maintien du clic gauche ne déplace plus rien (le clic gauche sert exclusivement à ajouter et retirer des objectifs).",
+        "Une trémie peut réapprovisionner le magasin, mais elle ne peut délibérément pas en extraire le contenu. Il s'agit d'éviter qu'un magasin que vous venez de remplir soit vidé à votre insu par une trémie raccordée.",
+        "Il n'y a rien à supprimer ni à modifier dans le config. Les nouvelles valeurs par défaut du magasin et du nombre d'objectifs (200 coups, 100 points) s'appliquent d'elles-mêmes au démarrage, et les valeurs que vous avez modifiées vous-même sont conservées telles quelles."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "« 100 d'un coup » est un plafond de conception, fixé de pair avec un budget de traitement par tick. Ce n'est pas un chiffre mesuré en mettant réellement 100 coups en l'air en même temps.",
+        "Les lignes lumineuses teal des pieds et du tube de missile sont un élément de peinture statique, allumé en permanence : ce n'est pas un témoin qui s'allume et s'éteint selon l'état de tir ou d'attente (limitation reprise de la V2.4.6).",
+        "Le glisser au clic droit sur la carte tactique ne fait que translater la vue (pas de rotation ni d'inclinaison 3D)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.8",
+     "date": "2026-08-27",
+     "type": "release",
+     "title": "Pieds et tube de missile réellement inclinés et effilés, carte tactique plus fine et déplaçable au glisser, magasin et objectifs portés à 50",
+     "summary": "Les pieds et le tube de missile du lance-missiles passent d'un empilement de pavés à un dessin dédié qui s'écarte et s'effile réellement (la même méthode de « dessin direct à chaque image » que la tête rotative de la tourelle). Sur la carte tactique, la résolution du terrain a été fortement augmentée et, en plus du zoom à la molette, il est désormais possible de maintenir le clic gauche et de glisser pour affiner la vue. Le magasin et la désignation d'objectifs passent tous deux de 10 à 50 (50 coups et 50 points), et le Wiki s'enrichit de la procédure de configuration de l'identifiant et du mot de passe de l'application d'administration.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les pieds du lance-missiles passent d'un empilement de pavés à des pieds qui s'effilent réellement depuis leur appui extérieur vers le centre, avec une articulation. Le tube de missile n'est lui non plus plus un pavé mais un fût à section octogonale qui s'effile réellement, pointe comprise. Les deux sont dessinés avec la même méthode de « dessin direct à chaque image » que la tête rotative de la tourelle automatique, et la boîte de collision reste inchangée.",
+        "Des lignes lumineuses teal ont été ajoutées aux pieds et au tube de missile.",
+        "Le rendu du terrain de la carte tactique passe d'un échantillon tous les 4 pixels d'écran à un échantillon par pixel d'écran (soit quatre fois plus de résolution en pratique).",
+        "Maintenir le clic gauche et déplacer la souris sur la carte tactique permet désormais d'affiner la vue (distinct du suivi du curseur au zoom : vous pouvez placer l'endroit que vous visez où vous voulez sur l'écran).",
+        "Le magasin du lance-missiles passe de 30 à 50 coups, et le nombre d'objectifs désignables sur la carte de 10 à 50 (après des essais de tir en rafale à 10 coups sans problème).",
+        "Le guide d'installation du Wiki s'enrichit de la procédure permettant au propriétaire de configurer l'identifiant et le mot de passe de l'« application d'administration » du jeu (les identifiants réels ne sont pas publiés : connaître la procédure ne permet pas de se connecter)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Capacité du magasin du lance-missiles : 30 → 50 coups. Nombre maximal d'objectifs désignables sur la carte : 10 → 50."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les lignes LED teal des pieds et du tube de missile sont un élément de peinture statique, allumé en permanence : ce n'est pas un témoin qui s'allume et s'éteint selon l'état de tir ou d'attente (limitation reprise de la V2.4.6).",
+        "Le glisser sur la carte tactique ne fait que translater la vue (pas de rotation ni d'inclinaison 3D)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.7",
+     "date": "2026-08-27",
+     "type": "release",
+     "title": "Le lance-missiles adopte un magasin mixte de 30 coups et un tir en rafale sur 10 points, avec une rampe refaite et un son d'impact renforcé",
+     "summary": "Après un nouvel examen du design de référence du propriétaire, la rampe du lance-missiles a été véritablement refaite, et pas simplement repeinte : elle possède maintenant quatre pieds qui s'écartent réellement en biais et un écran de tablette sur le flanc affichant la carte tactique. Par ailleurs, le magasin passe à 30 coups (missiles et ogives nucléaires peuvent être mélangés) et il est possible de désigner jusqu'à 10 objectifs sur la carte tactique puis de les tirer en une seule rafale continue, comme un fusil à rafales. Le son d'impact, tant des missiles que des ogives nucléaires, porte désormais plus loin et sonne plus fort et plus réaliste.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La forme de la rampe de lancement a été refaite : quatre pieds aux coins qui s'écartent visiblement en biais (une silhouette en gradins, large à l'appui au sol et se resserrant vers le haut) et un écran de tablette sur le flanc affichant la carte tactique (dans les mêmes couleurs que l'écran de carte réel).",
+        "Le magasin passe à 30 coups maximum. Ogives de missile et ogives nucléaires peuvent être chargées ensemble dans le même magasin, et sont tirées dans l'ordre où elles ont été chargées.",
+        "Il est désormais possible de désigner jusqu'à 10 objectifs sur la carte tactique. Chaque clic sur la carte y ajoute un objectif sur-le-champ (aucune validation n'est nécessaire), et cliquer sur une punaise existante la retire.",
+        "En appuyant sur le bouton de tir, les coups partent un à un vers les objectifs désignés, en rafale continue comme un fusil à rafales (chaque objectif consommé dans la file déclenche le tir suivant).",
+        "Le son d'impact des ogives de missile bénéficie désormais aussi d'une diffusion à longue distance (jusqu'à 6 000 blocs). Auparavant, on ne l'entendait que de très près.",
+        "Le son d'impact des ogives nucléaires comme des ogives de missile a davantage de graves et un volume plus élevé sur les deux diffusions, proche et lointaine."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Capacité du magasin du lance-missiles : 4 coups → 30 coups (chargement mixte)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les lignes LED teal de la rampe sont un élément de peinture statique, allumé en permanence : ce n'est pas un témoin qui s'allume et s'éteint selon l'état de tir ou d'attente (limitation reprise de la V2.4.6).",
+        "Les pieds des quatre coins ne sont pas une géométrie réellement inclinée : une silhouette en gradins faite de trois boîtes alignées sur les axes approxime un « pied qui s'écarte en biais ». C'est un parti pris de conception pour tout cet ensemble, afin de ne pas ajouter de calculs de collision avec rotation."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.6",
+     "date": "2026-08-27",
+     "type": "release",
+     "title": "Terrain réel et zoom sur la carte tactique du lance-missiles, et nouvelle allure de la rampe de lancement",
+     "summary": "La carte tactique ajoutée en V2.4.5 a reçu deux reproches : « avec des coordonnées et des symboles, on ne sait pas de quel endroit il s'agit » et « à l'échelle d'une portée de 2 000 blocs, viser de près est si grossier que le tir finit loin de l'endroit voulu ». La carte dessine donc désormais les couleurs du terrain réel avec le même mécanisme que l'objet carte de vanilla, et le zoom à la molette de la souris (centré sur la position du curseur) a été ajouté. Par la même occasion, le modèle 3D de la rampe de lancement elle-même, laissé de côté lors de la mise à jour précédente, a été refait selon le design de référence du propriétaire : une palette vert olive et acier sombre, des montants en guise de pieds aux quatre coins, et des lignes lumineuses teal (bleu-vert) réparties sur l'ensemble.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La carte tactique dessine le terrain réel : elle utilise la même « couleur du bloc de surface » que l'objet carte de vanilla, avec un ombrage simple déduit de la différence d'altitude avec le point voisin. Seules les zones déjà chargées sur votre client sont dessinées (celles qui ne le sont pas restent signalées comme « inconnues » par une couleur neutre, comme auparavant).",
+        "Le zoom avant et arrière à la molette de la souris a été ajouté. Comme il est centré sur la position du curseur, vous pouvez vous rapprocher de l'endroit qui vous intéresse sans avoir à l'amener au centre de l'écran. Le bouton « Retour au lanceur » rétablit l'échelle et le centrage d'origine.",
+        "Le modèle 3D de la rampe de lancement a été refait : palette vert olive et acier sombre, montants en guise de pieds aux quatre coins, et lignes lumineuses teal sur le corps, les montants et le tube du missile."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les lignes LED teal de la rampe sont un élément de peinture statique, allumé en permanence : ce n'est pas un témoin qui s'allume et s'éteint selon l'état de tir ou d'attente.",
+        "Le terrain est ré-échantillonné à chaque déplacement de la vue (zoom, ou « Retour au lanceur »), et non à chaque image. Sur une machine très peu puissante, une image grossière peut subsister un instant juste après un zoom avant.",
+        "La carte ne gère pas le déplacement de la vue par glisser. La vue ne se déplace qu'en suivant le curseur lors d'un zoom et via le bouton « Retour au lanceur »."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.5",
+     "date": "2026-08-26",
+     "type": "release",
+     "title": "Le pointage du lance-missiles passe de la saisie de coordonnées à la sélection au clic sur une carte tactique",
+     "summary": "La désignation des objectifs du lance-missiles a été refaite : au lieu de saisir des coordonnées, on choisit le point d'un clic sur une carte tactique. La carte affiche un anneau de portée (2 000 blocs par défaut) et la couleur indique d'un coup d'œil si le point choisi est ou non à portée. L'altitude réelle de l'impact est déterminée par le serveur lui-même à partir de la surface du terrain à ce point. Si vous choisissez une zone non chargée, l'opération n'échoue pas en silence : la raison s'affiche. Le contrôle de portée se fait désormais uniquement sur la distance horizontale, afin que le relief ne fasse plus diverger l'anneau de la carte et le contrôle réel. Les systèmes existants (sécurité, tir, ogives, temps de recharge) sont inchangés. L'aspect (le modèle 3D de la rampe de lancement elle-même) n'a pas été modifié dans cette mise à jour.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Un bouton « Ouvrir la carte » a été ajouté au pupitre de commande du lance-missiles ; les champs de saisie des coordonnées ont été supprimés.",
+        "Carte tactique : affiche le lanceur au centre, l'anneau de portée (2 000 blocs par défaut), votre propre position et le point choisi (une punaise). La punaise prend la couleur normale si le point est à portée et la couleur d'alerte sinon, et la distance est également indiquée en toutes lettres.",
+        "À la validation, seul le point choisi (XZ) est envoyé au serveur, qui détermine lui-même l'altitude réelle de l'impact (la surface du terrain). Si vous tentez de valider un point dans une zone qui n'est pas encore chargée, le message « cette zone n'est pas encore chargée » s'affiche et l'objectif précédent reste inchangé.",
+        "Le contrôle de portée passe de la distance en 3D (dénivelé compris) à la seule distance horizontale. Cela évite le défaut par lequel le relief faisait diverger l'anneau de la carte et ce qu'il était réellement possible de tirer."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le modèle 3D de la rampe de lancement (son aspect) n'a pas été modifié dans cette mise à jour : il conserve celui qu'il avait.",
+        "La carte ne gère encore ni le zoom ni le déplacement par glisser (elle affiche toujours une vue à échelle fixe centrée sur le lanceur).",
+        "L'aperçu de l'altitude du terrain sous le point choisi ne fonctionne que dans les zones déjà chargées sur votre propre client. Comme l'essentiel de la portée se situe au-delà de la distance d'affichage, il indiquera le plus souvent « inconnu jusqu'à validation » (le serveur calcule toujours correctement l'altitude réelle au moment de la validation)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.4",
+     "date": "2026-08-25",
+     "type": "hotfix",
+     "title": "La connexion à l'application d'administration passe à un identifiant et un mot de passe uniques, et la perte des droits d'opérateur est corrigée",
+     "summary": "Les signalements « je saisis l'identifiant et le mot de passe administrateur et je n'arrive pas à me connecter » ne cessant pas, le propriétaire a décidé de revoir le modèle de connexion de l'application d'administration lui-même. Le système liant trois comptes à trois noms précis est abandonné : il n'y a plus qu'un identifiant et un mot de passe partagés, et quiconque les connaît peut se connecter. L'enquête a par ailleurs révélé un défaut grave : lorsque le fichier de configuration des administrateurs est absent ou corrompu, le serveur retirait automatiquement les droits d'opérateur (/op) à toutes les personnes qui les possédaient réellement. C'est également corrigé (le mécanisme introduit en V2.4.0 en était la cause, et cela empêchait l'usage des commandes ainsi que, par exemple, l'activation des sauvegardes automatiques).",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La connexion à l'application d'administration passe de 3 comptes liés à des noms précis à un seul identifiant et mot de passe partagés. Quiconque connaît les deux peut se connecter, quel que soit le compte Minecraft utilisé.",
+        "Le défaut grave par lequel la synchronisation automatique des droits d'opérateur du serveur (/op) retirait ces droits à tous les opérateurs existants dès que le fichier de configuration des administrateurs était absent ou corrompu a été corrigé. Le système ne touche plus du tout aux droits existants tant que la configuration n'est pas en ordre.",
+        "Pour le propriétaire : la procédure de recréation des identifiants a été mise au propre pour le nouveau modèle à compte unique (documentation privée)."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Avec ce changement, l'accès à l'application d'administration ne repose plus sur des identifiants personnels mais sur un unique identifiant et mot de passe partagés. Pour révoquer l'accès d'une seule personne, changez le mot de passe partagé et redistribuez-le uniquement à celles qui doivent le conserver."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.3",
+     "date": "2026-08-25",
+     "type": "hotfix",
+     "title": "Message de diagnostic à la connexion administrateur, et correction des 3 défauts connus listés sur le Wiki",
+     "summary": "Version corrective faisant suite au signalement « je saisis l'identifiant et le mot de passe et je n'arrive pas à me connecter ». Aucun défaut n'a été trouvé dans le câblage du serveur ni dans la logique de vérification, mais l'écran affichait jusqu'ici toujours le même message, « identifiant ou mot de passe incorrect », aussi bien lorsque aucun compte administrateur n'était configuré sur le serveur que lorsque la saisie était réellement erronée, et l'utilisateur ne pouvait pas distinguer les deux cas. Désormais, dans le premier cas, un message distinct explique la raison, et cet état ne compte pas non plus comme un échec (la protection contre la force brute ne vous bloque pas). Par la même occasion, les 3 défauts qui figuraient encore sur la page des défauts connus du Wiki ont été corrigés (l'affichage du nom des vitres en verre renforcé, le câble isolé juste après une coupure puis un rétablissement du courant, et la disposition des recettes dans l'application « Recherche »).",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Écran de connexion de l'application d'administration : lorsque aucun compte administrateur valide n'est configuré sur le serveur, un message l'expliquant s'affiche désormais, au lieu de l'ancien « identifiant ou mot de passe incorrect ». Les tentatives de connexion dans cet état ne comptent pas comme des échecs pour la protection contre la force brute.",
+        "L'affichage du nom des vitres en verre renforcé (17 couleurs) a été corrigé. Toutes les couleurs affichent maintenant leur nom correct en japonais et en anglais.",
+        "Le défaut par lequel, juste après avoir coupé puis rétabli le disjoncteur général du tableau électrique, un câble détaché du réseau pouvait rester allumé a été corrigé.",
+        "L'affichage des recettes 3×3 de l'application « Recherche » a été corrigé pour reproduire la disposition réelle de l'établi (position des ingrédients et cases vides). C'était auparavant un affichage simplifié qui tassait les ingrédients depuis le début, sans cases vides.",
+        "Pour les administrateurs de serveur : la procédure de vérification et de rétablissement en cas de connexion administrateur inopérante (admin_account.json absent ou corrompu) a été mise au propre (documentation privée destinée au propriétaire)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La correction de la connexion administrateur sert à distinguer le cas « aucun compte n'est configuré sur le serveur ». Si les 3 sont correctement configurés et qu'un seul, en particulier, ne parvient toujours pas à se connecter, il s'agit d'un autre symptôme : signalez-le-nous de nouveau, s'il vous plaît.",
+        "La correction du câble isolé prend effet à partir des mises à jour correctement effectuées depuis cette version. Si vous passez directement à la V2.4.3 depuis un launcher ou un serveur antérieur à la V2.4.2 et qu'un câble isolé subsiste, cassez-le et reposez-le, ou attendez la prochaine manœuvre du disjoncteur général, qui le résoudra."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.1",
+     "date": "2026-08-24",
+     "type": "hotfix",
+     "title": "Correction du plantage du client au déploiement du drone et d'un défaut de l'écran de connexion de l'application d'administration",
+     "summary": "Version corrective faisant suite aux signalements des joueurs. Nous corrigeons le défaut qui faisait systématiquement planter le client au déploiement du drone, ainsi que celui par lequel, sur l'écran de connexion de l'application d'administration, le champ identifiant se vidait à chaque échec de connexion.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le défaut qui faisait systématiquement planter le client au déploiement du drone a été corrigé. L'aspect du drone (un petit quadricoptère) est désormais dessiné correctement.",
+        "Le défaut par lequel, sur l'écran de connexion de l'application d'administration, le champ identifiant se vidait à chaque tentative infructueuse et devait être ressaisi a été corrigé."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.0",
+     "date": "2026-08-24",
+     "type": "release",
+     "title": "Les lanternes de verre vraiment corrigées, la santé mentale ne chevauche plus la soif, les armes des tourelles redeviennent visibles, et « Glimpse Launcher » est publié",
+     "summary": "La correction des lanternes de verre de la V2.2.1 s'est révélée insuffisante ; à la suite de captures d'écran réelles, elle a été refaite à la base. Le cœur de lumière blanche resté au centre est totalement supprimé et remplacé par un unique dégradé de couleur régulier. Dans les Backrooms, la jauge de soif ordinaire, qui continuait de s'afficher à côté de la santé mentale, est désormais correctement masquée. Le défaut qui rendait invisibles les armes montées sur les tourelles est également corrigé, de même que plusieurs commandes de configuration pour administrateurs qui, en réalité, ne faisaient rien. Et nous publions « Glimpse Launcher », une nouvelle application de bureau qui vérifie et applique automatiquement les mises à jour du pack de MODs.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "L'émission lumineuse des lanternes de verre a été refaite une seconde fois. En V2.2.1, nous avions choisi de « laisser un cœur incandescent au centre » ; des captures d'écran réelles nous ont montré que ce cœur paraissait encore blanchâtre en jeu. La notion même de zone centrale traitée à part a été supprimée, au profit d'un unique dégradé où la couleur évolue régulièrement du centre vers le bord. Comme c'est du verre, on voit toujours à travers.",
+        "Le défaut par lequel la jauge de soif ordinaire (hydratation) restait affichée à côté de la santé mentale à l'intérieur des Backrooms a été corrigé. Dans les Backrooms, la jauge de soif est désormais correctement masquée (le mécanisme lui-même reste en place et peut revenir à tout moment).",
+        "Le défaut par lequel les armes à feu et les arcs montés sur une tourelle devenaient invisibles à l'écran a été corrigé. L'arme montée s'affiche correctement.",
+        "Plusieurs commandes de configuration pour administrateurs de serveur, documentées mais sans effet réel, ont été corrigées (probabilité et nombre de vagues des raids, limite de résolution vidéo, etc.). Un nouveau point d'entrée de configuration administrateur a également été ajouté pour les Backrooms.",
+        "Nous publions « Glimpse Launcher », une nouvelle application de bureau. Elle consulte le Wiki pour détecter les mises à jour du pack de MODs, vérifie chaque téléchargement en SHA-256 et effectue une sauvegarde automatique avant d'appliquer la mise à jour. Le bouton « Jouer » ouvre le launcher officiel de Minecraft (le choix du profil Fabric reste à votre charge, comme auparavant). Le même fichier fonctionne sous Windows, macOS et Linux (Java doit être installé). Rendez-vous sur la page de téléchargement."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Il s'agit de la toute première version de Glimpse Launcher. L'application elle-même ne se met pas encore à jour toute seule (c'est prévu pour une version ultérieure)."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.2",
+   "summary": "Les lanternes de verre brillent enfin de leur vraie couleur, et la mission des caisses du niveau 1 des Backrooms est corrigée",
+   "releases": [
+    {
+     "version": "V2.2.1",
+     "date": "2026-08-23",
+     "type": "hotfix",
+     "title": "Les lanternes de verre brillent enfin de leur vraie couleur, et la mission des caisses du niveau 1 des Backrooms est corrigée",
+     "summary": "Version corrective faisant suite aux signalements des joueurs. Les lanternes de verre ne paraissent plus blanchâtres : chaque couleur brille désormais comme un néon derrière le verre translucide. Le défaut qui empêchait de valider l'objectif « ouvrir 4 caisses » au niveau 1 des Backrooms a également été corrigé.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "L'aspect des lanternes de verre a été corrigé. Auparavant, la lumière colorée était presque effacée par une émission blanchâtre ; désormais le rouge brille en rouge, le bleu en bleu, et ainsi de suite pour chaque couleur, comme un néon. Il ne reste qu'un petit cœur incandescent au centre. Comme c'est du verre, on voit toujours à travers.",
+        "Le défaut par lequel l'objectif « ouvrir 4 caisses en bois » du niveau 1 des Backrooms ne progressait pas, même en ouvrant des caisses, a été corrigé. Il progresse maintenant correctement à chaque caisse forcée (ou ouverte accroupi à mains nues)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.2.0",
+     "date": "2026-08-23",
+     "type": "release",
+     "title": "52 lanternes de verre, un vrai hall des Backrooms, des raids en surface, des tourelles et une reconstitution de Sapporo",
+     "summary": "Cette fournée ajoute le 11e MOD, « Sapporo » : une dimension qui reconstitue la ville réelle de Sapporo (Japon) à partir de relevés réels. Le niveau 1 des Backrooms, « Le hall », n'est plus une pièce de démonstration mais un véritable espace explorable, avec un panneau d'objectifs en verre affiché en permanence à gauche de l'écran. Les raids de village peuvent désormais se déclencher par simple probabilité, sans Mauvais présage ; arrivent aussi des tourelles où monter armes à feu et arcs, la vidéo jusqu'en 4K qui s'arrête toute seule, le bâton de Sparxie doté d'une attaque à distance en plus du corps à corps, un rééquilibrage du minigun et du lance-roquettes, un drone-caméra pilotable avec son application dédiée, et 52 nouvelles lanternes de verre dans le MOD matériaux. La Porte d'améthyste s'ouvre désormais aussi avec de simples blocs d'améthyste vanilla.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le MOD « Sapporo » (sorakaze_sapporo) est enfin publié. C'est une dimension qui reconstitue la ville réelle de Sapporo (Hokkaidō, Japon) à partir de données géographiques réelles. L'emprise au sol des bâtiments et le relief proviennent à 100 % de relevés réels, mais la hauteur de la plupart des bâtiments reste une estimation statistique par quartier. C'est l'état réel des choses, et nous le disons : les données 3D urbaines plus détaillées (PLATEAU) ne sont pas encore accessibles. Les hauteurs seront affinées dès que ces données seront disponibles.",
+        "Le niveau 1 des Backrooms, « Le hall », est maintenant un vrai hall dans lequel on marche et que l'on explore, et non plus une petite pièce de démonstration. On y entre par une faille qui se génère naturellement près d'une cité de l'End.",
+        "Un panneau d'objectifs en verre est désormais affiché en permanence à gauche de l'écran : niveau en cours, santé mentale et prochaine destination d'un coup d'œil.",
+        "Dans les Backrooms, c'est la santé mentale qui remplace la soif comme jauge à gérer. De plus, les créatures qui y apparaissent sont insensibles à toute arme ordinaire et ne peuvent pas être tuées : c'est un endroit où l'on esquive, pas où l'on combat.",
+        "La Porte d'améthyste peut désormais être montée avec de simples blocs d'améthyste vanilla, en plus des blocs d'améthyste de portail. Les deux peuvent même être mélangés dans un même cadre.",
+        "Les raids de village peuvent désormais se déclencher par simple probabilité du seul fait de se trouver dans un village, sans l'effet Mauvais présage. 12 vagues au total, et des ennemis supplémentaires issus du MOD Ciel s'ajoutent à la dernière vague.",
+        "Des tourelles font leur apparition : on peut y monter une arme à feu, un arc ou une arbalète. L'arme montée dispose de son propre inventaire de munitions, et la démonter vous rend l'arme et les munitions restantes.",
+        "La lecture vidéo accepte désormais jusqu'à la 4K, conserve toujours un format 16:9 et s'arrête automatiquement lorsque vous vous éloignez de l'écran.",
+        "Le bâton de Sparxie peut désormais attaquer à distance (un éclair d'une portée de 24 blocs), en plus de son attaque au corps à corps.",
+        "Le minigun frappe environ trois fois plus fort et l'explosion du lance-roquettes est nettement plus puissante qu'avant.",
+        "Un drone-caméra librement pilotable a été ajouté, avec son application de drone dédiée sur le téléphone du jeu, qui affiche son point de vue en direct en 16:9. Lorsque vous lâchez les commandes, il reste en vol stationnaire sur place.",
+        "Le MOD matériaux et décoration gagne 52 lanternes de verre (18 en verre coloré vanilla + 17 renforcées + 17 occultantes). Niveau de lumière maximal, 15, et une texture émissive plus lumineuse que le panneau LED existant.",
+        "L'application d'administration sur l'ordinateur gagne un écran d'historique des modifications pour l'administrateur du serveur. C'est un écran en lecture seule, et le consulter n'est pas lui-même journalisé."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Les dégâts du minigun ont été multipliés par environ trois.",
+        "La puissance de l'explosion du lance-roquettes a été fortement augmentée."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Pour jouer dans la dimension Sapporo, l'administrateur du serveur doit avoir installé sur le serveur un fichier de données cartographiques distribué séparément (il n'est pas distribué sur ce site). Sans lui, ce monde est tout simplement inaccessible.",
+        "Les créatures des Backrooms ne peuvent pas être tuées. N'essayez pas de les affronter avec des armes ordinaires : esquivez."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La hauteur de la plupart des bâtiments de Sapporo reste une estimation statistique par quartier et non un relevé réel. Elle sera mise à jour dès que des données 3D urbaines plus détaillées seront disponibles.",
+        "La possibilité pour les joueurs de construire et d'allumer eux-mêmes la porte du Ciel (portail en pierre lumineuse) dépend d'un réglage de l'administrateur du serveur, désactivé par défaut."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.1",
+   "summary": "Les niveaux 3 à 8 des Backrooms deviennent de vrais niveaux sans fin ; une application d'administration serveur sur l'ordinateur du jeu ; les recettes d'invocation des boss arrivent dans le livre de recettes",
+   "releases": [
+    {
+     "version": "V2.1.0",
+     "date": "2026-08-22",
+     "type": "release",
+     "title": "Les niveaux 3 à 8 des Backrooms deviennent de vrais niveaux sans fin ; une application d'administration serveur sur l'ordinateur du jeu ; les recettes d'invocation des boss arrivent dans le livre de recettes",
+     "summary": "Le plus gros changement de cette manche, ce sont les niveaux 3 à 8 des Backrooms. C'étaient des îlots de démonstration de 128 blocs ; ce sont désormais des niveaux sans fin que l'on peut réellement parcourir. L'ordinateur du MOD Matériaux/Décoration gagne une application d'administration du serveur, et dans le MOD Boss les recettes des objets d'invocation apparaissent enfin dans le livre de recettes du jeu. Les trois armes pilotées par données ont enfin chacune leur propre modèle en main.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Seuls quatre MOD ont réellement changé : Backrooms, Matériaux/Décoration, Boss et Armes à feu. Les six autres (Planarcadia, Électricité, Chemin de fer, Ciel, Survie, Véhicules) sont passés en 2.1.0 uniquement pour garder l'ensemble cohérent — leurs fichiers jar diffèrent de ceux de 2.0.0 par une seule entrée, la chaîne de version dans fabric.mod.json. Pas un octet de leur contenu n'a changé.",
+        "Les niveaux 3 à 8 des Backrooms sont passés d'îlots de démonstration de 128 blocs à de vrais niveaux sans fin. Aucun n'a plus de bord ; tous se parcourent à pied.",
+        "Niveau 3, le bâtiment électrique. Le courant est sous tension et toucher un tableau est dangereux. Un Hound patrouille, et un Smiler attend dans la salle des câbles en sous-sol.",
+        "Niveau 4, les bureaux déserts. Classé sûr — mais 3 % des fenêtres vous regardent, et elles ressemblent exactement aux autres. La santé mentale y remonte lentement. L'eau d'amande est dans la salle de pause.",
+        "Niveau 5, l'hôtel de la terreur. 80 % des portes numérotées sont verrouillées. Dans chaque zone d'un seul tenant, exactement une chambre diffère dans les détails. Ne vous attardez pas.",
+        "Niveau 6, extinction des feux. Une lampe torche fonctionne correctement pendant 20 secondes ; passé ce délai, elle ne fonctionne plus qu'environ 15 % de chaque seconde. Tant qu'elle est allumée, les entités vous repèrent quatre fois plus loin — la lumière attire. C'est un niveau où l'on avance à l'oreille.",
+        "Niveau 7, thalassophobie. Une maison de forme fixe, et un océan sans rive opposée. N'allez pas jusqu'au bout du ponton.",
+        "Niveau 8, le réseau de grottes. Des galeries creusées pour les hommes puis abandonnées ; les rails de fer mènent vraiment quelque part. Il y a un puits intérieur noyé de 32 blocs de profondeur.",
+        "L'ordinateur du jeu gagne une application « Administration du serveur ». Sans ouvrir de fichier de configuration, un administrateur peut y changer : si la messagerie, les appels et le navigateur du téléphone sont autorisés ; combien de flux de caméra peuvent s'afficher en même temps et si la diffusion en direct est autorisée ; si les sauvegardes automatiques tournent, à quel intervalle et combien sont conservées ; ainsi que quelques réglages de boss (apparition naturelle du Médecin de peste et sa probabilité, uniquement par orage, délai de réapparition, nombre maximal de Withers de peste, nombre de Wardens nécessaires au Golem de sculk, nombre de Withers invoqués par le Faucheur, génération des générateurs de Rock Lock dans les forteresses du Nether, points de vie maximaux du Médecin de peste, multiplicateur de points de vie des Withers de peste).",
+        "Ouvrir l'application d'administration demande un identifiant administrateur et un mot de passe. L'administration du serveur les remet individuellement, uniquement aux personnes qu'elle choisit. Ils ne figurent nulle part sur ce site. La session expire au bout d'un moment, et les échecs de saisie sont limités en nombre.",
+        "Les recettes des objets d'invocation du MOD Boss (Cœur d'autel de forge, Couronne en fusion, Cœur de sculk, Œil sonar, Autel de givre, Œuf primordial, Autel de sang d'âme) apparaissent maintenant dans le livre de recettes du jeu. Jusqu'ici il n'existait aucun moyen de les débloquer, donc aucun moyen d'apprendre leur fabrication depuis le jeu.",
+        "Quatre progrès de découverte ont été ajoutés comme indice vers l'invocation : « La clé brûlante », « La clé des abysses », « La clé de givre » et « L'autel est dressé ». Chacun se déclenche lorsque vous tenez l'objet d'invocation correspondant.",
+        "L'apparition naturelle du Médecin de peste est de retour, derrière un interrupteur réservé aux administrateurs — mais il est désactivé par défaut. Tant qu'un administrateur ne l'active pas explicitement, le comportement est identique à V2.0.0.",
+        "Les trois armes pilotées par données (Pistolet de service, Carabine de tireur d'élite, Fusil d'effraction) ont désormais chacune leur propre modèle en main. Les trois empruntaient le maillage du fusil d'assaut : tenir un pistolet affichait un fusil."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Les niveaux 3 à 8 se génèrent désormais d'une manière fondamentalement différente. Dans un monde où vous avez visité les îlots de démonstration sous V2.0.0, le terrain de cette zone ne correspondra plus à ce qui s'y trouvait.",
+        "L'identifiant et le mot de passe de l'application d'administration ne sont jamais publiés sur ce site. Obtenez-les directement auprès de l'administration du serveur."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le MOD Sapporo (sorakaze_sapporo) ne fait pas partie de cette manche. Il est reporté à la V2.2.",
+        "L'aspect réel, le son et le comportement des entités des niveaux 3 à 8 n'avaient pas été vérifiés en partie réelle au moment de la rédaction."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.0",
+   "summary": "La mise à jour V2 — un 10ᵉ MOD, Planarcadia ; quatre nouveaux boss ; plomberie, essence et nourriture qui pourrit",
+   "releases": [
+    {
+     "version": "V2.0.0",
+     "date": "2026-08-18",
+     "type": "release",
+     "title": "La mise à jour V2 — un 10ᵉ MOD, Planarcadia ; quatre nouveaux boss ; plomberie, essence et nourriture qui pourrit",
+     "summary": "Voici V2 à proprement parler. Le 10ᵉ MOD, Planarcadia, est livré ici pour la première fois. Le MOD Boss gagne quatre nouveaux boss dotés chacun de son rituel d'invocation, Survie gagne un réseau d'eau et un réfrigérateur, Véhicules gagne l'essence et Électricité gagne un purificateur d'air. Les Backrooms se sont beaucoup étendues, et Matériaux/Décoration reçoit du verre renforcé occultant dans toutes les couleurs.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Un 10ᵉ MOD, Planarcadia (sorakaze_planarcadia), est fourni pour la première fois. Montez un cadre en blocs d'améthyste-portail, de la même forme qu'un portail du Nether, allumez-le : il s'ouvre sur un monde de loisirs où la nuit règne. Il apporte ses propres blocs — enseignes LED, lune fantôme, fresque du saut interdimensionnel, comptoir de vente. Il ne dépend d'aucun autre MOD de Glimpse Alpha.",
+        "Quatre nouveaux boss rejoignent le MOD Boss : le Roi Golem Volcanique (Cœur d'autel de forge + Couronne en fusion), le Gardien Kraken Abyssal (Cœur de sculk + Œil sonar), le Dragon Phénix de Glace Prismatique (Autel de givre + Œuf primordial) et le Seigneur Démon Witherstorm (Autel de sang d'âme + 3 crânes de wither squelette + une étoile du Nether).",
+        "L'autel de sang d'âme refuse le Seigneur Démon Witherstorm tant que les trois autres n'ont pas été abattus. Chacun des quatre a un butin garanti : Cœur volcanique, Tendon abyssal, Plume prismatique et Cœur du Seigneur.",
+        "Le Faucheur des Tombes a désormais une faible chance de lâcher la Faux moissonneuse d'âmes. Tout ce que vous tuez avec cette faux a une faible chance de lâcher son propre œuf d'apparition.",
+        "Survie gagne un réseau d'eau : tuyaux, pompe et robinet. La pompe puise, les tuyaux acheminent, le robinet remplit. Un réfrigérateur et de la « Nourriture avariée » arrivent avec.",
+        "Véhicules gagne l'essence. Clic droit sur un véhicule avec un jerrican d'essence en main pour faire le plein. Le jerrican vide ne casse pas — remplissez-le à l'établi avec 4 charbons ou charbons de bois.",
+        "Électricité gagne un purificateur d'air. Une centrale nucléaire en marche pollue désormais l'air autour d'elle, et rester dans un air pollué donne d'abord la lenteur, puis la faiblesse, puis le poison. Un purificateur alimenté fait disparaître cette pollution localement tant qu'il a du courant.",
+        "Armes à feu gagne un système d'armes et d'accessoires piloté par des données. Placez une arme et des accessoires dans l'établi d'armurier : ils se montent au moment où vous ressortez l'arme, et se démontent si vous la remettez. Trois armes (Pistolet de service, Carabine de tireur d'élite, Fusil d'effraction) et six accessoires (Viseur point rouge, Silencieux, Chargeur étendu, Poignée inclinée, Crosse lourde, Pointeur laser) l'utilisent. Une combinaison de protection contre la contamination nucléaire a aussi été ajoutée — elle ne protège qu'avec le masque à gaz.",
+        "Les Backrooms se sont beaucoup étendues : niveaux 0, 1 et 2, les Poolrooms, le niveau de la fête et un grand hall bordé de portes numérotées, plus douze entités (Hound, Smiler, Faceling, Skin Stealer, Peeling Colossus, Wailing Hulk, Pallid Runner, Partygoer, Deathmoth, Duller, Tableau vivant, Fausse flaque) et de quoi s'équiper — eau d'amande, bandages, lampe torche, kit d'analyse sanguine, pied-de-biche, allumettes.",
+        "Matériaux/Décoration gagne le verre renforcé occultant : trois formes (bloc, vitre, plaque) en 17 couleurs. Dans le même temps, les 16 vitres en verre renforcé livrées sans nom depuis la v1.7.7 ont enfin reçu un nom japonais et anglais."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Les numéros de version passent de 1.x à 2.0.0 partout. Remplacez les dix fichiers jar ensemble, sur le serveur comme sur le PC de chaque joueur."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Aucune entrée V2.0.0 n'avait été publiée sur ce site à l'époque. Celle-ci a été écrite après coup, en même temps que V2.1.0, en lisant le contenu réel des fichiers jar livrés."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.9",
+   "summary": "Preuve du fonctionnement de l'ogive nucléaire comme combustible, grande mise à jour du chemin de fer, nouveau design d'écran, coordonnées affichées en permanence",
+   "releases": [
+    {
+     "version": "v1.9.3",
+     "date": "2026-08-13",
+     "type": "release",
+     "title": "Preuve du fonctionnement de l'ogive nucléaire comme combustible, grande mise à jour du chemin de fer, nouveau design d'écran, coordonnées affichées en permanence",
+     "summary": "5 MOD ont été mis à jour simultanément (les versions V1.9.1 et V1.9.2 n'existent pas : la grande mise à jour du chemin de fer et les demandes autour de la production d'électricité par ogive nucléaire ont été regroupées et livrées sous le nom V1.9.3). Le dessin de la Poupée Spark α, corrigé depuis deux versions mais jamais livré jusqu'ici, arrive enfin. Ont également été corrigés : le bug qui abîmait une batterie laissée pleine trop longtemps, la mise en place (non encore exécutée) d'une vérification sur un vrai serveur de l'utilisation de l'ogive nucléaire comme combustible, et le bug de la lunette du lance-roquettes. Le chemin de fer reçoit une grande mise à jour (départ automatique, conduite automatique, etc.), les écrans des MOD électricité, armes à feu et boss adoptent le nouveau design « Glimpse Glass », et les coordonnées ainsi qu'un indicateur TPS/ping s'affichent désormais en permanence.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "[Important] Le bug d'apparence de la Poupée Spark α (une partie de l'oreille droite semblait disparaître) avait en réalité déjà été corrigé après la v1.9.0.2, mais une faille dans le mécanisme de comparaison entre versions livrées avait empêché cette correction d'être répercutée, ne serait-ce qu'une seule fois, dans les fichiers distribués. Le dessin enfin corrigé arrive avec cette version. Pour empêcher ce bug de se reproduire, une nouvelle vérification (check_dist_drift.py) confrontant directement les ressources sources et les fichiers distribués a été mise en place.",
+        "[Important] Électricité : correction d'un bug où une batterie pleine, laissée telle quelle pendant environ 18,6 heures, cessait définitivement de produire des cellules d'énergie. La cause était un dépassement de capacité lors d'une addition, un symptôme qui apparaissait d'autant plus vite que le combustible était puissant (comme l'ogive nucléaire). Les batteries déjà touchées par ce bug seront automatiquement réparées par cette mise à jour.",
+        "Électricité : le mécanisme permettant d'utiliser l'ogive nucléaire comme combustible existe depuis la v1.8.7, mais cette fois-ci, une méthode de vérification sur un vrai serveur dédié a été mise en place pour la première fois (cependant, l'environnement de test a été perdu pendant ce cycle de packaging, donc cette vérification n'a pas encore pu être exécutée — voir l'avertissement ci-dessous pour plus de détails). Correction également d'un bug où l'indicateur de qualité du combustible restait bloqué sur la chaîne non traduite « sorakaze_power.fuel_quality.nuclear ».",
+        "Armes à feu : la lunette de visée du lance-roquettes s'affiche enfin à l'écran (corrigé après 2 signalements). Le grossissement passe également de ×2 à ×4. L'apparence des 2 fusils de précision n'a pas changé.",
+        "Grande mise à jour du chemin de fer : ajout du départ automatique, de la conduite automatique, du bruit de roulement, de la caténaire (décorative uniquement), de l'éclairage intérieur et des phares avant, de l'affichage des annonces d'arrivée, de la possibilité de se déplacer à l'intérieur des voitures et de s'asseoir sur les sièges. Le compteur de vitesse a été déplacé en haut de l'écran et ne s'affiche plus que pour le conducteur (les passagers ne le voient plus).",
+        "Les écrans des MOD électricité, armes à feu et boss (batterie, tableau électrique, lance-missiles, balise améliorée, etc.) adoptent le nouveau design semi-transparent « Glimpse Glass ». Il prend également en charge le flou d'arrière-plan à l'ouverture de l'inventaire ou d'un coffre. Un pack de ressources à installation facultative, appliquant cet effet vitré même aux écrans vanilla (Glimpse_Alpha_Glass_UI_Pack.zip), est désormais fourni.",
+        "Les coordonnées s'affichent désormais en permanence à l'écran (avec l'orientation du regard). L'indicateur TPS/ping a lui aussi été refait, et son comportement par défaut passe de « affiché seulement en maintenant la touche Tab » à « affichage permanent » (la config permet de retrouver l'ancien comportement)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Grossissement de la lunette du lance-roquettes : ×2 → ×4"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Dans la grande mise à jour du chemin de fer, l'ajout de voitures haut de gamme et l'attelage avec les wagonnets vanilla ont été reportés cette fois-ci (seul un document de conception a été rédigé). L'attelage avec les wagonnets vanilla touchant à la politique du projet consistant à « ne pas remplacer ni supprimer les éléments vanilla », la décision sera prise après concertation séparée.",
+        "La vérification du fonctionnement de l'ogive nucléaire comme combustible sur un serveur dédié n'a pas pu être réexécutée cette fois-ci, l'environnement de test ayant été perdu pendant les opérations d'empaquetage (le mécanisme permettant d'utiliser l'ogive nucléaire comme combustible n'a lui-même pas changé depuis la v1.8.7).",
+        "Si vous n'avez pas encore effectué la suppression du dossier de monde des Backrooms (changement de la v1.9.0.2), veillez impérativement à le faire également.",
+        "Aucune suppression ni modification de la config n'est nécessaire. Tout ce qui a été ajouté cette fois-ci se limite à de nouveaux paramètres."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les nouvelles fonctionnalités du chemin de fer (départ automatique, conduite automatique, bruit de roulement, caténaire, éclairage intérieur, annonces d'arrivée, déplacement à l'intérieur des voitures) n'avaient, presque toutes, pas encore été vérifiées en jeu réel à ce stade.",
+        "L'apparence du nouveau design d'écran « Glimpse Glass » et celle du nouveau pack de ressources restaient elles aussi non vérifiées.",
+        "L'aspect réel des coordonnées et de l'indicateur TPS/ping affichés en permanence n'avait pas non plus été vérifié.",
+        "Parmi les tests automatisés, 3 concernant les armes à feu et 1 concernant l'électricité restent instables, avec des résultats qui varient d'une exécution à l'autre. Il a été confirmé que tous portent sur du code existant, non modifié cette fois-ci."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0.3",
+     "date": "2026-08-13",
+     "type": "visual-update",
+     "title": "Refonte complète de l'écran « Mine OS » du téléphone et de l'ordinateur, correction du bug des icônes",
+     "summary": "Mise à jour concernant uniquement le MOD matériaux. L'apparence de l'écran « Mine OS » du téléphone et de l'ordinateur a été entièrement repensée, avec l'ajout de 3 nouvelles applications : Réglages, Terminal et Musique. Le bug des icônes d'applications, présent depuis la v1.8.6, a également été corrigé. Par ailleurs, la taille du premier téléchargement de l'application Vidéo a été corrigée, et il s'est avéré qu'elle ne fonctionne pas sous macOS.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Refonte complète de l'écran du téléphone et de l'ordinateur : ajout de panneaux semi-transparents façon verre dépoli, de coins arrondis et d'ombres portées. L'ordinateur reçoit trois pastilles colorées en haut à gauche (façon macOS), un fil d'Ariane « Mine OS ▸ nom de l'application » en haut de l'écran et un Dock en bas ; le téléphone reçoit une barre d'état, un indicateur d'accueil (Home) et un écran de verrouillage. L'application Messages adopte désormais des bulles façon discussion, avec l'icône de tête du correspondant.",
+        "Ajout de 3 nouvelles applications (8 → 11) : « Réglages » (informations sur l'appareil et le serveur, activation/désactivation du son), « Terminal » (les 5 commandes help, about, ping, tps et cls répondent directement ; toutes les autres sont envoyées comme commande de chat) et « Musique » (lecture des morceaux des disques présents sur ce serveur).",
+        "Correction d'un bug présent depuis la v1.8.6, où les icônes des applications restaient cachées derrière une plaque grise. La cause : l'arrière-plan opaque du bouton vanilla venait se redessiner par-dessus l'icône juste après que celle-ci avait été affichée (le dessin lui-même était correct depuis le début).",
+        "Correction des bugs de texte qui débordait de l'écran ou était coupé en cours de mot, avec la mise en place d'une vérification automatique pour empêcher toute récidive (4 773 emplacements mesurés sur 2 langues × 23 tailles d'écran, avec confirmation d'aucun débordement)."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "⚠ L'application Vidéo ne fonctionne pas sur Minecraft pour macOS (confirmé par des tests réels ; Windows et Linux restent pris en charge). À partir de cette version, au lieu de rester bloquée silencieusement, l'application affiche désormais sur macOS le message « Non disponible sur cet OS » avant de se fermer.",
+        "[Correctif] Le premier téléchargement de l'application Vidéo ne pèse pas « environ 140 à 175 Mo », mais bien environ 300 Mo d'après une mesure réelle (l'indication donnée en v1.9.0.1 était erronée ; ceci la corrige).",
+        "Aucune suppression ni modification de la config n'est nécessaire (seuls 4 nouveaux paramètres sont ajoutés, tous réglés par défaut sur « affiché »)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La nouvelle apparence de Mine OS, le ressenti d'utilisation des 3 nouvelles applications (Réglages, Terminal, Musique) et le fait que l'application Musique produise effectivement du son n'avaient, à ce stade, pas encore été vérifiés en jeu réel.",
+        "La résolution effective du bug des icônes n'avait pas pu être vérifiée visuellement ; elle reposait uniquement sur l'analyse de l'ordre de dessin.",
+        "L'affichage réel des pages web par l'application Vidéo sur des installations Windows et Linux réelles restait, lui aussi, non vérifié."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0.2",
+     "date": "2026-08-12",
+     "type": "hotfix",
+     "title": "Correction du bug empêchant la génération du labyrinthe des Backrooms (manipulation du monde requise)",
+     "summary": "La v1.9.0.1 avait corrigé la faille elle-même, mais un bug est apparu : le monde des Backrooms qui s'y trouvait restait entièrement vide (le vide du néant). Il a été corrigé. Sur tout monde ayant déjà accueilli une visite des Backrooms, la suppression du dossier de dimension est nécessaire. Le bug d'apparence de 3 objets a également été corrigé, et la Poupée Spark α (MOD survie) a été remplacée par un dessin représentant le propriétaire lui-même.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Backrooms : correction d'un bug où, même après avoir franchi la faille, le labyrinthe n'existait nulle part, provoquant une mort immédiate même en créatif. La génération butait sur les deux filtres du système de génération de « monde plat » de Minecraft, si bien qu'aucun chunk n'avait jamais vu de labyrinthe se créer. Le sol a désormais été remplacé par du bedrock, et un dispositif de secours a été ajouté au cas où un joueur tomberait malgré tout.",
+        "Backrooms : correction d'un bug où les 3 objets Goutte d'Accalmie, lampe de poche et note déchirée s'affichaient dans l'inventaire avec le damier violet et noir standard de Minecraft signalant une texture manquante. Le fichier de définition déterminant leur apparence était entièrement absent.",
+        "Survie : le dessin de la Poupée Spark α a été remplacé par un pixel art représentant le propriétaire lui-même. Aucun aspect fonctionnel (mécanisme, recette, butin, config) n'a été modifié."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "[Important] Sur tout monde ayant déjà accueilli une visite des Backrooms, arrêtez le serveur puis supprimez le dossier <nom_du_monde>/dimensions/sorakaze_backrooms/backrooms/. Au prochain passage de la faille par un joueur, un nouveau labyrinthe correctement généré sera recréé. Les Backrooms étant un monde où il est impossible de poser ou de casser des blocs, cette suppression ne fait rien perdre (les objets comme la Goutte d'Accalmie, la lampe de poche ou la note déchirée restent dans l'inventaire). Si le dossier est introuvable, c'est qu'aucun joueur n'y est encore jamais entré : il n'y a rien à faire.",
+        "Aucune suppression ni modification de la config n'est nécessaire (seuls 2 nouveaux paramètres sont ajoutés, et ils sont pris en compte automatiquement)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'apparence réelle du labyrinthe corrigé (ambiance du papier peint jaune, etc.), le dessin des 3 objets corrigés et le rendu du dessin de la Poupée Spark α n'avaient, à ce stade, pas encore pu être vérifiés en jeu réel."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0.1",
+     "date": "2026-08-11",
+     "type": "hotfix",
+     "title": "Correction de la faille des cités de l'End et du vol de la Wither Storm, ajout de l'application Vidéo",
+     "summary": "Correction du bug qui faisait que la faille des Backrooms ajoutée en v1.9.0 n'était, dans les faits, quasiment jamais générée, ainsi que du bug laissant le vol des stades en lévitation de la Wither Storm non implémenté. Le MOD matériaux reçoit une application « Vidéo » pour le téléphone et l'ordinateur, avec des écrans façon OS propres à chaque modèle, et l'apparence de la Poupée Spark α (MOD survie) a été arrêtée.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Backrooms : correction d'un bug qui faisait que la faille des cités de l'End n'était, en pratique, quasiment jamais générée (un taux d'échec proche de 100 % en conditions réelles). La vérification portait sur la hauteur (coordonnée Y), mais la coordonnée réellement transmise valait toujours 0, si bien que le test concluait systématiquement à l'absence de faille. Sur les terres nouvellement générées, chaque cité de l'End reçoit désormais à coup sûr une faille (les terres déjà existantes n'en sont pas dotées rétroactivement). Les icônes de la Goutte d'Accalmie, de la lampe de poche et de la note déchirée ont également été redessinées.",
+        "Wither Storm : implémentation d'un véritable vol en 3D pour les stades en lévitation (S3 à S5) — approche en cercles, piqué pour attaquer, puis retrait. Les stades au sol (S0 à S2), l'attaque au corps à corps, la salve simultanée des têtes, le rayon tracteur et la formule de dégâts du grand tourbillon restent inchangés.",
+        "Matériaux : ajout de l'application « Vidéo » au téléphone et à l'ordinateur (elle intègre un véritable moteur de navigateur ; un téléchargement supplémentaire, à effectuer une seule fois, se lance sur le PC du joueur qui l'ouvre pour la première fois). Selon le modèle, l'écran prend désormais l'apparence d'iOS pour l'iPhone, ou celle de Macintosh (barre de menus, Dock) pour le MacBook et le Mac Studio.",
+        "Survie : l'apparence de la Poupée Spark α a été arrêtée (changement purement visuel, aucune fonctionnalité modifiée)."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La taille du premier téléchargement de l'application Vidéo avait été annoncée dans cette version comme étant d'« environ 140 à 175 Mo » : il s'agissait en réalité de la taille compressée, une indication erronée (corrigée en v1.9.0.3 après mesure réelle, à environ 300 Mo).",
+        "Aucune suppression ni modification de la config n'est nécessaire. Seuls de nouveaux paramètres ont été ajoutés cette fois-ci."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "À ce stade, la faille des Backrooms elle-même était corrigée, mais un autre bug subsistait : le labyrinthe qui devait s'y trouver n'était pas généré (découvert et corrigé en v1.9.0.2).",
+        "Ni le bon affichage réel des pages web dans l'application Vidéo, ni l'apparence des nouveaux écrans façon iPhone/macOS n'avaient été vérifiés.",
+        "Le naturel du vol des stades en lévitation de la Wither Storm (ressenti des cercles et des piqués) restait lui aussi à vérifier."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0",
+     "date": "2026-08-11",
+     "type": "release",
+     "title": "Nouveau MOD « Backrooms », refonte complète de la Wither Storm",
+     "summary": "Le 9ᵉ MOD, « Backrooms », fait son entrée : un contenu d'exploration avec jauge de santé mentale, où l'on s'égare en franchissant une faille générée près des cités de l'End. Dans le MOD boss, la Wither Storm a été entièrement refondue, avec une nouvelle apparence, des stades de croissance et un nouvel effet de statut, et se voit dotée de nouveaux butins garantis. Les 6 autres MOD — matériaux et décoration, armes à feu, électricité, ciel, chemin de fer et véhicules — restent inchangés.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le 9ᵉ MOD « Backrooms » (sorakaze_backrooms) fait son entrée. Chaque fois qu'une cité de l'End est générée, une faille (autel) apparaît systématiquement à proximité, dans un endroit sûr — une par cité (les cités de l'End déjà existantes n'en reçoivent pas).",
+        "Intègre un système de santé mentale (sanité). Elle plafonne à 100 et tombe à zéro en environ 18 minutes si l'on ne fait rien. Boire l'objet de restauration trouvé dans les coffres en récupère 35. Une « coupure de courant » a environ 12 % de chances de survenir toutes les 30 secondes environ, et les choses commencent à changer dès que la sanité passe sous 20.",
+        "Impossible de poser des blocs à l'intérieur du labyrinthe, et les murs, sols et plafonds — y compris les coffres — ne peuvent absolument pas être détruits. Les autres dimensions ne sont pas affectées.",
+        "L'entité « l'Écouteur vide » y rôde (40 PV, 6 en attaque ; elle s'immobilise tant qu'on la regarde, et ne se remet en mouvement que lorsqu'on détourne le regard). Trois individus au maximum peuvent être présents simultanément.",
+        "Une progression en 3 étapes (① confirmer sa survie → ② rassembler des indices → ③ s'échapper) s'affiche en permanence à l'écran.",
+        "L'apparence de la Wither Storm (boss) a été entièrement refaite. Elle passe d'une entité unique à PV fixes à un système de stades de croissance (S0 Embryon → S1 Dévoration → S2 Traque → S3 Ravage → S4 Tempête → S5 Apogée, avec des PV allant de 600 à 24 000). Le stade progresse selon la quantité d'objets et de mobs absorbés, et à partir de S2 elle se met à léviter et projette un champ de gravité qui attire tout ce qui l'entoure.",
+        "Ajout d'un nouvel effet de statut, le « mal du Wither ». Il se déclenche après une exposition répétée au rayon tracteur ou au champ de gravité (par défaut, les dégâts par seconde équivalent à la moitié de ceux du Dépérissement vanilla ; comme les autres effets de statut, boire du lait le soigne).",
+        "Ajout de la commande d'administration /glimpse storm restore [radius], qui permet de restaurer le terrain dévoré par la Wither Storm en le réécrivant à partir des relevés enregistrés.",
+        "Ajout de 2 nouveaux butins garantis pour la Wither Storm : le « Récolteur universel α » (même durabilité qu'une pioche en or, soit 32, et non enchantable — un objet distinct du « Récolteur universel » de base déjà existant) et la « Poupée d'artifice α » (utilisable à l'infini, mais avec un temps de recharge de 3 minutes après chaque utilisation — une version supérieure de la Poupée d'artifice existante).",
+        "Le fichier de recettes distribué séparément jusqu'à présent (レシピ早見表.html) n'est plus fourni. Les méthodes de fabrication sont désormais consultables sur ce site."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le nom « eau d'amande », demandé par le propriétaire, n'a pas été retenu : il a été jugé qu'il s'agit d'un nom propre étroitement associé, dans la communauté créative des Backrooms, à l'objet de restauration de sanité lui-même. La fonction (restauration de sanité, obtention dans les coffres, à boire d'un trait) reste inchangée ; seul le nom a été remplacé par « Goutte d'Accalmie ».",
+        "Si vous faites un clic droit sur un coffre en tenant un bloc en main, l'interdiction de pose prend le pas et empêche l'ouverture. Videz votre main ou changez d'objet avant d'ouvrir le coffre.",
+        "Aucune suppression ni modification de la config n'est nécessaire. Seuls de nouveaux paramètres ont été ajoutés cette fois-ci ; aucune valeur par défaut des paramètres existants n'a changé."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'apparence générale des Backrooms (le papier peint du labyrinthe, l'ambiance de l'éclairage, l'apparence de l'entité et sa mise en scène lorsqu'elle s'immobilise, la mise en scène des coupures de courant, l'affichage HUD de la progression, le contenu visible des coffres) n'a pas encore été vérifiée en jeu réel.",
+        "La nouvelle apparence de la Wither Storm, l'évolution de sa silhouette à chaque stade de croissance, la mise en scène du champ de gravité et l'aspect visuel de la dévoration du terrain n'ont pas non plus été vérifiés.",
+        "L'apparence et le son lors de la contraction du mal du Wither, ainsi que l'apparence (icône, tenue en main) du Récolteur universel α et de la Poupée d'artifice α, n'ont pas non plus été vérifiés.",
+        "La preuve de démarrage dédiée aux Backrooms (runBackroomsBoot) n'a pas encore été exécutée comme vérification isolée sur un serveur dédié (le test de démarrage simultané des 9 MOD a permis de confirmer le chargement de la dimension).",
+        "La synchronisation en jeu à deux et la charge serveur lors du fonctionnement simultané des 9 MOD n'ont pas été testées.",
+        "Les animations d'attaque du Golem sculk, de Rock Lock, du Kraken et du Titan, ainsi que le lancer de la Lance de foudre, restent reportées cette fois encore."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.8",
+   "summary": "Nouveau renforcement de l'ogive nucléaire, ajout de la batterie au MOD électricité",
+   "releases": [
+    {
+     "version": "v1.8.8",
+     "date": "2026-08-10",
+     "type": "release",
+     "title": "Nouveau renforcement de l'ogive nucléaire, ajout de la batterie au MOD électricité",
+     "summary": "Les dégâts d'impact direct de l'ogive nucléaire sont à nouveau triplés, et le son de l'impact porte désormais beaucoup plus loin. Le MOD électricité reçoit un nouveau bloc, la « batterie », qui change la façon dont l'électricité des générateurs est reçue.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les dégâts d'impact direct de l'ogive nucléaire passent de 22 400 à 67 200 (×3).",
+        "Le son de l'impact est désormais audible jusqu'à 20 000 blocs de distance. Le son du lancement est lui aussi devenu plus assourdissant.",
+        "Le lance-missiles est agrandi, et l'impact de l'ogive nucléaire s'accompagne désormais d'une destruction qui se propage progressivement, ainsi que d'un flash lumineux.",
+        "Ajout d'un nouveau bloc au MOD électricité : la « batterie ». L'électricité produite par les générateurs et la centrale nucléaire est désormais d'abord stockée dans la batterie, qui produit des cellules d'énergie une fois pleine. Il faut ensuite récupérer ces cellules d'énergie et les insérer dans l'emplacement de combustible du tableau électrique pour les utiliser."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Dégâts d'impact direct de l'ogive nucléaire : 22 400 → 67 200 (×3)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "[Important] Les générateurs et la centrale nucléaire ne peuvent plus fournir d'électricité au tableau électrique sans passer par une batterie. Le câblage précédent « générateur → câble → tableau électrique » seul ne suffit plus à faire arriver le courant. Le solaire, l'éolien et l'hydraulique continuent, eux, à alimenter directement comme avant.",
+        "Aucune suppression de la config n'est nécessaire."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "2 des tests liés à l'ogive nucléaire n'ont pas pu être vérifiés jusqu'au bout lorsque l'environnement de développement était très sollicité (le déclenchement et la destruction de l'ogive nucléaire elle-même ont bien été confirmés lors d'un test de mise à feu sur un serveur réel).",
+        "L'apparence de l'animation d'ouverture et de fermeture du couvercle de la batterie n'a pas été vérifiée."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.7",
+     "date": "2026-08-10",
+     "type": "release",
+     "title": "Renforcement du lance-roquettes et de l'ogive nucléaire, refonte des effets sonores des armes",
+     "summary": "La puissance du lance-roquettes est multipliée par 8, et le rayon d'explosion de l'ogive nucléaire est lui aussi fortement agrandi. Par ailleurs, le ressenti de la lunette de visée et du verrouillage de cible, qui fonctionnait déjà correctement mais restait difficile à percevoir, est rendu plus clair grâce à de nouveaux effets sonores. L'ogive nucléaire peut désormais aussi servir de nouveau combustible haut de gamme pour le MOD électricité.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les dégâts du lance-roquettes passent de 40 à 320 (×8).",
+        "Les dégâts d'impact direct de l'ogive nucléaire sont renforcés à 320 × 70 = 22 400. Le rayon d'explosion est lui aussi fortement agrandi, mais la conception reste sûre : le bedrock et le terrain non chargé ne sont jamais détruits.",
+        "Les effets sonores joués pendant la visée à la lunette et au moment où le verrouillage de cible se déclenche ont été entièrement refaits. Auparavant, un simple son d'interface vanilla générique était utilisé, ce qui rendait la fonction difficile à remarquer alors qu'elle fonctionnait déjà correctement.",
+        "L'ogive nucléaire peut désormais servir de combustible au MOD électricité : une source d'énergie environ 100 fois plus puissante et avec un temps de combustion 144 fois plus long (environ 1 heure) qu'un seau de lave vanilla."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Puissance du lance-roquettes : 40 → 320 (×8)",
+        "Dégâts d'impact direct de l'ogive nucléaire : 22 400 (320 × 70)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Aucune suppression de la config n'est nécessaire. La valeur par défaut est automatiquement mise à jour.",
+        "Le lance-missiles lui-même n'a encore aucun moyen de se protéger de sa propre explosion. Comme le rayon d'explosion de l'ogive nucléaire (64 blocs) dépasse la portée minimale du lance-missiles (24 blocs), viser une cible trop proche peut détruire le lance-missiles avec elle."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'apparence de l'explosion nucléaire (particules, tremblement d'écran) et les nouveaux effets sonores n'ont pas encore été vérifiés en jeu réel.",
+        "L'impact sur les FPS et les éventuels ralentissements lors d'une explosion nucléaire de grande ampleur avec un joueur présent n'ont pas été vérifiés."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.6",
+     "date": "2026-08-09",
+     "type": "visual-update",
+     "title": "Ajout des icônes des ogives de missile et des applis du téléphone",
+     "summary": "Deux corrections liées à l'apparence et à la facilité de découverte. Les ogives de missile et nucléaire, qui n'avaient encore aucune texture, reçoivent enfin une icône dédiée et deviennent fabricables. Par ailleurs, le lance-missiles, introuvable selon plusieurs signalements, est ajouté à l'onglet créatif, avec son nom affiché et la traduction de son écran de contrôle. Les 7 applications du téléphone et de l'ordinateur reçoivent elles aussi des icônes dédiées.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Création d'icônes dédiées de 128 px pour l'ogive de missile et l'ogive nucléaire (jusqu'ici, aucun dessin n'existait : elles s'affichaient dans l'inventaire avec le damier violet et noir standard de Minecraft signalant une texture manquante).",
+        "L'ogive de missile (5 lingots de fer + 1 TNT + 1 bloc de redstone) et l'ogive nucléaire (4 blocs de fer + 4 TNT + 1 étoile du Nether) deviennent fabricables.",
+        "Ajout du lance-missiles à l'onglet créatif (il était déjà fabricable auparavant, mais n'apparaissait dans aucun onglet et restait donc introuvable). Ajout de son nom affiché, ainsi que de la traduction de son panneau de contrôle — saisie des coordonnées cibles, 9 indicateurs d'état, 8 points cardinaux, sécurité, etc. (54 chaînes traduites en japonais comme en anglais).",
+        "Création d'icônes dédiées pour les 7 applications du téléphone et de l'ordinateur (caméra, messages, recherche, météo, calculatrice, téléphone, appareil photo), qui n'affichaient jusqu'ici que des rectangles colorés. Chaque application reçoit aussi des décorations propres : icônes de précipitations et horloge agrandie pour la météo, écran à cristaux liquides en creux pour la calculatrice, boussole pour le téléphone, apparence façon moniteur de surveillance pour la caméra.",
+        "À l'ouverture d'une application, l'icône et le nom de l'application actuellement ouverte s'affichent désormais en permanence en haut de l'écran."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Rendre l'ogive de missile et l'ogive nucléaire fabricables est une décision de l'équipe de développement (ce n'est pas une demande explicite du propriétaire). Si l'équilibre vous paraît trop puissant ou excessif, faites-en part à l'administration.",
+        "Aucune suppression ni modification de la config n'est nécessaire cette fois non plus."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'écran de recette 3×3 de l'appli « Recherche » ne peut pas recevoir du serveur l'information sur l'emplacement exact de chaque ingrédient dans la grille ; il affiche donc un rendu simplifié où les ingrédients sont rangés à la suite depuis le début (le type et la quantité des ingrédients, eux, restent corrects).",
+        "Les nouvelles icônes des ogives, la traduction du panneau de contrôle et les nouveaux écrans des applications du téléphone n'ont, dans tous les cas, pas encore été vérifiés à l'écran en jeu.",
+        "16 des 17 couleurs de vitre en verre renforcé restent toujours sans nom (problème hérité d'une version précédente)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.5",
+     "date": "2026-08-09",
+     "type": "hotfix",
+     "title": "Correction des tuyaux d'eau, de la balise améliorée et du masque à gaz",
+     "summary": "Correction de plusieurs bugs signalés après la v1.8.4 : l'impossibilité de casser les tuyaux d'eau, l'impossibilité de choisir les capacités des balises améliorées α et β, et le masque à gaz qui semblait flotter au-dessus de la tête. Le plafond d'apparition des monstres est corrigé pour ne s'appliquer qu'au monde normal, avec une valeur par défaut fixée à 150 individus réels.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Correction du bug empêchant de casser les tuyaux d'eau. L'unité de la zone de collision avait été confondue avec une autre, la rendant 32 fois plus petite que l'épaisseur visible (la dureté et l'outil requis étaient corrects depuis le début).",
+        "Correction également du bug faisant emporter par le courant une prise d'eau posée isolément dans une rivière (reconçue comme bloc compatible avec l'immersion).",
+        "Correction du bug empêchant de choisir les capacités des balises améliorées α et β. L'écran se refermait automatiquement dès le tick suivant, et le choix n'était de toute façon pas enregistré (la balise améliorée standard n'était pas concernée).",
+        "Correction du bug faisant flotter le masque à gaz au-dessus de la tête. Un nouveau modèle en volume, dédié, a été créé et positionné pour épouser le visage.",
+        "L'apparence de la poupée d'artifice revient à son dessin plat d'avant la v1.8.3, après le passage temporaire à une figurine en volume en v1.8.4 (à la demande du propriétaire). Ses fonctions, comme la limite d'utilisation, ne changent pas.",
+        "Le plafond d'apparition des monstres du monde normal passe de « 15 fois la valeur vanilla » (environ 1050 individus) à 150 individus réels. Aucun impact sur le Nether, l'End ou le Ciel (corrige au passage le bug qui l'appliquait par erreur à toutes les dimensions)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Plafond d'apparition des monstres (monde normal uniquement) : 15 fois la valeur vanilla (environ 1050 individus) → 150 individus réels"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Aucune suppression ni modification de la config n'est nécessaire. La valeur du plafond d'apparition est automatiquement mise à jour vers la nouvelle valeur par défaut."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La nouvelle apparence des tuyaux d'eau et du masque à gaz, ainsi que l'ergonomie de l'interface de la balise améliorée, n'ont pas encore été vérifiées en jeu.",
+        "Il reste à vérifier si cette nouvelle densité d'apparition de 150 individus est bien équilibrée une fois en jeu."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.4",
+     "date": "2026-08-09",
+     "type": "release",
+     "title": "Nouvelles armes, OS du téléphone, tuyaux d'eau, saisons et extension du Ciel",
+     "summary": "Ajout groupé de 2 nouvelles armes (pistolet et pistolet-mitrailleur), du lance-missiles et de 2 ogives, d'un véritable système d'exploitation pour le téléphone et l'ordinateur, de tuyaux d'eau, d'un ascenseur à cabine réellement mobile, et d'un système de 4 saisons. Le plafond de hauteur constructible dans le monde normal est également relevé (le sous-sol ne change pas), et le nombre de blocs de tri et de types de trémies nécessitant de l'électricité est fortement réduit.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Ajout de 2 nouvelles armes : le pistolet (200/seconde, chargeur de 12, semi-automatique) et le pistolet-mitrailleur (450/seconde, chargeur de 40, automatique). Les deux utilisent les munitions de petit calibre existantes ; aucune nouvelle munition n'est donc ajoutée.",
+        "Ajout du lance-missiles (arme posable) et des ogives de missile et nucléaire (l'ogive nucléaire a un nombre maximal de blocs détruits ; elle est réservée au lance-missiles et ne peut pas être tirée à la main).",
+        "Ajout d'un viseur zoom ×2 et d'un verrouillage de cible pour le lance-roquettes (le verrouillage s'établit après 1 seconde de visée continue ; il ne fonctionne pas contre une cible en train de courir).",
+        "Ajout d'un véritable système d'exploitation au téléphone et à l'ordinateur (7 applications : caméra, messages, recherche, météo, calculatrice, téléphone, appareil photo). Se lance en le tenant en main puis en faisant un clic droit, ou avec la touche H ; on peut aussi prendre une photo et l'envoyer par message.",
+        "Ajout des tuyaux d'eau (alimentent un chaudron ou un champ en eau depuis une rivière ou la mer). Ajout également d'un ascenseur à cabine réellement mobile qui monte et descend.",
+        "Le MOD électricité reçoit le câble à gros diamètre (portée quadruplée), le câble blindé (portée ×8) et le panneau LED.",
+        "Refonte complète de l'apparence des minerais. Ajout d'un nouveau matériau, le « jade lavande » (plus rare encore que le rubis), du masque à gaz et de l'injecteur de bouclier aérien.",
+        "Ajout d'un système de saisons (8 jours par saison, 32 jours par an). Le désert en été et la toundra en hiver deviennent plus rudes qu'auparavant.",
+        "Les balises améliorées α et β (MOD boss) deviennent fabricables. Par ailleurs, la balise améliorée elle-même n'a plus besoin d'électricité (annulation du besoin en électricité introduit en v1.8.1).",
+        "Le plafond de hauteur constructible dans le monde normal passe de y=319 à y=1023 (aucun changement en sous-sol ni au fond du monde).",
+        "Le nombre de dispositifs nécessitant de l'électricité est fortement réduit, de 17 à 3 types (destructeur d'objets, émetteur laser, tourelle automatique). La trémie, les 8 blocs de tri automatique, le tapis roulant, les 2 feux de circulation et le bloc d'arrêt automatique de train fonctionnent désormais sans électricité."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil d'assaut : puissance mesurée par seconde 4 500 → 5 850",
+        "Minigun : puissance mesurée par seconde 250 → 50 (fortement affaibli, désormais plus faible qu'une épée en diamant)",
+        "Les dégâts du fusil de précision et du fusil de précision lourd augmentent également. Le coefficient de calcul de la durabilité des fusils de précision passe aussi de 0,5 à 0,6"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La roquette tirée par le lance-missiles continue de détruire le terrain même si mobGriefing est réglé sur false. Pour n'empêcher que la destruction du terrain, réglez rocketDestroysTerrain sur false dans la config.",
+        "La hauteur constructible du monde normal est étendue jusqu'à y=1023. Cela concerne aussi les personnes n'utilisant pas le Ciel (le sous-sol ne change pas).",
+        "Le nombre de blocs de tri et de trémies nécessitant de l'électricité étant fortement réduit, des dispositifs jusqu'ici à l'arrêt se remettent automatiquement en marche. Soyez attentif à ces redémarrages inattendus dans les endroits laissés à l'abandon depuis longtemps.",
+        "Les changements de dégâts des armes ci-dessus s'appliquent automatiquement. Il n'est pas nécessaire de supprimer ou de modifier la config, mais vous pouvez y indiquer des valeurs différentes si vous souhaitez revenir en arrière."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Juste après leur ajout, les balises améliorées α et β présentaient un bug empêchant de choisir leurs capacités (corrigé dans la mise à jour suivante).",
+        "Juste après son ajout, le lance-missiles n'apparaissait pas dans l'onglet créatif et n'avait pas de nom affiché. Les icônes des 2 ogives n'étaient pas non plus prêtes (résolu dans la mise à jour suivante).",
+        "Les applications du téléphone et de l'ordinateur n'avaient pas encore d'icônes dédiées : seuls des rectangles colorés s'alignaient (amélioré dans la mise à jour suivante)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.3",
+     "date": "2026-08-06",
+     "type": "release",
+     "title": "Électrification des appareils domestiques, et chaleur des machines",
+     "summary": "La caméra de sécurité, l'ascenseur, l'escalator, la porte automatique et le DAB, soit 5 appareils du MOD matériaux, ont désormais besoin d'électricité. De plus, les machines en fonctionnement comme les générateurs ou la centrale nucléaire réchauffent désormais la pièce alentour ; sans ventilation ni refroidissement, la chaleur peut infliger des dégâts.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La caméra de sécurité, l'ascenseur, l'escalator, la porte automatique et le DAB deviennent des appareils nécessitant de l'électricité (les exemplaires déjà posés sont concernés dès le prochain démarrage). L'ascenseur continue toutefois de « descendre » même sans électricité (pour éviter de rester coincé).",
+        "Les machines en fonctionnement comme les générateurs ou la centrale nucléaire réchauffent désormais leur environnement. Faire tourner 8 machines sans les refroidir fait grimper la température ambiante à environ 77,8 °C, avec des dégâts qui commencent après environ 14 secondes.",
+        "Correction d'un bug : la climatisation consomme désormais réellement de l'électricité (auparavant, elle était considérée comme n'en consommant pas)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Chaleur des machines : faire tourner 8 machines non refroidies fait grimper la température ambiante jusqu'à environ 77,8 °C, avec des dégâts de chaleur après environ 14 secondes"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Un câblage électrique devient nécessaire pour la caméra de sécurité, l'ascenseur, l'escalator, la porte automatique et le DAB. Les installations déjà en place s'arrêteront elles aussi dès le prochain démarrage.",
+        "Autour des machines qui produisent de la chaleur, comme les générateurs, une ventilation ou un refroidissement par climatisation est nécessaire, sous peine de température dangereusement élevée."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le fonctionnement réel des 5 appareils électrifiés (caméra de sécurité, ascenseur, escalator, porte automatique, DAB), avec ou sans électricité, n'a pas été vérifié.",
+        "L'apparence et l'ergonomie des 3 nouveaux générateurs et de leurs emplacements de combustible n'ont pas été vérifiées."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.2",
+     "date": "2026-08-06",
+     "type": "release",
+     "title": "Agrandissement de la climatisation et pose simplifiée des appareils électriques",
+     "summary": "La taille de la climatisation est fortement augmentée pour lui donner enfin une présence visible dans une pièce. Chaque appareil du MOD électricité a été réorganisé pour se compléter en posant un seul objet, et le bug rendant la cheminée totalement inefficace en biome enneigé a été corrigé.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le corps de la climatisation est agrandi (environ 3,1 × 2,0 × 2,1 blocs). C'est désormais l'un des plus grands appareils du MOD électricité, avec une unité extérieure dotée d'un ventilateur rond, d'ailettes de refroidissement et d'un panneau de contrôle lumineux, et une unité intérieure avec 3 lamelles saillantes vers l'avant.",
+        "Les appareils du MOD électricité n'ont plus besoin d'assembler plusieurs blocs : ils sont désormais complets dès la pose d'un seul objet.",
+        "Correction du bug rendant la cheminée totalement inefficace en biome enneigé. Le froid du terrain et la chaleur des équipements sont désormais calculés séparément."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Neige, à côté d'une cheminée qu'on a soi-même allumée : température ressentie -24,0 °C (dégâts de gel) → +2,4 °C (sans danger)",
+        "Base avec toit, la nuit, sous la neige, avec cheminée : -18,6 °C → +7,9 °C"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "En cas de tempête de neige nocturne passée dehors sans bouger, une seule cheminée peut encore ne pas suffire (combinez-la avec un toit, une armure et/ou une cheminée supplémentaire)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'équilibre des températures n'a pas encore été vérifié en jeu réel.",
+        "La nouvelle apparence en volume des 9 blocs de tri automatique n'a pas encore été vue en jeu."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.1",
+     "date": "2026-08-05",
+     "type": "release",
+     "title": "Ajout du MOD électricité — la redstone a désormais besoin de courant",
+     "summary": "Le 8e MOD, « électricité », fait son entrée. Dans l'un des changements les plus profonds du projet, les circuits de redstone vanilla (poussière de redstone, répéteur, comparateur, bloc de redstone, torche de redstone) ont désormais besoin de courant fourni par un générateur. Toutes les installations existantes à base de redstone (fermes automatiques, gares, portes automatiques, etc.) s'arrêtent momentanément : il faut désormais câbler un réseau électrique.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le 8e MOD, « électricité », fait son entrée. Il devient possible de construire un réseau électrique à l'aide de générateurs, d'une centrale nucléaire, de tableaux électriques et de câbles.",
+        "17 éléments — levier, boutons, plaques de pression, crochet à fil-piège, observateur, capteur de lumière du jour, capteurs sculk, cible, coffre-piège, rail détecteur, lutrin, juke-box, paratonnerre, etc. — continuent de fonctionner sans électricité comme auparavant (l'ouverture des portes, par exemple, ne change pas).",
+        "Un bloc de redstone se détruit naturellement environ 10 minutes après sa pose et revient sous forme d'objet dans l'inventaire (pour éviter qu'une « source d'énergie gratuite » sans électricité ne traîne indéfiniment).",
+        "Seuls le destructeur d'objets, l'émetteur laser et la tourelle automatique bénéficient d'une mesure de sécurité inverse : en l'absence d'électricité, ils restent « actifs » plutôt que de s'arrêter (pour éviter de perdre accidentellement des objets précieux ou des créatures).",
+        "La vitesse des projectiles du fusil de précision, du fusil de précision lourd et du fusil laser a été corrigée pour correspondre à la valeur initialement prévue (les dégâts, la cadence de tir, la capacité du chargeur, la durabilité et la portée ne changent pas)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Vitesse des projectiles du fusil de précision et du fusil de précision lourd : 16,0 → 24,0 (×1,5)",
+        "Vitesse des projectiles du fusil laser : 16,0 → 48,0 (×3)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Toutes les installations existantes utilisant des circuits de redstone (fermes automatiques, gares, portes automatiques, etc.) s'arrêtent momentanément. Il faudra câbler un nouveau réseau électrique (générateur et câbles).",
+        "Pour annuler entièrement ce changement, réglez `powerEnabled` sur `false` dans config/sorakaze_power.json ; pour n'annuler que l'effet sur la redstone, réglez `redstoneRequiresPower` sur `false` dans le même fichier.",
+        "L'observateur et le capteur de lumière du jour restent volontairement indépendants de l'électricité (pour conserver un moyen de réparer en jeu une base privée de courant)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le ressenti réel d'un monde où la redstone est à l'arrêt, ainsi que le degré d'arrêt des fermes et des gares, n'ont pas été vérifiés.",
+        "L'éclairage des câbles, l'écran du tableau électrique et l'apparence des générateurs ou de la centrale nucléaire n'ont pas encore été vus en jeu.",
+        "Après avoir coupé puis rétabli l'électricité, un câble isolé non relié à un tableau électrique peut parfois rester allumé (le casser puis le reposer corrige le problème)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.0",
+     "date": "2026-08-04",
+     "type": "hotfix",
+     "title": "Réparation automatique des fichiers de config (v1.8.0 redistribuée)",
+     "summary": "Version corrective redistribuée le jour même. Dans la première v1.8.0, d'anciennes valeurs restées dans les fichiers de config de versions précédentes écrasaient les nouvelles valeurs par défaut, empêchant la prise en compte de la résolution de la caméra de sécurité, des caractéristiques d'Excalibur ou de la destruction de terrain du lance-roquettes. Il n'est désormais plus nécessaire de supprimer manuellement les fichiers de config à chaque mise à jour : un mécanisme détecte au démarrage les « anciennes valeurs héritées d'une version précédente » et les met à jour automatiquement vers les nouvelles valeurs par défaut.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Mise en place d'un mécanisme détectant automatiquement les réglages « fossiles » restés d'une version précédente et les remplaçant par les valeurs par défaut actuelles. Il ne sera plus nécessaire de supprimer manuellement les fichiers de config lors des prochaines mises à jour.",
+        "Les valeurs que vous avez ajustées vous-même ne sont jamais modifiées (seule une valeur identique à un ancien défaut historique est mise à jour).",
+        "Grâce à ce correctif, la résolution de la caméra de sécurité (768 → 3840), les caractéristiques d'Excalibur (puissance d'attaque 12 → 75, vitesse d'attaque 1,8 → 0,6) et la destruction de terrain du lance-roquettes sont désormais correctement prises en compte en jeu.",
+        "5 MOD sont concernés par cette mise à jour : boss, matériaux, armes à feu, Ciel et survie. Le chemin de fer et les véhicules ne changent pas cette fois-ci."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Cette version redistribuée porte le même numéro de version et le même nom de fichier que la première v1.8.0. Si vous possédez la toute première v1.8.0, jetez-la et remplacez-la par cette version.",
+        "La consigne « supprimez les fichiers de config » donnée à chaque mise à jour précédente n'est désormais plus nécessaire."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les nouvelles caractéristiques d'Excalibur et l'effet de destruction de terrain du lance-roquettes n'ont pas encore été vérifiés en situation de jeu réelle."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.0",
+     "date": "2026-08-04",
+     "type": "release",
+     "title": "Changement de nom pour « Glimpse Alpha »",
+     "summary": "Le groupe de MOD change de nom : « Sorakaze » devient « Glimpse Alpha ». Seuls les noms visibles changent — noms de fichiers jar, noms d'onglets créatifs, nom du zip de distribution — les identifiants internes des blocs et objets, les données de monde et les noms de fichiers de config restent totalement inchangés. Les constructions déjà bâties et les objets déjà possédés sont conservés tels quels. Cette mise à jour comprend aussi des ajustements de puissance des armes et des armes de boss, ainsi qu'une résolution plus élevée pour la caméra de sécurité.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le nom du serveur et des MOD passe de « Sorakaze » à « Glimpse Alpha » (nom affiché, noms de fichiers jar, noms d'onglets créatifs et nom du zip de distribution, tous concernés).",
+        "Aucun changement des identifiants internes, identifiants de registre, noms de fichiers de config ni données de sauvegarde. Toutes les constructions, tous les objets et toute la progression existants sont intégralement conservés.",
+        "Le pack de ressources distribué est lui aussi renommé « Glimpse_Alpha_Mask_Skin_Pack.zip » (auparavant Sorakaze_Mask_Skin_Pack.zip).",
+        "La résolution par défaut du flux vidéo de la caméra de sécurité passe de 768 à 3840.",
+        "L'explosion du lance-roquettes détruit désormais le terrain (elle ne détruisait rien auparavant)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Dégâts du fusil d'assaut : 375 → 450 (DPS mesuré 3 750 → 4 500)",
+        "Dégâts du fusil à pompe : 15 → 17,25",
+        "Dégâts du fusil de précision : 20 → 23",
+        "Dégâts du fusil de précision lourd : 80 → 92",
+        "Durabilité des fusils de précision : 128 → 64",
+        "Puissance d'explosion du lance-roquettes : 3 → 12",
+        "Excalibur (épée à deux mains, butin de boss) : puissance d'attaque 31 → 75, vitesse d'attaque -3,1 → -3,4, durabilité 6093 → 3047"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Les anciens sorakaze-*.jar (7 fichiers) présents dans le dossier mods du serveur doivent impérativement être tous supprimés avant d'y placer les nouveaux glimpse-alpha-*.jar. Si un seul ancien fichier reste, le serveur détectera « deux fois le même MOD » et refusera de démarrer.",
+        "Pour que les ajustements de puissance ci-dessus soient pris en compte, il fallait initialement supprimer config/sorakaze_guns.json et config/sorakaze_boss.json, et modifier une ligne dans config/sorakaze_deco.json. * Cette manipulation a été automatisée dès la mise à jour suivante (version redistribuée) et n'est plus nécessaire."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'affichage en jeu après le changement de nom (noms des objets, apparence des onglets créatifs, etc.) n'a pas encore été vérifié en jeu.",
+        "La nouvelle puissance d'explosion du lance-roquettes, ainsi que l'ampleur réelle des destructions de terrain, n'ont pas été testées."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.7",
+   "summary": "Mise à jour groupée des 7 MOD, retour des armes à balles réelles",
+   "releases": [
+    {
+     "version": "v1.7.7",
+     "date": "2026-08-04",
+     "type": "release",
+     "title": "Mise à jour groupée des 7 MOD, retour des armes à balles réelles",
+     "summary": "Les 7 MOD sont tous mis à jour simultanément vers la v1.7.7. Les armes reviennent d'un système de tir instantané (hitscan) à un système de projectiles réels, où la balle vole réellement jusqu'à sa cible (les valeurs de dégâts elles-mêmes ne changent pas). De nombreuses nouveautés sont ajoutées à chaque MOD : le « lance-roquettes », le bloc d'arrêt automatique de train, la poupée d'artifice, etc.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "[Armes à feu] Les balles reviennent à un système où elles « volent réellement » jusqu'à leur cible. Le ressenti visuel change, mais les dégâts de chaque arme restent inchangés.",
+        "[Armes à feu] Ajout de la nouvelle arme « lance-roquettes » et de sa munition dédiée. Elle inflige des dégâts d'impact direct et d'explosion ; la destruction du terrain est désactivée par défaut.",
+        "[Matériaux] Les portes se referment désormais même si quelqu'un est coincé dedans. La zone de collision étant conçue pour ne pas s'activer pendant la fermeture, personne ne peut être blessé en étant coincé.",
+        "[Matériaux] Ajout de vitres en verre renforcé colorées (17 couleurs), de 5 blocs décoratifs (smartphone, ordinateur portable, ordinateur de bureau) et d'une porte de coffre-fort. Le plafond de résolution du flux vidéo de la caméra de sécurité est étendu (la valeur par défaut ne change pas).",
+        "[Boss] Le nombre d'effets spéciaux sélectionnables simultanément sur la balise améliorée passe de 3 à 5.",
+        "[Boss] « Excalibur », le butin laissé par Rock Lock, est retravaillée en épée à deux mains, avec un modèle 3D dédié et des caractéristiques renforcées.",
+        "[Ciel] Correction du bug qui inversait l'orientation du corps par rapport au sens de la marche lorsqu'on montait un dragon.",
+        "[Ciel] Renforcement du bâton de l'ange. L'épée royale et l'ensemble de l'équipement des anges reçoivent également un modèle plus travaillé, en volume (les caractéristiques ne changent pas).",
+        "[Chemin de fer] Ajout du bloc d'arrêt automatique de train. Posé sous les rails, il freine automatiquement et en douceur les trains qui approchent.",
+        "[Véhicules] Correction du bug qui laissait une partie de la carrosserie invisible en permanence après avoir utilisé une seule fois la vue cockpit à la première personne. L'apparence de 11 véhicules a été retravaillée.",
+        "[Survie] La quantité générée de minerai de perle et de minerai de rubis double environ (terres nouvellement générées uniquement). Ajout du bloc de perle et du bloc de rubis.",
+        "[Survie] Ajout du nouvel objet « poupée d'artifice ». Comme la Totem d'immortalité, elle prévient une fois la mort, mais avec un effet plus puissant et jusqu'à 3 utilisations. Elle peut aussi être posée en décoration."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Excalibur (butin de boss) : dégâts 12,0 → 36,0 (×3), vitesse d'attaque divisée par deux, portée 3,0 → 4,0 blocs, ajout d'un effet de recul. En contrepartie, le taux de chute passe de 100 % à 70 %.",
+        "Bâton de l'ange : dégâts 12 → 20, portée 48 m → 64 m, temps de recharge raccourci, bonus au corps-à-corps 7,0 → 10,0 (il dépasse ainsi pour la première fois le bonus au corps-à-corps de l'épée de l'ange).",
+        "Lance-roquettes : impact direct de 40,0 + dégâts d'explosion (puissance d'explosion équivalente à celle d'un creeper). Un seul projectile en réserve ; vitesse de projectile la plus lente de toutes les armes."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Suppression de config nécessaire : `sorakaze_boss.json` (valeurs d'Excalibur) et `sorakaze_sky.json` (valeurs du bâton de l'ange). Sans cela, les nouvelles valeurs ne seront pas prises en compte.",
+        "La suppression de `sorakaze_guns.json` est également recommandée. Sans cela, le nouveau paramètre de « vitesse de projectile », commun à toutes les armes, reste bloqué à une valeur anormalement lente (les dégâts et autres valeurs de puissance ne sont pas concernés).",
+        "Parmi les 5 blocs décoratifs, le smartphone, l'ordinateur portable et l'ordinateur de bureau s'inspirent de produits réels, mais ni l'affichage en jeu ni le manuel ne mentionnent de nom de marque : seule la forme est reprise.",
+        "[Équilibrage] Même à ce stade, le fusil d'assaut reste extrêmement puissant, avec environ 3750 dégâts par seconde : même avec le renforcement de la balise améliorée, d'Excalibur et du bâton de l'ange, la plupart des boss peuvent être vaincus en quelques secondes. Aucune résistance n'a été ajoutée ni du côté des armes, ni du côté des boss.",
+        "Pour information, les numéros de version 1.4.3, 1.6.x, 1.7.2 et 1.7.6 sont des numéros internes utilisés en développement et n'ont jamais été distribués."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le ressenti des portes qui se referment même quand quelqu'un s'y trouve, la sensation de tir et d'impact du lance-roquettes, et l'ergonomie de la nouvelle interface de la balise améliorée n'ont pas été vérifiés en jeu.",
+        "L'apparence des nouveaux modèles 3D d'Excalibur et du bâton de l'ange, ainsi que le rendu réel de la correction d'orientation du dragon, restent également invérifiés.",
+        "L'apparence de la poupée d'artifice, des blocs de perle/rubis et du bloc d'arrêt automatique de train, ainsi que l'impact sur les performances de la haute résolution de la caméra de sécurité, n'ont pas non plus été testés.",
+        "Les animations d'attaque du Kraken et du Titan ne sont toujours pas implémentées comme prévu (en attente de confirmation du propriétaire).",
+        "Les 2 problèmes du MOD Ciel découverts en v1.7.3 (ralentissement lors des incursions, disparition du dragon apprivoisé) restent non résolus, les changements de cette mise à jour concernant le MOD Ciel étant sans rapport avec ce problème."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.5",
+     "date": "2026-08-02",
+     "type": "hotfix",
+     "title": "Correction du verre renforcé et des portes à double vantail",
+     "summary": "Mise à jour concernant uniquement le MOD matériaux. Correction du bug qui faisait mettre 75 secondes au verre renforcé (17 couleurs) pour être miné, quel que soit l'outil utilisé, ainsi que du bug empêchant les grandes portes à double vantail (50 types, ajoutées en v1.5.0) de s'ouvrir visuellement en grand.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le verre renforcé peut désormais être miné à la houe. La vitesse de minage varie selon le type d'outil (du bois à la netherite) et l'enchantement Efficacité. Auparavant, tout outil y mettait uniformément 75 secondes.",
+        "Le verre renforcé n'est plus détruit par le Wither ni l'Ender Dragon.",
+        "Les grandes portes à double vantail (50 types, tailles 3×3 et 3×4) s'ouvrent désormais visuellement en grand, comme prévu. Auparavant, elles ne réalisaient qu'un glissement étroit identique à celui d'une porte classique, ce qui ne laissait pas apparaître une ouverture suffisante."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Temps de minage indicatifs du verre renforcé : houe en bois environ 37,5 s, en pierre environ 18,8 s, en fer environ 12,5 s, en or environ 6,25 s, en diamant environ 9,4 s, en netherite environ 8,4 s (environ 2,25 s avec une houe en diamant Efficacité V). À mains nues, à la pioche, à la hache, à la pelle ou à l'épée, le temps reste de 75 secondes."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "[Limite technique] L'objectif initial était de réserver un minage rapide à une hache dédiée, mais le fonctionnement interne de la version vanilla fait que toute houe (même en bois) mine plus vite, chacune selon son niveau. Il n'a pas été possible de réserver cette vitesse à un outil précis.",
+        "La suppression de la config n'est pas nécessaire : ce correctif n'utilise aucune valeur de config."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le ressenti du minage du verre renforcé à la houe, ainsi que l'ouverture réellement visible à l'écran des portes à double vantail, n'ont pas encore été vérifiés en jeu.",
+        "Les animations d'attaque du Kraken et du Titan ne sont toujours pas implémentées comme prévu.",
+        "Les 2 problèmes du MOD Ciel découverts en v1.7.3 (ralentissement lors des incursions, disparition du dragon apprivoisé) ne sont pas résolus, le MOD Ciel n'ayant pas été modifié cette fois-ci."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.4",
+     "date": "2026-08-02",
+     "type": "release",
+     "title": "Apparition du médecin de la peste limitée à la pierre d'invocation",
+     "summary": "Mise à jour concernant uniquement le MOD boss. Le mécanisme d'apparition aléatoire du médecin de la peste par mauvais temps est supprimé ; il ne peut désormais être invoqué que via sa pierre d'invocation dédiée, comme les 10 autres boss.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le mode d'apparition du boss médecin de la peste a changé. Le mécanisme précédent, une « apparition aléatoire par mauvais temps », est supprimé au profit d'une invocation unifiée via une nouvelle pierre d'invocation dédiée, « pierre d'invocation du médecin de la peste ». Le motif de pose 3×3 est identique à celui des 10 autres boss : rose de Wither aux 4 coins, membrane de Phantom sur les bords, étoile du Nether au centre."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Si vous attendiez le mauvais temps pour chercher le médecin de la peste, il n'apparaîtra plus de cette façon. Fabriquez la pierre d'invocation pour l'invoquer.",
+        "La suppression de la config n'est pas nécessaire. Seuls les paramètres liés à l'apparition naturelle ont été supprimés ; les valeurs restantes ne sont pas affectées."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La mise en scène de l'invocation via la pierre, ainsi que l'apparence, la voix dédiée et la mise en scène du sacrifice du médecin de la peste lui-même, n'ont pas changé lors de cette mise à jour et restent invérifiées en jeu.",
+        "Le MOD matériaux ne fait pas partie de cette mise à jour. Une correction distincte du verre renforcé et des portes est en cours et sera intégrée à une prochaine mise à jour.",
+        "Les 2 problèmes du MOD Ciel découverts en v1.7.3 (ralentissement lors des incursions, disparition du dragon apprivoisé) ne sont toujours pas traités par cette mise à jour.",
+        "Les animations d'attaque du Kraken et du Titan ne sont toujours pas implémentées comme prévu."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.3",
+     "date": "2026-08-02",
+     "type": "release",
+     "title": "Correction de la vue depuis le train et de bugs à Singapour",
+     "summary": "Correction du problème empêchant de bien voir l'extérieur depuis le poste de conduite et les sièges des trains, ainsi que des bugs à Singapour où des bâtiments ne se généraient pas ou des ruines restaient suspendues en l'air. Le plafond d'apparition des monstres est désormais limité au monde normal, et le plafond de niveau d'enchantement a été ramené à une valeur raisonnable.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Correction du problème qui, assis au poste de conduite ou sur un siège des trains (8 modèles), ne laissait voir que le mur sous la fenêtre au lieu de l'extérieur. La vue vers l'avant et sur les côtés est désormais correcte.",
+        "Correction de bugs à Singapour, la cité-État céleste : des bâtiments ne se généraient pas du tout, le même hôtel se répétait plusieurs fois, ou des arbres et des villages restaient suspendus en l'air. Seules les terres nouvellement générées après ce correctif en bénéficient. Pour les zones déjà générées et abîmées, un outil de réparation dédié, limité aux zones concernées, est fourni pour les administrateurs.",
+        "Le MOD boss reçoit des paramètres de config réglables concernant l'apparition du médecin de la peste.",
+        "Les dégâts du souffle de la wyverne sont réduits de moitié.",
+        "Correction du bug qui appliquait par erreur le plafond d'apparition naturelle des monstres au Nether et à l'End : il se limite désormais au monde normal (MOD survie)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Dégâts du minigun réduits de 75 %.",
+        "Dégâts du fusil d'assaut augmentés de 25 %. Puissance effective mesurée par seconde : fusil d'assaut 3750 > fusil laser 2000 > minigun 250.",
+        "Le récolteur universel (outil de minage laissé tombé par un boss) passe d'une durabilité classique à une limite de « 5 utilisations avant de casser ». Il n'est plus possible d'y appliquer Solidité ou Raccommodage à l'enclume, mais Efficacité, Fortune et Toucher de soie restent applicables.",
+        "La valeur par défaut du plafond de niveau d'enchantement passe de 255 à 20 (le plafond réglable est lui aussi réduit, de 255 à 32). Les niveaux d'enchantement anormaux, comme le « niveau 255 » signalé par certains joueurs, ne devraient plus apparaître."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "3 fichiers de config à supprimer : `sorakaze_guns.json`, `sorakaze_sky.json` et `sorakaze_survival.json`. Sans cela, les changements de valeurs ci-dessus ne seront pas pris en compte. `sorakaze_boss.json` n'a pas besoin d'être supprimé.",
+        "[Important] Un test approfondi du MOD Ciel à grande échelle et sur une longue durée a révélé 2 nouveaux problèmes, non encore corrigés : (1) un ralentissement possible lors d'incursions de grande ampleur ; (2) un Ender Dragon apprivoisé qui peut disparaître au bout d'un certain temps (les wyvernes apprivoisées, elles, ne posent pas de problème)."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les problèmes ci-dessus (ralentissement lors des incursions, disparition du dragon apprivoisé) restent non résolus.",
+        "L'apparence et le comportement du médecin de la peste, ainsi que le ressenti de la limite de 5 utilisations du récolteur universel, n'ont pas encore été vérifiés en jeu.",
+        "Les animations d'attaque du Kraken et du Titan ne sont toujours pas implémentées comme prévu (en attente de confirmation du propriétaire).",
+        "L'outil de réparation de Singapour n'a été validé que sur des données de test ; son fonctionnement sur de vraies données de monde n'a pas encore été vérifié."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.1",
+     "date": "2026-08-01",
+     "type": "hotfix",
+     "title": "Correctif d'urgence : plantage après l'installation de la v1.7.0",
+     "summary": "L'installation de la v1.7.0 provoquait un plantage systématique à chaque démarrage du jeu. La cause se trouvait dans l'enregistrement des raccourcis clavier du MOD véhicules (lever/baisser le train d'atterrissage, volets, portes, etc.) ; la mise à jour du seul MOD véhicules vers la v1.7.1 résout le problème.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Seul le MOD véhicules (sorakaze_vehicles) a été mis à jour. Les 6 autres MOD restent en v1.7.0 sans problème.",
+        "Aucun nouvel objet ni bloc n'est ajouté. Cette mise à jour ne fait que corriger le plantage au démarrage."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Si l'installation de la v1.7.0 provoque un plantage « à chaque démarrage », remplacez impérativement le fichier jar du MOD véhicules par cette version v1.7.1.",
+        "Les 6 autres MOD (armes à feu, chemin de fer, matériaux, boss, Ciel, survie) continuent de fonctionner en v1.7.0. Il n'est pas nécessaire de les remplacer."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'apparence et le ressenti des nouveautés de la v1.7.0 pour les véhicules, comme la vue à la première personne (vue cockpit), restent invérifiés par quiconque, le plantage ayant empêché toute prise en main jusqu'ici.",
+        "La synchronisation à deux joueurs et la charge serveur avec tous les MOD actifs simultanément restent également invérifiées."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.0",
+     "date": "2026-08-01",
+     "type": "release",
+     "title": "Mise à jour simultanée des 7 MOD et déblocage de contenu caché",
+     "summary": "Les 7 MOD s'alignent pour la première fois et sont désormais tous distribués sous le même numéro de version (v1.7.0). La correction d'un bug du recueil de recettes révèle une grande quantité de contenu jusqu'ici caché, comme les produits alimentaires et les objets de la cité-État céleste « Singapour ». Le MOD véhicules reçoit une nouvelle vue à la première personne (vue cockpit).",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "C'est la première fois que les 7 MOD sont distribués sous un même numéro de version. Jusqu'ici, chaque MOD suivait sa propre numérotation.",
+        "La correction d'un bug du recueil de recettes fait apparaître dans celui-ci les 300 produits alimentaires en vente dans la cité-État céleste « Singapour », ainsi que des objets comme le bélier de siège, le titre de propriété, le cadastre ou l'étagère à provisions. Ces objets s'achètent en boutique et ne sont pas fabricables.",
+        "Le récolteur universel (butin de boss) et le « distributeur spécial » installé à Singapour (non fabricable) apparaissent désormais eux aussi dans le recueil de recettes.",
+        "Le MOD véhicules reçoit une vue à la première personne (vue cockpit) : au volant, le toit et les montants de son propre véhicule ne masquent plus la vue. Une option permet de la désactiver.",
+        "Les icônes de 113 véhicules, 35 trains et 3 armes ont été entièrement redessinées.",
+        "Le plafond de solde de la banque (DAB), auparavant fixé à 100 000, est supprimé : il est désormais possible d'épargner sans limite.",
+        "Ajout d'une recette permettant de retransformer un bloc d'améthyste en éclats d'améthyste.",
+        "Le relèvement important du plafond de niveau d'enchantement (30 normalement) est désormais actif (MOD survie)."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil laser : dégâts 160 → 200, cadence de tir 6 → 10 coups/seconde, capacité du chargeur 100 → 200.",
+        "Foreuse : vitesse de minage 12,0 → 24,0, durabilité 2048 → 10240.",
+        "Fort relèvement des plafonds de population du Royaume céleste et de la cité des anges (exemple : marchands du royaume 16 → 48, habitants 64 → 192).",
+        "La résolution par défaut du flux vidéo de la caméra de sécurité passe de 192 à 768."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Pour le MOD armes à feu (sorakaze_guns) et le MOD Ciel (sorakaze_sky), les changements de valeurs ci-dessus ne sont pris en compte qu'après suppression de `config/sorakaze_guns.json` et `config/sorakaze_sky.json`.",
+        "Pour le MOD matériaux (sorakaze_deco), ne supprimez pas la config : modifiez uniquement la valeur de `cameraFeedResolution`. La supprimer réinitialiserait aussi d'autres réglages, comme la durée des feux de circulation.",
+        "La puissance effective actuellement mesurée des armes est très élevée : environ 3 000 dégâts par seconde pour le fusil d'assaut, 2 000 pour le fusil laser et 1 000 pour le minigun. La plupart des boss peuvent être vaincus en quelques secondes."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le nouveau boss d'incursion « l'Envahisseur cuirassé » ne ressemble peut-être pas encore assez à une « armure » ; des ajustements sont à prévoir.",
+        "La carrosserie du train reste à environ un tiers de l'échelle réelle. La largeur de sa zone de collision passant de 1,8 à 2,0 blocs, il pourrait ne plus passer dans les tunnels existants de 2 blocs de large. Les 3 anciens modèles (train, voiture voyageurs, wagon de marchandises) n'ont ni fenêtres, ni intérieur, ni portes.",
+        "La vitesse de rotation maximale de la vue à la première personne des véhicules est de 36°/seconde, ce qui pourrait sembler trop rapide au ressenti.",
+        "La taille du fichier du recueil de recettes a fortement augmenté (en raison des nombreuses images de produits alimentaires ajoutées). L'affichage pourrait sembler lourd selon l'environnement.",
+        "La synchronisation à deux joueurs et la charge serveur avec tous les MOD actifs simultanément n'ont pas été vérifiées."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.5",
+   "summary": "Correction de l'épée et de l'arc royaux, minigun affaibli",
+   "releases": [
+    {
+     "version": "v1.5.7",
+     "date": "2026-07-30",
+     "type": "hotfix",
+     "title": "Correction de l'épée et de l'arc royaux, minigun affaibli",
+     "summary": "Correction de l'arc royal qui semblait à l'envers, ainsi que de l'apparence des 2 voitures du train à grande vitesse, oubliées lors de la refonte de la v1.5.6. Par ailleurs, l'épée royale et le minigun sont affaiblis, et la foreuse se recharge désormais automatiquement depuis l'inventaire lorsque sa cellule est vide.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les 13 icônes d'objets liés aux anges ont été redessinées en 128 px pour plus de finesse",
+        "Correction de l'arc royal, qui semblait orienté à l'envers",
+        "Refonte de l'apparence des 2 voitures du train à grande vitesse, oubliées lors de la refonte des trains en v1.5.6",
+        "La foreuse se recharge désormais automatiquement depuis une cellule de rechange présente dans l'inventaire lorsque sa cellule est vide"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Minigun : puissance effective ramenée d'environ 2 000 à environ 1 000 dégâts par seconde",
+        "Épée royale : affaiblie, y compris sur la vitesse d'attaque. Les DPS mesurés passent de 84,80 à 21,60 (-74,5 %). Résultat : elle est désormais légèrement en dessous de l'épée de l'ange (22,40)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La suppression de config/sorakaze_guns.json est nécessaire pour que ce changement soit pris en compte",
+        "Si vous effectuez une mise à jour d'un seul coup depuis une version antérieure ou égale à v1.5.5, supprimez également config/sorakaze_sky.json",
+        "L'affaiblissement de l'épée royale résulte de valeurs internes au programme et ne peut pas être annulé via un fichier de config"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'icône d'objet du train à grande vitesse utilise encore l'ancien design (la carrosserie a été refaite, mais l'icône ne correspond plus à son apparence)",
+        "Le Golem sculk, Rock Lock, le Kraken et le Titan n'ont toujours pas d'animation d'attaque dédiée",
+        "La Lance de foudre ne peut pas encore être lancée ; seule l'attaque au corps-à-corps est disponible"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.5.6",
+     "date": "2026-07-29",
+     "type": "release",
+     "title": "Arrivée du Royaume céleste, refonte majeure du boss la Faucheuse",
+     "summary": "Le MOD Ciel reçoit l'immense « Royaume céleste » ainsi que 7 « équipements royaux » réservés à l'achat. Le boss la Faucheuse obtient des animations d'attaque dédiées et voit ses caractéristiques revues en profondeur. L'équilibre de puissance des armes à feu est largement retravaillé, faisant du fusil d'assaut l'une des armes les plus puissantes du jeu. L'apparence des 6 familles de trains est également refaite.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Ajout du Royaume céleste (un immense pays d'inspiration britannique de 1001 blocs de diamètre). 64 habitants, 16 marchands, 65 coffres",
+        "Ajout de 7 « équipements royaux » exclusifs au Royaume céleste (réservés à l'achat, version supérieure de l'équipement des anges)",
+        "Arrivée d'une nouvelle créature, « REX », qu'on peut faire éclore d'un œuf puis monter",
+        "Le « pot de Kuley » permet désormais d'emporter un familier avec soi dans son intégralité",
+        "Ajout de 6 animations d'attaque dédiées pour le boss la Faucheuse. Nouvelle technique invoquant 3 Withers lorsque ses PV passent sous 50 %",
+        "Refonte de l'apparence des 6 familles de trains (fenêtres, portes, avant, indicateur de destination, feux, etc. tous plus arrondis et en volume)",
+        "L'ordinateur portable devient un bloc à poser. La caméra de sécurité passe en modèle 3D avec rotation, et son flux vidéo affiche désormais l'image en temps réel dans son rayon d'action, ou « NO SIGNAL » au-delà",
+        "Refonte complète de l'équilibre de puissance des armes à feu (détails dans les ajustements d'équilibrage)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil d'assaut : la puissance effective contre une cible unique passe d'environ 400 à environ 3 000 dégâts par seconde (correction garantissant désormais que chaque balle inflige bien ses dégâts)",
+        "Minigun : puissance effective ramenée d'environ 4 000 à environ 2 000 dégâts par seconde",
+        "Fusil à pompe : puissance triplée (environ 150 dégâts par pression de gâchette à bout portant)",
+        "Les 2 fusils de précision (normal/lourd) : durabilité ramenée à 128, soit un tiers de celle de l'arc (plus fragiles, mais très puissants)",
+        "Boss la Faucheuse : PV fixés à 3 000 au lieu d'un tirage aléatoire entre 6 000 et 9 000 ; puissance d'attaque 16 → 32",
+        "Wyverne : dégâts du souffle 10 → 7,5, taux de chute d'œuf 100 % → 20 % (affaiblissement)",
+        "Boss archange : PV renforcés à 3 000, soit ×1,5"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La suppression de config/sorakaze_guns.json est nécessaire pour que les changements de puissance des armes soient pris en compte (le réglage de durabilité des fusils de précision est un nouveau paramètre et s'applique donc automatiquement)",
+        "Le numéro de version saute de v1.5.1 à v1.5.6 : il ne s'agit pas d'un numéro sauté, mais de plusieurs petites mises à jour (ajustement des masques, affaiblissement de la wyverne, etc.) distribuées ensemble",
+        "Le minerai de perle et le minerai de rubis n'apparaissent pas sur les terres générées avant l'installation de ce MOD. D'après des mesures réelles, leur rareté est d'environ 1/32 de celle du diamant, soit environ la moitié de celle des débris antiques",
+        "Si une ville ou un château déjà partiellement généré se trouvait à proximité du Royaume céleste, le reste de sa génération peut manquer, laissant une structure incomplète (les données ne sont pas corrompues, seul l'aspect visuel est concerné)"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le Golem sculk, Rock Lock, le Kraken et le Titan n'ont toujours pas d'animation d'attaque dédiée (le cas de la Faucheuse est résolu par cette mise à jour)",
+        "La Lance de foudre ne peut pas encore être lancée ; seule l'attaque au corps-à-corps est disponible"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.5.1",
+     "date": "2026-07-28",
+     "type": "visual-update",
+     "title": "Refonte complète de l'apparence des 2 masques",
+     "summary": "Correction de l'apparence des 2 masques du MOD Survie étendue. Auparavant, un dessin plat semblait flotter au-dessus de la tête ; il a été remplacé par une forme en volume épousant la tête (avec oreilles). L'armure, la durabilité, les recettes et les autres caractéristiques restent inchangées.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Refonte complète de l'apparence des 2 masques. Correction du dessin plat flottant au-dessus de la tête, remplacé par une forme en volume couvrant la tête",
+        "Ajout de détails : oreilles de lapin pour le masque de lapin, oreilles de renard pour le masque du bouffon"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Les icônes du recueil de recettes utilisent encore l'ancien design (mise à jour prévue lors d'une prochaine mise à jour)"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les textures des côtés et de l'arrière des masques restent encore sommaires. Le design étant surtout pensé pour la vue de face, ils peuvent paraître presque unis lorsqu'on les regarde de côté ou de dos à la troisième personne"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.5.0",
+     "date": "2026-07-27",
+     "type": "release",
+     "title": "La plus grande mise à jour à ce jour, arrivée du 7e MOD « Survie étendue »",
+     "summary": "La plus grande mise à jour de l'histoire du projet. Le 7e MOD, « Survie étendue », fait son entrée avec des minerais de perle et de rubis, des masques, un pavois et une jauge d'hydratation. Les 6 MOD existants reçoivent également un contenu massif : le train passe à 30 types, les véhicules à 100 types, et les portes du MOD matériaux à 101 types.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le 7e MOD, « Survie étendue », fait son entrée. Ajout du minerai de perle, du minerai de rubis, de 2 masques (+50 d'armure, 814 de durabilité), d'un pavois et d'une jauge d'hydratation (se vide en 30 minutes)",
+        "Il devient possible d'acheter un livre de Tranchant X auprès d'un bibliothécaire (maître) (64 émeraudes)",
+        "Ajout au MOD armes à feu de 3 nouvelles armes : le « minigun », la « foreuse » (mine d'un coup un bloc de 3×3 dans l'axe du regard) et la « tourelle anti-araignées »",
+        "Le train passe à 30 types au total (6 familles × 5 livrées), contre un seul type auparavant",
+        "Les véhicules passent à 100 types au total (25 modèles de base × 4 livrées), et tous reçoivent le style arrondi",
+        "Le MOD matériaux reçoit 50 grandes portes à double vantail (portant le total des portes à 101 types), une caméra de sécurité, un ordinateur portable et un distributeur permettant d'épargner à intérêts composés",
+        "Ajout d'un incubateur d'œufs au MOD Ciel. Une fois éclos, la wyverne ou le dragon s'attache au joueur et peut être monté avec une selle dédiée"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "[Correctif] Il était jusqu'ici indiqué que « le fusil d'assaut inflige environ 2 000 dégâts par seconde contre une cible unique », mais une mesure réelle a révélé un chiffre d'environ 400 dégâts par seconde (les indications précédentes surestimaient largement la puissance réelle)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La puissance effective de la nouvelle arme « minigun » avoisine les 4 000 dégâts par seconde : c'est l'arme la plus puissante du projet à ce jour. Elle permet de vaincre la plupart des boss existants en quelques secondes ; pour conserver un peu de défi, abaissez `minigun.damage` dans la config",
+        "Il n'est pas nécessaire de supprimer les fichiers de config pour cette mise à jour (les nouveaux paramètres sont ajoutés automatiquement au démarrage)",
+        "Le minerai de perle et le minerai de rubis n'apparaissent pas sur les terres générées avant l'installation de ce MOD. Explorez de nouvelles terres si vous n'en trouvez pas"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "L'animation de rotation de la caméra de sécurité n'est pas encore implémentée ; la vue est pour l'instant fixe",
+        "Le Golem sculk, Rock Lock, la Faucheuse, le Kraken et le Titan n'ont pas encore d'animation d'attaque dédiée, et l'annonce de leur attaque spéciale se limite à des particules et des marqueurs",
+        "La Lance de foudre ne peut pas encore être lancée ; seule l'attaque au corps-à-corps est disponible"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.4",
+   "summary": "Cité céleste plus dense, nouvelle créature « Wyverne »",
+   "releases": [
+    {
+     "version": "v1.4.8",
+     "date": "2026-07-27",
+     "type": "release",
+     "title": "Cité céleste plus dense, nouvelle créature « Wyverne »",
+     "summary": "L'échelle de la cité céleste a été revue pour donner une ville à gratte-ciel plus dense. En son centre, 4 flèches culminant à 300 blocs de haut deviennent de nouveaux points de repère. Une nouvelle créature volante, la « Wyverne de cristal », fait également son apparition.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La superficie de la cité céleste est réduite, pour une ville plus dense (la hauteur varie selon les quartiers)",
+        "Seules les 4 flèches du centre-ville atteignent désormais 300 blocs de haut, façon gratte-ciel démesuré",
+        "Ajout de détails urbains : entrées et auvents des étages inférieurs, équipements de toiture, séparation de la chaussée et des trottoirs",
+        "16 coffres au total, répartis en 3 types (toit, bureau, entrepôt), sont placés dans la ville",
+        "La nouvelle créature « Wyverne de cristal » fait son apparition. Elle vole et attaque au souffle de boule de feu (elle ne vise que les joueurs, jamais les habitants de la ville)",
+        "Ajustement de l'intervalle d'apparition du château céleste (avec les réglages recommandés précédents, le château n'apparaissait quasiment jamais, ce qui était un bug)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Face à la puissance du fusil d'assaut, la Wyverne de cristal (200 PV) se fait vaincre en un instant. Pour un peu plus de défi, ajustez le réglage des dégâts des armes",
+        "La réduction de taille de la ville ne s'applique qu'aux terres nouvellement générées. Les cités célestes déjà existantes conservent leur ancienne taille, ce qui peut donner un aspect incohérent si elles se retrouvent voisines"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.7",
+     "date": "2026-07-27",
+     "type": "hotfix",
+     "title": "Refonte de la génération de la cité céleste, correction d'un bug de prolifération",
+     "summary": "Le mécanisme interne de génération de la cité céleste et du château céleste a été reconstruit pour plus de stabilité, et un bug faisant lentement croître le nombre d'habitants de la cité céleste au-delà de la limite prévue à chaque redémarrage du serveur a été corrigé.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Correction du bug faisant croître le nombre d'habitants de la cité céleste au-delà de la limite à chaque redémarrage répété du serveur",
+        "Le traitement de génération de la cité céleste et du château céleste a été rendu plus efficace en interne (la charge de génération est même réduite)",
+        "Ajustement de l'espacement entre les cités célestes et les châteaux célestes"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Ce changement de mode de génération ne s'applique qu'aux terres nouvellement générées. L'apparence des cités célestes et châteaux célestes déjà existants reste inchangée"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.6",
+     "date": "2026-07-26",
+     "type": "release",
+     "title": "La cité céleste devient une ville futuriste, nouveau boss",
+     "summary": "La « cité céleste » du MOD Ciel est entièrement transformée en une métropole futuriste à gratte-ciel, avec l'arrivée du « château céleste » et du nouveau boss « Archange du Ciel ». Un nouveau PNJ, « l'ange citadin », arpente désormais les rues, et le mode de paiement pour acheter de l'équipement a également changé.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La cité céleste devient une métropole futuriste à gratte-ciel (ajout de 20 tours, d'un réseau routier, de passerelles piétonnes et d'une place centrale)",
+        "Un nouveau PNJ, « l'ange citadin », déambule désormais dans les rues sous 4 apparences différentes",
+        "Le « château céleste » fait son apparition (remparts, 8 tours rondes, grande salle, donjon central, trésor souterrain, 6 coffres)",
+        "Le nouveau boss « Archange du Ciel » apparaît dans le château céleste. Un seul par château, et il ne réapparaît pas après sa défaite",
+        "Ajout du « bâton de l'ange », butin garanti du boss (particularité : puissance ×1,5 et temps de recharge divisé par deux en l'air)",
+        "Refonte de l'apparence du portail céleste, avec un cadre en or et pierre de lumière, ainsi qu'une animation d'allumage",
+        "Le paiement pour acheter de l'équipement céleste se fait désormais en émeraudes et en diamants"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Taux d'apparition naturelle du portail céleste : 1/340 → 1/1200 (bien plus difficile à trouver)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le portail est devenu bien plus difficile à trouver. Si vous n'en trouvez pas dans un monde existant, l'administrateur peut soit abaisser le taux d'apparition via la config, soit activer `allowPlayerBuiltSkyPortals` pour autoriser la construction manuelle d'un portail par les joueurs",
+        "La puissance du fusil d'assaut est extrêmement élevée (l'équivalent de 2 000 dégâts par seconde), ce qui permet de vaincre ce boss (2000 PV) en environ une seconde. Pour un peu plus de défi, ajustez le réglage des dégâts des armes"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.5",
+     "date": "2026-07-26",
+     "type": "hotfix",
+     "title": "Correction du crash de la dimension Ciel",
+     "summary": "Correction d'un bug important qui faisait systématiquement planter le client en entrant dans la dimension Ciel (aucun mécanisme d'affichage n'était enregistré pour les anges et les golems angéliques). La puissance du fusil de précision lourd est augmentée, et un nouveau grossissement est ajouté à la lunette.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "[Important] Correction d'un bug qui faisait systématiquement planter le client en entrant dans la dimension Ciel (le système d'affichage des anges et des golems angéliques n'était pas enregistré). Le même problème touchait aussi les anges présents dans d'anciens mondes créés avant le déplacement du Ciel dans sa propre dimension",
+        "Dégâts du fusil de précision lourd portés à 4 fois ceux du fusil de précision normal (40,0 → 80,0)",
+        "Ajout d'un nouveau grossissement « ×12 » à la lunette du fusil de précision (fusil de précision lourd uniquement)",
+        "La molette de la souris est désormais ignorée pendant que la lunette est utilisée (empêche un changement d'emplacement de barre d'accès rapide involontaire)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil de précision lourd : dégâts 40,0 → 80,0 (4 fois le fusil de précision normal)"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Il n'a pas encore été confirmé en jeu que ce correctif résout réellement le crash de la dimension Ciel. Merci de vérifier si le crash ne se produit plus en entrant dans cette dimension, et de le signaler s'il persiste"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.4",
+     "date": "2026-07-26",
+     "type": "release",
+     "title": "Forte hausse de la puissance des armes, 40 nouvelles portes",
+     "summary": "La puissance du fusil laser et du fusil d'assaut est fortement augmentée (×20 et ×10 respectivement). Cette hausse de puissance déséquilibre fortement les combats face aux boss existants. Par ailleurs, correction du bug de la tourelle automatique qui, en réalité, n'avait encore jamais tiré, du bug des glissières de sécurité qui ne se connectaient pas entre elles, et du bug du laser dont l'orientation était inversée entre l'est et l'ouest. Le MOD matériaux reçoit 40 nouvelles portes (la version 1.4.3 est un numéro sauté).",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Dégâts du fusil laser 8,0 → 160,0 (×20, 960 DPS), dégâts du fusil d'assaut 20,0 → 200,0 (×10, 2000 DPS)",
+        "Correction d'un bug qui empêchait la tourelle automatique de tirer, et ce depuis toujours (le rayon de visée partait de l'intérieur de sa propre zone de collision). La sélection des cibles a également été revue : les boss et le Warden ne sont plus visés",
+        "Correction du bug empêchant les glissières de sécurité de se connecter entre elles",
+        "Correction du bug inversant l'orientation du laser entre l'est et l'ouest",
+        "Portée du piège laser : 32 → 128 blocs (plafond de config étendu à 256). Il peut désormais s'orienter selon 26 directions (diagonales, haut et bas compris) ; clic droit à mains nues pour pivoter de 45° à l'horizontale, accroupi + clic droit pour changer l'angle",
+        "Ajout de 40 nouvelles portes au MOD matériaux (portant le total à 49, en comptant les 9 existantes)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil laser : dégâts 8,0 → 160,0 (×20)",
+        "Fusil d'assaut : dégâts 20,0 → 200,0 (×10)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "[Important] Cette hausse de puissance déséquilibre fortement les combats contre les boss existants (ils peuvent être vaincus en quelques secondes). Aucune résistance n'a été ajoutée du côté des boss ; si cela vous gêne, ajustez les dégâts dans config/sorakaze_guns.json",
+        "La suppression de config/sorakaze_guns.json est nécessaire pour que la hausse de puissance des armes soit prise en compte",
+        "La version 1.4.3 n'a pas été distribuée : c'est un numéro sauté"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.2",
+     "date": "2026-07-26",
+     "type": "hotfix",
+     "title": "Correction de l'apparence de l'équipement des anges",
+     "summary": "Correction d'un bug qui affichait, une fois « l'équipement des anges » réellement porté, une armure en netherite vanilla sur le corps et un élytre uni dans le dos. L'icône dans l'inventaire s'affichait pourtant correctement, ce qui rendait le problème difficile à remarquer.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Correction de l'apparence de l'équipement des anges (armure, ailes de l'ange) une fois porté, qui affiche désormais correctement son design dédié argenté et doré"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.1",
+     "date": "2026-07-26",
+     "type": "release",
+     "title": "Arrivée de la dimension Ciel, attaques spéciales pour les boss",
+     "summary": "Une nouvelle dimension, « Ciel », est ajoutée : on peut désormais s'y rendre via un portail qui apparaît rarement à la surface. Il devient possible de commercer avec les marchands anges et de s'équiper d'ailes planantes. Les 10 boss reçoivent tous une attaque spéciale et peuvent désormais être invoqués à volonté via une pierre d'invocation. Le MOD matériaux gagne un bouton de sélection dans les recettes, et les roues des véhicules tournent enfin.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Une nouvelle dimension « Ciel » fait son apparition, accessible via un portail de pierre de lumière apparaissant rarement à la surface",
+        "Des marchands anges peuplent le Ciel et proposent chacun un assortiment aléatoire d'articles. On peut y obtenir les « ailes de l'ange », qui permettent de planer comme avec un élytre, ainsi que des flèches et un arc dédiés",
+        "Ajout d'une mesure de secours en cas de chute depuis le Ciel (atterrissage en toute sécurité au-dessus du monde normal)",
+        "Ajout d'une pierre d'invocation pour chacun des 10 boss, fabricable et permettant de les invoquer à volonté. Tous les boss reçoivent une attaque spéciale (déclenchée sous 50 % de PV, annoncée 4 secondes à l'avance)",
+        "La puissance des 3 boss colossaux est désormais tirée au sort à l'invocation (de 30 à 45 fois les PV de l'Ender Dragon, fixée ensuite définitivement)",
+        "De nouvelles armes — « Faux de la Faucheuse », « Trident abyssal » et « Lance de foudre » — tombent des boss correspondants",
+        "Ajout d'un bouton de sélection sur l'établi du MOD matériaux, permettant de choisir plusieurs blocs à partir du même agencement de recette (par exemple pour les piliers en planches)",
+        "Les pelles et houes exclusives des boss permettent désormais de réellement tracer des chemins ou labourer la terre",
+        "Les roues des véhicules tournent visiblement (10 modèles concernés)"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le Golem sculk et Rock Lock n'ont toujours pas d'animation d'attaque dédiée (l'annonce de leur attaque spéciale se limite à des particules)",
+        "La Lance de foudre ne peut pas encore être lancée (attaque au corps-à-corps uniquement)"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.0",
+     "date": "2026-07-24",
+     "type": "visual-update",
+     "title": "Animations d'attaque des boss et outils passés en 3D",
+     "summary": "Ajout d'animations dédiées pour les attaques au corps-à-corps, de zone et à distance des 5 boss. Les 5 outils qu'ils laissent tomber (pioche, hache, houe, lance, pelle) sont eux aussi passés d'une icône plate à un modèle 3D en volume. Les dégâts, temps de recharge et autre contenu de jeu restent inchangés.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Ajout d'animations dédiées pour les attaques des 5 boss (corps-à-corps, 2 attaques de zone, attaque à distance), rendant l'annonce de l'attaque (la phase de préparation) plus lisible",
+        "Les 5 outils laissés tombés par les boss passent à un modèle 3D en volume. Leurs icônes dans l'interface passent également en affichage 3D"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les attaques au corps-à-corps n'ont pas reçu de geste préparatoire (élan, etc.). En effet, l'attaque au corps-à-corps de la version vanilla inflige ses dégâts instantanément, et ajouter un geste préparatoire décalerait le moment réel de l'impact"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.0",
+     "date": "2026-07-23",
+     "type": "visual-update",
+     "title": "Refonte complète de l'apparence des 5 boss",
+     "summary": "Suite au retour « on dirait la même créature avec des couleurs différentes », l'apparence des 5 nouveaux boss a été entièrement retravaillée. La puissance, les butins et le contenu des attaques restent inchangés.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Colosse runique : un noyau de pierre avec une armure de bronze/or, deux épées flottant de part et d'autre du corps, un anneau de runes tournant autour des bras",
+        "Seigneur des Braises : un sillon de lave traversant tout le corps, deux cornes en 4 segments se recourbant vers l'extérieur",
+        "Treant ancien : 8 branches d'orientation et de cassure toutes différentes (dont 3 brisées en cours de longueur), un visage sculpté dans le tronc",
+        "Traqueur du Néant : abandon de la silhouette humanoïde au profit d'un bloc d'obsidienne + un portail violet + 8 tentacules + 18 yeux lumineux",
+        "Roi-Liche du Givre : une robe à 5 pans, une couronne de glace hérissée de 9 pointes, un sceau de glace tournant dans sa main gauche levée"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.0",
+     "date": "2026-07-22",
+     "type": "release",
+     "title": "5 nouveaux boss et le plafond de PV enfin dépassé",
+     "summary": "Ajout de 5 nouveaux boss colossaux au MOD boss. La limite du moteur de Minecraft qui plafonnait les PV à 1024 est désormais contournée, ce qui permet des boss dignes de ce nom avec 2400 à 4000 PV. Leur défaite laisse tomber à coup sûr un outil amélioré dédié (pioche, hache, houe, une nouvelle arme « lance », pelle).",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Ajout de 5 nouveaux boss (invocables via un objet d'invocation fabricable) : Colosse runique (3000 PV), Seigneur des Braises (3400 PV), Treant ancien (4000 PV), Traqueur du Néant (2400 PV) et Roi-Liche du Givre (2800 PV)",
+        "Vaincre chaque boss laisse tomber à coup sûr un outil amélioré dédié : Pioche runique, Hache ardente, Houe du Treant, Lance du néant (une arme entièrement nouvelle, absente de la version vanilla) et Pelle de givre. Tous très résistants, déjà enchantés en de nombreuses façons, et non fabricables"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les 5 boss sont conçus pour être difficiles ; un affrontement en solo est censé être ardu. S'ils vous paraissent trop puissants, l'administrateur peut ajuster leurs PV et leur puissance d'attaque via la config",
+        "Le Traqueur du Néant devait initialement flotter dans les airs selon sa conception, mais il est pour l'instant implémenté en se déplaçant au sol et en se téléportant"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.3",
+   "summary": "138 nouveaux blocs de construction et durabilité des armes",
+   "releases": [
+    {
+     "version": "v1.3.2",
+     "date": "2026-07-22",
+     "type": "release",
+     "title": "138 nouveaux blocs de construction et durabilité des armes",
+     "summary": "Ajustements supplémentaires suite aux retours reçus après la publication de la v1.3.2. Refonte de l'apparence de 2 boss, et correction de la durabilité des armes qui n'était jusqu'ici qu'un affichage sans effet réel. Le MOD matériaux reçoit 138 nouveaux blocs de construction, et la portée de toutes les armes est quintuplée.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Refonte de l'apparence du Golem sculk et de Rock Lock (Golem sculk : façon golem de fer en sculk ; Rock Lock : façon robot armé futuriste). Ni la puissance ni les attaques ne changent",
+        "La durabilité des armes diminue enfin correctement (auparavant, la barre de durabilité s'affichait sans jamais casser l'arme). Durabilité par défaut : environ 1 536 tirs, environ 6 093 pour Excalibur",
+        "Portée de toutes les armes quintuplée (fusil d'assaut 60 → 300 m, fusil à pompe 24 → 120 m, fusil de précision 150 → 750 m, fusil laser 80 → 400 m)",
+        "Ajout de 138 nouveaux blocs de construction au MOD matériaux (dalle verticale, pilier octogonal, pente à 8 marches × 46 matériaux)",
+        "Le projet visant à donner aux véhicules un style « arrondi et réaliste » a été approuvé, et les maquettes de la berline et de l'avion à hélice sont terminées (le déploiement aux 13 véhicules se fera progressivement lors de prochaines mises à jour)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Portée de toutes les armes quintuplée (fusil d'assaut 60 → 300 m / fusil à pompe 24 → 120 m / fusil de précision 150 → 750 m / fusil laser 80 → 400 m)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La suppression de config/sorakaze_guns.json est nécessaire pour que l'allongement de portée soit pris en compte"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le style « arrondi » des véhicules n'existe pour l'instant qu'à l'état de maquette pour la berline et l'avion à hélice ; son déploiement aux 13 véhicules est prévu pour de prochaines mises à jour"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.3.2",
+     "date": "2026-07-22",
+     "type": "release",
+     "title": "Véhicules agrandis et nouveau boss du Nether « Rock Lock »",
+     "summary": "Les voitures, trains et aéronefs sont agrandis pour être nettement plus grands que le joueur, avec des proportions plus réalistes. La puissance du fusil d'assaut et du fusil laser est quadruplée. Un nouveau boss, « Rock Lock », apparaît dans le Nether ; sa défaite laisse tomber la puissante épée « Excalibur ».",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Agrandissement des voitures, bus, camions, motos, trains et aéronefs (environ ×1,6 pour les voitures, ×1,8 pour les trains, ×2,2 pour les gros avions de ligne — le facteur varie selon le type)",
+        "Le nouveau boss « Rock Lock » apparaît dans le Nether. Invocable via un objet dédié (fabricable avec 8 briques du Nether + 1 œil de l'End) ou via un exemplaire apparaissant naturellement à proximité des forteresses du Nether",
+        "Vaincre Rock Lock laisse tomber à coup sûr l'épée « Excalibur » (haute durabilité, résistance au feu, enflamme la cible touchée)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil d'assaut : dégâts 5,0 → 20,0 (×4)",
+        "Fusil laser : dégâts 2,0 → 8,0 (×4)"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La suppression de config/sorakaze_guns.json est nécessaire pour que le renforcement des armes soit pris en compte",
+        "Les véhicules et les trains étant désormais plus grands, faites attention dans les routes étroites, les tunnels et les hangars"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La fréquence d'apparition naturelle de l'objet d'invocation de Rock Lock à proximité des forteresses du Nether n'a pas été vérifiée (réglable dans la config)"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.3.1",
+     "date": "2026-07-21",
+     "type": "hotfix",
+     "title": "Correction d'un bug faisant vaincre le boss par le Warden",
+     "summary": "Correction d'un bug qui permettait au Warden, en représailles, de vaincre le boss « Golem sculk » — pourtant précieux, puisque limité à un seul par cité et par monde.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Le Golem sculk ne subit plus de dégâts de la part du Warden, et le Warden ne l'attaque ni ne le prend pour cible (les joueurs peuvent toujours le vaincre normalement)"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.3.0",
+     "date": "2026-07-20",
+     "type": "release",
+     "title": "Arrivée des MOD boss et véhicules, extension à 5 MOD",
+     "summary": "Deux nouveaux MOD, « boss » et « véhicules », rejoignent le pack, qui compte désormais 5 MOD au total. Vaincre 3 Wardens dans une cité antique fait apparaître le boss « Golem sculk » ; 13 véhicules (voitures, camions, avions, etc.), un fusil laser et des pièges laser font leur entrée. Le train peut désormais être attelé en rames de 15 voitures maximum.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Nouveau MOD « boss » : vaincre 3 Wardens dans une cité antique fait apparaître le boss « Golem sculk » (900 PV). Sa défaite laisse tomber à coup sûr une « balise améliorée » à la portée triplée",
+        "Nouveau MOD « véhicules » : ajout de 10 véhicules terrestres (voitures, bus, camions, motos, etc.) et de 3 aéronefs. Gyrophares et sirènes pour les véhicules d'urgence, plateau de chargement pour les camions, etc.",
+        "Ajout du fusil laser (100 tirs par cellule d'énergie) et de la tourelle automatique (ne vise que les ennemis) au MOD armes à feu",
+        "Ajout de l'émetteur/récepteur laser et d'une table au MOD matériaux",
+        "Le mode d'attelage du train a été amélioré et prend désormais en charge des rames de 15 voitures maximum, wagon de marchandises et voiture voyageurs compris. Ajout de 2 trains à grande vitesse dont la voiture de tête atteint 75 m/s"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le ressenti de pilotage des aéronefs (décollage, atterrissage, décrochage, etc.) est conçu pour être ajusté ultérieurement. S'il vous semble lourd ou difficile à manier, vous pouvez le régler dans la config"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.2",
+   "summary": "Passage des armes au tir instantané et portes enfin immobiles",
+   "releases": [
+    {
+     "version": "v1.2.1",
+     "date": "2026-07-19",
+     "type": "release",
+     "title": "Passage des armes au tir instantané et portes enfin immobiles",
+     "summary": "Les armes passent au tir instantané (hitscan), qui touche sa cible dès la pression sur la gâchette, avec l'ajout de bruitages de tir dédiés. Le train reçoit un modèle 3D et une fonction d'attelage (wagon de marchandises, voiture voyageurs), et le tremblement continu des portes fermées est corrigé. Des portes cachées et 3 nouveaux types de portes font leur apparition.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les armes passent au tir instantané (hitscan) : la balle touche sa cible sans délai de vol (portée de détection : 60 m pour le fusil d'assaut / 24 m pour le fusil à pompe / 150 m pour le fusil de précision)",
+        "Ajout de bruitages dédiés pour le tir, le rechargement et le tir à vide (sons composés maison)",
+        "La taille des armes tenues en main a été agrandie, pour une meilleure lisibilité à la première comme à la troisième personne",
+        "Ajout d'un modèle 3D pour le train (apparence façon train de banlieue). Le wagon de marchandises (27 emplacements de stockage) et la voiture voyageurs (2 places) peuvent désormais être attelés (impossible de reculer pendant l'attelage)",
+        "Correction du tremblement continu des portes fermées",
+        "Ajout de portes cachées (se faisant passer pour de la terre, de la pierre, du netherrack, de la pierre de l'End, etc.)",
+        "Ajout de 3 nouveaux types de portes (rideau métallique enroulable, porte coulissante simple, porte à grille métallique), portant le total à 9 types de portes"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.2.0",
+     "date": "2026-07-18",
+     "type": "release",
+     "title": "Correction du bug d'étouffement des portes et train bien plus rapide",
+     "summary": "Correction d'un bug important qui infligeait des dégâts en traversant une porte. La vitesse maximale du train passe à 60 m/s (plafond de config à 80 m/s), et les chunks dans le sens de la marche sont désormais chargés à l'avance automatiquement. De nouveaux blocs comme l'ascenseur et le tapis roulant font leur apparition, et le maniement des armes est unifié : clic gauche pour tirer, clic droit pour viser, R pour recharger.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "[Important] Correction du bug infligeant des dégâts en traversant une porte (porte automatique, fusuma, grande porte, trappe). Les portes ne se referment plus automatiquement tant que quelqu'un se trouve à proximité",
+        "Vitesse maximale du train : 20 → 60 m/s (le plafond de config peut être relevé jusqu'à 80 m/s). Les chunks dans le sens de la marche sont désormais préchargés automatiquement, ce qui réduit les décors qui n'ont pas le temps de se charger à haute vitesse",
+        "4 nouveaux blocs : ascenseur (saut pour monter / accroupissement pour descendre), escalator, 2 types de chaises, tapis roulant (transport d'objets, arrêt par redstone)",
+        "Maniement des armes entièrement revu : clic gauche pour tirer, clic droit maintenu pour viser (lunette pour le fusil de précision), touche R pour recharger",
+        "Les armes tenues en main s'affichent désormais en modèle 3D (auparavant, seule l'icône plate identique à celle de l'interface était visible)",
+        "Le fusil à pompe peut désormais achever d'un seul coup un ennemi non protégé à bout portant (correction d'un bug lié à l'invincibilité après impact qui annulait l'effet cumulé de plusieurs plombs)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil à pompe : dégâts par plomb 3,0 → 5,0 (10 plombs, 50,0 au total si tous touchent à bout portant)",
+        "Train : vitesse maximale 20 → 60 m/s, plafond de config 25 → 80 m/s"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "La signification du plafond de vitesse du train ayant changé, il est recommandé de supprimer config/sorakaze_rail.json après la mise à jour (sans quoi l'ancien réglage de 20 m/s reste actif)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Amélioration du comportement du train et renforcement des armes",
+   "releases": [
+    {
+     "version": "v1.1.0",
+     "date": "2026-07-18",
+     "type": "release",
+     "title": "Amélioration du comportement du train et renforcement des armes",
+     "summary": "Correction du mouvement saccadé du train et du problème obligeant à maintenir la touche W enfoncée en permanence pour avancer. Renforcement de la puissance des armes à feu, avec l'ajout d'un affichage de lunette dédié et d'un effet de tremblement pour le fusil de précision. Le MOD matériaux gagne 4 nouveaux types de portes, dont la porte automatique.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Train : correction du mouvement saccadé, qui est désormais fluide",
+        "Train : une seule pression sur la touche W suffit désormais pour accélérer et rouler en continu sans autre saisie (auparavant, il fallait maintenir la touche enfoncée). La touche S freine ; une seconde pression sur S une fois à l'arrêt fait reculer le train",
+        "Vitesse maximale du train : 15 → 20 m/s. L'icône de l'objet train a été redessinée",
+        "Fusil de précision : passage au principe « viser puis relâcher pour tirer », avec un affichage de lunette dédié, un zoom ×4/×8 (changement à la molette) et un tremblement du viseur réduit de moitié en position accroupie",
+        "Fusil d'assaut : la dispersion des tirs augmente désormais lorsqu'on tire en mouvement",
+        "MOD matériaux : ajout de 4 nouveaux types de portes — porte automatique, fusuma, grande porte (fer/bois) et trappe (structure multi-blocs : peu importe la partie détruite, un seul exemplaire est récupéré)"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Fusil d'assaut : dégâts 3,0 → 5,0, cadence de tir 8 → 10 coups/seconde",
+        "Fusil à pompe : dégâts par plomb 2,0 → 3,0 (10 plombs par tir désormais), portée efficace 12 → 16 m"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Sortie initiale : 3 MOD, armes à feu, chemin de fer et matériaux",
+   "releases": [
+    {
+     "version": "v1.0.0",
+     "date": "2026-07-15",
+     "type": "release",
+     "title": "Sortie initiale : 3 MOD, armes à feu, chemin de fer et matériaux",
+     "summary": "Les MOD « sorakaze_guns (armes à feu) », « sorakaze_rail (chemin de fer) » et « sorakaze_deco (matériaux) » sont installés pour la première fois sur le serveur. L'arc et les flèches ainsi que les wagonnets de la version vanilla restent inchangés ; de nouvelles armes, de nouveaux véhicules et de nouveaux blocs pour bâtir une ville deviennent fabricables en survie.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "MOD armes à feu : le fusil d'assaut, le fusil à pompe et le fusil de précision, ainsi que leurs munitions dédiées (balles de fusil / cartouches de chevrotine / balles de précision), deviennent fabricables",
+        "Ajout d'une fonction de zoom pour la lunette du fusil de précision",
+        "MOD chemin de fer : ajout d'un nouveau véhicule posable sur les rails, le « train » (l'arc, les flèches, l'arbalète, les wagonnets et les rails vanilla restent inchangés). Un bruit de roulement en boucle se fait entendre pendant la marche",
+        "MOD matériaux : ajout de 12 types de blocs — glissière de sécurité, poteau électrique, ligne électrique, dalle podotactile (guidage/avertissement), feu de circulation, feu piéton, feu d'obstacle aérien, projecteur, etc."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Pour rendre le serveur compatible avec les MOD, il faut migrer de la version vanilla vers Fabric. Minecraft 26.2 nécessitant Java 25 ou supérieur, vérifiez la version de Java installée sur la machine du serveur (voir le chapitre pour les administrateurs du guide d'installation)"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

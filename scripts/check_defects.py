@@ -376,27 +376,43 @@ def defect5_changelog_identity(fails):
                          f"back to an ambiguous key")
     # B: the published pages. The two entries that share v1.8.0/2026-08-04 must
     #    render as two DIFFERENT entries -- the collapse made them identical.
+    #
+    #    V3.2: the changelog was restyled (Alcove-shaped: grouped series, rows
+    #    that open). The MARKUP this reads therefore changed, and the selectors
+    #    below moved with it. The three assertions did NOT change and must not:
+    #    this gate guards a real shipped defect in which one entry's prose was
+    #    rendered against both badges on all thirteen pages, and the grouping
+    #    code added in V3.2 could reintroduce it just as easily as the old
+    #    dict-keyed lookup did. When the markup moves again, move these
+    #    selectors again -- do not relax the checks.
     for lang in LANGS:
         rel = page_path(lang, "changelog")
         markup = (ROOT / rel).read_text(encoding="utf-8")
-        arts = re.findall(r'<article class="timeline-entry".*?</article>', markup, re.S)
-        v180 = [a for a in arts if 'timeline-entry__release">v1.8.0</span>' in a]
+        arts = re.findall(r'<div class="cl__release".*?<div class="cl__detail".*?</div>\s*</div>',
+                          markup, re.S)
+        v180 = [a for a in arts if 'data-version="v1.8.0"' in a]
         if len(v180) != 2:
             _fail(fails, f"[5.2B] {rel}: {len(v180)} v1.8.0 entries rendered, expected 2")
             continue
-        t = [re.search(r"</span> — (.*?)\s*</h3>", a, re.S).group(1) for a in v180]
-        if t[0] == t[1]:
-            _fail(fails, f"[5.2B] {rel}: both v1.8.0 entries render the same title {t[0]!r} -- "
-                         f"the duplicate-key collapse is back")
+        titles = []
+        for a in v180:
+            m = re.search(r'<p class="cl__entryTitle">(.*?)</p>', a, re.S)
+            titles.append(m.group(1).strip() if m else "")
+        if not all(titles):
+            _fail(fails, f"[5.2B] {rel}: a v1.8.0 entry rendered no title at all -- the "
+                         f"per-release title is the thing that tells the two apart")
+            continue
+        if titles[0] == titles[1]:
+            _fail(fails, f"[5.2B] {rel}: both v1.8.0 entries render the same title "
+                         f"{titles[0]!r} -- the duplicate-key collapse is back")
         # EXACTLY ONE of the two is the rename announcement. Not "the first
-        # one": build_changelog.py renders newest-first, so the rename is the
-        # SECOND v1.8.0 article on the page, and an order-dependent version of
+        # one": the page renders newest-first, so an order-dependent version of
         # this line was RED on all 13 correct pages.
         renames = sum("Glimpse Alpha" in a for a in v180)
         if renames != 1:
             _fail(fails, f"[5.2B] {rel}: {renames} of the 2 v1.8.0 entries announce the rename "
                          f"to Glimpse Alpha, expected exactly 1 -- one entry's prose is "
-                         f"rendered against both badges: {t}")
+                         f"rendered against both badges: {titles}")
 
 
 # 5.3  features / gates / launcher_page were untranslated in 11 languages. The

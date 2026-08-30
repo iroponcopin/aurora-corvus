@@ -1,0 +1,2112 @@
+{
+ "lang": "de",
+ "updated": "2026-08-29",
+ "title": "Änderungsprotokoll",
+ "updated_label": "Aktualisiert am 2026-08-29",
+ "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
+ "groups": [
+  {
+   "label": "V3.2",
+   "summary": "Umbenannt in Corvus OS, Bildschirm im Linux-Stil und Geldautomat dreidimensional neu gebaut",
+   "releases": [
+    {
+     "version": "V3.2.0",
+     "date": "2026-08-29",
+     "type": "release",
+     "title": "Umbenannt in Corvus OS, Bildschirm im Linux-Stil und Geldautomat dreidimensional neu gebaut",
+     "summary": "Das System von Computer und Telefon heißt statt Mine OS nun Corvus OS, und der Bankbildschirm statt Mine Bank nun Corvus Bank – derselbe Name, den die Desktop-App und diese Seite bereits verwenden. Das System wurde im Linux-Stil überarbeitet, mit Startprotokoll, ruhigerer Farbgebung und einem Raben-Zeichen. Der Bildschirm des Computers lässt die Welt nicht mehr durchscheinen: Er ist jetzt undurchsichtig, wie ein echter Bildschirm. Auch der Geldautomat wurde neu gebaut, sodass Schlitze und Tastatur echte Formen sind statt aufgemalter Bilder.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Aus Mine OS wird Corvus OS, aus Mine Bank wird Corvus Bank. Das ist nur eine Änderung des angezeigten Namens – kein einziger Block-, Gegenstands- oder Konfigurationsbezeichner hat sich geändert.",
+        "Corvus OS ist im Linux-Stil überarbeitet: ein Startprotokoll aus [ OK ]-Zeilen, eine ruhigere anthrazitfarbene Palette und ein Raben-Zeichen anstelle des alten Würfels.",
+        "Der Bildschirm des Computers ist nicht mehr durchscheinend. Zuvor sah man die Welt hindurch; jetzt ist er undurchsichtig und wirkt wie ein echter Bildschirm. Das Telefon behält sein Milchglas.",
+        "Wird ein Fenster maximiert, verschwindet nun das Dock und das Fenster erhält diesen Platz tatsächlich; beim Wiederherstellen kommt das Dock zurück. Die Home-Leiste des Telefons bleibt unverändert.",
+        "Der Geldautomat wurde dreidimensional neu gebaut. Das blaue Schild, der Lichtstreifen darunter, der eingelassene Bildschirm, die Schlitze für Karte, Beleg und Bargeld, die Tastaturablage, die Eckpfeiler und der Sockel sind nun echte Geometrie statt einer bemalten Kiste. Der besondere Geldautomat erhält dieselbe Form in seiner goldenen Lackierung."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Umbenennung ist rein optisch. Kein Block-, Gegenstands- oder Konfigurationsbezeichner hat sich geändert, bestehende Welten und Einstellungsdateien funktionieren also unverändert weiter."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Diese Version folgt auf 3.0.0. Eine 3.1 gibt es nicht – die für V3.1 geplanten Funktionen sind noch nicht enthalten.",
+        "Die optischen Änderungen wurden nicht auf einem echten Bildschirm geprüft, da in der Entwicklungsumgebung kein Minecraft-Client vorhanden ist. Melden Sie uns bitte alles, was falsch aussieht.",
+        "Das neue Zeichen verliert unterhalb von etwa 16 px an Detail. Diese Grenze ist bekannt und akzeptiert."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V3.0",
+   "summary": "V3, Teil eins: drei Lagerblöcke, die neu gebaute Drohne und der Meridian Store",
+   "releases": [
+    {
+     "version": "V3.0.0",
+     "date": "2026-08-29",
+     "type": "release",
+     "title": "V3, Teil eins: drei Lagerblöcke, die neu gebaute Drohne und der Meridian Store",
+     "summary": "Diese Version bringt die ersten fünf der für V3 geplanten Funktionen. Drei neue Lagerblöcke – die Schlickfilterpumpe, die Gegenstände aus dem Wasser holt; das Getreidesilo, das große Mengen eines einzelnen Gegenstands fasst; und die Glasamphore, die eine Flüssigkeit speichert und den Füllstand sichtbar lässt – kommen zusammen mit einer von Grund auf neu gebauten Drohne, die nun Ich-Perspektive-Steuerung, Sprengkopfabwürfe und Truhentransport beherrscht. Hinzu kommt der Meridian Store, ein Laden im Spiel, der die Bestellung per Drohne liefert. Bezahlt wird mit den Smaragden, die Sie ohnehin haben (oder über Ihr MineBank-Konto); eine neue Währung gibt es nicht.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Schlickfilterpumpe wurde hinzugefügt. Alle 10 Ticks durchsucht sie das Wasser vor sich, holt heruntergefallene Gegenstände heraus und lagert sie intern (5 Stapel). Legt man Proben in ihre 5 Filterplätze, sammelt sie nur diese Sorten. Durch feste Blöcke saugt sie nicht, und ein Trichter kann von unten entnehmen.",
+        "Das Getreidesilo wurde hinzugefügt. Es legt sich auf die zuerst eingefüllte Gegenstandssorte fest und fasst davon bis zu 128 Stapel (8.192 Weizen). Ein Komparator liest die Menge, Trichter befördern Gegenstände in beide Richtungen, und die Sorte lässt sich nur bei leerem Silo zurücksetzen.",
+        "Die Glasamphore wurde hinzugefügt. Sie fasst 8 Eimer einer einzelnen Flüssigkeit, der Füllstand ist von außen sichtbar. Mit einem Eimer füllen oder leeren, die Menge mit einem Komparator auslesen – Flüssigkeiten lassen sich nicht mischen, also vorher leeren. Wird sie mit Behutsamkeit abgebaut, bleibt der Inhalt erhalten.",
+        "Die Drohne wurde von Grund auf neu gebaut: neues Modell, Steuerung aus der Ich-Perspektive, Transport und Abwurf von Sprengköpfen sowie das Aufnehmen und Tragen von Truhen. Beim Steuern wird die Maus nicht eingefangen – die Drohne wird relativ zur Bildschirmmitte gelenkt, mit einer Totzone in der Mitte. Eine große Truhe ist für eine einzelne Drohne zu viel.",
+        "Der Meridian Store wurde hinzugefügt. Bestellen Sie an einem Terminal im Spiel, und eine Lieferdrohne fliegt vom Depot los und setzt das Paket an Ihrem Bake ab. Bezahlen Sie mit den Smaragden im Inventar oder über Ihr MineBank-Konto; Erstattungen kommen auf demselben Weg zurück, auf dem gezahlt wurde."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Sprengkopfabwürfe funktionieren nur, wenn auf dem Server ein Schusswaffen-Modul installiert ist. Andernfalls sagt die Drohne das deutlich und es passiert nichts.",
+        "Steuerung, Sprengköpfe und Truhentransport lassen sich in den Servereinstellungen jeweils einzeln abschalten."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Diese Version enthält fünf der fünfzig für V3 geplanten Funktionen (#21, #22, #29, #38 und die erste Phase von #50). Der Rest folgt in späteren Versionen – dies ist nicht das vollständige V3.",
+        "Aussehen und Handhabung der Neuerungen wurden noch nicht auf einem echten Bildschirm geprüft, da in der Entwicklungsumgebung kein Minecraft-Client vorhanden ist. Melden Sie uns bitte alles, was falsch aussieht.",
+        "Dass die Drohne die Maus nicht einfängt, ist Absicht. In Minecraft 26.2 lässt sich eine hängengebliebene Maus nur durch erneutes Anmelden lösen; dieses Risiko wird bewusst vermieden."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.5",
+   "summary": "Leichtere taktische Karte für den Raketenwerfer und die Daten für die neue „Solospiel-Feinabstimmung“ im Corvus-Launcher",
+   "releases": [
+    {
+     "version": "V2.5.1",
+     "date": "2026-08-28",
+     "type": "release",
+     "title": "Leichtere taktische Karte für den Raketenwerfer und die Daten für die neue „Solospiel-Feinabstimmung“ im Corvus-Launcher",
+     "summary": "Die taktische Karte des Raketenwerfers, die beim Auswählen von Zielen (Ziehen, Zoomen) schwerfällig wurde, läuft jetzt deutlich leichter. Dazu kommt der Befehl /packintegrity, mit dem Serveradministratoren die Installation prüfen, und ab dieser Version die Daten, die der neue Bildschirm „Solospiel-Feinabstimmung“ der Desktop-App „Corvus“ für den Einzelspieler braucht.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die taktische Karte des Raketenwerfers, die beim Auswählen von Zielen mit dargestelltem Gelände schwerfällig wurde, läuft jetzt deutlich leichter. Aussehen und Bedienung ändern sich nicht.",
+        "Für Serveradministratoren kam der Befehl /packintegrity hinzu, der prüft, ob der MOD-Satz vollständig und korrekt vorliegt (das Ergebnis wird auch in logs/pack_integrity.log festgehalten). Auf das Spielgeschehen hat er keine Auswirkung.",
+        "Ab dieser Version kommen die Daten hinzu, mit denen der neue Bildschirm „Solospiel-Feinabstimmung“ der Desktop-App „Corvus“ (Einstellungen → Solospiel-Feinabstimmung) im Einzelspieler dieselben Punkte direkt einstellen kann wie die Administratoreinstellungen. Aktualisiere Corvus auf die neueste Version, um ihn zu nutzen."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der Bildschirm „Solospiel-Feinabstimmung“ setzt Corvus 1.7.0 oder neuer voraus. In älteren Corvus-Versionen erscheint er nicht."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "Disclosure",
+     "date": "2026-08-28",
+     "type": "disclosure",
+     "title": "Sieben nie dokumentierte Mechaniken, aufgeschrieben auf der Seite „Funktionen“",
+     "summary": "Sieben Mechaniken, die zum Stand V2.5.1 längst im Paket stecken und standardmäßig aktiv sind, hatten nie einen Eintrag im Änderungsverlauf: das Wettersystem, der Preismultiplikator, das Diamantguthaben am Geldautomaten, die rückwirkende Luftverschmutzung des Kernkraftwerks, der Tod durch Durst, das Benzin der Fahrzeuge und das Haltbarkeitssystem der Masken. Wir haben jede einzelne im echten MOD-Code nachgeprüft und auf der Seite „Funktionen“ zusammengefasst. Weder dieser Beitrag noch seine Veröffentlichung haben irgendetwas an den Spielmechaniken oder ihren Standardwerten geändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Wettersystem (Blizzard, Taifun, Erdbeben, Tsunami, Vulkan). Alle fünf sind standardmäßig aktiv. Schon mit den Standardeinstellungen kann ein Erdbeben Bauten aus natürlichen Materialien wie Stein, Bruchstein, Erde, Sand oder Kies zerstören; ein Vulkan bricht bei jedem Erdbeben mit 5 % Wahrscheinlichkeit aus und gräbt dabei tatsächlich einen Krater von 6 Blöcken Radius und 4 Blöcken Tiefe, den er mit Lava füllt (Abbruchbedingungen verhindern, dass Gebäude mitgerissen werden; Näheres auf der Seite „Funktionen“).",
+        "Preismultiplikator (×10 bis ×100). Standardmäßig aktiv in 2 MODs, Himmel und Planarcadia (der Vanilla-Dorfbewohnerhandel ist ausgenommen). Derselbe Code ist auch in Schusswaffen, Schienenverkehr, Strom und Backrooms kopiert, wird dort aber bislang von nirgends aufgerufen.",
+        "Geldautomat mit Diamanten. Am Geldautomaten des Baumaterial- und Deko-MODs gibt es standardmäßig ein Diamantguthaben getrennt vom Smaragdguthaben. Der Kurs ist fest: 1 Diamant = 4 Smaragde.",
+        "Die Luftverschmutzung des Kernkraftwerks ist standardmäßig aktiv und wirkt rückwirkend. Ein Kraftwerk, das schon vor der Paketaktualisierung lief, beginnt im Moment der Aktualisierung zu verschmutzen (die Mechanik selbst wurde in V2.0.0 vorgestellt; die Rückwirkung und der Standardwert stehen hier zum ersten Mal).",
+        "Bleibt der Durst (Flüssigkeitshaushalt) 10 Minuten am Stück bei 0, steigt der Schaden an, und außerhalb von Friedlich kann dich allein das töten. Im Survival-MOD standardmäßig aktiv.",
+        "Das Benzin der Fahrzeuge ist standardmäßig aktiv (Züge ausgenommen). Dass es sich in der Konfiguration abschalten lässt und dass vorhandene Fahrzeuge mit vollem Tank übernommen werden, steht hier zum ersten Mal (dass Benzin nötig wurde, war in V2.0.0 vorgestellt worden).",
+        "Die Haltbarkeit der Masken (Sparkle/Sparxie) beträgt 814. Nach dem Zerbrechen kehren sie genau einmal zurück, 320 Sekunden später."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Dieser Beitrag ändert keine einzige Spielmechanik und keinen einzigen Standardwert. Er schreibt sieben Dinge auf, die längst liefen, nachdem sie im echten MOD-Code nachgeprüft wurden. Die Einzelheiten und der jeweilige config-Schlüssel stehen auf der Seite „Funktionen“.",
+        "In welcher Version Preismultiplikator und Diamantguthaben zuerst hinzukamen, ist zum Zeitpunkt dieses Beitrags nicht ermittelt. Bestätigt ist nur, dass beide zum Stand V2.5.1 tatsächlich laufen."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.5.0",
+     "date": "2026-08-28",
+     "type": "release",
+     "title": "[Bitte unbedingt zuerst lesen] Lösche die alten glimpse-alpha-*.jar vor der Installation – die MODs heißen jetzt „Alpha“ statt „Glimpse Alpha“",
+     "summary": "⚠ Lösche vor der Installation dieser Version alle 11 jar-Dateien aus deinem mods-Ordner, die mit „glimpse-alpha-“ beginnen. Sonst starten weder Minecraft noch der Server. Die MODs wurden von „Glimpse Alpha“ in „Alpha“ umbenannt (auf Weisung des Eigentümers entfällt „Glimpse“), daher ändern sich die Dateinamen von „glimpse-alpha-irgendwas.jar“ zu „alpha-irgendwas.jar“. Nur der Name ist anders: Das Spiel behandelt sie als dieselben MODs, sodass zurückgelassene alte Dateien bedeuten, dass „derselbe MOD zweimal installiert“ ist – und Fabric bricht den Start genau dort ab (der Fehler heißt Duplicate mod). Lösche nur die 11 Dateien, die mit „glimpse-alpha-“ beginnen – lösche nicht die jar-Datei, die mit „fabric-api“ beginnt, und auch keine anderen MODs, die du selbst installiert hast. Geändert hat sich nichts außer dem Namen. An den internen IDs von Blöcken und Gegenständen wurde kein einziges Zeichen angerührt, also funktionieren deine bereits errichteten Bauten, deine Werkzeuge, deine Welt und deine config genau wie bisher. Wer den Launcher Corvus nutzt, muss davon nichts tun: Die App löscht die alten jar-Dateien selbst.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "[Das eine, worum wir zuerst bitten] Öffne deinen mods-Ordner, lösche alle 11 jar-Dateien, die mit „glimpse-alpha-“ beginnen, und lege dann die 11 neuen ab, die mit „alpha-“ beginnen. Legst du die neuen dazu, ohne die alten zu löschen, starten weder Minecraft noch der Server. Am sichersten ist es, „vor“ dem Hinzufügen zu löschen.",
+        "Lösche nur die Dateien, die mit „glimpse-alpha-“ beginnen. „fabric-api-….jar“ ist eine Datei, die Alpha zum Laufen braucht – lösche sie auf keinen Fall. Andere MODs, die du selbst installiert hast, können bleiben, wo sie sind.",
+        "Falls du es doch vergisst und nichts mehr startet, ist deine Welt nicht beschädigt. Lösche die jar-Dateien, die mit „glimpse-alpha-“ beginnen, aus dem mods-Ordner, und es startet wieder ganz normal.",
+        "Die MODs wurden von „Glimpse Alpha“ in „Alpha“ umbenannt. „Glimpse“ verschwindet aus den Namen der Kreativ-Reiter im Spiel, aus dem Namen der Tastenbelegungs-Kategorie und aus dem Namen in der MOD-Liste.",
+        "Die Dateinamen der jar-Dateien lauten jetzt „alpha-irgendwas-2.5.0+mc26.2.jar“, und das verteilte ZIP heißt „Alpha_MODs_v2.5.0+mc26.2.zip“.",
+        "An den internen IDs von Blöcken, Gegenständen und Entitäten (alle 11: sorakaze_guns und die übrigen) wurde kein einziges Zeichen geändert. Deshalb verschwinden bereits platzierte Blöcke und deine Gegenstände nicht, und du musst die Welt nicht neu anlegen.",
+        "Auch die Dateinamen der config bleiben „config/sorakaze_*.json“. Von dir angepasste Werte werden unverändert übernommen.",
+        "Die Befehle für Serveradministratoren (/glimpsebackup, /glimpse storm restore) behalten ihre bisherigen Namen. Etwas zu ändern, das bereits in Skripten und Abläufen steckt, wäre eine Verhaltensänderung und keine Umbenennung.",
+        "Nutzt du den Launcher Corvus 1.5.1, löscht die App die alten jar-Dateien für dich. Wer die Dateien von Hand in den mods-Ordner legt, und wer einen Server betreibt, löscht sie bitte selbst wie oben beschrieben."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Lösche vor der Installation dieser Version alle 11 jar-Dateien aus deinem mods-Ordner, die mit „glimpse-alpha-“ beginnen. Vergisst du das, sind dieselben MODs doppelt vorhanden, und weder Minecraft noch der Server starten.",
+        "Lösche nicht die jar-Datei, die mit „fabric-api“ beginnt. Alpha braucht diese Datei zum Laufen.",
+        "Wer einen Server betreibt, muss dieselbe Löschung auch im mods-Ordner des Servers durchführen."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der Launcher Corvus 1.5.1 zeigt auf seinem Bildschirm vorerst noch den alten Namen („Glimpse Alpha“). Das ist rein eine Anzeigefrage und wirkt sich weder auf die Update-Prüfung noch auf Download oder Installation aus. Mit der nächsten Launcher-Aktualisierung wird der Anzeigename aus den Veröffentlichungsdaten gelesen, womit sich das erledigt.",
+        "Die Beschreibungstexte der Seiten dieses Wikis sind bereits in allen 13 Sprachen auf „Alpha“ umgestellt. Ältere Einträge im Änderungsverlauf lauten dagegen weiterhin „Glimpse Alpha“, so wie sie damals geschrieben wurden – zu jenem Zeitpunkt hieß es tatsächlich so, und deshalb bleiben sie als Beleg stehen.",
+        "In den Namen der Spielbefehle (/glimpsebackup, /glimpse storm restore) und in der Protokolldatei für Administratoren (glimpse-admin/audit.log) bleibt der Name „glimpse“ erhalten. Einen Befehl umzubenennen würde bestehende Skripte zerstören, und die Protokolldatei umzubenennen würde die bisher darin festgehaltenen Aufzeichnungen unlesbar machen – beides wurde deshalb bewusst so gelassen.",
+        "„Glimpse Glass“ ist der Name der visuellen Gestaltung der Bildschirme und kein MOD-Name; er bleibt unverändert."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.4",
+   "summary": "Doppelt gezeichneter Raketenwerfer behoben, Karte jetzt mit rechter Maustaste verschieben, 100 Ziele pro Salve und ein 200-Schuss-Magazin als Behälter. Außerdem ein Serverabsturz in den Backrooms behoben",
+   "releases": [
+    {
+     "version": "V2.4.9",
+     "date": "2026-08-28",
+     "type": "release",
+     "title": "Doppelt gezeichneter Raketenwerfer behoben, Karte jetzt mit rechter Maustaste verschieben, 100 Ziele pro Salve und ein 200-Schuss-Magazin als Behälter. Außerdem ein Serverabsturz in den Backrooms behoben",
+     "summary": "Diese Version beantwortet 4 Hinweise des Eigentümers zum Raketenwerfer. Behoben sind der Fehler, durch den das Aussehen „eine Verschmelzung aus altem und neuem Entwurf“ war, und der Fehler, durch den sich die taktische Karte schon beim bloßen Klicken bewegte; die Zahl der gleichzeitig anvisierbaren Ziele steigt auf 100, und das Magazin wurde als „Behälter“ für 200 Schuss neu gebaut. Außerdem ist der Fehler behoben, durch den der Server beim Laden von Backrooms-Ebene-0-Abschnitten, die vor V2.4.x erzeugt wurden, zwangsweise beendet werden konnte. Weil das in einer frisch erstellten Welt nicht auftritt, war es bisher nicht gefunden worden. Für Server mit einer Welt, in der schon gespielt wird, ist das hier die wichtigste Änderung.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "[Serverabsturz behoben] Behoben ist der Fehler, durch den das Laden eines vor V2.4.x erzeugten Backrooms-Ebene-0-Abschnitts dazu führen konnte, dass der Server nicht mehr reagiert und rund 60 Sekunden später zwangsweise beendet wird. Der Vorgang, der alte Abschnitte auf das neue Aussehen umzeichnet, läuft jetzt nach dem Laden des Abschnitts statt währenddessen. Weil das in einer frisch erstellten Welt nie auftritt, konnten unsere Tests es nicht finden. Betroffen sind nur Welten, in denen schon lange gespielt wird.",
+        "Behoben ist der Fehler, durch den der Raketenwerfer wie „eine Verschmelzung aus altem und neuem Entwurf“ aussah. Es gab zwei Ursachen: (1) Beine und Raketenrohr wurden in allen vier Ausrichtungen um 180 Grad verdreht gezeichnet, sodass das Raketenrohr einen Block vor der Rampe stand und 2 der 4 Beine in der Luft gezeichnet wurden, und (2) 7 der 13 Blockmodelle des alten Entwurfs wurden noch immer mitgezeichnet. Beides ist behoben; außer der Bodenplatte wird jetzt nur noch die neue Form gezeichnet.",
+        "Dabei kam heraus, dass seit V2.4.6 die Kollisionsbox der Rampenbeine in 3 der 4 Ausrichtungen verschoben war (gemeldet worden war das nicht). Sie wurde so neu gebaut, dass sie in jeder Ausrichtung stimmt.",
+        "Das Verschieben der Ansicht auf der taktischen Karte wechselt vom Gedrückthalten der linken auf das Gedrückthalten der rechten Maustaste. Die linke Maustaste fügt nur noch Ziele hinzu und entfernt sie, sodass die Karte beim bloßen Klicken nicht mehr wegrutscht. Das Verschieben beginnt erst, wenn der Zeiger mindestens 3 Pixel von der gedrückten Stelle entfernt ist (bisher summierten sich kleinste Handbewegungen, und die Ansicht wanderte, obwohl du sie stillhalten wolltest). Die Bedienung steht außerdem unten am Kartenbildschirm.",
+        "Die auf der taktischen Karte markierbaren Ziele steigen von 50 auf 100. Damit mehr Schüsse die Leistung nicht belasten, haben die Flugspur-Darstellung und die Einschlagsverarbeitung jetzt ein Budget pro Tick und werden der Reihe nach abgearbeitet. Einschläge über dem Budget werden nicht verworfen, sondern auf den nächsten Tick verschoben – kein abgefeuerter Schuss geht verloren.",
+        "Das Magazin steigt von 50 auf 200 Schuss und wurde als Lagerbildschirm in Truhenform neu gebaut (6 Reihen × 9 Spalten). Es öffnet sich mit Rechtsklick im Ducken (ein normaler Rechtsklick öffnet weiterhin das Bedienpult wie bisher). Das Bedienpult hat zusätzlich eine Schaltfläche „Magazin“ bekommen. Und du kannst wie gehabt einen Sprengkopf in der Hand halten und ihn per Rechtsklick einzeln an Ort und Stelle laden.",
+        "Ein Trichter an einem beliebigen Block der Rampe (alle 36 Felder ihres 3×4×3-Volumens) füllt das Magazin nach. Raketen- und Atomsprengköpfe dürfen dabei gemischt liegen bleiben und lassen sich im Lagerbildschirm beliebig umsortieren.",
+        "Was vor V2.4.9 im Magazin geladen war, wird beim Laden der Welt unverändert ins neue Format übernommen. Es geht kein Schuss verloren."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Magazinkapazität des Raketenwerfers: 50 → 200 Schuss. Höchstzahl der auf der Karte markierbaren Ziele: 50 → 100."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Bedienung der taktischen Karte hat sich geändert. Die Ansicht verschiebst du, indem du die RECHTE Maustaste gedrückt hältst. Das Gedrückthalten der linken Maustaste verschiebt nichts mehr (die linke Maustaste dient ausschließlich dem Hinzufügen und Entfernen von Zielen).",
+        "Ein Trichter kann das Magazin nachfüllen, aber Inhalt herausziehen kann er bewusst nicht. So wird verhindert, dass ein gerade gefülltes Magazin von einem angeschlossenen Trichter unbemerkt leergesaugt wird.",
+        "In der config ist nichts zu löschen oder zu ändern. Die neuen Standardwerte für Magazin und Zielanzahl (200 Schuss, 100 Punkte) greifen beim Start von selbst, und von dir geänderte Werte bleiben unangetastet."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "„100 auf einmal“ ist eine Obergrenze des Entwurfs, festgelegt zusammen mit einem Verarbeitungsbudget pro Tick. Es ist keine Zahl, die durch tatsächliches gleichzeitiges Abfeuern von 100 Schuss gemessen wurde.",
+        "Die teal Leuchtlinien an Beinen und Raketenrohr sind eine statische, dauerhaft helle Farbgestaltung und keine Anzeige, die sich je nach Abschuss- oder Bereitschaftszustand ein- und ausschaltet (diese Einschränkung besteht seit V2.4.6 fort).",
+        "Das Ziehen mit der rechten Maustaste auf der taktischen Karte verschiebt die Ansicht nur parallel (keine Drehung, keine 3D-Neigung)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.8",
+     "date": "2026-08-27",
+     "type": "release",
+     "title": "Beine und Raketenrohr wirklich schräg und verjüngt, taktische Karte feiner aufgelöst und ziehbar, Magazin und Ziele auf 50 erhöht",
+     "summary": "Beine und Raketenrohr des Raketenwerfers werden nicht mehr aus gestapelten Quadern gebaut, sondern eigens so gezeichnet, dass sie sich wirklich spreizen und verjüngen (dasselbe „direkt in jedem Einzelbild zeichnen“ wie beim drehbaren Kopf des Geschützturms). Bei der taktischen Karte wurde die Geländeauflösung deutlich erhöht, und zusätzlich zum Mausrad-Zoom kannst du jetzt die linke Maustaste gedrückt halten und ziehen, um die Ansicht fein einzustellen. Magazin und Zielvorgabe steigen von 10 auf 50 (50 Schuss und 50 Punkte), und im Wiki steht jetzt, wie Kennung und Passwort der Verwaltungs-App eingerichtet werden.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Beine des Raketenwerfers bestehen nicht mehr aus gestapelten Quadern, sondern verjüngen sich wirklich vom äußeren Aufstandspunkt zur Mitte hin, mit einem Gelenk. Auch das Raketenrohr ist kein Quader mehr, sondern ein sich wirklich verjüngender Lauf mit achteckigem Querschnitt samt Spitze. Beide werden mit demselben „direkt in jedem Einzelbild zeichnen“ dargestellt wie der drehbare Kopf des automatischen Geschützturms; die Kollisionsbox bleibt unverändert.",
+        "An Beinen und Raketenrohr kamen teal Leuchtlinien hinzu.",
+        "Die Geländedarstellung der taktischen Karte geht von einer Abtastung je 4 Bildschirmpixel auf eine Abtastung je Bildschirmpixel über (praktisch die vierfache Auflösung).",
+        "Hältst du auf der taktischen Karte die linke Maustaste gedrückt und bewegst die Maus, kannst du jetzt die Ansicht fein einstellen (getrennt vom zeigerfolgenden Zoom kannst du damit die anvisierte Stelle an jede beliebige Stelle des Bildschirms schieben).",
+        "Das Magazin des Raketenwerfers steigt von 30 auf 50 Schuss und die auf der Karte markierbaren Ziele von 10 auf 50 (nachdem Feuerstoß-Tests mit 10 Schuss ohne Beanstandung verliefen).",
+        "Die Installationsanleitung im Wiki enthält jetzt die Schritte, mit denen der Eigentümer Kennung und Passwort der spielinternen „Verwaltungs-App“ selbst einrichtet (die echten Zugangsdaten werden nicht veröffentlicht – die Schritte zu kennen reicht zum Anmelden nicht aus)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Magazinkapazität des Raketenwerfers: 30 → 50 Schuss. Höchstzahl der auf der Karte markierbaren Ziele: 10 → 50."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die teal LED-Linien an Beinen und Raketenrohr sind eine statische, dauerhaft helle Farbgestaltung und keine Anzeige, die sich je nach Abschuss- oder Bereitschaftszustand ein- und ausschaltet (diese Einschränkung besteht seit V2.4.6 fort).",
+        "Das Ziehen auf der taktischen Karte verschiebt die Ansicht nur parallel (keine Drehung, keine 3D-Neigung)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.7",
+     "date": "2026-08-27",
+     "type": "release",
+     "title": "Raketenwerfer mit gemischtem 30-Schuss-Magazin und Feuerstoß auf 10 Punkte, neu gebauter Rampe und kräftigerem Einschlagsgeräusch",
+     "summary": "Nach einem erneuten Blick auf die Referenzgestaltung des Eigentümers wurde die Abschussrampe des Raketenwerfers wirklich neu gebaut statt bloß umgefärbt: Sie hat jetzt vier Beine, die sich tatsächlich schräg nach außen spreizen, und seitlich einen Tablet-Bildschirm, der die taktische Karte zeigt. Zudem fasst das Magazin jetzt bis zu 30 Schuss (Raketen und Atomsprengköpfe dürfen gemischt geladen werden), und auf der taktischen Karte lassen sich bis zu 10 Ziele markieren, die mit einer Bedienung wie bei einem Feuerstoßgewehr nacheinander abgefeuert werden. Das Einschlagsgeräusch von Raketen- wie Atomsprengköpfen trägt jetzt weiter und klingt lauter und echter.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Form der Abschussrampe wurde neu gebaut: an den Ecken vier Beine, die sich sichtbar schräg nach außen spreizen (eine gestufte Silhouette, breit am Boden und nach oben schmaler werdend), und seitlich ein Tablet-Bildschirm mit der taktischen Karte (in denselben Farben wie der echte Kartenbildschirm).",
+        "Das Magazin fasst jetzt bis zu 30 Schuss. Raketensprengköpfe und Atomsprengköpfe dürfen im selben Magazin gemischt geladen werden und werden in der Reihenfolge abgefeuert, in der sie geladen wurden.",
+        "Auf der taktischen Karte lassen sich jetzt bis zu 10 Ziele markieren. Jeder Klick auf die Karte setzt dort sofort ein Ziel (ein „Bestätigen“ entfällt), und ein Klick auf eine vorhandene Nadel entfernt sie wieder.",
+        "Drückst du die Abschusstaste, geht Schuss für Schuss auf die markierten Ziele hinaus, als fortlaufender Feuerstoß wie bei einem Feuerstoßgewehr (sobald ein Ziel aus der Warteschlange verbraucht ist, fliegt der nächste Schuss).",
+        "Das Einschlagsgeräusch der Raketensprengköpfe wird jetzt zusätzlich weiträumig übertragen (bis 6.000 Blöcke). Bisher war es nur aus nächster Nähe zu hören.",
+        "Das Einschlagsgeräusch von Atom- wie Raketensprengköpfen hat mehr Tiefbass und ist sowohl in der Nah- als auch in der Weitübertragung lauter."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Magazinkapazität des Raketenwerfers: 4 Schuss → 30 Schuss (gemischt ladbar)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die teal LED-Linien der Rampe sind eine statische, dauerhaft helle Farbgestaltung und keine Anzeige, die sich je nach Abschuss- oder Bereitschaftszustand ein- und ausschaltet (diese Einschränkung besteht seit V2.4.6 fort).",
+        "Die vier Eckbeine sind keine wirklich schräge Geometrie: Eine gestufte Silhouette aus drei achsparallelen Kästen nähert ein „schräg gespreiztes Bein“ an. Das ist eine bewusste Gestaltungsregel für dieses ganze Set, um keine zusätzlichen Kollisionsberechnungen mit Drehung einzuführen."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.6",
+     "date": "2026-08-27",
+     "type": "release",
+     "title": "Echtes Gelände und Zoom auf der taktischen Karte des Raketenwerfers, und ein neues Aussehen der Abschussrampe",
+     "summary": "Zur taktischen Karte aus V2.4.5 kamen zwei Rückmeldungen: „mit Koordinaten und Symbolen erkennt man den Ort nicht“ und „im Maßstab von 2.000 Blöcken Reichweite ist das Zielen auf kurze Distanz so grob, dass der Einschlag ungewollt weit daneben liegt“. Deshalb zeichnet die Karte jetzt die echten Geländefarben mit demselben Verfahren wie der Vanilla-Kartengegenstand, und ein Zoom mit dem Mausrad (zentriert auf die Zeigerposition) kam hinzu. Zugleich wurde das in der letzten Aktualisierung ausgesparte 3D-Modell der Abschussrampe selbst nach der Referenzgestaltung des Eigentümers überarbeitet: eine Palette aus Olivgrün und dunklem Stahl, an den vier Ecken Streben wie Beine und überall verteilte teal (blaugrüne) Leuchtlinien.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die taktische Karte zeichnet echtes Gelände: Sie nutzt dieselbe „Farbe des Oberflächenblocks“ wie der Vanilla-Kartengegenstand, mit einfacher Schattierung aus dem Höhenunterschied zum Nachbarpunkt. Gezeichnet wird nur, was auf deinem Client bereits geladen ist (nicht geladene Bereiche stehen wie bisher in neutraler Farbe für „unbekannt“).",
+        "Zoomen mit dem Mausrad kam hinzu. Weil dabei auf die Zeigerposition zentriert wird, kommst du näher an die gewünschte Stelle heran, ohne sie erst in die Bildschirmmitte holen zu müssen. Die Schaltfläche „Zurück zum Werfer“ stellt den ursprünglichen Maßstab und die ursprüngliche Mitte wieder her.",
+        "Das 3D-Modell der Abschussrampe wurde überarbeitet: Palette aus Olivgrün und dunklem Stahl, an den vier Ecken Streben wie Beine, und teal Leuchtlinien an Gehäuse, Streben und Raketenrohr."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die teal LED-Linien der Rampe sind eine statische, dauerhaft helle Farbgestaltung und keine Anzeige, die sich je nach Abschuss- oder Bereitschaftszustand ein- und ausschaltet.",
+        "Das Gelände wird bei jeder Bewegung der Ansicht neu abgetastet (Zoomen, „Zurück zum Werfer“), nicht in jedem Einzelbild. Auf sehr leistungsschwachen Geräten kann direkt nach dem Heranzoomen einen Moment lang ein grobes Bild stehen bleiben.",
+        "Die Karte lässt sich nicht durch Ziehen verschieben. Die Ansicht bewegt sich nur beim Zoomen (dem Zeiger folgend) und über die Schaltfläche „Zurück zum Werfer“."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.5",
+     "date": "2026-08-26",
+     "type": "release",
+     "title": "Zielen mit dem Raketenwerfer: statt Koordinaten eintippen jetzt Anklicken auf einer taktischen Karte",
+     "summary": "Die Zielvorgabe des Raketenwerfers wurde umgebaut: statt Koordinaten einzutippen, wählst du den Punkt jetzt per Klick auf einer taktischen Karte. Die Karte zeigt einen Reichweitenring (standardmäßig 2.000 Blöcke), und die Farbe verrät auf einen Blick, ob der gewählte Punkt in Reichweite liegt. Die tatsächliche Einschlaghöhe ermittelt der Server selbst aus der Geländeoberfläche an diesem Punkt. Wählst du einen nicht geladenen Bereich, scheitert es nicht stillschweigend, sondern der Grund wird angezeigt. Die Reichweitenprüfung nutzt jetzt nur noch die waagerechte Entfernung, damit Geländeunterschiede den Ring auf der Karte und die tatsächliche Prüfung nicht mehr auseinanderlaufen lassen. Bestehende Systeme (Sicherung, Abschuss, Sprengköpfe, Abklingzeit) bleiben unverändert. Das Aussehen (das 3D-Modell der Abschussrampe selbst) wurde in dieser Aktualisierung nicht geändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Am Bedienpult des Raketenwerfers gibt es jetzt die Schaltfläche „Karte öffnen“; die Eingabefelder für Koordinaten sind entfallen.",
+        "Taktische Karte: zeigt den Werfer im Zentrum, den Reichweitenring (standardmäßig 2.000 Blöcke), deine eigene Position und den gewählten Punkt (eine Nadel). Die Nadel ist in Reichweite normal eingefärbt, außerhalb in Warnfarbe, und die Entfernung steht zusätzlich als Text daneben.",
+        "Beim Bestätigen wird nur der gewählte Punkt (XZ) an den Server geschickt; die tatsächliche Einschlaghöhe (die Geländeoberfläche) ermittelt der Server selbst. Versuchst du einen Punkt in einem noch nicht geladenen Bereich zu bestätigen, erscheint der Text „dieser Bereich ist noch nicht geladen“, und das bisherige Ziel bleibt unverändert.",
+        "Die Reichweitenprüfung wechselt von der räumlichen Entfernung (mit Höhenunterschied) zur reinen waagerechten Entfernung. Das verhindert den Fehler, dass Geländeunterschiede den Ring auf der Karte und das, was tatsächlich abgefeuert werden kann, auseinanderlaufen ließen."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das 3D-Modell der Abschussrampe (ihr Aussehen) wurde in dieser Aktualisierung nicht verändert – es bleibt, wie es war.",
+        "Die Karte unterstützt weder Zoomen noch Verschieben per Ziehen (sie zeigt immer eine Ansicht in fester Vergrößerung, zentriert auf den Werfer).",
+        "Die Vorschau der Geländehöhe unter dem gewählten Punkt funktioniert nur in Bereichen, die auf deinem eigenen Client schon geladen sind. Da der größte Teil der Reichweite außerhalb der Sichtweite liegt, steht dort meistens „unbekannt bis zur Bestätigung“ (die tatsächliche Höhe ermittelt der Server im Moment der Bestätigung immer korrekt)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.4",
+     "date": "2026-08-25",
+     "type": "hotfix",
+     "title": "Anmeldung an der Verwaltungs-App auf eine gemeinsame Kennung samt Passwort umgestellt, und der Verlust der Operatorrechte behoben",
+     "summary": "Weil die Meldungen „ich gebe Administratorkennung und Passwort ein und komme trotzdem nicht hinein“ nicht aufhörten, hat der Eigentümer entschieden, das Anmeldemodell der Verwaltungs-App selbst zu überarbeiten. Das Verfahren, das drei Konten an drei feste Namen band, entfällt: Es gibt nur noch eine gemeinsame Kennung und ein gemeinsames Passwort, und wer beides kennt, kommt hinein. Bei der Untersuchung kam außerdem ein schwerwiegender Fehler zutage: Fehlt die Konfigurationsdatei der Administratoren oder ist sie beschädigt, entzog der Server allen Personen, die tatsächlich Operatorrechte (/op) hatten, diese Rechte automatisch. Auch das ist behoben (Ursache war ein in V2.4.0 eingeführter Mechanismus; er verhinderte die Nutzung von Befehlen und etwa das Umschalten der automatischen Sicherungen).",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Anmeldung an der Verwaltungs-App wechselt von 3 namensgebundenen Konten zu einer einzigen gemeinsamen Kennung samt Passwort. Wer beides kennt, kann sich mit jedem beliebigen Minecraft-Konto anmelden.",
+        "Behoben ist der schwerwiegende Fehler, durch den der automatische Abgleich der Serveroperatorrechte (/op) allen bestehenden Operatoren die Rechte entzog, sobald die Konfigurationsdatei der Administratoren fehlte oder beschädigt war. Solange die Konfiguration nicht in Ordnung ist, werden bestehende Rechte jetzt überhaupt nicht angetastet.",
+        "Für den Eigentümer: Die Schritte zum Neuanlegen der Zugangsdaten wurden auf das neue Ein-Konto-Modell umgestellt (nicht öffentliche Dokumentation)."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Durch diese Änderung beruht der Zugang zur Verwaltungs-App nicht mehr auf persönlichen Zugangsdaten, sondern auf einer einzigen gemeinsamen Kennung samt Passwort. Willst du einer einzelnen Person den Zugang entziehen, ändere das gemeinsame Passwort und gib es nur noch an diejenigen weiter, die es behalten sollen."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.3",
+     "date": "2026-08-25",
+     "type": "hotfix",
+     "title": "Klartext bei der Administratoranmeldung, und die 3 im Wiki gelisteten bekannten Fehler behoben",
+     "summary": "Eine Korrekturversion nach der Meldung „ich gebe Kennung und Passwort ein und komme trotzdem nicht hinein“. In der Serververkabelung und in der Prüflogik selbst wurde kein Fehler gefunden, aber der Bildschirm zeigte bisher immer dieselbe Meldung – „Kennung oder Passwort falsch“ –, sowohl wenn auf dem Server überhaupt kein Administratorkonto eingerichtet war als auch wenn die Eingabe tatsächlich falsch war, und die betroffene Person konnte beides nicht unterscheiden. Im ersten Fall erscheint jetzt ein eigener Text, der den Grund nennt, und dieser Zustand zählt auch nicht als Fehlversuch (der Schutz gegen Durchprobieren sperrt dich nicht aus). Außerdem wurden die 3 Punkte behoben, die auf der Seite mit den bekannten Fehlern im Wiki noch standen (Namensanzeige der verstärkten Glasfenster, isoliertes Kabel direkt nach Strom aus und wieder an, Rezeptanordnung in der App „Nachschlagen“).",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Anmeldebildschirm der Verwaltungs-App: Ist auf dem Server kein gültiges Administratorkonto eingerichtet, erscheint jetzt ein Text, der genau das erklärt, statt des bisherigen „Kennung oder Passwort falsch“. Anmeldeversuche in diesem Zustand zählen für den Schutz gegen Durchprobieren nicht als Fehlversuche.",
+        "Die Namensanzeige der verstärkten Glasfenster (17 Farben) wurde korrigiert. Alle Farben zeigen jetzt den richtigen japanischen und englischen Namen.",
+        "Behoben ist der Fehler, durch den direkt nach dem Aus- und Wiedereinschalten des Hauptschalters am Sicherungskasten ein vom Netz getrenntes Kabel weiter leuchten konnte.",
+        "Die 3×3-Rezeptansicht der App „Nachschlagen“ zeigt jetzt die tatsächliche Anordnung auf der Werkbank (Position der Zutaten und leere Felder). Zuvor war es eine vereinfachte Darstellung, die die Zutaten ohne Leerfelder von vorn auffüllte.",
+        "Für Serveradministratoren: Die Prüf- und Wiederherstellungsschritte für den Fall, dass die Administratoranmeldung nicht funktioniert (admin_account.json fehlt oder ist beschädigt), wurden geordnet (nicht öffentliche Dokumentation für den Eigentümer)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Korrektur der Administratoranmeldung unterscheidet den Fall „auf dem Server ist gar kein Konto eingerichtet“. Falls alle 3 korrekt eingerichtet sind und trotzdem genau eines sich nicht anmelden kann, ist das ein anderes Symptom: Bitte melde dich in dem Fall noch einmal bei uns.",
+        "Die Korrektur beim isolierten Kabel wirkt ab Aktualisierungen, die ab dieser Version korrekt durchgeführt wurden. Wenn du von einem Launcher oder Server vor V2.4.2 direkt auf V2.4.3 gehst und ein isoliertes Kabel übrig bleibt, brich es einmal ab und setze es neu – oder es löst sich beim nächsten Schalten des Hauptschalters."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.1",
+     "date": "2026-08-24",
+     "type": "hotfix",
+     "title": "Absturz des Clients beim Ausklappen der Drohne und ein Fehler im Anmeldebildschirm der Verwaltungs-App behoben",
+     "summary": "Eine Korrekturversion nach Rückmeldungen von Spielern. Behoben sind der Fehler, durch den der Client beim Ausklappen der Drohne jedes Mal abstürzte, und der Fehler, durch den im Anmeldebildschirm der Verwaltungs-App das Feld für die Kennung bei jedem fehlgeschlagenen Anmeldeversuch geleert wurde.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der Fehler, durch den der Client beim Ausklappen der Drohne jedes Mal abstürzte, wurde behoben. Das Aussehen der Drohne (ein kleiner Quadrocopter) wird jetzt neu gezeichnet.",
+        "Der Fehler, durch den im Anmeldebildschirm der Verwaltungs-App das Feld für die Kennung nach jedem Fehlversuch leer war und neu getippt werden musste, wurde behoben."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.4.0",
+     "date": "2026-08-24",
+     "type": "release",
+     "title": "Glaslaternen wirklich repariert, geistige Gesundheit überlagert nicht mehr die Durstanzeige, Geschützturmwaffen wieder sichtbar – und „Glimpse Launcher“ erscheint",
+     "summary": "Die Laternenkorrektur aus V2.2.1 war in Wahrheit unzureichend; nach echten Screenshots wurde sie von Grund auf neu gemacht. Der weiße Lichtkern in der Mitte entfällt vollständig und weicht einem einzigen weichen Farbverlauf. In den Backrooms wird die normale Durstanzeige, die weiterhin neben der geistigen Gesundheit zu sehen war, jetzt korrekt ausgeblendet. Behoben ist außerdem der Fehler, durch den auf Geschütztürme montierte Waffen unsichtbar waren, sowie mehrere Konfigurationsbefehle für Administratoren, die in Wirklichkeit wirkungslos waren. Und wir veröffentlichen „Glimpse Launcher“, eine neue Desktop-App, die Aktualisierungen des MOD-Pakets automatisch prüft und einspielt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Das Leuchten der Glaslaternen wurde noch einmal neu gemacht. In V2.2.1 hatten wir es so gelöst, dass „in der Mitte ein glühender Kern bleibt“; mit echten Screenshots wurde uns gezeigt, dass dieser Kern im Spiel immer noch weißlich wirkt. Die Idee einer gesondert behandelten Kernzone wurde ganz gestrichen und durch einen einzigen Verlauf ersetzt, in dem sich die Farbe von der Mitte bis zum Rand gleichmäßig ändert. Da es Glas ist, siehst du weiterhin hindurch.",
+        "Der Fehler, durch den innerhalb der Backrooms die normale Durstanzeige (Flüssigkeitshaushalt) weiterhin neben der geistigen Gesundheit eingeblendet blieb, wurde behoben. In den Backrooms wird die Durstanzeige jetzt korrekt ausgeblendet (das System selbst bleibt bestehen und kann jederzeit zurückkehren).",
+        "Der Fehler, durch den auf einen Geschützturm montierte Schusswaffen und Bögen am Bildschirm unsichtbar wurden, ist behoben. Die montierte Waffe wird korrekt dargestellt.",
+        "Mehrere Konfigurationsbefehle für Serveradministratoren, die zwar dokumentiert waren, aber tatsächlich nichts bewirkten, wurden repariert (Wahrscheinlichkeit und Wellenzahl der Dorfüberfälle, Obergrenze der Videoauflösung und anderes). Für die Backrooms kam außerdem ein neuer Einstiegspunkt für Administratoreinstellungen hinzu.",
+        "Wir veröffentlichen „Glimpse Launcher“, eine neue Desktop-App. Sie prüft im Wiki, ob es Aktualisierungen des MOD-Pakets gibt, verifiziert jeden Download per SHA-256 und legt vor dem Einspielen automatisch eine Sicherung an. Über die Schaltfläche „Spielen“ öffnest du den offiziellen Minecraft-Launcher (die Auswahl des Fabric-Profils bleibt wie bisher deine Sache). Dieselbe eine Datei läuft unter Windows, macOS und Linux (Java muss installiert sein). Du findest sie auf der Download-Seite."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Dies ist die allererste Ausgabe des Glimpse Launcher. Die App selbst aktualisiert sich noch nicht von allein (das ist für eine spätere Version geplant)."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.2",
+   "summary": "Glaslaternen leuchten endlich wirklich in ihrer Farbe, und die Kistenaufgabe auf Backrooms-Ebene 1 ist repariert",
+   "releases": [
+    {
+     "version": "V2.2.1",
+     "date": "2026-08-23",
+     "type": "hotfix",
+     "title": "Glaslaternen leuchten endlich wirklich in ihrer Farbe, und die Kistenaufgabe auf Backrooms-Ebene 1 ist repariert",
+     "summary": "Eine Korrekturversion nach Rückmeldungen von Spielern. Die Glaslaternen wirken nicht mehr weißlich: Jede Farbe leuchtet jetzt wie eine Neonröhre hinter dem durchscheinenden Glas. Außerdem ist der Fehler behoben, durch den sich das Ziel „öffne 4 Kisten“ auf Backrooms-Ebene 1 nicht erfüllen ließ.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Das Aussehen der Glaslaternen wurde korrigiert. Bisher wurde das farbige Licht von einem weißlichen Leuchten fast völlig überstrahlt; jetzt leuchtet Rot in Rot, Blau in Blau und so weiter für jede Farbe, wie eine Neonröhre. Nur in der Mitte bleibt ein kleiner glühender Kern. Da es Glas ist, siehst du weiterhin hindurch.",
+        "Der Fehler, durch den das Ziel „öffne 4 Holzkisten“ auf Backrooms-Ebene 1 trotz geöffneter Kisten überhaupt nicht voranschritt, wurde behoben. Jedes Mal, wenn du eine Kiste aufbrichst (oder geduckt mit bloßer Hand öffnest), zählt sie jetzt korrekt."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V2.2.0",
+     "date": "2026-08-23",
+     "type": "release",
+     "title": "52 Glaslaternen, eine echte Backrooms-Lobby, Überfälle an der Oberfläche, Geschütztürme und ein Nachbau von Sapporo",
+     "summary": "Diese Runde bringt den 11. MOD, „Sapporo“: eine Dimension, die die reale Stadt Sapporo (Japan) aus echten Vermessungsdaten nachbildet. Backrooms-Ebene 1, „Die Lobby“, ist kein Musterraum mehr, sondern ein wirklich begehbarer Raum, mit einer gläsernen Zieltafel, die dauerhaft am linken Bildschirmrand steht. Dorfüberfälle können jetzt auch ohne Böses Omen rein zufällig ausgelöst werden; dazu kommen Geschütztürme, auf die sich Schusswaffen und Bögen montieren lassen, Video bis 4K, das sich von selbst anhält, der Sparxie-Stab mit einem Fernkampfangriff zusätzlich zum Nahkampf, ein Rebalancing von Minigun und Raketenwerfer, eine frei fliegbare Kameradrohne mit eigener App und 52 neue Glaslaternen im Baumaterial-MOD. Das Amethysttor öffnet sich jetzt auch mit ganz normalen Vanilla-Amethystblöcken.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der MOD „Sapporo“ (sorakaze_sapporo) ist endlich erschienen. Es ist eine Dimension, die die reale Stadt Sapporo (Hokkaidō, Japan) aus echten Geodaten nachbildet. Gebäudegrundrisse und Gelände stammen zu 100 % aus echten Vermessungsdaten, die Höhe der meisten Gebäude ist dagegen noch eine statistische Schätzung je Stadtbezirk. Das ist der ehrliche Stand: Die genaueren 3D-Stadtdaten (PLATEAU) sind noch nicht verfügbar. Sobald sie vorliegen, werden die Höhen nachgeführt.",
+        "Backrooms-Ebene 1, „Die Lobby“, ist jetzt eine echte Lobby, durch die du laufen und die du erkunden kannst, und kein kleiner Musterraum mehr. Der Zugang ist ein Riss, der in der Nähe einer Endsiedlung natürlich entsteht.",
+        "Am linken Bildschirmrand steht jetzt dauerhaft eine gläserne Zieltafel: aktuelle Ebene, geistige Gesundheit und das nächste Ziel auf einen Blick.",
+        "In den Backrooms tritt die geistige Gesundheit an die Stelle des Durstes als die Anzeige, die du im Auge behalten musst. Die Wesen, die dort auftauchen, sind außerdem gegen jede normale Waffe immun und lassen sich nicht töten: Das ist ein Ort zum Ausweichen, nicht zum Kämpfen.",
+        "Das Amethysttor lässt sich jetzt zusätzlich zu den Portal-Amethystblöcken auch aus ganz normalen Vanilla-Amethystblöcken bauen. Beide dürfen sogar im selben Rahmen gemischt werden.",
+        "Dorfüberfälle können jetzt allein dadurch, dass du dich in einem Dorf aufhältst, rein zufällig starten – ganz ohne den Effekt Böses Omen. Insgesamt 12 Wellen, und in der letzten Welle kommen zusätzliche Gegner aus dem Himmel-MOD dazu.",
+        "Neue Geschütztürme, auf die sich eine Schusswaffe, ein Bogen oder eine Armbrust montieren lässt. Die montierte Waffe hat ein eigenes Munitionsinventar, und beim Abnehmen bekommst du Waffe und Restmunition zurück.",
+        "Die Videowiedergabe unterstützt jetzt bis zu 4K, hält immer das Seitenverhältnis 16:9 und stoppt automatisch, sobald du dich weit genug vom Bildschirm entfernst.",
+        "Der Sparxie-Stab kann jetzt zusätzlich zum bisherigen Nahkampf auch auf Distanz angreifen (ein Blitz mit 24 Blöcken Reichweite).",
+        "Die Minigun trifft rund dreimal so hart, und die Explosion des Raketenwerfers ist deutlich wuchtiger als zuvor.",
+        "Neu ist eine frei fliegbare Kameradrohne samt eigener Drohnen-App auf dem Spieltelefon, die ihre Sicht als Live-Bild im Format 16:9 zeigt. Lässt du die Steuerung los, bleibt sie an Ort und Stelle in der Schwebe.",
+        "Der Baumaterial- und Deko-MOD bekommt 52 Glaslaternen (18 aus Vanilla-Buntglas + 17 verstärkte + 17 abdunkelnde). Volle Lichtstufe 15 und eine leuchtende Textur, die heller ist als das bisherige LED-Panel.",
+        "Die Verwaltungs-App am Computer bekommt für Serveradministratoren eine Ansicht des Änderungsverlaufs. Sie ist reine Leseansicht, und ihr Aufruf selbst wird nicht protokolliert."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Der Schaden der Minigun wurde rund verdreifacht.",
+        "Die Sprengkraft des Raketenwerfers wurde deutlich erhöht."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Um in der Sapporo-Dimension zu spielen, muss der Serveradministrator eine separat verteilte Kartendatendatei auf dem Server installiert haben (sie wird auf dieser Seite nicht verteilt). Ohne sie ist diese Welt schlicht nicht erreichbar.",
+        "Die Wesen der Backrooms lassen sich nicht töten. Versuch nicht, sie mit normalen Waffen zu bekämpfen – weich ihnen aus."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Höhe der meisten Gebäude in Sapporo ist weiterhin eine statistische Schätzung je Stadtbezirk und keine echte Vermessung. Sie wird nachgeführt, sobald genauere 3D-Stadtdaten verfügbar sind.",
+        "Ob Spieler das Himmelstor (Glowstone-Portal) selbst bauen und entzünden dürfen, hängt von einer Einstellung des Serveradministrators ab, die standardmäßig aus ist."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.1",
+   "summary": "Backrooms-Ebenen 3–8 werden echte, endlose Ebenen; eine Server-Admin-App auf dem PC im Spiel; Boss-Beschwörungsrezepte im Rezeptbuch",
+   "releases": [
+    {
+     "version": "V2.1.0",
+     "date": "2026-08-22",
+     "type": "release",
+     "title": "Backrooms-Ebenen 3–8 werden echte, endlose Ebenen; eine Server-Admin-App auf dem PC im Spiel; Boss-Beschwörungsrezepte im Rezeptbuch",
+     "summary": "Die größte Änderung dieser Runde sind die Backrooms-Ebenen 3 bis 8. Früher waren das 128 Blöcke große Demo-Inseln; jetzt sind es endlose Ebenen, die man wirklich betreten und erkunden kann. Der PC im Baumaterial-MOD bekam eine Server-Verwaltungs-App, und im Boss-MOD stehen die Rezepte der Beschwörungsgegenstände nun im Rezeptbuch. Die drei datengetriebenen Waffen haben endlich jeweils ein eigenes Modell in der Hand.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Inhaltlich geändert haben sich nur vier MODs: Backrooms, Baumaterial/Deko, Boss und Schusswaffen. Die übrigen sechs (Planarcadia, Strom, Schienenverkehr, Himmel, Survival, Fahrzeuge) wurden nur auf 2.1.0 gehoben, damit der Satz einheitlich bleibt — ihre jar-Dateien unterscheiden sich von denen aus 2.0.0 in genau einem Eintrag, der Versionszeichenkette in fabric.mod.json. An ihrem Inhalt hat sich kein einziges Byte geändert.",
+        "Die Backrooms-Ebenen 3 bis 8 sind von 128 Blöcke großen Demo-Inseln zu echten, endlosen Ebenen geworden. Keine davon hat noch einen Rand; alle lassen sich zu Fuß erkunden.",
+        "Ebene 3, das Elektrizitätsgebäude. Der Strom ist an, und eine Schalttafel zu berühren ist gefährlich. Ein Hound patrouilliert, und im Kabelraum im Untergeschoss wartet ein Smiler.",
+        "Ebene 4, die leeren Büros. Als sicher eingestuft — aber 3 % der Fenster beobachten dich, und sie sehen aus wie alle anderen. Hier erholt sich die geistige Gesundheit langsam wieder. Das Mandelwasser steht im Pausenraum.",
+        "Ebene 5, das Schreckenshotel. 80 % der nummerierten Türen sind verschlossen. In jedem zusammenhängenden Bereich weicht genau ein Zimmer in den Details ab. Halte dich nicht lange auf.",
+        "Ebene 6, Licht aus. Eine Taschenlampe funktioniert 20 Sekunden lang zuverlässig; danach nur noch in etwa 15 % jeder Sekunde. Solange sie leuchtet, bemerken dich die Wesen aus der vierfachen Entfernung — Licht zieht an. Diese Ebene navigiert man nach Gehör.",
+        "Ebene 7, Thalassophobie. Ein Haus fester Form und ein Ozean ohne gegenüberliegendes Ufer. Gehe nicht bis ans Ende des Stegs.",
+        "Ebene 8, das Höhlensystem. Für Menschen gegrabene und dann aufgegebene Stollen; die Eisenschienen führen tatsächlich irgendwohin. Es gibt einen 32 Blöcke tiefen, gefluteten Blindschacht.",
+        "Der PC im Spiel bekam eine App „Server-Verwaltung“. Ohne eine Konfigurationsdatei zu öffnen, kann eine Administratorin darüber ändern: ob Nachrichten, Anrufe und der Browser des Telefons erlaubt sind; wie viele Kamerabilder gleichzeitig angezeigt werden dürfen und ob Live-Übertragungen erlaubt sind; ob automatische Sicherungen laufen, in welchem Abstand und wie viele aufbewahrt werden; sowie einige Boss-Stellschrauben (natürliches Spawnen des Pestdoktors und dessen Wahrscheinlichkeit, nur bei Gewitter, Wiederauftauch-Abstand, maximale Gruppengröße der Pest-Wither, für den Sculk-Golem nötige Warden-Zahl, Anzahl der vom Schnitter gerufenen Wither, ob Rock-Lock-Spawner in Netherfestungen entstehen, maximale Lebenspunkte des Pestdoktors, Lebenspunkte-Multiplikator der Pest-Wither).",
+        "Zum Öffnen der Admin-App braucht man eine Administrator-ID und ein Passwort. Die Serveradministration gibt beides einzeln nur an ausgewählte Personen weiter. Auf dieser Seite stehen sie nirgends. Die Anmeldung läuft nach einer Weile ab, und Fehlversuche sind zahlenmäßig begrenzt.",
+        "Die Rezepte der Beschwörungsgegenstände des Boss-MODs (Schmiedealtar-Kern, Geschmolzene Krone, Sculk-Herz, Sonarauge, Frostaltar, Urei, Seelenblut-Altar) stehen jetzt im Rezeptbuch im Spiel. Bisher gab es überhaupt keinen Freischaltweg, also auch keine Möglichkeit, ihre Herstellung im Spiel selbst herauszufinden.",
+        "Vier Entdeckungs-Fortschritte wurden als Hinweis auf die Beschwörung hinzugefügt: „Der glühende Schlüssel“, „Der Schlüssel der Tiefe“, „Der Frostschlüssel“ und „Der Altar steht“. Jeder erscheint, sobald du den passenden Beschwörungsgegenstand in Händen hältst.",
+        "Das natürliche Spawnen des Pestdoktors gibt es wieder, hinter einem Administrator-Schalter — der jedoch standardmäßig AUS ist. Solange ihn niemand ausdrücklich einschaltet, verhält sich alles genau wie in V2.0.0.",
+        "Die drei datengetriebenen Waffen (Dienstpistole, Marksman-Karabiner, Türöffner-Schrotflinte) haben jetzt jeweils ein eigenes Modell in der Hand. Alle drei hatten sich das Modell des Sturmgewehrs geliehen, sodass man beim Halten einer Pistole ein Gewehr sah."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Ebenen 3 bis 8 werden grundlegend anders erzeugt. In einer Welt, in der du unter V2.0.0 die Demo-Inseln besucht hast, stimmt das Gelände dort nicht mehr mit dem überein, was vorher da war.",
+        "Administrator-ID und Passwort der Server-Verwaltungs-App werden auf dieser Seite niemals veröffentlicht. Hole sie direkt bei der Serveradministration."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der Sapporo-MOD (sorakaze_sapporo) gehört nicht zu dieser Runde. Er ist auf V2.2 verschoben.",
+        "Wie die Ebenen 3–8 tatsächlich aussehen und klingen und wie sich die Wesen dort verhalten, war zum Zeitpunkt dieses Eintrags noch nicht in einem echten Durchspielen bestätigt."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V2.0",
+   "summary": "Das V2-Update — ein 10. MOD, Planarcadia; vier neue Bosse; Wasserleitungen, Benzin und verderbende Nahrung",
+   "releases": [
+    {
+     "version": "V2.0.0",
+     "date": "2026-08-18",
+     "type": "release",
+     "title": "Das V2-Update — ein 10. MOD, Planarcadia; vier neue Bosse; Wasserleitungen, Benzin und verderbende Nahrung",
+     "summary": "Das ist V2 selbst. Der 10. MOD, Planarcadia, wurde hier zum ersten Mal ausgeliefert. Der Boss-MOD bekam vier neue Bosse mit eigenen Beschwörungsritualen, Survival eine Wasserinfrastruktur und einen Kühlschrank, Fahrzeuge das Benzin und Strom einen Luftreiniger. Die Backrooms wuchsen erheblich, und Baumaterial/Deko bekam abdunkelndes Sicherheitsglas in allen Farben.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Ein 10. MOD, Planarcadia (sorakaze_planarcadia), ist zum ersten Mal dabei. Baue aus Portal-Amethystblöcken einen Rahmen in der Form eines Nether-Portals und zünde ihn an — dahinter liegt eine Vergnügungswelt, in der die Nacht regiert. Sie bringt eigene Blöcke mit: LED-Schilder, den Phantommond, das Dimensionssprung-Wandbild, einen Verkaufstresen. Sie hängt von keinem anderen Glimpse-Alpha-MOD ab.",
+        "Vier neue Bosse kamen in den Boss-MOD: der Vulkanische Golemkönig (Schmiedealtar-Kern + Geschmolzene Krone), der Abyssale Kraken-Wärter (Sculk-Herz + Sonarauge), der Prismatische Eis-Phönixdrache (Frostaltar + Urei) und der Witherstorm-Dämonenoberherr (Seelenblut-Altar + 3 Witherskelett-Schädel + ein Netherstern).",
+        "Der Seelenblut-Altar verweigert den Witherstorm-Dämonenoberherrn, bis die drei anderen besiegt sind. Jeder der vier hat einen garantierten Drop: Vulkankern, Abyssale Sehne, Prismatische Feder und Herz des Oberherrn.",
+        "Der Grabgebundene Schnitter lässt jetzt mit geringer Wahrscheinlichkeit die Seelenernte-Sense fallen. Was du mit dieser Sense tötest, lässt mit geringer Wahrscheinlichkeit sein eigenes Spawn-Ei fallen.",
+        "Survival bekam eine Wasserinfrastruktur: Rohre, eine Pumpe und einen Wasserhahn. Die Pumpe fördert, die Rohre leiten, der Hahn füllt. Ein Kühlschrank und „Verdorbene Nahrung“ kamen mit dazu.",
+        "Fahrzeuge bekamen Benzin. Rechtsklick auf ein Fahrzeug mit einem Benzinkanister in der Hand betankt es. Der leere Kanister geht nicht kaputt — fülle ihn an der Werkbank mit 4 Kohle oder Holzkohle wieder auf.",
+        "Strom bekam einen Luftreiniger. Ein laufendes Kernkraftwerk verschmutzt jetzt die Luft ringsum, und wer in verschmutzter Luft steht, bekommt erst Langsamkeit, dann Schwäche, dann Gift. Ein mit Strom versorgter Reiniger baut diese Verschmutzung örtlich ab, solange er Strom hat.",
+        "Schusswaffen bekamen ein datengetriebenes Waffen- und Aufsatzsystem. Lege eine Waffe und Aufsätze in die Waffenwerkbank; sie werden in dem Moment montiert, in dem du die Waffe herausnimmst, und wieder abgenommen, wenn du sie zurücklegst. Drei Waffen (Dienstpistole, Marksman-Karabiner, Türöffner-Schrotflinte) und sechs Aufsätze (Leuchtpunktvisier, Schalldämpfer, Erweitertes Magazin, Schräggriff, Schwerer Schaft, Laserpointer) nutzen es. Dazu kam ein Schutzanzug gegen nukleare Verstrahlung — er wirkt nur zusammen mit der Gasmaske.",
+        "Die Backrooms wuchsen erheblich: Ebene 0, 1 und 2, die Poolrooms, die Partyebene und eine Halle voller nummerierter Türen, dazu zwölf Wesen (Hound, Smiler, Faceling, Skin Stealer, Peeling Colossus, Wailing Hulk, Pallid Runner, Partygoer, Deathmoth, Duller, Lebendes Gemälde, Falsche Pfütze) und Dinge zum Mitnehmen — Mandelwasser, Verbände, Taschenlampe, Bluttest-Kit, Brecheisen, Streichhölzer.",
+        "Baumaterial/Deko bekam abdunkelndes Sicherheitsglas: drei Formen (Block, Scheibe, Platte) in 17 Farben. Gleichzeitig bekamen die 16 Sicherheitsglasscheiben, die seit v1.7.7 ohne Namen ausgeliefert worden waren, endlich japanische und englische Namen."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Versionsnummern sind durchgehend von 1.x auf 2.0.0 gesprungen. Tausche alle zehn jar-Dateien auf dem Server und auf jedem Spieler-PC gemeinsam aus."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Zu V2.0.0 erschien damals kein Eintrag auf dieser Seite. Dieser hier wurde nachträglich zusammen mit V2.1.0 geschrieben, indem der tatsächliche Inhalt der ausgelieferten jar-Dateien gelesen wurde."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.9",
+   "summary": "Testvorbereitung für Atomsprengkopf-Stromerzeugung, großes Schienen-Update, neues Bildschirmdesign, dauerhafte Koordinatenanzeige",
+   "releases": [
+    {
+     "version": "v1.9.3",
+     "date": "2026-08-13",
+     "type": "release",
+     "title": "Testvorbereitung für Atomsprengkopf-Stromerzeugung, großes Schienen-Update, neues Bildschirmdesign, dauerhafte Koordinatenanzeige",
+     "summary": "5 MODs wurden gleichzeitig aktualisiert (die Versionen V1.9.1 und V1.9.2 existieren nicht – das große Rail-Update und die Anliegen rund um die Atomsprengkopf-Stromerzeugung wurden gebündelt und als V1.9.3 ausgeliefert). Endlich kommt die Grafik der Feuerwerkspuppe α an, die zwar schon vor zwei Releases korrigiert worden war, aber nie in einen ausgelieferten Build gelangt ist. Außerdem wurden ein Fehler behoben, durch den ein voll geladener Akku bei längerem Stillstand kaputtgeht, die Vorbereitung einer Verifizierung auf einem echten Server für die Nutzung von Atomsprengköpfen als Brennstoff getroffen, sowie ein Fehler bei der Zielfernrohr-Anzeige des Raketenwerfers behoben. Rail erhielt ein großes Update mit automatischer Abfahrt, automatischem Fahrbetrieb und mehr, die Bildschirme von Strom, Schusswaffen und Bossen bekamen das neue Design „Glimpse Glass“, und es kamen dauerhaft angezeigte Koordinaten sowie eine TPS/Ping-Anzeige hinzu.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "[Wichtig] Der Grafikfehler der Feuerwerkspuppe α (ein Teil des rechten Ohrs schien zu verschwinden) war eigentlich schon nach v1.9.0.2 behoben worden, gelangte aber wegen eines Fehlers im Vergleichsmechanismus der ausgelieferten Builds nie in eine Distribution. Mit diesem Release kommt die korrigierte Grafik endlich an. Damit das nie wieder passiert, wurde eine neue Prüfung (check_dist_drift.py) eingeführt, die Quell-Assets direkt mit dem ausgelieferten Build abgleicht.",
+        "[Wichtig] Strom: Fehler behoben, durch den ein voll geladener Akku, der etwa 18,6 Stunden lang stehen gelassen wurde, für immer aufhörte, Energiezellen herzustellen. Ursache war ein Überlauf bei einer Addition, der bei leistungsstarken Brennstoffen (wie Atomsprengköpfen) schneller auftrat. Bereits betroffene Akkus reparieren sich mit diesem Release automatisch selbst.",
+        "Strom: Die Möglichkeit, Atomsprengköpfe als Brennstoff zu nutzen, besteht bereits seit v1.8.7, doch diesmal wurde erstmals eine Möglichkeit geschaffen, dies auf einem echten dedizierten Server zu verifizieren (die Testumgebung ging jedoch während dieser Paketierungsrunde verloren, sodass die Ausführung noch nicht stattgefunden hat – Details siehe Hinweise unten). Außerdem wurde ein Fehler behoben, bei dem die Anzeige der Brennstoffqualität als unübersetzte Zeichenkette „sorakaze_power.fuel_quality.nuclear“ erschien.",
+        "Schusswaffen: Das Zielfernrohr des Raketenwerfers ist endlich auf dem Bildschirm sichtbar (nach 2 Meldungen behoben). Der Zoomfaktor wurde außerdem von ×2 auf ×4 erhöht. Das Aussehen der beiden Scharfschützengewehre bleibt unverändert.",
+        "Großes Rail-Update: Automatische Abfahrt, automatischer Fahrbetrieb, Fahrgeräusche, Oberleitungen (rein dekorativ), Innenbeleuchtung und Frontscheinwerfer, Ankunftsanzeigen, die Möglichkeit, im Zug herumzulaufen, sowie das Hinsetzen auf Sitzplätze wurden hinzugefügt. Der Tachometer wurde an den oberen Bildschirmrand verschoben und wird nur noch dem Fahrer angezeigt, nicht mehr den Fahrgästen.",
+        "Für die Bildschirme von Strom, Schusswaffen und Bossen (Akku, Sicherungskasten, Lenkraketenwerfer, Verstärktes Leuchtfeuer u. a.) wurde das neue halbtransparente Design „Glimpse Glass“ eingeführt. Auch beim Öffnen von Inventar oder Truhen wird der Hintergrund nun unscharf dargestellt. Zusätzlich liegt neu das optionale Resource Pack Glimpse_Alpha_Glass_UI_Pack.zip bei, das den Glas-Look sogar auf Vanilla-Bildschirme ausweitet.",
+        "Koordinaten (inklusive Blickrichtung) werden nun dauerhaft auf dem Bildschirm angezeigt. Auch die TPS/Ping-Anzeige wurde neu gestaltet, und die Voreinstellung wechselte von „nur bei gedrückter Tab-Taste“ zu „dauerhaft angezeigt“ (über die config lässt sich das bisherige Verhalten wiederherstellen)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Zoomfaktor des Raketenwerfer-Zielfernrohrs: ×2 → ×4"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Innerhalb des großen Rail-Updates wurden das Hinzufügen höherwertiger Wagenklassen sowie die Kupplung mit Vanilla-Loren diesmal zurückgestellt (es wurde lediglich ein Konzeptdokument erstellt). Die Kupplung mit Vanilla-Loren berührt die Projektrichtlinie „Vanilla-Elemente werden nicht ersetzt oder entfernt“ und wird daher separat nach Rücksprache entschieden.",
+        "Der Nachweis des Betriebs auf einem dedizierten Server bei Verwendung von Atomsprengköpfen als Brennstoff konnte diesmal nicht erbracht werden, da die Testumgebung während der Paketierung verloren ging (der Mechanismus zur Nutzung von Atomsprengköpfen als Brennstoff selbst ist seit v1.8.7 unverändert).",
+        "Falls ihr den Backrooms-Weltordner (Änderung aus v1.9.0.2) noch nicht gelöscht habt, prüft dies bitte unbedingt ebenfalls.",
+        "Eine Löschung oder Änderung der config ist nicht nötig. Diesmal kamen ausschließlich neue Einstellungsoptionen hinzu."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Nahezu alle neuen Rail-Funktionen (automatische Abfahrt, automatischer Fahrbetrieb, Fahrgeräusche, Oberleitungen, Innenbeleuchtung, Ankunftsanzeigen, Herumlaufen im Zug) waren zu diesem Zeitpunkt noch nicht auf einem echten Gerät überprüft.",
+        "Sowohl das Aussehen des neuen Bildschirmdesigns „Glimpse Glass“ als auch das des neuen Resource Packs waren ebenfalls noch nicht überprüft.",
+        "Auch das tatsächliche Aussehen der dauerhaft angezeigten Koordinaten- und TPS/Ping-Anzeige war noch nicht überprüft.",
+        "3 automatisierte Tests im Bereich Schusswaffen und 1 im Bereich Strom bleiben instabil, da ihre Ergebnisse von Durchlauf zu Durchlauf schwanken. Es wurde jedoch bestätigt, dass sie sich allesamt auf bestehenden Code beziehen, der in diesem Release nicht verändert wurde."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0.3",
+     "date": "2026-08-13",
+     "type": "visual-update",
+     "title": "Bildschirm „Mine OS“ von Handy und PC komplett überarbeitet, Icon-Fehler behoben",
+     "summary": "Dieses Update betrifft ausschließlich den Baumaterial-MOD. Das Aussehen des Bildschirms „Mine OS“ von Handy und PC wurde komplett neu gestaltet, und die neuen Apps Einstellungen, Terminal und Musik kamen hinzu. Außerdem wurde der seit v1.8.6 bestehende Fehler bei den App-Icons behoben. Zusätzlich wurde die Erstdownload-Größe der Video-App korrigiert, und es stellte sich heraus, dass sie unter macOS nicht funktioniert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Bildschirme von Handy und PC wurden komplett neu gestaltet: halbtransparente, milchglasartige Panels, abgerundete Ecken und Schatten kamen hinzu. Der PC-Bildschirm erhielt oben links 3 Ampel-Buttons, oben eine „Mine OS ▸ App-Name“-Breadcrumb-Leiste und unten ein Dock; das Handy bekam eine Statusleiste, einen Home-Indikator und einen Sperrbildschirm. Die Nachrichten-App zeigt jetzt chatartige Sprechblasen mit dem Kopf-Icon des Gesprächspartners an.",
+        "3 neue Apps hinzugefügt (8 → 11 insgesamt): „Einstellungen“ (Geräte-/Serverinformationen und Ton-Umschaltung), „Terminal“ (die 5 Befehle help, about, ping, tps und cls antworten direkt, alles andere wird als Chat-Befehl gesendet) sowie „Musik“ (spielt Songs von Schallplatten ab, die auf diesem Server vorhanden sind).",
+        "Fehler behoben, durch den die App-Icons seit v1.8.6 durchgehend hinter einer grauen Fläche verborgen waren. Ursache war, dass der undurchsichtige Hintergrund des Vanilla-Buttons direkt nach dem Zeichnen des Icons an derselben Stelle erneut darübergezeichnet wurde (die Grafiken selbst waren von Anfang an korrekt vorhanden).",
+        "Fehler behoben, bei denen Text über den Bildschirmrand hinausragte oder abgeschnitten wurde, und eine automatische Prüfung eingeführt, damit das nicht wieder passiert (4.773 Stellen in 2 Sprachen × 23 Bildschirmgrößen gemessen, 0 Überläufe bestätigt)."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "⚠ Unter macOS funktioniert die Video-App in Minecraft nicht (durch Tests bestätigt; Windows und Linux werden weiterhin unterstützt). Ab diesem Release friert macOS nicht mehr stillschweigend ein, sondern zeigt „Auf diesem Betriebssystem nicht verfügbar“ an und bricht ab.",
+        "[Korrektur] Der Erstdownload der Video-App beträgt nicht „ca. 140–175 MB“, sondern tatsächlich gemessen ca. 300 MB (die Angabe in v1.9.0.1 war fehlerhaft und wird hiermit korrigiert).",
+        "Eine Löschung oder Änderung der config ist nicht nötig (es kommen lediglich 4 neue Einstellungsoptionen hinzu, die alle standardmäßig auf „anzeigen“ stehen)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das neue Aussehen von Mine OS, das Bedienungsgefühl der 3 neuen Apps (Einstellungen, Terminal, Musik) und ob die Musik-App tatsächlich Ton abspielt, war zu diesem Zeitpunkt allesamt noch nicht auf einem echten Gerät überprüft.",
+        "Ob der Icon-Fehler tatsächlich behoben ist, wurde nicht visuell bestätigt – die Grundlage war ausschließlich die Analyse der Zeichenreihenfolge.",
+        "Ob die Video-App auf echten Windows-/Linux-Geräten tatsächlich Webseiten anzeigt, blieb ebenfalls unbestätigt."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0.2",
+     "date": "2026-08-12",
+     "type": "hotfix",
+     "title": "Fehler behoben, durch den das Backrooms-Labyrinth nicht generiert wurde (Welt-Eingriff erforderlich)",
+     "summary": "In v1.9.0.1 wurde der Riss selbst behoben, doch es zeigte sich ein weiterer Fehler, durch den die dahinterliegende Backrooms-Welt selbst leer blieb (das Nichts) – dieser wurde nun behoben. In Welten, die schon einmal von einem Spieler in die Backrooms betreten wurden, muss der Dimensionsordner gelöscht werden. Außerdem wurde ein Aussehen-Fehler bei 3 Gegenständen behoben, und die Feuerwerkspuppe α aus Survival wurde durch eine vom Eigentümer selbst gezeichnete Grafik ersetzt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Backrooms: Fehler behoben, durch den nach dem Durchqueren des Risses nirgends ein Labyrinth vorhanden war und man selbst im Kreativmodus sofort starb. Ursache war, dass beide Filter im „Flachwelt“-Generierungssystem von Minecraft gleichzeitig griffen, wodurch in keinem einzigen Chunk je ein Labyrinth erzeugt wurde. Zusätzlich wurde unter dem Boden Grundgestein platziert und eine Rettungsroutine für den Fall eines Durchfallens hinzugefügt.",
+        "Backrooms: Fehler behoben, durch den Ruhetropfen, Taschenlampe und zerrissene Notiz im Inventar als „lila-schwarzes Schachbrettmuster“ (Anzeige bei fehlender Grafik) erschienen. Die Definitionsdatei, die das Aussehen festlegt, fehlte komplett.",
+        "Survival: Die Grafik der Feuerwerkspuppe α wurde durch ein vom Eigentümer selbst gezeichnetes Pixelbild ersetzt. Funktional (Mechanik, Rezept, Drops, config) ändert sich nichts."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "[Wichtig] Wurde in eurer Welt schon einmal von jemandem die Backrooms betreten, stoppt den Server und löscht den Ordner <Weltname>/dimensions/sorakaze_backrooms/backrooms/. Beim nächsten Durchqueren eines Risses wird ein neues, korrektes Labyrinth erzeugt. Da man in den Backrooms keine Blöcke setzen oder abbauen kann, geht durch das Löschen nichts verloren (Gegenstände wie Ruhetropfen, Taschenlampe und zerrissene Notiz im Inventar bleiben erhalten). Falls der Ordner nicht existiert, hat noch niemand diese Welt betreten – dann ist nichts zu tun.",
+        "Eine Löschung oder Änderung der config ist nicht nötig (es kommen lediglich 2 neue Einstellungsoptionen hinzu, die automatisch übernommen werden)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Wie das reparierte Labyrinth tatsächlich aussieht (etwa die Stimmung der gelben Tapete), wie die Grafiken der 3 korrigierten Gegenstände wirken und wie das neue Bild der Feuerwerkspuppe α aussieht, war zu diesem Zeitpunkt allesamt noch nicht auf einem echten Gerät überprüft."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0.1",
+     "date": "2026-08-11",
+     "type": "hotfix",
+     "title": "Riss in Endstädten und Flug des Wither Storm behoben, Video-App hinzugefügt",
+     "summary": "Behoben wurden ein Fehler, durch den die in v1.9.0 hinzugefügten Backrooms-Risse praktisch nie generiert wurden, sowie ein Fehler, durch den der Flug der schwebenden Wither-Storm-Stufen nie implementiert war. Der Baumaterial-MOD erhielt eine „Video“-App für Handy und PC sowie geräteabhängige, OS-artige Bildschirme, und das Aussehen von Survivals Feuerwerkspuppe α wurde festgelegt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Backrooms: Fehler behoben, durch den der Riss in Endstädten in der Praxis so gut wie nie generiert wurde. Die Prüfung schaute auf die Höhe (Y-Koordinate), die tatsächlich übergebene Koordinate hatte aber immer die Höhe 0, wodurch stets fälschlich „nicht vorhanden“ erkannt wurde. Auf neu generiertem Land entsteht nun garantiert genau ein Riss pro Endstadt (bereits existierendes Land erhält keinen rückwirkend). Auch die Icon-Grafiken von Ruhetropfen, Taschenlampe und zerrissener Notiz wurden neu gezeichnet.",
+        "Wither Storm: Echten 3D-Flug für die schwebenden Stufen (S3–S5) implementiert – Anflug im Kreisen, Sturzangriff, anschließendes Abdrehen. Die bodengebundenen Stufen (S0–S2), der Nahkampfangriff, die Kopf-Salve, der Zugstrahl und die Schadensformel des Großen Strudels bleiben unverändert.",
+        "Baumaterial: „Video“-App für Handy und PC hinzugefügt (mit eingebauter, echter Browser-Engine; beim ersten Öffnen läuft einmalig ein zusätzlicher Download auf dem PC des Spielers). Die Bildschirme unterscheiden sich nun je nach Gerät: iPhone erhält einen iOS-artigen Look, MacBook und Mac Studio einen macintosh-artigen Look (Menüleiste, Dock).",
+        "Survival: Das Aussehen der Feuerwerkspuppe α wurde festgelegt (rein optische Änderung, die Funktion bleibt unverändert)."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die in diesem Release genannte Erstdownload-Größe der Video-App von „ca. 140–175 MB“ war die komprimierte Größe und damit fehlerhaft (in v1.9.0.3 gemessen und auf „ca. 300 MB“ korrigiert).",
+        "Eine Löschung oder Änderung der config ist nicht nötig. Diesmal kamen ausschließlich neue Einstellungsoptionen hinzu."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Zu diesem Zeitpunkt war der Riss selbst zwar behoben, doch ein weiterer Fehler blieb bestehen, durch den das dahinterliegende Labyrinth überhaupt nicht generiert wurde (entdeckt und behoben in v1.9.0.2).",
+        "Ob die Video-App tatsächlich Webseiten anzeigt und wie die neuen iPhone-/macOS-artigen Bildschirmdesigns aussehen, war beides noch nicht überprüft.",
+        "Ob sich der Flug der schwebenden Wither-Storm-Stufen tatsächlich natürlich anfühlt (das Gefühl von Kreisen und Sturzangriff), war ebenfalls noch nicht überprüft."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.9.0",
+     "date": "2026-08-11",
+     "type": "release",
+     "title": "Neue MOD „Backrooms“ hinzugekommen, Wither Storm komplett überarbeitet",
+     "summary": "Die 9. MOD „Backrooms“ (sorakaze_backrooms) ist neu hinzugekommen: Erkundungsinhalte mit Sanity-System, in die man über einen an Endstädten generierten Riss hineingerät. Der Wither Storm der MOD sorakaze_boss wurde mit neuem Aussehen, Wachstumsstufen und einem neuen Statuseffekt komplett überarbeitet, außerdem kamen neue garantierte Drops hinzu. Die 6 MODs Baumaterial, Schusswaffen, Strom, Himmel, Schienenverkehr und Fahrzeuge bleiben unverändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die 9. MOD „Backrooms“ (sorakaze_backrooms) ist neu hinzugekommen. Bei jeder neu generierten Endstadt entsteht garantiert genau ein Riss (Altar) an einer nahegelegenen sicheren Stelle (bereits existierende Endstädte erhalten keinen).",
+        "Verfügt über ein „Sanity“-System (Geisteszustand). Der Wert beginnt bei maximal 100 und sinkt ohne Gegenmaßnahmen in etwa 18 Minuten auf null. Ein in Truhen zu findender Wiederherstellungstrank stellt 35 Punkte wieder her. Etwa alle 30 Sekunden tritt mit 12 % Wahrscheinlichkeit ein „Stromausfall“ ein, und unterhalb von 20 Punkten beginnt sich die Umgebung merklich zu verändern.",
+        "Im Labyrinth können keine Blöcke platziert werden, und Wände, Böden und Decken – einschließlich der Truhen – lassen sich nicht abbauen. Andere Dimensionen sind davon nicht betroffen.",
+        "Die Kreatur „Hohler Lauscher“ streift umher (40 HP, 6 Angriffskraft. Solange sie beobachtet wird, verharrt sie regungslos und bewegt sich erst wieder, wenn der Blick abgewendet wird). Es können höchstens 3 Exemplare gleichzeitig erscheinen.",
+        "Ein dreistufiger Fortschritt (① Überleben bestätigen → ② Spuren sammeln → ③ Entkommen) wird dauerhaft am Bildschirm angezeigt.",
+        "Das Aussehen des Bosses Wither Storm wurde komplett überarbeitet. Aus der bisherigen Ausführung mit einem fixen HP-Wert für ein einzelnes Exemplar wurde ein Wachstumsstufen-System (S0 Embryo → S1 Fressen → S2 Jagd → S3 Verwüstung → S4 Sturm → S5 Höchststufe, HP-Bereich 600–24.000). Die Stufe steigt je nach Menge der aufgenommenen Gegenstände und Mobs; ab S2 schwebt der Boss und erzeugt ein Gravitationsfeld, das die Umgebung anzieht.",
+        "Neuer Statuseffekt „Wither-Krankheit“ hinzugefügt. Er tritt auf, wenn man wiederholt dem Zugstrahl bzw. dem Gravitationsfeld ausgesetzt ist (Standardschaden pro Sekunde: die Hälfte des Vanilla-Wither-Effekts. Wie andere Statuseffekte lässt er sich durch Milchtrinken heilen).",
+        "Neuer Admin-Befehl /glimpse storm restore [radius] hinzugefügt. Damit lässt sich vom Wither Storm verschlungenes Gelände anhand der Aufzeichnungen wiederherstellen.",
+        "Zwei neue garantierte Drops des Wither Storm hinzugefügt: den „Universalsammler α“ (Haltbarkeit 32 wie eine goldene Spitzhacke, nicht verzauberbar; ein eigenständiger Gegenstand, getrennt vom bisherigen „Universalsammler“) und die „Feuerwerkspuppe α“ (unbegrenzt nutzbar, aber mit 3 Minuten Abklingzeit nach jeder Anwendung – die verbesserte Version der bestehenden Feuerwerkspuppe).",
+        "Die bisher mitgelieferte Rezeptsammlung (レシピ早見表.html) wird nicht mehr verteilt. Die Rezeptreferenz für Craftinganleitungen ist nun auf dieser Website zu finden."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Der vom Eigentümer ursprünglich gewünschte Name „Mandelwasser“ wurde nicht umgesetzt, da er in der Backrooms-Fanszene fest mit dem dortigen Sanity-Wiederherstellungsgegenstand selbst verknüpft ist. Die Funktion (Sanity wiederherstellen, in Truhen zu finden, einmalig trinkbar) wurde beibehalten, nur der Name wurde zu „Ruhetropfen“ geändert.",
+        "Wird eine Truhe mit einem Block-Gegenstand in der Hand per Rechtsklick geöffnet, greift zuerst die Platzierungssperre, sodass sie sich nicht öffnen lässt. Bitte die Hand leeren oder zu einem anderen Gegenstand wechseln, bevor die Truhe geöffnet wird.",
+        "Ein Löschen oder Anpassen der Config ist nicht nötig. Es wurden ausschließlich neue Einstellungsoptionen hinzugefügt; kein bestehender Standardwert wurde verändert."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das gesamte Erscheinungsbild von Backrooms (Tapetenmuster und Lichtstimmung im Labyrinth, Aussehen und Erstarrungs-Effekt des Hohlen Lauschers, Stromausfall-Effekt, Anzeige des Fortschritts-HUD, Inhalt der Truhen) wurde im tatsächlichen Spielbetrieb noch nicht überprüft.",
+        "Auch das neue Aussehen des Wither Storm, die optischen Veränderungen je Wachstumsstufe, die Darstellung des Gravitationsfelds sowie das Aussehen des Terrainverschlingens sind noch unbestätigt.",
+        "Ebenso unbestätigt sind Aussehen und Sound bei einer Wither-Krankheit sowie das Aussehen (Icon und in der Hand) von Universalsammler α und Feuerwerkspuppe α.",
+        "Der eigene Startnachweis für Backrooms (runBackroomsBoot) wurde als eigenständiger Test auf einem dedizierten Server noch nicht ausgeführt (beim gemeinsamen Starttest aller 9 MODs wurde immerhin das Laden der Dimension bestätigt).",
+        "Die Synchronisation bei gleichzeitigem Spiel zu zweit sowie die Serverlast beim gleichzeitigen Betrieb aller 9 MODs sind noch nicht getestet.",
+        "Die Angriffsanimationen von Sculk-Golem, Rock Lock, Kraken und Titan sowie der Wurfangriff des Donnerspeers bleiben auch dieses Mal offen."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.8",
+   "summary": "Atomsprengkopf weiter verstärkt, Akku für Strom-MOD hinzugefügt",
+   "releases": [
+    {
+     "version": "v1.8.8",
+     "date": "2026-08-10",
+     "type": "release",
+     "title": "Atomsprengkopf weiter verstärkt, Akku für Strom-MOD hinzugefügt",
+     "summary": "Der Direkttrefferschaden des Atomsprengkopfs wurde nochmals verdreifacht, und das Einschlaggeräusch ist nun aus deutlich größerer Entfernung zu hören. Dem Strom-MOD wurde der neue Block „Akku“ hinzugefügt, wodurch sich die Art, wie Strom von Generatoren empfangen wird, geändert hat.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der Direkttrefferschaden des Atomsprengkopfs wurde von 22.400 auf 67.200 erhöht (das 3-Fache).",
+        "Das Einschlaggeräusch ist nun bis zu 20.000 Blöcke weit zu hören. Auch der Abschusssound wurde zu einem lauteren Donnern.",
+        "Die Abschussrampe wurde vergrößert, und beim Einschlag des Atomsprengkopfs wurden eine sich stufenweise ausbreitende Zerstörungsanimation sowie ein Lichtblitz hinzugefügt.",
+        "Dem Strom-MOD wurde der neue Block „Akku“ hinzugefügt. Der Strom von Generator und Kernkraftwerk wird nun zunächst im Akku gespeichert; ist er voll, entsteht eine Energiezelle. Diese Energiezelle entnimmt man und steckt sie in den Brennstoff-Slot des Sicherungskastens."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Direkttrefferschaden des Atomsprengkopfs: 22.400 → 67.200 (das 3-Fache)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "【Wichtig】Generator und Kernkraftwerk können ohne einen zwischengeschalteten Akku keinen Strom mehr an den Sicherungskasten liefern. Die bisherige Verkabelung „Generator → Kabel → Sicherungskasten“ allein reicht nicht mehr aus. Solar-, Wind- und Wasserkraft liefern den Strom weiterhin wie gewohnt direkt.",
+        "Ein Löschen der Config ist nicht nötig."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Bei 2 der Tests rund um den Atomsprengkopf konnte unter hoher Last der Entwicklungsumgebung keine abschließende Bestätigung erzielt werden (die Zündung und Zerstörung des Atomsprengkopfs selbst wurde jedoch durch einen tatsächlichen Zündtest auf dem Server bestätigt).",
+        "Das Aussehen der Öffnungs-/Schließanimation des Akku-Deckels ist noch nicht bestätigt."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.7",
+     "date": "2026-08-10",
+     "type": "release",
+     "title": "Raketenwerfer und Atomsprengkopf verstärkt, neue Waffensounds",
+     "summary": "Die Durchschlagskraft des Raketenwerfers wurde verachtfacht, auch der Explosionsradius des Atomsprengkopfs wurde deutlich vergrößert. Zugleich wurde das Spielgefühl von Zielfernrohr und Zielverfolgung – die zwar schon korrekt funktionierten, aber kaum wahrnehmbar waren – durch neue Soundeffekte deutlich verständlicher gemacht. Der Atomsprengkopf lässt sich nun außerdem als neuer Spitzenbrennstoff im Strom-MOD verwenden.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der Schaden des Raketenwerfers wurde von 40 auf 320 erhöht (das 8-Fache).",
+        "Der Direkttrefferschaden des Atomsprengkopfs wurde auf 320 × 70 = 22.400 verstärkt. Auch der Explosionsradius wurde deutlich vergrößert, wobei aus Sicherheitsgründen weder Grundgestein noch nicht geladenes Gelände zerstört wird.",
+        "Die Soundeffekte beim Anvisieren durch das Zielfernrohr und im Moment einer erfolgreichen Zielverfolgung wurden neu erstellt. Bisher wurden dafür allgemeine Vanilla-UI-Sounds verwendet, wodurch trotz korrekt funktionierender Mechanik kaum wahrnehmbar war, dass etwas passiert.",
+        "Der Atomsprengkopf lässt sich nun als Brennstoff im Strom-MOD verwenden – eine Energiequelle mit etwa dem 100-Fachen der Leistung und dem 144-Fachen der Brenndauer (etwa 1 Stunde) eines Lavaeimers aus Vanilla."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Raketenwerfer-Durchschlagskraft: 40 → 320 (das 8-Fache)",
+        "Direkttrefferschaden des Atomsprengkopfs: 22.400 (320 × 70)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Ein Löschen der Config ist nicht nötig. Die Standardwerte werden automatisch aktualisiert.",
+        "Der Raketenwerfer selbst besitzt noch keinen Schutzmechanismus gegen die eigene Explosion. Da der Explosionsradius des Atomsprengkopfs (64 Blöcke) größer ist als die Mindestreichweite der Abschussrampe (24 Blöcke), kann beim Beschuss naher Ziele die Abschussrampe selbst mitzerstört werden."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das optische Erscheinungsbild der Atomexplosion (Partikel, Bildschirmerschütterung) sowie die neuen Soundeffekte sind im tatsächlichen Spielbetrieb noch nicht bestätigt.",
+        "FPS und mögliche Ruckler bei einer großflächigen Atomexplosion in Anwesenheit von Spielern sind noch nicht überprüft."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.6",
+     "date": "2026-08-09",
+     "type": "visual-update",
+     "title": "Icons für Sprengkopf und Handy-Apps hinzugefügt",
+     "summary": "Zwei Korrekturen zu Aussehen und Auffindbarkeit. Für konventionellen und nuklearen Sprengkopf, die bisher keinerlei Textur besaßen, wurden nun eigene Icons neu gezeichnet, außerdem sind sie jetzt craftbar. Der bislang als „nicht auffindbar“ gemeldete Lenkraketenwerfer wurde dem Kreativ-Reiter hinzugefügt, und Anzeigename sowie Bedienbildschirm wurden vollständig übersetzt. Auch die 7 Apps von Handy und Computer erhielten neu gezeichnete eigene Icons.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Für konventionellen und nuklearen Sprengkopf wurden eigene 128-px-Icons neu gezeichnet (bisher gab es überhaupt kein Bild, im Inventar erschien nur das Standard-„lila-schwarze Schachbrettmuster“ von Minecraft).",
+        "Konventioneller Sprengkopf (5 Eisenbarren + 1 TNT + 1 Redstone-Block) und nuklearer Sprengkopf (4 Eisenblöcke + 4 TNT + 1 Netherstern) sind nun craftbar.",
+        "Der Lenkraketenwerfer wurde dem Kreativ-Reiter hinzugefügt (er war bereits craftbar, tauchte aber im Reiter nicht auf und war so nicht auffindbar). Anzeigename und Übersetzung des Leitstand-Bildschirms (Zielkoordinateneingabe, 9 Statusanzeigen, 8 Himmelsrichtungen, Sicherung usw.) wurden neu hinzugefügt (je 54 Einträge auf Japanisch und Englisch).",
+        "Für alle 7 Apps von Handy und Computer (Kameraüberwachung, Nachrichten, Nachschlagen, Wetter, Taschenrechner, Telefon, Fotografieren) wurden eigene Icons neu gezeichnet (bisher reihten sich nur farbige Rechtecke aneinander). Auch app-spezifische Details kamen hinzu, etwa Niederschlags-Icon und vergrößerte Uhr in der Wetter-App, ein eingelassenes LCD-Design in der Taschenrechner-App, eine Kompassanzeige in der Telefon-App und ein Überwachungsmonitor-Design in der Kamera-App.",
+        "Beim Öffnen einer App werden Icon und Name der aktuell geöffneten App nun dauerhaft am oberen Bildschirmrand angezeigt."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Dass konventioneller und nuklearer Sprengkopf nun craftbar sind, ist eine Entscheidung der Entwicklung (kein ausdrücklicher Wunsch des Eigentümers). Falls die Balance zu stark oder übertrieben wirkt, bitte an die Serverleitung wenden.",
+        "Auch diesmal ist kein Löschen oder Bearbeiten der Config nötig."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der 3×3-Rezeptbildschirm der App „Nachschlagen“ kann vom Server nicht empfangen, in welchem Feld welche Zutat liegt, und zeigt deshalb eine vereinfachte Darstellung, bei der die Zutaten der Reihe nach von vorne aufgefüllt werden (Art und Anzahl der Zutaten selbst sind korrekt).",
+        "Die neuen Sprengkopf-Icons, die Übersetzung des Leitstands und die neuen Bildschirme der Handy-Apps sind allesamt noch nicht auf dem tatsächlichen Spielbildschirm bestätigt.",
+        "Bei 16 der 17 Farben des Sicherheitsglasfensters fehlt weiterhin ein Name (unverändert seit der vorherigen Version)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.5",
+     "date": "2026-08-09",
+     "type": "hotfix",
+     "title": "Fehler bei Wasserrohr, Verstärktem Leuchtfeuer und Gasmaske behoben",
+     "summary": "Mehrere in v1.8.4 gemeldete Fehler wurden behoben: das nicht abbaubare Wasserrohr, die fehlende Fähigkeitsauswahl bei Verstärktem Leuchtfeuer α/β sowie die über dem Kopf schwebende Gasmaske. Außerdem wurde die Spawn-Obergrenze feindlicher Mobs korrekt nur auf die Oberwelt beschränkt und der Standardwert auf real 150 Kreaturen geändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Fehler behoben, durch den sich das Wasserrohr nicht abbauen ließ. Die Einheit der Kollisionsform war vertauscht, wodurch die tatsächliche Trefferzone nur ein Zweiunddreißigstel der sichtbaren Dicke betrug (Härte und Werkzeugvorgabe waren von Anfang an korrekt).",
+        "Auch der Fehler behoben, dass ein einzeln an einem Fluss platzierter Wassereinlass von der Strömung mitgerissen wurde und verschwand (als wasserüberflutungsfähiger Block neu konzipiert).",
+        "Fehler behoben, durch den sich bei Verstärktem Leuchtfeuer α/β keine Fähigkeiten auswählen ließen. Der Bildschirm schloss sich automatisch im nächsten Tick, und die Auswahl wurde nicht gespeichert (das normale Verstärkte Leuchtfeuer war nicht betroffen).",
+        "Fehler behoben, durch den die Gasmaske über dem Kopf zu schweben schien. Ein eigenes plastisches Modell wurde neu erstellt und an eine dem Gesicht angepasste Position verschoben.",
+        "Das Aussehen der Feuerwerkspuppe wurde von der in v1.8.4 hinzugekommenen plastischen „Plüschfigur“ zurück auf die flache Bildoptik von vor v1.8.3 geändert (auf Wunsch des Eigentümers). Funktionen wie das Nutzungslimit bleiben unverändert.",
+        "Die Spawn-Obergrenze feindlicher Mobs in der Oberwelt wurde von bisher „das 15-Fache von Vanilla“ (entspricht etwa 1050 Kreaturen) auf real 150 Kreaturen geändert. Nether, das Ende und der Himmel sind davon nicht betroffen (auch der Fehler, durch den dieser Multiplikator fälschlich in allen Dimensionen galt, wurde gleichzeitig behoben)."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Ein Löschen oder Bearbeiten der Config ist nicht nötig. Der Wert der Spawn-Obergrenze wird automatisch auf den neuen Standardwert aktualisiert."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das neue Aussehen von Wasserrohr und Gasmaske sowie die Bedienbarkeit der GUI des Verstärkten Leuchtfeuers sind im tatsächlichen Spielbetrieb noch nicht bestätigt.",
+        "Ob die neue Spawndichte von 150 Kreaturen im tatsächlichen Spielbetrieb stimmig ist, wurde noch nicht überprüft."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.4",
+     "date": "2026-08-09",
+     "type": "release",
+     "title": "Neue Waffen, Handy-Betriebssystem, Wasserrohr, Jahreszeiten und Himmel-Erweiterung",
+     "summary": "Zusammengefasst wurden diesmal die beiden neuen Waffen Pistole und Maschinenpistole, der Lenkraketenwerfer samt 2 Sprengkopftypen, ein vollwertiges Betriebssystem für Handy und Computer, das Wasserrohr, ein tatsächlich fahrender Aufzug sowie ein Jahreszeitensystem mit Frühling, Sommer, Herbst und Winter. Außerdem wurde die maximale Bauhöhe in der Oberwelt angehoben (der Bereich unter der Erde bleibt unverändert), und die Zahl der Sortierblöcke und Trichter, die Strom benötigen, wurde deutlich reduziert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "2 neue Waffen hinzugefügt: Pistole (200/Sekunde, Magazin 12, halbautomatisch) und Maschinenpistole (450/Sekunde, Magazin 40, vollautomatisch). Beide verwenden die bestehende Kleinkalibermunition, es kommt also keine neue Munitionsart hinzu.",
+        "Lenkraketenwerfer (stationäre Waffe) sowie konventioneller und nuklearer Sprengkopf hinzugefügt (der nukleare Sprengkopf hat ein Limit an zerstörbaren Blöcken, funktioniert nur mit dem Lenkraketenwerfer und lässt sich nicht aus der Hand abfeuern).",
+        "Dem Raketenwerfer wurden ein 2-fach-Zoom-Zielfernrohr und eine Zielverfolgung hinzugefügt (aktiviert sich nach 1 Sekunde Anvisieren; läuft das Ziel, greift sie nicht).",
+        "Handy und Computer erhielten ein vollwertiges Betriebssystem (7 Apps: Kameraüberwachung, Nachrichten, Nachschlagen, Wetter, Taschenrechner, Telefon, Fotografieren). Aktivierbar per Rechtsklick in der Hand oder H-Taste; man kann auch Fotos machen und per Nachricht versenden.",
+        "Ein Wasserrohr hinzugefügt (versorgt Kessel oder Felder mit Wasser aus Fluss oder Meer). Außerdem ein tatsächlich fahrender, mit einer beweglichen Kabine ausgestatteter Aufzug.",
+        "Dem Strom-MOD wurden Starkstromkabel (4-fache Reichweite gegenüber normalem Kabel), Abgeschirmtes Kabel (8-fache Reichweite) und das LED-Panel hinzugefügt.",
+        "Das Aussehen der Erze wurde komplett überarbeitet. Neues Material „Lavendeljade“ (noch seltener als Rubin), Gasmaske und Aeroschild-Injektor hinzugefügt.",
+        "Ein Jahreszeitensystem hinzugefügt (1 Jahreszeit = 8 Tage, 1 Jahr = 32 Tage). Sommerwüste und Winterschnee sind nun anspruchsvoller als bisher.",
+        "Verstärktes Leuchtfeuer α und β (Boss-MOD) sind nun craftbar. Gleichzeitig benötigt das Verstärkte Leuchtfeuer selbst keinen Strom mehr (die in v1.8.1 eingeführte Strompflicht wurde damit zurückgenommen).",
+        "Die maximale Bauhöhe in der Oberwelt wurde von y=319 auf y=1023 erweitert (der Bereich unter der Erde und der Weltboden bleiben unverändert).",
+        "Die Zahl strombedürftiger Geräte wurde von 17 auf 3 Typen reduziert (Entsorgungsblock, Lasersender, Automatikgeschützturm). Trichter, die 8 automatischen Sortierblöcke, Förderband, 2 Ampeltypen und der automatische Zughalteblock funktionieren nun ohne Strom."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Sturmgewehr: gemessen 4.500/Sekunde → 5.850/Sekunde",
+        "Minigun: gemessen 250/Sekunde → 50/Sekunde (deutlich abgeschwächt, nun schwächer als ein Diamantschwert)",
+        "Auch der Schaden von Scharfschützengewehr und schwerem Scharfschützengewehr wurde erhöht. Der Berechnungsfaktor für die Haltbarkeit der Scharfschützengewehr-Reihe wurde von 0,5 auf 0,6 geändert"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die vom Lenkraketenwerfer abgefeuerte Rakete zerstört Gelände auch dann, wenn `mobGriefing` auf `false` gesetzt ist. Wer ausschließlich die Geländezerstörung deaktivieren möchte, setze `rocketDestroysTerrain` in der Config auf `false`.",
+        "Die Baumhöhe in der Oberwelt wurde auf y=1023 erweitert. Das betrifft auch Spieler, die den Himmel nicht nutzen (der Bereich unter der Erde bleibt unverändert).",
+        "Die Zahl der strombedürftigen Sortierblöcke und Trichter wurde deutlich reduziert – bisher gestoppte Geräte laufen dadurch automatisch wieder an. An lange unbeachteten Orten kann es dadurch zu unerwartetem Wiederanlaufen kommen.",
+        "Die obigen Änderungen bei der Schusswaffen-Schadensmenge werden automatisch übernommen. Ein Löschen oder Bearbeiten der Config ist nicht nötig, wer sie zurücksetzen möchte, kann die Werte einzeln in der Config festlegen."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Direkt nach Einführung ließen sich bei Verstärktem Leuchtfeuer α/β keine Fähigkeiten auswählen (im nächsten Update behoben).",
+        "Direkt nach Einführung erschien der Lenkraketenwerfer nicht im Kreativ-Reiter und hatte keinen Anzeigenamen. Auch für die 2 Sprengkopftypen fehlten Icons (im nächsten Update behoben).",
+        "Für die Apps von Handy und Computer gab es zunächst noch keine eigenen Icons, nur farbige Rechtecke nebeneinander (im nächsten Update verbessert)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.3",
+     "date": "2026-08-06",
+     "type": "release",
+     "title": "Elektrifizierung von Haushaltsgeräten und Wärmeentwicklung von Maschinen",
+     "summary": "Die 5 Baumaterial-Geräte Überwachungskamera, Aufzug, Rolltreppe, Automatiktür und Geldautomat benötigen nun Strom. Außerdem heizen laufende Maschinen wie Generator oder Kernkraftwerk nun den umgebenden Raum auf – ohne Belüftung oder Kühlung kann die Hitze Schaden verursachen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Überwachungskamera, Aufzug, Rolltreppe, Automatiktür und Geldautomat benötigen nun Strom (auch bereits aufgestellte Geräte sind ab dem nächsten Serverstart betroffen). Der Aufzug funktioniert ohne Strom immerhin noch abwärts (verhindert ein Einschließen).",
+        "Laufende Maschinen wie Generator oder Kernkraftwerk heizen nun ihre Umgebung auf. Betreibt man ungekühlt 8 Maschinen gleichzeitig, steigt die Raumtemperatur auf etwa 77,8 °C, nach etwa 14 Sekunden beginnt Schaden.",
+        "Die Klimaanlage verbraucht nun korrekt Strom (bisher galt sie fälschlich als stromlos)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Wärmeentwicklung von Maschinen: Bei 8 dauerhaft ungekühlt laufenden Maschinen steigt die Raumtemperatur auf etwa 77,8 °C, nach etwa 14 Sekunden entsteht Hitzeschaden"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Überwachungskamera, Aufzug, Rolltreppe, Automatiktür und Geldautomat müssen nun per Kabel verkabelt werden. Bereits aufgestellte Geräte bleiben ab dem nächsten Start stehen.",
+        "Die Umgebung von wärmeerzeugenden Maschinen wie Generatoren wird ohne Belüftung oder Kühlung durch die Klimaanlage gefährlich heiß."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das tatsächliche Verhalten der 5 elektrifizierten Geräte (Überwachungskamera, Aufzug, Rolltreppe, Automatiktür, Geldautomat) – sowohl mit als auch ohne Strom – ist noch nicht bestätigt.",
+        "Aussehen und Bedienbarkeit der 3 neuen Generatortypen und der Brennstoff-Slots sind noch nicht bestätigt."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.2",
+     "date": "2026-08-06",
+     "type": "release",
+     "title": "Klimaanlage vergrößert, Strom-Geräte einfacher aufzustellen",
+     "summary": "Die Klimaanlage wurde deutlich vergrößert und wirkt nun tatsächlich präsent im Raum. Außerdem wurden die Geräte des Strom-MODs so umgestaltet, dass sie sich jeweils durch das Aufstellen eines einzigen Gegenstands fertig aufbauen, und ein Fehler behoben, durch den der Kamin in der Schneebiome überhaupt keine Wirkung zeigte.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Grundgröße der Klimaanlage wurde vergrößert (entspricht nun etwa 3,1×2,0×2,1 Blöcken). Mit rundem Lüfterrad, Kühlrippen und beleuchtetem Bedienfeld an der Außeneinheit sowie drei nach vorn ragenden Lamellen an der Inneneinheit gehört sie zu den größten Geräten des Strom-MODs.",
+        "Geräte des Strom-MODs müssen nun nicht mehr aus mehreren Blöcken zusammengesetzt werden, sondern sind durch das Aufstellen eines einzigen Gegenstands fertig eingerichtet.",
+        "Fehler behoben, durch den der Kamin in der Schneebiome überhaupt keine Wirkung zeigte. Kälte des Geländes und Wärme der Ausrüstung werden nun getrennt berechnet."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Schneebiome neben selbst entzündetem Kamin: gefühlte Temperatur -24,0 °C (Frostschaden) → +2,4 °C (sicher)",
+        "Überdachte Basis, Nacht, Schneefall, mit Kamin: -18,6 °C → +7,9 °C"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Steht man in einer Schneesturm-Nacht dauerhaft im Freien, kann ein einzelner Kamin allein noch nicht ausreichen (kombiniere Dach, Rüstung und zusätzliche Kamine)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Ob die Temperaturbalance im tatsächlichen Spielbetrieb stimmig ist, wurde noch nicht überprüft.",
+        "Das neue dreidimensionale Aussehen der 9 automatischen Sortierblöcke ist noch nicht bestätigt."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.1",
+     "date": "2026-08-05",
+     "type": "release",
+     "title": "Strom-MOD hinzugefügt — Redstone braucht jetzt Strom",
+     "summary": "Der 8. MOD „Strom“ ist neu hinzugekommen. Als eine der größten Änderungen des gesamten Projekts benötigen Vanilla-Redstone-Schaltungen (Redstone-Staub, Repeater, Komparator, Redstone-Block, Redstone-Fackel) nun Strom von einem Generator. Alle bisherigen Redstone-Konstruktionen wie automatische Farmen, Bahnhöfe oder Automatiktüren bleiben zunächst stehen, bis ein Stromnetz verlegt wird.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der 8. MOD „Strom“ ist neu hinzugekommen. Mit Generator, Kernkraftwerk, Sicherungskasten und Kabeln lässt sich nun ein Stromnetz aufbauen.",
+        "17 Elemente wie Hebel, Knopf, Druckplatte, Stolperdrahthaken, Beobachter, Tageslichtsensor, Sculk-Sensor, Zielblock, Fallentruhe, Loren-Detektorschiene, Lesepult, Musikbox und Blitzableiter funktionieren weiterhin ohne Strom wie gewohnt (z. B. das Öffnen und Schließen von Türen bleibt unverändert).",
+        "Ein Redstone-Block zerfällt etwa 10 Minuten nach dem Platzieren von selbst und kehrt als Gegenstand zurück (damit kein „kostenloser Stromspender“ einfach herumsteht).",
+        "Nur 3 Ausnahmen – Entsorgungsblock, Lasersender und Automatikgeschützturm – bleiben aus Sicherheitsgründen ohne Strom umgekehrt weiter „aktiv“ (damit keine wichtigen Gegenstände oder Mobs versehentlich verloren gehen).",
+        "Die Geschossgeschwindigkeit von Scharfschützengewehr, schwerem Scharfschützengewehr und Lasergewehr wurde auf den ursprünglich beabsichtigten Wert korrigiert (Schaden, Feuerrate, Magazingröße, Haltbarkeit und Reichweite bleiben unverändert)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Geschossgeschwindigkeit von Scharfschützengewehr/schwerem Scharfschützengewehr: 16,0 → 24,0 (×1,5)",
+        "Geschossgeschwindigkeit des Lasergewehrs: 16,0 → 48,0 (×3)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Alle Anlagen mit Redstone-Schaltungen – bestehende automatische Farmen, Bahnhöfe, Automatiktüren usw. – bleiben zunächst stehen. Es muss ein neues Stromnetz (Generator und Kabel) verlegt werden.",
+        "Um all diese Änderungen vollständig rückgängig zu machen, setze `powerEnabled` in config/sorakaze_power.json auf `false`; um nur Redstone zurückzusetzen, setze in derselben Datei `redstoneRequiresPower` auf `false`.",
+        "Beobachter und Tageslichtsensor bleiben bewusst ohne Strom funktionsfähig (damit es weiterhin eine Möglichkeit gibt, eine stromlose Basis im Spiel selbst wieder instand zu setzen)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Wie sich eine Welt anfühlt, in der Redstone stillsteht, und wie stark Farmen und Bahnhöfe betroffen sind, ist noch nicht überprüft.",
+        "Das Leuchten der Kabel sowie das Aussehen von Sicherungskasten-Bildschirm, Generator und Kernkraftwerk sind im Spielbetrieb noch nicht bestätigt.",
+        "Wird der Strom aus- und wieder eingeschaltet, kann es vorkommen, dass ein nicht an einen Sicherungskasten angeschlossenes, isoliertes Kabel dauerhaft leuchtend bleibt (Abbauen und Neuplatzieren behebt das)."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.0",
+     "date": "2026-08-04",
+     "type": "hotfix",
+     "title": "Automatische Reparatur der Config-Dateien (Neuverteilung von v1.8.0)",
+     "summary": "Eine noch am selben Tag neu verteilte korrigierte Version. Im ursprünglichen v1.8.0 überschrieben alte, in den Config-Dateien früherer Versionen verbliebene Werte die neuen Standardwerte, wodurch Änderungen wie die Kameraauflösung, die Werte von Excalibur oder die Geländezerstörung des Raketenwerfers nicht wirksam wurden. Ab sofort muss die Config-Datei nach einem Update nicht mehr manuell gelöscht werden – ein neuer Mechanismus aktualisiert beim Start automatisch nur die „von einer alten Version gesetzten veralteten Werte“ auf die aktuellen Standardwerte.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Ein Mechanismus wurde eingeführt, der noch aus alten Versionen stammende „fossile“ Einstellungswerte automatisch erkennt und auf die aktuellen Standardwerte umschreibt. Ab sofort muss die Config-Datei bei Updates nicht mehr manuell gelöscht werden.",
+        "Selbst angepasste Werte bleiben dabei vollständig unangetastet (aktualisiert wird nur, wenn der gespeicherte Wert exakt einem früheren Standardwert entspricht).",
+        "Durch diese Korrektur werden Kameraauflösung (768 → 3840), Excalibur-Werte (Angriffskraft 12 → 75, Angriffsgeschwindigkeit 1,8 → 0,6) und die Geländezerstörung des Raketenwerfers nun auch im tatsächlichen Spielbetrieb korrekt übernommen.",
+        "Diesmal aktualisiert wurden 5 MODs: Bosse, Baumaterial, Schusswaffen, Himmel und Survival. Schienenverkehr und Fahrzeuge blieben diesmal unverändert."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Diese Neuverteilung wird unter derselben Versionsnummer und denselben Dateinamen wie das ursprüngliche v1.8.0 verteilt. Falls du das ursprüngliche v1.8.0 bereits hast, verwirf es bitte und ersetze es durch diese Version.",
+        "Der bisher bei jedem Update angekündigte Hinweis „bitte die Config-Datei löschen“ entfällt ab sofort."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die neuen Werte von Excalibur und der Geländezerstörungseffekt des Raketenwerfers sind im tatsächlichen Spielbetrieb noch nicht bestätigt."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.8.0",
+     "date": "2026-08-04",
+     "type": "release",
+     "title": "Umbenennung in „Glimpse Alpha“",
+     "summary": "Der Name der MOD-Sammlung wurde von „Sorakaze“ zu „Glimpse Alpha“ geändert. Es handelt sich ausschließlich um eine Änderung der angezeigten Namen – jar-Dateinamen, Namen der Kreativ-Reiter und der Name der Verteilungs-zip – während interne IDs von Blöcken und Gegenständen, Weltdaten und Config-Dateinamen komplett unverändert bleiben. Bereits errichtete Bauwerke und besessene Gegenstände bleiben vollständig erhalten. Außerdem wurden Werte bei Schusswaffen und Boss-Drop-Waffen angepasst und die Auflösung der Überwachungskamera erhöht.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Server- und MOD-Name von „Sorakaze“ zu „Glimpse Alpha“ geändert (Anzeigename, jar-Dateiname, Name des Kreativ-Reiters und Name der Verteilungs-zip – überall).",
+        "Interne IDs, Registry-IDs, Config-Dateinamen und Spielstanddaten bleiben vollständig unverändert. Bestehende Bauwerke, Gegenstände und der Spielfortschritt bleiben vollständig erhalten.",
+        "Auch das mitgelieferte Ressourcenpaket wurde in „Glimpse_Alpha_Mask_Skin_Pack.zip“ umbenannt (vorher Sorakaze_Mask_Skin_Pack.zip).",
+        "Standardauflösung der Überwachungskamera von 768 auf 3840 erhöht.",
+        "Explosionen des Raketenwerfers zerstören nun Gelände (bisher richteten sie keinerlei Schaden am Gelände an)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Schaden des Sturmgewehrs: 375 → 450 (gemessene DPS 3.750 → 4.500)",
+        "Schaden der Schrotflinte: 15 → 17,25",
+        "Schaden des Scharfschützengewehrs: 20 → 23",
+        "Schaden des schweren Scharfschützengewehrs: 80 → 92",
+        "Haltbarkeit der Scharfschützengewehr-Reihe: 128 → 64",
+        "Explosionskraft des Raketenwerfers: 3 → 12",
+        "Excalibur (Boss-Drop-Zweihandschwert): Angriffskraft 31 → 75, Angriffsgeschwindigkeit -3,1 → -3,4, Haltbarkeit 6093 → 3047"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die alten sorakaze-*.jar-Dateien (7 Stück) im mods-Ordner des Servers müssen unbedingt vollständig entfernt werden, bevor die neuen glimpse-alpha-*.jar-Dateien eingesetzt werden. Bleibt auch nur eine alte Datei zurück, entsteht der Zustand „derselbe MOD ist doppelt vorhanden“, und der Server startet nicht mehr.",
+        "Um die obigen Wertanpassungen zu übernehmen, waren ursprünglich das Löschen von config/sorakaze_guns.json und config/sorakaze_boss.json sowie eine einzeilige Änderung in config/sorakaze_deco.json nötig. ※ Dieser Aufwand wurde im nächsten Update (Neuverteilung) automatisiert und entfällt seither."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Anzeige im Spiel nach der Umbenennung (Gegenstandsnamen, Darstellung des Kreativ-Reiters usw.) wurde im Spielbetrieb noch nicht überprüft.",
+        "Die neue Explosionskraft des Raketenwerfers und das tatsächliche Ausmaß der Geländezerstörung sind noch nicht überprüft."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.7",
+   "summary": "Gleichzeitiges Update aller 7 MODs – Waffen kehren zu echten Geschossen zurück",
+   "releases": [
+    {
+     "version": "v1.7.7",
+     "date": "2026-08-04",
+     "type": "release",
+     "title": "Gleichzeitiges Update aller 7 MODs – Waffen kehren zu echten Geschossen zurück",
+     "summary": "Alle 7 MODs wurden gleichzeitig auf v1.7.7 aktualisiert. Die Waffen wechselten vom Hitscan-System (sofortiger Treffer) zurück zu tatsächlich fliegenden Geschossen (die Schadenswerte selbst wurden dabei nicht verändert). Zahlreiche neue Elemente kamen in jedem MOD hinzu, darunter die neue Waffe „Raketenwerfer“, der automatische Zughalteblock des Zug-MODs und die Feuerwerkspuppe.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "【Schusswaffen】Geschosse fliegen nun wieder „tatsächlich durch die Luft“. Das Spielgefühl ändert sich dadurch, die Schadenswerte der einzelnen Waffen bleiben aber unverändert.",
+        "【Schusswaffen】Neue Waffe „Raketenwerfer“ samt eigener Munition hinzugefügt. Verursacht Direkttreffer- plus Explosionsschaden; die Zerstörung von Gelände ist standardmäßig deaktiviert.",
+        "【Baumaterial】Türen schließen sich nun auch dann, wenn jemand eingeklemmt ist. Da die Kollisionsform beim Schließen so ausgelegt ist, dass keine Berührung entsteht, kommt es dabei zu keinem Schaden durch Einklemmen.",
+        "【Baumaterial】Farbige Sicherheitsglasfenster (17 Farben), 5 Dekorationsblöcke (Smartphone-, Laptop- und Desktop-Form) sowie eine Tresortür hinzugefügt. Die Obergrenze der Bildauflösung der Überwachungskamera wurde erweitert (der Standardwert bleibt unverändert).",
+        "【Bosse】Die Anzahl der gleichzeitig wählbaren Spezialeffekte des Verstärkten Leuchtfeuers wurde von 3 auf 5 erhöht.",
+        "【Bosse】Der Drop „Excalibur“ von Rock Lock wurde als Zweihandschwert neu gestaltet. Es erhielt ein eigenes 3D-Modell und wurde in seinen Werten verstärkt.",
+        "【Himmel】Ein Fehler behoben, bei dem beim Reiten auf einem Drachen die Fahrtrichtung der Körperausrichtung entgegengesetzt war.",
+        "【Himmel】Der Engelsstab wurde verstärkt. Auch das Aussehen von Königsschwert und dem gesamten Engels-Ausrüstungssatz wurde zu plastischeren Modellen überarbeitet (die Werte bleiben unverändert).",
+        "【Schienenverkehr】Neuer automatischer Zughalteblock hinzugefügt. Unter den Gleisen platziert, bringt er einen sich nähernden Zug automatisch sanft zum Stehen.",
+        "【Fahrzeuge】Fehler behoben, bei dem nach einmaligem Wechsel in die Ego-Cockpit-Perspektive dauerhaft Teile der Karosserie unsichtbar blieben. Das Aussehen von 11 Fahrzeugtypen wurde überarbeitet.",
+        "【Survival】Die Vorkommensmenge von Perlen- und Rubinerz wurde etwa verdoppelt (nur in neu generiertem Land). Perlen- und Rubinblöcke wurden hinzugefügt.",
+        "【Survival】Neuer Gegenstand „Feuerwerkspuppe“ hinzugefügt. Wie das Totem der Unsterblichkeit bewahrt sie einmalig vor dem Tod, wirkt aber stärker und lässt sich bis zu 3-mal verwenden. Sie kann auch als Dekoration aufgestellt werden."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Excalibur (Boss-Drop): Schaden 12,0 → 36,0 (×3), Angriffsgeschwindigkeit halbiert, Reichweite 3,0 → 4,0 Blöcke erhöht, neuer Rückstoß-Effekt hinzugefügt. Die Drop-Rate wurde jedoch von 100 % auf 70 % geändert.",
+        "Engelsstab: Schaden 12 → 20, Reichweite 48 m → 64 m, Abklingzeit verkürzt, Nahkampfbonus 7,0 → 10,0 (damit erstmals über dem Nahkampfbonus des Engelsschwerts).",
+        "Raketenwerfer: Direkttreffer 40,0 + Explosionsschaden (Explosionskraft entspricht einem Creeper). Magazingröße 1, mit der langsamsten Geschossgeschwindigkeit aller Waffen."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Config-Löschung erforderlich: `sorakaze_boss.json` (Werte von Excalibur), `sorakaze_sky.json` (Werte des Engelsstabs). Ohne Löschen werden die neuen Werte nicht übernommen.",
+        "Auch das Löschen von `sorakaze_guns.json` wird empfohlen. Ohne Löschen bleibt der neu hinzugekommene Einstellungspunkt „Geschossgeschwindigkeit“ für alle Waffen gemeinsam auf einem ungewöhnlich niedrigen Wert fixiert (Schaden und andere Werte sind davon nicht betroffen).",
+        "Von den 5 neuen Dekorationsblöcken sind die Smartphone-, Laptop- und Desktop-Form an real existierende Produkte angelehnt. Sowohl die Anzeige im Spiel als auch das Handbuch beschreiben jedoch nur die Form, ohne Markennamen zu verwenden.",
+        "【Balance】Auch zu diesem Zeitpunkt liegt das Sturmgewehr mit etwa 3750 Schaden pro Sekunde noch immer sehr hoch – selbst mit Verstärkung von Leuchtfeuer, Excalibur und Engelsstab lassen sich die meisten Bosse weiterhin in wenigen Sekunden besiegen. Weder Waffen noch Bosse haben zusätzliche Resistenz erhalten.",
+        "Die Versionsnummern 1.4.3, 1.6.x, 1.7.2 und 1.7.6 sind interne Nummern aus der Entwicklung und wurden nie tatsächlich verteilt."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Wie sich das Schließen von Türen „auch bei anwesenden Personen“ anfühlt, wie sich Abschuss und Einschlag des Raketenwerfers anfühlen und wie benutzerfreundlich die neue GUI des Verstärkten Leuchtfeuers ist, sind noch nicht im Spielbetrieb überprüft.",
+        "Auch wie die neuen 3D-Modelle von Excalibur und Engelsstab aussehen und wie sich die Korrektur der Drachenausrichtung tatsächlich zeigt, ist noch nicht überprüft.",
+        "Aussehen von Feuerwerkspuppe, Perlen-/Rubinblock und automatischem Zughalteblock sowie die Auswirkung der hochauflösenden Kameraeinstellung auf die Rechnerlast sind ebenfalls noch nicht überprüft.",
+        "Die Angriffsanimationen von Kraken und Titan entsprechen weiterhin nicht der ursprünglichen Spezifikation (Rückmeldung des Eigentümers steht aus).",
+        "Die beiden in v1.7.3 gefundenen Probleme des Himmel-MODs (Ruckler bei Überfällen, Verschwinden gezähmter Drachen) stehen in keinem Zusammenhang mit den diesmaligen Änderungen am Himmel-MOD und sind weiterhin ungelöst."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.5",
+     "date": "2026-08-02",
+     "type": "hotfix",
+     "title": "Fehler bei Sicherheitsglas und Flügeltüren behoben",
+     "summary": "Nur der Baumaterial-MOD wurde aktualisiert. Behoben wurden ein Fehler, durch den das Abbauen von Sicherheitsglas (17 Farben) unabhängig vom Werkzeug immer genau 75 Sekunden dauerte, sowie ein Fehler, bei dem die in v1.5.0 hinzugefügten großen Flügeltüren (50 Stück) sich optisch nicht richtig weit öffneten.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Sicherheitsglas lässt sich nun mit der Hacke abbauen. Die Abbaugeschwindigkeit hängt vom Werkzeugtyp (Holz bis Netherit) und der Verzauberung „Effizienz“ ab. Bisher gab es den Fehler, dass unabhängig vom Werkzeug immer genau 75 Sekunden nötig waren.",
+        "Sicherheitsglas wird nun nicht mehr von Wither oder Enderdrachen zerstört.",
+        "Die großen Flügeltüren (50 Stück, Größe 3×3 bzw. 3×4) öffnen sich nun auch optisch tatsächlich weit. Bisher glitten sie nur wie eine normale Tür schmal zur Seite, sodass der Durchgang nicht ausreichend geöffnet aussah."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Richtwerte für die Abbauzeit von Sicherheitsglas: Holzhacke ca. 37,5 Sekunden, Steinhacke ca. 18,8 Sekunden, Eisenhacke ca. 12,5 Sekunden, Goldhacke ca. 6,25 Sekunden, Diamanthacke ca. 9,4 Sekunden, Netherithacke ca. 8,4 Sekunden (mit Effizienz V an der Diamanthacke ca. 2,25 Sekunden). Bei bloßer Hand, Spitzhacke, Axt, Schaufel und Schwert bleibt es weiterhin bei 75 Sekunden."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "【Einschränkung】Ursprünglich war geplant, dass sich Sicherheitsglas ausschließlich mit einer speziellen Axt schnell abbauen lässt. Aufgrund des Vanilla-Mechanismus ist es jedoch (je nach Werkzeugstufe) mit jeder Hacke schnell abbaubar, einschließlich der Holzhacke – eine Beschränkung auf ein bestimmtes Werkzeug war technisch nicht umsetzbar.",
+        "Ein Löschen der Config ist nicht nötig. Diese Korrektur verwendet keine Config-Werte."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Wie sich der Abbau von Sicherheitsglas mit der Hacke tatsächlich anfühlt und ob sich die großen Flügeltüren auf dem Bildschirm sichtbar weit öffnen, ist noch nicht im Spielbetrieb überprüft.",
+        "Die Angriffsanimationen von Kraken und Titan entsprechen weiterhin nicht der ursprünglichen Spezifikation.",
+        "Die beiden in v1.7.3 gefundenen Probleme des Himmel-MODs (Ruckler bei Überfällen, Verschwinden gezähmter Drachen) sind weiterhin ungelöst, da der Himmel-MOD diesmal nicht verändert wurde."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.4",
+     "date": "2026-08-02",
+     "type": "release",
+     "title": "Erscheinen des Pestdoktors auf Beschwörungssteine beschränkt",
+     "summary": "Nur der Boss-MOD wurde aktualisiert. Der Mechanismus, bei dem der Pestdoktor bei schlechtem Wetter zufällig erschien, wurde entfernt – wie bei den anderen 10 Bossen lässt er sich nun ausschließlich über einen eigenen Beschwörungsstein herbeirufen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Erscheinungsweise des Pestdoktor-Bosses wurde geändert. Der bisherige Mechanismus „zufälliges Erscheinen bei schlechtem Wetter“ wurde entfernt und einheitlich durch das Aufstellen des neuen „Pestdoktor-Beschwörungssteins“ ersetzt. Das Aufstellmuster entspricht wie bei den anderen 10 Bossen einem 3×3-Muster mit Witherrosen an den 4 Ecken, Phantommembran an den Kanten und einem Netherstern in der Mitte."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Wer bisher auf schlechtes Wetter gewartet hat, um den Pestdoktor zu finden, wird ihn künftig so nicht mehr antreffen. Bitte den Beschwörungsstein craften und einsetzen.",
+        "Ein Löschen der Config ist nicht nötig. Die entfernten Einstellungen betrafen nur das natürliche Erscheinen und haben keinen Einfluss auf die verbleibenden Werte."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Effekte beim Einsatz des Beschwörungssteins sowie Aussehen, eigene Stimme und Opferritual-Effekte des Pestdoktors selbst wurden diesmal nicht verändert und sind weiterhin nicht im Spielbetrieb überprüft.",
+        "Der Baumaterial-MOD ist von diesem Update nicht betroffen. Separat laufen bereits Korrekturen an Sicherheitsglas und Türen, die in einem künftigen Update einfließen sollen.",
+        "Die beiden in v1.7.3 gefundenen Probleme des Himmel-MODs (Ruckler bei Überfällen, Verschwinden gezähmter Drachen) sind auch diesmal nicht Teil des Updates.",
+        "Die Angriffsanimationen von Kraken und Titan entsprechen weiterhin nicht der ursprünglichen Spezifikation."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.3",
+     "date": "2026-08-02",
+     "type": "release",
+     "title": "Fehler bei Zugfenstern und in Singapur behoben",
+     "summary": "Ein Fehler, bei dem man vom Führerstand bzw. den Sitzplätzen des Zuges kaum nach draußen sehen konnte, sowie Fehler im Stadtstaat „Singapur“ am Himmel – etwa nicht generierte Gebäude oder in der Luft schwebende Ruinen – wurden behoben. Außerdem wurde die Spawn-Obergrenze feindlicher Mobs korrekt auf die Oberwelt beschränkt und die maximale Verzauberungsstufe auf einen angemessenen Wert angepasst.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Fehler behoben, bei dem man auf dem Führerstand oder den Sitzplätzen aller 8 Zugtypen hauptsächlich die Wand unter dem Fenster sah und kaum nach draußen blicken konnte. Nun sind Blick nach vorn und zur Seite deutlich besser möglich.",
+        "Im Stadtstaat „Singapur“ am Himmel wurden Fehler behoben, bei denen gar keine Gebäude generiert wurden, dasselbe Hotel mehrfach gebaut wurde oder Bäume und Dörfer in der Luft schweben blieben. Behoben wird das jedoch nur für Land, das nach dem Update neu generiert wird. Für bereits generiertes, beschädigtes Gelände liegt ein Wiederherstellungswerkzeug für Administratoren bei, mit dem sich gezielt nur der betroffene Bereich neu aufbauen lässt.",
+        "Im Boss-MOD lassen sich Einstellungen zum Erscheinen des Pestdoktors nun über die Config anpassen.",
+        "Die Stärke des Atemangriffs der Wyvern wurde halbiert.",
+        "Ein Fehler wurde behoben, durch den die natürliche Spawn-Obergrenze feindlicher Mobs fälschlicherweise auch für Nether und das Ende galt – sie ist nun korrekt auf die Oberwelt beschränkt (Survival-MOD)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Schaden der Minigun um 75 % gesenkt.",
+        "Schaden des Sturmgewehrs um 25 % erhöht. Gemessene Schadenseffizienz pro Sekunde: Sturmgewehr 3750 > Lasergewehr 2000 > Minigun 250.",
+        "Der Universalsammler (Werkzeug aus dem Boss-Drop) wechselt von haltbarkeitsbasiert zu einem festen Limit von „geht nach 5 Anwendungen kaputt“. Verzauberungen wie Reparatur und Unzerstörbarkeit lassen sich am Amboss nicht mehr anlegen, Abbaugeschwindigkeit, Glück und Behutsamkeit weiterhin.",
+        "Standardwert der maximalen Verzauberungsstufe von 255 auf 20 angepasst (auch die einstellbare Obergrenze wurde von 255 auf 32 verringert). Damit treten die von manchen Spielern gemeldeten absurden Werte wie „Verzauberungsstufe 255“ nicht mehr auf."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "3 Config-Dateien müssen gelöscht werden: `sorakaze_guns.json`, `sorakaze_sky.json` und `sorakaze_survival.json`. Ohne das Löschen wirken die obigen Wertänderungen nicht. `sorakaze_boss.json` muss nicht gelöscht werden.",
+        "【Wichtig】Beim umfassenden Test des Himmel-MODs unter großem Maßstab und über einen längeren Zeitraum wurden 2 neue Probleme entdeckt, die noch nicht behoben sind: (1) Bei großen Überfallereignissen kann es zu Rucklern kommen. (2) Ein gezähmter Enderdrache kann mit der Zeit verschwinden (gezähmte Wyvern sind davon nicht betroffen)."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die oben genannten Ruckler bei Überfällen sowie das Verschwinden gezähmter Drachen sind weiterhin ungelöst.",
+        "Aussehen, Spawn-Verhalten und die Anwendungserfahrung mit dem auf 5 Anwendungen begrenzten Universalsammler des Pestdoktors sind noch nicht im Spielbetrieb überprüft.",
+        "Die Angriffsanimationen von Kraken und Titan entsprechen weiterhin nicht der ursprünglichen Spezifikation (Rückmeldung des Eigentümers steht aus).",
+        "Das Singapur-Wiederherstellungswerkzeug wurde bisher nur mit Testdaten geprüft; ein Test mit echten Weltdaten steht noch aus."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.1",
+     "date": "2026-08-01",
+     "type": "hotfix",
+     "title": "Notfall-Fix: Absturz nach Installation von v1.7.0 behoben",
+     "summary": "Nach der Installation von v1.7.0 stürzte das Spiel bei jedem Start zuverlässig ab. Ursache war die Registrierung der Tastenbelegung des Fahrzeuge-MODs (Fahrwerk ein-/ausfahren, Klappen, Türen usw.); das Problem wurde durch ein alleiniges Update des Fahrzeuge-MODs auf v1.7.1 behoben.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Nur der Fahrzeuge-MOD (sorakaze_vehicles) wurde aktualisiert. Die anderen 6 MODs bleiben unverändert bei v1.7.0.",
+        "Keine neuen Gegenstände oder Blöcke – dieses Update behebt ausschließlich den Startabsturz."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Wer nach der Installation von v1.7.0 „bei jedem Start abstürzt“, muss unbedingt die jar-Datei des Fahrzeuge-MODs durch diese Version v1.7.1 ersetzen.",
+        "Die anderen 6 MODs (Schusswaffen, Schienenverkehr, Baumaterial, Bosse, Himmel, Survival) funktionieren weiterhin mit v1.7.0. Ein Austausch ist dort nicht nötig."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Neue Elemente aus v1.7.0 wie die Ego-Perspektive (Cockpit-Sicht) der Fahrzeuge konnten aufgrund des Absturzes bislang von niemandem angesehen oder getestet werden.",
+        "Die Synchronisation bei gleichzeitigem Spiel zu zweit sowie die Serverlast bei gleichzeitigem Betrieb aller MODs sind weiterhin nicht überprüft."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.7.0",
+     "date": "2026-08-01",
+     "type": "release",
+     "title": "Gleichzeitiges Update aller 7 MODs, versteckte Inhalte freigeschaltet",
+     "summary": "Erstmals ziehen alle 7 MODs an einem Strang und werden nun unter derselben Versionsnummer (v1.7.0) verteilt. Durch die Behebung eines Fehlers in der Rezeptsammlung sind zahlreiche bisher verborgene Inhalte ans Licht gekommen, darunter Lebensmittel und Einrichtungsgegenstände des bislang unsichtbaren Stadtstaats „Singapur“ am Himmel. Dem Fahrzeuge-MOD wurde neu die Ego-Perspektive (Cockpit-Sicht) hinzugefügt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Erstmals werden alle 7 MODs unter derselben Versionsnummer verteilt. Bisher hatte jeder MOD seine eigene, uneinheitliche Versionsnummer.",
+        "Durch die Behebung eines Fehlers in der Rezeptsammlung erscheinen nun 300 im Stadtstaat „Singapur“ am Himmel erhältliche Lebensmittel sowie Gegenstände wie Belagerungshammer, Grundstücksurkunde, Grundbuch und Lebensmittelregal in der Sammlung. Diese werden in Geschäften gekauft und sind nicht craftbar.",
+        "Auch der Boss-Drop „Universalsammler“ und der in Singapur aufgestellte (nicht craftbare) „Spezial-Geldautomat“ erscheinen nun in der Rezeptsammlung.",
+        "Dem Fahrzeuge-MOD wurde die Ego-Perspektive (Cockpit-Sicht) hinzugefügt – beim Fahren versperren Dach und Säulen des eigenen Fahrzeugs nicht mehr die Sicht. Lässt sich in den Einstellungen wieder ausschalten.",
+        "Die Item-Icons von 113 Fahrzeugen, 35 Zugvarianten und 3 Waffen wurden neu gezeichnet.",
+        "Die bisherige Obergrenze des Guthabens beim Geldautomaten (bisher 100.000) wurde aufgehoben – Einzahlungen sind nun unbegrenzt möglich.",
+        "Ein Rezept zum Zurückwandeln von Amethystblöcken in Amethystscherben wurde hinzugefügt.",
+        "Die maximale Verzauberungsstufe (normal 30) wurde deutlich angehoben (Survival-MOD)."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Lasergewehr: Schaden 160 → 200, Feuerrate 6 → 10 Schuss/Sekunde, Magazingröße 100 → 200.",
+        "Bohrer: Abbaugeschwindigkeit 12,0 → 24,0, Haltbarkeit 2048 → 10240.",
+        "Bevölkerungsobergrenze von Himmelskönigreich und Engelsstadt deutlich erhöht (z. B. Händler des Königreichs 16 → 48, Bewohner 64 → 192).",
+        "Standard-Bildauflösung der Überwachungskamera von 192 auf 768 geändert."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Damit die obigen Wertänderungen bei Schusswaffen-MOD (sorakaze_guns) und Himmel-MOD (sorakaze_sky) wirken, müssen nach dem Update `config/sorakaze_guns.json` und `config/sorakaze_sky.json` gelöscht werden.",
+        "Die Config des Baumaterial-MODs (sorakaze_deco) bitte nicht löschen, sondern nur den Wert von `cameraFeedResolution` ändern. Beim Löschen werden auch alle anderen Einstellungen wie die Ampelzeiten auf die Standardwerte zurückgesetzt.",
+        "Die aktuell gemessene Schadenseffizienz der Waffen ist mit etwa 3.000/Sekunde beim Sturmgewehr, 2.000/Sekunde beim Lasergewehr und 1.000/Sekunde bei der Minigun sehr hoch – die meisten Bosse lassen sich damit in wenigen Sekunden besiegen."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der neu hinzugekommene Überfallboss „Gepanzerter Eindringling“ sieht optisch möglicherweise noch nicht recht nach „gepanzert“ aus und wird voraussichtlich künftig angepasst.",
+        "Die Zugmodelle sind weiterhin nur etwa im Maßstab 1:3 gegenüber echten Zügen. Zudem wurde die Breite der Kollisionsform von 1,8 auf 2,0 Blöcke vergrößert, wodurch bestehende 2 Blöcke breite Tunnel möglicherweise nicht mehr befahrbar sind. Den 3 älteren Zugtypen (Zug/Personenwagen/Güterwagen) fehlen Fenster, Innenausstattung und Türen.",
+        "Bei der Ego-Perspektive der Fahrzeuge liegt die maximale Wendegeschwindigkeit bei 36°/Sekunde, was sich möglicherweise zu schnell anfühlt.",
+        "Die Dateigröße der Rezeptsammlung ist durch die vielen neuen Lebensmittelbilder deutlich gewachsen. Je nach Umgebung kann die Anzeige dadurch träge wirken.",
+        "Die Synchronisation bei gleichzeitigem Spiel zu zweit sowie die Serverlast bei gleichzeitigem Betrieb aller MODs sind noch nicht überprüft."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.5",
+   "summary": "Königsschwert und Königsbogen korrigiert, Minigun abgeschwächt",
+   "releases": [
+    {
+     "version": "v1.5.7",
+     "date": "2026-07-30",
+     "type": "hotfix",
+     "title": "Königsschwert und Königsbogen korrigiert, Minigun abgeschwächt",
+     "summary": "Ein Fehler, bei dem der Königsbogen spiegelverkehrt aussah, sowie das Aussehen der beiden Super-Express-Züge, das bei der Überarbeitung in v1.5.6 übersehen wurde, wurden behoben. Außerdem wurden Königsschwert und Minigun abgeschwächt, und der Bohrer füllt bei leerer Zelle nun automatisch aus dem Inventar nach.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Icons von 13 engelsbezogenen Gegenständen in 128 px feiner neu gezeichnet",
+        "Fehler behoben, bei dem der Königsbogen spiegelverkehrt aussah",
+        "Aussehen der beiden Super-Express-Züge überarbeitet, das bei der Zug-Überarbeitung in v1.5.6 übersehen wurde",
+        "Der Bohrer füllt bei leerer Zelle nun automatisch aus Ersatzzellen im Inventar nach"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Minigun: Effektive Feuerkraft von etwa 2.000 auf etwa 1.000 Schaden/Sekunde gesenkt",
+        "Königsschwert: Abgeschwächt, auch bei der Angriffsgeschwindigkeit. Gemessene DPS 84,80 → 21,60 (−74,5 %). Damit liegt es sogar leicht unter dem Engelsschwert (22,40)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Damit diese Änderungen wirken, muss config/sorakaze_guns.json gelöscht werden",
+        "Wer von einer Version vor v1.5.5 in einem Schritt aktualisiert, sollte zusätzlich config/sorakaze_sky.json löschen",
+        "Die Abschwächung des Königsschwerts beruht auf internen Programmwerten und lässt sich nicht über die Config zurücksetzen"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das Item-Icon des Super-Express-Zugs zeigt noch das alte Design (der Wagen wurde überarbeitet, Icon und Erscheinungsbild passen also noch nicht zusammen)",
+        "Sculk-Golem, Rock Lock sowie Kraken und Titan haben noch keine eigenen Angriffsanimationen",
+        "Der Donnerspeer unterstützt noch keinen Wurfangriff, nur Nahkampf ist möglich"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.5.6",
+     "date": "2026-07-29",
+     "type": "release",
+     "title": "Himmelskönigreich hinzugefügt, Sensenmann-Boss stark überarbeitet",
+     "summary": "Dem Himmel-MOD wurden das riesige „Himmelskönigreich“ und 7 nur käuflich erhältliche „Königliche Ausrüstungsteile“ hinzugefügt. Der Sensenmann-Boss erhielt eigene Angriffsanimationen und ein rundum überarbeitetes Konzept. Bei den Schusswaffen wurde die Kraftbalance grundlegend überarbeitet, wodurch das Sturmgewehr zur stärksten Waffenklasse aufstieg. Auch das Aussehen aller 6 Zugfamilien wurde überarbeitet.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Das Himmelskönigreich (ein riesiges, britisch anmutendes Reich mit 1.001 Blöcken Durchmesser) ist neu hinzugekommen. 64 Bewohner, 16 Händler, 65 Schatztruhen",
+        "7 „Königliche Ausrüstungsteile“ nur im Himmelskönigreich erhältlich (nur käuflich, verbesserte Version der Engelsausrüstung)",
+        "Neuer Mob „REX“ hinzugefügt. Kann aus einem Ei ausgebrütet und geritten werden",
+        "Mit dem „Kuley-Topf“ lässt sich ein Haustier nun komplett transportieren",
+        "6 neue eigene Angriffsanimationen für den Sensenmann-Boss implementiert. Ab 50 % HP beschwört er zudem als neue Fähigkeit 3 Wither",
+        "Aussehen aller 6 Zugfamilien überarbeitet (rundliche, dreidimensionale Fenster, Türen, Front, Zielanzeige, Leuchten usw.)",
+        "Der Laptop wurde zu einem platzierbaren Block. Die Überwachungskamera erhielt ein 3D-Modell mit Schwenkfunktion, das Bild zeigt in Reichweite Echtzeitbilder, außerhalb der Reichweite „NO SIGNAL“",
+        "Die Kraftbalance der Schusswaffen grundlegend überarbeitet (Details siehe Balance-Anpassungen)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Sturmgewehr: Effektive Feuerkraft gegen ein einzelnes Ziel deutlich erhöht von etwa 400 auf etwa 3.000 Schaden/Sekunde (behoben wurde, dass nicht mehr alle Kugeln zuverlässig Schaden verursachten)",
+        "Minigun: Effektive Feuerkraft von etwa 4.000 auf etwa 2.000 Schaden/Sekunde gesenkt",
+        "Schrotflinte: Stärke verdreifacht (aus nächster Nähe etwa 150 Schaden pro Abzug)",
+        "Beide Scharfschützengewehr-Typen (normal/schwer): Haltbarkeit auf 128 gesenkt, ein Drittel der Haltbarkeit des Bogens (weniger robust, dafür hohe Feuerkraft)",
+        "Sensenmann-Boss: HP von zufällig 6.000–9.000 auf fest 3.000 geändert, Angriffskraft 16 → 32",
+        "Wyvern: Atemschaden 10 → 7,5, Ei-Drop-Rate 100 % → 20 % gesenkt (Abschwächung)",
+        "Erzengel-Boss: HP auf das 1,5-Fache auf 3.000 erhöht"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Damit die Waffenänderungen wirken, muss config/sorakaze_guns.json gelöscht werden (die Haltbarkeitseinstellung der Scharfschützengewehre ist ein neuer Eintrag und wird automatisch übernommen)",
+        "Die Versionsnummer springt von v1.5.1 auf v1.5.6, weil mehrere kleine Zwischen-Updates (Maskenanpassung, Wyvern-Abschwächung usw.) gebündelt verteilt wurden – es handelt sich nicht um eine Nummernlücke",
+        "Perlen- und Rubinerz erscheinen nicht in Land, das bereits vor der MOD-Installation generiert wurde. Laut tatsächlicher Messung sind sie etwa 1/32 so selten wie Diamant und etwa halb so selten wie antiker Schrott",
+        "Lagen bereits teilweise generierte Städte oder Burgen in der Nähe des Himmelskönigreichs, kann es sein, dass der Rest nicht generiert wird und fehlt (keine Datenbeschädigung, nur ein optisches Problem)"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Sculk-Golem, Rock Lock sowie Kraken und Titan haben noch keine eigenen Angriffsanimationen (beim Sensenmann wurde dies mit diesem Update behoben)",
+        "Der Donnerspeer unterstützt noch keinen Wurfangriff, nur Nahkampf ist möglich"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.5.1",
+     "date": "2026-07-28",
+     "type": "visual-update",
+     "title": "Aussehen der 2 Masken komplett überarbeitet",
+     "summary": "Das Aussehen der beiden Masken aus der Survival-Erweiterung wurde überarbeitet. Bisher gab es den Fehler, dass ein flaches Bild über dem Kopf zu schweben schien; nun wurde es zu einer dreidimensionalen Form (mit Ohren) umgestaltet, die dem Kopf angepasst ist. Rüstungswert, Haltbarkeit, Rezepte und andere Eigenschaften bleiben unverändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Aussehen der beiden Masken komplett neu gestaltet. Der Fehler, bei dem ein flaches Bild über dem Kopf zu schweben schien, wurde behoben – jetzt eine dreidimensionale, den Kopf umschließende Form",
+        "Der Hasenmaske wurden Hasenohren, der Harlekinmaske Fuchsohren als Detail hinzugefügt"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Icons in der Rezeptsammlung zeigen noch das alte Design (wird im nächsten Update aktualisiert)"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Textur an Seiten und Rückseite der Masken ist noch schlicht gehalten. Da der Fokus auf der Vorderseite liegt, kann sie aus der Third-Person-Ansicht von der Seite oder von hinten nahezu einfarbig wirken"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.5.0",
+     "date": "2026-07-27",
+     "type": "release",
+     "title": "Größtes Update bisher: 7. MOD „Survival-Erweiterung“ hinzugekommen",
+     "summary": "Das bisher größte Update des Projekts. Der 7. MOD „Survival-Erweiterung“ ist neu hinzugekommen und bringt Survival-Elemente wie Perlen- und Rubinerz, Masken, einen Großschild und eine Hydrationsanzeige mit sich. Außerdem erhielten alle 6 bestehenden MODs umfangreiche neue Inhalte: Der Zug wächst auf 30 Varianten, die Fahrzeuge auf 100 Varianten und die Türen des Baumaterial-MODs auf 101 Varianten.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der 7. MOD „Survival-Erweiterung“ ist neu hinzugekommen. Perlen- und Rubinerz, 2 Maskentypen (RÜSTUNG +50, Haltbarkeit 814), ein Großschild sowie eine Hydrationsanzeige (nach 30 Minuten leer) wurden hinzugefügt",
+        "Beim Meister-Bibliothekar lässt sich nun ein Buch mit Schärfe X kaufen (64 Smaragde)",
+        "Neue Waffen „Minigun“, „Bohrer“ (schürft in Blickrichtung sofort 3×3 Blöcke) und „Spinnenabwehrturm“ für den Schusswaffen-MOD hinzugefügt",
+        "Der Zug wächst auf insgesamt 30 Varianten (6 Familien × 5 Lackierungen) an (bisher gab es nur eine einzige Variante)",
+        "Die Fahrzeuge wachsen auf insgesamt 100 Varianten (25 Grundtypen × 4 Lackierungen) an, alle Fahrzeuge erhalten nun eine rundliche Stilrichtung",
+        "50 neue Flügeltüren im Prunktür-Stil (insgesamt jetzt 101 Türtypen), eine Überwachungskamera, ein Laptop sowie ein Geldautomat mit Zinseszins für den Baumaterial-MOD hinzugefügt",
+        "Ein Brutkasten für Eier für den Himmel-MOD hinzugefügt. Ausgebrütete Wyvern/Drachen werden zahm und lassen sich mit einem eigenen Sattel reiten"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "【Korrektur】Bisher wurde angegeben, dass das „Sturmgewehr gegen ein einzelnes Ziel etwa 2.000 Schaden pro Sekunde“ verursacht. Tatsächliche Messungen ergaben jedoch nur etwa 400 Schaden pro Sekunde (frühere Angaben hatten die Feuerkraft deutlich überschätzt)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die neue Waffe „Minigun“ hat eine tatsächliche Feuerkraft von etwa 4.000 Schaden pro Sekunde und ist damit die stärkste Waffe des gesamten Projekts. Da sich damit fast alle bestehenden Bosse innerhalb weniger Sekunden besiegen lassen, kann bei Bedarf für mehr Herausforderung der Wert `minigun.damage` in der Config gesenkt werden",
+        "Für dieses Update muss keine Config-Datei gelöscht werden (neue Einstellungspunkte werden beim Start automatisch ergänzt)",
+        "Perlen- und Rubinerz erscheinen nicht in Land, das bereits vor der MOD-Installation generiert wurde. Erkunde bei Bedarf neues Land"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Schwenk-Animation der Überwachungskamera ist noch nicht implementiert, derzeit ist die Perspektive fest",
+        "Sculk-Golem, Rock Lock, der Sensenmann sowie Kraken und Titan haben noch keine eigenen Angriffsanimationen, auch die Ankündigung des Spezialangriffs erfolgt nur über Partikel und Marker",
+        "Der Donnerspeer unterstützt noch keinen Wurfangriff, nur Nahkampf ist möglich"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.4",
+   "summary": "Himmelsstadt verdichtet, neuer Mob „Wyvern“ hinzugefügt",
+   "releases": [
+    {
+     "version": "v1.4.8",
+     "date": "2026-07-27",
+     "type": "release",
+     "title": "Himmelsstadt verdichtet, neuer Mob „Wyvern“ hinzugefügt",
+     "summary": "Der Umfang der Himmelsstadt wurde überarbeitet und zu einer dichteren Hochhausstadt umgebaut. In der Mitte ragen nun 4 gewaltige Türme mit bis zu 300 Blöcken Höhe als neue Landmarke empor. Außerdem wurde der neue fliegende Gegner „Kristallwyvern“ hinzugefügt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Fläche der Himmelsstadt verkleinert und zu einer dichteren Stadt umgebaut (die Höhe variiert je nach Viertel)",
+        "Nur die 4 Türme im Stadtzentrum erreichen als Wolkenkratzer eine Höhe von 300 Blöcken",
+        "Details wie Eingänge, Vordächer und Dachaufbauten in unteren Stockwerken sowie eine Trennung von Fahrbahn und Gehweg zum Stadtbild hinzugefügt",
+        "16 Schatztruhen in 3 Varianten (Dach/Büro/Lager) in der Stadt platziert",
+        "Neuer Mob „Kristallwyvern“ hinzugefügt. Fliegt und greift mit Feuerball-Atem an (visiert nur Spieler an, greift Stadtbewohner nicht an)",
+        "Erscheinungsabstand der Himmelsburg angepasst (bei der vorherigen Empfehlungseinstellung erschienen Burgen praktisch nie – dieser Fehler wurde behoben)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Gegen die Feuerkraft des Sturmgewehrs ist die Kristallwyvern (HP 200) im Handumdrehen besiegt. Wer mehr Herausforderung möchte, sollte die Schaden-Einstellungen der Waffen anpassen",
+        "Die Verkleinerung der Stadt gilt nur für neu generiertes Land. Bestehende Himmelsstädte behalten ihre alte Größe, wodurch es bei Nachbarschaft zu einer unnatürlich wirkenden Größendifferenz kommen kann"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.7",
+     "date": "2026-07-27",
+     "type": "hotfix",
+     "title": "Generierung der Himmelsstadt überarbeitet, Fehler bei Bewohnervermehrung behoben",
+     "summary": "Der Generierungsmechanismus von Himmelsstadt und Himmelsburg wurde intern neu aufgebaut und stabilisiert. Außerdem wurde ein Fehler behoben, durch den die Zahl der Bewohner der Himmelsstadt bei jedem Serverneustart schleichend über die Obergrenze anstieg.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Fehler behoben, durch den die Bewohnerzahl der Himmelsstadt bei wiederholten Serverneustarts über die Obergrenze hinaus weiter anstieg",
+        "Generierung von Himmelsstadt und Himmelsburg intern effizienter gestaltet (die Generierungslast sinkt sogar)",
+        "Abstände zwischen Himmelsstadt und Himmelsburg angepasst"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Änderung der Generierungsmethode gilt nur für neu generiertes Land. Bereits bestehende Himmelsstädte und -burgen bleiben unverändert"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.6",
+     "date": "2026-07-26",
+     "type": "release",
+     "title": "Himmelsstadt zur futuristischen Stadt umgestaltet, neuer Boss hinzugefügt",
+     "summary": "Die „Himmelsstadt“ des Himmel-MODs wurde komplett zu einer futuristischen Hochhausstadt umgestaltet, dazu kamen neu die „Himmelsburg“ und der neue Boss „Sky Archangel“ hinzu. Außerdem gibt es den neuen Mob „gewöhnlicher Engel“, der durch die Straßen wandert, sowie eine geänderte Bezahlmethode beim Ausrüstungskauf.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Himmelsstadt zu einer futuristischen Hochhausstadt umgestaltet (20 Hochhäuser, Straßennetz, Fußgängerbrücken und ein zentraler Platz hinzugefügt)",
+        "Neuer Mob „gewöhnlicher Engel“ bewegt sich nun in 4 verschiedenen Erscheinungsformen durch die Straßen",
+        "Die „Himmelsburg“ ist neu hinzugekommen (Burgmauer, 8 runde Türme, große Halle, zentraler Bergfried, unterirdische Schatzkammer, 6 Schatztruhen)",
+        "Der neue Boss „Sky Archangel“ erscheint in der Himmelsburg. Pro Burg gibt es 1 Exemplar, das nach der Bezwingung nicht erneut erscheint",
+        "Garantierter Boss-Drop „Engelsstab“ hinzugefügt (mit der Eigenschaft: in der Luft 1,5-fache Stärke, halbierte Abklingzeit)",
+        "Aussehen des Himmelsportals überarbeitet, nun mit Rahmen aus Gold und Leuchtstein sowie einer neuen Zünd-Animation",
+        "Beim Kauf von Himmelsausrüstung erfolgt die Bezahlung nun in zwei Währungen: Smaragd und Diamant"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Natürliche Spawnrate des Himmelsportals von 1/340 auf 1/1200 gesenkt (deutlich schwerer zu finden)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Portale sind nun deutlich schwerer zu finden. Wird in einer bestehenden Welt keines gefunden, können Administratoren entweder die Spawnrate per Config senken oder `allowPlayerBuiltSkyPortals` aktivieren, um Spielern das manuelle Errichten zu erlauben",
+        "Die Feuerkraft des Sturmgewehrs ist enorm (entspricht etwa 2.000 Schaden pro Sekunde) – dieser Boss (HP 2000) lässt sich damit in etwa 1 Sekunde besiegen. Wer mehr Herausforderung möchte, sollte die Schaden-Einstellungen der Waffen anpassen"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.5",
+     "date": "2026-07-26",
+     "type": "hotfix",
+     "title": "Absturz der Dimension „Himmel“ behoben",
+     "summary": "Ein schwerwiegender Fehler wurde behoben, durch den der Client beim Betreten der Dimension „Himmel“ zwangsläufig abstürzte (Ursache: Es war kein einziger Rendering-Mechanismus für Engel und Engelsgolems registriert). Außerdem wurde die Stärke des schweren Scharfschützengewehrs erhöht und dem Zielfernrohr eine neue Zoomstufe hinzugefügt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "【Wichtig】Fehler behoben, durch den der Client beim Betreten der Dimension „Himmel“ zwangsläufig abstürzte (Ursache: Die Rendering-Verarbeitung für Engel und Engelsgolems war nicht registriert). Derselbe Fehler trat auch bei Engeln in alten Welten auf, die vor der Verlegung des Himmels entstanden waren",
+        "Schaden des schweren Scharfschützengewehrs auf das Vierfache des normalen Scharfschützengewehrs geändert (40,0 → 80,0)",
+        "Neue Zoomstufe „×12“ für das Zielfernrohr des Scharfschützengewehrs hinzugefügt (nur beim schweren Scharfschützengewehr)",
+        "Während das Zielfernrohr angelegt ist, wird das Mausrad nun ignoriert (verhindert ungewolltes Umschalten der Schnellzugriffsleiste)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Schweres Scharfschützengewehr: Schaden 40,0 → 80,0 (Vierfaches des normalen Scharfschützengewehrs)"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Ob dieser Fix den Absturz der Dimension „Himmel“ tatsächlich behebt, wurde im Spielbetrieb noch nicht bestätigt. Bitte prüfe, ob das Betreten der Dimension „Himmel“ nicht mehr zum Absturz führt, und melde es, falls es weiterhin auftritt"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.4",
+     "date": "2026-07-26",
+     "type": "release",
+     "title": "Waffen deutlich verstärkt, 40 neue Türen hinzugefügt",
+     "summary": "Die Stärke von Lasergewehr und Sturmgewehr wurde um das 20- bzw. 10-Fache erhöht. Diese Kraftsteigerung bringt die Kampfbalance gegenüber bestehenden Bossen erheblich durcheinander. Außerdem wurden ein Fehler behoben, durch den der Automatikgeschützturm tatsächlich nie geschossen hatte, dazu Leitplanken, die sich nicht verbinden ließen, sowie eine seitenverkehrte Laserausrichtung in Ost-West-Richtung. Der Baumaterial-MOD erhielt 40 neue Türen (Version 1.4.3 ist eine bewusste Lücke in der Nummerierung).",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Schaden des Lasergewehrs 8,0 → 160,0 (×20, DPS 960), Schaden des Sturmgewehrs 20,0 → 200,0 (×10, DPS 2000) erhöht",
+        "Fehler behoben, durch den der Automatikgeschützturm tatsächlich nie geschossen hatte (der Zielstrahl begann innerhalb seiner eigenen Kollisionsform). Außerdem wurde die Zielerkennung überarbeitet, sodass Bosse und der Warden nicht mehr anvisiert werden",
+        "Fehler behoben, durch den sich Leitplanken nicht miteinander verbinden ließen",
+        "Fehler behoben, durch den die Laserausrichtung in Ost-West-Richtung seitenverkehrt war",
+        "Reichweite der Laserfalle 32 → 128 Blöcke (Config-Obergrenze auf 256 erweitert). Ausrichtung in 26 Richtungen (inkl. schräg, oben/unten) möglich; Rechtsklick mit leerer Hand dreht horizontal um 45°, Schleichen + Rechtsklick ändert den Neigungswinkel",
+        "40 neue Türen für den Baumaterial-MOD hinzugefügt (zusammen mit den bestehenden 9 also insgesamt 49 Türtypen)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Lasergewehr: Schaden 8,0 → 160,0 (×20)",
+        "Sturmgewehr: Schaden 20,0 → 200,0 (×10)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "【Wichtig】Durch diese Kraftsteigerung gerät die Kampfbalance gegenüber bestehenden Bossen erheblich durcheinander (Bosse lassen sich in wenigen Sekunden besiegen). Da den Bossen keine zusätzliche Resistenz hinzugefügt wurde, kann bei Bedarf die Schadensmenge in config/sorakaze_guns.json angepasst werden",
+        "Damit die Kraftsteigerung der Waffen wirkt, muss config/sorakaze_guns.json gelöscht werden",
+        "Version 1.4.3 ist eine bewusste Lücke in der Nummerierung und wurde nicht verteilt"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.2",
+     "date": "2026-07-26",
+     "type": "hotfix",
+     "title": "Optischer Fehler bei Engelsausrüstung behoben",
+     "summary": "Ein Fehler wurde behoben, durch den beim tatsächlichen Anlegen der „Engelsausrüstung“ am Körper eine Vanilla-Netheritrüstung und auf dem Rücken eine einfarbige Elytra angezeigt wurden. Da das Inventar-Icon korrekt dargestellt wurde, war das Problem schwer zu bemerken.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Fehler behoben: Beim Anlegen der Engelsausrüstung (Rüstung und Engelsflügel) wird nun korrekt das eigene Silber-Gold-Design angezeigt"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.1",
+     "date": "2026-07-26",
+     "type": "release",
+     "title": "Neue Dimension „Himmel“, Spezialangriffe für Bosse hinzugefügt",
+     "summary": "Die neue Dimension „Himmel“ wurde hinzugefügt, erreichbar über selten an der Oberfläche generierte Portale. Handel mit Engelshändlern und Gleiter-Ausrüstung sind nun möglich. Alle 10 Bosse haben jetzt Spezialangriffe und lassen sich per Beschwörungsstein jederzeit herbeirufen. Beim Baumaterial gibt es jetzt einen Auswahlknopf im Rezept, bei den Fahrzeugen drehen sich die Reifen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Neue Dimension „Himmel“ hinzugefügt. Erreichbar über selten an der Oberfläche generierte Portale aus Leuchtstein",
+        "Im Himmel leben Engelshändler mit individuell zufälligem Warenangebot. Erhältlich sind u. a. die gleiterartigen „Engelsflügel“ sowie ein eigener Pfeil und Bogen",
+        "Rettungsmechanik hinzugefügt für den Fall, dass man vom Himmel herabstürzt (sicherer Fall hoch über der Oberwelt)",
+        "Für alle 10 Bosse wurden Beschwörungssteine hinzugefügt, mit denen man sie nach dem Craften jederzeit herbeirufen kann. Außerdem erhielten alle Bosse einen Spezialangriff (löst bei 50 % HP mit 4 Sekunden Vorwarnung aus)",
+        "Bei den 3 riesigen Bossen wird die Stärke beim Besiegen nun zufällig festgelegt (das 30- bis 45-Fache der HP des Enderdrachens, danach fest)",
+        "Die neuen Waffen „Sense des Sensenmanns“, „Abgrund-Dreizack“ und „Donnerspeer“ droppen bei den jeweils zugehörigen Bossen",
+        "Am Werktisch des Baumaterial-MODs wurde ein Umschalt-Knopf hinzugefügt, mit dem sich aus derselben Anordnung mehrere Blöcke auswählen lassen (z. B. Holzsäulen)",
+        "Mit der bosseigenen Schaufel und Hacke lassen sich nun tatsächlich Wege anlegen bzw. Erde umgraben",
+        "Die Reifen der Fahrzeuge drehen sich nun sichtbar mit (bei 10 Fahrzeugtypen)"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Sculk-Golem und Rock Lock haben noch keine eigenen Angriffsanimationen (auch die Ankündigung des Spezialangriffs erfolgt nur über Partikel)",
+        "Der Donnerspeer lässt sich noch nicht werfen (nur Nahkampfangriff möglich)"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.0",
+     "date": "2026-07-24",
+     "type": "visual-update",
+     "title": "Angriffsanimationen der Bosse und 3D-Werkzeuge",
+     "summary": "Für Nahkampf-, Flächen- und Strahlangriffe der 5 Bosse wurden jeweils eigene Animationen hinzugefügt. Auch die 5 Drop-Werkzeuge (Spitzhacke, Axt, Hacke, Speer, Schaufel) wurden von flachen Icons zu dreidimensionalen Modellen überarbeitet. Schaden, Abklingzeiten und andere Spielinhalte wurden nicht verändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Für die Angriffe der 5 Bosse (Nahkampf, 2 Flächenangriffe, Strahlangriff) wurden jeweils eigene Animationen hinzugefügt, wodurch die Ankündigung eines Angriffs (Aufladebewegung) jetzt deutlich erkennbar ist",
+        "Die 5 Drop-Werkzeuge wurden zu dreidimensionalen Modellen überarbeitet. Auch die GUI-Icons zeigen nun die 3D-Darstellung"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Nahkampfangriffe haben keine Vorbereitungsbewegung wie Ausholen. Da Vanilla-Nahkampfangriffe den Schaden sofort auslösen, würde eine Vorbereitungsbewegung den Zeitpunkt des Schadens verschieben"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.0",
+     "date": "2026-07-23",
+     "type": "visual-update",
+     "title": "Aussehen der 5 Bosse komplett überarbeitet",
+     "summary": "Als Reaktion auf das Feedback „sehen aus wie dieselbe Kreatur in verschiedenen Farben“ wurde ausschließlich das Erscheinungsbild der 5 neuen Bosse komplett neu gestaltet. Spielinhalte wie Stärke, Drops oder Angriffe wurden nicht verändert.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Runenkern-Koloss: Steinerner Kern mit Bronze-/Gold-Panzerung, zwei um den Körper schwebende Schwerter, eine um die Arme rotierende Runenring-Anordnung",
+        "Emberlord: Lavaadern, die den Körper durchziehen, zwei sich in vier Segmenten nach oben biegende Hörner",
+        "Uralter Treant: 8 unterschiedlich ausgerichtete und geknickte Äste (3 davon sichtbar gebrochen), ein in den Stamm geschnitztes Gesicht",
+        "Leerenpirscher: Die humanoide Form wurde aufgegeben – jetzt ein Klumpen aus Obsidian mit lilafarbenem Portal, 8 Tentakeln und 18 leuchtenden Augen",
+        "Frost-Lichkönig: 5-stufige Robe, 9 gezackte Eiskrone-Zacken, ein rotierendes Eis-Emblem in der erhobenen linken Hand"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.4.0",
+     "date": "2026-07-22",
+     "type": "release",
+     "title": "5 neue Bosse, HP-Obergrenze durchbrochen",
+     "summary": "Dem Boss-MOD wurden 5 neue mächtige Bosse hinzugefügt. Die bisherige Begrenzung, wonach Minecraft selbst die HP nur bis 1024 erhöhen ließ, wurde aufgehoben – jetzt gibt es ausgewachsene Bosse mit 2400 bis 4000 HP. Beim Besiegen droppt garantiert ein eigenes verstärktes Werkzeug (Spitzhacke, Axt, Hacke, die neue Waffe „Speer“ und Schaufel).",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "5 neue Bosse hinzugefügt (beschwörbar mit craftbaren Beschwörungsgegenständen): Runenkern-Koloss (HP 3000), Emberlord (HP 3400), Uralter Treant (HP 4000), Leerenpirscher (HP 2400), Frost-Lichkönig (HP 2800)",
+        "Beim Besiegen jedes Bosses droppt garantiert ein eigenes verstärktes Werkzeug: Runenkern-Spitzhacke, Glutaxt, Waldhacke, Leerenspeer (neue Waffe, die es in Vanilla nicht gibt) und Frostschaufel. Alle mit hoher Haltbarkeit, zahlreichen bereits angelegten Verzauberungen und nicht craftbar"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Alle 5 Bosse sind bewusst schwer gehalten und im Solospiel als Herausforderung gedacht. Falls sie zu stark wirken, können Administratoren HP und Angriffskraft über die Config anpassen",
+        "Der Leerenpirscher sollte laut Konzept eigentlich schweben, ist aber derzeit als bodengebundene Einheit mit Teleport-Fähigkeit umgesetzt"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.3",
+   "summary": "138 neue Baumaterial-Blöcke, Waffen-Haltbarkeit implementiert",
+   "releases": [
+    {
+     "version": "v1.3.2",
+     "date": "2026-07-22",
+     "type": "release",
+     "title": "138 neue Baumaterial-Blöcke, Waffen-Haltbarkeit implementiert",
+     "summary": "Zusätzliche Anpassungen als Reaktion auf das Feedback zur Veröffentlichung von v1.3.2. Zwei Bosse erhielten ein überarbeitetes Aussehen, und die Haltbarkeit der Waffen – die bisher nur angezeigt, aber nie tatsächlich verbraucht wurde – funktioniert nun endlich korrekt. Der Baumaterial-MOD bekam 138 neue Bau-Blöcke, und die Reichweite aller Waffen wurde verfünffacht.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Aussehen von Sculk-Golem und Rock Lock überarbeitet (Sculk-Golem = im Stil eines Eisengolems aus Sculk, Rock Lock = futuristischer Kampfroboter). Stärke und Angriffe bleiben unverändert",
+        "Die Haltbarkeit der Waffen nimmt endlich korrekt ab (bisher wurde nur eine Haltbarkeitsleiste angezeigt, die Waffe ging aber nie kaputt). Standardhaltbarkeit beträgt nun etwa 1.536 Schüsse, Excalibur etwa 6.093 Treffer",
+        "Reichweite aller Waffen verfünffacht (Sturmgewehr 60 → 300 m, Schrotflinte 24 → 120 m, Scharfschützengewehr 150 → 750 m, Lasergewehr 80 → 400 m)",
+        "138 neue Bau-Blöcke für den Baumaterial-MOD (Vertikalstufe, Säule mit Achteckquerschnitt, 8-stufige Rampe × 46 Materialien)",
+        "Der Plan, das Design der Fahrzeuge in Richtung „runde, realistische Formen“ weiterzuentwickeln, wurde genehmigt; Entwürfe für Limousine und Propellerflugzeug sind fertig (die Umsetzung für alle 13 Typen erfolgt schrittweise in künftigen Updates)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Reichweite aller Waffen verfünffacht (Sturmgewehr 60 → 300 m / Schrotflinte 24 → 120 m / Scharfschützengewehr 150 → 750 m / Lasergewehr 80 → 400 m)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Damit die Reichweitenerhöhung wirkt, muss config/sorakaze_guns.json gelöscht werden"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das „runde Design“ der Fahrzeuge existiert bisher nur als Entwurf für Limousine und Propellerflugzeug; die Umsetzung für alle 13 Typen folgt in künftigen Updates"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.3.2",
+     "date": "2026-07-22",
+     "type": "release",
+     "title": "Fahrzeuge vergrößert, neuer Nether-Boss „Rock Lock“",
+     "summary": "Autos, Züge und Flugzeuge wurden deutlich größer und realistischer proportioniert als der Spieler. Sturmgewehr und Lasergewehr wurden auf die vierfache Stärke gebracht. Im Nether erscheint der neue Boss „Rock Lock“, der bei seiner Bezwingung das mächtige Schwert „Excalibur“ droppt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Autos, Busse, Lastwagen, Motorräder, Züge und Flugzeuge wurden vergrößert (Autos etwa das 1,6-Fache, Züge das 1,8-Fache, große Verkehrsflugzeuge das 2,2-Fache – der Faktor variiert je nach Typ)",
+        "Neuer Boss „Rock Lock“ erscheint im Nether. Beschwörbar entweder mit einem eigenen Beschwörungsgegenstand (craftbar aus 8 Netherziegeln + Enderauge) oder mit einem natürlich in der Nähe von Netherfestungen generierten Exemplar",
+        "Beim Besiegen von Rock Lock droppt garantiert das Schwert „Excalibur“ (hohe Haltbarkeit, feuerfest, Gegner entzünden sich bei Treffer)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Sturmgewehr: Schaden 5,0 → 20,0 (×4)",
+        "Lasergewehr: Schaden 2,0 → 8,0 (×4)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Damit die Waffenverstärkung wirkt, muss config/sorakaze_guns.json gelöscht werden",
+        "Da Fahrzeuge und Züge größer geworden sind, ist beim Durchfahren enger Straßen, Tunnel und Hangars Vorsicht geboten"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Wie häufig der Beschwörungsgegenstand für Rock Lock in der Nähe von Netherfestungen natürlich generiert wird, ist noch nicht überprüft (die Häufigkeit lässt sich per Config anpassen)"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.3.1",
+     "date": "2026-07-21",
+     "type": "hotfix",
+     "title": "Fehler behoben, bei dem der Boss vom Warden besiegt werden konnte",
+     "summary": "Ein Fehler wurde behoben, durch den der seltene Boss „Sculk-Golem“ (nur 1 pro Stadt, nur 1 pro Spielwelt) von einem sich wehrenden Warden besiegt werden konnte.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Der Sculk-Golem nimmt nun keinen Schaden mehr vom Warden, und der Warden greift den Sculk-Golem auch nicht mehr an oder sucht ihn als Ziel (Spieler können ihn weiterhin wie gewohnt besiegen)"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.3.0",
+     "date": "2026-07-20",
+     "type": "release",
+     "title": "Neue MODs für Bosse und Fahrzeuge – jetzt 5 MODs insgesamt",
+     "summary": "Zwei neue MODs, „Bosse“ und „Fahrzeuge“, kamen hinzu – insgesamt sind es jetzt 5 MODs. Besiegt man in der Ancient City drei Warden, erscheint der Boss „Sculk-Golem“ für einen Bosskampf. Außerdem neu: 13 Fahrzeuge (Autos, Lastwagen, Flugzeuge usw.), das Lasergewehr und Laserfallen. Der Zug unterstützt jetzt Kupplungen mit bis zu 15 Wagen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Neuer MOD „Bosse“: Besiegt man in der Ancient City 3 Warden, erscheint der Boss „Sculk-Golem“ (HP 900). Bei seiner Bezwingung droppt garantiert ein „Verstärktes Leuchtfeuer“ mit 3-facher Reichweite",
+        "Neuer MOD „Fahrzeuge“: 10 Landfahrzeuge (Autos, Busse, Lastwagen, Motorräder usw.) und 3 Luftfahrzeuge hinzugefügt. Unterstützt werden u. a. Rundumleuchten und Sirenen für Einsatzfahrzeuge sowie die Ladefläche von Lastwagen",
+        "Lasergewehr (100 Schuss pro Energiezelle) und Automatikgeschützturm (zielt nur auf Gegner) für den Schusswaffen-MOD hinzugefügt",
+        "Lasersender/-empfänger und Tisch für den Baumaterial-MOD hinzugefügt",
+        "Kupplungssystem des Zuges überarbeitet, unterstützt nun Züge mit bis zu 15 Wagen inklusive Güter- und Personenwagen. Außerdem 2 neue Super-Express-Züge mit 75 m/s im Führungswagen"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das Flugverhalten der Flugzeuge (Start/Landung, Strömungsabriss usw.) ist bewusst als Ausgangspunkt für künftige Feinabstimmung ausgelegt. Wirkt es zu träge oder schwer zu bedienen, lässt es sich über die Config anpassen"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.2",
+   "summary": "Waffen auf Hitscan umgestellt, Türen-Zittern behoben",
+   "releases": [
+    {
+     "version": "v1.2.1",
+     "date": "2026-07-19",
+     "type": "release",
+     "title": "Waffen auf Hitscan umgestellt, Türen-Zittern behoben",
+     "summary": "Waffen wurden auf ein Hitscan-System umgestellt, bei dem der Treffer im Moment des Abschusses erfolgt, dazu kamen eigene Schussgeräusche hinzu. Der Zug erhielt ein 3D-Modell und eine Kupplungsfunktion (Güter- und Personenwagen), und ein Fehler, bei dem geschlossene Türen ständig leicht zitterten, wurde behoben. Außerdem gibt es jetzt versteckte Türen und 3 neue Türtypen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Waffen treffen nun sofort (Hitscan), ohne auf die Flugzeit des Geschosses zu warten (Trefferreichweite: Sturmgewehr 60 m/Schrotflinte 24 m/Scharfschützengewehr 150 m)",
+        "Neue Schuss-, Nachlade- und Leerschuss-Geräusche hinzugefügt (selbst erstellte Sounds)",
+        "Größe der Waffen beim Halten vergrößert, sowohl in der Ego- als auch der Third-Person-Perspektive besser erkennbar",
+        "Der Zug erhielt ein 3D-Modell (im Stil eines Nahverkehrszugs). Güterwagen (27 Lagerplätze) und Personenwagen (2 Sitzplätze) lassen sich ankuppeln (während der Kupplung kein Rückwärtsfahren möglich)",
+        "Fehler behoben, bei dem geschlossene Türen ständig leicht zitterten",
+        "Versteckte Türen hinzugefügt (getarnt als Erde, Stein, Netherrack, Endstein usw.)",
+        "3 neue Türtypen hinzugefügt (Rollladen, Schiebetür, Gittertür) – damit gibt es nun insgesamt 9 Türtypen"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "v1.2.0",
+     "date": "2026-07-18",
+     "type": "release",
+     "title": "Erstickungsbug bei Türen behoben, Zug deutlich schneller",
+     "summary": "Ein schwerwiegender Fehler, bei dem man beim Durchqueren einer Tür Schaden nahm, wurde behoben. Die Höchstgeschwindigkeit des Zuges wurde auf 60 m/s angehoben (Config-Obergrenze 80 m/s), und während der Fahrt werden Chunks in Fahrtrichtung nun automatisch vorgeladen. Außerdem kamen neue Blöcke wie Aufzug und Förderband hinzu, und die Waffensteuerung wurde auf Linksklick zum Feuern, Rechtsklick zum Anlegen und R zum Nachladen vereinheitlicht.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "【Wichtig】Fehler behoben, bei dem man beim Durchqueren einer Tür Schaden nahm (Automatiktür, Fusuma, große Tür, Hatch). Türen schließen sich nun nicht mehr automatisch, solange sich jemand in der Nähe aufhält",
+        "Höchstgeschwindigkeit des Zuges 20 → 60 m/s (Config-Obergrenze bis 80 m/s erhöhbar). Während der Fahrt werden Chunks in Fahrtrichtung automatisch vorgeladen, wodurch bei hoher Geschwindigkeit weniger Landschaft „abreißt“",
+        "4 neue Blöcke: Aufzug (Sprung = hoch/Schleichen = runter), Rolltreppe, 2 Stuhltypen und Förderband (transportiert Gegenstände, per Redstone stoppbar)",
+        "Waffensteuerung komplett überarbeitet: Linksklick zum Feuern, gehaltener Rechtsklick zum Anlegen (bei Scharfschützengewehr = Zielfernrohr), R-Taste zum Nachladen",
+        "Waffen werden beim Halten nun als 3D-Modell dargestellt (vorher nur dieselbe flache Icon-Grafik wie im GUI)",
+        "Die Schrotflinte kann ungerüstete Gegner aus nächster Nähe nun mit einem Schuss erledigen (auch ein Fehler behoben, durch den mehrere Kugeln aufgrund der Unverwundbarkeitszeit nach Treffern gemeinsam wirkungslos blieben)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Schrotflinte: Schaden pro Kugel 3,0 → 5,0 (10 Kugeln, bei Volltreffer aus nächster Nähe 50,0)",
+        "Zug: Höchstgeschwindigkeit 20 → 60 m/s, Config-Obergrenze 25 → 80 m/s"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Da sich die Bedeutung der Geschwindigkeitsobergrenze des Zuges geändert hat, wird empfohlen, nach dem Update config/sorakaze_rail.json zu löschen (sonst bleibt es bei den alten 20 m/s)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Verbessertes Zugverhalten und stärkere Schusswaffen",
+   "releases": [
+    {
+     "version": "v1.1.0",
+     "date": "2026-07-18",
+     "type": "release",
+     "title": "Verbessertes Zugverhalten und stärkere Schusswaffen",
+     "summary": "Das ruckelige Fahrverhalten des Zuges sowie das Problem, dass man die W-Taste durchgehend gedrückt halten musste, wurden behoben. Die Waffen wurden verstärkt, und das Scharfschützengewehr erhielt eine eigene Zielfernrohr-Anzeige samt Wackel-Effekt. Der Baumaterial-MOD bekam 4 neue Türtypen wie die Automatiktür.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Zug: Ruckelndes Fahrverhalten behoben, läuft nun flüssig",
+        "Zug: Nach einmaligem Drücken der W-Taste beschleunigt und fährt der Zug fortan ohne weitere Eingabe automatisch weiter (vorher musste die Taste durchgehend gedrückt bleiben). S-Taste zum Bremsen, nach dem Halt nochmals S zum Rückwärtsfahren",
+        "Höchstgeschwindigkeit des Zuges von 15 auf 20 m/s erhöht. Icon des Zug-Items überarbeitet",
+        "Scharfschützengewehr: Umstellung auf „Anlegen → Loslassen zum Feuern“, dazu eigene Zielfernrohr-Überlagerung mit ×4/×8-Zoom (per Scrollrad umschaltbar) sowie ein Zielwackeln, das sich beim Schleichen halbiert",
+        "Sturmgewehr: Beim Schießen während der Bewegung streut nun stärker",
+        "Baumaterial-MOD: 4 neue Türtypen hinzugefügt – Automatiktür, Fusuma, große Tür (Eisen/Holz) und Hatch (Multiblock-Struktur, bei der ein Abbau an beliebiger Stelle 1 Gegenstand droppt)"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Sturmgewehr: Schaden 3,0 → 5,0, Feuerrate 8 → 10 Schuss/Sekunde",
+        "Schrotflinte: Schaden pro Kugel 2,0 → 3,0 (jetzt 10 Kugeln), effektive Reichweite 12 → 16 m"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Erstveröffentlichung: 3 MODs für Schusswaffen, Schienenverkehr und Baumaterial",
+   "releases": [
+    {
+     "version": "v1.0.0",
+     "date": "2026-07-15",
+     "type": "release",
+     "title": "Erstveröffentlichung: 3 MODs für Schusswaffen, Schienenverkehr und Baumaterial",
+     "summary": "Auf dem Server wurden erstmals die drei MODs „sorakaze_guns“ (Schusswaffen), „sorakaze_rail“ (Schienenverkehr) und „sorakaze_deco“ (Baumaterial) installiert. Bogen und Pfeil sowie die Lore bleiben unverändert, während sich neue Waffen, Fahrzeuge und Bau-Blöcke für den Städtebau nun im Survival-Modus craften lassen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Schusswaffen-MOD: Sturmgewehr, Schrotflinte und Scharfschützengewehr sowie die passende Munition (Gewehrmunition/Schrotpatrone/Scharfschützenmunition) sind craftbar",
+        "Zoom-Funktion für das Zielfernrohr des Scharfschützengewehrs implementiert",
+        "Schienenverkehr-MOD: Neues auf Schienen platzierbares Fahrzeug „Zug“ hinzugefügt (Vanilla-Lore, -Schienen, -Bogen und -Armbrust bleiben unverändert). Während der Fahrt läuft ein Fahrgeräusch in Dauerschleife",
+        "Baumaterial-MOD: 12 neue Blöcke wie Leitplanke, Strommast, Stromleitung, taktile Bodenplatten (Leit-/Warnfunktion), Verkehrsampel, Fußgängerampel, Luftfahrt-Warnlicht und Strahler hinzugefügt"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Damit der Server MODs laden kann, muss von Vanilla auf Fabric umgestellt werden. Außerdem benötigt Minecraft 26.2 mindestens Java 25 – bitte die Java-Version auf dem Servergerät prüfen (Installationsschritte siehe Anleitung für Administratoren)"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

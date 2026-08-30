@@ -26,6 +26,7 @@ BUILD_SCRIPTS = [
     "build_features.py",
     "build_roadmap.py",
     "build_known_issues.py",
+    "build_changelog_feed.py",
     "build_releases_feed.py",
     "build_glimpse_manifest.py",
     "build_404.py",
