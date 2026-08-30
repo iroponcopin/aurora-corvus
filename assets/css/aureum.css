@@ -170,22 +170,41 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 .au-hero__inner {
   position: relative; z-index: 1;
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  /* vmin-driven, not vw-driven: a pinned scene is sized to the viewport's
-     HEIGHT (100svh), and every monitor class the owner actually uses --
-     FHD/WQHD/4K -- is the same 16:9 shape, just scaled, so vmin (== vh at
-     16:9) is what keeps the hero's PROPORTION of the screen constant as
-     the screen itself grows. The first version of this fix mixed in a raw
-     vh term behind a fixed px ceiling, which looked right on the one
-     window it was tested against but actually made the fill ratio go
-     BACKWARDS from FHD to WQHD (measured 53% -> 41%) once the viewport
-     grew past that ceiling -- caught by testing the three concrete
-     resolutions the owner named, not by eyeballing one window. */
-  gap: clamp(14px, 3.2vmin, 56px);
+  /* vh-driven, NOT vmin- and NOT vw-driven. This beat is pinned inside a
+     100svh stage, so the only axis that decides whether it looks full or
+     empty is the viewport HEIGHT.
+
+     Two earlier attempts got this wrong in a way that is worth recording,
+     because both "passed" their own measurements:
+
+       - The first sized on vw. A browser window is much wider than it is
+         tall, so vw terms hit their px ceiling immediately and the sizes
+         went constant -- the monogram was a flat 349px on every desktop
+         window from 1512px to 2560px wide.
+
+       - The second switched to vmin on the reasoning that "the monitors are
+         all 16:9, so vmin == vh". Two things are wrong with that. vmin is
+         the SHORTER axis, which for a landscape browser window is the
+         height MINUS the browser chrome -- and, more importantly, the
+         numbers it was tuned against (2560x1440, 3840x2160) are monitor
+         resolutions, not CSS viewports. This machine's displays report
+         3024x1964 Retina (~1512x982 CSS px) and 2560x1600 at 1x -- 16:10,
+         not 16:9, and roughly half the CSS pixels the tuning assumed. At
+         the viewports that actually occur here the vmin rules computed
+         SMALLER values than the vw rules they replaced (monogram 349 ->
+         300 at 1512x860), which is why the owner correctly reported no
+         visible change: the hero had shrunk ~4-14%, not grown.
+
+     Sizing on vh directly, with ceilings high enough that no realistic
+     desktop window reaches them, is what actually holds the fill ratio
+     steady (measured ~68-69% of stage height at 1512x860, 1920x955 and
+     2560x1480, up from ~45% at all three). */
+  gap: clamp(14px, 3.4vh, 52px);
   padding-inline: max(var(--gutter), env(safe-area-inset-left))
                   max(var(--gutter), env(safe-area-inset-right));
 }
 .au-hero__monogram {
-  width: min(36vmin, 56vw, 840px);
+  width: min(62vh, 46vw, 900px);
   filter: drop-shadow(0 18px 46px rgba(var(--au-gold-rgb), 0.28));
 }
 .au-hero__monogram img { display: block; width: 100%; height: auto; }
@@ -193,7 +212,7 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 .au-word {
   font-family: var(--au-font-serif); font-weight: 600; line-height: 1.05;
   letter-spacing: 0.22em;
-  margin: 0; font-size: clamp(2.6rem, 9vmin, 11.5rem);
+  margin: 0; font-size: clamp(2.6rem, 10.5vh, 9rem);
   background: linear-gradient(100deg, var(--au-gold) 8%, var(--au-gold-bright) 46%, var(--au-gold) 92%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   text-transform: uppercase;
@@ -207,7 +226,7 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 
 .au-tagline {
   margin: 0; font-family: var(--au-font-serif); font-weight: 500;
-  font-size: clamp(0.72rem, 1.7vmin, 2rem);
+  font-size: clamp(0.78rem, 2vh, 1.6rem);
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--au-gold-bright);
 }
@@ -218,7 +237,18 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
    the home page's .film / the (deleted) V3 teaser's .v3t-hero: --p overall,
    --t linear per-scene, --e eased per-scene, --o per-scene opacity ramp.
    ========================================================================== */
-.au-film-shell { width: 100%; }
+/* NO `width` here. `.au-film-shell` already gets its width from the
+   full-bleed rule near the top of this file
+   (`.au-film-shell, .au-section { width: 100vw; margin-inline: calc(50% - 50vw) }`).
+   This line used to say `width: 100%`, which has the same specificity and
+   comes later in the file, so it QUIETLY WON -- while the negative
+   `margin-inline` from the full-bleed rule kept applying. The result was a
+   film shell sized to <main>'s max-width (1313px) and then shifted left by
+   half the viewport, i.e. the entire pinned hero+stats film rendered as a
+   band pinned to the LEFT EDGE of the screen with a dead gap on the right,
+   measured at 527px (1512x860), 845px (1920x955) and 1327px (2560x1480) --
+   while every `.au-section` below it ran correctly edge to edge. That gap,
+   not the type scale, was the "wasted whitespace" on the live page. */
 .au-film {
   --au-scroll: 220vh;
   width: 100%;
@@ -351,37 +381,66 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
 }
 .au-stats {
   position: relative; z-index: 1;
-  /* vmin-driven for the same reason .au-hero__inner's gap is (see that
-     comment) -- and the same fixed-ceiling mistake that comment describes
-     applied here too (a 1040px width/64px gap cap that WQHD and 4K sail
-     past while the viewport keeps growing, shrinking the fill ratio
-     instead of holding it steady). */
-  display: grid; gap: clamp(20px, 4.4vmin, 96px);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  width: min(100%, 60vmin, 1500px); margin-inline: auto;
+  /* Width is a HORIZONTAL question, so it is driven by nothing but a px
+     cap and the gutters; height/fill is a VERTICAL question and lives in
+     .au-stat's padding below. The previous rule mixed the two up and
+     capped this grid at 60vmin -- i.e. at 60% of the viewport HEIGHT --
+     which on a 1512x860 window is 516px. Three cards with a
+     minmax(220px, 1fr) track floor cannot fit in 516px, so auto-fit
+     silently dropped the row to ONE column (and to two at 1920x955),
+     making the beat ~3x taller than designed and pushing it out of the
+     pinned stage. Three columns are now stated explicitly so the layout
+     cannot collapse on a desktop viewport regardless of the width cap. */
+  display: grid; gap: clamp(18px, 2.2vw, 32px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 1220px); margin-inline: auto;
   padding-inline: max(var(--gutter), env(safe-area-inset-left))
                   max(var(--gutter), env(safe-area-inset-right));
 }
 .au-stat {
-  /* Ceilings deliberately sit well above what 6.2vmin/4vmin actually
-     compute to at 4K (2160 vmin -> ~134px/86px) -- the first pass at this
-     capped padding at 130px, just BELOW the 4K value, so the fill ratio
-     dropped at exactly the top of the resolution range the owner named
-     (FHD/WQHD/4K) instead of holding steady through it. */
-  padding: clamp(30px, 6.2vmin, 168px) clamp(22px, 4vmin, 100px);
+  /* Block padding is what gives this beat its vertical weight, so it is
+     the one dimension sized on vh; inline padding is sized on vw because
+     it competes with the card's text for horizontal room. Keeping those
+     two axes separate matters: the previous rule sized BOTH on vmin, so
+     on a tall window the inline padding grew too and squeezed the value
+     text into wrapping (measured: .au-stat__value 402px tall over four
+     lines at 2560x1480). */
+  padding: min(clamp(34px, 12vh, 200px), 13vw) clamp(16px, 1.6vw, 28px);
   border: 1px solid var(--au-hairline); border-radius: var(--radius, 16px);
   background: var(--au-glass);
   text-align: center;
-  display: flex; flex-direction: column; gap: 12px;
+  display: flex; flex-direction: column; gap: clamp(10px, 1.6vh, 26px);
 }
 .au-stat__value {
   font-family: var(--au-font-serif); font-weight: 600;
-  font-size: clamp(2.3rem, 6.2vmin, 10rem); line-height: 1;
+  /* The ceiling is in PX on purpose. This site scales its root font-size
+     with the viewport (measured: 1rem = 16.27px at 1512px wide, 20.2px at
+     2560px), so a rem ceiling is not actually a ceiling -- an earlier
+     `4rem` cap resolved to 80.8px on the wide display and wrapped every
+     value onto two lines.
+
+     62px is set from measurement, not taste: "-17.2 MB" -- the longest
+     string that appears in ALL 13 languages -- needs 4.6x its font-size in
+     width, and the narrowest card this grid produces has 316px of content
+     width, so the largest safe size is ~68px; 62px keeps a 10% margin for
+     the fonts to load and for languages measured less exactly.
+     The third card's value is a word rather than a number ("Unchanged",
+     "Tidak berubah", "Без изменений"...) and is allowed to wrap; grid rows
+     stretch, so a two-line value cannot make one card taller than its
+     neighbours.
+
+     The trailing `5vw` is a WIDTH guard, and it is not optional: the
+     vh term alone is blind to how wide the card is, so a portrait tablet
+     (768x1024 -- tall AND narrow) resolved 6vh to 61px inside a 231px-wide
+     card and wrapped every value onto two or three lines. The hero's
+     monogram already carries the equivalent guard (`46vw`); this rule was
+     simply missing its own. */
+  font-size: min(clamp(2.2rem, 6vh, 62px), 5vw); line-height: 1; text-wrap: balance;
   background: linear-gradient(100deg, var(--au-gold) 10%, var(--au-gold-bright) 60%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .au-stat__label {
-  font-size: clamp(0.92rem, 1.5vmin, 2.5rem); color: var(--au-text-muted); letter-spacing: -0.006em;
+  font-size: clamp(0.95rem, 1.9vh, 1.6rem); color: var(--au-text-muted); letter-spacing: -0.006em;
 }
 
 /* ==========================================================================
@@ -475,10 +534,18 @@ main:has(> .au-film-shell) a:focus-visible { color: var(--au-text); }
    distance (less empty scroll for a beat that is inherently simpler on a
    narrow column), stat tiles stack to one column below 480px.
    ========================================================================== */
+/* Below this width the vh-driven desktop sizing above is the wrong tool:
+   on a phone `vh` resolves to the LARGE viewport height while the pinned
+   stage is 100svh (the small one), so a vh-sized hero would overflow the
+   very stage it is meant to sit inside. Narrow screens go back to being
+   width-driven, and the three stat cards stack -- three columns cannot fit
+   here no matter how the width cap is written. */
 @media (max-width: 700px) {
   .au-film { --au-scroll: 180vh; }
-  .au-hero__monogram { width: min(64vw, 280px); }
-}
-@media (max-width: 480px) {
+  .au-hero__monogram { width: min(64vw, 300px); }
+  .au-word { font-size: clamp(2.2rem, 11vw, 3.4rem); }
+  .au-tagline { font-size: clamp(0.78rem, 3vw, 1rem); }
   .au-stats { grid-template-columns: 1fr; }
+  .au-stat { padding: clamp(30px, 7vw, 48px) clamp(20px, 5vw, 34px); }
+  .au-stat__value { font-size: clamp(2.2rem, 9vw, 3.2rem); }
 }
