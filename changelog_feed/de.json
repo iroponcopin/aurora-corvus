@@ -6,6 +6,44 @@
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
   {
+   "label": "V3.5",
+   "summary": "Die Rotorblätter des Windrads drehen sich jetzt, und der Bohrer hält 20-mal so lange",
+   "releases": [
+    {
+     "version": "V3.5.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "Die Rotorblätter des Windrads drehen sich jetzt, und der Bohrer hält 20-mal so lange",
+     "summary": "Die drei Rotorblätter des Windrads drehen sich wirklich. Das Tempo folgt der tatsächlichen Leistung, sodass ein eingebautes Windrad, das nichts erzeugt, völlig stillsteht — und „Blätter drehen sich, Lampe aus\" sagt auf einen Blick, dass der Standort gut ist, das Kabel aber nicht angeschlossen. Die Blätter sind außerdem glatt, wo sie früher gestuft aussahen. Die Haltbarkeit des Bohrers ist das Zwanzigfache (10240 auf 204800).",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Die Rotorblätter des Windrads drehen sich. Bei voller Leistung dauert eine Umdrehung vier Sekunden.",
+        "Das Tempo folgt der tatsächlichen Leistung. Ein überdachtes oder vergrabenes Windrad, das nichts erzeugt, steht völlig still; in geringer Höhe dreht es langsam. Man erkennt einen Standort schon am Hinsehen.",
+        "Die Blätter sind jetzt glatt. Ihre Diagonalen wirkten früher gestuft; weil der Rotor nun von einem Renderer gezeichnet wird, lässt sich ein Blatt als ein langer, sich verjüngender Träger bauen.",
+        "Die Haltbarkeit des Bohrers ist das Zwanzigfache (10240 auf 204800). Wenn Sie bereits auf einem Server spielen, wird der alte Wert in Ihrer Konfigurationsdatei automatisch auf den neuen aktualisiert."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die Blätter überstreichen etwa 0,6 Blöcke mehr, als das Windrad zum Platzieren braucht. Genau 11 Blöcke auseinander gesetzte Windräder sehen aus, als streiften sich ihre Blätter — lassen Sie etwas mehr Raum.",
+        "Die Haltbarkeitsaktualisierung überschreibt den alten Wert (10240) in Ihrer Konfiguration genau einmal. Hatten Sie einen eigenen Wert gesetzt, bleibt dieser unangetastet."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Diese Entwicklungsumgebung hat keinen Minecraft-Client, die Blätter wurden also nie im echten Spiel drehend gesehen — nur in sechs offline gerenderten Einzelbildern. Auch die Drehrichtung (beabsichtigt ist im Uhrzeigersinn von vorn) ist auf einem echten Client unbestätigt.",
+        "Ob nachts das Licht korrekt auf die Blätter fällt, ist im Spiel ebenfalls unbestätigt."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.4",
    "summary": "Das Windrad als Röhrenturm der Referenz neu gebaut, und neun Waffen in ihrer FORM neu gebaut",
    "releases": [

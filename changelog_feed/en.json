@@ -6,6 +6,44 @@
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
+   "label": "V3.5",
+   "summary": "The wind turbine's blades now turn, and the drill's durability is 20x",
+   "releases": [
+    {
+     "version": "V3.5.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "The wind turbine's blades now turn, and the drill's durability is 20x",
+     "summary": "The wind turbine's three blades actually rotate. The speed follows how much power it is making, so a turbine that is boxed in and generating nothing stands completely still — and 'blades turning, lamp off' tells you at a glance that the site is good but the cable is not connected. The blades are also smooth now, where they used to look stepped. The drill's durability is twenty times what it was (10240 to 204800).",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "The wind turbine's blades turn. At full output one revolution takes four seconds.",
+        "The speed follows the actual output. A turbine roofed in or buried, generating nothing, stands completely still; at low altitude it turns slowly. You can judge a site just by looking at it.",
+        "The blades are smooth now. Their diagonals used to look stepped; moving the rotor to a renderer means a blade can be built as one long tapered beam.",
+        "The drill's durability is twenty times what it was (10240 to 204800). If you are already playing on a server, the old value in your config file is updated to the new one automatically."
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "The blades sweep about 0.6 blocks wider than the space the turbine needs to be placed in. Turbines set exactly 11 blocks apart will appear to brush blades, so leave a little extra room.",
+        "The durability update rewrites the old value (10240) in your config file once. If you had set the drill's durability to something of your own, your value is respected and left alone."
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "This development environment has no Minecraft client, so the blades have never been seen turning in the actual game — only in six offline frames rendered at different angles. The direction of rotation (clockwise seen from the front is what is intended) is likewise unconfirmed on a real client.",
+        "Whether light falls on the blades correctly at night is also unconfirmed in-game."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.4",
    "summary": "The wind turbine rebuilt as the reference's tubular machine, and nine guns rebuilt in SHAPE",
    "releases": [

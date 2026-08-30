@@ -6,6 +6,44 @@
  "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
  "groups": [
   {
+   "label": "V3.5",
+   "summary": "As pás do aerogerador agora giram, e a broca dura 20 vezes mais",
+   "releases": [
+    {
+     "version": "V3.5.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "As pás do aerogerador agora giram, e a broca dura 20 vezes mais",
+     "summary": "As três pás do aerogerador giram de verdade. A velocidade acompanha a geração, então um aerogerador fechado que não produz nada fica completamente parado — e «pás girando, lâmpada apagada» diz num relance que o local é bom mas o cabo não está ligado. As pás também estão lisas onde antes pareciam serrilhadas. A durabilidade da broca é vinte vezes a anterior (10240 para 204800).",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "As pás do aerogerador giram. Em potência máxima, uma volta leva quatro segundos.",
+        "A velocidade acompanha a geração real. Um aerogerador coberto ou enterrado, que não produz nada, fica completamente parado; em altitude baixa gira devagar. Dá para julgar um local só de olhar.",
+        "As pás agora são lisas. Suas diagonais pareciam serrilhadas; ao passar o rotor para um renderizador, uma pá pode ser construída como uma única viga longa e afilada.",
+        "A durabilidade da broca é vinte vezes a anterior (10240 para 204800). Se você já joga num servidor, o valor antigo do seu arquivo de configuração é atualizado automaticamente."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "As pás varrem cerca de 0,6 bloco a mais que o espaço necessário para posicionar o aerogerador. Aerogeradores a exatamente 11 blocos de distância parecerão se roçar: deixe uma folga.",
+        "A atualização de durabilidade reescreve o valor antigo (10240) uma única vez. Se você tinha definido um valor próprio, ele é respeitado e mantido."
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "Este ambiente de desenvolvimento não tem cliente de Minecraft, então as pás nunca foram vistas girando no jogo real, apenas em seis quadros renderizados offline. O sentido de rotação (horário visto de frente, que é o pretendido) também não foi confirmado num cliente real.",
+        "Se a luz incide corretamente nas pás à noite também não foi confirmado no jogo."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.4",
    "summary": "O aerogerador refeito como a máquina tubular da referência, e nove armas refeitas na FORMA",
    "releases": [

@@ -6,6 +6,44 @@
  "note": "Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.",
  "groups": [
   {
+   "label": "V3.5",
+   "summary": "Bilah turbin angin kini berputar, dan ketahanan bor menjadi 20 kali lipat",
+   "releases": [
+    {
+     "version": "V3.5.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "Bilah turbin angin kini berputar, dan ketahanan bor menjadi 20 kali lipat",
+     "summary": "Ketiga bilah turbin angin benar-benar berputar. Kecepatannya mengikuti besarnya daya yang dihasilkan, sehingga turbin yang terkurung dan tidak menghasilkan apa pun berhenti total — dan «bilah berputar, lampu mati» langsung memberi tahu bahwa lokasinya bagus tetapi kabelnya belum tersambung. Bilahnya kini juga mulus, tidak lagi tampak bertangga. Ketahanan bor menjadi dua puluh kali lipat (10240 menjadi 204800).",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Bilah turbin angin berputar. Pada keluaran penuh, satu putaran memakan empat detik.",
+        "Kecepatannya mengikuti keluaran nyata. Turbin yang beratap atau terkubur, yang tidak menghasilkan apa pun, berhenti total; pada ketinggian rendah ia berputar pelan. Anda bisa menilai lokasi hanya dengan melihatnya.",
+        "Bilahnya kini mulus. Garis diagonalnya dulu tampak bertangga; dengan memindahkan rotor ke perender, satu bilah dapat dibangun sebagai satu balok panjang yang meruncing.",
+        "Ketahanan bor menjadi dua puluh kali lipat (10240 menjadi 204800). Jika Anda sudah bermain di server, nilai lama pada berkas konfigurasi Anda diperbarui otomatis."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Sapuan bilah sekitar 0,6 blok lebih lebar daripada ruang yang dibutuhkan untuk memasang turbin. Turbin yang dipasang tepat berjarak 11 blok akan tampak saling menyerempet, jadi berilah sedikit kelonggaran.",
+        "Pembaruan ketahanan menulis ulang nilai lama (10240) pada berkas konfigurasi satu kali saja. Jika Anda pernah menetapkan nilai sendiri, nilai itu dihormati dan dibiarkan."
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Lingkungan pengembangan ini tidak memiliki klien Minecraft, jadi bilah tersebut belum pernah terlihat berputar di dalam gim sungguhan — hanya pada enam bingkai render luring. Arah putaran (searah jarum jam dilihat dari depan, sesuai maksud) juga belum dipastikan pada klien sungguhan.",
+        "Apakah cahaya mengenai bilah dengan benar pada malam hari juga belum dipastikan di dalam gim."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.4",
    "summary": "Turbin angin dibangun ulang sebagai mesin tabung sesuai acuan, dan sembilan senjata dibangun ulang BENTUKNYA",
    "releases": [
