@@ -305,6 +305,25 @@
   </p>
 </div>
 
+<h2>Aureum (lightweight optimisation mod, separate download)</h2>
+<p>Aureum is a separate, independent mod from the Alpha pack. It optimises game logic, memory, and server tick cost, and deliberately never touches the chunk-render pipeline. It is not a replacement for Sodium — it optimises the side Sodium does not touch, so it is safe to run alongside it. If you want higher FPS, install Sodium separately.</p>
+<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">Version 1.0.0</span>
+  </div>
+  <h3 style="margin-top:0">aureum-1.0.0.jar</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">File size</td>
+        <td><code>35.4 KB</code> (36,216 bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">SHA-256</td>
+        <td style="word-break:break-all"><code>9085efc7670357fe15c408a4f75e52f3bf0ff1cc0a847beef894ab98c2dfa18a</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="aureum-1.0.0.jar" download>Download Aureum</a>
+  </p>
+  <p class="callout callout--info">Measured so far: -6.3 MB at 2,209 loaded chunks, -17.2 MB after generating a similarly sized area of new terrain (both reproduced across two independent runs). MSPT (tick time) is unchanged within measurement noise. Two client-side toggles (particle limit, block-entity render distance) ship off by default and unmeasured, because this development environment has no client. See the README on GitHub for installation and configuration.</p>
+</div>
+
 <h2>Discord release notifications</h2>
 <p class="callout callout--info">The Discord release bot is not yet available for this server — the invite link has not been published yet.</p>
 

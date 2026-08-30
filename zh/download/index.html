@@ -305,6 +305,25 @@
   </p>
 </div>
 
+<h2>Aureum（轻量化优化模组，单独下载）</h2>
+<p>Aureum 是与 Alpha 整合包完全独立的模组。它优化游戏逻辑、内存与服务器 tick 开销，且刻意从不触碰区块渲染管线。它不是 Sodium 的替代品——它优化的正是 Sodium 未涉及的那一侧，因此可以与 Sodium 一起安全使用。若想提升帧率，请另行安装 Sodium。</p>
+<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">版本 1.0.0</span>
+  </div>
+  <h3 style="margin-top:0">aureum-1.0.0.jar</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">文件大小</td>
+        <td><code>35.4 KB</code> (36,216 bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">SHA-256</td>
+        <td style="word-break:break-all"><code>9085efc7670357fe15c408a4f75e52f3bf0ff1cc0a847beef894ab98c2dfa18a</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="aureum-1.0.0.jar" download>下载 Aureum</a>
+  </p>
+  <p class="callout callout--info">目前实测：加载 2,209 个区块时减少 6.3 MB，生成同等规模的新地形后减少 17.2 MB（两次独立测量结果一致）。MSPT（tick 用时）在测量误差范围内无变化。两个客户端功能（粒子数量上限、方块实体渲染距离）默认关闭且未经测量，因为本开发环境没有客户端。安装与配置方法请参阅 GitHub 上的 README。</p>
+</div>
+
 <h2>Discord 更新通知机器人</h2>
 <p class="callout callout--info">Discord 更新通知机器人尚不可用（邀请链接尚未公开）。</p>
 

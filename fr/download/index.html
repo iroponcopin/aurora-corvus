@@ -305,6 +305,25 @@
   </p>
 </div>
 
+<h2>Aureum (mod d&#x27;optimisation léger, téléchargement séparé)</h2>
+<p>Aureum est un mod indépendant, séparé du pack Alpha. Il optimise la logique du jeu, la mémoire et le coût des tick serveur, et ne touche délibérément jamais au pipeline de rendu des chunks. Ce n&#x27;est pas un remplacement de Sodium : il optimise le côté que Sodium ne touche pas, donc il est sûr de l&#x27;utiliser avec lui. Pour plus de FPS, installez Sodium séparément.</p>
+<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">Version 1.0.0</span>
+  </div>
+  <h3 style="margin-top:0">aureum-1.0.0.jar</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">Taille du fichier</td>
+        <td><code>35.4 KB</code> (36,216 bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">SHA-256</td>
+        <td style="word-break:break-all"><code>9085efc7670357fe15c408a4f75e52f3bf0ff1cc0a847beef894ab98c2dfa18a</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="aureum-1.0.0.jar" download>Télécharger Aureum</a>
+  </p>
+  <p class="callout callout--info">Mesuré jusqu&#x27;ici : -6,3 Mo à 2 209 chunks chargés, -17,2 Mo après génération d&#x27;une zone de taille similaire (reproduit sur deux exécutions indépendantes). Le MSPT (temps de tick) reste inchangé dans la marge de bruit de mesure. Deux réglages côté client (limite de particules, distance de rendu des blocs-entités) sont désactivés par défaut et non mesurés, cet environnement de développement n&#x27;ayant pas de client. Voir le README sur GitHub pour l&#x27;installation et la configuration.</p>
+</div>
+
 <h2>Bot de notification des mises à jour Discord</h2>
 <p class="callout callout--info">Le bot de notification Discord n&#x27;est pas encore disponible pour ce serveur : le lien d&#x27;invitation n&#x27;a pas encore été publié.</p>
 

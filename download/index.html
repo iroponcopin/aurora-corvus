@@ -305,6 +305,25 @@
   </p>
 </div>
 
+<h2>Aureum(軽量化MOD・別配布)</h2>
+<p>Aureum は Alpha パックとは別の、独立したMODです。ゲームロジック・メモリ・サーバーのtickコストを最適化しますが、チャンク描画パイプラインには一切触れません。Sodiumの代わりではなく、Sodiumが扱わない側を最適化する設計なので、Sodiumと並べて安全に使えます。FPSを上げたい場合はSodiumを別途導入してください。</p>
+<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">バージョン 1.0.0</span>
+  </div>
+  <h3 style="margin-top:0">aureum-1.0.0.jar</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">ファイルサイズ</td>
+        <td><code>35.4 KB</code> (36,216 bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">SHA-256</td>
+        <td style="word-break:break-all"><code>9085efc7670357fe15c408a4f75e52f3bf0ff1cc0a847beef894ab98c2dfa18a</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="aureum-1.0.0.jar" download>Aureum をダウンロード</a>
+  </p>
+  <p class="callout callout--info">現在の実測は2,209チャンク読み込み時に -6.3 MB、同規模の新規生成で -17.2 MB(いずれも独立2回計測で一致)。MSPT(tick時間)への影響は計測範囲内で変化なしです。クライアント側の2機能(パーティクル上限・ブロックエンティティ描画距離)は既定offで、この開発環境にクライアントが無いため未計測です。導入・設定方法はGitHubのREADMEを参照してください。</p>
+</div>
+
 <h2>Discord 更新通知ボット</h2>
 <p class="callout callout--info">Discord 更新通知ボットはまだ利用できません(招待リンクは未公開です)。</p>
 

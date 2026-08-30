@@ -21,6 +21,7 @@ those genuinely exist in en/ja only and have real English defaults.
 """
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -109,8 +110,19 @@ def _release_date(version):
 
 
 def _fmt_size(num_bytes):
+    """Human file size, scaled to the unit that is actually informative.
+
+    Written assuming every caller was a multi-megabyte pack ZIP or installer,
+    so it always divided by 1 MB and rendered with one decimal place. Aureum's
+    jar (36,216 bytes) is the first artefact on this page under 1 MB, and the
+    old version silently printed "0.0 MB" for it -- true, but useless: a reader
+    cannot tell a rounding artefact from a broken download. KB below 1 MB now.
+    """
     mb = num_bytes / (1024 * 1024)
-    return f"{mb:.1f} MB"
+    if mb >= 1:
+        return f"{mb:.1f} MB"
+    kb = num_bytes / 1024
+    return f"{kb:.1f} KB"
 
 
 def _discord_invite():
@@ -129,6 +141,41 @@ def _discord_invite():
         f"?client_id={client_id}&scope=bot%20applications.commands&permissions={permissions}"
     )
     return url, True
+
+
+_AUREUM_JAR_RE = re.compile(r"^aureum-(?P<version>\d+(?:\.\d+)*)\.jar$")
+
+
+def _aureum_facts():
+    """The real facts about the published Aureum build, computed straight from
+    the file on disk -- same discipline as _launcher_facts(): never typed, and
+    never read back out of a second source that could disagree with it.
+
+    Aureum is a SEPARATE mod (its own repo, its own version line), not a member
+    of the Alpha pack ZIP, so it is not in glimpse_manifest.json and has no
+    self-update path through Corvus. This is the standalone download story for
+    it. Returns None if no build has been published yet, so a wiki checkout
+    without the jar in downloads/ still builds (matching newest_launcher_jar()'s
+    own None case) rather than crashing every language's build over one
+    optional artefact.
+    """
+    candidates = []
+    if DOWNLOAD_DIR.is_dir():
+        for path in DOWNLOAD_DIR.iterdir():
+            m = _AUREUM_JAR_RE.match(path.name)
+            if m:
+                candidates.append((tuple(int(x) for x in m.group("version").split(".")),
+                                   m.group("version"), path))
+    if not candidates:
+        return None
+    candidates.sort(key=lambda t: t[0], reverse=True)
+    _, version, path = candidates[0]
+    return {
+        "version": version,
+        "file_name": path.name,
+        "size_bytes": path.stat().st_size,
+        "sha256": _sha256(path),
+    }
 
 
 def _launcher_facts():
@@ -267,6 +314,37 @@ def _whats_new_body(lang, bundle, dl):
     return dl.get("whats_new_body", "")
 
 
+def _aureum_section_html(dl, aureum):
+    """Aureum is optional in every sense: a separate mod, verified in its own
+    repo, that a player installs alongside Alpha rather than as part of it.
+    Missing entirely (aureum is None) renders NOTHING -- not a broken card, not
+    an empty heading -- so a wiki checkout without the jar published yet still
+    produces a complete, honest download page.
+    """
+    if aureum is None:
+        return ""
+    return (
+        f'\n<h2>{esc(dl.get("aureum_heading", "Aureum"))}</h2>\n'
+        f'<p>{esc(dl.get("aureum_body", ""))}</p>\n'
+        f'<div class="card" style="margin-bottom:20px;">\n'
+        f'  <div class="badge-row">\n'
+        f'    <span class="type-badge type-release">{esc(dl.get("version_label", "Version"))} {esc(aureum["version"])}</span>\n'
+        f'  </div>\n'
+        f'  <h3 style="margin-top:0">{esc(aureum["file_name"])}</h3>\n'
+        f'  <table style="width:100%; border-collapse:collapse;">\n'
+        f'    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">{esc(dl.get("size_label", "Size"))}</td>\n'
+        f'        <td><code>{esc(_fmt_size(aureum["size_bytes"]))}</code> ({aureum["size_bytes"]:,} bytes)</td></tr>\n'
+        f'    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">{esc(dl.get("sha_label", "SHA-256"))}</td>\n'
+        f'        <td style="word-break:break-all"><code>{esc(aureum["sha256"])}</code></td></tr>\n'
+        f'  </table>\n'
+        f'  <p style="margin-top:16px">\n'
+        f'    <a class="btn" href="{esc(aureum["file_name"])}" download>{esc(dl.get("aureum_cta", dl.get("primary_cta", "Download")))}</a>\n'
+        f'  </p>\n'
+        f'  <p class="callout callout--info">{esc(dl.get("aureum_note", ""))}</p>\n'
+        f'</div>\n'
+    )
+
+
 def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     bundle = load_bundle(lang)
     ui = bundle["ui"]
@@ -274,6 +352,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     dl = _require_download_block(bundle, lang)
     invite_url, discord_configured = _discord_invite()
     launcher = _launcher_facts()
+    aureum = _aureum_facts()
 
     # downloads/ lives at the wiki repo root, *outside* every per-language
     # directory - it needs the language-aware root prefix (asset_root_prefix),
@@ -323,7 +402,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
                                 'mod pack up to date automatically, verifying every download against '
                                 'this Wiki by SHA-256.'))}</p>
 {_launcher_section_html(dl, lang, launcher)}
-
+{_aureum_section_html(dl, aureum)}
 <h2>{esc(dl.get('discord_heading', 'Discord release notifications'))}</h2>
 {_discord_section_html(dl, invite_url, discord_configured)}
 """

@@ -305,6 +305,25 @@
   </p>
 </div>
 
+<h2>Aureum (mod optimisasi ringan, unduhan terpisah)</h2>
+<p>Aureum adalah mod independen yang terpisah dari paket Alpha. Ia mengoptimalkan logika permainan, memori, dan biaya tick server, serta secara sengaja tidak pernah menyentuh alur render chunk. Ini bukan pengganti Sodium — ia mengoptimalkan sisi yang tidak disentuh Sodium, jadi aman dipakai berdampingan dengannya. Jika ingin FPS lebih tinggi, pasang Sodium secara terpisah.</p>
+<div class="card" style="margin-bottom:20px;">
+  <div class="badge-row">
+    <span class="type-badge type-release">Versi 1.0.0</span>
+  </div>
+  <h3 style="margin-top:0">aureum-1.0.0.jar</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">Ukuran berkas</td>
+        <td><code>35.4 KB</code> (36,216 bytes)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">SHA-256</td>
+        <td style="word-break:break-all"><code>9085efc7670357fe15c408a4f75e52f3bf0ff1cc0a847beef894ab98c2dfa18a</code></td></tr>
+  </table>
+  <p style="margin-top:16px">
+    <a class="btn" href="aureum-1.0.0.jar" download>Unduh Aureum</a>
+  </p>
+  <p class="callout callout--info">Terukur sejauh ini: -6,3 MB pada 2.209 chunk yang dimuat, -17,2 MB setelah menghasilkan area baru dengan ukuran serupa (direproduksi dalam dua kali pengujian independen). MSPT (waktu tick) tidak berubah dalam batas noise pengukuran. Dua sakelar sisi klien (batas partikel, jarak render block-entity) default mati dan belum terukur, karena lingkungan pengembangan ini tidak memiliki klien. Lihat README di GitHub untuk instalasi dan konfigurasi.</p>
+</div>
+
 <h2>Bot notifikasi pembaruan Discord</h2>
 <p class="callout callout--info">Bot notifikasi Discord belum tersedia untuk server ini — tautan undangannya belum dipublikasikan.</p>
 

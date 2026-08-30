@@ -4781,7 +4781,11 @@
     "launcher_pending": "Corvus is not yet available for download - no build has been published to the Wiki yet. Check back soon, or continue installing the mod pack manually using the ZIP above.",
     "launcher_jar_note": "Cross-platform (Windows, macOS, Linux) - needs Java 21 or newer already installed.",
     "launcher_native_heading": "Native installers (no Java required)",
-    "launcher_native_note": "These install like a normal desktop app and do not need Java installed separately. They are not code-signed yet, so your OS will show a first-run warning - see the install guide for how to proceed past it."
+    "launcher_native_note": "These install like a normal desktop app and do not need Java installed separately. They are not code-signed yet, so your OS will show a first-run warning - see the install guide for how to proceed past it.",
+    "aureum_heading": "Aureum (lightweight optimisation mod, separate download)",
+    "aureum_body": "Aureum is a separate, independent mod from the Alpha pack. It optimises game logic, memory, and server tick cost, and deliberately never touches the chunk-render pipeline. It is not a replacement for Sodium — it optimises the side Sodium does not touch, so it is safe to run alongside it. If you want higher FPS, install Sodium separately.",
+    "aureum_cta": "Download Aureum",
+    "aureum_note": "Measured so far: -6.3 MB at 2,209 loaded chunks, -17.2 MB after generating a similarly sized area of new terrain (both reproduced across two independent runs). MSPT (tick time) is unchanged within measurement noise. Two client-side toggles (particle limit, block-entity render distance) ship off by default and unmeasured, because this development environment has no client. See the README on GitHub for installation and configuration."
   },
   "launcher_page": {
     "intro": "Corvus is a small desktop app that keeps your Alpha mod pack up to date automatically. It checks this Wiki for the current release, downloads updates for you, and verifies every file it downloads against a SHA-256 checksum published here before it touches your pack folder. This Wiki is the only source it trusts.",
