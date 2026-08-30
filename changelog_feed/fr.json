@@ -6,6 +6,51 @@
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
   {
+   "label": "V3.4",
+   "summary": "L'éolienne reconstruite en machine tubulaire conforme à la référence, et neuf armes reconstruites en FORME",
+   "releases": [
+    {
+     "version": "V3.4.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "L'éolienne reconstruite en machine tubulaire conforme à la référence, et neuf armes reconstruites en FORME",
+     "summary": "Le propriétaire avait raison au sujet de V3.3.0 : le travail visuel était insuffisant. La référence montre une éolienne tubulaire lisse, mais ce qui a été livré était un mât en treillis ouvert — une famille structurelle différente — simplement recoloré et agrandi. Les armes n'avaient vu changer que trois COULEURS sur neuf et pas une seule forme. Les deux sont reconstruits ici. L'éolienne est désormais une véritable machine tubulaire avec nacelle, longues pales effilées et socle en béton avec escalier ; la géométrie des armes a été alignée sur la référence, y compris la crosse du fusil d'assaut, le chargeur courbe du PM et le porte-cartouches du fusil à pompe.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "L'éolienne est reconstruite. Du mât en treillis ouvert elle passe à la tour tubulaire lisse de la référence, avec deux bandes de balisage rouge et blanc sur sa moitié supérieure, une nacelle à persiennes avec anémomètre, un cône de nez arrondi, trois longues pales effilées à bouts rouges, et un socle en béton avec garde-corps, escalier extérieur et porte d'accès.",
+        "Le rotor a enfin la bonne taille : environ 12,5 blocs de diamètre sur une machine de 16 blocs — la proportion de la vraie machine. Avant, les pales n'étaient qu'un symbole d'environ un dixième de la hauteur.",
+        "Le fusil d'assaut a maintenant une crosse correctement formée et une hausse rabattable. La lunette à lentille bleue, absente de la référence, a été retirée. Ses proportions générales ont aussi été allongées.",
+        "La crosse du pistolet-mitrailleur est désormais une plaque pliante pleine, et son chargeur est courbe comme le vrai.",
+        "Le fusil à pompe a gagné l'élément le plus distinctif de la référence : un porte-cartouches, quatre douilles rouges sur culots laiton. La crosse en bois, absente de la référence, a été retirée.",
+        "Les six canons de la minigun sont enfin visibles. Un collier de canons se trouvait exactement au niveau de la bouche, si bien que toute la face se lisait comme un disque doré.",
+        "Les icônes d'inventaire ont été redessinées pour correspondre aux modèles 3D reconstruits. Les crosses en bois ont disparu des icônes du fusil d'assaut et du fusil à pompe, et celle du fusil à pompe montre son porte-cartouches."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Cette version ne touche que l'apparence. Aucun identifiant de bloc, d'objet ou d'entité n'a changé, et aucune statistique ni boîte de collision n'a été modifiée. Votre monde et vos configurations sont conservés tels quels.",
+        "L'éolienne demande désormais une autre quantité de place (hauteur 11 à 16 blocs, largeur 5 à 11). Comme elle est maintenant creuse, le nombre de blocs réellement occupés est toutefois passé de 200 à 133."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les diagonales des pales sont visiblement en escalier. Les boîtes pivotées ne peuvent pas franchir une limite de bloc dans cette approche : c'est une limite, pas un défaut à corriger.",
+        "De fines coutures horizontales apparaissent tous les 8 pixels le long de la tour. De loin, on dirait des joints à brides ; de près, la tour est plus massive que la référence.",
+        "La nacelle est plus anguleuse que la référence et un peu grande par rapport au moyeu. C'est la résolution de 16 pixels par bloc.",
+        "Parmi les armes, le fusil à pompe et le pistolet se lisent comme le bon TYPE d'arme mais ne collent pas à la référence. Ces deux armes de référence ont des corps arrondis et chanfreinés qu'un modèle fait de boîtes ne peut atteindre.",
+        "Le fusil d'assaut est désormais plus difficile à repérer dans une petite case d'inventaire. Sa crosse en bois orange remplissait ce rôle. La cohérence avec le modèle 3D était l'exigence, et c'est ce qu'elle a coûté.",
+        "Cet environnement de développement n'a pas de client Minecraft : là encore, rien de tout cela n'a été vu dans le jeu, seulement en rendu hors ligne."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.3",
    "summary": "Nouveau mod téléphone, éolienne bien plus grande, et l'eau du tsunami qui s'écoule enfin",
    "releases": [

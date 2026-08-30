@@ -6,6 +6,51 @@
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
+   "label": "V3.4",
+   "summary": "The wind turbine rebuilt as the reference's tubular machine, and nine guns rebuilt in SHAPE",
+   "releases": [
+    {
+     "version": "V3.4.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "The wind turbine rebuilt as the reference's tubular machine, and nine guns rebuilt in SHAPE",
+     "summary": "The owner was right about V3.3.0's visual work: it was not enough. The reference shows a smooth tubular wind turbine, but what shipped was an open lattice mast — a different structural family — that had only been recoloured and made taller. The guns had only three of nine COLOURS changed and not one shape. Both are rebuilt here. The turbine is now a real tubular machine with a boxy nacelle, long tapered blades and a concrete base with stairs; the guns had their geometry matched to the reference, including the assault rifle's stock, the SMG's curved magazine and the shotgun's shell side-saddle.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "The wind turbine is rebuilt. It goes from an open lattice mast to the reference's smooth tubular tower, with two red-and-white aviation bands on its upper half, a louvred nacelle with an anemometer, a rounded nose cone, three long tapered blades with red tips, and a concrete base with a handrail, an external staircase and an access door.",
+        "The rotor is now the right size. It spans about 12.5 blocks on a 16-block machine — the real machine's proportion. Before, the blades were a token roughly a tenth of the machine's height.",
+        "The assault rifle now has a properly shaped buttstock and a flip-up sight. The blue lens optic, which the reference does not have, is gone. Its overall proportions were stretched to match the reference too.",
+        "The submachine gun's stock is now a solid folding plate, and its magazine curves the way the real one does.",
+        "The shotgun gained the reference's most distinctive feature: a shell side-saddle, four red hulls over brass heads. The wooden shoulder stock, which the reference does not have, was removed.",
+        "The minigun's six bores are visible at last. A barrel clamp used to sit exactly level with the muzzle, so the whole muzzle face read as a gold disc.",
+        "The inventory icons were redrawn to match the rebuilt 3D models. The wooden stocks are gone from the assault rifle and shotgun icons, and the shotgun icon now shows its side-saddle."
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "This is an appearance-only release. Not one block, item or entity identifier changed, and no stats or hitboxes changed. Your world and configs carry over untouched.",
+        "The wind turbine needs a different amount of space to place (height 11 to 16 blocks, width 5 to 11). Because it is now hollow, however, the number of blocks it actually occupies fell from 200 to 133."
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "The blades' diagonals are visibly stepped. Rotated boxes cannot cross a block boundary in this rendering approach, so this is a limit rather than a defect to fix.",
+        "Faint horizontal seams appear every 8 pixels up the tower. At a distance they read as flange joints; close up the tower is chunkier than the reference.",
+        "The nacelle is blockier than the reference and slightly large relative to the hub. That is the 16-pixels-per-block resolution.",
+        "Among the guns, the shotgun and handgun read as the right KIND of weapon but are not close matches. Both reference guns have rounded, chamfered bodies that a model built from boxes cannot reach.",
+        "The assault rifle is now harder to pick out in a small inventory slot. Its orange wooden stock had been doing that work. Matching the 3D model was the requirement, and this is what it cost.",
+        "This development environment has no Minecraft client, so once again none of this has been seen in the actual game — only in offline renders."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.3",
    "summary": "A new phone mod, a much larger wind turbine, and tsunami water that finally drains",
    "releases": [
