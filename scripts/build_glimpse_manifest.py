@@ -27,10 +27,34 @@ Jar discovery and version ordering live in site_common (find_launcher_jars /
 newest_launcher_jar) so this script and build_download.py cannot drift apart
 about which file is "current" — see the comment there for the two bugs the
 old private copies shared.
+
+The "aureum" block (2026-08-31) follows the same rule for the same reason.
+Aureum is a SEPARATE mod with its own repo and its own version line, and until
+now it had no path through Corvus at all — it was a website download only. The
+owner asked for three things: that it be installable FROM Corvus without
+visiting the site, that people who already have it get new versions
+automatically, and — the constraint that shapes everything — that it is NEVER
+introduced automatically unless they put the jar in their mods folder
+themselves or pressed Install in Corvus. This block is what makes the first two
+possible; the third is enforced on the launcher side (see AureumConsent there).
+
+Two things about this block are deliberate:
+
+  * jar discovery reuses build_download.py's _aureum_facts(), so the Download
+    page, the /aureum/ landing page and this manifest can never disagree about
+    which build is current. build_aureum.py already imports it for exactly this
+    reason.
+
+  * "mod_id" is read out of the jar's own fabric.mod.json rather than typed.
+    Corvus identifies an installed Aureum by mod id, never by file name --
+    because the file name is the thing that has already broken a cross-repo
+    contract in this project once (the launcher jar glob). Typing "aureum" here
+    would reintroduce exactly that class of drift, one layer down.
 """
 import hashlib
 import json
 import sys
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -38,6 +62,8 @@ from site_common import (  # noqa: E402
     ROOT, LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
     PACK_NAME, pack_zip_path,
 )
+from build_download import _aureum_facts  # noqa: E402  (single source of truth
+# for which Aureum jar is current -- same import build_aureum.py already makes)
 
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
@@ -144,6 +170,69 @@ def _launcher_block(release):
     return block
 
 
+def _aureum_mod_id(jar_path):
+    """The Fabric mod id the published jar actually declares.
+
+    Read from the artefact, never typed. Corvus matches an installed Aureum by
+    mod id (see AureumJar over there), so this value is what lets a future
+    rename reach copies that are already installed. A literal here would be a
+    second place for the truth to live, and the wrong one would silently switch
+    install detection off for everybody -- the launcher would then report
+    "not installed" for a folder that has it, and offer to install a second
+    copy, which Fabric refuses to load.
+    """
+    try:
+        with zipfile.ZipFile(jar_path) as zf:
+            meta = json.loads(zf.read("fabric.mod.json").decode("utf-8"))
+    except (OSError, KeyError, ValueError) as exc:
+        raise SystemExit(
+            f"ERROR: could not read fabric.mod.json out of {jar_path} ({exc}). The manifest's "
+            f"aureum.mod_id must come from the jar itself -- do not type it."
+        )
+    mod_id = meta.get("id")
+    if not isinstance(mod_id, str) or not mod_id.strip():
+        raise SystemExit(
+            f"ERROR: {jar_path} declares no usable \"id\" in its fabric.mod.json, so Corvus would "
+            f"have nothing to match an installed copy against."
+        )
+    return mod_id.strip()
+
+
+def _aureum_block():
+    """The `aureum` block, or None when no Aureum build has been published.
+
+    None is honest before the first Aureum release, exactly as an absent
+    `launcher` block was before the first launcher shipped. It is NOT honest
+    once one has shipped: a manifest that silently drops the block would tell
+    every installed Corvus that Aureum no longer exists, which switches its
+    auto-update off. build() checks the already-published manifest for that
+    case and stops loudly.
+    """
+    facts = _aureum_facts()
+    if facts is None:
+        return None
+    jar_path = DOWNLOAD_DIR / facts["file_name"]
+    return {
+        "mod_id": _aureum_mod_id(jar_path),
+        "latest": facts["version"],
+        "download_url": f"{SITE_BASE_URL}/downloads/{facts['file_name']}",
+        "file_name": facts["file_name"],
+        "file_size": facts["size_bytes"],
+        "sha256": facts["sha256"],
+    }
+
+
+def _previously_published_manifest():
+    """The manifest currently committed at the repo root, or {} if there is none."""
+    path = ROOT / "glimpse_manifest.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except ValueError:
+        return {}
+
+
 def build():
     version = _mod_version()
     zpath = _zip_path(version)
@@ -191,6 +280,28 @@ def build():
                    ", ".join(sorted(notes_table)), LAUNCHER_APP_NAME))
         print("glimpse_manifest.py: no launcher jar found yet - writing manifest with 'pack' "
               "only (expected until the first launcher build ships)")
+
+    aureum = _aureum_block()
+    if aureum is not None:
+        manifest["aureum"] = aureum
+        print(f"glimpse_manifest.py: Aureum {aureum['latest']} ({aureum['file_name']}, mod id "
+              f"{aureum['mod_id']!r}) selected, including 'aureum' block")
+    elif "aureum" in _previously_published_manifest():
+        # Same rule as the launcher block above, and the same failure it
+        # prevents: an absent block is only honest before the first release.
+        # After that it means discovery broke (a rename, a moved folder), and
+        # publishing without it would tell every installed Corvus that Aureum
+        # has no published version -- switching off the auto-update the owner
+        # explicitly asked for, silently, for everyone who already has it.
+        raise SystemExit(
+            f"ERROR: no Aureum jar found in {DOWNLOAD_DIR}, but the published glimpse_manifest.json "
+            f"already carries an 'aureum' block. Dropping it would silently disable Aureum "
+            f"auto-update for every installed Corvus. Publish the jar, or fix the naming - do not "
+            f"ship this."
+        )
+    else:
+        print("glimpse_manifest.py: no Aureum jar found yet - writing manifest with no 'aureum' "
+              "block (expected until the first Aureum build ships)")
 
     out_path = ROOT / "glimpse_manifest.json"
     out_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

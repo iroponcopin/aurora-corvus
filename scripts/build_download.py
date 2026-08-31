@@ -152,12 +152,21 @@ def _aureum_facts():
     never read back out of a second source that could disagree with it.
 
     Aureum is a SEPARATE mod (its own repo, its own version line), not a member
-    of the Alpha pack ZIP, so it is not in glimpse_manifest.json and has no
-    self-update path through Corvus. This is the standalone download story for
-    it. Returns None if no build has been published yet, so a wiki checkout
-    without the jar in downloads/ still builds (matching newest_launcher_jar()'s
-    own None case) rather than crashing every language's build over one
-    optional artefact.
+    of the Alpha pack ZIP. This is the standalone download story for it.
+
+    Since 2026-08-31 these same facts ALSO feed glimpse_manifest.json's `aureum`
+    block (build_glimpse_manifest.py imports this function), so Corvus can
+    install and update Aureum without anyone visiting this page. Both consumers
+    read this one function on purpose: a second discovery routine is how the
+    Download page and the manifest would come to disagree about which build is
+    current. Note that Corvus installing Aureum is always OPT-IN -- it never
+    introduces it on its own -- which is enforced on the launcher side, not
+    here.
+
+    Returns None if no build has been published yet, so a wiki checkout without
+    the jar in downloads/ still builds (matching newest_launcher_jar()'s own
+    None case) rather than crashing every language's build over one optional
+    artefact.
     """
     candidates = []
     if DOWNLOAD_DIR.is_dir():
