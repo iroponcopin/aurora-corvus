@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "1.8.2",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.2.jar",
-    "file_name": "corvus-1.8.2.jar",
-    "file_size": 10721800,
-    "sha256": "e6bb48fffb16d2db16a9ecbbb50dca0e36cf3f4da9722c72dd94ff31df926d91",
-    "notes": "Stops Corvus asking you to update forever. Every 1.8.1 build reported itself as \"1.8.0\" no matter what it actually was, so it compared itself against the published 1.8.1, decided it was out of date, and offered an update — which installed another build that also said 1.8.0, so the offer came straight back. Taking 1.8.2 once ends the loop: 1.8.2 correctly reports 1.8.2. This affected Windows, macOS and Linux alike; macOS simply hit it first. The version now comes from the build itself rather than a number someone had to remember to edit, and the release pipeline refuses to publish a build whose reported version disagrees with the version it was built as.",
+    "latest": "1.8.3",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.3.jar",
+    "file_name": "corvus-1.8.3.jar",
+    "file_size": 10722331,
+    "sha256": "97915e88570651007b6c7d24f4c2199524f5410345ed4cd60daae7891dd8a79f",
+    "notes": "Fixes Corvus never opening on macOS — it would appear in the Dock, bounce, and never show a window. 1.8.2 read your pack's mods folder, opening every jar in it, before it was allowed to draw the window; if that folder lives on an external or slow drive there was no limit on how long that took. The scan now happens in the background and the window opens straight away, with the Aureum row filling in a moment later. Verified by launching the built app with a real pack folder configured: the window appears and the scan is no longer on the drawing thread.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.2-macos.dmg",
-        "file_name": "corvus-1.8.2-macos.dmg",
-        "file_size": 68096228,
-        "sha256": "0a53d6a1d5a5e30999c950799b925a4927da02e598cc37efcc87761a3dd308a2"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.3-macos.dmg",
+        "file_name": "corvus-1.8.3-macos.dmg",
+        "file_size": 68096599,
+        "sha256": "e07f6e4dfcbed259133ef98ca5c2e0af174c30a0e61e4b796b4c5cdf0331fdd9"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.2-windows.msi",
-        "file_name": "corvus-1.8.2-windows.msi",
-        "file_size": 65785953,
-        "sha256": "72074a0fa0e186f84b50daf6affd0041409afc1741013f94ed202dae9e7bec9b"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.3-windows.msi",
+        "file_name": "corvus-1.8.3-windows.msi",
+        "file_size": 65790049,
+        "sha256": "626333f3cb7cb2b0a2fdc6135eb42e37693e302cdee3663049a0c91f5d8eb8cc"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.2-linux.deb",
-        "file_name": "corvus-1.8.2-linux.deb",
-        "file_size": 46805004,
-        "sha256": "e07c3a443f8cd8f2ffa72004b33c3d291bf72b0619673d44a93c19afb5b59095"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.8.3-linux.deb",
+        "file_name": "corvus-1.8.3-linux.deb",
+        "file_size": 46807010,
+        "sha256": "f7fe98249bd5a48fc57244848494d947bdbbcfa9181f5d184f68e4112655e120"
       }
     }
   },
