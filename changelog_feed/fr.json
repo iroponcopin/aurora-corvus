@@ -1,10 +1,54 @@
 {
  "lang": "fr",
- "updated": "2026-08-30",
+ "updated": "2026-08-31",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-08-30",
+ "updated_label": "Mis à jour le 2026-08-31",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
+  {
+   "label": "V3.6",
+   "summary": "Les lanternes de verre colorées teintent ce qu'elles éclairent, et seule la mèche de la foreuse tourne",
+   "releases": [
+    {
+     "version": "V3.6.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Les lanternes de verre colorées teintent ce qu'elles éclairent, et seule la mèche de la foreuse tourne",
+     "summary": "Une lanterne de verre colorée baigne désormais le sol et les murs de sa propre couleur : une lanterne rouge rend les alentours rouges. La luminosité est exactement la même qu'avant ; seule la couleur change. La foreuse ne tournoie plus en entier : seule la mèche tourne. Elle mine aussi tous les blocs à la même vitesse, corrigeant la lenteur extrême sur la terre, le sable et le gravier. Et Corvus peut maintenant installer et mettre à jour Aureum directement.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les lanternes de verre colorées teintent le sol et les murs qu'elles éclairent. Une lanterne rouge rend les alentours rouges, une bleue bleus. Le NIVEAU de lumière est identique à avant — seule la couleur est nouvelle.",
+        "Le blanc, le gris clair, le gris, le noir et la lanterne non teintée ne projettent aucune couleur, comme avant. Cela se décide automatiquement d'après la saturation du colorant, pas d'après une liste écrite à la main.",
+        "Seule la mèche de la foreuse tourne désormais. L'outil entier tournoyait à l'écran ; la poignée et le corps restent maintenant immobiles.",
+        "La foreuse mine tous les blocs à la même vitesse. La terre, le sable et le gravier étaient nettement plus lents, car le jeu ne considérait pas la foreuse comme l'outil adapté.",
+        "Les butins ont été corrigés en conséquence. Creuser vite sans rien obtenir serait pire que creuser lentement : la foreuse fait désormais tomber ce qu'elle casse — les toiles d'araignée donnent de la ficelle, ce qui n'était pas le cas.",
+        "Corvus peut télécharger et mettre à jour Aureum sans ouvrir le site."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Aureum n'est jamais installé automatiquement. Il n'arrive que si vous le placez vous-même dans votre dossier mods ou si vous appuyez sur Installer dans Corvus. Ensuite, les nouvelles versions sont récupérées automatiquement, selon votre réglage de mise à jour existant.",
+        "La foreuse étant désormais uniforme, les toiles d'araignée se cassent instantanément. Les épées et les cisailles ont déjà leur propre cas particulier pour les toiles : c'est donc une différence de degré, pas de nature — et les toiles donnent désormais de la ficelle au lieu de rien."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La couleur des lanternes n'est pas une vraie lumière colorée. Le moteur de Minecraft ne peut pas stocker une couleur par source — la lumière de bloc est un seul nombre de 0 à 15 — on pose donc un film coloré sur les surfaces. Les couleurs ne s'additionnent donc pas : une lanterne rouge et une bleue sur le même sol ne donnent pas du violet ; c'est la dernière dessinée qui l'emporte.",
+        "Pour la même raison, seules les faces de blocs sont teintées. Ni les joueurs, ni les créatures, ni les objets au sol. Ni les escaliers, dalles, feuilles, verre et eau, et les formes fines comme les barrières ne projettent pas d'ombre dans la teinte.",
+        "Un sol déjà éclairé par des torches prend autant de couleur qu'un sol sombre. Après pose ou destruction, il faut environ une demi-seconde pour que cela apparaisse.",
+        "Les lanternes de la famille verte paraissent très légèrement plus lumineuses, car l'œil pondère fortement le vert. C'est plafonné, au prix d'un vert plutôt olive que citron vif.",
+        "Le comportement avec les mods de shaders (Iris/Sodium) n'a pas été vérifié.",
+        "Cet environnement de développement n'a pas de client Minecraft : ni la couleur des lanternes ni la rotation de la foreuse n'ont été vues dans le jeu réel, seulement en rendu hors ligne."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.5",
    "summary": "Les pales de l'éolienne tournent enfin, et la foreuse dure 20 fois plus longtemps",

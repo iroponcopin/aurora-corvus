@@ -1,10 +1,54 @@
 {
  "lang": "tr",
- "updated": "2026-08-30",
+ "updated": "2026-08-31",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-08-30 tarihinde güncellendi",
+ "updated_label": "2026-08-31 tarihinde güncellendi",
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
+  {
+   "label": "V3.6",
+   "summary": "Renkli cam fenerler artık aydınlattıklarını renklendiriyor, matkapta ise yalnızca uç dönüyor",
+   "releases": [
+    {
+     "version": "V3.6.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Renkli cam fenerler artık aydınlattıklarını renklendiriyor, matkapta ise yalnızca uç dönüyor",
+     "summary": "Renkli bir cam fener artık zemini ve duvarları kendi rengine boyuyor: kırmızı fener çevreyi kırmızı yapıyor. Parlaklık tam olarak eskisi gibi; değişen yalnızca renk. Matkap artık bütün olarak dönmüyor, sadece ucu dönüyor. Ayrıca her bloğu aynı hızda kazıyor; toprak, kum ve çakıl artık aşırı yavaş değil. Corvus da Aureum'u doğrudan kurup güncelleyebiliyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Renkli cam fenerler aydınlattıkları zemini ve duvarları renklendiriyor. Kırmızı fener çevreyi kırmızı, mavi olan maviye çeviriyor. Işık SEVİYESİ tam olarak eskisi gibi — yeni olan yalnızca renk.",
+        "Beyaz, açık gri, gri, siyah ve boyasız fener eskisi gibi renk yaymıyor. Bu, boyanın doygunluğuna göre otomatik belirleniyor; elle yazılmış bir listeye göre değil.",
+        "Artık yalnızca matkabın ucu dönüyor. Eskiden ekranda tüm alet dönüyordu; sap ve gövde artık sabit duruyor.",
+        "Matkap her bloğu aynı hızda kazıyor. Toprak, kum ve çakıl belirgin biçimde daha yavaştı, çünkü oyun matkabı bunlar için uygun alet saymıyordu.",
+        "Düşen eşyalar da buna göre düzeltildi. Hızlı kazıp hiçbir şey alamamak yavaş kazmaktan kötü olurdu; artık matkap kırdığını düşürüyor — örümcek ağı artık ip veriyor, eskiden vermiyordu.",
+        "Corvus, siteyi açmadan Aureum'u indirip güncelleyebiliyor."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Aureum asla otomatik kurulmaz. Yalnızca kendiniz mods klasörüne koyarsanız ya da Corvus'ta Kur'a basarsanız gelir. Kurulduktan sonra yeni sürümler, mevcut otomatik güncelleme ayarınıza göre otomatik alınır.",
+        "Matkap artık her yerde aynı olduğundan örümcek ağları anında kırılıyor. Kılıçlar ve makasların zaten örümcek ağına özel bir istisnası var; yani bu türde değil derecede bir fark — üstelik ağlar artık hiçbir şey yerine ip düşürüyor."
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Fener rengi gerçek renkli ışık değildir. Minecraft motoru kaynak başına renk saklayamaz — blok ışığı 0-15 arası tek bir sayıdır — bu yüzden yüzeylerin üzerine renkli bir katman serilir. Dolayısıyla renkler toplanmaz: aynı zemindeki kırmızı ve mavi fener mor yapmaz; en son çizilen kazanır.",
+        "Aynı nedenle yalnızca blok yüzeyleri renklenir. Oyuncular, yaratıklar ve yerdeki eşyalar renklenmez. Merdivenler, plakalar, yapraklar, cam ve su da öyle; çit gibi ince şekiller bu renk yıkamasında gölge düşürmez.",
+        "Meşalelerle zaten aydınlık bir zemin, karanlık bir zemin kadar renk alır. Fener konduktan veya kırıldıktan sonra görünmesi yaklaşık yarım saniye sürer.",
+        "Yeşil ailesindeki fenerler çok az daha parlak görünür, çünkü göz yeşile fazla ağırlık verir. Bu sınırlandı; bedeli, yeşilin canlı misket limonu yerine zeytin yeşiline çalması.",
+        "Gölgelendirici modlarla (Iris/Sodium) birlikte davranışı denenmedi.",
+        "Bu geliştirme ortamında Minecraft istemcisi yok; ne fener rengi ne de matkabın dönüşü gerçek oyunda görüldü, yalnızca çevrimdışı görüntülemelerde."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.5",
    "summary": "Rüzgâr türbininin kanatları artık dönüyor, matkabın dayanıklılığı 20 katına çıktı",

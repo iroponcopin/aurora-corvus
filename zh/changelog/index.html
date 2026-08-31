@@ -208,7 +208,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新日志</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-08-30</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-08-31</span></p>
     <p class="cl__note">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
   </header>
 
@@ -223,7 +223,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>没有符合条件的更新记录。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.5">
+<section class="cl__group" id="v3.6">
+      <h2 class="cl__groupTitle">V3.6</h2>
+      <p class="cl__groupSummary">彩色玻璃灯笼now会用自身颜色照亮周围,钻头仅尖端旋转</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V3.6.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-6-0">
+          <h3 class="cl__version">V3.6.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-31</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-6-0" hidden><p class="cl__entryTitle">彩色玻璃灯笼now会用自身颜色照亮周围,钻头仅尖端旋转</p><p class="cl__lede">彩色玻璃灯笼现在会把地面和墙壁染上自身的颜色——红色灯笼会让周围变红。亮度与此前完全相同,改变的只有色调。钻头不再整体旋转,只有尖端转动。同时,泥土、沙子、砂砾等此前极慢的方块,现在与其他方块以相同速度挖掘。Corvus 启动器现在也可直接安装与更新轻量化模组 Aureum。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(6)</span></h4><ul class="cl__list"><li>彩色玻璃灯笼会为其照亮的地面与墙壁着色。红色灯笼让周围泛红,蓝色则泛蓝。光照等级与此前完全一致,新增的只有色彩。</li><li>白色、淡灰色、灰色、黑色以及未染色的灯笼一如既往不产生颜色。这由染料的鲜艳程度自动判定,并非手写清单。</li><li>钻头现在只有尖端转动。此前整个工具都在画面上旋转;现在握把与机身保持静止,仅切削头旋转。</li><li>钻头对所有方块的挖掘速度一致。此前泥土、沙子、砂砾明显更慢,因为原版并不认为钻头是它们的合适工具。</li><li>同时修正了掉落判定。挖得快却什么都不掉,会比慢挖更糟,因此钻头现在会正常掉落所破坏的方块——蜘蛛网现在会掉落线,此前不会。</li><li>Corvus 可直接下载并更新轻量化模组 Aureum,无需打开网站。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>Aureum 绝不会被自动安装。只有您自行放入 mods 文件夹,或在 Corvus 中按下「安装」,它才会出现。一旦安装,后续新版本将按您现有的自动更新设置自动获取。</li><li>由于钻头速度已统一,蜘蛛网会被瞬间破坏。剑与剪刀原本就对蜘蛛网有各自的特例,因此这是程度而非性质的变化——而且蜘蛛网现在会掉落线,此前则什么都不掉。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(6)</span></h4><ul class="cl__list"><li>灯笼的颜色并非真正的彩色光源。Minecraft 引擎无法为每个光源保存颜色(方块光只是 0–15 的单一数值),因此这是在表面覆盖了一层彩色薄膜。因此颜色不会叠加:红色与蓝色灯笼照亮同一地面不会变成紫色,而是后绘制者取胜。</li><li>同理,只有方块表面会被着色。玩家、生物与掉落物不会。楼梯、台阶、树叶、玻璃与水同样不在范围内,栅栏等细小形状也不会在色彩中投下阴影。</li><li>已被火把照亮的地面,着色程度与黑暗地面相同。放置或破坏灯笼后约需半秒才会反映。</li><li>绿色系灯笼看起来会略亮一些,因为人眼对绿色更敏感。已作抑制,代价是绿色偏橄榄色而非鲜亮的黄绿。</li><li>与光影模组(Iris/Sodium)同时使用时的表现尚未确认。</li><li>开发环境中没有 Minecraft 客户端,因此灯笼颜色与钻头旋转均未在实际游戏画面中确认,仅通过离线渲染检查。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.5">
       <h2 class="cl__groupTitle">V3.5</h2>
       <p class="cl__groupSummary">风力发电机的叶片开始转动,钻头耐久提升至20倍</p>
       <div class="cl__releases">

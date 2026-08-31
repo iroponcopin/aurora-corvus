@@ -1,10 +1,54 @@
 {
  "lang": "pt-br",
- "updated": "2026-08-30",
+ "updated": "2026-08-31",
  "title": "Histórico de atualizações",
- "updated_label": "Atualizado em 2026-08-30",
+ "updated_label": "Atualizado em 2026-08-31",
  "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
  "groups": [
+  {
+   "label": "V3.6",
+   "summary": "Lanternas de vidro coloridas agora tingem o que iluminam, e só a ponta da broca gira",
+   "releases": [
+    {
+     "version": "V3.6.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Lanternas de vidro coloridas agora tingem o que iluminam, e só a ponta da broca gira",
+     "summary": "Uma lanterna de vidro colorida agora banha o chão e as paredes com a própria cor: uma lanterna vermelha deixa a área vermelha. O brilho é exatamente o mesmo de antes; só a cor muda. A broca não gira mais por inteiro: apenas a ponta gira. Ela também minera todos os blocos na mesma velocidade, corrigindo a lentidão enorme em terra, areia e cascalho. E o Corvus já instala e atualiza o Aureum diretamente.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Lanternas de vidro coloridas tingem o chão e as paredes que iluminam. Uma vermelha deixa o entorno vermelho, uma azul deixa azul. O NÍVEL de luz é exatamente o de antes — o que há de novo é só a cor.",
+        "Branco, cinza-claro, cinza, preto e a lanterna sem tintura não lançam cor, como antes. Isso é decidido automaticamente pela saturação do corante, não por uma lista escrita à mão.",
+        "Agora só a ponta da broca gira. Antes a ferramenta inteira girava na tela; o cabo e a carcaça ficam parados.",
+        "A broca minera todos os blocos na mesma velocidade. Terra, areia e cascalho eram bem mais lentos porque o jogo não a considerava a ferramenta certa.",
+        "Os drops foram corrigidos junto. Cavar rápido e não receber nada seria pior que cavar devagar, então agora ela derruba o que quebra — teias dão linha, o que antes não acontecia.",
+        "O Corvus pode baixar e atualizar o Aureum sem abrir o site."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "O Aureum nunca é instalado automaticamente. Ele só aparece se você mesmo o colocar na pasta mods ou pressionar Instalar no Corvus. Depois disso, novas versões são obtidas automaticamente, seguindo sua configuração de atualização atual.",
+        "Como a broca agora é uniforme, teias quebram instantaneamente. Espadas e tesouras já têm seu próprio caso especial para teias, então é uma mudança de grau e não de natureza — e teias agora soltam linha em vez de nada."
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "A cor da lanterna não é luz colorida de verdade. O motor do Minecraft não guarda uma cor por fonte — a luz de bloco é um único número de 0 a 15 — então se sobrepõe uma película colorida às superfícies. Por isso as cores não somam: uma lanterna vermelha e uma azul no mesmo chão não fazem roxo; vence a que for desenhada por último.",
+        "Pelo mesmo motivo, só as faces de blocos são tingidas. Jogadores, mobs e itens caídos não. Escadas, lajes, folhas, vidro e água também não, e formas finas como cercas não projetam sombra no banho de cor.",
+        "Um chão já iluminado por tochas recebe tanta cor quanto um escuro. Colocar ou quebrar uma lanterna leva cerca de meio segundo para aparecer.",
+        "Lanternas da família verde parecem levemente mais claras, porque o olho pondera muito o verde. Isso foi limitado, ao custo de o verde puxar para oliva em vez de lima vivo.",
+        "O comportamento junto a mods de shaders (Iris/Sodium) não foi verificado.",
+        "Este ambiente de desenvolvimento não tem cliente de Minecraft, então nem a cor das lanternas nem o giro da broca foram vistos no jogo real, apenas em renderizações offline."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.5",
    "summary": "As pás do aerogerador agora giram, e a broca dura 20 vezes mais",

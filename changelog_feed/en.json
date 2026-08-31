@@ -1,10 +1,54 @@
 {
  "lang": "en",
- "updated": "2026-08-30",
+ "updated": "2026-08-31",
  "title": "Changelog",
- "updated_label": "Updated 2026-08-30",
+ "updated_label": "Updated 2026-08-31",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
+  {
+   "label": "V3.6",
+   "summary": "Coloured glass lanterns now tint what they light, and only the drill's bit spins",
+   "releases": [
+    {
+     "version": "V3.6.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Coloured glass lanterns now tint what they light, and only the drill's bit spins",
+     "summary": "A coloured glass lantern now washes the floor and walls in its own colour — a red lantern makes the area red. The brightness is exactly as it was; only the colour changes. The drill no longer whirls as a whole tool: just the bit turns. It also mines every block at the same speed, fixing dirt, sand and gravel being drastically slow. And Corvus can now install and update Aureum, the lightweight optimisation mod, directly.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "Coloured glass lanterns tint the floor and walls they light. A red lantern makes its surroundings red, a blue one blue. The light LEVEL is exactly as before — only the colour is new.",
+        "White, light gray, gray, black and the plain undyed lantern cast no colour, as before. That is decided automatically from how saturated the dye is, not from a hand-written list.",
+        "Only the drill's bit turns now. The whole tool used to spin on screen; the grip and housing now stay still and just the cutting head rotates.",
+        "The drill mines every block at the same speed. Dirt, sand and gravel used to be drastically slower, because vanilla did not consider the drill the right tool for them.",
+        "Its drops were fixed to match. A tool that digs fast but yields nothing would be worse than a slow one, so the drill now drops what it breaks — cobwebs give string, which they did not before.",
+        "Corvus can download and update Aureum, the lightweight optimisation mod, without opening the website."
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "Aureum is never installed automatically. It arrives only if you put it in your mods folder yourself or press Install in Corvus. Once it is there, new versions are picked up automatically, following your existing auto-update setting.",
+        "Because the drill is now uniform, cobwebs break instantly. Swords and shears already carry their own cobweb special case, so this is a change of degree rather than of kind — and cobwebs now drop string where they used to drop nothing."
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "The lantern colour is not real coloured light. Minecraft's engine cannot hold a colour per light source — block light is a single 0-15 number — so this lays a coloured film over the surfaces instead. Consequently colours do not add: a red and a blue lantern on the same floor do not make purple; whichever draws last wins.",
+        "For the same reason only block faces are tinted. Players, mobs and dropped items are not. Stairs, slabs, leaves, glass and water are not either, and thin shapes like fences cast no shadow in the wash.",
+        "A floor already lit by torches takes just as much colour as a dark one. Placing or breaking a lantern takes about half a second to show.",
+        "Green-family lanterns read very slightly brighter, because the eye weights green heavily. That is capped, at the cost of green looking olive rather than vivid lime.",
+        "Behaviour alongside shader mods (Iris/Sodium) has not been checked.",
+        "This development environment has no Minecraft client, so neither the lantern colour nor the drill's spin has ever been seen in the actual game — only in offline renders."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.5",
    "summary": "The wind turbine's blades now turn, and the drill's durability is 20x",

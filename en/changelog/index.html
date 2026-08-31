@@ -208,7 +208,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Changelog</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Updated 2026-08-30</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Updated 2026-08-31</span></p>
     <p class="cl__note">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
   </header>
 
@@ -223,7 +223,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>No updates match your filters.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.5">
+<section class="cl__group" id="v3.6">
+      <h2 class="cl__groupTitle">V3.6</h2>
+      <p class="cl__groupSummary">Coloured glass lanterns now tint what they light, and only the drill&#x27;s bit spins</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V3.6.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-6-0">
+          <h3 class="cl__version">V3.6.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-31</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-6-0" hidden><p class="cl__entryTitle">Coloured glass lanterns now tint what they light, and only the drill&#x27;s bit spins</p><p class="cl__lede">A coloured glass lantern now washes the floor and walls in its own colour — a red lantern makes the area red. The brightness is exactly as it was; only the colour changes. The drill no longer whirls as a whole tool: just the bit turns. It also mines every block at the same speed, fixing dirt, sand and gravel being drastically slow. And Corvus can now install and update Aureum, the lightweight optimisation mod, directly.</p><div class="cl__section"><h4 class="cl__sectionTitle">Highlights <span>(6)</span></h4><ul class="cl__list"><li>Coloured glass lanterns tint the floor and walls they light. A red lantern makes its surroundings red, a blue one blue. The light LEVEL is exactly as before — only the colour is new.</li><li>White, light gray, gray, black and the plain undyed lantern cast no colour, as before. That is decided automatically from how saturated the dye is, not from a hand-written list.</li><li>Only the drill&#x27;s bit turns now. The whole tool used to spin on screen; the grip and housing now stay still and just the cutting head rotates.</li><li>The drill mines every block at the same speed. Dirt, sand and gravel used to be drastically slower, because vanilla did not consider the drill the right tool for them.</li><li>Its drops were fixed to match. A tool that digs fast but yields nothing would be worse than a slow one, so the drill now drops what it breaks — cobwebs give string, which they did not before.</li><li>Corvus can download and update Aureum, the lightweight optimisation mod, without opening the website.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Warnings <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>Aureum is never installed automatically. It arrives only if you put it in your mods folder yourself or press Install in Corvus. Once it is there, new versions are picked up automatically, following your existing auto-update setting.</li><li>Because the drill is now uniform, cobwebs break instantly. Swords and shears already carry their own cobweb special case, so this is a change of degree rather than of kind — and cobwebs now drop string where they used to drop nothing.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Not yet implemented/confirmed at this point <span>(6)</span></h4><ul class="cl__list"><li>The lantern colour is not real coloured light. Minecraft&#x27;s engine cannot hold a colour per light source — block light is a single 0-15 number — so this lays a coloured film over the surfaces instead. Consequently colours do not add: a red and a blue lantern on the same floor do not make purple; whichever draws last wins.</li><li>For the same reason only block faces are tinted. Players, mobs and dropped items are not. Stairs, slabs, leaves, glass and water are not either, and thin shapes like fences cast no shadow in the wash.</li><li>A floor already lit by torches takes just as much colour as a dark one. Placing or breaking a lantern takes about half a second to show.</li><li>Green-family lanterns read very slightly brighter, because the eye weights green heavily. That is capped, at the cost of green looking olive rather than vivid lime.</li><li>Behaviour alongside shader mods (Iris/Sodium) has not been checked.</li><li>This development environment has no Minecraft client, so neither the lantern colour nor the drill&#x27;s spin has ever been seen in the actual game — only in offline renders.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.5">
       <h2 class="cl__groupTitle">V3.5</h2>
       <p class="cl__groupSummary">The wind turbine&#x27;s blades now turn, and the drill&#x27;s durability is 20x</p>
       <div class="cl__releases">

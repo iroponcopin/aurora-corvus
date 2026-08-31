@@ -208,7 +208,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Änderungsprotokoll</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Aktualisiert am 2026-08-30</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Aktualisiert am 2026-08-31</span></p>
     <p class="cl__note">Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.</p>
   </header>
 
@@ -223,7 +223,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>Keine Updates gefunden, die den Kriterien entsprechen.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.5">
+<section class="cl__group" id="v3.6">
+      <h2 class="cl__groupTitle">V3.6</h2>
+      <p class="cl__groupSummary">Farbige Glaslaternen färben, was sie beleuchten — und nur noch der Bohrkopf dreht sich</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V3.6.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-6-0">
+          <h3 class="cl__version">V3.6.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-31</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-6-0" hidden><p class="cl__entryTitle">Farbige Glaslaternen färben, was sie beleuchten — und nur noch der Bohrkopf dreht sich</p><p class="cl__lede">Eine farbige Glaslaterne taucht Boden und Wände nun in ihre eigene Farbe: eine rote Laterne macht die Umgebung rot. Die Helligkeit bleibt genau wie bisher, nur die Farbe ist neu. Der Bohrer wirbelt nicht mehr als Ganzes — nur der Bohrkopf dreht sich. Außerdem baut er jeden Block gleich schnell ab; Erde, Sand und Kies waren zuvor drastisch langsam. Und Corvus kann Aureum, das Optimierungs-Mod, jetzt direkt installieren und aktualisieren.</p><div class="cl__section"><h4 class="cl__sectionTitle">Änderungen <span>(6)</span></h4><ul class="cl__list"><li>Farbige Glaslaternen färben Boden und Wände, die sie beleuchten. Eine rote Laterne macht die Umgebung rot, eine blaue blau. Die LICHTSTÄRKE ist exakt wie zuvor — neu ist nur die Farbe.</li><li>Weiß, Hellgrau, Grau, Schwarz und die ungefärbte Laterne werfen wie bisher keine Farbe. Das entscheidet sich automatisch an der Sättigung des Farbstoffs, nicht an einer handgeschriebenen Liste.</li><li>Nur noch der Bohrkopf dreht sich. Früher rotierte das ganze Werkzeug auf dem Bildschirm; Griff und Gehäuse stehen jetzt still.</li><li>Der Bohrer baut jeden Block gleich schnell ab. Erde, Sand und Kies waren zuvor drastisch langsamer, weil Vanilla den Bohrer dort nicht als passendes Werkzeug ansah.</li><li>Die Drops wurden passend dazu korrigiert. Schnell graben und nichts bekommen wäre schlimmer als langsam graben, also lässt der Bohrer jetzt fallen, was er abbaut — Spinnweben geben Faden, was vorher nicht der Fall war.</li><li>Corvus kann Aureum herunterladen und aktualisieren, ohne die Website zu öffnen.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Hinweise <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>Aureum wird niemals automatisch installiert. Es kommt nur, wenn Sie es selbst in Ihren mods-Ordner legen oder in Corvus auf Installieren drücken. Danach werden neue Versionen gemäß Ihrer bestehenden Auto-Update-Einstellung automatisch übernommen.</li><li>Weil der Bohrer nun gleichmäßig ist, zerbrechen Spinnweben sofort. Schwerter und Scheren haben ohnehin ihre eigene Spinnweben-Sonderregel, das ist also ein Unterschied im Grad, nicht in der Art — und Spinnweben geben jetzt Faden statt nichts.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt <span>(6)</span></h4><ul class="cl__list"><li>Die Laternenfarbe ist kein echtes farbiges Licht. Minecrafts Engine kann pro Lichtquelle keine Farbe speichern — Blocklicht ist eine einzelne Zahl von 0 bis 15 — daher wird ein farbiger Film über die Flächen gelegt. Folglich addieren sich Farben nicht: Eine rote und eine blaue Laterne auf demselben Boden ergeben kein Violett; es gewinnt, was zuletzt gezeichnet wird.</li><li>Aus demselben Grund werden nur Blockflächen gefärbt. Spieler, Mobs und liegende Gegenstände nicht. Treppen, Stufen, Laub, Glas und Wasser ebenfalls nicht, und dünne Formen wie Zäune werfen im Farbschein keinen Schatten.</li><li>Ein bereits von Fackeln beleuchteter Boden nimmt genauso viel Farbe an wie ein dunkler. Nach Setzen oder Abbauen dauert es etwa eine halbe Sekunde, bis es sichtbar wird.</li><li>Laternen der Grünfamilie wirken minimal heller, weil das Auge Grün stark gewichtet. Das ist gedeckelt — um den Preis, dass Grün eher oliv als leuchtend limette aussieht.</li><li>Das Verhalten zusammen mit Shader-Mods (Iris/Sodium) wurde nicht geprüft.</li><li>Diese Entwicklungsumgebung hat keinen Minecraft-Client; weder die Laternenfarbe noch die Bohrerdrehung wurden je im echten Spiel gesehen, nur in Offline-Renderings.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.5">
       <h2 class="cl__groupTitle">V3.5</h2>
       <p class="cl__groupSummary">Die Rotorblätter des Windrads drehen sich jetzt, und der Bohrer hält 20-mal so lange</p>
       <div class="cl__releases">

@@ -1,10 +1,54 @@
 {
  "lang": "id",
- "updated": "2026-08-30",
+ "updated": "2026-08-31",
  "title": "Riwayat Pembaruan",
- "updated_label": "Diperbarui 2026-08-30",
+ "updated_label": "Diperbarui 2026-08-31",
  "note": "Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.",
  "groups": [
+  {
+   "label": "V3.6",
+   "summary": "Lentera kaca berwarna kini mewarnai apa yang disinarinya, dan hanya mata bor yang berputar",
+   "releases": [
+    {
+     "version": "V3.6.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Lentera kaca berwarna kini mewarnai apa yang disinarinya, dan hanya mata bor yang berputar",
+     "summary": "Lentera kaca berwarna kini membasuh lantai dan dinding dengan warnanya sendiri: lentera merah membuat sekitarnya merah. Kecerahannya persis seperti sebelumnya; hanya warnanya yang berubah. Bor tidak lagi berputar seluruhnya — hanya mata bornya. Ia juga menambang semua blok dengan kecepatan sama, memperbaiki tanah, pasir, dan kerikil yang sebelumnya sangat lambat. Corvus pun kini dapat memasang dan memperbarui Aureum secara langsung.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Lentera kaca berwarna mewarnai lantai dan dinding yang disinarinya. Lentera merah membuat sekitarnya merah, yang biru menjadi biru. TINGKAT cahaya persis seperti sebelumnya — yang baru hanyalah warnanya.",
+        "Putih, abu-abu muda, abu-abu, hitam, dan lentera tanpa pewarna tidak melemparkan warna, seperti sebelumnya. Itu ditentukan otomatis dari seberapa pekat pewarnanya, bukan dari daftar yang ditulis tangan.",
+        "Kini hanya mata bor yang berputar. Dahulu seluruh alat berputar di layar; kini gagang dan bodinya diam.",
+        "Bor menambang semua blok dengan kecepatan sama. Tanah, pasir, dan kerikil dahulu jauh lebih lambat karena gim tidak menganggap bor sebagai alat yang tepat untuknya.",
+        "Hasil jatuhannya diperbaiki seiring itu. Menggali cepat tetapi tidak mendapat apa pun lebih buruk daripada menggali lambat, jadi kini bor menjatuhkan apa yang dipecahnya — sarang laba-laba memberi benang, yang dulu tidak.",
+        "Corvus dapat mengunduh dan memperbarui Aureum tanpa membuka situs."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Aureum tidak pernah dipasang secara otomatis. Ia hanya hadir jika Anda sendiri menaruhnya di folder mods atau menekan Pasang di Corvus. Setelah ada, versi baru diambil otomatis mengikuti pengaturan pembaruan otomatis Anda yang sekarang.",
+        "Karena bor kini seragam, sarang laba-laba pecah seketika. Pedang dan gunting memang sudah punya perlakuan khusus untuk sarang laba-laba, jadi ini perbedaan derajat bukan jenis — dan sarang laba-laba kini menjatuhkan benang alih-alih tidak sama sekali."
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Warna lentera bukan cahaya berwarna yang sesungguhnya. Mesin Minecraft tidak dapat menyimpan warna per sumber cahaya — cahaya blok hanyalah satu angka 0–15 — sehingga yang dilakukan adalah melapisi permukaan dengan selaput warna. Akibatnya warna tidak menjumlah: lentera merah dan biru pada lantai yang sama tidak menghasilkan ungu; yang digambar terakhir yang menang.",
+        "Karena alasan yang sama, hanya sisi blok yang diwarnai. Pemain, mob, dan barang yang tergeletak tidak. Tangga, slab, dedaunan, kaca, dan air juga tidak, dan bentuk tipis seperti pagar tidak menjatuhkan bayangan pada warna itu.",
+        "Lantai yang sudah terang oleh obor menerima warna sebanyak lantai yang gelap. Setelah dipasang atau dipecah, perlu sekitar setengah detik agar terlihat.",
+        "Lentera keluarga hijau tampak sedikit lebih terang karena mata sangat menimbang hijau. Hal itu dibatasi, dengan konsekuensi hijau tampak zaitun alih-alih limau menyala.",
+        "Perilakunya bersama mod shader (Iris/Sodium) belum diperiksa.",
+        "Lingkungan pengembangan ini tidak memiliki klien Minecraft, jadi baik warna lentera maupun putaran mata bor belum pernah terlihat di dalam gim sungguhan, hanya pada render luring."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.5",
    "summary": "Bilah turbin angin kini berputar, dan ketahanan bor menjadi 20 kali lipat",

@@ -1,10 +1,54 @@
 {
  "lang": "de",
- "updated": "2026-08-30",
+ "updated": "2026-08-31",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-08-30",
+ "updated_label": "Aktualisiert am 2026-08-31",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
+  {
+   "label": "V3.6",
+   "summary": "Farbige Glaslaternen färben, was sie beleuchten — und nur noch der Bohrkopf dreht sich",
+   "releases": [
+    {
+     "version": "V3.6.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Farbige Glaslaternen färben, was sie beleuchten — und nur noch der Bohrkopf dreht sich",
+     "summary": "Eine farbige Glaslaterne taucht Boden und Wände nun in ihre eigene Farbe: eine rote Laterne macht die Umgebung rot. Die Helligkeit bleibt genau wie bisher, nur die Farbe ist neu. Der Bohrer wirbelt nicht mehr als Ganzes — nur der Bohrkopf dreht sich. Außerdem baut er jeden Block gleich schnell ab; Erde, Sand und Kies waren zuvor drastisch langsam. Und Corvus kann Aureum, das Optimierungs-Mod, jetzt direkt installieren und aktualisieren.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Farbige Glaslaternen färben Boden und Wände, die sie beleuchten. Eine rote Laterne macht die Umgebung rot, eine blaue blau. Die LICHTSTÄRKE ist exakt wie zuvor — neu ist nur die Farbe.",
+        "Weiß, Hellgrau, Grau, Schwarz und die ungefärbte Laterne werfen wie bisher keine Farbe. Das entscheidet sich automatisch an der Sättigung des Farbstoffs, nicht an einer handgeschriebenen Liste.",
+        "Nur noch der Bohrkopf dreht sich. Früher rotierte das ganze Werkzeug auf dem Bildschirm; Griff und Gehäuse stehen jetzt still.",
+        "Der Bohrer baut jeden Block gleich schnell ab. Erde, Sand und Kies waren zuvor drastisch langsamer, weil Vanilla den Bohrer dort nicht als passendes Werkzeug ansah.",
+        "Die Drops wurden passend dazu korrigiert. Schnell graben und nichts bekommen wäre schlimmer als langsam graben, also lässt der Bohrer jetzt fallen, was er abbaut — Spinnweben geben Faden, was vorher nicht der Fall war.",
+        "Corvus kann Aureum herunterladen und aktualisieren, ohne die Website zu öffnen."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Aureum wird niemals automatisch installiert. Es kommt nur, wenn Sie es selbst in Ihren mods-Ordner legen oder in Corvus auf Installieren drücken. Danach werden neue Versionen gemäß Ihrer bestehenden Auto-Update-Einstellung automatisch übernommen.",
+        "Weil der Bohrer nun gleichmäßig ist, zerbrechen Spinnweben sofort. Schwerter und Scheren haben ohnehin ihre eigene Spinnweben-Sonderregel, das ist also ein Unterschied im Grad, nicht in der Art — und Spinnweben geben jetzt Faden statt nichts."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die Laternenfarbe ist kein echtes farbiges Licht. Minecrafts Engine kann pro Lichtquelle keine Farbe speichern — Blocklicht ist eine einzelne Zahl von 0 bis 15 — daher wird ein farbiger Film über die Flächen gelegt. Folglich addieren sich Farben nicht: Eine rote und eine blaue Laterne auf demselben Boden ergeben kein Violett; es gewinnt, was zuletzt gezeichnet wird.",
+        "Aus demselben Grund werden nur Blockflächen gefärbt. Spieler, Mobs und liegende Gegenstände nicht. Treppen, Stufen, Laub, Glas und Wasser ebenfalls nicht, und dünne Formen wie Zäune werfen im Farbschein keinen Schatten.",
+        "Ein bereits von Fackeln beleuchteter Boden nimmt genauso viel Farbe an wie ein dunkler. Nach Setzen oder Abbauen dauert es etwa eine halbe Sekunde, bis es sichtbar wird.",
+        "Laternen der Grünfamilie wirken minimal heller, weil das Auge Grün stark gewichtet. Das ist gedeckelt — um den Preis, dass Grün eher oliv als leuchtend limette aussieht.",
+        "Das Verhalten zusammen mit Shader-Mods (Iris/Sodium) wurde nicht geprüft.",
+        "Diese Entwicklungsumgebung hat keinen Minecraft-Client; weder die Laternenfarbe noch die Bohrerdrehung wurden je im echten Spiel gesehen, nur in Offline-Renderings."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.5",
    "summary": "Die Rotorblätter des Windrads drehen sich jetzt, und der Bohrer hält 20-mal so lange",

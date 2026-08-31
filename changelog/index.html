@@ -208,7 +208,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新履歴</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-08-30</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-08-31</span></p>
     <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
   </header>
 
@@ -223,7 +223,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>条件に一致する更新はありません。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.5">
+<section class="cl__group" id="v3.6">
+      <h2 class="cl__groupTitle">V3.6</h2>
+      <p class="cl__groupSummary">色付きガラスランタンが周囲を自分の色で照らすように。ドリルは先端だけが回転し、全ブロックを同じ速さで掘れます</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V3.6.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-6-0">
+          <h3 class="cl__version">V3.6.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-31</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-6-0" hidden><p class="cl__entryTitle">色付きガラスランタンが周囲を自分の色で照らすように。ドリルは先端だけが回転し、全ブロックを同じ速さで掘れます</p><p class="cl__lede">色付きのガラスランタンが、床や壁を自分の色で染めるようになりました。赤いランタンなら周囲が赤くなります。明るさは今までどおりで、変わるのは色味だけです。ドリルは工具全体がぐるぐる回っていたのを直し、先端だけが回るようになりました。あわせて、土・砂・砂利などが極端に遅かったのを改め、どのブロックも同じ速さで掘れるようにしています。CorvusランチャーからAureum(軽量化MOD)を直接導入・更新できるようにもなりました。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(6)</span></h4><ul class="cl__list"><li>色付きガラスランタンが、照らした床や壁をその色に染めるようになりました。赤いランタンなら周囲が赤く、青なら青くなります。明るさ(光レベル)は今までとまったく同じで、変わるのは色味だけです。</li><li>白・薄い灰色・灰色・黒、および色の付いていないガラスランタンは、これまでどおり色を付けません。染料の色みの濃さで自動的に判定しています。</li><li>ドリルの先端だけが回るようになりました。これまでは工具全体が画面上でぐるぐる回っていました。グリップも筐体も動かず、先端の刃だけが回ります。</li><li>ドリルがすべてのブロックを同じ速さで掘れるようになりました。これまでは土・砂・砂利など「ドリルが最適な道具ではない」と判定されるブロックで速度が大幅に落ちていました。</li><li>あわせてドリルのドロップ判定も直しました。速く掘れるのに何も落ちない、という状態にならないようにしています(クモの巣から糸が手に入るようになりました)。</li><li>CorvusランチャーからAureum(軽量化MOD)を直接ダウンロード・更新できるようになりました。ウェブサイトを開く必要はありません。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>Aureumは、ご自分でmodsフォルダーに入れるか、Corvusで「インストール」を押さない限り、自動で導入されることはありません。一度導入したあとは、新しい版が出たときに自動更新の対象になります(自動更新の設定に従います)。</li><li>ドリルで掘る速さが全ブロック均一になった結果、クモの巣が一瞬で壊れるようになりました。剣やハサミにも元々クモの巣専用の特別扱いがあるため、程度の違いであって性質の違いではないと判断しています。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(6)</span></h4><ul class="cl__list"><li>ランタンの色は「本物の色付きの光」ではありません。Minecraftの光源は色を持てない仕組み(光の強さが0〜15の数値ひとつだけ)なので、床や壁に色の膜を重ねて見せています。そのため、赤と青のランタンで同じ床を照らしても紫にはならず、後から描かれた方の色になります。</li><li>同じ理由で、色が付くのはブロックの面だけです。プレイヤー・モブ・落ちているアイテムには色が付きません。階段・ハーフブロック・葉・ガラス・水も対象外です。柵などの細かい形は影を落としません。</li><li>松明などで既に明るい床でも、暗い床と同じだけ色が乗ります。設置・破壊してから色が反映されるまで0.5秒ほどかかります。</li><li>緑系のランタンは、人の目が緑に敏感なぶん見かけの明るさがわずかに上がります(約5%)。抑えた結果、鮮やかな黄緑ではなくオリーブ寄りの色味になっています。</li><li>影MOD(Iris/Sodiumなど)と併用したときの見え方は確認できていません。</li><li>開発環境にMinecraftのクライアントが無いため、ランタンの色もドリルの回転も、実際のゲーム画面では一度も確認できていません。オフラインの描画で確認しただけです。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.5">
       <h2 class="cl__groupTitle">V3.5</h2>
       <p class="cl__groupSummary">風力発電機の羽根が回るようになりました。ドリルの耐久値を20倍に</p>
       <div class="cl__releases">
