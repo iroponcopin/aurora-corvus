@@ -223,7 +223,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>条件に一致する更新はありません。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.6">
+<section class="cl__group" id="v3.7">
+      <h2 class="cl__groupTitle">V3.7</h2>
+      <p class="cl__groupSummary">レーザーガンをビーム式に作り直して3倍に強化。ミニガンは射撃中に銃身が回り、ドリルの空振りモーションを廃止</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V3.7.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-7-0">
+          <h3 class="cl__version">V3.7.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-31</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-7-0" hidden><p class="cl__entryTitle">レーザーガンをビーム式に作り直して3倍に強化。ミニガンは射撃中に銃身が回り、ドリルの空振りモーションを廃止</p><p class="cl__lede">レーザーガンを作り直しました。見た目は参考図どおりに露出した発光コアを持つ形になり、威力は3倍(200→600)、そして連射ではなく引き金を引いているあいだビームが出続ける方式になります。ミニガンは弾を撃っているあいだ銃身束が回転します。ドリルは、左クリックのたびに一度だけ入っていた「殴る」モーションが出なくなりました。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(5)</span></h4><ul class="cl__list"><li>レーザーガンの見た目を作り直しました。白い本体・暗い銃口部・むき出しの青い発光コアと締め輪・実体のある銃床が入り、参考図に近い形になっています。</li><li>レーザーガンの威力を3倍にしました(1発 200 → 600)。すでにサーバーで遊んでいる場合も、設定ファイルの古い値は自動で新しい値に更新されます。</li><li>レーザーガンが連射武器ではなくビーム武器になりました。引き金を引いているあいだ光線が出続け、当たっているものにダメージが入り続けます。弾(セル)の減り方は今までと同じです。</li><li>ミニガンは、実際に弾が出ているあいだ銃身束が回転します。弾切れ中・回転の立ち上がり中・撃ち終わりの待ち時間中は回りません。撃ち終わると惰性で少し回ってから止まります。</li><li>ドリルで左クリックしたときに一度だけ入っていた「殴る」腕のモーションが出なくなりました。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>レーザーガンの毎秒ダメージは6,000です。1発が3倍になっただけで、ビーム化によって秒間の手数が増えたわけではありません(判定の間隔は従来の連射と同じ毎秒10回のままです)。</li><li>ドリルの腕のモーションを止めた影響で、右クリックでセルを装填するときにも腕を振らなくなります。装填の音と残量表示は今までどおりです。</li><li>ミニガンの銃身を締める輪が、回転させたときに「回るナット」に見えないよう四角から八角形になりました。太さがわずかに変わって見えます。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(3)</span></h4><ul class="cl__list"><li>レーザーガンは「変わった」と言える見た目にはなりましたが、参考図ほど近くはありません。参考図の本体は角が滑らかに削られており、箱を組み合わせて作るこの方式では届きません。</li><li>ミニガンの銃身を締める八角形の輪は、回転すると面の切り替わりが見えます(このパックが円筒を近似する方式の制約です)。</li><li>開発環境にMinecraftのクライアントが無いため、レーザーのビームもミニガンの回転も、実際のゲーム画面では一度も確認できていません。オフラインの描画で確認しただけです。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.6">
       <h2 class="cl__groupTitle">V3.6</h2>
       <p class="cl__groupSummary">色付きガラスランタンが周囲を自分の色で照らすように。ドリルは先端だけが回転し、全ブロックを同じ速さで掘れます</p>
       <div class="cl__releases">

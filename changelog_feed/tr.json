@@ -6,6 +6,47 @@
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
   {
+   "label": "V3.7",
+   "summary": "Lazer tüfek gerçek bir ışına dönüştürüldü ve üç katına çıkarıldı, minigun namluları dönüyor, matkap artık savurmuyor",
+   "releases": [
+    {
+     "version": "V3.7.0",
+     "date": "2026-08-31",
+     "type": "release",
+     "title": "Lazer tüfek gerçek bir ışına dönüştürüldü ve üç katına çıkarıldı, minigun namluları dönüyor, matkap artık savurmuyor",
+     "summary": "Lazer tüfek yeniden yapıldı: artık açıkta parlayan bir çekirdekle referansa benziyor, üç kat sert vuruyor (200'den 600'e) ve tetik basılı tutuldukça ayrı ayrı hızlı atışlar yerine sürekli bir ışın veriyor. Minigun'un namluları gerçekten ateş ederken dönüyor. Matkap ise her sol tıkta bir kez oynayan yumruk animasyonunu artık oynatmıyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Lazer tüfeğin biçimi yeniden yapıldı: beyaz gövde, koyu namlu ağzı bloğu, kelepçe halkalı açıkta mavi enerji çekirdeği ve dolu bir dipçik — referansa çok daha yakın.",
+        "Lazer tüfek üç kat sert vuruyor (isabet başına 200'den 600'e). Zaten bir sunucuda oynuyorsanız, yapılandırmanızdaki eski değer otomatik güncellenir.",
+        "Lazer tüfek artık bir ışın silahı, hızlı atış silahı değil. Tetiği basılı tutun, ışın açık kalır ve dokunduğuna hasar verir. Hücre tüketimi değişmedi.",
+        "Minigun'un namluları gerçekten mermi çıkarken dönüyor. Şarjör boşken, devir yükselirken ve soğuma sırasında sabit durur; son mermiden sonra yavaşlayarak durur.",
+        "Matkap, her sol tıkta bir kez görünen yumruk animasyonunu artık oynatmıyor."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Lazer tüfek saniyede 6.000 hasar verir. Bu, isabet başına istenen tam üç kattır ve fazlası değil — ışın hâlâ saniyede on kez hasar uygular, tıpkı eski hızlı atış gibi.",
+        "Matkabın kol savurması bastırıldığı için, sağ tıkla hücre doldurmak da artık kolu savurmuyor. Doldurma sesi ve şarj göstergesi değişmedi.",
+        "Minigun'un kelepçe halkaları, dönerken dönen bir somun gibi görünmesin diye kareden sekizgene çevrildi. Biraz daha kalın görünüyorlar."
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Lazer tüfek değişmiş olarak okunuyor ama referansla yakın bir eşleşme değil. O silahın gövdesi yumuşak pahlıdır; kutulardan kurulan bir model buna ulaşamaz.",
+        "Minigun'un sekizgen halkaları dönerken gözle görülür biçimde faset veriyor — bu, paketin silindir yaklaşımının görünmesidir.",
+        "Bu geliştirme ortamında Minecraft istemcisi yok; ne ışın ne de dönen namlular gerçek oyunda görüldü, yalnızca çevrimdışı görüntülemelerde."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V3.6",
    "summary": "Renkli cam fenerler artık aydınlattıklarını renklendiriyor, matkapta ise yalnızca uç dönüyor",
    "releases": [

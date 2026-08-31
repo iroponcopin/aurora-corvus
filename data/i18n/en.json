@@ -1796,6 +1796,32 @@
         "This development environment has no Minecraft client, so neither the lantern colour nor the drill's spin has ever been seen in the actual game — only in offline renders."
       ],
       "balance_changes": []
+    },
+    {
+      "id": "v3.7.0",
+      "release": "V3.7.0",
+      "date": "2026-08-31",
+      "type": "release",
+      "title": "The laser gun rebuilt as a real beam and tripled, the minigun's barrels spin, and the drill stops swinging",
+      "summary": "The laser gun was rebuilt: it now looks like the reference with an exposed glowing core, hits three times as hard (200 to 600), and fires a continuous beam while you hold the trigger instead of rapid discrete shots. The minigun's barrel cluster turns while it is actually firing. And the drill no longer plays a punch animation once every time you left-click.",
+      "highlights": [
+        "The laser gun's shape was rebuilt: a white body, a dark muzzle housing, an exposed blue energy core with clamp rings, and a solid stock — much closer to the reference.",
+        "The laser gun hits three times as hard (200 to 600 per hit). If you are already playing on a server, the old value in your config file is updated automatically.",
+        "The laser gun is a beam weapon now, not a rapid-fire one. Hold the trigger and the beam stays on, damaging whatever it touches. Cell consumption is unchanged.",
+        "The minigun's barrels turn while rounds are actually leaving it. They stay still on an empty magazine, during spin-up and during the cooldown, and coast to a stop after the last round.",
+        "The drill no longer plays the punch animation that appeared once on every left-click."
+      ],
+      "warnings": [
+        "The laser gun does 6,000 damage per second. That is the ordered 3x on each hit and nothing more — the beam still applies damage ten times a second, exactly as the old rapid fire did.",
+        "Because the drill's arm swing is suppressed, right-clicking to load a cell no longer swings your arm either. The loading sound and the charge readout are unchanged.",
+        "The minigun's barrel clamps went from square to octagonal so they do not read as a spinning nut when the cluster turns. They look slightly thicker."
+      ],
+      "known_limitations": [
+        "The laser gun reads as changed, but it is not a close match to the reference. That gun's body is smoothly chamfered, which a model built from boxes cannot reach.",
+        "The minigun's octagonal clamps visibly facet as they turn — that is this pack's cylinder approximation showing.",
+        "This development environment has no Minecraft client, so neither the beam nor the spinning barrels have been seen in the actual game — only in offline renders."
+      ],
+      "balance_changes": []
     }
   ],
   "roadmap": {
