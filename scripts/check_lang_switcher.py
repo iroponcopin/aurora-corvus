@@ -17,6 +17,11 @@ Each assertion here has been shown to go RED against a deliberate break:
   * every page advertising the HOME section 1820 problems
   * lang-flags.css path hardcoded to ../ .. 121 problems
   * one language's fallback artwork removed 1 problem
+  * SECTIONS pinned to its old hand-written list .. 39 pages never visited
+
+The sections it audits are discovered from disk (see _discover_sections),
+not listed here: the hand-written list fell three sections behind the site
+and stayed green about it.
 """
 import re
 import sys
@@ -40,8 +45,35 @@ ORDER = ["ja", "en", "es", "fr", "zh", "ko", "pt-br", "it", "ar", "ru", "id", "d
 HREFLANG = {c: c for c in ORDER}
 HREFLANG["pt-br"] = "pt-BR"
 BASE = "https://iroponcopin.github.io/aurora-corvus"
-SECTIONS = ["", "aureum/", "download/", "changelog/", "recipes/", "guide/", "launcher/",
-            "gates/", "features/", "roadmap/", "known-issues/"]
+# Directories that are not language sections. Named rather than pattern-matched
+# so a genuinely new section cannot be skipped by accident.
+SKIP_DIRS = {"assets", "data", "scripts", "downloads", "scratchpad",
+             "changelog_feed", ".git", ".github", "node_modules"}
+
+
+def _discover_sections():
+    """Every section that actually exists, found on disk.
+
+    This list USED to be typed out here, and had silently fallen three
+    sections behind the site: /upcoming/, /v4/ and /discord/ were each built
+    in all thirteen languages, and this checker had never looked at one of
+    them -- while reporting GREEN over "143 pages". A gate that does not know
+    a page exists cannot fail for it, and nothing about that reads as broken.
+
+    Discovering them keeps this file's independence (it still shares no list,
+    and no expectation, with site_common) while making the coverage impossible
+    to fall behind: a section is checked because it is THERE.
+    """
+    found = {""}
+    for path in sorted(REPO.iterdir()):
+        if not path.is_dir() or path.name in SKIP_DIRS or path.name in set(ORDER):
+            continue
+        if (path / "index.html").is_file():
+            found.add(path.name + "/")
+    return sorted(found)
+
+
+SECTIONS = _discover_sections()
 
 problems = []
 checks = 0

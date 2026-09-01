@@ -33,6 +33,8 @@ CHECKS = [
      "404.html: one message section per language, resolver, no hreflang"),
     ("lang", "check_lang_switcher.py", [],
      "every rendered page: switcher, flags, hreflang alternates, detector"),
+    ("discord", "check_discord_page.py", [],
+     "/discord/ vs the bot's own command export, in all 13 languages"),
 ]
 
 

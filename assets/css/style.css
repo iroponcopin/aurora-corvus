@@ -1648,3 +1648,108 @@ html.js .hero.reveal.is-visible { transform: translate3d(0, 0, 0); }
 
 .up-disclaimer { margin-top: 22px; }
 .up-disclaimer p { margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.85; }
+
+/* ----------------------------------------------------------------- /discord/
+   How to use the Aurora Corvus Discord bot (scripts/build_discord.py).
+   Namespaced .dc-* so nothing here can reach another page. Permanent, like
+   /upcoming/, so it lives here rather than in a file to be deleted later. */
+.dc-hero .dc-lede { max-width: 46em; color: var(--text-muted); }
+.dc-cta { margin: 20px 0 8px; }
+.dc-note { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin: 10px 0 0; }
+
+.dc-setup { margin-top: 22px; }
+.dc-steps { margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.dc-steps > li { margin: 0 0 18px; }
+.dc-steps > li:last-child { margin-bottom: 0; }
+.dc-steps h3 { margin: 0 0 6px; font-size: 1.02rem; color: var(--accent-strong); }
+.dc-steps p { margin: 0; color: var(--text-muted); line-height: 1.85; }
+
+.dc-posts { margin-top: 22px; }
+.dc-posts p { color: var(--text-muted); line-height: 1.85; }
+.dc-posts-list { margin: 12px 0 0; padding-inline-start: 1.2em; }
+.dc-posts-list li { margin: 6px 0; line-height: 1.8; }
+
+.dc-commands { margin-top: 22px; }
+/* The table is the densest thing on the page and the one most likely to
+   overflow a phone. It scrolls inside its own box rather than pushing the
+   whole page sideways. */
+.dc-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.dc-table {
+  width: 100%;
+  min-width: 34em;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+.dc-table th, .dc-table td {
+  text-align: start;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+}
+.dc-table thead th {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.dc-table td { color: var(--text-muted); line-height: 1.75; }
+.dc-table td code { color: var(--text); white-space: nowrap; }
+/* Each group's header row: a rule the eye can rest on between /bug, /request,
+   /channels and so on, so the table reads as five short lists, not one long
+   one. */
+.dc-group-row th {
+  padding-top: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  border-bottom: 1px solid var(--border);
+  white-space: normal;
+}
+.dc-table tbody tr:first-child .dc-group-row th,
+.dc-table tbody tr:first-child th { padding-top: 4px; }
+.dc-arg {
+  color: var(--text-muted);
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+/* Who may run it. The two states differ in colour as well as in word, so the
+   table can be scanned without reading every cell. */
+.dc-who {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--accent-strong);
+  border-color: rgba(var(--accent-rgb), 0.40);
+}
+.dc-who--admin { color: #f0c674; border-color: rgba(240, 198, 116, 0.45); }
+
+.dc-langs { margin-top: 22px; }
+.dc-langs > p { color: var(--text-muted); line-height: 1.85; }
+.dc-lang-list {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 14px 0 0; padding: 0; list-style: none;
+}
+.dc-lang {
+  display: inline-flex; align-items: baseline; gap: 7px;
+  padding: 5px 11px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  font-size: 0.88rem;
+}
+.dc-lang-name { color: var(--text); }
+.dc-lang code { color: var(--text-muted); font-size: 0.82em; }
+
+.dc-privacy { margin-top: 22px; }
+.dc-privacy p { margin: 0; color: var(--text-muted); line-height: 1.85; }
+/* The literal <kind> values, sitting at the end of step 4's sentence. */
+.dc-kinds { white-space: nowrap; }
+.dc-kinds code { margin-inline-end: 4px; }

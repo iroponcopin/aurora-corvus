@@ -1,0 +1,342 @@
+{
+  "generated_by": "discord-release-bot/export_commands.py",
+  "languages": [
+    "en",
+    "ja",
+    "zh",
+    "ko",
+    "de",
+    "fr",
+    "es",
+    "pt-br",
+    "it",
+    "ru",
+    "ar",
+    "id",
+    "tr"
+  ],
+  "language_names": {
+    "en": "English",
+    "ja": "日本語",
+    "zh": "中文",
+    "ko": "한국어",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "pt-br": "Português (Brasil)",
+    "it": "Italiano",
+    "ru": "Русский",
+    "ar": "العربية",
+    "id": "Bahasa Indonesia",
+    "tr": "Türkçe"
+  },
+  "route_kinds": [
+    "update",
+    "upcoming",
+    "bug",
+    "request"
+  ],
+  "invite_permissions": 309237730304,
+  "groups": [
+    {
+      "name": "bug",
+      "description": "Report a bug, and manage this server's reports",
+      "admin": false,
+      "parameters": [],
+      "subcommands": [
+        {
+          "name": "close",
+          "description": "Mark a bug report as dealt with",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "number",
+              "description": "…",
+              "required": true,
+              "choices": []
+            },
+            {
+              "name": "resolution",
+              "description": "…",
+              "required": true,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List the bug reports filed in this server",
+          "admin": false,
+          "parameters": [
+            {
+              "name": "status",
+              "description": "…",
+              "required": false,
+              "choices": [
+                "open",
+                "closed",
+                "all"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "new",
+          "description": "Report a bug you have run into",
+          "admin": false,
+          "parameters": []
+        },
+        {
+          "name": "reopen",
+          "description": "Reopen a bug report that was closed",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "number",
+              "description": "…",
+              "required": true,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "channels",
+      "description": "Send each kind of message to its own channel",
+      "admin": false,
+      "parameters": [],
+      "subcommands": [
+        {
+          "name": "clear",
+          "description": "Use the default channel for this kind again",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "kind",
+              "description": "…",
+              "required": true,
+              "choices": [
+                "update",
+                "upcoming",
+                "bug",
+                "request"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Send one kind of message to a specific channel",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "kind",
+              "description": "…",
+              "required": true,
+              "choices": [
+                "update",
+                "upcoming",
+                "bug",
+                "request"
+              ]
+            },
+            {
+              "name": "channel",
+              "description": "…",
+              "required": true,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show which channel each kind goes to",
+          "admin": false,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "language",
+      "description": "Choose the language this bot uses in this server",
+      "admin": false,
+      "parameters": [],
+      "subcommands": [
+        {
+          "name": "set",
+          "description": "Set this server's language",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "language",
+              "description": "…",
+              "required": true,
+              "choices": [
+                "en",
+                "ja",
+                "zh",
+                "ko",
+                "de",
+                "fr",
+                "es",
+                "pt-br",
+                "it",
+                "ru",
+                "ar",
+                "id",
+                "tr"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show this server's language",
+          "admin": false,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "release",
+      "description": "Glimpse Alpha release notifications",
+      "admin": false,
+      "parameters": [],
+      "subcommands": [
+        {
+          "name": "channel",
+          "description": "Set the channel for release notifications",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "channel",
+              "description": "Text channel to post release announcements in",
+              "required": true,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "name": "disable",
+          "description": "Turn off release notifications for this server",
+          "admin": true,
+          "parameters": []
+        },
+        {
+          "name": "enable",
+          "description": "Turn on release notifications for this server",
+          "admin": true,
+          "parameters": []
+        },
+        {
+          "name": "latest",
+          "description": "Show the latest release the bot knows about, without announcing it",
+          "admin": false,
+          "parameters": []
+        },
+        {
+          "name": "launcher",
+          "description": "Choose whether Corvus updates are announced too",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "enabled",
+              "description": "True to announce launcher updates, False for modpack releases only",
+              "required": true,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "description": "Show the current release notification settings",
+          "admin": false,
+          "parameters": []
+        },
+        {
+          "name": "test",
+          "description": "Post a sample release announcement",
+          "admin": true,
+          "parameters": []
+        },
+        {
+          "name": "upcoming",
+          "description": "Show what is coming next, or turn advance announcements on/off",
+          "admin": false,
+          "parameters": [
+            {
+              "name": "enabled",
+              "description": "Admins only: True to announce new upcoming items, False to stop",
+              "required": false,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "request",
+      "description": "Suggest a feature or change, and manage this server's requests",
+      "admin": false,
+      "parameters": [],
+      "subcommands": [
+        {
+          "name": "close",
+          "description": "Mark a request as dealt with",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "number",
+              "description": "…",
+              "required": true,
+              "choices": []
+            },
+            {
+              "name": "resolution",
+              "description": "…",
+              "required": true,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List the requests made in this server",
+          "admin": false,
+          "parameters": [
+            {
+              "name": "status",
+              "description": "…",
+              "required": false,
+              "choices": [
+                "open",
+                "closed",
+                "all"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "new",
+          "description": "Suggest a feature, a change, or an addition",
+          "admin": false,
+          "parameters": []
+        },
+        {
+          "name": "reopen",
+          "description": "Reopen a request that was closed",
+          "admin": true,
+          "parameters": [
+            {
+              "name": "number",
+              "description": "…",
+              "required": true,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

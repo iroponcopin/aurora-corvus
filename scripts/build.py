@@ -38,6 +38,11 @@ BUILD_SCRIPTS = [
     # After the roadmap (same family of page) and before the feeds/sitemap,
     # because it writes upcoming.json at the site root for the Discord bot.
     "build_upcoming.py",
+    # After build_upcoming.py and before the feeds/sitemap. It imports
+    # _discord_invite() from build_download.py so the invite link on this page
+    # and on the Download page cannot diverge, and it reads the command export
+    # copied from the bot repo (data/discord_commands.json).
+    "build_discord.py",
     "build_known_issues.py",
     "build_changelog_feed.py",
     "build_releases_feed.py",

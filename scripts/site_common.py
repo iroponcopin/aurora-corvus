@@ -208,6 +208,7 @@ NAV_SECTIONS = [
     ("gates", "gates/"),
     ("features", "features/"),
     ("upcoming", "upcoming/"),
+    ("discord", "discord/"),
     ("roadmap", "roadmap/"),
     ("issues", "known-issues/"),
 ]
@@ -235,6 +236,10 @@ NAV_LABEL_FALLBACK = {
     # English default until the twelve other bundles carry ui.nav.upcoming;
     # the PAGE itself is fully translated in all 13 (data/upcoming.json).
     "upcoming": "Coming next",
+    # Same arrangement as "upcoming": the nav label falls back to English
+    # until the bundles carry ui.nav.discord, while the page itself is fully
+    # translated in all 13 (data/discord_bot.json).
+    "discord": "Discord bot",
 }
 
 # --- Mega menu -------------------------------------------------------------
@@ -260,7 +265,13 @@ NAV_GROUPS = [
     # "upcoming" sits with changelog/roadmap because it answers the same
     # question at a different distance: changelog = what shipped, upcoming =
     # what is next, roadmap = the long view.
-    ("status", ["changelog", "upcoming", "roadmap", "issues"]),
+    # "discord" sits with them because it answers the same family of question
+    # from the other side: changelog/upcoming/roadmap say what happened and
+    # what is next, issues says what is broken, and the Discord page is how a
+    # server hears those things as they happen -- and how a player tells us
+    # about the one that is broken. It is NOT under "start": you do not need
+    # Discord to install or play the pack.
+    ("status", ["changelog", "upcoming", "roadmap", "issues", "discord"]),
 ]
 
 # English fallbacks for the group heading + one-line blurb shown in each
