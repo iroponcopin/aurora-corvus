@@ -207,6 +207,7 @@ NAV_SECTIONS = [
     ("launcher", "launcher/"),
     ("gates", "gates/"),
     ("features", "features/"),
+    ("upcoming", "upcoming/"),
     ("roadmap", "roadmap/"),
     ("issues", "known-issues/"),
 ]
@@ -231,6 +232,9 @@ NAV_LABEL_FALLBACK = {
     # nothing to translate into the other twelve scripts, same category as
     # LAUNCHER_APP_NAME and "Aureum" above.
     "v4": "V4",
+    # English default until the twelve other bundles carry ui.nav.upcoming;
+    # the PAGE itself is fully translated in all 13 (data/upcoming.json).
+    "upcoming": "Coming next",
 }
 
 # --- Mega menu -------------------------------------------------------------
@@ -253,7 +257,10 @@ NAV_SOLO = ["home", "v4", "aureum"]  # "v4" is TEMPORARY -- see NAV_SECTIONS
 NAV_GROUPS = [
     ("start", ["download", "launcher", "guide"]),
     ("reference", ["recipes", "gates", "features"]),
-    ("status", ["changelog", "roadmap", "issues"]),
+    # "upcoming" sits with changelog/roadmap because it answers the same
+    # question at a different distance: changelog = what shipped, upcoming =
+    # what is next, roadmap = the long view.
+    ("status", ["changelog", "upcoming", "roadmap", "issues"]),
 ]
 
 # English fallbacks for the group heading + one-line blurb shown in each

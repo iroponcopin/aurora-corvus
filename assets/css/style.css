@@ -1612,3 +1612,39 @@ html.js .hero.reveal.is-visible { transform: translate3d(0, 0, 0); }
   .mega-panel { transition: visibility 0s !important; }
   @media (max-width: 899px) { .site-nav { transition: visibility 0s !important; } }
 }
+
+/* ---------------------------------------------------------------- /upcoming/
+   The "coming next" board (scripts/build_upcoming.py). Namespaced .up-* so
+   nothing here can reach another page. Unlike the V4 teaser this page is
+   permanent, so its handful of rules live with the rest of the site rather
+   than in a file that would have to be remembered and deleted. */
+.up-hero .up-intro { max-width: 46em; color: var(--text-muted); }
+
+.up-entry { margin-top: 18px; }
+.up-meta {
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 10px; font-size: 0.82rem;
+}
+.up-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* Two states, told apart by colour as well as by word — a badge that reads
+   the same in both is not a badge. */
+.up-badge--planned { color: var(--accent-strong); border-color: rgba(var(--accent-rgb), 0.45); }
+.up-badge--in_progress { color: #f0c674; border-color: rgba(240, 198, 116, 0.45); }
+.up-target { color: var(--text-muted); }
+
+.up-entry h2 { margin: 0 0 8px; }
+.up-body { margin: 0 0 12px; color: var(--text-muted); line-height: 1.85; }
+.up-items { margin: 0; padding-inline-start: 1.2em; }
+.up-items li { margin: 4px 0; }
+.up-more { margin: 12px 0 0; }
+
+.up-disclaimer { margin-top: 22px; }
+.up-disclaimer p { margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.85; }

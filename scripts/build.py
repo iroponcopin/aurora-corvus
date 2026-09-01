@@ -35,6 +35,9 @@ BUILD_SCRIPTS = [
     "build_gates.py",
     "build_features.py",
     "build_roadmap.py",
+    # After the roadmap (same family of page) and before the feeds/sitemap,
+    # because it writes upcoming.json at the site root for the Discord bot.
+    "build_upcoming.py",
     "build_known_issues.py",
     "build_changelog_feed.py",
     "build_releases_feed.py",
