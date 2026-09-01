@@ -23,6 +23,11 @@ BUILD_SCRIPTS = [
     # and this page's download CTA is a companion to that page's Aureum
     # section, not to anything below.
     "build_aureum.py",
+    # TEMPORARY (2026-09-01): the V4 announcement page. Placed right after the
+    # home/Aureum pair because it is a marketing page, not a reference one,
+    # and it must build before build_sitemap.py so its URLs are listed.
+    # Deleted in one line when V4 ships; see scripts/build_v4_teaser.py.
+    "build_v4_teaser.py",
     "build_changelog.py",
     "build_recipes.py",
     "build_guide.py",
