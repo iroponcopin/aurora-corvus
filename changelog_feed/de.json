@@ -1,10 +1,61 @@
 {
  "lang": "de",
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-08-31",
+ "updated_label": "Aktualisiert am 2026-09-01",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
+  {
+   "label": "V3.8",
+   "summary": "Der Bohrgroßgerät-Rig und Hartkernschaden für jede schwere und Fernkampfwaffe",
+   "releases": [
+    {
+     "version": "V3.8.0",
+     "date": "2026-09-01",
+     "type": "release",
+     "title": "Der Bohrgroßgerät-Rig und Hartkernschaden für jede schwere und Fernkampfwaffe",
+     "summary": "Fügt das Bohrgroßgerät hinzu: eine Kettenmaschine, auf der man fährt, die man absetzt und mit der man bohrt. Sie räumt eine 5x5-Fläche in einem Durchgang und geht durch Obsidian — dafür ist sie sehr langsam und kann sich beim Bohren überhaupt nicht bewegen. Dieselbe Version lässt schwere Gegenstände, Geschosse und Fernkampfwaffen Blöcke beschädigen, mit einer Stärke, die sich von Waffe zu Waffe unterscheidet: eine Pistole kratzt Stein kaum an, eine Rakete schlägt ein Loch hindurch.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Das Bohrgroßgerät ist da. Aufsteigen, hinfahren, den Mast aufrichten, bohren. Es räumt eine 5x5-Fläche — 25 Blöcke auf einmal gegen die 3x3 = 9 des Handbohrers.",
+        "Das Rig geht durch Obsidian. Dafür ist die Handhabung bewusst schlecht: die Schnecke dreht sich erst, wenn der Mast steht, mit aufgerichtetem Mast fährt die Maschine nicht, und während der Mast sich bewegt nimmt sie überhaupt keine Eingaben an.",
+        "Steuerung für das Rig und eine Anzeige für Mast und Bohrer.",
+        "Jeder schwere Gegenstand, jedes Geschoss und jede Fernkampfwaffe kann jetzt Blöcke beschädigen: elf Schusswaffen, der Engels- und der Königspfeil, der Engelsstab und der Sturmhammer.",
+        "Die Stärke unterscheidet sich je Waffe. Pistole und MP brauchen 50 Schuss für Stein, das Sturmgewehr 19, das Scharfschützengewehr 8, das schwere 2, der Raketenwerfer 1.",
+        "Ein Schlag mit dem Sturmhammer bricht jetzt Wände — Stein mit einem, Tiefenschiefer mit zwei. Er baut nicht schneller ab, sondern zehrt eine aus der Härte abgeleitete Haltbarkeit auf, bis der Block nachgibt.",
+        "Ein Engelspfeil öffnet Stein in 38 Treffern, ein Königspfeil in einem Viertel davon. Der Blitz des Engelsstabs brennt Stein in 5 durch."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Hartkernschaden je Schuss (Haltbarkeit ist Härte x 100, Stein also 150 und Obsidian 5000): Pistole 3 / MP 3 / Minigun 4 / Sturmgewehr 8 / Schrotflinte 2 je Kugel x10 / Breaching-Schrotflinte 6 je Kugel x10 / Marksman-Karabiner 12 / Scharfschütze 20 / schwerer Scharfschütze 100 (unverändert) / Laser 12 / Raketenwerfer 600 / Engelspfeil 4 / Königspfeil 16 / Engelsstab 30 / Sturmhammer 250."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Das schwere Scharfschützengewehr ist unverändert (Stein in 2, Obsidian in 50). V3.8.0 fügt Waffen hinzu, die Blöcke beschädigen; es balanciert die eine, die es schon konnte, nicht neu.",
+        "Schusswaffen können jetzt Bauten beschädigen, was das Bauen auf Survival- und Mehrspieler-Servern verändert. Gebietsschutz und Rechteprüfungen greifen genau wie zuvor. Der Wert 0 in der Konfiguration schaltet den Hartkernschaden für genau diese eine Waffe ab.",
+        "Wenn du schon auf einem Server spielst, werden die neuen Einstellungen beim Start in deine Konfigurationsdatei geschrieben. Ohne das käme jede Waffe still auf 0 heraus — also ganz ohne Hartkernschaden.",
+        "Unzerstörbare Blöcke wie Grundgestein nehmen von keiner Waffe Schaden.",
+        "Das Rig kann beim Bohren nicht fahren. Zum Fahren den Mast einfahren."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das Rig räumt pro Durchgang weit mehr als der Handbohrer, braucht aber länger je Block.",
+        "Die Risse entstehen im Waffen-Mod und im Himmels-Mod technisch unterschiedlich, weil die Mods keine Verweise aufeinander halten. Die Formel von Härte zu Haltbarkeit ist in beiden identisch.",
+        "In der Entwicklungsumgebung gibt es keinen Minecraft-Client, daher wurden das Aussehen des Rigs und die Rissdarstellung nicht auf echter Hardware geprüft."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.7",
    "summary": "Die Laserwaffe als echter Strahl neu gebaut und verdreifacht, die Minigun-Läufe drehen sich, der Bohrer schlägt nicht mehr zu",

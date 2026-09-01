@@ -211,7 +211,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">업데이트 기록</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-08-31</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-09-01</span></p>
     <p class="cl__note">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
   </header>
 
@@ -226,7 +226,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>조건에 맞는 업데이트가 없습니다.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.7">
+<section class="cl__group" id="v3.8">
+      <h2 class="cl__groupTitle">V3.8</h2>
+      <p class="cl__groupSummary">채굴 드릴 중장비 추가, 모든 중량 아이템과 원거리 무기가 블록을 부술 수 있습니다</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V3.8.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-8-0">
+          <h3 class="cl__version">V3.8.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-01</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-8-0" hidden><p class="cl__entryTitle">채굴 드릴 중장비 추가, 모든 중량 아이템과 원거리 무기가 블록을 부술 수 있습니다</p><p class="cl__lede">채굴 드릴 중장비를 추가했습니다. 올라타 몰고, 자리를 잡고, 파는 무한궤도 기계입니다. 한 번에 5x5 단면을 뚫으며 흑요석도 관통합니다. 대신 매우 느리고, 파는 동안에는 전혀 움직일 수 없습니다. 같은 릴리스에서 중량 아이템·투사체·원거리 무기가 블록에 피해를 줄 수 있게 되었습니다. 위력은 무기마다 다릅니다. 권총은 돌에 자국만 남기지만, 로켓은 한 발로 구멍을 뚫습니다.</p><div class="cl__section"><h4 class="cl__sectionTitle">변경 사항 <span>(7)</span></h4><ul class="cl__list"><li>채굴 드릴 중장비가 왔습니다. 올라타서 팔 곳까지 몰고, 마스트를 세우고, 뚫습니다. 한 번에 5x5 단면 — 25블록으로, 손에 드는 드릴의 3x3 = 9블록을 크게 넘어섭니다.</li><li>이 중장비는 흑요석도 뚫습니다. 대신 조작성은 일부러 나쁘게 만들었습니다. 마스트를 세우기 전에는 드릴이 돌지 않고, 마스트를 세운 채로는 주행할 수 없으며, 마스트가 움직이는 동안에는 어떤 조작도 받지 않습니다.</li><li>중장비 조작 키와 마스트·드릴 상태 표시를 추가했습니다.</li><li>모든 중량 아이템·투사체·원거리 무기가 블록에 피해를 줄 수 있습니다. 총기 11종, 천사의 화살과 왕족의 화살, 천사의 지팡이, 공성 망치가 대상입니다.</li><li>위력은 무기마다 다릅니다. 권총과 기관단총은 돌을 뚫는 데 50발, 돌격소총은 19발, 저격총은 8발, 대물 저격총은 2발, 로켓 발사기는 1발입니다.</li><li>공성 망치로 블록을 치면 벽이 무너집니다 — 돌은 한 번, 심층암은 두 번. 채굴이 빨라지는 것이 아니라, 경도에서 환산한 내구를 깎아내어 무너뜨리는 방식입니다.</li><li>천사의 화살은 돌을 38발에, 왕족의 화살은 그 4분의 1로 뚫습니다. 천사의 지팡이 광선은 돌을 5발에 태워 뚫습니다.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">밸런스 조정 <span>(1)</span></h4><ul class="cl__list"><li>발당 대물 피해(내구는 경도 x 100이므로 돌 150, 흑요석 5000): 권총 3 / 기관단총 3 / 미니건 4 / 돌격소총 8 / 산탄총 알당 2 x10 / 돌파용 산탄총 알당 6 x10 / 지정사수 카빈 12 / 저격총 20 / 대물 저격총 100(변경 없음) / 레이저 12 / 로켓 발사기 600 / 천사의 화살 4 / 왕족의 화살 16 / 천사의 지팡이 30 / 공성 망치 250.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">주의 사항 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>대물 저격총은 그대로입니다(돌 2발, 흑요석 50발). V3.8.0은 블록을 부술 수 있는 무기를 늘린 것이지, 이미 부술 수 있었던 한 자루를 재조정한 것이 아닙니다.</li><li>이제 총으로 건축물을 부술 수 있어, 서바이벌과 멀티플레이에서 건축을 다루는 방식이 달라집니다. 땅 보호와 권한 확인은 지금까지와 똑같이 작동합니다. 설정 파일에서 어떤 무기의 값을 0으로 하면 그 무기만 대물 피해가 꺼집니다.</li><li>이미 서버에서 플레이 중이라면, 시작할 때 새 설정이 설정 파일에 자동으로 채워집니다. 채워지지 않으면 모든 총이 조용히 0이 되어 대물 피해가 전혀 없게 됩니다.</li><li>기반암처럼 파괴할 수 없는 블록은 어떤 무기로도 손상되지 않습니다.</li><li>중장비는 파는 동안 움직일 수 없습니다. 이동하려면 마스트를 접으세요.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">이 시점에 미구현·미확인이었던 사항 <span>(3)</span></h4><ul class="cl__list"><li>중장비는 한 번에 훨씬 넓은 범위를 뚫지만, 블록 하나당 걸리는 시간은 더 깁니다.</li><li>균열이 보이는 방식은 총기 MOD와 천공 MOD에서 내부 구조가 다릅니다(MOD 사이에 참조를 두지 않는 방침 때문입니다). 경도에서 내구를 구하는 계산식은 양쪽이 동일합니다.</li><li>개발 환경에 마인크래프트 클라이언트가 없어, 중장비의 겉모습과 균열 표시는 실제 기기에서 확인하지 못했습니다.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.7">
       <h2 class="cl__groupTitle">V3.7</h2>
       <p class="cl__groupSummary">레이저 건을 빔 방식으로 다시 만들고 3배 강화, 미니건은 사격 중 총열이 회전, 드릴의 헛치는 동작 제거</p>
       <div class="cl__releases">

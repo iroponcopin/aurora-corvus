@@ -1,10 +1,61 @@
 {
  "lang": "id",
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "title": "Riwayat Pembaruan",
- "updated_label": "Diperbarui 2026-08-31",
+ "updated_label": "Diperbarui 2026-09-01",
  "note": "Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.",
  "groups": [
+  {
+   "label": "V3.8",
+   "summary": "Rig Bor Tambang, dan kerusakan anti-material pada semua senjata berat dan jarak jauh",
+   "releases": [
+    {
+     "version": "V3.8.0",
+     "date": "2026-09-01",
+     "type": "release",
+     "title": "Rig Bor Tambang, dan kerusakan anti-material pada semua senjata berat dan jarak jauh",
+     "summary": "Menambahkan Rig Bor Tambang: mesin beroda rantai yang kamu naiki, kamu tempatkan, lalu kamu pakai mengebor. Sekali jalan ia membuka bidang 5x5 dan menembus obsidian — sebagai gantinya ia sangat lambat dan sama sekali tidak bisa bergerak saat mengebor. Rilis yang sama membuat barang berat, proyektil, dan senjata jarak jauh bisa merusak blok, dengan kekuatan yang berbeda tiap senjata: pistol hanya meninggalkan bekas di batu, roket menembusnya.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Rig Bor Tambang hadir. Naiki, kemudikan ke tempat yang mau digali, tegakkan tiang, lalu bor. Sekali jalan ia membuka bidang 5x5 — 25 blok sekaligus, dibanding 3x3 = 9 milik bor genggam.",
+        "Rig ini menembus obsidian. Sebagai gantinya, kendalinya sengaja dibuat sulit: bor tidak berputar sebelum tiang tegak, mesin tidak bisa berjalan dengan tiang tegak, dan sama sekali tidak menerima perintah selama tiang bergerak.",
+        "Tombol kendali rig serta tampilan status tiang dan pengeboran.",
+        "Setiap barang berat, proyektil, dan senjata jarak jauh kini bisa merusak blok: sebelas senjata api, panah malaikat dan panah kerajaan, tongkat malaikat, dan godam pengepungan.",
+        "Kekuatannya berbeda tiap senjata. Pistol dan pistol mitraliur butuh 50 tembakan untuk menembus batu, senapan serbu 19, senapan runduk 8, runduk berat 2, dan peluncur roket 1.",
+        "Memukul blok dengan godam pengepungan kini meruntuhkan dinding — batu sekali pukul, deepslate dua kali. Ia tidak menambang lebih cepat, melainkan mengikis ketahanan yang diturunkan dari kekerasan sampai blok menyerah.",
+        "Panah malaikat menembus batu dalam 38 tancapan, panah kerajaan seperempatnya. Berkas tongkat malaikat membakar tembus batu dalam 5."
+       ]
+      },
+      {
+       "title": "Penyesuaian Balance",
+       "items": [
+        "Kerusakan anti-material per tembakan (ketahanan = kekerasan x 100, jadi batu 150 dan obsidian 5000): pistol 3 / pistol mitraliur 3 / minigun 4 / senapan serbu 8 / shotgun 2 per butir x10 / shotgun pendobrak 6 per butir x10 / karabin penembak jitu 12 / senapan runduk 20 / runduk berat 100 (tetap) / laser 12 / peluncur roket 600 / panah malaikat 4 / panah kerajaan 16 / tongkat malaikat 30 / godam pengepungan 250."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Senapan runduk berat tidak berubah (batu 2, obsidian 50). V3.8.0 menambah senjata yang bisa merusak blok, bukan menyeimbangkan ulang satu-satunya yang sudah bisa.",
+        "Senjata api kini bisa merusak bangunan, sehingga cara membangun di mode bertahan hidup dan di server multipemain berubah. Perlindungan lahan dan pemeriksaan izin tetap berlaku persis seperti sebelumnya. Mengatur nilai sebuah senjata menjadi 0 di konfigurasi mematikan kerusakan anti-material untuk senjata itu saja.",
+        "Kalau kamu sudah bermain di server, pengaturan baru ditulis ke berkas konfigurasimu saat mulai. Tanpa itu, semua senjata akan diam-diam keluar di angka 0 — tanpa kerusakan anti-material sama sekali.",
+        "Blok yang tak bisa dihancurkan seperti bedrock tidak terpengaruh senjata apa pun.",
+        "Rig tidak bisa bergerak saat mengebor. Turunkan tiang untuk berjalan."
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Sekali jalan rig membuka jauh lebih banyak daripada bor genggam, tetapi butuh waktu lebih lama per blok.",
+        "Retakan dihasilkan oleh mekanisme internal yang berbeda di mod senjata dan mod langit, karena kedua mod tidak saling merujuk. Rumus yang mengubah kekerasan menjadi ketahanan sama persis di keduanya.",
+        "Tidak ada klien Minecraft di lingkungan pengembangan, jadi tampilan rig dan penggambaran retakan belum diperiksa di perangkat sungguhan."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.7",
    "summary": "Senapan laser dibangun ulang sebagai sinar sungguhan dan dilipattigakan, laras minigun berputar, dan bor berhenti mengayun",

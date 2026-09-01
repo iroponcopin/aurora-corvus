@@ -1822,6 +1822,38 @@
         "This development environment has no Minecraft client, so neither the beam nor the spinning barrels have been seen in the actual game — only in offline renders."
       ],
       "balance_changes": []
+    },
+    {
+      "id": "v3.8.0",
+      "release": "V3.8.0",
+      "date": "2026-09-01",
+      "type": "release",
+      "title": "The Mining Drill Rig, and anti-materiel damage on every heavy and ranged weapon",
+      "summary": "Adds the Mining Drill Rig: a tracked machine you ride, set down, and drill with. It clears a 5x5 face in one pass and goes through obsidian — in exchange it is very slow and cannot move at all while drilling. The same release lets heavy items, projectiles and ranged weapons damage blocks, with a power that differs from weapon to weapon: a handgun barely marks stone, a rocket puts a hole straight through it.",
+      "highlights": [
+        "The Mining Drill Rig is here. Ride it, drive it where you want to dig, raise the mast, and bore. It clears a 5x5 face — 25 blocks at a time, against the handheld drill's 3x3 = 9.",
+        "The rig goes through obsidian. Its handling is deliberately poor in exchange: the auger will not turn until the mast is up, the machine cannot drive with the mast up, and it takes no input at all while the mast is moving.",
+        "Rig controls and a readout for the mast and the drill.",
+        "Every heavy item, projectile and ranged weapon can now damage blocks: eleven guns, the angel and royal arrows, the angel staff, and the siege maul.",
+        "The power differs by weapon. A handgun or SMG takes 50 shots to open stone, an assault rifle 19, a sniper 8, a heavy sniper 2, and a rocket launcher 1.",
+        "Hitting a block with the siege maul now breaks walls — stone in one swing, deepslate in two. It does not mine faster; it wears down a durability derived from hardness until the block gives.",
+        "An angel arrow opens stone in 38 hits, a royal arrow in a quarter of that. The angel staff's bolt burns through stone in 5."
+      ],
+      "warnings": [
+        "The heavy sniper rifle is unchanged (stone in 2, obsidian in 50). V3.8.0 adds weapons that damage blocks; it does not re-balance the one that already did.",
+        "Guns can now damage builds, which changes how building works on survival and multiplayer servers. Land protection and permission checks still apply exactly as before. Setting a weapon's value to 0 in the config turns anti-materiel damage off for that weapon alone.",
+        "If you are already playing on a server, the new settings are written into your config file at startup. Without that, every gun would silently come out at 0 — no anti-materiel damage at all.",
+        "Unbreakable blocks such as bedrock cannot be damaged by any weapon.",
+        "The rig cannot move while drilling. Stow the mast to drive."
+      ],
+      "known_limitations": [
+        "The rig clears far more per pass than the handheld drill, but takes longer per block.",
+        "The crack overlay is produced by different internals in the guns mod and the sky mod, because the mods hold no references to each other. The formula turning hardness into durability is identical in both.",
+        "There is no Minecraft client in the development environment, so the rig's appearance and the crack rendering have not been checked on real hardware."
+      ],
+      "balance_changes": [
+        "Anti-materiel damage per shot (durability is hardness x 100, so stone is 150 and obsidian 5000): handgun 3 / SMG 3 / minigun 4 / assault rifle 8 / shotgun 2 per pellet x10 / breaching shotgun 6 per pellet x10 / marksman carbine 12 / sniper 20 / heavy sniper 100 (unchanged) / laser 12 / rocket launcher 600 / angel arrow 4 / royal arrow 16 / angel staff 30 / siege maul 250."
+      ]
     }
   ],
   "roadmap": {

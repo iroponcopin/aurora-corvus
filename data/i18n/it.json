@@ -1712,6 +1712,38 @@
         "Questo ambiente di sviluppo non ha un client Minecraft, quindi né il raggio né le canne rotanti sono stati visti nel gioco reale, solo in render offline."
       ],
       "balance_changes": []
+    },
+    {
+      "id": "v3.8.0",
+      "release": "V3.8.0",
+      "date": "2026-09-01",
+      "type": "release",
+      "title": "La trivella pesante e danno anti-materiale su ogni arma pesante e a distanza",
+      "summary": "Aggiunge la trivella pesante: una macchina cingolata su cui si sale, che si posa e con cui si scava. Sgombra una faccia 5x5 in una passata e attraversa l'ossidiana — in cambio è molto lenta e non può muoversi affatto mentre scava. La stessa versione consente a oggetti pesanti, proiettili e armi a distanza di danneggiare i blocchi, con una potenza diversa da arma ad arma: una pistola segna appena la pietra, un razzo la buca da parte a parte.",
+      "highlights": [
+        "Arriva la trivella pesante. Sali, guidala dove vuoi scavare, alza il palo e trivella. Sgombra una faccia 5x5 — 25 blocchi alla volta, contro i 3x3 = 9 del trapano a mano.",
+        "La trivella attraversa l'ossidiana. In cambio la maneggevolezza è volutamente scarsa: la coclea non gira finché il palo non è alzato, la macchina non si muove con il palo su e non accetta alcun comando mentre il palo è in movimento.",
+        "Comandi della trivella e indicatore di palo e trivellazione.",
+        "Ogni oggetto pesante, proiettile e arma a distanza può ora danneggiare i blocchi: undici armi da fuoco, le frecce angelica e reale, il bastone angelico e il maglio d'assedio.",
+        "La potenza cambia con l'arma. Pistola e mitraglietta servono 50 colpi per aprire la pietra, il fucile d'assalto 19, il fucile di precisione 8, quello pesante 2, il lanciarazzi 1.",
+        "Colpire un blocco con il maglio d'assedio ora abbatte i muri: la pietra in un colpo, l'ardesia profonda in due. Non scava più in fretta: consuma una resistenza ricavata dalla durezza finché il blocco cede.",
+        "Una freccia angelica apre la pietra in 38 colpi, una reale in un quarto. Il dardo del bastone angelico la brucia in 5."
+      ],
+      "warnings": [
+        "Il fucile di precisione pesante è invariato (pietra in 2, ossidiana in 50). La V3.8.0 aggiunge armi che danneggiano i blocchi; non ribilancia quella che già lo faceva.",
+        "Le armi da fuoco ora possono danneggiare le costruzioni, il che cambia il modo di costruire in sopravvivenza e in multigiocatore. Le protezioni del terreno e i controlli dei permessi valgono esattamente come prima. Mettere a 0 il valore di un'arma nella configurazione disattiva il danno anti-materiale solo per quella.",
+        "Se giochi già su un server, le nuove impostazioni vengono scritte nel tuo file di configurazione all'avvio. Senza, ogni arma uscirebbe in silenzio a 0 — nessun danno anti-materiale.",
+        "I blocchi indistruttibili come la bedrock non subiscono danno da nessuna arma.",
+        "La trivella non può muoversi mentre scava. Abbassa il palo per guidare."
+      ],
+      "known_limitations": [
+        "La trivella sgombra molto di più per passata rispetto al trapano a mano, ma impiega più tempo per blocco.",
+        "Le crepe sono prodotte da meccanismi diversi nel mod delle armi e in quello celeste, perché i mod non si riferiscono l'un l'altro. La formula che trasforma la durezza in resistenza è identica nei due.",
+        "Nell'ambiente di sviluppo non c'è un client di Minecraft, quindi l'aspetto della trivella e il disegno delle crepe non sono stati verificati su hardware reale."
+      ],
+      "balance_changes": [
+        "Danno anti-materiale per colpo (la resistenza è durezza x 100, quindi pietra 150 e ossidiana 5000): pistola 3 / mitraglietta 3 / minigun 4 / fucile d'assalto 8 / fucile a pompa 2 per pallino x10 / fucile a pompa da sfondamento 6 per pallino x10 / carabina da tiratore 12 / fucile di precisione 20 / precisione pesante 100 (invariato) / laser 12 / lanciarazzi 600 / freccia angelica 4 / freccia reale 16 / bastone angelico 30 / maglio d'assedio 250."
+      ]
     }
   ],
   "roadmap": {

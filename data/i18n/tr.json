@@ -1708,6 +1708,38 @@
         "Bu geliştirme ortamında Minecraft istemcisi yok; ne ışın ne de dönen namlular gerçek oyunda görüldü, yalnızca çevrimdışı görüntülemelerde."
       ],
       "balance_changes": []
+    },
+    {
+      "id": "v3.8.0",
+      "release": "V3.8.0",
+      "date": "2026-09-01",
+      "type": "release",
+      "title": "Madencilik Sondaj Makinesi ve her ağır ve menzilli silahta malzeme karşıtı hasar",
+      "summary": "Madencilik Sondaj Makinesi eklendi: binip sürdüğünüz, yerine oturttuğunuz ve deldiğiniz paletli bir makine. Tek geçişte 5x5'lik bir yüzeyi açıyor ve obsidyeni deliyor — karşılığında çok yavaş ve delerken hiç hareket edemiyor. Aynı sürüm ağır eşyalara, mermilere ve menzilli silahlara bloklara hasar verme yeteneği kazandırıyor; güç silahtan silaha değişiyor: tabanca taşta ancak iz bırakıyor, roket ise delip geçiyor.",
+      "highlights": [
+        "Madencilik Sondaj Makinesi geldi. Binin, kazmak istediğiniz yere sürün, direği kaldırın ve delin. Tek geçişte 5x5'lik yüzey açıyor — bir seferde 25 blok; elde taşınan matkapta bu 3x3 = 9.",
+        "Makine obsidyeni deliyor. Karşılığında kullanımı bilerek zor: direk kalkmadan burgu dönmüyor, direk kalkıkken makine yürümüyor ve direk hareket ederken hiçbir komut kabul etmiyor.",
+        "Makinenin kontrol tuşları ve direk ile delme durumunu gösteren ekran.",
+        "Artık her ağır eşya, mermi ve menzilli silah bloklara hasar verebiliyor: on bir ateşli silah, melek ve kraliyet okları, melek asası ve kuşatma tokmağı.",
+        "Güç silaha göre değişiyor. Tabanca ve hafif makineli taşı açmak için 50 atış istiyor, saldırı tüfeği 19, keskin nişancı 8, ağır keskin nişancı 2, roketatar 1.",
+        "Kuşatma tokmağıyla bloğa vurmak artık duvarları yıkıyor — taş bir vuruşta, derin arduvaz iki. Daha hızlı kazmıyor; sertlikten türetilen bir dayanıklılığı blok çökene kadar aşındırıyor.",
+        "Melek oku taşı 38 isabette açıyor, kraliyet oku bunun dörtte birinde. Melek asasının ışını taşı 5'te yakıp geçiyor."
+      ],
+      "warnings": [
+        "Ağır keskin nişancı tüfeği değişmedi (taş 2, obsidyen 50). V3.8.0 bloklara hasar verebilen silahları çoğaltıyor; zaten verebilen tek silahı yeniden dengelemiyor.",
+        "Ateşli silahlar artık yapılara hasar verebiliyor; bu, hayatta kalma ve çok oyunculu sunucularda inşa etmeyi değiştiriyor. Arazi koruması ve yetki denetimleri eskisi gibi işliyor. Yapılandırmada bir silahın değerini 0 yapmak yalnızca o silahın malzeme karşıtı hasarını kapatıyor.",
+        "Zaten bir sunucuda oynuyorsanız, yeni ayarlar açılışta yapılandırma dosyanıza yazılıyor. Yazılmasa her silah sessizce 0'da kalırdı — yani hiç malzeme karşıtı hasar olmazdı.",
+        "Ana kaya gibi kırılamayan bloklara hiçbir silah hasar veremiyor.",
+        "Makine delerken hareket edemiyor. Sürmek için direği indirin."
+      ],
+      "known_limitations": [
+        "Makine geçiş başına elde taşınan matkaptan çok daha fazlasını açıyor, ama blok başına daha uzun sürüyor.",
+        "Çatlaklar silah modunda ve gökyüzü modunda farklı iç mekanizmalarla çiziliyor; çünkü modlar birbirine referans tutmuyor. Sertliği dayanıklılığa çeviren formül ikisinde de aynı.",
+        "Geliştirme ortamında Minecraft istemcisi bulunmadığından, makinenin görünümü ve çatlakların çizimi gerçek donanımda denetlenmedi."
+      ],
+      "balance_changes": [
+        "Atış başına malzeme karşıtı hasar (dayanıklılık = sertlik x 100; taş 150, obsidyen 5000): tabanca 3 / hafif makineli 3 / minigun 4 / saldırı tüfeği 8 / pompalı 2 saçma başına x10 / gedik açan pompalı 6 saçma başına x10 / nişancı karabinası 12 / keskin nişancı 20 / ağır keskin nişancı 100 (değişmedi) / lazer 12 / roketatar 600 / melek oku 4 / kraliyet oku 16 / melek asası 30 / kuşatma tokmağı 250."
+      ]
     }
   ],
   "roadmap": {

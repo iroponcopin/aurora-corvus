@@ -211,7 +211,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新日志</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-08-31</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-01</span></p>
     <p class="cl__note">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
   </header>
 
@@ -226,7 +226,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>没有符合条件的更新记录。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.7">
+<section class="cl__group" id="v3.8">
+      <h2 class="cl__groupTitle">V3.8</h2>
+      <p class="cl__groupSummary">新增采矿钻机重型机械，所有重型物品与远程武器可以破坏方块</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V3.8.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-8-0">
+          <h3 class="cl__version">V3.8.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-01</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-8-0" hidden><p class="cl__entryTitle">新增采矿钻机重型机械，所有重型物品与远程武器可以破坏方块</p><p class="cl__lede">新增采矿钻机：一台可以骑乘、就位、开钻的履带机械。一次可挖穿 5x5 的断面，连黑曜石也能钻透——代价是非常慢，而且开钻时完全无法移动。同一版本还让重型物品、投射物与远程武器可以对方块造成伤害，威力因武器而异：手枪只能在石头上留下痕迹，火箭则一发穿透。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(7)</span></h4><ul class="cl__list"><li>采矿钻机来了。骑上去，开到想挖的地方，升起桅杆，开钻。一次清出 5x5 的断面——25 个方块，而手持钻头是 3x3 = 9 个。</li><li>钻机能钻透黑曜石。代价是操控刻意做得很差：桅杆没升起来钻头就不转，桅杆升起时机器不能行驶，桅杆运动期间完全不接受操作。</li><li>新增钻机的操作按键，以及桅杆与钻掘的状态显示。</li><li>所有重型物品、投射物与远程武器现在都能破坏方块：11 种枪械、天使之箭与王族之箭、天使法杖、攻城巨槌。</li><li>威力因武器而异。手枪与冲锋枪需要 50 发才能打穿石头，突击步枪 19 发，狙击枪 8 发，重狙 2 发，火箭筒 1 发。</li><li>用攻城巨槌敲击方块现在可以击溃墙体——石头一击，深板岩二击。它不是挖得更快，而是消耗由硬度换算的耐久，直到方块崩落。</li><li>天使之箭 38 箭打穿石头，王族之箭只需四分之一。天使法杖的光束 5 发烧穿石头。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">平衡性调整 <span>(1)</span></h4><ul class="cl__list"><li>每发对物伤害（耐久为硬度 x 100，故石头 150、黑曜石 5000）：手枪 3 / 冲锋枪 3 / 转管机枪 4 / 突击步枪 8 / 霰弹枪 每颗 2 x10 / 破门霰弹枪 每颗 6 x10 / 精确射手卡宾枪 12 / 狙击枪 20 / 重狙 100（不变）/ 激光枪 12 / 火箭筒 600 / 天使之箭 4 / 王族之箭 16 / 天使法杖 30 / 攻城巨槌 250。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>重型狙击枪没有改动（石头 2 发、黑曜石 50 发）。V3.8.0 是增加能破坏方块的武器，而不是重新平衡本来就能破坏的那一把。</li><li>枪械现在会破坏建筑，这改变了生存与多人服务器中的建造方式。领地保护与权限判定仍与以往完全一致。在配置文件中把某把武器的数值设为 0，即可单独关闭该武器的对物伤害。</li><li>如果你已经在服务器上游玩，启动时会自动把新设置写入你的配置文件。若不写入，所有枪械都会悄无声息地变成 0——完全没有对物伤害。</li><li>基岩等不可破坏的方块，任何武器都无法造成伤害。</li><li>钻机开钻时无法移动。要行驶请先收起桅杆。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(3)</span></h4><ul class="cl__list"><li>钻机每次清出的范围远大于手持钻头，但每个方块所需的时间更长。</li><li>裂纹的呈现在枪械 MOD 与天空 MOD 中由不同的内部机制产生，因为两个 MOD 互不引用。由硬度换算耐久的公式两者完全相同。</li><li>开发环境中没有 Minecraft 客户端，因此钻机的外观与裂纹的绘制尚未在实机上确认。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.7">
       <h2 class="cl__groupTitle">V3.7</h2>
       <p class="cl__groupSummary">激光枪重制为真正的光束并强化三倍,转管机枪射击时枪管旋转,钻头不再有挥击动作</p>
       <div class="cl__releases">

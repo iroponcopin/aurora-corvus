@@ -211,7 +211,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Changelog</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Updated 2026-08-31</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Updated 2026-09-01</span></p>
     <p class="cl__note">The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.</p>
   </header>
 
@@ -226,7 +226,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>No updates match your filters.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.7">
+<section class="cl__group" id="v3.8">
+      <h2 class="cl__groupTitle">V3.8</h2>
+      <p class="cl__groupSummary">The Mining Drill Rig, and anti-materiel damage on every heavy and ranged weapon</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V3.8.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v3-8-0">
+          <h3 class="cl__version">V3.8.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-01</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v3-8-0" hidden><p class="cl__entryTitle">The Mining Drill Rig, and anti-materiel damage on every heavy and ranged weapon</p><p class="cl__lede">Adds the Mining Drill Rig: a tracked machine you ride, set down, and drill with. It clears a 5x5 face in one pass and goes through obsidian — in exchange it is very slow and cannot move at all while drilling. The same release lets heavy items, projectiles and ranged weapons damage blocks, with a power that differs from weapon to weapon: a handgun barely marks stone, a rocket puts a hole straight through it.</p><div class="cl__section"><h4 class="cl__sectionTitle">Highlights <span>(7)</span></h4><ul class="cl__list"><li>The Mining Drill Rig is here. Ride it, drive it where you want to dig, raise the mast, and bore. It clears a 5x5 face — 25 blocks at a time, against the handheld drill&#x27;s 3x3 = 9.</li><li>The rig goes through obsidian. Its handling is deliberately poor in exchange: the auger will not turn until the mast is up, the machine cannot drive with the mast up, and it takes no input at all while the mast is moving.</li><li>Rig controls and a readout for the mast and the drill.</li><li>Every heavy item, projectile and ranged weapon can now damage blocks: eleven guns, the angel and royal arrows, the angel staff, and the siege maul.</li><li>The power differs by weapon. A handgun or SMG takes 50 shots to open stone, an assault rifle 19, a sniper 8, a heavy sniper 2, and a rocket launcher 1.</li><li>Hitting a block with the siege maul now breaks walls — stone in one swing, deepslate in two. It does not mine faster; it wears down a durability derived from hardness until the block gives.</li><li>An angel arrow opens stone in 38 hits, a royal arrow in a quarter of that. The angel staff&#x27;s bolt burns through stone in 5.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Balance changes <span>(1)</span></h4><ul class="cl__list"><li>Anti-materiel damage per shot (durability is hardness x 100, so stone is 150 and obsidian 5000): handgun 3 / SMG 3 / minigun 4 / assault rifle 8 / shotgun 2 per pellet x10 / breaching shotgun 6 per pellet x10 / marksman carbine 12 / sniper 20 / heavy sniper 100 (unchanged) / laser 12 / rocket launcher 600 / angel arrow 4 / royal arrow 16 / angel staff 30 / siege maul 250.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Warnings <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>The heavy sniper rifle is unchanged (stone in 2, obsidian in 50). V3.8.0 adds weapons that damage blocks; it does not re-balance the one that already did.</li><li>Guns can now damage builds, which changes how building works on survival and multiplayer servers. Land protection and permission checks still apply exactly as before. Setting a weapon&#x27;s value to 0 in the config turns anti-materiel damage off for that weapon alone.</li><li>If you are already playing on a server, the new settings are written into your config file at startup. Without that, every gun would silently come out at 0 — no anti-materiel damage at all.</li><li>Unbreakable blocks such as bedrock cannot be damaged by any weapon.</li><li>The rig cannot move while drilling. Stow the mast to drive.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Not yet implemented/confirmed at this point <span>(3)</span></h4><ul class="cl__list"><li>The rig clears far more per pass than the handheld drill, but takes longer per block.</li><li>The crack overlay is produced by different internals in the guns mod and the sky mod, because the mods hold no references to each other. The formula turning hardness into durability is identical in both.</li><li>There is no Minecraft client in the development environment, so the rig&#x27;s appearance and the crack rendering have not been checked on real hardware.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.7">
       <h2 class="cl__groupTitle">V3.7</h2>
       <p class="cl__groupSummary">The laser gun rebuilt as a real beam and tripled, the minigun&#x27;s barrels spin, and the drill stops swinging</p>
       <div class="cl__releases">

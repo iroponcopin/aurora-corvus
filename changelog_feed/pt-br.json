@@ -1,10 +1,61 @@
 {
  "lang": "pt-br",
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "title": "Histórico de atualizações",
- "updated_label": "Atualizado em 2026-08-31",
+ "updated_label": "Atualizado em 2026-09-01",
  "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
  "groups": [
+  {
+   "label": "V3.8",
+   "summary": "A perfuratriz pesada e dano antimaterial em todas as armas pesadas e de longo alcance",
+   "releases": [
+    {
+     "version": "V3.8.0",
+     "date": "2026-09-01",
+     "type": "release",
+     "title": "A perfuratriz pesada e dano antimaterial em todas as armas pesadas e de longo alcance",
+     "summary": "Adiciona a perfuratriz pesada: uma máquina de esteiras que você pilota, assenta e usa para perfurar. Ela abre uma face de 5x5 em uma passada e atravessa obsidiana — em troca é muito lenta e não pode se mover enquanto perfura. A mesma versão permite que itens pesados, projéteis e armas de longo alcance danifiquem blocos, com potência diferente para cada arma: uma pistola mal marca a pedra, um foguete abre um buraco nela.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "A perfuratriz pesada chegou. Suba, dirija até onde quer cavar, levante o mastro e perfure. Ela abre uma face de 5x5 — 25 blocos por vez, contra os 3x3 = 9 da furadeira de mão.",
+        "A perfuratriz atravessa obsidiana. Em troca, o manejo é ruim de propósito: a broca só gira com o mastro erguido, a máquina não anda com o mastro em pé e não aceita nenhum comando enquanto o mastro se move.",
+        "Controles da perfuratriz e indicador do mastro e da broca.",
+        "Todo item pesado, projétil e arma de longo alcance agora danifica blocos: onze armas de fogo, as flechas angelical e real, o cajado angelical e o malho de cerco.",
+        "A potência varia por arma. Pistola e submetralhadora levam 50 tiros para abrir pedra; o fuzil de assalto 19, o de precisão 8, o pesado 2 e o lança-foguetes 1.",
+        "Bater num bloco com o malho de cerco agora derruba paredes — pedra em um golpe, ardósia profunda em dois. Ele não minera mais rápido: gasta uma resistência derivada da dureza até o bloco ceder.",
+        "Uma flecha angelical abre pedra em 38 acertos; uma real, em um quarto disso. O raio do cajado angelical atravessa pedra em 5."
+       ]
+      },
+      {
+       "title": "Ajustes de balanceamento",
+       "items": [
+        "Dano antimaterial por tiro (a resistência é dureza x 100, então pedra é 150 e obsidiana 5000): pistola 3 / submetralhadora 3 / minigun 4 / fuzil de assalto 8 / escopeta 2 por bago x10 / escopeta de arrombamento 6 por bago x10 / carabina de atirador 12 / fuzil de precisão 20 / precisão pesado 100 (inalterado) / laser 12 / lança-foguetes 600 / flecha angelical 4 / flecha real 16 / cajado angelical 30 / malho de cerco 250."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "O fuzil de precisão pesado não mudou (pedra em 2, obsidiana em 50). A V3.8.0 acrescenta armas que danificam blocos; não reequilibra a que já fazia isso.",
+        "As armas de fogo agora danificam construções, o que muda como se constrói em modo sobrevivência e em multijogador. As proteções de terreno e as verificações de permissão continuam valendo como antes. Definir 0 para uma arma na configuração desliga o dano antimaterial só dela.",
+        "Se você já joga em um servidor, os novos ajustes são escritos no seu arquivo de configuração ao iniciar. Sem isso, todas as armas sairiam silenciosamente em 0 — sem nenhum dano antimaterial.",
+        "Blocos indestrutíveis como a bedrock não sofrem dano de arma nenhuma.",
+        "A perfuratriz não se move enquanto perfura. Recolha o mastro para dirigir."
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "A perfuratriz abre muito mais por passada que a furadeira de mão, mas leva mais tempo por bloco.",
+        "As rachaduras são produzidas por mecanismos diferentes no mod de armas e no mod celeste, porque os mods não se referenciam. A fórmula que converte dureza em resistência é idêntica nos dois.",
+        "Não há cliente de Minecraft no ambiente de desenvolvimento, então a aparência da perfuratriz e o desenho das rachaduras não foram conferidos em hardware real."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.7",
    "summary": "O rifle laser refeito como um feixe de verdade e triplicado, os canos da minigun giram, e a broca para de socar",

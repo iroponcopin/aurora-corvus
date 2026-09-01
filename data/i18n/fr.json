@@ -1710,6 +1710,38 @@
         "Cet environnement de développement n'a pas de client Minecraft : ni le rayon ni les canons en rotation n'ont été vus dans le jeu réel, seulement en rendu hors ligne."
       ],
       "balance_changes": []
+    },
+    {
+      "id": "v3.8.0",
+      "release": "V3.8.0",
+      "date": "2026-09-01",
+      "type": "release",
+      "title": "La foreuse lourde, et des dégâts anti-matériel sur toutes les armes lourdes et à distance",
+      "summary": "Ajoute la foreuse lourde : une machine à chenilles que l'on pilote, que l'on pose et avec laquelle on fore. Elle dégage une face de 5x5 en une passe et traverse l'obsidienne — en échange elle est très lente et ne peut pas bouger du tout en forant. La même version permet aux objets lourds, aux projectiles et aux armes à distance d'endommager les blocs, avec une puissance qui varie d'une arme à l'autre : un pistolet marque à peine la pierre, une roquette la traverse.",
+      "highlights": [
+        "La foreuse lourde est là. Montez, conduisez jusqu'à l'endroit à creuser, levez le mât et forez. Elle dégage une face de 5x5 — 25 blocs d'un coup, contre 3x3 = 9 pour la perceuse à main.",
+        "La foreuse traverse l'obsidienne. Sa maniabilité est mauvaise à dessein en échange : la vis ne tourne pas tant que le mât n'est pas levé, la machine ne roule pas mât levé, et elle n'accepte aucune commande pendant que le mât bouge.",
+        "Commandes de la foreuse et affichage de l'état du mât et du forage.",
+        "Tout objet lourd, projectile et arme à distance peut désormais endommager les blocs : onze armes à feu, les flèches angéliques et royales, le bâton angélique et le maillet de siège.",
+        "La puissance varie selon l'arme. Pistolet et PM demandent 50 tirs pour percer la pierre, le fusil d'assaut 19, le fusil de précision 8, le lourd 2, le lance-roquettes 1.",
+        "Frapper un bloc avec le maillet de siège abat les murs — la pierre en un coup, l'ardoise des abîmes en deux. Il ne mine pas plus vite : il use une résistance déduite de la dureté jusqu'à ce que le bloc cède.",
+        "Une flèche angélique ouvre la pierre en 38 coups, une flèche royale en quatre fois moins. L'éclair du bâton angélique la traverse en 5."
+      ],
+      "warnings": [
+        "Le fusil de précision lourd est inchangé (pierre en 2, obsidienne en 50). V3.8.0 ajoute des armes capables d'endommager les blocs ; il ne rééquilibre pas celle qui le pouvait déjà.",
+        "Les armes à feu peuvent maintenant abîmer les constructions, ce qui change la manière de bâtir en survie et en multijoueur. Les protections de terrain et les vérifications de droits s'appliquent exactement comme avant. Mettre la valeur d'une arme à 0 dans la configuration désactive les dégâts anti-matériel pour cette arme seule.",
+        "Si vous jouez déjà sur un serveur, les nouveaux réglages sont écrits dans votre fichier de configuration au démarrage. Sans cela, chaque arme sortirait silencieusement à 0 — aucun dégât anti-matériel.",
+        "Les blocs indestructibles comme la bedrock ne peuvent être endommagés par aucune arme.",
+        "La foreuse ne peut pas se déplacer en forant. Rabattez le mât pour rouler."
+      ],
+      "known_limitations": [
+        "La foreuse dégage bien plus par passe que la perceuse à main, mais met plus de temps par bloc.",
+        "Les fissures sont produites par des mécanismes différents dans le mod des armes et dans le mod céleste, car les mods ne se référencent pas. La formule qui convertit la dureté en résistance est identique dans les deux.",
+        "Il n'y a pas de client Minecraft dans l'environnement de développement ; l'apparence de la foreuse et le rendu des fissures n'ont donc pas été vérifiés sur du matériel réel."
+      ],
+      "balance_changes": [
+        "Dégâts anti-matériel par tir (la résistance vaut dureté x 100, donc 150 pour la pierre et 5000 pour l'obsidienne) : pistolet 3 / PM 3 / minigun 4 / fusil d'assaut 8 / fusil à pompe 2 par plomb x10 / fusil à pompe de brèche 6 par plomb x10 / carabine de tireur 12 / fusil de précision 20 / fusil lourd 100 (inchangé) / laser 12 / lance-roquettes 600 / flèche angélique 4 / flèche royale 16 / bâton angélique 30 / maillet de siège 250."
+      ]
     }
   ],
   "roadmap": {
