@@ -7,8 +7,48 @@
  "groups": [
   {
    "label": "V4.0",
-   "summary": "Das V4-Update: 20 neue Module, vom Chronos Anchor bis zum Atmospheric Harvester",
+   "summary": "V4.0.1: Jedes neue Modul erklärt sich jetzt in der Hand und auf den Rezeptseiten; der Geofracture Drill braucht keinen Strom",
    "releases": [
+    {
+     "version": "V4.0.1",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "V4.0.1: Jedes neue Modul erklärt sich jetzt in der Hand und auf den Rezeptseiten; der Geofracture Drill braucht keinen Strom",
+     "summary": "Korrekturen zum V4.0.0-Bericht, dass die 20 neuen Module keinen Hinweis gaben, wie man sie startet. Alle 20 tragen jetzt Gebrauchstext beim Überfahren des Gegenstands; Chronos Anchor, Gravity Inverter und Null-Zone Generator melden mit leerer Hand per Rechtsklick ihren Zustand. Die Rezeptseiten erhalten alle V4-Rezepte und eine Anleitung mit 20 Abschnitten. Der Geofracture Drill braucht keinen Strom mehr, weil ein lückenloses Gehäuse und ein anliegendes Kabel nicht beide erfüllbar waren.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Alle 20 Module haben Hover-Text zur Bedienung. In V4.0.0 hatten neun Maschinen und Ausrüstungen (Thermodynamic Engine, Aetherial Conduit, Geofracture Drill, Automated Fabricator, Biological Weaver, Schlacke, Resonance Rail, Kinetic-Dampening-Stiefel, Glitch Strider) Text im Jar, der nie angezeigt wurde; die meisten übrigen hatten gar keinen.",
+        "Chronos Anchor, Gravity Inverter und Null-Zone Generator antworten auf Rechtsklick mit leerer Hand mit aktiv/inaktiv, dem, was sie brauchen, und der Größe ihres Bereichs. Der Chronos Anchor startet mit einem Redstone-Signal (ein Hebel genügt) — das stand nirgends.",
+        "Der Geofracture Drill braucht keinen Strom (Konfiguration drill.wattsFactor 0 = kein Strom; über 0 wird wie zuvor Strom verlangt). Ein von V4.0.0 gespeicherter Wert 2.0 wird beim Start automatisch auf 0 repariert.",
+        "Die Rezeptseiten dieser Website führen jetzt alle 25 V4-Rezepte und eine Anleitung für die 20 neuen Module; ihre Zahlen werden aus der Konfiguration jedes Mods gelesen.",
+        "Der Luftreiniger (V2) und der Hinweis zur automatischen Abfahrt des Zughalts waren aus demselben Grund verborgen und werden jetzt angezeigt.",
+        "Eine Prüfung, die in beide Richtungen sicherstellt, dass jeder Gebrauchstext vom Code angezeigt wird, läuft jetzt in allen 12 Modulen."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Standard-Stromverbrauch des Geofracture Drill: 2 Maschinen → 0 (kein Strom)."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Lässt sich direkt in eine bestehende Welt einbauen. Die Bohrer-Einstellung wird beim Start repariert; die Konfigurationsdatei erhält Version 9.",
+        "Die V4-Bedienung steht im Hover-Text jedes Gegenstands und auf den Rezeptseiten dieser Website unter dem Anleitungs-Tab."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "In der Entwicklungsumgebung gibt es keinen Minecraft-Client; das Aussehen von Hover-Text und Statuszeilen wurde nicht im Spiel geprüft.",
+        "Die Anleitung ist wie die bestehende Stromanleitung nur auf Japanisch."
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.0.0",
      "date": "2026-09-02",

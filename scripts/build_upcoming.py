@@ -8,9 +8,15 @@ and neither could carry this without becoming a worse version of itself --
 the roadmap would bury next month under five years, and the changelog cannot
 list something that has not happened.
 
-Unlike /v4/, this page is PERMANENT. It has no removal steps because it never
-empties: when V3.8.0 ships, its entry moves out of data/upcoming.json and the
-next one moves in.
+Unlike /v4/, this page is PERMANENT. It has no removal steps. It was first
+written on the assumption that it never empties (when V3.8.0 ships, its entry
+moves out and the next one moves in), but on 2026-09-02 V4.0.1 shipped with
+nothing decided after it. An empty board is therefore a real state, and it is
+rendered honestly: every language must provide an `empty` line ("nothing is
+scheduled right now"), the page shows that line instead of cards, and the feed
+carries `"entries": []` so the bot keeps a valid file to poll. A board with
+zero entries and no `empty` line still refuses to build -- that is the case
+where somebody deleted the last entry without deciding what the page says.
 
 == The feed ==============================================================
 build() also writes upcoming.json at the site root, next to releases.json and
@@ -50,11 +56,16 @@ def _load():
     data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     entries = data.get("entries") or []
     if not entries:
-        raise SystemExit(
-            "upcoming: data/upcoming.json lists no entries. An empty 'coming next' page is "
-            "not a page -- either add an entry or take the nav link down deliberately, "
-            "rather than shipping a heading with nothing under it."
-        )
+        lacking = [lang for lang, block in data.items()
+                   if isinstance(block, dict) and "entries" in block and not block.get("empty")]
+        if lacking:
+            raise SystemExit(
+                "upcoming: data/upcoming.json lists no entries, and these languages have no "
+                f"'empty' line to show instead: {lacking}. An empty board is a real state "
+                "(V4.0.1, 2026-09-02) but it must SAY so in every language -- either add the "
+                "next entry or write the 'empty' line, rather than shipping a heading with "
+                "nothing under it."
+            )
     seen = set()
     for e in entries:
         for key in ("id", "status", "target"):
@@ -105,6 +116,11 @@ def build_lang(lang, data, entries):
 </div>"""]
     for entry in entries:
         body.append(_entry_html(lang, entry, t["entries"], t["status_labels"], prefix))
+    if not entries:
+        body.append(f"""
+<section class="card up-entry up-entry--empty">
+  <p class="up-body">{esc(t['empty'])}</p>
+</section>""")
     body.append(f"""
 <section class="card up-disclaimer">
   <p>{esc(t['disclaimer'])}</p>

@@ -7,8 +7,48 @@
  "groups": [
   {
    "label": "V4.0",
-   "summary": "Pembaruan V4: 20 modul baru, dari Chronos Anchor hingga Atmospheric Harvester",
+   "summary": "V4.0.1: setiap modul baru menjelaskan dirinya di tangan dan di halaman resep; Geofracture Drill tak perlu daya",
    "releases": [
+    {
+     "version": "V4.0.1",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "V4.0.1: setiap modul baru menjelaskan dirinya di tangan dan di halaman resep; Geofracture Drill tak perlu daya",
+     "summary": "Perbaikan atas laporan V4.0.0 bahwa 20 modul baru tidak memberi petunjuk cara memulainya. Ke-20 modul kini membawa teks penggunaan yang terbaca saat mengarahkan kursor ke item, dan Chronos Anchor, Gravity Inverter, serta Null-Zone Generator menjawab dengan statusnya saat diklik kanan dengan tangan kosong. Halaman resep mendapat semua resep V4 plus panduan penggunaan 20 bagian. Geofracture Drill tidak lagi memerlukan daya, karena selubung tanpa celah dan kabel yang menempel tak bisa dipenuhi bersamaan.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Semua 20 modul punya teks hover yang menjelaskan cara pakainya. Di V4.0.0, sembilan mesin dan perlengkapan (Thermodynamic Engine, Aetherial Conduit, Geofracture Drill, Automated Fabricator, Biological Weaver, terak, Resonance Rail, sepatu Kinetic Dampening, Glitch Strider) punya teks di dalam jar yang tak pernah ditampilkan, dan sebagian besar sisanya tak punya sama sekali.",
+        "Chronos Anchor, Gravity Inverter, dan Null-Zone Generator menjawab klik kanan tangan kosong dengan aktif/siaga, apa yang dibutuhkan, dan ukuran wilayahnya. Chronos Anchor mulai dengan sinyal redstone (tuas sudah cukup) — sebelumnya tidak tertulis di mana pun.",
+        "Geofracture Drill tak perlu daya (konfigurasi drill.wattsFactor 0 = tanpa daya; di atas 0 memerlukan daya seperti dulu). Nilai 2.0 yang disimpan V4.0.0 diperbaiki menjadi 0 otomatis saat mulai.",
+        "Halaman resep situs ini kini memuat semua 25 resep V4 dan panduan penggunaan 20 modul baru; angkanya dibaca dari konfigurasi tiap mod.",
+        "Pemurni udara (V2) dan petunjuk berangkat otomatis pemberhentian kereta tersembunyi karena sebab yang sama dan kini tampil.",
+        "Gerbang yang memeriksa dua arah bahwa setiap teks penggunaan ditampilkan oleh kode kini berjalan di semua 12 modul."
+       ]
+      },
+      {
+       "title": "Penyesuaian Balance",
+       "items": [
+        "Konsumsi daya bawaan Geofracture Drill: 2 mesin → 0 (tanpa daya)."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Bisa langsung dipasang di dunia yang sudah ada. Pengaturan bor diperbaiki saat mulai dan versi berkas konfigurasi menjadi 9.",
+        "Cara pakai V4 ada di teks hover tiap item dan di halaman resep situs ini pada tab panduan."
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Tidak ada klien Minecraft di lingkungan pengembangan, jadi tampilan teks hover dan baris status belum diperiksa di dalam gim.",
+        "Panduan penggunaan hanya berbahasa Jepang, seperti panduan daya yang sudah ada."
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.0.0",
      "date": "2026-09-02",

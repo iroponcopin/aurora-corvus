@@ -354,6 +354,16 @@ VANILLA_JA_NAMES = {
 # "block/<name>.png" texture (multi-face blocks, pane models that borrow another
 # block's texture) - map those to the closest single representative texture.
 VANILLA_TEXTURE_OVERRIDE = {
+    # V4.0.1: V4 の材料 3 種。いずれも面ごとに別テクスチャのブロックで item/<name>.png を持たない。
+    # 音響タレット(スカルクセンサー)、虚空ポーチ(樽)、共鳴レール(石のハーフブロック = block/stone)。
+    "sculk_sensor": "block/sculk_sensor_top",
+    "barrel": "block/barrel_side",
+    "stone_slab": "block/stone",
+    # V4.0.1 の手引きの図が使う 3 つ。ロードストーンは面ごと、コンパスは 32 コマのアニメ、
+    # 雪ブロックは block/snow を流用して描かれる。
+    "lodestone": "block/lodestone_side",
+    "compass": "item/compass_16",
+    "snow_block": "block/snow",
     "furnace": "block/furnace_front",
     "glass_pane": "block/glass",
     "quartz_block": "block/quartz_block_side",
@@ -436,6 +446,14 @@ MOD_TEXTURE_OVERRIDE = {
 # (照合は常に「その位置で一致する最長のキー」を選ぶ)。
 #   例) 「金庫」を入れておかないと「金」+「庫」に割れる。「格子戸」は「格子」に勝つ。
 YOMI = {
+    # --- V4.0.1: V3〜V4 で増えた名前(2026-09-02 の実行で 25 件が未登録だった)。複合語は音便のためまとめて登録 ---
+    "音響": "おんきょう", "共鳴": "きょうめい", "穀物": "こくもつ", "配送": "はいそう", "受取": "うけとり",
+    "ろ過": "ろか", "遮光": "しゃこう", "重機": "じゅうき", "時間停止碇": "じかんていしいかり",
+    "次元鏡": "じげんきょう", "重力反転機": "じゅうりょくはんてんき", "無効化領域発生器": "むこうかりょういきはっせいき",
+    "空間転移杖": "くうかんてんいじょう", "反響探知機": "はんきょうたんちき", "運動減衰": "うんどうげんすい",
+    "虚空": "こくう", "空間導管": "くうかんどうかん", "空間": "くうかん", "大気採集機": "たいきさいしゅうき",
+    "自動製作機": "じどうせいさくき", "生体織機": "せいたいしょっき", "注射器": "ちゅうしゃき",
+    "地殻掘削機": "ちかくくっさくき", "砂利": "じゃり", "熱機関発電機": "ねつきかんはつでんき",
     # --- 形状・共通の接尾語 -------------------------------------------------
     "円柱": "えんちゅう", "縦": "たて", "板材": "いたざい", "階段": "かいだん",
     "柱": "はしら", "扉": "とびら", "戸": "ど", "石": "いし", "盾": "たて",
@@ -2180,6 +2198,91 @@ def read_power_facts():
 
 POWER_FACTS = read_power_facts()
 
+
+# ---------------------------------------------------------------------------
+# V4.0.1: V4 の 20 モジュールの手引きが使う数字。電力の節と同じ規律 —— **手で書かない。**
+# 各 MOD の config / 定数から読む。改名されれば java_field_defaults がその場で止める。
+# ---------------------------------------------------------------------------
+MODS_JAVA = ROOT / "mods-src"
+
+
+def _mod_java(module, modid):
+    return MODS_JAVA / module / "src/main/java/net/sorakaze" / modid
+
+
+def _ticks_to_seconds(raw):
+    v = _java_number(raw)
+    return ("%g" % (v / 20.0))
+
+
+def read_v4_facts():
+    """V4 の手引きの数字。返る dict は POWER_FACTS に併合され、全部が使われることを要求される。"""
+    sky = _mod_java("sorakaze-sky", "sorakaze_sky") / "config/SkyConfig.java"
+    survival = _mod_java("sorakaze-survival", "sorakaze_survival") / "config/SurvivalConfig.java"
+    rail = _mod_java("sorakaze-rail", "sorakaze_rail") / "config/RailConfig.java"
+    guns = _mod_java("sorakaze-guns", "sorakaze_guns") / "config/GunsConfig.java"
+    power = POWER_JAVA / "config/PowerConfig.java"
+    f = {}
+    c = java_field_defaults(sky, ["chronosAnchorRadiusBlocks", "gravityInverterRegionWidth",
+                                  "gravityInverterRegionHeight", "nullZoneRadiusBlocks",
+                                  "dimensionalMirrorRefreshTicks", "spatialTranspositorRangeBlocks",
+                                  "spatialTranspositorCooldownTicks"])
+    f["v4_chronos_side"] = str(2 * int(_java_number(c["chronosAnchorRadiusBlocks"])) + 1)
+    f["v4_gravity_w"] = "%g" % _java_number(c["gravityInverterRegionWidth"])
+    f["v4_gravity_h"] = "%g" % _java_number(c["gravityInverterRegionHeight"])
+    f["v4_nullzone_radius"] = "%g" % _java_number(c["nullZoneRadiusBlocks"])
+    f["v4_mirror_refresh_s"] = _ticks_to_seconds(c["dimensionalMirrorRefreshTicks"])
+    f["v4_transpositor_range"] = "%g" % _java_number(c["spatialTranspositorRangeBlocks"])
+    f["v4_transpositor_cooldown_s"] = _ticks_to_seconds(c["spatialTranspositorCooldownTicks"])
+    c = java_field_defaults(survival, ["entropySiphonPercentPerLevel", "kineticBootsPowerPerBlock",
+                                       "kineticBootsMaxPower", "kineticBootsDurabilityPerLanding",
+                                       "glitchStriderDashBlocks", "glitchStriderInvulnerableTicks",
+                                       "glitchStriderCooldownTicks"])
+    f["v4_siphon_percent"] = "%g" % _java_number(c["entropySiphonPercentPerLevel"])
+    f["v4_kinetic_per_block"] = "%g" % _java_number(c["kineticBootsPowerPerBlock"])
+    f["v4_kinetic_max"] = "%g" % _java_number(c["kineticBootsMaxPower"])
+    f["v4_kinetic_durability"] = "%g" % _java_number(c["kineticBootsDurabilityPerLanding"])
+    f["v4_glitch_blocks"] = "%g" % _java_number(c["glitchStriderDashBlocks"])
+    f["v4_glitch_invuln_s"] = _ticks_to_seconds(c["glitchStriderInvulnerableTicks"])
+    f["v4_glitch_cooldown_s"] = _ticks_to_seconds(c["glitchStriderCooldownTicks"])
+    echo = _mod_java("sorakaze-survival", "sorakaze_survival") / "echo/EchoFilter.java"
+    c = java_field_defaults(echo, ["RANGE_BLOCKS", "LINGER_TICKS"])
+    f["v4_echo_range"] = "%g" % _java_number(c["RANGE_BLOCKS"])
+    f["v4_echo_linger_s"] = _ticks_to_seconds(c["LINGER_TICKS"])
+    pocket = _mod_java("sorakaze-survival", "sorakaze_survival") / "pocket/VoidPocketData.java"
+    f["v4_pocket_slots"] = "%g" % _java_number(java_field_defaults(pocket, ["SLOTS"])["SLOTS"])
+    c = java_field_defaults(rail, ["resonanceRailMaxBlocksPerTick"])
+    bpt = _java_number(c["resonanceRailMaxBlocksPerTick"])
+    f["v4_rail_bpt"] = "%g" % bpt
+    f["v4_rail_mps"] = "%g" % (bpt * 20)
+    m = _java_regex(guns, r"new AcousticTurretSettings\(" + _JNUM + r",\s*" + _JNUM + r",\s*" + _JNUM
+                    + r",\s*" + _JNUM + r",\s*" + _JNUM, "the acoustic turret defaults")
+    f["v4_turret_range"] = "%g" % _java_number(m.group(1))
+    f["v4_turret_damage"] = "%g" % _java_number(m.group(2))
+    f["v4_turret_cooldown_s"] = _ticks_to_seconds(m.group(5))
+    c = java_field_defaults(guns, ["cryoStacksToEncase", "cryoEncaseTicks", "cryoFrostbiteDurationTicks"])
+    f["v4_cryo_stacks"] = "%g" % _java_number(c["cryoStacksToEncase"])
+    f["v4_cryo_encase_s"] = _ticks_to_seconds(c["cryoEncaseTicks"])
+    f["v4_cryo_frost_s"] = _ticks_to_seconds(c["cryoFrostbiteDurationTicks"])
+    frost = _mod_java("sorakaze-guns", "sorakaze_guns") / "effect/FrostbiteMobEffect.java"
+    f["v4_cryo_slow_percent"] = "%g" % abs(_java_number(java_field_defaults(frost, ["SLOW_PER_STACK"])["SLOW_PER_STACK"]) * 100)
+    photic = _mod_java("sorakaze-deco", "sorakaze_deco") / "block/PhoticSynthesiserBlock.java"
+    c = java_field_defaults(photic, ["GROW_R", "GROW_G", "GROW_B"])
+    f["v4_photic_r"], f["v4_photic_g"], f["v4_photic_b"] = (c["GROW_R"], c["GROW_G"], c["GROW_B"])
+    c = java_field_defaults(power, ["probeBlocks", "maxOutputUnits", "maxLinkBlocks", "ticksPerBlock",
+                                    "craftIntervalTicks", "workTicks", "cycleTicks"])
+    f["v4_thermo_probe"] = "%g" % _java_number(c["probeBlocks"])
+    f["v4_thermo_max"] = "%g" % _java_number(c["maxOutputUnits"])
+    f["v4_conduit_range"] = "%g" % _java_number(c["maxLinkBlocks"])
+    f["v4_drill_ticks"] = "%g" % _java_number(c["ticksPerBlock"])
+    f["v4_fabricator_s"] = _ticks_to_seconds(c["craftIntervalTicks"])
+    f["v4_weaver_s"] = _ticks_to_seconds(c["workTicks"])
+    f["v4_harvester_cycle_s"] = _ticks_to_seconds(c["cycleTicks"])
+    return f
+
+
+POWER_FACTS.update(read_v4_facts())
+
 # 「電気が要る機器」の一覧。**タグを唯一の出典にする**ので、
 # 相手の MOD に機器が増えたら(= タグに 1 行増えたら)検査⑥が生成を止める。
 POWERED_DEVICE_IDS = [i for i in tag_block_ids("power_devices") if not i.startswith("#")]
@@ -3109,6 +3212,357 @@ GUIDES = [
                     "<b>丸ごと止めたいときは</b> <code>config/sorakaze_power.json</code> の "
                     "<code>pollution.enabled</code> を <code>false</code> にしてください。"
                     "半径や秒数も同じところで変えられます(変えると上の数字も一緒に変わります)。",
+                ],
+            },
+        ],
+    },
+    # =======================================================================
+    # V4(V4.0.1 で追加)。所有者の実機報告「時間停止などの新要素 20 項目で起動方法がよく
+    # わからなかった」への答え。1 モジュール 1 節、**まず何を置いて何をすれば動くか**を絵で。
+    # ⚠ 数字は {v4_*} で、各 MOD の config / 定数から読む(read_v4_facts)。手で書かない。
+    # =======================================================================
+    {
+        "id": "v4",
+        "icon": "sorakaze_sky:chronos_anchor",
+        "tab": "使い方",
+        "title": "V4 の新要素 20 種の使い方",
+        "lede": "V4 で入った 20 のモジュールを、<b>「置く → 起動する → 何が起きるか」</b>の順に 1 つずつ。"
+                "どれも<b>素手で右クリックすると、いま何をしているか(何が足りないか)を答えます</b>。"
+                "電気が要るのは 4 つだけ(空間導管・自動製作機・生体織機、そして設定で有効にした場合の地殻掘削機)。",
+        "sections": [
+            {
+                "title": "① 時間停止碇 — レッドストーン信号で起動",
+                "goal": "信号を受けている間だけ、周り {v4_chronos_side}×{v4_chronos_side}×{v4_chronos_side} の"
+                        "ブロックの動作(かまど・ホッパーなど)と生き物の動きが止まります。",
+                "diagram": {
+                    "caption": "碇の隣にレバー(またはレッドストーンブロック)。入れると止まり、切ると戻る",
+                    "rows": [[("i", "minecraft:lever", "レバー(信号)"), ("a", "→"),
+                              ("i", "sorakaze_sky:chronos_anchor", "時間停止碇"), ("a", "→"),
+                              ("i", "minecraft:furnace", "止まる")]],
+                },
+                "io": {"in": [("minecraft:redstone_block", "レッドストーン信号")],
+                       "out": [("sorakaze_sky:chronos_anchor", "光って、うなる")]},
+                "steps": [
+                    "碇を置きます。<b>置いただけでは何も起きません。</b>",
+                    "隣にレバーを置いて入れる(またはレッドストーンブロックを接する)と起動し、碇が明るく光ります。",
+                    "信号を切るか碇を壊すと、止めていた物は元どおり動きます。",
+                ],
+                "notes": ["素手で右クリック: 「起動中」か「待機中 — 信号を隣接させると…」を答えます。"],
+            },
+            {
+                "title": "② 虚空ポーチ — 右クリックで開く",
+                "goal": "持ち歩ける {v4_pocket_slots} マスの倉庫。中身はワールドに保存されるので、ポーチ自体は軽いままです。",
+                "diagram": {
+                    "caption": "手に持って右クリック。初めて開いた時にそのポーチだけの個体になる",
+                    "rows": [[("i", "sorakaze_survival:void_stitched_pocket", "ポーチ"), ("a", "→"),
+                              ("i", "minecraft:chest", "{v4_pocket_slots} マスの画面")]],
+                },
+                "io": {"in": [("sorakaze_survival:void_stitched_pocket", "右クリック")],
+                       "out": [("minecraft:chest", "倉庫が開く")]},
+                "steps": [
+                    "ポーチを手に持って<b>右クリック</b>すると、{v4_pocket_slots} マスの画面が開きます。",
+                    "溶岩で燃えたときだけ、燃えた場所に中身を吐き出して忘れます。それ以外では中身は失われません。",
+                ],
+            },
+            {
+                "title": "③ エコー探知機 — 手に持つだけ",
+                "goal": "{v4_echo_range} ブロック以内の生き物(敵対・中立)とプレイヤーが立てた音を、{v4_echo_linger_s} 秒のあいだ枠で示します。",
+                "diagram": {
+                    "caption": "どちらかの手に持っている間だけ働く。専用の操作は無い",
+                    "rows": [[("i", "sorakaze_survival:echolic_locator", "探知機を持つ"), ("a", "→"),
+                              ("i", "minecraft:rotten_flesh", "足音・攻撃音の主に枠")]],
+                },
+                "io": {"in": [("sorakaze_survival:echolic_locator", "持つ")],
+                       "out": [("minecraft:rotten_flesh", "音の主が見える")]},
+                "steps": [
+                    "利き手か左手に持ちます。<b>それだけです。</b>",
+                    "生き物が音を立てる(歩く・攻撃する)と、その方向に枠が出て {v4_echo_linger_s} 秒で消えます。",
+                    "環境音・ブロックの音・レコードは生き物ではないので拾いません。",
+                ],
+            },
+            {
+                "title": "④ 熱機関発電機 — バイオームの境目に置く",
+                "goal": "各方向 {v4_thermo_probe} ブロック先のバイオームの温度差で発電します。燃料は要りません。",
+                "diagram": {
+                    "caption": "暑いバイオームと寒いバイオームの境目に置き、蓄電池へケーブルをつなぐ",
+                    "rows": [[("n", "砂漠 ←"), ("i", "sorakaze_power:thermodynamic_engine", "熱機関発電機"),
+                              ("n", "→ 雪原"), ("a", "→"), ("i", "sorakaze_power:cable", "ケーブル"), ("a", "→"),
+                              ("i", "sorakaze_power:battery", "蓄電池")]],
+                },
+                "io": {"in": [("minecraft:snowball", "温度差")],
+                       "out": [("sorakaze_power:battery", "電気(最大 {v4_thermo_max} 単位/tick)")]},
+                "steps": [
+                    "<b>同じバイオームの中では出力 0</b> です。{v4_thermo_probe} ブロック先の 4 方位のどれかが違う温度のバイオームになる場所(境目)に置きます。",
+                    "ふつうの発電機と同じく、<b>蓄電池</b>までケーブルをつなぎます。出力は温度差に比例し、{v4_thermo_max} で頭打ちです。",
+                    "素手で右クリックすると、いまの温度差と出力を答えます。",
+                ],
+            },
+            {
+                "title": "⑤ エントロピー吸引 — 武器のエンチャント",
+                "goal": "倒した相手の最大体力 × {v4_siphon_percent}% × レベルぶん、傷んだ装備の耐久を回復します。",
+                "diagram": {
+                    "caption": "エンチャントテーブルか金床で武器に付ける(最大 III)。ブロックではない",
+                    "rows": [[("i", "minecraft:enchanted_book", "エンチャント"), ("a", "→"),
+                              ("i", "minecraft:diamond_sword", "武器に付く"), ("a", "→"),
+                              ("i", "minecraft:iron_chestplate", "倒すと装備が直る")]],
+                },
+                "io": {"in": [("minecraft:lapis_lazuli", "エンチャント")],
+                       "out": [("minecraft:iron_chestplate", "耐久回復")]},
+                "steps": [
+                    "エンチャントテーブルで武器に付けます(本と金床でも可)。",
+                    "倒すたびに、傷んだ装備へ等分に耐久が戻ります。傷んでいない装備には配りません。",
+                ],
+            },
+            {
+                "title": "⑥ 共鳴レール — 通電で速くなる",
+                "goal": "通電中のレールの上だけ、トロッコの上限が {v4_rail_bpt} ブロック/tick(= {v4_rail_mps} m/s)になります。",
+                "diagram": {
+                    "caption": "パワードレールと同じ通電のしかた。信号は通電したレールから 8 ブロック先まで伝わる",
+                    "rows": [[("i", "minecraft:redstone_torch", "信号"), ("a", "→"),
+                              ("i", "sorakaze_rail:resonance_rail", "共鳴レール(光る)"), ("a", "→"),
+                              ("i", "minecraft:minecart", "トロッコが加速")]],
+                },
+                "io": {"in": [("minecraft:redstone_torch", "レッドストーン信号")],
+                       "out": [("minecraft:minecart", "{v4_rail_mps} m/s")]},
+                "steps": [
+                    "直線のレールとして敷きます(カーブ・坂はバニラのレールで)。",
+                    "レッドストーントーチやレバーで通電します。<b>光っていれば通電中</b>です。",
+                    "共鳴レールを離れた次の tick から、バニラの上限(0.4 ブロック/tick)に戻ります。",
+                ],
+                "notes": ["高速で走ると進行方向のチャンクを先読みします。サーバーが重ければ config で上限を下げてください。"],
+            },
+            {
+                "title": "⑦ 空間導管 + 空間チューナー — 送り先を「写す」",
+                "goal": "取り付けた先のコンテナから、{v4_conduit_range} ブロック以内の好きなコンテナへアイテムと液体を送ります。電気 1 台ぶん。",
+                "diagram": {
+                    "caption": "①送り先のチェストをチューナーで右クリック ②導管をチューナーで右クリック ③導管はチェストに向けて置く",
+                    "rows": [[("i", "sorakaze_power:aetherial_tuner", "チューナーで送り先を記憶"), ("a", "→"),
+                              ("i", "sorakaze_power:aetherial_conduit", "導管に写す"), ("a", "→"),
+                              ("i", "minecraft:chest", "送り先へ流れる")],
+                             [("i", "minecraft:chest", "送り元(導管の向く先)"), None,
+                              ("i", "sorakaze_power:cable", "電気(接する)"), None, None]],
+                },
+                "io": {"in": [("sorakaze_power:aetherial_tuner", "送り先の指定"), ("sorakaze_guns:energy_cell", "分電盤の電気")],
+                       "out": [("minecraft:chest", "アイテム・液体が届く")]},
+                "steps": [
+                    "<b>送り先</b>のチェストを空間チューナーで右クリックして覚えさせます。",
+                    "導管を<b>送り元のチェストに向けて</b>置き(観察者と同じ置き方)、その導管をチューナーで右クリックして送り先を写します。",
+                    "分電盤の系統のケーブルを導管に接します。以後、毎ティック 1 スタック(液体は大釜から 1 バケツ)が流れます。",
+                    "スニーク + 右クリックで結線を切ります。別ディメンションと {v4_conduit_range} ブロック超は断られます。",
+                ],
+            },
+            {
+                "title": "⑧ 運動減衰ブーツ — 履いて落ちる",
+                "goal": "落下ダメージが消え、着地の衝撃波(落下距離 × {v4_kinetic_per_block}、最大 {v4_kinetic_max})になります。",
+                "diagram": {
+                    "caption": "履くだけ。既定ではブロックを壊さない(config kineticBootsBreakBlocks)",
+                    "rows": [[("i", "sorakaze_survival:kinetic_boots", "履く"), ("a", "→"),
+                              ("i", "minecraft:feather", "落ちてもダメージ 0"), ("a", "→"),
+                              ("i", "minecraft:tnt", "着地で衝撃波")]],
+                },
+                "io": {"in": [("sorakaze_survival:kinetic_boots", "装備")],
+                       "out": [("minecraft:tnt", "周囲にダメージ(自分は無傷)")]},
+                "steps": ["足に装備します。着地のたびに耐久を {v4_kinetic_durability} 使います。"],
+            },
+            {
+                "title": "⑨ 光合成灯 — 染料で色を合わせる",
+                "goal": "赤・緑・青の 3 チャンネルを染料で調整する光源。{v4_photic_r}:{v4_photic_g}:{v4_photic_b} のときだけ真下の作物を促成します。",
+                "diagram": {
+                    "caption": "染料を持って右クリック = その色 +1。スニークで −1。染料は減らない",
+                    "rows": [[("i", "minecraft:red_dye", "赤 {v4_photic_r}"), ("i", "minecraft:green_dye", "緑 {v4_photic_g}"),
+                              ("i", "minecraft:blue_dye", "青 {v4_photic_b}"), ("a", "→"),
+                              ("i", "sorakaze_deco:photic_synthesiser", "育成光"), ("a", "↓"),
+                              ("i", "minecraft:wheat", "下の作物が早く育つ")]],
+                },
+                "io": {"in": [("minecraft:red_dye", "染料(減らない)")],
+                       "out": [("minecraft:wheat", "円錐 1×1→3×3→5×5 が促成")]},
+                "steps": [
+                    "灯を置きます(置いた時点では 3 色とも 15 = 白い光)。",
+                    "赤の染料で右クリックすると赤が 1 上がり(15 の次は 0)、スニークしながらで 1 下がります。緑・青も同じ。",
+                    "赤 {v4_photic_r}・緑 {v4_photic_g}・青 {v4_photic_b} に合わせると「育成光」の表示が出て、真下の円錐の作物が早く育ちます。",
+                ],
+            },
+            {
+                "title": "⑩ 地殻掘削機 — 鉄ブロックで囲うだけ(電気は要らない)",
+                "goal": "3×3×3 の筐体で囲い、筐体の外側にチェストを接すると、真下へ 3×3 の縦坑を {v4_drill_ticks} tick に 1 マスずつ岩盤まで掘ります。",
+                "diagram": {
+                    "caption": "中央に掘削機、周り 26 個を鉄ブロック(または機械の筐体)。チェストは筐体の外側に接する",
+                    "rows": [[("i", "minecraft:iron_block", "鉄ブロック ×26"), ("a", "→"),
+                              ("i", "sorakaze_power:geofracture_drill", "地殻掘削機(中央)"), ("a", "→"),
+                              ("i", "minecraft:chest", "筐体に接するチェスト")],
+                             [("i", "minecraft:stone", "石は"), ("a", "→"), ("i", "sorakaze_power:slag", "スラグ(4 個で砂利 1)"),
+                              None, None]],
+                },
+                "io": {"in": [("minecraft:iron_block", "筐体 26 個"), ("minecraft:chest", "出口")],
+                       "out": [("sorakaze_power:slag", "石はスラグ"), ("minecraft:dirt", "石以外はそのまま")]},
+                "steps": [
+                    "掘削機を置き、<b>上下前後左右の 26 マス全部</b>を鉄ブロックか機械の筐体で埋めます(隙間 1 つでも「筐体が未完成」)。",
+                    "筐体のどれかに接する位置にチェストを置きます。<b>これで動きます。電気は要りません。</b>",
+                    "チェストが満杯なら待ち、床には撒きません。岩盤に着いたら止まり、スニーク + 右クリックでやり直せます。",
+                ],
+                "notes": [
+                    "V4.0.0 は電気を要求していましたが、筐体を隙間なく囲う決まりとケーブルを接する配線が両立しないため、"
+                    "V4.0.1 で<b>電気不要</b>にしました(config drill.wattsFactor を 0 より大きくすると以前どおり要求します)。",
+                    "素手で右クリック: 「筐体の不足 N」「コンテナがない」「掘削中」などを答えます。",
+                ],
+            },
+            {
+                "title": "⑪ 生体織機 + DNA 注射器 — 2 匹の親から交雑の卵",
+                "goal": "空の注射器を生き物に使って種類を採り、2 本と電気で {v4_weaver_s} 秒後に交雑スポーンエッグができます。",
+                "diagram": {
+                    "caption": "①空の注射器で親 A を右クリック ②別の注射器で親 B ③織機に 2 本入れて電気 → 卵",
+                    "rows": [[("i", "sorakaze_power:dna_syringe", "注射器 ×2(採取済み)"), ("a", "→"),
+                              ("i", "sorakaze_power:biological_weaver", "生体織機 + 電気 2 台ぶん"), ("a", "→"),
+                              ("i", "sorakaze_power:hybrid_spawn_egg", "交雑スポーンエッグ")]],
+                },
+                "io": {"in": [("sorakaze_power:dna_syringe", "親 A と親 B"), ("sorakaze_guns:energy_cell", "分電盤の電気")],
+                       "out": [("sorakaze_power:hybrid_spawn_egg", "親 A の種類、速度と攻撃力は親 B")]},
+                "steps": [
+                    "空の DNA 注射器を持って生き物を右クリックすると、その種類を採ります(傷つけません)。",
+                    "織機を右クリックして画面を開き、注射器を 2 本入れます。分電盤の系統のケーブルを織機に接します。",
+                    "{v4_weaver_s} 秒で卵が 1 個できます。卵を使うと親 A の種類として湧き、移動速度と攻撃力だけが親 B の値になります。",
+                ],
+            },
+            {
+                "title": "⑫ 空間転位器 — 生き物と入れ替わる",
+                "goal": "視線の先 {v4_transpositor_range} ブロック以内の生き物と、自分の位置を入れ替えます。再使用 {v4_transpositor_cooldown_s} 秒。",
+                "diagram": {
+                    "caption": "手に持って、生き物に向けて右クリック",
+                    "rows": [[("i", "sorakaze_sky:spatial_transpositor", "右クリック"), ("a", "→"),
+                              ("i", "minecraft:gunpowder", "相手の位置へ、相手は自分の位置へ")]],
+                },
+                "io": {"in": [("sorakaze_sky:spatial_transpositor", "右クリック")],
+                       "out": [("minecraft:ender_pearl", "位置の交換")]},
+                "steps": ["生き物を見て右クリック。{v4_transpositor_range} ブロック以内に相手がいなければ何も起きません。"],
+            },
+            {
+                "title": "⑬ 重力反転機 — 置くだけ",
+                "goal": "真上 {v4_gravity_w}×{v4_gravity_h}×{v4_gravity_w} の中の生き物と物を毎ティック押し上げます。信号も電気も要りません。",
+                "diagram": {
+                    "caption": "床に置くと、その真上の柱状の領域が反重力になる。上端を抜けた者は低速落下",
+                    "rows": [[("i", "sorakaze_sky:gravity_inverter", "重力反転機"), ("a", "↑"),
+                              ("i", "minecraft:feather", "上へ漂う"), ("a", "↑"),
+                              ("i", "minecraft:phantom_membrane", "上端で低速落下")]],
+                },
+                "io": {"in": [("sorakaze_sky:gravity_inverter", "置く")],
+                       "out": [("minecraft:feather", "{v4_gravity_h} 段の上昇気流")]},
+                "steps": ["置くだけで動きます。壊せば止まります。素手で右クリックすると領域の大きさを答えます。"],
+            },
+            {
+                "title": "⑭ グリッチ・ストライダー — 4 部位そろえて G",
+                "goal": "フルセットで瞬移キー(既定 G)を押すと、視線の先 {v4_glitch_blocks} ブロックへ壁越しに移動します。",
+                "diagram": {
+                    "caption": "4 部位全部を装備。行き先の足元と頭が空気なら壁の向こうへも",
+                    "rows": [[("i", "sorakaze_survival:glitch_strider_helmet", "バイザー"),
+                              ("i", "sorakaze_survival:glitch_strider_chestplate", "スーツ"),
+                              ("i", "sorakaze_survival:glitch_strider_leggings", "レギンス"),
+                              ("i", "sorakaze_survival:glitch_strider_boots", "ブーツ"), ("a", "→"),
+                              ("n", "G キー"), ("a", "→"), ("i", "minecraft:ender_pearl", "{v4_glitch_blocks} ブロック先へ")]],
+                },
+                "io": {"in": [("sorakaze_survival:glitch_strider_chestplate", "フルセット + G")],
+                       "out": [("minecraft:ender_pearl", "無敵 {v4_glitch_invuln_s} 秒、再使用 {v4_glitch_cooldown_s} 秒")]},
+                "steps": [
+                    "4 部位全部を装備します(1 つ欠けても効きません)。",
+                    "行きたい方向を見て <b>G</b> を押します。行き先が塞がっていれば何も起きません。",
+                    "G は鉄道のドア・乗り物のギアと共有です。<b>搭乗中は瞬移しません。</b>",
+                ],
+            },
+            {
+                "title": "⑮ 音響タレット — 置くだけ、音に反応",
+                "goal": "{v4_turret_range} ブロック以内の音(足音・着地・ブロック操作)を聞き、音の主へ音波弾(魔法ダメージ {v4_turret_damage})を撃ちます。",
+                "diagram": {
+                    "caption": "置くだけ。プレイヤーの音は無視。既定ではプレイヤーに当たらない",
+                    "rows": [[("i", "minecraft:rotten_flesh", "Mob の足音"), ("a", "→"),
+                              ("i", "sorakaze_guns:acoustic_turret", "音響タレット"), ("a", "→"),
+                              ("i", "minecraft:echo_shard", "音波弾(魔法 {v4_turret_damage})")]],
+                },
+                "io": {"in": [("minecraft:sculk_sensor", "音(振動)")],
+                       "out": [("minecraft:echo_shard", "{v4_turret_cooldown_s} 秒に 1 発")]},
+                "steps": [
+                    "置くだけです。電気も信号も要りません。",
+                    "Mob が近くで歩く・攻撃すると撃ちます。プレイヤー自身の音とプレイヤーの発射体は無視します。",
+                    "プレイヤーにも当てたいサーバーは config の hitsPlayers を有効にします。",
+                ],
+            },
+            {
+                "title": "⑯ 次元鏡 — ロードストーンコンパスで結ぶ",
+                "goal": "結んだ場所の次元・バイオーム・昼夜を 11 種の絵で映します(実際の景色ではありません)。{v4_mirror_refresh_s} 秒ごとに更新。",
+                "diagram": {
+                    "caption": "①ロードストーンにコンパスを使う ②そのコンパスで鏡を右クリック ③絵が変わる",
+                    "rows": [[("i", "minecraft:lodestone", "ロードストーン"), ("a", "→"),
+                              ("i", "minecraft:compass", "ロードストーンコンパス"), ("a", "→"),
+                              ("i", "sorakaze_sky:dimensional_mirror", "鏡に右クリック"), ("a", "→"),
+                              ("i", "minecraft:painting", "その場所の絵")]],
+                },
+                "io": {"in": [("minecraft:compass", "ロードストーンコンパス")],
+                       "out": [("minecraft:painting", "11 種の絵の 1 つ")]},
+                "steps": [
+                    "映したい場所にロードストーンを置き、コンパスを使ってロードストーンコンパスにします。",
+                    "そのコンパスを持って鏡を右クリックすると結ばれます。素手で右クリックすると状態を答えます。",
+                    "スニークしながら右クリックで結びを解きます。未読込の場所は読み込まず、絵は前回のままです。",
+                ],
+            },
+            {
+                "title": "⑰ 自動製作機 — 雛形に 1 個ずつ置く",
+                "goal": "3×3 の雛形にレシピを並べると、接しているコンテナの材料で {v4_fabricator_s} 秒に 1 回作ります。電気 1 台ぶん。",
+                "diagram": {
+                    "caption": "画面の 3×3 に実物を 1 個ずつ置く(減らない)。材料は隣のチェストから引く",
+                    "rows": [[("i", "minecraft:chest", "材料のチェスト(接する)"), ("a", "→"),
+                              ("i", "sorakaze_power:automated_fabricator", "自動製作機(雛形 3×3)"), ("a", "→"),
+                              ("i", "minecraft:hopper", "出力トレイからホッパーで")],
+                             [None, None, ("i", "sorakaze_power:cable", "電気(接する)"), None, None]],
+                },
+                "io": {"in": [("minecraft:chest", "材料"), ("sorakaze_guns:energy_cell", "分電盤の電気")],
+                       "out": [("minecraft:hopper", "完成品(取り出しのみ)")]},
+                "steps": [
+                    "製作機を右クリックして画面を開き、作りたいレシピのとおりに<b>実物を 1 個ずつ</b>雛形に置きます。雛形の物は減りません。",
+                    "材料を入れたチェストを製作機に接して置き、分電盤の系統のケーブルも接します。",
+                    "{v4_fabricator_s} 秒に 1 回、材料が全部そろっている時だけ作ります(1 個も消えません)。出力トレイはホッパーで取れます。",
+                ],
+            },
+            {
+                "title": "⑱ クライオキャノン — 当てて凍らせる",
+                "goal": "命中ごとに凍傷(1 段につき移動速度 −{v4_cryo_slow_percent}%、{v4_cryo_frost_s} 秒)。{v4_cryo_stacks} 段目で {v4_cryo_encase_s} 秒間氷に封じます。",
+                "diagram": {
+                    "caption": "エネルギーセルを弾として使う銃。ビームを当て続ける",
+                    "rows": [[("i", "sorakaze_guns:energy_cell", "エネルギーセル(弾)"), ("a", "→"),
+                              ("i", "sorakaze_guns:cryo_cannon", "クライオキャノン"), ("a", "→"),
+                              ("i", "minecraft:packed_ice", "{v4_cryo_stacks} 発で氷漬け")]],
+                },
+                "io": {"in": [("sorakaze_guns:energy_cell", "弾")],
+                       "out": [("minecraft:packed_ice", "封じられた相手は動けず窒息する")]},
+                "steps": ["ほかの銃と同じ操作です。弾はエネルギーセル。封じた氷は壁や床を置き換えません。"],
+            },
+            {
+                "title": "⑲ 無効化領域発生器 — 置くだけ",
+                "goal": "半径 {v4_nullzone_radius} の球の中で、レッドストーン信号の更新と状態効果の付与が止まります。信号も電気も要りません。",
+                "diagram": {
+                    "caption": "置いた瞬間から効く。壊せば戻る",
+                    "rows": [[("i", "sorakaze_sky:null_zone_generator", "発生器"), ("a", "→"),
+                              ("i", "minecraft:redstone", "信号が変わらない"), ("i", "minecraft:potion", "効果が付かない")]],
+                },
+                "io": {"in": [("sorakaze_sky:null_zone_generator", "置く")],
+                       "out": [("minecraft:barrier", "半径 {v4_nullzone_radius} の球")]},
+                "steps": [
+                    "置くだけです。素手で右クリックすると半径と、何を止めているかを答えます。",
+                    "ポーション・ビーコン・エンチャントを問わず新しい効果は付きません。<b>すでに掛かっている効果は消えません。</b>",
+                    "水や松明などの形状の更新は止めません。例外にしたい効果はタグ #sorakaze_sky:null_zone_passes に書きます。",
+                ],
+            },
+            {
+                "title": "⑳ 大気採集機 — 空の下に置くだけ",
+                "goal": "真上が空に開いていれば、その場所の温度と高さに応じた物を {v4_harvester_cycle_s} 秒に 1 個集めます。電気は要りません。",
+                "diagram": {
+                    "caption": "寒冷バイオーム、または Y150 より上。屋根があると止まる",
+                    "rows": [[("i", "minecraft:snow_block", "寒冷バイオーム / 高所"), ("a", "→"),
+                              ("i", "sorakaze_power:atmospheric_harvester", "大気採集機(空が見える)"), ("a", "→"),
+                              ("i", "minecraft:hopper", "右クリックか下のホッパーで取り出す")]],
+                },
+                "io": {"in": [("minecraft:snow_block", "寒さ・高さ")],
+                       "out": [("minecraft:glass_bottle", "液体窒素・高空の気体など")]},
+                "steps": [
+                    "真上に何も無い場所に置きます。ふつうの平地では「ここでは何も採れない」と答えます —— 寒いバイオームか Y150 より上へ。",
+                    "溜まったら右クリックで受け取ります。下にホッパーを置けば自動で抜けます。",
                 ],
             },
         ],

@@ -7,8 +7,48 @@
  "groups": [
   {
    "label": "V4.0",
-   "summary": "La mise à jour V4 : 20 nouveaux modules, du Chronos Anchor à l'Atmospheric Harvester",
+   "summary": "V4.0.1 : chaque nouveau module s'explique en main et sur les pages de recettes ; le Geofracture Drill n'a plus besoin d'énergie",
    "releases": [
+    {
+     "version": "V4.0.1",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "V4.0.1 : chaque nouveau module s'explique en main et sur les pages de recettes ; le Geofracture Drill n'a plus besoin d'énergie",
+     "summary": "Corrections suite au retour sur V4.0.0 : les 20 nouveaux modules ne disaient pas comment les démarrer. Les 20 portent désormais un texte d'usage visible en survolant l'objet, et le Chronos Anchor, le Gravity Inverter et le Null-Zone Generator répondent par leur état à un clic droit à main vide. Les pages de recettes gagnent toutes les recettes V4 et un guide d'usage en 20 sections. Le Geofracture Drill n'a plus besoin d'énergie, car un boîtier sans trou et un câble en contact ne pouvaient être satisfaits ensemble.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Les 20 modules ont un texte au survol expliquant leur usage. Dans V4.0.0, neuf machines et équipements (Thermodynamic Engine, Aetherial Conduit, Geofracture Drill, Automated Fabricator, Biological Weaver, scories, Resonance Rail, bottes Kinetic Dampening, Glitch Strider) avaient un texte dans le jar jamais affiché, et la plupart des autres n'en avaient aucun.",
+        "Chronos Anchor, Gravity Inverter et Null-Zone Generator répondent au clic droit à main vide par actif/inactif, ce qu'il leur faut et la taille de leur zone. Le Chronos Anchor démarre sur un signal de redstone (un levier suffit) : rien ne le disait.",
+        "Le Geofracture Drill n'a plus besoin d'énergie (configuration drill.wattsFactor 0 = sans énergie ; au-dessus de 0, il l'exige comme avant). Un 2.0 enregistré par V4.0.0 est corrigé en 0 automatiquement au démarrage.",
+        "Les pages de recettes de ce site listent désormais les 25 recettes V4 et un guide d'usage des 20 nouveaux modules ; ses chiffres sont lus dans la configuration de chaque mod.",
+        "Le purificateur d'air (V2) et l'indication de départ automatique de l'arrêt de train étaient masqués pour la même cause et s'affichent désormais.",
+        "Une vérification qui s'assure, dans les deux sens, que tout texte d'usage est affiché par le code tourne désormais dans les 12 modules."
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Consommation par défaut du Geofracture Drill : 2 machines → 0 (sans énergie)."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "S'installe directement dans un monde existant. Le réglage de la foreuse est corrigé au démarrage et le fichier de configuration passe en version 9.",
+        "L'usage de V4 se trouve dans le texte de chaque objet et sur les pages de recettes de ce site, onglet des guides."
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Il n'y a pas de client Minecraft dans l'environnement de développement : l'apparence du texte et des lignes d'état n'a pas été vérifiée en jeu.",
+        "Le guide d'usage est en japonais seulement, comme le guide de l'énergie existant."
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.0.0",
      "date": "2026-09-02",

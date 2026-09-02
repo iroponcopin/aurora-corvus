@@ -7,8 +7,48 @@
  "groups": [
   {
    "label": "V4.0",
-   "summary": "V4 更新:从 Chronos Anchor 到 Atmospheric Harvester,新增 20 个模块",
+   "summary": "V4.0.1:20 个新模块在手中和配方页面都能看懂用法;Geofracture Drill 不再需要电力",
    "releases": [
+    {
+     "version": "V4.0.1",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "V4.0.1:20 个新模块在手中和配方页面都能看懂用法;Geofracture Drill 不再需要电力",
+     "summary": "针对 V4.0.0 实机反馈「时间停止等 20 个新要素不知道怎么启动」的修正。20 个模块全部带有悬停即可阅读的用法说明,Chronos Anchor、Gravity Inverter、Null-Zone Generator 空手右键会回答当前状态。配方页面加入了全部 V4 配方和 20 节用法指南。Geofracture Drill 不再需要电力,因为「外壳必须无缝」与「电缆必须接触」无法同时满足。",
+     "sections": [
+      {
+       "title": "更新内容",
+       "items": [
+        "20 个模块全部有悬停用法说明。V4.0.0 中有 9 个机器和装备(Thermodynamic Engine、Aetherial Conduit、Geofracture Drill、Automated Fabricator、Biological Weaver、矿渣、Resonance Rail、Kinetic Dampening 靴、Glitch Strider)的说明文字虽在 jar 内却从未显示,其余大多根本没有说明。",
+        "Chronos Anchor、Gravity Inverter、Null-Zone Generator 空手右键会回答运行中/待机、需要什么、区域大小。Chronos Anchor 需要红石信号(拉杆即可)才会启动——此前没有任何地方写明。",
+        "Geofracture Drill 不再需要电力(配置 drill.wattsFactor 为 0 = 不需要电力;大于 0 则照旧要求)。V4.0.0 保存的 2.0 会在启动时自动修正为 0。",
+        "本站配方页面现在列出全部 25 个 V4 配方,以及 20 个新模块的用法指南;指南中的数字读取自各模组的配置。",
+        "空气净化器(V2)和列车停止装置的自动发车提示因同一原因未显示,现已修正。",
+        "新增一道双向检查:每条用法文本都必须由代码显示,已接入全部 12 个模组。"
+       ]
+      },
+      {
+       "title": "平衡性调整",
+       "items": [
+        "Geofracture Drill 默认耗电:2 台 → 0(不需要电力)。"
+       ]
+      },
+      {
+       "title": "注意事项",
+       "items": [
+        "可直接装入现有世界。钻机设置会在启动时自动修正,配置文件版本变为 9。",
+        "V4 的用法见各物品的悬停说明,以及本站配方页面的指南标签。"
+       ]
+      },
+      {
+       "title": "截至当时尚未实现或未确认的内容",
+       "items": [
+        "开发环境中没有 Minecraft 客户端,悬停文字和状态行的显示效果未在游戏内验证。",
+        "用法指南仅有日文,与现有的电力指南相同。"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.0.0",
      "date": "2026-09-02",

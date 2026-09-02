@@ -227,8 +227,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.0">
       <h2 class="cl__groupTitle">V4.0</h2>
-      <p class="cl__groupSummary">V4 アップデート: 時間停止碇から大気採集機まで、20 の新モジュールを追加</p>
+      <p class="cl__groupSummary">V4.0.1: 新要素 20 種の使い方が手元とレシピページで分かるように。地殻掘削機は電気不要に</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.0.1">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-0-1">
+          <h3 class="cl__version">V4.0.1</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-02</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-0-1" hidden><p class="cl__entryTitle">V4.0.1: 新要素 20 種の使い方が手元とレシピページで分かるように。地殻掘削機は電気不要に</p><p class="cl__lede">V4.0.0 の実機報告「時間停止などの新要素 20 項目で起動方法がよくわからなかった」への修正です。20 のモジュール全部が手に持った説明文で起動方法を答え、時間停止碇・重力反転機・無効化領域発生器は素手で右クリックすると状態を答えます。レシピページに V4 の全レシピと「使い方」の手引き(20 節)を載せました。地殻掘削機は筐体を隙間なく囲う決まりとケーブルを接する配線が両立しなかったため、電気を要らなくしました。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(6)</span></h4><ul class="cl__list"><li>20 モジュール全部に、手に持つと読める使い方の説明文が付きました。V4.0.0 では 9 つの機器・装備(熱機関発電機・空間導管・地殻掘削機・自動製作機・生体織機・スラグ・共鳴レール・運動減衰ブーツ・グリッチ・ストライダー)の説明文が jar の中にあるのに表示されておらず、残りの多くには説明文そのものがありませんでした。</li><li>時間停止碇・重力反転機・無効化領域発生器は、素手で右クリックすると「起動中/待機中」「何が必要か」「領域の大きさ」を答えます。時間停止碇はレッドストーン信号(レバーなど)で起動します —— これがどこにも書かれていませんでした。</li><li>地殻掘削機は電気を要らなくしました(設定 drill.wattsFactor が 0 = 電気不要。0 より大きくすれば以前どおり要求)。V4.0.0 で保存された 2.0 は起動時に自動で 0 に直ります。</li><li>レシピページ(このサイト)に V4 の全 25 レシピと、V4 の新要素 20 種の使い方の手引きを載せました。手引きの数字は各 MOD の設定値から読んでいます。</li><li>空気清浄機(V2)と列車停止装置の自動発車の案内も、同じ原因で表示されていなかったので直しました。</li><li>説明文の翻訳キーがコードから表示されているかを両方向で検査する門を 12 モジュール全部に付けました。同じ形の欠陥は次から梱包前に止まります。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">バランス調整 <span>(1)</span></h4><ul class="cl__list"><li>地殻掘削機の消費電力の既定を 2 台ぶん → 0(電気不要)にしました。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>既存ワールドにそのまま導入できます。地殻掘削機の設定は起動時に自動で直り、設定ファイルの版が 9 になります。</li><li>V4 の使い方は、各アイテムにカーソルを合わせた説明文と、このサイトのレシピページ「使い方」タブ → 「V4 の新要素 20 種の使い方」に書いてあります。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(2)</span></h4><ul class="cl__list"><li>開発環境に Minecraft のクライアントが無いため、説明文と状態表示の見え方は実機で確認していません。</li><li>使い方の手引きは日本語のみです(既存の「電気のつなぎかた」と同じ)。</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="" data-version="V4.0.0">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-0-0">
           <h3 class="cl__version">V4.0.0</h3>

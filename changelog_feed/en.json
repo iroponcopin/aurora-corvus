@@ -7,8 +7,48 @@
  "groups": [
   {
    "label": "V4.0",
-   "summary": "The V4 update: 20 new modules, from the Chronos Anchor to the Atmospheric Harvester",
+   "summary": "V4.0.1: every new module now explains itself in hand and on the recipe pages; the Geofracture Drill needs no power",
    "releases": [
+    {
+     "version": "V4.0.1",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "V4.0.1: every new module now explains itself in hand and on the recipe pages; the Geofracture Drill needs no power",
+     "summary": "Fixes for the V4.0.0 field report that the 20 new modules gave no clue how to start them. All 20 now carry usage text you read by hovering the item, and the Chronos Anchor, Gravity Inverter and Null-Zone Generator answer with their status when right-clicked with an empty hand. The recipe pages gain all V4 recipes plus a 20-section usage guide. The Geofracture Drill no longer needs power, because a gap-free casing and a touching cable could not both be satisfied.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "All 20 modules have hover text explaining how to use them. In V4.0.0, nine machines and gear (Thermodynamic Engine, Aetherial Conduit, Geofracture Drill, Automated Fabricator, Biological Weaver, slag, Resonance Rail, Kinetic Dampening boots, Glitch Strider) had usage text inside the jar that was never displayed, and most of the rest had none at all.",
+        "Chronos Anchor, Gravity Inverter and Null-Zone Generator answer an empty-hand right-click with active/idle, what they need, and their region size. The Chronos Anchor starts on a redstone signal (a lever will do) — nothing said so before.",
+        "The Geofracture Drill needs no power (config drill.wattsFactor 0 = no power; set it above 0 to require power as before). A 2.0 saved by V4.0.0 is repaired to 0 automatically on start.",
+        "The recipe pages on this site now list all 25 V4 recipes and a usage guide for the 20 new modules; its numbers are read from each mod's config.",
+        "The Air Purifier (V2) and the train stop's auto-depart hint were hidden by the same cause and are shown now.",
+        "A gate that checks, both ways, that every usage text is displayed by code now runs in all 12 modules, so this class of defect stops before packaging."
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "Geofracture Drill default power draw: 2 machines → 0 (no power)."
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "Installs straight into an existing world. The drill setting is repaired on start and the config file version becomes 9.",
+        "V4 usage is in each item's hover text and on this site's recipe pages under the guide tab: \"How to use the 20 new V4 modules\"."
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "There is no Minecraft client in the development environment, so how the hover text and status lines look has not been checked in-game.",
+        "The usage guide is Japanese only, like the existing power guide."
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.0.0",
      "date": "2026-09-02",
