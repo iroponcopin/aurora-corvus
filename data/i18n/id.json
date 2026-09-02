@@ -1739,6 +1739,53 @@
       "balance_changes": [
         "Kerusakan anti-material per tembakan (ketahanan = kekerasan x 100, jadi batu 150 dan obsidian 5000): pistol 3 / pistol mitraliur 3 / minigun 4 / senapan serbu 8 / shotgun 2 per butir x10 / shotgun pendobrak 6 per butir x10 / karabin penembak jitu 12 / senapan runduk 20 / runduk berat 100 (tetap) / laser 12 / peluncur roket 600 / panah malaikat 4 / panah kerajaan 16 / tongkat malaikat 30 / godam pengepungan 250."
       ]
+    },
+    {
+      "id": "v4.0.0",
+      "release": "V4.0.0",
+      "date": "2026-09-02",
+      "type": "release",
+      "title": "Pembaruan V4: 20 modul baru, dari Chronos Anchor hingga Atmospheric Harvester",
+      "summary": "V4 adalah pembaruan terbesar yang pernah dimiliki paket ini. Enam mod - langit, daya, bertahan hidup, rel, senjata, dan dekorasi - mendapat 20 modul: jangkar yang menghentikan waktu, kantong tanpa dasar, pelacak yang menggambar suara di sekitarmu, cermin ke dimensi lain, rel resonansi, turret akustik, dan lainnya. Bisa langsung dipasang di dunia yang sudah ada; berkas konfigurasi mendapat kunci baru secara otomatis saat pertama dijalankan.",
+      "highlights": [
+        "Chronos Anchor (langit): saat diberi daya, menghentikan mesin blok dan makhluk dalam area 5×5×5 di sekitarnya. Putus dayanya atau hancurkan, semuanya berjalan lagi.",
+        "Void-Stitched Pocket (bertahan hidup): kantong bawaan yang praktis tanpa dasar. Menjadi item unik saat pertama dibuka, dan hanya kehilangan isinya bila terbakar di lava.",
+        "Echolic Locator (bertahan hidup): menangkap suara mob bermusuhan dan netral di sekitar serta pemain, lalu menggambar garis ke masing-masing.",
+        "Thermodynamic Engine (daya): menghasilkan daya dari selisih suhu bioma yang dibaca 8 blok ke empat arah. Tanpa bahan bakar; keluaran naik sesuai selisih, dengan batas atas.",
+        "Entropy Siphon (bertahan hidup): pesona senjata (hingga III). Memperbaiki perlengkapanmu yang rusak sebesar 20% nyawa maksimum korban per tingkat.",
+        "Resonance Rail (rel): menaikkan batas kecepatan minecart hanya saat diberi daya (bawaan 25 m/s, hingga 50 m/s di konfigurasi) dan memuat chunk di depan lebih dulu.",
+        "Aetherial Conduit (daya): mengirim item dan fluida ke wadah mana pun dalam 16 blok. Tujuan diatur dengan item baru Aetherial Tuner; memakai daya satu mesin.",
+        "Kinetic Dampening Matrix (bertahan hidup): sepatu yang meniadakan kerusakan jatuh dan melepaskan gelombang kejut saat mendarat, sesuai tinggi jatuh (hingga 6). Secara bawaan tidak merusak blok.",
+        "Photic Synthesiser (dekorasi): lampu yang kanal merah, hijau, dan birunya diatur dengan klik kanan memakai pewarna. Pada rasio tertentu mempercepat tanaman tepat di bawahnya.",
+        "Geofracture Drill (daya): bor otomatis diam. Kelilingi dengan selubung 3×3, beri daya dua mesin, dan ia menggali bidang 3×3 sambil menyimpan semuanya ke wadah di sebelah (bila penuh menunggu; tidak ada yang hilang).",
+        "Biological Weaver (daya): mengubah dua suntikan DNA plus daya menjadi telur pemunculan hibrida. Mob muncul sebagai spesies induk A dengan kecepatan gerak dan kerusakan serangan induk B.",
+        "Spatial Transpositor (langit): bertukar tempat dengan mob hingga 32 blok jauhnya. Jeda 5 detik.",
+        "Gravity Inverter (langit): mendorong semuanya ke atas dalam area 8×16×8 di atasnya; yang keluar lewat atas mendapat jatuh perlahan.",
+        "Glitch Strider (bertahan hidup): set zirah empat bagian. Dengan set lengkap, tekan G untuk melesat 3 blok searah pandangan, menembus dinding. Kebal 1 detik, jeda 6 detik.",
+        "Acoustic Turret (senjata): mendengarkan suara (getaran) dalam 16 blok dan menembakkan tembakan sonik. Secara bawaan tidak membidik pemain.",
+        "Dimensional Mirror (langit): menampilkan dimensi, bioma, dan waktu dari tempat yang ditautkan dengan kompas lodestone, sebagai salah satu dari 11 gambar.",
+        "Automated Fabricator (daya): merakit resep yang disusun di templat 3×3-nya sekali per detik dari bahan di wadah sebelah. Daya satu mesin.",
+        "Sub-Zero Cryo-Cannon (senjata): tiap kena menambah perlambatan radang dingin bertumpuk; tumpukan kelima membekukan target dalam es.",
+        "Null-Zone Generator (langit): di dalam bola 16 blok, pembaruan sinyal redstone dan pemberian efek status berhenti. Tak perlu daya.",
+        "Atmospheric Harvester (daya): di bawah langit terbuka, mengumpulkan gas atau cairan yang sesuai suhu dan ketinggian bioma. Tak perlu daya."
+      ],
+      "balance_changes": [
+        "Batas bawaan Resonance Rail adalah 25 m/s. Angka 50 m/s dari spesifikasi adalah batas atas yang bisa dipilih di konfigurasi (beban pemuatan chunk).",
+        "Gelombang kejut sepatu Kinetic Dampening secara bawaan tidak merusak blok; aktifkan dengan kineticBootsBreakBlocks."
+      ],
+      "warnings": [
+        "Bisa langsung dipasang di dunia yang sudah ada. Kunci V4 ditambahkan ke berkas konfigurasi secara otomatis saat dijalankan.",
+        "Tombol G dipakai bersama oleh lesatan Glitch Strider dan kontrol pintu kereta / gigi kendaraan. Tidak bisa melesat saat menunggangi sesuatu.",
+        "Null Zone menolak semua efek status apa pun sumbernya - ramuan, beacon, atau pesona (pengecualian dimasukkan ke tag #sorakaze_sky:null_zone_passes). Efek yang sudah berjalan tidak dihapus.",
+        "Melaju kencang di Resonance Rail memuat chunk di depan. Bila beban server naik, turunkan batas kecepatan di konfigurasi.",
+        "Acoustic Turret bereaksi pada suara bukan pemain (langkah mob, serangan, dsb.). Agar bisa mengenai pemain, aktifkan hitsPlayers di konfigurasi."
+      ],
+      "known_limitations": [
+        "Dimensional Mirror menampilkan salah satu dari 11 gambar yang dipilih dari dimensi, bioma, dan waktu target, bukan pemandangan sebenarnya di seberang.",
+        "Chronos Anchor tidak menyimpan tick terjadwal yang menumpuk selama pembekuan saat dunia disimpan.",
+        "Acoustic Turret menyimpan arah piringannya, tetapi modelnya tidak berputar.",
+        "Tidak ada klien Minecraft di lingkungan pengembangan, jadi tampilan, suara, dan kontrol tombol modul baru belum diperiksa di dalam gim."
+      ]
     }
   ],
   "roadmap": {

@@ -1854,6 +1854,53 @@
       "balance_changes": [
         "Anti-materiel damage per shot (durability is hardness x 100, so stone is 150 and obsidian 5000): handgun 3 / SMG 3 / minigun 4 / assault rifle 8 / shotgun 2 per pellet x10 / breaching shotgun 6 per pellet x10 / marksman carbine 12 / sniper 20 / heavy sniper 100 (unchanged) / laser 12 / rocket launcher 600 / angel arrow 4 / royal arrow 16 / angel staff 30 / siege maul 250."
       ]
+    },
+    {
+      "id": "v4.0.0",
+      "release": "V4.0.0",
+      "date": "2026-09-02",
+      "type": "release",
+      "title": "The V4 update: 20 new modules, from the Chronos Anchor to the Atmospheric Harvester",
+      "summary": "V4 is the biggest update this pack has had. Six mods - sky, power, survival, rail, guns and deco - gain 20 modules: an anchor that stops time, a bottomless pouch, a locator that draws sound around you, a mirror onto another dimension, resonance rails, an acoustic turret and more. It installs straight into an existing world; the config files gain the new keys automatically on first start.",
+      "highlights": [
+        "Chronos Anchor (sky): while powered, it halts block machinery and creatures in the 5×5×5 around it. Cut the power or break it and everything resumes.",
+        "Void-Stitched Pocket (survival): an effectively bottomless carried pouch. It becomes a unique item the first time it is opened, and only loses its contents when it burns in lava.",
+        "Echolic Locator (survival): picks up sounds made by nearby hostile and neutral mobs and by players, and draws a line towards each one.",
+        "Thermodynamic Engine (power): generates from the biome temperature difference read 8 blocks out in the four directions. No fuel; output scales with the difference, with a cap.",
+        "Entropy Siphon (survival): a weapon enchantment (up to III). Repairs your damaged gear by 20% of the victim's max health per level.",
+        "Resonance Rail (rail): raises the minecart speed limit only while powered (25 m/s by default, up to 50 m/s in the config) and pre-loads the chunks ahead.",
+        "Aetherial Conduit (power): sends items and fluids to any container within 16 blocks. The target is set with the new Aetherial Tuner item; it draws one machine's worth of power.",
+        "Kinetic Dampening Matrix (survival): boots that cancel fall damage and release a shockwave on landing, scaled by fall distance (up to 6). They do not break blocks by default.",
+        "Photic Synthesiser (deco): a light whose red, green and blue channels are tuned by right-clicking with dyes. At one specific ratio it speeds up the crop directly below.",
+        "Geofracture Drill (power): a stationary auto-miner. Enclose it in a 3×3 casing, feed it two machines' worth of power, and it bores a 3×3 face, storing everything in an adjacent container (it waits when full; nothing is lost).",
+        "Biological Weaver (power): turns two DNA syringes plus power into a hybrid spawn egg. The mob spawns as parent A's species with parent B's movement speed and attack damage.",
+        "Spatial Transpositor (sky): swaps places with a mob up to 32 blocks away. 5-second cooldown.",
+        "Gravity Inverter (sky): pushes everything upward in an 8×16×8 region above it; whoever leaves through the top gets slow falling.",
+        "Glitch Strider (survival): a four-piece armour set. With the full set, press G to blink 3 blocks along your line of sight, through walls. 1 second of invulnerability, 6-second cooldown.",
+        "Acoustic Turret (guns): listens for sound (vibrations) within 16 blocks and fires sonic blasts. It does not target players by default.",
+        "Dimensional Mirror (sky): shows the dimension, biome and time of day of a place linked with a lodestone compass, as one of 11 pictures.",
+        "Automated Fabricator (power): crafts the recipe laid out in its 3×3 template once a second from materials in adjacent containers. One machine's worth of power.",
+        "Sub-Zero Cryo-Cannon (guns): each hit applies a stacking frostbite slow; the fifth stack encases the target in ice.",
+        "Null-Zone Generator (sky): inside a 16-block sphere, redstone signal updates and the application of status effects stop. Needs no power.",
+        "Atmospheric Harvester (power): under open sky, collects the gas or liquid that matches the biome's temperature and altitude. Needs no power."
+      ],
+      "balance_changes": [
+        "The Resonance Rail's default limit is 25 m/s. The specified 50 m/s is the ceiling you can choose in the config (chunk-loading load).",
+        "The Kinetic Dampening boots' shockwave does not break blocks by default; enable it with kineticBootsBreakBlocks."
+      ],
+      "warnings": [
+        "Installs straight into an existing world. The V4 keys are added to the config files automatically on start.",
+        "The G key is shared between the Glitch Strider blink and the rail door / vehicle gear controls. You cannot blink while riding.",
+        "The Null Zone refuses every status effect regardless of source - potion, beacon or enchantment (exceptions go in the tag #sorakaze_sky:null_zone_passes). Effects already applied are not removed.",
+        "Riding Resonance Rails at speed loads the chunks ahead. If server load rises, lower the speed limit in the config.",
+        "The Acoustic Turret reacts to non-player sounds (mob footsteps, attacks and so on). To let it hit players, enable hitsPlayers in the config."
+      ],
+      "known_limitations": [
+        "The Dimensional Mirror shows one of 11 pictures chosen from the target's dimension, biome and time of day, not the actual view on the other side.",
+        "The Chronos Anchor does not keep scheduled ticks that piled up while frozen when the world is saved.",
+        "The Acoustic Turret saves its dish direction, but the model does not rotate.",
+        "There is no Minecraft client in the development environment, so the new modules' visuals, sounds and key controls have not been checked in-game."
+      ]
     }
   ],
   "roadmap": {

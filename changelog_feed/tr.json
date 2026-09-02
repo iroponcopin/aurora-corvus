@@ -1,10 +1,76 @@
 {
  "lang": "tr",
- "updated": "2026-09-01",
+ "updated": "2026-09-02",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-09-01 tarihinde güncellendi",
+ "updated_label": "2026-09-02 tarihinde güncellendi",
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
+  {
+   "label": "V4.0",
+   "summary": "V4 güncellemesi: Chronos Anchor'dan Atmospheric Harvester'a 20 yeni modül",
+   "releases": [
+    {
+     "version": "V4.0.0",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "V4 güncellemesi: Chronos Anchor'dan Atmospheric Harvester'a 20 yeni modül",
+     "summary": "V4, bu paketin gördüğü en büyük güncelleme. Altı mod - gökyüzü, güç, hayatta kalma, ray, silah ve dekor - 20 modül kazanıyor: zamanı durduran bir çapa, dipsiz bir kese, çevrendeki sesleri çizen bir bulucu, başka bir boyuta açılan bir ayna, rezonans rayları, akustik bir taret ve dahası. Mevcut bir dünyaya doğrudan kurulur; yapılandırma dosyalarına yeni anahtarlar ilk başlatmada otomatik eklenir.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Chronos Anchor (gökyüzü): güç verildiğinde çevresindeki 5×5×5 alanda blok mekanizmalarını ve canlıları durdurur. Gücü kes ya da kır, her şey devam eder.",
+        "Void-Stitched Pocket (hayatta kalma): neredeyse dipsiz bir taşınabilir kese. İlk açıldığında benzersiz bir eşya olur ve içindekileri yalnızca lavda yandığında kaybeder.",
+        "Echolic Locator (hayatta kalma): yakındaki düşman ve nötr yaratıkların ve oyuncuların çıkardığı sesleri yakalar, her birine bir çizgi çizer.",
+        "Thermodynamic Engine (güç): dört yönde 8 blok ötede okunan biyom sıcaklık farkından güç üretir. Yakıt yok; çıktı farkla artar, bir üst sınırı vardır.",
+        "Entropy Siphon (hayatta kalma): bir silah büyüsü (III'e kadar). Hasarlı ekipmanını, kurbanın azami canının seviye başına %20'si kadar onarır.",
+        "Resonance Rail (ray): madenci arabasının hız sınırını yalnızca güç varken yükseltir (varsayılan 25 m/s, yapılandırmada 50 m/s'ye kadar) ve öndeki yığınları önceden yükler.",
+        "Aetherial Conduit (güç): eşyaları ve sıvıları 16 blok içindeki herhangi bir kaba gönderir. Hedef yeni Aetherial Tuner eşyasıyla belirlenir; bir makinelik güç çeker.",
+        "Kinetic Dampening Matrix (hayatta kalma): düşme hasarını iptal eden ve inişte düşüş yüksekliğine göre şok dalgası (en fazla 6) yayan botlar. Varsayılan olarak blok kırmaz.",
+        "Photic Synthesiser (dekor): kırmızı, yeşil ve mavi kanalları boyalarla sağ tıklanarak ayarlanan bir ışık. Belirli bir oranda hemen altındaki ekini hızlandırır.",
+        "Geofracture Drill (güç): sabit bir otomatik kazıcı. 3×3 kasayla çevrele, iki makinelik güç ver; 3×3 bir yüzeyi kazar ve her şeyi bitişik bir kaba koyar (doluysa bekler; hiçbir şey kaybolmaz).",
+        "Biological Weaver (güç): iki DNA şırıngası ve gücü melez bir yaratık yumurtasına dönüştürür. Yaratık, ebeveyn A'nın türü olarak ebeveyn B'nin hareket hızı ve saldırı hasarıyla doğar.",
+        "Spatial Transpositor (gökyüzü): 32 bloğa kadar uzaktaki bir yaratıkla yer değiştirir. 5 saniye bekleme.",
+        "Gravity Inverter (gökyüzü): üstündeki 8×16×8 bölgede her şeyi yukarı iter; üstten çıkan yavaş düşme alır.",
+        "Glitch Strider (hayatta kalma): dört parçalık zırh seti. Tam setle G'ye bas, bakış yönünde 3 blok ışınlan, duvarların içinden bile. 1 saniye dokunulmazlık, 6 saniye bekleme.",
+        "Acoustic Turret (silah): 16 blok içindeki sesleri (titreşimleri) dinler ve sonik atışlar yapar. Varsayılan olarak oyuncuları hedeflemez.",
+        "Dimensional Mirror (gökyüzü): manyetit pusulayla bağlanan yerin boyutunu, biyomunu ve günün saatini 11 resimden biriyle gösterir.",
+        "Automated Fabricator (güç): 3×3 şablonuna dizilen tarifi bitişik kaplardaki malzemelerle saniyede bir üretir. Bir makinelik güç.",
+        "Sub-Zero Cryo-Cannon (silah): her isabet biriken bir soğuk ısırması yavaşlaması uygular; beşinci katman hedefi buza hapseder.",
+        "Null-Zone Generator (gökyüzü): 16 bloklu bir kürenin içinde kızıltaş sinyal güncellemeleri ve durum etkilerinin uygulanması durur. Güç gerektirmez.",
+        "Atmospheric Harvester (güç): açık gökyüzü altında biyomun sıcaklığına ve yüksekliğine uyan gazı ya da sıvıyı toplar. Güç gerektirmez."
+       ]
+      },
+      {
+       "title": "Denge Ayarları",
+       "items": [
+        "Resonance Rail'in varsayılan sınırı 25 m/s. Belirtimdeki 50 m/s, yapılandırmada seçilebilen tavandır (yığın yükleme yükü).",
+        "Kinetic Dampening botlarının şok dalgası varsayılan olarak blok kırmaz; kineticBootsBreakBlocks ile etkinleştirin."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Mevcut bir dünyaya doğrudan kurulur. V4 anahtarları başlatmada yapılandırma dosyalarına otomatik eklenir.",
+        "G tuşu Glitch Strider ışınlanması ile tren kapısı / araç vites kontrolleri arasında ortaktır. Binmişken ışınlanamazsınız.",
+        "Null Zone, kaynağı ne olursa olsun her durum etkisini reddeder - iksir, işaret kulesi ya da büyü (istisnalar #sorakaze_sky:null_zone_passes etiketine yazılır). Zaten uygulanmış etkiler kaldırılmaz.",
+        "Resonance Rail üzerinde hızlı gitmek öndeki yığınları yükler. Sunucu yükü artarsa yapılandırmada hız sınırını düşürün.",
+        "Acoustic Turret oyuncu dışı seslere (yaratık adımları, saldırılar vb.) tepki verir. Oyuncuları vurması için yapılandırmada hitsPlayers'ı etkinleştirin."
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Dimensional Mirror, karşı taraftaki gerçek manzarayı değil, hedefin boyutu, biyomu ve saatine göre seçilen 11 resimden birini gösterir.",
+        "Chronos Anchor, dondurma sırasında biriken zamanlanmış tikleri kayıtta korumaz.",
+        "Acoustic Turret çanağının yönünü kaydeder ama model dönmez.",
+        "Geliştirme ortamında Minecraft istemcisi yok; yeni modüllerin görünümü, sesleri ve tuş kontrolleri oyun içinde denetlenmedi."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.8",
    "summary": "Madencilik Sondaj Makinesi ve her ağır ve menzilli silahta malzeme karşıtı hasar",

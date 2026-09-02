@@ -194,11 +194,6 @@ def recipe_cat_index(cat_name):
 # the domain root, so every link in this site is prefix-relative.
 NAV_SECTIONS = [
     ("home", ""),
-    # TEMPORARY (2026-09-01): the V4 announcement. Filed as a top-level link
-    # rather than inside a mega-menu panel because it is a limited-time
-    # announcement -- burying it one hover level down defeats the point.
-    # Removed in one line when V4 ships; see scripts/build_v4_teaser.py.
-    ("v4", "v4/"),
     ("aureum", "aureum/"),
     ("download", "download/"),
     ("changelog", "changelog/"),
@@ -229,12 +224,6 @@ NAV_LABEL_FALLBACK = {
     # to fall back this way (see build_aureum.py's header for why every other
     # string on that page has a real translation in all 13 languages).
     "aureum": "Aureum",
-    # TEMPORARY (2026-09-01): "V4" is a version number, not a word -- there is
-    # nothing to translate into the other twelve scripts, same category as
-    # LAUNCHER_APP_NAME and "Aureum" above.
-    "v4": "V4",
-    # English default until the twelve other bundles carry ui.nav.upcoming;
-    # the PAGE itself is fully translated in all 13 (data/upcoming.json).
     "upcoming": "Coming next",
     # Same arrangement as "upcoming": the nav label falls back to English
     # until the bundles carry ui.nav.discord, while the page itself is fully
@@ -258,7 +247,7 @@ NAV_LABEL_FALLBACK = {
 # Alpha pack's own get-started flow) nor under "reference" (Aureum has no
 # recipes/gates/features of its own) nor "status" (it has no changelog page
 # of its own yet) -- it simply does not belong to any of those three stories.
-NAV_SOLO = ["home", "v4", "aureum"]  # "v4" is TEMPORARY -- see NAV_SECTIONS
+NAV_SOLO = ["home", "aureum"]
 NAV_GROUPS = [
     ("start", ["download", "launcher", "guide"]),
     ("reference", ["recipes", "gates", "features"]),

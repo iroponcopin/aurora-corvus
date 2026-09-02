@@ -120,7 +120,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">首页</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v4/">V4</a></li>
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../aureum/">Aureum</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
@@ -211,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新日志</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-01</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-02</span></p>
     <p class="cl__note">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
   </header>
 
@@ -226,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>没有符合条件的更新记录。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.8">
+<section class="cl__group" id="v4.0">
+      <h2 class="cl__groupTitle">V4.0</h2>
+      <p class="cl__groupSummary">V4 更新:从 Chronos Anchor 到 Atmospheric Harvester,新增 20 个模块</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-0-0">
+          <h3 class="cl__version">V4.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-02</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-0-0" hidden><p class="cl__entryTitle">V4 更新:从 Chronos Anchor 到 Atmospheric Harvester,新增 20 个模块</p><p class="cl__lede">V4 是本整合包有史以来最大的一次更新。天空、电力、生存、铁路、枪械、装饰六个模组共新增 20 个模块:停止时间的锚、无底的口袋、把周围声音画出来的定位器、映出另一个维度的镜子、共鸣铁轨、声学炮塔等等。可直接装入现有世界;首次启动时配置文件会自动补上新的条目。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(20)</span></h4><ul class="cl__list"><li>Chronos Anchor(天空):通电后,周围 5×5×5 范围内的方块机械与生物全部停止。断电或破坏后恢复。</li><li>Void-Stitched Pocket(生存):几乎无底的随身口袋。第一次打开时成为独立个体,只有在岩浆中烧毁时才会失去内容物。</li><li>Echolic Locator(生存):捕捉附近敌对、中立生物和玩家发出的声音,并向每个声源画出一条线。</li><li>Thermodynamic Engine(电力):利用四个方向 8 格外的生物群系温差发电。无需燃料;输出随温差增大,有上限。</li><li>Entropy Siphon(生存):武器附魔(最高 III 级)。每级按击杀目标最大生命值的 20% 修复你已损耗的装备。</li><li>Resonance Rail(铁路):仅在通电时提高矿车速度上限(默认 25 m/s,配置中最高 50 m/s),并预加载前方区块。</li><li>Aetherial Conduit(电力):把物品和流体送往 16 格内的任意容器。目标用新物品 Aetherial Tuner 指定;消耗一台机器的电力。</li><li>Kinetic Dampening Matrix(生存):免疫摔落伤害的靴子,落地时按摔落高度释放冲击波(最高 6)。默认不破坏方块。</li><li>Photic Synthesiser(装饰):用染料右键调节红、绿、蓝三个通道的光源。在特定比例下会加速正下方的作物生长。</li><li>Geofracture Drill(电力):固定式自动钻机。用 3×3 外壳围住,供给两台机器的电力,即可掘进 3×3 断面,并把产物存入相邻容器(满了就等待,一个也不会丢)。</li><li>Biological Weaver(电力):用两支 DNA 注射器加电力制作杂交刷怪蛋。生成的生物为亲本 A 的种类,移动速度和攻击力取亲本 B。</li><li>Spatial Transpositor(天空):与最远 32 格外的生物互换位置。冷却 5 秒。</li><li>Gravity Inverter(天空):对上方 8×16×8 区域内的一切施加向上的力;从顶部离开的生物获得缓降。</li><li>Glitch Strider(生存):四件套盔甲。穿齐全套后按 G 沿视线方向闪现 3 格,可穿墙。无敌 1 秒,冷却 6 秒。</li><li>Acoustic Turret(枪械):侦听 16 格内的声音(振动)并发射声波弹。默认不攻击玩家。</li><li>Dimensional Mirror(天空):以 11 种画面之一显示用磁石指针连接地点的维度、生物群系和昼夜。</li><li>Automated Fabricator(电力):按 3×3 模板中摆放的配方,每秒一次用相邻容器中的材料自动合成。消耗一台机器的电力。</li><li>Sub-Zero Cryo-Cannon(枪械):每次命中叠加冻伤减速;叠到第五层将目标封入冰中。</li><li>Null-Zone Generator(天空):半径 16 格的球体内,红石信号更新和状态效果的施加全部停止。无需电力。</li><li>Atmospheric Harvester(电力):在露天处收集与生物群系温度和海拔相应的气体或液体。无需电力。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">平衡性调整 <span>(2)</span></h4><ul class="cl__list"><li>Resonance Rail 的默认上限为 25 m/s。规格中的 50 m/s 是配置中可选的最高值(考虑区块加载负担)。</li><li>Kinetic Dampening 靴子的冲击波默认不破坏方块;可用 kineticBootsBreakBlocks 开启。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>可直接装入现有世界。启动时会自动把 V4 的条目补入配置文件。</li><li>G 键由 Glitch Strider 的闪现与列车车门 / 载具换挡共用。骑乘时无法闪现。</li><li>Null Zone 会拒绝一切状态效果,无论来自药水、信标还是附魔(例外写入标签 #sorakaze_sky:null_zone_passes)。已生效的效果不会被移除。</li><li>在 Resonance Rail 上高速行驶会加载前方区块。若服务器负载升高,请在配置中调低速度上限。</li><li>Acoustic Turret 会对非玩家的声音(生物脚步、攻击等)作出反应。要让它攻击玩家,请在配置中开启 hitsPlayers。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(4)</span></h4><ul class="cl__list"><li>Dimensional Mirror 显示的是按目标的维度、生物群系和昼夜选出的 11 种画面之一,而不是对面的真实景象。</li><li>Chronos Anchor 保存时不会保留冻结期间积压的计划刻(预定更新)。</li><li>Acoustic Turret 会保存天线朝向,但模型不会转动。</li><li>开发环境中没有 Minecraft 客户端,新模块的外观、声音和按键操作未在游戏内验证。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.8">
       <h2 class="cl__groupTitle">V3.8</h2>
       <p class="cl__groupSummary">新增采矿钻机重型机械，所有重型物品与远程武器可以破坏方块</p>
       <div class="cl__releases">

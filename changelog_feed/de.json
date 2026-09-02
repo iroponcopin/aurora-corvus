@@ -1,10 +1,76 @@
 {
  "lang": "de",
- "updated": "2026-09-01",
+ "updated": "2026-09-02",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-09-01",
+ "updated_label": "Aktualisiert am 2026-09-02",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
+  {
+   "label": "V4.0",
+   "summary": "Das V4-Update: 20 neue Module, vom Chronos Anchor bis zum Atmospheric Harvester",
+   "releases": [
+    {
+     "version": "V4.0.0",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "Das V4-Update: 20 neue Module, vom Chronos Anchor bis zum Atmospheric Harvester",
+     "summary": "V4 ist das größte Update, das dieses Paket je hatte. Sechs Mods - Himmel, Energie, Überleben, Schiene, Waffen und Deko - erhalten 20 Module: einen Anker, der die Zeit anhält, einen bodenlosen Beutel, einen Ortungssensor, der Geräusche um dich herum zeichnet, einen Spiegel in eine andere Dimension, Resonanzschienen, einen akustischen Geschützturm und mehr. Es lässt sich direkt in eine bestehende Welt einbauen; die Konfigurationsdateien erhalten die neuen Schlüssel beim ersten Start automatisch.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Chronos Anchor (Himmel): Unter Strom hält er Blockmaschinen und Kreaturen im 5×5×5-Bereich an. Strom weg oder abgebaut - alles läuft weiter.",
+        "Void-Stitched Pocket (Überleben): ein praktisch bodenloser Beutel. Beim ersten Öffnen wird er zum Einzelstück; seinen Inhalt verliert er nur, wenn er in Lava verbrennt.",
+        "Echolic Locator (Überleben): fängt Geräusche feindlicher und neutraler Mobs sowie von Spielern in der Nähe auf und zeichnet eine Linie zu jedem.",
+        "Thermodynamic Engine (Energie): erzeugt Strom aus dem Biom-Temperaturunterschied, gemessen 8 Blöcke entfernt in vier Richtungen. Kein Brennstoff; die Leistung wächst mit dem Unterschied, mit Obergrenze.",
+        "Entropy Siphon (Überleben): eine Waffenverzauberung (bis III). Repariert beschädigte Ausrüstung um 20 % der maximalen Lebenspunkte des Opfers pro Stufe.",
+        "Resonance Rail (Schiene): hebt das Tempolimit der Lore nur unter Strom (standardmäßig 25 m/s, bis 50 m/s in der Konfiguration) und lädt die Chunks voraus.",
+        "Aetherial Conduit (Energie): schickt Gegenstände und Flüssigkeiten in jeden Behälter im Umkreis von 16 Blöcken. Das Ziel wird mit dem neuen Aetherial Tuner gesetzt; verbraucht den Strom einer Maschine.",
+        "Kinetic Dampening Matrix (Überleben): Stiefel, die Fallschaden aufheben und beim Landen eine Druckwelle abgeben, skaliert mit der Fallhöhe (bis 6). Standardmäßig zerstören sie keine Blöcke.",
+        "Photic Synthesiser (Deko): eine Lichtquelle, deren Rot-, Grün- und Blaukanal per Rechtsklick mit Farbstoffen eingestellt werden. Bei einem bestimmten Verhältnis beschleunigt sie die Pflanze direkt darunter.",
+        "Geofracture Drill (Energie): ein stationärer Automatikbohrer. In ein 3×3-Gehäuse eingefasst und mit dem Strom zweier Maschinen versorgt bohrt er eine 3×3-Fläche und lagert alles in einen angrenzenden Behälter (ist er voll, wartet er; nichts geht verloren).",
+        "Biological Weaver (Energie): macht aus zwei DNA-Spritzen plus Strom ein Hybrid-Spawn-Ei. Der Mob erscheint als Art von Elternteil A mit Bewegungstempo und Angriffsschaden von Elternteil B.",
+        "Spatial Transpositor (Himmel): tauscht den Platz mit einem Mob in bis zu 32 Blöcken Entfernung. 5 Sekunden Abklingzeit.",
+        "Gravity Inverter (Himmel): drückt alles in einem 8×16×8-Bereich darüber nach oben; wer oben hinausgeht, erhält Sanfter Fall.",
+        "Glitch Strider (Überleben): ein vierteiliges Rüstungsset. Mit vollem Set springst du mit G 3 Blöcke entlang der Blickrichtung, auch durch Wände. 1 Sekunde Unverwundbarkeit, 6 Sekunden Abklingzeit.",
+        "Acoustic Turret (Waffen): lauscht auf Geräusche (Vibrationen) im Umkreis von 16 Blöcken und feuert Schallgeschosse. Zielt standardmäßig nicht auf Spieler.",
+        "Dimensional Mirror (Himmel): zeigt Dimension, Biom und Tageszeit eines per Leitsteinkompass verknüpften Ortes als eines von 11 Bildern.",
+        "Automated Fabricator (Energie): stellt das in seiner 3×3-Vorlage gelegte Rezept einmal pro Sekunde aus Material angrenzender Behälter her. Strom einer Maschine.",
+        "Sub-Zero Cryo-Cannon (Waffen): jeder Treffer verlangsamt durch stapelbaren Frostbrand; der fünfte Stapel schließt das Ziel in Eis ein.",
+        "Null-Zone Generator (Himmel): in einer Kugel von 16 Blöcken stoppen Redstone-Signaländerungen und das Anlegen von Statuseffekten. Braucht keinen Strom.",
+        "Atmospheric Harvester (Energie): sammelt unter freiem Himmel das Gas oder die Flüssigkeit, die zu Temperatur und Höhe des Bioms passt. Braucht keinen Strom."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Das Standardlimit der Resonance Rail beträgt 25 m/s. Die vorgesehenen 50 m/s sind die in der Konfiguration wählbare Obergrenze (Chunk-Ladelast).",
+        "Die Druckwelle der Kinetic-Dampening-Stiefel zerstört standardmäßig keine Blöcke; einschalten mit kineticBootsBreakBlocks."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Lässt sich direkt in eine bestehende Welt einbauen. Die V4-Schlüssel werden beim Start automatisch in die Konfigurationsdateien geschrieben.",
+        "Die Taste G teilen sich der Glitch-Strider-Sprung und die Steuerung von Bahntüren / Fahrzeuggängen. Beim Reiten oder Fahren ist kein Sprung möglich.",
+        "Die Nullzone verweigert jeden Statuseffekt unabhängig von der Quelle - Trank, Leuchtfeuer oder Verzauberung (Ausnahmen in den Tag #sorakaze_sky:null_zone_passes). Bereits wirkende Effekte werden nicht entfernt.",
+        "Schnelles Fahren auf Resonance Rails lädt die Chunks voraus. Steigt die Serverlast, senke das Tempolimit in der Konfiguration.",
+        "Der Acoustic Turret reagiert auf Geräusche, die nicht von Spielern stammen (Mob-Schritte, Angriffe usw.). Damit er Spieler trifft, hitsPlayers in der Konfiguration aktivieren."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der Dimensional Mirror zeigt eines von 11 Bildern, gewählt nach Dimension, Biom und Tageszeit des Ziels - nicht die tatsächliche Aussicht auf der anderen Seite.",
+        "Der Chronos Anchor behält beim Speichern keine geplanten Ticks, die sich während des Stillstands angesammelt haben.",
+        "Der Acoustic Turret speichert die Richtung seiner Schüssel, aber das Modell dreht sich nicht.",
+        "In der Entwicklungsumgebung gibt es keinen Minecraft-Client; Optik, Klänge und Tastensteuerung der neuen Module wurden nicht im Spiel geprüft."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.8",
    "summary": "Der Bohrgroßgerät-Rig und Hartkernschaden für jede schwere und Fernkampfwaffe",

@@ -120,7 +120,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">ホーム</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v4/">V4</a></li>
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../aureum/">Aureum</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
@@ -211,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新履歴</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-01</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-02</span></p>
     <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
   </header>
 
@@ -226,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>条件に一致する更新はありません。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.8">
+<section class="cl__group" id="v4.0">
+      <h2 class="cl__groupTitle">V4.0</h2>
+      <p class="cl__groupSummary">V4 アップデート: 時間停止碇から大気採集機まで、20 の新モジュールを追加</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-0-0">
+          <h3 class="cl__version">V4.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-02</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-0-0" hidden><p class="cl__entryTitle">V4 アップデート: 時間停止碇から大気採集機まで、20 の新モジュールを追加</p><p class="cl__lede">V4 は本パック最大の更新です。天空・電力・サバイバル・鉄道・銃・装飾の 6 つの MOD に、時間を止める碇、底なしのポーチ、音で獲物を描く探知機、次元の向こうを映す鏡、共鳴レール、音響タレットなど 20 のモジュールを追加しました。既存のワールドにそのまま導入でき、設定ファイルには新しい項目が起動時に自動で書き足されます。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(20)</span></h4><ul class="cl__list"><li>時間停止碇(Chronos Anchor / 天空): 通電すると周囲 5×5×5 のブロックの動作と生き物の動きを止めます。通電を切るか壊すと元に戻ります。</li><li>虚空ポーチ(Void-Stitched Pocket / サバイバル): 事実上底なしの携帯ポーチ。初めて開いた時に個体になり、溶岩で焼けた時だけ中身を失います。</li><li>エコー探知機(Echolic Locator / サバイバル): 周囲の敵対・中立 Mob とプレイヤーが立てた音を拾い、その方向を線で描きます。</li><li>熱機関発電機(Thermodynamic Engine / 電力): 8 ブロック先 4 方位のバイオーム温度差で発電します。燃料は不要で、出力は温度差に比例し上限があります。</li><li>エントロピー吸引(Entropy Siphon / サバイバル): 武器のエンチャント(最大 III)。倒した相手の最大体力の 20%×レベルぶん、傷んだ装備の耐久を回復します。</li><li>共鳴レール(Resonance Rail / 鉄道): 通電中だけトロッコの上限速度を上げます(既定 25 m/s、設定で最大 50 m/s)。進行方向のチャンクを先読みします。</li><li>空間導管(Aetherial Conduit / 電力): 16 ブロック以内の任意のコンテナへアイテムと液体を送ります。送り先は新アイテムの空間チューナーで指定し、電気は 1 台ぶんです。</li><li>運動減衰ブーツ(Kinetic Dampening Matrix / サバイバル): 落下ダメージを無効化し、着地で落下距離に応じた衝撃波(最大 6)を放ちます。既定ではブロックを壊しません。</li><li>光合成灯(Photic Synthesiser / 装飾): 染料の右クリックで赤・緑・青の 3 チャンネルを調整する光源。特定の比率で真下の作物の成長を早めます。</li><li>地殻掘削機(Geofracture Drill / 電力): 据え置き型の自動掘削機。3×3 の筐体で囲い、電気 2 台ぶんで 3×3 の断面を掘り進め、隣接コンテナへ収納します(満杯なら待ち、1 個も消えません)。</li><li>生体織機(Biological Weaver / 電力): DNA 注射器 2 本と電気で交雑スポーンエッグを作ります。親 A の種類として湧き、移動速度と攻撃力は親 B の値になります。</li><li>空間転位器(Spatial Transpositor / 天空): 32 ブロック先の Mob と自分の位置を入れ替えます。クールダウン 5 秒。</li><li>重力反転装置(Gravity Inverter / 天空): 上方 8×16×8 の領域に上向きの力を与えます。上端から出た者には低速落下が付きます。</li><li>グリッチ・ストライダー(Glitch Strider / サバイバル): 4 部位の防具。フルセットで G キーを押すと視線方向へ 3 ブロック瞬間移動します(壁越し可)。無敵 1 秒、待ち時間 6 秒。</li><li>音響タレット(Acoustic Turret / 銃): 半径 16 の音(振動)を検知して音波弾を撃ちます。既定ではプレイヤーを撃ちません。</li><li>次元鏡(Dimensional Mirror / 天空): ロードストーンコンパスで結んだ場所の次元・バイオーム・昼夜を 11 種の絵で映します。</li><li>自動製作機(Automated Fabricator / 電力): 3×3 の雛形に置いたレシピを、隣接コンテナの材料で毎秒 1 回自動製作します。電気 1 台ぶん。</li><li>クライオキャノン(Sub-Zero Cryo-Cannon / 銃): 命中ごとに凍傷(段階的な減速)を与え、5 段目で相手を氷に封じます。</li><li>無効化領域発生器(Null-Zone Generator / 天空): 半径 16 の球の中でレッドストーン信号の更新と状態効果の付与を止めます。電気は不要です。</li><li>大気採集機(Atmospheric Harvester / 電力): 空が見える場所で、バイオームの温度と高度に応じた気体・液体を集めます。電気は不要です。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">バランス調整 <span>(2)</span></h4><ul class="cl__list"><li>共鳴レールの既定の上限は 25 m/s です。仕様上の 50 m/s は設定で選べる上限にしました(チャンク読み込みの負荷を考慮)。</li><li>運動減衰ブーツの衝撃波は既定でブロックを壊しません。設定 kineticBootsBreakBlocks で有効にできます。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>既存のワールドにそのまま導入できます。設定ファイルには V4 の項目が起動時に自動で書き足されます。</li><li>G キーはグリッチ・ストライダーの瞬間移動と、鉄道のドア・乗り物のギア操作で共有です。搭乗中は瞬間移動しません。</li><li>無効化領域は、ポーション・ビーコン・エンチャントの区別なく、すべての状態効果の付与を止めます(例外はタグ #sorakaze_sky:null_zone_passes で指定)。すでに掛かっている効果は消えません。</li><li>共鳴レールを高速で走ると先のチャンクを読み込みます。サーバーの負荷が上がる場合は設定で上限速度を下げてください。</li><li>音響タレットはプレイヤー以外の音(Mob の足音や攻撃など)に反応します。プレイヤーにも当てるには設定 hitsPlayers を有効にしてください。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(4)</span></h4><ul class="cl__list"><li>次元鏡は向こう側の実際の景色ではなく、次元・バイオーム・昼夜から選んだ 11 種の絵を映します。</li><li>時間停止碇は、停止中に積まれた遅延ティック(予定されていた更新)を保存時に保持しません。</li><li>音響タレットの皿は向きを保存しますが、モデルは回転しません。</li><li>開発環境に Minecraft のクライアントが無いため、新モジュールの見た目・音・キー操作は実機で確認していません。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.8">
       <h2 class="cl__groupTitle">V3.8</h2>
       <p class="cl__groupSummary">マイニングドリル重機を追加。全ての重アイテム・飛び道具・遠距離武器がブロックを削れるようになりました</p>
       <div class="cl__releases">

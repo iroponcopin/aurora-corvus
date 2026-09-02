@@ -120,7 +120,6 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">الرئيسية</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../v4/">V4</a></li>
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../aureum/">Aureum</a></li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
@@ -211,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">سجل التحديثات</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>آخر تحديث 2026-09-01</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>آخر تحديث 2026-09-02</span></p>
     <p class="cl__note">قيم الضرر والسرعة وغيرها المعروضة هنا هي القيم الافتراضية عند إصدار التحديث. قد تختلف عن القيم التي تشعر بها فعليًا أثناء اللعب بسبب تعديلات إعدادات (config) الخادم.</p>
   </header>
 
@@ -226,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>لا توجد تحديثات مطابقة للشروط المحددة.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v3.8">
+<section class="cl__group" id="v4.0">
+      <h2 class="cl__groupTitle">V4.0</h2>
+      <p class="cl__groupSummary">تحديث V4: عشرون وحدة جديدة، من Chronos Anchor إلى Atmospheric Harvester</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-0-0">
+          <h3 class="cl__version">V4.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-02</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-0-0" hidden><p class="cl__entryTitle">تحديث V4: عشرون وحدة جديدة، من Chronos Anchor إلى Atmospheric Harvester</p><p class="cl__lede">V4 هو أكبر تحديث عرفته هذه الحزمة. تحصل ستة مودات - السماء والطاقة والبقاء والسكك والأسلحة والديكور - على 20 وحدة: مرساة توقف الزمن، وحقيبة بلا قاع، وجهاز يرسم الأصوات من حولك، ومرآة على بُعد آخر، وسكك رنين، وبرج صوتي وغيرها. يُثبَّت مباشرة في عالم موجود؛ وتُضاف المفاتيح الجديدة إلى ملفات الإعدادات تلقائيًا عند أول تشغيل.</p><div class="cl__section"><h4 class="cl__sectionTitle">أبرز التغييرات <span>(20)</span></h4><ul class="cl__list"><li>Chronos Anchor (السماء): عند تشغيله بالطاقة يوقف آليات الكتل والكائنات في نطاق 5×5×5 حوله. اقطع الطاقة أو اكسره فيعود كل شيء إلى الحركة.</li><li>Void-Stitched Pocket (البقاء): حقيبة محمولة بلا قاع عمليًا. تصبح غرضًا فريدًا عند فتحها أول مرة، ولا تفقد محتوياتها إلا إذا احترقت في الحمم.</li><li>Echolic Locator (البقاء): يلتقط أصوات الكائنات العدائية والمحايدة القريبة واللاعبين، ويرسم خطًا نحو كل منها.</li><li>Thermodynamic Engine (الطاقة): يولّد الطاقة من فرق حرارة البيومات المقاس على بُعد 8 كتل في الاتجاهات الأربعة. بلا وقود؛ يزداد الإنتاج مع الفرق وله حد أقصى.</li><li>Entropy Siphon (البقاء): سحر للأسلحة (حتى III). يصلح عتادك المتضرر بمقدار 20% من الصحة القصوى للضحية لكل مستوى.</li><li>Resonance Rail (السكك): يرفع حد سرعة العربات أثناء التشغيل بالطاقة فقط (25 م/ث افتراضيًا، وحتى 50 م/ث في الإعدادات) ويحمّل القطع الأمامية مسبقًا.</li><li>Aetherial Conduit (الطاقة): يرسل الأغراض والسوائل إلى أي حاوية ضمن 16 كتلة. تُحدَّد الوجهة بالغرض الجديد Aetherial Tuner؛ يستهلك طاقة آلة واحدة.</li><li>Kinetic Dampening Matrix (البقاء): حذاء يلغي ضرر السقوط ويطلق موجة صدمية عند الهبوط بحسب ارتفاع السقوط (حتى 6). لا يكسر الكتل افتراضيًا.</li><li>Photic Synthesiser (الديكور): مصدر ضوء تُضبط قنواته الحمراء والخضراء والزرقاء بالنقر الأيمن بالأصباغ. عند نسبة معيّنة يسرّع نمو المحصول أسفله مباشرة.</li><li>Geofracture Drill (الطاقة): حفّار آلي ثابت. أحطه بغلاف 3×3 وزوّده بطاقة آلتين فيحفر وجهًا 3×3 ويخزّن كل شيء في حاوية مجاورة (إذا امتلأت ينتظر؛ لا يضيع شيء).</li><li>Biological Weaver (الطاقة): يحوّل حقنتي DNA مع الطاقة إلى بيضة توليد هجينة. يظهر الكائن من نوع الأب A بسرعة حركة وضرر هجوم الأب B.</li><li>Spatial Transpositor (السماء): يبادل مكانك مع كائن على بُعد 32 كتلة. فترة انتظار 5 ثوانٍ.</li><li>Gravity Inverter (السماء): يدفع كل شيء إلى الأعلى في منطقة 8×16×8 فوقه؛ ومن يخرج من الأعلى يحصل على السقوط البطيء.</li><li>Glitch Strider (البقاء): طقم درع من أربع قطع. بالطقم الكامل اضغط G للانتقال 3 كتل في اتجاه النظر، حتى عبر الجدران. حصانة ثانية واحدة، وانتظار 6 ثوانٍ.</li><li>Acoustic Turret (الأسلحة): يرصد الأصوات (الاهتزازات) ضمن 16 كتلة ويطلق قذائف صوتية. لا يستهدف اللاعبين افتراضيًا.</li><li>Dimensional Mirror (السماء): يعرض بُعد المكان المرتبط ببوصلة حجر مغناطيسي وبيومه ووقت اليوم فيه بإحدى 11 صورة.</li><li>Automated Fabricator (الطاقة): يصنع الوصفة الموضوعة في قالبه 3×3 مرة كل ثانية من مواد الحاويات المجاورة. طاقة آلة واحدة.</li><li>Sub-Zero Cryo-Cannon (الأسلحة): كل إصابة تضيف إبطاءً تراكميًا بالصقيع؛ والطبقة الخامسة تحبس الهدف في الجليد.</li><li>Null-Zone Generator (السماء): داخل كرة نصف قطرها 16 كتلة تتوقف تحديثات إشارات الريدستون وتطبيق تأثيرات الحالة. لا يحتاج إلى طاقة.</li><li>Atmospheric Harvester (الطاقة): تحت السماء المكشوفة يجمع الغاز أو السائل المناسب لحرارة البيوم وارتفاعه. لا يحتاج إلى طاقة.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">تعديلات التوازن <span>(2)</span></h4><ul class="cl__list"><li>الحد الافتراضي لـ Resonance Rail هو 25 م/ث. أما 50 م/ث الواردة في المواصفات فهي السقف الذي يمكن اختياره في الإعدادات (عبء تحميل القطع).</li><li>الموجة الصدمية لحذاء Kinetic Dampening لا تكسر الكتل افتراضيًا؛ فعّلها عبر kineticBootsBreakBlocks.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">ملاحظات هامة <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>يُثبَّت مباشرة في عالم موجود. تُضاف مفاتيح V4 إلى ملفات الإعدادات تلقائيًا عند التشغيل.</li><li>مفتاح G مشترك بين وثبة Glitch Strider وتحكم أبواب القطار / تروس المركبات. لا يمكن الوثب أثناء الركوب.</li><li>ترفض Null Zone كل تأثير حالة أيًا كان مصدره - جرعة أو منارة أو سحر (تُوضع الاستثناءات في الوسم #sorakaze_sky:null_zone_passes). ولا تُزال التأثيرات المطبَّقة سابقًا.</li><li>الركوب بسرعة على Resonance Rail يحمّل القطع الأمامية. إذا ارتفع حمل الخادم فاخفض حد السرعة في الإعدادات.</li><li>يستجيب Acoustic Turret للأصوات غير الصادرة عن اللاعبين (خطوات الكائنات والهجمات وغيرها). ولكي يصيب اللاعبين فعّل hitsPlayers في الإعدادات.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">أمور لم تُنفَّذ أو لم يتم التحقق منها حتى هذه اللحظة <span>(4)</span></h4><ul class="cl__list"><li>تعرض Dimensional Mirror إحدى 11 صورة تُختار بحسب بُعد الهدف وبيومه ووقت اليوم، لا المشهد الحقيقي في الجهة الأخرى.</li><li>لا يحتفظ Chronos Anchor عند الحفظ بالتكّات المجدولة التي تراكمت أثناء التجميد.</li><li>يحفظ Acoustic Turret اتجاه صحنه، لكن النموذج لا يدور.</li><li>لا يوجد عميل Minecraft في بيئة التطوير، لذا لم يُتحقَّق داخل اللعبة من مظهر الوحدات الجديدة وأصواتها وأزرارها.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v3.8">
       <h2 class="cl__groupTitle">V3.8</h2>
       <p class="cl__groupSummary">حفّارة التعدين الثقيلة، وضرر مضاد للعتاد على كل سلاح ثقيل وبعيد المدى</p>
       <div class="cl__releases">

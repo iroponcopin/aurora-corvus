@@ -1,10 +1,76 @@
 {
  "lang": "it",
- "updated": "2026-09-01",
+ "updated": "2026-09-02",
  "title": "Changelog",
- "updated_label": "Aggiornato il 2026-09-01",
+ "updated_label": "Aggiornato il 2026-09-02",
  "note": "I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell'introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.",
  "groups": [
+  {
+   "label": "V4.0",
+   "summary": "L'aggiornamento V4: 20 nuovi moduli, dal Chronos Anchor all'Atmospheric Harvester",
+   "releases": [
+    {
+     "version": "V4.0.0",
+     "date": "2026-09-02",
+     "type": "release",
+     "title": "L'aggiornamento V4: 20 nuovi moduli, dal Chronos Anchor all'Atmospheric Harvester",
+     "summary": "V4 è il più grande aggiornamento che questo pacchetto abbia avuto. Sei mod - cielo, energia, sopravvivenza, rotaie, armi e arredo - ricevono 20 moduli: un'ancora che ferma il tempo, una borsa senza fondo, un localizzatore che disegna i suoni intorno a te, uno specchio su un'altra dimensione, rotaie di risonanza, una torretta acustica e altro. Si installa direttamente in un mondo esistente; i file di configurazione ricevono le nuove chiavi automaticamente all'avvio.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "Chronos Anchor (cielo): sotto tensione ferma i meccanismi dei blocchi e le creature nel 5×5×5 circostante. Togli la corrente o rompilo e tutto riprende.",
+        "Void-Stitched Pocket (sopravvivenza): una borsa portatile praticamente senza fondo. Diventa un oggetto unico alla prima apertura e perde il contenuto solo se brucia nella lava.",
+        "Echolic Locator (sopravvivenza): capta i suoni di mob ostili e neutrali vicini e dei giocatori, e traccia una linea verso ciascuno.",
+        "Thermodynamic Engine (energia): genera dalla differenza di temperatura dei biomi letta a 8 blocchi nelle quattro direzioni. Senza carburante; la produzione cresce con la differenza, con un tetto.",
+        "Entropy Siphon (sopravvivenza): un incantesimo per armi (fino a III). Ripara l'equipaggiamento danneggiato del 20% della salute massima della vittima per livello.",
+        "Resonance Rail (rotaie): alza il limite di velocità dei carrelli solo sotto tensione (25 m/s di default, fino a 50 m/s nella configurazione) e precarica i chunk davanti.",
+        "Aetherial Conduit (energia): invia oggetti e fluidi a qualsiasi contenitore entro 16 blocchi. La destinazione si imposta con il nuovo Aetherial Tuner; consuma l'energia di una macchina.",
+        "Kinetic Dampening Matrix (sopravvivenza): stivali che annullano i danni da caduta e rilasciano un'onda d'urto all'atterraggio, in base all'altezza (fino a 6). Di default non rompono blocchi.",
+        "Photic Synthesiser (arredo): una luce i cui canali rosso, verde e blu si regolano con clic destro con le tinture. A una proporzione precisa accelera la coltura subito sotto.",
+        "Geofracture Drill (energia): una trivella automatica fissa. Racchiudila in un involucro 3×3, dalle l'energia di due macchine e scava una faccia 3×3 riponendo tutto in un contenitore adiacente (se pieno aspetta; nulla va perso).",
+        "Biological Weaver (energia): trasforma due siringhe di DNA più energia in un uovo generatore ibrido. Il mob nasce come specie del genitore A con velocità e danno d'attacco del genitore B.",
+        "Spatial Transpositor (cielo): scambia il tuo posto con un mob fino a 32 blocchi. Ricarica di 5 secondi.",
+        "Gravity Inverter (cielo): spinge tutto verso l'alto in una regione 8×16×8 sopra di sé; chi esce dall'alto riceve Caduta lenta.",
+        "Glitch Strider (sopravvivenza): un set di armatura in quattro pezzi. Con il set completo, premi G per scattare di 3 blocchi lungo lo sguardo, anche attraverso i muri. 1 secondo di invulnerabilità, 6 secondi di ricarica.",
+        "Acoustic Turret (armi): ascolta i suoni (vibrazioni) entro 16 blocchi e spara raffiche soniche. Di default non prende di mira i giocatori.",
+        "Dimensional Mirror (cielo): mostra dimensione, bioma e ora del giorno di un luogo collegato con una bussola di magnetite, come una di 11 immagini.",
+        "Automated Fabricator (energia): fabbrica la ricetta disposta nel suo modello 3×3 una volta al secondo con i materiali dei contenitori adiacenti. Energia di una macchina.",
+        "Sub-Zero Cryo-Cannon (armi): ogni colpo applica un rallentamento da congelamento cumulabile; il quinto accumulo racchiude il bersaglio nel ghiaccio.",
+        "Null-Zone Generator (cielo): in una sfera di 16 blocchi si fermano gli aggiornamenti dei segnali di redstone e l'applicazione degli effetti di stato. Non serve energia.",
+        "Atmospheric Harvester (energia): a cielo aperto raccoglie il gas o il liquido corrispondente a temperatura e altitudine del bioma. Non serve energia."
+       ]
+      },
+      {
+       "title": "Bilanciamento",
+       "items": [
+        "Il limite di default del Resonance Rail è 25 m/s. I 50 m/s della specifica sono il tetto selezionabile nella configurazione (carico dei chunk).",
+        "L'onda d'urto degli stivali Kinetic Dampening non rompe blocchi di default; attivala con kineticBootsBreakBlocks."
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "Si installa direttamente in un mondo esistente. Le chiavi V4 vengono aggiunte ai file di configurazione automaticamente all'avvio.",
+        "Il tasto G è condiviso tra lo scatto del Glitch Strider e i comandi delle porte dei treni / delle marce dei veicoli. Non puoi scattare mentre sei a bordo.",
+        "La Null Zone rifiuta ogni effetto di stato qualunque sia l'origine - pozione, faro o incantesimo (le eccezioni vanno nel tag #sorakaze_sky:null_zone_passes). Gli effetti già applicati non vengono rimossi.",
+        "Viaggiare veloci sui Resonance Rail carica i chunk davanti. Se il carico del server sale, abbassa il limite di velocità nella configurazione.",
+        "L'Acoustic Turret reagisce ai suoni non dei giocatori (passi dei mob, attacchi e così via). Per farle colpire i giocatori, attiva hitsPlayers nella configurazione."
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Il Dimensional Mirror mostra una di 11 immagini scelta in base a dimensione, bioma e ora del bersaglio, non la vista reale dall'altra parte.",
+        "Il Chronos Anchor non conserva al salvataggio i tick programmati accumulati durante il congelamento.",
+        "L'Acoustic Turret salva la direzione della parabola, ma il modello non ruota.",
+        "Non c'è un client Minecraft nell'ambiente di sviluppo, quindi aspetto, suoni e comandi da tastiera dei nuovi moduli non sono stati verificati in gioco."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V3.8",
    "summary": "La trivella pesante e danno anti-materiale su ogni arma pesante e a distanza",
