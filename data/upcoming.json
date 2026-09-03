@@ -1,6 +1,14 @@
 {
   "_comment": "Content for /upcoming/ (scripts/build_upcoming.py) AND for the machine-readable upcoming.json feed the Discord bot polls. Structure (id/status/target) is shared; prose is per language, keyed by the same ids -- the split data/changelog.json uses. The bot announces an entry ONCE, keyed by id, so changing an entry's prose does not re-announce it but adding a new id does. An empty board is allowed only when every language has an 'empty' line (V4.0.1); the feed then carries entries: [].",
-  "entries": [],
+  "entries": [
+    {
+      "id": "v4-1-1",
+      "status": "planned",
+      "target": "未定 / TBD",
+      "kind": "pack",
+      "url_path": "upcoming/"
+    }
+  ],
   "ar": {
     "title": "قريبًا",
     "description": "ما يجري العمل عليه قبل إصداره. قد يتغيّر الموعد والمحتوى.",
@@ -10,7 +18,20 @@
       "planned": "مخطَّط",
       "in_progress": "قيد العمل"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — زجاج مقوّى كيميائيًا، ياقوت أزرق، شبكة مياه، عتاد Apex",
+        "target_label": "لا موعد بعد",
+        "body": "التحديث الذي يلي V4.1 (التصنيع). زجاج يصمد أمام الحصار، وخام أندر من النذرايت، وشبكة مياه للمدينة، ودرع يتجاوز عتاد المملكة. قد يتغيّر الموعد والمحتوى.",
+        "items": [
+          "زجاج مقوّى كيميائيًا ونسخته المعتمة وفوانيس من كليهما. الألوان السبعة عشر كلها. نحو ثماني دقائق للكتلة الواحدة تحت الحصار",
+          "خام الياقوت الأزرق: أندر من الحطام القديم، جوهرة واحدة مدفونة في أعماق الصخر العميق",
+          "شبكة مياه للمدينة: مآخذ ومحطات ضخ وأنابيب ضغط وأبراج مياه وخزانات. لا تعمل الآلات بكامل سرعتها إلا على الشبكة",
+          "عتاد Apex: دفاع 100 للطقم الكامل مقابل 50 لعتاد المملكة. ويُصلَح بالياقوت الأزرق",
+          "تقوية قناعَي Sparxie وSparkle (المتانة والدفاع ×4) وتصحيح حجم عصا Sparxie في اليد"
+        ]
+      }
+    },
     "empty": "لا شيء مجدول الآن. عندما يتقرر التحديث التالي سيُعلن عنه هنا قبل صدوره."
   },
   "de": {
@@ -22,7 +43,20 @@
       "planned": "Geplant",
       "in_progress": "In Arbeit"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — chemisch gehärtetes Glas, Saphir, Wassernetz, Apex-Rüstung",
+        "target_label": "Noch kein Termin",
+        "body": "Das Update nach V4.1 (Industrialisierung). Glas, das eine Belagerung übersteht, ein Erz seltener als Netherit, ein städtisches Wassernetz und eine Rüstung jenseits der Königsrüstung. Zeitpunkt und Inhalt können sich ändern.",
+        "items": [
+          "Chemisch gehärtetes Glas, die getönte Variante und Laternen aus beiden. Alle 17 Farben. Rund acht Minuten pro Block unter Belagerung",
+          "Saphirerz: seltener als Antikschutt, ein einzelner Kristall tief im Tiefenschiefer",
+          "Ein städtisches Wassernetz: Entnahme, Pumpstationen, Druckrohre, Wassertürme und Speicher. Maschinen laufen erst am Netz mit voller Leistung",
+          "Apex-Rüstung: 100 Rüstung im vollen Satz, die Königsrüstung gibt 50. Repariert wird sie mit Saphir",
+          "Sparxie- und Sparkle-Masken verstärkt (Haltbarkeit und Rüstung x4), der Sparxie-Stab sitzt endlich richtig in der Hand"
+        ]
+      }
+    },
     "empty": "Derzeit ist nichts angekündigt. Sobald das nächste Update feststeht, wird es hier vor der Veröffentlichung angekündigt."
   },
   "en": {
@@ -34,7 +68,20 @@
       "planned": "Planned",
       "in_progress": "In progress"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — chemically strengthened glass, sapphire, mains water, Apex Gear",
+        "target_label": "No date yet",
+        "body": "The update after V4.1 (industrialisation). Glass that survives a siege, an ore rarer than netherite, a municipal water grid, and armour that goes beyond Kingdom Gear. Timing and contents may change.",
+        "items": [
+          "Chemically strengthened glass, its tinted twin, and lanterns of both. All 17 colours. About eight minutes per block under siege from a storm boss",
+          "Sapphire ore: rarer than ancient debris, a single gem buried deep in the deepslate",
+          "A municipal water grid: intakes, pump stations, pressure pipes, water towers and reservoirs. Machines only run at full rate once they are on the mains",
+          "Apex Gear: 100 defence for the full set, where Kingdom Gear gives 50. Sapphire is what repairs it",
+          "Sparxie and Sparkle masks buffed (durability and defence x4), and the Sparxie Wand sized properly in hand"
+        ]
+      }
+    },
     "empty": "Nothing is scheduled right now. When the next update is decided, it will be announced here before it ships."
   },
   "es": {
@@ -46,7 +93,20 @@
       "planned": "Previsto",
       "in_progress": "En curso"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — vidrio químicamente reforzado, zafiro, red de agua, equipo Apex",
+        "target_label": "Sin fecha aún",
+        "body": "La actualización posterior a V4.1 (industrialización). Vidrio que aguanta un asedio, un mineral más raro que la netherita, una red municipal de agua y una armadura que supera al equipo del Reino. La fecha y el contenido pueden cambiar.",
+        "items": [
+          "Vidrio químicamente reforzado, su versión tintada y linternas de ambos. Los 17 colores. Unos ocho minutos por bloque bajo asedio",
+          "Mena de zafiro: más rara que los restos antiguos, una sola gema enterrada en la pizarra profunda",
+          "Red municipal de agua: tomas, estaciones de bombeo, tuberías a presión, torres y depósitos. Las máquinas solo van a pleno rendimiento conectadas a la red",
+          "Equipo Apex: 100 de defensa con el conjunto completo, frente a los 50 del equipo del Reino. Se repara con zafiro",
+          "Máscaras Sparxie y Sparkle mejoradas (durabilidad y defensa x4) y la varita Sparxie con el tamaño correcto en la mano"
+        ]
+      }
+    },
     "empty": "Ahora mismo no hay nada anunciado. Cuando se decida la próxima actualización, se anunciará aquí antes de publicarse."
   },
   "fr": {
@@ -58,7 +118,20 @@
       "planned": "Prévu",
       "in_progress": "En cours"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — verre chimiquement renforcé, saphir, réseau d'eau, équipement Apex",
+        "target_label": "Pas encore de date",
+        "body": "La mise à jour qui suit V4.1 (industrialisation). Du verre qui tient un siège, un minerai plus rare que la netherite, un réseau d'eau municipal et une armure au-delà de l'équipement du Royaume. Date et contenu peuvent changer.",
+        "items": [
+          "Verre chimiquement renforcé, sa version teintée et des lanternes des deux. Les 17 couleurs. Environ huit minutes par bloc sous un siège",
+          "Minerai de saphir : plus rare que les débris antiques, une seule gemme enfouie dans l'ardoise des abîmes",
+          "Un réseau d'eau municipal : prises d'eau, stations de pompage, conduites sous pression, châteaux d'eau et réservoirs. Les machines ne tournent à plein régime qu'une fois raccordées",
+          "Équipement Apex : 100 de défense pour la panoplie complète, contre 50 pour l'équipement du Royaume. Il se répare au saphir",
+          "Masques Sparxie et Sparkle renforcés (durabilité et défense x4), et la baguette Sparxie enfin à la bonne taille en main"
+        ]
+      }
+    },
     "empty": "Rien n'est prévu pour le moment. Quand la prochaine mise à jour sera décidée, elle sera annoncée ici avant sa sortie."
   },
   "id": {
@@ -70,7 +143,20 @@
       "planned": "Direncanakan",
       "in_progress": "Sedang dikerjakan"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — kaca diperkuat secara kimia, safir, jaringan air, perlengkapan Apex",
+        "target_label": "Belum ada tanggal",
+        "body": "Pembaruan setelah V4.1 (industrialisasi). Kaca yang bertahan dari pengepungan, bijih yang lebih langka dari netherite, jaringan air kota, dan zirah di atas perlengkapan Kerajaan. Waktu dan isinya bisa berubah.",
+        "items": [
+          "Kaca diperkuat secara kimia, versi berwarnanya, dan lentera dari keduanya. Ke-17 warna. Sekitar delapan menit per balok saat dikepung",
+          "Bijih safir: lebih langka dari puing kuno, satu permata terkubur dalam di batu tubir",
+          "Jaringan air kota: pengambilan, stasiun pompa, pipa bertekanan, menara air, dan waduk. Mesin baru bekerja penuh setelah tersambung ke jaringan",
+          "Perlengkapan Apex: pertahanan 100 untuk satu set penuh, sementara perlengkapan Kerajaan 50. Diperbaiki dengan safir",
+          "Topeng Sparxie dan Sparkle diperkuat (ketahanan dan pertahanan x4), serta ukuran Tongkat Sparxie di tangan diperbaiki"
+        ]
+      }
+    },
     "empty": "Belum ada yang dijadwalkan saat ini. Saat pembaruan berikutnya diputuskan, akan diumumkan di sini sebelum dirilis."
   },
   "it": {
@@ -82,7 +168,20 @@
       "planned": "Previsto",
       "in_progress": "In lavorazione"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — vetro chimicamente rinforzato, zaffiro, rete idrica, equipaggiamento Apex",
+        "target_label": "Data non ancora fissata",
+        "body": "L'aggiornamento dopo V4.1 (industrializzazione). Vetro che regge un assedio, un minerale più raro del netherite, una rete idrica municipale e un'armatura oltre l'equipaggiamento del Regno. Tempi e contenuti possono cambiare.",
+        "items": [
+          "Vetro chimicamente rinforzato, la versione scurita e lanterne di entrambi. Tutti e 17 i colori. Circa otto minuti a blocco sotto assedio",
+          "Minerale di zaffiro: più raro dei detriti antichi, una sola gemma sepolta nell'ardesia profonda",
+          "Rete idrica municipale: prese, stazioni di pompaggio, condotte in pressione, torri e serbatoi. Le macchine vanno a pieno regime solo una volta allacciate",
+          "Equipaggiamento Apex: 100 di difesa con il set completo, contro i 50 del Regno. Si ripara con lo zaffiro",
+          "Maschere Sparxie e Sparkle potenziate (durabilità e difesa x4) e la bacchetta Sparxie finalmente della misura giusta in mano"
+        ]
+      }
+    },
     "empty": "Al momento non c'è nulla in programma. Quando il prossimo aggiornamento sarà deciso, verrà annunciato qui prima dell'uscita."
   },
   "ja": {
@@ -94,7 +193,20 @@
       "planned": "予定",
       "in_progress": "作業中"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — 化学強化ガラス、サファイア、上水道、エイペックス装備",
+        "target_label": "未定",
+        "body": "V4.1(工業化)に続く更新です。攻城戦に耐えるガラス、ネザライトより希少な鉱石、町の水道、そして王国装備を超える防具を予定しています。内容と時期は変わることがあります。",
+        "items": [
+          "化学強化ガラスと遮光版、それぞれのランタン。17 色すべて。攻城の巨獣に壊されるまで 1 ブロックあたり約 8 分",
+          "サファイア鉱石。古代の残骸より希少で、深い岩盤近くにひとつぶだけ埋まっています",
+          "上水道。取水口・加圧ポンプ・圧力管・給水塔・貯水槽。機械は水道につながって初めて全速で回ります",
+          "エイペックス装備。フルセットの防御 100(王国装備は 50)。修理にサファイアを使います",
+          "スパーシー / スパークルの仮面を強化(耐久と防御を 4 倍)、スパーシーの杖の持ち方を修正"
+        ]
+      }
+    },
     "empty": "いまは予告している項目がありません。次の更新が決まったら、配信より先にここで知らせます。"
   },
   "ko": {
@@ -106,7 +218,20 @@
       "planned": "예정",
       "in_progress": "작업 중"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — 화학 강화 유리, 사파이어, 상수도, 에이펙스 장비",
+        "target_label": "날짜 미정",
+        "body": "V4.1(산업화) 다음 업데이트입니다. 공성에 견디는 유리, 네더라이트보다 희귀한 광석, 도시 상수도, 그리고 왕국 장비를 넘어서는 방어구를 준비 중입니다. 시기와 내용은 바뀔 수 있습니다.",
+        "items": [
+          "화학 강화 유리와 착색 버전, 그리고 두 가지의 랜턴. 17색 전부. 공성 보스 앞에서 한 블록당 약 8분",
+          "사파이어 광석: 고대 잔해보다 희귀하며, 심층암 깊은 곳에 한 알만 묻혀 있습니다",
+          "도시 상수도: 취수구, 가압 펌프장, 압력관, 급수탑, 저수조. 기계는 상수도에 연결되어야 전속력으로 돌아갑니다",
+          "에이펙스 장비: 풀세트 방어 100(왕국 장비는 50). 수리에는 사파이어를 씁니다",
+          "Sparxie와 Sparkle 가면 강화(내구도와 방어 x4), Sparxie 지팡이의 손에 쥔 크기 수정"
+        ]
+      }
+    },
     "empty": "지금은 예고 중인 항목이 없습니다. 다음 업데이트가 정해지면 배포보다 먼저 여기에서 알립니다."
   },
   "pt-br": {
@@ -118,7 +243,20 @@
       "planned": "Previsto",
       "in_progress": "Em andamento"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — vidro quimicamente reforçado, safira, rede de água, equipamento Apex",
+        "target_label": "Sem data ainda",
+        "body": "A atualização depois do V4.1 (industrialização). Vidro que aguenta um cerco, um minério mais raro que a netherita, uma rede municipal de água e uma armadura além do equipamento do Reino. Prazo e conteúdo podem mudar.",
+        "items": [
+          "Vidro quimicamente reforçado, a versão fumê e lanternas dos dois. As 17 cores. Cerca de oito minutos por bloco sob cerco",
+          "Minério de safira: mais raro que os destroços antigos, uma única gema enterrada no ardósia profundo",
+          "Rede municipal de água: captações, estações de bombeamento, tubos pressurizados, caixas d'água e reservatórios. As máquinas só rodam a plena carga ligadas à rede",
+          "Equipamento Apex: 100 de defesa no conjunto completo, contra 50 do Reino. A safira é o que o conserta",
+          "Máscaras Sparxie e Sparkle reforçadas (durabilidade e defesa x4) e a varinha Sparxie no tamanho certo na mão"
+        ]
+      }
+    },
     "empty": "Nada está agendado agora. Quando a próxima atualização for decidida, ela será anunciada aqui antes de sair."
   },
   "ru": {
@@ -130,7 +268,20 @@
       "planned": "Запланировано",
       "in_progress": "В работе"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — химически упрочнённое стекло, сапфир, водопровод, снаряжение Apex",
+        "target_label": "Дата пока не назначена",
+        "body": "Обновление после V4.1 (индустриализация). Стекло, выдерживающее осаду, руда реже незерита, городской водопровод и броня выше Королевского снаряжения. Сроки и содержание могут измениться.",
+        "items": [
+          "Химически упрочнённое стекло, его затемнённая версия и фонари из обоих. Все 17 цветов. Около восьми минут на блок под осадой",
+          "Сапфировая руда: реже древних обломков, единственный кристалл глубоко в глубинном сланце",
+          "Городской водопровод: водозаборы, насосные станции, напорные трубы, водонапорные башни и резервуары. Машины работают на полную только в сети",
+          "Снаряжение Apex: 100 брони за полный комплект против 50 у Королевского. Чинится сапфиром",
+          "Маски Sparxie и Sparkle усилены (прочность и броня x4), посох Sparxie наконец нормального размера в руке"
+        ]
+      }
+    },
     "empty": "Сейчас ничего не запланировано. Когда следующее обновление будет решено, о нём объявят здесь до выхода."
   },
   "tr": {
@@ -142,7 +293,20 @@
       "planned": "Planlandı",
       "in_progress": "Üzerinde çalışılıyor"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — kimyasal olarak güçlendirilmiş cam, safir, şebeke suyu, Apex teçhizatı",
+        "target_label": "Henüz tarih yok",
+        "body": "V4.1'den (sanayileşme) sonraki güncelleme. Kuşatmaya dayanan cam, netherit'ten daha nadir bir cevher, şehir su şebekesi ve Krallık teçhizatını aşan bir zırh. Zaman ve içerik değişebilir.",
+        "items": [
+          "Kimyasal olarak güçlendirilmiş cam, renkli hâli ve ikisinin fenerleri. 17 rengin tamamı. Kuşatma altında blok başına yaklaşık sekiz dakika",
+          "Safir cevheri: kadim kalıntılardan daha nadir, derin arduvazın içine gömülü tek bir taş",
+          "Şehir su şebekesi: su alma, pompa istasyonları, basınçlı borular, su kuleleri ve depolar. Makineler ancak şebekeye bağlıyken tam hızda çalışır",
+          "Apex teçhizatı: tam takımda 100 savunma, Krallık teçhizatında 50. Onarımı safirle yapılır",
+          "Sparxie ve Sparkle maskeleri güçlendirildi (dayanıklılık ve savunma x4), Sparxie Asası elde doğru boyutta"
+        ]
+      }
+    },
     "empty": "Şu anda planlanmış bir şey yok. Bir sonraki güncelleme kararlaştırıldığında, yayınlanmadan önce burada duyurulacak."
   },
   "zh": {
@@ -154,7 +318,20 @@
       "planned": "计划中",
       "in_progress": "制作中"
     },
-    "entries": {},
+    "entries": {
+      "v4-1-1": {
+        "headline": "V4.1.1 — 化学强化玻璃、蓝宝石、自来水系统、Apex 装备",
+        "target_label": "日期未定",
+        "body": "V4.1(工业化)之后的更新。能扛住攻城的玻璃、比下界合金更稀有的矿石、城市供水系统,以及超越王国装备的护甲。时间与内容可能变动。",
+        "items": [
+          "化学强化玻璃、遮光版本,以及两者的灯笼。全部 17 种颜色。在攻城巨兽面前每块约需八分钟",
+          "蓝宝石矿:比远古残骸更稀有,深板岩深处只埋着一颗",
+          "城市供水:取水口、加压泵站、压力管、水塔与蓄水池。机器接入管网后才会全速运转",
+          "Apex 装备:整套防御 100,王国装备为 50。用蓝宝石修理",
+          "Sparxie 与 Sparkle 面具强化(耐久与防御 x4),Sparxie 法杖的握持尺寸修正"
+        ]
+      }
+    },
     "empty": "目前没有预告中的内容。下一次更新确定后,会先在这里公布,再进行发布。"
   }
 }
