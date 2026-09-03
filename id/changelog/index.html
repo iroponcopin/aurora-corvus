@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Riwayat Pembaruan</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Diperbarui 2026-09-02</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Diperbarui 2026-09-03</span></p>
     <p class="cl__note">Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.</p>
   </header>
 
@@ -225,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>Tidak ada pembaruan yang cocok dengan kriteria ini.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v4.0">
+<section class="cl__group" id="v4.1">
+      <h2 class="cl__groupTitle">V4.1</h2>
+      <p class="cl__groupSummary">Pembaruan industrialisasi: 29 elemen baru untuk menghancurkan bijih, membuat baja, dan menjalankan pabrik</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.1.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-0">
+          <h3 class="cl__version">V4.1.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-03</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-1-0" hidden><p class="cl__entryTitle">Pembaruan industrialisasi: 29 elemen baru untuk menghancurkan bijih, membuat baja, dan menjalankan pabrik</p><p class="cl__lede">Rantai industri lengkap hadir di mod tenaga. Mulai dari engkol tangan dan kincir air, hasilkan uap untuk listrik, buat baja di tanur kokas dan tanur tinggi, hancurkan dan cuci bijih menjadi pelat dan batang, lalu otomatiskan semuanya dengan sabuk dan lengan perakit. Dapat langsung dipasang di dunia yang sudah ada.</p><div class="cl__section"><h4 class="cl__sectionTitle">Perubahan <span>(10)</span></h4><ul class="cl__list"><li>Rotasi (01, 02, 09): engkol tangan, poros, kincir air, motor listrik. Poros hanya meneruskan pada sumbunya sendiri.</li><li>Uap (03, 04): ketel dan turbin. Bila kering, panas ketel naik sampai berhenti sepuluh detik.</li><li>Metalurgi (05, 06): tanur kokas dan tanur tinggi, keduanya bangunan 3x3x4 dari bata tahan api. Besi, kokas, dan kalsit menjadi **baja**.</li><li>Fluida (10, 11, 22, 23): pipa bertekanan dan katup, pompa, penyuling, generator bahan bakar. Pipa mengingat fluida pertama yang lewat.</li><li>Pengolahan (14-17, 24, 29): penghancur, pencuci, tanur busur, penggiling, bubut, dan pendaur - satu rantai utuh dengan dua belas bahan antara baru.</li><li>Logistik (12, 13, 18, 19): sabuk barang dan tanjakan, gerbang pemilah, lengan perakit, kartu cetak biru. Sabuk ini membawa **barang saja**.</li><li>Pabrik (25-28, 30): menara pengasap, sirene, perancah dan jembatan, kunci inggris, panel kendali. Sirene berbunyi bila ada mesin berpanas 90 atau lebih dalam 16 blok.</li><li>Setiap mesin kini punya panas 0 sampai 100 dan berhenti sepuluh detik di puncaknya. Tidak ada yang meledak.</li><li>Kabel, trafo, dan baterai **tidak** dibuat ulang: yang ada melayani mesin baru apa adanya.</li><li>Angka daya dikonversi ke jaringan yang ada dengan 1 IU/t = 20 W.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Penyesuaian Balance <span>(2)</span></h4><ul class="cl__list"><li>Satu sabuk menyerap 2,5 W; delapan sabuk setara satu mesin.</li><li>Bor Geofracture tetap tidak memerlukan listrik.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Catatan Penting <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>Dapat dipasang di dunia yang sudah ada; kunci ditambahkan otomatis saat mulai.</li><li>Uap, kreosot, bahan bakar, dan residu **tidak bisa diletakkan di dunia**.</li><li>Penyuling tidak membuang residunya: bila tangki penuh, mesin macet.</li><li>Panel kendali dan sirene melihat **mesin dengan block entity**; sabuk dan pipa tidak dihitung.</li><li>Mesin tidak punya layar: gunakan hopper dan wadah sebelah, klik kanan tangan kosong untuk status.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu <span>(3)</span></h4><ul class="cl__list"><li>Dynamic Tank pada spesifikasi tidak masuk rilis ini.</li><li>Bubuk beton abu-abu tidak ada di versi Minecraft ini, jadi pendaur menghasilkan andesit.</li><li>Tidak ada klien Minecraft di lingkungan pengembangan, sehingga tampilan, suara, dan partikel belum diperiksa dalam permainan.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v4.0">
       <h2 class="cl__groupTitle">V4.0</h2>
       <p class="cl__groupSummary">V4.0.1: setiap modul baru menjelaskan dirinya di tangan dan di halaman resep; Geofracture Drill tak perlu daya</p>
       <div class="cl__releases">

@@ -1,10 +1,65 @@
 {
  "lang": "de",
- "updated": "2026-09-02",
+ "updated": "2026-09-03",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-09-02",
+ "updated_label": "Aktualisiert am 2026-09-03",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
+  {
+   "label": "V4.1",
+   "summary": "Das Industrialisierungs-Update: 29 neue Elemente zum Erz brechen, Stahl kochen und Fabriken betreiben",
+   "releases": [
+    {
+     "version": "V4.1.0",
+     "date": "2026-09-03",
+     "type": "release",
+     "title": "Das Industrialisierungs-Update: 29 neue Elemente zum Erz brechen, Stahl kochen und Fabriken betreiben",
+     "summary": "Eine vollständige Industriekette kommt in den Energie-Mod. Beginnen Sie mit Handkurbel und Wasserrad, machen Sie Dampf für Strom, kochen Sie Stahl in Koksofen und Hochofen, brechen und waschen Sie Erz zu Platten und Stäben, und automatisieren Sie alles mit Bändern und einem Montagearm. Lässt sich direkt in eine bestehende Welt einbauen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Drehkraft (01, 02, 09): Handkurbel, Antriebswelle, Wasserrad, Elektromotor. Eine Welle überträgt nur entlang ihrer eigenen Achse.",
+        "Dampf (03, 04): Kessel und Turbine. Läuft der Kessel trocken, steigt die Hitze bis zur zehn Sekunden langen Abschaltung.",
+        "Metallurgie (05, 06): Koksofen und Hochofen, beide 3x3x4 aus Schamottstein. Eisen, Koks und Calcit ergeben **Stahl**, das erste Metall dieses Pakets.",
+        "Flüssigkeiten (10, 11, 22, 23): Druckrohre und Ventil, Pumpe, Destillerie, Kraftstoffgenerator. Ein Rohr merkt sich die erste Flüssigkeit.",
+        "Verarbeitung (14-17, 24, 29): Brecher, Erzwäsche, Lichtbogenofen, Walzwerk, Drehbank, Verwerter - eine durchgehende Kette mit zwölf neuen Zwischenprodukten.",
+        "Logistik (12, 13, 18, 19): Förderband und Rampe, Sortierer, Montagearm, Blaupausenkarte. Diese Bänder tragen **nur Gegenstände**.",
+        "Fabrik (25-28, 30): Räucherturm, Sirene, Gerüst und Laufsteg, Schraubenschlüssel, Leitstand. Die Sirene meldet Hitze ab 90 im Umkreis von 16 Blöcken.",
+        "Jede Maschine hat nun Hitze von 0 bis 100 und stoppt bei 100 für zehn Sekunden. Nichts explodiert.",
+        "Kabel, Transformator und Akku werden **nicht** neu gebaut - die vorhandenen dienen den neuen Maschinen unverändert.",
+        "Die Leistungsangaben rechnen mit 1 IU/t = 20 W auf das bestehende Netz um."
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Ein Förderband zieht 2,5 W; acht davon sind genau eine Maschine.",
+        "Der Geofracture Drill braucht weiterhin keinen Strom."
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Lässt sich direkt in eine bestehende Welt einbauen; die Schlüssel werden beim Start ergänzt.",
+        "Dampf, Kreosot, Kraftstoff und Rückstand **lassen sich nicht in der Welt platzieren**.",
+        "Die Destillerie wirft ihren Rückstand nicht weg - bei vollem Tank blockiert sie.",
+        "Leitstand und Sirene sehen **Maschinen mit Blockentität**; Bänder und Rohre nicht.",
+        "Die Maschinen haben keine Bildschirme: Trichter, Nachbarkisten und Rechtsklick mit leerer Hand."
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Der Dynamic Tank der Spezifikation ist nicht enthalten und wird nachgereicht.",
+        "Grauen Betonstaub gibt es in dieser Minecraft-Version nicht; der Verwerter liefert Andesit.",
+        "Ohne Minecraft-Client in der Entwicklungsumgebung sind Optik, Klänge und Partikel nicht im Spiel geprüft."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.0",
    "summary": "V4.0.1: Jedes neue Modul erklärt sich jetzt in der Hand und auf den Rezeptseiten; der Geofracture Drill braucht keinen Strom",

@@ -1818,6 +1818,42 @@
         "Non c'è un client Minecraft nell'ambiente di sviluppo, quindi l'aspetto del testo e delle righe di stato non è stato verificato in gioco.",
         "La guida d'uso è solo in giapponese, come la guida all'energia esistente."
       ]
+    },
+    {
+      "id": "v4.1.0",
+      "release": "V4.1.0",
+      "date": "2026-09-03",
+      "type": "release",
+      "title": "L'aggiornamento industrializzazione: 29 nuovi elementi per frantumare minerale, fare acciaio e gestire una fabbrica",
+      "summary": "Arriva una catena industriale completa nel mod energia. Si parte da manovella e ruota idraulica, si produce vapore per l'elettricità, si fa acciaio con forno da coke e altoforno, si frantuma e si lava il minerale fino a piastre e barre, e si automatizza tutto con nastri e un braccio assemblatore. Si installa direttamente in un mondo esistente.",
+      "highlights": [
+        "Rotazione (01, 02, 09): manovella, albero, ruota idraulica, motore elettrico. Un albero trasmette solo lungo il proprio asse.",
+        "Vapore (03, 04): caldaia e turbina. A secco la caldaia si scalda fino a fermarsi per dieci secondi.",
+        "Metallurgia (05, 06): forno da coke e altoforno, entrambi 3x3x4 in mattoni refrattari. Ferro, coke e calcite danno l'**acciaio**, primo metallo del pacchetto.",
+        "Fluidi (10, 11, 22, 23): tubi in pressione e valvola, pompa, distilleria, generatore a combustibile. Un tubo ricorda il primo fluido passato.",
+        "Lavorazione (14-17, 24, 29): frantoio, lavatore, forno ad arco, laminatoio, tornio e riciclatore: una catena continua con dodici materiali nuovi.",
+        "Logistica (12, 13, 18, 19): nastro e rampa, selettore, braccio assemblatore, scheda progetto. Questi nastri portano **solo oggetti**.",
+        "Fabbrica (25-28, 30): affumicatoio, sirena, impalcatura e passerella, chiave inglese, quadro di controllo. La sirena segnala calore 90 o più entro 16 blocchi.",
+        "Ogni macchina ha calore da 0 a 100 e si ferma dieci secondi al massimo. Nulla esplode.",
+        "Cavi, trasformatore e batteria **non** vengono rifatti: quelli esistenti servono le nuove macchine così come sono.",
+        "Le potenze si convertono sulla rete attuale con 1 IU/t = 20 W."
+      ],
+      "balance_changes": [
+        "Un nastro assorbe 2,5 W; otto nastri valgono una macchina.",
+        "La trivella Geofracture continua a non richiedere elettricità."
+      ],
+      "warnings": [
+        "Si installa in un mondo esistente; le chiavi vengono aggiunte all'avvio.",
+        "Vapore, creosoto, carburante e residuo **non si possono posare nel mondo**.",
+        "La distilleria non butta il residuo: a serbatoio pieno si blocca.",
+        "Quadro e sirena guardano le **macchine con block entity**; nastri e tubi no.",
+        "Le macchine non hanno schermi: tramogge, contenitori adiacenti e clic destro a mani vuote."
+      ],
+      "known_limitations": [
+        "Il Dynamic Tank della specifica non è in questa versione.",
+        "La polvere di calcestruzzo grigia non esiste in questa versione di Minecraft; il riciclatore dà andesite.",
+        "Senza client Minecraft nell'ambiente di sviluppo, aspetto, suoni e particelle non sono stati verificati in gioco."
+      ]
     }
   ],
   "roadmap": {

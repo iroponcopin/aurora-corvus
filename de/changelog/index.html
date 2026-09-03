@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Änderungsprotokoll</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Aktualisiert am 2026-09-02</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Aktualisiert am 2026-09-03</span></p>
     <p class="cl__note">Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.</p>
   </header>
 
@@ -225,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>Keine Updates gefunden, die den Kriterien entsprechen.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v4.0">
+<section class="cl__group" id="v4.1">
+      <h2 class="cl__groupTitle">V4.1</h2>
+      <p class="cl__groupSummary">Das Industrialisierungs-Update: 29 neue Elemente zum Erz brechen, Stahl kochen und Fabriken betreiben</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.1.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-0">
+          <h3 class="cl__version">V4.1.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-03</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-1-0" hidden><p class="cl__entryTitle">Das Industrialisierungs-Update: 29 neue Elemente zum Erz brechen, Stahl kochen und Fabriken betreiben</p><p class="cl__lede">Eine vollständige Industriekette kommt in den Energie-Mod. Beginnen Sie mit Handkurbel und Wasserrad, machen Sie Dampf für Strom, kochen Sie Stahl in Koksofen und Hochofen, brechen und waschen Sie Erz zu Platten und Stäben, und automatisieren Sie alles mit Bändern und einem Montagearm. Lässt sich direkt in eine bestehende Welt einbauen.</p><div class="cl__section"><h4 class="cl__sectionTitle">Änderungen <span>(10)</span></h4><ul class="cl__list"><li>Drehkraft (01, 02, 09): Handkurbel, Antriebswelle, Wasserrad, Elektromotor. Eine Welle überträgt nur entlang ihrer eigenen Achse.</li><li>Dampf (03, 04): Kessel und Turbine. Läuft der Kessel trocken, steigt die Hitze bis zur zehn Sekunden langen Abschaltung.</li><li>Metallurgie (05, 06): Koksofen und Hochofen, beide 3x3x4 aus Schamottstein. Eisen, Koks und Calcit ergeben **Stahl**, das erste Metall dieses Pakets.</li><li>Flüssigkeiten (10, 11, 22, 23): Druckrohre und Ventil, Pumpe, Destillerie, Kraftstoffgenerator. Ein Rohr merkt sich die erste Flüssigkeit.</li><li>Verarbeitung (14-17, 24, 29): Brecher, Erzwäsche, Lichtbogenofen, Walzwerk, Drehbank, Verwerter - eine durchgehende Kette mit zwölf neuen Zwischenprodukten.</li><li>Logistik (12, 13, 18, 19): Förderband und Rampe, Sortierer, Montagearm, Blaupausenkarte. Diese Bänder tragen **nur Gegenstände**.</li><li>Fabrik (25-28, 30): Räucherturm, Sirene, Gerüst und Laufsteg, Schraubenschlüssel, Leitstand. Die Sirene meldet Hitze ab 90 im Umkreis von 16 Blöcken.</li><li>Jede Maschine hat nun Hitze von 0 bis 100 und stoppt bei 100 für zehn Sekunden. Nichts explodiert.</li><li>Kabel, Transformator und Akku werden **nicht** neu gebaut - die vorhandenen dienen den neuen Maschinen unverändert.</li><li>Die Leistungsangaben rechnen mit 1 IU/t = 20 W auf das bestehende Netz um.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Balance-Anpassungen <span>(2)</span></h4><ul class="cl__list"><li>Ein Förderband zieht 2,5 W; acht davon sind genau eine Maschine.</li><li>Der Geofracture Drill braucht weiterhin keinen Strom.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Hinweise <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>Lässt sich direkt in eine bestehende Welt einbauen; die Schlüssel werden beim Start ergänzt.</li><li>Dampf, Kreosot, Kraftstoff und Rückstand **lassen sich nicht in der Welt platzieren**.</li><li>Die Destillerie wirft ihren Rückstand nicht weg - bei vollem Tank blockiert sie.</li><li>Leitstand und Sirene sehen **Maschinen mit Blockentität**; Bänder und Rohre nicht.</li><li>Die Maschinen haben keine Bildschirme: Trichter, Nachbarkisten und Rechtsklick mit leerer Hand.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt <span>(3)</span></h4><ul class="cl__list"><li>Der Dynamic Tank der Spezifikation ist nicht enthalten und wird nachgereicht.</li><li>Grauen Betonstaub gibt es in dieser Minecraft-Version nicht; der Verwerter liefert Andesit.</li><li>Ohne Minecraft-Client in der Entwicklungsumgebung sind Optik, Klänge und Partikel nicht im Spiel geprüft.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v4.0">
       <h2 class="cl__groupTitle">V4.0</h2>
       <p class="cl__groupSummary">V4.0.1: Jedes neue Modul erklärt sich jetzt in der Hand und auf den Rezeptseiten; der Geofracture Drill braucht keinen Strom</p>
       <div class="cl__releases">

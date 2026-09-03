@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">업데이트 기록</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-09-02</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-09-03</span></p>
     <p class="cl__note">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
   </header>
 
@@ -225,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>조건에 맞는 업데이트가 없습니다.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v4.0">
+<section class="cl__group" id="v4.1">
+      <h2 class="cl__groupTitle">V4.1</h2>
+      <p class="cl__groupSummary">산업화 업데이트: 광석을 부수고 강철을 만들고 공장을 돌리는 29가지 새 요소</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.1.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-0">
+          <h3 class="cl__version">V4.1.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-03</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-1-0" hidden><p class="cl__entryTitle">산업화 업데이트: 광석을 부수고 강철을 만들고 공장을 돌리는 29가지 새 요소</p><p class="cl__lede">전력 모드에 완전한 산업 사슬이 들어옵니다. 손 크랭크와 물레바퀴에서 시작해 증기로 전기를 만들고, 코크스로와 고로에서 강철을 만들고, 광석을 부수고 씻어 판과 봉으로 가공하고, 벨트와 조립 팔로 자동화합니다. 기존 월드에 그대로 설치할 수 있습니다.</p><div class="cl__section"><h4 class="cl__sectionTitle">변경 사항 <span>(10)</span></h4><ul class="cl__list"><li>회전(01, 02, 09): 손 크랭크, 동력축, 물레바퀴, 전동기. 축은 자기 방향으로만 회전을 전달합니다.</li><li>증기(03, 04): 보일러와 터빈. 물 없이 계속 때면 열이 올라 10초간 멈춥니다.</li><li>야금(05, 06): 코크스로와 고로. 둘 다 내화벽돌로 쌓는 3×3×4 구조물입니다. 철과 코크스와 방해석으로 **강철**을 만듭니다.</li><li>유체(10, 11, 22, 23): 압력관과 밸브, 전동 펌프, 증류기, 연료 발전기. 관은 처음 흘린 액체를 기억합니다.</li><li>가공(14-17, 24, 29): 분쇄기, 세광기, 아크로, 압연기, 선반, 재처리기가 하나의 사슬로 이어지고 중간 재료 12종이 추가됩니다.</li><li>물류(12, 13, 18, 19): 아이템 컨베이어와 경사로, 분류문, 조립 팔, 청사진 카드. 이 벨트는 **아이템만** 옮깁니다.</li><li>공장(25-28, 30): 산업용 훈연탑, 안전 경보, 비계와 통로, 렌치, 공장 제어반. 16블록 안에 열 90 이상인 기계가 있으면 경보가 울립니다.</li><li>모든 기계가 0~100의 열을 가지며 100에서 10초간 멈춥니다. 폭발하지 않습니다.</li><li>케이블·변압기·축전지는 **새로 만들지 않았습니다**. 기존 것이 새 기계를 그대로 지원합니다.</li><li>출력 수치는 1 IU/t = 20 W로 기존 전력망에 맞춰 환산했습니다.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">밸런스 조정 <span>(2)</span></h4><ul class="cl__list"><li>컨베이어 한 장은 2.5 W로, 여덟 장이 정확히 기계 한 대분입니다.</li><li>지각 굴착기는 여전히 전기가 필요 없습니다.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">주의 사항 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>기존 월드에 그대로 설치됩니다. 설정 항목은 시작할 때 자동으로 추가됩니다.</li><li>증기·크레오소트·정제 연료·잔재는 **월드에 놓을 수 없습니다**.</li><li>증류기는 잔재를 버리지 않습니다. 탱크가 차면 멈춥니다.</li><li>제어반과 경보는 **블록 엔티티가 있는 기계**를 봅니다. 벨트와 관은 세지 않습니다.</li><li>기계에는 화면이 없습니다. 호퍼와 인접 컨테이너로 넣고 빼며, 맨손 우클릭으로 상태를 확인합니다.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">이 시점에 미구현·미확인이었던 사항 <span>(3)</span></h4><ul class="cl__list"><li>명세의 동적 탱크는 이번 배포에 포함되지 않았습니다.</li><li>이 버전의 마인크래프트에는 회색 콘크리트 가루가 없어 재처리기는 안산암을 냅니다.</li><li>개발 환경에 마인크래프트 클라이언트가 없어 외형·소리·입자는 게임에서 확인하지 못했습니다.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v4.0">
       <h2 class="cl__groupTitle">V4.0</h2>
       <p class="cl__groupSummary">V4.0.1: 새 모듈 20개가 손에 들었을 때와 레시피 페이지에서 사용법을 알려 줍니다. Geofracture Drill은 전력 불필요</p>
       <div class="cl__releases">

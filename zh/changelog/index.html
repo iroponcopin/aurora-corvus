@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新日志</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-02</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-03</span></p>
     <p class="cl__note">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
   </header>
 
@@ -225,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>没有符合条件的更新记录。</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v4.0">
+<section class="cl__group" id="v4.1">
+      <h2 class="cl__groupTitle">V4.1</h2>
+      <p class="cl__groupSummary">工业化更新:29 个新要素,用来碎矿、炼钢、开工厂</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.1.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-0">
+          <h3 class="cl__version">V4.1.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-03</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-1-0" hidden><p class="cl__entryTitle">工业化更新:29 个新要素,用来碎矿、炼钢、开工厂</p><p class="cl__lede">电力模组迎来完整的工业链。从手摇曲柄和水车起步,用蒸汽发电,在焦炉与高炉里炼钢,把矿石碎开洗净做成板材与棒材,再用传送带和组装臂把一切自动化。可直接装入现有世界,配置文件会在首次启动时自动补上新条目。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(10)</span></h4><ul class="cl__list"><li>旋转(01、02、09):手摇曲柄、动力轴、水车、电动机。轴只沿自身朝向传递动力,抽掉一根就断。</li><li>蒸汽(03、04):蒸汽锅炉与蒸汽轮机。锅炉烧干后热度上升,到顶会停机十秒。</li><li>冶金(05、06):焦炉与高炉,都是耐火砖搭的 3×3×4 结构。铁、焦炭与方解石炼出**钢**,这是本整合包的第一种金属。</li><li>流体(10、11、22、23):压力管与阀门、电动泵、蒸馏器、燃料发电机。管道记住第一种流过的液体,排空前不通别的。</li><li>加工(14-17、24、29):粉碎机、洗矿机、电弧炉、轧机、车床与回收机,连成一条完整的链,新增十二种中间materials。</li><li>物流(12、13、18、19):物品传送带与坡道、分拣门、组装臂、蓝图卡。这些传送带**只运物品**。</li><li>工厂(25-28、30):工业熏制塔、安全警报、脚手架与走道、扳手、控制台。半径 16 内有机器热度达 90,警报就会响并输出红石。</li><li>所有机器都有 0-100 的热度,到顶停机十秒,不会爆炸。</li><li>电缆、变压器与蓄电池**没有重做**,现有的直接为新机器服务。</li><li>功率按 1 IU/t = 20 W 换算到现有电网。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">平衡性调整 <span>(2)</span></h4><ul class="cl__list"><li>一条传送带耗 2.5 W,八条正好等于一台机器。</li><li>地壳钻机仍然不需要电力。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>可直接装入现有世界,启动时自动补上配置项。</li><li>蒸汽、木馏油、精炼燃料与残渣**不能放置在世界中**。</li><li>蒸馏器不会丢弃残渣:残渣罐满了就会卡住。</li><li>控制台与警报只看**带方块实体的机器**,传送带和管道不计入。</li><li>机器没有界面:用漏斗与相邻容器进出,空手右键查看状态。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(3)</span></h4><ul class="cl__list"><li>规格中的动态储罐未包含在本次更新中。</li><li>此版本 Minecraft 没有灰色混凝土粉末,回收机改为产出安山岩。</li><li>开发环境没有 Minecraft 客户端,新机器的外观、声音与粒子未在游戏内确认。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v4.0">
       <h2 class="cl__groupTitle">V4.0</h2>
       <p class="cl__groupSummary">V4.0.1:20 个新模块在手中和配方页面都能看懂用法;Geofracture Drill 不再需要电力</p>
       <div class="cl__releases">

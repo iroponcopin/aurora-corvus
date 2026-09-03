@@ -1,10 +1,65 @@
 {
  "lang": "pt-br",
- "updated": "2026-09-02",
+ "updated": "2026-09-03",
  "title": "Histórico de atualizações",
- "updated_label": "Atualizado em 2026-09-02",
+ "updated_label": "Atualizado em 2026-09-03",
  "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
  "groups": [
+  {
+   "label": "V4.1",
+   "summary": "A atualização de industrialização: 29 novos elementos para triturar minério, fazer aço e tocar uma fábrica",
+   "releases": [
+    {
+     "version": "V4.1.0",
+     "date": "2026-09-03",
+     "type": "release",
+     "title": "A atualização de industrialização: 29 novos elementos para triturar minério, fazer aço e tocar uma fábrica",
+     "summary": "Chega uma cadeia industrial completa ao mod de energia. Comece com a manivela e a roda d'água, faça vapor para eletricidade, produza aço no forno de coque e no alto-forno, triture e lave minério até virar placas e hastes, e automatize tudo com esteiras e um braço montador. Instala direto em um mundo existente.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Rotação (01, 02, 09): manivela, eixo, roda d'água e motor elétrico. Um eixo só transmite ao longo do próprio eixo.",
+        "Vapor (03, 04): caldeira e turbina. Sem água, a caldeira esquenta até parar por dez segundos.",
+        "Metalurgia (05, 06): forno de coque e alto-forno, ambos 3x3x4 em tijolo refratário. Ferro, coque e calcita viram **aço**, o primeiro metal do pacote.",
+        "Fluidos (10, 11, 22, 23): tubos pressurizados e válvula, bomba, destilaria e gerador a combustível. O tubo lembra o primeiro fluido que passou.",
+        "Processamento (14-17, 24, 29): triturador, lavador, forno a arco, laminador, torno e reciclador: uma cadeia contínua com doze materiais novos.",
+        "Logística (12, 13, 18, 19): esteira e rampa, separador, braço montador e cartão de projeto. Estas esteiras levam **apenas itens**.",
+        "Fábrica (25-28, 30): defumador, sirene, andaime e passarela, chave inglesa e painel de controle. A sirene avisa com calor 90 ou mais em 16 blocos.",
+        "Toda máquina tem calor de 0 a 100 e para por dez segundos ao chegar ao topo. Nada explode.",
+        "Cabos, transformador e bateria **não** foram refeitos: os existentes servem às novas máquinas como estão.",
+        "As potências convertem para a rede atual a 1 IU/t = 20 W."
+       ]
+      },
+      {
+       "title": "Ajustes de balanceamento",
+       "items": [
+        "Uma esteira consome 2,5 W; oito delas equivalem a uma máquina.",
+        "A perfuratriz Geofracture continua sem precisar de eletricidade."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Instala em um mundo existente; as chaves entram sozinhas ao iniciar.",
+        "Vapor, creosoto, combustível e resíduo **não podem ser colocados no mundo**.",
+        "A destilaria não joga fora o resíduo: com o tanque cheio, ela trava.",
+        "O painel e a sirene observam **máquinas com block entity**; esteiras e tubos não contam.",
+        "As máquinas não têm telas: funis, baús vizinhos e clique direito de mão vazia."
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "O Dynamic Tank da especificação não entra nesta versão.",
+        "O pó de concreto cinza não existe nesta versão do Minecraft; o reciclador dá andesito.",
+        "Sem cliente do Minecraft no ambiente, visual, sons e partículas não foram conferidos no jogo."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.0",
    "summary": "V4.0.1: cada módulo novo se explica na mão e nas páginas de receitas; o Geofracture Drill não precisa de energia",

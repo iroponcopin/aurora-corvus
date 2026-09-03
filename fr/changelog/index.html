@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Historique des mises à jour</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Mis à jour le 2026-09-02</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Mis à jour le 2026-09-03</span></p>
     <p class="cl__note">Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.</p>
   </header>
 
@@ -225,7 +225,20 @@
   <p id="changelogEmpty" class="cl__empty" hidden>Aucune mise à jour ne correspond à ces critères.</p>
 
   <div id="changelogGroups" data-cut="8">
-<section class="cl__group" id="v4.0">
+<section class="cl__group" id="v4.1">
+      <h2 class="cl__groupTitle">V4.1</h2>
+      <p class="cl__groupSummary">La mise à jour industrialisation : 29 nouveaux éléments pour concasser le minerai, faire l&#x27;acier et tenir une usine</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V4.1.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-0">
+          <h3 class="cl__version">V4.1.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-03</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-1-0" hidden><p class="cl__entryTitle">La mise à jour industrialisation : 29 nouveaux éléments pour concasser le minerai, faire l&#x27;acier et tenir une usine</p><p class="cl__lede">Une chaîne industrielle complète arrive dans le mod énergie. Commencez à la manivelle et à la roue à aubes, faites de la vapeur pour l&#x27;électricité, produisez de l&#x27;acier au four à coke et au haut fourneau, concassez et lavez le minerai jusqu&#x27;aux plaques et aux tiges, puis automatisez le tout avec des tapis et un bras assembleur. S&#x27;installe directement dans un monde existant.</p><div class="cl__section"><h4 class="cl__sectionTitle">Changements <span>(10)</span></h4><ul class="cl__list"><li>Rotation (01, 02, 09) : manivelle, arbre, roue à aubes, moteur électrique. Un arbre ne transmet que le long de son propre axe.</li><li>Vapeur (03, 04) : chaudière et turbine. À sec, la chaudière chauffe jusqu&#x27;à s&#x27;arrêter dix secondes.</li><li>Métallurgie (05, 06) : four à coke et haut fourneau, deux structures 3x3x4 en brique réfractaire. Fer, coke et calcite donnent l&#x27;**acier**, premier métal du pack.</li><li>Fluides (10, 11, 22, 23) : conduites sous pression et vanne, pompe, distillerie, générateur à carburant. Une conduite retient le premier fluide passé.</li><li>Transformation (14-17, 24, 29) : concasseur, laveur, four à arc, laminoir, tour et recycleur - une chaîne continue et douze matériaux intermédiaires.</li><li>Logistique (12, 13, 18, 19) : tapis et rampe, trieur, bras assembleur, carte de plan. Ces tapis ne transportent **que des objets**.</li><li>Usine (25-28, 30) : fumoir, sirène, échafaudage et passerelle, clé, pupitre. La sirène signale une chaleur de 90 ou plus dans 16 blocs.</li><li>Chaque machine porte une chaleur de 0 à 100 et s&#x27;arrête dix secondes au maximum. Rien n&#x27;explose.</li><li>Câbles, transformateur et batterie ne sont **pas** refaits : l&#x27;existant sert les nouvelles machines tel quel.</li><li>Les puissances se convertissent sur le réseau actuel à 1 IU/t = 20 W.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Ajustements d&#x27;équilibrage <span>(2)</span></h4><ul class="cl__list"><li>Un tapis consomme 2,5 W ; huit tapis valent une machine.</li><li>La foreuse Geofracture n&#x27;a toujours pas besoin d&#x27;électricité.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Points d&#x27;attention <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>S&#x27;installe dans un monde existant ; les clés sont ajoutées au démarrage.</li><li>Vapeur, créosote, carburant et résidu **ne se posent pas dans le monde**.</li><li>La distillerie ne jette pas son résidu : cuve pleine, elle se bloque.</li><li>Le pupitre et la sirène surveillent les **machines dotées d&#x27;une entité de bloc**.</li><li>Les machines n&#x27;ont pas d&#x27;écran : entonnoirs, coffres voisins, clic droit à main nue.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Ce qui n&#x27;était pas encore implémenté ou vérifié à ce stade <span>(3)</span></h4><ul class="cl__list"><li>Le Dynamic Tank de la spécification n&#x27;est pas dans cette version.</li><li>La poudre de béton grise n&#x27;existe pas dans cette version de Minecraft ; le recycleur rend de l&#x27;andésite.</li><li>Sans client Minecraft dans l&#x27;environnement, l&#x27;aspect, les sons et les particules n&#x27;ont pas été vérifiés en jeu.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section><section class="cl__group" id="v4.0">
       <h2 class="cl__groupTitle">V4.0</h2>
       <p class="cl__groupSummary">V4.0.1 : chaque nouveau module s&#x27;explique en main et sur les pages de recettes ; le Geofracture Drill n&#x27;a plus besoin d&#x27;énergie</p>
       <div class="cl__releases">

@@ -1,10 +1,65 @@
 {
  "lang": "id",
- "updated": "2026-09-02",
+ "updated": "2026-09-03",
  "title": "Riwayat Pembaruan",
- "updated_label": "Diperbarui 2026-09-02",
+ "updated_label": "Diperbarui 2026-09-03",
  "note": "Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.",
  "groups": [
+  {
+   "label": "V4.1",
+   "summary": "Pembaruan industrialisasi: 29 elemen baru untuk menghancurkan bijih, membuat baja, dan menjalankan pabrik",
+   "releases": [
+    {
+     "version": "V4.1.0",
+     "date": "2026-09-03",
+     "type": "release",
+     "title": "Pembaruan industrialisasi: 29 elemen baru untuk menghancurkan bijih, membuat baja, dan menjalankan pabrik",
+     "summary": "Rantai industri lengkap hadir di mod tenaga. Mulai dari engkol tangan dan kincir air, hasilkan uap untuk listrik, buat baja di tanur kokas dan tanur tinggi, hancurkan dan cuci bijih menjadi pelat dan batang, lalu otomatiskan semuanya dengan sabuk dan lengan perakit. Dapat langsung dipasang di dunia yang sudah ada.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Rotasi (01, 02, 09): engkol tangan, poros, kincir air, motor listrik. Poros hanya meneruskan pada sumbunya sendiri.",
+        "Uap (03, 04): ketel dan turbin. Bila kering, panas ketel naik sampai berhenti sepuluh detik.",
+        "Metalurgi (05, 06): tanur kokas dan tanur tinggi, keduanya bangunan 3x3x4 dari bata tahan api. Besi, kokas, dan kalsit menjadi **baja**.",
+        "Fluida (10, 11, 22, 23): pipa bertekanan dan katup, pompa, penyuling, generator bahan bakar. Pipa mengingat fluida pertama yang lewat.",
+        "Pengolahan (14-17, 24, 29): penghancur, pencuci, tanur busur, penggiling, bubut, dan pendaur - satu rantai utuh dengan dua belas bahan antara baru.",
+        "Logistik (12, 13, 18, 19): sabuk barang dan tanjakan, gerbang pemilah, lengan perakit, kartu cetak biru. Sabuk ini membawa **barang saja**.",
+        "Pabrik (25-28, 30): menara pengasap, sirene, perancah dan jembatan, kunci inggris, panel kendali. Sirene berbunyi bila ada mesin berpanas 90 atau lebih dalam 16 blok.",
+        "Setiap mesin kini punya panas 0 sampai 100 dan berhenti sepuluh detik di puncaknya. Tidak ada yang meledak.",
+        "Kabel, trafo, dan baterai **tidak** dibuat ulang: yang ada melayani mesin baru apa adanya.",
+        "Angka daya dikonversi ke jaringan yang ada dengan 1 IU/t = 20 W."
+       ]
+      },
+      {
+       "title": "Penyesuaian Balance",
+       "items": [
+        "Satu sabuk menyerap 2,5 W; delapan sabuk setara satu mesin.",
+        "Bor Geofracture tetap tidak memerlukan listrik."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Dapat dipasang di dunia yang sudah ada; kunci ditambahkan otomatis saat mulai.",
+        "Uap, kreosot, bahan bakar, dan residu **tidak bisa diletakkan di dunia**.",
+        "Penyuling tidak membuang residunya: bila tangki penuh, mesin macet.",
+        "Panel kendali dan sirene melihat **mesin dengan block entity**; sabuk dan pipa tidak dihitung.",
+        "Mesin tidak punya layar: gunakan hopper dan wadah sebelah, klik kanan tangan kosong untuk status."
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Dynamic Tank pada spesifikasi tidak masuk rilis ini.",
+        "Bubuk beton abu-abu tidak ada di versi Minecraft ini, jadi pendaur menghasilkan andesit.",
+        "Tidak ada klien Minecraft di lingkungan pengembangan, sehingga tampilan, suara, dan partikel belum diperiksa dalam permainan."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.0",
    "summary": "V4.0.1: setiap modul baru menjelaskan dirinya di tangan dan di halaman resep; Geofracture Drill tak perlu daya",
