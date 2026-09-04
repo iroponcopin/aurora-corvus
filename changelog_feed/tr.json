@@ -7,8 +7,47 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Kül Konurbasyonu — kirlenmiş koca bir mega şehir",
+   "summary": "Kül Kentsel Alanı'nın son rötuşları, ayrıca Çarklı Kasa Kapısı ve Perçinli Kapak",
    "releases": [
+    {
+     "version": "V4.2.1",
+     "date": "2026-09-04",
+     "type": "release",
+     "title": "Kül Kentsel Alanı'nın son rötuşları, ayrıca Çarklı Kasa Kapısı ve Perçinli Kapak",
+     "summary": "V4.2'nin kurduğu sistemlere görünüm ve his kazandıran küçük bir güncelleme. Şehrin gökyüzü yıldızsız ve aysız sonsuz bir alacakaranlığa dönüşüyor, sis mahalle mahalle koyulaşıyor. Tortu tomurcukları büyüyor, Kinetik Kasılma'nın mili dönüyor ve Etüt Haritası şehri ekranına çiziyor. Üç hata düzeltildi, üç sayı ayarlandı. Bunun yanında yapı modu, tasarım görsellerinden üretilen Çarklı Kasa Kapısı (3×3) ve Perçinli Kapak (2×2) kazanıyor; ikisi de animasyonlu: kasa kapısı, kanat açılmadan önce el çarkını çevirip sürgülerini çekiyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Çarklı Kasa Kapısı (3×3) ve Perçinli Kapak (2×2, zemin veya tavan): 3D görsellerden parça parça yeniden üretilmiş zırhlı kapılar. Kasa kapısına sağ tıklayın: el çarkı bir buçuk tur döner, altı sürgü içeri çekilir ve ancak o zaman kanat 90 derece açılır (üç saniye). Kapak kolunu kaldırır, sonra 100 derece açılır. İkisi de kızıltaşla çalışır ve açıkken çarpışma alanları kaybolur, böylece hiçbir şey sıkışmaz. Tarifler: kasa kapısı için 1 netherit parçasının çevresinde 4 taş tuğla + 4 demir blok; kapak için 1 demir bloğun çevresinde 4 demir külçesi + 4 demir çubuk",
+        "Kül Kentsel Alanı'nın artık kendi gökyüzü var. Güneş batı ufkunun hemen üzerinde asılı durur ve hiç kıpırdamaz; ay da yıldız da yoktur. Zirve mor-siyah, ufuk kahverengi, bulutlar karanlık, güneş ise soluk kahve-mor bir disktir. Sis mahalleye göre değişir: Filtre Halkası uzağı görür, Damar Çukuru en yoğunudur",
+        "Tortu kristali büyür. Tomurcuklanan tortuya değen her hava yüzeyinde tomurcuklar küçük → orta → büyük olarak ilerler (suda asla), ametistin yirmi beşte biri hızında ve Filtre Halkası'nın içinde asla. Büyük bir tomurcuk kendiliğinden tortu bloğuna dönüşmez. Her adım küçük bir ses ve bir tutam mor zerre çıkarır",
+        "Kinetik Kasılma gerçekten çalışıyor. Mili durmadan 16 RPM ile döner, mor zerreler sızar ve 12 blok içinde alçak bir taşlama uğultusu duyulur. Her beş saniyede %8 olasılıkla altı blok içindeki en yakın oyuncu dört saniyelik Tortu Hastalığı'na yakalanır (yaratıcı ve izleyici hariç). Açıklaması artık 'Kararsız. Yakınında durmayın.' ve '16 RPM · 256 SU' satırlarını taşır ve hafifçe parlar",
+        "Etüt Haritası'nı kullanın; ekranın ortasında on saniye boyunca şehrin haritası belirir: eşkenar dörtgen, Filtre Halkası, Damar Çukuru, doğudaki Yoğuşturucu Kıyısı ve şehir içindeyken konumunuzla yönünüzü gösteren bir ok. Eğilince kapanır. Şehir dışında kullanıldığında etüt plakasının burada tepkisiz olduğunu söyler",
+        "4.2.0'da tek bir parçacık bile çizilmiyordu (düşen enkaz uyarısı, yoğuşturucu bobinin damlaları, filtre lambasının kıvılcımları): istemci tarafı kaydı eksikti. 4.2.1'den itibaren üçü de görünür ve filtre lambalarının çevresinde artık mavi-yeşil kıvılcımlar süzülür",
+        "Kül Geçidi nihayet sağ tıklamaya yanıt veriyor: geçidin üzerinde sizi şehir merkezine götürür, şehrin içinde ise bulunduğunuz yere geri getirir. Artık üretilebilir de: 4 prefabrik beton + 4 tortu kristali + 1 ender incisi"
+       ]
+      },
+      {
+       "title": "Denge Ayarları",
+       "items": [
+        "Maskesizken Tortu Hastalığı'nın başlama süresi: 8 saniye → 10 saniye (filtre maskesiyle 40 saniye değişmedi; maskenin 240 dayanıklılığı 4.2.0'dan beri geçerli)",
+        "Düşen enkazlar arasındaki en kısa aralık: 60 saniye → 80 saniye (120 saniyelik üst sınır değişmedi)",
+        "Nabız Tazısı'nın ulumasını tetikleyen mesafe: 24 blok → 20 blok"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Düzeltildi: Kül Geçidi'nden girdikten sonra yeniden bağlanmak artık dönüş yolunu kaybettirmiyor (dönüş noktası sunucuda değil oyuncunun kendisinde saklanır ve ölümden sonra da kalır)",
+        "Düzeltildi: erimiş tortu artık Filtre Halkası'na akamaz; akmaya çalışan tortu kaldırılır (kovanın zaten reddettiği alanla aynı)",
+        "Düzeltildi: Montaj Devi'nin öldürülme kaydı şehir boyutunun kendisinde saklanır. 4.2.0'ın ana dünyada bıraktığı kayıt bir kez devralınır, böylece öldürüldüğü bir dünyada ikincisi belirmez",
+        "Şehrin arazisi, mahalleleri ve düşmanları değişmedi; diğer on bir modun içinde de hiçbir şey değişmedi (yalnızca sürüm numarası 4.2.1'e geçiyor)",
+        "V4.2.2 ve sonrası — viyadük, Yoğuşturucu Kıyısı, Alt Tesisler — bu yapımda yok"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.0",
      "date": "2026-09-04",

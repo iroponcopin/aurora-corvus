@@ -2019,6 +2019,50 @@
         "There is one Assembly Colossus per world. Kill it and it never returns",
         "Everything from V4.2.1 onward - the viaduct, the Condenser Reach, the Underworks - is not in this build. What the Upcoming page lists is not yet in your game"
       ]
+    },
+    {
+      "id": "v4.2.1",
+      "release": "V4.2.1",
+      "date": "2026-09-04",
+      "type": "release",
+      "title": "Finishing the Ashen Conurbation, plus the Wheel Vault Door and Riveted Hatch",
+      "summary": "A small update that gives the systems V4.2 laid down their look and feel. The city's sky becomes a perpetual dusk with no stars and no moon, and the fog thickens district by district. Residue buds grow, the Kinetic Seizure's shaft turns, and the Survey Map draws the city on your screen. Three bugs are fixed and three numbers tuned. Alongside it, the building mod gains the Wheel Vault Door (3×3) and the Riveted Hatch (2×2) built from the design renders, both animated: the vault door turns its hand-wheel and draws its bolts before the leaf swings.",
+      "highlights": [
+        "The Wheel Vault Door (3×3) and the Riveted Hatch (2×2, floor or ceiling): armoured doors reproduced piece by piece from the 3D design renders. Right-click the vault door and its hand-wheel turns one and a half times, six bolts withdraw, and only then does the leaf swing open 90 degrees (three seconds). The hatch lifts its handle and then opens 100 degrees. Both work with redstone, and their collision disappears while open, so nothing gets crushed. Recipes: 4 stone bricks + 4 iron blocks around 1 netherite scrap for the vault door; 4 iron nuggets + 4 iron ingots around 1 iron block for the hatch",
+        "The Ashen Conurbation has a sky of its own. The sun hangs just above the western horizon and never moves; there is no moon and there are no stars. The zenith is purple-black, the horizon brown, the clouds dark, and the sun a weak brown-purple disc. Fog differs by precinct: the Filter Ring sees far, the Vein Pit is thickest",
+        "Residue crystal grows. On any air face touching budding residue, buds advance small → medium → large (never in water), at a twenty-fifth of amethyst's pace and never inside the Filter Ring. A large bud does not turn into a block of residue by itself. Each step makes a small sound and a puff of purple motes",
+        "The Kinetic Seizure really runs. Its shaft turns at 16 RPM without stopping, purple motes leak from it, and within 12 blocks a low grinding loop plays. Every five seconds there is an 8% chance that the nearest player within six blocks catches four seconds of Residue Sickness (creative and spectator players excepted). Its tooltip now reads 'Unstable. Do not stand close.' and '16 RPM · 256 SU', and it glows faintly",
+        "Use the Survey Map and a map of the city appears in the middle of the screen for ten seconds: the diamond, the Filter Ring, the Vein Pit, the Condenser Reach to the east, and, inside the city, an arrow for where you stand and which way you face. Sneak to close it. Used outside the city it says the survey plate is inert here",
+        "In 4.2.0 not a single particle was drawn (the falling-debris warning, the condenser coil's drips, the filter lamp's sparks): the client-side registration was missing. All three are visible from 4.2.1, and blue-green sparks now drift around filter lamps",
+        "The Ashen Gateway answers a right-click at last: on the gateway it takes you to the city's centre, and inside the city it brings you back where you were. It can also be crafted now: 4 precast concrete + 4 residue crystals + 1 ender pearl"
+      ],
+      "balance_changes": [
+        "Time before Residue Sickness sets in bare-faced: 8 seconds → 10 seconds (the 40 seconds with a filter mask is unchanged; the mask's 240 durability has been in place since 4.2.0)",
+        "Minimum interval between falling debris: 60 seconds → 80 seconds (the 120-second maximum is unchanged)",
+        "Range at which a Pulse Hound's howl is triggered: 24 blocks → 20 blocks"
+      ],
+      "warnings": [
+        "Fixed: after entering through the Ashen Gateway, a relog no longer loses the way home (the return point is stored on the player, not the server, and survives death)",
+        "Fixed: molten residue can no longer flow into the Filter Ring; residue that tries to is removed (the same area the bucket already refuses)",
+        "Fixed: the Assembly Colossus's slain record is stored in the city dimension itself. A record 4.2.0 left in the overworld is inherited once, so a world where it was killed will not get a second one",
+        "The city's terrain, precincts and enemies are unchanged, and nothing inside the other eleven mods changed (only the version number moves to 4.2.1)",
+        "Everything from V4.2.2 onward - the viaduct, the Condenser Reach, the Underworks - is not in this build"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.1",
+        "sorakaze_boss": "4.2.1",
+        "sorakaze_deco": "4.2.1",
+        "sorakaze_fallout": "4.2.1",
+        "sorakaze_guns": "4.2.1",
+        "sorakaze_phone": "4.2.1",
+        "sorakaze_planarcadia": "4.2.1",
+        "sorakaze_power": "4.2.1",
+        "sorakaze_rail": "4.2.1",
+        "sorakaze_sapporo": "4.2.1",
+        "sorakaze_sky": "4.2.1",
+        "sorakaze_survival": "4.2.1",
+        "sorakaze_vehicles": "4.2.1"
+      }
     }
   ],
   "roadmap": {

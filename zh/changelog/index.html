@@ -227,8 +227,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.2">
       <h2 class="cl__groupTitle">V4.2</h2>
-      <p class="cl__groupSummary">灰烬都会圈 —— 一整座被污染的巨型城市</p>
+      <p class="cl__groupSummary">灰烬都会的收尾，以及轮盘金库门与铆钉舱口</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.2.1">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-2-1">
+          <h3 class="cl__version">V4.2.1</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-04</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-2-1" hidden><p class="cl__entryTitle">灰烬都会的收尾，以及轮盘金库门与铆钉舱口</p><p class="cl__lede">一次小型更新，为 V4.2 铺设的系统赋予外观与手感。城市的天空变为没有星星和月亮的永恒黄昏，雾气按区划逐区加浓。残渣芽会生长，动能痉挛机的轴会转动，测绘图会把城市画在屏幕上。修复三处错误，调整三个数值。同时，建材模组新增依照设计渲染图制作的轮盘金库门（3×3）与铆钉舱口（2×2），两者均带动画：金库门先转动手轮、收回门闩，门扇才会打开。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(7)</span></h4><ul class="cl__list"><li>轮盘金库门（3×3）与铆钉舱口（2×2，可装于地面或天花板）：逐件按 3D 渲染图复现的装甲门。右键金库门：手轮转一圈半，六根门闩收回，随后门扇才转开 90 度（三秒）。舱口先抬起把手，再打开 100 度。两者都可由红石驱动，打开期间碰撞体积消失，不会夹到任何东西。配方：金库门为 4 石砖 + 4 铁块围绕 1 下界合金碎片；舱口为 4 铁粒 + 4 铁锭围绕 1 铁块</li><li>灰烬都会拥有专属的天空。太阳悬在西方地平线上方一动不动；没有月亮，也没有星星。天顶紫黑，地平线棕褐，云层昏暗，太阳是一枚微弱的棕紫色圆盘。雾气因区划而异：过滤环视野最远，矿脉坑最浓</li><li>残渣晶体会生长。凡与出芽残渣相接的空气面，芽会按小 → 中 → 大三阶段生长（水中不会），速度为紫水晶的二十五分之一，且过滤环内绝不生长。大芽不会自行变成残渣方块。每一步都伴随轻响与一缕紫色尘粒</li><li>动能痉挛机真正运转起来了。顶部的轴以 16 RPM 持续转动，紫色尘粒渗出，12 格内可听到低沉的研磨声。每五秒有 8% 的几率让六格内最近的玩家患上四秒残渣病（创造与旁观模式除外）。提示文本新增“不稳定。请勿靠近。”与“16 RPM · 256 SU”两行，并会微微发光</li><li>使用测绘图，屏幕中央会显示城市地图十秒：菱形城区、过滤环、矿脉坑、东侧的冷凝边缘，以及在城内时标示你位置与朝向的箭头。潜行即可关闭。在城外使用时会提示测绘板在此无反应</li><li>4.2.0 中没有绘制任何粒子（落石预警、冷凝线圈的滴落、过滤灯的火花）：客户端侧的注册缺失。自 4.2.1 起三种粒子全部可见，过滤灯周围还会飘起蓝绿色火花</li><li>灰烬之门终于响应右键：在门上右键传送到城市中心，在城内右键则送回原处。现在也可以合成：4 预制混凝土 + 4 残渣晶体 + 1 末影珍珠</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">平衡性调整 <span>(3)</span></h4><ul class="cl__list"><li>未戴面罩时患上残渣病的时间：8 秒 → 10 秒（戴过滤面罩时的 40 秒不变；面罩耐久 240 自 4.2.0 起沿用）</li><li>落石的最小间隔：60 秒 → 80 秒（最大 120 秒不变）</li><li>脉冲猎犬嚎叫的触发距离：24 格 → 20 格</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(5)</span></h4><ul class="cl__list cl__list--warn"><li>修复：经灰烬之门进入后，重新登录不再丢失回程（返回点保存在玩家自身而非服务器上，死亡后也会保留）</li><li>修复：熔融残渣不再能流入过滤环；试图流入的残渣会被清除（与桶已拒绝放置的范围相同）</li><li>修复：组装巨像的击杀记录改为保存在城市维度本身。4.2.0 留在主世界的记录会被继承一次，因此已击杀的世界不会再刷出第二只</li><li>城市的地形、区划与敌人未变，其余十一个模组内容未变（仅版本号统一为 4.2.1）</li><li>V4.2.2 及之后的内容——高架、冷凝边缘、过滤下层等——不在此版本中</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.2.0">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-2-0">
           <h3 class="cl__version">V4.2.0</h3>

@@ -1907,6 +1907,50 @@
         "Il y a un Colosse d'Assemblage par monde. Une fois tué, il ne revient jamais",
         "Tout ce qui vient à partir de la V4.2.1 — viaduc, Étendue du Condenseur, Sous-œuvre — n'est pas dans cette version. Ce que liste la page des prochaines nouveautés n'est pas encore dans votre jeu"
       ]
+    },
+    {
+      "id": "v4.2.1",
+      "release": "V4.2.1",
+      "date": "2026-09-04",
+      "type": "release",
+      "title": "Les finitions de la Conurbation Cendreuse, plus la Porte Blindée à Volant et l'Écoutille Rivetée",
+      "summary": "Une petite mise à jour qui donne aux systèmes posés par la V4.2 leur apparence et leur toucher. Le ciel de la ville devient un crépuscule perpétuel sans étoiles ni lune, et le brouillard s'épaissit quartier par quartier. Les bourgeons de résidu poussent, l'arbre du Convulseur Cinétique tourne, et la Carte d'Arpentage dessine la ville sur votre écran. Trois bugs sont corrigés et trois valeurs ajustées. En parallèle, le mod de construction reçoit la Porte Blindée à Volant (3×3) et l'Écoutille Rivetée (2×2), bâties d'après les rendus de conception, toutes deux animées : la porte tourne son volant et rétracte ses verrous avant que le battant ne s'ouvre.",
+      "highlights": [
+        "La Porte Blindée à Volant (3×3) et l'Écoutille Rivetée (2×2, au sol ou au plafond) : des portes blindées reproduites pièce par pièce d'après les rendus 3D. Clic droit sur la porte : le volant fait un tour et demi, six verrous se rétractent, et seulement alors le battant pivote de 90 degrés (trois secondes). L'écoutille relève sa poignée puis s'ouvre de 100 degrés. Les deux réagissent à la redstone, et leur collision disparaît tant qu'elles sont ouvertes : rien n'est écrasé. Recettes : 4 briques de pierre + 4 blocs de fer autour d'1 débris de Netherite pour la porte ; 4 pépites de fer + 4 lingots de fer autour d'1 bloc de fer pour l'écoutille",
+        "La Conurbation Cendreuse a son propre ciel. Le soleil reste suspendu juste au-dessus de l'horizon ouest et ne bouge jamais ; ni lune ni étoiles. Le zénith est noir violacé, l'horizon brun, les nuages sombres, et le soleil un faible disque brun-violet. Le brouillard varie selon le quartier : l'Anneau de Filtrage voit loin, la Fosse aux Veines est la plus épaisse",
+        "Le cristal de résidu pousse. Sur toute face d'air en contact avec du résidu bourgeonnant, les bourgeons passent de petit → moyen → grand (jamais dans l'eau), à un vingt-cinquième du rythme de l'améthyste et jamais dans l'Anneau de Filtrage. Un grand bourgeon ne devient pas de lui-même un bloc de résidu. Chaque étape produit un petit son et une bouffée de particules violettes",
+        "Le Convulseur Cinétique fonctionne vraiment. Son arbre tourne à 16 tr/min sans s'arrêter, des particules violettes s'en échappent, et à moins de 12 blocs un grondement sourd de meulage se fait entendre. Toutes les cinq secondes, 8 % de chances que le joueur le plus proche à moins de six blocs attrape quatre secondes de Maladie du Résidu (créatif et spectateur exclus). Son infobulle indique désormais « Instable. Ne restez pas à proximité. » et « 16 RPM · 256 SU », et il luit faiblement",
+        "Utilisez la Carte d'Arpentage : une carte de la ville apparaît dix secondes au centre de l'écran : le losange, l'Anneau de Filtrage, la Fosse aux Veines, la Lisière des Condenseurs à l'est et, dans la ville, une flèche indiquant votre position et votre orientation. S'accroupir la ferme. Hors de la ville, elle signale que la plaque d'arpentage est inerte ici",
+        "En 4.2.0, pas une seule particule n'était dessinée (l'avertissement de chute de débris, les gouttes de la bobine de condensation, les étincelles de la lampe de filtrage) : l'enregistrement côté client manquait. Depuis 4.2.1, les trois sont visibles, et des étincelles bleu-vert flottent désormais autour des lampes de filtrage",
+        "Le Portail Cendreux répond enfin au clic droit : sur le portail, il vous mène au centre de la ville ; dans la ville, il vous ramène là où vous étiez. Il se fabrique aussi désormais : 4 béton préfabriqué + 4 cristaux de résidu + 1 perle de l'Ender"
+      ],
+      "balance_changes": [
+        "Délai avant l'apparition de la Maladie du Résidu à visage nu : 8 secondes → 10 secondes (les 40 secondes avec masque filtrant sont inchangées ; la durabilité 240 du masque date de la 4.2.0)",
+        "Intervalle minimal entre deux chutes de débris : 60 secondes → 80 secondes (le maximum de 120 secondes est inchangé)",
+        "Distance de déclenchement du hurlement du Chien de Pulsation : 24 blocs → 20 blocs"
+      ],
+      "warnings": [
+        "Corrigé : après être entré par le Portail Cendreux, une reconnexion ne perd plus le chemin du retour (le point de retour est stocké sur le joueur, pas sur le serveur, et survit à la mort)",
+        "Corrigé : le résidu fondu ne peut plus couler dans l'Anneau de Filtrage ; le résidu qui s'y essaie est retiré (la même zone que le seau refuse déjà)",
+        "Corrigé : le registre de mort du Colosse d'Assemblage est stocké dans la dimension de la ville elle-même. Un registre laissé par la 4.2.0 dans l'Overworld est hérité une fois, si bien qu'un monde où il a été tué n'en aura pas de second",
+        "Le terrain, les quartiers et les ennemis de la ville sont inchangés, et rien ne change dans les onze autres mods (seul le numéro de version passe en 4.2.1)",
+        "Tout ce qui suit la V4.2.2 — le viaduc, la Lisière des Condenseurs, les Sous-Œuvres — n'est pas dans cette version"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.1",
+        "sorakaze_boss": "4.2.1",
+        "sorakaze_deco": "4.2.1",
+        "sorakaze_fallout": "4.2.1",
+        "sorakaze_guns": "4.2.1",
+        "sorakaze_phone": "4.2.1",
+        "sorakaze_planarcadia": "4.2.1",
+        "sorakaze_power": "4.2.1",
+        "sorakaze_rail": "4.2.1",
+        "sorakaze_sapporo": "4.2.1",
+        "sorakaze_sky": "4.2.1",
+        "sorakaze_survival": "4.2.1",
+        "sorakaze_vehicles": "4.2.1"
+      }
     }
   ],
   "roadmap": {

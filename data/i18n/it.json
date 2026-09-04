@@ -1909,6 +1909,50 @@
         "C'è un Colosso d'Assemblaggio per mondo. Ucciso, non torna più",
         "Tutto ciò che viene dalla V4.2.1 in poi — viadotto, Distesa del Condensatore, Sottostruttura — non è in questa build. Quello che elenca la pagina delle prossime novità non è ancora nel tuo gioco"
       ]
+    },
+    {
+      "id": "v4.2.1",
+      "release": "V4.2.1",
+      "date": "2026-09-04",
+      "type": "release",
+      "title": "Le rifiniture della Conurbazione Cinerea, più la Porta Blindata a Volantino e il Portello Rivettato",
+      "summary": "Un piccolo aggiornamento che dà aspetto e consistenza ai sistemi posati dalla V4.2. Il cielo della città diventa un crepuscolo perpetuo senza stelle né luna, e la nebbia si infittisce quartiere per quartiere. Le gemme di residuo crescono, l'albero del Convulsore Cinetico gira e la Mappa di Rilevamento disegna la città sullo schermo. Tre bug corretti e tre valori ritoccati. Inoltre il mod di costruzione riceve la Porta Blindata a Volantino (3×3) e il Portello Rivettato (2×2), costruiti dai render di progetto ed entrambi animati: la porta gira il volantino e ritrae i chiavistelli prima che il battente si apra.",
+      "highlights": [
+        "La Porta Blindata a Volantino (3×3) e il Portello Rivettato (2×2, a pavimento o a soffitto): porte corazzate riprodotte pezzo per pezzo dai render 3D. Clic destro sulla porta: il volantino fa un giro e mezzo, sei chiavistelli si ritraggono e solo allora il battente ruota di 90 gradi (tre secondi). Il portello solleva la maniglia e poi si apre di 100 gradi. Entrambi rispondono alla redstone e la loro collisione scompare mentre sono aperti, così nulla resta schiacciato. Ricette: 4 mattoni di pietra + 4 blocchi di ferro attorno a 1 frammento di netherite per la porta; 4 pepite di ferro + 4 lingotti di ferro attorno a 1 blocco di ferro per il portello",
+        "La Conurbazione Cinerea ha un cielo tutto suo. Il sole resta sospeso appena sopra l'orizzonte occidentale e non si muove mai; non ci sono né luna né stelle. Lo zenit è nero violaceo, l'orizzonte bruno, le nuvole scure, e il sole un debole disco bruno-violetto. La nebbia cambia per quartiere: l'Anello di Filtraggio vede lontano, la Fossa delle Vene è la più fitta",
+        "Il cristallo di residuo cresce. Su ogni faccia d'aria a contatto con residuo germogliante, le gemme avanzano piccola → media → grande (mai in acqua), a un venticinquesimo del ritmo dell'ametista e mai dentro l'Anello di Filtraggio. Una gemma grande non diventa da sola un blocco di residuo. Ogni passo produce un suono lieve e uno sbuffo di particelle viola",
+        "Il Convulsore Cinetico funziona davvero. L'albero gira a 16 giri/min senza fermarsi, particelle viola ne fuoriescono, ed entro 12 blocchi si sente un basso ronzio di molatura. Ogni cinque secondi c'è l'8 % di probabilità che il giocatore più vicino entro sei blocchi prenda quattro secondi di Malattia del Residuo (creativa e spettatore esclusi). La descrizione ora dice «Instabile. Non sostare vicino.» e «16 RPM · 256 SU», e brilla debolmente",
+        "Usa la Mappa di Rilevamento e per dieci secondi compare al centro dello schermo una mappa della città: il rombo, l'Anello di Filtraggio, la Fossa delle Vene, il Margine dei Condensatori a est e, dentro la città, una freccia con la tua posizione e direzione. Accovacciati per chiuderla. Fuori dalla città avvisa che la piastra di rilevamento qui è inerte",
+        "Nella 4.2.0 non veniva disegnata nemmeno una particella (l'avviso dei detriti in caduta, le gocce della bobina di condensazione, le scintille della lampada di filtraggio): mancava la registrazione lato client. Dalla 4.2.1 tutte e tre sono visibili, e scintille blu-verdi fluttuano ora attorno alle lampade di filtraggio",
+        "Il Varco Cinereo risponde finalmente al clic destro: sul varco ti porta al centro della città, dentro la città ti riporta dov'eri. Ora si può anche fabbricare: 4 calcestruzzo prefabbricato + 4 cristalli di residuo + 1 perla di ender"
+      ],
+      "balance_changes": [
+        "Tempo prima che la Malattia del Residuo compaia senza maschera: 8 secondi → 10 secondi (i 40 secondi con la maschera filtrante non cambiano; la durabilità 240 della maschera è in vigore dalla 4.2.0)",
+        "Intervallo minimo fra le cadute di detriti: 60 secondi → 80 secondi (il massimo di 120 secondi non cambia)",
+        "Distanza a cui si attiva l'ululato del Segugio a Impulsi: 24 blocchi → 20 blocchi"
+      ],
+      "warnings": [
+        "Corretto: dopo essere entrati dal Varco Cinereo, un nuovo accesso non perde più la via del ritorno (il punto di ritorno è salvato sul giocatore, non sul server, e sopravvive alla morte)",
+        "Corretto: il residuo fuso non può più scorrere dentro l'Anello di Filtraggio; il residuo che ci prova viene rimosso (la stessa area che il secchio già rifiuta)",
+        "Corretto: il registro di uccisione del Colosso d'Assemblaggio è salvato nella dimensione della città stessa. Un registro lasciato dalla 4.2.0 nell'Overworld viene ereditato una volta, così un mondo in cui è stato ucciso non ne avrà un secondo",
+        "Terreno, quartieri e nemici della città sono invariati, e nulla è cambiato negli altri undici mod (solo il numero di versione passa a 4.2.1)",
+        "Tutto ciò che viene dopo la V4.2.2 — il viadotto, il Margine dei Condensatori, le Sottoopere — non è in questa build"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.1",
+        "sorakaze_boss": "4.2.1",
+        "sorakaze_deco": "4.2.1",
+        "sorakaze_fallout": "4.2.1",
+        "sorakaze_guns": "4.2.1",
+        "sorakaze_phone": "4.2.1",
+        "sorakaze_planarcadia": "4.2.1",
+        "sorakaze_power": "4.2.1",
+        "sorakaze_rail": "4.2.1",
+        "sorakaze_sapporo": "4.2.1",
+        "sorakaze_sky": "4.2.1",
+        "sorakaze_survival": "4.2.1",
+        "sorakaze_vehicles": "4.2.1"
+      }
     }
   ],
   "roadmap": {
