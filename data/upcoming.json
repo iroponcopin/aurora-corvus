@@ -2,14 +2,14 @@
   "_comment": "Content for /upcoming/ (scripts/build_upcoming.py) AND for the machine-readable upcoming.json feed the Discord bot polls. Structure (id/status/target) is shared; prose is per language, keyed by the same ids -- the split data/changelog.json uses. The bot announces an entry ONCE, keyed by id, so changing an entry's prose does not re-announce it but adding a new id does. An empty board is allowed only when every language has an 'empty' line (V4.0.1); the feed then carries entries: [].",
   "entries": [
     {
-      "id": "v4-1-1",
+      "id": "v4-2-0",
       "status": "planned",
       "target": "未定 / TBD",
       "kind": "pack",
       "url_path": "upcoming/"
     },
     {
-      "id": "v4-2-0",
+      "id": "v4-2-1",
       "status": "planned",
       "target": "未定 / TBD",
       "kind": "pack",
@@ -26,18 +26,6 @@
       "in_progress": "قيد العمل"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — زجاج مقوّى كيميائيًا، ياقوت أزرق، شبكة مياه، عتاد Apex",
-        "target_label": "لا موعد بعد",
-        "body": "التحديث الذي يلي V4.1 (التصنيع). زجاج يصمد أمام الحصار، وخام أندر من النذرايت، وشبكة مياه للمدينة، ودرع يتجاوز عتاد المملكة. قد يتغيّر الموعد والمحتوى.",
-        "items": [
-          "زجاج مقوّى كيميائيًا ونسخته المعتمة وفوانيس من كليهما. الألوان السبعة عشر كلها. نحو ثماني دقائق للكتلة الواحدة تحت الحصار",
-          "خام الياقوت الأزرق: أندر من الحطام القديم، جوهرة واحدة مدفونة في أعماق الصخر العميق",
-          "شبكة مياه للمدينة: مآخذ ومحطات ضخ وأنابيب ضغط وأبراج مياه وخزانات. لا تعمل الآلات بكامل سرعتها إلا على الشبكة",
-          "عتاد Apex: دفاع 100 للقطعة الواحدة و400 للطقم الكامل مقابل 50 لعتاد المملكة. ويُصلَح بالياقوت الأزرق",
-          "تقوية قناعَي Sparxie وSparkle (المتانة والدفاع ×4) وتعديل حجم عصا Sparxie"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: بُعد جديد، مدينة عملاقة ملوّثة",
         "target_label": "لا موعد بعد",
@@ -48,6 +36,19 @@
           "ثلاثة أعداء جدد: متربّص الراسب (نبّاش يصطاد في جماعات)، وكلب النبض (عواؤه يقوّي القطيع)، وحارس الخردة (محايد داخل حلقة الترشيح إن كنت ترتدي قناعًا)",
           "زعيم، عملاق التجميع: واحد في كل عالم، في قاع حفرة العروق. ثلاث مراحل كلما ضعف — موجات صدمية، حرّاس مستدعَون، وينابيع من الراسب المنصهر. يُسقط الراسب المثبّت وخريطة المسح",
           "وأيضًا: النوبة الحركية (مصدر طاقة لا يتوقف أبدًا ويُخشى الوقوف قربه)، والراسب المنصهر (سائل جديد)، وبوابة الرماد (باب للدخول والخروج)، ووصفات صهر، وشجرة تقدّم من أربع خطوات"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — لمسات Ashen Conurbation الأخيرة: السماء، والبلّورة النامية، وخريطة المسح",
+        "target_label": "لا موعد بعد",
+        "body": "تحديث صغير يأتي مباشرةً بعد V4.2. لا أرض جديدة ولا أعداء جدد؛ بل يمنح الأنظمة التي أرستها V4.2 مظهرها وملمسها. قد يتغيّر الموعد والمحتوى.",
+        "items": [
+          "سماء خاصة بها: غسق دائم بلا نجوم ولا شمس، وضباب يزداد كثافة من حيّ إلى آخر (خفيف في حلقة الترشيح، وأكثفه في حفرة العروق). وتحوم حول فوانيس الترشيح المضاءة ذرّات سماوية باهتة",
+          "بلّورة الراسب تنمو. تتدرّج البراعم صغيرة ثم متوسطة ثم كبيرة، لكن بخُمس عُشر سرعة الجمشت، ولا تنمو أبدًا داخل حلقة الترشيح",
+          "لم تعد النوبة الحركية مجرّد مكعّب: نموذج خاص بها، ونواة بنفسجية أثناء العمل، وحلقة صوت طحن، وسطر يقرأ 16 RPM · 256 SU",
+          "ترسم خريطة المسح المدينة على الشاشة: المعيّن، وحلقة الترشيح، وحفرة العروق، وسهمًا يشير إلى موضعك. انحنِ لإغلاقها",
+          "تعديلات: متانة قناع الترشيح من 180 إلى 240، ويبدأ المرض بعد 10 ثوانٍ بدل 8، ويقلّ تساقط الحطام، ويصل عواء كلب النبض إلى 20 مكعبًا بدل 24",
+          "ثلاثة إصلاحات: تتذكّر بوابة الرماد طريق العودة بعد إعادة الاتصال، ولم يعد الراسب المنصهر يتدفّق إلى حلقة الترشيح، ويُحفظ سجلّ إسقاط العملاق في المدينة نفسها"
         ]
       }
     },
@@ -63,18 +64,6 @@
       "in_progress": "In Arbeit"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — chemisch gehärtetes Glas, Saphir, Wassernetz, Apex-Rüstung",
-        "target_label": "Noch kein Termin",
-        "body": "Das Update nach V4.1 (Industrialisierung). Glas, das eine Belagerung übersteht, ein Erz seltener als Netherit, ein städtisches Wassernetz und eine Rüstung jenseits der Königsrüstung. Zeitpunkt und Inhalt können sich ändern.",
-        "items": [
-          "Chemisch gehärtetes Glas, die getönte Variante und Laternen aus beiden. Alle 17 Farben. Rund acht Minuten pro Block unter Belagerung",
-          "Saphirerz: seltener als Antikschutt, ein einzelner Kristall tief im Tiefenschiefer",
-          "Ein städtisches Wassernetz: Entnahme, Pumpstationen, Druckrohre, Wassertürme und Speicher. Maschinen laufen erst am Netz mit voller Leistung",
-          "Apex-Rüstung: 100 Rüstung je Teil, 400 im vollen Satz, gegenüber 50 der Königsrüstung. Repariert wird sie mit Saphir",
-          "Sparxie- und Sparkle-Masken verstärkt (Haltbarkeit und Rüstung x4) und der Sparxie-Stab neu skaliert"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: eine neue Dimension, eine verseuchte Megastadt",
         "target_label": "Noch kein Termin",
@@ -85,6 +74,19 @@
           "Drei neue Gegner: der Residue-Stalker (ein Plünderer, der im Rudel jagt), der Pulshund (sein Heulen stärkt das Rudel) und der Schrott-Wächter (neutral im Filterring, wenn du eine Maske trägst)",
           "Ein Boss, der Montage-Koloss: einer pro Welt, am Boden der Adergrube. Drei Phasen, je schwächer er wird – Schockwellen, herbeigerufene Wächter, Geysire aus geschmolzenem Residue. Er hinterlässt stabilisiertes Residue und die Vermessungskarte",
           "Außerdem: der Kinetische Krampf (eine Energiequelle, die nie stoppt und in deren Nähe man nicht stehen sollte), geschmolzenes Residue (eine neue Flüssigkeit), das Aschentor (eine Tür hinein und hinaus), Schmelzrezepte und ein Fortschrittsbaum mit vier Stufen"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Der Feinschliff der Ashen Conurbation: Himmel, wachsender Kristall, Vermessungskarte",
+        "target_label": "Noch kein Termin",
+        "body": "Ein kleines Update direkt nach V4.2. Kein neues Land, keine neuen Gegner: es gibt den in V4.2 gelegten Systemen ihr Aussehen und ihr Gefühl. Zeitpunkt und Inhalt können sich ändern.",
+        "items": [
+          "Ein eigener Himmel: ewige Dämmerung ohne Sterne und ohne Sonne, und Nebel, der von Bezirk zu Bezirk dichter wird (dünn im Filterring, am dichtesten in der Adergrube). Um brennende Filterlampen schweben blassblaue Partikel",
+          "Residue-Kristall wächst. Knospen gehen über klein, mittel und groß — aber mit einem Fünfundzwanzigstel von Amethysts Tempo, und nie im Filterring",
+          "Der Kinetische Krampf ist kein Würfel mehr: eigenes Modell, ein violetter Kern im Betrieb, eine mahlende Schleife und die Zeile 16 RPM · 256 SU",
+          "Die Vermessungskarte zeichnet die Stadt auf den Bildschirm: die Raute, den Filterring, die Adergrube — und einen Pfeil für deinen Standort. Zum Schließen schleichen",
+          "Feinabstimmung: Haltbarkeit der Filtermaske 180 auf 240, Krankheit nach 8 Sekunden wird 10, Trümmer fallen seltener, und das Heulen des Pulshunds trägt 20 statt 24 Blöcke",
+          "Drei Korrekturen: das Aschentor merkt sich den Rückweg über einen Neustart hinweg, geschmolzenes Residue kann nicht mehr in den Filterring fließen, und der Erlegt-Vermerk des Kolosses liegt in der Stadt selbst"
         ]
       }
     },
@@ -100,18 +102,6 @@
       "in_progress": "In progress"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — chemically strengthened glass, sapphire, mains water, Apex Gear",
-        "target_label": "No date yet",
-        "body": "The update after V4.1 (industrialisation). Glass that survives a siege, an ore rarer than netherite, a municipal water grid, and armour that goes beyond Kingdom Gear. Timing and contents may change.",
-        "items": [
-          "Chemically strengthened glass, its tinted twin, and lanterns of both. All 17 colours. About eight minutes per block under siege from a storm boss",
-          "Sapphire ore: rarer than ancient debris, a single gem buried deep in the deepslate",
-          "A municipal water grid: intakes, pump stations, pressure pipes, water towers and reservoirs. Machines only run at full rate once they are on the mains",
-          "Apex Gear: 100 defence from a single piece, 400 for the full set, against Kingdom Gear's 50. Sapphire is what repairs it",
-          "Sparxie and Sparkle masks buffed (durability and defence x4), and the Sparxie Wand resized"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: a new dimension, a contaminated megacity",
         "target_label": "No date yet",
@@ -122,6 +112,19 @@
           "Three new enemies: the Residue Stalker (a scavenger that hunts in numbers), the Pulse Hound (its howl strengthens the pack) and the Scrap Sentinel (neutral inside the Filter Ring if you wear a mask)",
           "A boss, the Assembly Colossus: one per world, at the bottom of the Vein Pit. Three phases as it weakens — shockwaves, summoned sentinels, geysers of Molten Residue. It drops Stabilised Residue and the Survey Map",
           "Also: the Kinetic Seizure (a power source that never stops and is dangerous to stand near), Molten Residue (a new fluid), the Ashen Gateway (a door in and out), smelting recipes and a four-step advancement tree"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Finishing the Ashen Conurbation: sky, growing crystal, survey map",
+        "target_label": "No date yet",
+        "body": "A small update straight after V4.2. No new land and no new enemies: it gives the systems V4.2 laid down their look and feel. Timing and contents may change.",
+        "items": [
+          "A sky of its own: perpetual dusk with no stars and no sun, and fog that thickens district by district (thin in the Filter Ring, thickest in the Vein Pit). Pale cyan motes drift around lit filter lamps",
+          "Residue crystal grows. Buds advance through small, medium and large — but at a twenty-fifth of amethyst's pace, and never inside the Filter Ring",
+          "The Kinetic Seizure stops being a cube: its own model, a purple core while it is producing, a grinding loop, and a line reading 16 RPM · 256 SU",
+          "The Survey Map draws the city on your screen: the diamond, the Filter Ring, the Vein Pit — and an arrow for where you are standing. Sneak to close it",
+          "Tuning: filter mask durability 180 to 240, sickness after 8 seconds becomes 10, debris falls less often, and the pulse hound's howl carries 24 blocks instead of 20",
+          "Three fixes: the Ashen Gateway remembers the way home across a relog, molten residue can no longer flow into the Filter Ring, and the colossus's slain record lives in the city itself"
         ]
       }
     },
@@ -137,18 +140,6 @@
       "in_progress": "En curso"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — vidrio químicamente reforzado, zafiro, red de agua, equipo Apex",
-        "target_label": "Sin fecha aún",
-        "body": "La actualización posterior a V4.1 (industrialización). Vidrio que aguanta un asedio, un mineral más raro que la netherita, una red municipal de agua y una armadura que supera al equipo del Reino. La fecha y el contenido pueden cambiar.",
-        "items": [
-          "Vidrio químicamente reforzado, su versión tintada y linternas de ambos. Los 17 colores. Unos ocho minutos por bloque bajo asedio",
-          "Mena de zafiro: más rara que los restos antiguos, una sola gema enterrada en la pizarra profunda",
-          "Red municipal de agua: tomas, estaciones de bombeo, tuberías a presión, torres y depósitos. Las máquinas solo van a pleno rendimiento conectadas a la red",
-          "Equipo Apex: 100 de defensa por pieza, 400 con el conjunto completo, frente a los 50 del equipo del Reino. Se repara con zafiro",
-          "Máscaras Sparxie y Sparkle mejoradas (durabilidad y defensa x4) y la varita Sparxie reescalada"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: una nueva dimensión, una megaciudad contaminada",
         "target_label": "Sin fecha aún",
@@ -159,6 +150,19 @@
           "Tres enemigos nuevos: el Acechador de Residuo (un carroñero que caza en grupo), el Sabueso de Pulso (su aullido fortalece a la manada) y el Centinela de Chatarra (neutral dentro del Anillo de Filtrado si llevas máscara)",
           "Un jefe, el Coloso de Ensamblaje: uno por mundo, en el fondo del Pozo de Vetas. Tres fases a medida que se debilita — ondas de choque, centinelas invocados, géiseres de Residuo Fundido. Suelta Residuo Estabilizado y el Mapa de Reconocimiento",
           "Además: la Convulsión Cinética (una fuente de energía que nunca se detiene y de la que conviene alejarse), el Residuo Fundido (un fluido nuevo), la Puerta de Ceniza (una puerta para entrar y salir), recetas de fundición y un árbol de logros de cuatro pasos"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Los acabados de la Ashen Conurbation: cielo, cristal que crece, mapa de reconocimiento",
+        "target_label": "Sin fecha aún",
+        "body": "Una actualización pequeña justo después de V4.2. Ni tierra nueva ni enemigos nuevos: da aspecto y tacto a los sistemas que V4.2 dejó puestos. Fecha y contenido pueden cambiar.",
+        "items": [
+          "Un cielo propio: crepúsculo perpetuo sin estrellas ni sol, y niebla que se espesa distrito a distrito (fina en el Anillo de Filtrado, densísima en el Pozo de Vetas). Alrededor de los faroles encendidos flotan motas cian",
+          "El cristal de Residuo crece. Los brotes pasan por pequeño, mediano y grande, pero a una veinticincoava parte del ritmo de la amatista, y nunca dentro del Anillo de Filtrado",
+          "La Convulsión Cinética deja de ser un cubo: modelo propio, núcleo violeta mientras produce, un bucle de molienda y una línea que dice 16 RPM · 256 SU",
+          "El Mapa de Reconocimiento dibuja la ciudad en pantalla: el rombo, el Anillo de Filtrado, el Pozo de Vetas — y una flecha con tu posición. Agáchate para cerrarlo",
+          "Ajustes: durabilidad de la máscara de 180 a 240, la enfermedad tarda 10 segundos en vez de 8, los escombros caen menos y el aullido del sabueso llega a 20 bloques en vez de 24",
+          "Tres correcciones: la Puerta de Ceniza recuerda el camino de vuelta tras reconectar, el residuo fundido ya no puede entrar en el Anillo de Filtrado, y el registro del coloso abatido vive en la propia ciudad"
         ]
       }
     },
@@ -174,18 +178,6 @@
       "in_progress": "En cours"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — verre chimiquement renforcé, saphir, réseau d'eau, équipement Apex",
-        "target_label": "Pas encore de date",
-        "body": "La mise à jour qui suit V4.1 (industrialisation). Du verre qui tient un siège, un minerai plus rare que la netherite, un réseau d'eau municipal et une armure au-delà de l'équipement du Royaume. Date et contenu peuvent changer.",
-        "items": [
-          "Verre chimiquement renforcé, sa version teintée et des lanternes des deux. Les 17 couleurs. Environ huit minutes par bloc sous un siège",
-          "Minerai de saphir : plus rare que les débris antiques, une seule gemme enfouie dans l'ardoise des abîmes",
-          "Un réseau d'eau municipal : prises d'eau, stations de pompage, conduites sous pression, châteaux d'eau et réservoirs. Les machines ne tournent à plein régime qu'une fois raccordées",
-          "Équipement Apex : 100 de défense par pièce, 400 pour la panoplie complète, contre 50 pour l'équipement du Royaume. Il se répare au saphir",
-          "Masques Sparxie et Sparkle renforcés (durabilité et défense x4) et la baguette Sparxie remise à l'échelle"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation : une nouvelle dimension, une mégapole contaminée",
         "target_label": "Pas encore de date",
@@ -196,6 +188,19 @@
           "Trois nouveaux ennemis : le Rôdeur du résidu (un pillard qui chasse en nombre), le Limier à impulsions (son hurlement renforce la meute) et la Sentinelle de ferraille (neutre dans l'Anneau de filtrage si vous portez un masque)",
           "Un boss, le Colosse d'assemblage : un seul par monde, au fond de la Fosse aux veines. Trois phases à mesure qu'il faiblit — ondes de choc, sentinelles invoquées, geysers de Résidu en fusion. Il laisse du Résidu stabilisé et la Carte de relevé",
           "Et aussi : la Crise cinétique (une source d'énergie qui ne s'arrête jamais et dont il vaut mieux s'éloigner), le Résidu en fusion (un nouveau fluide), la Porte de cendre (une porte pour entrer et sortir), des recettes de fonte et un arbre de progrès en quatre étapes"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Les finitions de l'Ashen Conurbation : ciel, cristal qui pousse, carte de relevé",
+        "target_label": "Pas encore de date",
+        "body": "Une petite mise à jour juste après la V4.2. Ni nouvelle terre ni nouveaux ennemis : elle donne leur allure et leur toucher aux systèmes posés par la V4.2. Date et contenu peuvent changer.",
+        "items": [
+          "Un ciel à elle : crépuscule perpétuel sans étoiles ni soleil, et un brouillard qui s'épaissit de quartier en quartier (léger dans l'Anneau de filtrage, le plus dense dans la Fosse aux veines). Des motes cyan flottent autour des lampes allumées",
+          "Le cristal de Résidu pousse. Les bourgeons passent par petit, moyen et grand — mais à un vingt-cinquième du rythme de l'améthyste, et jamais dans l'Anneau de filtrage",
+          "La Crise cinétique cesse d'être un cube : son propre modèle, un cœur violet quand elle produit, une boucle de meulage, et une ligne indiquant 16 RPM · 256 SU",
+          "La Carte de relevé dessine la ville à l'écran : le losange, l'Anneau de filtrage, la Fosse aux veines — et une flèche pour votre position. S'accroupir la referme",
+          "Réglages : durabilité du masque de 180 à 240, la maladie met 10 secondes au lieu de 8, les débris tombent moins souvent, et le hurlement du limier porte 20 blocs au lieu de 24",
+          "Trois correctifs : la Porte de cendre se souvient du chemin du retour après une reconnexion, le Résidu en fusion ne peut plus couler dans l'Anneau de filtrage, et le relevé d'abattage du colosse réside dans la ville elle-même"
         ]
       }
     },
@@ -211,18 +216,6 @@
       "in_progress": "Sedang dikerjakan"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — kaca diperkuat secara kimia, safir, jaringan air, perlengkapan Apex",
-        "target_label": "Belum ada tanggal",
-        "body": "Pembaruan setelah V4.1 (industrialisasi). Kaca yang bertahan dari pengepungan, bijih yang lebih langka dari netherite, jaringan air kota, dan zirah di atas perlengkapan Kerajaan. Waktu dan isinya bisa berubah.",
-        "items": [
-          "Kaca diperkuat secara kimia, versi berwarnanya, dan lentera dari keduanya. Ke-17 warna. Sekitar delapan menit per balok saat dikepung",
-          "Bijih safir: lebih langka dari puing kuno, satu permata terkubur dalam di batu tubir",
-          "Jaringan air kota: pengambilan, stasiun pompa, pipa bertekanan, menara air, dan waduk. Mesin baru bekerja penuh setelah tersambung ke jaringan",
-          "Perlengkapan Apex: pertahanan 100 per bagian, 400 untuk satu set penuh, sementara perlengkapan Kerajaan 50. Diperbaiki dengan safir",
-          "Topeng Sparxie dan Sparkle diperkuat (ketahanan dan pertahanan x4) serta ukuran Tongkat Sparxie disesuaikan"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: dimensi baru, megakota yang terkontaminasi",
         "target_label": "Belum ada tanggal",
@@ -233,6 +226,19 @@
           "Tiga musuh baru: Penguntit Residu (pemulung yang berburu berkelompok), Anjing Denyut (lolongannya menguatkan kawanan), dan Penjaga Rongsokan (netral di dalam Cincin Penyaring bila kamu memakai masker)",
           "Bos, Kolosus Perakitan: satu per dunia, di dasar Lubang Urat. Tiga fase seiring melemah — gelombang kejut, penjaga yang dipanggil, semburan Residu Lebur. Menjatuhkan Residu Stabil dan Peta Survei",
           "Selain itu: Kejang Kinetik (sumber tenaga yang tak pernah berhenti dan berbahaya untuk didekati), Residu Lebur (fluida baru), Gerbang Abu (pintu keluar-masuk), resep peleburan, dan pohon kemajuan empat langkah"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Sentuhan akhir Ashen Conurbation: langit, kristal yang tumbuh, peta survei",
+        "target_label": "Belum ada tanggal",
+        "body": "Pembaruan kecil tepat setelah V4.2. Tidak ada tanah baru maupun musuh baru: ia memberi rupa dan rasa pada sistem yang dipasang V4.2. Waktu dan isinya bisa berubah.",
+        "items": [
+          "Langit tersendiri: senja abadi tanpa bintang dan tanpa matahari, serta kabut yang menebal dari distrik ke distrik (tipis di Cincin Penyaring, paling pekat di Lubang Urat). Di sekitar lentera penyaring yang menyala melayang butiran biru muda",
+          "Kristal residu tumbuh. Tunas melewati kecil, sedang, dan besar — tetapi seperdua puluh lima laju batu kecubung, dan tidak pernah di dalam Cincin Penyaring",
+          "Kejang Kinetik tak lagi berupa kubus: model sendiri, inti ungu saat bekerja, dengung gerinda, dan satu baris bertuliskan 16 RPM · 256 SU",
+          "Peta Survei menggambar kota di layar: belah ketupat, Cincin Penyaring, Lubang Urat — dan panah tempat kamu berdiri. Menunduk untuk menutupnya",
+          "Penyetelan: ketahanan masker dari 180 ke 240, penyakit datang setelah 10 detik alih-alih 8, puing lebih jarang jatuh, dan lolongan Anjing Denyut mencapai 20 blok, bukan 24",
+          "Tiga perbaikan: Gerbang Abu mengingat jalan pulang meski sambungan terputus, residu lebur tak bisa lagi mengalir ke Cincin Penyaring, dan catatan tumbangnya Kolosus disimpan di kota itu sendiri"
         ]
       }
     },
@@ -248,18 +254,6 @@
       "in_progress": "In lavorazione"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — vetro chimicamente rinforzato, zaffiro, rete idrica, equipaggiamento Apex",
-        "target_label": "Data non ancora fissata",
-        "body": "L'aggiornamento dopo V4.1 (industrializzazione). Vetro che regge un assedio, un minerale più raro del netherite, una rete idrica municipale e un'armatura oltre l'equipaggiamento del Regno. Tempi e contenuti possono cambiare.",
-        "items": [
-          "Vetro chimicamente rinforzato, la versione scurita e lanterne di entrambi. Tutti e 17 i colori. Circa otto minuti a blocco sotto assedio",
-          "Minerale di zaffiro: più raro dei detriti antichi, una sola gemma sepolta nell'ardesia profonda",
-          "Rete idrica municipale: prese, stazioni di pompaggio, condotte in pressione, torri e serbatoi. Le macchine vanno a pieno regime solo una volta allacciate",
-          "Equipaggiamento Apex: 100 di difesa per pezzo, 400 con il set completo, contro i 50 del Regno. Si ripara con lo zaffiro",
-          "Maschere Sparxie e Sparkle potenziate (durabilità e difesa x4) e la bacchetta Sparxie ridimensionata"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: una nuova dimensione, una megalopoli contaminata",
         "target_label": "Data non ancora fissata",
@@ -270,6 +264,19 @@
           "Tre nuovi nemici: lo Stalker del residuo (un saccheggiatore che caccia in gruppo), il Segugio a impulsi (il suo ululato rafforza il branco) e la Sentinella di rottami (neutrale dentro l'Anello filtrante se indossi una maschera)",
           "Un boss, il Colosso d'assemblaggio: uno per mondo, in fondo alla Fossa delle vene. Tre fasi man mano che si indebolisce — onde d'urto, sentinelle evocate, geyser di Residuo fuso. Lascia Residuo stabilizzato e la Mappa di rilevamento",
           "E inoltre: la Crisi cinetica (una fonte di energia che non si ferma mai e da cui è meglio stare lontani), il Residuo fuso (un nuovo fluido), il Portale di cenere (una porta per entrare e uscire), ricette di fusione e un albero di progressi in quattro passi"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Le rifiniture della Ashen Conurbation: cielo, cristallo che cresce, mappa di rilevamento",
+        "target_label": "Data non ancora fissata",
+        "body": "Un piccolo aggiornamento subito dopo la V4.2. Nessuna terra nuova e nessun nemico nuovo: dà aspetto e consistenza ai sistemi posati dalla V4.2. Data e contenuti possono cambiare.",
+        "items": [
+          "Un cielo tutto suo: crepuscolo perpetuo senza stelle né sole, e nebbia che si infittisce di quartiere in quartiere (rada nell'Anello filtrante, densissima nella Fossa delle vene). Attorno alle lanterne accese fluttuano granelli ciano",
+          "Il cristallo di Residuo cresce. I germogli passano per piccolo, medio e grande, ma a un venticinquesimo del ritmo dell'ametista, e mai dentro l'Anello filtrante",
+          "La Crisi cinetica smette di essere un cubo: modello proprio, nucleo viola mentre produce, un ciclo di macinatura e una riga che recita 16 RPM · 256 SU",
+          "La Mappa di rilevamento disegna la città sullo schermo: il rombo, l'Anello filtrante, la Fossa delle vene — e una freccia per la tua posizione. Accovacciati per chiuderla",
+          "Ritocchi: durabilità della maschera da 180 a 240, la malattia arriva dopo 10 secondi invece di 8, i detriti cadono meno spesso e l'ululato del segugio arriva a 20 blocchi invece di 24",
+          "Tre correzioni: il Portale di cenere ricorda la via del ritorno anche dopo una riconnessione, il Residuo fuso non può più entrare nell'Anello filtrante, e il registro del colosso abbattuto risiede nella città stessa"
         ]
       }
     },
@@ -285,18 +292,6 @@
       "in_progress": "作業中"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — 化学強化ガラス、サファイア、上水道、エイペックス装備",
-        "target_label": "未定",
-        "body": "V4.1(工業化)に続く更新です。攻城戦に耐えるガラス、ネザライトより希少な鉱石、町の水道、そして王国装備を超える防具を予定しています。内容と時期は変わることがあります。",
-        "items": [
-          "化学強化ガラスと遮光版、それぞれのランタン。17 色すべて。攻城の巨獣に壊されるまで 1 ブロックあたり約 8 分",
-          "サファイア鉱石。古代の残骸より希少で、深い岩盤近くにひとつぶだけ埋まっています",
-          "上水道。取水口・加圧ポンプ・圧力管・給水塔・貯水槽。機械は水道につながって初めて全速で回ります",
-          "エイペックス装備。1 部位で防御 100、フルセットで 400(王国装備は 50)。修理にサファイアを使います",
-          "スパークシー / スパークルの仮面を強化(耐久と防御を 4 倍)、スパークシーの杖の大きさを調整"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — 灰街圏(はいがいけん):汚染された巨大都市の新ディメンション",
         "target_label": "未定",
@@ -307,6 +302,19 @@
           "新しい敵 3 種:残渣ストーカー(群れで狩る略奪者)、パルスハウンド(遠吠えで仲間を強化)、スクラップ哨戒体(濾過輪の中でマスクを着けていれば中立)",
           "ボス「組立巨体」。脈坑の底にワールドで 1 体だけ。弱るにつれて 3 段階 — 衝撃波、哨戒体の召喚、溶融残渣の噴出。倒すと安定残渣と測量図を落とします",
           "そのほか:運動発作機(止まらず、近づくと危ない動力源)、溶融残渣(新しい流体)、灰の門(行き来のための扉)、精錬レシピ、4 段の進捗"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — 灰街圏の仕上げ: 空、育つ結晶、測量図",
+        "target_label": "未定",
+        "body": "V4.2(灰街圏)の直後に来る小さな更新です。新しい土地も新しい敵も増やさず、V4.2 で置いた仕組みに<b>見た目と手触り</b>を与えます。内容と時期は変わることがあります。",
+        "items": [
+          "空を専用のものに。星も太陽も出ない永遠の夕暮れと、地区ごとに濃さの違う霧(濾過輪は薄く、脈坑はいちばん濃い)。濾過灯のまわりには青緑の粒が舞います",
+          "残渣の結晶が育つように。芽が小・中・大と 4 段階で伸びます。ただしアメジストの 25 分の 1 の速さで、濾過輪の中では育ちません",
+          "運動発作機がただの箱でなくなります。専用の形、稼働中の紫の芯、研削音、そして「16 RPM · 256 SU」の表示",
+          "測量図が画面に地図を出すように。菱形の街と濾過輪と脈坑、そして<b>自分がいまどこに居るか</b>の矢印。しゃがむと閉じます",
+          "調整: 濾過マスクの耐久 180 → 240、マスク無しで発症するまで 8 秒 → 10 秒、瓦礫の落ちる間隔を延長、パルスハウンドの遠吠えを 24 → 20 ブロック",
+          "修正 3 件: 再接続しても灰の門が帰り道を覚えている / 溶融残渣が濾過輪へ流れ込めない / 組立巨体の討伐記録を灰街圏そのものに保存"
         ]
       }
     },
@@ -322,18 +330,6 @@
       "in_progress": "작업 중"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — 화학 강화 유리, 사파이어, 상수도, 에이펙스 장비",
-        "target_label": "날짜 미정",
-        "body": "V4.1(산업화) 다음 업데이트입니다. 공성에 견디는 유리, 네더라이트보다 희귀한 광석, 도시 상수도, 그리고 왕국 장비를 넘어서는 방어구를 준비 중입니다. 시기와 내용은 바뀔 수 있습니다.",
-        "items": [
-          "화학 강화 유리와 착색 버전, 그리고 두 가지의 랜턴. 17색 전부. 공성 보스 앞에서 한 블록당 약 8분",
-          "사파이어 광석: 고대 잔해보다 희귀하며, 심층암 깊은 곳에 한 알만 묻혀 있습니다",
-          "도시 상수도: 취수구, 가압 펌프장, 압력관, 급수탑, 저수조. 기계는 상수도에 연결되어야 전속력으로 돌아갑니다",
-          "에이펙스 장비: 한 부위당 방어 100, 풀세트 400(왕국 장비는 50). 수리에는 사파이어를 씁니다",
-          "Sparxie와 Sparkle 가면 강화(내구도와 방어 x4), Sparxie 지팡이의 크기 조정"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — 잿빛 도시권(Ashen Conurbation): 오염된 거대도시, 새 차원",
         "target_label": "날짜 미정",
@@ -344,6 +340,19 @@
           "새로운 적 3종: 잔류물 스토커(무리 지어 사냥하는 약탈자), 펄스 하운드(울음으로 무리를 강화), 스크랩 파수꾼(마스크를 쓰고 필터 링 안에 있으면 중립)",
           "보스 「조립 거상」. 광맥 구덩이 바닥에 월드당 단 하나. 약해질수록 3단계 — 충격파, 파수꾼 소환, 용융 잔류물 분출. 쓰러뜨리면 안정 잔류물과 측량 지도를 떨어뜨립니다",
           "그 밖에: 운동 발작기(멈추지 않으며 가까이 서면 위험한 동력원), 용융 잔류물(새 유체), 잿빛 관문(드나드는 문), 제련 레시피, 4단계 발전 과제"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — 잿빛 도시권의 마무리: 하늘, 자라는 결정, 측량 지도",
+        "target_label": "날짜 미정",
+        "body": "V4.2 바로 다음에 오는 작은 업데이트입니다. 새 땅도 새 적도 늘리지 않고, V4.2 가 깔아 둔 구조에 <b>겉모습과 손맛</b>을 입힙니다. 시기와 내용은 바뀔 수 있습니다.",
+        "items": [
+          "전용 하늘: 별도 해도 없는 영원한 황혼, 그리고 구역마다 짙기가 다른 안개(필터 링은 옅고 광맥 구덩이가 가장 짙습니다). 켜진 필터 등 주위에는 청록 입자가 떠다닙니다",
+          "잔류물 결정이 자랍니다. 싹이 소·중·대로 이어지지만 자수정의 25 분의 1 속도이며, 필터 링 안에서는 자라지 않습니다",
+          "운동 발작기가 더는 단순한 상자가 아닙니다. 전용 모델, 가동 중의 보라색 코어, 연삭음, 그리고 「16 RPM · 256 SU」 표시",
+          "측량 지도가 화면에 지도를 띄웁니다. 마름모꼴 도시와 필터 링과 광맥 구덩이, 그리고 <b>지금 내가 있는 곳</b>을 가리키는 화살표. 웅크리면 닫힙니다",
+          "조정: 필터 마스크 내구 180 → 240, 마스크 없이 발병까지 8 초 → 10 초, 잔해가 떨어지는 간격을 늘림, 펄스 하운드의 울음이 24 → 20 블록",
+          "수정 3 건: 재접속해도 잿빛 관문이 돌아갈 길을 기억 / 용융 잔류물이 필터 링으로 흘러들지 못함 / 조립 거상의 처치 기록을 잿빛 도시권 자체에 저장"
         ]
       }
     },
@@ -359,18 +368,6 @@
       "in_progress": "Em andamento"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — vidro quimicamente reforçado, safira, rede de água, equipamento Apex",
-        "target_label": "Sem data ainda",
-        "body": "A atualização depois do V4.1 (industrialização). Vidro que aguenta um cerco, um minério mais raro que a netherita, uma rede municipal de água e uma armadura além do equipamento do Reino. Prazo e conteúdo podem mudar.",
-        "items": [
-          "Vidro quimicamente reforçado, a versão fumê e lanternas dos dois. As 17 cores. Cerca de oito minutos por bloco sob cerco",
-          "Minério de safira: mais raro que os destroços antigos, uma única gema enterrada no ardósia profundo",
-          "Rede municipal de água: captações, estações de bombeamento, tubos pressurizados, caixas d'água e reservatórios. As máquinas só rodam a plena carga ligadas à rede",
-          "Equipamento Apex: 100 de defesa por peça, 400 no conjunto completo, contra 50 do Reino. A safira é o que o conserta",
-          "Máscaras Sparxie e Sparkle reforçadas (durabilidade e defesa x4) e a varinha Sparxie redimensionada"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: uma nova dimensão, uma megacidade contaminada",
         "target_label": "Sem data ainda",
@@ -381,6 +378,19 @@
           "Três inimigos novos: o Espreitador de Resíduo (um saqueador que caça em bando), o Cão de Pulso (seu uivo fortalece a matilha) e a Sentinela de Sucata (neutra dentro do Anel de Filtragem se você usar máscara)",
           "Um chefe, o Colosso de Montagem: um por mundo, no fundo do Poço de Veios. Três fases conforme enfraquece — ondas de choque, sentinelas invocadas, gêiseres de Resíduo Fundido. Ele deixa Resíduo Estabilizado e o Mapa de Levantamento",
           "E mais: a Convulsão Cinética (uma fonte de energia que nunca para e da qual é melhor manter distância), o Resíduo Fundido (um fluido novo), o Portão de Cinzas (uma porta para entrar e sair), receitas de fundição e uma árvore de progressos em quatro passos"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Os acabamentos da Ashen Conurbation: céu, cristal que cresce, mapa de levantamento",
+        "target_label": "Sem data ainda",
+        "body": "Uma atualização pequena logo depois da V4.2. Sem terra nova e sem inimigos novos: dá aparência e textura aos sistemas que a V4.2 deixou prontos. Data e conteúdo podem mudar.",
+        "items": [
+          "Um céu próprio: crepúsculo perpétuo sem estrelas nem sol, e névoa que engrossa de distrito em distrito (rala no Anel de Filtragem, densíssima no Poço de Veios). Ao redor das lanternas acesas flutuam partículas ciano",
+          "O cristal de Resíduo cresce. Os brotos passam por pequeno, médio e grande, mas a um vinte e cinco avos do ritmo da ametista, e nunca dentro do Anel de Filtragem",
+          "A Convulsão Cinética deixa de ser um cubo: modelo próprio, núcleo roxo enquanto produz, um ciclo de moagem e uma linha dizendo 16 RPM · 256 SU",
+          "O Mapa de Levantamento desenha a cidade na tela: o losango, o Anel de Filtragem, o Poço de Veios — e uma seta para onde você está. Agache para fechar",
+          "Ajustes: durabilidade da máscara de 180 para 240, a doença leva 10 segundos em vez de 8, os escombros caem com menos frequência, e o uivo do cão de pulso alcança 20 blocos em vez de 24",
+          "Três correções: o Portão de Cinzas lembra o caminho de volta após reconectar, o resíduo fundido não pode mais fluir para o Anel de Filtragem, e o registro do colosso abatido fica na própria cidade"
         ]
       }
     },
@@ -396,18 +406,6 @@
       "in_progress": "В работе"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — химически упрочнённое стекло, сапфир, водопровод, снаряжение Apex",
-        "target_label": "Дата пока не назначена",
-        "body": "Обновление после V4.1 (индустриализация). Стекло, выдерживающее осаду, руда реже незерита, городской водопровод и броня выше Королевского снаряжения. Сроки и содержание могут измениться.",
-        "items": [
-          "Химически упрочнённое стекло, его затемнённая версия и фонари из обоих. Все 17 цветов. Около восьми минут на блок под осадой",
-          "Сапфировая руда: реже древних обломков, единственный кристалл глубоко в глубинном сланце",
-          "Городской водопровод: водозаборы, насосные станции, напорные трубы, водонапорные башни и резервуары. Машины работают на полную только в сети",
-          "Снаряжение Apex: 100 брони за один предмет, 400 за полный комплект против 50 у Королевского. Чинится сапфиром",
-          "Маски Sparxie и Sparkle усилены (прочность и броня x4), посох Sparxie изменён в размере"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: новое измерение, заражённый мегаполис",
         "target_label": "Дата пока не назначена",
@@ -418,6 +416,19 @@
           "Три новых врага: Осадочный сталкер (падальщик, охотящийся стаей), Импульсная гончая (её вой усиливает стаю) и Страж из лома (нейтрален внутри Фильтрующего кольца, если на вас маска)",
           "Босс — Сборочный колосс: один на мир, на дне Жильной ямы. Три фазы по мере ослабления — ударные волны, призванные стражи, гейзеры расплавленного осадка. Оставляет Стабилизированный осадок и Карту съёмки",
           "А также: Кинетический припадок (источник энергии, который никогда не останавливается и рядом с которым лучше не стоять), Расплавленный осадок (новая жидкость), Пепельные врата (дверь туда и обратно), рецепты переплавки и дерево достижений из четырёх шагов"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Отделка Ashen Conurbation: небо, растущий кристалл, карта съёмки",
+        "target_label": "Дата пока не назначена",
+        "body": "Небольшое обновление сразу после V4.2. Ни новых земель, ни новых врагов: оно придаёт вид и ощущение системам, заложенным в V4.2. Сроки и содержание могут измениться.",
+        "items": [
+          "Собственное небо: вечные сумерки без звёзд и солнца, и туман, густеющий от квартала к кварталу (редкий в Фильтрующем кольце, самый плотный в Жильной яме). Вокруг горящих фильтрующих ламп плывут бледно-голубые искры",
+          "Кристалл осадка растёт. Почки проходят малую, среднюю и большую стадии — но в двадцать пять раз медленнее аметиста и никогда внутри Фильтрующего кольца",
+          "Кинетический припадок перестаёт быть кубом: собственная модель, фиолетовое ядро во время работы, петля скрежета и строка «16 RPM · 256 SU»",
+          "Карта съёмки рисует город на экране: ромб, Фильтрующее кольцо, Жильную яму — и стрелку там, где вы стоите. Присядьте, чтобы закрыть",
+          "Правки: прочность фильтрующей маски со 180 до 240, болезнь наступает через 10 секунд вместо 8, обломки падают реже, а вой импульсной гончей слышен на 20 блоков вместо 24",
+          "Три исправления: Пепельные врата помнят дорогу назад после переподключения, расплавленный осадок больше не затекает в Фильтрующее кольцо, а запись об убийстве колосса хранится в самом городе"
         ]
       }
     },
@@ -433,18 +444,6 @@
       "in_progress": "Üzerinde çalışılıyor"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — kimyasal olarak güçlendirilmiş cam, safir, şebeke suyu, Apex teçhizatı",
-        "target_label": "Henüz tarih yok",
-        "body": "V4.1'den (sanayileşme) sonraki güncelleme. Kuşatmaya dayanan cam, netherit'ten daha nadir bir cevher, şehir su şebekesi ve Krallık teçhizatını aşan bir zırh. Zaman ve içerik değişebilir.",
-        "items": [
-          "Kimyasal olarak güçlendirilmiş cam, renkli hâli ve ikisinin fenerleri. 17 rengin tamamı. Kuşatma altında blok başına yaklaşık sekiz dakika",
-          "Safir cevheri: kadim kalıntılardan daha nadir, derin arduvazın içine gömülü tek bir taş",
-          "Şehir su şebekesi: su alma, pompa istasyonları, basınçlı borular, su kuleleri ve depolar. Makineler ancak şebekeye bağlıyken tam hızda çalışır",
-          "Apex teçhizatı: parça başına 100 savunma, tam takımda 400; Krallık teçhizatında 50. Onarımı safirle yapılır",
-          "Sparxie ve Sparkle maskeleri güçlendirildi (dayanıklılık ve savunma x4) ve Sparxie Asası yeniden ölçeklendirildi"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — Ashen Conurbation: yeni bir boyut, kirlenmiş bir megakent",
         "target_label": "Henüz tarih yok",
@@ -455,6 +454,19 @@
           "Üç yeni düşman: Kalıntı Sinsisi (sürü hâlinde avlanan bir çöpçü), Nabız Tazısı (uluması sürüyü güçlendirir) ve Hurda Nöbetçisi (maske takıyorsanız Filtre Halkası içinde tarafsız)",
           "Bir patron, Montaj Devi: dünya başına bir tane, Damar Çukuru'nun dibinde. Zayıfladıkça üç evre — şok dalgaları, çağrılan nöbetçiler, Erimiş Kalıntı gayzerleri. Dengelenmiş Kalıntı ve Keşif Haritası bırakır",
           "Ayrıca: Kinetik Nöbet (hiç durmayan ve yanında durmanın tehlikeli olduğu bir güç kaynağı), Erimiş Kalıntı (yeni bir sıvı), Kül Geçidi (giriş çıkış kapısı), eritme tarifleri ve dört adımlı bir ilerleme ağacı"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — Ashen Conurbation'ın son rötuşları: gökyüzü, büyüyen kristal, keşif haritası",
+        "target_label": "Henüz tarih yok",
+        "body": "V4.2'nin hemen ardından gelen küçük bir güncelleme. Ne yeni toprak ne yeni düşman: V4.2'nin kurduğu sistemlere görünüm ve doku kazandırıyor. Zamanlama ve içerik değişebilir.",
+        "items": [
+          "Kendine ait bir gökyüzü: yıldızsız ve güneşsiz sonsuz alacakaranlık ve mahalleden mahalleye koyulaşan sis (Filtre Halkası'nda ince, Damar Çukuru'nda en yoğun). Yanan filtre fenerlerinin çevresinde soluk camgöbeği zerreler süzülür",
+          "Kalıntı kristali büyüyor. Tomurcuklar küçük, orta ve büyük diye ilerliyor — ama ametistin yirmi beşte biri hızında ve Filtre Halkası içinde asla",
+          "Kinetik Nöbet artık bir küp değil: kendi modeli, çalışırken mor bir çekirdek, öğütme döngüsü ve 16 RPM · 256 SU yazan bir satır",
+          "Keşif Haritası şehri ekrana çiziyor: eşkenar dörtgen, Filtre Halkası, Damar Çukuru — ve durduğunuz yeri gösteren bir ok. Kapatmak için eğilin",
+          "Ayarlar: filtre maskesi dayanıklılığı 180'den 240'a, hastalık 8 saniye yerine 10 saniyede başlıyor, moloz daha seyrek düşüyor ve nabız tazısının uluması 24 yerine 20 blok gidiyor",
+          "Üç düzeltme: Kül Geçidi yeniden bağlandıktan sonra da dönüş yolunu hatırlıyor, erimiş kalıntı artık Filtre Halkası'na akamıyor ve devin öldürüldüğü kaydı şehrin kendisinde tutuluyor"
         ]
       }
     },
@@ -470,18 +482,6 @@
       "in_progress": "制作中"
     },
     "entries": {
-      "v4-1-1": {
-        "headline": "V4.1.1 — 化学强化玻璃、蓝宝石、自来水系统、Apex 装备",
-        "target_label": "日期未定",
-        "body": "V4.1(工业化)之后的更新。能扛住攻城的玻璃、比下界合金更稀有的矿石、城市供水系统,以及超越王国装备的护甲。时间与内容可能变动。",
-        "items": [
-          "化学强化玻璃、遮光版本,以及两者的灯笼。全部 17 种颜色。在攻城巨兽面前每块约需八分钟",
-          "蓝宝石矿:比远古残骸更稀有,深板岩深处只埋着一颗",
-          "城市供水:取水口、加压泵站、压力管、水塔与蓄水池。机器接入管网后才会全速运转",
-          "Apex 装备:单件防御 100,整套 400,王国装备为 50。用蓝宝石修理",
-          "Sparxie 与 Sparkle 面具强化(耐久与防御 x4),Sparxie 法杖的尺寸调整"
-        ]
-      },
       "v4-2-0": {
         "headline": "V4.2 — 灰街圈:被污染的巨型城市,全新维度",
         "target_label": "日期未定",
@@ -492,6 +492,19 @@
           "三种新敌人:残渣潜行者(成群狩猎的拾荒者)、脉冲猎犬(嚎叫强化同伴)、废铁哨兵(戴着面罩时在过滤环内保持中立)",
           "首领「组装巨像」:每个世界只有一个,位于脉坑底部。随着削弱分为三阶段——冲击波、召唤哨兵、喷涌熔融残渣。击败后掉落稳定残渣与测绘图",
           "另外:动能痉挛机(永不停止、靠近即危险的动力源)、熔融残渣(新流体)、灰烬之门(进出之门)、熔炼配方与四步进度树"
+        ]
+      },
+      "v4-2-1": {
+        "headline": "V4.2.1 — 灰街圈的收尾:天空、会生长的结晶、测绘图",
+        "target_label": "日期未定",
+        "body": "紧接 V4.2 之后的小更新。不新增土地,也不新增敌人,而是为 V4.2 铺好的机制补上<b>外观与手感</b>。时间与内容可能变动。",
+        "items": [
+          "专属天空:没有星星也没有太阳的永恒黄昏,以及逐街区加浓的雾(过滤环稀薄,脉坑最浓)。点亮的过滤灯周围会飘着青绿色的微粒",
+          "残渣结晶会生长。芽会依次长成小、中、大,但速度只有紫水晶的二十五分之一,而且过滤环内不会生长",
+          "动能痉挛机不再只是一个方块:专属模型、运转时的紫色核心、研磨循环,以及「16 RPM · 256 SU」的提示",
+          "测绘图会在画面上画出城市:菱形城区、过滤环、脉坑,以及<b>你此刻所在位置</b>的箭头。潜行即可关闭",
+          "调整:过滤面罩耐久 180 → 240,未戴面罩发病由 8 秒改为 10 秒,碎石坠落间隔延长,脉冲猎犬的嚎叫由 24 格改为 20 格",
+          "三项修复:重新连线后灰烬之门仍记得回程 / 熔融残渣无法流入过滤环 / 组装巨像的击杀记录保存在灰街圈本身"
         ]
       }
     },

@@ -1964,6 +1964,35 @@
         "The specification's grey concrete powder does not exist in this version of Minecraft, so the recycler yields andesite instead.",
         "There is no Minecraft client in the development environment, so the new machines' looks, sounds and particles have not been checked in-game."
       ]
+    },
+    {
+      "id": "v4.1.1",
+      "release": "V4.1.1",
+      "date": "2026-09-04",
+      "type": "release",
+      "title": "Chemically strengthened glass, sapphire, Apex Gear and a mains water grid",
+      "summary": "Sixty-eight kinds of glass that survive a siege, an ore rarer than netherite, armour that outguards the old masks eightfold, and a water grid for a whole town. It installs straight into an existing world, and the config files gain the new keys on first start. The masks' old numbers (50 defence, 814 durability) are corrected automatically.",
+      "highlights": [
+        "Chemically strengthened glass: 4 families x 17 colours = 68 blocks (plain, tinted, lantern, tinted lantern). A diamond pickaxe or better is required, and only Silk Touch brings the block back",
+        "Siege endurance: a storm boss needs about eight minutes of continuous assault per block. A vanilla wither takes ten times longer, and one stick of TNT barely scratches it. Lanterns hold half as long",
+        "Sapphire: deepslate ore, raw, gem and block. One attempt in twelve chunks, a single block a vein, Y -64 to -48, and never where a face would be exposed. Fortune adds 0 or 1, capped at two raw",
+        "Apex Gear, four pieces: 100 defence each, 400 for the set. Smithed from a netherite piece with a sapphire. Two pieces take 10% off explosions, the full set 25% and two extra hearts",
+        "A municipal water grid, nine blocks: intake, wellhead, pump station, reservoir, water tower, treatment filter, consumer port, meter and aqueduct slab. Pressure starts at 32, falls by 1 a pipe, and a pump restores 32 up to a cap of 64",
+        "The ore washer and the steam boiler only reach full speed on a live consumer port; a bucket line runs them at half speed",
+        "The Sparxie and Sparkle masks are four times stronger (200 defence, 3256 durability). The downvote stick was resized only - its reach is unchanged"
+      ],
+      "balance_changes": [
+        "Masks: defence 50 -> 200, durability 814 -> 3256. A config file still holding the old numbers is corrected on start",
+        "A pressurised run longer than 64 pipes without a pump bursts: it places exactly one water source, then stays dead until an industrial wrench repairs it"
+      ],
+      "warnings": [
+        "Chemically strengthened glass drops nothing to bare hands or an iron pickaxe. That is the opposite of reinforced glass, which always drops itself, so check how you plan to recover it before you build with it"
+      ],
+      "known_limitations": [
+        "The siege-boss tag ships empty: this pack contains no Wither Storm, so add your own with a datapack. A vanilla wither is already counted automatically, at a tenth of the rate",
+        "Sapphire being rarer than ancient debris is shown by comparing the generation settings, not by a ten-thousand-chunk survey",
+        "The reservoir is a single block (32,000 mB). A multiblock tank waits for the dynamic tank in a later update"
+      ]
     }
   ],
   "roadmap": {

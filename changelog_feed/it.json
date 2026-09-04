@@ -1,14 +1,56 @@
 {
  "lang": "it",
- "updated": "2026-09-03",
+ "updated": "2026-09-04",
  "title": "Changelog",
- "updated_label": "Aggiornato il 2026-09-03",
+ "updated_label": "Aggiornato il 2026-09-04",
  "note": "I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell'introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.",
  "groups": [
   {
    "label": "V4.1",
-   "summary": "L'aggiornamento industrializzazione: 29 nuovi elementi per frantumare minerale, fare acciaio e gestire una fabbrica",
+   "summary": "Vetro chimicamente rinforzato, zaffiro, equipaggiamento Apex e rete idrica",
    "releases": [
+    {
+     "version": "V4.1.1",
+     "date": "2026-09-04",
+     "type": "release",
+     "title": "Vetro chimicamente rinforzato, zaffiro, equipaggiamento Apex e rete idrica",
+     "summary": "Sessantotto vetri che reggono un assedio, un minerale più raro del netherite, un'armatura che protegge otto volte più delle vecchie maschere e una rete idrica per un'intera città. Si installa in un mondo esistente e i file di configurazione ricevono le nuove chiavi al primo avvio. I vecchi valori delle maschere (50 di difesa, 814 di durabilità) vengono corretti da soli.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "Vetro chimicamente rinforzato: 4 famiglie x 17 colori = 68 blocchi (normale, oscurato, lanterna e lanterna oscurata). Serve un piccone di diamante o migliore, e solo Tocco Soave restituisce il blocco",
+        "Resistenza all'assedio: un boss tempesta impiega circa otto minuti di attacco continuo per blocco. Un wither normale ci mette dieci volte tanto e un TNT lo graffia appena. Le lanterne reggono la metà",
+        "Zaffiro: minerale nell'ardesia profonda, grezzo, gemma e blocco. Un tentativo ogni dodici chunk, un solo blocco per vena, Y -64..-48, e mai dove una faccia resterebbe esposta. La fortuna aggiunge 0 o 1, al massimo due grezzi",
+        "Equipaggiamento Apex, quattro pezzi: 100 di difesa ciascuno, 400 per il set. Si forgia al banco da fabbro da un pezzo di netherite e uno zaffiro. Due pezzi tolgono il 10% alle esplosioni, il set completo il 25% e due cuori in più",
+        "Una rete idrica municipale, nove blocchi: presa, pozzo, stazione di pompaggio, serbatoio, torre dell'acqua, filtro, presa di consumo, contatore e lastra d'acquedotto. La pressione parte da 32, cala di 1 per tubo, una pompa ne restituisce 32 fino a un tetto di 64",
+        "Lavatoio del minerale e caldaia a vapore raggiungono la piena velocità solo su una presa attiva; con i secchi vanno a metà",
+        "Le maschere Sparxie e Sparkle sono quattro volte più forti (200 di difesa, 3256 di durabilità). Il bastone è stato solo ridimensionato: la portata non cambia"
+       ]
+      },
+      {
+       "title": "Bilanciamento",
+       "items": [
+        "Maschere: difesa 50 -> 200, durabilità 814 -> 3256. Una configurazione che conserva i vecchi valori viene corretta all'avvio",
+        "Una tratta in pressione oltre 64 tubi senza pompa scoppia: posa esattamente una sorgente d'acqua e resta morta finché una chiave industriale non la ripara"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "Il vetro chimicamente rinforzato non lascia nulla a mani nude o con un piccone di ferro. È l'opposto del vetro rinforzato, che si raccoglie sempre: pensa a come recuperarlo prima di costruirci"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Il tag del boss d'assedio viene distribuito vuoto: questo pacchetto non contiene alcuna Wither Storm, quindi aggiungila con un datapack. Un wither normale è già conteggiato automaticamente, a un decimo del ritmo",
+        "Che lo zaffiro sia più raro delle rovine antiche è mostrato confrontando le impostazioni di generazione, non con un campione di diecimila chunk",
+        "Il serbatoio è un blocco singolo (32.000 mB). Una cisterna multiblocco attende il serbatoio dinamico di un aggiornamento successivo"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.1.0",
      "date": "2026-09-03",

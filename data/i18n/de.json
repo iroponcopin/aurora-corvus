@@ -1845,6 +1845,35 @@
         "Grauen Betonstaub gibt es in dieser Minecraft-Version nicht; der Verwerter liefert Andesit.",
         "Ohne Minecraft-Client in der Entwicklungsumgebung sind Optik, Klänge und Partikel nicht im Spiel geprüft."
       ]
+    },
+    {
+      "id": "v4.1.1",
+      "release": "V4.1.1",
+      "date": "2026-09-04",
+      "type": "release",
+      "title": "Chemisch gehärtetes Glas, Saphir, Apex-Ausrüstung und ein Wassernetz",
+      "summary": "Achtundsechzig Glassorten, die eine Belagerung überstehen, ein Erz seltener als Netherit, eine Rüstung, die die alten Masken achtfach übertrifft, und ein Wassernetz für eine ganze Stadt. Es lässt sich direkt in eine bestehende Welt einspielen; die Konfigurationsdateien erhalten die neuen Schlüssel beim ersten Start. Die alten Maskenwerte (50 Rüstung, 814 Haltbarkeit) werden automatisch korrigiert.",
+      "highlights": [
+        "Chemisch gehärtetes Glas: 4 Familien x 17 Farben = 68 Blöcke (klar, getönt, Laterne, getönte Laterne). Es braucht mindestens eine Diamantspitzhacke, und nur Behutsamkeit bringt den Block zurück",
+        "Belagerungsfestigkeit: ein Sturm-Boss braucht rund acht Minuten Dauerbeschuss pro Block. Ein normaler Wither braucht zehnmal so lange, und eine Stange TNT kratzt kaum. Laternen halten halb so lange",
+        "Saphir: Tiefenschiefer-Erz, Rohsaphir, Edelstein und Block. Ein Versuch je zwölf Chunks, ein einzelner Block pro Ader, Y -64 bis -48, und nie an einer freiliegenden Fläche. Glück gibt 0 oder 1 dazu, höchstens zwei Rohsaphire",
+        "Apex-Ausrüstung, vier Teile: je 100 Rüstung, 400 im Set. Am Schmiedetisch aus einem Netheritteil mit einem Saphir. Zwei Teile nehmen Explosionen 10%, das ganze Set 25% und zwei Herzen extra",
+        "Ein städtisches Wassernetz, neun Blöcke: Einlauf, Brunnenkopf, Pumpwerk, Reservoir, Wasserturm, Filter, Verbraucheranschluss, Zähler und Aquädukt-Platte. Der Druck beginnt bei 32, fällt um 1 je Rohr, eine Pumpe gibt 32 zurück, gedeckelt bei 64",
+        "Erzwäsche und Dampfkessel laufen nur an einem aktiven Verbraucheranschluss mit voller Geschwindigkeit; eine Eimerkette halbiert sie",
+        "Die Sparxie- und Sparkle-Masken sind viermal stärker (200 Rüstung, 3256 Haltbarkeit). Der Stab wurde nur verkleinert - seine Reichweite bleibt gleich"
+      ],
+      "balance_changes": [
+        "Masken: Rüstung 50 -> 200, Haltbarkeit 814 -> 3256. Eine Konfiguration mit den alten Werten wird beim Start korrigiert",
+        "Eine Druckleitung über 64 Rohre ohne Pumpe platzt: sie setzt genau eine Wasserquelle und bleibt tot, bis ein Industrieschraubenschlüssel sie repariert"
+      ],
+      "warnings": [
+        "Chemisch gehärtetes Glas lässt sich mit bloßen Händen oder einer Eisenspitzhacke nicht bergen. Das ist das Gegenteil von verstärktem Glas, das sich immer selbst fallen lässt - prüfe vorher, wie du es wieder abbauen willst"
+      ],
+      "known_limitations": [
+        "Das Belagerungs-Boss-Tag wird leer ausgeliefert: dieses Paket enthält keinen Wither Storm, also ergänze ihn per Datenpaket. Ein normaler Wither zählt bereits automatisch, mit einem Zehntel der Rate",
+        "Dass Saphir seltener ist als antiker Schutt, wird über den Vergleich der Generierungseinstellungen gezeigt, nicht über eine Zählung von zehntausend Chunks",
+        "Das Reservoir ist ein einzelner Block (32.000 mB). Ein Multiblock-Tank wartet auf den dynamischen Tank in einem späteren Update"
+      ]
     }
   ],
   "roadmap": {

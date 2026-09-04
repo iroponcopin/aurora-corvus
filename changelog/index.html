@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新履歴</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-03</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-04</span></p>
     <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
   </header>
 
@@ -227,8 +227,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.1">
       <h2 class="cl__groupTitle">V4.1</h2>
-      <p class="cl__groupSummary">工業化アップデート。鉱石を砕き、鋼を作り、工場を動かす 29 の新要素</p>
+      <p class="cl__groupSummary">化学強化ガラス・サファイア・エイペックス装備・上水道</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.1.1">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-1">
+          <h3 class="cl__version">V4.1.1</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-04</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-1-1" hidden><p class="cl__entryTitle">化学強化ガラス・サファイア・エイペックス装備・上水道</p><p class="cl__lede">攻城戦に耐えるガラスを 68 種、ネザライトより希少なサファイア、王国の 8 倍を守るエイペックス装備、そして町ぐるみの水道が入りました。既存のワールドにそのまま入り、設定ファイルには初回起動時に新しい項目が自動で足されます。仮面 2 種の古い値(防御 50 / 耐久 814)も自動で新しい値に直ります。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(7)</span></h4><ul class="cl__list"><li>化学強化ガラス 4 系統 × 17 色 = 68 ブロック(ふつう・遮光・ランタン・遮光ランタン)。ダイヤ以上のツルハシが要り、シルクタッチでだけ回収できます</li><li>攻城耐久: 攻城の巨獣が 1 ブロックを破るのに約 8 分。ウィザーならその 10 倍、TNT 1 発ではかすり傷です。ランタンはブロックの半分</li><li>サファイア: 深層岩の鉱石・原石・宝石・ブロック。12 チャンクに 1 回・鉱脈 1 ブロック・Y −64〜−48・空気に触れる場所には出ません。幸運は +0〜1、原石は 2 個まで</li><li>エイペックス装備 4 部位: 1 部位で防御 100、フルセットで 400。鍛冶台でサファイアとネザライトの防具から作ります。2 部位で爆発 −10%、4 部位で −25% と最大体力 +2 ハート</li><li>上水道 9 ブロック: 取水口・井戸・加圧ポンプ・貯水槽・給水塔・浄水器・給水口・水量計・導水渠。圧力は水源で 32、管 1 本ごとに −1、ポンプで +32(上限 64)</li><li>洗鉱機と蒸気ボイラーは、給水口につながって初めて満速で回ります。バケツで運ぶと半分の速さです</li><li>スパークシー / スパークルの仮面を 4 倍に強化(防御 200・耐久 3256)。スパークシーの低評価ステッキは大きさだけを調整し、間合いは変えていません</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">バランス調整 <span>(2)</span></h4><ul class="cl__list"><li>仮面 2 種: 防御 50 → 200、耐久 814 → 3256。設定ファイルに古い値が残っていれば起動時に自動で直ります</li><li>圧力管を 64 本を超えてポンプ無しで引き回すと破裂します。水源を 1 個だけ落として止まり、工業用レンチで直せます</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>化学強化ガラスは素手や鉄のツルハシでは何も落ちません。強化ガラス(素手でも落ちる)とは逆の規則なので、置き換えるときは回収方法にご注意ください</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(3)</span></h4><ul class="cl__list"><li>攻城耐久の対象になる「攻城のボス」のタグは空のまま出荷しています。このパックにウィザーストームは入っていないので、データパックで足してください(バニラのウィザーは自動で 10 分の 1 の速さとして数えます)</li><li>サファイアが古代の残骸より希少であることは、生成の設定を突き合わせて確かめています。1 万チャンクを実際に掘った統計ではありません</li><li>貯水槽は単体(32,000 mB)のみです。複数ブロックの大型タンクは動的タンクと一緒に次回以降になります</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="" data-version="V4.1.0">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-1-0">
           <h3 class="cl__version">V4.1.0</h3>

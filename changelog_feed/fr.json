@@ -1,14 +1,56 @@
 {
  "lang": "fr",
- "updated": "2026-09-03",
+ "updated": "2026-09-04",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-09-03",
+ "updated_label": "Mis à jour le 2026-09-04",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
   {
    "label": "V4.1",
-   "summary": "La mise à jour industrialisation : 29 nouveaux éléments pour concasser le minerai, faire l'acier et tenir une usine",
+   "summary": "Verre chimiquement renforcé, saphir, équipement Apex et réseau d'eau",
    "releases": [
+    {
+     "version": "V4.1.1",
+     "date": "2026-09-04",
+     "type": "release",
+     "title": "Verre chimiquement renforcé, saphir, équipement Apex et réseau d'eau",
+     "summary": "Soixante-huit verres qui tiennent un siège, un minerai plus rare que la netherite, une armure qui protège huit fois mieux que les anciens masques, et un réseau d'eau pour toute une ville. Tout s'installe dans un monde existant, et les fichiers de configuration reçoivent les nouvelles clés au premier démarrage. Les anciennes valeurs des masques (50 de défense, 814 de durabilité) sont corrigées automatiquement.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Verre chimiquement renforcé : 4 familles x 17 couleurs = 68 blocs (clair, teinté, lanterne, lanterne teintée). Une pioche en diamant au minimum, et seule la Toucher de soie rend le bloc",
+        "Endurance de siège : un boss de tempête met environ huit minutes d'assaut continu par bloc. Un wither ordinaire met dix fois plus longtemps, et une TNT l'égratigne à peine. Les lanternes tiennent moitié moins",
+        "Saphir : minerai d'ardoise des abîmes, brut, gemme et bloc. Un essai tous les douze chunks, un seul bloc par filon, Y -64 à -48, et jamais sur une face exposée. La fortune ajoute 0 ou 1, plafonnée à deux bruts",
+        "Équipement Apex, quatre pièces : 100 de défense chacune, 400 pour la panoplie. Forgé à la table de forge à partir d'une pièce en netherite et d'un saphir. Deux pièces retirent 10% aux explosions, la panoplie 25% et deux cœurs de plus",
+        "Un réseau d'eau municipal, neuf blocs : prise d'eau, tête de puits, station de pompage, réservoir, château d'eau, filtre, prise de consommation, compteur et dalle d'aqueduc. La pression part de 32, perd 1 par tuyau, une pompe en rend 32 avec un plafond de 64",
+        "Le laveur de minerai et la chaudière ne tournent à pleine vitesse que sur une prise alimentée ; au seau, ils vont deux fois moins vite",
+        "Les masques Sparxie et Sparkle sont quatre fois plus solides (200 de défense, 3256 de durabilité). Le bâton a seulement été redimensionné : sa portée est inchangée"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Masques : défense 50 -> 200, durabilité 814 -> 3256. Une configuration contenant encore les anciennes valeurs est corrigée au démarrage",
+        "Une conduite sous pression de plus de 64 tuyaux sans pompe éclate : elle pose exactement une source d'eau puis reste morte jusqu'à réparation à la clé industrielle"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le verre chimiquement renforcé ne tombe ni à mains nues ni à la pioche en fer. C'est l'inverse du verre renforcé, qui se ramasse toujours : réfléchissez à la récupération avant de bâtir avec"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le tag de boss de siège est livré vide : ce pack ne contient pas de Wither Storm, ajoutez le vôtre par datapack. Un wither ordinaire est déjà compté automatiquement, à un dixième du rythme",
+        "La rareté du saphir par rapport aux débris antiques est établie en comparant les réglages de génération, pas par un relevé de dix mille chunks",
+        "Le réservoir est un bloc unique (32 000 mB). Une cuve multibloc attend la cuve dynamique d'une mise à jour ultérieure"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.1.0",
      "date": "2026-09-03",
