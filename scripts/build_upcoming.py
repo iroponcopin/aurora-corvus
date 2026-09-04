@@ -85,8 +85,34 @@ def _load():
     return data, entries
 
 
+_INLINE_TAG = __import__("re").compile(r"</?[A-Za-z][A-Za-z0-9]*(?:\\s[^>]*)?/?>")
+
+
+def _refuse_markup(lang, eid, field, value):
+    """**この頁の散文は素のテキストである。**タグを書いても描画されない。
+
+    2026-09-04 実測: V4.2.1 と V4.2.2 の予告に書いた <b> は `esc()` に食われて
+    <b>そのまま文字として</b>出ており、公開中の頁で読者に見えていた
+    (13 言語 × 36 か所)。更新履歴の散文 71 件には 1 つもタグが無い ——
+    つまり素のテキストがこの site の作法で、予告だけがそれを破っていた。
+    escape は安全側の既定として正しいので、直すべきは<b>黙って通したこと</b>である。
+    強調したいならその言語の言い回しで書くこと(鍵括弧など)。
+    """
+    m = _INLINE_TAG.search(value)
+    if m:
+        raise SystemExit(
+            f"upcoming: {lang}/{eid} の {field} に HTML タグ {m.group(0)!r} がある。"
+            f"この頁は散文を escape するので、タグは描画されず**文字として出る**。"
+            f"data/upcoming.json から取り除くこと。"
+        )
+
+
 def _entry_html(lang, entry, prose, labels, prefix):
     text = prose[entry["id"]]
+    for field in ("headline", "target_label", "body"):
+        _refuse_markup(lang, entry["id"], field, text[field])
+    for n, item in enumerate(text["items"]):
+        _refuse_markup(lang, entry["id"], f"items[{n}]", item)
     items = "".join(f"<li>{esc(i)}</li>" for i in text["items"])
     badge = esc(labels.get(entry["status"], entry["status"]))
     link = ""
