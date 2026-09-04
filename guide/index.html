@@ -217,7 +217,7 @@
       
 <p>
   <strong>Alpha</strong>(旧称: Glimpse Alpha、さらにその前は Sorakaze)は、そらかぜからすサーバーに導入されている
-  Fabric MOD 群です。12 個の独立した MOD で構成されており、それぞれ個別に導入・更新できます。
+  Fabric MOD 群です。13 個の独立した MOD で構成されており、それぞれ個別に導入・更新できます。
   弓矢やトロッコなどバニラ(MOD なしの標準)の要素を置き換えたり削除したりはせず、
   新しいアイテム・ブロック・ディメンションを追加する形になっています。
 </p>
@@ -258,8 +258,8 @@
 
 <h3>だれが何を用意するか</h3>
 <ul>
-  <li><strong>サーバー(そらかぜからす鯖)</strong> — Fabric サーバー本体 + Fabric API + Alpha 12 MOD</li>
-  <li><strong>参加する人 1 人 1 人の PC</strong> — Fabric クライアント + Fabric API + Alpha 12 MOD(サーバーと完全に同じ組み合わせ)</li>
+  <li><strong>サーバー(そらかぜからす鯖)</strong> — Fabric サーバー本体 + Fabric API + Alpha 13 MOD</li>
+  <li><strong>参加する人 1 人 1 人の PC</strong> — Fabric クライアント + Fabric API + Alpha 13 MOD(サーバーと完全に同じ組み合わせ)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -291,7 +291,7 @@
 <tr><td>Minecraft バージョン</td><td><code>26.2</code></td></tr>
 <tr><td>必要な Java</td><td>Java 25(<a href="https://adoptium.net/">Temurin 25 (LTS)</a> 推奨)</td></tr>
 <tr><td>Fabric API</td><td>Minecraft のバージョンに対応するもの(例: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
-<tr><td>MOD 構成</td><td>12 個(銃火器・鉄道・建材/装飾・乗り物・ボス・天空・サバイバル・電力・バックルームズ・二相楽園)</td></tr>
+<tr><td>MOD 構成</td><td>13 個(銃火器・鉄道・建材/装飾・乗り物・ボス・天空・サバイバル・電力・バックルームズ・二相楽園)</td></tr>
 </table>
 </div>
 
@@ -317,7 +317,7 @@
 <h3>用意するもの</h3>
 <ul>
   <li>Minecraft Java 版が遊べる Windows または Mac の PC</li>
-  <li>サーバー管理者から受け取った <strong>MOD 一式(jar ファイル 13 個 = Fabric API 1 個 + Alpha の MOD 12 個)</strong></li>
+  <li>サーバー管理者から受け取った <strong>MOD 一式(jar ファイル 14 個 = Fabric API 1 個 + Alpha の MOD 13 個)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -331,7 +331,7 @@
 </div>
 
 <h3>受け取る予定のファイル(例)</h3>
-<p>サーバー管理者から、だいたい次のような 13 個のファイルを受け取ります(バージョン番号は更新のたびに変わります)。</p>
+<p>サーバー管理者から、だいたい次のような 14 個のファイルを受け取ります(バージョン番号は更新のたびに変わります)。</p>
 <div class="table-wrap">
 <table>
 <tr><th>ファイル名(例)</th><th>内容</th></tr>
@@ -393,7 +393,7 @@
 <ol class="steps">
   <li>エクスプローラーのアドレス欄に <code>%appdata%\.minecraft</code> と入力して Enter を押します。</li>
   <li><code>mods</code> フォルダーがなければ新規作成します(すべて小文字)。</li>
-  <li>受け取った 13 個の jar ファイルをすべて、この <code>mods</code> フォルダーの中にコピーします(解凍は不要、jar のまま入れます)。</li>
+  <li>受け取った 14 個の jar ファイルをすべて、この <code>mods</code> フォルダーの中にコピーします(解凍は不要、jar のまま入れます)。</li>
 </ol>
 
 <h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
@@ -401,13 +401,13 @@
   <li>デスクトップを 1 回クリックしてから、<code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> を同時に押します(または上部メニューの「移動」→「フォルダへ移動…」)。</li>
   <li>出てきた入力欄に <code>~/Library/Application Support/minecraft</code> をそのまま貼り付けて Enter を押します(先頭の「<code>~</code>」も忘れずに)。「Library」は Finder では普段見えないフォルダーなので、この方法で開くのが確実です。</li>
   <li><code>mods</code> フォルダーがなければ、その場で右クリック→「新規フォルダ」で作成します。</li>
-  <li>受け取った 13 個の jar ファイルをすべて、ドラッグ&ドロップでこの <code>mods</code> フォルダーに入れます。</li>
+  <li>受け取った 14 個の jar ファイルをすべて、ドラッグ&ドロップでこの <code>mods</code> フォルダーに入れます。</li>
 </ol>
 
 <h3>③ Fabric で起動してサーバーに参加する</h3>
 <ol class="steps">
   <li>Minecraft ランチャーを開き、「プレイ」ボタンの近くにある起動構成(プロファイル)の一覧から <code>fabric-loader-26.2</code> のような名前を選びます(「最新のリリース」のままだと MOD なしで起動してしまいます)。</li>
-  <li>そのまま「プレイ」を押して起動します。タイトル画面に「Mods」ボタンが増えていれば成功です。押すと Alpha の MOD 12 個と Fabric API が確認できます。</li>
+  <li>そのまま「プレイ」を押して起動します。タイトル画面に「Mods」ボタンが増えていれば成功です。押すと Alpha の MOD 13 個と Fabric API が確認できます。</li>
   <li>あとはいつもどおり「マルチプレイ」からサーバーに接続します。</li>
 </ol>
 
@@ -445,7 +445,7 @@
 <p>
   ここからはサーバー本体を運用・管理する立場の方向けの章です。すでに Minecraft の
   サーバー(バニラ、MOD なしの標準サーバー)が動いている状態から、Fabric と
-  Alpha の 12 MOD を追加する手順を説明します。この章では Windows サーバーを例にします。
+  Alpha の 13 MOD を追加する手順を説明します。この章では Windows サーバーを例にします。
   Mac / Linux でサーバーを運用している場合は、フォルダーの場所やコマンドの実行方法をご自身の
   環境に読みかえたうえで、同様の手順(Fabric 公式サイトの案内)に沿ってください。
 </p>
@@ -556,8 +556,8 @@ pause</pre>
 
 <h3>3. MOD 一式を mods フォルダーに入れる</h3>
 <p>
-  Fabric API 1 個 + Alpha の MOD 12 個、合計 13 個の jar ファイルを <code>mods</code> フォルダーの
-  中にコピーします(解凍は不要、jar ファイルのまま入れます)。この 12 個の MOD 本体は、これまでどおりの
+  Fabric API 1 個 + Alpha の MOD 13 個、合計 14 個の jar ファイルを <code>mods</code> フォルダーの
+  中にコピーします(解凍は不要、jar ファイルのまま入れます)。この 13 個の MOD 本体は、これまでどおりの
   配布経路で入手してください。<strong>このサイトでは MOD 本体そのものは配布していません。</strong>
 </p>
 <div class="table-wrap">
@@ -608,7 +608,7 @@ pause</pre>
       <div class="badge-row"><span class="type-badge type-visual">サーバー管理者向け</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">MOD を新しい版に入れかえるとき</h2>
       
-<p>Alpha MOD パックは 12 個の MOD がそれぞれ完全に独立しているため、更新のたびに 12 個すべてが
+<p>Alpha MOD パックは 13 個の MOD がそれぞれ完全に独立しているため、更新のたびに 13 個すべてが
 差し替わるとは限りません。実際に中身が変わった MOD だけを入れかえれば大丈夫です
 (どの MOD が変わったかは、配布時の案内や<a href="../changelog/">更新履歴</a>で確認できます)。</p>
 

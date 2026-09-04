@@ -217,7 +217,7 @@
       
 <p>
   <strong>Alpha</strong> (eski adıyla: Glimpse Alpha, ondan önce Sorakaze), Sorakazekarasu sunucusuna kurulu
-  Fabric MOD paketidir. 12 bağımsız MOD'dan oluşur ve her biri ayrı ayrı kurulup güncellenebilir.
+  Fabric MOD paketidir. 13 bağımsız MOD'dan oluşur ve her biri ayrı ayrı kurulup güncellenebilir.
   Yay-ok ve maden arabası gibi vanilla (MOD'suz standart) unsurları değiştirmez veya kaldırmaz;
   bunun yerine yeni eşyalar, bloklar ve boyutlar ekler.
 </p>
@@ -258,8 +258,8 @@
 
 <h3>Kim neyi hazırlayacak</h3>
 <ul>
-  <li><strong>Sunucu (Sorakazekarasu sunucusu)</strong> — Fabric sunucusu + Fabric API + Alpha 12 MOD</li>
-  <li><strong>Katılacak her kişinin bilgisayarı</strong> — Fabric istemcisi + Fabric API + Alpha 12 MOD (sunucuyla tamamen aynı kombinasyon)</li>
+  <li><strong>Sunucu (Sorakazekarasu sunucusu)</strong> — Fabric sunucusu + Fabric API + Alpha 13 MOD</li>
+  <li><strong>Katılacak her kişinin bilgisayarı</strong> — Fabric istemcisi + Fabric API + Alpha 13 MOD (sunucuyla tamamen aynı kombinasyon)</li>
 </ul>
 
 <div class="callout callout--info">
@@ -292,7 +292,7 @@
 <tr><td>Minecraft sürümü</td><td><code>26.2</code></td></tr>
 <tr><td>Gereken Java</td><td>Java 25 (<a href="https://adoptium.net/">Temurin 25 (LTS)</a> önerilir)</td></tr>
 <tr><td>Fabric API</td><td>Minecraft sürümüne uygun olan (örnek: <code>fabric-api-0.154.2+26.2.jar</code>)</td></tr>
-<tr><td>MOD yapısı</td><td>12 adet (silahlar, demiryolu, yapı/dekorasyon, araçlar, boss, gökyüzü, hayatta kalma, elektrik, Backrooms, Planarcadia)</td></tr>
+<tr><td>MOD yapısı</td><td>13 adet (silahlar, demiryolu, yapı/dekorasyon, araçlar, boss, gökyüzü, hayatta kalma, elektrik, Backrooms, Planarcadia)</td></tr>
 </table>
 </div>
 
@@ -318,7 +318,7 @@
 <h3>Gerekenler</h3>
 <ul>
   <li>Minecraft Java sürümünü oynatabilen bir Windows veya Mac bilgisayar</li>
-  <li>Sunucu yöneticisinden alınan <strong>MOD paketi (13 jar dosyası = Fabric API 1 + Alpha'nın 12 MOD'u)</strong></li>
+  <li>Sunucu yöneticisinden alınan <strong>MOD paketi (14 jar dosyası = Fabric API 1 + Alpha'nın 13 MOD'u)</strong></li>
 </ul>
 
 <div class="callout callout--danger">
@@ -332,7 +332,7 @@
 </div>
 
 <h3>Alacağınız dosyalar (örnek)</h3>
-<p>Sunucu yöneticisinden aşağıdaki gibi yaklaşık 13 dosya alırsınız (sürüm numaraları her güncellemede değişir).</p>
+<p>Sunucu yöneticisinden aşağıdaki gibi yaklaşık 14 dosya alırsınız (sürüm numaraları her güncellemede değişir).</p>
 <div class="table-wrap">
 <table>
 <tr><th>Dosya adı (örnek)</th><th>İçerik</th></tr>
@@ -394,7 +394,7 @@
 <ol class="steps">
   <li>Gezgin'in adres çubuğuna <code>%appdata%\.minecraft</code> yazıp Enter'a basın.</li>
   <li><code>mods</code> klasörü yoksa yeni oluşturun (tamamı küçük harf).</li>
-  <li>Aldığınız 13 jar dosyasının tamamını bu <code>mods</code> klasörünün içine kopyalayın (arşivden çıkarmaya gerek yok, jar olarak koyun).</li>
+  <li>Aldığınız 14 jar dosyasının tamamını bu <code>mods</code> klasörünün içine kopyalayın (arşivden çıkarmaya gerek yok, jar olarak koyun).</li>
 </ol>
 
 <h4>Mac: <code>~/Library/Application Support/minecraft/mods</code></h4>
@@ -402,13 +402,13 @@
   <li>Masaüstüne bir kez tıkladıktan sonra <code>⌘ command</code>+<code>⇧ shift</code>+<code>G</code> tuşlarına aynı anda basın (veya üst menüdeki "Git" → "Klasöre Git…").</li>
   <li>Çıkan giriş kutusuna <code>~/Library/Application Support/minecraft</code> yazısını olduğu gibi yapıştırıp Enter'a basın (başındaki "<code>~</code>" işaretini de unutmayın). "Library" Finder'da normalde görünmeyen bir klasör olduğundan, bu yöntemle açmak en kesin yoldur.</li>
   <li><code>mods</code> klasörü yoksa, olduğu yerde sağ tık → "Yeni Klasör" ile oluşturun.</li>
-  <li>Aldığınız 13 jar dosyasının tamamını sürükle-bırak yöntemiyle bu <code>mods</code> klasörüne koyun.</li>
+  <li>Aldığınız 14 jar dosyasının tamamını sürükle-bırak yöntemiyle bu <code>mods</code> klasörüne koyun.</li>
 </ol>
 
 <h3>③ Fabric ile başlatıp sunucuya katılın</h3>
 <ol class="steps">
   <li>Minecraft başlatıcısını açın, "Oyna" butonunun yakınındaki başlatma profili listesinden <code>fabric-loader-26.2</code> gibi bir isim seçin ("En Son Sürüm" olarak bırakırsanız MOD'suz başlar).</li>
-  <li>Öylece "Oyna"ya basıp başlatın. Ana ekranda "Mods" butonu artmışsa başarılı demektir. Basınca Alpha'nın 12 MOD'unu ve Fabric API'yi görebilirsiniz.</li>
+  <li>Öylece "Oyna"ya basıp başlatın. Ana ekranda "Mods" butonu artmışsa başarılı demektir. Basınca Alpha'nın 13 MOD'unu ve Fabric API'yi görebilirsiniz.</li>
   <li>Sonrasında her zamanki gibi "Çok Oyunculu"dan sunucuya bağlanın.</li>
 </ol>
 
@@ -446,7 +446,7 @@
 <p>
   Buradan itibaren sunucu makinesini işleten/yöneten kişilere yönelik bölüm başlıyor. Zaten çalışmakta olan bir
   Minecraft sunucusundan (vanilla, MOD'suz standart sunucu) yola çıkarak, Fabric ve
-  Alpha'nın 12 MOD'unu ekleme adımları anlatılıyor. Bu bölümde örnek olarak Windows sunucusu kullanılıyor.
+  Alpha'nın 13 MOD'unu ekleme adımları anlatılıyor. Bu bölümde örnek olarak Windows sunucusu kullanılıyor.
   Mac / Linux üzerinde sunucu işletiyorsanız, klasör konumlarını ve komut çalıştırma yöntemini kendi
   ortamınıza göre uyarlayarak benzer adımları (Fabric'in resmî sitesindeki talimatlar) izleyin.
 </p>
@@ -557,8 +557,8 @@ pause</pre>
 
 <h3>3. MOD paketini mods klasörüne koyun</h3>
 <p>
-  Fabric API 1 + Alpha'nın 12 MOD'u olmak üzere toplam 13 jar dosyasını <code>mods</code> klasörünün
-  içine kopyalayın (arşivden çıkarmaya gerek yok, jar dosyası olarak koyun). Bu 12 MOD'un kendisini,
+  Fabric API 1 + Alpha'nın 13 MOD'u olmak üzere toplam 14 jar dosyasını <code>mods</code> klasörünün
+  içine kopyalayın (arşivden çıkarmaya gerek yok, jar dosyası olarak koyun). Bu 13 MOD'un kendisini,
   şimdiye kadarki dağıtım yolundan temin edin. <strong>Bu sitede MOD dosyalarının kendisi dağıtılmıyor.</strong>
 </p>
 <div class="table-wrap">
@@ -609,7 +609,7 @@ iletip, herkesin kendi bilgisayarına aynı Fabric ve MOD paketini kurmasını s
       <div class="badge-row"><span class="type-badge type-visual">Sunucu Yöneticileri İçin</span></div>
       <h2 style="margin-top:0;border-top:none;padding-top:0;">MOD&#x27;ları Yeni Sürümle Değiştirirken</h2>
       
-<p>Alpha'daki 12 MOD birbirinden tamamen bağımsız olduğundan, her güncellemede 12'unun da
+<p>Alpha'daki 13 MOD birbirinden tamamen bağımsız olduğundan, her güncellemede 13'unun da
 birden değişeceği anlamına gelmez. Gerçekten içeriği değişen MOD'u değiştirmeniz yeterlidir
 (hangi MOD'un değiştiğini dağıtım sırasındaki bilgilendirmeden veya <a href="../changelog/">Güncelleme Geçmişi</a>'nden kontrol edebilirsiniz).</p>
 
