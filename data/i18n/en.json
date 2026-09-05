@@ -2107,6 +2107,57 @@
         "sorakaze_survival": "4.2.2",
         "sorakaze_vehicles": "4.2.2"
       }
+    },
+    {
+      "id": "v4.2.3",
+      "release": "V4.2.3",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "The Filter Underworks and the Service Drop, plus the Padlock and the PIN Door Lock",
+      "summary": "The Ashen Conurbation gains a sixth precinct directly under the Filter Ring, the Filter Underworks, and the Service Drop that leads down to it from the plaza grate: the shaft, the east service tunnel, the Sump Hall with its condensate pool, the pipe leeches that drop from the pressure mains, the service cage, the service key, the sump gauge and the condensate bucket. Alongside it the building mod gains a Padlock and a PIN Door Lock. They hang on every door in the pack, the 21 vanilla doors included, and a locked door cannot be broken by players, mobs, bosses, TNT, pistons or commands. A padlock opens, closes and breaks only for the person who hung it and for operators; a PIN door lock only for those who have entered its 4–8 digit number.",
+      "highlights": [
+        "The Filter Underworks (sixth precinct): an underground layer directly beneath the Filter Ring, y40–63 within 96 blocks of the centre. Contamination continues there — no filter grace. Below y64 the survey map shows an inner circle and a centre mark",
+        "The Service Drop: from the sump grate in the middle of the plaza at (0,64,0) a shaft goes down to y49, with a ladder and a redstone-powered service cage (sneak-use inside it to ride between y49 and y65, ten ticks apart; unpowered it says the cage has no charge). For testers, /fallout drop lands you inside the cage",
+        "The east service tunnel: three blocks wide at y50–52 from x=4 to the first viaduct pier at x=132, with a pressure main on the ceiling every four blocks and a service locker at x=64 (one service key guaranteed plus 3–5 items). The ladder at its end climbs to the viaduct deck (y72)",
+        "The Sump Hall (a sump-brick box, x −10..10, y48–59, z −10..10): a 5×5 condensate pool, four condenser coils, two kinetic seizure machines and three chests (5–8 items). Standing there grants \"Take the Drop\"",
+        "Pressure mains and pipe leeches: one main in five is infested; walk under one within four blocks above eye level and a leech drops from the ceiling (health 10, attack 2, speed 0.24, climbs walls). A bite gives 4 s of residue sickness and 2 s of slowness. It drops 0–1 condensate vial and a service key one time in five. Underworks spawn table: pipe leech 80 (2–5), scrap sentinel 5 (1), nothing else",
+        "Condensate (a fluid) and the condensate bucket: contact gives 6 s each of Sump Damp (slowness I + mining fatigue I) and residue sickness. It cannot be placed in or flow into the Residue Flats or the Vein Pit — only the ring and the underworks — and molten residue can no longer be placed in the underworks either. Right-click a condensate source with a condensate vial to refill it to 8 uses (the source stays). Filling a bucket in the underworks grants \"Prime the Sump\"",
+        "Service Key (2 iron ingots + 1 iron nugget, no durability): the only thing that opens and closes the sump grate — hands and redstone do nothing to it. Sump Gauge (6 iron ingots + sump grate + condensate vial): held in the main hand it shows on the action bar how many pressure mains are within 16 blocks and how many of them are charged by a kinetic seizure machine. Sump Brick ×4 = 3 precast concrete + 1 condensate vial",
+        "Sump mist drifts through the underworks, and three sounds arrive with it (cage, grate, leech drop). The Assembly Colossus does not wake for players inside the Sump Hall, the shaft or the tunnel",
+        "Padlock (5 iron ingots): right-click a door you placed yourself. Only you and operators (permission level 2 or above) can open, close, dig or break it; for everyone else the door stays shut and no cracks appear. Sneak + empty hand as the owner takes it off and drops the padlock",
+        "PIN Door Lock (6 iron ingots + stone button + redstone dust): right-click opens a keypad; choose 4–8 digits and confirm with #. Only people who have entered the number can open, close or break the door. A wrong number starts a lockout on that lock (1 second, doubling up to 10 minutes, for everyone); the right number lights the green lamp for two seconds and opens the door",
+        "A locked door does not break: mining, TNT and warhead explosions, the wither, pistons, removing the floor under it, even /setblock over it — the door stays and nothing drops. Redstone does not open it and zombies stop pounding on it. When an allowed person breaks it, one door and one lock drop",
+        "Every door counts: the 12 wooden, the iron and the 8 copper vanilla doors, and the building mod's 2 armoured and 10 kit doors. The lock hangs on the face where you clicked and swings with the leaf; on the hatch it sits on the plate",
+        "Only the person who placed the door (and operators) can lock it, so nobody can seal someone else's house. Doors placed before this version, and the city's doors, can be locked by operators only. An open door cannot be locked"
+      ],
+      "balance_changes": [
+        "No Ashen Conurbation number changed (the sickness clock, the mask's durability, the colossus's health). The underworks are contaminated exactly like the Collapsed Precincts, with no grace",
+        "Only the building mod and the Ashen Conurbation mod changed. The other eleven mods are untouched inside (only their version numbers move to 4.2.3)"
+      ],
+      "warnings": [
+        "The Ashen Conurbation mod's pickaxe tags (mineable/pickaxe and needs_diamond_tool) had been written in the wrong place since V4.2.0, so vanilla pickaxes never read them. V4.2.3 fixes this: blocks that require a tool now drop correctly with a pickaxe, and the Filter Ring's wall needs a diamond pickaxe (a behaviour change)",
+        "The underworks appear in existing Ashen Conurbation worlds only in chunks that have not been generated yet. A centre that is already generated will show neither the shaft nor the hall",
+        "The fog colour when submerged in condensate (#A0E6E2) is not implemented — 26.2 has no per-fluid fog hook — so the biome's fog applies",
+        "A door can be locked only by the person who placed it (or an operator). Doors placed before V4.2.3 carry no placer record: ask an operator if you want one locked",
+        "A locked copper door stops weathering (honeycomb and axes do nothing) until the lock comes off",
+        "For administrators: /doorlock admin remove <x y z> (permission level 3) removes a lock without breaking the door; every use is logged and announced to the operators present",
+        "The lock items are in the \"building\" creative tab. Trapdoors and fence gates cannot be locked"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.3",
+        "sorakaze_boss": "4.2.3",
+        "sorakaze_deco": "4.2.3",
+        "sorakaze_fallout": "4.2.3",
+        "sorakaze_guns": "4.2.3",
+        "sorakaze_phone": "4.2.3",
+        "sorakaze_planarcadia": "4.2.3",
+        "sorakaze_power": "4.2.3",
+        "sorakaze_rail": "4.2.3",
+        "sorakaze_sapporo": "4.2.3",
+        "sorakaze_sky": "4.2.3",
+        "sorakaze_survival": "4.2.3",
+        "sorakaze_vehicles": "4.2.3"
+      }
     }
   ],
   "roadmap": {

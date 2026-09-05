@@ -2,13 +2,6 @@
   "_comment": "Content for /upcoming/ (scripts/build_upcoming.py) AND for the machine-readable upcoming.json feed the Discord bot polls. Structure (id/status/target) is shared; prose is per language, keyed by the same ids -- the split data/changelog.json uses. The bot announces an entry ONCE, keyed by id, so changing an entry's prose does not re-announce it but adding a new id does. An empty board is allowed only when every language has an 'empty' line (V4.0.1); the feed then carries entries: [].",
   "entries": [
     {
-      "id": "v4-2-3",
-      "status": "planned",
-      "target": "未定 / TBD",
-      "kind": "pack",
-      "url_path": "upcoming/"
-    },
-    {
       "id": "v4-2-4",
       "status": "planned",
       "target": "未定 / TBD",
@@ -117,19 +110,6 @@
       "in_progress": "قيد العمل"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — أسفل المرشّح ونزلة الصيانة: إلى ما تحت المدينة مباشرة",
-        "target_label": "لا موعد بعد",
-        "body": "التحديث الذي يلي V4.2.2. حيث أرسلك V4.2.2 إلى الشرق، يرسلك هذا إلى الأسفل. لا بُعد جديد ولا زعيم جديد. ساحة حلقة الترشيح مبنيّة فوق حوض ترسيب مختوم. النزلة ما زالت تعمل. أمّا المضخّات فلا. قد يتغيّر الموعد والمحتوى.",
-        "items": [
-          "أسفل المرشّح: منطقة جديدة تحت الساحة تمامًا، الارتفاع 40–63 ونصف القطر 96. نعمة مصابيح الساحة لا تنزل تحت الارتفاع 64 — يبدأ داء الرواسب بعد 10 ثوانٍ بلا قناع، و40 ثانية مع القناع",
-          "نزلة الصيانة: انزل البئر من الشبكة في وسط الساحة إلى قاعة الترسيب (21 × 12 × 21)، ثم اسلك النفق الشرقي عند الارتفاع 50 حتى x=128 واصعد أول دعامة للجسر إلى سطح V4.2.2 — طريق واحد متّصل",
-          "قفص الصيانة: قفزة بمحرّك بين الساحة والحوض. يحتاج قوّة دورانية أو إشارة ريدستون. إذا لم تكن فيه شحنة قال ذلك، والسلّم يعمل دائمًا",
-          "يصبح المكثّف سائلًا حقيقيًا يُحمل في دلو. يجوز وضعه في حلقة الترشيح وفي الأسفل؛ أمّا في سهول الرواسب وحفرة العروق فيتبخّر. ملامسته تمنح رطوبة الحوض (6 ثوانٍ من بطء المشي والتعدين)",
-          "علقة الأنابيب: تختبئ في أنابيب الضغط فوق رأسك وتسقط حين تمرّ تحتها. تترك قوارير مكثّف، ومفتاح صيانة بنسبة 20% — لكنّ المفتاح الأول مضمون في الخزانة عند x=64",
-          "مفتاح الصيانة (يفتح الشبكة ويغلقها) ومقياس الحوض (يعدّ الأنابيب القريبة على شريط الإجراءات)، مع الأمر /fallout drop. لا جسور معلّقة جديدة على السطح"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — الخط الحلقي وضغط المصابيح: لم يكن الضوء سحرًا قط",
         "target_label": "لا موعد بعد",
@@ -311,19 +291,6 @@
       "in_progress": "In Arbeit"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Filterunterbau und der Wartungsabstieg: geradewegs unter die Stadt",
-        "target_label": "Noch kein Termin",
-        "body": "Das Update nach V4.2.2. Wo V4.2.2 nach Osten schickte, schickt dieses nach unten. Keine neue Dimension, kein neuer Boss. Der Platz des Filterrings steht auf einem versiegelten Sumpfbecken. Der Abstieg funktioniert noch. Die Pumpen nicht. Zeitpunkt und Inhalt können sich ändern.",
-        "items": [
-          "Filterunterbau: ein neues Gebiet direkt unter dem Platz, y 40–63, Radius 96. Die Gnade der Platzlampen reicht nicht unter y 64 — die Residuenkrankheit beginnt nach 10 Sekunden ohne Maske, nach 40 mit Maske",
-          "Der Wartungsabstieg: durch den Rost in der Platzmitte in die Sumpfhalle (21 × 12 × 21), dann den Osttunnel auf y 50 bis x=128 und die erste Viaduktstütze hinauf auf das Deck aus V4.2.2 — ein durchgehender Weg",
-          "Wartungskorb: ein angetriebener Sprung zwischen Platz und Sumpf. Er braucht Rotationskraft oder ein Redstone-Signal. Ohne Ladung sagt er es, und die Leiter geht immer",
-          "Kondensat wird zu einer echten Flüssigkeit mit Eimer. Im Filterring und im Unterbau darf es stehen; in den Rückstandsebenen und im Adernschacht verkocht es. Kontakt gibt Sumpffeuchte (6 Sekunden langsamer gehen und graben)",
-          "Rohr-Blutegel: versteckt sich in den Druckleitungen über dir und fällt herab, wenn du darunter gehst. Er lässt Kondensatfläschchen fallen und zu 20 % einen Wartungsschlüssel — der erste Schlüssel liegt aber garantiert im Spind bei x=64",
-          "Wartungsschlüssel (öffnet und schließt den Rost) und Sumpfanzeige (zählt die Leitungen in der Nähe in der Aktionsleiste), dazu der Befehl /fallout drop. Keine neuen Viadukte an der Oberfläche"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Ringleitung und Lampendruck: das Licht war nie Magie",
         "target_label": "Noch kein Termin",
@@ -505,19 +472,6 @@
       "in_progress": "In progress"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Filter Underworks and the Service Drop: straight down under the city",
-        "target_label": "No date yet",
-        "body": "The update after V4.2.2. Where V4.2.2 sent you east, this one sends you down. No new dimension, no new boss. The Filter Ring plaza was built on top of a sealed sump. The drop still works. The pumps do not. Timing and contents may change.",
-        "items": [
-          "Filter Underworks: a new area directly under the plaza, y 40–63, radius 96. The grace of the plaza lamps does not reach below y 64 — Residue Sickness starts after 10 seconds unmasked, 40 with a mask",
-          "The Service Drop: descend the shaft from the grate at the centre of the plaza into the Sump Hall (21 × 12 × 21), then walk the east tunnel at y 50 out to x=128 and climb the first viaduct pier onto the V4.2.2 deck — one continuous route",
-          "Service Cage: a powered hop between plaza and sump. It needs rotational power or a redstone signal. With no charge it says so, and the ladder always works",
-          "Condensate becomes a real fluid you can carry in a bucket. It can be placed in the Filter Ring and the Underworks; on the Flats and in the Vein Pit it boils off. Contact gives Sump Damp (6 seconds of slower movement and mining)",
-          "Pipe Leech: hides in the pressure mains overhead and drops when you walk under. It leaves condensate vials, and a service key 20% of the time — but the first key is a guaranteed find in the locker at x=64, so you never have to hunt one",
-          "Service Key (opens and closes the grate) and Sump Gauge (counts the mains near you on the action bar), plus the command /fallout drop. No new viaducts on the surface"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Ring Main and Lamp Pressure: the light was never magic",
         "target_label": "No date yet",
@@ -699,19 +653,6 @@
       "in_progress": "En curso"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Subestructura del Filtro y el Descenso de Servicio: justo bajo la ciudad",
-        "target_label": "Sin fecha aún",
-        "body": "La actualización posterior a V4.2.2. Donde V4.2.2 te mandaba al este, esta te manda abajo. Sin dimensión nueva ni jefe nuevo. La plaza del Anillo de Filtrado se levantó sobre un sumidero sellado. El descenso todavía funciona. Las bombas no. El contenido y las fechas pueden cambiar.",
-        "items": [
-          "Subestructura del Filtro: una zona nueva justo bajo la plaza, y 40–63, radio 96. La gracia de las lámparas de la plaza no baja de y 64: la Enfermedad de Residuo empieza a los 10 segundos sin máscara y a los 40 con ella",
-          "El Descenso de Servicio: baja por el pozo desde la rejilla del centro de la plaza hasta la Sala del Sumidero (21 × 12 × 21), recorre el túnel este a y 50 hasta x=128 y sube por el primer pilar del viaducto hasta la plataforma de V4.2.2: una ruta continua",
-          "Jaula de Servicio: un salto motorizado entre la plaza y el sumidero. Necesita fuerza rotacional o una señal de redstone. Sin carga te lo dice, y la escalera siempre sirve",
-          "El condensado pasa a ser un fluido real que puedes llevar en cubo. Se puede colocar en el Anillo de Filtrado y en la Subestructura; en los Llanos de Residuo y en el Pozo de Vetas se evapora. El contacto da Humedad de Sumidero (6 segundos de andar y picar más lento)",
-          "Sanguijuela de Tubería: se esconde en las tuberías del techo y cae cuando pasas por debajo. Suelta viales de condensado y, un 20 % de las veces, una llave de servicio; pero la primera llave está garantizada en la taquilla de x=64",
-          "Llave de Servicio (abre y cierra la rejilla) y Manómetro de Sumidero (cuenta las tuberías cercanas en la barra de acción), más el comando /fallout drop. Ningún viaducto nuevo en la superficie"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Anillo principal y presión de lámparas: la luz nunca fue magia",
         "target_label": "Sin fecha aún",
@@ -893,19 +834,6 @@
       "in_progress": "En cours"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Sous-œuvre du Filtre et la Descente de Service : droit sous la ville",
-        "target_label": "Pas encore de date",
-        "body": "La mise à jour après la V4.2.2. Là où la V4.2.2 vous envoyait vers l'est, celle-ci vous envoie vers le bas. Pas de nouvelle dimension, pas de nouveau boss. La place de l'Anneau de Filtrage a été bâtie sur un bassin scellé. La descente fonctionne encore. Les pompes, non. Le contenu et les dates peuvent changer.",
-        "items": [
-          "Sous-œuvre du Filtre : une zone inédite juste sous la place, y 40–63, rayon 96. La grâce des lampes de la place ne descend pas sous y 64 — la Maladie du Résidu commence après 10 secondes sans masque, 40 avec",
-          "La Descente de Service : descendez le puits depuis la grille au centre de la place jusqu'à la Salle du Bassin (21 × 12 × 21), puis longez le tunnel est à y 50 jusqu'à x=128 et grimpez la première pile du viaduc sur le tablier de la V4.2.2 — un seul trajet continu",
-          "Cage de Service : un saut motorisé entre la place et le bassin. Il lui faut une force rotative ou un signal de redstone. Sans charge elle le dit, et l'échelle marche toujours",
-          "Le condensat devient un vrai fluide que l'on transporte au seau. On peut le poser dans l'Anneau de Filtrage et la Sous-œuvre ; sur les Plaines de Résidu et dans la Fosse aux Veines, il s'évapore. Le contact donne Moiteur de Bassin (6 secondes de marche et de minage ralentis)",
-          "Sangsue de Conduite : tapie dans les conduites au plafond, elle tombe quand vous passez dessous. Elle laisse des fioles de condensat et, une fois sur cinq, une clé de service — mais la première clé est garantie dans le casier de x=64",
-          "Clé de Service (ouvre et ferme la grille) et Jauge de Bassin (compte les conduites proches dans la barre d'action), plus la commande /fallout drop. Aucun nouveau viaduc en surface"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Conduite annulaire et pression des lampes : la lumière n'a jamais été magique",
         "target_label": "Pas encore de date",
@@ -1087,19 +1015,6 @@
       "in_progress": "Sedang dikerjakan"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Bawah Filter dan Turunan Servis: tepat di bawah kota",
-        "target_label": "Belum ada tanggal",
-        "body": "Pembaruan setelah V4.2.2. Kalau V4.2.2 mengirim Anda ke timur, yang ini mengirim Anda ke bawah. Tidak ada dimensi baru, tidak ada bos baru. Plaza Cincin Filter dibangun di atas bak endapan yang disegel. Turunannya masih berfungsi. Pompanya tidak. Waktu dan isinya masih bisa berubah.",
-        "items": [
-          "Bawah Filter: wilayah baru tepat di bawah plaza, y 40–63, radius 96. Rahmat lampu plaza tidak turun sampai di bawah y 64 — Penyakit Residu mulai setelah 10 detik tanpa masker, 40 detik dengan masker",
-          "Turunan Servis: turuni poros dari jeruji di tengah plaza ke Aula Endapan (21 × 12 × 21), lalu susuri terowongan timur di y 50 sampai x=128 dan panjat pilar viaduk pertama ke lantai V4.2.2 — satu jalur yang menyambung",
-          "Sangkar Servis: lompatan bertenaga antara plaza dan bak endapan. Perlu tenaga putar atau sinyal redstone. Kalau tidak ada muatan ia mengatakannya, dan tangga selalu bisa dipakai",
-          "Kondensat menjadi cairan sungguhan yang bisa dibawa dengan ember. Boleh ditaruh di Cincin Filter dan Bawah Filter; di Dataran Residu dan Lubang Urat ia menguap. Terkena cairan ini memberi Lembap Endapan (6 detik jalan dan menambang lebih lambat)",
-          "Lintah Pipa: bersembunyi di pipa tekanan di langit-langit dan jatuh saat Anda lewat di bawahnya. Menjatuhkan vial kondensat dan 20% kunci servis — tetapi kunci pertama pasti ada di loker di x=64",
-          "Kunci Servis (membuka dan menutup jeruji) dan Pengukur Endapan (menghitung pipa di dekat Anda pada action bar), ditambah perintah /fallout drop. Tidak ada viaduk baru di permukaan"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Pipa Cincin dan Tekanan Lampu: cahaya itu tak pernah sihir",
         "target_label": "Belum ada tanggal",
@@ -1281,19 +1196,6 @@
       "in_progress": "In lavorazione"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Sottostruttura del Filtro e la Discesa di Servizio: dritti sotto la città",
-        "target_label": "Data da definire",
-        "body": "L'aggiornamento dopo la V4.2.2. Dove la V4.2.2 vi mandava a est, questo vi manda giù. Nessuna nuova dimensione, nessun nuovo boss. La piazza dell'Anello di Filtraggio poggia su una vasca sigillata. La discesa funziona ancora. Le pompe no. Tempi e contenuti possono cambiare.",
-        "items": [
-          "Sottostruttura del Filtro: una zona nuova proprio sotto la piazza, y 40–63, raggio 96. La grazia delle lampade della piazza non scende sotto y 64: il Male del Residuo comincia dopo 10 secondi senza maschera, 40 con la maschera",
-          "La Discesa di Servizio: scendete il pozzo dalla grata al centro della piazza fino alla Sala della Vasca (21 × 12 × 21), poi percorrete il tunnel est a y 50 fino a x=128 e risalite il primo pilone del viadotto sull'impalcato della V4.2.2 — un percorso unico e continuo",
-          "Gabbia di Servizio: un salto motorizzato tra piazza e vasca. Richiede forza rotazionale o un segnale di redstone. Senza carica ve lo dice, e la scala funziona sempre",
-          "Il condensato diventa un fluido vero da portare nel secchio. Si può posare nell'Anello di Filtraggio e nella Sottostruttura; nelle Piane del Residuo e nella Fossa delle Vene evapora. Il contatto dà Umidità di Vasca (6 secondi di movimento e scavo più lenti)",
-          "Sanguisuga da Condotta: si nasconde nelle condotte in alto e cade quando ci passate sotto. Lascia fiale di condensato e, nel 20% dei casi, una chiave di servizio — ma la prima chiave è garantita nell'armadietto a x=64",
-          "Chiave di Servizio (apre e chiude la grata) e Manometro di Vasca (conta le condotte vicine nella barra azioni), più il comando /fallout drop. Nessun nuovo viadotto in superficie"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Anello principale e pressione delle lampade: la luce non è mai stata magia",
         "target_label": "Data da definire",
@@ -1475,19 +1377,6 @@
       "in_progress": "作業中"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — 濾過下層と点検降下: 街の真下へ",
-        "target_label": "未定",
-        "body": "V4.2.2 の次に来る更新です。V4.2.2 が東へ送ったのに対し、こちらは下へ送ります。新しいディメンションもボスも増やしません。濾過輪の広場は、封じられた沈殿槽の上に載っていました。降下の仕掛けはいまも動きます。ポンプは動きません。内容と時期は変わることがあります。",
-        "items": [
-          "濾過下層: 広場の真下、高さ 40〜63、半径 96 の新しい土地。広場の灯りの加護は高さ 64 より下には届きません —— マスク無しで 10 秒、マスクありで 40 秒で残渣病が始まります",
-          "点検降下: 広場の中央の格子から縦坑を降り、槽ホール(21 × 12 × 21)へ。そこから高さ 50 の東トンネルを x=128 まで歩き、最初の橋脚の梯子を登ると V4.2.2 の高架の床に出ます —— 一本につながった道です",
-          "点検籠: 広場と槽ホールを行き来する動力仕掛け。回転動力かレッドストーンが要ります。電荷が無ければそう言うので、そのときは梯子を使ってください",
-          "凝縮液が本物の液体になり、バケツで汲めるようになります。濾過輪と濾過下層には置けますが、残渣原と脈坑では沸騰して消えます。浴びると「槽湿」(移動と採掘が 6 秒鈍る)が付きます",
-          "パイプリーチ: 天井の圧本管に潜み、下を通ると落ちてきます。凝縮バイアルと、20% で点検鍵を落とします —— ただし確実な 1 本目の鍵は x=64 の物置に在るので、狩らなくても先へ進めます",
-          "点検鍵(格子の開閉)と槽ゲージ(近くの本管の本数を画面下に表示)、コマンド /fallout drop。地上に新しい高架は増やしません"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — 環状本管と灯の圧: 明かりは魔法ではなかった",
         "target_label": "未定",
@@ -1669,19 +1558,6 @@
       "in_progress": "작업 중"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — 여과 하부와 점검 강하: 도시 바로 아래로",
-        "target_label": "날짜 미정",
-        "body": "V4.2.2 다음 업데이트입니다. V4.2.2가 동쪽으로 보냈다면, 이번에는 아래로 보냅니다. 새 차원도, 새 보스도 없습니다. 여과 고리의 광장은 봉인된 침전조 위에 세워져 있었습니다. 강하 장치는 아직 움직입니다. 펌프는 움직이지 않습니다. 시기와 내용은 바뀔 수 있습니다.",
-        "items": [
-          "여과 하부: 광장 바로 아래, 높이 40~63, 반지름 96의 새 지역. 광장 등불의 가호는 높이 64 아래로 내려가지 않습니다 — 마스크 없이 10초, 마스크를 쓰면 40초 만에 잔재병이 시작됩니다",
-          "점검 강하: 광장 한가운데 격자에서 수직갱을 내려가 침전 홀(21 × 12 × 21)에 닿고, 높이 50의 동쪽 터널을 x=128까지 걸어가 첫 교각 사다리를 올라 V4.2.2의 고가 바닥으로 나옵니다 — 하나로 이어진 길입니다",
-          "점검 바구니: 광장과 침전조를 오가는 동력 장치. 회전 동력이나 레드스톤 신호가 필요합니다. 충전이 없으면 그렇다고 알려 주며, 사다리는 언제나 쓸 수 있습니다",
-          "응축액이 진짜 액체가 되어 양동이로 나를 수 있습니다. 여과 고리와 하부에는 놓을 수 있지만, 잔재 평원과 광맥 구덩이에서는 끓어 사라집니다. 닿으면 '침전 습기'(6초 동안 이동과 채굴이 느려짐)가 붙습니다",
-          "배관 거머리: 천장의 압력 본관에 숨어 있다가 아래를 지나가면 떨어집니다. 응축액 병과 20% 확률로 점검 열쇠를 남깁니다 — 다만 첫 열쇠는 x=64의 보관함에 반드시 있습니다",
-          "점검 열쇠(격자 여닫기)와 침전 계기(주변 본관 수를 아래 막대에 표시), 그리고 /fallout drop 명령. 지상에 새 고가는 늘리지 않습니다"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — 환상 본관과 등불의 압력: 불빛은 마법이 아니었다",
         "target_label": "날짜 미정",
@@ -1863,19 +1739,6 @@
       "in_progress": "Em andamento"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Subestrutura do Filtro e a Descida de Serviço: direto embaixo da cidade",
-        "target_label": "Sem data ainda",
-        "body": "A atualização depois da V4.2.2. Onde a V4.2.2 mandava você para leste, esta manda você para baixo. Sem dimensão nova, sem chefe novo. A praça do Anel de Filtragem foi erguida sobre um poço selado. A descida ainda funciona. As bombas não. Prazos e conteúdo podem mudar.",
-        "items": [
-          "Subestrutura do Filtro: uma área nova bem embaixo da praça, y 40–63, raio 96. A graça das lâmpadas da praça não desce abaixo de y 64 — a Doença do Resíduo começa após 10 segundos sem máscara e 40 com ela",
-          "A Descida de Serviço: desça o poço a partir da grade no centro da praça até o Salão do Poço (21 × 12 × 21), depois percorra o túnel leste em y 50 até x=128 e suba o primeiro pilar do viaduto até o tabuleiro da V4.2.2 — uma rota contínua",
-          "Gaiola de Serviço: um salto motorizado entre a praça e o poço. Precisa de força rotacional ou de um sinal de redstone. Sem carga ela avisa, e a escada sempre funciona",
-          "O condensado vira um fluido de verdade, carregável em balde. Pode ser colocado no Anel de Filtragem e na Subestrutura; nas Planícies de Resíduo e no Poço de Veios ele evapora. O contato dá Umidade de Poço (6 segundos andando e minerando mais devagar)",
-          "Sanguessuga de Tubulação: esconde-se nas tubulações do teto e cai quando você passa por baixo. Deixa frascos de condensado e, em 20% das vezes, uma chave de serviço — mas a primeira chave é garantida no armário em x=64",
-          "Chave de Serviço (abre e fecha a grade) e Medidor de Poço (conta as tubulações próximas na barra de ação), além do comando /fallout drop. Nenhum viaduto novo na superfície"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Anel principal e pressão das lâmpadas: a luz nunca foi mágica",
         "target_label": "Sem data ainda",
@@ -2057,19 +1920,6 @@
       "in_progress": "В работе"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Подфильтровый ярус и Служебный спуск: прямо под город",
-        "target_label": "Дата пока не назначена",
-        "body": "Обновление после V4.2.2. Если V4.2.2 уводила на восток, то это уводит вниз. Ни нового измерения, ни нового босса. Площадь Фильтрующего кольца стоит на запечатанном отстойнике. Спуск ещё работает. Насосы — нет. Сроки и содержание могут измениться.",
-        "items": [
-          "Подфильтровый ярус: новая область прямо под площадью, y 40–63, радиус 96. Благодать площадных ламп не опускается ниже y 64 — Остаточная болезнь начинается через 10 секунд без маски и через 40 с маской",
-          "Служебный спуск: по стволу от решётки в центре площади в Отстойный зал (21 × 12 × 21), затем восточным туннелем на y 50 до x=128 и вверх по первой опоре виадука на настил из V4.2.2 — один непрерывный путь",
-          "Служебная клеть: приводной перескок между площадью и отстойником. Нужна вращательная сила или сигнал редстоуна. Без заряда она об этом скажет, а лестница работает всегда",
-          "Конденсат становится настоящей жидкостью, которую можно носить в ведре. Его можно ставить в Фильтрующем кольце и на ярусе; на Остаточных равнинах и в Жильной яме он выкипает. Касание даёт Отстойную сырость (6 секунд замедленного шага и добычи)",
-          "Трубная пиявка: прячется в напорных магистралях над головой и падает, когда проходишь снизу. Оставляет флаконы конденсата и в 20% случаев служебный ключ — но первый ключ гарантированно лежит в шкафчике на x=64",
-          "Служебный ключ (открывает и закрывает решётку) и Отстойный манометр (считает магистрали рядом в строке действия), плюс команда /fallout drop. Новых виадуков на поверхности не будет"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Кольцевая магистраль и давление ламп: свет никогда не был магией",
         "target_label": "Дата пока не назначена",
@@ -2251,19 +2101,6 @@
       "in_progress": "Üzerinde çalışılıyor"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — Filtre Altyapısı ve Servis İnişi: doğruca şehrin altına",
-        "target_label": "Henüz tarih yok",
-        "body": "V4.2.2'den sonraki güncelleme. V4.2.2 sizi doğuya yollamıştı; bu sizi aşağıya yolluyor. Yeni boyut yok, yeni patron yok. Filtre Halkası meydanı mühürlü bir çökeltme havuzunun üstüne kurulmuş. İniş hâlâ çalışıyor. Pompalar çalışmıyor. Zamanlama ve içerik değişebilir.",
-        "items": [
-          "Filtre Altyapısı: meydanın tam altında yeni bir alan, y 40–63, yarıçap 96. Meydan lambalarının lütfu y 64'ün altına inmez — Kalıntı Hastalığı maskesiz 10 saniyede, maskeyle 40 saniyede başlar",
-          "Servis İnişi: meydanın ortasındaki ızgaradan kuyuya inip Çökeltme Salonu'na (21 × 12 × 21) varın, sonra y 50'deki doğu tünelinden x=128'e yürüyün ve ilk viyadük ayağına tırmanıp V4.2.2 tabliyesine çıkın — tek ve kesintisiz bir güzergâh",
-          "Servis Kafesi: meydanla çökeltme arasında güçle çalışan bir sıçrama. Dönme gücü ya da bir redstone sinyali ister. Şarjı yoksa bunu söyler; merdiven her zaman çalışır",
-          "Yoğuşuk artık gerçek bir sıvı ve kovayla taşınıyor. Filtre Halkası'na ve Altyapı'ya konabilir; Kalıntı Düzlükleri'nde ve Damar Çukuru'nda buharlaşır. Teması Çökelti Rutubeti verir (6 saniye yavaş yürüme ve kazma)",
-          "Boru Sülüğü: tavandaki basınç hatlarında saklanır ve altından geçtiğinizde düşer. Yoğuşuk şişeleri ve %20 ihtimalle bir servis anahtarı bırakır — ama ilk anahtar x=64'teki dolapta garantidir",
-          "Servis Anahtarı (ızgarayı açar ve kapatır) ve Çökelti Göstergesi (yakındaki hatları eylem çubuğunda sayar), ayrıca /fallout drop komutu. Yüzeyde yeni viyadük yok"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — Halka ana hattı ve lamba basıncı: ışık hiç sihir değildi",
         "target_label": "Henüz tarih yok",
@@ -2445,19 +2282,6 @@
       "in_progress": "制作中"
     },
     "entries": {
-      "v4-2-3": {
-        "headline": "V4.2.3 — 滤环下层与检修降道:直往城市正下方",
-        "target_label": "日期未定",
-        "body": "V4.2.2 之后的更新。V4.2.2 把你送往东边,这一次把你送往地下。不加新维度,也不加新首领。滤环广场原本就盖在一座封死的沉淀槽上。降道还能用,泵已经不能。内容与时间都可能变动。",
-        "items": [
-          "滤环下层:广场正下方的新区域,高度 40–63,半径 96。广场灯火的庇护到不了高度 64 以下 —— 不戴面罩 10 秒、戴面罩 40 秒就会染上残渣病",
-          "检修降道:从广场中央的格栅下竖井进入沉淀厅(21 × 12 × 21),再沿高度 50 的东向隧道走到 x=128,爬上第一座桥墩登上 V4.2.2 的高架桥面 —— 一条连通到底的路",
-          "检修吊笼:广场与沉淀槽之间的动力跳跃。需要旋转动力或红石信号。没有电荷时它会直说,梯子则永远可用",
-          "冷凝液成为真正的液体,可以用桶装。可以放在滤环与下层;在残渣平原和矿脉坑中会沸腾散尽。沾上会获得「槽湿」(6 秒内行动与挖掘变慢)",
-          "管道水蛭:藏在头顶的压力总管里,你从下方经过时落下。会掉落冷凝液小瓶,并有 20% 掉落检修钥匙 —— 但第一把钥匙必定在 x=64 的储物柜里",
-          "检修钥匙(开合格栅)与沉淀量表(在快捷栏上方数出附近的总管数),以及命令 /fallout drop。地面上不会新增高架"
-        ]
-      },
       "v4-2-4": {
         "headline": "V4.2.4 — 环形总管与灯的压力:光从来不是魔法",
         "target_label": "日期未定",

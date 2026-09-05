@@ -7,8 +7,54 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Yoğuşturucu Kıyısı ve Kül Viyadüğü, ayrıca kapıların tamamen değişimi",
+   "summary": "Filtre Alt Tesisleri ve Servis İnişi, ayrıca Asma Kilit ve PIN Kapı Kilidi",
    "releases": [
+    {
+     "version": "V4.2.3",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "Filtre Alt Tesisleri ve Servis İnişi, ayrıca Asma Kilit ve PIN Kapı Kilidi",
+     "summary": "Kül Kentsel Alanı, Filtre Halkası'nın hemen altında altıncı bir bölge olan Filtre Alt Tesisleri'ni ve meydandaki ızgaradan oraya inen Servis İnişi'ni kazanıyor: kuyu, doğu servis tüneli, yoğuşma havuzuyla Drenaj Salonu, basınç ana hatlarından düşen boru sülükleri, servis kafesi, servis anahtarı, drenaj göstergesi ve yoğuşma kovası. Aynı zamanda yapı modu bir Asma Kilit ve bir PIN Kapı Kilidi kazanıyor. Paketteki her kapıya, 21 vanilla kapı dahil, takılabiliyorlar ve kilitli bir kapı oyuncular, yaratıklar, boslar, TNT, pistonlar ya da komutlarla kırılamıyor. Asma kilit yalnızca onu takan kişi ve operatörler için açılır, kapanır ve kırılır; PIN kapı kilidi ise yalnızca 4–8 haneli numarasını girmiş olanlar için.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Filtre Alt Tesisleri (altıncı bölge): Filtre Halkası'nın hemen altında, merkezden 96 blok içinde y40–63'te bir yeraltı katmanı. Kirlenme orada da sürer — filtre süresi yok. y64'ün altında etüt haritası bir iç daire ve bir merkez işareti gösterir",
+        "Servis İnişi: meydanın ortasındaki (0,64,0) drenaj ızgarasından bir kuyu y49'a iner; merdiven ve kızıltaşla çalışan bir servis kafesi vardır (içinde eğilip kullanınca y49 ile y65 arasında, on tik arayla gidip gelir; güç yoksa kafesin yükü olmadığını söyler). Test edenler için /fallout drop sizi kafesin içine indirir",
+        "Doğu servis tüneli: y50–52'de üç blok genişliğinde, x=4'ten x=132'deki ilk viyadük ayağına kadar; tavanda her dört blokta bir basınç ana hattı ve x=64'te bir servis dolabı (bir servis anahtarı garanti, artı 3–5 eşya). Ucundaki merdiven viyadük döşemesine (y72) çıkar",
+        "Drenaj Salonu (drenaj tuğlasından bir kutu, x −10..10, y48–59, z −10..10): 5×5 bir yoğuşma havuzu, dört yoğuşturucu bobin, iki Kinetik Kasılma ve üç sandık (5–8 eşya). Orada durmak “İnişi Al” ilerlemesini verir",
+        "Basınç ana hatları ve boru sülükleri: her beş hattan biri sülük doludur; göz hizasının en fazla dört blok üstündeki bir hattın altından geçin, tavandan bir sülük düşer (10 can, 2 hasar, 0,24 hız, duvarlara tırmanır). Isırığı 4 sn Tortu Hastalığı ve 2 sn yavaşlık verir. 0–1 yoğuşma şişesi ve beşte bir olasılıkla bir servis anahtarı düşürür. Alt Tesisler doğma tablosu: boru sülüğü 80 (2–5), Hurda Nöbetçisi 5 (1), başka hiçbir şey yok",
+        "Yoğuşma sıvısı (bir akışkan) ve yoğuşma kovası: temas, 6'şar sn Drenaj Nemi (Yavaşlık I + Madenci Yorgunluğu I) ve Tortu Hastalığı verir. Kalıntı Düzlükleri'ne ya da Damar Çukuru'na konulamaz ve oraya akmaz — yalnızca halka ve Alt Tesisler — ve erimiş tortu da artık Alt Tesisler'e konulamaz. Bir yoğuşma kaynağına yoğuşma şişesiyle sağ tıklamak şişeyi 8 kullanıma yeniden doldurur (kaynak kalır). Alt Tesisler'de kova doldurmak “Drenaja Su Ver” ilerlemesini verir",
+        "Servis Anahtarı (2 demir külçesi + 1 demir parçası, dayanıklılığı yok): drenaj ızgarasını açıp kapatan tek şey — eller ve kızıltaş ona hiçbir şey yapmaz. Drenaj Göstergesi (6 demir külçesi + drenaj ızgarası + yoğuşma şişesi): ana elde tutulunca 16 blok içinde kaç basınç ana hattı olduğunu ve bunlardan kaçının bir Kinetik Kasılma tarafından yüklendiğini eylem çubuğunda gösterir. Drenaj Tuğlası ×4 = 3 prefabrik beton + 1 yoğuşma şişesi",
+        "Alt Tesisler'de drenaj sisi süzülür ve onunla üç ses gelir (kafes, ızgara, sülük düşüşü). Montaj Devi, Drenaj Salonu, kuyu ya da tünelin içindeki oyuncular için uyanmaz",
+        "Asma Kilit (5 demir külçesi): kendi yerleştirdiğiniz bir kapıya sağ tıklayın. Onu yalnızca siz ve operatörler (izin seviyesi 2 ve üstü) açabilir, kapatabilir, kazabilir ya da kırabilir; diğer herkes için kapı kapalı kalır ve çatlak görünmez. Sahibi olarak eğilip boş elle tıklamak kilidi çıkarır ve asma kilidi düşürür",
+        "PIN Kapı Kilidi (6 demir külçesi + taş düğme + kızıltaş tozu): sağ tık bir tuş takımı açar; 4–8 hane seçin ve # ile onaylayın. Kapıyı yalnızca numarayı girmiş olanlar açabilir, kapatabilir ya da kırabilir. Yanlış numara o kilitte bir kilitlenme başlatır (1 saniye, 10 dakikaya kadar ikiye katlanır, herkes için); doğru numara yeşil lambayı iki saniye yakar ve kapıyı açar",
+        "Kilitli bir kapı kırılmaz: kazma, TNT ve savaş başlığı patlamaları, wither, pistonlar, altındaki zeminin kaldırılması, hatta üstüne /setblock — kapı kalır ve hiçbir şey düşmez. Kızıltaş onu açmaz ve zombiler ona vurmayı bırakır. İzinli bir kişi kırdığında bir kapı ve bir kilit düşer",
+        "Her kapı sayılır: vanilla'nın 12 ahşap, demir ve 8 bakır kapısı ile yapı modunun 2 zırhlı ve 10 kit kapısı. Kilit tıkladığınız yüze asılır ve kanatla birlikte döner; kapakta plakanın üstünde durur",
+        "Bir kapıyı yalnızca onu yerleştiren kişi (ve operatörler) kilitleyebilir, böylece kimse başkasının evini mühürleyemez. Bu sürümden önce yerleştirilen kapılar ve şehrin kapıları yalnızca operatörlerce kilitlenebilir. Açık bir kapı kilitlenemez"
+       ]
+      },
+      {
+       "title": "Denge Ayarları",
+       "items": [
+        "Kül Kentsel Alanı'nın hiçbir sayısı değişmedi (hastalık saati, maskenin dayanıklılığı, devin canı). Alt Tesisler tam olarak Çökmüş Mahalleler gibi kirlidir, süre tanınmaz",
+        "Yalnızca yapı modu ve Kül Kentsel Alanı modu değişti. Diğer on bir modun içine dokunulmadı (yalnızca sürüm numaraları 4.2.3'e geçiyor)"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Kül Kentsel Alanı modunun kazma etiketleri (mineable/pickaxe ve needs_diamond_tool) V4.2.0'dan beri yanlış yere yazılmıştı, bu yüzden vanilla kazmalar onları hiç okumadı. V4.2.3 bunu düzeltiyor: alet gerektiren bloklar artık kazmayla doğru düşüyor ve Filtre Halkası'nın duvarı elmas kazma istiyor (bir davranış değişikliği)",
+        "Alt Tesisler var olan Kül Kentsel Alanı dünyalarında yalnızca henüz üretilmemiş chunk'larda belirir. Zaten üretilmiş bir merkez ne kuyuyu ne de salonu gösterir",
+        "Yoğuşma sıvısına daldığınızdaki sis rengi (#A0E6E2) uygulanmadı — 26.2'de akışkan başına sis kancası yok — bu yüzden biyomun sisi geçerli",
+        "Bir kapıyı yalnızca onu yerleştiren kişi (ya da bir operatör) kilitleyebilir. V4.2.3'ten önce yerleştirilen kapılarda yerleştiren kaydı yok: birini kilitlemek istiyorsanız bir operatöre sorun",
+        "Kilitli bir bakır kapı, kilit çıkana kadar paslanmayı durdurur (bal peteği ve baltalar hiçbir şey yapmaz)",
+        "Yöneticiler için: /doorlock admin remove <x y z> (izin seviyesi 3) kapıyı kırmadan kilidi kaldırır; her kullanım günlüğe yazılır ve oradaki operatörlere duyurulur",
+        "Kilit eşyaları “yapı” yaratıcılık sekmesindedir. Tuzak kapıları ve çit kapıları kilitlenemez"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.2",
      "date": "2026-09-05",
