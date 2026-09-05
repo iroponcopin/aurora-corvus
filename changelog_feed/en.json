@@ -7,8 +7,45 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "The Cradle Economy and the Colossus's three phases",
+   "summary": "Ship freeze and QA gate",
    "releases": [
+    {
+     "version": "V4.2.6",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "Ship freeze and QA gate",
+     "summary": "No new place, no new boss. This release makes V4.2.0 through V4.2.5 shippable: the Ashen Conurbation's blocks and items get their tags, a tester's tool and three commands arrive, and two holes nobody had ever seen are closed — six spawn eggs and a bucket that appeared in no creative tab, and the asset and translation checks that were never wired into the build.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "Eleven tag tables now cover the Ashen Conurbation's blocks and items (city fabric, route decks, the pressure network, contaminants, the filter kit, salvage, city hostiles, and the tools that break the ring wall). Each one has a test that resolves it against the live registry and counts what it finds",
+        "New Inspector Ledger: right-click it to read out where you are — biome, height, whether you are on a route deck, whether the ring is charged, whether the colossus is slain, and the content-freeze flag. Sneak-use re-measures nine places in the city. No recipe; creative tab only",
+        "Three new commands: /fallout help (the registered verbs), /fallout assert (checks that nine parts of the city generated correctly) and /fallout freeze (records the content freeze). All at permission level 2",
+        "A new hidden advancement, Frozen Line, for holding the Inspector Ledger",
+        "Six spawn eggs and the molten residue bucket now appear in the creative tab (eggs grouped last). Those seven items had appeared in no tab at all, and the test meant to catch it built its expectation from the same list the tab used, so it could only ever pass",
+        "When the dimension is not loaded, /fallout viaduct, drop and cradle and the ashen gateway now print a real sentence instead of a raw translation key — a defect that had shipped since V4.2.0",
+        "The header tank, the salvage bay and the kinetic seizure machine now need an iron pickaxe or better to drop. A wooden pickaxe used to collect them",
+        "Walking on condensate film now sounds like walking through shallow water"
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "No new block, mob, area or fluid. What arrived is one tester item, one advancement and the tag tables",
+        "Only the Ashen Conurbation mod changed. The other twelve are untouched inside; only their version numbers move to 4.2.6"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "The header tank, salvage bay and kinetic seizure machine now require an iron pickaxe or better. If you meant to collect one with a wooden pickaxe, do it before updating",
+        "The Filter Ring wall keeps its hardness of 50 and still needs a diamond pickaxe. The brief asked for hardness 8 and an iron pickaxe; that would make a shipped block easier to mine in live worlds, which is not something to do in a release whose purpose is a freeze. Say the word and it changes in the next one",
+        "The content-freeze flag lives on the overworld's saved data, so it survives deleting the Ashen Conurbation dimension"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.5",
      "date": "2026-09-05",
