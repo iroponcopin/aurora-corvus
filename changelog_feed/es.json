@@ -7,8 +7,58 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Las Subobras del Filtro y el Descenso de Servicio, más el Candado y la Cerradura de Puerta con PIN",
+   "summary": "La Tubería en Anillo y la presión de las lámparas, todas las puertas blindadas y cuatro correcciones",
    "releases": [
+    {
+     "version": "V4.2.4",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "La Tubería en Anillo y la presión de las lámparas, todas las puertas blindadas y cuatro correcciones",
+     "summary": "Las lámparas del Anillo de Filtrado dejan de ser magia. Queman condensado empujado desde un depósito de carga de la Sala del Sumidero por una tubería en anillo enterrada a radio 120, y cuando el depósito se vacía el anillo se apaga. Una nueva Galería del Anillo permite recorrer el muro interior en y=70. Junto a ello se corrigen cuatro problemas reportados: nadie podía saber quién vende el bastón de Sparxie, el Echolic Locator cerraba el juego cada vez que se usaba, las doce puertas que añade este pack no eran tan fuertes como la puerta acorazada, y el vidrio templado químicamente se rompía de un solo mordisco de la Tormenta del Wither pese a prometer ocho minutos.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Las lámparas del Anillo de Filtrado ahora queman condensado. Llena el depósito de carga de la Sala del Sumidero (dieciséis cubos), mantén en marcha los convulsores del muro norte y la válvula de presión abierta, y el anillo se enciende; deja que el depósito se vacíe y el anillo se apaga",
+        "Zona nueva, la Galería del Anillo: un paseo de dos de ancho en y=70 sobre la cara interior del muro, dando toda la vuelta, con una escalera en cada una de las cuatro puertas. Como en el tablero del viaducto, no aparece nueva Enfermedad del Residuo mientras estés en ella",
+        "Ruta nueva, la Tubería en Anillo: un bucle cerrado enterrado a radio 120, y=62, con una columna de toma en cada uno de los cuatro caminos de las puertas. Dos bloques nuevos: el Depósito de Carga (de dos bloques de alto; llénalo con un cubo de condensado y vacíalo con uno vacío) y la Válvula de Presión (agáchate para abrirla o cerrarla; la redstone la fuerza abierta)",
+        "Objeto nuevo, el Esquema de la Tubería en Anillo (papel sobre un medidor de sumidero): mientras lo sostienes, el estado del anillo aparece en tu barra de acción y en el mapa de prospección se dibuja un círculo discontinuo a radio 120. Dos progresos nuevos: Enciende el anillo y Recorre la galería (visitar los cuatro salientes de las puertas)",
+        "Sparxie está ahora detrás del mostrador, en Planarcadia. La etiqueta con su nombre siempre se ve y el contorno dorado atraviesa el cristal, así que distingues la tienda desde el otro lado de la plaza. Hacer clic derecho sobre Sparxie es exactamente la compra del mostrador: el primer clic da el presupuesto, un segundo dentro de treinta segundos compra el Bastón de Voto Negativo",
+        "El mostrador se llama ahora Mostrador de Sparxie, y al sostenerlo muestra tres líneas: quién vende aquí, el precio de catálogo de 200,000 esmeraldas por el multiplicador de este mundo, y que el pago sale de tu inventario más los contenedores a menos de seis bloques. La descripción del propio bastón también nombra ya la tienda",
+        "Corregido: sostener el Echolic Locator (echolic_locator) cerraba el juego. De V4.0.0 a V4.2.3 el cliente moría en el fotograma siguiente a cualquier sonido emitido por una criatura, así que nadie ha visto nunca lo que dibuja esta herramienta",
+        "Lo que dibuja: una caja cian de 1×1×1 alrededor de la posición del sonido, que se desvanece en unos tres segundos. Solo sonidos de criaturas a menos de 32 bloques (hostiles, neutrales, jugadores); nunca la lluvia, la música, los discos ni los sonidos de bloques. Guarda el localizador y todas las cajas desaparecen al instante",
+        "Las doce puertas que añade este pack siguen ahora la regla de la puerta acorazada: las diez puertas del kit reciben velocidad de destrucción -1 y resistencia a explosiones 3,600,000. Ningún jefe, asalto, disparo, TNT, ojiva, dragón del End, wither, terremoto, taladro ni pistón puede romperlas",
+        "Solo un jugador las atraviesa, con pico, hacha, pala o azada, en exactamente tres minutos: el nivel de la herramienta, la eficiencia y la prisa no cambian nada, y con las manos desnudas o una espada no se avanza en absoluto. La puerta ahora cae con cualquiera de esas cuatro herramientas (antes, todo lo que no fuera un pico atravesaba y no soltaba nada)",
+        "El vidrio templado químicamente cumple ya su promesa de ocho minutos. Ni la Tormenta del Wither, ni una ojiva, ni un asalto del mod Cielo, ni un terremoto lo llevan de un solo golpe; los excavadores de un asalto necesitan ahora ocho minutos en lugar de cien segundos",
+        "La Tormenta del Wither ya no crece con bloques que en realidad no ha roto, ni los anota en el registro de restauración. La Tormenta del Wither y el Señor Demonio Witherstorm están ahora registrados como jefes de asedio",
+        "Comandos nuevos para administradores: /fallout pressure (los nodos de la red, la carga, el contenido del depósito y las lámparas encendidas del bloque que estés mirando) y /chemglass admin remove <pos> y /chemglass admin info <pos> (nivel de permiso 3; cada uso queda registrado y se anuncia a los operadores presentes)"
+       ]
+      },
+      {
+       "title": "Ajustes de balance",
+       "items": [
+        "No ha cambiado ningún número de la Conurbación Cenicienta (el reloj de la enfermedad, la durabilidad de la máscara, la vida del coloso). Lo que ha cambiado es la condición para que el Anillo de Filtrado sea seguro: sus lámparas tienen que estar encendidas",
+        "Solo cambiaron cinco mods (construcción, Conurbación Cenicienta, supervivencia, Planarcadia, jefes). Los otros ocho están intactos por dentro; solo su número de versión pasa a 4.2.4"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "⚠ Una ciudad recién generada nace con el anillo a oscuras, a propósito. Mientras las lámparas estén apagadas la plaza del Anillo de Filtrado está contaminada, así que lleva una máscara en tu primera visita: llena un cubo en la poza de la Sala del Sumidero y viértelo en el depósito de carga para encenderlo",
+        "Un anillo encendido quema 40 mB por segundo. Los 25 cubos de la poza y lo que salga de los cofres no durarán para siempre, y en esta versión nada los rellena automáticamente. Las 46 lámparas del Viaducto Ceniciento y del Margen Condensador no están en la tubería en anillo y siguen encendidas de todos modos",
+        "La Tubería en Anillo y la Galería del Anillo aparecen en los mundos existentes de la Conurbación Cenicienta solo en los chunks aún no generados; un centro ya generado no mostrará ninguna de las dos",
+        "Antes los jefes y los asaltantes podían romper las puertas del kit. Desde V4.2.4 ya no: una base diseñada suponiendo que las romperían necesita replantearse. La regla se aplica también a las puertas ya colocadas, y quitar una cuesta ahora tres minutos",
+        "Esto abarca solo las doce puertas que añade el pack. Las 21 puertas vanilla y las 5 de los backrooms no cambian",
+        "La retirada del vidrio de asedio se rechaza mientras le quede durabilidad, en todas las vías que borran un bloque: el consumo de terreno de la tormenta, los impactos de jefes, la magma de Malachor, las ojivas, los excavadores de los asaltos, los terremotos, y también /setblock y /fill. Solo el picado de los jugadores no cambia: allí decide la dureza",
+        "El «asalto sostenido» se cuenta con el reloj de pared. Una retirada rechazada resta solo el tiempo transcurrido desde el último impacto recibido, hasta un máximo de dos minutos. Así, una sola ojiva no le cuesta nada al vidrio, y solo el fuego sostenido lo desgasta; cuando el ataque cesa el reloj se para, y el daño acumulado nunca se cura",
+        "Los cubos de vidrio templado químicamente ya no pueden ser empujados por pistones (como la obsidiana): empujarlos de un lado a otro curaba el daño de asedio. El Recolector Universal tampoco puede recogerlos ya; vuelve a aplicarse la regla original (un pico de diamante o mejor con toque de seda)",
+        "La nota de V4.1.1 que decía que la etiqueta de jefe de asedio se entrega vacía porque este pack no tiene Tormenta del Wither era errónea, y por su culpa los ocho minutos del vidrio no habían estado nunca en vigor",
+        "La descripción del Echolic Locator en V4.0.0 también era errónea: no dibuja ninguna línea de dirección. Enmarca la posición de un sonido oído a menos de 32 bloques, y la caja dura unos tres segundos",
+        "El ciudadano sin nombre que flotaba dentro de la caseta de la tienda ha desaparecido. Parecer un tendero y no hacer nada al hacerle clic era la raíz de «¿quién vende esto en realidad?». Ten en cuenta que el precio que pagas no es el de catálogo, sino el de catálogo por el multiplicador de este mundo (×10 a ×100)"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.3",
      "date": "2026-09-05",

@@ -2039,6 +2039,61 @@
         "sorakaze_survival": "4.2.3",
         "sorakaze_vehicles": "4.2.3"
       }
+    },
+    {
+      "id": "v4.2.4",
+      "release": "V4.2.4",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "Die Ringleitung und der Druck der Lampen, jede Tür gepanzert, dazu vier Fehlerbehebungen",
+      "summary": "Die Lampen des Filterrings hören auf, magisch zu sein. Sie brennen Kondensat, das aus einem Hochbehälter in der Sumpfhalle durch eine vergrabene Ringleitung im Radius 120 gedrückt wird; läuft der Behälter leer, wird der Ring dunkel. Eine neue Ringgalerie lässt dich auf y=70 an der Innenmauer entlanggehen. Daneben sind vier gemeldete Probleme behoben: niemand konnte erkennen, wer Sparxies Stab verkauft, der Echolic Locator ließ das Spiel bei jeder Benutzung abstürzen, die zwölf Türen dieses Packs waren nicht so stark wie die Tresortür, und chemisch gehärtetes Glas zerbrach unter einem einzigen Biss des Wither-Sturms, obwohl acht Minuten versprochen waren.",
+      "highlights": [
+        "Die Lampen des Filterrings brennen jetzt Kondensat. Füll den Hochbehälter in der Sumpfhalle (sechzehn Eimer), lass die Krampfer an der Nordmauer laufen und halte das Druckventil offen, dann leuchtet der Ring; läuft der Behälter leer, wird der Ring dunkel",
+        "Neues Gebiet, die Ringgalerie: ein zwei Blöcke breiter Laufsteg auf y=70 an der Innenseite der Mauer, einmal ganz herum, mit einer Leiter an jedem der vier Tore. Wie auf dem Viaduktdeck setzt keine neue Rückstandskrankheit ein, solange du darauf stehst",
+        "Neue Route, die Ringleitung: ein geschlossener Kreis, vergraben im Radius 120 auf y=62, mit einem Standrohr in jeder der vier Torstraßen. Zwei neue Blöcke — der Hochbehälter (zwei Blöcke hoch; mit einem Kondensateimer füllen, mit einem leeren Eimer abzapfen) und das Druckventil (Schleichen öffnet und schließt es, Redstone zwingt es auf)",
+        "Neuer Gegenstand, der Ringleitungsplan (Papier über einem Sumpfmesser): solange du ihn hältst, steht der Zustand des Rings in deiner Aktionsleiste, und auf der Vermessungskarte erscheint ein gestrichelter Kreis im Radius 120. Zwei neue Fortschritte — „Entzünde den Ring“ und „Geh die Galerie ab“ (alle vier Torsimse besuchen)",
+        "Sparxie steht jetzt in Planarcadia hinter dem Verkaufstresen. Das Namensschild ist immer sichtbar und der goldene Umriss scheint durch das Glas, sodass du den Laden von der anderen Seite des Platzes aus siehst. Ein Rechtsklick auf Sparxie ist genau der Kauf am Tresen: der erste Klick nennt den Preis, ein zweiter innerhalb von dreißig Sekunden kauft den Downvote-Stab",
+        "Der Tresen heißt jetzt Sparxies Verkaufstresen, und in der Hand zeigt er drei Zeilen: wer hier verkauft, den Listenpreis von 200,000 Smaragden mal dem Multiplikator dieser Welt, und dass die Zahlung aus deinem Inventar sowie aus Behältern im Umkreis von sechs Blöcken kommt. Auch die Beschreibung des Stabs nennt jetzt den Laden",
+        "Behoben: Der Echolic Locator (echolic_locator) ließ das Spiel abstürzen, sobald man ihn in der Hand hielt. Von V4.0.0 bis V4.2.3 starb der Client im nächsten Einzelbild, nachdem irgendein Lebewesen ein Geräusch gemacht hatte — niemand hat also je gesehen, was dieses Werkzeug zeichnet",
+        "Was er zeichnet: einen cyanfarbenen 1×1×1-Rahmen um die Position des Geräuschs, der über etwa drei Sekunden verblasst. Nur Geräusche von Lebewesen innerhalb von 32 Blöcken (feindlich, neutral, Spieler) — nie Regen, Musik, Schallplatten oder Blockgeräusche. Steckst du den Locator weg, verschwinden alle Rahmen sofort",
+        "Alle zwölf Türen, die dieses Pack hinzufügt, folgen jetzt der Regel der Tresortür: Die zehn Kit-Türen erhalten Abbaugeschwindigkeit -1 und Explosionswiderstand 3,600,000. Kein Boss, kein Überfall, kein Beschuss, kein TNT, kein Sprengkopf, kein Enderdrache, kein Wither, kein Erdbeben, kein Bohrer und kein Kolben bricht sie",
+        "Hindurch kommt nur ein Spieler, mit Spitzhacke, Axt, Schaufel oder Hacke, in genau drei Minuten — Werkzeugstufe, Effizienz und Eile ändern nichts daran, und mit bloßen Händen oder einem Schwert kommt man kein Stück voran. Die Tür fällt jetzt bei jedem dieser vier Werkzeuge (bisher grub sich alles außer der Spitzhacke hindurch und ließ nichts fallen)",
+        "Chemisch gehärtetes Glas hält jetzt sein Versprechen von acht Minuten. Weder der Wither-Sturm noch ein Sprengkopf noch ein Überfall des Himmel-Mods noch ein Erdbeben nimmt es mit einem Schlag; die Schürfer eines Überfalls brauchen jetzt acht Minuten statt hundert Sekunden",
+        "Der Wither-Sturm wächst nicht mehr an Blöcken, die er in Wirklichkeit gar nicht zerstört hat, und trägt sie auch nicht mehr ins Wiederherstellungsjournal ein. Der Wither-Sturm und der Witherstorm-Dämonenoberherr sind jetzt als Belagerungsbosse registriert",
+        "Neue Administratorbefehle: /fallout pressure (Knoten des Netzes, Ladung, Tankinhalt und leuchtende Lampen für den Block, den du ansiehst) sowie /chemglass admin remove <pos> und /chemglass admin info <pos> (Berechtigungsstufe 3; jede Verwendung wird protokolliert und den anwesenden Operatoren gemeldet)"
+      ],
+      "balance_changes": [
+        "Kein Wert der Aschen-Konurbation hat sich geändert (die Krankheitsuhr, die Haltbarkeit der Maske, die Lebenspunkte des Kolosses). Geändert hat sich die Bedingung dafür, dass der Filterring sicher ist: seine Lampen müssen brennen",
+        "Nur fünf Mods haben sich geändert (Bau, Aschen-Konurbation, Überleben, Planarcadia, Boss). Die anderen acht sind innen unberührt; allein ihre Versionsnummern gehen auf 4.2.4"
+      ],
+      "warnings": [
+        "⚠ Eine neu generierte Stadt kommt mit einem dunklen Ring zur Welt — so gewollt. Solange die Lampen aus sind, ist der Platz des Filterrings verseucht; nimm für den ersten Besuch also eine Maske mit — füll einen Eimer am Becken der Sumpfhalle und gieß ihn in den Hochbehälter, dann geht das Licht an",
+        "Ein leuchtender Ring verbrennt 40 mB pro Sekunde. Die 25 Eimer des Beckens und was die Truhen auswürfeln, halten nicht ewig, und in dieser Version füllt nichts sie automatisch nach. Die 46 Lampen auf dem Aschen-Viadukt und im Kondensatorsaum hängen nicht an der Ringleitung und bleiben so oder so an",
+        "Die Ringleitung und die Ringgalerie entstehen in bestehenden Welten der Aschen-Konurbation nur in Chunks, die noch nicht generiert wurden; ein bereits generiertes Zentrum zeigt weder das eine noch das andere",
+        "Bisher konnten Bosse und Plünderer Kit-Türen zerstören. Ab V4.2.4 nicht mehr — ein Stützpunkt, der darauf gebaut war, dass sie durchbrochen werden, muss neu gedacht werden. Die Regel gilt auch für bereits gesetzte Türen, und eine abzubauen kostet jetzt drei Minuten",
+        "Das betrifft nur die zwölf Türen, die das Pack hinzufügt. Die 21 Vanilla-Türen und die 5 der Backrooms bleiben unverändert",
+        "Das Entfernen von Belagerungsglas wird verweigert, solange noch Haltbarkeit übrig ist — auf jedem Weg, der einen Block löscht: das Geländefressen des Sturms, Bosseinschläge, Malachors Magma, Sprengköpfe, Schürfer eines Überfalls, Erdbeben und auch /setblock und /fill. Nur das Abbauen durch Spieler bleibt wie bisher — dort entscheidet die Härte",
+        "„Dauerbeschuss“ wird nach der Wanduhr gezählt. Eine verweigerte Entfernung zieht nur die Zeit ab, die seit dem letzten Treffer vergangen ist, höchstens zwei Minuten. Ein einzelner Sprengkopf kostet das Glas also nichts, und nur anhaltender Beschuss trägt es ab; hört der Angriff auf, steht auch die Uhr still, und aufgelaufener Schaden heilt nie",
+        "Würfel aus chemisch gehärtetem Glas lassen sich nicht mehr von Kolben schieben (wie Obsidian) — sie hin und her zu schieben hat den Belagerungsschaden geheilt. Auch der Universalsammler kann sie nicht mehr einsammeln; es gilt wieder die ursprüngliche Regel (mindestens eine Diamantspitzhacke mit Behutsamkeit)",
+        "Der Hinweis in V4.1.1, das Belagerungsboss-Tag bleibe leer, weil dieses Pack keinen Wither-Sturm habe, war falsch; deshalb waren die acht Minuten des Glases kein einziges Mal in Kraft",
+        "Auch die Beschreibung des Echolic Locator in V4.0.0 war falsch: Er zeichnet keine Richtungslinie. Er umrahmt die Position eines Geräuschs, das innerhalb von 32 Blöcken zu hören war, und der Rahmen bleibt etwa drei Sekunden",
+        "Der namenlose Bürger, der bisher in der Ladenhütte schwebte, ist verschwunden. Dass er wie ein Händler aussah, auf Klicks aber nicht reagierte, war die Wurzel der Frage „Wer verkauft das hier eigentlich?“. Beachte: Du zahlst nicht den Listenpreis selbst, sondern den Listenpreis mal dem Multiplikator dieser Welt (×10 bis ×100)"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.4",
+        "sorakaze_boss": "4.2.4",
+        "sorakaze_deco": "4.2.4",
+        "sorakaze_fallout": "4.2.4",
+        "sorakaze_guns": "4.2.4",
+        "sorakaze_phone": "4.2.4",
+        "sorakaze_planarcadia": "4.2.4",
+        "sorakaze_power": "4.2.4",
+        "sorakaze_rail": "4.2.4",
+        "sorakaze_sapporo": "4.2.4",
+        "sorakaze_sky": "4.2.4",
+        "sorakaze_survival": "4.2.4",
+        "sorakaze_vehicles": "4.2.4"
+      }
     }
   ],
   "roadmap": {
@@ -3610,7 +3665,11 @@
       "sorakaze_fallout:service_cage": "Wartungskorb",
       "sorakaze_fallout:service_ladder": "Wartungsleiter",
       "sorakaze_fallout:pipe_leech_spawn_egg": "Rohregel-Spawn-Ei",
-      "minecraft:stone_button": "Steinknopf"
+      "minecraft:stone_button": "Steinknopf",
+      "sorakaze_fallout:header_tank": "Hochbehälter",
+      "sorakaze_fallout:pressure_valve": "Druckventil",
+      "sorakaze_fallout:main_schematic": "Ringleitungsplan",
+      "sorakaze_planarcadia:paradise_shop_counter": "Sparxies Verkaufstresen"
     },
     "howto": [
       {

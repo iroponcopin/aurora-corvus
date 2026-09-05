@@ -2048,6 +2048,61 @@
         "sorakaze_survival": "4.2.3",
         "sorakaze_vehicles": "4.2.3"
       }
+    },
+    {
+      "id": "v4.2.4",
+      "release": "V4.2.4",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "La Condotta ad Anello e la pressione delle lampade, ogni porta corazzata e quattro correzioni",
+      "summary": "Le lampade dell'Anello di Filtraggio smettono di essere magia. Bruciano condensa spinta da un serbatoio di carico della Sala del Pozzetto lungo una condotta ad anello sepolta al raggio 120, e quando il serbatoio si svuota l'anello si spegne. Una nuova Galleria dell'Anello permette di percorrere il muro interno a y=70. Insieme sono corretti quattro problemi segnalati: nessuno riusciva a capire chi vende il bastone di Sparxie, l'Echolic Locator faceva crollare il gioco a ogni uso, le dodici porte aggiunte da questo pack non erano forti quanto la porta blindata, e il vetro temprato chimicamente si rompeva a un solo morso della Tempesta di Wither nonostante gli otto minuti promessi.",
+      "highlights": [
+        "Le lampade dell'Anello di Filtraggio ora bruciano condensa. Riempi il serbatoio di carico nella Sala del Pozzetto (sedici secchi), tieni in moto i convulsori del muro nord e la valvola di pressione aperta, e l'anello si accende; lascia svuotare il serbatoio e l'anello si spegne",
+        "Nuova area, la Galleria dell'Anello: un camminamento largo due a y=70 sulla faccia interna del muro, per tutto il giro, con una scala a ciascuna delle quattro porte. Come sull'impalcato del viadotto, finché ci stai sopra non insorge nuova Malattia del Residuo",
+        "Nuovo tracciato, la Condotta ad Anello: un circuito chiuso sepolto al raggio 120, y=62, con una colonna montante in ciascuna delle quattro strade delle porte. Due blocchi nuovi — il Serbatoio di Carico (alto due blocchi; riempilo con un secchio di condensa, svuotalo con uno vuoto) e la Valvola di Pressione (accovacciati per aprirla o chiuderla; la redstone la forza aperta)",
+        "Nuovo oggetto, lo Schema della Condotta ad Anello (carta sopra un indicatore del pozzetto): finché lo tieni in mano lo stato dell'anello compare sulla barra delle azioni e sulla mappa di rilevamento appare un cerchio tratteggiato al raggio 120. Due nuovi progressi — Accendi l'anello e Percorri la galleria (visitare tutti e quattro i cornicioni delle porte)",
+        "Sparxie ora sta dietro il bancone, a Planarcadia. La targhetta col nome è sempre visibile e il contorno dorato traspare attraverso il vetro, così riconosci il negozio dall'altro capo della piazza. Il clic destro su Sparxie è esattamente l'acquisto al bancone: il primo clic dà il preventivo, un secondo entro trenta secondi compra il Bastone del Voto Negativo",
+        "Il bancone si chiama ora Bancone di Sparxie e, tenendolo in mano, mostra tre righe: chi vende qui, il prezzo di listino di 200,000 smeraldi per il moltiplicatore di questo mondo, e che il pagamento esce dal tuo inventario più i contenitori entro sei blocchi. Anche la descrizione del bastone ora nomina il negozio",
+        "Corretto: tenere in mano l'Echolic Locator (echolic_locator) faceva crollare il gioco. Dalla V4.0.0 alla V4.2.3 il client moriva al fotogramma successivo a un qualsiasi suono emesso da una creatura, così nessuno ha mai visto che cosa disegna questo attrezzo",
+        "Che cosa disegna: un riquadro ciano 1×1×1 attorno alla posizione del suono, che sbiadisce in circa tre secondi. Solo suoni di creature entro 32 blocchi (ostili, neutrali, giocatori) — mai pioggia, musica, dischi o suoni dei blocchi. Riponi il localizzatore e tutti i riquadri spariscono all'istante",
+        "Tutte e dodici le porte aggiunte da questo pack seguono ora la regola della porta blindata: le dieci porte del kit ricevono velocità di distruzione -1 e resistenza alle esplosioni 3,600,000. Nessun boss, incursione, sparo, TNT, testata, drago dell'End, wither, terremoto, trivella o pistone può romperle",
+        "Passa solo un giocatore, con piccone, ascia, pala o zappa, in esattamente tre minuti — livello dell'attrezzo, efficienza e rapidità non cambiano nulla, e a mani nude o con una spada non si avanza affatto. La porta ora cade con ciascuno di quei quattro attrezzi (prima, tutto ciò che non fosse un piccone scavava e non lasciava nulla)",
+        "Il vetro temprato chimicamente mantiene la sua promessa di otto minuti. Né la Tempesta di Wither, né una testata, né un'incursione del mod Cielo, né un terremoto lo portano via in un colpo solo; gli scavatori di un'incursione ora impiegano otto minuti invece di cento secondi",
+        "La Tempesta di Wither non cresce più sui blocchi che in realtà non ha rotto, e non li annota più nel registro di ripristino. La Tempesta di Wither e il Signore Demone Witherstorm sono ora registrati come boss d'assedio",
+        "Nuovi comandi per amministratori: /fallout pressure (i nodi della rete, la carica, il contenuto del serbatoio e le lampade accese per il blocco che stai guardando) e /chemglass admin remove <pos> e /chemglass admin info <pos> (livello di permesso 3; ogni uso viene registrato e annunciato agli operatori presenti)"
+      ],
+      "balance_changes": [
+        "Nessun numero della Conurbazione Cinerea è cambiato (l'orologio della malattia, la durabilità della maschera, la salute del colosso). È cambiata la condizione perché l'Anello di Filtraggio sia sicuro: le sue lampade devono essere accese",
+        "Sono cambiati solo cinque mod (costruzione, Conurbazione Cinerea, sopravvivenza, Planarcadia, boss). Gli altri otto sono intatti dentro; solo i loro numeri di versione passano a 4.2.4"
+      ],
+      "warnings": [
+        "⚠ Una città appena generata nasce con l'anello spento, di proposito. Finché le lampade sono spente la piazza dell'Anello di Filtraggio è contaminata, quindi porta una maschera alla prima visita — riempi un secchio alla vasca della Sala del Pozzetto e versalo nel serbatoio di carico per accenderlo",
+        "Un anello acceso brucia 40 mB al secondo. I 25 secchi della vasca e quel che esce dalle casse non dureranno per sempre, e in questa versione nulla li ricarica automaticamente. Le 46 lampade del Viadotto Cinereo e del Margine dei Condensatori non sono sulla condotta ad anello e restano accese comunque",
+        "La Condotta ad Anello e la Galleria dell'Anello compaiono nei mondi esistenti della Conurbazione Cinerea solo nei chunk non ancora generati; un centro già generato non mostrerà né l'una né l'altra",
+        "Le porte del kit una volta erano rompibili da boss e predoni. Dalla V4.2.4 non lo sono più — una base progettata sul presupposto che venissero sfondate va ripensata. La regola vale anche per le porte già piazzate, e toglierne una ora costa tre minuti",
+        "Questo riguarda solo le dodici porte aggiunte dal pack. Le 21 porte vanilla e le 5 dei backrooms restano invariate",
+        "La rimozione del vetro d'assedio viene rifiutata finché gli resta durabilità, su ogni percorso che cancella un blocco: la divorazione del terreno da parte della tempesta, gli impatti dei boss, il magma di Malachor, le testate, gli scavatori delle incursioni, i terremoti e anche /setblock e /fill. Solo lo scavo dei giocatori è invariato — lì decide la durezza",
+        "L'«assalto continuo» si conta sull'orologio da parete. Una rimozione rifiutata sottrae solo il tempo trascorso dall'ultimo colpo andato a segno, fino a due minuti. Così una singola testata non costa nulla al vetro, e solo il fuoco continuo lo consuma; quando l'attacco si ferma si ferma anche l'orologio, e il danno accumulato non si rimargina mai",
+        "I cubi di vetro temprato chimicamente non possono più essere spinti dai pistoni (come l'ossidiana) — spingerli avanti e indietro rimarginava il danno d'assedio. Nemmeno il Raccoglitore Universale può più raccoglierli; torna a valere la regola originale (un piccone di diamante o migliore con Tocco di velluto)",
+        "La nota della V4.1.1 secondo cui il tag dei boss d'assedio viene consegnato vuoto perché questo pack non ha una Tempesta di Wither era sbagliata, e per causa sua gli otto minuti del vetro non erano mai stati in vigore nemmeno una volta",
+        "Anche la descrizione dell'Echolic Locator nella V4.0.0 era sbagliata: non traccia alcuna linea di direzione. Riquadra la posizione di un suono udito entro 32 blocchi, e il riquadro dura circa tre secondi",
+        "Il cittadino senza nome che fluttuava dentro la baracca del negozio non c'è più. Sembrare un negoziante e non fare nulla al clic era la radice del «ma chi è che vende questa roba?». Nota che il prezzo che paghi non è quello di listino, ma quello di listino per il moltiplicatore di questo mondo (×10 fino a ×100)"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.4",
+        "sorakaze_boss": "4.2.4",
+        "sorakaze_deco": "4.2.4",
+        "sorakaze_fallout": "4.2.4",
+        "sorakaze_guns": "4.2.4",
+        "sorakaze_phone": "4.2.4",
+        "sorakaze_planarcadia": "4.2.4",
+        "sorakaze_power": "4.2.4",
+        "sorakaze_rail": "4.2.4",
+        "sorakaze_sapporo": "4.2.4",
+        "sorakaze_sky": "4.2.4",
+        "sorakaze_survival": "4.2.4",
+        "sorakaze_vehicles": "4.2.4"
+      }
     }
   ],
   "roadmap": {
@@ -3619,7 +3674,11 @@
       "sorakaze_fallout:service_cage": "Gabbia di servizio",
       "sorakaze_fallout:service_ladder": "Scala di servizio",
       "sorakaze_fallout:pipe_leech_spawn_egg": "Uovo generatore di sanguisuga dei tubi",
-      "minecraft:stone_button": "Pulsante di pietra"
+      "minecraft:stone_button": "Pulsante di pietra",
+      "sorakaze_fallout:header_tank": "Serbatoio di carico",
+      "sorakaze_fallout:pressure_valve": "Valvola di pressione",
+      "sorakaze_fallout:main_schematic": "Schema della condotta ad anello",
+      "sorakaze_planarcadia:paradise_shop_counter": "Bancone di Sparxie"
     },
     "howto": [
       {

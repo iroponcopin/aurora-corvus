@@ -7,8 +7,58 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "The Filter Underworks and the Service Drop, plus the Padlock and the PIN Door Lock",
+   "summary": "The Ring Main and lamp pressure, every door armoured, and four fixes",
    "releases": [
+    {
+     "version": "V4.2.4",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "The Ring Main and lamp pressure, every door armoured, and four fixes",
+     "summary": "The Filter Ring's lamps stop being magic. They burn condensate pushed from a header tank in the Sump Hall around a buried main at radius 120, and when the tank runs dry the ring goes dark. A new Ring Gallery lets you walk the inner wall at y=70. Alongside it, four reported problems are fixed: nobody could tell who sells Sparxie's staff, the Echolic Locator crashed the game on every use, the twelve doors this pack adds were not as strong as the vault door, and chemically strengthened glass was broken in one bite by the Wither Storm despite promising eight minutes.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "The Filter Ring's lamps now burn condensate. Fill the header tank in the Sump Hall (sixteen buckets), keep the north-wall seizure machines running and the pressure valve open, and the ring lights; let the tank run dry and the ring goes dark",
+        "New area, the Ring Gallery: a two-wide walkway at y=70 on the inner face of the wall, all the way round, with a ladder at each of the four gates. Like the viaduct deck, no new residue sickness starts while you are on it",
+        "New route, the Ring Main: a closed loop buried at radius 120, y=62, with a standpipe in each of the four gate roads. Two new blocks — the Header Tank (two blocks tall; fill it with a condensate bucket, draw it off with an empty one) and the Pressure Valve (sneak to open or close; redstone forces it open)",
+        "New item, the Ring Main Schematic (paper over a sump gauge): while you hold it the ring's state is on your action bar and a dashed circle at radius 120 appears on the survey map. Two new advancements — Light the Ring, and Walk the Gallery (visit all four gate ledges)",
+        "Sparxie now stands behind the counter in Planarcadia. The name tag is always visible and the gold outline shows through the glass, so you can see the shop from across the plaza. Right-clicking Sparxie is exactly the counter's purchase: the first click quotes, a second within thirty seconds buys the Downvote Stick",
+        "The counter is now Sparxie's Counter, and holding it shows three lines: who sells here, the list price of 200,000 emeralds times this world's multiplier, and that payment comes from your inventory plus containers within six blocks. The stick's own tooltip now names the shop too",
+        "Fixed: holding the Echolic Locator crashed the game. From V4.0.0 to V4.2.3 the client died on the very next frame after any creature made a sound, so nobody has ever seen what this tool draws",
+        "What it draws: a cyan 1×1×1 box around the position of the sound, fading out over about three seconds. Only creature sounds within 32 blocks (hostile, neutral, players) — never rain, music, records or block sounds. Put the locator away and any boxes vanish at once",
+        "All twelve doors this pack adds now follow the vault door's rule: the ten kit doors get destroy speed -1 and blast resistance 3,600,000. No boss, raid, gunfire, TNT, warhead, ender dragon, wither, earthquake, drill or piston can break them",
+        "Only a player gets through, with a pickaxe, axe, shovel or hoe, in exactly three minutes — tier, efficiency and haste make no difference, and bare hands or a sword make no progress at all. The door drops for any of those four tools now (before, anything but a pickaxe dug through and dropped nothing)",
+        "Chemically strengthened glass keeps its eight-minute promise. Neither the Wither Storm, nor a warhead, nor a sky raid, nor an earthquake takes it in one hit; a raid's diggers now need eight minutes rather than a hundred seconds",
+        "The Wither Storm no longer grows on blocks it did not actually break, and no longer records them in the restore journal. The Wither Storm and the Witherstorm Demon Overlord are now registered siege bosses",
+        "New administrator commands: /fallout pressure (the network's nodes, charge, tank contents and lit lamps for the block you are looking at) and /chemglass admin remove <pos> / info <pos> (permission level 3; every use is logged and announced to the operators present)"
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "No Ashen Conurbation number changed (the sickness clock, the mask's durability, the colossus's health). What changed is the condition for the Filter Ring being safe: its lamps have to be lit",
+        "Only five mods changed (building, Ashen Conurbation, survival, Planarcadia, boss). The other eight are untouched inside; only their version numbers move to 4.2.4"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "⚠ A newly generated city is born with a dark ring, on purpose. While the lamps are out the Filter Ring plaza is contaminated, so bring a mask on your first visit — fill a bucket from the Sump Hall pool and pour it into the header tank to light it",
+        "A lit ring burns 40 mB per second. The pool's 25 buckets and whatever the chests roll will not last for ever, and nothing refills them automatically in this version. The 46 lamps on the Ashen Viaduct and in the Condenser Reach are not on the ring main and stay lit either way",
+        "The Ring Main and the Ring Gallery appear in existing Ashen Conurbation worlds only in chunks that have not been generated yet; an already-generated centre will show neither",
+        "Kit doors used to be breakable by bosses and raiders. From V4.2.4 they are not — a base designed around them being broken through needs rethinking. The rule applies to doors already placed, and taking one down now costs three minutes",
+        "This covers only the twelve doors the pack adds. Vanilla's 21 doors and the backrooms' 5 are unchanged",
+        "Removing siege glass is refused while it still has durability, on every path that deletes a block: the storm's terrain feeding, boss impacts, Malachor's magma, warheads, raid diggers, earthquakes, and /setblock and /fill as well. Only player mining is unchanged — hardness decides there",
+        "\"Sustained assault\" is counted on the wall clock. A refused removal takes off only the time elapsed since the assault last landed, up to two minutes. So a single warhead costs the glass nothing, and only sustained fire wears it down; when the attack stops the clock stops, and accumulated damage never heals",
+        "Chemically strengthened glass cubes can no longer be pushed by pistons (like obsidian) — pushing them back and forth was healing the siege damage. The universal harvester can no longer collect them either; the original rule (a diamond-or-better pickaxe with silk touch) applies again",
+        "The V4.1.1 note saying the siege-boss tag ships empty because this pack has no Wither Storm was wrong, and because of it the glass's eight minutes had never once been in force",
+        "The V4.0.0 description of the Echolic Locator was also wrong: it draws no direction line. It outlines the position of a sound heard within 32 blocks, and the box lasts about three seconds",
+        "The nameless citizen that used to hover inside the shop hut is gone. Looking like a shopkeeper while doing nothing when clicked was the root of \"who actually sells this?\". Note that the price you pay is not the list price but the list price times this world's multiplier (×10 to ×100)"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.3",
      "date": "2026-09-05",
