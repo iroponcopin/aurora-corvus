@@ -2094,6 +2094,55 @@
         "sorakaze_survival": "4.2.4",
         "sorakaze_vehicles": "4.2.4"
       }
+    },
+    {
+      "id": "v4.2.5",
+      "release": "V4.2.5",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "Die Wiegen-Ökonomie und die drei Phasen des Kolosses",
+      "summary": "Die Adergrube wird zu einem Kampf mit Rechnung. Ein markierter Grubeneinschnitt führt vom Südtor des Filterrings hinab in das Becken, und der Boden der Grube ist jetzt eine Wiegenplatte mit einer Bergungsbucht darauf. Der Montagekoloss kämpft in drei benannten, farbigen Phasen, und sein Krampfkern fällt nur, wenn du den tödlichen Schlag auf der Platte stehend setzt. An der Bucht zerlegen acht Meißelschläge den Kern in Teile, welche die Routen der Stadt gebrauchen können. Diese Version behebt außerdem einen ausgelieferten Fehler: Der geschmolzene Rückstand der dritten Phase verschwand nie und überflutete den Grubenboden dauerhaft.",
+      "highlights": [
+        "Neue Route, der Grubeneinschnitt: ein fünf Blöcke breiter Weg vom Südtor des Filterrings bei (0,64,128) hinab zum Boden der Adergrube — bis zum Rand ein Einschnitt auf Höhe des Geländes, dann eine Treppe, die dem Becken Stufe für Stufe folgt, mit Stützmauern und einer Lampe alle zwölf Blöcke auf der Westschulter",
+        "Drei Verstecke entlang des Einschnitts (z=96, 72, 52). Das dem Tor nächste enthält immer einen Wiegenmeißel, sodass die Bergungsbucht nach einem ersten Tod nie hinter dem Handwerk eingeschlossen ist",
+        "Neues Gebiet, der Wiegenboden: eine Plattenscheibe mit Radius 14 auf dem Grubenboden, drei Deckungspfeiler alle 120° und die Bergungsbucht an ihrem Nordrand. Der Grund unter der Platte ist aufgefüllt, sodass dich das Zerschlagen einer Kachel nicht fallen lässt; die Platte ist etwas rutschiger als Stein",
+        "Der Montagekoloss erwacht jetzt, statt untätig zu sein: Er bleibt still, bis ein Spieler auf 28 Blöcke herankommt und dabei entweder auf der Platte steht oder sich innerhalb von Radius 16 unterhalb von y=28 befindet. Dann erklingt der Phasenton und der Kampf beginnt",
+        "Drei Phasen: KRAMPF (über 60% Leben, ein drei Blöcke breiter Schlag alle 60 Ticks), MONTAGE (30–60%, Schlag alle 80 Ticks, zwei Schrottwächter auf einmal bis zu drei gleichzeitig lebenden und ein Fernangriff alle 70 Ticks für 8 Schaden) und BLUTUNG (unter 30%, keine neuen Wächter, sechs geschmolzene Rückstandsblöcke auf einem Ring mit Radius 6 alle 100 Ticks, schnellerer Gang, ein vier Blöcke breiter Schlag alle 50 Ticks)",
+        "Die Bossleiste wechselt mit der Phase Name und Farbe — Violett für KRAMPF, Gelb für MONTAGE, Rot für BLUTUNG",
+        "Wer auf dem Grubeneinschnitt bei y≥40 steht, nimmt nur den halben Schaden aus dem Schlag hin. Es ist eine Abschwächung, keine Immunität — und Wächter verfolgen dich nicht über y=40 hinauf in den Einschnitt",
+        "Die Bergungsbucht: Benutze einen Krampfkern an ihr, und sie öffnet sich für 200 Ticks; lande in diesem Fenster acht Treffer mit dem Wiegenmeißel, dann gibt sie 6 stabilisierten Rückstand, 1 Kinetischen Krampfer, 2 Kondensatphiolen, 1 Viaduktmarke und 1 Ringleitungsplan aus. Verpasst du das Fenster, spuckt die Bucht den Kern wieder aus",
+        "Drei neue Gegenstände: der Krampfkern (Stapelgröße eins, der einzigartige Drop des Kolosses), der Wiegenmeißel (Haltbarkeit 64; Eisen-Tempo auf der Platte, der Bucht und den Rückstandsadern, überall sonst Holz-Tempo) und das Randleuchtfeuer (drei Anwendungen; ein 20 Sekunden langer Impuls der Filter-Schonfrist, nur bei y≥56 innerhalb des Filterrings oder auf dem Grubeneinschnitt)",
+        "Drei neue Fortschritte — „Schneide die Grube“, „Reiß den Motor heraus“ und „Drei Bewegungen“ (den Koloss erlegen, nachdem man jede Phase gesehen hat)",
+        "Die Vermessungskarte erhält südliche Teilstriche, und /fallout cradle setzt dich auf der Platte ab (nicht oben auf dem Koloss)"
+      ],
+      "balance_changes": [
+        "Der Koloss behält 320 Leben, 14 Nahkampf und 8 Fernkampf. Geändert haben sich der Aufbau der Phasen und die Wächtergrenze, die von vier gleichzeitig Lebenden auf drei sinkt",
+        "Nur das Mod der Aschen-Konurbation hat sich geändert. Die anderen zwölf sind innen unberührt; allein ihre Versionsnummern gehen auf 4.2.5"
+      ],
+      "warnings": [
+        "⚠ Der Krampfkern fällt nur, wenn der tödliche Schlag von einem Spieler kommt, der auf der Wiegenplatte steht. Erlege ihn vom Rand oder aus der Ferne, und der Kern versinkt mit dem Körper — die Erlegt-Markierung wird trotzdem gesetzt, es gibt also keinen zweiten Kampf, und der Kern dieser Welt ist für immer verloren. Steig hinab und kämpfe",
+        "Behoben: Der geschmolzene Rückstand der dritten Phase verschwand nie und überflutete den Wiegenboden schon im ersten Kampf dauerhaft. Platzierter Rückstand löst sich jetzt nach zehn Sekunden auf, und der Ring landet nie auf der Bergungsbucht oder im mittleren 3×3 der Platte",
+        "Der Grubeneinschnitt und der Wiegenboden entstehen in bestehenden Welten der Aschen-Konurbation nur in Chunks, die noch nicht generiert wurden; eine bereits generierte Grube zeigt weder das eine noch das andere",
+        "Der Einschnitt kreuzt bei z=120 das +Z-Standrohr der Ringleitung, das mitten im Weg steht. Geh darum herum — es zu zerstören kostet den Ring seinen Druck",
+        "Die Lampen des Einschnitts werden unbeleuchtet generiert. Sie liegen außerhalb des Eignungsradius des Drucknetzes, das Aufladen des Rings entzündet sie also nicht: Die Grube bleibt dunkel",
+        "Das Rezept des Randleuchtfeuers verbraucht eine Filterlampe, und Filterlampen haben kein Rezept und liegen in keiner Truhe — die einzige Quelle ist es, eine aus dem Filterring herauszubrechen, dessen leuchtende Lampen seit V4.2.4 die Sicherheit des Rings sind. Fertige Leuchtfeuer fallen außerdem mit 8% aus den Truhen des Grubeneinschnitts",
+        "Eine gefüllte Bergungsbucht lässt sich nicht abbauen; sonst würde die Bucht zerbrechen, bevor der achte Meißelschlag landet"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.5",
+        "sorakaze_boss": "4.2.5",
+        "sorakaze_deco": "4.2.5",
+        "sorakaze_fallout": "4.2.5",
+        "sorakaze_guns": "4.2.5",
+        "sorakaze_phone": "4.2.5",
+        "sorakaze_planarcadia": "4.2.5",
+        "sorakaze_power": "4.2.5",
+        "sorakaze_rail": "4.2.5",
+        "sorakaze_sapporo": "4.2.5",
+        "sorakaze_sky": "4.2.5",
+        "sorakaze_survival": "4.2.5",
+        "sorakaze_vehicles": "4.2.5"
+      }
     }
   ],
   "roadmap": {
@@ -3669,7 +3718,12 @@
       "sorakaze_fallout:header_tank": "Hochbehälter",
       "sorakaze_fallout:pressure_valve": "Druckventil",
       "sorakaze_fallout:main_schematic": "Ringleitungsplan",
-      "sorakaze_planarcadia:paradise_shop_counter": "Sparxies Verkaufstresen"
+      "sorakaze_planarcadia:paradise_shop_counter": "Sparxies Verkaufstresen",
+      "sorakaze_fallout:cradle_plate": "Wiegenplatte",
+      "sorakaze_fallout:salvage_bay": "Bergungsbucht",
+      "sorakaze_fallout:seizure_core": "Krampfkern",
+      "sorakaze_fallout:cradle_chisel": "Wiegenmeißel",
+      "sorakaze_fallout:rim_beacon": "Randleuchtfeuer"
     },
     "howto": [
       {

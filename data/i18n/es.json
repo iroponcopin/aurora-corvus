@@ -2102,6 +2102,55 @@
         "sorakaze_survival": "4.2.4",
         "sorakaze_vehicles": "4.2.4"
       }
+    },
+    {
+      "id": "v4.2.5",
+      "release": "V4.2.5",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "La economía de la cuna y las tres fases del coloso",
+      "summary": "La Fosa de Vetas se convierte en una pelea con factura. Un Corte de la Fosa señalizado baja desde la puerta sur del Anillo de Filtrado hasta el cuenco, y el fondo de la fosa es ahora una placa de cuna con una bahía de desguace encima. El Coloso de Ensamblaje pelea en tres fases con nombre y color, y su núcleo de convulsión solo cae si asestas el golpe mortal de pie sobre la placa. En la bahía, ocho golpes de cincel parten el núcleo en piezas que las rutas de la ciudad pueden aprovechar. Esta versión corrige además un defecto ya publicado: el residuo fundido de la tercera fase nunca desaparecía e inundaba el fondo de la fosa para siempre.",
+      "highlights": [
+        "Ruta nueva, el Corte de la Fosa: un camino de cinco de ancho desde la puerta sur del Anillo de Filtrado, en (0,64,128), hasta el fondo de la Fosa de Vetas: una trinchera a nivel del terreno hasta el borde, y a partir de ahí una escalera que sigue el cuenco escalón a escalón, con muros de contención y una lámpara cada doce bloques en el hombro oeste",
+        "Tres alijos a lo largo del corte (z=96, 72, 52). El más cercano a la puerta siempre guarda un cincel de cuna, así que la bahía de desguace nunca queda detrás de una fabricación tras la primera muerte",
+        "Zona nueva, el Suelo de la Cuna: un disco de placa de radio 14 en el fondo de la fosa, tres pilares de cobertura cada 120° y la bahía de desguace en su borde norte. El terreno bajo la placa está relleno, así que romper una losa no te hace caer; la placa resbala un poco más que la piedra",
+        "El Coloso de Ensamblaje ahora despierta en vez de estar inactivo: no se mueve hasta que un jugador llega a 28 bloques y además está sobre la placa o dentro del radio 16 por debajo de y=28. Entonces suena el sonido de fase y empieza la pelea",
+        "Tres fases: CONVULSIÓN (por encima del 60% de vida, un golpetazo de tres de ancho cada 60 ticks), ENSAMBLAJE (30–60%, golpetazo cada 80 ticks, dos centinelas de chatarra a la vez hasta tres vivos, y un escupitajo a distancia cada 70 ticks de 8 de daño) y HEMORRAGIA (por debajo del 30%, sin centinelas nuevos, seis bloques de residuo fundido en un anillo de radio 6 cada 100 ticks, paso más rápido y un golpetazo de cuatro de ancho cada 50 ticks)",
+        "La barra del jefe cambia de nombre y de color con la fase: morada en CONVULSIÓN, amarilla en ENSAMBLAJE, roja en HEMORRAGIA",
+        "Estar sobre el Corte de la Fosa a y≥40 reduce a la mitad el daño de golpetazo que recibes. Es una atenuación, no una inmunidad, y los centinelas no te perseguirán corte arriba por encima de y=40",
+        "La Bahía de Desguace: usa un núcleo de convulsión sobre ella y se abre durante 200 ticks; acierta ocho golpes de cincel de cuna dentro de esa ventana y suelta 6 residuos estabilizados, 1 convulsor cinético, 2 viales de condensado, 1 ficha del viaducto y 1 esquema de la tubería en anillo. Si fallas la ventana, la bahía escupe el núcleo de vuelta",
+        "Tres objetos nuevos: el Núcleo de Convulsión (apilable de uno, el botín único del coloso), el Cincel de Cuna (durabilidad 64; velocidad de hierro sobre la placa, la bahía y las vetas de residuo, y velocidad de madera en todo lo demás) y el Faro del Borde (tres usos; un pulso de 20 segundos de gracia del filtro, solo a y≥56 dentro del Anillo de Filtrado o sobre el Corte de la Fosa)",
+        "Tres progresos nuevos: Corta la fosa, Desnuda el motor y Tres movimientos (matar al coloso tras haber visto todas las fases)",
+        "El mapa de prospección gana marcas de graduación al sur, y /fallout cradle te deja caer sobre la placa (no encima del coloso)"
+      ],
+      "balance_changes": [
+        "El coloso conserva 320 de vida, 14 cuerpo a cuerpo y 8 a distancia. Lo que ha cambiado es la estructura de fases, y el límite de centinelas, que pasa de cuatro vivos a tres",
+        "Solo cambió el mod de la Conurbación Cenicienta. Los otros doce están intactos por dentro; solo su número de versión pasa a 4.2.5"
+      ],
+      "warnings": [
+        "⚠ El núcleo de convulsión solo cae si el golpe mortal viene de un jugador de pie sobre la placa de cuna. Mátalo desde el borde o a distancia y el núcleo se hunde con el cuerpo: la marca de abatido se pone igualmente, así que no hay segunda pelea y el núcleo de ese mundo se pierde para siempre. Baja y pelea",
+        "Corregido: el residuo fundido de la tercera fase nunca desaparecía e inundaba para siempre el suelo de la cuna ya en la primera pelea. El residuo colocado ahora se limpia a los diez segundos, y el anillo nunca cae sobre la bahía de desguace ni sobre el 3×3 central de la placa",
+        "El Corte de la Fosa y el Suelo de la Cuna aparecen en los mundos existentes de la Conurbación Cenicienta solo en los chunks aún no generados; una fosa ya generada no mostrará ninguno de los dos",
+        "El corte cruza la columna de toma +Z de la tubería en anillo en z=120, que queda en mitad del camino. Rodéala: romperla le cuesta al anillo su presión",
+        "Las lámparas del corte se generan apagadas. Quedan fuera del radio de admisión de la red de presión, así que cargar el anillo no las encenderá: la fosa sigue a oscuras",
+        "La receta del Faro del Borde consume una lámpara de filtrado, y las lámparas de filtrado no tienen receta ni aparecen en ningún cofre: la única fuente es picar una del Anillo de Filtrado, cuyas lámparas encendidas son la seguridad del anillo desde V4.2.4. Los faros ya hechos también salen de los alijos del Corte de la Fosa con un 8%",
+        "Una bahía de desguace llena no se puede picar; si no, la bahía se rompería antes de que llegara el octavo golpe de cincel"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.5",
+        "sorakaze_boss": "4.2.5",
+        "sorakaze_deco": "4.2.5",
+        "sorakaze_fallout": "4.2.5",
+        "sorakaze_guns": "4.2.5",
+        "sorakaze_phone": "4.2.5",
+        "sorakaze_planarcadia": "4.2.5",
+        "sorakaze_power": "4.2.5",
+        "sorakaze_rail": "4.2.5",
+        "sorakaze_sapporo": "4.2.5",
+        "sorakaze_sky": "4.2.5",
+        "sorakaze_survival": "4.2.5",
+        "sorakaze_vehicles": "4.2.5"
+      }
     }
   ],
   "roadmap": {
@@ -3677,7 +3726,12 @@
       "sorakaze_fallout:header_tank": "Depósito de carga",
       "sorakaze_fallout:pressure_valve": "Válvula de presión",
       "sorakaze_fallout:main_schematic": "Esquema de la tubería en anillo",
-      "sorakaze_planarcadia:paradise_shop_counter": "Mostrador de Sparxie"
+      "sorakaze_planarcadia:paradise_shop_counter": "Mostrador de Sparxie",
+      "sorakaze_fallout:cradle_plate": "Placa de cuna",
+      "sorakaze_fallout:salvage_bay": "Bahía de desguace",
+      "sorakaze_fallout:seizure_core": "Núcleo de convulsión",
+      "sorakaze_fallout:cradle_chisel": "Cincel de cuna",
+      "sorakaze_fallout:rim_beacon": "Faro del borde"
     },
     "howto": [
       {

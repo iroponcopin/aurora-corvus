@@ -2101,6 +2101,55 @@
         "sorakaze_survival": "4.2.4",
         "sorakaze_vehicles": "4.2.4"
       }
+    },
+    {
+      "id": "v4.2.5",
+      "release": "V4.2.5",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "L'économie du berceau et les trois phases du colosse",
+      "summary": "La Fosse aux Veines devient un combat avec une facture. Une Tranchée de la Fosse balisée descend de la porte sud de l'Anneau de Filtrage jusque dans la cuvette, et le fond de la fosse est désormais une plaque de berceau surmontée d'une baie de récupération. Le Colosse d'Assemblage se bat en trois phases nommées et colorées, et son noyau de convulsion ne tombe que si vous portez le coup fatal debout sur la plaque. À la baie, huit coups de ciseau brisent le noyau en pièces dont les tracés de la ville peuvent se servir. Cette version corrige aussi un défaut déjà livré : le résidu fondu de la phase trois ne disparaissait jamais et noyait définitivement le fond de la fosse.",
+      "highlights": [
+        "Nouveau tracé, la Tranchée de la Fosse : une voie de cinq de large depuis la porte sud de l'Anneau de Filtrage, en (0,64,128), jusqu'au fond de la Fosse aux Veines — une tranchée au niveau du sol jusqu'au bord, puis un escalier qui suit la cuvette marche après marche, avec des murs de soutènement et une lampe tous les douze blocs sur l'épaulement ouest",
+        "Trois caches le long de la tranchée (z=96, 72, 52). Celle qui est la plus proche de la porte contient toujours un ciseau de berceau, si bien que la baie de récupération n'est jamais bloquée derrière un artisanat après une première mort",
+        "Nouvelle zone, le Sol du Berceau : un disque de plaques de rayon 14 au fond de la fosse, trois piliers de couverture tous les 120° et la baie de récupération sur son bord nord. Le sol sous la plaque est comblé, si bien que briser une dalle ne vous fait pas tomber ; la plaque glisse un peu plus que la pierre",
+        "Le Colosse d'Assemblage s'éveille désormais au lieu de rester inerte : il ne bouge pas tant qu'un joueur n'est pas à moins de 28 blocs et, en plus, soit sur la plaque, soit dans le rayon 16 sous y=28. Le son de phase retentit alors et le combat commence",
+        "Trois phases : CONVULSION (au-dessus de 60% de vie, un écrasement de trois de large toutes les 60 ticks), ASSEMBLAGE (30–60%, écrasement toutes les 80 ticks, deux sentinelles de ferraille à la fois jusqu'à trois en vie, et un crachat à distance toutes les 70 ticks pour 8 dégâts) et HÉMORRAGIE (sous 30%, aucune nouvelle sentinelle, six blocs de résidu fondu sur un anneau de rayon 6 toutes les 100 ticks, marche plus rapide, un écrasement de quatre de large toutes les 50 ticks)",
+        "La barre de boss change de nom et de couleur avec la phase — violet pour CONVULSION, jaune pour ASSEMBLAGE, rouge pour HÉMORRAGIE",
+        "Se tenir sur la Tranchée de la Fosse à y≥40 réduit de moitié les dégâts d'écrasement que vous subissez. C'est un affaiblissement, pas une immunité — et les sentinelles ne vous poursuivent pas dans la tranchée au-dessus de y=40",
+        "La Baie de Récupération : utilisez un noyau de convulsion dessus et elle s'ouvre pendant 200 ticks ; placez huit coups de ciseau de berceau dans cette fenêtre et elle rend 6 résidus stabilisés, 1 convulseur cinétique, 2 fioles de condensat, 1 jeton du viaduc et 1 schéma de la conduite en anneau. Manquez la fenêtre et la baie recrache le noyau",
+        "Trois nouveaux objets : le Noyau de Convulsion (empilable par un, le butin unique du colosse), le Ciseau de Berceau (durabilité 64 ; vitesse du fer sur la plaque, la baie et les veines de résidu, vitesse du bois partout ailleurs) et la Balise du Bord (trois usages ; une impulsion de 20 secondes de sursis du filtre, seulement à y≥56 dans l'Anneau de Filtrage ou sur la Tranchée de la Fosse)",
+        "Trois nouveaux progrès — Tranche la fosse, Dépouille le moteur et Trois mouvements (tuer le colosse après avoir vu chaque phase)",
+        "La carte d'arpentage gagne des graduations au sud, et /fallout cradle vous dépose sur la plaque (pas sur le dos du colosse)"
+      ],
+      "balance_changes": [
+        "Le colosse garde 320 de vie, 14 au corps à corps et 8 à distance. Ce qui a changé, c'est la structure des phases, et le plafond de sentinelles qui passe de quatre en vie à trois",
+        "Seul le mod de la Conurbation Cendreuse a changé. Les douze autres sont intacts à l'intérieur ; seuls leurs numéros de version passent à 4.2.5"
+      ],
+      "warnings": [
+        "⚠ Le noyau de convulsion ne tombe que si le coup fatal vient d'un joueur debout sur la plaque de berceau. Tuez-le depuis le bord ou à distance et le noyau sombre avec le corps — le marqueur d'abattu se pose quand même, il n'y a donc pas de second combat et le noyau de ce monde est perdu pour de bon. Descendez et affrontez-le",
+        "Corrigé : le résidu fondu de la phase trois ne disparaissait jamais et noyait définitivement le sol du berceau dès le premier combat. Le résidu posé se dissipe maintenant au bout de dix secondes, et l'anneau ne tombe jamais sur la baie de récupération ni sur le 3×3 central de la plaque",
+        "La Tranchée de la Fosse et le Sol du Berceau n'apparaissent dans les mondes existants de la Conurbation Cendreuse que dans les chunks pas encore générés ; une fosse déjà générée ne montrera ni l'une ni l'autre",
+        "La tranchée croise la colonne montante +Z de la conduite en anneau en z=120, qui se dresse au milieu de la voie. Contournez-la — la briser coûte à l'anneau sa pression",
+        "Les lampes de la tranchée sont générées éteintes. Elles se trouvent hors du rayon d'éligibilité du réseau de pression, si bien que charger l'anneau ne les allumera pas : la fosse reste sombre",
+        "La recette de la Balise du Bord consomme une lampe de filtrage, et les lampes de filtrage n'ont pas de recette et n'apparaissent dans aucun coffre — la seule source est d'en extraire une de l'Anneau de Filtrage, dont les lampes allumées font la sécurité de l'anneau depuis la V4.2.4. Les balises finies tombent aussi des caches de la Tranchée de la Fosse à 8%",
+        "Une baie de récupération pleine ne peut pas être minée ; sinon la baie se briserait avant que le huitième coup de ciseau ne soit porté"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.5",
+        "sorakaze_boss": "4.2.5",
+        "sorakaze_deco": "4.2.5",
+        "sorakaze_fallout": "4.2.5",
+        "sorakaze_guns": "4.2.5",
+        "sorakaze_phone": "4.2.5",
+        "sorakaze_planarcadia": "4.2.5",
+        "sorakaze_power": "4.2.5",
+        "sorakaze_rail": "4.2.5",
+        "sorakaze_sapporo": "4.2.5",
+        "sorakaze_sky": "4.2.5",
+        "sorakaze_survival": "4.2.5",
+        "sorakaze_vehicles": "4.2.5"
+      }
     }
   ],
   "roadmap": {
@@ -3676,7 +3725,12 @@
       "sorakaze_fallout:header_tank": "Réservoir de charge",
       "sorakaze_fallout:pressure_valve": "Vanne de pression",
       "sorakaze_fallout:main_schematic": "Schéma de la conduite en anneau",
-      "sorakaze_planarcadia:paradise_shop_counter": "Comptoir de Sparxie"
+      "sorakaze_planarcadia:paradise_shop_counter": "Comptoir de Sparxie",
+      "sorakaze_fallout:cradle_plate": "Plaque de berceau",
+      "sorakaze_fallout:salvage_bay": "Baie de récupération",
+      "sorakaze_fallout:seizure_core": "Noyau de convulsion",
+      "sorakaze_fallout:cradle_chisel": "Ciseau de berceau",
+      "sorakaze_fallout:rim_beacon": "Balise du bord"
     },
     "howto": [
       {

@@ -2213,6 +2213,55 @@
         "sorakaze_survival": "4.2.4",
         "sorakaze_vehicles": "4.2.4"
       }
+    },
+    {
+      "id": "v4.2.5",
+      "release": "V4.2.5",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "The Cradle Economy and the Colossus's three phases",
+      "summary": "The Vein Pit becomes a fight with a bill. A marked Pit Cut runs from the Filter Ring's south gate down into the bowl, and the floor of the pit is now a Cradle plate with a salvage bay on it. The Assembly Colossus fights in three named, coloured phases, and its seizure core drops only if you land the killing blow standing on the plate. At the bay, eight chisel strokes break the core into parts the city's routes can use. This release also fixes a shipped defect: phase-three molten residue never despawned and permanently flooded the pit floor.",
+      "highlights": [
+        "New route, the Pit Cut: a five-wide way from the Filter Ring's south gate at (0,64,128) down to the floor of the Vein Pit — a cutting at grade as far as the rim, then a stair that follows the bowl down one step at a time, with retaining walls and a lamp every twelve blocks on the west shoulder",
+        "Three caches along the cut (z=96, 72, 52). The one nearest the gate always holds a cradle chisel, so the salvage bay is never gated behind crafting after a first death",
+        "New area, the Cradle Floor: a plate disk of radius 14 on the pit floor, three cover pillars at 120°, and the salvage bay on its north edge. The ground under the plate is filled, so breaking one tile does not drop you; the plate is slightly slipperier than stone",
+        "The Assembly Colossus now wakes rather than idling: it stays still until a player comes within 28 blocks and is either on the plate or inside radius 16 below y=28. Then the phase sound plays and the fight begins",
+        "Three phases: SEIZE (above 60% health, a three-wide smash every 60 ticks), ASSEMBLY (30–60%, smash every 80 ticks, two scrap sentinels at a time up to three alive, and a ranged spit every 70 ticks for 8 damage), and BLEED (below 30%, no new sentinels, six molten residue blocks on a radius-6 ring every 100 ticks, faster walk, a four-wide smash every 50 ticks)",
+        "The boss bar changes name and colour with the phase — purple for SEIZE, yellow for ASSEMBLY, red for BLEED",
+        "Standing on the Pit Cut at y≥40 halves the smash damage you take. It is a falloff, not immunity — and sentinels will not chase you up the cut above y=40",
+        "The Salvage Bay: use a seizure core on it and it opens for 200 ticks; land eight cradle-chisel hits inside that window and it yields 6 stabilised residue, 1 kinetic seizure, 2 condensate vials, 1 viaduct token and 1 ring main schematic. Miss the window and the bay spits the core back out",
+        "Three new items: the Seizure Core (stack of one, the colossus's unique drop), the Cradle Chisel (durability 64; iron speed on the plate, the bay and residue veins, wood speed everywhere else) and the Rim Beacon (three uses; a 20-second Filter Grace pulse, only at y≥56 inside the Filter Ring or on the Pit Cut)",
+        "Three new advancements — Cut the Pit, Strip the Motor, and Three Motions (slay the colossus after seeing every phase)",
+        "The survey map gains south tick marks, and /fallout cradle drops you onto the plate (not on top of the colossus)"
+      ],
+      "balance_changes": [
+        "The colossus keeps 320 health, 14 melee and 8 ranged. What changed is the phase structure, and the sentinel cap moving from four alive to three",
+        "Only the Ashen Conurbation mod changed. The other twelve are untouched inside; only their version numbers move to 4.2.5"
+      ],
+      "warnings": [
+        "⚠ The seizure core drops only if the killing blow comes from a player standing on the cradle plate. Kill it from the rim or from range and the core sinks with the body — the slain flag still sets, so there is no second fight and that world's core is gone for good. Come down and fight it",
+        "Fixed: phase-three molten residue never despawned and permanently flooded the cradle floor on the first fight. Placed residue now clears after ten seconds, and the ring never lands on the salvage bay or the plate's centre 3×3",
+        "The Pit Cut and the Cradle Floor appear in existing Ashen Conurbation worlds only in chunks that have not been generated yet; an already-generated pit will show neither",
+        "The cut crosses the ring main's +Z standpipe at z=120, which stands in the middle of the way. Walk around it — breaking it costs the ring its pressure",
+        "The cut's lamps are generated unlit. They sit outside the pressure network's eligibility radius, so charging the ring will not light them: the pit stays dark",
+        "The Rim Beacon's recipe consumes a filter lamp, and filter lamps have no recipe and appear in no chest — the only source is mining one out of the Filter Ring, whose lit lamps have been the ring's safety since V4.2.4. Finished beacons also drop from the Pit Cut caches at 8%",
+        "A filled salvage bay cannot be mined; otherwise the bay would break before the eighth chisel stroke landed"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.5",
+        "sorakaze_boss": "4.2.5",
+        "sorakaze_deco": "4.2.5",
+        "sorakaze_fallout": "4.2.5",
+        "sorakaze_guns": "4.2.5",
+        "sorakaze_phone": "4.2.5",
+        "sorakaze_planarcadia": "4.2.5",
+        "sorakaze_power": "4.2.5",
+        "sorakaze_rail": "4.2.5",
+        "sorakaze_sapporo": "4.2.5",
+        "sorakaze_sky": "4.2.5",
+        "sorakaze_survival": "4.2.5",
+        "sorakaze_vehicles": "4.2.5"
+      }
     }
   ],
   "roadmap": {

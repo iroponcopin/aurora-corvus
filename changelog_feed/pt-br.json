@@ -7,8 +7,52 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "A Tubulação em Anel e a pressão das lâmpadas, todas as portas blindadas e quatro correções",
+   "summary": "A economia do berço e as três fases do colosso",
    "releases": [
+    {
+     "version": "V4.2.5",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "A economia do berço e as três fases do colosso",
+     "summary": "O Poço das Veias vira uma luta com fatura. Um Corte do Poço sinalizado desce do portão sul do Anel de Filtragem até dentro da bacia, e o fundo do poço agora é uma placa de berço com uma baía de desmonte em cima. O Colosso de Montagem luta em três fases com nome e cor, e o núcleo de convulsão dele só cai se você desferir o golpe final de pé sobre a placa. Na baía, oito golpes de cinzel partem o núcleo em peças que as rotas da cidade conseguem usar. Esta versão também corrige um defeito já publicado: o resíduo fundido da terceira fase nunca sumia e inundava o fundo do poço para sempre.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Rota nova, o Corte do Poço: um caminho de cinco de largura do portão sul do Anel de Filtragem, em (0,64,128), até o fundo do Poço das Veias — uma trincheira no nível do terreno até a borda e, dali em diante, uma escadaria que acompanha a bacia degrau a degrau, com muros de arrimo e uma lâmpada a cada doze blocos no ombro oeste",
+        "Três esconderijos ao longo do corte (z=96, 72, 52). O mais próximo do portão sempre guarda um cinzel de berço, então a baía de desmonte nunca fica presa atrás de uma fabricação depois da primeira morte",
+        "Área nova, o Piso do Berço: um disco de placas de raio 14 no fundo do poço, três pilares de cobertura a cada 120° e a baía de desmonte na borda norte dele. O chão sob a placa está preenchido, então quebrar uma peça não faz você cair; a placa escorrega um pouco mais que a pedra",
+        "O Colosso de Montagem agora acorda em vez de ficar ocioso: fica parado até um jogador chegar a 28 blocos e estar sobre a placa ou dentro do raio 16 abaixo de y=28. Aí o som de fase toca e a luta começa",
+        "Três fases: CONVULSÃO (acima de 60% de vida, uma pancada de três de largura a cada 60 ticks), MONTAGEM (30–60%, pancada a cada 80 ticks, duas sentinelas de sucata por vez até três vivas, e um cuspe à distância a cada 70 ticks causando 8 de dano) e HEMORRAGIA (abaixo de 30%, sem sentinelas novas, seis blocos de resíduo fundido num anel de raio 6 a cada 100 ticks, andar mais rápido, uma pancada de quatro de largura a cada 50 ticks)",
+        "A barra do chefe muda de nome e de cor conforme a fase — roxa na CONVULSÃO, amarela na MONTAGEM, vermelha na HEMORRAGIA",
+        "Ficar em cima do Corte do Poço em y≥40 corta pela metade o dano de pancada que você recebe. É uma atenuação, não imunidade — e as sentinelas não te perseguem corte acima de y=40",
+        "A Baía de Desmonte: use um núcleo de convulsão nela e ela abre por 200 ticks; acerte oito golpes de cinzel de berço dentro dessa janela e ela rende 6 resíduos estabilizados, 1 convulsor cinético, 2 frascos de condensado, 1 ficha do viaduto e 1 esquema da tubulação em anel. Perdida a janela, a baía cospe o núcleo de volta",
+        "Três itens novos: o Núcleo de Convulsão (pilha de um, o drop exclusivo do colosso), o Cinzel de Berço (durabilidade 64; velocidade de ferro na placa, na baía e nas veias de resíduo, e velocidade de madeira em todo o resto) e o Farol da Borda (três usos; um pulso de 20 segundos de carência do filtro, só em y≥56 dentro do Anel de Filtragem ou sobre o Corte do Poço)",
+        "Três conquistas novas — Corte o Poço, Desnude o Motor e Três Movimentos (matar o colosso depois de ver todas as fases)",
+        "O mapa de levantamento ganha marcas ao sul, e /fallout cradle joga você sobre a placa (não em cima do colosso)"
+       ]
+      },
+      {
+       "title": "Ajustes de balanceamento",
+       "items": [
+        "O colosso mantém 320 de vida, 14 corpo a corpo e 8 à distância. O que mudou foi a estrutura de fases, e o limite de sentinelas caindo de quatro vivas para três",
+        "Só o mod da Conurbação Cinzenta mudou. Os outros doze estão intactos por dentro; apenas o número de versão deles vai para 4.2.5"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "⚠ O núcleo de convulsão só cai se o golpe final vier de um jogador de pé sobre a placa de berço. Mate-o da borda ou à distância e o núcleo afunda junto com o corpo — a marca de abatido é gravada mesmo assim, então não há segunda luta e o núcleo daquele mundo se perde de vez. Desça e enfrente-o",
+        "Corrigido: o resíduo fundido da terceira fase nunca sumia e inundava para sempre o piso do berço já na primeira luta. O resíduo colocado agora some depois de dez segundos, e o anel nunca cai sobre a baía de desmonte nem sobre o 3×3 central da placa",
+        "O Corte do Poço e o Piso do Berço aparecem nos mundos existentes da Conurbação Cinzenta só nos chunks que ainda não foram gerados; um poço já gerado não mostrará nenhum dos dois",
+        "O corte cruza a coluna de tomada +Z da tubulação em anel em z=120, que fica no meio do caminho. Contorne-a — quebrá-la custa ao anel a pressão dele",
+        "As lâmpadas do corte são geradas apagadas. Elas ficam fora do raio de elegibilidade da rede de pressão, então carregar o anel não vai acendê-las: o poço continua escuro",
+        "A receita do Farol da Borda consome uma lâmpada de filtragem, e lâmpadas de filtragem não têm receita e não aparecem em baú nenhum — a única fonte é minerar uma do Anel de Filtragem, cujas lâmpadas acesas são a segurança do anel desde a V4.2.4. Faróis prontos também caem dos esconderijos do Corte do Poço a 8%",
+        "Uma baía de desmonte cheia não pode ser minerada; senão a baía quebraria antes de o oitavo golpe de cinzel acertar"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.4",
      "date": "2026-09-05",

@@ -7,8 +7,52 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Pipa Utama Cincin dan tekanan lampu, semua pintu dilapis baja, plus empat perbaikan",
+   "summary": "Ekonomi buaian dan tiga fase kolosus",
    "releases": [
+    {
+     "version": "V4.2.5",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "Ekonomi buaian dan tiga fase kolosus",
+     "summary": "Lubang Urat menjadi pertarungan yang datang dengan tagihan. Sayatan Lubang yang bertanda turun dari gerbang selatan Cincin Filter ke dalam cekungan, dan dasar lubang kini berupa pelat buaian dengan teluk bongkar di atasnya. Kolosus Perakitan bertarung dalam tiga fase yang bernama dan berwarna, dan inti kejangnya hanya jatuh bila pukulan mematikan kamu daratkan sambil berdiri di atas pelat. Di teluk itu, delapan pukulan pahat memecah inti menjadi bagian-bagian yang bisa dipakai rute-rute kota. Rilis ini juga memperbaiki cacat yang sudah terlanjur dikirim: residu cair fase tiga tak pernah lenyap dan menenggelamkan dasar lubang selamanya.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Rute baru, Sayatan Lubang: jalan selebar lima blok dari gerbang selatan Cincin Filter di (0,64,128) turun ke dasar Lubang Urat — sebuah galian setara tanah sampai bibir lubang, lalu tangga yang mengikuti cekungan setapak demi setapak, dengan dinding penahan dan satu lampu tiap dua belas blok di bahu barat",
+        "Tiga simpanan di sepanjang sayatan (z=96, 72, 52). Yang paling dekat gerbang selalu berisi satu pahat buaian, jadi teluk bongkar tak pernah terkunci di balik pembuatan setelah kematian pertama",
+        "Area baru, Lantai Buaian: cakram pelat berjari-jari 14 di dasar lubang, tiga pilar perlindungan tiap 120°, dan teluk bongkar di sisi utaranya. Tanah di bawah pelat sudah diisi, jadi memecah satu ubin tidak menjatuhkanmu; pelatnya sedikit lebih licin daripada batu",
+        "Kolosus Perakitan kini bangun alih-alih diam saja: ia tak bergerak sampai seorang pemain berada dalam 28 blok dan sekaligus berdiri di atas pelat atau berada dalam radius 16 di bawah y=28. Lalu suara fase berbunyi dan pertarungan dimulai",
+        "Tiga fase: KEJANG (di atas 60% nyawa, hantaman selebar tiga tiap 60 tick), PERAKITAN (30–60%, hantaman tiap 80 tick, dua sentinel rongsok sekaligus hingga tiga yang hidup, dan semburan jarak jauh tiap 70 tick sebesar 8 kerusakan), dan PENDARAHAN (di bawah 30%, tanpa sentinel baru, enam blok residu cair di cincin berjari-jari 6 tiap 100 tick, langkah lebih cepat, hantaman selebar empat tiap 50 tick)",
+        "Bilah bos berganti nama dan warna mengikuti fase — ungu untuk KEJANG, kuning untuk PERAKITAN, merah untuk PENDARAHAN",
+        "Berdiri di Sayatan Lubang pada y≥40 memotong separuh kerusakan hantaman yang kamu terima. Ini pelemahan, bukan kekebalan — dan sentinel tidak mengejarmu naik ke sayatan di atas y=40",
+        "Teluk Bongkar: pakai inti kejang padanya dan ia terbuka selama 200 tick; daratkan delapan pukulan pahat buaian di dalam jendela itu dan ia mengeluarkan 6 residu stabil, 1 kejang kinetik, 2 vial kondensat, 1 token jalan layang, dan 1 skema pipa utama cincin. Lewatkan jendelanya dan teluk memuntahkan intinya kembali",
+        "Tiga item baru: Inti Kejang (tumpukan satu, jatuhan khas kolosus), Pahat Buaian (ketahanan 64; kecepatan besi di pelat, teluk, dan urat residu, kecepatan kayu di semua tempat lain), dan Suar Tepi (tiga pemakaian; denyut tenggang filter selama 20 detik, hanya pada y≥56 di dalam Cincin Filter atau di atas Sayatan Lubang)",
+        "Tiga kemajuan baru — Belah Lubangnya, Kuliti Motornya, dan Tiga Gerakan (bunuh kolosus setelah melihat setiap fase)",
+        "Peta survei mendapat tanda skala di sisi selatan, dan /fallout cradle menurunkanmu ke atas pelat (bukan di atas kepala kolosus)"
+       ]
+      },
+      {
+       "title": "Penyesuaian Balance",
+       "items": [
+        "Kolosus tetap 320 nyawa, 14 serangan jarak dekat, dan 8 jarak jauh. Yang berubah adalah susunan fasenya, dan batas sentinel yang turun dari empat hidup menjadi tiga",
+        "Hanya mod Konurbasi Abu yang berubah. Dua belas lainnya tak tersentuh di dalamnya; hanya nomor versinya yang naik ke 4.2.5"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "⚠ Inti kejang hanya jatuh bila pukulan mematikan datang dari pemain yang berdiri di atas pelat buaian. Bunuh dari bibir lubang atau dari jauh dan intinya tenggelam bersama tubuhnya — tanda terbunuh tetap tercatat, jadi tidak ada pertarungan kedua dan inti dunia itu hilang untuk selamanya. Turunlah dan lawan dia",
+        "Diperbaiki: residu cair fase tiga tak pernah lenyap dan menenggelamkan lantai buaian selamanya pada pertarungan pertama. Residu yang ditempatkan kini bersih setelah sepuluh detik, dan cincinnya tak pernah mendarat di teluk bongkar maupun di 3×3 tengah pelat",
+        "Sayatan Lubang dan Lantai Buaian muncul di dunia Konurbasi Abu yang sudah ada hanya di chunk yang belum dibuat; lubang yang sudah dibuat tidak akan menampilkan keduanya",
+        "Sayatan itu memotong pipa tegak +Z pipa utama cincin di z=120, yang berdiri tepat di tengah jalan. Berjalanlah memutarinya — memecahkannya membuat cincin kehilangan tekanannya",
+        "Lampu-lampu sayatan dibuat dalam keadaan padam. Mereka berada di luar radius kelayakan jaringan tekanan, jadi mengisi cincin tidak akan menyalakannya: lubang tetap gelap",
+        "Resep Suar Tepi memakan satu lampu filter, dan lampu filter tidak punya resep dan tidak muncul di peti mana pun — satu-satunya sumbernya adalah menambangnya dari Cincin Filter, yang lampu-lampu menyalanya menjadi keselamatan cincin sejak V4.2.4. Suar jadi juga jatuh dari simpanan Sayatan Lubang sebesar 8%",
+        "Teluk bongkar yang terisi tidak bisa ditambang; kalau tidak, teluknya akan pecah sebelum pukulan pahat kedelapan mendarat"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.4",
      "date": "2026-09-05",

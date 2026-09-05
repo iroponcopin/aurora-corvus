@@ -7,8 +7,52 @@
  "groups": [
   {
    "label": "V4.2",
-   "summary": "La Condotta ad Anello e la pressione delle lampade, ogni porta corazzata e quattro correzioni",
+   "summary": "L'economia della culla e le tre fasi del colosso",
    "releases": [
+    {
+     "version": "V4.2.5",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "L'economia della culla e le tre fasi del colosso",
+     "summary": "La Fossa delle Vene diventa una lotta con il conto. Un Taglio della Fossa segnato scende dalla porta sud dell'Anello di Filtraggio dentro la conca, e il fondo della fossa ora è una piastra della culla con sopra una baia di recupero. Il Colosso d'Assemblaggio combatte in tre fasi con nome e colore, e il suo nucleo di convulsione cade solo se il colpo mortale lo assesti stando in piedi sulla piastra. Alla baia, otto colpi di scalpello spezzano il nucleo in parti che le rotte della città possono usare. Questa versione corregge anche un difetto già uscito: il residuo fuso della terza fase non spariva mai e allagava per sempre il fondo della fossa.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "Nuovo tracciato, il Taglio della Fossa: una via larga cinque dalla porta sud dell'Anello di Filtraggio, a (0,64,128), fino al fondo della Fossa delle Vene — una trincea a raso fino al ciglio, poi una scala che segue la conca un gradino alla volta, con muri di sostegno e una lampada ogni dodici blocchi sulla spalla ovest",
+        "Tre nascondigli lungo il taglio (z=96, 72, 52). Quello più vicino alla porta contiene sempre uno scalpello della culla, così la baia di recupero non resta mai chiusa dietro la fabbricazione dopo una prima morte",
+        "Nuova area, il Suolo della Culla: un disco di piastre di raggio 14 sul fondo della fossa, tre pilastri di riparo ogni 120° e la baia di recupero sul suo bordo nord. Il terreno sotto la piastra è riempito, così rompere una mattonella non ti fa cadere; la piastra scivola un po' più della pietra",
+        "Il Colosso d'Assemblaggio ora si sveglia invece di restare inerte: sta fermo finché un giocatore non arriva entro 28 blocchi ed è o sulla piastra o entro il raggio 16 sotto y=28. Allora suona il tono di fase e la lotta comincia",
+        "Tre fasi: CONVULSIONE (sopra il 60% di salute, una martellata larga tre ogni 60 tick), ASSEMBLAGGIO (30–60%, martellata ogni 80 tick, due sentinelle di rottami per volta fino a tre vive e uno sputo a distanza ogni 70 tick da 8 danni) ed EMORRAGIA (sotto il 30%, nessuna nuova sentinella, sei blocchi di residuo fuso su un anello di raggio 6 ogni 100 tick, passo più rapido, una martellata larga quattro ogni 50 tick)",
+        "La barra del boss cambia nome e colore con la fase — viola per CONVULSIONE, gialla per ASSEMBLAGGIO, rossa per EMORRAGIA",
+        "Stare sul Taglio della Fossa a y≥40 dimezza il danno da martellata che subisci. È un'attenuazione, non un'immunità — e le sentinelle non ti inseguono su per il taglio oltre y=40",
+        "La Baia di Recupero: usa un nucleo di convulsione su di essa e si apre per 200 tick; metti a segno otto colpi di scalpello della culla dentro quella finestra e rende 6 residui stabilizzati, 1 convulsore cinetico, 2 fiale di condensa, 1 gettone del viadotto e 1 schema della condotta ad anello. Manca la finestra e la baia risputa fuori il nucleo",
+        "Tre oggetti nuovi: il Nucleo di Convulsione (pila da uno, il drop unico del colosso), lo Scalpello della Culla (durabilità 64; velocità del ferro sulla piastra, sulla baia e sulle vene di residuo, velocità del legno ovunque altrove) e il Faro del Bordo (tre usi; un impulso di 20 secondi di tregua del filtro, solo a y≥56 dentro l'Anello di Filtraggio o sul Taglio della Fossa)",
+        "Tre nuovi progressi — Taglia la fossa, Spoglia il motore e Tre movimenti (uccidere il colosso dopo aver visto ogni fase)",
+        "La mappa di rilevamento guadagna le tacche a sud, e /fallout cradle ti fa scendere sulla piastra (non sopra il colosso)"
+       ]
+      },
+      {
+       "title": "Bilanciamento",
+       "items": [
+        "Il colosso mantiene 320 di salute, 14 in mischia e 8 a distanza. È cambiata la struttura delle fasi, e il tetto delle sentinelle che passa da quattro vive a tre",
+        "È cambiato solo il mod della Conurbazione Cinerea. Gli altri dodici sono intatti dentro; solo i loro numeri di versione passano a 4.2.5"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "⚠ Il nucleo di convulsione cade solo se il colpo mortale viene da un giocatore in piedi sulla piastra della culla. Uccidilo dal ciglio o da lontano e il nucleo sprofonda con il corpo — il segno di abbattuto si mette lo stesso, quindi non c'è una seconda lotta e il nucleo di quel mondo è perso per sempre. Scendi e combattilo",
+        "Corretto: il residuo fuso della terza fase non spariva mai e allagava per sempre il suolo della culla già alla prima lotta. Il residuo piazzato ora sparisce dopo dieci secondi, e l'anello non finisce mai sulla baia di recupero né sul 3×3 centrale della piastra",
+        "Il Taglio della Fossa e il Suolo della Culla compaiono nei mondi esistenti della Conurbazione Cinerea solo nei chunk non ancora generati; una fossa già generata non mostrerà né l'uno né l'altro",
+        "Il taglio incrocia la colonna montante +Z della condotta ad anello a z=120, che sta in mezzo alla via. Giraci intorno — romperla costa all'anello la sua pressione",
+        "Le lampade del taglio sono generate spente. Stanno fuori dal raggio di idoneità della rete di pressione, quindi caricare l'anello non le accenderà: la fossa resta buia",
+        "La ricetta del Faro del Bordo consuma una lampada di filtraggio, e le lampade di filtraggio non hanno ricetta e non compaiono in nessuna cassa — l'unica fonte è scavarne una dall'Anello di Filtraggio, le cui lampade accese sono la sicurezza dell'anello dalla V4.2.4. I fari già fatti escono anche dai nascondigli del Taglio della Fossa all'8%",
+        "Una baia di recupero piena non si può scavare; altrimenti la baia si romperebbe prima che arrivi l'ottavo colpo di scalpello"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.4",
      "date": "2026-09-05",
