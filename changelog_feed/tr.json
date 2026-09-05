@@ -1,14 +1,53 @@
 {
  "lang": "tr",
- "updated": "2026-09-04",
+ "updated": "2026-09-05",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-09-04 tarihinde güncellendi",
+ "updated_label": "2026-09-05 tarihinde güncellendi",
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Kül Kentsel Alanı'nın son rötuşları, ayrıca Çarklı Kasa Kapısı ve Perçinli Kapak",
+   "summary": "Yoğuşturucu Kıyısı ve Kül Viyadüğü, ayrıca kapıların tamamen değişimi",
    "releases": [
+    {
+     "version": "V4.2.2",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "Yoğuşturucu Kıyısı ve Kül Viyadüğü, ayrıca kapıların tamamen değişimi",
+     "summary": "Kül Kentsel Alanı doğuda Yoğuşturucu Kıyısı'nı ve Filtre Halkası'nın doğu kapısından oraya uzanan Kül Viyadüğü'nü kazanıyor: ucunda Tahliye Barakası, yol boyunca dört durak, Bobin Sürüngeni, Viyadük Jetonu ve Yoğuşma Şişesi. Aynı zamanda yapı modunun kapıları toptan değişiyor: V4.2.0 ve öncesinin tüm kapıları (102 adet) kaldırıldı, yerlerini tasarım görsellerinden üretilen on yeni kapı aldı. V4.2.1'in Çarklı Kasa Kapısı ve Perçinli Kapağı artık hiçbir bos, yaratık, TNT ya da savaş başlığıyla yıkılamıyor; bir oyuncu üç dakikada kazıp geçiyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Her biri bir tasarım görselinden yeniden üretilmiş, hepsi animasyonlu on yeni kapı: Çivili Çelik Çift Kapı (4×3), Hangar Patlama Kapısı (6×4, yana kayıp cebine giriyor), Tuş Takımlı Güvenlik Kapısı (2×3, önce kol iniyor), X Destekli Kasa Kapısı (3×4, iki tur çark), Demir Bantlı Çift Kapı (3×5, önce sürgü çekiliyor), Dişli Tahrikli Kapı (3×4, pirinç dişliler taş levhayı kaldırıyor), Patlama Kapısı 01 (5×4, lentoya yükseliyor), Yuvarlak Hava Kilidi Kapısı (3×3, önce dört kelepçe dönüyor), Sürgülü Demir Kapı (3×4, vinçler dönüyor) ve Hücre Kapısı (2×3, önce mandal kayıyor). Hepsi için sağ tık ya da kızıltaş",
+        "Çarklı Kasa Kapısı ve Perçinli Kapak yıkılmaz: hiçbir bos, yaratık, wither, ejderha, baskın, ağır keskin nişancı, TNT ya da nükleer başlık onları kıramaz. Yalnızca oyuncu, kazma, balta, kürek ya da çapayla, aletin seviyesi ne olursa olsun tam üç dakikada kazar (çıplak el ve kılıç ilerlemez)",
+        "Kül Viyadüğü: halkanın doğu kapısından (x=128) Kıyı'ya (x=480) kadar beş genişliğinde bir döşeme y=72'de hiç kopmadan uzanır; orta hatta ray, iki kenarda her 16 blokta filtre lambası, her 12 blokta bir ayak vardır ve kuleleri, molozları yarıp geçen bir koridor açar. Döşemenin üzerindeyken yeni Tortu Hastalığı başlamaz (var olan azalmaya devam eder). Her 80 tikte rüzgâr",
+        "Dört durak (kuzey tarafta x=192, 256, 320, 384): ağartılmış prefabrik kulübeler, çökmüş bir pencere, bir sandık (demir külçesi, yoğuşma şişesi, viyadük jetonu, kristal, kömür, ekmek) ve çatıda bir yoğuşturucu bobin. Beşte ikisi, 32 blok içine geldiğinizde bir kez sürüngen doğuran Bobin Sürüngeni işareti taşır",
+        "Tahliye Barakası (x=496–516, 21×13×21): batı yüzü viyadüğe açılır; içeride altı yoğuşturucu bobin, iki sandık (şişeler, jetonlar, kararlı tortu, filtre maskesi, etüt haritası), demir parmaklıklı bölmede bir Kinetik Kasılma ve zeminin altında 3×3 bir sarnıç. İçeride kırk tik, 8 saniyelik Islak Bobin verir (Acele I ve Tortu Hastalığı iki kat hızlı azalır); tavandan damlar",
+        "Bobin Sürüngeni (14 can, 3 hasar, 0,28 hız): döşemedekilere tarafsız, Kıyı'ya, bir ayağa ya da bobine inenlere düşman. Duvarlara ve bobinlere tırmanır, 0-2 yoğuşma şişesi ve 0-1 tortu kristali düşürür. Kıyı'da doğma: sürüngen 70 (2-4'lü gruplar), sinsi 15, nabız tazısı yok",
+        "Viyadük Jetonu (döşemede sağ tık: 30 saniye Hız I, 30 saniye bekleme; başka yerde jetonun yalnızca viyadükte uyandığını söyler) ve Yoğuşma Şişesi (8 kullanım: tortu ve tortu damarları ağartılmış prefabriğe dönüşür, tomurcuklar kaybolur, erimiş tortu kaynağı kaybolur, kirlenmiş asfalt viyadük döşemesine dönüşür; halka duvarı ve kasılma etkilenmez). Tarifler: jeton = 4 demir külçesi + 4 şişe + kararlı tortu; şişe ×2 = cam şişe + su kovası + yoğuşturucu bobin; ağartılmış prefabrik ×4 = 2 prefabrik + 2 şişe; döşeme ×4 = 4 ağartılmış; taş kesici: ağartılmış → ayak",
+        "Etüt Haritası'nın ölçeği 512'ye genişler; Kıyı, viyadük çizgisi ve son durak kâğıda sığar (eşkenar dörtgen aynı). İki ilerleme (Isı Çizgisini İzle, Hâlâ Yoğuşuyor). /fallout viaduct test edenleri doğu kapısı döşemesine götürür"
+       ]
+      },
+      {
+       "title": "Denge Ayarları",
+       "items": [
+        "V4.2.1 sayıları, devin canı ve maskenin dayanıklılığı değişmedi. Kıyı'da hastalık saati Çökmüş Mahalleler'inkiyle aynı (maskesiz 10 sn, maskeli 40 sn) ama döşemede durur",
+        "Yalnızca yapı modu ve şehir modu değişti; diğer on bir modun içinde hiçbir şey kıpırdamadı (yalnızca sürüm numarası 4.2.2'ye geçiyor)"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "⚠ V4.2.0 ve öncesinin 102 kapısı (otomatik kapılar, fusuma, büyük kapılar, kapak, kamuflaj kapısı, sarmal kepenk, sürgülü cam kapı, hücre parmaklıkları ve 93 üretilmiş kapı) kaldırıldı. Var olan bir dünyaya yerleştirilmiş eski kapılar bu yapımla yüklendiğinde kaybolur (havaya dönüşür), envanterlerdeki eski kapı eşyaları da kaybolur. Sahibin talimatıyla toptan değişim",
+        "Otomatik kapının güç ayarları (autoDoorRequiresPower ve üç ayar daha) yapılandırmadan çıktı. Diğer güçlü cihazlar (güvenlik kamerası, asansör, yürüyen merdiven, ATM) değişmedi",
+        "Yoğuşturucu bobinler yalnızca kazma ya da İpeksi Dokunuş'la toplanır; diğer aletler hiçbir şey düşürmez",
+        "Var olan bir şehir dünyasında viyadük henüz üretilmemiş chunk'larda belirir, üretilmiş olanlarda değil",
+        "V4.2.3 ve sonrası (Alt Tesisler vb.) bu yapımda yok"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.1",
      "date": "2026-09-04",

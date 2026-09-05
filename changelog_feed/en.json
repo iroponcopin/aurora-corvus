@@ -1,14 +1,53 @@
 {
  "lang": "en",
- "updated": "2026-09-04",
+ "updated": "2026-09-05",
  "title": "Changelog",
- "updated_label": "Updated 2026-09-04",
+ "updated_label": "Updated 2026-09-05",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Finishing the Ashen Conurbation, plus the Wheel Vault Door and Riveted Hatch",
+   "summary": "The Condenser Reach and the Ashen Viaduct, plus a clean sweep of the doors",
    "releases": [
+    {
+     "version": "V4.2.2",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "The Condenser Reach and the Ashen Viaduct, plus a clean sweep of the doors",
+     "summary": "The Ashen Conurbation gains the Condenser Reach to the east and the Ashen Viaduct that runs there from the Filter Ring's east gate: the Bleed Shed at its end, four waystations along the way, the Coil Crawler, the Viaduct Token and the Condensate Vial. Alongside it the building mod's doors are replaced wholesale: every door of V4.2.0 and earlier (102 of them) is removed and ten new doors built from the design renders take their place. The V4.2.1 Wheel Vault Door and Riveted Hatch can no longer be destroyed by any boss, mob, TNT or warhead; a player digs through in three minutes.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "Ten new doors, each reproduced from one design render, all animated: the Studded Steel Double Gate (4×3), the Hangar Blast Gate (6×4, slides sideways into its pocket), the Keypad Security Door (2×3, the lever drops first), the X-Braced Vault Door (3×4, two turns of the wheel), the Iron-Bound Double Door (3×5, the bar slides free first), the Gear-Driven Gate (3×4, brass gears lift a stone slab), Blast Door 01 (5×4, lifts into the lintel), the Round Airlock Door (3×3, four clamps turn free first), the Portcullis (3×4, winches turn) and the Cell Door (2×3, the latch slides first). Right-click or redstone for all of them",
+        "The Wheel Vault Door and the Riveted Hatch are indestructible: no boss, mob, wither, dragon, raid, heavy sniper, TNT or nuclear warhead can break them. Only a player can, with a pickaxe, axe, shovel or hoe, in exactly three minutes whatever the tool's tier (bare hands and swords make no progress)",
+        "The Ashen Viaduct: from the ring's east gate (x=128) to the Condenser Reach (x=480), a five-wide deck runs unbroken at y=72 with a rail on the centre line, filter lamps every 16 blocks along both edges and a pier every 12 blocks, cutting a corridor through towers and rubble. While you stand on the deck no new Residue Sickness sets in (an existing one keeps ticking down). Wind every 80 ticks",
+        "Four waystations (north side at x=192, 256, 320, 384): bleached-precast booths with a collapsed window, a chest (iron nuggets, condensate vials, a viaduct token, crystals, coal, bread) and a condenser coil on the roof. Two in five carry a Coil Crawler marker that spawns one crawler, once, when you come within 32 blocks",
+        "The Bleed Shed (x=496 to 516, 21×13×21): its west face opens onto the viaduct; inside, six condenser coils, two chests (vials, tokens, stabilised residue, a filter mask, a survey map), a Kinetic Seizure in an iron-bar bay and a 3×3 cistern under the floor. Forty ticks inside grant Wet Coil for 8 seconds (Haste I, and Residue Sickness drains twice as fast); the ceiling drips",
+        "The Coil Crawler (14 health, 3 damage, 0.28 speed): neutral to anyone on the deck, hostile to anyone who steps down onto the Reach, a pier or a coil. It climbs walls and coils and drops 0-2 condensate vials and 0-1 residue crystal. Reach spawns: crawlers 70 (packs of 2-4), stalkers 15, no pulse hounds",
+        "The Viaduct Token (right-click on the deck for 30 seconds of Speed I with a 30-second cooldown; elsewhere it says the token only wakes on the viaduct) and the Condensate Vial (8 uses: residue and residue veins become bleached precast, buds vanish, a molten residue source vanishes, contaminated asphalt becomes viaduct deck; the ring wall and the seizure are untouched). Recipes: token = 4 iron nuggets + 4 vials + stabilised residue; vial ×2 = glass bottle + water bucket + condenser coil; bleached precast ×4 = 2 precast + 2 vials; viaduct deck ×4 = 4 bleached; stonecutter: bleached → pier",
+        "The Survey Map's scale widens to 512 so the Reach, the viaduct line and the terminus fit on the sheet (the diamond is unchanged). Two advancements (Follow the Heat Line, Still Condensing). /fallout viaduct takes testers to the east gate deck"
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "The V4.2.1 numbers, the colossus's health and the mask's durability are unchanged. On the Reach the sickness clock is the Collapsed Precincts' (10 s bare, 40 s masked), but it stops on the deck",
+        "Only the building mod and the city mod changed; nothing inside the other eleven mods moved (the version number alone goes to 4.2.2)"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "⚠ The 102 doors of V4.2.0 and earlier (the automatic doors, fusuma, large doors, hatch, camouflage door, roller shutter, sliding glass door, jail bars and the 93 generated doors) are removed. Old doors placed in an existing world disappear (they become air) when it loads with this build, and old door items vanish from inventories. This is a wholesale replacement at the owner's instruction",
+        "The automatic door's power settings (autoDoorRequiresPower and three more) are gone from the config. The other powered devices (security camera, elevator, escalator, ATM) are unchanged",
+        "Condenser coils drop only with a pickaxe or silk touch; other tools drop nothing",
+        "In an existing city world the viaduct appears in chunks that have not been generated yet, not in chunks already generated",
+        "Everything from V4.2.3 onward (the Underworks and so on) is not in this build"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.1",
      "date": "2026-09-04",

@@ -1948,6 +1948,50 @@
         "sorakaze_survival": "4.2.1",
         "sorakaze_vehicles": "4.2.1"
       }
+    },
+    {
+      "id": "v4.2.2",
+      "release": "V4.2.2",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "冷凝边缘与灰烬高架，以及门的整体更换",
+      "summary": "灰烬都会新增东侧的冷凝边缘，以及从过滤环东门通往那里的灰烬高架：终点的排放棚、沿途四处候车所、线圈爬行者、高架代币与冷凝液小瓶。与此同时，建材模组的门被整体更换：V4.2.0 及更早的全部 102 种门被删除，取而代之的是依据设计渲染图制作的十种新门。V4.2.1 的轮盘金库门与铆钉舱口不再会被任何首领、生物、TNT 或弹头摧毁；玩家可在三分钟内挖穿。",
+      "highlights": [
+        "十种新门，每种按一张设计渲染图复现，全部带动画：铆钉钢双开门（4×3）、机库防爆闸门（6×4，横向滑入收纳槽）、密码安全门（2×3，先压下拉杆）、X形加固金库门（3×4，转两圈手轮）、铁箍双开门（3×5，先抽出门闩）、齿轮驱动升降门（3×4，黄铜齿轮抬起石板）、防爆门 01（5×4，升入门楣）、圆形气闸门（3×3，先松开四个夹钳）、落闸格栅（3×4，绞盘转动）和牢房门（2×3，先滑开门栓）。全部支持右键与红石",
+        "轮盘金库门与铆钉舱口坚不可摧：任何首领、生物、凋灵、末影龙、袭击、重型狙击、TNT 或核弹头都无法破坏。只有玩家能用镐、斧、锹或锄挖穿，无论工具等级都恰好三分钟（空手与剑没有进度）",
+        "灰烬高架：从环的东门（x=128）到冷凝边缘（x=480），五格宽的桥面在 y=72 连续无断，中线有轨道，两侧每 16 格一盏过滤灯，每 12 格一根桥墩，穿过塔楼与瓦砾形成走廊。站在桥面上不会新患残渣病（已有的继续减少）。每 80 刻有风声",
+        "四处候车所（北侧 x=192、256、320、384）：漂白预制件的小屋，带一扇坍塌的窗、一个箱子（铁粒、冷凝液小瓶、高架代币、晶体、煤、面包）和屋顶的冷凝线圈。五分之二的小屋带有线圈爬行者标记，当你靠近到 32 格内时会生成一只，仅一次",
+        "排放棚（x=496 至 516，21×13×21）：西面向高架敞开；内有六个冷凝线圈、两个箱子（小瓶、代币、稳定残渣、过滤面罩、测绘图）、铁栏围住的动能痉挛机，以及地板下 3×3 的蓄水池。在内停留四十刻获得“湿线圈”8 秒（急迫 I，残渣病以两倍速度消退）；天花板滴水",
+        "线圈爬行者（生命 14、攻击 3、速度 0.28）：对桥面上的人保持中立，对走下边缘、桥墩或线圈的人怀有敌意。会攀爬墙壁与线圈，掉落 0-2 个冷凝液小瓶和 0-1 个残渣晶体。边缘刷怪：爬行者 70（2-4 只一群）、潜行者 15，没有脉冲猎犬",
+        "高架代币（在桥面上右键：30 秒速度 I，冷却 30 秒；在别处会提示代币只在高架上苏醒）与冷凝液小瓶（8 次：残渣与残渣矿脉变为漂白预制件，芽消失，熔融残渣源消失，污染沥青变为高架桥面；环墙与痉挛机不受影响）。配方：代币 = 4 铁粒 + 4 小瓶 + 稳定残渣；小瓶 ×2 = 玻璃瓶 + 水桶 + 冷凝线圈；漂白预制件 ×4 = 2 预制件 + 2 小瓶；桥面 ×4 = 4 漂白预制件；切石机：漂白预制件 → 桥墩",
+        "测绘图比例尺扩大到 512，使边缘、高架线和终点都落在图上（菱形不变）。两个进度（“追寻热线”“仍在冷凝”）。测试人员可用 /fallout viaduct 传送到东门桥面"
+      ],
+      "balance_changes": [
+        "V4.2.1 的数值、巨像血量与面罩耐久不变。边缘的残渣病计时与坍塌街区相同（无面罩 10 秒 / 有面罩 40 秒），但在桥面上停止",
+        "只有建材模组与城市模组发生了变化，其余十一个模组内容未动（仅版本号统一为 4.2.2）"
+      ],
+      "warnings": [
+        "⚠ V4.2.0 及更早的 102 种门（自动门、襖、大门、舱口、伪装门、卷帘门、玻璃推拉门、牢房栏杆以及 93 种生成门）已删除。已有世界中放置的旧门在此版本加载时会消失（变为空气），背包中的旧门物品也会消失。此为所有者指示的整体更换",
+        "自动门的电力设置（autoDoorRequiresPower 等四项）已从配置中移除。其他用电设备（监控摄像头、电梯、扶梯、ATM）不变",
+        "冷凝线圈只能用镐或精准采集回收；其他工具不掉落任何东西",
+        "在已有的城市世界中，高架只会出现在尚未生成的区块，已生成的区块不会",
+        "V4.2.3 及之后的内容（过滤下层等）不在此版本中"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.2",
+        "sorakaze_boss": "4.2.2",
+        "sorakaze_deco": "4.2.2",
+        "sorakaze_fallout": "4.2.2",
+        "sorakaze_guns": "4.2.2",
+        "sorakaze_phone": "4.2.2",
+        "sorakaze_planarcadia": "4.2.2",
+        "sorakaze_power": "4.2.2",
+        "sorakaze_rail": "4.2.2",
+        "sorakaze_sapporo": "4.2.2",
+        "sorakaze_sky": "4.2.2",
+        "sorakaze_survival": "4.2.2",
+        "sorakaze_vehicles": "4.2.2"
+      }
     }
   ],
   "roadmap": {
@@ -2147,7 +2191,8 @@
       "天空",
       "生存",
       "电力",
-      "二相乐园"
+      "二相乐园",
+      "灰烬都会"
     ],
     "items": {
       "minecraft:acacia_planks": "金合欢木板",
@@ -2360,20 +2405,14 @@
       "sorakaze_boss:universal_harvester": "万能采集器",
       "sorakaze_boss:void_spear": "虚空之枪",
       "sorakaze_boss:void_stalker_summon": "虚空潜行者的召唤石",
-      "sorakaze_deco:acacia_chevron_door": "金合欢人字纹门",
       "sorakaze_deco:acacia_planks_pillar": "金合欢木板柱",
       "sorakaze_deco:acacia_planks_slope": "金合欢木板斜面",
       "sorakaze_deco:acacia_planks_vertical_slab": "金合欢木板竖直台阶",
-      "sorakaze_deco:airtight_door": "气密门",
-      "sorakaze_deco:amado": "防风窗板（雨户）",
       "sorakaze_deco:andesite_pillar": "安山岩柱",
       "sorakaze_deco:andesite_slope": "安山岩斜面",
       "sorakaze_deco:andesite_vertical_slab": "安山岩竖直台阶",
       "sorakaze_deco:atm": "ATM",
-      "sorakaze_deco:auto_door": "自动门",
-      "sorakaze_deco:auto_glass_door": "自动玻璃门（双扇）",
       "sorakaze_deco:aviation_light": "航空障碍灯",
-      "sorakaze_deco:birch_glazed_door": "白桦嵌玻璃门",
       "sorakaze_deco:birch_planks_pillar": "白桦木板柱",
       "sorakaze_deco:birch_planks_slope": "白桦木板斜面",
       "sorakaze_deco:birch_planks_vertical_slab": "白桦木板竖直台阶",
@@ -2394,12 +2433,6 @@
       "sorakaze_deco:blue_reinforced_glass_pane": "蓝色强化玻璃窗",
       "sorakaze_deco:blue_reinforced_glass_plate": "蓝色强化玻璃板",
       "sorakaze_deco:blue_stained_glass_plate": "蓝色染色玻璃板",
-      "sorakaze_deco:bone_door": "骨门",
-      "sorakaze_deco:brass_glazed_grand_door": "黄铜嵌玻璃对开门（3×3）",
-      "sorakaze_deco:brass_grille_grand_door": "黄铜格栅对开门（3×4）",
-      "sorakaze_deco:brass_ornate_grand_door": "黄铜装饰对开门（3×3）",
-      "sorakaze_deco:brass_panelled_grand_door": "黄铜镶板对开门（3×4）",
-      "sorakaze_deco:brass_plain_grand_door": "黄铜素面对开门（3×3）",
       "sorakaze_deco:bricks_pillar": "红砖柱",
       "sorakaze_deco:bricks_slope": "红砖斜面",
       "sorakaze_deco:bricks_vertical_slab": "红砖竖直台阶",
@@ -2410,17 +2443,10 @@
       "sorakaze_deco:brown_reinforced_glass_pane": "棕色强化玻璃窗",
       "sorakaze_deco:brown_reinforced_glass_plate": "棕色强化玻璃板",
       "sorakaze_deco:brown_stained_glass_plate": "棕色染色玻璃板",
-      "sorakaze_deco:bulkhead_door": "隔舱门",
-      "sorakaze_deco:camo_door": "隐藏门（伪装）",
-      "sorakaze_deco:carved_door": "雕花石门",
-      "sorakaze_deco:castle_gate_door": "城门",
       "sorakaze_deco:category_sorter": "分类分拣机",
-      "sorakaze_deco:checker_plate_door": "花纹钢板门",
-      "sorakaze_deco:cherry_carved_door": "樱花雕花门",
       "sorakaze_deco:cherry_planks_pillar": "樱花木板柱",
       "sorakaze_deco:cherry_planks_slope": "樱花木板斜面",
       "sorakaze_deco:cherry_planks_vertical_slab": "樱花木板竖直台阶",
-      "sorakaze_deco:church_door": "教堂门",
       "sorakaze_deco:cobblestone_pillar": "圆石柱",
       "sorakaze_deco:cobblestone_slope": "圆石斜面",
       "sorakaze_deco:cobblestone_vertical_slab": "圆石竖直台阶",
@@ -2432,43 +2458,21 @@
       "sorakaze_deco:cyan_reinforced_glass_pane": "青色强化玻璃窗",
       "sorakaze_deco:cyan_reinforced_glass_plate": "青色强化玻璃板",
       "sorakaze_deco:cyan_stained_glass_plate": "青色染色玻璃板",
-      "sorakaze_deco:dark_oak_glazed_grand_door": "深色橡木嵌玻璃对开门（3×3）",
-      "sorakaze_deco:dark_oak_grille_grand_door": "深色橡木格栅对开门（3×4）",
-      "sorakaze_deco:dark_oak_ornate_grand_door": "深色橡木装饰对开门（3×3）",
-      "sorakaze_deco:dark_oak_panelled_grand_door": "深色橡木镶板对开门（3×4）",
-      "sorakaze_deco:dark_oak_plain_grand_door": "深色橡木素面对开门（3×3）",
       "sorakaze_deco:dark_oak_planks_pillar": "深色橡木木板柱",
       "sorakaze_deco:dark_oak_planks_slope": "深色橡木木板斜面",
       "sorakaze_deco:dark_oak_planks_vertical_slab": "深色橡木木板竖直台阶",
-      "sorakaze_deco:dark_oak_studded_door": "深色橡木铆钉门",
       "sorakaze_deco:deepslate_bricks_pillar": "深板岩砖柱",
       "sorakaze_deco:deepslate_bricks_slope": "深板岩砖斜面",
       "sorakaze_deco:deepslate_bricks_vertical_slab": "深板岩砖竖直台阶",
       "sorakaze_deco:diorite_pillar": "闪长岩柱",
       "sorakaze_deco:diorite_slope": "闪长岩斜面",
       "sorakaze_deco:diorite_vertical_slab": "闪长岩竖直台阶",
-      "sorakaze_deco:double_door": "双开门（2×2）",
       "sorakaze_deco:end_stone_bricks_pillar": "末地石砖柱",
       "sorakaze_deco:end_stone_bricks_slope": "末地石砖斜面",
       "sorakaze_deco:end_stone_bricks_vertical_slab": "末地石砖竖直台阶",
       "sorakaze_deco:escalator": "扶梯",
       "sorakaze_deco:filter_card": "过滤记忆卡",
-      "sorakaze_deco:framed_glass_door": "带框玻璃门",
-      "sorakaze_deco:frosted_glass_door": "磨砂玻璃门",
-      "sorakaze_deco:full_glass_door": "全玻璃门",
-      "sorakaze_deco:fusuma": "襖（隔扇）",
-      "sorakaze_deco:gilded_glazed_grand_door": "鎏金嵌玻璃对开门（3×4）",
-      "sorakaze_deco:gilded_grille_grand_door": "鎏金格栅对开门（3×3）",
-      "sorakaze_deco:gilded_ornate_grand_door": "鎏金装饰对开门（3×4）",
-      "sorakaze_deco:gilded_panelled_grand_door": "鎏金镶板对开门（3×3）",
-      "sorakaze_deco:gilded_plain_grand_door": "鎏金素面对开门（3×4）",
-      "sorakaze_deco:glass_glazed_grand_door": "玻璃嵌玻璃对开门（3×4）",
-      "sorakaze_deco:glass_grille_grand_door": "玻璃格栅对开门（3×3）",
-      "sorakaze_deco:glass_ornate_grand_door": "玻璃装饰对开门（3×4）",
-      "sorakaze_deco:glass_panelled_grand_door": "玻璃镶板对开门（3×3）",
-      "sorakaze_deco:glass_plain_grand_door": "玻璃素面对开门（3×4）",
       "sorakaze_deco:glass_plate": "玻璃平板",
-      "sorakaze_deco:grand_double_door": "双开大门（2×3）",
       "sorakaze_deco:granite_pillar": "花岗岩柱",
       "sorakaze_deco:granite_slope": "花岗岩斜面",
       "sorakaze_deco:granite_vertical_slab": "花岗岩竖直台阶",
@@ -2487,27 +2491,14 @@
       "sorakaze_deco:green_reinforced_glass_plate": "绿色强化玻璃板",
       "sorakaze_deco:green_stained_glass_plate": "绿色染色玻璃板",
       "sorakaze_deco:guardrail": "护栏",
-      "sorakaze_deco:hangar_door": "机库门（2×3）",
-      "sorakaze_deco:hatch": "舱口盖",
       "sorakaze_deco:iphone": "iPhone",
-      "sorakaze_deco:iron_glazed_grand_door": "铁嵌玻璃对开门（3×4）",
-      "sorakaze_deco:iron_grille_grand_door": "铁格栅对开门（3×3）",
-      "sorakaze_deco:iron_ornate_grand_door": "铁装饰对开门（3×4）",
-      "sorakaze_deco:iron_panelled_grand_door": "铁镶板对开门（3×3）",
-      "sorakaze_deco:iron_plain_grand_door": "铁素面对开门（3×4）",
-      "sorakaze_deco:ita_do": "木板门（板户）",
       "sorakaze_deco:item_collector": "物品收集器",
       "sorakaze_deco:item_counter": "物品计数器",
       "sorakaze_deco:item_pump": "物品输送泵",
-      "sorakaze_deco:jail_door": "监狱栅栏门",
-      "sorakaze_deco:jungle_louvered_door": "丛林百叶门",
       "sorakaze_deco:jungle_planks_pillar": "丛林木板柱",
       "sorakaze_deco:jungle_planks_slope": "丛林木板斜面",
       "sorakaze_deco:jungle_planks_vertical_slab": "丛林木板竖直台阶",
-      "sorakaze_deco:koushi_door": "格子门（格子户）",
       "sorakaze_deco:laptop": "笔记本电脑",
-      "sorakaze_deco:large_door_iron": "大型门（铁制）",
-      "sorakaze_deco:large_door_wood": "大型门（木制）",
       "sorakaze_deco:laser_receiver": "激光接收器",
       "sorakaze_deco:laser_transmitter": "激光发射器",
       "sorakaze_deco:light_blue_concrete_pillar": "淡蓝色混凝土柱",
@@ -2542,7 +2533,6 @@
       "sorakaze_deco:magenta_reinforced_glass_pane": "品红色强化玻璃窗",
       "sorakaze_deco:magenta_reinforced_glass_plate": "品红色强化玻璃板",
       "sorakaze_deco:magenta_stained_glass_plate": "品红色染色玻璃板",
-      "sorakaze_deco:mangrove_lattice_door": "红树格子门",
       "sorakaze_deco:mangrove_planks_pillar": "红树木板柱",
       "sorakaze_deco:mangrove_planks_slope": "红树木板斜面",
       "sorakaze_deco:mangrove_planks_vertical_slab": "红树木板竖直台阶",
@@ -2550,21 +2540,9 @@
       "sorakaze_deco:nether_bricks_pillar": "下界砖柱",
       "sorakaze_deco:nether_bricks_slope": "下界砖斜面",
       "sorakaze_deco:nether_bricks_vertical_slab": "下界砖竖直台阶",
-      "sorakaze_deco:nijiriguchi": "茶室躙口",
-      "sorakaze_deco:oak_glazed_grand_door": "橡木嵌玻璃对开门（3×3）",
-      "sorakaze_deco:oak_grille_grand_door": "橡木格栅对开门（3×4）",
-      "sorakaze_deco:oak_ornate_grand_door": "橡木装饰对开门（3×3）",
-      "sorakaze_deco:oak_panel_door": "橡木镶板门",
-      "sorakaze_deco:oak_panelled_grand_door": "橡木镶板对开门（3×4）",
-      "sorakaze_deco:oak_plain_grand_door": "橡木素面对开门（3×3）",
       "sorakaze_deco:oak_planks_pillar": "橡木木板柱",
       "sorakaze_deco:oak_planks_slope": "橡木木板斜面",
       "sorakaze_deco:oak_planks_vertical_slab": "橡木木板竖直台阶",
-      "sorakaze_deco:obsidian_trim_glazed_grand_door": "黑曜石镶边嵌玻璃对开门（3×3）",
-      "sorakaze_deco:obsidian_trim_grille_grand_door": "黑曜石镶边格栅对开门（3×4）",
-      "sorakaze_deco:obsidian_trim_ornate_grand_door": "黑曜石镶边装饰对开门（3×3）",
-      "sorakaze_deco:obsidian_trim_panelled_grand_door": "黑曜石镶边镶板对开门（3×4）",
-      "sorakaze_deco:obsidian_trim_plain_grand_door": "黑曜石镶边素面对开门（3×3）",
       "sorakaze_deco:orange_concrete_pillar": "橙色混凝土柱",
       "sorakaze_deco:orange_concrete_slope": "橙色混凝土斜面",
       "sorakaze_deco:orange_concrete_vertical_slab": "橙色混凝土竖直台阶",
@@ -2596,7 +2574,6 @@
       "sorakaze_deco:polished_granite_pillar": "磨制花岗岩柱",
       "sorakaze_deco:polished_granite_slope": "磨制花岗岩斜面",
       "sorakaze_deco:polished_granite_vertical_slab": "磨制花岗岩竖直台阶",
-      "sorakaze_deco:portcullis_door": "吊闸门（2×3）",
       "sorakaze_deco:power_line": "电线",
       "sorakaze_deco:prismarine_bricks_pillar": "海晶石砖柱",
       "sorakaze_deco:prismarine_bricks_slope": "海晶石砖斜面",
@@ -2614,7 +2591,6 @@
       "sorakaze_deco:quartz_block_pillar": "石英块柱",
       "sorakaze_deco:quartz_block_slope": "石英块斜面",
       "sorakaze_deco:quartz_block_vertical_slab": "石英块竖直台阶",
-      "sorakaze_deco:ranma_door": "带亮子的推拉门",
       "sorakaze_deco:red_concrete_pillar": "红色混凝土柱",
       "sorakaze_deco:red_concrete_slope": "红色混凝土斜面",
       "sorakaze_deco:red_concrete_vertical_slab": "红色混凝土竖直台阶",
@@ -2628,51 +2604,26 @@
       "sorakaze_deco:reinforced_glass": "强化玻璃",
       "sorakaze_deco:reinforced_glass_pane": "强化玻璃窗",
       "sorakaze_deco:reinforced_glass_plate": "强化玻璃板",
-      "sorakaze_deco:revolving_door": "仿旋转门",
-      "sorakaze_deco:roller_shutter": "卷帘门",
       "sorakaze_deco:round_robin_splitter": "轮询分配器",
-      "sorakaze_deco:rune_door": "符文门",
-      "sorakaze_deco:rusted_door": "锈蚀门",
-      "sorakaze_deco:safe_door": "保险柜门（2×2）",
       "sorakaze_deco:sandstone_pillar": "沙岩柱",
       "sorakaze_deco:sandstone_slope": "沙岩斜面",
       "sorakaze_deco:sandstone_vertical_slab": "沙岩竖直台阶",
       "sorakaze_deco:security_camera": "监控摄像头",
-      "sorakaze_deco:shoji_door": "障子拉门",
-      "sorakaze_deco:shopfront_door": "店铺入口门",
-      "sorakaze_deco:sliding_glass_door": "单扇玻璃推拉门",
       "sorakaze_deco:smooth_stone_pillar": "平滑石头柱",
       "sorakaze_deco:smooth_stone_slope": "平滑石头斜面",
       "sorakaze_deco:smooth_stone_vertical_slab": "平滑石头竖直台阶",
       "sorakaze_deco:sorting_filter": "分拣过滤器",
       "sorakaze_deco:special_atm": "特别 ATM",
       "sorakaze_deco:spotlight": "聚光灯",
-      "sorakaze_deco:spruce_braced_door": "云杉斜撑门",
-      "sorakaze_deco:spruce_glazed_grand_door": "云杉嵌玻璃对开门（3×4）",
-      "sorakaze_deco:spruce_grille_grand_door": "云杉格栅对开门（3×3）",
-      "sorakaze_deco:spruce_ornate_grand_door": "云杉装饰对开门（3×4）",
-      "sorakaze_deco:spruce_panelled_grand_door": "云杉镶板对开门（3×3）",
-      "sorakaze_deco:spruce_plain_grand_door": "云杉素面对开门（3×4）",
       "sorakaze_deco:spruce_planks_pillar": "云杉木板柱",
       "sorakaze_deco:spruce_planks_slope": "云杉木板斜面",
       "sorakaze_deco:spruce_planks_vertical_slab": "云杉木板竖直台阶",
       "sorakaze_deco:station_bench": "站台长椅",
-      "sorakaze_deco:steel_fire_door": "钢制防火门",
-      "sorakaze_deco:steel_glazed_grand_door": "钢嵌玻璃对开门（3×3）",
-      "sorakaze_deco:steel_grille_grand_door": "钢格栅对开门（3×4）",
-      "sorakaze_deco:steel_ornate_grand_door": "钢装饰对开门（3×3）",
-      "sorakaze_deco:steel_panelled_grand_door": "钢镶板对开门（3×4）",
-      "sorakaze_deco:steel_plain_grand_door": "钢素面对开门（3×3）",
       "sorakaze_deco:stock_indicator": "库存指示灯",
       "sorakaze_deco:stone_bricks_pillar": "石砖柱",
       "sorakaze_deco:stone_bricks_slope": "石砖斜面",
       "sorakaze_deco:stone_bricks_vertical_slab": "石砖竖直台阶",
-      "sorakaze_deco:stone_glazed_grand_door": "石嵌玻璃对开门（3×4）",
-      "sorakaze_deco:stone_grille_grand_door": "石格栅对开门（3×3）",
-      "sorakaze_deco:stone_ornate_grand_door": "石装饰对开门（3×4）",
-      "sorakaze_deco:stone_panelled_grand_door": "石镶板对开门（3×3）",
       "sorakaze_deco:stone_pillar": "石头柱",
-      "sorakaze_deco:stone_plain_grand_door": "石素面对开门（3×4）",
       "sorakaze_deco:stone_slope": "石头斜面",
       "sorakaze_deco:stone_vertical_slab": "石头竖直台阶",
       "sorakaze_deco:table": "木桌",
@@ -2680,18 +2631,11 @@
       "sorakaze_deco:tactile_guide_thin": "盲道砖（引导、薄型）",
       "sorakaze_deco:tactile_warning_block": "盲道砖（警示）",
       "sorakaze_deco:tactile_warning_thin": "盲道砖（警示、薄型）",
-      "sorakaze_deco:tall_gate_door": "高门（1×3）",
-      "sorakaze_deco:tall_glass_door": "通高玻璃门（1×3）",
       "sorakaze_deco:teleport_elevator": "电梯（传送式）",
       "sorakaze_deco:traffic_light": "车用信号灯",
-      "sorakaze_deco:treasury_door": "宝库门",
       "sorakaze_deco:utility_pole": "电线杆",
       "sorakaze_deco:utility_pole_arm": "电线杆（带横担）",
-      "sorakaze_deco:vault_door": "金库门",
-      "sorakaze_deco:vault_hatch": "金库舱门",
-      "sorakaze_deco:vault_hatch_large": "金库舱门（2×2）",
       "sorakaze_deco:void_trash": "虚空销毁器",
-      "sorakaze_deco:warehouse_door": "仓库门（2×2）",
       "sorakaze_deco:water_pipe": "水管",
       "sorakaze_deco:white_concrete_pillar": "白色混凝土柱",
       "sorakaze_deco:white_concrete_slope": "白色混凝土斜面",
@@ -2700,7 +2644,6 @@
       "sorakaze_deco:white_reinforced_glass_pane": "白色强化玻璃窗",
       "sorakaze_deco:white_reinforced_glass_plate": "白色强化玻璃板",
       "sorakaze_deco:white_stained_glass_plate": "白色染色玻璃板",
-      "sorakaze_deco:wire_mesh_door": "铁丝网门",
       "sorakaze_deco:wooden_chair": "木椅",
       "sorakaze_deco:yellow_concrete_pillar": "黄色混凝土柱",
       "sorakaze_deco:yellow_concrete_slope": "黄色混凝土斜面",
@@ -3454,7 +3397,161 @@
       "sorakaze_survival:glitch_strider_leggings": "Glitch Strider Leggings",
       "sorakaze_survival:kinetic_boots": "Kinetic Dampening Boots",
       "sorakaze_survival:void_stitched_pocket": "Void-Stitched Pocket",
-      "sorakaze_vehicles:mining_rig": "采矿钻机"
+      "sorakaze_vehicles:mining_rig": "采矿钻机",
+      "sorakaze_deco:studded_double_gate": "铆钉钢双开门",
+      "sorakaze_deco:hangar_blast_gate": "机库防爆闸门",
+      "sorakaze_deco:security_door": "密码安全门",
+      "sorakaze_deco:braced_vault_door": "X形加固金库门",
+      "sorakaze_deco:ironbound_double_door": "铁箍双开门",
+      "sorakaze_deco:geared_gate": "齿轮驱动升降门",
+      "sorakaze_deco:blast_door": "防爆门 01",
+      "sorakaze_deco:airlock_door": "圆形气闸门",
+      "sorakaze_deco:portcullis": "落闸格栅",
+      "sorakaze_deco:cell_door": "牢房门",
+      "sorakaze_fallout:viaduct_token": "高架代币",
+      "sorakaze_fallout:condensate_vial": "冷凝液小瓶",
+      "sorakaze_fallout:bleached_precast": "漂白预制件",
+      "sorakaze_fallout:viaduct_deck": "高架桥面",
+      "sorakaze_fallout:viaduct_pier": "高架桥墩",
+      "sorakaze_fallout:coil_crawler_spawn_egg": "线圈爬行者刷怪蛋",
+      "sorakaze_deco:chemically_strengthened_glass": "化学强化玻璃",
+      "sorakaze_deco:white_chemically_strengthened_glass": "白色化学强化玻璃",
+      "sorakaze_deco:orange_chemically_strengthened_glass": "橙色化学强化玻璃",
+      "sorakaze_deco:magenta_chemically_strengthened_glass": "品红色化学强化玻璃",
+      "sorakaze_deco:light_blue_chemically_strengthened_glass": "淡蓝色化学强化玻璃",
+      "sorakaze_deco:yellow_chemically_strengthened_glass": "黄色化学强化玻璃",
+      "sorakaze_deco:lime_chemically_strengthened_glass": "黄绿色化学强化玻璃",
+      "sorakaze_deco:pink_chemically_strengthened_glass": "粉红色化学强化玻璃",
+      "sorakaze_deco:gray_chemically_strengthened_glass": "灰色化学强化玻璃",
+      "sorakaze_deco:light_gray_chemically_strengthened_glass": "淡灰色化学强化玻璃",
+      "sorakaze_deco:cyan_chemically_strengthened_glass": "青色化学强化玻璃",
+      "sorakaze_deco:purple_chemically_strengthened_glass": "紫色化学强化玻璃",
+      "sorakaze_deco:blue_chemically_strengthened_glass": "蓝色化学强化玻璃",
+      "sorakaze_deco:brown_chemically_strengthened_glass": "棕色化学强化玻璃",
+      "sorakaze_deco:green_chemically_strengthened_glass": "绿色化学强化玻璃",
+      "sorakaze_deco:red_chemically_strengthened_glass": "红色化学强化玻璃",
+      "sorakaze_deco:black_chemically_strengthened_glass": "黑色化学强化玻璃",
+      "sorakaze_deco:chemically_strengthened_tinted_glass": "化学强化遮光玻璃",
+      "sorakaze_deco:white_chemically_strengthened_tinted_glass": "白色化学强化遮光玻璃",
+      "sorakaze_deco:orange_chemically_strengthened_tinted_glass": "橙色化学强化遮光玻璃",
+      "sorakaze_deco:magenta_chemically_strengthened_tinted_glass": "品红色化学强化遮光玻璃",
+      "sorakaze_deco:light_blue_chemically_strengthened_tinted_glass": "淡蓝色化学强化遮光玻璃",
+      "sorakaze_deco:yellow_chemically_strengthened_tinted_glass": "黄色化学强化遮光玻璃",
+      "sorakaze_deco:lime_chemically_strengthened_tinted_glass": "黄绿色化学强化遮光玻璃",
+      "sorakaze_deco:pink_chemically_strengthened_tinted_glass": "粉红色化学强化遮光玻璃",
+      "sorakaze_deco:gray_chemically_strengthened_tinted_glass": "灰色化学强化遮光玻璃",
+      "sorakaze_deco:light_gray_chemically_strengthened_tinted_glass": "淡灰色化学强化遮光玻璃",
+      "sorakaze_deco:cyan_chemically_strengthened_tinted_glass": "青色化学强化遮光玻璃",
+      "sorakaze_deco:purple_chemically_strengthened_tinted_glass": "紫色化学强化遮光玻璃",
+      "sorakaze_deco:blue_chemically_strengthened_tinted_glass": "蓝色化学强化遮光玻璃",
+      "sorakaze_deco:brown_chemically_strengthened_tinted_glass": "棕色化学强化遮光玻璃",
+      "sorakaze_deco:green_chemically_strengthened_tinted_glass": "绿色化学强化遮光玻璃",
+      "sorakaze_deco:red_chemically_strengthened_tinted_glass": "红色化学强化遮光玻璃",
+      "sorakaze_deco:black_chemically_strengthened_tinted_glass": "黑色化学强化遮光玻璃",
+      "sorakaze_deco:chemically_strengthened_glass_lantern": "化学强化玻璃灯笼",
+      "sorakaze_deco:white_chemically_strengthened_glass_lantern": "白色化学强化玻璃灯笼",
+      "sorakaze_deco:orange_chemically_strengthened_glass_lantern": "橙色化学强化玻璃灯笼",
+      "sorakaze_deco:magenta_chemically_strengthened_glass_lantern": "品红色化学强化玻璃灯笼",
+      "sorakaze_deco:light_blue_chemically_strengthened_glass_lantern": "淡蓝色化学强化玻璃灯笼",
+      "sorakaze_deco:yellow_chemically_strengthened_glass_lantern": "黄色化学强化玻璃灯笼",
+      "sorakaze_deco:lime_chemically_strengthened_glass_lantern": "黄绿色化学强化玻璃灯笼",
+      "sorakaze_deco:pink_chemically_strengthened_glass_lantern": "粉红色化学强化玻璃灯笼",
+      "sorakaze_deco:gray_chemically_strengthened_glass_lantern": "灰色化学强化玻璃灯笼",
+      "sorakaze_deco:light_gray_chemically_strengthened_glass_lantern": "淡灰色化学强化玻璃灯笼",
+      "sorakaze_deco:cyan_chemically_strengthened_glass_lantern": "青色化学强化玻璃灯笼",
+      "sorakaze_deco:purple_chemically_strengthened_glass_lantern": "紫色化学强化玻璃灯笼",
+      "sorakaze_deco:blue_chemically_strengthened_glass_lantern": "蓝色化学强化玻璃灯笼",
+      "sorakaze_deco:brown_chemically_strengthened_glass_lantern": "棕色化学强化玻璃灯笼",
+      "sorakaze_deco:green_chemically_strengthened_glass_lantern": "绿色化学强化玻璃灯笼",
+      "sorakaze_deco:red_chemically_strengthened_glass_lantern": "红色化学强化玻璃灯笼",
+      "sorakaze_deco:black_chemically_strengthened_glass_lantern": "黑色化学强化玻璃灯笼",
+      "sorakaze_deco:chemically_strengthened_tinted_glass_lantern": "化学强化遮光玻璃灯笼",
+      "sorakaze_deco:white_chemically_strengthened_tinted_glass_lantern": "白色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:orange_chemically_strengthened_tinted_glass_lantern": "橙色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:magenta_chemically_strengthened_tinted_glass_lantern": "品红色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:light_blue_chemically_strengthened_tinted_glass_lantern": "淡蓝色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:yellow_chemically_strengthened_tinted_glass_lantern": "黄色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:lime_chemically_strengthened_tinted_glass_lantern": "黄绿色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:pink_chemically_strengthened_tinted_glass_lantern": "粉红色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:gray_chemically_strengthened_tinted_glass_lantern": "灰色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:light_gray_chemically_strengthened_tinted_glass_lantern": "淡灰色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:cyan_chemically_strengthened_tinted_glass_lantern": "青色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:purple_chemically_strengthened_tinted_glass_lantern": "紫色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:blue_chemically_strengthened_tinted_glass_lantern": "蓝色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:brown_chemically_strengthened_tinted_glass_lantern": "棕色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:green_chemically_strengthened_tinted_glass_lantern": "绿色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:red_chemically_strengthened_tinted_glass_lantern": "红色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:black_chemically_strengthened_tinted_glass_lantern": "黑色化学强化遮光玻璃灯笼",
+      "sorakaze_deco:chemical_strengthening_bath": "化学强化槽",
+      "sorakaze_deco:charged_strengthening_bath": "通电的化学强化槽",
+      "sorakaze_power:aqueduct_slab": "导水渠",
+      "sorakaze_power:arc_furnace": "电弧炉",
+      "sorakaze_power:assembler_arm": "装配臂",
+      "sorakaze_power:blast_furnace_stack": "高炉",
+      "sorakaze_power:blueprint_card": "蓝图卡",
+      "sorakaze_power:catwalk": "走道",
+      "sorakaze_power:coke_oven": "焦炉",
+      "sorakaze_power:consumer_port": "供水口",
+      "sorakaze_power:copper_wire": "铜线",
+      "sorakaze_power:crusher": "粉碎机",
+      "sorakaze_power:electric_motor": "电动机",
+      "sorakaze_power:electric_pump": "电动泵",
+      "sorakaze_power:factory_hub": "工厂控制盘",
+      "sorakaze_power:factory_scaffold": "工厂脚手架",
+      "sorakaze_power:firebrick": "耐火砖",
+      "sorakaze_power:fluid_pipe": "加压流体管",
+      "sorakaze_power:fluid_valve": "流体阀",
+      "sorakaze_power:industrial_distillery": "工业蒸馏器",
+      "sorakaze_power:industrial_smoker": "工业熏制塔",
+      "sorakaze_power:industrial_wrench": "工业扳手",
+      "sorakaze_power:iron_plate": "铁板",
+      "sorakaze_power:item_conveyor": "物品传送带",
+      "sorakaze_power:item_conveyor_ramp": "上坡传送带",
+      "sorakaze_power:kinetic_crank": "手摇曲柄",
+      "sorakaze_power:lathe": "车床",
+      "sorakaze_power:ore_washer": "洗矿机",
+      "sorakaze_power:power_axle": "传动轴",
+      "sorakaze_power:pump_station": "加压泵站",
+      "sorakaze_power:refinery_generator": "燃料发电机",
+      "sorakaze_power:reservoir_tank": "贮水罐",
+      "sorakaze_power:rolling_mill": "轧机",
+      "sorakaze_power:safety_siren": "安全警报器",
+      "sorakaze_power:slag_recycler": "矿渣回收机",
+      "sorakaze_power:sorter_gate": "分拣门",
+      "sorakaze_power:steam_boiler": "蒸汽锅炉",
+      "sorakaze_power:steam_turbine": "蒸汽轮机",
+      "sorakaze_power:steel_gear": "钢齿轮",
+      "sorakaze_power:steel_ingot": "钢锭",
+      "sorakaze_power:steel_plate": "钢板",
+      "sorakaze_power:steel_rod": "钢棒",
+      "sorakaze_power:steel_screw": "钢螺钉",
+      "sorakaze_power:treatment_filter": "净水器",
+      "sorakaze_power:water_intake": "取水口",
+      "sorakaze_power:water_meter": "水表",
+      "sorakaze_power:water_tower": "水塔",
+      "sorakaze_power:water_wheel": "水车",
+      "sorakaze_power:wellhead": "井口",
+      "sorakaze_fallout:ashen_gateway": "灰烬之门",
+      "sorakaze_fallout:condenser_coil": "冷凝线圈",
+      "sorakaze_fallout:filter_mask": "过滤面罩",
+      "sorakaze_fallout:precast_concrete": "预制混凝土",
+      "sorakaze_fallout:residue_barricade": "残渣路障",
+      "sorakaze_fallout:residue_crystal": "残渣晶体",
+      "sorakaze_fallout:stabilised_residue": "稳定残渣",
+      "sorakaze_fallout:stabiliser_canister": "稳定剂罐",
+      "sorakaze_fallout:survey_map": "测绘图",
+      "sorakaze_deco:riveted_hatch": "铆钉舱口",
+      "sorakaze_deco:wheel_vault_door": "轮盘金库门",
+      "minecraft:brick": "红砖",
+      "minecraft:calcite": "方解石",
+      "minecraft:crafter": "合成器",
+      "minecraft:iron_ore": "铁矿石",
+      "minecraft:note_block": "音符盒",
+      "minecraft:sand": "沙子",
+      "minecraft:sea_lantern": "海晶灯",
+      "minecraft:smoker": "烟熏炉",
+      "sorakaze_survival:sapphire": "蓝宝石",
+      "sorakaze_survival:sapphire_block": "蓝宝石块"
     },
     "howto": [
       {
@@ -4847,16 +4944,6 @@
                 [
                   [
                     "i",
-                    "sorakaze_deco:auto_door",
-                    "自动门"
-                  ],
-                  [
-                    "i",
-                    "sorakaze_deco:auto_glass_door",
-                    "自动玻璃门"
-                  ],
-                  [
-                    "i",
                     "sorakaze_boss:enhanced_beacon",
                     "强化信标"
                   ],
@@ -4877,7 +4964,7 @@
               ],
               "out": [
                 [
-                  "sorakaze_deco:auto_door",
+                  "sorakaze_deco:teleport_elevator",
                   "又能重新运作了"
                 ]
               ]
@@ -4889,7 +4976,7 @@
             ],
             "notes": [
               "<b>只有强化信标</b>稍有不同，它看的是相邻电缆是否发光。",
-              "建材 MOD 的设备（摄像头、电梯、扶梯、自动门、ATM），<b>可以在建材 MOD 一侧的设置中单独取消电力需求</b>（<code>config/sorakaze_deco.json</code> 中的 <code>…RequiresPower</code>）。"
+              "建材 MOD 的设备（摄像头、电梯、扶梯、ATM），<b>可以在建材 MOD 一侧的设置中单独取消电力需求</b>（<code>config/sorakaze_deco.json</code> 中的 <code>…RequiresPower</code>）。"
             ]
           },
           {
@@ -5043,6 +5130,896 @@
             "notes": [
               "<b>停电就会熄灭。</b>如果只靠它来防止怪物生成，一旦燃料耗尽，夜晚就可能在据点内生成怪物。<b>重要的地方请务必保留火把作为备用。</b>",
               "沉入水中也能使用（浸水不会熄灭）。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "factory",
+        "icon": "sorakaze_power:steam_turbine",
+        "tab": "使用方法",
+        "title": "工厂建造指南(V4.1 工业化的 40 种方块)",
+        "lede": "把电力模组的 40 种工业方块分成九部分讲解:旋转、蒸汽、炉窑、液体、供水、传送带、加工、燃料与装配。<b>每一种都可以空手右键查看自身状态</b>。拿不准时,先这么做。",
+        "sections": [
+          {
+            "title": "① 产生并传递旋转(手摇曲柄、水车、传动轴、电动机)",
+            "goal": "产生旋转(SU),并用传动轴传递。",
+            "diagram": {
+              "caption": "旋转沿传动轴传递,且只沿轴自身的方向(侧视图)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:kinetic_crank",
+                    "手摇曲柄:右键输出 8 SU"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "传动轴(最多 16 格)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "只连接同向的轴"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "n",
+                    "接收旋转的机器(本版本尚无)"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:water_wheel",
+                    "水车:放在流动的水上"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "传动轴"
+                  ],
+                  null,
+                  [
+                    "i",
+                    "sorakaze_power:electric_motor",
+                    "电动机:电 → 旋转"
+                  ],
+                  [
+                    "a",
+                    "←"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "电力"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:water_bucket",
+                  "流动的水(水车)"
+                ],
+                [
+                  "sorakaze_power:cable",
+                  "电力(电动机)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:power_axle",
+                  "旋转(SU)"
+                ]
+              ]
+            },
+            "steps": [
+              "放下手摇曲柄并<b>右键</b>。它会持续转动约 3 秒,期间一直输出 8 SU。停下前再摇一次可以延长时间。",
+              "把水车放在<b>流动的水</b>中。静止的水源不会转动:0 SU。水流越快 SU 越多;沿轴向并排三台时只有中间一台转动,但比单独一台强得多。",
+              "传动轴会顺着放置的面躺下,只要同向的轴连续,就能把旋转传到<b>最远 16 格</b>。每 8 格因摩擦损失 1 SU。",
+              "电动机把配电盘回路的电变成旋转。<b>反过来(旋转 → 电)做不到</b>。没有电就什么也不输出。"
+            ],
+            "notes": [
+              "<b>本版本中还没有任何机器接收旋转来工作</b>。轴网由测试测量;旋转是为后续机器打的底子。",
+              "中途拆掉一根轴,后面就传不到了(轴网断开)。"
+            ]
+          },
+          {
+            "title": "② 用蒸汽发电(蒸汽锅炉、蒸汽轮机)",
+            "goal": "把固体燃料和水变成电。",
+            "diagram": {
+              "caption": "燃料从上方进,水用桶倒入,蒸汽送到隔壁的轮机(侧视图)",
+              "rows": [
+                [
+                  null,
+                  null,
+                  [
+                    "i",
+                    "minecraft:hopper",
+                    "固体燃料放进上方漏斗"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "minecraft:water_bucket",
+                    "用水桶右键"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:steam_boiler",
+                    "蒸汽锅炉"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:steam_turbine",
+                    "蒸汽轮机(6 个面任意一面)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "电缆"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:breaker",
+                    "配电盘"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "n",
+                    "灰落入下方漏斗"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:coal",
+                  "煤、木炭、木板等"
+                ],
+                [
+                  "minecraft:water_bucket",
+                  "水"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:cable",
+                  "电力"
+                ]
+              ]
+            },
+            "steps": [
+              "在锅炉上方放漏斗,投入固体燃料(煤、木炭、木板等)。",
+              "<b>用水桶右键锅炉</b>注水。",
+              "把蒸汽轮机紧贴锅炉放置(任意一面),并拉电缆到配电盘回路。蒸汽直接传过去。",
+              "两者都没有界面。空手右键会报告热量、水量、蒸汽量,以及缺的是哪一样。"
+            ],
+            "notes": [
+              "<b>高温时绝不能让水用完。</b>没有水热量会骤升,锅炉过热,直到冷却前都会停机。",
+              "灰积在下方槽位,正下方放漏斗即可回收。在轮机上接比较器可读取蒸汽量。"
+            ]
+          },
+          {
+            "title": "③ 用耐火砖砌炉(焦炉、高炉、工业熏制塔)",
+            "goal": "三种炉都是“一个正面方块 + 耐火砖外壳”。",
+            "diagram": {
+              "caption": "正面方块放在前墙中央、离地一格,其余用耐火砖填满",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:firebrick",
+                    "耐火砖:焦炉 33 块、高炉 31 块"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:coke_oven",
+                    "焦炉 3x3x4:煤 → 焦炭与杂酚油"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:blast_furnace_stack",
+                    "高炉 3x3x4:铁 + 焦炭 + 方解石 → 钢"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_smoker",
+                    "工业熏制塔 3x3x3:同时熏 4 种食物"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:coal",
+                  "煤(焦炉)"
+                ],
+                [
+                  "minecraft:iron_ingot",
+                  "铁锭(高炉)"
+                ],
+                [
+                  "minecraft:calcite",
+                  "方解石 = 助熔剂(高炉)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:steel_ingot",
+                  "钢锭"
+                ]
+              ]
+            },
+            "steps": [
+              "把正面方块(焦炉、高炉或熏制塔)放在<b>前墙中央、离地一格</b>。",
+              "其余用耐火砖填满。焦炉留空<b>正面方块正后方及其上方的两格</b>(炉室);高炉留空<b>正后方整列四格</b>(风道);熏制塔留空中心。",
+              "空手右键:若未组装完成,会报告<b>缺少的砖数和第一处空缺的坐标</b>。",
+              "没有界面。从上方漏斗投料,从下方漏斗取出(熏制塔的燃料从侧面进)。"
+            ],
+            "notes": [
+              "只有熏制塔<b>不需要电</b>。它像熔炉一样烧焦炭或煤,原版熏制炉能做的食物都能做。",
+              "建造前多备些耐火砖(焦炉 33 块、高炉 31 块)。它单独只是普通建材。"
+            ]
+          },
+          {
+            "title": "④ 输送液体(电动泵、加压流体管、流体阀、贮水罐)",
+            "goal": "只有泵能推动液体。管道只负责连接。",
+            "diagram": {
+              "caption": "把吸入法兰对准要抽取的东西,从其他面接管道(侧视图)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:water_bucket",
+                    "水源、熔岩源、炼药锅"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:electric_pump",
+                    "电动泵(正面为吸入法兰)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "加压流体管"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_valve",
+                    "流体阀:有信号即关闭"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:reservoir_tank",
+                    "贮水罐 32,000 mB"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "电力(仅泵)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:reservoir_tank",
+                  "用比较器读余量"
+                ]
+              ]
+            },
+            "steps": [
+              "放置电动泵,使其<b>正面吸入法兰</b>对准要抽取的对象(水源、熔岩源、炼药锅、管道),并从配电盘回路供电。",
+              "从其他任意面接加压流体管到目的地。管道会自动连接拥有相同管道、阀或罐的机器。",
+              "流体阀<b>收到红石信号即关闭,一滴也不通过</b>。可用来切换泵的去向,或在放空储罐时停止注入。",
+              "贮水罐可存 32,000 mB。不需要电,比较器可读余量。"
+            ],
+            "notes": [
+              "<b>一条管网只能输送一种液体。</b>最先进入的液体会锁定管网,直到排空为止。",
+              "管道、阀和罐都不用电。空手右键可知管道锁定了什么液体、阀是否关闭。"
+            ]
+          },
+          {
+            "title": "⑤ 铺设供水(取水口、井口、加压泵站、水塔、导水渠、净水器、水表、供水口)",
+            "goal": "建立有压力的供水管网,让机器从供水口取水。",
+            "diagram": {
+              "caption": "取水、加压、从高处分配、在供水口接收",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:water_intake",
+                    "取水口:静止水源上,200 mB/tick"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:wellhead",
+                    "井口:向下 8 格竖井,100 mB/tick"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:pump_station",
+                    "加压泵站:压力 +32(上限 64)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:water_tower",
+                    "水塔:从高处分配压力"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:consumer_port",
+                    "供水口:相邻机器取水"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:aqueduct_slab",
+                    "导水渠:仅靠重力,50 mB/tick"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:treatment_filter",
+                    "净水器:把管网标记为已净化"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:water_meter",
+                    "水表:向比较器输出 0~15"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "电力(取水口、净水器)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:consumer_port",
+                  "压力 ≥1 即可取水"
+                ]
+              ]
+            },
+            "steps": [
+              "把取水口放在<b>静止的水源上</b>(通电时 200 mB/tick)。附近没有海就用井口:向下挖 8 格竖井,从井底取水(100 mB/tick)。",
+              "每 32 根管配一台加压泵站。它恢复 32 压力(上限 64)。",
+              "水塔放在高处时,会不用泵地把压力分配给<b>下方 8 格以上、48 格以内</b>的一切。",
+              "把供水口放在机器旁。压力 ≥1 时相邻机器就从管网取水(右键可读压力)。"
+            ],
+            "notes": [
+              "导水渠完全不用电,仅靠重力向下游流 50 mB/tick。",
+              "净水器让水直接通过,并把管网标记为“已净化”(2 IU/t)。水表把流量以 0~15 输出到相邻比较器。"
+            ]
+          },
+          {
+            "title": "⑥ 用传送带搬运与分拣(物品传送带、上坡传送带、分拣门)",
+            "goal": "不搭漏斗塔,在地面上搬运并分流物品。",
+            "diagram": {
+              "caption": "掉在上面的物品朝传送带正面流动,在分拣门处向侧面分出(俯视图)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:hopper",
+                    "从漏斗进第一节"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor",
+                    "物品传送带"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor_ramp",
+                    "上坡:抬高一格"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor",
+                    "物品传送带"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:sorter_gate",
+                    "分拣门"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "其余直行"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "与样本相同的向侧面"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "极少的电(8 节 ≈ 一盏灯)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:chest",
+                  "分拣后的箱子"
+                ]
+              ]
+            },
+            "steps": [
+              "把传送带朝正面排好,把物品丢上去或从漏斗送入第一节。<b>它们不会碰到玩家和生物。</b>",
+              "台阶用上坡跨越。朝要爬的方向放置,前后接平的传送带。用电与一节平带相同。",
+              "把分拣门立在队列中,<b>手持物品右键</b>加入样本(最多 5 个)。与样本相同的被推向侧面,其余继续前进。",
+              "潜行 + 右键忘掉全部样本。空手右键报告朝向和供电状态。"
+            ],
+            "notes": [
+              "红石信号是<b>停止信号,不是启动信号</b>。信号会让分拣门翻转,样本变成黑名单(镜片白名单时绿、黑名单时红)。",
+              "分拣门不会销毁任何东西。没地方推就掉在地上。它不需要电。"
+            ]
+          },
+          {
+            "title": "⑦ 矿石翻倍(粉碎机、洗矿机、电弧炉、轧机、车床、矿渣回收机)",
+            "goal": "把 1 个矿石变成 2 个锭的量,再加工成板、棒、螺钉和齿轮。",
+            "diagram": {
+              "caption": "从上方漏斗投料,从下方漏斗取出,送往下一台(侧视图)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:iron_ore",
+                    "1 个铁矿石"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:crusher",
+                    "粉碎机:2 个碎矿"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:ore_washer",
+                    "洗矿机:成粉(水 250 mB)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:arc_furnace",
+                    "电弧炉:锭、板"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:rolling_mill",
+                    "轧机:棒、线"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:lathe",
+                    "车床:螺钉、齿轮"
+                  ]
+                ],
+                [
+                  [
+                    "n",
+                    "石泥(洗矿机)"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:slag",
+                    "矿渣"
+                  ],
+                  [
+                    "n",
+                    "灰(锅炉)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:slag_recycler",
+                    "矿渣回收机:黏土、安山岩、砂土"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "电力(全部)"
+                ],
+                [
+                  "minecraft:water_bucket",
+                  "水(仅洗矿机)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:iron_ingot",
+                  "相当于 2 个铁锭"
+                ],
+                [
+                  "sorakaze_power:steel_gear",
+                  "钢齿轮"
+                ]
+              ]
+            },
+            "steps": [
+              "粉碎机:1 个铁矿石、深层铁矿石或粗铁变成<b>2 个碎铁矿</b>(铜同理)。圆石变成砂砾。",
+              "洗矿机:把碎矿洗成粉。<b>电和水都要</b>(每次 250 mB)。第二个槽位还会出石泥。",
+              "电弧炉:粉变锭,锭变板(铁、铜、钢)。六台中最耗电。",
+              "轧机:1 钢板 → 2 钢棒,1 铁板 → 1 棒,1 铜板 → 3 铜线。车床:1 钢棒 → 4 螺钉,1 铁板 → 1 钢齿轮。"
+            ],
+            "notes": [
+              "每台机器都从上方漏斗进、下方漏斗出。粉碎机和电弧炉<b>会积热,冷却前停机</b>(空手右键读热量)。",
+              "矿渣回收机把废料变回可用之物:灰 → 砂土,矿渣 → 安山岩,石泥 → 黏土球。六台中最省电。"
+            ]
+          },
+          {
+            "title": "⑧ 精炼燃料驱动最强发电机(工业蒸馏器、燃料发电机)",
+            "goal": "把焦炉的杂酚油精炼成燃料,驱动最强的发电机。",
+            "diagram": {
+              "caption": "杂酚油经管道进蒸馏器,精炼燃料经管道进发电机(侧视图)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:coke_oven",
+                    "焦炉:杂酚油"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "经管道输入"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_distillery",
+                    "工业蒸馏器"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "右侧冷凝器出精炼燃料"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:refinery_generator",
+                    "燃料发电机"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "送往配电盘"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ],
+                  null,
+                  null,
+                  null,
+                  [
+                    "n",
+                    "排气筒正上方留空"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "n",
+                    "残渣也要用管道排走"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "电力(蒸馏器)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:cable",
+                  "本整合包最强的持续发电"
+                ]
+              ]
+            },
+            "steps": [
+              "把焦炉产出的杂酚油<b>用管道</b>送进蒸馏器,并从配电盘回路供电。",
+              "从右侧冷凝器用管道抽出精炼燃料,送到燃料发电机。",
+              "从发电机拉电缆到配电盘回路。<b>它完全不接受固体燃料。</b>",
+              "空手右键:蒸馏器报告三个储罐的内容(mB);发电机报告是否运转及原因、IU/t、剩余燃料和烟囱状态。"
+            ],
+            "notes": [
+              "蒸馏器每次还会产出<b>残渣</b>。不用管道排走的话塔会堵住停机。",
+              "<b>发电机排气筒正上方的方块要留空。</b>烟囱被堵会憋住,输出大幅下降。"
+            ]
+          },
+          {
+            "title": "⑨ 装配、监视与脚手架(装配臂、蓝图卡、工厂控制盘、安全警报器、工厂脚手架、走道、工业扳手)",
+            "goal": "自动做 3x3 配方,监视工厂,在机器之间安全行走。",
+            "diagram": {
+              "caption": "把合成器里的排列复制到卡上交给装配臂,材料来自旁边的箱子(侧视图)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:crafter",
+                    "在合成器里摆好 3x3"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:blueprint_card",
+                    "用蓝图卡右键(复制)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:assembler_arm",
+                    "放入装配臂上方槽位"
+                  ],
+                  [
+                    "a",
+                    "←"
+                  ],
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "材料箱(装配臂旁)"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:factory_hub",
+                    "工厂控制盘:监视最多 8 台"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:safety_siren",
+                    "安全警报器:机器过热时鸣响"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:factory_scaffold",
+                    "工厂脚手架:可攀爬"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:catwalk",
+                    "走道:带栏杆"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_wrench",
+                    "工业扳手:旋转、拆卸"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "电力(装配臂、控制盘)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:redstone",
+                  "有机器停机时输出信号"
+                ]
+              ]
+            },
+            "steps": [
+              "蓝图卡:在合成器里摆好 3x3 排列,<b>用卡右键那台合成器</b>即可复制。潜行 + 右键清空。",
+              "装配臂:把卡放进上方槽位(上方漏斗也行),把材料箱放在装配臂<b>旁边</b>。九格材料都找齐后才各取一个,因此不会吃掉半份配方。成品从下方槽位取出。",
+              "工厂控制盘监视半径 16 格内最多 8 台机器,<b>只要有一台停机就输出红石信号</b>。安全警报器在机器过热时鸣响、警灯变红,同时也输出信号。",
+              "工厂脚手架像梯子一样可以攀爬(仅用钢棒做 8 个)。走道的栏杆有碰撞,不会从边缘掉下(每次 6 块)。工业扳手右键旋转 90°,潜行 + 右键小心拆下(400 次)。"
+            ],
+            "notes": [
+              "控制盘和警报器<b>只看不动</b>,不搬运物品和液体。警报器不用电,控制盘用一点。",
+              "原版工作台关闭后内容会消失,无法复制;模板是合成器。扳手只对 Alpha Power 的方块有效。"
             ]
           }
         ]

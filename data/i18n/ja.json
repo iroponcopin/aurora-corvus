@@ -1962,6 +1962,50 @@
         "sorakaze_survival": "4.2.1",
         "sorakaze_vehicles": "4.2.1"
       }
+    },
+    {
+      "id": "v4.2.2",
+      "release": "V4.2.2",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "凝縮辺縁と灰の高架、そして扉の総入れ替え",
+      "summary": "灰街圏に東の凝縮辺縁と、濾過輪の東門からそこまで続く灰の高架が加わりました。終点のブリード小屋、道中の待避所 4 か所、コイルクローラー、高架トークンと凝縮バイアル。あわせて建材 MOD の扉を総入れ替えしました: V4.2.0 以前の 102 種のドアはすべて削除され、設計画から作った 10 種の新しい扉が加わります。V4.2.1 のヴォールトドアとリベットハッチは、どのボス・どのモブ・TNT・核弾頭にも壊されない扉になりました(プレイヤーは採掘道具で 3 分かけて掘れます)。",
+      "highlights": [
+        "新しい扉 10 種(設計画 10 枚を 1 つずつ写した、すべて開閉アニメーション付き): 鋲打ち鋼の両開き門扉(4×3)、格納庫の防爆ゲート(6×4、横へ滑って収納)、暗証番号式セキュリティドア(2×3、レバーが下りてから開く)、X字補強のヴォールトドア(3×4、ホイール 2 回転)、鉄帯の両開きドア(3×5、かんぬきが外れてから)、歯車駆動の昇降扉(3×4、真鍮の歯車が回って石板を持ち上げる)、防爆扉 01(5×4、まぐさへ持ち上がる)、円形エアロックドア(3×3、締め具 4 つが外れてから)、落とし格子(3×4、巻き上げ機が回る)、独房の扉(2×3、掛け金が外れてから)。すべて右クリックと赤石で",
+        "ヴォールトドアとリベットハッチは壊れません: ボス、モブ、ウィザー、ドラゴン、襲撃、重狙撃、TNT、核弾頭 —— どれも壊せません。プレイヤーだけがツルハシ・斧・シャベル・クワで、道具の等級に関わらずきっかり 3 分で掘り抜けます(素手・剣では掘れません)",
+        "灰の高架: 濾過輪の東門(x=128)から凝縮辺縁(x=480)まで、y=72 に幅 5 の床が途切れなく続き、中心線に軌道、両縁に 16 ブロックごとの濾過灯、12 ブロックごとに橋脚。塔や瓦礫の中を貫く廊下になっています。床の上に居るあいだは新しい残渣病が発症しません(残っている病はそのまま減ります)。80 ティックごとに風の音",
+        "待避所 4 か所(x=192, 256, 320, 384 の北側): 漂白プレキャストの小屋に崩れた窓、宝箱(鉄塊・凝縮バイアル・高架トークン・結晶・石炭・パン)、屋根に凝縮コイル。4 割の小屋にはコイルクローラーの印があり、32 ブロック以内に近づくと 1 度だけ湧きます",
+        "ブリード小屋(x=496〜516、21×13×21): 西面が高架へ開き、中に凝縮コイル 6 つ、宝箱 2 つ(バイアル・トークン・安定化残渣・濾過マスク・測量図)、鉄格子で囲った運動痙攣機、床下に 3×3 の貯水槽。中に 40 ティック居ると「湿コイル」(採掘速度上昇 I、残渣病の残り時間が 2 倍の速さで減る)が 8 秒付き、天井から滴が落ちます",
+        "コイルクローラー(体力 14、攻撃 3、速さ 0.28): 高架の床の上に居る人には中立、辺縁の地面・橋脚・コイルに降りた人だけを狙います。壁とコイルを這い登り、倒すと凝縮バイアル 0〜2 と残渣の結晶 0〜1。辺縁の湧き表: クローラー 70(2〜4 匹)、ストーカー 15、パルスハウンドは湧きません",
+        "高架トークン(高架の上で右クリック → 30 秒の移動速度上昇 I、30 秒のクールダウン。外で使うと「トークンは高架の上でしか反応しない」)と凝縮バイアル(8 回: 残渣・残渣脈 → 漂白プレキャスト、芽 → 消える、溶融残渣の源 → 消える、汚染アスファルト → 高架の床。壁と発作機には効かない)。レシピ: トークン=鉄塊 4 + バイアル 4 + 安定化残渣、バイアル ×2=ガラス瓶 + 水入りバケツ + 凝縮コイル、漂白プレキャスト ×4=プレキャスト 2 + バイアル 2、高架の床 ×4=漂白 4、石切台で漂白 → 橋脚",
+        "測量図の縮尺が 512 に広がり、凝縮辺縁と高架の線と終点が地図に載りました(菱形はそのまま)。進捗 2 つ(「熱の線を辿れ」「まだ凝縮している」)。テスター向けに /fallout viaduct で東門の床へ"
+      ],
+      "balance_changes": [
+        "V4.2.1 の数値・巨像の体力・マスクの耐久は変えていません。凝縮辺縁では残渣病の時計は崩落街区と同じ(素 10 秒 / マスク 40 秒)ですが、高架の床の上では止まります",
+        "変更は建材 MOD と灰街圏 MOD の 2 つだけ。ほかの 11 MOD の中身は変わっていません(版数だけが 4.2.2 に揃います)"
+      ],
+      "warnings": [
+        "⚠ V4.2.0 以前の 102 種のドア(自動ドア・襖・大扉・ハッチ・隠し扉・巻き上げシャッター・片引きガラス戸・鉄格子・生成ドア 93 種)は削除されました。既存のワールドに置いてあった旧ドアは、この版で読み込んだときに消えます(空気になります)。インベントリの旧ドアのアイテムも消えます。所有者の指示による総入れ替えです",
+        "自動ドアの電力設定(autoDoorRequiresPower など 4 項)は config から消えました。ほかの電力機器(防犯カメラ・エレベーター・エスカレーター・ATM)は変わっていません",
+        "凝縮コイルはツルハシかシルクタッチでだけ回収できます。それ以外の道具では何も落ちません",
+        "灰の高架は既存の灰街圏ワールドでも、まだ生成されていないチャンクに建ちます。すでに生成済みのチャンクには建ちません",
+        "V4.2.3 以降(濾過下層など)はまだ入っていません"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.2",
+        "sorakaze_boss": "4.2.2",
+        "sorakaze_deco": "4.2.2",
+        "sorakaze_fallout": "4.2.2",
+        "sorakaze_guns": "4.2.2",
+        "sorakaze_phone": "4.2.2",
+        "sorakaze_planarcadia": "4.2.2",
+        "sorakaze_power": "4.2.2",
+        "sorakaze_rail": "4.2.2",
+        "sorakaze_sapporo": "4.2.2",
+        "sorakaze_sky": "4.2.2",
+        "sorakaze_survival": "4.2.2",
+        "sorakaze_vehicles": "4.2.2"
+      }
     }
   ],
   "roadmap": {
@@ -2170,7 +2214,8 @@
       "天空",
       "サバイバル",
       "電力",
-      "二相楽園"
+      "二相楽園",
+      "灰街圏"
     ],
     "items": {
       "sorakaze_guns:data_attachment": {
@@ -2581,10 +2626,6 @@
         "ja": "路面電車(銀)",
         "en": "Tram (Silver)"
       },
-      "sorakaze_deco:acacia_chevron_door": {
-        "ja": "アカシアの山形ドア",
-        "en": "Acacia Chevron Door"
-      },
       "minecraft:acacia_planks": {
         "ja": "アカシアの板材",
         "en": "Acacia Planks"
@@ -2605,17 +2646,9 @@
         "ja": "アカシアの板材の縦ハーフブロック",
         "en": "Acacia Planks Vertical Slab"
       },
-      "sorakaze_deco:airtight_door": {
-        "ja": "気密扉",
-        "en": "Airtight Door"
-      },
       "minecraft:slime_ball": {
         "ja": "スライムボール",
         "en": "Slimeball"
-      },
-      "sorakaze_deco:amado": {
-        "ja": "雨戸",
-        "en": "Storm Shutter (Amado)"
       },
       "minecraft:spruce_planks": {
         "ja": "トウヒの板材",
@@ -2645,14 +2678,6 @@
         "ja": "エメラルドブロック",
         "en": "Block of Emerald"
       },
-      "sorakaze_deco:auto_door": {
-        "ja": "自動ドア",
-        "en": "Auto Door"
-      },
-      "sorakaze_deco:auto_glass_door": {
-        "ja": "自動ガラス扉(2枚)",
-        "en": "Automatic Glass Door"
-      },
       "sorakaze_deco:aviation_light": {
         "ja": "航空障害灯",
         "en": "Aviation Obstruction Light"
@@ -2660,10 +2685,6 @@
       "minecraft:glowstone": {
         "ja": "グロウストーン",
         "en": "Glowstone"
-      },
-      "sorakaze_deco:birch_glazed_door": {
-        "ja": "シラカバのガラス入りドア",
-        "en": "Birch Glazed Door"
       },
       "minecraft:birch_planks": {
         "ja": "シラカバの板材",
@@ -2813,10 +2834,6 @@
         "ja": "青色の色付きガラス",
         "en": "Blue Stained Glass"
       },
-      "sorakaze_deco:bone_door": {
-        "ja": "骨の扉",
-        "en": "Bone Door"
-      },
       "minecraft:bone_block": {
         "ja": "骨ブロック",
         "en": "Bone Block"
@@ -2829,37 +2846,17 @@
         "ja": "スケルトンの頭蓋骨",
         "en": "Skeleton Skull"
       },
-      "sorakaze_deco:brass_glazed_grand_door": {
-        "ja": "真鍮のガラス入り観音扉(3×3)",
-        "en": "Brass Glazed Grand Door (3x3)"
-      },
-      "sorakaze_deco:brass_grille_grand_door": {
-        "ja": "真鍮の格子観音扉(3×4)",
-        "en": "Brass Grille Grand Door (3x4)"
-      },
       "minecraft:iron_bars": {
         "ja": "鉄格子",
         "en": "Iron Bars"
-      },
-      "sorakaze_deco:brass_ornate_grand_door": {
-        "ja": "真鍮の装飾観音扉(3×3)",
-        "en": "Brass Ornate Grand Door (3x3)"
       },
       "minecraft:gold_ingot": {
         "ja": "金インゴット",
         "en": "Gold Ingot"
       },
-      "sorakaze_deco:brass_panelled_grand_door": {
-        "ja": "真鍮の鏡板観音扉(3×4)",
-        "en": "Brass Panelled Grand Door (3x4)"
-      },
       "minecraft:gold_nugget": {
         "ja": "金塊",
         "en": "Gold Nugget"
-      },
-      "sorakaze_deco:brass_plain_grand_door": {
-        "ja": "真鍮の無地観音扉(3×3)",
-        "en": "Brass Plain Grand Door (3x3)"
       },
       "sorakaze_deco:bricks_pillar": {
         "ja": "レンガの円柱",
@@ -2929,14 +2926,6 @@
         "ja": "茶色の色付きガラス",
         "en": "Brown Stained Glass"
       },
-      "sorakaze_deco:bulkhead_door": {
-        "ja": "隔壁扉",
-        "en": "Bulkhead Door"
-      },
-      "sorakaze_deco:camo_door": {
-        "ja": "隠しドア(カモフラージュ)",
-        "en": "Hidden Door (Camouflage)"
-      },
       "minecraft:stone": {
         "ja": "石",
         "en": "Stone"
@@ -2944,10 +2933,6 @@
       "minecraft:oak_door": {
         "ja": "オークのドア",
         "en": "Oak Door"
-      },
-      "sorakaze_deco:carved_door": {
-        "ja": "彫刻の扉",
-        "en": "Carved Stone Door"
       },
       "minecraft:stone_bricks": {
         "ja": "石レンガ",
@@ -2960,10 +2945,6 @@
       "minecraft:quartz": {
         "ja": "ネザークォーツ",
         "en": "Nether Quartz"
-      },
-      "sorakaze_deco:castle_gate_door": {
-        "ja": "城門の扉",
-        "en": "Castle Gate Door"
       },
       "minecraft:dark_oak_planks": {
         "ja": "ダークオークの板材",
@@ -2985,17 +2966,9 @@
         "ja": "本",
         "en": "Book"
       },
-      "sorakaze_deco:checker_plate_door": {
-        "ja": "縞鋼板扉",
-        "en": "Checker Plate Door"
-      },
       "minecraft:flint": {
         "ja": "火打石",
         "en": "Flint"
-      },
-      "sorakaze_deco:cherry_carved_door": {
-        "ja": "サクラの彫り飾りドア",
-        "en": "Cherry Carved Door"
       },
       "minecraft:cherry_planks": {
         "ja": "サクラの板材",
@@ -3012,10 +2985,6 @@
       "sorakaze_deco:cherry_planks_vertical_slab": {
         "ja": "サクラの板材の縦ハーフブロック",
         "en": "Cherry Planks Vertical Slab"
-      },
-      "sorakaze_deco:church_door": {
-        "ja": "教会の扉",
-        "en": "Church Door"
       },
       "sorakaze_deco:cobblestone_pillar": {
         "ja": "丸石の円柱",
@@ -3089,26 +3058,6 @@
         "ja": "青緑色の色付きガラス",
         "en": "Cyan Stained Glass"
       },
-      "sorakaze_deco:dark_oak_glazed_grand_door": {
-        "ja": "ダークオークのガラス入り観音扉(3×3)",
-        "en": "Dark Oak Glazed Grand Door (3x3)"
-      },
-      "sorakaze_deco:dark_oak_grille_grand_door": {
-        "ja": "ダークオークの格子観音扉(3×4)",
-        "en": "Dark Oak Grille Grand Door (3x4)"
-      },
-      "sorakaze_deco:dark_oak_ornate_grand_door": {
-        "ja": "ダークオークの装飾観音扉(3×3)",
-        "en": "Dark Oak Ornate Grand Door (3x3)"
-      },
-      "sorakaze_deco:dark_oak_panelled_grand_door": {
-        "ja": "ダークオークの鏡板観音扉(3×4)",
-        "en": "Dark Oak Panelled Grand Door (3x4)"
-      },
-      "sorakaze_deco:dark_oak_plain_grand_door": {
-        "ja": "ダークオークの無地観音扉(3×3)",
-        "en": "Dark Oak Plain Grand Door (3x3)"
-      },
       "sorakaze_deco:dark_oak_planks_pillar": {
         "ja": "ダークオークの板材の円柱",
         "en": "Dark Oak Planks Pillar"
@@ -3120,10 +3069,6 @@
       "sorakaze_deco:dark_oak_planks_vertical_slab": {
         "ja": "ダークオークの板材の縦ハーフブロック",
         "en": "Dark Oak Planks Vertical Slab"
-      },
-      "sorakaze_deco:dark_oak_studded_door": {
-        "ja": "ダークオークの鋲打ちドア",
-        "en": "Dark Oak Studded Door"
       },
       "sorakaze_deco:deepslate_bricks_pillar": {
         "ja": "深層岩レンガの円柱",
@@ -3157,10 +3102,6 @@
         "ja": "閃緑岩の縦ハーフブロック",
         "en": "Diorite Vertical Slab"
       },
-      "sorakaze_deco:double_door": {
-        "ja": "二重扉(2×2)",
-        "en": "Double Door (2x2)"
-      },
       "sorakaze_deco:end_stone_bricks_pillar": {
         "ja": "エンドストーンレンガの円柱",
         "en": "End Stone Bricks Pillar"
@@ -3185,73 +3126,13 @@
         "ja": "フィルター記憶カード",
         "en": "Filter Card"
       },
-      "sorakaze_deco:framed_glass_door": {
-        "ja": "枠付きガラス扉",
-        "en": "Framed Glass Door"
-      },
-      "sorakaze_deco:frosted_glass_door": {
-        "ja": "すりガラス扉",
-        "en": "Frosted Glass Door"
-      },
       "minecraft:white_dye": {
         "ja": "白色の染料",
         "en": "White Dye"
       },
-      "sorakaze_deco:full_glass_door": {
-        "ja": "全面ガラス扉",
-        "en": "Full Glass Door"
-      },
-      "sorakaze_deco:fusuma": {
-        "ja": "ふすま",
-        "en": "Fusuma (Sliding Paper Door)"
-      },
-      "sorakaze_deco:gilded_glazed_grand_door": {
-        "ja": "金装飾のガラス入り観音扉(3×4)",
-        "en": "Gilded Glazed Grand Door (3x4)"
-      },
-      "sorakaze_deco:gilded_grille_grand_door": {
-        "ja": "金装飾の格子観音扉(3×3)",
-        "en": "Gilded Grille Grand Door (3x3)"
-      },
-      "sorakaze_deco:gilded_ornate_grand_door": {
-        "ja": "金装飾の装飾観音扉(3×4)",
-        "en": "Gilded Ornate Grand Door (3x4)"
-      },
-      "sorakaze_deco:gilded_panelled_grand_door": {
-        "ja": "金装飾の鏡板観音扉(3×3)",
-        "en": "Gilded Panelled Grand Door (3x3)"
-      },
-      "sorakaze_deco:gilded_plain_grand_door": {
-        "ja": "金装飾の無地観音扉(3×4)",
-        "en": "Gilded Plain Grand Door (3x4)"
-      },
-      "sorakaze_deco:glass_glazed_grand_door": {
-        "ja": "ガラスのガラス入り観音扉(3×4)",
-        "en": "Glass Glazed Grand Door (3x4)"
-      },
-      "sorakaze_deco:glass_grille_grand_door": {
-        "ja": "ガラスの格子観音扉(3×3)",
-        "en": "Glass Grille Grand Door (3x3)"
-      },
-      "sorakaze_deco:glass_ornate_grand_door": {
-        "ja": "ガラスの装飾観音扉(3×4)",
-        "en": "Glass Ornate Grand Door (3x4)"
-      },
-      "sorakaze_deco:glass_panelled_grand_door": {
-        "ja": "ガラスの鏡板観音扉(3×3)",
-        "en": "Glass Panelled Grand Door (3x3)"
-      },
-      "sorakaze_deco:glass_plain_grand_door": {
-        "ja": "ガラスの無地観音扉(3×4)",
-        "en": "Glass Plain Grand Door (3x4)"
-      },
       "sorakaze_deco:glass_plate": {
         "ja": "ガラス板",
         "en": "Glass Plate"
-      },
-      "sorakaze_deco:grand_double_door": {
-        "ja": "大扉(両開き・2×3)",
-        "en": "Grand Double Door (2x3)"
       },
       "sorakaze_deco:granite_pillar": {
         "ja": "花崗岩の円柱",
@@ -3377,41 +3258,9 @@
         "ja": "白色のコンクリート",
         "en": "White Concrete"
       },
-      "sorakaze_deco:hangar_door": {
-        "ja": "格納庫の扉(2×3)",
-        "en": "Hangar Door (2x3)"
-      },
-      "sorakaze_deco:hatch": {
-        "ja": "ハッチ",
-        "en": "Hatch"
-      },
       "sorakaze_deco:iphone": {
         "ja": "iPhone",
         "en": "iPhone"
-      },
-      "sorakaze_deco:iron_glazed_grand_door": {
-        "ja": "鉄のガラス入り観音扉(3×4)",
-        "en": "Iron Glazed Grand Door (3x4)"
-      },
-      "sorakaze_deco:iron_grille_grand_door": {
-        "ja": "鉄の格子観音扉(3×3)",
-        "en": "Iron Grille Grand Door (3x3)"
-      },
-      "sorakaze_deco:iron_ornate_grand_door": {
-        "ja": "鉄の装飾観音扉(3×4)",
-        "en": "Iron Ornate Grand Door (3x4)"
-      },
-      "sorakaze_deco:iron_panelled_grand_door": {
-        "ja": "鉄の鏡板観音扉(3×3)",
-        "en": "Iron Panelled Grand Door (3x3)"
-      },
-      "sorakaze_deco:iron_plain_grand_door": {
-        "ja": "鉄の無地観音扉(3×4)",
-        "en": "Iron Plain Grand Door (3x4)"
-      },
-      "sorakaze_deco:ita_do": {
-        "ja": "板戸",
-        "en": "Plank Door (Ita-do)"
       },
       "sorakaze_deco:item_collector": {
         "ja": "アイテム集荷器",
@@ -3433,14 +3282,6 @@
         "ja": "搬送ポンプ",
         "en": "Item Pump"
       },
-      "sorakaze_deco:jail_door": {
-        "ja": "鉄格子ドア",
-        "en": "Jail Bar Door"
-      },
-      "sorakaze_deco:jungle_louvered_door": {
-        "ja": "ジャングルのルーバードア",
-        "en": "Jungle Louvered Door"
-      },
       "minecraft:jungle_planks": {
         "ja": "ジャングルの板材",
         "en": "Jungle Planks"
@@ -3461,21 +3302,9 @@
         "ja": "ジャングルの板材の縦ハーフブロック",
         "en": "Jungle Planks Vertical Slab"
       },
-      "sorakaze_deco:koushi_door": {
-        "ja": "格子戸",
-        "en": "Lattice Door (Koushi)"
-      },
       "sorakaze_deco:laptop": {
         "ja": "ノートパソコン",
         "en": "Laptop"
-      },
-      "sorakaze_deco:large_door_iron": {
-        "ja": "大型ドア(鉄製)",
-        "en": "Large Door (Iron)"
-      },
-      "sorakaze_deco:large_door_wood": {
-        "ja": "大型ドア(木製)",
-        "en": "Large Door (Wood)"
       },
       "sorakaze_deco:laser_receiver": {
         "ja": "レーザー受信機",
@@ -3705,10 +3534,6 @@
         "ja": "赤紫色の色付きガラス",
         "en": "Magenta Stained Glass"
       },
-      "sorakaze_deco:mangrove_lattice_door": {
-        "ja": "マングローブの格子ドア",
-        "en": "Mangrove Lattice Door"
-      },
       "minecraft:mangrove_planks": {
         "ja": "マングローブの板材",
         "en": "Mangrove Planks"
@@ -3745,41 +3570,13 @@
         "ja": "ネザーレンガの縦ハーフブロック",
         "en": "Nether Bricks Vertical Slab"
       },
-      "sorakaze_deco:nijiriguchi": {
-        "ja": "にじり口",
-        "en": "Tea Room Crawl Door"
-      },
       "minecraft:clay_ball": {
         "ja": "粘土玉",
         "en": "Clay Ball"
       },
-      "sorakaze_deco:oak_glazed_grand_door": {
-        "ja": "オークのガラス入り観音扉(3×3)",
-        "en": "Oak Glazed Grand Door (3x3)"
-      },
-      "sorakaze_deco:oak_grille_grand_door": {
-        "ja": "オークの格子観音扉(3×4)",
-        "en": "Oak Grille Grand Door (3x4)"
-      },
-      "sorakaze_deco:oak_ornate_grand_door": {
-        "ja": "オークの装飾観音扉(3×3)",
-        "en": "Oak Ornate Grand Door (3x3)"
-      },
-      "sorakaze_deco:oak_panel_door": {
-        "ja": "オークの鏡板ドア",
-        "en": "Oak Panel Door"
-      },
       "minecraft:oak_slab": {
         "ja": "オークのハーフブロック",
         "en": "Oak Slab"
-      },
-      "sorakaze_deco:oak_panelled_grand_door": {
-        "ja": "オークの鏡板観音扉(3×4)",
-        "en": "Oak Panelled Grand Door (3x4)"
-      },
-      "sorakaze_deco:oak_plain_grand_door": {
-        "ja": "オークの無地観音扉(3×3)",
-        "en": "Oak Plain Grand Door (3x3)"
       },
       "sorakaze_deco:oak_planks_pillar": {
         "ja": "オークの板材の円柱",
@@ -3793,29 +3590,9 @@
         "ja": "オークの板材の縦ハーフブロック",
         "en": "Oak Planks Vertical Slab"
       },
-      "sorakaze_deco:obsidian_trim_glazed_grand_door": {
-        "ja": "黒曜石縁取りのガラス入り観音扉(3×3)",
-        "en": "Obsidian-Trimmed Glazed Grand Door (3x3)"
-      },
       "minecraft:obsidian": {
         "ja": "黒曜石",
         "en": "Obsidian"
-      },
-      "sorakaze_deco:obsidian_trim_grille_grand_door": {
-        "ja": "黒曜石縁取りの格子観音扉(3×4)",
-        "en": "Obsidian-Trimmed Grille Grand Door (3x4)"
-      },
-      "sorakaze_deco:obsidian_trim_ornate_grand_door": {
-        "ja": "黒曜石縁取りの装飾観音扉(3×3)",
-        "en": "Obsidian-Trimmed Ornate Grand Door (3x3)"
-      },
-      "sorakaze_deco:obsidian_trim_panelled_grand_door": {
-        "ja": "黒曜石縁取りの鏡板観音扉(3×4)",
-        "en": "Obsidian-Trimmed Panelled Grand Door (3x4)"
-      },
-      "sorakaze_deco:obsidian_trim_plain_grand_door": {
-        "ja": "黒曜石縁取りの無地観音扉(3×3)",
-        "en": "Obsidian-Trimmed Plain Grand Door (3x3)"
       },
       "sorakaze_deco:orange_blackout_reinforced_glass": {
         "ja": "橙色の遮光付き強化ガラス",
@@ -4009,10 +3786,6 @@
         "ja": "磨かれた花崗岩の縦ハーフブロック",
         "en": "Polished Granite Vertical Slab"
       },
-      "sorakaze_deco:portcullis_door": {
-        "ja": "落とし格子(2×3)",
-        "en": "Portcullis (2x3)"
-      },
       "sorakaze_deco:power_line": {
         "ja": "電線",
         "en": "Power Line"
@@ -4113,10 +3886,6 @@
         "ja": "クォーツブロックの縦ハーフブロック",
         "en": "Quartz Block Vertical Slab"
       },
-      "sorakaze_deco:ranma_door": {
-        "ja": "欄間付き引き戸",
-        "en": "Sliding Door with Transom"
-      },
       "sorakaze_deco:red_blackout_reinforced_glass": {
         "ja": "赤色の遮光付き強化ガラス",
         "en": "Red Blackout Reinforced Glass"
@@ -4189,14 +3958,6 @@
         "ja": "強化ガラス板",
         "en": "Reinforced Glass Plate"
       },
-      "sorakaze_deco:revolving_door": {
-        "ja": "回転扉風の扉",
-        "en": "Revolving-Style Door"
-      },
-      "sorakaze_deco:roller_shutter": {
-        "ja": "巻き上げシャッター",
-        "en": "Roller Shutter"
-      },
       "sorakaze_deco:round_robin_splitter": {
         "ja": "振り分け分配器",
         "en": "Round-Robin Splitter"
@@ -4205,21 +3966,9 @@
         "ja": "ドロッパー",
         "en": "Dropper"
       },
-      "sorakaze_deco:rune_door": {
-        "ja": "ルーンの扉",
-        "en": "Rune Door"
-      },
       "minecraft:lapis_lazuli": {
         "ja": "ラピスラズリ",
         "en": "Lapis Lazuli"
-      },
-      "sorakaze_deco:rusted_door": {
-        "ja": "錆びた扉",
-        "en": "Rusted Door"
-      },
-      "sorakaze_deco:safe_door": {
-        "ja": "金庫の扉(2×2)",
-        "en": "Vault Door (2x2)"
       },
       "minecraft:netherite_scrap": {
         "ja": "ネザライトの欠片",
@@ -4245,21 +3994,9 @@
         "ja": "防犯カメラ",
         "en": "Security Camera"
       },
-      "sorakaze_deco:shoji_door": {
-        "ja": "障子",
-        "en": "Shoji Screen Door"
-      },
-      "sorakaze_deco:shopfront_door": {
-        "ja": "店舗入口の扉",
-        "en": "Shopfront Door"
-      },
       "minecraft:oak_sign": {
         "ja": "オークの看板",
         "en": "Oak Sign"
-      },
-      "sorakaze_deco:sliding_glass_door": {
-        "ja": "片引き戸(ガラス)",
-        "en": "Sliding Glass Door"
       },
       "sorakaze_deco:smooth_stone_pillar": {
         "ja": "滑らかな石の円柱",
@@ -4289,30 +4026,6 @@
         "ja": "スポットライト",
         "en": "Spotlight"
       },
-      "sorakaze_deco:spruce_braced_door": {
-        "ja": "トウヒの筋交いドア",
-        "en": "Spruce Braced Door"
-      },
-      "sorakaze_deco:spruce_glazed_grand_door": {
-        "ja": "トウヒのガラス入り観音扉(3×4)",
-        "en": "Spruce Glazed Grand Door (3x4)"
-      },
-      "sorakaze_deco:spruce_grille_grand_door": {
-        "ja": "トウヒの格子観音扉(3×3)",
-        "en": "Spruce Grille Grand Door (3x3)"
-      },
-      "sorakaze_deco:spruce_ornate_grand_door": {
-        "ja": "トウヒの装飾観音扉(3×4)",
-        "en": "Spruce Ornate Grand Door (3x4)"
-      },
-      "sorakaze_deco:spruce_panelled_grand_door": {
-        "ja": "トウヒの鏡板観音扉(3×3)",
-        "en": "Spruce Panelled Grand Door (3x3)"
-      },
-      "sorakaze_deco:spruce_plain_grand_door": {
-        "ja": "トウヒの無地観音扉(3×4)",
-        "en": "Spruce Plain Grand Door (3x4)"
-      },
       "sorakaze_deco:spruce_planks_pillar": {
         "ja": "トウヒの板材の円柱",
         "en": "Spruce Planks Pillar"
@@ -4328,30 +4041,6 @@
       "sorakaze_deco:station_bench": {
         "ja": "駅ベンチ",
         "en": "Station Bench"
-      },
-      "sorakaze_deco:steel_fire_door": {
-        "ja": "鋼製防火扉",
-        "en": "Steel Fire Door"
-      },
-      "sorakaze_deco:steel_glazed_grand_door": {
-        "ja": "鋼のガラス入り観音扉(3×3)",
-        "en": "Steel Glazed Grand Door (3x3)"
-      },
-      "sorakaze_deco:steel_grille_grand_door": {
-        "ja": "鋼の格子観音扉(3×4)",
-        "en": "Steel Grille Grand Door (3x4)"
-      },
-      "sorakaze_deco:steel_ornate_grand_door": {
-        "ja": "鋼の装飾観音扉(3×3)",
-        "en": "Steel Ornate Grand Door (3x3)"
-      },
-      "sorakaze_deco:steel_panelled_grand_door": {
-        "ja": "鋼の鏡板観音扉(3×4)",
-        "en": "Steel Panelled Grand Door (3x4)"
-      },
-      "sorakaze_deco:steel_plain_grand_door": {
-        "ja": "鋼の無地観音扉(3×3)",
-        "en": "Steel Plain Grand Door (3x3)"
       },
       "sorakaze_deco:stock_indicator": {
         "ja": "在庫表示ランプ",
@@ -4369,29 +4058,9 @@
         "ja": "石レンガの縦ハーフブロック",
         "en": "Stone Bricks Vertical Slab"
       },
-      "sorakaze_deco:stone_glazed_grand_door": {
-        "ja": "石のガラス入り観音扉(3×4)",
-        "en": "Stone Glazed Grand Door (3x4)"
-      },
-      "sorakaze_deco:stone_grille_grand_door": {
-        "ja": "石の格子観音扉(3×3)",
-        "en": "Stone Grille Grand Door (3x3)"
-      },
-      "sorakaze_deco:stone_ornate_grand_door": {
-        "ja": "石の装飾観音扉(3×4)",
-        "en": "Stone Ornate Grand Door (3x4)"
-      },
-      "sorakaze_deco:stone_panelled_grand_door": {
-        "ja": "石の鏡板観音扉(3×3)",
-        "en": "Stone Panelled Grand Door (3x3)"
-      },
       "sorakaze_deco:stone_pillar": {
         "ja": "石の円柱",
         "en": "Stone Pillar"
-      },
-      "sorakaze_deco:stone_plain_grand_door": {
-        "ja": "石の無地観音扉(3×4)",
-        "en": "Stone Plain Grand Door (3x4)"
       },
       "sorakaze_deco:stone_slope": {
         "ja": "石のスロープ",
@@ -4425,17 +4094,9 @@
         "ja": "点字ブロック(警告・薄型)",
         "en": "Tactile Paving (Warning, Thin)"
       },
-      "sorakaze_deco:tall_gate_door": {
-        "ja": "高扉(1×3)",
-        "en": "Tall Gate Door (1x3)"
-      },
       "minecraft:lantern": {
         "ja": "ランタン",
         "en": "Lantern"
-      },
-      "sorakaze_deco:tall_glass_door": {
-        "ja": "吹き抜けガラス扉(1×3)",
-        "en": "Tall Glass Door (1x3)"
       },
       "sorakaze_deco:teleport_elevator": {
         "ja": "エレベーター(テレポート式)",
@@ -4444,10 +4105,6 @@
       "sorakaze_deco:traffic_light": {
         "ja": "車両用信号機",
         "en": "Vehicle Traffic Light"
-      },
-      "sorakaze_deco:treasury_door": {
-        "ja": "宝物庫の扉",
-        "en": "Treasury Door"
       },
       "minecraft:emerald": {
         "ja": "エメラルド",
@@ -4461,18 +4118,6 @@
         "ja": "電柱(腕金付き)",
         "en": "Utility Pole (with Crossarm)"
       },
-      "sorakaze_deco:vault_door": {
-        "ja": "金庫ドア",
-        "en": "Vault Door"
-      },
-      "sorakaze_deco:vault_hatch": {
-        "ja": "金庫ハッチ",
-        "en": "Vault Hatch"
-      },
-      "sorakaze_deco:vault_hatch_large": {
-        "ja": "金庫ハッチ(2×2)",
-        "en": "Vault Hatch (2x2)"
-      },
       "sorakaze_deco:void_trash": {
         "ja": "廃棄装置",
         "en": "Void Trash"
@@ -4480,10 +4125,6 @@
       "minecraft:lava_bucket": {
         "ja": "溶岩入りバケツ",
         "en": "Lava Bucket"
-      },
-      "sorakaze_deco:warehouse_door": {
-        "ja": "倉庫の扉(2×2)",
-        "en": "Warehouse Door (2x2)"
       },
       "sorakaze_deco:water_pipe": {
         "ja": "水道管",
@@ -4532,10 +4173,6 @@
       "minecraft:white_stained_glass": {
         "ja": "白色の色付きガラス",
         "en": "White Stained Glass"
-      },
-      "sorakaze_deco:wire_mesh_door": {
-        "ja": "金網扉",
-        "en": "Wire Mesh Door"
       },
       "sorakaze_deco:wooden_chair": {
         "ja": "木製チェア",
@@ -7068,7 +6705,23 @@
       "sorakaze_survival:glitch_strider_leggings": "グリッチ・ストライダーのレギンス",
       "sorakaze_survival:kinetic_boots": "運動減衰ブーツ",
       "sorakaze_survival:void_stitched_pocket": "虚空ポーチ",
-      "sorakaze_vehicles:mining_rig": "マイニングドリル重機"
+      "sorakaze_vehicles:mining_rig": "マイニングドリル重機",
+      "sorakaze_deco:studded_double_gate": "鋲打ち鋼の両開き門扉",
+      "sorakaze_deco:hangar_blast_gate": "格納庫の防爆ゲート",
+      "sorakaze_deco:security_door": "暗証番号式セキュリティドア",
+      "sorakaze_deco:braced_vault_door": "X字補強のヴォールトドア",
+      "sorakaze_deco:ironbound_double_door": "鉄帯の両開きドア",
+      "sorakaze_deco:geared_gate": "歯車駆動の昇降扉",
+      "sorakaze_deco:blast_door": "防爆扉 01",
+      "sorakaze_deco:airlock_door": "円形エアロックドア",
+      "sorakaze_deco:portcullis": "落とし格子(ポートカリス)",
+      "sorakaze_deco:cell_door": "独房の扉",
+      "sorakaze_fallout:viaduct_token": "高架トークン",
+      "sorakaze_fallout:condensate_vial": "凝縮バイアル",
+      "sorakaze_fallout:bleached_precast": "漂白されたプレキャスト",
+      "sorakaze_fallout:viaduct_deck": "高架の床",
+      "sorakaze_fallout:viaduct_pier": "高架の橋脚",
+      "sorakaze_fallout:coil_crawler_spawn_egg": "コイルクローラーのスポーンエッグ"
     },
     "howto": [
       {
@@ -8482,16 +8135,6 @@
                 [
                   [
                     "i",
-                    "sorakaze_deco:auto_door",
-                    "自動ドア"
-                  ],
-                  [
-                    "i",
-                    "sorakaze_deco:auto_glass_door",
-                    "自動ガラスドア"
-                  ],
-                  [
-                    "i",
                     "sorakaze_boss:enhanced_beacon",
                     "強化ビーコン"
                   ],
@@ -8512,7 +8155,7 @@
               ],
               "out": [
                 [
-                  "sorakaze_deco:auto_door",
+                  "sorakaze_deco:teleport_elevator",
                   "また動くようになります"
                 ]
               ]
@@ -8524,7 +8167,7 @@
             ],
             "notes": [
               "<b>強化ビーコン</b>だけは少し違い、となりのケーブルが光っているかどうかを見ます。",
-              "建材 MOD の機器(カメラ・エレベーター・エスカレーター・自動ドア・ATM)は、<b>建材 MOD 側の設定で個別に電気を要らなくできます</b>(<code>config/sorakaze_deco.json</code> の <code>…RequiresPower</code>)。"
+              "建材 MOD の機器(カメラ・エレベーター・エスカレーター・ATM)は、<b>建材 MOD 側の設定で個別に電気を要らなくできます</b>(<code>config/sorakaze_deco.json</code> の <code>…RequiresPower</code>)。"
             ]
           },
           {
@@ -8781,6 +8424,896 @@
               "<b>清浄機が無くても、原子力発電所を止めれば汚染は時間で 0 に戻ります。</b>上がりっぱなしにはなりません。清浄機はその減りを局所的に速くする道具です。",
               "<b>屋内・屋外の区別はありません</b>(気温と違うところです)。壁で囲っても汚れは入ってきます —— 距離だけが効きます。",
               "<b>丸ごと止めたいときは</b> <code>config/sorakaze_power.json</code> の <code>pollution.enabled</code> を <code>false</code> にしてください。半径や秒数も同じところで変えられます(変えると上の数字も一緒に変わります)。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "factory",
+        "icon": "sorakaze_power:steam_turbine",
+        "tab": "使い方",
+        "title": "工場のつくりかた(V4.1 産業化の 40 ブロック)",
+        "lede": "回転・蒸気・炉・液体・水道・コンベア・加工・燃料・組立の 9 つに分けて、電力 MOD の産業化ブロック 40 種の使い方をまとめます。どれも<b>素手で右クリックすると自分の状態を答えます</b>。迷ったらまずそれを。",
+        "sections": [
+          {
+            "title": "① 回転を作って運ぶ(手回しクランク・水車・動力軸・電動機)",
+            "goal": "回転(SU)を作り、動力軸で運びます。",
+            "diagram": {
+              "caption": "回転は動力軸を通って、同じ向きにだけ伝わります(横から見た図)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:kinetic_crank",
+                    "手回しクランク: 右クリックで 8 SU"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "動力軸(最大 16 ブロック)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "同じ向きの軸だけ"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "n",
+                    "回転を受ける機械(この版にはまだ無い)"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:water_wheel",
+                    "水車: 流れる水の上"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "動力軸"
+                  ],
+                  null,
+                  [
+                    "i",
+                    "sorakaze_power:electric_motor",
+                    "電動機: 電気 → 回転"
+                  ],
+                  [
+                    "a",
+                    "←"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "電気"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:water_bucket",
+                  "流れる水(水車)"
+                ],
+                [
+                  "sorakaze_power:cable",
+                  "電気(電動機)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:power_axle",
+                  "回転(SU)"
+                ]
+              ]
+            },
+            "steps": [
+              "手回しクランクを置いて<b>右クリック</b>します。約 3 秒回りつづけ、そのあいだ 8 SU を出します。止まる前にもう一度回すと延びます。",
+              "水車は<b>「流れている水」</b>に置きます。止まった水源では回らず 0 SU です。流れが速いほど強く、軸の向きに 3 台並べると真ん中の 1 台だけが回り、単独よりずっと強く回ります。",
+              "動力軸は当てた面の向きに寝て、同じ向きの軸が続くかぎり<b>最大 16 ブロック先</b>まで回転を渡します。8 ブロックごとに 1 SU を摩擦で失います。",
+              "電動機は分電盤の系統の電気を回転に変えます。<b>逆(回転 → 電気)はできません</b>。電気が来ていないと何も出しません。"
+            ],
+            "notes": [
+              "この版には、<b>回転を受け取って仕事をする機械はまだありません</b>。軸の網は検査で測っていますが、回転は次の機械のための下地です。",
+              "途中の軸を 1 本壊すと、その先には届きません(網が割れます)。"
+            ]
+          },
+          {
+            "title": "② 蒸気で発電する(蒸気ボイラー・蒸気タービン)",
+            "goal": "固形燃料と水から電気を作ります。",
+            "diagram": {
+              "caption": "燃料は上から、水はバケツで、蒸気は隣のタービンへ(横から見た図)",
+              "rows": [
+                [
+                  null,
+                  null,
+                  [
+                    "i",
+                    "minecraft:hopper",
+                    "上のホッパーに固形燃料"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "minecraft:water_bucket",
+                    "水入りバケツで右クリック"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:steam_boiler",
+                    "蒸気ボイラー"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:steam_turbine",
+                    "蒸気タービン(6 面どこでも)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "ケーブル"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:breaker",
+                    "分電盤"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "n",
+                    "灰は真下のホッパーへ"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:coal",
+                  "石炭・木炭・板材など"
+                ],
+                [
+                  "minecraft:water_bucket",
+                  "水"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:cable",
+                  "電気"
+                ]
+              ]
+            },
+            "steps": [
+              "ボイラーの上にホッパーを載せ、固形燃料(石炭・木炭・板材など)を入れます。",
+              "<b>水入りバケツでボイラーを右クリック</b>して水を張ります。",
+              "ボイラーに接して(どの面でも)蒸気タービンを置き、分電盤の系統までケーブルを引きます。蒸気は隣へそのまま渡ります。",
+              "どちらも画面はありません。素手で右クリックすると、熱・水・蒸気の量や、足りないのがどちらかを答えます。"
+            ],
+            "notes": [
+              "<b>熱いまま水を切らさないでください。</b>水が無くなると熱が一気に上がって過熱し、冷めるまで止まります。",
+              "灰は下の枠に溜まるので、真下にホッパーを置くと回収できます。タービンにコンパレーターを当てると蒸気の量が読めます。"
+            ]
+          },
+          {
+            "title": "③ 耐火煉瓦で炉を組む(コークス炉・高炉・工業用燻製塔)",
+            "goal": "3 つの炉はどれも「正面ブロック 1 個 + 耐火煉瓦の殻」です。",
+            "diagram": {
+              "caption": "正面ブロックを壁の中央・地面から 1 段上に置き、残りを耐火煉瓦で埋めます",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:firebrick",
+                    "耐火煉瓦: コークス炉 33 個・高炉 31 個"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:coke_oven",
+                    "コークス炉 3x3x4: 石炭 → コークスとクレオソート"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:blast_furnace_stack",
+                    "高炉 3x3x4: 鉄 + コークス + 方解石 → 鋼"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_smoker",
+                    "工業用燻製塔 3x3x3: 食べ物 4 品同時"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:coal",
+                  "石炭(コークス炉)"
+                ],
+                [
+                  "minecraft:iron_ingot",
+                  "鉄インゴット(高炉)"
+                ],
+                [
+                  "minecraft:calcite",
+                  "方解石 = 融剤(高炉)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:steel_ingot",
+                  "鋼インゴット"
+                ]
+              ]
+            },
+            "steps": [
+              "正面ブロック(コークス炉・高炉・燻製塔)を<b>正面の壁の中央、地面から 1 段上</b>に置きます。",
+              "残りを耐火煉瓦で埋めます。コークス炉は正面ブロックの<b>真後ろとそのすぐ上の 2 マス</b>を空け(炉室)、高炉は<b>真後ろの列を 4 マスとも</b>空け(風道)、燻製塔は真ん中を空けます。",
+              "素手で右クリックすると、組み上がっていなければ<b>足りない数と最初の 1 か所の座標</b>を答えます。",
+              "画面はありません。上のホッパーから入れ、下のホッパーで取り出します(燻製塔の燃料は横から)。"
+            ],
+            "notes": [
+              "燻製塔だけは<b>電気が要りません</b>。かまどと同じようにコークスか石炭を焚き、燻製器で焼ける食べ物はすべて焼けます。",
+              "耐火煉瓦は建てる前に多めに(コークス炉 33 個、高炉 31 個)。単体ではただの建材です。"
+            ]
+          },
+          {
+            "title": "④ 液体を運ぶ(電動ポンプ・加圧流体パイプ・流体弁・貯水槽)",
+            "goal": "液体を動かせるのはポンプだけ。パイプは繋ぐだけです。",
+            "diagram": {
+              "caption": "吸込フランジを汲みたいものに向け、他の面からパイプを引きます(横から見た図)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:water_bucket",
+                    "水源・溶岩源・大釜"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:electric_pump",
+                    "電動ポンプ(正面の吸込フランジ)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "加圧流体パイプ"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_valve",
+                    "流体弁: 信号で閉じる"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:reservoir_tank",
+                    "貯水槽 32,000 mB"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "電気(ポンプだけ)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:reservoir_tank",
+                  "残量はコンパレーターで"
+                ]
+              ]
+            },
+            "steps": [
+              "電動ポンプの<b>正面の吸込フランジ</b>を汲みたいもの(水源・溶岩源・大釜・パイプ)に向けて置き、分電盤の系統から電気を送ります。",
+              "送り先へは他の面から加圧流体パイプを引きます。パイプは同じパイプ・弁・タンクを持つ機械に自分から繋がります。",
+              "流体弁はレッドストーン信号が来ると<b>閉じ、1 mB も通しません</b>。ポンプの行き先を切り替えたり、抜いている最中のタンクへ注ぐのを止めたりできます。",
+              "貯水槽は 32,000 mB 溜まります。電気は不要で、コンパレーターで残量が読めます。"
+            ],
+            "notes": [
+              "<b>1 本の系統で運べる液体は 1 種類だけ</b>です。最初に入った液体で固定され、空になるまで変わりません。",
+              "パイプも弁もタンクも電気を使いません。素手で右クリックすると、何で固定されているか・弁で閉じられていないかを答えます。"
+            ]
+          },
+          {
+            "title": "⑤ 水道を引く(取水口・井戸・加圧ポンプ・給水塔・導水渠・浄水器・水量計・給水口)",
+            "goal": "圧力のある水道を作り、給水口から機械に汲ませます。",
+            "diagram": {
+              "caption": "水を汲み、圧力を足し、高い所から配って、給水口で受けます",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:water_intake",
+                    "取水口: 静かな水源の上、200 mB/tick"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:wellhead",
+                    "井戸: 真下 8 ブロックの縦坑、100 mB/tick"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:pump_station",
+                    "加圧ポンプ: 圧力 +32(上限 64)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:water_tower",
+                    "給水塔: 高い所から圧力を配る"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:consumer_port",
+                    "給水口: 隣の機械が汲む"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:aqueduct_slab",
+                    "導水渠: 重力だけで 50 mB/tick"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:treatment_filter",
+                    "浄水器: 系統を浄水済みに"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:water_meter",
+                    "水量計: コンパレーターに 0〜15"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "電気(取水口・浄水器)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:consumer_port",
+                  "圧力 1 以上で汲める"
+                ]
+              ]
+            },
+            "steps": [
+              "取水口を<b>静かな水源の上</b>に置きます(通電中 200 mB/tick)。海が無ければ井戸を: 真下へ 8 ブロックの縦坑を掘って底の水を汲みます(100 mB/tick)。",
+              "管 32 本ごとに加圧ポンプを 1 台。圧力を 32 回復します(上限 64)。",
+              "給水塔を高い所に置くと、<b>8 ブロック以上下の 48 ブロック以内</b>へポンプ無しで圧力を配ります。",
+              "給水口を機械の隣に置きます。圧力 1 以上で隣の機械が水道から汲みます(右クリックで圧力が読めます)。"
+            ],
+            "notes": [
+              "導水渠は電気を一切使わず、重力だけで下流へ 50 mB/tick 流します。",
+              "浄水器は水を素通しして系統を「浄水済み」にします(2 IU/t)。水量計は隣のコンパレーターに流量を 0〜15 で出します。"
+            ]
+          },
+          {
+            "title": "⑥ コンベアで運んで仕分ける(アイテムコンベア・上り坂・仕分け門)",
+            "goal": "ホッパーの塔を建てずに、床の上で物を運んで振り分けます。",
+            "diagram": {
+              "caption": "上に落とした物が正面の向きへ流れ、仕分け門で横へ分かれます(上から見た図)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:hopper",
+                    "ホッパーから 1 枚目へ"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor",
+                    "アイテムコンベア"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor_ramp",
+                    "上り坂: 1 段持ち上げる"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor",
+                    "アイテムコンベア"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:sorter_gate",
+                    "仕分け門"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "それ以外はまっすぐ"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "見本と同じものは横へ"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "ごく僅かな電気(8 枚でランプ 1 個ぶん)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:chest",
+                  "仕分けた箱"
+                ]
+              ]
+            },
+            "steps": [
+              "コンベアを正面の向きに並べ、上にアイテムを落とすかホッパーから 1 枚目に流し込みます。<b>人にも Mob にも触れません</b>。",
+              "段差は上り坂で越えます。登りたい向きに置き、前後に平らなコンベアを並べます。要る電気は平らな 1 枚と同じです。",
+              "仕分け門を列の途中に立て、<b>手に持って右クリック</b>で見本に加えます(5 個まで)。見本と同じものは横へ押し出され、それ以外は前へ進みます。",
+              "しゃがんで右クリックで見本を全部忘れます。素手で右クリックすると向きと電気の状態を答えます。"
+            ],
+            "notes": [
+              "レッドストーン信号は<b>動かす合図ではなく止める合図</b>です。仕分け門は信号で裏返り、見本が黒名簿になります(レンズが白名簿で緑・黒名簿で赤)。",
+              "仕分け門は何も消しません。押し出す先が無ければ床に落ちるだけで、電気も要りません。"
+            ]
+          },
+          {
+            "title": "⑦ 鉱石を 2 倍にする(粉砕機・洗鉱機・電気炉・圧延機・旋盤・スラグ再処理機)",
+            "goal": "鉱石 1 個をインゴット 2 個ぶんにし、板・棒・ねじ・歯車まで加工します。",
+            "diagram": {
+              "caption": "上のホッパーから入れ、下のホッパーで取り出して次へ(横から見た図)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:iron_ore",
+                    "鉄鉱石 1 個"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:crusher",
+                    "粉砕機: 砕けた鉱石 2 個"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:ore_washer",
+                    "洗鉱機: 粉に(水 250 mB)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:arc_furnace",
+                    "電気炉: インゴット・板"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:rolling_mill",
+                    "圧延機: 棒・線"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:lathe",
+                    "旋盤: ねじ・歯車"
+                  ]
+                ],
+                [
+                  [
+                    "n",
+                    "石の泥(洗鉱機)"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:slag",
+                    "スラグ"
+                  ],
+                  [
+                    "n",
+                    "灰(ボイラー)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:slag_recycler",
+                    "スラグ再処理機: 粘土玉・安山岩・粗い土に"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "電気(全部)"
+                ],
+                [
+                  "minecraft:water_bucket",
+                  "水(洗鉱機だけ)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:iron_ingot",
+                  "鉄インゴット 2 個ぶん"
+                ],
+                [
+                  "sorakaze_power:steel_gear",
+                  "鋼の歯車"
+                ]
+              ]
+            },
+            "steps": [
+              "粉砕機: 鉄鉱石・深層鉄鉱石・粗鉄 1 個から<b>砕けた鉄鉱石 2 個</b>(銅も同じ)。丸石は砂利になります。",
+              "洗鉱機: 砕けた鉱石を洗って粉にします。<b>電気と水の両方</b>が要ります(1 回 250 mB)。石の泥も 2 つめの枠に出ます。",
+              "電気炉: 粉をインゴットに、インゴットを板にします(鉄・銅・鋼)。6 台のなかでいちばん電気を食います。",
+              "圧延機: 鋼板 1 → 鋼の棒 2、鉄板 1 → 棒 1、銅板 1 → 銅線 3。旋盤: 鋼の棒 1 → ねじ 4、鉄板 1 → 鋼の歯車 1。"
+            ],
+            "notes": [
+              "どの機械も上のホッパーから入れて下のホッパーで取り出します。粉砕機と電気炉は<b>熱が溜まり、冷めるまで止まります</b>(素手で右クリックすると熱の量)。",
+              "スラグ再処理機は屑を戻します: 灰 → 粗い土、スラグ → 安山岩、石の泥 → 粘土玉。6 台のなかでいちばん電気を食いません。"
+            ]
+          },
+          {
+            "title": "⑧ 燃料を精製して発電する(工業用蒸留器・燃料発電機)",
+            "goal": "コークス炉のクレオソートを精製燃料にして、いちばん強い発電機を回します。",
+            "diagram": {
+              "caption": "クレオソートはパイプで蒸留器へ、精製燃料はパイプで発電機へ(横から見た図)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:coke_oven",
+                    "コークス炉: クレオソート"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "パイプで入れる"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_distillery",
+                    "工業用蒸留器"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "右手側の凝縮器から精製燃料"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:refinery_generator",
+                    "燃料発電機"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "分電盤へ"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ],
+                  null,
+                  null,
+                  null,
+                  [
+                    "n",
+                    "排気筒の真上は空ける"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "n",
+                    "残渣もパイプで捨てる"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "電気(蒸留器)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:cable",
+                  "このパックでいちばん強い定常発電"
+                ]
+              ]
+            },
+            "steps": [
+              "コークス炉が出すクレオソートを<b>パイプで</b>蒸留器に入れ、分電盤の系統から電気を送ります。",
+              "右手側の凝縮器から精製燃料をパイプで抜き、燃料発電機へ送ります。",
+              "燃料発電機からケーブルを分電盤の系統まで引きます。<b>固形燃料は一切受けつけません</b>。",
+              "素手で右クリックすると、蒸留器は 3 つのタンクの中身(mB)、発電機は動いている/いない理由・IU/t・残り燃料・煙突の状態を答えます。"
+            ],
+            "notes": [
+              "蒸留器は 1 回ごとに<b>残渣</b>も出します。パイプで捨てないと塔が詰まって止まります。",
+              "発電機の<b>排気筒の真上のブロックは空けておいてください</b>。煙突が塞がると息が詰まり、出力がぐっと落ちます。"
+            ]
+          },
+          {
+            "title": "⑨ 組み立て・見張り・足場(組立腕・設計図カード・工場制御盤・作業安全警報・工場足場・歩廊・工業用レンチ)",
+            "goal": "3x3 レシピを自動で作り、工場を見張り、機械のあいだを安全に歩きます。",
+            "diagram": {
+              "caption": "自動製作機で写した設計図を組立腕に渡し、材料は隣の箱から(横から見た図)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:crafter",
+                    "自動製作機に 3x3 を並べる"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:blueprint_card",
+                    "設計図カードで右クリック(写す)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:assembler_arm",
+                    "組立腕の上の枠へ"
+                  ],
+                  [
+                    "a",
+                    "←"
+                  ],
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "材料の箱(腕の隣)"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:factory_hub",
+                    "工場制御盤: 8 台まで見張る"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:safety_siren",
+                    "作業安全警報: 熱い機械で鳴る"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:factory_scaffold",
+                    "工場足場: 登れる"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:catwalk",
+                    "歩廊: 手すり付き"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_wrench",
+                    "工業用レンチ: 回す・外す"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "電気(組立腕・制御盤)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:redstone",
+                  "止まった台があれば信号"
+                ]
+              ]
+            },
+            "steps": [
+              "設計図カード: 自動製作機に 3x3 の並びを置き、<b>カードでその自動製作機を右クリック</b>すると写します。しゃがんで右クリックで白紙に戻ります。",
+              "組立腕: カードを上の枠に入れ(上のホッパーでも可)、材料の箱を腕の<b>隣</b>に置きます。9 枠ぶん全部見つかってから 1 個ずつ引くので、半端に食べません。できた物は下の枠から。",
+              "工場制御盤は半径 16 の機械を最大 8 台見て、<b>1 台でも止まっていればレッドストーン信号</b>を出します。作業安全警報は熱くなった機械があると鳴り、回転灯が赤く光り、信号も出します。",
+              "工場足場は梯子のように登れます(鋼の棒だけで 8 個)。歩廊は手すりに当たり判定があり縁から落ちません(6 枚)。工業用レンチは右クリックで 90 度回し、しゃがんで右クリックで丁寧に外します(400 回)。"
+            ],
+            "notes": [
+              "制御盤も警報も<b>見るだけ</b>で、物も液体も動かしません。警報は電気不要、制御盤は少しだけ要ります。",
+              "バニラの作業台は閉じると中身が消えるので写せません。雛形は自動製作機です。レンチは Alpha Power のブロックにだけ効きます。"
             ]
           }
         ]

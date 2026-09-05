@@ -1951,6 +1951,50 @@
         "sorakaze_survival": "4.2.1",
         "sorakaze_vehicles": "4.2.1"
       }
+    },
+    {
+      "id": "v4.2.2",
+      "release": "V4.2.2",
+      "date": "2026-09-05",
+      "type": "release",
+      "title": "A Borda Condensadora e o Viaduto Cinzento, mais uma troca completa das portas",
+      "summary": "A Conurbação Cinzenta ganha a Borda Condensadora a leste e o Viaduto Cinzento que chega até lá desde o portão leste do Anel de Filtragem: o Galpão de Purga no fim, quatro paradas no caminho, o Rastejador de Bobina, a Ficha do Viaduto e o Frasco de Condensado. Junto, as portas do mod de construção são trocadas por inteiro: todas as portas da V4.2.0 e anteriores (102) somem e dez portas novas feitas a partir dos renders de design tomam o lugar delas. A Porta Blindada de Volante e a Escotilha Rebitada da V4.2.1 não podem mais ser destruídas por nenhum chefe, mob, TNT ou ogiva; um jogador as atravessa em três minutos.",
+      "highlights": [
+        "Dez portas novas, cada uma reproduzida de um render, todas animadas: o Portão duplo de aço rebitado (4×3), o Portão antiexplosão de hangar (6×4, desliza para o bolso), a Porta de segurança com teclado (2×3, a alavanca cai primeiro), a Porta de cofre com reforço em X (3×4, duas voltas de volante), a Porta dupla com bandas de ferro (3×5, a tranca solta primeiro), o Portão movido a engrenagens (3×4, engrenagens de latão erguem uma laje de pedra), a Porta antiexplosão 01 (5×4, sobe para a verga), a Porta de eclusa redonda (3×3, quatro presilhas giram primeiro), a Grade levadiça (3×4, os guinchos giram) e a Porta de cela (2×3, o trinco desliza primeiro). Clique direito ou redstone em todas",
+        "A Porta Blindada de Volante e a Escotilha Rebitada são indestrutíveis: nenhum chefe, mob, wither, dragão, ataque, franco-atirador pesado, TNT ou ogiva nuclear as quebra. Só um jogador consegue, com picareta, machado, pá ou enxada, em exatamente três minutos seja qual for o nível da ferramenta (mãos nuas e espadas não avançam)",
+        "O Viaduto Cinzento: do portão leste do anel (x=128) até a Borda (x=480), um tabuleiro de cinco de largura corre sem falhas em y=72 com um trilho na linha central, lâmpadas de filtragem a cada 16 blocos nas duas bordas e um pilar a cada 12 blocos, abrindo um corredor através de torres e escombros. Sobre o tabuleiro nenhuma nova Doença do Resíduo começa (a existente continua caindo). Vento a cada 80 ticks",
+        "Quatro paradas (lado norte em x=192, 256, 320, 384): cabines de pré-moldado alvejado com uma janela desabada, um baú (pepitas de ferro, frascos de condensado, uma ficha do viaduto, cristais, carvão, pão) e uma bobina condensadora no telhado. Duas em cada cinco levam uma marca de Rastejador de Bobina que gera um rastejador, uma única vez, quando você chega a 32 blocos",
+        "O Galpão de Purga (x=496 a 516, 21×13×21): a face oeste se abre para o viaduto; dentro, seis bobinas condensadoras, dois baús (frascos, fichas, resíduo estabilizado, uma máscara de filtragem, um mapa de levantamento), um Convulsor Cinético num cercado de grades de ferro e uma cisterna 3×3 sob o piso. Quarenta ticks lá dentro dão Bobina Úmida por 8 segundos (Pressa I, e a Doença do Resíduo se esgota duas vezes mais rápido); o teto goteja",
+        "O Rastejador de Bobina (14 de vida, 3 de dano, 0,28 de velocidade): neutro com quem está no tabuleiro, hostil com quem desce para a Borda, um pilar ou uma bobina. Escala paredes e bobinas e solta 0-2 frascos de condensado e 0-1 cristal de resíduo. Surgimentos na Borda: rastejadores 70 (grupos de 2-4), espreitadores 15, nenhum cão de pulso",
+        "A Ficha do Viaduto (clique direito no tabuleiro: 30 segundos de Velocidade I com 30 segundos de recarga; em outro lugar ela diz que a ficha só desperta no viaduto) e o Frasco de Condensado (8 usos: resíduo e veios de resíduo viram pré-moldado alvejado, brotos somem, uma fonte de resíduo fundido some, asfalto contaminado vira tabuleiro do viaduto; o muro do anel e o convulsor ficam intactos). Receitas: ficha = 4 pepitas de ferro + 4 frascos + resíduo estabilizado; frasco ×2 = garrafa de vidro + balde de água + bobina condensadora; pré-moldado alvejado ×4 = 2 pré-moldado + 2 frascos; tabuleiro ×4 = 4 alvejados; cortador de pedra: alvejado → pilar",
+        "A escala do Mapa de Levantamento aumenta para 512 para que a Borda, a linha do viaduto e o terminal caibam na folha (o losango não muda). Duas conquistas (Siga a linha de calor, Ainda condensando). /fallout viaduct leva testadores ao tabuleiro do portão leste"
+      ],
+      "balance_changes": [
+        "Os números da V4.2.1, a vida do colosso e a durabilidade da máscara não mudam. Na Borda o relógio da doença é o dos Distritos Desabados (10 s sem máscara, 40 s com ela), mas ele para no tabuleiro",
+        "Só o mod de construção e o mod da cidade mudaram; nada se moveu nos outros onze mods (apenas o número de versão vai para 4.2.2)"
+      ],
+      "warnings": [
+        "⚠ As 102 portas da V4.2.0 e anteriores (portas automáticas, fusuma, portas grandes, escotilha, porta camuflada, persiana de enrolar, porta de vidro de correr, grades de cela e as 93 portas geradas) foram removidas. Portas antigas colocadas num mundo existente somem (viram ar) ao carregar com esta build, e os itens de portas antigas somem dos inventários. Troca completa por instrução do proprietário",
+        "As configurações de energia da porta automática (autoDoorRequiresPower e mais três) saíram do config. Os outros aparelhos elétricos (câmera, elevador, escada rolante, caixa eletrônico) não mudam",
+        "Bobinas condensadoras só são recuperadas com picareta ou toque de seda; outras ferramentas não soltam nada",
+        "Num mundo de cidade já existente, o viaduto aparece nos chunks ainda não gerados, não nos já gerados",
+        "Tudo a partir da V4.2.3 (as Obras Subterrâneas etc.) não está nesta build"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.2",
+        "sorakaze_boss": "4.2.2",
+        "sorakaze_deco": "4.2.2",
+        "sorakaze_fallout": "4.2.2",
+        "sorakaze_guns": "4.2.2",
+        "sorakaze_phone": "4.2.2",
+        "sorakaze_planarcadia": "4.2.2",
+        "sorakaze_power": "4.2.2",
+        "sorakaze_rail": "4.2.2",
+        "sorakaze_sapporo": "4.2.2",
+        "sorakaze_sky": "4.2.2",
+        "sorakaze_survival": "4.2.2",
+        "sorakaze_vehicles": "4.2.2"
+      }
     }
   ],
   "roadmap": {
@@ -2150,7 +2194,8 @@
       "Céu",
       "Sobrevivência",
       "Energia",
-      "Planarcadia"
+      "Planarcadia",
+      "Conurbação Cinzenta"
     ],
     "items": {
       "minecraft:iron_ingot": "Lingote de Ferro",
@@ -2771,148 +2816,46 @@
       "sorakaze_deco:red_stained_glass_plate": "Chapa de Vidro Tingido de Vermelho",
       "sorakaze_deco:white_stained_glass_plate": "Chapa de Vidro Tingido de Branco",
       "sorakaze_deco:yellow_stained_glass_plate": "Chapa de Vidro Tingido de Amarelo",
-      "sorakaze_deco:brass_glazed_grand_door": "Porta Dupla Grande de Latão Envidraçada (3×3)",
-      "sorakaze_deco:brass_grille_grand_door": "Porta Dupla Grande de Latão de Grade (3×4)",
-      "sorakaze_deco:brass_ornate_grand_door": "Porta Dupla Grande de Latão Ornamentada (3×3)",
-      "sorakaze_deco:brass_panelled_grand_door": "Porta Dupla Grande de Latão Almofadada (3×4)",
-      "sorakaze_deco:brass_plain_grand_door": "Porta Dupla Grande de Latão Lisa (3×3)",
-      "sorakaze_deco:dark_oak_glazed_grand_door": "Porta Dupla Grande de Carvalho-negro Envidraçada (3×3)",
-      "sorakaze_deco:dark_oak_grille_grand_door": "Porta Dupla Grande de Carvalho-negro de Grade (3×4)",
-      "sorakaze_deco:dark_oak_ornate_grand_door": "Porta Dupla Grande de Carvalho-negro Ornamentada (3×3)",
-      "sorakaze_deco:dark_oak_panelled_grand_door": "Porta Dupla Grande de Carvalho-negro Almofadada (3×4)",
-      "sorakaze_deco:dark_oak_plain_grand_door": "Porta Dupla Grande de Carvalho-negro Lisa (3×3)",
-      "sorakaze_deco:gilded_glazed_grand_door": "Porta Dupla Grande Dourada Envidraçada (3×4)",
-      "sorakaze_deco:gilded_grille_grand_door": "Porta Dupla Grande Dourada de Grade (3×3)",
-      "sorakaze_deco:gilded_ornate_grand_door": "Porta Dupla Grande Dourada Ornamentada (3×4)",
-      "sorakaze_deco:gilded_panelled_grand_door": "Porta Dupla Grande Dourada Almofadada (3×3)",
-      "sorakaze_deco:gilded_plain_grand_door": "Porta Dupla Grande Dourada Lisa (3×4)",
-      "sorakaze_deco:glass_glazed_grand_door": "Porta Dupla Grande de Vidro Envidraçada (3×4)",
-      "sorakaze_deco:glass_grille_grand_door": "Porta Dupla Grande de Vidro de Grade (3×3)",
-      "sorakaze_deco:glass_ornate_grand_door": "Porta Dupla Grande de Vidro Ornamentada (3×4)",
-      "sorakaze_deco:glass_panelled_grand_door": "Porta Dupla Grande de Vidro Almofadada (3×3)",
-      "sorakaze_deco:glass_plain_grand_door": "Porta Dupla Grande de Vidro Lisa (3×4)",
-      "sorakaze_deco:iron_glazed_grand_door": "Porta Dupla Grande de Ferro Envidraçada (3×4)",
-      "sorakaze_deco:iron_grille_grand_door": "Porta Dupla Grande de Ferro de Grade (3×3)",
-      "sorakaze_deco:iron_ornate_grand_door": "Porta Dupla Grande de Ferro Ornamentada (3×4)",
-      "sorakaze_deco:iron_panelled_grand_door": "Porta Dupla Grande de Ferro Almofadada (3×3)",
-      "sorakaze_deco:iron_plain_grand_door": "Porta Dupla Grande de Ferro Lisa (3×4)",
-      "sorakaze_deco:oak_glazed_grand_door": "Porta Dupla Grande de Carvalho Envidraçada (3×3)",
-      "sorakaze_deco:oak_grille_grand_door": "Porta Dupla Grande de Carvalho de Grade (3×4)",
-      "sorakaze_deco:oak_ornate_grand_door": "Porta Dupla Grande de Carvalho Ornamentada (3×3)",
-      "sorakaze_deco:oak_panelled_grand_door": "Porta Dupla Grande de Carvalho Almofadada (3×4)",
-      "sorakaze_deco:oak_plain_grand_door": "Porta Dupla Grande de Carvalho Lisa (3×3)",
-      "sorakaze_deco:obsidian_trim_glazed_grand_door": "Porta Dupla Grande com Borda de Obsidiana Envidraçada (3×3)",
-      "sorakaze_deco:obsidian_trim_grille_grand_door": "Porta Dupla Grande com Borda de Obsidiana de Grade (3×4)",
-      "sorakaze_deco:obsidian_trim_ornate_grand_door": "Porta Dupla Grande com Borda de Obsidiana Ornamentada (3×3)",
-      "sorakaze_deco:obsidian_trim_panelled_grand_door": "Porta Dupla Grande com Borda de Obsidiana Almofadada (3×4)",
-      "sorakaze_deco:obsidian_trim_plain_grand_door": "Porta Dupla Grande com Borda de Obsidiana Lisa (3×3)",
-      "sorakaze_deco:spruce_glazed_grand_door": "Porta Dupla Grande de Abeto Envidraçada (3×4)",
-      "sorakaze_deco:spruce_grille_grand_door": "Porta Dupla Grande de Abeto de Grade (3×3)",
-      "sorakaze_deco:spruce_ornate_grand_door": "Porta Dupla Grande de Abeto Ornamentada (3×4)",
-      "sorakaze_deco:spruce_panelled_grand_door": "Porta Dupla Grande de Abeto Almofadada (3×3)",
-      "sorakaze_deco:spruce_plain_grand_door": "Porta Dupla Grande de Abeto Lisa (3×4)",
-      "sorakaze_deco:steel_glazed_grand_door": "Porta Dupla Grande de Aço Envidraçada (3×3)",
-      "sorakaze_deco:steel_grille_grand_door": "Porta Dupla Grande de Aço de Grade (3×4)",
-      "sorakaze_deco:steel_ornate_grand_door": "Porta Dupla Grande de Aço Ornamentada (3×3)",
-      "sorakaze_deco:steel_panelled_grand_door": "Porta Dupla Grande de Aço Almofadada (3×4)",
-      "sorakaze_deco:steel_plain_grand_door": "Porta Dupla Grande de Aço Lisa (3×3)",
-      "sorakaze_deco:stone_glazed_grand_door": "Porta Dupla Grande de Pedra Envidraçada (3×4)",
-      "sorakaze_deco:stone_grille_grand_door": "Porta Dupla Grande de Pedra de Grade (3×3)",
-      "sorakaze_deco:stone_ornate_grand_door": "Porta Dupla Grande de Pedra Ornamentada (3×4)",
-      "sorakaze_deco:stone_panelled_grand_door": "Porta Dupla Grande de Pedra Almofadada (3×3)",
-      "sorakaze_deco:stone_plain_grand_door": "Porta Dupla Grande de Pedra Lisa (3×4)",
-      "sorakaze_deco:acacia_chevron_door": "Porta de Acácia em Chevron",
-      "sorakaze_deco:airtight_door": "Porta Hermética",
-      "sorakaze_deco:amado": "Veneziana de Tempestade (Amado)",
       "sorakaze_deco:atm": "Caixa Eletrônico",
-      "sorakaze_deco:auto_door": "Porta Automática",
-      "sorakaze_deco:auto_glass_door": "Porta de Vidro Automática (2 Folhas)",
       "sorakaze_deco:aviation_light": "Luz de Obstrução Aérea",
-      "sorakaze_deco:birch_glazed_door": "Porta de Bétula Envidraçada",
-      "sorakaze_deco:bone_door": "Porta de Osso",
-      "sorakaze_deco:bulkhead_door": "Porta Estanque",
-      "sorakaze_deco:camo_door": "Porta Escondida (Camuflagem)",
-      "sorakaze_deco:carved_door": "Porta de Pedra Esculpida",
-      "sorakaze_deco:castle_gate_door": "Portão de Castelo",
       "sorakaze_deco:category_sorter": "Separador por Categoria",
-      "sorakaze_deco:checker_plate_door": "Porta de Chapa Xadrez",
-      "sorakaze_deco:cherry_carved_door": "Porta de Cerejeira Esculpida",
-      "sorakaze_deco:church_door": "Porta de Igreja",
       "sorakaze_deco:conveyor_belt": "Esteira Transportadora",
-      "sorakaze_deco:dark_oak_studded_door": "Porta de Carvalho-negro com Tachas",
-      "sorakaze_deco:double_door": "Porta Dupla (2×2)",
       "sorakaze_deco:escalator": "Escada Rolante",
       "sorakaze_deco:filter_card": "Cartão de Filtro",
-      "sorakaze_deco:framed_glass_door": "Porta de Vidro com Moldura",
-      "sorakaze_deco:frosted_glass_door": "Porta de Vidro Fosco",
-      "sorakaze_deco:full_glass_door": "Porta Totalmente de Vidro",
-      "sorakaze_deco:fusuma": "Fusuma (Porta de Correr Japonesa)",
       "sorakaze_deco:glass_plate": "Chapa de Vidro",
-      "sorakaze_deco:grand_double_door": "Porta Grande de Duas Folhas (2×3)",
       "sorakaze_deco:guardrail": "Guard-rail",
-      "sorakaze_deco:hangar_door": "Porta de Hangar (2×3)",
-      "sorakaze_deco:hatch": "Escotilha",
       "sorakaze_deco:iphone": "iPhone",
-      "sorakaze_deco:ita_do": "Ita-do (Porta de Tábuas)",
       "sorakaze_deco:item_collector": "Coletor de Itens",
       "sorakaze_deco:item_counter": "Contador de Itens",
       "sorakaze_deco:item_pump": "Bomba de Itens",
-      "sorakaze_deco:jail_door": "Porta de Grades da Prisão",
-      "sorakaze_deco:jungle_louvered_door": "Porta Veneziana de Selva",
-      "sorakaze_deco:koushi_door": "Koushi (Porta de Treliça)",
       "sorakaze_deco:laptop": "Notebook",
-      "sorakaze_deco:large_door_iron": "Porta Grande (Ferro)",
-      "sorakaze_deco:large_door_wood": "Porta Grande (Madeira)",
       "sorakaze_deco:laser_receiver": "Receptor de Laser",
       "sorakaze_deco:laser_transmitter": "Emissor de Laser",
       "sorakaze_deco:mac_studio": "Mac Studio",
       "sorakaze_deco:macbook_air": "MacBook Air",
       "sorakaze_deco:macbook_neo": "MacBook Neo",
       "sorakaze_deco:macbook_pro": "MacBook Pro",
-      "sorakaze_deco:mangrove_lattice_door": "Porta de Treliça de Mangue",
       "sorakaze_deco:moving_elevator": "Elevador (Cabine Móvel)",
-      "sorakaze_deco:nijiriguchi": "Nijiriguchi (Porta de Entrada da Casa de Chá)",
-      "sorakaze_deco:oak_panel_door": "Porta de Carvalho Almofadada",
       "sorakaze_deco:overflow_valve": "Válvula de Transbordamento",
       "sorakaze_deco:pedestrian_signal": "Semáforo de Pedestres",
-      "sorakaze_deco:portcullis_door": "Grade Levadiça (2×3)",
       "sorakaze_deco:power_line": "Fiação Elétrica",
-      "sorakaze_deco:ranma_door": "Ranma (Porta de Correr com Bandeira)",
-      "sorakaze_deco:revolving_door": "Porta Giratória",
-      "sorakaze_deco:roller_shutter": "Grade de Enrolar",
       "sorakaze_deco:round_robin_splitter": "Distribuidor Round-Robin",
-      "sorakaze_deco:rune_door": "Porta Rúnica",
-      "sorakaze_deco:rusted_door": "Porta Enferrujada",
-      "sorakaze_deco:safe_door": "Porta de Cofre (2×2)",
       "sorakaze_deco:security_camera": "Câmera de Segurança",
-      "sorakaze_deco:shoji_door": "Shoji (Painel de Correr Japonês)",
-      "sorakaze_deco:shopfront_door": "Porta de Vitrine",
-      "sorakaze_deco:sliding_glass_door": "Porta de Correr de Vidro",
       "sorakaze_deco:sorting_filter": "Filtro de Separação",
       "sorakaze_deco:spotlight": "Holofote",
-      "sorakaze_deco:spruce_braced_door": "Porta de Abeto Reforçada",
       "sorakaze_deco:station_bench": "Banco de Estação",
-      "sorakaze_deco:steel_fire_door": "Porta Corta-fogo de Aço",
       "sorakaze_deco:stock_indicator": "Indicador de Estoque",
       "sorakaze_deco:table": "Mesa de Madeira",
       "sorakaze_deco:tactile_guide_block": "Piso Tátil (Direcional)",
       "sorakaze_deco:tactile_guide_thin": "Piso Tátil (Direcional, Fino)",
       "sorakaze_deco:tactile_warning_block": "Piso Tátil (Alerta)",
       "sorakaze_deco:tactile_warning_thin": "Piso Tátil (Alerta, Fino)",
-      "sorakaze_deco:tall_gate_door": "Portão Alto (1×3)",
-      "sorakaze_deco:tall_glass_door": "Porta de Vidro Alta (1×3)",
       "sorakaze_deco:teleport_elevator": "Elevador (Teletransporte)",
       "sorakaze_deco:traffic_light": "Semáforo Veicular",
-      "sorakaze_deco:treasury_door": "Porta do Tesouro",
       "sorakaze_deco:utility_pole": "Poste de Energia",
       "sorakaze_deco:utility_pole_arm": "Poste de Energia (com Braço)",
-      "sorakaze_deco:vault_door": "Porta de Cofre",
-      "sorakaze_deco:vault_hatch": "Escotilha de Cofre",
-      "sorakaze_deco:vault_hatch_large": "Escotilha de Cofre (2×2)",
       "sorakaze_deco:void_trash": "Bloco de Descarte",
-      "sorakaze_deco:warehouse_door": "Porta de Armazém (2×2)",
       "sorakaze_deco:water_pipe": "Cano de Água",
-      "sorakaze_deco:wire_mesh_door": "Porta de Tela de Arame",
       "sorakaze_deco:wooden_chair": "Cadeira de Madeira",
       "sorakaze_deco:special_atm": "Caixa Eletrônico Especial",
       "sorakaze_sky:angel_planks": "Tábuas de Árvore de Anjo",
@@ -3457,7 +3400,161 @@
       "sorakaze_survival:glitch_strider_leggings": "Glitch Strider Leggings",
       "sorakaze_survival:kinetic_boots": "Kinetic Dampening Boots",
       "sorakaze_survival:void_stitched_pocket": "Void-Stitched Pocket",
-      "sorakaze_vehicles:mining_rig": "Perfuratriz de mineração"
+      "sorakaze_vehicles:mining_rig": "Perfuratriz de mineração",
+      "sorakaze_deco:studded_double_gate": "Portão duplo de aço rebitado",
+      "sorakaze_deco:hangar_blast_gate": "Portão antiexplosão de hangar",
+      "sorakaze_deco:security_door": "Porta de segurança com teclado",
+      "sorakaze_deco:braced_vault_door": "Porta de cofre com reforço em X",
+      "sorakaze_deco:ironbound_double_door": "Porta dupla com bandas de ferro",
+      "sorakaze_deco:geared_gate": "Portão movido a engrenagens",
+      "sorakaze_deco:blast_door": "Porta antiexplosão 01",
+      "sorakaze_deco:airlock_door": "Porta de eclusa redonda",
+      "sorakaze_deco:portcullis": "Grade levadiça",
+      "sorakaze_deco:cell_door": "Porta de cela",
+      "sorakaze_fallout:viaduct_token": "Ficha do viaduto",
+      "sorakaze_fallout:condensate_vial": "Frasco de condensado",
+      "sorakaze_fallout:bleached_precast": "Pré-moldado alvejado",
+      "sorakaze_fallout:viaduct_deck": "Tabuleiro do viaduto",
+      "sorakaze_fallout:viaduct_pier": "Pilar do viaduto",
+      "sorakaze_fallout:coil_crawler_spawn_egg": "Ovo gerador de rastejador de bobina",
+      "sorakaze_deco:chemically_strengthened_glass": "Vidro temperado quimicamente",
+      "sorakaze_deco:white_chemically_strengthened_glass": "Vidro temperado quimicamente branco",
+      "sorakaze_deco:orange_chemically_strengthened_glass": "Vidro temperado quimicamente laranja",
+      "sorakaze_deco:magenta_chemically_strengthened_glass": "Vidro temperado quimicamente magenta",
+      "sorakaze_deco:light_blue_chemically_strengthened_glass": "Vidro temperado quimicamente azul-claro",
+      "sorakaze_deco:yellow_chemically_strengthened_glass": "Vidro temperado quimicamente amarelo",
+      "sorakaze_deco:lime_chemically_strengthened_glass": "Vidro temperado quimicamente verde-limão",
+      "sorakaze_deco:pink_chemically_strengthened_glass": "Vidro temperado quimicamente rosa",
+      "sorakaze_deco:gray_chemically_strengthened_glass": "Vidro temperado quimicamente cinza",
+      "sorakaze_deco:light_gray_chemically_strengthened_glass": "Vidro temperado quimicamente cinza-claro",
+      "sorakaze_deco:cyan_chemically_strengthened_glass": "Vidro temperado quimicamente ciano",
+      "sorakaze_deco:purple_chemically_strengthened_glass": "Vidro temperado quimicamente roxo",
+      "sorakaze_deco:blue_chemically_strengthened_glass": "Vidro temperado quimicamente azul",
+      "sorakaze_deco:brown_chemically_strengthened_glass": "Vidro temperado quimicamente marrom",
+      "sorakaze_deco:green_chemically_strengthened_glass": "Vidro temperado quimicamente verde",
+      "sorakaze_deco:red_chemically_strengthened_glass": "Vidro temperado quimicamente vermelho",
+      "sorakaze_deco:black_chemically_strengthened_glass": "Vidro temperado quimicamente preto",
+      "sorakaze_deco:chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente",
+      "sorakaze_deco:white_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente branco",
+      "sorakaze_deco:orange_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente laranja",
+      "sorakaze_deco:magenta_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente magenta",
+      "sorakaze_deco:light_blue_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente azul-claro",
+      "sorakaze_deco:yellow_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente amarelo",
+      "sorakaze_deco:lime_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente verde-limão",
+      "sorakaze_deco:pink_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente rosa",
+      "sorakaze_deco:gray_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente cinza",
+      "sorakaze_deco:light_gray_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente cinza-claro",
+      "sorakaze_deco:cyan_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente ciano",
+      "sorakaze_deco:purple_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente roxo",
+      "sorakaze_deco:blue_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente azul",
+      "sorakaze_deco:brown_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente marrom",
+      "sorakaze_deco:green_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente verde",
+      "sorakaze_deco:red_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente vermelho",
+      "sorakaze_deco:black_chemically_strengthened_tinted_glass": "Vidro tingido temperado quimicamente preto",
+      "sorakaze_deco:chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente",
+      "sorakaze_deco:white_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente branco",
+      "sorakaze_deco:orange_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente laranja",
+      "sorakaze_deco:magenta_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente magenta",
+      "sorakaze_deco:light_blue_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente azul-claro",
+      "sorakaze_deco:yellow_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente amarelo",
+      "sorakaze_deco:lime_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente verde-limão",
+      "sorakaze_deco:pink_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente rosa",
+      "sorakaze_deco:gray_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente cinza",
+      "sorakaze_deco:light_gray_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente cinza-claro",
+      "sorakaze_deco:cyan_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente ciano",
+      "sorakaze_deco:purple_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente roxo",
+      "sorakaze_deco:blue_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente azul",
+      "sorakaze_deco:brown_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente marrom",
+      "sorakaze_deco:green_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente verde",
+      "sorakaze_deco:red_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente vermelho",
+      "sorakaze_deco:black_chemically_strengthened_glass_lantern": "Lanterna de vidro temperado quimicamente preto",
+      "sorakaze_deco:chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente",
+      "sorakaze_deco:white_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente branco",
+      "sorakaze_deco:orange_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente laranja",
+      "sorakaze_deco:magenta_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente magenta",
+      "sorakaze_deco:light_blue_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente azul-claro",
+      "sorakaze_deco:yellow_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente amarelo",
+      "sorakaze_deco:lime_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente verde-limão",
+      "sorakaze_deco:pink_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente rosa",
+      "sorakaze_deco:gray_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente cinza",
+      "sorakaze_deco:light_gray_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente cinza-claro",
+      "sorakaze_deco:cyan_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente ciano",
+      "sorakaze_deco:purple_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente roxo",
+      "sorakaze_deco:blue_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente azul",
+      "sorakaze_deco:brown_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente marrom",
+      "sorakaze_deco:green_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente verde",
+      "sorakaze_deco:red_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente vermelho",
+      "sorakaze_deco:black_chemically_strengthened_tinted_glass_lantern": "Lanterna de vidro tingido temperado quimicamente preto",
+      "sorakaze_deco:chemical_strengthening_bath": "Banho de têmpera química",
+      "sorakaze_deco:charged_strengthening_bath": "Banho de têmpera carregado",
+      "sorakaze_power:aqueduct_slab": "Laje de aqueduto",
+      "sorakaze_power:arc_furnace": "Forno a arco",
+      "sorakaze_power:assembler_arm": "Braço montador",
+      "sorakaze_power:blast_furnace_stack": "Alto-forno",
+      "sorakaze_power:blueprint_card": "Cartão de projeto",
+      "sorakaze_power:catwalk": "Passarela",
+      "sorakaze_power:coke_oven": "Forno de coque",
+      "sorakaze_power:consumer_port": "Ponto de consumo",
+      "sorakaze_power:copper_wire": "Fio de cobre",
+      "sorakaze_power:crusher": "Triturador",
+      "sorakaze_power:electric_motor": "Motor elétrico",
+      "sorakaze_power:electric_pump": "Bomba elétrica",
+      "sorakaze_power:factory_hub": "Central da fábrica",
+      "sorakaze_power:factory_scaffold": "Andaime de fábrica",
+      "sorakaze_power:firebrick": "Tijolo refratário",
+      "sorakaze_power:fluid_pipe": "Cano pressurizado",
+      "sorakaze_power:fluid_valve": "Válvula",
+      "sorakaze_power:industrial_distillery": "Destilaria industrial",
+      "sorakaze_power:industrial_smoker": "Defumador industrial",
+      "sorakaze_power:industrial_wrench": "Chave industrial",
+      "sorakaze_power:iron_plate": "Placa de ferro",
+      "sorakaze_power:item_conveyor": "Esteira de itens",
+      "sorakaze_power:item_conveyor_ramp": "Rampa de esteira",
+      "sorakaze_power:kinetic_crank": "Manivela cinética",
+      "sorakaze_power:lathe": "Torno",
+      "sorakaze_power:ore_washer": "Lavador de minério",
+      "sorakaze_power:power_axle": "Eixo motriz",
+      "sorakaze_power:pump_station": "Estação de bombeamento",
+      "sorakaze_power:refinery_generator": "Gerador de refinaria",
+      "sorakaze_power:reservoir_tank": "Tanque de reserva",
+      "sorakaze_power:rolling_mill": "Laminador",
+      "sorakaze_power:safety_siren": "Sirene de segurança",
+      "sorakaze_power:slag_recycler": "Reciclador de escória",
+      "sorakaze_power:sorter_gate": "Portão separador",
+      "sorakaze_power:steam_boiler": "Caldeira a vapor",
+      "sorakaze_power:steam_turbine": "Turbina a vapor",
+      "sorakaze_power:steel_gear": "Engrenagem de aço",
+      "sorakaze_power:steel_ingot": "Barra de aço",
+      "sorakaze_power:steel_plate": "Placa de aço",
+      "sorakaze_power:steel_rod": "Haste de aço",
+      "sorakaze_power:steel_screw": "Parafuso de aço",
+      "sorakaze_power:treatment_filter": "Filtro de tratamento",
+      "sorakaze_power:water_intake": "Captação de água",
+      "sorakaze_power:water_meter": "Hidrômetro",
+      "sorakaze_power:water_tower": "Caixa d'água",
+      "sorakaze_power:water_wheel": "Roda d'água",
+      "sorakaze_power:wellhead": "Cabeça de poço",
+      "sorakaze_fallout:ashen_gateway": "Portão cinzento",
+      "sorakaze_fallout:condenser_coil": "Bobina condensadora",
+      "sorakaze_fallout:filter_mask": "Máscara de filtragem",
+      "sorakaze_fallout:precast_concrete": "Pré-moldado",
+      "sorakaze_fallout:residue_barricade": "Barricada de resíduo",
+      "sorakaze_fallout:residue_crystal": "Cristal de resíduo",
+      "sorakaze_fallout:stabilised_residue": "Resíduo estabilizado",
+      "sorakaze_fallout:stabiliser_canister": "Cilindro estabilizador",
+      "sorakaze_fallout:survey_map": "Mapa de levantamento",
+      "sorakaze_deco:riveted_hatch": "Escotilha rebitada",
+      "sorakaze_deco:wheel_vault_door": "Porta blindada de volante",
+      "minecraft:brick": "Tijolo",
+      "minecraft:calcite": "Calcita",
+      "minecraft:crafter": "Fabricador",
+      "minecraft:iron_ore": "Minério de ferro",
+      "minecraft:note_block": "Bloco musical",
+      "minecraft:sand": "Areia",
+      "minecraft:sea_lantern": "Lanterna do mar",
+      "minecraft:smoker": "Defumador",
+      "sorakaze_survival:sapphire": "Safira",
+      "sorakaze_survival:sapphire_block": "Bloco de safira"
     },
     "howto": [
       {
@@ -4850,16 +4947,6 @@
                 [
                   [
                     "i",
-                    "sorakaze_deco:auto_door",
-                    "Porta Automática"
-                  ],
-                  [
-                    "i",
-                    "sorakaze_deco:auto_glass_door",
-                    "Porta de Vidro Automática"
-                  ],
-                  [
-                    "i",
                     "sorakaze_boss:enhanced_beacon",
                     "Farol Aprimorado"
                   ],
@@ -4880,7 +4967,7 @@
               ],
               "out": [
                 [
-                  "sorakaze_deco:auto_door",
+                  "sorakaze_deco:teleport_elevator",
                   "Volta a funcionar"
                 ]
               ]
@@ -4892,7 +4979,7 @@
             ],
             "notes": [
               "O <b>farol aprimorado</b> é um pouco diferente: ele verifica se o cabo ao lado está aceso.",
-              "Os aparelhos do MOD de materiais de construção (câmera, elevador, escada rolante, porta automática, caixa eletrônico) <b>podem ser liberados individualmente da exigência de eletricidade pela configuração do próprio MOD de materiais de construção</b> (as chaves <code>…RequiresPower</code> em <code>config/sorakaze_deco.json</code>)."
+              "Os aparelhos do MOD de materiais de construção (câmera, elevador, escada rolante, caixa eletrônico) <b>podem ser liberados individualmente da exigência de eletricidade pela configuração do próprio MOD de materiais de construção</b> (as chaves <code>…RequiresPower</code> em <code>config/sorakaze_deco.json</code>)."
             ]
           },
           {
@@ -5046,6 +5133,896 @@
             "notes": [
               "<b>Apaga se faltar energia.</b> Se você depender só disso para impedir spawns, quando o combustível acabar à noite, mobs podem nascer dentro da sua base. <b>Deixe também algumas tochas em locais importantes.</b>",
               "Funciona até debaixo d'água (não apaga mesmo submerso)."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "factory",
+        "icon": "sorakaze_power:steam_turbine",
+        "tab": "Como usar",
+        "title": "Como montar uma fábrica (os 40 blocos industriais da V4.1)",
+        "lede": "Os 40 blocos industriais do mod de energia em nove partes: rotação, vapor, fornos, líquidos, rede de água, esteiras, processamento, combustível e montagem. <b>Todos informam o próprio estado com um clique direito de mão vazia</b>. Na dúvida, comece por aí.",
+        "sections": [
+          {
+            "title": "① Gerar e transmitir rotação (Manivela Cinética, Roda d'Água, Eixo Motriz, Motor Elétrico)",
+            "goal": "Produzir rotação (SU) e levá-la pelos eixos motrizes.",
+            "diagram": {
+              "caption": "A rotação passa pelos eixos, e só ao longo do próprio eixo (vista lateral)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:kinetic_crank",
+                    "Manivela Cinética: clique direito dá 8 SU"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "Eixo Motriz (até 16 blocos)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "Só eixos na mesma direção"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "n",
+                    "Uma máquina que receba rotação (nenhuma nesta versão ainda)"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:water_wheel",
+                    "Roda d'Água: sobre água corrente"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:power_axle",
+                    "Eixo Motriz"
+                  ],
+                  null,
+                  [
+                    "i",
+                    "sorakaze_power:electric_motor",
+                    "Motor Elétrico: eletricidade → rotação"
+                  ],
+                  [
+                    "a",
+                    "←"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "Eletricidade"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:water_bucket",
+                  "Água corrente (roda)"
+                ],
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade (motor)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:power_axle",
+                  "Rotação (SU)"
+                ]
+              ]
+            },
+            "steps": [
+              "Coloque uma Manivela Cinética e <b>clique com o botão direito</b>. Ela gira por cerca de 3 segundos e produz 8 SU o tempo todo. Gire de novo antes de parar para prolongar.",
+              "Ponha a Roda d'Água <b>em água corrente</b>. Em água parada ela não gira: 0 SU. Corrente mais rápida dá mais SU; com três rodas em fila ao longo do eixo só a do meio gira, bem mais forte que uma sozinha.",
+              "O Eixo Motriz deita ao longo da face onde é colocado e passa rotação <b>por até 16 blocos</b> enquanto houver eixos na mesma direção. Perde 1 SU de atrito a cada 8 blocos.",
+              "O Motor Elétrico transforma a eletricidade do circuito do quadro em rotação. <b>O inverso (rotação → eletricidade) é impossível</b>. Sem eletricidade não produz nada."
+            ],
+            "notes": [
+              "<b>Nesta versão nenhuma máquina recebe rotação para trabalhar ainda</b>. A rede de eixos é medida pelos testes; a rotação é a base das máquinas que vêm a seguir.",
+              "Quebre um eixo no meio e nada chega além dele (a rede se parte)."
+            ]
+          },
+          {
+            "title": "② Gerar com vapor (Caldeira a Vapor, Turbina a Vapor)",
+            "goal": "Transformar combustível sólido e água em eletricidade.",
+            "diagram": {
+              "caption": "Combustível por cima, água pelo balde, vapor na turbina ao lado (vista lateral)",
+              "rows": [
+                [
+                  null,
+                  null,
+                  [
+                    "i",
+                    "minecraft:hopper",
+                    "Combustível sólido no funil de cima"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "minecraft:water_bucket",
+                    "Clique direito com balde d'água"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:steam_boiler",
+                    "Caldeira a Vapor"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:steam_turbine",
+                    "Turbina a Vapor (qualquer das 6 faces)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "Cabo"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:breaker",
+                    "Quadro de Disjuntores"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  [
+                    "n",
+                    "A cinza cai num funil embaixo"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:coal",
+                  "Carvão, carvão vegetal, tábuas etc."
+                ],
+                [
+                  "minecraft:water_bucket",
+                  "Água"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade"
+                ]
+              ]
+            },
+            "steps": [
+              "Ponha um funil em cima da caldeira e alimente com combustível sólido (carvão, carvão vegetal, tábuas e afins).",
+              "<b>Clique direito na caldeira com um balde d'água</b> para enchê-la.",
+              "Coloque uma Turbina a Vapor encostada na caldeira (qualquer face) e leve um cabo até o circuito do quadro. O vapor passa direto.",
+              "Nenhuma das duas tem tela. Clique direito de mão vazia informa calor, água, vapor e o que está faltando."
+            ],
+            "notes": [
+              "<b>Nunca deixe a água acabar enquanto está quente.</b> Sem água o calor dispara, a caldeira superaquece e para até esfriar.",
+              "A cinza junta no espaço de baixo; um funil logo abaixo recolhe. Um comparador na turbina lê o vapor."
+            ]
+          },
+          {
+            "title": "③ Erguer fornos com tijolo refratário (Forno de Coque, Alto-Forno, Defumador Industrial)",
+            "goal": "Os três fornos são um bloco frontal mais uma casca de tijolo refratário.",
+            "diagram": {
+              "caption": "O bloco frontal no meio da parede da frente, um degrau acima do chão, o resto de tijolo refratário",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:firebrick",
+                    "Tijolo Refratário: 33 por forno de coque, 31 por alto-forno"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:coke_oven",
+                    "Forno de Coque 3x3x4: carvão → coque e creosoto"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:blast_furnace_stack",
+                    "Alto-Forno 3x3x4: ferro + coque + calcita → aço"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_smoker",
+                    "Defumador Industrial 3x3x3: 4 comidas de uma vez"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "minecraft:coal",
+                  "Carvão (forno de coque)"
+                ],
+                [
+                  "minecraft:iron_ingot",
+                  "Barra de ferro (alto-forno)"
+                ],
+                [
+                  "minecraft:calcite",
+                  "Calcita = fundente (alto-forno)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:steel_ingot",
+                  "Barra de aço"
+                ]
+              ]
+            },
+            "steps": [
+              "Coloque o bloco frontal (Forno de Coque, Alto-Forno ou Defumador) <b>no meio da parede da frente, um degrau acima do chão</b>.",
+              "Preencha o resto com tijolo refratário. O forno de coque deixa vazias <b>as duas células logo atrás do bloco frontal e acima delas</b> (a câmara); o alto-forno deixa vazia <b>a coluna inteira atrás, as quatro células</b> (a chaminé); o defumador deixa o centro vazio.",
+              "Clique direito de mão vazia: se não estiver montado, ele diz <b>quantos tijolos faltam e o primeiro lugar vazio</b>.",
+              "Não há tela. Alimente por um funil em cima e retire por um funil embaixo (o defumador recebe combustível pelo lado)."
+            ],
+            "notes": [
+              "Só o defumador <b>não precisa de eletricidade</b>. Queima coque ou carvão como uma fornalha e cozinha tudo o que um defumador vanilla cozinha.",
+              "Faça estoque de tijolo refratário antes de construir (33 para o forno de coque, 31 para o alto-forno). Sozinho é só um bloco de construção."
+            ]
+          },
+          {
+            "title": "④ Mover líquidos (Bomba Elétrica, Cano Pressurizado, Válvula, Tanque de Reserva)",
+            "goal": "Só a bomba move líquido. Os canos apenas conectam.",
+            "diagram": {
+              "caption": "Aponte o flange de sucção para o que quer puxar e leve canos pelas outras faces (vista lateral)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:water_bucket",
+                    "Fonte de água, fonte de lava, caldeirão"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:electric_pump",
+                    "Bomba Elétrica (flange de sucção na frente)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "Cano Pressurizado"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_valve",
+                    "Válvula: fecha com sinal"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:reservoir_tank",
+                    "Tanque de Reserva 32.000 mB"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade (só a bomba)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:reservoir_tank",
+                  "Nível pelo comparador"
+                ]
+              ]
+            },
+            "steps": [
+              "Coloque a Bomba Elétrica com o <b>flange de sucção da frente</b> voltado para o que ela deve puxar (fonte de água ou lava, caldeirão, cano) e alimente-a pelo circuito do quadro.",
+              "Leve Cano Pressurizado de qualquer outra face até o destino. Os canos se conectam sozinhos a qualquer máquina com os mesmos canos, válvulas ou tanques.",
+              "Uma Válvula <b>fecha com sinal de redstone e não deixa passar um mB</b>. Serve para alternar o destino de uma bomba ou para não encher um tanque enquanto ele é esvaziado.",
+              "Um Tanque de Reserva guarda 32.000 mB. Não precisa de eletricidade, e um comparador lê o nível."
+            ],
+            "notes": [
+              "<b>Uma rede leva um só tipo de líquido.</b> O primeiro que entra a trava, até a rede esvaziar.",
+              "Canos, válvulas e tanques não usam eletricidade. Clique direito de mão vazia diz a que um cano está travado e se uma válvula o fecha."
+            ]
+          },
+          {
+            "title": "⑤ Puxar a rede de água (Captação, Cabeça de Poço, Estação de Bombeamento, Caixa d'Água, Laje de Aqueduto, Filtro de Tratamento, Hidrômetro, Ponto de Consumo)",
+            "goal": "Montar uma rede de água com pressão e deixar as máquinas puxarem de um Ponto de Consumo.",
+            "diagram": {
+              "caption": "Captar água, somar pressão, distribuir do alto, receber num ponto",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:water_intake",
+                    "Captação: sobre fonte parada, 200 mB/tick"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:wellhead",
+                    "Cabeça de Poço: poço de 8 blocos abaixo, 100 mB/tick"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:pump_station",
+                    "Estação de Bombeamento: pressão +32 (máx. 64)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:water_tower",
+                    "Caixa d'Água: pressão do alto"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:consumer_port",
+                    "Ponto de Consumo: a máquina ao lado puxa"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:aqueduct_slab",
+                    "Laje de Aqueduto: só gravidade, 50 mB/tick"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:treatment_filter",
+                    "Filtro de Tratamento: marca a rede como tratada"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:water_meter",
+                    "Hidrômetro: 0 a 15 num comparador"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade (captação, filtro)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:consumer_port",
+                  "Puxa com pressão 1 ou mais"
+                ]
+              ]
+            },
+            "steps": [
+              "Coloque uma Captação <b>sobre uma fonte de água parada</b> (200 mB/tick com energia). Sem mar por perto, use uma Cabeça de Poço: ela cava um poço de 8 blocos para baixo e puxa a água do fundo (100 mB/tick).",
+              "Uma Estação de Bombeamento a cada 32 canos. Ela recupera 32 de pressão (máx. 64).",
+              "Uma Caixa d'Água no alto distribui pressão sem bombas para tudo que estiver <b>8 ou mais blocos abaixo, até 48 blocos</b>.",
+              "Ponha um Ponto de Consumo ao lado de uma máquina. Com pressão 1 ou mais, a máquina puxa da rede (clique direito lê a pressão)."
+            ],
+            "notes": [
+              "A Laje de Aqueduto não usa eletricidade alguma e deixa 50 mB/tick correr morro abaixo só pela gravidade.",
+              "O Filtro de Tratamento deixa a água passar e marca a rede como tratada (2 IU/t). O Hidrômetro põe a vazão, de 0 a 15, no comparador ao lado."
+            ]
+          },
+          {
+            "title": "⑥ Transportar e separar em esteiras (Esteira de Itens, Rampa, Portão Separador)",
+            "goal": "Mover e distribuir itens pelo chão sem torres de funis.",
+            "diagram": {
+              "caption": "Itens soltos em cima seguem para onde a esteira aponta e desviam de lado num Portão Separador (vista de cima)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:hopper",
+                    "De um funil para a primeira esteira"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor",
+                    "Esteira de Itens"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor_ramp",
+                    "Rampa: sobe um bloco"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:item_conveyor",
+                    "Esteira de Itens"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:sorter_gate",
+                    "Portão Separador"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "O resto segue reto"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "Os iguais vão para o lado"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "Pouquíssima eletricidade (8 esteiras ≈ uma lâmpada)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:chest",
+                  "O baú separado"
+                ]
+              ]
+            },
+            "steps": [
+              "Disponha esteiras apontando para a frente e solte itens nelas ou alimente a primeira por um funil. <b>Elas nunca tocam jogadores nem mobs.</b>",
+              "Vença um degrau com uma rampa. Coloque-a virada para a subida, com esteiras planas antes e depois. Precisa da mesma eletricidade que uma esteira plana.",
+              "Ponha um Portão Separador na fila e <b>clique direito segurando um item</b> para incluí-lo nas amostras (até 5). Os iguais são empurrados para o lado; o resto segue.",
+              "Agachado + clique direito esquece todas as amostras. Clique direito de mão vazia informa direção e energia."
+            ],
+            "notes": [
+              "Um sinal de redstone é <b>sinal de parar, não de andar</b>. Um sinal inverte o portão e as amostras viram lista negra (a lente fica verde na lista branca, vermelha na lista negra).",
+              "O portão nunca apaga nada. Sem lugar para empurrar, os itens só caem no chão. Não precisa de eletricidade."
+            ]
+          },
+          {
+            "title": "⑦ Dobrar o minério (Triturador, Lavador de Minério, Forno a Arco, Laminador, Torno, Reciclador de Escória)",
+            "goal": "Tirar de um minério o equivalente a duas barras e seguir até placas, hastes, parafusos e engrenagens.",
+            "diagram": {
+              "caption": "Alimente pelo funil de cima, retire pelo de baixo, passe adiante (vista lateral)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:iron_ore",
+                    "1 minério de ferro"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:crusher",
+                    "Triturador: 2 minérios triturados"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:ore_washer",
+                    "Lavador: vira pó (250 mB de água)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:arc_furnace",
+                    "Forno a Arco: barras, placas"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:rolling_mill",
+                    "Laminador: hastes, fio"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:lathe",
+                    "Torno: parafusos, engrenagens"
+                  ]
+                ],
+                [
+                  [
+                    "n",
+                    "Lama de pedra (lavador)"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:slag",
+                    "Escória"
+                  ],
+                  [
+                    "n",
+                    "Cinza (caldeira)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:slag_recycler",
+                    "Reciclador de Escória: argila, andesito, terra grossa"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade (todos)"
+                ],
+                [
+                  "minecraft:water_bucket",
+                  "Água (só o lavador)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:iron_ingot",
+                  "O equivalente a duas barras de ferro"
+                ],
+                [
+                  "sorakaze_power:steel_gear",
+                  "Engrenagem de aço"
+                ]
+              ]
+            },
+            "steps": [
+              "Triturador: um minério de ferro, de ardósia profunda ou ferro bruto vira <b>2 minérios de ferro triturados</b> (cobre idem). Pedregulho vira cascalho.",
+              "Lavador: lava o minério triturado até virar pó. Precisa de <b>eletricidade e água</b> (250 mB por ciclo). Lama de pedra também sai no segundo espaço.",
+              "Forno a Arco: pó em barras, barras em placas (ferro, cobre, aço). O mais faminto dos seis por eletricidade.",
+              "Laminador: 1 placa de aço → 2 hastes de aço, 1 placa de ferro → 1 haste, 1 placa de cobre → 3 fios de cobre. Torno: 1 haste de aço → 4 parafusos, 1 placa de ferro → 1 engrenagem de aço."
+            ],
+            "notes": [
+              "Toda máquina é alimentada por um funil em cima e esvaziada por um funil embaixo. Triturador e Forno a Arco <b>acumulam calor e param até esfriar</b> (clique direito de mão vazia lê o calor).",
+              "O Reciclador de Escória devolve os rejeitos a algo útil: cinza → terra grossa, escória → andesito, lama de pedra → bolas de argila. O menos faminto dos seis."
+            ]
+          },
+          {
+            "title": "⑧ Refinar combustível para o gerador mais forte (Destilaria Industrial, Gerador de Refinaria)",
+            "goal": "Refinar o creosoto do forno de coque em combustível e rodar com ele o gerador mais forte.",
+            "diagram": {
+              "caption": "Creosoto por cano na destilaria, combustível refinado por cano no gerador (vista lateral)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "sorakaze_power:coke_oven",
+                    "Forno de Coque: creosoto"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "Entra por cano"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_distillery",
+                    "Destilaria Industrial"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:fluid_pipe",
+                    "Combustível refinado pelo condensador da direita"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:refinery_generator",
+                    "Gerador de Refinaria"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:cable",
+                    "Para o quadro"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "a",
+                    "↓"
+                  ],
+                  null,
+                  null,
+                  null,
+                  [
+                    "n",
+                    "Deixe livre o bloco acima da chaminé"
+                  ]
+                ],
+                [
+                  null,
+                  null,
+                  null,
+                  null,
+                  [
+                    "n",
+                    "O resíduo também sai por cano"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade (destilaria)"
+                ]
+              ],
+              "out": [
+                [
+                  "sorakaze_power:cable",
+                  "O gerador contínuo mais forte do pacote"
+                ]
+              ]
+            },
+            "steps": [
+              "Leve o creosoto do forno de coque <b>por cano</b> até a destilaria e alimente-a pelo circuito do quadro.",
+              "Tire o combustível refinado por cano do condensador do lado direito e mande para o Gerador de Refinaria.",
+              "Leve um cabo do gerador até o circuito do quadro. <b>Ele não aceita combustível sólido algum.</b>",
+              "Clique direito de mão vazia: a destilaria informa os três tanques (mB); o gerador, se está rodando e por quê, IU/t, combustível restante e o estado da chaminé."
+            ],
+            "notes": [
+              "Cada ciclo da destilaria também gera <b>resíduo</b>. Tire-o por cano, ou a coluna entope e para.",
+              "<b>Deixe vazio o bloco logo acima da chaminé de escape do gerador.</b> Chaminé tapada o sufoca e a potência despenca."
+            ]
+          },
+          {
+            "title": "⑨ Montagem, vigilância e passarelas (Braço Montador, Cartão de Projeto, Central da Fábrica, Sirene de Segurança, Andaime de Fábrica, Passarela, Chave Industrial)",
+            "goal": "Fabricar receitas 3x3 automaticamente, vigiar a fábrica e andar com segurança entre as máquinas.",
+            "diagram": {
+              "caption": "Copie o arranjo de um fabricador para um cartão, entregue ao braço, materiais do baú ao lado (vista lateral)",
+              "rows": [
+                [
+                  [
+                    "i",
+                    "minecraft:crafter",
+                    "Monte o 3x3 num fabricador"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:blueprint_card",
+                    "Clique direito com o Cartão de Projeto (copia)"
+                  ],
+                  [
+                    "a",
+                    "→"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:assembler_arm",
+                    "No espaço de cima do braço"
+                  ],
+                  [
+                    "a",
+                    "←"
+                  ],
+                  [
+                    "i",
+                    "minecraft:chest",
+                    "Baú de materiais (ao lado do braço)"
+                  ]
+                ],
+                [
+                  [
+                    "i",
+                    "sorakaze_power:factory_hub",
+                    "Central da Fábrica: vigia até 8 máquinas"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:safety_siren",
+                    "Sirene de Segurança: toca com máquina quente"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:factory_scaffold",
+                    "Andaime de Fábrica: escalável"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:catwalk",
+                    "Passarela: com corrimão"
+                  ],
+                  [
+                    "i",
+                    "sorakaze_power:industrial_wrench",
+                    "Chave Industrial: gira, remove"
+                  ]
+                ]
+              ]
+            },
+            "io": {
+              "in": [
+                [
+                  "sorakaze_power:cable",
+                  "Eletricidade (braço, central)"
+                ]
+              ],
+              "out": [
+                [
+                  "minecraft:redstone",
+                  "Um sinal quando alguma máquina parou"
+                ]
+              ]
+            },
+            "steps": [
+              "Cartão de Projeto: monte um padrão 3x3 num fabricador e <b>clique direito nesse fabricador com o cartão</b> para copiar. Agachado + clique direito apaga o cartão.",
+              "Braço Montador: ponha o cartão no espaço de cima (um funil em cima também serve) e coloque o baú de materiais <b>ao lado</b> do braço. Ele só puxa um de cada quando encontra os nove espaços, então nunca come uma receita pela metade. O produto sai pelo espaço de baixo.",
+              "A Central da Fábrica vigia até 8 máquinas num raio de 16 blocos e <b>emite sinal de redstone se uma só parar</b>. A Sirene de Segurança toca quando uma máquina esquenta, seu giroflex fica vermelho, e ela também emite sinal.",
+              "O Andaime de Fábrica se escala como uma escada (8 só com hastes de aço). O corrimão da Passarela tem colisão, você não cai da beirada (6 por receita). A Chave Industrial gira 90° com clique direito e remove com cuidado com agachado + clique direito (400 usos)."
+            ],
+            "notes": [
+              "A central e a sirene <b>só observam</b>; não movem itens nem líquidos. A sirene não precisa de eletricidade, a central precisa de um pouco.",
+              "Uma mesa de trabalho vanilla esvazia ao fechar, então não pode ser copiada; o molde é o fabricador. A chave só funciona em blocos do Alpha Power."
             ]
           }
         ]

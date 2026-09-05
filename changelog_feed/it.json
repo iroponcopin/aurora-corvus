@@ -1,14 +1,53 @@
 {
  "lang": "it",
- "updated": "2026-09-04",
+ "updated": "2026-09-05",
  "title": "Changelog",
- "updated_label": "Aggiornato il 2026-09-04",
+ "updated_label": "Aggiornato il 2026-09-05",
  "note": "I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell'introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Le rifiniture della Conurbazione Cinerea, più la Porta Blindata a Volantino e il Portello Rivettato",
+   "summary": "Il Margine dei Condensatori e il Viadotto Cinereo, più un ricambio completo delle porte",
    "releases": [
+    {
+     "version": "V4.2.2",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "Il Margine dei Condensatori e il Viadotto Cinereo, più un ricambio completo delle porte",
+     "summary": "La Conurbazione Cinerea guadagna il Margine dei Condensatori a est e il Viadotto Cinereo che vi arriva dalla porta est dell'Anello di Filtraggio: il Capanno di Spurgo al suo termine, quattro stazioni lungo la via, lo Strisciatore di Bobina, il Gettone del Viadotto e la Fiala di Condensa. Insieme, le porte del mod di costruzione vengono sostituite in blocco: tutte le porte della V4.2.0 e precedenti (102) spariscono e dieci porte nuove costruite dai render di progetto prendono il loro posto. La Porta Blindata a Volantino e il Portello Rivettato della V4.2.1 non possono più essere distrutti da nessun boss, mob, TNT o testata; un giocatore li scava in tre minuti.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "Dieci porte nuove, ciascuna riprodotta da un render, tutte animate: il Portone doppio d'acciaio borchiato (4×3), il Cancello antideflagrante da hangar (6×4, scorre nella sua tasca), la Porta di sicurezza con tastierino (2×3, prima cade la leva), la Porta blindata con rinforzo a X (3×4, due giri di volantino), la Porta doppia ferrata (3×5, prima si libera la sbarra), il Cancello a ingranaggi (3×4, ingranaggi d'ottone sollevano una lastra di pietra), la Porta antideflagrante 01 (5×4, sale nell'architrave), la Porta stagna rotonda (3×3, prima girano quattro morsetti), la Saracinesca (3×4, girano gli argani) e la Porta di cella (2×3, prima scorre il chiavistello). Clic destro o redstone per tutte",
+        "La Porta Blindata a Volantino e il Portello Rivettato sono indistruttibili: nessun boss, mob, wither, drago, incursione, cecchino pesante, TNT o testata nucleare li rompe. Solo un giocatore può, con piccone, ascia, pala o zappa, in esattamente tre minuti qualunque sia il livello dell'attrezzo (mani nude e spade non fanno progressi)",
+        "Il Viadotto Cinereo: dalla porta est dell'anello (x=128) al Margine (x=480), un impalcato largo cinque corre senza interruzioni a y=72 con una rotaia sulla linea centrale, lampade di filtraggio ogni 16 blocchi su entrambi i bordi e una pila ogni 12 blocchi, aprendo un corridoio attraverso torri e macerie. Sull'impalcato non insorge nuova Malattia del Residuo (quella in corso continua a scendere). Vento ogni 80 tick",
+        "Quattro stazioni (lato nord a x=192, 256, 320, 384): casotti di prefabbricato sbiancato con una finestra crollata, una cassa (pepite di ferro, fiale di condensa, un gettone del viadotto, cristalli, carbone, pane) e una bobina di condensazione sul tetto. Due su cinque portano un segno di Strisciatore di Bobina che genera uno strisciatore, una volta sola, quando ti avvicini a 32 blocchi",
+        "Il Capanno di Spurgo (x=496–516, 21×13×21): il lato ovest si apre sul viadotto; dentro, sei bobine di condensazione, due casse (fiale, gettoni, residuo stabilizzato, una maschera filtrante, una mappa di rilevamento), un Convulsore Cinetico in un recinto di sbarre e una cisterna 3×3 sotto il pavimento. Quaranta tick all'interno danno Bobina Umida per 8 secondi (Rapidità I, e la Malattia del Residuo si esaurisce due volte più in fretta); il soffitto gocciola",
+        "Lo Strisciatore di Bobina (14 salute, 3 danno, 0,28 velocità): neutrale con chi sta sull'impalcato, ostile con chi scende sul Margine, su una pila o su una bobina. Si arrampica su muri e bobine e lascia 0-2 fiale di condensa e 0-1 cristallo di residuo. Generazioni sul Margine: strisciatori 70 (gruppi di 2-4), predatori 15, nessun segugio a impulsi",
+        "Il Gettone del Viadotto (clic destro sull'impalcato: 30 secondi di Velocità I con 30 secondi di ricarica; altrove dice che il gettone si sveglia solo sul viadotto) e la Fiala di Condensa (8 usi: residuo e vene di residuo diventano prefabbricato sbiancato, le gemme spariscono, una sorgente di residuo fuso sparisce, l'asfalto contaminato diventa impalcato; il muro dell'anello e il convulsore restano intatti). Ricette: gettone = 4 pepite di ferro + 4 fiale + residuo stabilizzato; fiala ×2 = ampolla di vetro + secchio d'acqua + bobina di condensazione; prefabbricato sbiancato ×4 = 2 prefabbricato + 2 fiale; impalcato ×4 = 4 sbiancati; tagliapietre: sbiancato → pila",
+        "La scala della Mappa di Rilevamento si allarga a 512 perché il Margine, la linea del viadotto e il capolinea stiano sul foglio (il rombo non cambia). Due progressi (Segui la linea del calore, Condensa ancora). /fallout viaduct porta i tester sull'impalcato della porta est"
+       ]
+      },
+      {
+       "title": "Bilanciamento",
+       "items": [
+        "I numeri della V4.2.1, la salute del colosso e la durabilità della maschera non cambiano. Sul Margine l'orologio della malattia è quello dei Quartieri Crollati (10 s a viso nudo, 40 s con maschera), ma si ferma sull'impalcato",
+        "Sono cambiati solo il mod di costruzione e il mod della città; nulla si è mosso negli altri undici mod (solo il numero di versione passa a 4.2.2)"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "⚠ Le 102 porte della V4.2.0 e precedenti (porte automatiche, fusuma, porte grandi, portello, porta mimetica, serranda avvolgibile, porta scorrevole di vetro, sbarre di cella e le 93 porte generate) sono rimosse. Le vecchie porte piazzate in un mondo esistente spariscono (diventano aria) al caricamento con questa build, e i vecchi oggetti-porta spariscono dagli inventari. Ricambio completo su istruzione del proprietario",
+        "Le impostazioni di alimentazione della porta automatica (autoDoorRequiresPower e altre tre) sono sparite dalla configurazione. Gli altri dispositivi alimentati (telecamera, ascensore, scala mobile, bancomat) sono invariati",
+        "Le bobine di condensazione si recuperano solo con piccone o Tocco di velluto; gli altri attrezzi non lasciano nulla",
+        "In un mondo di città esistente il viadotto compare nei chunk non ancora generati, non in quelli già generati",
+        "Tutto ciò che viene dopo la V4.2.3 (le Sottoopere, ecc.) non è in questa build"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.1",
      "date": "2026-09-04",

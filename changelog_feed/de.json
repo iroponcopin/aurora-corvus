@@ -1,14 +1,53 @@
 {
  "lang": "de",
- "updated": "2026-09-04",
+ "updated": "2026-09-05",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-09-04",
+ "updated_label": "Aktualisiert am 2026-09-05",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Der Feinschliff der Aschen-Konurbation, dazu Rad-Tresortür und Nietluke",
+   "summary": "Der Kondensatorsaum und das Aschen-Viadukt, dazu ein kompletter Türentausch",
    "releases": [
+    {
+     "version": "V4.2.2",
+     "date": "2026-09-05",
+     "type": "release",
+     "title": "Der Kondensatorsaum und das Aschen-Viadukt, dazu ein kompletter Türentausch",
+     "summary": "Die Aschen-Konurbation erhält den Kondensatorsaum im Osten und das Aschen-Viadukt, das vom Osttor des Filterrings dorthin führt: den Bleed-Schuppen an seinem Ende, vier Warteposten unterwegs, den Spulenkriecher, die Viaduktmarke und die Kondensatphiole. Zugleich werden die Türen des Bau-Mods komplett ersetzt: jede Tür aus V4.2.0 und früher (102 Stück) entfällt, zehn neue Türen nach den Design-Renderings treten an ihre Stelle. Die Rad-Tresortür und die Nietluke aus V4.2.1 kann kein Boss, Mob, TNT oder Sprengkopf mehr zerstören; ein Spieler gräbt sich in drei Minuten hindurch.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "Zehn neue Türen, jede nach einem Design-Rendering nachgebaut, alle animiert: das genietete Stahl-Doppeltor (4×3), das Hangar-Explosionstor (6×4, gleitet seitlich in seine Tasche), die Sicherheitstür mit Tastenfeld (2×3, erst fällt der Hebel), die Tresortür mit Kreuzverstrebung (3×4, zwei Drehungen am Rad), die eisenbeschlagene Doppeltür (3×5, erst gleitet der Riegel frei), das zahnradgetriebene Tor (3×4, Messingzahnräder heben eine Steinplatte), Explosionsschutztür 01 (5×4, hebt sich in den Sturz), die runde Schleusentür (3×3, erst drehen sich vier Klammern frei), das Fallgatter (3×4, Winden drehen) und die Zellentür (2×3, erst gleitet der Riegel). Rechtsklick oder Redstone für alle",
+        "Rad-Tresortür und Nietluke sind unzerstörbar: kein Boss, Mob, Wither, Drache, Überfall, schwerer Scharfschütze, TNT oder Atomsprengkopf bricht sie. Nur ein Spieler kann es, mit Spitzhacke, Axt, Schaufel oder Hacke, in genau drei Minuten unabhängig von der Werkzeugstufe (bloße Hände und Schwerter kommen nicht voran)",
+        "Das Aschen-Viadukt: vom Osttor des Rings (x=128) bis zum Kondensatorsaum (x=480) läuft ein fünf Blöcke breites Deck lückenlos auf y=72, mit Schiene auf der Mittellinie, Filterlampen alle 16 Blöcke an beiden Rändern und einem Pfeiler alle 12 Blöcke; es schneidet einen Korridor durch Türme und Schutt. Auf dem Deck setzt keine neue Rückstandskrankheit ein (eine bestehende läuft weiter ab). Wind alle 80 Ticks",
+        "Vier Warteposten (Nordseite bei x=192, 256, 320, 384): Buden aus gebleichtem Fertigbeton mit eingestürztem Fenster, Truhe (Eisenklumpen, Kondensatphiolen, Viaduktmarke, Kristalle, Kohle, Brot) und Kondensatorspule auf dem Dach. Zwei von fünf tragen eine Spulenkriecher-Markierung, die einmal einen Kriecher erzeugt, sobald du dich auf 32 Blöcke näherst",
+        "Der Bleed-Schuppen (x=496 bis 516, 21×13×21): die Westseite öffnet sich zum Viadukt; innen sechs Kondensatorspulen, zwei Truhen (Phiolen, Marken, stabilisierter Rückstand, eine Filtermaske, eine Vermessungskarte), ein Kinetischer Krampfer in einem Eisengitter-Verschlag und eine 3×3-Zisterne unter dem Boden. Vierzig Ticks im Inneren gewähren „Nasse Spule“ für 8 Sekunden (Eile I, Rückstandskrankheit klingt doppelt so schnell ab); von der Decke tropft es",
+        "Der Spulenkriecher (14 Leben, 3 Schaden, 0,28 Tempo): neutral gegenüber allen auf dem Deck, feindlich gegenüber jedem, der auf den Saum, einen Pfeiler oder eine Spule hinabsteigt. Er klettert an Wänden und Spulen und lässt 0–2 Kondensatphiolen und 0–1 Rückstandskristall fallen. Spawns im Saum: Kriecher 70 (Gruppen zu 2–4), Pirscher 15, keine Pulshunde",
+        "Die Viaduktmarke (Rechtsklick auf dem Deck: 30 Sekunden Schnelligkeit I, 30 Sekunden Abklingzeit; anderswo meldet sie, dass die Marke nur auf dem Viadukt erwacht) und die Kondensatphiole (8 Anwendungen: Rückstand und Rückstandsadern werden zu gebleichtem Fertigbeton, Knospen verschwinden, eine Quelle geschmolzenen Rückstands verschwindet, verseuchter Asphalt wird zu Viaduktdeck; Ringmauer und Krampfer bleiben unberührt). Rezepte: Marke = 4 Eisenklumpen + 4 Phiolen + stabilisierter Rückstand; Phiole ×2 = Glasflasche + Wassereimer + Kondensatorspule; gebleichter Fertigbeton ×4 = 2 Fertigbeton + 2 Phiolen; Viaduktdeck ×4 = 4 gebleichte; Steinsäge: gebleicht → Pfeiler",
+        "Der Maßstab der Vermessungskarte weitet sich auf 512, damit Saum, Viaduktlinie und Endstation auf das Blatt passen (die Raute bleibt). Zwei Fortschritte („Folge der Hitzelinie“, „Kondensiert noch“). /fallout viaduct bringt Tester auf das Deck am Osttor"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Die Werte aus V4.2.1, die Lebenspunkte des Kolosses und die Haltbarkeit der Maske sind unverändert. Im Saum gilt die Krankheitsuhr der eingestürzten Bezirke (10 s ohne, 40 s mit Maske), auf dem Deck steht sie still",
+        "Nur Bau-Mod und Stadt-Mod haben sich geändert; in den anderen elf Mods bewegte sich nichts (allein die Versionsnummer geht auf 4.2.2)"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "⚠ Die 102 Türen aus V4.2.0 und früher (automatische Türen, Fusuma, große Türen, Luke, Tarntür, Rollladen, Glasschiebetür, Gitterstäbe und die 93 generierten Türen) sind entfernt. In einer bestehenden Welt platzierte alte Türen verschwinden beim Laden mit diesem Build (sie werden zu Luft), alte Tür-Items verschwinden aus den Inventaren. Ein vollständiger Austausch auf Anweisung des Eigentümers",
+        "Die Stromeinstellungen der automatischen Tür (autoDoorRequiresPower und drei weitere) sind aus der Konfiguration verschwunden. Die anderen Stromgeräte (Überwachungskamera, Aufzug, Rolltreppe, Geldautomat) sind unverändert",
+        "Kondensatorspulen lassen sich nur mit Spitzhacke oder Behutsamkeit einsammeln; andere Werkzeuge lassen nichts fallen",
+        "In einer bestehenden Stadtwelt entsteht das Viadukt in noch nicht generierten Chunks, nicht in bereits generierten",
+        "Alles ab V4.2.3 (das Unterwerk usw.) ist nicht in diesem Build"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.1",
      "date": "2026-09-04",
