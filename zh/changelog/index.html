@@ -210,7 +210,7 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新日志</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-05</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>更新于 2026-09-06</span></p>
     <p class="cl__note">页面中显示的伤害、速度等数值均为导入时的默认值。服务器可能通过 config 进行了调整，实际游玩时体验到的数值可能有所不同。</p>
   </header>
 
@@ -227,8 +227,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.2">
       <h2 class="cl__groupTitle">V4.2</h2>
-      <p class="cl__groupSummary">出货冻结与检查之门</p>
+      <p class="cl__groupSummary">配置、提示文本与更轻的区块生成</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.2.7">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-2-7">
+          <h3 class="cl__version">V4.2.7</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-06</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-2-7" hidden><p class="cl__entryTitle">配置、提示文本与更轻的区块生成</p><p class="cl__lede">本版把冻结的城市变成「可以运营」的状态。灰烬都会获得了一份配置文件，无需重启即可重新加载；已注册的 56 件物品终于都带上了双语各一行的说明；区块生成中实测出来的浪费也被削掉了：写入的方块一个不变，循环次数却只有原来的 12.8 分之一。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(7)</span></h4><ul class="cl__list"><li>新增配置文件：通用 17 项（残骸、水蛭、巨像的开关，各类生成物的开关与每区块上限，压力消耗量与储罐容量，核掉落是否需要摇篮板，边缘伤害衰减率）与客户端 2 项（测绘图叠加图的秒数、灰烬天空）。每个值都有上下限，写出范围外的数字会被修正为安全值，而不是照单执行</li><li>/fallout reload 可以重新读取配置，并当场把读到的值念出来，因此不需要额外的探测道具。已经生成过的区块不会被改写</li><li>已注册的 56 件物品与方块物品，现在都带有英日各一行的说明。此前有说明的只有 9 件，其余 47 件拿在手里什么也看不出来。过去只能靠踩坑才知道的规则——环墙需要钻石镐，集水槽格栅只有检修钥匙才能打开，压力阀要潜行才能开关——现在都写下来了</li><li>区块生成变轻了。写街区的处理原本要把 20×20 的整块地皮全部走一遍，再在最内层循环里丢弃；现在只走与区块重叠的那一部分。在菱形范围的 2,401 个区块上实测，循环次数从 23,299,228 次降到 1,826,764 次（12.8×），放置的方块一个也没有变</li><li>塔与线圈斑块的每区块上限现在可以配置。上限作用于地皮组而不是区块，因此横跨四个区块的塔不会在接缝处被切掉一块</li><li>/fallout assert 现在可以附加可选的 budget 参数，打印某个区块生成或扫描所用的毫秒数；它不给出通过或失败，并会说明该区块是否原本就已存在</li><li>在服务器加载完成之前输入指令不会再抛出异常；方块实体的保存数据有缺失时，也会回落到默认值而不是失败</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">平衡性调整 <span>(2)</span></h4><ul class="cl__list"><li>没有新的方块、物品、生物、区域或流体——内容冻结继续。塔的上限取默认值 3，因此今后生成的区块中会有 3.0% 的塔变成一块空地皮；已有的世界一个方块也不会变</li><li>只有灰烬都会模组发生了变化。其余十二个模组内容未动，仅版本号统一为 4.2.7</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(4)</span></h4><ul class="cl__list cl__list--warn"><li>调低储罐容量不会再没收里面的东西了。在 V4.2.6 之前，把容量从 16000 调低后重新加载，下一次抽取时最多会有 12000 mB 悄悄消失</li><li>如果在配置中关闭某个生成物，那个世界里的 /fallout assert 就会在该项上失败。这是正确的行为：检查看的是实际放置的方块</li><li>「灰烬天空」设置只切换太阳的外观。星星、月亮、黄昏色带与雾都来自数据包，因此会保留</li><li>过滤环墙壁的硬度（50）与所需工具（钻石镐及以上）这次同样没有改动。委托书要求硬度 8、铁镐即可，并支持精准采集掉落；这三点都会让已发布的方块在正在运行的世界里更容易被带走。若有指示，下一版即可落实</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.2.6">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-2-6">
           <h3 class="cl__version">V4.2.6</h3>

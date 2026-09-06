@@ -2192,6 +2192,48 @@
         "sorakaze_survival": "4.2.6",
         "sorakaze_vehicles": "4.2.6"
       }
+    },
+    {
+      "id": "v4.2.7",
+      "release": "V4.2.7",
+      "date": "2026-09-06",
+      "type": "release",
+      "title": "Config, descrições e um gerador de chunks mais leve",
+      "summary": "Esta versão torna a cidade congelada operável. A Conurbação Cinzenta ganha um arquivo de configuração que pode ser recarregado sem reiniciar, todos os 56 itens registrados finalmente trazem uma linha de ajuda nos dois idiomas, e o desperdício medido do gerador de chunks acabou: os mesmos blocos são escritos com 12.8 vezes menos passagens de laço.",
+      "highlights": [
+        "Chega um arquivo de configuração: dezessete chaves comuns (entulho, sanguessugas e colosso ligados ou não, quais geradores rodam e seus limites por chunk, o consumo de pressão e a capacidade do tanque, se o núcleo exige a placa, a queda do dano na borda) e duas chaves de cliente (segundos da sobreposição do mapa de levantamento, céu cinzento). Todo valor é limitado, então um número fora da faixa é corrigido em vez de obedecido",
+        "/fallout reload relê a configuração e recita o que carregou, então nenhum item de sondagem foi preciso. Chunks já gerados nunca são reescritos",
+        "Todos os 56 itens e itens-bloco registrados agora trazem uma linha de ajuda em inglês e em japonês. Antes só nove tinham; os outros 47 não diziam nada na mão. As regras que se aprendiam na tentativa — o muro do anel exige picareta de diamante, a grade do sumidouro só abre com a chave de serviço, a válvula de pressão alterna ao agachar — agora estão escritas",
+        "A geração de chunks ficou mais leve. Os escritores de distrito percorriam o lote inteiro de 20×20 e descartavam células no laço mais interno; agora percorrem só a parte que cai dentro do chunk. Medido nos 2,401 chunks do losango, as passagens de laço caem de 23,299,228 para 1,826,764 (12.8×), e nem um bloco colocado muda",
+        "Os limites por chunk de torres e manchas de bobina são configuráveis. O limite vale para o grupo de lotes, e não para o chunk, então uma torre que atravessa quatro chunks nunca fica esquartejada numa emenda",
+        "/fallout assert agora aceita um argumento opcional budget que imprime os milissegundos que um chunk levou para gerar ou para ser varrido, sem aprovado nem reprovado, e diz se o chunk já estava lá",
+        "Comandos não lançam mais erro se rodarem antes de o servidor terminar de carregar, e uma entidade de bloco com campos salvos faltando volta nos valores padrão em vez de falhar"
+      ],
+      "balance_changes": [
+        "Nenhum bloco, item, mob, área ou fluido novo — o congelamento de conteúdo continua. O limite de torres no padrão de 3 transforma uma torre em lote vazio em 3.0% dos chunks recém-gerados; mundos que já existem não mudam um único bloco",
+        "Só o mod da Conurbação Cinzenta mudou. Os outros doze estão intactos por dentro; apenas o número de versão deles vai para 4.2.7"
+      ],
+      "warnings": [
+        "Baixar a capacidade do tanque não destrói mais o que está guardado. Até a V4.2.6, baixá-la de 16000 e recarregar apagava em silêncio até 12000 mB na retirada seguinte",
+        "Se você desligar um gerador na configuração, /fallout assert vai falhar naquela checagem naquele mundo. Isso está certo: a checagem olha os blocos que foram de fato colocados",
+        "O ajuste do céu cinzento controla só o disco do sol. As estrelas, a lua, a faixa do crepúsculo e a névoa vêm do datapack e ficam",
+        "O muro do Anel de Filtragem mantém a dureza de 50 e continua exigindo picareta de diamante. O pedido é dureza 8, picareta de ferro e queda com toque suave; os três deixariam um bloco já publicado mais fácil de levar em mundos em andamento. É só falar e eles entram na próxima versão"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.7",
+        "sorakaze_boss": "4.2.7",
+        "sorakaze_deco": "4.2.7",
+        "sorakaze_fallout": "4.2.7",
+        "sorakaze_guns": "4.2.7",
+        "sorakaze_phone": "4.2.7",
+        "sorakaze_planarcadia": "4.2.7",
+        "sorakaze_power": "4.2.7",
+        "sorakaze_rail": "4.2.7",
+        "sorakaze_sapporo": "4.2.7",
+        "sorakaze_sky": "4.2.7",
+        "sorakaze_survival": "4.2.7",
+        "sorakaze_vehicles": "4.2.7"
+      }
     }
   ],
   "roadmap": {

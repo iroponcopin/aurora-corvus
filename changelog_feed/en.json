@@ -1,14 +1,51 @@
 {
  "lang": "en",
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "title": "Changelog",
- "updated_label": "Updated 2026-09-05",
+ "updated_label": "Updated 2026-09-06",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Ship freeze and QA gate",
+   "summary": "Config, tooltips and a lighter chunk generator",
    "releases": [
+    {
+     "version": "V4.2.7",
+     "date": "2026-09-06",
+     "type": "release",
+     "title": "Config, tooltips and a lighter chunk generator",
+     "summary": "This release makes the frozen city operable. The Ashen Conurbation gains a config file that can be reloaded without restarting, all 56 registered items finally carry a line of help in both languages, and the chunk generator's measured waste is gone: the same blocks are written with 12.8 times fewer loop passes.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "A config file arrives: seventeen common keys (debris, leeches and the colossus on or off, which generators run and their per-chunk caps, the pressure drain and tank capacity, whether the core needs the plate, the rim damage falloff) and two client keys (survey overlay seconds, ashen sky). Every value is clamped, so an out-of-range number is corrected rather than obeyed",
+        "/fallout reload re-reads the config and reads back what it loaded, so no probe item was needed. Chunks that already generated are never rewritten",
+        "All 56 registered items and block-items now carry one line of help in English and Japanese. Only nine did before; the other 47 told you nothing in the hand. The rules you used to learn by trial — the ring wall needs a diamond pickaxe, the sump grate opens only for the service key, the pressure valve toggles on sneak — are now written down",
+        "Chunk generation is lighter. The precinct writers walked the whole 20×20 lot and discarded cells in the innermost loop; they now walk only the part that lies in the chunk. Measured across the diamond's 2,401 chunks, loop passes fall from 23,299,228 to 1,826,764 (12.8×), and not one placed block changes",
+        "The per-chunk caps on towers and coil patches are configurable. The cap applies to the lot group rather than the chunk, so a tower spanning four chunks is never left quartered at a seam",
+        "/fallout assert now takes an optional budget argument that prints the milliseconds a chunk took to generate or scan, with no pass or fail, and says whether the chunk was already there",
+        "Commands no longer throw if they run before the server has finished loading, and a block entity with missing saved fields comes back on defaults instead of failing"
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "No new block, item, mob, area or fluid — the content freeze continues. The tower cap at its default of 3 turns one tower into an empty lot in 3.0% of newly generated chunks; worlds that already exist do not change by a single block",
+        "Only the Ashen Conurbation mod changed. The other twelve are untouched inside; only their version numbers move to 4.2.7"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "Lowering the tank capacity no longer destroys what is stored. Up to V4.2.6, dropping it from 16000 and reloading silently deleted as much as 12000 mB on the next drain",
+        "If you switch a generator off in the config, /fallout assert will fail on that check in that world. That is correct: the check looks at blocks that were actually placed",
+        "The ashen sky setting only controls the sun disc. The stars, the moon, the dusk band and the fog come from the datapack and stay",
+        "The Filter Ring wall keeps its hardness of 50 and still needs a diamond pickaxe. The brief asks for hardness 8, an iron pickaxe and a silk-touch drop; all three would make a shipped block easier to take in live worlds. Say the word and they land in the next release"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.6",
      "date": "2026-09-05",

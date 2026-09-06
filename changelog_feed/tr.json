@@ -1,14 +1,51 @@
 {
  "lang": "tr",
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-09-05 tarihinde güncellendi",
+ "updated_label": "2026-09-06 tarihinde güncellendi",
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Sevkiyat dondurma ve denetim kapısı",
+   "summary": "Yapılandırma, açıklamalar ve daha hafif bir chunk üreteci",
    "releases": [
+    {
+     "version": "V4.2.7",
+     "date": "2026-09-06",
+     "type": "release",
+     "title": "Yapılandırma, açıklamalar ve daha hafif bir chunk üreteci",
+     "summary": "Bu sürüm dondurulmuş şehri işletilebilir kılıyor. Kül Kentsel Alanı, yeniden başlatmadan tekrar okunabilen bir yapılandırma dosyası kazanıyor; kayıtlı 56 eşyanın hepsi nihayet iki dilde birer satır yardım taşıyor; ve chunk üretecinin ölçülmüş israfı ortadan kalktı: aynı bloklar 12.8 kat daha az döngü geçişiyle yazılıyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Bir yapılandırma dosyası geliyor: on yedi ortak anahtar (moloz, sülükler ve devin açık ya da kapalı olması, hangi üreteçlerin çalıştığı ve chunk başına tavanları, basınç tüketimi ve depo kapasitesi, çekirdeğin levhayı isteyip istemediği, kenardaki hasar sönümü) ve iki istemci anahtarı (etüt haritası bindirmesinin saniyesi, kül göğü). Her değer sınırlanır; aralık dışındaki bir sayı uygulanmak yerine düzeltilir",
+        "/fallout reload yapılandırmayı yeniden okur ve yüklediğini yerinde geri okur, bu yüzden ayrı bir yoklama eşyasına gerek kalmadı. Zaten üretilmiş chunk'lar asla yeniden yazılmaz",
+        "Kayıtlı 56 eşya ve blok eşyanın hepsi artık İngilizce ve Japonca birer satır yardım taşıyor. Önceden yalnızca dokuzunda vardı; kalan 47'si elde hiçbir şey söylemiyordu. Eskiden ancak deneyerek öğrenilen kurallar — halka duvarı elmas kazma ister, drenaj ızgarası yalnızca servis anahtarıyla açılır, basınç vanası eğilince açılıp kapanır — artık yazılı",
+        "Chunk üretimi hafifledi. Bölge yazıcıları 20×20'lik parselin tamamını dolaşıp hücreleri en içteki döngüde atıyordu; artık yalnızca chunk'ın içine düşen kısmı dolaşıyorlar. Eşkenar dörtgenin 2,401 chunk'ı üzerinde ölçüldüğünde döngü geçişleri 23,299,228'den 1,826,764'e iniyor (12.8×) ve yerleştirilen tek bir blok bile değişmiyor",
+        "Kulelerin ve bobin lekelerinin chunk başına tavanları ayarlanabilir. Tavan chunk'a değil parsel grubuna uygulanır, böylece dört chunk'a yayılan bir kule hiçbir dikişte dörde bölünmüş kalmaz",
+        "/fallout assert artık isteğe bağlı bir budget argümanı alıyor; bir chunk'ın üretilmesinin ya da taranmasının kaç milisaniye sürdüğünü yazdırıyor, geçti ya da kaldı demiyor ve o chunk'ın zaten orada olup olmadığını söylüyor",
+        "Komutlar, sunucu yüklemeyi bitirmeden çalıştırıldıklarında artık hata fırlatmıyor; kaydedilmiş alanları eksik bir blok varlığı da başarısız olmak yerine varsayılan değerlerle geri geliyor"
+       ]
+      },
+      {
+       "title": "Denge Ayarları",
+       "items": [
+        "Yeni blok, eşya, yaratık, alan ya da sıvı yok — içerik dondurması sürüyor. Kule tavanı varsayılan değeri olan 3'te iken, yeni üretilen chunk'ların 3.0% kadarında bir kule boş parsele dönüşüyor; hâlihazırda var olan dünyalar tek bir blok bile değişmiyor",
+        "Yalnızca Kül Kentsel Alanı modu değişti. Diğer on ikisinin içine dokunulmadı; yalnızca sürüm numaraları 4.2.7'ye geçiyor"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Depo kapasitesini düşürmek artık içindekine el koymuyor. V4.2.6'ya kadar kapasiteyi 16000'den düşürüp yeniden yüklediğinizde, bir sonraki çekimde 12000 mB'ye varan miktar sessizce siliniyordu",
+        "Yapılandırmada bir üreteci kapatırsanız, o dünyada /fallout assert o denetimde kalır. Bu doğru davranıştır: denetim gerçekten yerleştirilmiş bloklara bakar",
+        "Kül göğü ayarı yalnızca güneş diskini değiştirir. Yıldızlar, ay, alacakaranlık şeridi ve sis datapack tarafındadır ve oldukları gibi kalır",
+        "Filtre Halkası duvarı 50 sertliğini koruyor ve hâlâ elmas kazma istiyor. Sipariş sertlik 8, demir kazma ve ipek dokunuşuyla düşme istiyor; üçü de yayımlanmış bir bloğu yaşayan dünyalarda daha kolay alınır hale getirir. Söyleyin, bir sonraki sürümde gelsinler"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.6",
      "date": "2026-09-05",

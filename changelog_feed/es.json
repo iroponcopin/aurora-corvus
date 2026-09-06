@@ -1,14 +1,51 @@
 {
  "lang": "es",
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "title": "Historial de actualizaciones",
- "updated_label": "Actualizado el 2026-09-05",
+ "updated_label": "Actualizado el 2026-09-06",
  "note": "Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Congelación del envío y la puerta de control",
+   "summary": "Configuración, descripciones y un generador de chunks más ligero",
    "releases": [
+    {
+     "version": "V4.2.7",
+     "date": "2026-09-06",
+     "type": "release",
+     "title": "Configuración, descripciones y un generador de chunks más ligero",
+     "summary": "Esta versión hace operable la ciudad congelada. La Conurbación Cenicienta gana un archivo de configuración que se puede recargar sin reiniciar, los 56 objetos registrados llevan por fin una línea de ayuda en ambos idiomas, y el desperdicio medido del generador de chunks ha desaparecido: se escriben los mismos bloques con 12.8 veces menos pasadas de bucle.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Llega un archivo de configuración: diecisiete claves comunes (escombros, sanguijuelas y coloso encendidos o apagados, qué generadores funcionan y sus topes por chunk, el consumo de presión y la capacidad del depósito, si el núcleo exige la placa, la caída del daño en el borde) y dos claves de cliente (segundos de la superposición del mapa de prospección, cielo ceniciento). Todo valor se acota, así que un número fuera de rango se corrige en vez de obedecerse",
+        "/fallout reload vuelve a leer la configuración y recita lo que ha cargado, de modo que no hizo falta ningún objeto de sondeo. Los chunks ya generados nunca se reescriben",
+        "Los 56 objetos y objetos-bloque registrados llevan ahora una línea de ayuda en inglés y en japonés. Antes solo la tenían nueve; los otros 47 no decían nada en la mano. Las reglas que antes se aprendían a base de pruebas — el muro del anillo necesita un pico de diamante, la rejilla del sumidero solo se abre con la llave de servicio, la válvula de presión se conmuta agachándose — están ahora escritas",
+        "La generación de chunks es más ligera. Los escritores de distrito recorrían la parcela entera de 20×20 y descartaban celdas en el bucle más interno; ahora solo recorren la parte que cae dentro del chunk. Medido sobre los 2,401 chunks del rombo, las pasadas de bucle bajan de 23,299,228 a 1,826,764 (12.8×), y no cambia ni un bloque colocado",
+        "Los topes por chunk de torres y manchas de bobina son configurables. El tope se aplica al grupo de parcelas y no al chunk, así que una torre que abarca cuatro chunks nunca queda partida en una junta",
+        "/fallout assert acepta ahora un argumento opcional budget que imprime los milisegundos que ha tardado un chunk en generarse o en ser escaneado, sin aprobado ni suspenso, y dice si el chunk ya estaba ahí",
+        "Los comandos ya no lanzan errores si se ejecutan antes de que el servidor termine de cargar, y una entidad de bloque a la que le falten campos guardados vuelve con los valores por defecto en lugar de fallar"
+       ]
+      },
+      {
+       "title": "Ajustes de balance",
+       "items": [
+        "Ningún bloque, objeto, mob, zona ni fluido nuevo: la congelación de contenido continúa. El tope de torres en su valor por defecto de 3 convierte una torre en una parcela vacía en el 3.0% de los chunks recién generados; los mundos que ya existen no cambian ni un solo bloque",
+        "Solo cambió el mod de la Conurbación Cenicienta. Los otros doce están intactos por dentro; solo su número de versión pasa a 4.2.7"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Bajar la capacidad del depósito ya no destruye lo almacenado. Hasta V4.2.6, bajarla desde 16000 y recargar borraba en silencio hasta 12000 mB en el siguiente vaciado",
+        "Si apagas un generador en la configuración, /fallout assert fallará en esa comprobación en ese mundo. Es lo correcto: la comprobación mira los bloques que se colocaron de verdad",
+        "El ajuste del cielo ceniciento solo controla el disco solar. Las estrellas, la luna, la franja del crepúsculo y la niebla vienen del datapack y se quedan",
+        "El muro del Anillo de Filtrado conserva su dureza de 50 y sigue necesitando un pico de diamante. El encargo pide dureza 8, pico de hierro y recogida con toque de seda; las tres cosas harían más fácil llevarse un bloque ya publicado en mundos en marcha. Dilo y llegan en la próxima versión"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.6",
      "date": "2026-09-05",

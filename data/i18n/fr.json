@@ -2192,6 +2192,48 @@
         "sorakaze_survival": "4.2.6",
         "sorakaze_vehicles": "4.2.6"
       }
+    },
+    {
+      "id": "v4.2.7",
+      "release": "V4.2.7",
+      "date": "2026-09-06",
+      "type": "release",
+      "title": "Configuration, infobulles et un générateur de chunks plus léger",
+      "summary": "Cette version rend la ville gelée exploitable. La Conurbation Cendreuse gagne un fichier de configuration rechargeable sans redémarrer, les 56 objets enregistrés portent enfin une ligne d'aide dans les deux langues, et le gaspillage mesuré du générateur de chunks a disparu : les mêmes blocs sont écrits avec 12.8 fois moins de passages de boucle.",
+      "highlights": [
+        "Un fichier de configuration arrive : dix-sept clés communes (débris, sangsues et colosse activés ou non, quels générateurs tournent et leurs plafonds par chunk, la consommation de pression et la capacité du réservoir, si le noyau exige la plaque, l'atténuation des dégâts au bord) et deux clés client (secondes de la surimpression de la carte d'arpentage, ciel cendré). Chaque valeur est bornée : un nombre hors plage est corrigé plutôt qu'obéi",
+        "/fallout reload relit la configuration et énonce ce qu'il a chargé, si bien qu'aucun objet de sondage n'a été nécessaire. Les chunks déjà générés ne sont jamais réécrits",
+        "Les 56 objets et objets-blocs enregistrés portent désormais une ligne d'aide en anglais et en japonais. Neuf seulement en avaient une ; les 47 autres ne disaient rien en main. Les règles qu'on apprenait à l'essai — le mur de l'anneau réclame une pioche en diamant, la grille du puisard ne s'ouvre que pour la clé de service, la vanne de pression bascule en s'accroupissant — sont maintenant écrites",
+        "La génération des chunks est plus légère. Les écrivains de quartier parcouraient la parcelle entière de 20×20 et écartaient les cases dans la boucle la plus interne ; ils ne parcourent plus que la partie qui tombe dans le chunk. Mesuré sur les 2,401 chunks du losange, les passages de boucle tombent de 23,299,228 à 1,826,764 (12.8×), et pas un bloc posé ne change",
+        "Les plafonds par chunk des tours et des taches de bobine sont configurables. Le plafond s'applique au groupe de parcelles et non au chunk, si bien qu'une tour à cheval sur quatre chunks n'est jamais laissée écartelée sur une couture",
+        "/fallout assert accepte désormais un argument budget facultatif qui affiche les millisecondes qu'un chunk a mises à se générer ou à être parcouru, sans réussite ni échec, et dit si le chunk était déjà là",
+        "Les commandes ne lèvent plus d'erreur si elles s'exécutent avant que le serveur ait fini de charger, et une entité de bloc à qui il manque des champs enregistrés revient sur les valeurs par défaut au lieu d'échouer"
+      ],
+      "balance_changes": [
+        "Aucun nouveau bloc, objet, mob, lieu ni fluide — le gel du contenu continue. Le plafond des tours, à sa valeur par défaut de 3, change une tour en parcelle vide dans 3.0% des chunks nouvellement générés ; les mondes déjà existants ne bougent pas d'un seul bloc",
+        "Seul le mod de la Conurbation Cendreuse a changé. Les douze autres sont intacts à l'intérieur ; seuls leurs numéros de version passent à 4.2.7"
+      ],
+      "warnings": [
+        "Baisser la capacité du réservoir ne détruit plus ce qu'il contient. Jusqu'à la V4.2.6, la faire descendre depuis 16000 puis recharger supprimait en silence jusqu'à 12000 mB au prochain soutirage",
+        "Si vous coupez un générateur dans la configuration, /fallout assert échouera sur ce contrôle dans ce monde. C'est correct : le contrôle regarde les blocs réellement posés",
+        "Le réglage du ciel cendré ne commande que le disque solaire. Les étoiles, la lune, la bande du crépuscule et le brouillard viennent du datapack et restent",
+        "Le mur de l'Anneau de Filtrage garde sa dureté de 50 et réclame toujours une pioche en diamant. La commande demande une dureté de 8, une pioche en fer et un butin à la touche de soie ; tous trois rendraient un bloc déjà livré plus facile à emporter dans des mondes en cours. Un mot de vous et ils arrivent à la prochaine version"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.7",
+        "sorakaze_boss": "4.2.7",
+        "sorakaze_deco": "4.2.7",
+        "sorakaze_fallout": "4.2.7",
+        "sorakaze_guns": "4.2.7",
+        "sorakaze_phone": "4.2.7",
+        "sorakaze_planarcadia": "4.2.7",
+        "sorakaze_power": "4.2.7",
+        "sorakaze_rail": "4.2.7",
+        "sorakaze_sapporo": "4.2.7",
+        "sorakaze_sky": "4.2.7",
+        "sorakaze_survival": "4.2.7",
+        "sorakaze_vehicles": "4.2.7"
+      }
     }
   ],
   "roadmap": {

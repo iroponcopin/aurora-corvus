@@ -2185,6 +2185,48 @@
         "sorakaze_survival": "4.2.6",
         "sorakaze_vehicles": "4.2.6"
       }
+    },
+    {
+      "id": "v4.2.7",
+      "release": "V4.2.7",
+      "date": "2026-09-06",
+      "type": "release",
+      "title": "Konfiguration, Tooltips und ein leichterer Chunk-Generator",
+      "summary": "Diese Version macht die eingefrorene Stadt bedienbar. Die Aschen-Konurbation erhält eine Konfigurationsdatei, die sich ohne Neustart neu laden lässt, alle 56 registrierten Gegenstände tragen endlich eine Zeile Hilfe in beiden Sprachen, und die gemessene Verschwendung des Chunk-Generators ist verschwunden: Dieselben Blöcke werden mit 12.8-mal weniger Schleifendurchläufen geschrieben.",
+      "highlights": [
+        "Eine Konfigurationsdatei kommt hinzu: siebzehn gemeinsame Schlüssel (Trümmer, Egel und Koloss an oder aus, welche Generatoren laufen und ihre Obergrenzen je Chunk, der Druckverbrauch und die Behälterkapazität, ob der Kern die Platte braucht, die Abschwächung des Schadens am Rand) und zwei Client-Schlüssel (Sekunden der Überblendung auf der Vermessungskarte, Aschenhimmel). Jeder Wert wird begrenzt, eine Zahl außerhalb des Bereichs wird also korrigiert statt befolgt",
+        "/fallout reload liest die Konfiguration neu ein und liest vor, was geladen wurde, deshalb war kein Prüfgegenstand nötig. Bereits generierte Chunks werden nie überschrieben",
+        "Alle 56 registrierten Gegenstände und Blockgegenstände tragen jetzt eine Zeile Hilfe auf Englisch und Japanisch. Vorher hatten nur neun eine; die übrigen 47 sagten in der Hand gar nichts. Die Regeln, die man früher durch Ausprobieren lernte — die Ringmauer braucht eine Diamantspitzhacke, das Sumpfgitter öffnet sich nur für den Wartungsschlüssel, das Druckventil schaltet beim Schleichen um — stehen nun geschrieben",
+        "Die Chunk-Generierung ist leichter geworden. Die Bezirksschreiber liefen das ganze Grundstück von 20×20 ab und verwarfen Zellen in der innersten Schleife; jetzt laufen sie nur den Teil ab, der im Chunk liegt. Gemessen über die 2,401 Chunks der Raute fallen die Schleifendurchläufe von 23,299,228 auf 1,826,764 (12.8×), und kein einziger gesetzter Block ändert sich",
+        "Die Obergrenzen je Chunk für Türme und Spulenflecken sind einstellbar. Die Grenze gilt der Grundstücksgruppe und nicht dem Chunk, deshalb bleibt ein Turm, der über vier Chunks reicht, an keiner Naht geviertelt zurück",
+        "/fallout assert nimmt jetzt ein optionales budget-Argument, das die Millisekunden ausgibt, die ein Chunk zum Generieren oder Abtasten gebraucht hat — ohne Bestanden oder Durchgefallen — und sagt, ob der Chunk schon da war",
+        "Befehle werfen keinen Fehler mehr, wenn sie laufen, bevor der Server fertig geladen hat, und eine Blockeinheit mit fehlenden gespeicherten Feldern kommt mit Vorgabewerten zurück, statt zu scheitern"
+      ],
+      "balance_changes": [
+        "Kein neuer Block, kein neuer Gegenstand, kein neuer Mob, kein neues Gebiet, keine neue Flüssigkeit — die Inhaltssperre geht weiter. Die Turmgrenze auf ihrem Vorgabewert 3 macht in 3.0% der neu generierten Chunks aus einem Turm ein leeres Grundstück; bereits bestehende Welten ändern sich um keinen einzigen Block",
+        "Nur das Mod der Aschen-Konurbation hat sich geändert. Die anderen zwölf sind innen unberührt; allein ihre Versionsnummern gehen auf 4.2.7"
+      ],
+      "warnings": [
+        "Das Herabsetzen der Behälterkapazität vernichtet den Inhalt nicht mehr. Bis V4.2.6 löschte ein Herabsetzen von 16000 samt Neuladen beim nächsten Abzapfen stillschweigend bis zu 12000 mB",
+        "Schaltest du in der Konfiguration einen Generator ab, fällt /fallout assert in dieser Welt bei dieser Prüfung durch. Das ist richtig so: Die Prüfung schaut auf Blöcke, die tatsächlich gesetzt wurden",
+        "Die Einstellung „Aschenhimmel“ steuert nur die Sonnenscheibe. Die Sterne, der Mond, das Dämmerungsband und der Nebel kommen aus dem Datenpaket und bleiben",
+        "Die Mauer des Filterrings behält ihre Härte von 50 und braucht weiterhin eine Diamantspitzhacke. Der Auftrag verlangt Härte 8, eine Eisenspitzhacke und einen Drop mit Behutsamkeit; alle drei würden einen bereits ausgelieferten Block in laufenden Welten leichter mitnehmbar machen. Ein Wort von dir, und sie kommen in der nächsten Version"
+      ],
+      "mod_versions": {
+        "sorakaze_backrooms": "4.2.7",
+        "sorakaze_boss": "4.2.7",
+        "sorakaze_deco": "4.2.7",
+        "sorakaze_fallout": "4.2.7",
+        "sorakaze_guns": "4.2.7",
+        "sorakaze_phone": "4.2.7",
+        "sorakaze_planarcadia": "4.2.7",
+        "sorakaze_power": "4.2.7",
+        "sorakaze_rail": "4.2.7",
+        "sorakaze_sapporo": "4.2.7",
+        "sorakaze_sky": "4.2.7",
+        "sorakaze_survival": "4.2.7",
+        "sorakaze_vehicles": "4.2.7"
+      }
     }
   ],
   "roadmap": {

@@ -1,14 +1,51 @@
 {
  "lang": "it",
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "title": "Changelog",
- "updated_label": "Aggiornato il 2026-09-05",
+ "updated_label": "Aggiornato il 2026-09-06",
  "note": "I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell'introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.",
  "groups": [
   {
    "label": "V4.2",
-   "summary": "Blocco della consegna e cancello di collaudo",
+   "summary": "Configurazione, descrizioni e un generatore di chunk più leggero",
    "releases": [
+    {
+     "version": "V4.2.7",
+     "date": "2026-09-06",
+     "type": "release",
+     "title": "Configurazione, descrizioni e un generatore di chunk più leggero",
+     "summary": "Questa versione rende governabile la città congelata. La Conurbazione Cinerea guadagna un file di configurazione ricaricabile senza riavviare, tutti i 56 oggetti registrati portano finalmente una riga di aiuto in entrambe le lingue, e lo spreco misurato del generatore di chunk è sparito: gli stessi blocchi vengono scritti con 12.8 volte meno passaggi di ciclo.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "Arriva un file di configurazione: diciassette chiavi comuni (macerie, sanguisughe e colosso accesi o spenti, quali generatori girano e i loro tetti per chunk, il consumo di pressione e la capacità del serbatoio, se il nucleo richiede la piastra, l'attenuazione del danno al bordo) e due chiavi client (secondi della sovrimpressione della mappa di rilevamento, cielo cinereo). Ogni valore è limitato, quindi un numero fuori intervallo viene corretto anziché obbedito",
+        "/fallout reload rilegge la configurazione e ripete ad alta voce ciò che ha caricato, così non è servito alcun oggetto di sonda. I chunk già generati non vengono mai riscritti",
+        "Tutti i 56 oggetti e oggetti-blocco registrati portano ora una riga di aiuto in inglese e in giapponese. Prima ce l'avevano solo nove; gli altri 47 in mano non dicevano nulla. Le regole che si imparavano a tentativi — il muro dell'anello richiede un piccone di diamante, la grata del pozzetto si apre solo con la chiave di servizio, la valvola di pressione si commuta accovacciandosi — ora sono scritte",
+        "La generazione dei chunk è più leggera. Gli scrittori di quartiere percorrevano l'intero lotto di 20×20 e scartavano le celle nel ciclo più interno; ora percorrono solo la parte che ricade nel chunk. Misurato sui 2,401 chunk del rombo, i passaggi di ciclo scendono da 23,299,228 a 1,826,764 (12.8×), e non cambia un solo blocco posato",
+        "I tetti per chunk di torri e chiazze di bobina sono configurabili. Il tetto si applica al gruppo di lotti e non al chunk, così una torre a cavallo di quattro chunk non resta mai squartata su una giunzione",
+        "/fallout assert accetta ora un argomento facoltativo budget che stampa i millisecondi impiegati da un chunk per generarsi o per essere scandito, senza esito positivo o negativo, e dice se il chunk c'era già",
+        "I comandi non sollevano più errori se vengono eseguiti prima che il server abbia finito di caricare, e un'entità blocco a cui mancano campi salvati torna sui valori predefiniti invece di fallire"
+       ]
+      },
+      {
+       "title": "Bilanciamento",
+       "items": [
+        "Nessun blocco, oggetto, mob, area o fluido nuovo: il congelamento dei contenuti continua. Il tetto delle torri, al suo valore predefinito di 3, trasforma una torre in un lotto vuoto nel 3.0% dei chunk appena generati; i mondi già esistenti non cambiano di un solo blocco",
+        "È cambiato solo il mod della Conurbazione Cinerea. Gli altri dodici sono intatti dentro; solo i loro numeri di versione passano a 4.2.7"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "Abbassare la capacità del serbatoio non distrugge più ciò che è immagazzinato. Fino alla V4.2.6, portarla giù da 16000 e ricaricare cancellava in silenzio fino a 12000 mB al prelievo successivo",
+        "Se spegni un generatore nella configurazione, /fallout assert fallirà su quel controllo in quel mondo. È corretto: il controllo guarda i blocchi che sono stati davvero posati",
+        "L'impostazione del cielo cinereo governa solo il disco del sole. Le stelle, la luna, la fascia del crepuscolo e la nebbia vengono dal datapack e restano",
+        "Il muro dell'Anello di Filtraggio mantiene la sua durezza di 50 e continua a richiedere un piccone di diamante. La commessa chiede durezza 8, un piccone di ferro e una raccolta con tocco di velluto; tutti e tre renderebbero più facile portarsi via un blocco già uscito nei mondi in corso. Basta una parola e arrivano nella prossima versione"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.2.6",
      "date": "2026-09-05",
