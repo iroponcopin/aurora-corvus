@@ -28,7 +28,9 @@ browser for the moment they type it.
 
 HONEST LIMIT (told to the owner, not buried here)
 -------------------------------------------------
-A four-digit PIN is 10,000 possibilities. Someone who downloads the blob can
+The PIN's length is the strength. Four digits is 10,000 possibilities; the owner moved
+to an eight digit PIN on 2026-09-07, which is 10^8 and puts a brute force out of casual
+reach at these iterations. Either way, someone who downloads the blob can
 try them all offline; at 600,000 PBKDF2 iterations that is on the order of an
 hour of one CPU, and much less with optimised code. This gate stops casual
 copying and keeps the file out of search results. It is NOT secrecy. Rotating

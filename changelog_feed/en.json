@@ -1,14 +1,57 @@
 {
  "lang": "en",
- "updated": "2026-09-06",
+ "updated": "2026-09-07",
  "title": "Changelog",
- "updated_label": "Updated 2026-09-06",
+ "updated_label": "Updated 2026-09-07",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "The west yard, Sparxie in person, and a bank ledger",
+   "summary": "Grit storms in winter only, a flood that recedes, and a factory line",
    "releases": [
+    {
+     "version": "V4.3.1",
+     "date": "2026-09-07",
+     "type": "release",
+     "title": "Grit storms in winter only, a flood that recedes, and a factory line",
+     "summary": "Seasons now turn in the Ashen Conurbation. Grit storms blow in winter and in no other season, and inside the Filter Ring plaza they leave you alone. When a main breaks, the water it throws always recedes. A factory line has been built inside the west yard, with eleven machines standing in it. Sparxie has started selling a second staff, and both staves have gone from a flat picture to a solid model.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "The city has seasons. Spring, summer, autumn and winter each last seven game days, and a fresh world starts in autumn. The clock only advances while somebody is in the city. Hold a Season Gauge to read the season and the days left in it",
+        "Grit storms blow <b>in winter only</b>. On the Residue Flats, the Collapsed Precincts and the Stackworks the grit clouds your sight and slows your step; in the Filter Ring plaza, the Underworks, the Vein Pit and the Condenser Reach nothing happens at all. Under a roof, likewise",
+        "When a main breaks, water and condensate appear in the Sump Hall and the service tunnel — and <b>that water always recedes</b>. Four cells clear every twenty ticks, and when the time is up the rest goes at once. The sump pool that was already there is not on the list, so it is never removed. A Flood Pump lets you drain it yourself",
+        "A Line Hall now stands inside the west yard. Eleven blocks — industrial casing, scaffold, line mark, cinder filter, slag press, factory gauge, tainted clutch, tainted gearshift, ashen depot, ashen drain and scrubber stack — and three items: slag, filter mesh and line blueprint. Put a scrubber stack within four blocks of a firebox and the firebox smokes at two fifths of the rate",
+        "Sparxie has a second staff for sale. The new one hits for 7,200 (twice the old one), lasts twenty times as long, and <b>takes enchantments</b>. It costs 800,000 emeralds, four times the old price. The Downvote Stick is unchanged in every way, and the counter now offers both",
+        "<b>Both staves are solid models now.</b> They used to be a single flat picture; they are now built from cuboids raised from the owner's reference photographs. In your hand, on the ground and in an item frame they have depth; only the inventory icon keeps the old flat art, because at 16×16 the shaft would fall below one pixel",
+        "The ATM now has a per-deposit limit. The default is 200,000,000 emeralds"
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "A residue firebox now drops slag one smelt in ten",
+        "A residue firebox with a scrubber stack nearby emits sparks and residue motes every 100 ticks instead of every 40"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "The 200,000,000 deposit limit <b>can never be reached</b> as deposits work today. A deposit counts only the emeralds in your inventory, and the physical maximum for one deposit is 20,736. The limit only bites if a server lowers it",
+        "The Line Hall only appears in newly generated chunks. In a world where the west yard has already been visited, the hall may not be there"
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "The grit particle, the storm sounds, the fog of Grit Blind and the look of the eleven machines have been checked on the server side only. How they actually look is unknown until the pack is installed",
+        "The staves' models are scaled and angled in the hand by arithmetic. Nothing has ever been rendered, so how they sit in a hand is unknown until the pack is installed",
+        "The flood_marker block from the spec's table is not registered. The same spec says the position list is enough, and the list is what was built"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.0",
      "date": "2026-09-06",

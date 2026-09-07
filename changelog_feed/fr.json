@@ -1,14 +1,57 @@
 {
  "lang": "fr",
- "updated": "2026-09-06",
+ "updated": "2026-09-07",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-09-06",
+ "updated_label": "Mis à jour le 2026-09-07",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "La cour ouest, Sparxie en personne et un livre de comptes",
+   "summary": "Tempêtes de poussière l'hiver seulement, une crue qui se retire, une ligne d'usine",
    "releases": [
+    {
+     "version": "V4.3.1",
+     "date": "2026-09-07",
+     "type": "release",
+     "title": "Tempêtes de poussière l'hiver seulement, une crue qui se retire, une ligne d'usine",
+     "summary": "Les saisons tournent désormais dans la Conurbation de Cendre. Les tempêtes de poussière ne soufflent qu'en hiver, et sur la place de l'Anneau filtrant elles vous laissent tranquille. Quand une conduite cède, l'eau qu'elle répand se retire toujours. Une ligne d'usine est bâtie dans la cour ouest, avec onze machines. Sparxie vend un second bâton, et les deux bâtons sont passés d'une image plate à un modèle en volume.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La ville a des saisons. Printemps, été, automne et hiver durent chacun sept jours de jeu, et un monde neuf commence en automne. L'horloge n'avance que lorsque quelqu'un est en ville. Tenez la jauge de saison pour lire la saison et les jours restants",
+        "Les tempêtes de poussière ne soufflent <b>qu'en hiver</b>. Sur les Plaines de résidu, les Quartiers effondrés et les Stackworks, la poussière voile la vue et ralentit le pas ; sur la place de l'Anneau filtrant, dans les Sous-œuvres, la Fosse veineuse et l'Étendue du condenseur, il ne se passe rien. Sous un toit non plus",
+        "Quand une conduite cède, de l'eau et du condensat apparaissent dans la Halle du puisard et le tunnel de service — et <b>cette eau se retire toujours</b>. Quatre cases disparaissent toutes les vingt tics, et à l'échéance le reste part d'un coup. Le bassin qui était déjà là n'est pas sur la liste : il n'est jamais supprimé. La pompe de crue vous permet de vider vous-même",
+        "Une Halle de ligne se dresse dans la cour ouest. Onze blocs — carter industriel, échafaudage, marque de ligne, filtre à cendre, presse à scories, jauge d'usine, embrayage souillé, boîte de vitesses souillée, dépôt de cendre, drain de cendre et tour de lavage — et trois objets : scorie, tamis filtrant et plan de ligne. Une tour de lavage à quatre blocs ou moins d'un foyer réduit sa fumée aux deux cinquièmes",
+        "Sparxie propose un second bâton. Le nouveau frappe à 7 200 (le double de l'ancien), dure vingt fois plus longtemps et <b>accepte les enchantements</b>. Il coûte 800 000 émeraudes, quatre fois l'ancien prix. Le Bâton de désaveu ne change en rien, et le comptoir présente les deux",
+        "<b>Les deux bâtons sont désormais des modèles en volume.</b> C'étaient auparavant de simples images plates ; ils sont maintenant faits de pavés dérivés des photographies de référence du propriétaire. En main, au sol et dans un cadre ils ont de l'épaisseur ; seule l'icône d'inventaire garde l'ancienne image plate, car en 16×16 la hampe tomberait sous le pixel",
+        "Le distributeur a désormais un plafond par dépôt. Par défaut 200 000 000 d'émeraudes"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Un foyer à résidu lâche désormais une scorie une fonte sur dix",
+        "Un foyer à résidu proche d'une tour de lavage émet étincelles et particules toutes les 100 tics au lieu de 40"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le plafond de 200 000 000 <b>ne peut jamais être atteint</b> en l'état. Un dépôt ne compte que les émeraudes de votre inventaire, et le maximum physique d'un dépôt est 20 736. Le plafond ne mord que si un serveur l'abaisse",
+        "La Halle de ligne n'apparaît que dans les chunks nouvellement générés. Dans un monde où la cour ouest a déjà été visitée, elle peut manquer"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La particule de poussière, les sons de tempête, le brouillard de l'Aveuglement et l'aspect des onze machines n'ont été vérifiés que côté serveur. Leur rendu réel n'apparaîtra qu'à l'installation",
+        "La taille et l'angle des bâtins en main sont fixés par le calcul. Rien n'a jamais été rendu : la tenue ne se verra qu'à l'installation",
+        "Le bloc flood_marker du tableau de la spécification n'est pas enregistré. La même spécification dit que la liste de positions suffit, et c'est la liste qui a été construite"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.0",
      "date": "2026-09-06",

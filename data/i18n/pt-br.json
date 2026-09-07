@@ -2258,6 +2258,36 @@
         "A skin distribuída no site é uma skin de jogador 64×64 e é um arquivo diferente da Sparxie do pacote. O corpo do jogador são seis caixas fixas: as maria-chiquinhas, as solas plataforma e as pregas da saia não têm superfície onde existir e não podem ser levadas junto",
         "O painel de histórico do caixa e a aparência de Sparxie foram provados apenas do lado do servidor. Como ficam na tela só será visto depois de instalar o pacote"
       ]
+    },
+    {
+      "id": "v4.3.1",
+      "release": "V4.3.1",
+      "date": "2026-09-07",
+      "type": "release",
+      "title": "Tempestades de pó só no inverno, uma cheia que recua e uma linha de fábrica",
+      "summary": "As estações agora giram na Conurbação de Cinza. As tempestades de pó sopram apenas no inverno e, na praça do Anel Filtrante, não afetam ninguém. Quando um adutor rompe, a água que ele espalha sempre recua. No pátio oeste ergueu-se uma linha de fábrica com onze máquinas. Sparxie passou a vender um segundo cajado, e os dois cajados deixaram de ser uma imagem plana e viraram modelos com volume.",
+      "highlights": [
+        "A cidade tem estações. Primavera, verão, outono e inverno duram sete dias de jogo cada, e um mundo novo começa no outono. O relógio só avança enquanto houver alguém na cidade. Com o medidor de estação na mão dá para ler a estação e os dias restantes",
+        "As tempestades de pó sopram <b>somente no inverno</b>. Nas Planícies de Resíduo, nos Distritos Desabados e nos Stackworks o pó embaça a visão e atrasa o passo; na praça do Anel Filtrante, nas Subobras, no Poço Venoso e no Alcance do Condensador nada acontece. Sob um teto, idem",
+        "Quando um adutor rompe, água e condensado surgem no Salão do Poço e no túnel de serviço — e <b>essa água sempre recua</b>. A cada vinte ticks somem quatro células e, esgotado o prazo, o resto vai de uma vez. A poça que já estava ali não entra na lista e nunca é removida. A bomba de cheia permite esvaziar por conta própria",
+        "No pátio oeste há agora um Galpão de Linha. Onze blocos — carcaça industrial, andaime, marca de linha, filtro de cinza, prensa de escória, medidor de fábrica, embreagem contaminada, caixa de marchas contaminada, depósito de cinza, ralo de cinza e torre lavadora — e três itens: escória, tela de filtro e planta de linha. Uma torre lavadora a quatro blocos ou menos de uma fornalha reduz sua fumaça a dois quintos",
+        "Sparxie vende um segundo cajado. O novo bate por 7.200 (o dobro do anterior), dura vinte vezes mais e <b>aceita encantamentos</b>. Custa 800.000 esmeraldas, quatro vezes o preço antigo. O Cajado de Voto Negativo não mudou em nada, e o balcão oferece os dois",
+        "<b>Os dois cajados agora são modelos com volume.</b> Antes eram uma única imagem plana; agora são feitos de blocos retangulares derivados das fotografias de referência do proprietário. Na mão, no chão e num quadro têm profundidade; só o ícone do inventário mantém o desenho plano, porque em 16×16 a haste ficaria abaixo de um pixel",
+        "O caixa passou a ter um limite por depósito. O padrão é 200.000.000 de esmeraldas"
+      ],
+      "balance_changes": [
+        "Uma fornalha de resíduo agora solta escória a cada dez fundições",
+        "Uma fornalha de resíduo com torre lavadora por perto emite faíscas e partículas a cada 100 ticks em vez de 40"
+      ],
+      "warnings": [
+        "O limite de 200.000.000 <b>nunca pode ser alcançado</b> do jeito que os depósitos funcionam hoje. Um depósito conta apenas as esmeraldas do inventário, e o máximo físico de um depósito é 20.736. O limite só pesa se um servidor abaixá-lo",
+        "O Galpão de Linha só aparece em chunks recém-gerados. Num mundo onde o pátio oeste já foi visitado, pode não estar lá"
+      ],
+      "known_limitations": [
+        "A partícula de pó, os sons da tempestade, a névoa da Cegueira de Pó e a aparência das onze máquinas foram conferidos apenas no lado do servidor. Como ficam de fato só se saberá na instalação",
+        "O tamanho e o ângulo dos cajados na mão foram definidos por cálculo. Nada foi renderizado, então a pose só se verá na instalação",
+        "O bloco flood_marker da tabela da especificação não foi registrado. A mesma especificação diz que a lista de posições basta, e foi a lista que se construiu"
+      ]
     }
   ],
   "roadmap": {
