@@ -6,6 +6,45 @@
  "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
  "groups": [
   {
+   "label": "V4.3",
+   "summary": "O pátio oeste, Sparxie em pessoa e um extrato do banco",
+   "releases": [
+    {
+     "version": "V4.3.0",
+     "date": "2026-09-06",
+     "type": "release",
+     "title": "O pátio oeste, Sparxie em pessoa e um extrato do banco",
+     "summary": "A oeste da Conurbação de Cinzas surgem um pátio e uma estrada até ele, o vendedor do cajado deixa de ser um bloco e passa a ser uma pessoa, e o banco Corvus passa a guardar um histórico de operações. Sparxie é o modelo em voxels do proprietário (43×20×76 células) refeito caixa por caixa, e nada consegue matá-la. O cajado pode ser pago pela conta pessoal, compartilhada ou especial, e o pagamento fica registrado no banco.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "As Stackworks — um pátio oeste — e o Ramal de Cinzas que chega até elas passam a ser gerados a oeste da Conurbação. A estrada corre sem interrupção de x = −480 a −128, suas 2.471 células de tabuleiro são todas de estrado de cinzas, e no pátio erguem-se catorze instalações fixas",
+        "Uma linha de resíduos (britar, lavar, prensar), o Cofre de Cinzas, âncoras de carga com o respectivo bilhete, uma Caixa de Crise de 512 SU e uma Fornalha de Resíduos. O resíduo só queima nessa fornalha: ele foi deliberadamente deixado fora da tabela de combustíveis original e não queima em nenhum outro forno",
+        "Sparxie agora está de pé ali. O vendedor do cajado não é mais um bloco, e sim uma balconista com nome, copiada caixa por caixa do modelo 3D do proprietário: 11.765 voxels em 19 cores, reunidos em 339 caixas. Nada consegue matá-la — nem arma, nem /kill; derrubá-la para fora do mundo a devolve ao seu posto",
+        "Falar com ela abre uma tela de compra. Há quatro formas de pagar: débito na conta pessoal, compartilhada ou especial, ou esmeraldas em mãos. Se o mod do banco estiver ausente, a tela avisa e não move uma única esmeralda",
+        "O banco Corvus passa a guardar um histórico: depósitos, saques, débitos, movimentos de diamantes e trocas — sete tipos, do mais recente ao mais antigo, até 64 linhas, lidas de nove em nove no caixa eletrônico. Enquanto o histórico está aberto, os controles de depósito e saque não respondem",
+        "Sparxie é distribuída como skin no site. O download pede um código PIN, e esse PIN não está escrito em lugar nenhum do site"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "O Ramal de Cinzas e as Stackworks só aparecem em chunks recém-gerados. O terreno já percorrido nunca é reescrito: em um mundo que já visitou a faixa entre x = −480 e −128, a estrada pode parecer terminar no meio do caminho"
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "A skin distribuída no site é uma skin de jogador 64×64 e é um arquivo diferente da Sparxie do pacote. O corpo do jogador são seis caixas fixas: as maria-chiquinhas, as solas plataforma e as pregas da saia não têm superfície onde existir e não podem ser levadas junto",
+        "O painel de histórico do caixa e a aparência de Sparxie foram provados apenas do lado do servidor. Como ficam na tela só será visto depois de instalar o pacote"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "label": "V4.2",
    "summary": "Config, descrições e um gerador de chunks mais leve",
    "releases": [

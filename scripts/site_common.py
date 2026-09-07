@@ -206,6 +206,10 @@ NAV_SECTIONS = [
     ("discord", "discord/"),
     ("roadmap", "roadmap/"),
     ("issues", "known-issues/"),
+    # V4.3.0. The Sparxie skin, behind its PIN. Filed under "start" with the
+    # download/launcher/guide: it is a thing you fetch and install, not a
+    # reference page and not a status page.
+    ("skin", "skin/"),
 ]
 
 # English fallback nav labels, used only when a language bundle doesn't
@@ -229,6 +233,10 @@ NAV_LABEL_FALLBACK = {
     # until the bundles carry ui.nav.discord, while the page itself is fully
     # translated in all 13 (data/discord_bot.json).
     "discord": "Discord bot",
+    # Same arrangement as "upcoming" / "discord": the label falls back to
+    # English until the bundles carry ui.nav.skin; the page itself is written
+    # in ja/en and falls back to English elsewhere (build_skin_gate.py).
+    "skin": "Sparxie skin",
 }
 
 # --- Mega menu -------------------------------------------------------------
@@ -249,7 +257,7 @@ NAV_LABEL_FALLBACK = {
 # of its own yet) -- it simply does not belong to any of those three stories.
 NAV_SOLO = ["home", "aureum"]
 NAV_GROUPS = [
-    ("start", ["download", "launcher", "guide"]),
+    ("start", ["download", "launcher", "guide", "skin"]),
     ("reference", ["recipes", "gates", "features"]),
     # "upcoming" sits with changelog/roadmap because it answers the same
     # question at a different distance: changelog = what shipped, upcoming =

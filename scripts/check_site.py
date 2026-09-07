@@ -35,6 +35,14 @@ CHECKS = [
      "every rendered page: switcher, flags, hreflang alternates, detector"),
     ("discord", "check_discord_page.py", [],
      "/discord/ vs the bot's own command export, in all 13 languages"),
+    # V4.3.0. The half of the skin gate that needs no secret: the page exists in
+    # every language, its blob path resolves, the blob is well formed, it is NOT
+    # stale against the skin the game ships, and no digit run leaked into the
+    # markup. The PIN-bearing half is scripts/check_skin_gate.py, run by hand at
+    # release time with AURORA_SKIN_PIN set — it cannot live here because this
+    # entry point must stay runnable by anyone.
+    ("skin", "check_skin_page.py", [],
+     "/skin/ in 13 languages + downloads/sparxie-skin.acsk vs the in-game skin"),
 ]
 
 
