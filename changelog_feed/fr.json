@@ -1,14 +1,55 @@
 {
  "lang": "fr",
- "updated": "2026-09-07",
+ "updated": "2026-09-08",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-09-07",
+ "updated_label": "Mis à jour le 2026-09-08",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Tempêtes de poussière l'hiver seulement, une crue qui se retire, une ligne d'usine",
+   "summary": "Des armes qui bougent dans la main, un scintillement disparu des portes, des châssis et les vingt pièces industrielles",
    "releases": [
+    {
+     "version": "V4.3.2",
+     "date": "2026-09-08",
+     "type": "release",
+     "title": "Des armes qui bougent dans la main, un scintillement disparu des portes, des châssis et les vingt pièces industrielles",
+     "summary": "Quatorze armes bougent dans vos mains pour la première fois : la culasse recule, le chargeur tombe, le chien frappe et la bouche se relève. Le scintillement des portes a été remonté jusqu'à sa cause et supprimé. Les deux bâtons de Sparxie reposent sur le même squelette. Côté véhicules : trois châssis et l'Ashen Sparrow, vingt pièces industrielles, de l'essence, un banc de montage et une pompe.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "<b>Quatorze armes tiennent désormais sur des os.</b> Jusqu'ici une arme était un bloc figé de 22 à 53 boîtes ; recharger ne faisait qu'incliner l'ensemble. Les armes refaites portent 320 à 1 021 boîtes sur 71 à 87 os, et la culasse, le levier d'armement, la détente, le chien, le chargeur, l'élévateur, la sûreté et les bagues de lunette bougent chacun de leur côté. Chaque arme compte de 19 à 24 mouvements distincts",
+        "Le recul est <b>calculé</b> : masse de la balle, vitesse initiale et poids de l'arme. Le fusil anti-matériel de 12,7 mm recule de 7,29, le fusil de précision de 7,62 mm de 4,48, le fusil d'assaut de 5,56 mm de 2,97. Le bullpup recule moins que le fusil d'assaut à munition égale parce qu'il est plus lourd. Le lance-roquettes bouge à peine, son propergol partant vers l'arrière",
+        "Le fusil à pompe se charge cartouche par cartouche, l'arme rotative monte en régime avant de tirer, et le foret de la perceuse tourne. Chaque type bouge à sa façon",
+        "<b>Le scintillement des portes a disparu.</b> Là où une porte était coupée à la limite d'un bloc, une face était dessinée sur <b>la coupe elle-même</b> — une surface intérieure à la porte. Le bloc voisin dessinait la sienne dans le même plan, et les deux se disputaient la profondeur. 204 faces de ce type ont été retirées de 82 modèles de portes",
+        "Les deux bâtons de Sparxie sont aussi sur le squelette. Ils oscillent quand on les porte, décrivent un arc quand on frappe, et la tête tourne à l'usage. La forme ne change pas, seul le mouvement est nouveau",
+        "Trois châssis (Rosso Runner, Toro Wedge, Stern Saloon) et l'avion Ashen Sparrow arrivent, avec vingt pièces industrielles, de l'essence et des jerricans. Un châssis n'atteint sa vitesse qu'une fois le kit moteur posé",
+        "Un <b>banc de montage</b> et une <b>pompe à essence</b> sont ajoutés. Clic droit sur le banc avec un châssis pour le poser ; clic droit sur la pompe avec un jerrican vide pour le remplir. Il y en a un de chaque dans la Line Hall. <b>/garage</b> vous emmène au banc le plus proche",
+        "Les noms de constructeurs réels ont disparu des noms affichés. De la V1.5.0 à la V4.3.1, deux voitures portaient une marque dans leur nom publié. <b>Les identifiants d'enregistrement sont inchangés</b> : les voitures déjà posées ne disparaissent pas"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Aucune boîte de collision, aucun dégât, aucune capacité de chargeur ni portée n'a changé. Ce qui change ici, c'est <b>l'apparence et le mouvement seulement</b>",
+        "Un châssis est limité à 35 % de sa vitesse tant qu'aucun kit moteur n'est posé. Les moteurs ne tournent pas dans l'Anneau de filtrage"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "L'apparence de toutes les armes et des deux bâtons est entièrement remplacée. Les inventaires et les identifiants ne changent pas : rien n'est perdu dans votre monde"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "La position exacte de l'arme dans la main ne peut être jugée qu'en jeu. Longueur et orientation sont calculées à partir de dimensions réelles ; l'ajustement au bras sera affiné à la version suivante"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.1",
      "date": "2026-09-07",
