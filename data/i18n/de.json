@@ -2388,6 +2388,29 @@
       "known_limitations": [
         "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. Alles auf dem Bildschirm ist hier strukturell nicht überprüfbar, deshalb <b>wird nichts als behoben bezeichnet, bevor es funktionierend gesehen wurde</b>"
       ]
+    },
+    {
+      "id": "v4.3.3.3",
+      "release": "V4.3.3.3",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Die Pose der Waffe summierte sich jeden Frame auf — nur der Wurzelknochen wurde zurückgesetzt",
+      "summary": "Die Ursache dafür, dass die Waffe <b>in der Hand unsichtbar war und beim Fallenlassen über den Himmel verstreut wurde</b>, ist gefunden. Das Zurücksetzen der Pose setzte <b>nur den Wurzelknochen</b> zurück, sodass sich die Transformationen der <b>animationstragenden Kindknochen jeden Frame aufsummierten</b> — 0,36 bis 0,55 Blöcke pro Frame. In etwa fünf Sekunden ist die Waffe 36 bis 55 Blöcke entfernt.",
+      "highlights": [
+        "<b>{@code ModelPart.resetPose()} setzt nur diesen Teil zurück.</b> Die Kinder werden nie berührt — im 26.2-Bytecode gibt es <b>keinerlei</b> Verweis auf children oder forEach. Die Animation liegt auf den Kindern (Rückstoß, Schwanken, Verschluss, Magazin, Hahn)",
+        "<b>Die Korrektur setzt den ganzen Baum zurück:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Warum vier Versionen daran vorbeiliefen.</b> Die Aufsummierung beginnt im zweiten Frame, <b>der erste Frame ist also immer korrekt</b>. Jede Prüfung, die ein Standbild misst, lässt diesen Fehler durch",
+        "<b>Eingegrenzt wurde es durch Bisektion.</b> Ein Würfel, der sichtbar sein muss, wurde über denselben Collector und denselben Aufruf eingereicht; <b>der Würfel erschien</b> — der Renderpfad lebte, der Fehler lag bei Modell und Pose",
+        "<b>Die Prüfung wurde neu gebaut.</b> Sie verschiebt absichtlich jeden Kindknochen, ruft das Zurücksetzen auf und verlangt, dass der Kasten exakt zur Ruhelage zurückkehrt. Gegen den alten Stand schlägt sie <b>14 von 14</b> fehl, um 0,36–0,55 Blöcke"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Ob das Türflackern weg ist, bleibt unbewiesen.</b> V4.3.3.1 entfernte 182 koplanare Flächenpaare; ob sie das von Ihnen gesehene Flackern sind, weiß man erst beim Hinsehen",
+        "<b>Die Meldung, dass auch andere Gegenstände beim Fallenlassen wegfliegen, wurde nicht gemessen.</b> Die obige Aufsummierung ist für Waffen belegt; für andere Gegenstände wurde nichts gemessen"
+      ],
+      "known_limitations": [
+        "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. <b>Nichts wird als behoben bezeichnet, bevor es funktionierend gesehen wurde.</b> Diese Diagnose wurde durch Ihr eigenes Protokoll und Ihre Screenshots entschieden"
+      ]
     }
   ],
   "roadmap": {

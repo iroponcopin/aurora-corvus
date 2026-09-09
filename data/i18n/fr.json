@@ -2395,6 +2395,29 @@
       "known_limitations": [
         "Il n'y a pas de client Minecraft sur cette machine. Tout ce qui s'affiche y est structurellement invérifiable ; <b>rien n'est annoncé corrigé avant d'avoir été vu fonctionner</b>"
       ]
+    },
+    {
+      "id": "v4.3.3.3",
+      "release": "V4.3.3.3",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "La pose de l'arme s'accumulait à chaque image — seul l'os racine était réinitialisé",
+      "summary": "La cause de l'arme <b>invisible en main et dispersée dans le ciel une fois lâchée</b> est trouvée. La remise à zéro de la pose ne réinitialisait <b>que l'os racine</b>, si bien que les transformations des <b>os enfants porteurs de l'animation s'accumulaient à chaque image</b> — 0,36 à 0,55 bloc par image. En environ cinq secondes l'arme est à 36–55 blocs.",
+      "highlights": [
+        "<b>{@code ModelPart.resetPose()} ne réinitialise que cette partie.</b> Il ne touche jamais les enfants — le bytecode 26.2 ne contient <b>aucune</b> référence à children ou forEach. L'animation vit sur les enfants (recul, balancement, culasse, chargeur, chien)",
+        "<b>La correction réinitialise tout l'arbre :</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Pourquoi quatre versions l'ont manqué.</b> L'accumulation commence à la deuxième image, donc <b>la première est toujours correcte</b>. Toute vérification sur une image fixe laisse passer ce défaut",
+        "<b>Isolé par bissection.</b> Un cube forcément visible a été soumis via le même collecteur et le même appel ; <b>le cube est apparu</b> — le chemin de rendu était vivant, la faute était du côté du modèle et de la pose",
+        "<b>La barrière a été refaite.</b> Elle déplace volontairement chaque os enfant, appelle la remise à zéro et exige que la boîte revienne exactement au repos. Contre l'ancien code elle échoue <b>14 fois sur 14</b>, de 0,36 à 0,55 bloc"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>La disparition du scintillement des portes reste non prouvée.</b> La V4.3.3.1 a retiré 182 paires de faces coplanaires ; savoir si c'est ce que vous voyez demande de le regarder",
+        "<b>Le signalement selon lequel d'autres objets s'envolent aussi n'a pas été mesuré.</b> L'accumulation ci-dessus est établie pour les armes ; rien n'a été mesuré pour les autres objets"
+      ],
+      "known_limitations": [
+        "Il n'y a pas de client Minecraft sur cette machine. <b>Rien n'est annoncé corrigé avant d'avoir été vu fonctionner.</b> Ce diagnostic a été tranché par votre propre journal et vos captures"
+      ]
     }
   ],
   "roadmap": {

@@ -2395,6 +2395,29 @@
       "known_limitations": [
         "Não há cliente de Minecraft nesta máquina. O que aparece na tela é inverificável aqui; <b>nada é descrito como corrigido antes de ter sido visto funcionando</b>"
       ]
+    },
+    {
+      "id": "v4.3.3.3",
+      "release": "V4.3.3.3",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "A pose da arma se acumulava a cada quadro — só o osso raiz era redefinido",
+      "summary": "Encontrada a causa de a arma ficar <b>invisível na mão e espalhada pelo céu ao ser derrubada</b>. A redefinição da pose redefinia <b>apenas o osso raiz</b>, então as transformações dos <b>ossos filhos que carregam a animação se acumulavam a cada quadro</b> — 0,36 a 0,55 bloco por quadro. Em cerca de cinco segundos a arma está a 36–55 blocos.",
+      "highlights": [
+        "<b>{@code ModelPart.resetPose()} só redefine aquela parte.</b> Nunca toca nos filhos — o bytecode de 26.2 não tem <b>nenhuma</b> referência a children ou forEach. A animação vive nos filhos (recuo, balanço, ferrolho, carregador, cão)",
+        "<b>A correção redefine a árvore inteira:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Por que quatro versões passaram batido.</b> O acúmulo começa no segundo quadro, então <b>o primeiro está sempre certo</b>. Qualquer verificação sobre um quadro parado deixa esse defeito passar",
+        "<b>Isolado por bisseção.</b> Um cubo que tem de aparecer foi submetido pelo mesmo coletor e a mesma chamada; <b>o cubo apareceu</b> — o caminho de desenho estava vivo e a culpa era do modelo e da pose",
+        "<b>A barreira foi refeita.</b> Ela desloca de propósito cada osso filho, chama a redefinição e exige que a caixa volte exatamente ao repouso. Contra o código anterior reprova <b>14 de 14</b>, em 0,36–0,55 bloco"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Se a cintilação das portas sumiu continua não provado.</b> A V4.3.3.1 removeu 182 pares de faces coplanares; se são o que você vê só olhando",
+        "<b>O relato de que outros itens também voam para longe não foi medido.</b> O acúmulo acima está provado para armas; para outros itens nada foi medido"
+      ],
+      "known_limitations": [
+        "Não há cliente de Minecraft nesta máquina. <b>Nada é descrito como corrigido antes de ter sido visto funcionando.</b> Este diagnóstico foi decidido pelo seu próprio registro e suas capturas"
+      ]
     }
   ],
   "roadmap": {

@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Senjata digambar 13 blok jauhnya dari item — salah satuan, sudah diperbaiki",
+   "summary": "Pose senjata menumpuk setiap frame — hanya tulang akar yang direset",
    "releases": [
+    {
+     "version": "V4.3.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Pose senjata menumpuk setiap frame — hanya tulang akar yang direset",
+     "summary": "Penyebab senjata <b>tak terlihat di tangan dan berserak di langit saat dijatuhkan</b> sudah ditemukan. Rutin yang mengembalikan pose hanya mereset <b>tulang akar</b>, sehingga transformasi pada <b>tulang anak yang membawa animasi menumpuk setiap frame</b> — 0,36 sampai 0,55 blok per frame. Dalam sekitar lima detik senjata sudah 36–55 blok jauhnya.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>{@code ModelPart.resetPose()} hanya mereset bagian itu.</b> Ia tak pernah menyentuh anak-anaknya — bytecode 26.2 <b>sama sekali tidak</b> menyebut children atau forEach. Animasi ada pada tulang anak (recoil, ayunan, kokang, magasin, palu)",
+        "<b>Perbaikannya mereset seluruh pohon:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Kenapa empat rilis melewatkannya.</b> Akumulasi mulai pada frame kedua, jadi <b>frame pertama selalu benar</b>. Pemeriksaan apa pun atas satu gambar diam akan meloloskan cacat ini",
+        "<b>Diisolasi dengan biseksi.</b> Sebuah kubus yang pasti terlihat dikirim lewat collector dan bentuk panggilan yang sama; <b>kubus itu muncul</b> — jalur render hidup, dan kesalahannya di sisi model dan pose",
+        "<b>Gerbangnya dibangun ulang.</b> Ia sengaja menggeser tiap tulang anak, memanggil reset, dan menuntut kotak kembali persis ke rest. Terhadap kode lama ia gagal <b>14 dari 14</b>, sebesar 0,36–0,55 blok"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>Apakah kedipan pintu hilang masih belum terbukti.</b> V4.3.3.1 menghapus 182 pasang muka sebidang; apakah itu yang Anda lihat baru diketahui setelah dilihat",
+        "<b>Laporan bahwa item lain juga terbang saat dijatuhkan belum diukur.</b> Akumulasi di atas terbukti untuk senjata; untuk item lain belum ada yang diukur"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Tidak ada klien Minecraft di mesin ini. <b>Tidak ada yang disebut diperbaiki sebelum terlihat berfungsi.</b> Diagnosis ini ditentukan oleh log dan tangkapan layar Anda sendiri"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.2",
      "date": "2026-09-09",

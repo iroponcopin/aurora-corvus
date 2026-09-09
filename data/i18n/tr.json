@@ -2393,6 +2393,29 @@
       "known_limitations": [
         "Bu makinede Minecraft istemcisi yok. Ekrandaki her şey burada doğrulanamaz; <b>çalıştığı görülmeden hiçbir şey düzeldi diye yazılmaz</b>"
       ]
+    },
+    {
+      "id": "v4.3.3.3",
+      "release": "V4.3.3.3",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Silahın duruşu her karede birikiyordu — yalnızca kök kemik sıfırlanıyordu",
+      "summary": "Silahın <b>elde görünmemesinin ve düşürüldüğünde gökyüzüne saçılmasının</b> nedeni bulundu. Duruşu sıfırlayan işlem <b>yalnızca kök kemiği</b> sıfırlıyordu; animasyonu taşıyan <b>alt kemiklerin dönüşümleri her karede birikiyordu</b> — kare başına 0,36–0,55 blok. Yaklaşık beş saniyede silah 36–55 blok uzakta oluyor.",
+      "highlights": [
+        "<b>{@code ModelPart.resetPose()} yalnızca o parçayı sıfırlar.</b> Çocuklara hiç dokunmaz — 26.2 bytecode'unda children ya da forEach'e <b>hiçbir</b> gönderme yok. Animasyon çocuk kemiklerde yaşar (geri tepme, salınım, sürgü, şarjör, horoz)",
+        "<b>Düzeltme tüm ağacı sıfırlar:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Dört sürüm neden kaçırdı.</b> Birikme ikinci karede başlar, dolayısıyla <b>ilk kare her zaman doğrudur</b>. Tek bir donmuş kareyi ölçen her denetim bu kusuru geçirir",
+        "<b>İkiye bölerek yalıtıldı.</b> Görünmesi zorunlu bir küp, aynı toplayıcı ve aynı çağrıyla gönderildi; <b>küp göründü</b> — çizim yolu canlıydı, kabahat model ve duruş tarafındaydı",
+        "<b>Denetim yeniden yazıldı.</b> Her alt kemiği bilerek kaydırır, sıfırlamayı çağırır ve kutunun tam olarak dinlenme konumuna dönmesini şart koşar. Eski kodda <b>14'te 14</b> kırmızı verir, 0,36–0,55 blokla"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Kapı titremesinin geçtiği hâlâ kanıtlanmadı.</b> V4.3.3.1, 182 eş düzlemli yüz çiftini kaldırdı; gördüğünüz titreme onlar mı, bakılınca anlaşılır",
+        "<b>Diğer eşyaların da düşürüldüğünde uçup gittiği bildirimi ölçülmedi.</b> Yukarıdaki birikme silahlar için kanıtlı; diğer eşyalar için hiçbir şey ölçülmedi"
+      ],
+      "known_limitations": [
+        "Bu makinede Minecraft istemcisi yok. <b>Çalıştığı görülmeden hiçbir şey düzeldi diye yazılmaz.</b> Bu teşhis sizin günlüğünüz ve ekran görüntülerinizle kesinleşti"
+      ]
     }
   ],
   "roadmap": {

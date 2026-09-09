@@ -228,8 +228,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">총이 아이템에서 13 블록 떨어진 곳에 그려지고 있었습니다 — 단위 착오 수정</p>
+      <p class="cl__groupSummary">총의 자세가 매 프레임 누적되고 있었습니다 — 뿌리 뼈만 되돌리고 있었습니다</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.3">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-3">
+          <h3 class="cl__version">V4.3.3.3</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-3-3" hidden><p class="cl__entryTitle">총의 자세가 매 프레임 누적되고 있었습니다 — 뿌리 뼈만 되돌리고 있었습니다</p><p class="cl__lede">총이 &lt;b&gt;손에 들면 보이지 않고, 떨어뜨리면 하늘에 흩어지던&lt;/b&gt; 원인을 찾았습니다. 자세를 rest 로 되돌리는 처리가 &lt;b&gt;뿌리 뼈만&lt;/b&gt; 되돌리고 있어, 움직임을 담당하는 &lt;b&gt;자식 뼈의 변환이 매 프레임 누적&lt;/b&gt;되었습니다 — 프레임당 0.36〜0.55 블록. 약 5 초면 36〜55 블록 밖으로 날아갑니다.</p><div class="cl__section"><h4 class="cl__sectionTitle">변경 사항 <span>(5)</span></h4><ul class="cl__list"><li>&lt;b&gt;{@code ModelPart.resetPose()} 는 그 파트만 되돌립니다.&lt;/b&gt; 자식은 전혀 건드리지 않습니다 — 26.2 바이트코드에 children / forEach 참조가 &lt;b&gt;하나도&lt;/b&gt; 없습니다. 움직임은 자식 뼈(반동·흔들림·노리쇠·탄창·공이)에 있습니다</li><li>&lt;b&gt;고치는 방법은 나무 전체를 되돌리는 것입니다:&lt;/b&gt; {@code root.getAllParts().forEach(ModelPart::resetPose)}</li><li>&lt;b&gt;왜 네 판이나 놓쳤는가.&lt;/b&gt; 누적은 두 번째 프레임부터 시작하므로 &lt;b&gt;첫 프레임은 언제나 옳습니다&lt;/b&gt;. 정지 화면 한 장을 재는 검사는 이 결함을 반드시 통과시킵니다</li><li>&lt;b&gt;이분법으로 좁혔습니다.&lt;/b&gt; 반드시 보여야 할 정육면체를 같은 collector·같은 호출로 제출했더니 &lt;b&gt;정육면체는 보였습니다&lt;/b&gt; — 그리기 경로는 살아 있었고, 원인은 모델과 자세 쪽이었습니다</li><li>&lt;b&gt;관문을 다시 만들었습니다.&lt;/b&gt; 자식 뼈를 일부러 어긋내고 되돌린 뒤, 상자가 정확히 rest 로 돌아오는지를 잽니다. 이전 코드에서는 &lt;b&gt;14/14&lt;/b&gt; 가 0.36〜0.55 블록으로 빨강입니다</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">주의 사항 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>&lt;b&gt;문 깜빡임이 사라졌는지는 아직 미확인입니다.&lt;/b&gt; V4.3.3.1 에서 동일 평면 면 182 쌍을 제거했지만, 그것이 보고 계신 깜빡임인지는 실제로 보기 전까지 알 수 없습니다</li><li>&lt;b&gt;「총 이외의 아이템도 떨어뜨리면 날아간다」는 보고는 아직 측정하지 못했습니다.&lt;/b&gt; 위 누적은 총에 대해서는 확정됐지만, 다른 아이템에 대해서는 아무것도 측정하지 못했습니다</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">이 시점에 미구현·미확인이었던 사항 <span>(1)</span></h4><ul class="cl__list"><li>이 기기에는 Minecraft 클라이언트가 없습니다. &lt;b&gt;실제로 동작하는 것을 보기 전에는 「고쳤다」고 쓰지 않습니다.&lt;/b&gt; 이번 원인 규명도 당신의 실기 로그와 화면이 결정적이었습니다</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.2">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-2">
           <h3 class="cl__version">V4.3.3.2</h3>

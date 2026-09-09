@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "El arma se dibujaba a 13 bloques del objeto: confusión de unidades, corregida",
+   "summary": "La pose del arma se acumulaba en cada fotograma: solo se reiniciaba el hueso raíz",
    "releases": [
+    {
+     "version": "V4.3.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "La pose del arma se acumulaba en cada fotograma: solo se reiniciaba el hueso raíz",
+     "summary": "Se ha encontrado la causa de que el arma fuera <b>invisible en la mano y quedara esparcida por el cielo al tirarla</b>. El reinicio de la pose solo reiniciaba <b>el hueso raíz</b>, de modo que las transformaciones de los <b>huesos hijos que llevan la animación se acumulaban cada fotograma</b>: de 0,36 a 0,55 bloques por fotograma. En unos cinco segundos el arma está a 36–55 bloques.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "<b>{@code ModelPart.resetPose()} solo reinicia esa parte.</b> Nunca toca a los hijos — el bytecode de 26.2 no contiene <b>ninguna</b> referencia a children ni forEach. La animación vive en los hijos (retroceso, balanceo, cerrojo, cargador, martillo)",
+        "<b>El arreglo reinicia todo el árbol:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Por qué cuatro versiones lo pasaron por alto.</b> La acumulación empieza en el segundo fotograma, así que <b>el primero siempre es correcto</b>. Cualquier comprobación sobre una imagen fija deja pasar este defecto",
+        "<b>Se aisló por bisección.</b> Se envió un cubo que debe verse por el mismo colector y la misma llamada; <b>el cubo apareció</b> — la ruta de dibujado estaba viva y la culpa era del modelo y la pose",
+        "<b>La barrera se rehízo.</b> Desplaza a propósito cada hueso hijo, llama al reinicio y exige que la caja vuelva exactamente al reposo. Contra el código anterior falla <b>14 de 14</b>, por 0,36–0,55 bloques"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "<b>Que el parpadeo de las puertas haya desaparecido sigue sin probarse.</b> La V4.3.3.1 quitó 182 pares de caras coplanares; si son lo que ves solo se sabrá al mirarlo",
+        "<b>El informe de que otros objetos también salen volando no se ha medido.</b> La acumulación anterior está probada para armas; para otros objetos no se ha medido nada"
+       ]
+      },
+      {
+       "title": "Lo que aún no estaba implementado o confirmado en este momento",
+       "items": [
+        "No hay cliente de Minecraft en esta máquina. <b>Nada se describe como arreglado hasta haberlo visto funcionar.</b> Este diagnóstico lo decidieron tu propio registro y tus capturas"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.2",
      "date": "2026-09-09",

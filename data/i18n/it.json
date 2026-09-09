@@ -2397,6 +2397,29 @@
       "known_limitations": [
         "Su questa macchina non c'è un client Minecraft. Ciò che appare a schermo è qui non verificabile; <b>nulla è descritto come risolto prima di essere stato visto funzionare</b>"
       ]
+    },
+    {
+      "id": "v4.3.3.3",
+      "release": "V4.3.3.3",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "La posa dell'arma si accumulava a ogni fotogramma: veniva azzerato solo l'osso radice",
+      "summary": "Trovata la causa dell'arma <b>invisibile in mano e sparsa nel cielo una volta lasciata cadere</b>. L'azzeramento della posa reimpostava <b>solo l'osso radice</b>, così le trasformazioni delle <b>ossa figlie che portano l'animazione si accumulavano a ogni fotogramma</b>: 0,36–0,55 blocchi per fotogramma. In circa cinque secondi l'arma è a 36–55 blocchi.",
+      "highlights": [
+        "<b>{@code ModelPart.resetPose()} azzera solo quella parte.</b> Non tocca mai i figli — nel bytecode 26.2 non c'è <b>alcun</b> riferimento a children o forEach. L'animazione sta sui figli (rinculo, oscillazione, otturatore, caricatore, cane)",
+        "<b>La correzione azzera tutto l'albero:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Perché quattro versioni non l'hanno visto.</b> L'accumulo parte dal secondo fotogramma, quindi <b>il primo è sempre corretto</b>. Qualunque controllo su un fermo immagine lascia passare questo difetto",
+        "<b>Isolato per bisezione.</b> Un cubo che deve essere visibile è stato inviato con lo stesso collector e la stessa chiamata; <b>il cubo è comparso</b> — il percorso di disegno era vivo e la colpa stava nel modello e nella posa",
+        "<b>Il controllo è stato rifatto.</b> Sposta di proposito ogni osso figlio, chiama l'azzeramento e pretende che la scatola torni esattamente a riposo. Contro il codice precedente fallisce <b>14 su 14</b>, di 0,36–0,55 blocchi"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Se lo sfarfallio delle porte sia sparito resta non provato.</b> La V4.3.3.1 ha rimosso 182 coppie di facce complanari; se siano quello che vedi si saprà solo guardando",
+        "<b>La segnalazione che anche altri oggetti volino via non è stata misurata.</b> L'accumulo sopra è provato per le armi; per gli altri oggetti non è stato misurato nulla"
+      ],
+      "known_limitations": [
+        "Su questa macchina non c'è un client Minecraft. <b>Nulla è descritto come risolto prima di essere stato visto funzionare.</b> Questa diagnosi è stata decisa dal tuo registro e dalle tue schermate"
+      ]
     }
   ],
   "roadmap": {

@@ -228,8 +228,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">枪械被画在离物品 13 格的地方 —— 单位弄错，已修正</p>
+      <p class="cl__groupSummary">枪械的姿态每帧不断累积 —— 只重置了根骨骼</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.3">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-3">
+          <h3 class="cl__version">V4.3.3.3</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-3-3" hidden><p class="cl__entryTitle">枪械的姿态每帧不断累积 —— 只重置了根骨骼</p><p class="cl__lede">枪械&lt;b&gt;手持时不可见、掉落后散布在天上&lt;/b&gt;的原因已找到。把姿态归位的处理&lt;b&gt;只重置了根骨骼&lt;/b&gt;，而承载动画的&lt;b&gt;子骨骼变换每帧不断累积&lt;/b&gt;——每帧 0.36 至 0.55 格。约五秒后，枪就在 36 至 55 格之外。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(5)</span></h4><ul class="cl__list"><li>&lt;b&gt;{@code ModelPart.resetPose()} 只重置该部件。&lt;/b&gt;它从不触碰子部件——26.2 的字节码中&lt;b&gt;完全没有&lt;/b&gt;对 children 或 forEach 的引用。而动画正是挂在子骨骼上（后坐、摆动、枪机、弹匣、击锤）</li><li>&lt;b&gt;修正是重置整棵树：&lt;/b&gt;{@code root.getAllParts().forEach(ModelPart::resetPose)}</li><li>&lt;b&gt;为何四个版本都没发现。&lt;/b&gt;累积从第二帧才开始，因此&lt;b&gt;第一帧永远是正确的&lt;/b&gt;。任何只量一张静止画面的检查，都会放过这个缺陷</li><li>&lt;b&gt;用二分法定位。&lt;/b&gt;把一个必定可见的立方体，经由同一个 collector、同样的调用提交；&lt;b&gt;立方体出现了&lt;/b&gt;——说明渲染路径是活的，问题出在模型与姿态一侧</li><li>&lt;b&gt;关卡已重做。&lt;/b&gt;它故意移动每一根子骨骼，调用重置，并要求盒子精确回到静止位置。对旧代码判红 &lt;b&gt;14 中 14&lt;/b&gt;，偏差 0.36–0.55 格</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>&lt;b&gt;门的闪烁是否消失仍未证实。&lt;/b&gt;V4.3.3.1 移除了 182 对共面面；它们是否就是您看到的闪烁，要看过才知道</li><li>&lt;b&gt;「其他物品掉落也会飞走」这一报告尚未测量。&lt;/b&gt;上述累积对枪械已确证；对其他物品则未测量任何内容</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(1)</span></h4><ul class="cl__list"><li>本机没有 Minecraft 客户端。&lt;b&gt;在亲眼看到确实可用之前，不写「已修复」。&lt;/b&gt;这次的定位，是靠您的日志和截图定下的</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.2">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-2">
           <h3 class="cl__version">V4.3.3.2</h3>

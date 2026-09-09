@@ -228,8 +228,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">銃がアイテムから 13 ブロック離れて描かれていた ―― 位置の取り違えを修正</p>
+      <p class="cl__groupSummary">銃の姿勢が毎フレーム積み上がっていた ―― 根しか rest へ戻していなかった</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.3">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-3">
+          <h3 class="cl__version">V4.3.3.3</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-3-3" hidden><p class="cl__entryTitle">銃の姿勢が毎フレーム積み上がっていた ―― 根しか rest へ戻していなかった</p><p class="cl__lede">銃が&lt;b&gt;手に持つと見えず、落とすと空に散らばっていた&lt;/b&gt;原因を特定しました。姿勢を rest へ戻す処理が&lt;b&gt;根のボーンしか戻しておらず&lt;/b&gt;、動きを付けている&lt;b&gt;子ボーンの変換が毎フレーム積み上がって&lt;/b&gt;いました。1 フレームあたり 0.36〜0.55 ブロック。約 5 秒で 36〜55 ブロック彼方へ飛びます。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(5)</span></h4><ul class="cl__list"><li>&lt;b&gt;{@code ModelPart.resetPose()} は、そのパートだけを戻します。&lt;/b&gt;子ボーンには触れません —— 26.2 のバイトコードに children / forEach への参照が&lt;b&gt;1 つもない&lt;/b&gt;ことを確認しました。動きを付けるのは子(反動・揺れ・遊底・弾倉・撃鉄)なので、根だけ戻しても意味がありませんでした</li><li>&lt;b&gt;直し方は木の全体を戻すことです。&lt;/b&gt;{@code root.getAllParts().forEach(ModelPart::resetPose)}</li><li>&lt;b&gt;なぜ 4 版も見つからなかったか。&lt;/b&gt;積み上がりは 2 フレーム目から始まるので、&lt;b&gt;最初のフレームだけは常に正しい&lt;/b&gt;。静止画を 1 枚測る検査は、この欠陥を必ず緑で通します。位置・大きさ・外接箱・テクスチャ・描画呼び出しを実測してもすべて正常に見えたのはこのためです</li><li>&lt;b&gt;切り分けは二分探索で行いました。&lt;/b&gt;銃と同じ collector・同じ呼び出し形で、確実に見えるはずの立方体も描かせたところ&lt;b&gt;立方体は見えた&lt;/b&gt; —— 描画経路は生きており、原因は模型・姿勢の側だと確定しました</li><li>&lt;b&gt;門を作り直しました。&lt;/b&gt;子ボーンを故意にずらしてから戻し、箱が rest に一致することを測ります。旧コードでは &lt;b&gt;14/14 が赤&lt;/b&gt;(ずれ 0.36〜0.55 ブロック)になります</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>&lt;b&gt;扉のちらつきが消えたかどうかは、まだ未確認です。&lt;/b&gt;V4.3.3.1 で同一平面の面 182 組を除去しましたが、それがあなたの見ているちらつきそのものかは、実際に見るまで分かりません</li><li>&lt;b&gt;「銃以外のアイテムもドロップで飛ぶ」件は、まだ測れていません。&lt;/b&gt;銃については上の積み上がりが原因と確定しましたが、他のアイテムについては何も測っていません</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(1)</span></h4><ul class="cl__list"><li>この開発機に Minecraft クライアントはありません。&lt;b&gt;実際に見て確認するまで「直った」とは書きません。&lt;/b&gt;今回の原因特定も、あなたの実機ログと画面が決め手でした</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.2">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-2">
           <h3 class="cl__version">V4.3.3.2</h3>

@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "The gun was being drawn 13 blocks away from the item — a unit mix-up, fixed",
+   "summary": "The gun's pose accumulated every frame — only the root bone was being reset",
    "releases": [
+    {
+     "version": "V4.3.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "The gun's pose accumulated every frame — only the root bone was being reset",
+     "summary": "The cause of the gun being <b>invisible in the hand and scattered across the sky when dropped</b> has been found. The routine that returns the pose to rest was resetting <b>only the root bone</b>, so the transforms on the <b>child bones that carry the animation accumulated every frame</b> — 0.36 to 0.55 blocks per frame. In about five seconds the gun is 36 to 55 blocks away.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "<b>{@code ModelPart.resetPose()} resets only that part.</b> It never touches the children — confirmed in the 26.2 bytecode, which contains <b>no reference at all</b> to children or forEach. The animation lives on the children (recoil, sway, bolt, magazine, hammer), so resetting the root alone did nothing",
+        "<b>The fix is to reset the whole tree:</b> {@code root.getAllParts().forEach(ModelPart::resetPose)}",
+        "<b>Why four releases missed it.</b> The accumulation starts on the second frame, so <b>the first frame is always correct</b>. Any check that measures one still frame passes this defect. That is why position, size, extents, textures and the render call all measured normal",
+        "<b>It was isolated by bisection.</b> A cube that must be visible was submitted through the same collector and the same call shape as the gun; <b>the cube appeared</b>, which proved the render path was alive and put the fault on the model and pose side",
+        "<b>The gate has been rebuilt.</b> It deliberately displaces every child bone, calls the reset, and requires the box to return exactly to rest. Against the old code it fails <b>14 of 14</b>, by 0.36–0.55 blocks"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "<b>Whether the door flicker is gone is still unproven.</b> V4.3.3.1 removed 182 coplanar face pairs, but whether they are the flicker you see cannot be known until it is looked at",
+        "<b>The report that non-gun items also fly off when dropped has not been measured.</b> The accumulation above is established for guns; nothing has been measured for other items"
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "There is no Minecraft client on this development machine. <b>Nothing is described as fixed until it has been seen working.</b> This diagnosis was settled by your own log and screenshots"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.2",
      "date": "2026-09-09",
