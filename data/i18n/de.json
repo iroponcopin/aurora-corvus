@@ -2340,6 +2340,31 @@
       "known_limitations": [
         "Die bekreidbaren Decks und das Signal für den Sturm gehören beide zur Aschestadt (sorakaze_fallout). Ohne dieses Modul markiert die Kreide keinen Boden und die Sturmbremsung greift nie — kein Fehler, es passiert schlicht nichts"
       ]
+    },
+    {
+      "id": "v4.3.3.1",
+      "release": "V4.3.3.1",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Alle 182 koplanaren Flächenpaare aus den Türen entfernt; Hüllkörper der Waffe jetzt gemessen",
+      "summary": "Die beiden Dinge, die V4.3.2 und V4.3.3 als behoben ausgaben, waren <b>nicht behoben</b>. Diese Angaben wurden zurückgezogen. Diese Version behebt ausschließlich tatsächlich gemessene Fehler. <b>Ob das Türflackern verschwindet, ist unbewiesen, und die unsichtbare Waffe ist nicht behoben — die Ursache wurde nicht gefunden.</b>",
+      "highlights": [
+        "<b>Alle 182 Flächenpaare (5.566 px²), die auf derselben Ebene mit derselben Normalen überlappend lagen, wurden aus den Türmodellen entfernt.</b> Zwei undurchsichtige Flächen in derselben Tiefe tauschen bei Kamerabewegung die Reihenfolge. V4.3.2 entfernte eine <b>andere</b> Menge (254 Flächen an Zellschnitten), V4.3.3 fügte einen <b>anderen</b> Mechanismus hinzu; diese 182 rührte keine der beiden an",
+        "<b>Jedes einzelne dieser 182 wurde gezeichnet.</b> Die Türen sind mit {@code noOcclusion} registriert, daher verdecken die 726 cullface-Angaben <b>überhaupt nichts</b> (canOcclude=false → leere Verdeckungsform → immer gezeichnet). Im Bytecode nachverfolgt",
+        "Die Korrektur stellt die dekorative Fläche 0,002 nach vorn (ein Achttausendstel eines 1/16-Blocks, 0,125 mm). Eine Fläche zu löschen würde dort ein Loch reißen, wo die Überlappung nur teilweise ist",
+        "<b>Der Hüllkörper der Waffe wird jetzt aus dem Modell gemessen statt fest verdrahtet.</b> V4.3.2 und V4.3.3 lieferten für alle vierzehn Waffen denselben Kasten (±1,4 / ±0,7). Gemessen sind die Waffen in der Hand 0,24 bis 1,45 Blöcke groß — keine einzige passt dazu",
+        "Dieser Kasten bestimmt <b>die Höhe eines fallen gelassenen Gegenstands und die Streuung eines Stapels</b> (zur Skalierung wird er nie benutzt). Waffen, die im Boden versinken oder schweben, sind damit korrigiert",
+        "Zwei neue Prüfungen. <b>Türen</b>: ein einziges koplanares überlappendes Paar färbt sie rot, mit drei Kontrollen. <b>Waffen</b>: das echte {@code ModelPart.render} wird ausgeführt und die Größe in der Hand <b>in Blöcken</b> gemessen"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Die unsichtbare Waffe ist NICHT behoben.</b> Auf jedem Weg, den diese Maschine ausführen kann, werden die Waffen mit 0,24 bis 1,45 Blöcken korrekt dargestellt. Die Ursache wurde nicht gefunden. Der als kleiner weißer Punkt erscheinende fallen gelassene Gegenstand bleibt <b>ungelöst</b>",
+        "<b>Ob das Türflackern verschwindet, ist unbewiesen.</b> Die 182 Paare waren ein gemessener Fehler, aber ob sie das von Ihnen gesehene Flackern sind, lässt sich erst beim Hinsehen feststellen"
+      ],
+      "known_limitations": [
+        "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. Alles, was auf dem Bildschirm erscheint, ist hier strukturell nicht überprüfbar; deshalb wird <b>nichts als behoben bezeichnet, bevor es funktionierend gesehen wurde</b>",
+        "Siebenundsechzig Paare derselben Art bleiben in anderen Baublöcken (Sortierer, Ampeln, Pumpen, Geldautomat). Sie wurden nicht gemeldet und bleiben in dieser Version unangetastet"
+      ]
     }
   ],
   "roadmap": {

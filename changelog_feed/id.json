@@ -7,8 +7,42 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Disiplin garasi: petak dan kait, bahan bakar terendam banjir, dan satu tabel tabrakan",
+   "summary": "Seluruh 182 pasang muka sebidang dihapus dari pintu; kotak batas senjata kini diukur",
    "releases": [
+    {
+     "version": "V4.3.3.1",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Seluruh 182 pasang muka sebidang dihapus dari pintu; kotak batas senjata kini diukur",
+     "summary": "Dua hal yang V4.3.2 dan V4.3.3 nyatakan sudah diperbaiki ternyata <b>belum</b>. Pernyataan itu sudah ditarik. Rilis ini hanya memperbaiki cacat yang benar-benar terukur. <b>Apakah kedipan pintu hilang belum terbukti, dan senjata yang tak terlihat belum diperbaiki — penyebabnya belum ditemukan.</b>",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>Seluruh 182 pasang muka (5.566 px²) yang berada di bidang yang sama, dengan normal yang sama dan saling tumpang tindih, telah dihapus dari model pintu.</b> Dua muka buram pada kedalaman yang sama akan bertukar tempat begitu kamera bergerak. V4.3.2 menghapus himpunan <b>lain</b> (254 muka pada potongan sel) dan V4.3.3 menambahkan mekanisme <b>lain</b>; keduanya tidak menyentuh 182 ini",
+        "<b>Semua 182 itu memang digambar.</b> Pintu didaftarkan dengan {@code noOcclusion}, sehingga 726 deklarasi cullface <b>tidak menyaring apa pun</b> (canOcclude=false → bentuk oklusi kosong → selalu digambar). Ditelusuri lewat bytecode",
+        "Perbaikannya memajukan muka hias sebesar 0,002 (seperdelapan ribu blok 1/16, 0,125 mm). Menghapus muka justru akan melubangi bagian yang tumpang tindihnya hanya sebagian",
+        "<b>Kotak batas senjata kini diukur dari model, bukan ditulis tetap.</b> V4.3.2 dan V4.3.3 mengembalikan kotak yang sama (±1,4 / ±0,7) untuk keempat belas senjata. Diukur, di tangan senjata berkisar 0,24 sampai 1,45 blok — tak satu pun cocok",
+        "Kotak itu menentukan <b>ketinggian barang yang dijatuhkan dan sebaran tumpukannya</b> (tidak pernah dipakai untuk penskalaan). Senjata yang tenggelam ke tanah atau melayang jadi terkoreksi",
+        "Dua gerbang baru. <b>Pintu</b>: satu pasang sebidang yang tumpang tindih saja membuatnya merah, dengan tiga kontrol. <b>Senjata</b>: menjalankan {@code ModelPart.render} yang asli dan mengukur ukuran di tangan <b>dalam blok</b>"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>Senjata yang tak terlihat BELUM diperbaiki.</b> Pada setiap jalur yang bisa dijalankan mesin ini, senjata digambar dengan benar antara 0,24 dan 1,45 blok. Penyebabnya belum ditemukan. Barang jatuh yang tampak sebagai titik putih kecil masih <b>belum terpecahkan</b>",
+        "<b>Apakah kedipan pintu hilang belum terbukti.</b> 182 pasang itu cacat yang terukur, tetapi apakah itu kedipan yang Anda lihat baru diketahui setelah dilihat"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Tidak ada klien Minecraft di mesin pengembangan ini. Apa pun yang tampil di layar secara struktural tak bisa diverifikasi di sini, sehingga <b>tidak ada yang akan disebut diperbaiki sebelum terlihat benar-benar berfungsi</b>",
+        "Enam puluh tujuh pasang sejenis masih ada di blok bangunan lain (penyortir, lampu lalu lintas, pompa, ATM). Tidak dilaporkan, jadi tidak disentuh di rilis ini"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3",
      "date": "2026-09-09",

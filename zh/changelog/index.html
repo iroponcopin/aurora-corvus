@@ -228,8 +228,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">车库纪律：车位与吊钩、被水泡过的燃料，以及一张碰撞表</p>
+      <p class="cl__groupSummary">从门中移除全部 182 对共面面；枪械包围盒改为实测</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.1">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-1">
+          <h3 class="cl__version">V4.3.3.1</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-3-1" hidden><p class="cl__entryTitle">从门中移除全部 182 对共面面；枪械包围盒改为实测</p><p class="cl__lede">V4.3.2 与 V4.3.3 宣称修复的两件事&lt;b&gt;并未修复&lt;/b&gt;，那些说法已经撤回。本版本只修复真正测量到的缺陷。&lt;b&gt;门的闪烁是否消失尚未确认；枪械不可见的问题未修复，原因尚未查明。&lt;/b&gt;</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(6)</span></h4><ul class="cl__list"><li>&lt;b&gt;门模型中位于同一平面、法线相同且互相重叠的 182 对面（5,566 px²）已全部移除。&lt;/b&gt;同一深度上有两张不透明面，镜头一动前后就会互换。V4.3.2 移除的是&lt;b&gt;另一批&lt;/b&gt;（单元切口上的 254 张面），V4.3.3 加入的是&lt;b&gt;另一套&lt;/b&gt;机制，这 182 对两版都没碰到</li><li>&lt;b&gt;这 182 对全都在被绘制。&lt;/b&gt;门以 {@code noOcclusion} 注册，因此面上的 726 个 cullface &lt;b&gt;一个都不起作用&lt;/b&gt;（canOcclude=false → 空遮挡形状 → 始终绘制）。已通过字节码核实</li><li>修复方式是把装饰面向外挪 0.002（1/16 方块的八千分之一，0.125 毫米）。若改为删面，在只有部分重叠的地方会破洞</li><li>&lt;b&gt;枪械包围盒改为从模型实测，而非写死。&lt;/b&gt;V4.3.2 与 V4.3.3 对全部十四把枪返回同一个盒子（±1.4 / ±0.7）。实测手持时为 0.24 至 1.45 方块，没有一把对得上</li><li>该盒子决定&lt;b&gt;掉落物的高度与成堆时的散布&lt;/b&gt;（从不用于缩放）。掉落的枪陷入地面或悬空的问题因此得到纠正</li><li>新增两道关卡。&lt;b&gt;门&lt;/b&gt;：只要有一对共面重叠即判红，并带三个对照。&lt;b&gt;枪&lt;/b&gt;：运行真正的 {@code ModelPart.render}，以&lt;b&gt;方块&lt;/b&gt;为单位测量手持尺寸</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>&lt;b&gt;枪械不可见的问题并未修复。&lt;/b&gt;在本机可运行的所有路径中，枪械均以 0.24 至 1.45 方块正确绘制，原因尚未查明。掉落物显示为小白点一事&lt;b&gt;仍未解决&lt;/b&gt;</li><li>&lt;b&gt;门的闪烁是否消失尚未确认。&lt;/b&gt;那 182 对是实测到的缺陷，但它们是否就是您看到的闪烁，要看过才知道</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(2)</span></h4><ul class="cl__list"><li>本开发机没有 Minecraft 客户端。屏幕上呈现的一切在此结构上无法验证，因此&lt;b&gt;在亲眼看到确实可用之前，不会写「已修复」&lt;/b&gt;</li><li>其他建筑方块（分拣机、信号灯、泵、ATM）中仍有同类的 67 对。它们未被报告，本版本不作改动</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3">
           <h3 class="cl__version">V4.3.3</h3>

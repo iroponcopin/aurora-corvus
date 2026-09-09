@@ -2347,6 +2347,31 @@
       "known_limitations": [
         "As lajes que aceitam giz e o sinal da tempestade pertencem à cidade de cinzas (sorakaze_fallout). Sem esse módulo o giz não marca chão algum e a frenagem da nevasca nunca dispara — não dá erro, simplesmente nada acontece"
       ]
+    },
+    {
+      "id": "v4.3.3.1",
+      "release": "V4.3.3.1",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "As 182 pares de faces coplanares removidas das portas; caixa da arma agora medida",
+      "summary": "As duas coisas que a V4.3.2 e a V4.3.3 declararam corrigidas <b>não estavam</b>. Essas declarações foram retiradas. Esta versão corrige apenas defeitos de fato medidos. <b>Se a cintilação das portas some, não está provado, e a arma invisível não foi corrigida: a causa não foi encontrada.</b>",
+      "highlights": [
+        "<b>Todos os 182 pares de faces (5.566 px²) que ficavam no mesmo plano, com a mesma normal e sobrepostos, foram removidos dos modelos de porta.</b> Duas faces opacas na mesma profundidade trocam de lugar quando a câmera se move. A V4.3.2 removeu um conjunto <b>diferente</b> (254 faces nos cortes de célula) e a V4.3.3 acrescentou um mecanismo <b>diferente</b>; nenhuma tocou nesses 182",
+        "<b>Todos os 182 estavam sendo desenhados.</b> As portas são registradas com {@code noOcclusion}, então as 726 declarações cullface não escondem <b>absolutamente nada</b> (canOcclude=false → forma de oclusão vazia → sempre desenhado). Rastreado no bytecode",
+        "A correção adianta a face decorativa em 0,002 (um oito-milésimo de um bloco 1/16, 0,125 mm). Apagar uma face abriria um buraco onde a sobreposição é apenas parcial",
+        "<b>A caixa da arma agora é medida do modelo em vez de fixada no código.</b> A V4.3.2 e a V4.3.3 devolviam a mesma caixa (±1,4 / ±0,7) para as catorze armas. Medidas, vão de 0,24 a 1,45 blocos na mão: nenhuma bate",
+        "Essa caixa governa <b>a altura em que um item derrubado fica e como uma pilha se espalha</b> (nunca é usada para escalar). Armas que afundam no chão ou flutuam ficam corrigidas",
+        "Duas barreiras novas. <b>Portas</b>: um único par coplanar sobreposto reprova, com três controles. <b>Armas</b>: executa-se o {@code ModelPart.render} real e mede-se o tamanho na mão <b>em blocos</b>"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>A arma invisível NÃO foi corrigida.</b> Em todos os caminhos que esta máquina consegue executar, as armas são desenhadas corretamente entre 0,24 e 1,45 blocos. A causa não foi encontrada. O item derrubado aparecendo como um pontinho branco continua <b>sem solução</b>",
+        "<b>Se a cintilação das portas some, não está provado.</b> Os 182 pares eram um defeito medido, mas se são a cintilação que você vê só se sabe olhando"
+      ],
+      "known_limitations": [
+        "Não há cliente de Minecraft nesta máquina de desenvolvimento. Tudo o que aparece na tela é estruturalmente inverificável aqui, por isso <b>nada será descrito como corrigido antes de ter sido visto funcionando</b>",
+        "Restam sessenta e sete pares do mesmo tipo em outros blocos (classificadores, semáforos, bombas, caixa eletrônico). Não foram relatados e ficam intactos"
+      ]
     }
   ],
   "roadmap": {

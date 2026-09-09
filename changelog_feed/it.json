@@ -7,8 +7,42 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Disciplina d'officina: stalli e ganci, carburante allagato e una tabella del traffico",
+   "summary": "Rimosse dalle porte tutte le 182 coppie di facce complanari; il volume dell'arma ora è misurato",
    "releases": [
+    {
+     "version": "V4.3.3.1",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Rimosse dalle porte tutte le 182 coppie di facce complanari; il volume dell'arma ora è misurato",
+     "summary": "Le due cose che la V4.3.2 e la V4.3.3 dichiaravano risolte <b>non lo erano</b>. Quelle dichiarazioni sono state ritirate. Questa versione risolve solo difetti realmente misurati. <b>Che lo sfarfallio delle porte sparisca non è provato, e l'arma invisibile non è risolta: la causa non è stata trovata.</b>",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "<b>Tutte le 182 coppie di facce (5.566 px²) che stavano sullo stesso piano, con la stessa normale e sovrapposte, sono state rimosse dai modelli delle porte.</b> Due facce opache alla stessa profondità si scambiano quando la telecamera si muove. La V4.3.2 ne rimosse un insieme <b>diverso</b> (254 facce sui tagli di cella) e la V4.3.3 aggiunse un meccanismo <b>diverso</b>; nessuna delle due toccò queste 182",
+        "<b>Tutte e 182 venivano disegnate.</b> Le porte sono registrate con {@code noOcclusion}, quindi le 726 dichiarazioni cullface non nascondono <b>assolutamente nulla</b> (canOcclude=false → forma di occlusione vuota → sempre disegnata). Verificato nel bytecode",
+        "La correzione porta la faccia decorativa avanti di 0,002 (un ottomillesimo di un blocco 1/16, 0,125 mm). Cancellare una faccia aprirebbe un buco dove la sovrapposizione è solo parziale",
+        "<b>Il volume dell'arma ora è misurato dal modello invece che scritto a mano.</b> La V4.3.2 e la V4.3.3 restituivano la stessa scatola (±1,4 / ±0,7) per tutte e quattordici le armi. Misurate, in mano vanno da 0,24 a 1,45 blocchi: nessuna corrisponde",
+        "Quella scatola governa <b>l'altezza a cui sta un oggetto caduto e come si sparpaglia una pila</b> (non è mai usata per scalare). Le armi che sprofondano nel terreno o galleggiano sono corrette",
+        "Due nuovi controlli. <b>Porte</b>: una sola coppia complanare sovrapposta li fa fallire, con tre controlli. <b>Armi</b>: si esegue il vero {@code ModelPart.render} e si misura la dimensione in mano <b>in blocchi</b>"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "<b>L'arma invisibile NON è risolta.</b> Su ogni percorso che questa macchina può eseguire le armi vengono disegnate correttamente tra 0,24 e 1,45 blocchi. La causa non è stata trovata. L'oggetto caduto che appare come un puntino bianco resta <b>irrisolto</b>",
+        "<b>Che lo sfarfallio delle porte sparisca non è provato.</b> Le 182 coppie erano un difetto misurato, ma se siano lo sfarfallio che vedi si saprà solo guardandolo"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Su questa macchina di sviluppo non c'è un client Minecraft. Tutto ciò che appare a schermo qui è strutturalmente non verificabile, perciò <b>nulla sarà descritto come risolto prima di essere stato visto funzionare</b>",
+        "Restano sessantasette coppie dello stesso tipo in altri blocchi (selezionatori, semafori, pompe, bancomat). Non sono state segnalate e restano intatte"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3",
      "date": "2026-09-09",

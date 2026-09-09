@@ -2348,6 +2348,31 @@
       "known_limitations": [
         "Las losas que admiten tiza y la señal de la tormenta pertenecen a la ciudad ceniza (sorakaze_fallout). Sin ese módulo la tiza no marca ningún suelo y el frenado de ventisca no se activa nunca — no da error, sencillamente no ocurre nada"
       ]
+    },
+    {
+      "id": "v4.3.3.1",
+      "release": "V4.3.3.1",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Los 182 pares de caras coplanares retirados de las puertas; caja del arma ahora medida",
+      "summary": "Las dos cosas que la V4.3.2 y la V4.3.3 declararon arregladas <b>no lo estaban</b>. Esas declaraciones han sido retiradas. Esta versión arregla solo defectos realmente medidos. <b>Que el parpadeo de las puertas desaparezca no está probado, y el arma invisible no está arreglada: no se ha encontrado la causa.</b>",
+      "highlights": [
+        "<b>Los 182 pares de caras (5.566 px²) que estaban en el mismo plano, con la misma normal y solapándose, se han retirado de los modelos de puerta.</b> Dos caras opacas a la misma profundidad se intercambian al mover la cámara. La V4.3.2 retiró un conjunto <b>distinto</b> (254 caras en los cortes de celda) y la V4.3.3 añadió un mecanismo <b>distinto</b>; ninguna tocó estos 182",
+        "<b>Los 182 se estaban dibujando.</b> Las puertas se registran con {@code noOcclusion}, así que las 726 declaraciones cullface no ocultan <b>absolutamente nada</b> (canOcclude=false → forma de oclusión vacía → siempre dibujado). Comprobado en el bytecode",
+        "El arreglo adelanta la cara decorativa 0,002 (una ochomilésima de un bloque 1/16, 0,125 mm). Borrar una cara abriría un agujero donde el solape es solo parcial",
+        "<b>La caja del arma ahora se mide del modelo en lugar de estar fijada en el código.</b> La V4.3.2 y la V4.3.3 devolvían la misma caja (±1,4 / ±0,7) para las catorce armas. Medidas, van de 0,24 a 1,45 bloques en la mano: ninguna coincide",
+        "Esa caja gobierna <b>la altura a la que queda un objeto tirado y cómo se dispersa un montón</b> (nunca se usa para escalar). Las armas que se hunden en el suelo o flotan quedan corregidas",
+        "Dos barreras nuevas. <b>Puertas</b>: un solo par coplanar solapado la pone en rojo, con tres controles. <b>Armas</b>: se ejecuta el {@code ModelPart.render} real y se mide el tamaño en la mano <b>en bloques</b>"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>El arma invisible NO está arreglada.</b> En todos los caminos que esta máquina puede ejecutar, las armas se dibujan correctamente entre 0,24 y 1,45 bloques. No se ha encontrado la causa. El objeto tirado que aparece como un pequeño punto blanco sigue <b>sin resolver</b>",
+        "<b>Que el parpadeo de las puertas desaparezca no está probado.</b> Los 182 pares eran un defecto medido, pero si son el parpadeo que ves solo se sabrá al mirarlo"
+      ],
+      "known_limitations": [
+        "No hay cliente de Minecraft en esta máquina de desarrollo. Todo lo que aparece en pantalla es estructuralmente inverificable aquí, por eso <b>nada se describirá como arreglado hasta haberlo visto funcionar</b>",
+        "Quedan sesenta y siete pares del mismo tipo en otros bloques de construcción (clasificadores, semáforos, bombas, cajero). No fueron reportados y quedan intactos"
+      ]
     }
   ],
   "roadmap": {

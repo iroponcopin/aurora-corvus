@@ -2347,6 +2347,31 @@
       "known_limitations": [
         "Les dalles traçables et le signal de tempête appartiennent tous deux à la ville cendrée (sorakaze_fallout). Sans ce module, la craie ne marque aucun sol et le ralentissement de blizzard ne se déclenche jamais — sans erreur, il ne se passe simplement rien"
       ]
+    },
+    {
+      "id": "v4.3.3.1",
+      "release": "V4.3.3.1",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Les 182 paires de faces coplanaires retirées des portes ; boîte englobante de l'arme désormais mesurée",
+      "summary": "Les deux choses que la V4.3.2 et la V4.3.3 annonçaient corrigées ne l'étaient <b>pas</b>. Ces annonces ont été retirées. Cette version ne corrige que des défauts réellement mesurés. <b>La disparition du scintillement des portes n'est pas prouvée, et l'arme invisible n'est pas corrigée : la cause n'a pas été trouvée.</b>",
+      "highlights": [
+        "<b>Les 182 paires de faces (5 566 px²) situées sur le même plan, de même normale et se recouvrant, ont toutes été retirées des modèles de portes.</b> Deux faces opaques à la même profondeur permutent dès que la caméra bouge. La V4.3.2 avait retiré un ensemble <b>différent</b> (254 faces sur les coupes de cellules) et la V4.3.3 ajouté un mécanisme <b>différent</b> ; aucune des deux n'a touché ces 182",
+        "<b>Ces 182 étaient toutes dessinées.</b> Les portes sont enregistrées avec {@code noOcclusion}, donc les 726 déclarations cullface n'éliminent <b>strictement rien</b> (canOcclude=false → forme d'occlusion vide → toujours dessiné). Vérifié dans le bytecode",
+        "La correction avance la face décorative de 0,002 (un huit-millième de bloc 1/16, soit 0,125 mm). Supprimer une face percerait un trou là où le recouvrement n'est que partiel",
+        "<b>La boîte englobante de l'arme est maintenant mesurée sur le modèle au lieu d'être écrite en dur.</b> La V4.3.2 et la V4.3.3 renvoyaient la même boîte (±1,4 / ±0,7) pour les quatorze armes. Mesurées, elles font de 0,24 à 1,45 bloc en main : aucune ne correspond",
+        "Cette boîte détermine <b>la hauteur d'un objet au sol et l'étalement d'une pile</b> (elle ne sert jamais à mettre à l'échelle). Les armes qui s'enfoncent dans le sol ou flottent sont corrigées",
+        "Deux nouvelles barrières. <b>Portes</b> : une seule paire coplanaire recouvrante la fait échouer, avec trois témoins. <b>Armes</b> : on exécute le vrai {@code ModelPart.render} et on mesure la taille en main <b>en blocs</b>"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>L'arme invisible n'est PAS corrigée.</b> Sur tous les chemins que cette machine peut exécuter, les armes s'affichent correctement entre 0,24 et 1,45 bloc. La cause n'a pas été trouvée. L'objet lâché apparaissant comme un petit point blanc reste <b>non résolu</b>",
+        "<b>La disparition du scintillement des portes n'est pas prouvée.</b> Les 182 paires étaient un défaut mesuré, mais savoir si elles sont bien le scintillement que vous voyez demande de le regarder"
+      ],
+      "known_limitations": [
+        "Il n'y a pas de client Minecraft sur cette machine de développement. Tout ce qui s'affiche à l'écran y est structurellement invérifiable ; c'est pourquoi <b>rien ne sera annoncé comme corrigé avant d'avoir été vu fonctionner</b>",
+        "Soixante-sept paires du même type subsistent dans d'autres blocs de construction (trieurs, feux, pompes, distributeur). Elles n'ont pas été signalées et restent intactes"
+      ]
     }
   ],
   "roadmap": {

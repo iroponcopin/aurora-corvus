@@ -2459,6 +2459,31 @@
       "known_limitations": [
         "The decks you can chalk and the signal for the storm both belong to the ashen city (sorakaze_fallout). Without that module the chalk marks no floor and the blizzard slow never fires — it does not error, it simply does nothing"
       ]
+    },
+    {
+      "id": "v4.3.3.1",
+      "release": "V4.3.3.1",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "All 182 coplanar face pairs removed from the doors; the gun's bounding box now measured",
+      "summary": "The two things V4.3.2 and V4.3.3 claimed to have fixed were <b>not fixed</b>. Those claims have been withdrawn. This release fixes only defects that were actually measured. <b>Whether the door flicker goes away is unproven, and the invisible gun is not fixed — its cause has not been found.</b>",
+      "highlights": [
+        "<b>All 182 pairs of faces (5,566 px²) that sat on the same plane, with the same normal, overlapping, have been removed from the door models.</b> Two opaque faces at the same depth swap places as the camera moves. V4.3.2 removed a <b>different</b> set (254 faces on cell-boundary cuts) and V4.3.3 added a <b>different</b> mechanism (off-screen rendering); neither version touched these 182",
+        "<b>Every one of those 182 was being drawn.</b> The doors are registered with {@code noOcclusion}, so the 726 cullface declarations on their faces cull <b>nothing at all</b> (canOcclude=false → empty occlusion shape → always rendered). Traced through the bytecode",
+        "The fix stands the decorative face 0.002 proud (one eight-thousandth of a 1/16 block, 0.125 mm). Deleting a face instead would punch a hole where the overlap is only partial",
+        "<b>The gun's bounding box is now measured from the model instead of hard-coded.</b> V4.3.2 and V4.3.3 returned the same box (±1.4 / ±0.7) for all fourteen guns. Measured, the guns are 0.24 to 1.45 blocks in hand — not one of them matches. Every vanilla special renderer derives it from the real model",
+        "That box drives <b>the height a dropped item sits at and how a stack spreads</b> (it is never used to scale). Dropped guns sinking into or floating above the ground, and stacks spreading oddly, are corrected",
+        "Two new gates. <b>Doors</b>: a single coplanar overlapping pair turns it red, with three controls. <b>Guns</b>: drive the real {@code ModelPart.render} and measure the in-hand size <b>in blocks</b>"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>The invisible gun is NOT fixed.</b> In every path this machine can drive, the guns render at 0.24 to 1.45 blocks, correctly. The cause has not been found. A dropped item appearing as a small white dot remains <b>unresolved</b>",
+        "<b>Whether the door flicker disappears is unproven.</b> The 182 pairs were a measured defect, but whether they are the flicker you are seeing cannot be known until it is looked at"
+      ],
+      "known_limitations": [
+        "There is no Minecraft client on this development machine. Anything that appears on screen is structurally unverifiable here, so <b>nothing will be described as fixed until it has been seen working</b>",
+        "Sixty-seven pairs of the same kind remain in other building blocks (sorters, traffic lights, pumps, the ATM). They were not reported, so they are untouched in this release"
+      ]
     }
   ],
   "roadmap": {

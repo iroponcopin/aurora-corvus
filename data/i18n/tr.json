@@ -2345,6 +2345,31 @@
       "known_limitations": [
         "Tebeşirin tuttuğu zeminler de fırtına işareti de kül şehrine (sorakaze_fallout) ait. O modül olmadan tebeşir hiçbir zemine çizmez ve tipi yavaşlaması hiç tetiklenmez — hata vermez, sadece hiçbir şey olmaz"
       ]
+    },
+    {
+      "id": "v4.3.3.1",
+      "release": "V4.3.3.1",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Kapılardaki 182 eş düzlemli yüz çiftinin tamamı kaldırıldı; silahın sınır kutusu artık ölçülüyor",
+      "summary": "V4.3.2 ve V4.3.3'ün düzeltildi dediği iki şey <b>düzelmemişti</b>. O ifadeler geri çekildi. Bu sürüm yalnızca gerçekten ölçülmüş kusurları düzeltiyor. <b>Kapı titremesinin geçip geçmediği kanıtlanmadı; görünmeyen silah düzelmedi, nedeni de bulunamadı.</b>",
+      "highlights": [
+        "<b>Kapı modellerinde aynı düzlemde, aynı normalde ve üst üste binen 182 yüz çiftinin (5.566 px²) tamamı kaldırıldı.</b> Aynı derinlikte iki opak yüz, kamera kıpırdadıkça yer değiştirir. V4.3.2 <b>başka</b> bir kümeyi kaldırmıştı (hücre kesitlerindeki 254 yüz), V4.3.3 <b>başka</b> bir mekanizma eklemişti; bu 182'ye ikisi de dokunmadı",
+        "<b>Bu 182'nin hepsi çiziliyordu.</b> Kapılar {@code noOcclusion} ile kaydedildiği için yüzlerdeki 726 cullface bildirimi <b>hiçbir şeyi</b> elemiyor (canOcclude=false → boş kapatma şekli → hep çizilir). Bytecode üzerinden doğrulandı",
+        "Düzeltme, süs yüzünü 0,002 öne alıyor (1/16 bloğun sekiz binde biri, 0,125 mm). Yüzü silmek, örtüşmenin kısmi olduğu yerde delik açardı",
+        "<b>Silahın sınır kutusu artık koda gömülü değil, modelden ölçülüyor.</b> V4.3.2 ve V4.3.3 on dört silahın hepsine aynı kutuyu (±1,4 / ±0,7) veriyordu. Ölçüldüğünde silahlar elde 0,24 ile 1,45 blok arasında; hiçbiri uymuyor",
+        "Bu kutu <b>yere düşen eşyanın yüksekliğini ve yığının dağılımını</b> belirler (ölçeklemede hiç kullanılmaz). Yere gömülen ya da havada duran silahlar böylece düzelir",
+        "İki yeni kapı denetimi. <b>Kapılar</b>: tek bir eş düzlemli örtüşen çift bile kırmızıya çevirir, üç kontrolüyle. <b>Silahlar</b>: gerçek {@code ModelPart.render} çalıştırılır ve eldeki boyut <b>blok cinsinden</b> ölçülür"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Görünmeyen silah DÜZELMEDİ.</b> Bu makinenin çalıştırabildiği her yolda silahlar 0,24 ile 1,45 blok arasında doğru çiziliyor. Neden bulunamadı. Yere düşen eşyanın küçük beyaz bir nokta olarak görünmesi <b>çözülmedi</b>",
+        "<b>Kapı titremesinin geçip geçmeyeceği kanıtlanmadı.</b> 182 çift ölçülmüş bir kusurdu, ama sizin gördüğünüz titremenin kendisi olup olmadığı ancak bakılınca anlaşılır"
+      ],
+      "known_limitations": [
+        "Bu geliştirme makinesinde Minecraft istemcisi yok. Ekranda görünen her şey burada yapısal olarak doğrulanamaz; bu yüzden <b>çalıştığı görülmeden hiçbir şey düzeldi diye yazılmayacak</b>",
+        "Aynı türden altmış yedi çift, başka yapı bloklarında (ayırıcılar, trafik lambaları, pompalar, ATM) duruyor. Bildirilmedikleri için bu sürümde ellenmedi"
+      ]
     }
   ],
   "roadmap": {

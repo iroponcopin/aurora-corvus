@@ -228,8 +228,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">車庫の規律 —— 枠と鉤、洪水に濡れた燃料、交通の表</p>
+      <p class="cl__groupSummary">扉の同一平面の面を 182 組すべて除去、銃の外接箱を実測値へ</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.1">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-1">
+          <h3 class="cl__version">V4.3.3.1</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-3-1" hidden><p class="cl__entryTitle">扉の同一平面の面を 182 組すべて除去、銃の外接箱を実測値へ</p><p class="cl__lede">V4.3.2 と V4.3.3 で「直った」と書いた 2 件は&lt;b&gt;直っていませんでした&lt;/b&gt;。その記載は撤回済みです。この版は、実測で見つかった欠陥だけを直します。&lt;b&gt;扉のちらつきが消えるかどうかは未確認です。銃が見えない問題は原因が特定できておらず、直っていません。&lt;/b&gt;</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(6)</span></h4><ul class="cl__list"><li>&lt;b&gt;扉のモデルから、同じ平面・同じ向き・重なりのある面を 182 組(5,566 px²)すべて取り除きました。&lt;/b&gt;同じ深さに不透明な面が 2 枚あると、カメラが動くたびにどちらが手前か入れ替わります。V4.3.2 が消したのは&lt;b&gt;別の集合&lt;/b&gt;(セル境界の切り口 254 面)、V4.3.3 が足したのは&lt;b&gt;別の仕組み&lt;/b&gt;(範囲外描画)で、この 182 組には両版とも触れていませんでした</li><li>&lt;b&gt;その 182 組は全部描かれていました。&lt;/b&gt;扉は {@code noOcclusion} で登録されているため、面に付けた 726 個の cullface は&lt;b&gt;1 つも効いていません&lt;/b&gt;(canOcclude=false → 空の遮蔽形状 → 常に描画)。バイトコードで追って確認しています</li><li>直し方は&lt;b&gt;装飾側の面を 0.002 だけ手前に出す&lt;/b&gt;ことです(1/16 ブロックの 1/8000 = 0.125 mm)。面を消すと、部分的にしか重なっていない箇所で下地に穴が開きます</li><li>&lt;b&gt;銃の外接箱を、ベタ書きからモデルの実測値に変えました。&lt;/b&gt;4.3.2 と 4.3.3 は 14 挺すべてに同じ箱(±1.4 / ±0.7)を返していました。実測すると銃は手の中で 0.24〜1.45 ブロックで、どの 1 挺も一致しません。バニラの special 描画は例外なく実モデルから求めています</li><li>この箱は&lt;b&gt;落ちているアイテムの高さと、積み重ねた時の散らばり&lt;/b&gt;に使われます(拡大縮小には使われません)。落とした銃が地面にめり込む・浮く、複数個が不自然に散らばる、が直ります</li><li>新しい関門を 2 本追加しました。&lt;b&gt;扉&lt;/b&gt;: 同一平面の重なりが 1 組でもあれば赤(対照 3 つつき)。&lt;b&gt;銃&lt;/b&gt;: 本物の {@code ModelPart.render} を回して、手の中の大きさを&lt;b&gt;ブロック単位で&lt;/b&gt;測る</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>&lt;b&gt;「銃が見えない」問題は直っていません。&lt;/b&gt;この機械で回せる経路では銃は 0.24〜1.45 ブロックで正しく描画され、原因は特定できていません。落としたアイテムが小さな白い点になる件は&lt;b&gt;未解決&lt;/b&gt;です</li><li>&lt;b&gt;扉のちらつきが消えるかどうかは未確認です。&lt;/b&gt;取り除いた 182 組は実測された欠陥ですが、それがあなたの見ているちらつきそのものかは、実際に見るまで分かりません</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(2)</span></h4><ul class="cl__list"><li>この開発機に Minecraft クライアントはありません。画面に映るものは構造的に検証できないため、&lt;b&gt;実際に見て確認するまで「直った」とは書きません&lt;/b&gt;</li><li>扉以外の建材(仕分け機・信号機・ポンプ・ATM)にも同種の重なりが 67 組残っています。報告されていないため、この版では触れていません</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3">
           <h3 class="cl__version">V4.3.3</h3>
