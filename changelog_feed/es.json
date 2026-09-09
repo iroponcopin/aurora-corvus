@@ -7,8 +7,49 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "El arma se sostenía al revés — dirección corregida, recarga rehecha y partículas propias",
+   "summary": "Cada disparo lanzaba system_profiler en su Mac — los 2 FPS y el tamaño de las armas",
    "releases": [
+    {
+     "version": "V4.3.5",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Cada disparo lanzaba system_profiler en su Mac — los 2 FPS y el tamaño de las armas",
+     "summary": "La caída a 2 FPS tras disparar se ha rastreado <b>hasta su mecanismo</b>. La partícula del casquillo lanzaba una división por cero; por cada excepción así Minecraft construye un {@code CrashReport}, y construirlo <b>hace fork de {@code system_profiler}</b> — medido en este Mac en <b>1,3 a 2,0 segundos por disparo</b>, en el hilo de renderizado. Además, el aspecto de «juguete en miniatura» se ha medido contra el paquete de referencia y corregido.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "<b>Los 2 FPS eran una línea.</b> La partícula del casquillo llamaba a {@code sprites.get(0, 0)}. En 26.2 {@code MutableSpriteSet.get(age, lifetime)} es {@code age × (n−1) ÷ lifetime}: un segundo argumento 0 es una <b>división por cero</b>. El casquillo <b>no se ha dibujado ni una vez</b> desde la V4.3.4",
+        "<b>Por qué eso cuesta 2 FPS.</b> Cuando una partícula lanza, {@code ClientLevel.doAddParticle} construye un {@code CrashReport}. Su constructor construye de inmediato un {@code SystemReport} que, vía OSHI, <b>hace fork de {@code system_profiler SPDisplaysDataType}</b>. Medido aquí: <b>1,27–1,98 s</b>, <b>en el hilo de render, por cada disparo</b>",
+        "<b>La prueba estaba en su registro.</b> La línea de OSHI propia de macOS «Unable to parse version 27.0 to a codename.» aparece <b>exactamente una vez justo antes de cada uno</b> de los 55 avisos. Esa cadena no existe en el jar de Minecraft, solo en {@code MacOperatingSystem} de OSHI",
+        "<b>Ya hay un control de partículas.</b> Exige para cada tipo registrado una definición, que exista cada textura que nombra, y que ningún {@code sprites.get(age, lifetime)} pase un lifetime ≤ 0. Tres controles negativos deben ponerse en rojo en cada ejecución",
+        "<b>El fogonazo no salía de la boca del cañón.</b> {@code sendParticles} cambia de significado con count: con <b>count &gt; 0</b> los xyz son una <b>dispersión gaussiana de posición</b>; solo con <b>count == 0</b> son <b>velocidad</b>. La V4.3.4 pasaba el vector de mirada con count=1, así que el fogonazo se <b>dispersaba ±1 bloque (colas a ±3)</b>",
+        "<b>El tamaño también se midió.</b> Midiendo los modelos del paquete de referencia, la longitud en tercera persona es 0,99 bloques para una pistola, 1,61 para un fusil de asalto y 1,73 para una escopeta. Los nuestros: 0,36 / 1,28 / 1,50 — <b>la pistola era 2,75 veces más pequeña</b>, porque dibujábamos <b>a escala real</b>",
+        "<b>El paquete de referencia no usa una escala única.</b> Dibuja una pistola de 186 mm a 0,99 bloques (≈5,3×) y un fusil de 880 mm a 1,61 (≈1,8×): <b>exagera más las armas pequeñas</b>. El cuerpo de Minecraft está estilizado y el brazo mide solo 0,25 bloques",
+        "<b>Esos tres puntos siguen una ley de potencias.</b> {@code longitud = 0,99 × (mm ÷ 186)^0,315}. El exponente sacado de 186→0,99 y 880→1,61 predice 1,71 para 1060 mm — medido 1,73: una <b>predicción, no una extrapolación</b>",
+        "<b>Resultado:</b> pistola 0,36 → <b>1,07</b> (referencia 0,99), fusil de asalto 1,28 → <b>1,60</b> (1,61), escopeta 1,50 → <b>1,68</b> (1,73). Las 14 quedan en la banda de la referencia",
+        "<b>La recarga tuvo que seguir.</b> Un arma mayor hace que el mismo gesto sea más rápido en pantalla, así que la caída del cargador se <b>limita por la longitud del arma</b>. El golpe del cierre recibió un tiempo de subida <b>en tiempo real</b> de 45 ms — como fracción eran 11 ms, <b>menos de un fotograma</b>",
+        "<b>Los casquillos dejan de colisionar al asentarse.</b> {@code Particle.move} consulta las formas de colisión cada tick; los casquillos quietos acumulan coste sin cambiar nada en pantalla",
+        "<b>El umbral de continuidad ya no depende de la escala.</b> Era absoluto (0,120 bloques), así que agrandar las armas <b>cambió su significado mientras el número seguía igual</b>. Ahora es una fracción de la longitud del arma"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "<b>Tampoco nadie ha visto esto en marcha.</b> La causa de los 2 FPS se siguió hasta su mecanismo y se eliminó, pero <b>que la tasa de fotogramas se recupere no está verificado</b>",
+        "<b>V4.3.4Update.md (propiedad, libro de recetas, Line Card) NO está en esta versión.</b> 2 FPS es injugable, así que eso fue primero. La especificación está leída y va a continuación — no se ha abandonado en silencio",
+        "<b>El parpadeo de las puertas</b> sigue sin verificarse y <b>«otros objetos también salen volando»</b> sin medirse"
+       ]
+      },
+      {
+       "title": "Lo que aún no estaba implementado o confirmado en este momento",
+       "items": [
+        "Medido: los tres controles negativos del control de partículas se ponen en rojo. Dirección correcta en 14 de 14. Salto de la recarga en el vértice mediano 0,0062–0,0146 bloques (límite 0,020; camino antiguo 0,307). Residuo tras el guion <b>exactamente 0</b>. Longitud renderizada de 1,07 a 1,89 bloques",
+        "En esta máquina de desarrollo no hay cliente de Minecraft. <b>Nada se describe como corregido hasta haberlo visto funcionar.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.4",
      "date": "2026-09-09",

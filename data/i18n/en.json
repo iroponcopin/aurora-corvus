@@ -2619,6 +2619,53 @@
     "Measured: direction correct on 14 of 14 (14 of 14 fail under the old sign). The reload's jump, measured on the median vertex, is <b>0.0038–0.0104 blocks</b> across all 14 (the bar is 0.020; the old path reads 0.246). Residue after the script is <b>exactly 0</b>. Flash sizes run 0.15–0.34 blocks. The 9 particle textures and 3 sounds are compared <b>byte for byte</b> against their generators",
     "There is no Minecraft client on this development machine. <b>Nothing is described as fixed until it has been seen working.</b>"
    ]
+  },
+  {
+   "id": "v4.3.5",
+   "release": "V4.3.5",
+   "date": "2026-09-09",
+   "type": "release",
+   "title": "Every shot was launching system_profiler on your Mac — the 2 FPS, and the size of the guns",
+   "summary": "The collapse to 2 FPS after firing has been traced <b>to its mechanism</b>. The shell casing particle threw a division by zero; for every such exception Minecraft builds a {@code CrashReport}, and building one <b>forks {@code system_profiler}</b> — timed on this Mac at <b>1.3 to 2.0 seconds per shot</b>, on the render thread. Alongside it, the guns looking like miniature toys has been measured against the reference pack and corrected.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.5",
+    "sorakaze_boss": "4.3.5",
+    "sorakaze_deco": "4.3.5",
+    "sorakaze_fallout": "4.3.5",
+    "sorakaze_guns": "4.3.5",
+    "sorakaze_phone": "4.3.5",
+    "sorakaze_planarcadia": "4.3.5",
+    "sorakaze_power": "4.3.5",
+    "sorakaze_rail": "4.3.5",
+    "sorakaze_sapporo": "4.3.5",
+    "sorakaze_sky": "4.3.5",
+    "sorakaze_survival": "4.3.5",
+    "sorakaze_vehicles": "4.3.5"
+   },
+   "highlights": [
+    "<b>The 2 FPS was one line.</b> The shell casing particle called {@code sprites.get(0, 0)}. In 26.2 {@code MutableSpriteSet.get(age, lifetime)} is {@code age × (count−1) ÷ lifetime}, so a second argument of 0 is a <b>division by zero</b>. The casing has <b>never once rendered</b> since V4.3.4 shipped",
+    "<b>Why that costs 2 FPS.</b> When a particle throws, {@code ClientLevel.doAddParticle} builds a {@code CrashReport}. That constructor eagerly builds a {@code SystemReport}, which via OSHI <b>forks {@code system_profiler SPDisplaysDataType}</b>. Timed on this Mac: <b>1.27–1.98 seconds</b>. It ran <b>on the render thread, once per shot</b>",
+    "<b>The proof was in your log.</b> The macOS-only OSHI line \"Unable to parse version 27.0 to a codename.\" appears <b>exactly once immediately before every one</b> of the 55 particle warnings. That string is not in the Minecraft jar at all — it is only in OSHI's {@code MacOperatingSystem} — so a full hardware and software probe really was running for every shot",
+    "<b>There is now a particle gate.</b> It requires every registered type to have a definition, every texture in that definition to exist, and no {@code sprites.get(age, lifetime)} to pass a lifetime of 0 or less. Three negative controls (restore the division by zero, delete a definition, delete a texture) must all go red on every run",
+    "<b>The muzzle flash was not coming out of the muzzle.</b> {@code sendParticles} changes meaning with count: with <b>count &gt; 0</b> the xyz are a <b>gaussian position spread</b>; only with <b>count == 0</b> are they a <b>velocity</b>. V4.3.4 passed the look vector with count=1, so the flash was <b>scattered by ±1 block (tails to ±3)</b> with zero velocity. It is now count=0",
+    "<b>The guns being too small was measured too.</b> Measuring the reference pack's own models, third-person rendered length is 0.99 blocks for a pistol, 1.61 for an assault rifle, 1.73 for a shotgun. Ours were 0.36 / 1.28 / 1.50 — <b>the pistol was 2.75× too small</b>. The cause was that we drew them <b>at true scale</b>: at 1 block = 1 m, a 195 mm pistol is 0.2 blocks",
+    "<b>The reference pack does not use one scale.</b> It draws a 186 mm pistol at 0.99 blocks (≈5.3×) and an 880 mm rifle at 1.61 (≈1.8×) — it <b>exaggerates small guns more</b>. Minecraft's body is stylised, with an arm only 0.25 blocks wide, so a true-scale pistol simply disappears in that hand",
+    "<b>Those three points fit a power law.</b> {@code length = 0.99 × (oal_mm ÷ 186)^0.315}. Taking the exponent from 186→0.99 and 880→1.61 and then predicting 1060 mm gives 1.71 — measured 1.73, so it <b>predicts rather than extrapolates</b>. That curve is now the target, and the overall length is <b>measured from the baked model</b>, so there is no per-gun table",
+    "<b>Result:</b> pistol 0.36 → <b>1.07</b> (reference 0.99), assault rifle 1.28 → <b>1.60</b> (reference 1.61), shotgun 1.50 → <b>1.68</b> (reference 1.73). All 14 now sit in the reference's band",
+    "<b>The reload needed following through.</b> A larger gun makes the same motion faster on screen, so the magazine's fall is now <b>capped by the gun's own length</b> (a pistol's was falling 1.3× the whole gun). The bolt-closing jolt was also given a <b>wall-clock</b> rise of 45 ms — as a fraction it was 11 ms on a 1.4 s pistol reload, <b>less than one frame</b>, so the whole gun moved in a single frame",
+    "<b>Casings stop colliding once they settle.</b> {@code Particle.move} queries the world's collision shapes every tick, so settled casings pile up cost without changing anything on screen. An automatic weapon drops a dozen a second",
+    "<b>The continuity bar is now scale-invariant.</b> The \"too fast\" threshold was an absolute 0.120 blocks, so enlarging the guns <b>changed its meaning while the number stayed the same</b> — the worst kind of threshold. It is now a fraction of the gun's own length, so it means the same thing for a pistol and an anti-materiel rifle, and it survives the model being rebuilt"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Nobody has seen this running either.</b> The 2 FPS was traced to its mechanism and removed, but <b>that the frame rate actually recovers is unverified</b>. The scale and the reload are headless measurements",
+    "<b>V4.3.4Update.md (Ownership, Recipe book, Line Card) is NOT in this release.</b> 2 FPS is unplayable, so that went first. The brief has been read and is next — it has not been quietly dropped",
+    "<b>The door flicker</b> is still unverified and <b>\"non-gun items fly off when dropped\"</b> is still unmeasured"
+   ],
+   "known_limitations": [
+    "Measured: the particle gate's three negative controls all go red. Direction correct on 14 of 14 (14 of 14 fail under the old sign). The reload's jump on the median vertex is 0.0062–0.0146 blocks (bar 0.020; the old path reads 0.307). Residue after the script is <b>exactly 0</b>. Rendered length runs 1.07 blocks for a pistol to 1.89 for the anti-materiel rifle",
+    "There is no Minecraft client on this development machine. <b>Nothing is described as fixed until it has been seen working.</b>"
+   ]
   }
  ],
  "roadmap": {

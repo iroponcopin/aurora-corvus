@@ -7,8 +7,49 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Senjatanya dipegang terbalik — arah diperbaiki, isi ulang dibangun ulang, dan partikelnya kini milik sendiri",
+   "summary": "Setiap tembakan menjalankan system_profiler di Mac Anda — penyebab 2 FPS, dan ukuran senjatanya",
    "releases": [
+    {
+     "version": "V4.3.5",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Setiap tembakan menjalankan system_profiler di Mac Anda — penyebab 2 FPS, dan ukuran senjatanya",
+     "summary": "Anjloknya ke 2 FPS setelah menembak sudah dilacak <b>sampai ke mekanismenya</b>. Partikel selongsong melempar pembagian dengan nol; untuk tiap kekecualian seperti itu Minecraft membangun {@code CrashReport}, dan membangunnya <b>mem-fork {@code system_profiler}</b> — terukur di Mac ini <b>1,3 sampai 2,0 detik per tembakan</b>, dan itu di utas penggambaran. Bersamaan dengan itu, tampilan «mainan miniatur» diukur terhadap paket rujukan dan diperbaiki.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>2 FPS itu satu baris.</b> Partikel selongsong memanggil {@code sprites.get(0, 0)}. Di 26.2 {@code MutableSpriteSet.get(age, lifetime)} sama dengan {@code age × (jumlah−1) ÷ lifetime}, jadi argumen kedua 0 adalah <b>pembagian dengan nol</b>. Selongsong <b>belum pernah sekali pun tergambar</b> sejak V4.3.4",
+        "<b>Mengapa itu memakan 2 FPS.</b> Ketika partikel melempar, {@code ClientLevel.doAddParticle} membangun {@code CrashReport}. Konstruktornya langsung membangun {@code SystemReport} yang lewat OSHI <b>mem-fork {@code system_profiler SPDisplaysDataType}</b>. Terukur di sini: <b>1,27–1,98 detik</b>, <b>di utas penggambaran, tiap tembakan</b>",
+        "<b>Buktinya ada di log Anda.</b> Baris OSHI khas macOS «Unable to parse version 27.0 to a codename.» muncul <b>tepat sekali persis sebelum setiap</b> dari 55 peringatan partikel. Untai itu sama sekali tidak ada di jar Minecraft — hanya ada di {@code MacOperatingSystem} milik OSHI",
+        "<b>Kini ada pemeriksaan partikel.</b> Ia menuntut tiap tipe terdaftar punya berkas definisi, tiap tekstur yang disebut benar-benar ada, dan tak satu pun {@code sprites.get(age, lifetime)} memberi lifetime ≤ 0. Tiga kendali negatif harus memerah pada tiap jalannya",
+        "<b>Kilatan moncong tidak keluar dari moncong.</b> {@code sendParticles} berubah makna menurut count: dengan <b>count &gt; 0</b> xyz adalah <b>sebaran posisi gaussian</b>; hanya dengan <b>count == 0</b> ia <b>kecepatan</b>. V4.3.4 memberi vektor pandang dengan count=1, jadi kilatan <b>tersebar ±1 blok (ekornya ±3)</b> dan kecepatannya nol",
+        "<b>Ukurannya juga diukur.</b> Mengukur model paket rujukan sendiri, panjang pada sudut orang ketiga adalah 0,99 blok untuk pistol, 1,61 untuk senapan serbu, 1,73 untuk senapan gentel. Punya kita 0,36 / 1,28 / 1,50 — <b>pistolnya 2,75 kali terlalu kecil</b>, karena kita menggambar <b>pada skala sebenarnya</b>",
+        "<b>Paket rujukan tidak memakai satu skala.</b> Pistol 186 mm digambar 0,99 blok (≈5,3×) dan senapan 880 mm 1,61 blok (≈1,8×) — <b>senjata kecil dilebih-lebihkan lebih banyak</b>. Tubuh Minecraft distilisasi, lengannya hanya selebar 0,25 blok",
+        "<b>Ketiga titik itu mengikuti hukum pangkat.</b> {@code panjang = 0,99 × (mm ÷ 186)^0,315}. Pangkat dari 186→0,99 dan 880→1,61 memprediksi 1,71 untuk 1060 mm — terukur 1,73, jadi ini <b>prediksi, bukan ekstrapolasi</b>",
+        "<b>Hasil:</b> pistol 0,36 → <b>1,07</b> (rujukan 0,99), senapan serbu 1,28 → <b>1,60</b> (1,61), senapan gentel 1,50 → <b>1,68</b> (1,73). Keempat belasnya masuk ke pita rujukan",
+        "<b>Isi ulang harus menyusul.</b> Senjata yang lebih besar membuat gerak yang sama tampak lebih cepat, jadi jatuhnya magasin kini <b>dibatasi oleh panjang senjata</b>. Hentakan penutup yang mengunci juga diberi waktu naik <b>waktu nyata</b> 45 ms — sebagai pecahan tadinya 11 ms, <b>kurang dari satu bingkai</b>",
+        "<b>Selongsong berhenti bertumbukan setelah diam.</b> {@code Particle.move} menanyai bentuk tumbukan dunia tiap tik; selongsong yang diam menumpuk biaya tanpa mengubah apa pun di layar",
+        "<b>Ambang kesinambungan kini tak bergantung skala.</b> Ambangnya mutlak (0,120 blok), jadi memperbesar senjata <b>mengubah maknanya sementara angkanya tetap</b>. Sekarang ia pecahan dari panjang senjata"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>Ini pun belum ada yang melihatnya berjalan.</b> Penyebab 2 FPS dilacak sampai mekanismenya dan dihapus, tetapi <b>apakah laju bingkai benar-benar pulih belum terverifikasi</b>",
+        "<b>V4.3.4Update.md (kepemilikan, buku resep, Line Card) TIDAK ada di rilis ini.</b> 2 FPS berarti tak bisa dimainkan, jadi ini yang keluar dulu. Spesifikasinya sudah dibaca dan menyusul — bukan diam-diam ditinggalkan",
+        "<b>Kedipan pintu</b> masih belum terverifikasi dan <b>«barang selain senjata juga melayang»</b> masih belum diukur"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Terukur: ketiga kendali negatif pemeriksaan partikel memerah. Arah benar pada 14 dari 14. Lompatan isi ulang pada titik sudut median 0,0062–0,0146 blok (batas 0,020; jalur lama 0,307). Sisa setelah skenario <b>tepat 0</b>. Panjang tergambar 1,07 sampai 1,89 blok",
+        "Tidak ada klien Minecraft di mesin pengembangan ini. <b>Tidak ada yang ditulis sudah diperbaiki sebelum terlihat berjalan.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.4",
      "date": "2026-09-09",

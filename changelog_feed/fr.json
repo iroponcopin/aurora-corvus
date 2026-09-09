@@ -7,8 +7,49 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "L'arme était tenue à l'envers — la direction est corrigée, le rechargement refait, et les particules sont les nôtres",
+   "summary": "Chaque tir lançait system_profiler sur votre Mac — les 2 FPS, et la taille des armes",
    "releases": [
+    {
+     "version": "V4.3.5",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Chaque tir lançait system_profiler sur votre Mac — les 2 FPS, et la taille des armes",
+     "summary": "L'effondrement à 2 FPS après un tir a été remonté <b>jusqu'à son mécanisme</b>. La particule de douille levait une division par zéro ; pour chaque exception de ce genre Minecraft construit un {@code CrashReport}, et le construire <b>fork {@code system_profiler}</b> — mesuré sur ce Mac à <b>1,3 à 2,0 secondes par tir</b>, sur le fil de rendu. À côté, l'aspect « jouet miniature » a été mesuré face au pack de référence et corrigé.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "<b>Les 2 FPS tenaient à une ligne.</b> La particule de douille appelait {@code sprites.get(0, 0)}. En 26.2 {@code MutableSpriteSet.get(age, lifetime)} vaut {@code age × (nombre−1) ÷ lifetime} : un second argument nul est une <b>division par zéro</b>. La douille n'a <b>jamais été affichée</b> depuis la V4.3.4",
+        "<b>Pourquoi cela coûte 2 FPS.</b> Quand une particule lève, {@code ClientLevel.doAddParticle} construit un {@code CrashReport}. Son constructeur construit aussitôt un {@code SystemReport} qui, via OSHI, <b>fork {@code system_profiler SPDisplaysDataType}</b>. Mesuré sur ce Mac : <b>1,27 à 1,98 seconde</b>, <b>sur le fil de rendu, à chaque tir</b>",
+        "<b>La preuve était dans votre journal.</b> La ligne OSHI propre à macOS « Unable to parse version 27.0 to a codename. » apparaît <b>exactement une fois juste avant chacun</b> des 55 avertissements. Cette chaîne n'existe pas dans le jar de Minecraft — seulement dans {@code MacOperatingSystem} d'OSHI",
+        "<b>Il existe désormais un contrôle des particules.</b> Il exige pour chaque type une définition, l'existence de chaque texture qu'elle nomme, et qu'aucun {@code sprites.get(age, lifetime)} ne passe un lifetime ≤ 0. Trois contrôles négatifs doivent virer au rouge à chaque exécution",
+        "<b>L'éclair ne sortait pas de la bouche du canon.</b> {@code sendParticles} change de sens selon count : avec <b>count &gt; 0</b> les xyz sont une <b>dispersion gaussienne de position</b> ; seulement avec <b>count == 0</b> ils sont une <b>vitesse</b>. La V4.3.4 passait le vecteur de visée avec count=1, l'éclair était donc <b>dispersé de ±1 bloc (queues à ±3)</b>",
+        "<b>La taille aussi a été mesurée.</b> En mesurant les modèles du pack de référence, la longueur à la troisième personne est de 0,99 bloc pour un pistolet, 1,61 pour un fusil d'assaut, 1,73 pour un fusil à pompe. Les nôtres : 0,36 / 1,28 / 1,50 — <b>le pistolet était 2,75 fois trop petit</b>, parce que nous dessinions <b>à l'échelle réelle</b>",
+        "<b>Le pack de référence n'utilise pas une échelle unique.</b> Il dessine un pistolet de 186 mm à 0,99 bloc (≈5,3×) et un fusil de 880 mm à 1,61 (≈1,8×) — il <b>exagère davantage les petites armes</b>. Le corps de Minecraft est stylisé, le bras ne fait que 0,25 bloc de large",
+        "<b>Ces trois points suivent une loi de puissance.</b> {@code longueur = 0,99 × (longueur_mm ÷ 186)^0,315}. L'exposant tiré de 186→0,99 et 880→1,61 prédit 1,71 pour 1060 mm — mesuré 1,73 : une <b>prédiction, pas une extrapolation</b>",
+        "<b>Résultat :</b> pistolet 0,36 → <b>1,07</b> (référence 0,99), fusil d'assaut 1,28 → <b>1,60</b> (1,61), fusil à pompe 1,50 → <b>1,68</b> (1,73). Les 14 sont dans la bande du pack de référence",
+        "<b>Le rechargement a dû suivre.</b> Une arme plus grande rend le même geste plus rapide à l'écran ; la chute du chargeur est donc <b>plafonnée par la longueur de l'arme</b>. Le choc de fermeture de culasse a reçu un temps de montée <b>en temps réel</b> de 45 ms — en fraction il valait 11 ms, <b>moins d'une image</b>",
+        "<b>Les douilles cessent de collisionner une fois posées.</b> {@code Particle.move} interroge les formes de collision du monde à chaque tick ; des douilles immobiles accumulent du coût sans rien changer à l'image",
+        "<b>Le seuil de continuité est maintenant indépendant de l'échelle.</b> Il était absolu (0,120 bloc) : agrandir les armes <b>en changeait le sens alors que le nombre restait le même</b>. C'est désormais une fraction de la longueur de l'arme"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "<b>Personne n'a vu cela tourner non plus.</b> La cause des 2 FPS a été suivie jusqu'à son mécanisme et supprimée, mais <b>que le nombre d'images remonte réellement n'est pas vérifié</b>",
+        "<b>V4.3.4Update.md (propriété, livre de recettes, Line Card) n'est PAS dans cette version.</b> 2 FPS, c'est injouable : cela est passé d'abord. La spécification est lue et vient ensuite — elle n'a pas été abandonnée en silence",
+        "<b>Le scintillement des portes</b> reste non vérifié et <b>« les autres objets s'envolent aussi »</b> non mesuré"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Mesuré : les trois contrôles négatifs du contrôle des particules virent au rouge. Direction correcte sur 14 sur 14. Saut du rechargement au sommet médian 0,0062–0,0146 bloc (seuil 0,020 ; ancien chemin 0,307). Résidu après le scénario <b>exactement 0</b>. Longueur rendue de 1,07 à 1,89 bloc",
+        "Il n'y a pas de client Minecraft sur cette machine de développement. <b>Rien n'est décrit comme corrigé avant d'avoir été vu fonctionner.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.4",
      "date": "2026-09-09",

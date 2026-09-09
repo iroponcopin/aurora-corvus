@@ -7,8 +7,49 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Silah ters tutuluyordu — yön düzeltildi, şarjör değişimi yeniden yapıldı, parçacıklar artık bize ait",
+   "summary": "Her atış Mac'inizde system_profiler çalıştırıyordu — 2 FPS'nin sebebi ve silahların boyu",
    "releases": [
+    {
+     "version": "V4.3.5",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Her atış Mac'inizde system_profiler çalıştırıyordu — 2 FPS'nin sebebi ve silahların boyu",
+     "summary": "Ateş ettikten sonra 2 FPS'ye düşme <b>mekanizmasına kadar</b> izlendi. Kovan parçacığı sıfıra bölme fırlatıyordu; böyle her istisna için Minecraft bir {@code CrashReport} kurar ve onu kurmak <b>{@code system_profiler}'ı fork eder</b> — bu Mac'te ölçüldü: <b>atış başına 1,3 ila 2,0 saniye</b>, üstelik çizim iş parçacığında. Bunun yanında «minyatür oyuncak» görünümü de referans pakete karşı ölçülüp düzeltildi.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "<b>2 FPS tek bir satırdı.</b> Kovan parçacığı {@code sprites.get(0, 0)} çağırıyordu. 26.2'de {@code MutableSpriteSet.get(age, lifetime)} şuna eşittir: {@code age × (adet−1) ÷ lifetime}; ikinci argümanın 0 olması <b>sıfıra bölme</b> demektir. Kovan V4.3.4'ten beri <b>bir kez bile çizilmedi</b>",
+        "<b>Bu neden 2 FPS'ye mal olur.</b> Bir parçacık fırlattığında {@code ClientLevel.doAddParticle} bir {@code CrashReport} kurar. Onun kurucusu hemen bir {@code SystemReport} kurar ve o da OSHI üzerinden <b>{@code system_profiler SPDisplaysDataType}'ı fork eder</b>. Burada ölçülen: <b>1,27–1,98 saniye</b>, <b>çizim iş parçacığında, her atışta</b>",
+        "<b>Kanıt kaydınızdaydı.</b> Yalnızca macOS'ta çıkan OSHI satırı «Unable to parse version 27.0 to a codename.» 55 parçacık uyarısının <b>her birinin hemen öncesinde tam bir kez</b> yer alıyor. Bu dizge Minecraft jar'ında hiç yok — sadece OSHI'nin {@code MacOperatingSystem} sınıfında var",
+        "<b>Artık bir parçacık denetimi var.</b> Kayıtlı her tür için bir tanım dosyası, o tanımın andığı her dokunun gerçekten var olması ve hiçbir {@code sprites.get(age, lifetime)} çağrısının lifetime'ı 0 veya daha küçük geçirmemesi şart. Üç negatif denetim her koşuda kırmızıya dönmeli",
+        "<b>Namlu alevi namludan çıkmıyordu.</b> {@code sendParticles} count'a göre anlam değiştirir: <b>count &gt; 0</b> ise xyz bir <b>gauss konum saçılımı</b>dır; yalnızca <b>count == 0</b> iken <b>hız</b>dır. V4.3.4 bakış vektörünü count=1 ile geçiriyordu, yani alev <b>±1 blok (kuyrukları ±3) saçılıyordu</b> ve hızı sıfırdı",
+        "<b>Boyut da ölçüldü.</b> Referans paketin kendi modelleri ölçüldüğünde üçüncü şahıs uzunluğu tabanca için 0,99 blok, saldırı tüfeği için 1,61, pompalı için 1,73. Bizimkiler 0,36 / 1,28 / 1,50 — <b>tabanca 2,75 kat küçüktü</b>, çünkü <b>gerçek ölçekte</b> çiziyorduk",
+        "<b>Referans paket tek bir ölçek kullanmıyor.</b> 186 mm'lik tabancayı 0,99 blok (≈5,3×), 880 mm'lik tüfeği 1,61 blok (≈1,8×) çiziyor — <b>küçük silahları daha çok abartıyor</b>. Minecraft'ın bedeni üsluplaştırılmıştır, kol yalnızca 0,25 blok enindedir",
+        "<b>Bu üç nokta bir üs yasasına oturuyor.</b> {@code uzunluk = 0,99 × (mm ÷ 186)^0,315}. 186→0,99 ve 880→1,61'den alınan üs 1060 mm için 1,71 öngörüyor — ölçülen 1,73, yani <b>dışdeğerleme değil öngörü</b>",
+        "<b>Sonuç:</b> tabanca 0,36 → <b>1,07</b> (referans 0,99), saldırı tüfeği 1,28 → <b>1,60</b> (1,61), pompalı 1,50 → <b>1,68</b> (1,73). On dördü de referansın bandına girdi",
+        "<b>Şarjör değişiminin de buna uyması gerekti.</b> Daha büyük bir silah aynı hareketi ekranda hızlandırır; bu yüzden şarjörün düşüşü artık <b>silahın kendi boyuyla sınırlı</b>. Sürgünün kapanma darbesine de <b>gerçek zamanlı</b> 45 ms yükselme süresi verildi — oran olarak yazıldığında tabancanın 1,4 saniyelik şarjör değişiminde 11 ms, yani <b>bir kareden az</b> ediyordu",
+        "<b>Kovanlar yerleşince çarpışmayı bırakır.</b> {@code Particle.move} her tikte dünyanın çarpışma şekillerini sorgular; duran kovanlar ekranda hiçbir şeyi değiştirmeden maliyet biriktirir",
+        "<b>Süreklilik eşiği artık ölçekten bağımsız.</b> Eşik mutlaktı (0,120 blok), dolayısıyla silahları büyütmek <b>sayı aynı kalırken anlamını değiştirdi</b>. Artık silahın boyunun bir oranı"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "<b>Bunu da henüz kimse çalışırken görmedi.</b> 2 FPS'nin sebebi mekanizmasına kadar izlenip kaldırıldı, ama <b>kare hızının gerçekten geri geldiği doğrulanmadı</b>",
+        "<b>V4.3.4Update.md (sahiplik, tarif kitabı, Line Card) bu sürümde DEĞİL.</b> 2 FPS oynanamaz demek, o yüzden önce bu çıktı. Şartname okundu ve sırada o var — sessizce bırakılmadı",
+        "<b>Kapılardaki titreme</b> hâlâ doğrulanmadı, <b>«silah dışındaki eşyalar da uçuyor»</b> hâlâ ölçülmedi"
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Ölçülen: parçacık denetiminin üç negatif kontrolü de kırmızıya dönüyor. Yön 14'te 14 doğru. Şarjör değişiminin sıçraması ortanca köşe noktasında 0,0062–0,0146 blok (eşik 0,020; eski yol 0,307). Senaryodan sonraki kalıntı <b>tam olarak 0</b>. Çizilen uzunluk 1,07 ila 1,89 blok",
+        "Bu geliştirme makinesinde Minecraft istemcisi yok. <b>Çalıştığı görülmeden hiçbir şey düzeltildi diye yazılmaz.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.4",
      "date": "2026-09-09",

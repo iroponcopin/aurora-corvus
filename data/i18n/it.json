@@ -2509,6 +2509,53 @@
     "Misurato: direzione corretta su 14 di 14 (col vecchio segno falliscono 14 su 14). Il salto della ricarica, misurato sul vertice mediano, è di <b>0,0038–0,0104 blocchi</b> su tutte e 14 (la soglia è 0,020; il vecchio percorso legge 0,246). Il residuo dopo il copione è <b>esattamente 0</b>. Le vampe vanno da 0,15 a 0,34 blocchi. Le 9 texture e i 3 suoni sono confrontati <b>byte per byte</b> con i loro generatori",
     "Su questa macchina di sviluppo non c'è un client Minecraft. <b>Nulla viene descritto come risolto prima di essere stato visto funzionare.</b>"
    ]
+  },
+  {
+   "id": "v4.3.5",
+   "release": "V4.3.5",
+   "date": "2026-09-09",
+   "type": "release",
+   "title": "Ogni sparo lanciava system_profiler sul suo Mac — i 2 FPS e la dimensione delle armi",
+   "summary": "Il crollo a 2 FPS dopo lo sparo è stato risalito <b>fino al meccanismo</b>. La particella del bossolo sollevava una divisione per zero; per ogni eccezione simile Minecraft costruisce un {@code CrashReport}, e costruirlo <b>fa fork di {@code system_profiler}</b> — misurato su questo Mac in <b>1,3–2,0 secondi per sparo</b>, sul thread di rendering. Accanto a ciò, l'aspetto da «giocattolo in miniatura» è stato misurato contro il pacchetto di riferimento e corretto.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.5",
+    "sorakaze_boss": "4.3.5",
+    "sorakaze_deco": "4.3.5",
+    "sorakaze_fallout": "4.3.5",
+    "sorakaze_guns": "4.3.5",
+    "sorakaze_phone": "4.3.5",
+    "sorakaze_planarcadia": "4.3.5",
+    "sorakaze_power": "4.3.5",
+    "sorakaze_rail": "4.3.5",
+    "sorakaze_sapporo": "4.3.5",
+    "sorakaze_sky": "4.3.5",
+    "sorakaze_survival": "4.3.5",
+    "sorakaze_vehicles": "4.3.5"
+   },
+   "highlights": [
+    "<b>I 2 FPS erano una riga.</b> La particella del bossolo chiamava {@code sprites.get(0, 0)}. In 26.2 {@code MutableSpriteSet.get(age, lifetime)} è {@code age × (n−1) ÷ lifetime}: un secondo argomento 0 è una <b>divisione per zero</b>. Il bossolo <b>non è mai stato disegnato</b> dalla V4.3.4",
+    "<b>Perché costa 2 FPS.</b> Quando una particella solleva, {@code ClientLevel.doAddParticle} costruisce un {@code CrashReport}. Il suo costruttore costruisce subito un {@code SystemReport} che, via OSHI, <b>fa fork di {@code system_profiler SPDisplaysDataType}</b>. Misurato qui: <b>1,27–1,98 s</b>, <b>sul thread di rendering, a ogni sparo</b>",
+    "<b>La prova era nel suo log.</b> La riga OSHI propria di macOS «Unable to parse version 27.0 to a codename.» compare <b>esattamente una volta subito prima di ciascuno</b> dei 55 avvisi. Quella stringa non esiste nel jar di Minecraft, solo in {@code MacOperatingSystem} di OSHI",
+    "<b>Ora c'è un controllo delle particelle.</b> Pretende per ogni tipo registrato una definizione, l'esistenza di ogni texture nominata, e che nessun {@code sprites.get(age, lifetime)} passi un lifetime ≤ 0. Tre controlli negativi devono diventare rossi a ogni esecuzione",
+    "<b>La vampa non usciva dalla volata.</b> {@code sendParticles} cambia significato con count: con <b>count &gt; 0</b> gli xyz sono una <b>dispersione gaussiana di posizione</b>; solo con <b>count == 0</b> sono una <b>velocità</b>. La V4.3.4 passava il vettore di mira con count=1, quindi la vampa era <b>sparsa di ±1 blocco (code a ±3)</b>",
+    "<b>Anche la dimensione è stata misurata.</b> Misurando i modelli del pacchetto di riferimento, la lunghezza in terza persona è 0,99 blocchi per una pistola, 1,61 per un fucile d'assalto, 1,73 per un fucile a pompa. I nostri: 0,36 / 1,28 / 1,50 — <b>la pistola era 2,75 volte più piccola</b>, perché disegnavamo <b>in scala reale</b>",
+    "<b>Il pacchetto di riferimento non usa una scala unica.</b> Disegna una pistola da 186 mm a 0,99 blocchi (≈5,3×) e un fucile da 880 mm a 1,61 (≈1,8×): <b>esagera di più le armi piccole</b>. Il corpo di Minecraft è stilizzato e il braccio è largo solo 0,25 blocchi",
+    "<b>Quei tre punti seguono una legge di potenza.</b> {@code lunghezza = 0,99 × (mm ÷ 186)^0,315}. L'esponente ricavato da 186→0,99 e 880→1,61 prevede 1,71 per 1060 mm — misurato 1,73: una <b>previsione, non un'estrapolazione</b>",
+    "<b>Risultato:</b> pistola 0,36 → <b>1,07</b> (riferimento 0,99), fucile d'assalto 1,28 → <b>1,60</b> (1,61), fucile a pompa 1,50 → <b>1,68</b> (1,73). Tutte e 14 rientrano nella fascia del riferimento",
+    "<b>La ricarica ha dovuto seguire.</b> Un'arma più grande rende lo stesso gesto più veloce a schermo, quindi la caduta del caricatore è <b>limitata dalla lunghezza dell'arma</b>. Il colpo di chiusura dell'otturatore ha ricevuto un tempo di salita <b>in tempo reale</b> di 45 ms — come frazione erano 11 ms, <b>meno di un fotogramma</b>",
+    "<b>I bossoli smettono di collidere una volta fermi.</b> {@code Particle.move} interroga le forme di collisione a ogni tick; bossoli immobili accumulano costo senza cambiare nulla a schermo",
+    "<b>La soglia di continuità non dipende più dalla scala.</b> Era assoluta (0,120 blocchi), quindi ingrandire le armi <b>ne ha cambiato il significato mentre il numero restava uguale</b>. Ora è una frazione della lunghezza dell'arma"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Nemmeno questo l'ha visto girare qualcuno.</b> La causa dei 2 FPS è stata seguita fino al meccanismo e rimossa, ma <b>che il frame rate torni davvero non è verificato</b>",
+    "<b>V4.3.4Update.md (proprietà, ricettario, Line Card) NON è in questa versione.</b> 2 FPS è ingiocabile, quindi è passato prima. La specifica è letta e viene dopo — non è stata abbandonata in silenzio",
+    "<b>Lo sfarfallio delle porte</b> resta non verificato e <b>«anche altri oggetti volano via»</b> non misurato"
+   ],
+   "known_limitations": [
+    "Misurato: i tre controlli negativi del controllo particelle diventano rossi. Direzione corretta su 14 di 14. Salto della ricarica sul vertice mediano 0,0062–0,0146 blocchi (soglia 0,020; vecchio percorso 0,307). Residuo dopo il copione <b>esattamente 0</b>. Lunghezza resa da 1,07 a 1,89 blocchi",
+    "Su questa macchina di sviluppo non c'è un client Minecraft. <b>Nulla viene descritto come risolto prima di essere stato visto funzionare.</b>"
+   ]
   }
  ],
  "roadmap": {
