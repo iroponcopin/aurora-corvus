@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Kapılardaki 182 eş düzlemli yüz çiftinin tamamı kaldırıldı; silahın sınır kutusu artık ölçülüyor",
+   "summary": "Silah, eşyadan 13 blok uzakta çiziliyordu — birim karışıklığı düzeltildi",
    "releases": [
+    {
+     "version": "V4.3.3.2",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Silah, eşyadan 13 blok uzakta çiziliyordu — birim karışıklığı düzeltildi",
+     "summary": "Yere düşen silahın <b>imkânsız bir yerde havada süzülüp dönmesinin</b> nedeni bulundu. Silah <b>eşyadan 10,8 ila 13,9 blok uzakta</b> çiziliyordu ve yerdeki eşya kendi ekseninde döndüğü için silah o mesafede etrafında <b>dönüyordu</b>. Bu kadar uzaktan <b>beyaz bir nokta</b> gibi görünür. Elde tutulurken görülen büyük soluk şekil de aynı kaymadır.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "<b>Neden bir birim karışıklığıydı.</b> Hizalama tablosu eski modelin merkezini <b>1/16 blok biriminde</b> (0–16) zaten blok cinsinden olan bir terime ekliyordu; 8–10 çıkıyor ve blok cinsinden öteleme olarak kullanılıyordu",
+        "<b>Üstüne ikinci bir hata bindi.</b> Yeni modelin merkezi, <b>kemik kaymalarını içermeyen</b> ham kutu koordinatlarından hesaplanıyordu",
+        "<b>Tablo kaldırıldı.</b> Yerleşim artık çalışma anında <b>pişirilmiş modelin kendisinden</b> ölçülüyor ({@code ModelPart.getExtentsForGui}). Aynı sayı artık iki yerde yazılı değil",
+        "<b>Ölçüm:</b> öncesinde on dört silahın hepsi 10,8–13,9 blok uzaktaydı; sonrasında hepsi <b>0,0000 blok</b>, boyutlar değişmeden 0,24–1,45",
+        "<b>Denetim yeniden yazıldı.</b> Eskisi <b>yalnızca boyutu</b> ölçüyordu — öteleme kutunun boyutunu değiştirmediği için yeşil kalıyordu. Yenisi <b>konumu da</b> ölçüyor ve eski kodda 14'te 14 kırmızı veriyor"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "<b>Her düşen eşyanın ışınlandığı bildirimi ölçülmedi.</b> Yukarıdaki kayma silahlar için kanıtlı; diğer eşyalar için hiçbir şey ölçülmedi. <b>Düzeltildiği iddia edilmiyor.</b>",
+        "<b>Kapı titremesinin geçtiği hâlâ kanıtlanmadı.</b> V4.3.3.1, 182 eş düzlemli yüz çiftini kaldırdı, ama gördüğünüz titreme onlar mı, bakılınca anlaşılır"
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Bu makinede Minecraft istemcisi yok. Ekrandaki her şey burada doğrulanamaz; <b>çalıştığı görülmeden hiçbir şey düzeldi diye yazılmaz</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.1",
      "date": "2026-09-09",

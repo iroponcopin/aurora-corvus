@@ -2373,6 +2373,29 @@
         "No hay cliente de Minecraft en esta máquina de desarrollo. Todo lo que aparece en pantalla es estructuralmente inverificable aquí, por eso <b>nada se describirá como arreglado hasta haberlo visto funcionar</b>",
         "Quedan sesenta y siete pares del mismo tipo en otros bloques de construcción (clasificadores, semáforos, bombas, cajero). No fueron reportados y quedan intactos"
       ]
+    },
+    {
+      "id": "v4.3.3.2",
+      "release": "V4.3.3.2",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "El arma se dibujaba a 13 bloques del objeto: confusión de unidades, corregida",
+      "summary": "Se ha encontrado la causa de que un arma tirada <b>flotara y girara en un sitio imposible</b>. Se dibujaba <b>a entre 10,8 y 13,9 bloques del objeto</b>, y como un objeto en el suelo gira, el arma <b>orbitaba</b> a esa distancia. Tan lejos, se ve como un <b>punto blanco</b>. La forma pálida grande al empuñarla es el mismo desplazamiento.",
+      "highlights": [
+        "<b>La causa fue una confusión de unidades.</b> La tabla de alineación sumaba el centro del modelo antiguo en <b>unidades de 1/16 de bloque</b> (0–16) a un término ya expresado en bloques. Salían valores de 8–10, usados luego como traslación en bloques",
+        "<b>Había un segundo error encima.</b> El centro del modelo nuevo se calculaba con coordenadas brutas que <b>no incluyen los desplazamientos de huesos</b>",
+        "<b>La tabla ha desaparecido.</b> La colocación ahora la mide en ejecución el renderizador desde <b>el propio modelo horneado</b> ({@code ModelPart.getExtentsForGui}). El mismo número ya no está escrito en dos sitios",
+        "<b>Medido:</b> antes, las catorce armas estaban a 10,8–13,9 bloques; después, las catorce a <b>0,0000 bloques</b>, con tamaños sin cambios de 0,24 a 1,45",
+        "<b>La barrera se rehízo.</b> La anterior medía <b>solo el tamaño</b> — y una traslación no cambia el tamaño de una caja, así que seguía verde. La nueva mide <b>también la posición</b> y falla 14 de 14 contra el código anterior"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>El informe de que todo objeto tirado se teletransporta no se ha medido.</b> El desplazamiento anterior está probado para armas; para otros objetos no se ha medido nada. <b>No se afirma ninguna corrección.</b>",
+        "<b>Que el parpadeo de las puertas haya desaparecido sigue sin probarse.</b> La V4.3.3.1 quitó 182 pares de caras coplanares, pero si son lo que ves solo se sabrá al mirarlo"
+      ],
+      "known_limitations": [
+        "No hay cliente de Minecraft en esta máquina. Lo que aparece en pantalla es inverificable aquí; <b>nada se describe como arreglado hasta haberlo visto funcionar</b>"
+      ]
     }
   ],
   "roadmap": {

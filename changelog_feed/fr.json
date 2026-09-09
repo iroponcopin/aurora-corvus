@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Les 182 paires de faces coplanaires retirées des portes ; boîte englobante de l'arme désormais mesurée",
+   "summary": "L'arme était dessinée à 13 blocs de l'objet — erreur d'unités corrigée",
    "releases": [
+    {
+     "version": "V4.3.3.2",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "L'arme était dessinée à 13 blocs de l'objet — erreur d'unités corrigée",
+     "summary": "La cause d'une arme lâchée qui <b>flottait et tournait à un endroit impossible</b> est trouvée. Elle était dessinée <b>à 10,8 à 13,9 blocs de l'objet</b>, et comme un objet au sol tourne sur lui-même, l'arme <b>gravitait</b> autour à cette distance. D'aussi loin, elle se lit comme un <b>point blanc</b>. La grande forme pâle en main est le même décalage.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "<b>La cause était une confusion d'unités.</b> La table d'alignement ajoutait le centre de l'ancien modèle en <b>unités de 1/16 de bloc</b> (0–16) à un terme déjà exprimé en blocs. On obtenait 8–10, utilisés ensuite comme translation en blocs",
+        "<b>Une seconde erreur s'y superposait.</b> Le centre du nouveau modèle était calculé à partir de coordonnées brutes qui <b>n'incluent pas les décalages d'os</b>",
+        "<b>La table a disparu.</b> Le placement est désormais mesuré à l'exécution par le rendu depuis <b>le modèle cuit lui-même</b> ({@code ModelPart.getExtentsForGui}). Le même nombre n'est plus écrit à deux endroits",
+        "<b>Mesuré :</b> avant, les quatorze armes étaient à 10,8–13,9 blocs de l'objet ; après, les quatorze sont à <b>0,0000 bloc</b>, tailles inchangées de 0,24 à 1,45 bloc",
+        "<b>La barrière a été refaite.</b> L'ancienne ne mesurait <b>que la taille</b> — et une translation ne change pas la taille d'une boîte, donc elle restait verte. La nouvelle mesure <b>aussi la position</b> et échoue 14 fois sur 14 contre l'ancien code"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "<b>Le signalement selon lequel tout objet lâché se téléporte n'a pas été mesuré.</b> Le décalage ci-dessus est prouvé pour les armes ; pour les autres objets, rien n'a été mesuré. <b>Aucune correction n'est annoncée.</b>",
+        "<b>La disparition du scintillement des portes reste non prouvée.</b> La V4.3.3.1 a retiré 182 paires de faces coplanaires, mais savoir si c'est bien ce que vous voyez demande de le regarder"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Il n'y a pas de client Minecraft sur cette machine. Tout ce qui s'affiche y est structurellement invérifiable ; <b>rien n'est annoncé corrigé avant d'avoir été vu fonctionner</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.1",
      "date": "2026-09-09",

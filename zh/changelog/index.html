@@ -228,8 +228,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">从门中移除全部 182 对共面面；枪械包围盒改为实测</p>
+      <p class="cl__groupSummary">枪械被画在离物品 13 格的地方 —— 单位弄错，已修正</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.2">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-2">
+          <h3 class="cl__version">V4.3.3.2</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-3-2" hidden><p class="cl__entryTitle">枪械被画在离物品 13 格的地方 —— 单位弄错，已修正</p><p class="cl__lede">掉落的枪&lt;b&gt;在不可能的位置漂浮旋转&lt;/b&gt;的原因已找到。枪被画在&lt;b&gt;离物品 10.8 至 13.9 格&lt;/b&gt;的地方，而掉落物本身会自转，于是枪以那个距离&lt;b&gt;绕着它公转&lt;/b&gt;。距离这么远，看上去就是一个&lt;b&gt;白点&lt;/b&gt;。手持时那团大而发白的形状，也是同一处偏移。</p><div class="cl__section"><h4 class="cl__sectionTitle">更新内容 <span>(5)</span></h4><ul class="cl__list"><li>&lt;b&gt;原因是单位弄错。&lt;/b&gt;对位表把旧模型的中心以&lt;b&gt;1/16 方块单位&lt;/b&gt;（0–16）直接加到了已经是方块单位的项上，得出 8–10，然后当作方块单位的平移使用</li><li>&lt;b&gt;上面还叠了第二个错误。&lt;/b&gt;新模型的中心是用&lt;b&gt;不含骨骼偏移&lt;/b&gt;的原始方块坐标算的</li><li>&lt;b&gt;这张表已经删除。&lt;/b&gt;摆放位置改由渲染器在运行时从&lt;b&gt;烘焙后的模型本身&lt;/b&gt;测量（{@code ModelPart.getExtentsForGui}）。同一个数不再写在两个地方，也就无从走样</li><li>&lt;b&gt;实测：&lt;/b&gt;修正前十四把枪全部偏离物品 10.8–13.9 格；修正后十四把全部为 &lt;b&gt;0.0000 格&lt;/b&gt;，尺寸不变，仍为 0.24–1.45 格</li><li>&lt;b&gt;关卡已重做。&lt;/b&gt;旧关卡&lt;b&gt;只量尺寸&lt;/b&gt;——而平移并不改变盒子的尺寸，所以把枪甩到 13 格外它依然是绿的。新关卡&lt;b&gt;同时量位置&lt;/b&gt;，对旧代码 14 中 14 判红</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意事项 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li>&lt;b&gt;「所有掉落物都会瞬移」这一报告尚未测量。&lt;/b&gt;上述偏移对枪械已证实，对其他物品则未测量任何内容。&lt;b&gt;不作任何已修复的声明。&lt;/b&gt;</li><li>&lt;b&gt;门的闪烁是否消失仍未证实。&lt;/b&gt;V4.3.3.1 移除了 182 对共面面，但它们是否就是您看到的闪烁，要看过才知道</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">截至当时尚未实现或未确认的内容 <span>(1)</span></h4><ul class="cl__list"><li>本机没有 Minecraft 客户端。屏幕上的一切在此无法验证；&lt;b&gt;在亲眼看到确实可用之前，不写「已修复」&lt;/b&gt;</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.1">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-1">
           <h3 class="cl__version">V4.3.3.1</h3>

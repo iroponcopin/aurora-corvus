@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Seluruh 182 pasang muka sebidang dihapus dari pintu; kotak batas senjata kini diukur",
+   "summary": "Senjata digambar 13 blok jauhnya dari item — salah satuan, sudah diperbaiki",
    "releases": [
+    {
+     "version": "V4.3.3.2",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Senjata digambar 13 blok jauhnya dari item — salah satuan, sudah diperbaiki",
+     "summary": "Penyebab senjata yang dijatuhkan <b>melayang dan berputar di tempat yang mustahil</b> sudah ditemukan. Senjata digambar <b>10,8 sampai 13,9 blok dari item</b>, dan karena item di tanah berputar pada porosnya, senjata itu <b>mengorbitinya</b> pada jarak tersebut. Sejauh itu, ia tampak seperti <b>titik putih</b>. Bentuk pucat besar saat dipegang adalah pergeseran yang sama.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>Penyebabnya salah satuan.</b> Tabel penyelarasan menambahkan pusat model lama dalam <b>satuan 1/16 blok</b> (0–16) ke suku yang sudah dalam blok. Hasilnya 8–10, lalu dipakai sebagai translasi dalam blok",
+        "<b>Ada kesalahan kedua di atasnya.</b> Pusat model baru dihitung dari koordinat kotak mentah yang <b>tidak menyertakan offset tulang</b>",
+        "<b>Tabelnya dihapus.</b> Penempatan kini diukur saat runtime oleh perender dari <b>model panggang itu sendiri</b> ({@code ModelPart.getExtentsForGui}). Angka yang sama tidak lagi ditulis di dua tempat",
+        "<b>Terukur:</b> sebelumnya keempat belas senjata berjarak 10,8–13,9 blok; sesudahnya keempat belas pada <b>0,0000 blok</b>, ukuran tetap 0,24–1,45",
+        "<b>Gerbangnya dibangun ulang.</b> Yang lama hanya mengukur <b>ukuran</b> — dan translasi tidak mengubah ukuran kotak, jadi tetap hijau. Yang baru mengukur <b>posisi juga</b>, dan gagal 14 dari 14 terhadap kode lama"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>Laporan bahwa setiap item yang dijatuhkan berteleportasi belum diukur.</b> Pergeseran di atas terbukti untuk senjata; untuk item lain belum ada yang diukur. <b>Tidak ada klaim perbaikan.</b>",
+        "<b>Apakah kedipan pintu hilang masih belum terbukti.</b> V4.3.3.1 menghapus 182 pasang muka sebidang, tetapi apakah itu yang Anda lihat baru diketahui setelah dilihat"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Tidak ada klien Minecraft di mesin ini. Apa pun di layar tak bisa diverifikasi di sini; <b>tidak ada yang disebut diperbaiki sebelum terlihat berfungsi</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.1",
      "date": "2026-09-09",

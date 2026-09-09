@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "As 182 pares de faces coplanares removidas das portas; caixa da arma agora medida",
+   "summary": "A arma era desenhada a 13 blocos do item — confusão de unidades, corrigida",
    "releases": [
+    {
+     "version": "V4.3.3.2",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "A arma era desenhada a 13 blocos do item — confusão de unidades, corrigida",
+     "summary": "Encontrada a causa de uma arma derrubada <b>flutuar e girar num lugar impossível</b>. Ela era desenhada <b>a 10,8 a 13,9 blocos do item</b>, e como um item no chão gira, a arma <b>orbitava</b> nessa distância. Tão longe, aparece como um <b>ponto branco</b>. A forma clara e grande na mão é o mesmo deslocamento.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "<b>A causa foi uma confusão de unidades.</b> A tabela de alinhamento somava o centro do modelo antigo em <b>unidades de 1/16 de bloco</b> (0–16) a um termo já em blocos. Saíam valores de 8–10, usados então como translação em blocos",
+        "<b>Havia um segundo erro por cima.</b> O centro do modelo novo era calculado a partir de coordenadas brutas que <b>não incluem os deslocamentos de ossos</b>",
+        "<b>A tabela acabou.</b> O posicionamento agora é medido em tempo de execução pelo renderizador a partir do <b>próprio modelo assado</b> ({@code ModelPart.getExtentsForGui}). O mesmo número não está mais escrito em dois lugares",
+        "<b>Medido:</b> antes, as catorze armas estavam a 10,8–13,9 blocos; depois, as catorze a <b>0,0000 bloco</b>, tamanhos inalterados de 0,24 a 1,45",
+        "<b>A barreira foi refeita.</b> A anterior media <b>só o tamanho</b> — e uma translação não muda o tamanho de uma caixa, então continuava verde. A nova mede <b>também a posição</b> e reprova 14 de 14 contra o código anterior"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "<b>O relato de que todo item derrubado se teletransporta não foi medido.</b> O deslocamento acima está provado para armas; para outros itens nada foi medido. <b>Nenhuma correção é afirmada.</b>",
+        "<b>Se a cintilação das portas sumiu continua não provado.</b> A V4.3.3.1 removeu 182 pares de faces coplanares, mas se são o que você vê só olhando"
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "Não há cliente de Minecraft nesta máquina. O que aparece na tela é inverificável aqui; <b>nada é descrito como corrigido antes de ter sido visto funcionando</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.1",
      "date": "2026-09-09",

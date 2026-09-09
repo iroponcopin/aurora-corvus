@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Rimosse dalle porte tutte le 182 coppie di facce complanari; il volume dell'arma ora è misurato",
+   "summary": "L'arma veniva disegnata a 13 blocchi dall'oggetto: errore di unità, corretto",
    "releases": [
+    {
+     "version": "V4.3.3.2",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "L'arma veniva disegnata a 13 blocchi dall'oggetto: errore di unità, corretto",
+     "summary": "Trovata la causa per cui un'arma caduta <b>fluttuava e ruotava in un punto impossibile</b>. Veniva disegnata <b>a 10,8–13,9 blocchi dall'oggetto</b>, e poiché un oggetto a terra ruota, l'arma gli <b>orbitava</b> attorno a quella distanza. Così lontana, appare come un <b>puntino bianco</b>. La grande forma chiara quando la si impugna è lo stesso spostamento.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "<b>La causa era una confusione di unità.</b> La tabella di allineamento sommava il centro del vecchio modello in <b>unità da 1/16 di blocco</b> (0–16) a un termine già in blocchi. Uscivano valori 8–10, usati poi come traslazione in blocchi",
+        "<b>C'era un secondo errore sopra.</b> Il centro del nuovo modello era calcolato da coordinate grezze che <b>non includono gli offset delle ossa</b>",
+        "<b>La tabella non c'è più.</b> Il posizionamento è ora misurato a runtime dal renderer sul <b>modello cotto stesso</b> ({@code ModelPart.getExtentsForGui}). Lo stesso numero non è più scritto in due punti",
+        "<b>Misurato:</b> prima tutte e quattordici erano a 10,8–13,9 blocchi; dopo tutte e quattordici a <b>0,0000 blocchi</b>, dimensioni invariate 0,24–1,45",
+        "<b>Il controllo è stato rifatto.</b> Il precedente misurava <b>solo la dimensione</b> — e una traslazione non cambia la dimensione di una scatola, quindi restava verde. Il nuovo misura <b>anche la posizione</b> e fallisce 14 su 14 contro il codice precedente"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "<b>La segnalazione che ogni oggetto caduto si teletrasporti non è stata misurata.</b> Lo spostamento sopra è provato per le armi; per gli altri oggetti non è stato misurato nulla. <b>Non si dichiara alcuna correzione.</b>",
+        "<b>Se lo sfarfallio delle porte sia sparito resta non provato.</b> La V4.3.3.1 ha rimosso 182 coppie di facce complanari, ma se siano quello che vedi si saprà solo guardando"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Su questa macchina non c'è un client Minecraft. Ciò che appare a schermo è qui non verificabile; <b>nulla è descritto come risolto prima di essere stato visto funzionare</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.1",
      "date": "2026-09-09",

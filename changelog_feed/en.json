@@ -7,8 +7,40 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "All 182 coplanar face pairs removed from the doors; the gun's bounding box now measured",
+   "summary": "The gun was being drawn 13 blocks away from the item — a unit mix-up, fixed",
    "releases": [
+    {
+     "version": "V4.3.3.2",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "The gun was being drawn 13 blocks away from the item — a unit mix-up, fixed",
+     "summary": "The cause of a dropped gun <b>floating and spinning somewhere impossible</b> has been found. The gun was drawn <b>10.8 to 13.9 blocks away from the item</b>, and since a dropped item spins, the gun <b>orbited</b> it at that distance. Far enough away, it reads as a <b>white dot</b>. The large pale shape when held is the same displacement.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "<b>The cause was a unit mix-up.</b> The alignment table added the old model's centre in <b>1/16-block units</b> (0–16) to a term already in blocks. The values came out at 8–10 and were then used as a translation in blocks",
+        "<b>A second error was layered on top.</b> The new model's centre was computed from raw box coordinates that <b>do not include the bone offsets</b>, so it pointed somewhere the baked model never was",
+        "<b>The table is gone.</b> Placement is now measured at runtime by the renderer from <b>the baked model itself</b> (vanilla's {@code ModelPart.getExtentsForGui}). The same number is no longer written in two places, so it cannot drift. The generated {@code GunAlignment.java} has been deleted",
+        "<b>Measured:</b> before, all fourteen guns sat 10.8–13.9 blocks off the item. After, all fourteen are at <b>0.0000 blocks</b>, with sizes unchanged at 0.24–1.45 blocks",
+        "<b>The gate has been rebuilt.</b> The old one measured <b>size only</b> — and a translation does not change the size of a box, so flinging the gun 13 blocks away left it green. The new gate measures <b>position too</b>, requiring the box to contain the item's centre. Against the old code it fails 14 of 14"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "<b>The report that every dropped item teleports has not been measured.</b> The displacement above is proven for guns; for other items nothing has been measured. <b>No claim of a fix is made.</b>",
+        "<b>Whether the door flicker is gone is still unproven.</b> V4.3.3.1 removed 182 coplanar face pairs, but whether they are the flicker you see cannot be known until it is looked at"
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "There is no Minecraft client on this development machine. Anything on screen is structurally unverifiable here, so <b>nothing is described as fixed until it has been seen working</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.1",
      "date": "2026-09-09",

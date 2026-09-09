@@ -2365,6 +2365,29 @@
         "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. Alles, was auf dem Bildschirm erscheint, ist hier strukturell nicht überprüfbar; deshalb wird <b>nichts als behoben bezeichnet, bevor es funktionierend gesehen wurde</b>",
         "Siebenundsechzig Paare derselben Art bleiben in anderen Baublöcken (Sortierer, Ampeln, Pumpen, Geldautomat). Sie wurden nicht gemeldet und bleiben in dieser Version unangetastet"
       ]
+    },
+    {
+      "id": "v4.3.3.2",
+      "release": "V4.3.3.2",
+      "date": "2026-09-09",
+      "type": "release",
+      "title": "Die Waffe wurde 13 Blöcke vom Gegenstand entfernt gezeichnet — Einheitenfehler behoben",
+      "summary": "Die Ursache dafür, dass eine fallen gelassene Waffe <b>an einer unmöglichen Stelle schwebte und rotierte</b>, ist gefunden. Sie wurde <b>10,8 bis 13,9 Blöcke neben dem Gegenstand</b> gezeichnet, und da ein liegender Gegenstand sich dreht, <b>umkreiste</b> ihn die Waffe in diesem Abstand. So weit weg erscheint sie als <b>weißer Punkt</b>. Die große blasse Form beim Halten ist dieselbe Verschiebung.",
+      "highlights": [
+        "<b>Die Ursache war eine Verwechslung der Einheiten.</b> Die Ausrichtungstabelle addierte den Mittelpunkt des alten Modells in <b>1/16-Block-Einheiten</b> (0–16) zu einem Term, der bereits in Blöcken vorlag. Es kamen Werte von 8–10 heraus, die dann als Verschiebung in Blöcken verwendet wurden",
+        "<b>Ein zweiter Fehler lag darüber.</b> Der Mittelpunkt des neuen Modells wurde aus rohen Kastenkoordinaten berechnet, die <b>die Knochenversätze nicht enthalten</b>",
+        "<b>Die Tabelle ist weg.</b> Die Platzierung wird jetzt zur Laufzeit vom Renderer aus <b>dem gebackenen Modell selbst</b> gemessen ({@code ModelPart.getExtentsForGui}). Dieselbe Zahl steht nicht mehr an zwei Stellen und kann nicht auseinanderlaufen",
+        "<b>Gemessen:</b> vorher lagen alle vierzehn Waffen 10,8–13,9 Blöcke daneben; nachher alle vierzehn bei <b>0,0000 Blöcken</b>, Größen unverändert 0,24–1,45 Blöcke",
+        "<b>Die Prüfung wurde neu gebaut.</b> Die alte maß <b>nur die Größe</b> — und eine Verschiebung ändert die Größe eines Kastens nicht, also blieb sie grün. Die neue misst <b>auch die Position</b> und schlägt gegen den alten Stand 14 von 14 fehl"
+      ],
+      "balance_changes": [],
+      "warnings": [
+        "<b>Die Meldung, dass jeder fallen gelassene Gegenstand sich teleportiert, wurde nicht gemessen.</b> Für Waffen ist die Verschiebung bewiesen, für andere Gegenstände wurde nichts gemessen. <b>Es wird keine Behebung behauptet.</b>",
+        "<b>Ob das Türflackern weg ist, bleibt unbewiesen.</b> V4.3.3.1 entfernte 182 koplanare Flächenpaare, aber ob sie das von Ihnen gesehene Flackern sind, weiß man erst beim Hinsehen"
+      ],
+      "known_limitations": [
+        "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. Alles auf dem Bildschirm ist hier strukturell nicht überprüfbar, deshalb <b>wird nichts als behoben bezeichnet, bevor es funktionierend gesehen wurde</b>"
+      ]
     }
   ],
   "roadmap": {
