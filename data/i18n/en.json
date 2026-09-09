@@ -2574,6 +2574,51 @@
     "sorakaze_survival": "4.3.3.4",
     "sorakaze_vehicles": "4.3.3.4"
    }
+  },
+  {
+   "id": "v4.3.4",
+   "release": "V4.3.4",
+   "date": "2026-09-09",
+   "type": "release",
+   "title": "The gun was being held backwards — the direction is fixed, the reload rebuilt, and the particles are ours now",
+   "summary": "Your photograph showed the gun <b>being held by the muzzle</b>. Every one of the 14 guns has been 180 degrees wrong in <b>all six releases</b> since they moved onto bones in V4.3.2. Alongside that, the reload has been rebuilt at <b>a higher density than the reference pack</b>, and the whole look of firing is now <b>our own particles</b> — until now it was vanilla's torch flame and campfire smoke.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.4",
+    "sorakaze_boss": "4.3.4",
+    "sorakaze_deco": "4.3.4",
+    "sorakaze_fallout": "4.3.4",
+    "sorakaze_guns": "4.3.4",
+    "sorakaze_phone": "4.3.4",
+    "sorakaze_planarcadia": "4.3.4",
+    "sorakaze_power": "4.3.4",
+    "sorakaze_rail": "4.3.4",
+    "sorakaze_sapporo": "4.3.4",
+    "sorakaze_sky": "4.3.4",
+    "sorakaze_survival": "4.3.4",
+    "sorakaze_vehicles": "4.3.4"
+   },
+   "highlights": [
+    "<b>The direction was reversed.</b> The boned model has <b>the muzzle at +X</b> (confirmed by four independent landmarks — {@code bullet_spawn} ahead of {@code muzzle_flash}, {@code sight_front} ahead of {@code sight_rear}, the stock at −X, no exception in any of the 14). But the existing {@code *_in_hand} models, which supply the display transforms, put <b>the muzzle at low z</b> — and their elements are literally tagged {@code \"name\": \"muzzle\"}. A rotation of θ about Y sends (1,0,0) to (cos θ, 0, −sin θ), so <b>−90° puts the muzzle at +Z</b> (backwards) and <b>+90° at −Z</b> (correct). It is now +90°",
+    "<b>It was in every jar from 4.3.2 to 4.3.3.4.</b> Confirmed by disassembling {@code GunSpecialRenderer.class} inside each one and finding {@code ldc float -90.0}. <b>Including this morning's 4.3.3.4.</b> It went unnoticed because for that entire time the gun was never in a state where direction could be judged — too small (4.3.2), then 13 blocks away (4.3.3.2), then flying off every frame (4.3.3.3)",
+    "<b>There is now a gate for direction.</b> It renders the barrel bone and the butt bone <b>one at a time</b>, takes each centroid, and requires the difference to point at −Z. A rotation changes neither the size nor the centre of the bounding box, so the earlier gates (size, position, continuity) <b>could not possibly</b> have seen this. Under the old sign it fails <b>14 of 14</b>. The rotation had also been <b>copy-pasted at six sites</b>; there is now one",
+    "<b>The reload has been rebuilt.</b> V4.3.3.4 had 5 bones and 32 keyframes, and <b>11 of the 14 guns were identical</b>. It is now <b>11 bones and 1,135–2,197 keyframes</b>, different for every gun. For comparison the reference pack's ak47 is 9 bones / 269, and its glock_17 is 11 bones / 1,322",
+    "<b>Eight stages.</b> The support hand leaves and the gun tips over → the magazine catch is pressed → the magazine comes straight down → it clears, then tilts as it falls → a fresh one is fetched → it goes in nose-first and rocks level → a tap confirms it seated → the charging handle is pulled and the bolt runs home, then it settles. There is <b>secondary motion</b> too: the floorplate lags the magazine by one sample, the bolt cocks the hammer on its way forward, and the finger comes off the trigger for the duration",
+    "<b>The curves are baked out, frame by frame.</b> The reference pack's glock_17 keys every 0.0167 s with every channel linear — the author baked the curve rather than trusting an interpolator. This does the same, but bakes a <b>velocity-continuous</b> Hermite curve (tangents taken from the neighbouring control points and <b>normalised for time</b>). Applying a separate easing per segment makes the speed change in a step at every join, which measured as a 0.085-block jump",
+    "<b>All three firing particles are ours now.</b> Until now it was two {@code ParticleTypes.SMALL_FLAME} and three {@code ParticleTypes.SMOKE}, placed 0.4 blocks in front of the eye — <b>a torch flame and campfire smoke</b>, unrelated to where the muzzle actually is or which way it points",
+    "<b>The muzzle flash</b> has four frames. Its colours are taken from <b>black-body radiation</b> (3200 K at the core, 2200 K at the tips) and 5–7 uneven rays point a different way each time. Its size is the <b>fourth root of the muzzle energy</b> — 0.16 blocks for a handgun, 0.34 for the anti-materiel rifle. It lives 2–3 ticks and is <b>lit by itself</b>, so it still reads in the dark",
+    "<b>The smoke</b> has four frames, a broken-up silhouette, and expands 3.6× while thinning. <b>The shell casing</b> is brass and <b>has physics</b> — it flies right, spins as it falls, bounces twice, and <b>makes a sound</b> when it lands (one of three synthesised variants). Energy weapons and the launcher eject nothing",
+    "<b>Two defects in the gates themselves were fixed.</b> The animation gate treated a neutral scale as 0 when it is <b>1</b> ({@code scaleVec(x,y,z)} returns {@code x−1}, which is added to the default 1.0) — it would have failed every correctly written scale channel, and it was luck that this surfaced before it mattered. And the continuity gate now judges on the <b>median</b> vertex: a bolt slamming home is <b>supposed</b> to be abrupt; what is unnatural is <b>the whole gun</b> jumping"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Nobody has seen this running either.</b> The direction, the reload and the particles were all measured with no client attached. <b>Whether it looks right is not proven</b>, and it is stated as such",
+    "<b>The door flicker</b> is still unverified, and <b>\"non-gun items fly off when dropped\"</b> is still unmeasured",
+    "<b>There are still areas behind the reference pack.</b> The hands (the left and right hand bones exist but carry no geometry yet), the inspect/draw/holster motions (the clips exist but are never played), firing the reload's sounds <b>at the animation's own timings</b>, and driving the aim with a second-order filter — those four are next"
+   ],
+   "known_limitations": [
+    "Measured: direction correct on 14 of 14 (14 of 14 fail under the old sign). The reload's jump, measured on the median vertex, is <b>0.0038–0.0104 blocks</b> across all 14 (the bar is 0.020; the old path reads 0.246). Residue after the script is <b>exactly 0</b>. Flash sizes run 0.15–0.34 blocks. The 9 particle textures and 3 sounds are compared <b>byte for byte</b> against their generators",
+    "There is no Minecraft client on this development machine. <b>Nothing is described as fixed until it has been seen working.</b>"
+   ]
   }
  ],
  "roadmap": {

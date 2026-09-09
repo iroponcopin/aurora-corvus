@@ -7,8 +7,47 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "A mira, a corrida e a recarga das armas foram refeitas — a postura de arco sumiu e o movimento é contínuo",
+   "summary": "A arma estava sendo segurada ao contrário — direção corrigida, recarga refeita e partículas próprias",
    "releases": [
+    {
+     "version": "V4.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "A arma estava sendo segurada ao contrário — direção corrigida, recarga refeita e partículas próprias",
+     "summary": "Sua foto mostrava a arma <b>segurada pela boca do cano</b>. As 14 armas estiveram 180 graus erradas em <b>todas as seis versões</b> desde que passaram para ossos na V4.3.2. Junto disso, a recarga foi refeita com <b>densidade maior que a do pacote de referência</b>, e toda a aparência do disparo agora são <b>partículas próprias</b> — até agora era a chama de tocha e a fumaça de fogueira do Minecraft.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "<b>A direção estava invertida.</b> O modelo em ossos tem <b>a boca em +X</b> (confirmado por quatro marcos independentes — {@code bullet_spawn} à frente de {@code muzzle_flash}, {@code sight_front} à frente de {@code sight_rear}, a coronha em −X, sem exceção nas 14). Mas os modelos {@code *_in_hand}, que fornecem as transformações de exibição, põem <b>a boca no z baixo</b> — e seus elementos trazem literalmente {@code \"name\": \"muzzle\"}. Uma rotação de θ em torno de Y leva (1,0,0) a (cos θ, 0, −sin θ): <b>−90° põe a boca em +Z</b> (invertido) e <b>+90° em −Z</b> (correto). Agora é +90°",
+        "<b>Estava em todos os jars da 4.3.2 à 4.3.3.4.</b> Confirmado desmontando {@code GunSpecialRenderer.class} dentro de cada um e achando {@code ldc float -90.0}. <b>Inclusive na 4.3.3.4 de hoje de manhã.</b> Passou despercebido porque durante todo esse tempo a arma nunca esteve em um estado em que a direção pudesse ser julgada — pequena demais (4.3.2), depois a 13 blocos (4.3.3.2), depois voando para longe a cada quadro (4.3.3.3)",
+        "<b>Agora existe um controle de direção.</b> Ele desenha o osso do cano e o da coronha <b>um de cada vez</b>, toma os dois centroides e exige que a diferença aponte para −Z. Uma rotação não muda nem o tamanho nem o centro da caixa: os controles anteriores <b>não tinham como</b> ver isso. Sob o sinal antigo ele falha <b>14 de 14</b>. A rotação também estava <b>copiada em seis lugares</b>; agora há um",
+        "<b>A recarga foi refeita.</b> A V4.3.3.4 tinha 5 ossos e 32 quadros-chave, e <b>11 das 14 armas eram idênticas</b>. Agora são <b>11 ossos e 1.135 a 2.197 quadros-chave</b>, diferentes para cada arma. Para comparar: o ak47 do pacote de referência tem 9 ossos / 269, e o glock_17 11 / 1.322",
+        "<b>Oito estágios.</b> A mão de apoio sai e a arma inclina → o retém é pressionado → o carregador desce reto → sai livre e inclina ao cair → um novo é pego → entra de ponta e é bascutado → um tapa confirma o assento → a alavanca é puxada, o ferrolho volta, e tudo assenta. Com <b>movimento secundário</b>: a base do carregador atrasa uma amostra, o ferrolho arma o cão ao avançar, e o dedo sai do gatilho durante toda a manobra",
+        "<b>As curvas são assadas quadro a quadro.</b> O glock_17 de referência põe uma chave a cada 0,0167 s com todos os canais lineares — o autor assou a curva em vez de confiar num interpolador. Aqui igual, mas com uma curva de Hermite <b>de velocidade contínua</b> (tangentes dos pontos vizinhos, <b>normalizadas pelo tempo</b>). Aplicar uma suavização própria por trecho faz a velocidade saltar em cada junção: 0,085 bloco medido",
+        "<b>As três partículas do disparo agora são próprias.</b> Até agora eram duas {@code ParticleTypes.SMALL_FLAME} e três {@code ParticleTypes.SMOKE}, postas 0,4 bloco à frente do olho — <b>uma chama de tocha e fumaça de fogueira</b>, sem relação com onde a boca realmente está nem para onde aponta",
+        "<b>O clarão</b> tem quatro quadros. Suas cores vêm da <b>radiação de corpo negro</b> (3200 K no núcleo, 2200 K nas pontas) e de 5 a 7 raios desiguais apontam diferente a cada vez. Seu tamanho é a <b>raiz quarta da energia de boca</b> — 0,16 bloco para uma pistola, 0,34 para o fuzil antimaterial. Vive 2–3 ticks e <b>ilumina a si mesmo</b>, então continua legível no escuro",
+        "<b>A fumaça</b> tem quatro quadros, silhueta irregular, e se expande 3,6× enquanto afina. <b>O estojo</b> é de latão e <b>tem física</b> — sai para a direita, gira ao cair, quica duas vezes e <b>faz som</b> ao pousar (uma de três variantes sintetizadas). Armas de energia e o lança-foguetes não ejetam nada",
+        "<b>Dois defeitos nos próprios controles foram corrigidos.</b> O controle de animação tomava a escala neutra como 0 quando ela é <b>1</b> ({@code scaleVec(x,y,z)} devolve {@code x−1}, somado ao 1.0 padrão) — teria reprovado qualquer canal de escala escrito corretamente. E o controle de continuidade julga agora pela <b>mediana</b>: um ferrolho fechando <b>deve</b> ser abrupto; o que é artificial é <b>a arma inteira</b> saltar"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "<b>Ninguém viu isso rodando também.</b> Direção, recarga e partículas foram medidas sem cliente. <b>Se fica bom não está provado</b>, e está escrito assim",
+        "<b>O tremeluzir das portas</b> continua sem verificação, e <b>«outros itens também voam»</b> continua sem medição",
+        "<b>Ainda há áreas atrás do pacote de referência.</b> As mãos (os ossos existem mas ainda não têm geometria), os gestos de inspeção/saque/guarda (os clipes existem mas nunca tocam), disparar os sons de recarga <b>nos tempos da animação</b>, e conduzir a mira com um filtro de segunda ordem — esses quatro vêm a seguir"
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "Medido: direção correta em 14 de 14 (com o sinal antigo falham 14 de 14). O salto da recarga, medido no vértice mediano, é de <b>0,0038 a 0,0104 bloco</b> nas 14 (o limite é 0,020; o caminho antigo dá 0,246). O resíduo após o roteiro é <b>exatamente 0</b>. Os clarões vão de 0,15 a 0,34 bloco. As 9 texturas e 3 sons são comparados <b>byte a byte</b> com seus geradores",
+        "Não há cliente de Minecraft nesta máquina de desenvolvimento. <b>Nada é descrito como corrigido antes de ter sido visto funcionando.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.4",
      "date": "2026-09-09",

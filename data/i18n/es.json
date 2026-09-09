@@ -2463,6 +2463,51 @@
     "sorakaze_survival": "4.3.3.4",
     "sorakaze_vehicles": "4.3.3.4"
    }
+  },
+  {
+   "id": "v4.3.4",
+   "release": "V4.3.4",
+   "date": "2026-09-09",
+   "type": "release",
+   "title": "El arma se sostenía al revés — dirección corregida, recarga rehecha y partículas propias",
+   "summary": "Su fotografía mostraba el arma <b>sujeta por la boca del cañón</b>. Las 14 armas han estado 180 grados al revés en <b>las seis versiones</b> desde que pasaron a huesos en la V4.3.2. Además, la recarga se ha rehecho con <b>más densidad que el paquete de referencia</b>, y todo el aspecto del disparo son ahora <b>partículas propias</b> — hasta ahora era la llama de antorcha y el humo de hoguera de Minecraft.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.4",
+    "sorakaze_boss": "4.3.4",
+    "sorakaze_deco": "4.3.4",
+    "sorakaze_fallout": "4.3.4",
+    "sorakaze_guns": "4.3.4",
+    "sorakaze_phone": "4.3.4",
+    "sorakaze_planarcadia": "4.3.4",
+    "sorakaze_power": "4.3.4",
+    "sorakaze_rail": "4.3.4",
+    "sorakaze_sapporo": "4.3.4",
+    "sorakaze_sky": "4.3.4",
+    "sorakaze_survival": "4.3.4",
+    "sorakaze_vehicles": "4.3.4"
+   },
+   "highlights": [
+    "<b>La dirección estaba invertida.</b> El modelo con huesos tiene <b>la boca en +X</b> (confirmado por cuatro referencias independientes — {@code bullet_spawn} por delante de {@code muzzle_flash}, {@code sight_front} por delante de {@code sight_rear}, la culata en −X, sin excepción en las 14). Pero los modelos {@code *_in_hand}, que aportan las transformaciones de visualización, ponen <b>la boca en la z baja</b> — y sus elementos llevan literalmente {@code \"name\": \"muzzle\"}. Un giro de θ sobre Y lleva (1,0,0) a (cos θ, 0, −sin θ): <b>−90° pone la boca en +Z</b> (al revés) y <b>+90° en −Z</b> (correcto). Ahora es +90°",
+    "<b>Estaba en todos los jar de la 4.3.2 a la 4.3.3.4.</b> Confirmado desensamblando {@code GunSpecialRenderer.class} dentro de cada uno y hallando {@code ldc float -90.0}. <b>Incluida la 4.3.3.4 de esta mañana.</b> Pasó inadvertido porque durante todo ese tiempo el arma nunca estuvo en un estado en que pudiera juzgarse su dirección — demasiado pequeña (4.3.2), luego a 13 bloques (4.3.3.2), luego saliendo volando cada fotograma (4.3.3.3)",
+    "<b>Ya hay un control de dirección.</b> Dibuja el hueso del cañón y el de la culata <b>por separado</b>, toma ambos centroides y exige que la diferencia apunte a −Z. Un giro no cambia ni el tamaño ni el centro de la caja: los controles anteriores <b>no podían</b> ver esto. Con el signo antiguo falla <b>14 de 14</b>. Además el giro estaba <b>copiado en seis sitios</b>; ahora hay uno",
+    "<b>La recarga se ha rehecho.</b> La V4.3.3.4 tenía 5 huesos y 32 fotogramas clave, y <b>11 de las 14 armas eran idénticas</b>. Ahora son <b>11 huesos y de 1.135 a 2.197 fotogramas clave</b>, distintos en cada arma. Para comparar: el ak47 del paquete de referencia tiene 9 huesos / 269, y su glock_17 11 / 1.322",
+    "<b>Ocho etapas.</b> La mano de apoyo se retira y el arma se inclina → se pulsa el retén → el cargador baja recto → se libera y se inclina al caer → se toma uno nuevo → entra de punta y se bascula → un golpe confirma el asiento → se tira de la palanca, el cerrojo vuelve, y todo se asienta. Con <b>movimiento secundario</b>: la base del cargador se retrasa una muestra, el cerrojo monta el martillo al avanzar, y el dedo sale del gatillo durante toda la maniobra",
+    "<b>Las curvas se hornean fotograma a fotograma.</b> El glock_17 de referencia pone una clave cada 0,0167 s con todos los canales lineales — el autor horneó la curva en vez de fiarse de un interpolador. Aquí igual, pero con una curva de Hermite <b>de velocidad continua</b> (tangentes de los puntos vecinos, <b>normalizadas por el tiempo</b>). Aplicar un suavizado propio por tramo hace que la velocidad salte en cada unión: 0,085 bloques medidos",
+    "<b>Las tres partículas del disparo son ahora propias.</b> Hasta ahora eran dos {@code ParticleTypes.SMALL_FLAME} y tres {@code ParticleTypes.SMOKE}, colocadas 0,4 bloques delante del ojo — <b>una llama de antorcha y humo de hoguera</b>, sin relación con dónde está realmente la boca ni hacia dónde apunta",
+    "<b>El fogonazo</b> tiene cuatro fotogramas. Sus colores salen de la <b>radiación de cuerpo negro</b> (3200 K en el núcleo, 2200 K en las puntas) y de 5 a 7 rayos desiguales apuntan distinto cada vez. Su tamaño es la <b>raíz cuarta de la energía en boca</b> — 0,16 bloques para una pistola, 0,34 para el rifle antimaterial. Vive 2–3 ticks y <b>se ilumina solo</b>, así que se lee también a oscuras",
+    "<b>El humo</b> tiene cuatro fotogramas, silueta irregular, y se expande 3,6× adelgazándose. <b>El casquillo</b> es de latón y <b>tiene física</b> — sale a la derecha, gira al caer, rebota dos veces y <b>suena</b> al posarse (una de tres variantes sintetizadas). Las armas de energía y el lanzacohetes no expulsan nada",
+    "<b>Se han corregido dos defectos en los propios controles.</b> El control de animación tomaba la escala neutra como 0 cuando es <b>1</b> ({@code scaleVec(x,y,z)} devuelve {@code x−1}, que se suma al 1.0 por defecto) — habría suspendido cualquier canal de escala bien escrito. Y el control de continuidad juzga ahora por la <b>mediana</b>: un cerrojo que cierra <b>debe</b> ser brusco; lo antinatural es que salte <b>el arma entera</b>"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Tampoco nadie ha visto esto en marcha.</b> Dirección, recarga y partículas se midieron sin cliente. <b>Que quede bien no está demostrado</b>, y así se dice",
+    "<b>El parpadeo de las puertas</b> sigue sin verificarse, y <b>«otros objetos también salen volando»</b> sigue sin medirse",
+    "<b>Aún hay áreas por detrás del paquete de referencia.</b> Las manos (los huesos existen pero aún no tienen geometría), los gestos de inspección/desenfundado/guardado (los clips existen pero nunca se reproducen), disparar los sonidos de recarga <b>en los tiempos de la animación</b>, y llevar el apuntado con un filtro de segundo orden — esos cuatro van a continuación"
+   ],
+   "known_limitations": [
+    "Medido: dirección correcta en 14 de 14 (con el signo antiguo fallan 14 de 14). El salto de la recarga, medido en el vértice mediano, es de <b>0,0038 a 0,0104 bloques</b> en las 14 (el límite es 0,020; el camino antiguo da 0,246). El residuo tras el guion es <b>exactamente 0</b>. Los fogonazos van de 0,15 a 0,34 bloques. Las 9 texturas y 3 sonidos se comparan <b>byte a byte</b> con sus generadores",
+    "En esta máquina de desarrollo no hay cliente de Minecraft. <b>Nada se describe como corregido hasta haberlo visto funcionar.</b>"
+   ]
   }
  ],
  "roadmap": {

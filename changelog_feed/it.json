@@ -7,8 +7,47 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Mira, scatto e ricarica delle armi rifatti — la posa dell'arco è sparita e il movimento è continuo",
+   "summary": "L'arma veniva impugnata al contrario — direzione corretta, ricarica rifatta e particelle nostre",
    "releases": [
+    {
+     "version": "V4.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "L'arma veniva impugnata al contrario — direzione corretta, ricarica rifatta e particelle nostre",
+     "summary": "La sua foto mostrava l'arma <b>impugnata per la volata</b>. Tutte e 14 le armi sono state ruotate di 180 gradi in <b>tutte e sei le versioni</b> da quando sono passate alle ossa nella V4.3.2. Insieme a questo, la ricarica è stata rifatta con <b>densità superiore al pacchetto di riferimento</b>, e tutto l'aspetto dello sparo è ora fatto di <b>particelle nostre</b> — finora era la fiamma di torcia e il fumo di falò di Minecraft.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "<b>La direzione era invertita.</b> Il modello a ossa ha <b>la volata a +X</b> (confermato da quattro riferimenti indipendenti — {@code bullet_spawn} davanti a {@code muzzle_flash}, {@code sight_front} davanti a {@code sight_rear}, il calcio a −X, senza eccezioni su tutte e 14). Ma i modelli {@code *_in_hand}, che forniscono le trasformazioni di visualizzazione, mettono <b>la volata sulla z bassa</b> — e i loro elementi portano letteralmente {@code \"name\": \"muzzle\"}. Una rotazione di θ attorno a Y manda (1,0,0) in (cos θ, 0, −sin θ): <b>−90° mette la volata a +Z</b> (al contrario) e <b>+90° a −Z</b> (corretto). Ora è +90°",
+        "<b>Era in ogni jar dalla 4.3.2 alla 4.3.3.4.</b> Confermato disassemblando {@code GunSpecialRenderer.class} dentro ciascuno e trovando {@code ldc float -90.0}. <b>Compresa la 4.3.3.4 di stamattina.</b> È passato inosservato perché per tutto quel tempo l'arma non è mai stata in uno stato in cui si potesse giudicare la direzione — troppo piccola (4.3.2), poi a 13 blocchi (4.3.3.2), poi volando via ogni fotogramma (4.3.3.3)",
+        "<b>Ora esiste un controllo della direzione.</b> Disegna l'osso della canna e quello del calcio <b>uno alla volta</b>, prende i due baricentri e pretende che la differenza punti a −Z. Una rotazione non cambia né la dimensione né il centro della scatola: i controlli precedenti <b>non potevano</b> vederlo. Con il vecchio segno fallisce <b>14 su 14</b>. La rotazione era inoltre <b>copiata in sei punti</b>; ora ce n'è uno",
+        "<b>La ricarica è stata rifatta.</b> La V4.3.3.4 aveva 5 ossa e 32 fotogrammi chiave, e <b>11 delle 14 armi erano identiche</b>. Ora sono <b>11 ossa e da 1.135 a 2.197 fotogrammi chiave</b>, diversi per ogni arma. Per confronto: l'ak47 del pacchetto di riferimento ha 9 ossa / 269, e il suo glock_17 11 / 1.322",
+        "<b>Otto fasi.</b> La mano d'appoggio si stacca e l'arma s'inclina → si preme l'arresto → il caricatore scende dritto → si libera e s'inclina cadendo → se ne prende uno nuovo → entra di punta e si raddrizza → un colpetto conferma la sede → si tira la leva, l'otturatore rientra, poi tutto si assesta. Con <b>moto secondario</b>: il fondello ritarda di un campione, l'otturatore arma il cane avanzando, e il dito lascia il grilletto per tutta la durata",
+        "<b>Le curve sono cotte fotogramma per fotogramma.</b> Il glock_17 di riferimento pone una chiave ogni 0,0167 s con tutti i canali lineari — l'autore ha cotto la curva invece di affidarsi a un interpolatore. Qui lo stesso, ma con una curva di Hermite <b>a velocità continua</b> (tangenti dai punti vicini, <b>normalizzate nel tempo</b>). Applicare un'attenuazione propria per tratto fa saltare la velocità a ogni giunzione: 0,085 blocchi misurati",
+        "<b>Le tre particelle dello sparo sono ora nostre.</b> Finora erano due {@code ParticleTypes.SMALL_FLAME} e tre {@code ParticleTypes.SMOKE}, poste 0,4 blocchi davanti all'occhio — <b>una fiamma di torcia e fumo di falò</b>, senza rapporto con dove sia davvero la volata né con dove punti",
+        "<b>La vampa</b> ha quattro fotogrammi. I colori vengono dalla <b>radiazione di corpo nero</b> (3200 K al centro, 2200 K alle punte) e da 5 a 7 raggi disuguali puntano ogni volta diversamente. La dimensione è la <b>radice quarta dell'energia alla volata</b> — 0,16 blocchi per una pistola, 0,34 per il fucile anti-materiale. Vive 2–3 tick ed è <b>illuminata da sé</b>, quindi si legge anche al buio",
+        "<b>Il fumo</b> ha quattro fotogrammi, silhouette irregolare, e si espande 3,6× assottigliandosi. <b>Il bossolo</b> è di ottone e <b>ha una fisica</b> — esce a destra, ruota cadendo, rimbalza due volte e <b>fa rumore</b> quando si posa (una di tre varianti sintetizzate). Le armi a energia e il lanciarazzi non espellono nulla",
+        "<b>Sono stati corretti due difetti nei controlli stessi.</b> Il controllo delle animazioni considerava neutra una scala 0 quando è <b>1</b> ({@code scaleVec(x,y,z)} restituisce {@code x−1}, sommato all'1.0 predefinito) — avrebbe bocciato ogni canale di scala scritto correttamente. E il controllo di continuità giudica ora sulla <b>mediana</b>: un otturatore che chiude <b>deve</b> essere brusco; ciò che è innaturale è che salti <b>l'arma intera</b>"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "<b>Nemmeno questo l'ha visto girare qualcuno.</b> Direzione, ricarica e particelle sono state misurate senza client. <b>Che risulti bello non è dimostrato</b>, ed è scritto così",
+        "<b>Lo sfarfallio delle porte</b> resta non verificato, e <b>«anche altri oggetti volano via»</b> resta non misurato",
+        "<b>Restano aree indietro rispetto al pacchetto di riferimento.</b> Le mani (le ossa ci sono ma non portano ancora geometria), i gesti di ispezione/estrazione/riposizione (le clip ci sono ma non vengono mai riprodotte), far partire i suoni della ricarica <b>ai tempi dell'animazione</b>, e guidare la mira con un filtro del secondo ordine — questi quattro vengono dopo"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Misurato: direzione corretta su 14 di 14 (col vecchio segno falliscono 14 su 14). Il salto della ricarica, misurato sul vertice mediano, è di <b>0,0038–0,0104 blocchi</b> su tutte e 14 (la soglia è 0,020; il vecchio percorso legge 0,246). Il residuo dopo il copione è <b>esattamente 0</b>. Le vampe vanno da 0,15 a 0,34 blocchi. Le 9 texture e i 3 suoni sono confrontati <b>byte per byte</b> con i loro generatori",
+        "Su questa macchina di sviluppo non c'è un client Minecraft. <b>Nulla viene descritto come risolto prima di essere stato visto funzionare.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.4",
      "date": "2026-09-09",

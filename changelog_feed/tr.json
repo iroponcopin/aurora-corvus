@@ -7,8 +7,47 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Silahların nişan alma, koşma ve şarjör değiştirme hareketleri yeniden yapıldı — yay duruşu kaldırıldı, hareket kesintisiz",
+   "summary": "Silah ters tutuluyordu — yön düzeltildi, şarjör değişimi yeniden yapıldı, parçacıklar artık bize ait",
    "releases": [
+    {
+     "version": "V4.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Silah ters tutuluyordu — yön düzeltildi, şarjör değişimi yeniden yapıldı, parçacıklar artık bize ait",
+     "summary": "Fotoğrafınızda silah <b>namlu ucundan tutuluyordu</b>. V4.3.2'de kemiklere geçtiklerinden beri <b>altı sürümün hepsinde</b> 14 silahın tamamı 180 derece tersti. Bununla birlikte şarjör değişimi <b>referans paketten daha yüksek yoğunlukta</b> yeniden yapıldı ve ateş etmenin tüm görüntüsü artık <b>kendi parçacıklarımız</b> — şimdiye kadar Minecraft'ın meşale alevi ve kamp ateşi dumanıydı.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "<b>Yön tersti.</b> Kemikli modelde <b>namlu +X'te</b> (dört bağımsız işaretle doğrulandı — {@code bullet_spawn}, {@code muzzle_flash}'in önünde; {@code sight_front}, {@code sight_rear}'ın önünde; dipçik −X'te; 14'ünde de istisnasız). Oysa görüntü dönüşümlerini veren mevcut {@code *_in_hand} modelleri <b>namluyu küçük z tarafına</b> koyuyor — ve öğeleri harfiyen {@code \"name\": \"muzzle\"} etiketli. Y ekseni etrafında θ dönüşü (1,0,0)'ı (cos θ, 0, −sin θ)'ya gönderir: <b>−90° namluyu +Z'ye</b> (ters), <b>+90° −Z'ye</b> (doğru) koyar. Artık +90°",
+        "<b>4.3.2'den 4.3.3.4'e kadar her jar'ın içindeydi.</b> Her birinin içindeki {@code GunSpecialRenderer.class} sökülerek {@code ldc float -90.0} bulunmasıyla doğrulandı. <b>Bu sabahki 4.3.3.4 dâhil.</b> Fark edilmemesinin sebebi, o süre boyunca silahın yönünün yargılanabileceği bir durumda hiç olmamasıdır — çok küçüktü (4.3.2), sonra 13 blok ötedeydi (4.3.3.2), sonra her karede uçup gidiyordu (4.3.3.3)",
+        "<b>Artık yön için bir denetim var.</b> Namlu kemiğiyle dipçik kemiğini <b>birer birer</b> çizer, ikisinin ağırlık merkezini alır ve farkın −Z'yi göstermesini şart koşar. Bir dönüş kutunun ne boyutunu ne merkezini değiştirir; önceki denetimler (boyut, konum, süreklilik) bunu <b>ilkesel olarak</b> göremezdi. Eski işaretle <b>14'te 14</b> kırmızı verir. Ayrıca bu dönüş <b>altı yere kopyalanmıştı</b>; artık tek",
+        "<b>Şarjör değişimi yeniden yapıldı.</b> V4.3.3.4'te 5 kemik ve 32 anahtar kare vardı, üstelik <b>14 silahtan 11'i aynıydı</b>. Şimdi <b>11 kemik ve 1.135–2.197 anahtar kare</b>, her silah için farklı. Karşılaştırma: referans paketin ak47'si 9 kemik / 269, glock_17'si 11 / 1.322",
+        "<b>Sekiz aşama.</b> Destek eli ayrılır ve silah yatar → şarjör mandalına basılır → şarjör dümdüz iner → kurtulur ve düşerken yatar → yenisi alınır → burnu önce girer ve doğrultulur → oturduğunu bir vuruşla doğrular → kurma kolu çekilir, sürgü ileri gider, sonra her şey yerine oturur. <b>İkincil hareket</b> de var: taban kapağı şarjörden bir örnek geride kalır, sürgü ileri giderken horozu kurar ve parmak süre boyunca tetikten ayrılır",
+        "<b>Eğriler kare kare pişiriliyor.</b> Referans paketin glock_17'si her 0,0167 saniyede bir anahtar koyar, tüm kanallar doğrusaldır — yazar eğriyi bir ara değerleyiciye bırakmak yerine pişirmiştir. Burada da öyle, ancak pişirilen <b>hızı sürekli</b> bir Hermite eğrisi (teğetler komşu kontrol noktalarından ve <b>zamana göre normalleştirilmiş</b>). Her parçaya ayrı yumuşatma uygulamak, hızın her ek yerinde basamak yapmasına yol açar — ölçülen 0,085 blok",
+        "<b>Ateş etmenin üç parçacığı da artık bize ait.</b> Şimdiye kadar iki {@code ParticleTypes.SMALL_FLAME} ve üç {@code ParticleTypes.SMOKE}, gözün 0,4 blok önüne konuyordu — yani <b>bir meşale alevi ve kamp ateşi dumanı</b>, namlunun gerçekte nerede olduğuyla da nereye baktığıyla da ilgisiz",
+        "<b>Namlu alevi</b> dört karelik. Renkleri <b>kara cisim ışımasından</b> alınmış (çekirdekte 3200 K, uçlarda 2200 K) ve 5–7 eşit olmayan ışın her seferinde başka yöne gidiyor. Boyutu <b>namlu enerjisinin dördüncü kökü</b> — tabanca için 0,16 blok, ağır nişancı tüfeği için 0,34. 2–3 tik yaşar ve <b>kendi ışığıyla</b> çizilir, yani karanlıkta da okunur",
+        "<b>Duman</b> dört karelik, düzensiz siluetli, 3,6 kat genişlerken inceliyor. <b>Kovan</b> pirinç ve <b>fiziği var</b> — sağa fırlar, düşerken döner, iki kez sıçrar ve yere oturunca <b>ses çıkarır</b> (sentezlenmiş üç çeşitten biri). Enerji silahları ve roketatar kovan atmaz",
+        "<b>Denetimlerin kendisindeki iki kusur da düzeltildi.</b> Animasyon denetimi ölçekte nötrü 0 sanıyordu, oysa <b>1</b>'dir ({@code scaleVec(x,y,z)} {@code x−1} döndürür ve varsayılan 1.0'a eklenir) — doğru yazılmış her ölçek kanalını kırmızıya düşürürdü. İkincisi, süreklilik denetimi artık <b>ortanca</b> üzerinden karar veriyor: kapanan bir sürgü <b>ani olmalıdır</b>; doğal olmayan, <b>silahın tümünün</b> sıçramasıdır"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "<b>Bunu da henüz kimse çalışırken görmedi.</b> Yön, şarjör değişimi ve parçacıklar istemci olmadan ölçüldü. <b>Göze güzel görünüp görünmediği kanıtlanmadı</b> ve öyle yazıldı",
+        "<b>Kapılardaki titreme</b> hâlâ doğrulanmadı, <b>«silah dışındaki eşyalar da uçuyor»</b> hâlâ ölçülmedi",
+        "<b>Referans paketin gerisinde kalan alanlar hâlâ var.</b> Eller (sol ve sağ el kemikleri var ama henüz geometrileri yok), inceleme/çekme/kaldırma hareketleri (klipler var ama hiç oynatılmıyor), şarjör seslerini <b>animasyonun kendi zamanlarında</b> çalmak ve nişan almayı ikinci mertebeden bir süzgeçle sürmek — bu dördü sırada"
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Ölçülen: yön 14'te 14 doğru (eski işaretle 14'te 14 kırmızı). Şarjör değişiminin sıçraması, ortanca köşe noktasında ölçüldüğünde 14'ünde de <b>0,0038–0,0104 blok</b> (eşik 0,020; eski yol 0,246 verir). Senaryodan sonraki kalıntı <b>tam olarak 0</b>. Alev boyutları 0,15–0,34 blok. 9 parçacık dokusu ve 3 ses, üreteçleriyle <b>bayt bayt</b> karşılaştırılıyor",
+        "Bu geliştirme makinesinde Minecraft istemcisi yok. <b>Çalıştığı görülmeden hiçbir şey düzeltildi diye yazılmaz.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.4",
      "date": "2026-09-09",

@@ -2455,6 +2455,51 @@
     "sorakaze_survival": "4.3.3.4",
     "sorakaze_vehicles": "4.3.3.4"
    }
+  },
+  {
+   "id": "v4.3.4",
+   "release": "V4.3.4",
+   "date": "2026-09-09",
+   "type": "release",
+   "title": "Die Waffe wurde verkehrt herum gehalten — Richtung korrigiert, Nachladen neu gebaut, Partikel jetzt eigene",
+   "summary": "Ihr Foto zeigte, dass die Waffe <b>an der Mündung gehalten</b> wurde. Alle 14 Waffen waren in <b>allen sechs Versionen</b> seit dem Umstieg auf Knochen in V4.3.2 um 180 Grad verdreht. Zusätzlich wurde das Nachladen mit <b>höherer Dichte als das Referenzpaket</b> neu gebaut, und das gesamte Erscheinungsbild des Schusses besteht nun aus <b>eigenen Partikeln</b> — bisher waren es Vanillas Fackelflamme und Lagerfeuerrauch.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.4",
+    "sorakaze_boss": "4.3.4",
+    "sorakaze_deco": "4.3.4",
+    "sorakaze_fallout": "4.3.4",
+    "sorakaze_guns": "4.3.4",
+    "sorakaze_phone": "4.3.4",
+    "sorakaze_planarcadia": "4.3.4",
+    "sorakaze_power": "4.3.4",
+    "sorakaze_rail": "4.3.4",
+    "sorakaze_sapporo": "4.3.4",
+    "sorakaze_sky": "4.3.4",
+    "sorakaze_survival": "4.3.4",
+    "sorakaze_vehicles": "4.3.4"
+   },
+   "highlights": [
+    "<b>Die Richtung war vertauscht.</b> Das Knochenmodell hat <b>die Mündung bei +X</b> (durch vier unabhängige Landmarken bestätigt — {@code bullet_spawn} vor {@code muzzle_flash}, {@code sight_front} vor {@code sight_rear}, der Schaft bei −X, ohne Ausnahme in allen 14). Die vorhandenen {@code *_in_hand}-Modelle, die die Display-Transformationen liefern, setzen <b>die Mündung an das niedrige z</b> — ihre Elemente tragen wörtlich {@code \"name\": \"muzzle\"}. Eine Drehung um θ um Y schickt (1,0,0) nach (cos θ, 0, −sin θ): <b>−90° legt die Mündung auf +Z</b> (verkehrt), <b>+90° auf −Z</b> (richtig). Jetzt +90°",
+    "<b>Es steckte in jeder JAR von 4.3.2 bis 4.3.3.4.</b> Bestätigt durch Disassemblieren von {@code GunSpecialRenderer.class} in jeder einzelnen und den Fund von {@code ldc float -90.0}. <b>Auch in der heutigen 4.3.3.4.</b> Unbemerkt blieb es, weil die Waffe in dieser ganzen Zeit nie in einem Zustand war, in dem sich die Richtung beurteilen ließ — zu klein (4.3.2), dann 13 Blöcke entfernt (4.3.3.2), dann jeden Frame davonfliegend (4.3.3.3)",
+    "<b>Es gibt jetzt ein Prüfwerk für die Richtung.</b> Es zeichnet den Laufknochen und den Schaftknochen <b>einzeln</b>, nimmt beide Schwerpunkte und verlangt, dass die Differenz nach −Z zeigt. Eine Drehung ändert weder Größe noch Mittelpunkt der Hülle — die bisherigen Prüfungen konnten das <b>prinzipiell nicht</b> sehen. Unter dem alten Vorzeichen fällt es <b>14 von 14</b>. Die Drehung war zudem <b>an sechs Stellen kopiert</b>; jetzt gibt es eine",
+    "<b>Das Nachladen wurde neu gebaut.</b> V4.3.3.4 hatte 5 Knochen und 32 Keyframes, und <b>11 der 14 Waffen waren identisch</b>. Jetzt sind es <b>11 Knochen und 1.135–2.197 Keyframes</b>, für jede Waffe verschieden. Zum Vergleich: die ak47 des Referenzpakets hat 9 Knochen / 269, die glock_17 11 / 1.322",
+    "<b>Acht Stufen.</b> Die Stützhand löst sich und die Waffe kippt → der Magazinhalter wird gedrückt → das Magazin fährt gerade heraus → es kommt frei und kippt im Fallen → ein frisches wird geholt → es geht mit der Nase zuerst hinein und wird eingeschwenkt → ein Schlag bestätigt den Sitz → der Ladehebel wird gezogen, der Verschluss läuft vor, dann setzt sich alles. Dazu <b>sekundäre Bewegung</b>: der Bodendeckel hinkt dem Magazin um eine Probe nach, der Verschluss spannt im Vorlauf den Hahn, und der Finger verlässt für die Dauer den Abzug",
+    "<b>Die Kurven werden Bild für Bild ausgebacken.</b> Die glock_17 des Referenzpakets setzt alle 0,0167 s einen Schlüssel, jede Spur linear — der Autor hat die Kurve ausgebacken, statt einem Interpolator zu vertrauen. Hier ebenso, aber mit einer <b>geschwindigkeitsstetigen</b> Hermite-Kurve (Tangenten aus den Nachbarpunkten, <b>zeitnormiert</b>). Eine eigene Glättung je Abschnitt lässt die Geschwindigkeit an jeder Naht springen — gemessen 0,085 Blöcke",
+    "<b>Alle drei Schusspartikel sind jetzt eigene.</b> Bisher waren es zwei {@code ParticleTypes.SMALL_FLAME} und drei {@code ParticleTypes.SMOKE}, 0,4 Blöcke vor dem Auge platziert — <b>eine Fackelflamme und Lagerfeuerrauch</b>, ohne Bezug dazu, wo die Mündung ist oder wohin sie zeigt",
+    "<b>Der Mündungsblitz</b> hat vier Bilder. Seine Farben stammen aus der <b>Schwarzkörperstrahlung</b> (3200 K im Kern, 2200 K an den Spitzen), und 5–7 ungleiche Strahlen zeigen jedes Mal anders. Die Größe ist die <b>vierte Wurzel der Mündungsenergie</b> — 0,16 Blöcke für eine Pistole, 0,34 für das schwere Scharfschützengewehr. Er lebt 2–3 Ticks und <b>leuchtet selbst</b>, bleibt also auch im Dunkeln sichtbar",
+    "<b>Der Rauch</b> hat vier Bilder, eine aufgebrochene Silhouette und dehnt sich um das 3,6-fache aus, während er dünner wird. <b>Die Hülse</b> ist aus Messing und <b>hat Physik</b> — sie fliegt nach rechts, dreht sich im Fallen, springt zweimal und <b>macht ein Geräusch</b>, wenn sie landet (eine von drei synthetisierten Varianten). Energiewaffen und der Werfer werfen nichts aus",
+    "<b>Zwei Fehler in den Prüfwerken selbst wurden behoben.</b> Das Animationsprüfwerk hielt einen neutralen Scale für 0, obwohl er <b>1</b> ist ({@code scaleVec(x,y,z)} liefert {@code x−1}, was auf die vorgegebene 1.0 addiert wird) — es hätte jede korrekt geschriebene Scale-Spur rot gemacht. Und die Stetigkeitsprüfung urteilt jetzt über den <b>Median</b>: ein zuschlagender Verschluss <b>soll</b> abrupt sein; unnatürlich ist, wenn <b>die ganze Waffe</b> springt"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Auch das hat niemand laufen sehen.</b> Richtung, Nachladen und Partikel wurden ohne Client gemessen. <b>Ob es gut aussieht, ist nicht bewiesen</b>, und so steht es auch da",
+    "<b>Das Türflackern</b> bleibt unbestätigt, und <b>„auch andere Gegenstände fliegen beim Fallenlassen davon\"</b> bleibt ungemessen",
+    "<b>Es gibt weiter Bereiche hinter dem Referenzpaket.</b> Die Hände (die Knochen existieren, tragen aber noch keine Geometrie), Prüfen/Ziehen/Wegstecken (die Clips existieren, werden aber nie abgespielt), die Nachladegeräusche <b>zu den Zeitpunkten der Animation</b>, und das Zielen über ein Filter zweiter Ordnung — diese vier kommen als Nächstes"
+   ],
+   "known_limitations": [
+    "Gemessen: Richtung bei 14 von 14 korrekt (unter dem alten Vorzeichen fallen 14 von 14). Der Sprung des Nachladens, am Median-Eckpunkt gemessen, liegt bei <b>0,0038–0,0104 Blöcken</b> über alle 14 (Schwelle 0,020; der alte Pfad liest 0,246). Der Rest nach dem Drehbuch ist <b>genau 0</b>. Blitzgrößen 0,15–0,34 Blöcke. Die 9 Partikeltexturen und 3 Geräusche werden <b>byteweise</b> gegen ihre Generatoren geprüft",
+    "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. <b>Nichts wird als behoben bezeichnet, bevor es funktionierend gesehen wurde.</b>"
+   ]
   }
  ],
  "roadmap": {

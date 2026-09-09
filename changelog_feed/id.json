@@ -7,8 +7,47 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Membidik, berlari, dan mengisi ulang senjata dibangun ulang — pose busur dihapus dan gerakannya menjadi menyambung",
+   "summary": "Senjatanya dipegang terbalik — arah diperbaiki, isi ulang dibangun ulang, dan partikelnya kini milik sendiri",
    "releases": [
+    {
+     "version": "V4.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Senjatanya dipegang terbalik — arah diperbaiki, isi ulang dibangun ulang, dan partikelnya kini milik sendiri",
+     "summary": "Foto Anda memperlihatkan senjata <b>dipegang pada moncongnya</b>. Keempat belas senjata terbalik 180 derajat di <b>keenam rilis</b> sejak beralih ke tulang pada V4.3.2. Bersamaan dengan itu, isi ulang dibangun ulang dengan <b>kerapatan lebih tinggi daripada paket rujukan</b>, dan seluruh tampilan tembakan kini memakai <b>partikel buatan sendiri</b> — sebelumnya nyala obor dan asap api unggun bawaan Minecraft.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>Arahnya terbalik.</b> Model bertulang punya <b>moncong di +X</b> (dipastikan oleh empat penanda yang saling bebas — {@code bullet_spawn} di depan {@code muzzle_flash}, {@code sight_front} di depan {@code sight_rear}, popor di −X, tanpa kecuali pada keempat belasnya). Namun model {@code *_in_hand} yang ada, yang memasok transformasi tampilan, menaruh <b>moncong di z yang kecil</b> — dan elemennya secara harfiah ditandai {@code \"name\": \"muzzle\"}. Rotasi sebesar θ terhadap Y mengirim (1,0,0) ke (cos θ, 0, −sin θ): <b>−90° menaruh moncong di +Z</b> (terbalik), <b>+90° di −Z</b> (benar). Sekarang +90°",
+        "<b>Ada di setiap jar dari 4.3.2 sampai 4.3.3.4.</b> Dipastikan dengan membongkar {@code GunSpecialRenderer.class} di dalam masing-masing dan menemukan {@code ldc float -90.0}. <b>Termasuk 4.3.3.4 pagi tadi.</b> Ini luput karena sepanjang waktu itu senjata tidak pernah berada dalam keadaan yang memungkinkan arahnya dinilai — terlalu kecil (4.3.2), lalu 13 blok jauhnya (4.3.3.2), lalu melesat pergi tiap bingkai (4.3.3.3)",
+        "<b>Kini ada pemeriksaan arah.</b> Ia menggambar tulang laras dan tulang popor <b>satu per satu</b>, mengambil kedua titik beratnya, dan menuntut selisihnya menunjuk ke −Z. Rotasi tidak mengubah ukuran maupun pusat kotak, jadi pemeriksaan sebelumnya (ukuran, posisi, kesinambungan) <b>secara prinsip</b> tidak bisa melihatnya. Dengan tanda lama ia gagal <b>14 dari 14</b>. Rotasi itu juga <b>disalin di enam tempat</b>; kini hanya satu",
+        "<b>Isi ulang dibangun ulang.</b> V4.3.3.4 punya 5 tulang dan 32 bingkai kunci, dan <b>11 dari 14 senjata identik</b>. Kini <b>11 tulang dan 1.135–2.197 bingkai kunci</b>, berbeda untuk tiap senjata. Sebagai pembanding, ak47 paket rujukan 9 tulang / 269, dan glock_17-nya 11 / 1.322",
+        "<b>Delapan tahap.</b> Tangan penopang lepas dan senjata miring → kancing magasin ditekan → magasin turun lurus → lepas lalu miring saat jatuh → magasin baru diambil → masuk dengan ujung dulu lalu ditegakkan → ditepuk untuk memastikan duduk → tuas kokang ditarik, penutup maju, lalu semuanya tenang. Ada pula <b>gerak sekunder</b>: pelat dasar tertinggal satu cuplikan dari magasin, penutup mengokang palu saat maju, dan jari lepas dari picu selama itu",
+        "<b>Kurvanya dipanggang bingkai demi bingkai.</b> glock_17 paket rujukan memasang kunci tiap 0,0167 detik dengan semua kanal linier — penyusunnya memanggang kurva alih-alih memercayai interpolator. Di sini sama, tetapi yang dipanggang adalah kurva Hermite <b>yang lajunya sinambung</b> (garis singgung dari titik kendali tetangga dan <b>dinormalkan terhadap waktu</b>). Menerapkan pelembutan sendiri per ruas membuat laju melompat di tiap sambungan — terukur 0,085 blok",
+        "<b>Ketiga partikel tembakan kini milik sendiri.</b> Sebelumnya dua {@code ParticleTypes.SMALL_FLAME} dan tiga {@code ParticleTypes.SMOKE}, ditaruh 0,4 blok di depan mata — yaitu <b>nyala obor dan asap api unggun</b>, tak berhubungan dengan letak moncong yang sebenarnya maupun arahnya",
+        "<b>Kilatan moncong</b> punya empat bingkai. Warnanya diambil dari <b>radiasi benda hitam</b> (3200 K di inti, 2200 K di ujung) dan 5–7 sinar tak sama panjang menunjuk arah berbeda tiap kali. Ukurannya <b>akar pangkat empat dari energi moncong</b> — 0,16 blok untuk pistol, 0,34 untuk senapan antimaterial. Hidup 2–3 tik dan <b>menyala sendiri</b>, jadi tetap terbaca dalam gelap",
+        "<b>Asapnya</b> empat bingkai, siluetnya tak rata, dan memuai 3,6 kali sambil menipis. <b>Selongsongnya</b> kuningan dan <b>berfisika</b> — melesat ke kanan, berputar saat jatuh, memantul dua kali, dan <b>berbunyi</b> saat mendarat (satu dari tiga varian sintesis). Senjata energi dan pelontar tidak melontarkan selongsong",
+        "<b>Dua cacat pada pemeriksaan itu sendiri juga diperbaiki.</b> Pemeriksaan animasi menganggap skala netral bernilai 0 padahal <b>1</b> ({@code scaleVec(x,y,z)} mengembalikan {@code x−1}, yang ditambahkan ke 1.0 bawaan) — ia akan memerahkan setiap kanal skala yang ditulis dengan benar. Dan pemeriksaan kesinambungan kini menilai lewat <b>median</b>: penutup yang menutup <b>memang seharusnya</b> mendadak; yang tidak wajar adalah <b>seluruh senjata</b> melompat"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>Ini pun belum ada yang melihatnya berjalan.</b> Arah, isi ulang, dan partikel semuanya diukur tanpa klien. <b>Apakah enak dipandang belum terbukti</b>, dan ditulis apa adanya",
+        "<b>Kedipan pintu</b> masih belum terverifikasi, dan <b>«barang selain senjata juga melayang»</b> masih belum diukur",
+        "<b>Masih ada bidang yang tertinggal dari paket rujukan.</b> Tangan (tulang tangan kiri dan kanan ada tetapi belum bergeometri), gerak memeriksa/mencabut/menyimpan (klipnya ada tetapi tak pernah dimainkan), membunyikan suara isi ulang <b>pada waktu animasinya sendiri</b>, dan menggerakkan bidikan dengan tapis orde dua — keempat itu berikutnya"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Terukur: arah benar pada 14 dari 14 (dengan tanda lama gagal 14 dari 14). Lompatan isi ulang, diukur pada titik sudut median, adalah <b>0,0038–0,0104 blok</b> pada keempat belasnya (batas 0,020; jalur lama terbaca 0,246). Sisa setelah skenario <b>tepat 0</b>. Ukuran kilatan 0,15–0,34 blok. Kesembilan tekstur partikel dan ketiga suara dibandingkan <b>bita demi bita</b> dengan pembangkitnya",
+        "Tidak ada klien Minecraft di mesin pengembangan ini. <b>Tidak ada yang ditulis sudah diperbaiki sebelum terlihat berjalan.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.4",
      "date": "2026-09-09",

@@ -7,8 +7,47 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "La visée, le sprint et le rechargement des armes ont été refaits — la posture d'arc a disparu et le mouvement est continu",
+   "summary": "L'arme était tenue à l'envers — la direction est corrigée, le rechargement refait, et les particules sont les nôtres",
    "releases": [
+    {
+     "version": "V4.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "L'arme était tenue à l'envers — la direction est corrigée, le rechargement refait, et les particules sont les nôtres",
+     "summary": "Votre photo montrait l'arme <b>tenue par la bouche du canon</b>. Les 14 armes étaient à 180 degrés dans <b>les six versions</b> depuis leur passage aux os en V4.3.2. En parallèle, le rechargement a été refait <b>à une densité supérieure au pack de référence</b>, et toute l'apparence du tir repose désormais sur <b>nos propres particules</b> — jusqu'ici c'était la flamme de torche et la fumée de feu de camp de Minecraft.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "<b>La direction était inversée.</b> Le modèle à os a <b>la bouche en +X</b> (confirmé par quatre repères indépendants — {@code bullet_spawn} devant {@code muzzle_flash}, {@code sight_front} devant {@code sight_rear}, la crosse en −X, sans exception sur les 14). Mais les modèles {@code *_in_hand}, qui fournissent les transformations d'affichage, placent <b>la bouche du côté des z faibles</b> — et leurs éléments portent littéralement {@code \"name\": \"muzzle\"}. Une rotation de θ autour de Y envoie (1,0,0) sur (cos θ, 0, −sin θ) : <b>−90° met la bouche en +Z</b> (à l'envers), <b>+90° en −Z</b> (correct). C'est maintenant +90°",
+        "<b>C'était dans chaque jar de 4.3.2 à 4.3.3.4.</b> Confirmé en désassemblant {@code GunSpecialRenderer.class} dans chacune et en y trouvant {@code ldc float -90.0}. <b>Y compris la 4.3.3.4 de ce matin.</b> Cela est passé inaperçu parce que, pendant tout ce temps, l'arme n'a jamais été dans un état permettant de juger de sa direction — trop petite (4.3.2), puis à 13 blocs (4.3.3.2), puis s'envolant à chaque image (4.3.3.3)",
+        "<b>Il existe désormais un contrôle de direction.</b> Il dessine l'os du canon et celui de la crosse <b>l'un après l'autre</b>, prend les deux barycentres, et exige que la différence pointe vers −Z. Une rotation ne change ni la taille ni le centre de la boîte : les contrôles précédents <b>ne pouvaient pas</b> voir cela. Sous l'ancien signe il échoue <b>14 fois sur 14</b>. La rotation était de plus <b>recopiée à six endroits</b> ; il n'y en a plus qu'un",
+        "<b>Le rechargement a été refait.</b> La V4.3.3.4 avait 5 os et 32 images clés, et <b>11 des 14 armes étaient identiques</b>. Il y a maintenant <b>11 os et 1 135 à 2 197 images clés</b>, différentes pour chaque arme. À titre de comparaison, l'ak47 du pack de référence fait 9 os / 269, et son glock_17 11 / 1 322",
+        "<b>Huit étapes.</b> La main d'appui se retire et l'arme bascule → l'arrêtoir est pressé → le chargeur descend droit → il se dégage puis bascule en tombant → on en prend un neuf → il entre le nez en premier puis bascule en place → une tape confirme l'assise → le levier est tiré, la culasse revient, puis tout se stabilise. Avec de la <b>motion secondaire</b> : le fond de chargeur retarde d'un échantillon, la culasse arme le chien en avançant, et le doigt quitte la détente pendant toute la durée",
+        "<b>Les courbes sont cuites image par image.</b> Le glock_17 du pack de référence pose une clé toutes les 0,0167 s, toutes les pistes linéaires — l'auteur a cuit la courbe plutôt que de faire confiance à un interpolateur. Ici de même, mais avec une courbe d'Hermite <b>à vitesse continue</b> (tangentes prises aux points voisins et <b>normalisées par le temps</b>). Appliquer un lissage propre à chaque segment fait varier la vitesse par paliers à chaque jonction : 0,085 bloc mesuré",
+        "<b>Les trois particules de tir sont désormais les nôtres.</b> Jusqu'ici c'était deux {@code ParticleTypes.SMALL_FLAME} et trois {@code ParticleTypes.SMOKE}, placées à 0,4 bloc devant l'œil — <b>une flamme de torche et de la fumée de feu de camp</b>, sans rapport avec l'endroit où se trouve réellement la bouche ni avec sa direction",
+        "<b>L'éclair de bouche</b> a quatre images. Ses couleurs viennent du <b>rayonnement du corps noir</b> (3200 K au cœur, 2200 K aux pointes) et 5 à 7 rayons inégaux pointent différemment à chaque fois. Sa taille est la <b>racine quatrième de l'énergie à la bouche</b> — 0,16 bloc pour un pistolet, 0,34 pour le fusil antimatériel. Il vit 2 à 3 ticks et <b>s'éclaire lui-même</b>, donc il reste lisible dans le noir",
+        "<b>La fumée</b> a quatre images, une silhouette irrégulière, et s'étend 3,6 fois en s'amincissant. <b>La douille</b> est en laiton et <b>a une physique</b> — elle part à droite, tourne en tombant, rebondit deux fois et <b>fait un bruit</b> en se posant (une variante synthétisée sur trois). Les armes à énergie et le lance-roquettes n'éjectent rien",
+        "<b>Deux défauts dans les contrôles eux-mêmes ont été corrigés.</b> Le contrôle d'animation considérait qu'une échelle neutre valait 0 alors qu'elle vaut <b>1</b> ({@code scaleVec(x,y,z)} renvoie {@code x−1}, ajouté au 1.0 par défaut) — il aurait mis en échec toute piste d'échelle correctement écrite. Et le contrôle de continuité juge maintenant sur la <b>médiane</b> : une culasse qui claque <b>doit</b> être brutale ; ce qui est anormal, c'est que <b>toute l'arme</b> saute"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "<b>Personne n'a vu cela tourner non plus.</b> La direction, le rechargement et les particules ont tous été mesurés sans client. <b>Que ce soit beau n'est pas prouvé</b>, et c'est écrit ainsi",
+        "<b>Le scintillement des portes</b> reste non vérifié, et <b>« les autres objets s'envolent aussi »</b> reste non mesuré",
+        "<b>Des domaines restent en retard sur le pack de référence.</b> Les mains (les os existent mais ne portent pas encore de géométrie), les gestes d'inspection/dégainage/rangement (les clips existent mais ne sont jamais joués), le déclenchement des sons de rechargement <b>aux temps de l'animation</b>, et la visée pilotée par un filtre du second ordre — ces quatre-là viennent ensuite"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Mesuré : direction correcte sur 14 sur 14 (14 sur 14 échouent sous l'ancien signe). Le saut du rechargement, mesuré sur le sommet médian, vaut <b>0,0038 à 0,0104 bloc</b> sur les 14 (seuil 0,020 ; l'ancien chemin donne 0,246). Le résidu après le scénario est <b>exactement 0</b>. Tailles d'éclair de 0,15 à 0,34 bloc. Les 9 textures de particules et 3 sons sont comparés <b>octet par octet</b> à leurs générateurs",
+        "Il n'y a pas de client Minecraft sur cette machine de développement. <b>Rien n'est décrit comme corrigé avant d'avoir été vu fonctionner.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.4",
      "date": "2026-09-09",
