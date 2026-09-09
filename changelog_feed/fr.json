@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "La pose de l'arme s'accumulait à chaque image — seul l'os racine était réinitialisé",
+   "summary": "La visée, le sprint et le rechargement des armes ont été refaits — la posture d'arc a disparu et le mouvement est continu",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "La visée, le sprint et le rechargement des armes ont été refaits — la posture d'arc a disparu et le mouvement est continu",
+     "summary": "Pour les trois signalements — « le mouvement de rechargement n'est pas naturel », « la prise en main se dérègle en sprint » et « viser ressemble à bander un arc » — la cause a été <b>mesurée séparément</b> et la mécanique d'animation elle-même a été refaite. La posture ne vient plus du <b>choix d'un seul clip par image</b> : les clips sont désormais <b>mélangés avec des poids qui évoluent dans le temps</b>.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "<b>Viser ressemblait à un arc parce que c'était littéralement la posture de l'arc.</b> L'arme renvoyait {@code ItemUseAnimation.BOW}. Confirmé dans le bytecode 26.2 : en vue à la première personne, translation ∓0,2786/+0,1834/+0,1573, puis X −13,935°, Y ±35,3°, Z ∓9,785° et enfin Y ∓45° ; à la troisième personne, {@code ArmPose.BOW_AND_ARROW}. C'est désormais {@code NONE}",
+        "<b>En visée, l'arme restait étirée de 20 % et vibrait 4,14 fois par seconde.</b> Le facteur de bandage se fige à 1,0 après 21 ticks, et la durée d'usage de l'arme est de 72000 ticks : {@code scale(1, 1, 1.2)} s'appliquait donc indéfiniment. Une rotation composée après une mise à l'échelle non uniforme est <b>un cisaillement, pas une rotation</b>. Une oscillation de ±0,0036 bloc ne s'arrêtait jamais non plus",
+        "<b>Viser ne déplaçait l'arme nulle part.</b> Seul {@code idle_aimed} jouait : trois clés de rotation, pic 0,203°, et <b>aucune piste de translation</b>. Le clip qui porte le vrai décalage de visée ({@code aim_in}, −1,2/−4,5/−2,4 unités) n'était <b>jamais joué</b>. Sur 19 à 24 clips par arme, <b>6 seulement pouvaient être atteints</b> — 84 sur 282",
+        "<b>Chaque clic droit faisait plonger l'arme de 0,6 bloc.</b> {@code Minecraft.startUseItem} appelle toujours {@code itemUsed()} en cas de succès, et {@code CONSUME} — ce que renvoie l'arme — est un succès. {@code mainHandHeight} retombait à 0 et rejouait tout le mouvement de changement d'arme. Cette ligne est maintenant ignorée pour les armes seulement",
+        "<b>La posture de sprint disparaissait en une seule image.</b> Aucune extrémité du clip de sprint n'est au repos (rotation −26/+22/−14°, translation 0/+5/−3 unités) et les images clés s'appliquent <b>par addition</b>. À l'arrêt du sprint, 26° et 7 unités — 17 % de la hauteur de l'arme — disparaissaient en une image. Tirer ou recharger faisait de même",
+        "<b>L'animation et la durée réelle de rechargement divergeaient sur les 14 armes.</b> Durée du clip ÷ rechargement réel : lance-roquettes 185,1 %, pistolet 184,3 %, laser/cryo 168,0 %, fusil lourd 162,7 %, pistolet de service 161,2 %, PM 147,0 %, carabine de précision 141,8 %, fusil d'assaut 120,0 %, sniper 110,0 %, minigun 85,0 % — et <b>le fusil à pompe 11,7 %</b>. Le clip s'étire désormais sur la durée réelle (entre 0,5× et 2×)",
+        "<b>Le rechargement du fusil à pompe ne jouait que ses 0,42 première seconde.</b> Les clips « boucle » et « fin » écrits pour le chargement cartouche par cartouche n'avaient <b>aucun appelant</b> ; les 3,18 secondes restantes restaient figées. C'est maintenant étagé : début → une boucle par cartouche → fin",
+        "<b>Deux animations de rechargement tournaient en même temps.</b> Le clip des os, plus un abaissement appliqué séparément dans l'espace caméra (−0,55 bloc, X 34°, Z 8°) avec une sinusoïde de période sans rapport. La seconde a été supprimée ; l'abaissement est passé sur les os, calé sur la sortie du chargeur et la fermeture de la culasse",
+        "<b>La méthode elle-même a changé.</b> Plusieurs clips sont désormais appliqués <b>avec des poids</b> dans une même image. C'est possible grâce à deux faits vérifiés dans le bytecode : le second argument de {@code apply(temps, poids)} est multiplié par {@code fmul} dans chaque composante, et {@code offsetPos}/{@code offsetRotation} <b>additionnent</b>. Si la somme des poids vaut 1, le résultat est un mélange linéaire correct"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "<b>Personne n'a encore vu tout cela dans le jeu en marche.</b> Les chiffres ci-dessus ont été mesurés sans client, en pilotant le vrai {@code ModelPart.render} et le vrai contrôleur. <b>Que cela soit beau à l'œil n'est pas prouvé.</b>",
+        "<b>Le scintillement des portes reste non prouvé.</b> V4.3.3.1 a retiré 182 paires de faces coplanaires, mais rien ne dit que c'est le scintillement que vous voyez",
+        "<b>Le signalement selon lequel les autres objets s'envolent aussi n'a toujours pas été mesuré.</b>"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Le nouveau contrôle <b>fait avancer le temps le long d'un scénario</b>, enregistre tous les sommets à chaque image et mesure la <b>variation du mouvement</b> par rapport à l'image précédente. L'ancienne méthode donne <b>0,44377 bloc</b> ; celle-ci donne <b>0,0089 à 0,0166 bloc</b> sur les 14 armes (seuil 0,020). Ensuite, l'écart avec une exécution au repos de même durée est <b>exactement 0</b>. Viser déplace maintenant l'arme de 0,035 à 0,093 bloc ; auparavant, de 0",
+        "Il n'y a pas de client Minecraft sur cette machine de développement. <b>Rien n'est décrit comme corrigé avant d'avoir été vu fonctionner.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

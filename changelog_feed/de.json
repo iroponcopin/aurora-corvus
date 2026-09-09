@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Die Pose der Waffe summierte sich jeden Frame auf — nur der Wurzelknochen wurde zurückgesetzt",
+   "summary": "Zielen, Sprinten und Nachladen der Waffen neu gebaut — die Bogenhaltung ist weg, die Bewegung ist durchgehend",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Zielen, Sprinten und Nachladen der Waffen neu gebaut — die Bogenhaltung ist weg, die Bewegung ist durchgehend",
+     "summary": "Für alle drei Meldungen — „die Nachladebewegung wirkt unnatürlich“, „beim Sprinten stimmt die Haltung nicht“ und „Zielen sieht aus wie das Spannen eines Bogens“ — wurde die Ursache <b>einzeln gemessen</b> und die Animationsmechanik selbst neu gebaut. Die Haltung entsteht nicht mehr durch <b>die Wahl eines einzigen Clips pro Bild</b>, sondern durch <b>gewichtetes Mischen mit über die Zeit laufenden Gewichten</b>.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "<b>Das Zielen sah aus wie ein Bogen, weil es buchstäblich die Bogenhaltung war.</b> Die Waffe lieferte {@code ItemUseAnimation.BOW}. Im Bytecode von 26.2 bestätigt: in der Ego-Perspektive eine Verschiebung von ∓0,2786/+0,1834/+0,1573, dann X −13,935°, Y ±35,3°, Z ∓9,785° und zuletzt Y ∓45°; in der Dritte-Person-Ansicht {@code ArmPose.BOW_AND_ARROW}. Jetzt {@code NONE}",
+        "<b>Beim Zielen war die Waffe dauerhaft um 20 % gestreckt und zitterte 4,14-mal pro Sekunde.</b> Der Spannfaktor des Bogens bleibt nach 21 Ticks bei 1,0, die Nutzungsdauer der Waffe beträgt 72000 Ticks — also galt {@code scale(1, 1, 1.2)} für immer. Eine Drehung nach einer ungleichmäßigen Skalierung ist <b>eine Scherung, keine Drehung</b>. Auch ein Zittern von ±0,0036 Blöcken hörte nie auf",
+        "<b>Zielen bewegte die Waffe überhaupt nicht.</b> Es lief nur {@code idle_aimed}: drei Rotationsschlüssel, Spitze 0,203°, <b>keine einzige Translationsspur</b>. Der Clip mit dem eigentlichen Zielversatz ({@code aim_in}, −1,2/−4,5/−2,4 Einheiten) wurde <b>nie abgespielt</b>. Von 19–24 Clips je Waffe waren <b>nur 6 überhaupt erreichbar</b> — 84 von 282",
+        "<b>Jeder Rechtsklick ließ die Waffe um 0,6 Blöcke absacken.</b> {@code Minecraft.startUseItem} ruft bei Erfolg immer {@code itemUsed()} auf, und {@code CONSUME} — der Rückgabewert der Waffe — ist ein Erfolg. Das setzte {@code mainHandHeight} auf 0 und spielte die Wechselbewegung von vorn ab. Diese eine Zeile wird jetzt nur für Waffen übersprungen",
+        "<b>Die Sprinthaltung verschwand in einem einzigen Bild.</b> Kein Ende des Sprint-Clips liegt in Ruhe (Rotation −26/+22/−14°, Translation 0/+5/−3 Einheiten), und Keyframes wirken <b>additiv</b>. Beim Ende des Sprints verschwanden 26° und 7 Einheiten — 17 % der Waffenhöhe — in einem Bild. Schießen und Nachladen taten dasselbe",
+        "<b>Animation und tatsächliche Nachladezeit stimmten bei allen 14 Waffen nicht überein.</b> Cliplänge ÷ echte Nachladezeit: Raketenwerfer 185,1 %, Pistole 184,3 %, Laser/Kryo 168,0 %, schweres Scharfschützengewehr 162,7 %, Dienstpistole 161,2 %, MP 147,0 %, Marksman 141,8 %, Sturmgewehr 120,0 %, Scharfschütze 110,0 %, Minigun 85,0 % — und <b>die Schrotflinte 11,7 %</b>. Jetzt wird auf die echte Zeit gestreckt (0,5×–2×)",
+        "<b>Das Nachladen der Schrotflinte spielte nur die ersten 0,42 Sekunden.</b> Die Clips „Schleife“ und „Ende“ für das patronenweise Laden hatten <b>nirgends eine Aufrufstelle</b>; die restlichen 3,18 Sekunden stand alles still. Jetzt in Stufen: Beginn → eine Schleife je Patrone → Ende",
+        "<b>Zwei Nachladeanimationen liefen gleichzeitig.</b> Der Knochen-Clip und eine getrennte Absenkung im Kameraraum (−0,55 Blöcke, X 34°, Z 8°) mit einer Sinuswelle unpassender Periode. Letztere wurde gelöscht; das Absenken sitzt jetzt auf den Knochen, abgestimmt auf Magazinwechsel und Verschlussschluss",
+        "<b>Die Methode selbst wurde geändert.</b> Mehrere Clips werden nun <b>gewichtet</b> in einem Bild angewandt. Möglich wegen zweier im Bytecode geprüfter Fakten: das zweite Argument von {@code apply(Zeit, Gewicht)} wird per {@code fmul} in jede Komponente multipliziert, und {@code offsetPos}/{@code offsetRotation} <b>addieren</b>. Summieren sich die Gewichte zu 1, ist das eine korrekte lineare Mischung"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "<b>Bisher hat niemand dies im laufenden Spiel gesehen.</b> Die Zahlen oben wurden ohne Client gemessen, indem der echte {@code ModelPart.render} und der echte Controller angetrieben wurden. <b>Ob es fürs Auge richtig aussieht, ist nicht bewiesen.</b>",
+        "<b>Ob das Flackern der Türen weg ist, bleibt unbewiesen.</b> V4.3.3.1 entfernte 182 koplanare Flächenpaare; ob das Ihr Flackern ist, ist weiter unbekannt",
+        "<b>Die Meldung, dass auch andere Gegenstände beim Fallenlassen wegfliegen, wurde weiterhin nicht gemessen.</b>"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Das neue Prüfwerk <b>lässt die Zeit entlang eines Drehbuchs laufen</b>, zeichnet jedes Bild alle Eckpunkte auf und misst die <b>Änderung der Bewegung</b> gegenüber dem Vorbild. Die alte Methode liefert <b>0,44377 Blöcke</b>, diese <b>0,0089–0,0166 Blöcke</b> bei allen 14 Waffen (Schwelle 0,020). Danach ist der Unterschied zu einem reinen Ruhelauf gleicher Länge <b>genau 0</b>. Zielen bewegt die Waffe jetzt um 0,035–0,093 Blöcke; vorher um 0",
+        "Auf diesem Entwicklungsrechner gibt es keinen Minecraft-Client. <b>Nichts wird als behoben bezeichnet, bevor es funktionierend gesehen wurde.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

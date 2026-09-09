@@ -153,13 +153,38 @@ def group_entries(entries_desc):
     return [(k, groups[k]) for k in order]
 
 
+# --------------------------------------------------------------------------
+# Inline markup in changelog prose
+#
+# The prose fields are escaped, as they must be. But seven releases (V4.3.1
+# onward) were written with <b>...</b> emphasis and {@code ...} spans, and
+# every one of them shipped to the site as VISIBLE "&lt;b&gt;" and "{@code x}"
+# text -- readers saw the markup instead of the emphasis. This admits exactly
+# two marks back, AFTER escaping, so nothing else can get through:
+#
+#   <b>...</b>      -> <strong>...</strong>   (only when the tags balance)
+#   {@code x}       -> <code>x</code>
+#
+# Everything else stays escaped. An unbalanced <b> is left as literal text
+# rather than guessed at, so a typo in one entry cannot break the page.
+_CODE_SPAN = re.compile(r"\{@code\s+([^{}]+?)\}", re.S)
+
+
+def rich(text):
+    """Escape, then re-admit only <b> and {@code ...}."""
+    out = esc(text)
+    if out.count("&lt;b&gt;") == out.count("&lt;/b&gt;"):
+        out = out.replace("&lt;b&gt;", "<strong>").replace("&lt;/b&gt;", "</strong>")
+    return _CODE_SPAN.sub(r"<code>\1</code>", out)
+
+
 def detail_html(bundle, e):
     c = bundle["ui"]["common"]
 
     def section(label, items, extra=""):
         if not items:
             return ""
-        lis = "".join(f"<li>{esc(x)}</li>" for x in items)
+        lis = "".join(f"<li>{rich(x)}</li>" for x in items)
         return (f'<div class="cl__section">'
                 f'<h4 class="cl__sectionTitle">{esc(label)} <span>({len(items)})</span></h4>'
                 f'<ul class="cl__list{extra}">{lis}</ul></div>')
@@ -169,8 +194,8 @@ def detail_html(bundle, e):
     # titles -- the first cut of this page did exactly that, and check_defects'
     # 5.2B gate is what caught it.
     return (
-        (f'<p class="cl__entryTitle">{esc(e["title"])}</p>' if e.get("title") else "")
-        + (f'<p class="cl__lede">{esc(e["summary"])}</p>' if e.get("summary") else "")
+        (f'<p class="cl__entryTitle">{rich(e["title"])}</p>' if e.get("title") else "")
+        + (f'<p class="cl__lede">{rich(e["summary"])}</p>' if e.get("summary") else "")
         + section(c["changelog_highlights_label"], e.get("highlights"))
         + section(c["changelog_balance_label"], e.get("balance_changes"))
         + section(c["changelog_warnings_label"], e.get("warnings"), " cl__list--warn")

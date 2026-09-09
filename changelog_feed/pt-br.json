@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "A pose da arma se acumulava a cada quadro — só o osso raiz era redefinido",
+   "summary": "A mira, a corrida e a recarga das armas foram refeitas — a postura de arco sumiu e o movimento é contínuo",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "A mira, a corrida e a recarga das armas foram refeitas — a postura de arco sumiu e o movimento é contínuo",
+     "summary": "Para os três relatos — «o movimento de recarga não é natural», «ao correr a empunhadura fica errada» e «mirar parece o mesmo que puxar um arco» — a causa foi <b>medida separadamente</b> e a própria mecânica de animação foi refeita. A postura não vem mais de <b>escolher um único clipe por quadro</b>: agora os clipes são <b>misturados com pesos que variam no tempo</b>.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "<b>Mirar parecia um arco porque era literalmente a postura do arco.</b> A arma devolvia {@code ItemUseAnimation.BOW}. Confirmado no bytecode do 26.2: em primeira pessoa aplica translação de ∓0,2786/+0,1834/+0,1573, depois X −13,935°, Y ±35,3°, Z ∓9,785° e por fim Y ∓45°; em terceira pessoa seleciona {@code ArmPose.BOW_AND_ARROW}. Agora devolve {@code NONE}",
+        "<b>Ao mirar, a arma ficava permanentemente esticada em 20 % e tremia 4,14 vezes por segundo.</b> O fator de tensão do arco trava em 1,0 após 21 ticks e a duração de uso da arma é de 72000 ticks, então {@code scale(1, 1, 1.2)} valia para sempre. Uma rotação composta após uma escala não uniforme é <b>um cisalhamento, não uma rotação</b>. Um tremor de ±0,0036 bloco também nunca parava",
+        "<b>Mirar não movia a arma para lugar nenhum.</b> Só tocava {@code idle_aimed}: três chaves de rotação, pico de 0,203°, e <b>nenhuma trilha de translação</b>. O clipe que carrega o deslocamento real da mira ({@code aim_in}, −1,2/−4,5/−2,4 unidades) <b>nunca era tocado</b>. Dos 19–24 clipes por arma, <b>apenas 6 eram alcançáveis</b> — 84 de 282",
+        "<b>Cada clique direito afundava a arma em 0,6 bloco.</b> {@code Minecraft.startUseItem} sempre chama {@code itemUsed()} quando a interação tem sucesso, e {@code CONSUME} — o que a arma devolve — é um sucesso. Isso zerava {@code mainHandHeight} e repetia do início o movimento de troca de item. Essa linha agora é pulada só para armas",
+        "<b>A postura de corrida sumia em um único quadro.</b> Nenhuma ponta do clipe de corrida está em repouso (rotação −26/+22/−14°, translação 0/+5/−3 unidades) e os quadros-chave são aplicados <b>por soma</b>. Ao parar de correr, 26° e 7 unidades — 17 % da altura da arma — sumiam em um quadro. Atirar ou recarregar fazia o mesmo",
+        "<b>A animação e o tempo real de recarga divergiam nas 14 armas.</b> Duração do clipe ÷ recarga real: lança-foguetes 185,1 %, pistola 184,3 %, laser/crio 168,0 %, fuzil pesado 162,7 %, pistola de serviço 161,2 %, submetralhadora 147,0 %, carabina de precisão 141,8 %, fuzil de assalto 120,0 %, sniper 110,0 %, minigun 85,0 % — e <b>a espingarda 11,7 %</b>. Agora o clipe se ajusta ao tempo real (entre 0,5× e 2×)",
+        "<b>A recarga da espingarda só tocava seus primeiros 0,42 segundo.</b> Os clipes de «laço» e «fim» escritos para carregar cartucho a cartucho <b>não tinham nenhum chamador</b>; os 3,18 segundos restantes ficavam congelados. Agora é em etapas: início → um laço por cartucho → fim",
+        "<b>Duas animações de recarga rodavam ao mesmo tempo.</b> O clipe dos ossos e um abaixamento que a renderização em primeira pessoa aplicava à parte no espaço da câmera (−0,55 bloco, X 34°, Z 8°) com uma senoide de período alheio. A segunda foi removida; o abaixamento passou para os ossos, sincronizado com a saída do carregador e o fechamento do ferrolho",
+        "<b>O próprio método mudou.</b> Vários clipes agora são aplicados <b>com pesos</b> no mesmo quadro. Isso é possível por dois fatos verificados no bytecode: o segundo argumento de {@code apply(tempo, peso)} é multiplicado com {@code fmul} em cada componente, e {@code offsetPos}/{@code offsetRotation} <b>somam</b>. Se os pesos somam 1, o resultado é uma mistura linear correta"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "<b>Ninguém ainda viu nada disso com o jogo rodando.</b> Os números acima foram medidos sem cliente, acionando o {@code ModelPart.render} real e o controlador real. <b>Se fica bom aos olhos não está provado.</b>",
+        "<b>Se o tremeluzir das portas acabou continua sem prova.</b> A V4.3.3.1 removeu 182 pares de faces coplanares, mas não se sabe se são o tremeluzir que você vê",
+        "<b>O relato de que outros itens também voam ao serem soltos continua sem medição.</b>"
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "O novo controle <b>avança o tempo por um roteiro</b>, registra todos os vértices a cada quadro e mede a <b>variação do movimento</b> em relação ao quadro anterior. O método antigo dá <b>0,44377 bloco</b>; este dá <b>0,0089–0,0166 bloco</b> nas 14 armas (o limite é 0,020). Depois do roteiro, a diferença para uma execução só em repouso de mesma duração é <b>exatamente 0</b>. Mirar move agora a arma 0,035–0,093 bloco; antes, 0",
+        "Não há cliente de Minecraft nesta máquina de desenvolvimento. <b>Nada é descrito como corrigido antes de ter sido visto funcionando.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

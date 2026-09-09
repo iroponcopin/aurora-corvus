@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Silahın duruşu her karede birikiyordu — yalnızca kök kemik sıfırlanıyordu",
+   "summary": "Silahların nişan alma, koşma ve şarjör değiştirme hareketleri yeniden yapıldı — yay duruşu kaldırıldı, hareket kesintisiz",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Silahların nişan alma, koşma ve şarjör değiştirme hareketleri yeniden yapıldı — yay duruşu kaldırıldı, hareket kesintisiz",
+     "summary": "Üç bildirimin tamamı için — «şarjör değiştirme hareketi doğal değil», «koşarken tutuş bozuluyor» ve «nişan almak yay germekle aynı görünüyor» — neden <b>ayrı ayrı ölçüldü</b> ve animasyon düzeneğinin kendisi yeniden yapıldı. Duruş artık <b>kare başına tek bir klip seçilerek</b> değil, <b>zamanla değişen ağırlıklarla karıştırılarak</b> üretiliyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "<b>Nişan almanın yaya benzemesinin sebebi, birebir yay duruşu olmasıydı.</b> Silah {@code ItemUseAnimation.BOW} döndürüyordu. 26.2 bayt kodunda doğrulandı: birinci şahısta ∓0,2786/+0,1834/+0,1573 ötelemesi, ardından X −13,935°, Y ±35,3°, Z ∓9,785° ve son olarak Y ∓45°; üçüncü şahısta ise {@code ArmPose.BOW_AND_ARROW}. Artık {@code NONE} döndürüyor",
+        "<b>Nişan alırken silah sürekli %20 gerilmiş hâldeydi ve saniyede 4,14 kez titriyordu.</b> Yayın gerilme katsayısı 21 tikten sonra 1,0'e sabitlenir; silahın kullanım süresi ise 72000 tik, dolayısıyla {@code scale(1, 1, 1.2)} sonsuza dek uygulanıyordu. Düzgün olmayan bir ölçeklemeden sonra gelen dönme <b>dönme değil, kaymadır</b>. ±0,0036 küplük dikey titreme de hiç durmuyordu",
+        "<b>Nişan almak silahı hiçbir yere kımıldatmıyordu.</b> Nişan alırken yalnızca {@code idle_aimed} çalıyordu: üç dönme anahtarı, tepe 0,203°, ve <b>sıfır öteleme kanalı</b>. Gerçek nişan kaydırmasını taşıyan klip ({@code aim_in}, −1,2/−4,5/−2,4 birim) <b>hiç oynatılmıyordu</b>. Silah başına 19–24 klipten <b>yalnızca 6'sına ulaşılabiliyordu</b> — 282'nin 84'ü",
+        "<b>Her sağ tık silahı 0,6 küp aşağı düşürüyordu.</b> {@code Minecraft.startUseItem}, etkileşim başarılı olduğunda daima {@code itemUsed()} çağırır ve silahın döndürdüğü {@code CONSUME} de bir başarıdır. Bu, {@code mainHandHeight} değerini 0 yapıp «az önce bu eşyaya geçildi» hareketini baştan oynatıyordu. Bu satır artık yalnızca silahlar için atlanıyor",
+        "<b>Koşma duruşu tek karede yok oluyordu.</b> Koşma klibinin iki ucu da dinlenme konumunda değil (dönme −26/+22/−14°, öteleme 0/+5/−3 birim) ve anahtar kareler <b>toplanarak</b> uygulanır. Koşma bitince 26 derece ve 7 birim — silah yüksekliğinin %17'si — tek karede kayboluyordu. Ateş etmek ve şarjör değiştirmek de aynısını yapıyordu",
+        "<b>Animasyon ile gerçek şarjör süresi 14 silahın hepsinde uyuşmuyordu.</b> Klip uzunluğu ÷ gerçek süre: roketatar %185,1, tabanca %184,3, lazer/kriyo %168,0, ağır keskin nişancı %162,7, zati tabanca %161,2, hafif makineli %147,0, nişancı karabinası %141,8, saldırı tüfeği %120,0, keskin nişancı %110,0, minigun %85,0 — ve <b>pompalı %11,7</b>. Klip artık gerçek süreye göre esniyor (0,5×–2× aralığında)",
+        "<b>Pompalının şarjör değişimi yalnızca ilk 0,42 saniyesini oynatıyordu.</b> Fişek fişek doldurmak için yazılan «döngü» ve «bitiş» kliplerinin <b>hiçbir yerde çağrılan bir yeri yoktu</b>; kalan 3,18 saniye doldurma duruşunda donuyordu. Artık aşamalı: başlangıç → her fişek için bir döngü → bitiş",
+        "<b>Aynı anda iki şarjör animasyonu çalışıyordu.</b> Kemik klibi ve birinci şahıs çiziminin kamera uzayında ayrıca uyguladığı bir alçalma (−0,55 küp, X 34°, Z 8°) ile ilgisiz periyotlu bir sinüs. İkincisi silindi; silahı alçaltma hareketi kemiklere taşındı ve şarjörün çıkışı ile sürgünün kapanmasıyla aynı hizaya getirildi",
+        "<b>Yöntemin kendisi değişti.</b> Artık aynı karede birden çok klip <b>ağırlıklı</b> olarak uygulanıyor. Bunu mümkün kılan, bayt kodunda doğrulanan iki olgu: {@code apply(zaman, ağırlık)} çağrısının ikinci argümanı her bileşene {@code fmul} ile çarpılır — yani bir <b>ağırlıktır</b> — ve {@code offsetPos}/{@code offsetRotation} <b>toplar</b>. Ağırlıkların toplamı 1 olduğu sürece sonuç doğru bir doğrusal karışımdır"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "<b>Bunların hiçbirini henüz çalışan oyunda gören olmadı.</b> Yukarıdaki sayılar istemci olmadan, gerçek {@code ModelPart.render} ve gerçek denetleyici sürülerek ölçüldü. <b>Göze güzel görünüp görünmediği kanıtlanmış değildir.</b>",
+        "<b>Kapılardaki titremenin geçtiği hâlâ kanıtlanmadı.</b> V4.3.3.1 aynı düzlemdeki 182 yüz çiftini kaldırdı, ama bunların sizin gördüğünüz titreme olup olmadığı bilinmiyor",
+        "<b>Silah dışındaki eşyaların da düşürülünce uçtuğu bildirimi hâlâ ölçülmedi.</b>"
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Yeni denetim <b>zamanı bir senaryo boyunca ilerletir</b>, her karede tüm köşe noktalarını kaydeder ve bir önceki kareye göre <b>hareket miktarındaki değişimi</b> ölçer. Eski yöntem <b>0,44377 küp</b> veriyor; bu ise 14 silahın hepsinde <b>0,0089–0,0166 küp</b> (eşik 0,020). Senaryodan sonra, aynı uzunlukta yalnızca beklemenin çalıştırıldığı bir koşuya göre fark <b>tam olarak 0</b>. Nişan almak artık silahı 0,035–0,093 küp hareket ettiriyor; önceden 0 idi",
+        "Bu geliştirme makinesinde Minecraft istemcisi yok. <b>Çalıştığı görülmeden hiçbir şey düzeltildi diye yazılmaz.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

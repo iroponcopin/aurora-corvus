@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "The gun's pose accumulated every frame — only the root bone was being reset",
+   "summary": "The gun's aim, sprint and reload have been rebuilt — the bow pose is gone and the motion is continuous",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "The gun's aim, sprint and reload have been rebuilt — the bow pose is gone and the motion is continuous",
+     "summary": "For all three reports — \"the reload motion is unnatural\", \"the hold goes wrong when sprinting\" and \"aiming looks the same as drawing a bow\" — the cause was <b>measured individually</b> and the animation machinery itself has been rebuilt. The pose is no longer produced by <b>picking one clip per frame</b>; clips are now <b>blended with weights that move over time</b>.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "<b>Aiming looked like a bow because it literally was the bow pose.</b> The gun returned {@code ItemUseAnimation.BOW}. As confirmed in the 26.2 bytecode, that applies, in first person, a translate of ∓0.2786/+0.1834/+0.1573, then X −13.935°, Y ±35.3°, Z ∓9.785° and finally Y ∓45°; in third person it selects {@code ArmPose.BOW_AND_ARROW}, the archer's arms. It now returns {@code NONE}",
+        "<b>While aiming, the gun was permanently stretched 20 % and shaking 4.14 times a second.</b> The bow's charge factor pins at 1.0 after 21 ticks, and the gun's use duration is 72000 ticks — so from then on {@code scale(1, 1, 1.2)} was applied forever. A rotation composed after a non-uniform scale is <b>a shear, not a rotation</b>. A ±0.0036-block vertical shake never stopped either. Vanilla never shows this because a bow is released within about 20 ticks",
+        "<b>Aiming moved the gun nowhere at all.</b> The only clip that played while aiming was {@code idle_aimed}: three rotation keys, peak 0.203°, and <b>zero translation channels</b>. The clip that actually holds the aim offset ({@code aim_in}, −1.2/−4.5/−2.4 units) was <b>never played</b>. Of the 19–24 clips each gun carries, <b>only 6 could ever be selected</b> — 84 of 282 across the pack",
+        "<b>Every right-click dropped the gun by 0.6 blocks.</b> {@code Minecraft.startUseItem} always calls {@code itemUsed()} when the interaction succeeds, and {@code CONSUME} — what the gun returns — is a success. That set {@code mainHandHeight} to 0 and replayed the whole \"just swapped to this item\" motion from the start. That one line is now skipped for guns only",
+        "<b>The sprint pose vanished in a single frame.</b> Neither end of the sprint clip is at rest (rotation −26/+22/−14°, translation 0/+5/−3 units) and keyframes are applied <b>additively</b>. So the moment sprinting stopped, 26° and 7 units — 17 % of the gun's height — disappeared in one frame. Firing or reloading did the same, dropping the entire sprint pose and restoring it in one frame",
+        "<b>The reload animation and the real reload disagreed on all 14 guns.</b> Clip length ÷ actual reload time: rocket launcher 185.1 %, handgun 184.3 %, laser/cryo 168.0 %, heavy sniper 162.7 %, service pistol 161.2 %, submachine gun 147.0 %, marksman carbine 141.8 %, assault rifle 120.0 %, sniper 110.0 %, minigun 85.0 % — and <b>the shotgun 11.7 %</b>. The clip is now stretched to the server's real reload time (within 0.5×–2×)",
+        "<b>The shotgun's reload only ever played its first 0.42 seconds.</b> The \"loop\" and \"end\" clips written for loading shell by shell had <b>no call site anywhere</b>, so the remaining 3.18 seconds sat frozen in the loading posture. It is now staged: start → one loop per shell → end",
+        "<b>Two reload animations were running at once.</b> The bone clip, plus a separate dip the first-person renderer applied in camera space (−0.55 blocks, X 34°, Z 8°) with a sine of an unrelated period. The second one has been deleted, and the gun-lowering has moved onto the bones, staged against the magazine leaving and the bolt closing",
+        "<b>The method itself has changed.</b> Several clips are now applied in one frame <b>with weights</b>. This is possible because of two facts checked in the 26.2 bytecode: the second argument of {@code apply(time, weight)} is {@code fmul}-ed into every component — it is a <b>weight</b> — and the targets {@code offsetPos}/{@code offsetRotation} <b>add</b>. Keep the weights summing to 1 and the result is a correct linear blend"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "<b>Nobody has yet seen any of this in the running game.</b> The figures above were measured by driving the real {@code ModelPart.render} and the real controller with no client attached. <b>Whether it looks right to the eye is not proven.</b>",
+        "<b>Whether the door flicker is gone is still unproven.</b> V4.3.3.1 removed 182 coplanar face pairs, but whether those are the flicker you see is still unknown",
+        "<b>The report that non-gun items fly off when dropped has still not been measured.</b> It was not touched this time either"
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "The new gate <b>advances time through a script</b>, records every vertex each frame, and measures the <b>change in movement</b> against the previous frame. The old method reads <b>0.44377 blocks</b>; this one reads <b>0.0089–0.0166 blocks</b> on all 14 guns (the bar is 0.020). After the script, the difference from an idle-only run of the same length is <b>exactly 0</b>. Aiming now moves the gun 0.035–0.093 blocks; before, it moved 0",
+        "There is no Minecraft client on this development machine. <b>Nothing is described as fixed until it has been seen working.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

@@ -385,3 +385,20 @@ body:has(.cl) {
 @media (prefers-reduced-motion: reduce) {
   .cl__row, .cl__chev, .cl__more { transition: none; }
 }
+
+/* V4.3.3.4: the changelog prose admits exactly two inline marks — emphasis and
+   a code span (see rich() in scripts/build_changelog.py). Before this, seven
+   releases shipped their "<b>" and "{@code …}" to the page as literal text. */
+.cl__lede strong,
+.cl__entryTitle strong,
+.cl__list strong { font-weight: 650; color: var(--ink, inherit); }
+.cl__lede code,
+.cl__entryTitle code,
+.cl__list code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  padding: 0.05em 0.32em;
+  border-radius: 4px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  overflow-wrap: anywhere;
+}

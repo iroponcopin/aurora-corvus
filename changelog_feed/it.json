@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "La posa dell'arma si accumulava a ogni fotogramma: veniva azzerato solo l'osso radice",
+   "summary": "Mira, scatto e ricarica delle armi rifatti — la posa dell'arco è sparita e il movimento è continuo",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Mira, scatto e ricarica delle armi rifatti — la posa dell'arco è sparita e il movimento è continuo",
+     "summary": "Per tutte e tre le segnalazioni — «il movimento di ricarica non è naturale», «scattando l'impugnatura si sfalsa» e «mirare sembra tendere un arco» — la causa è stata <b>misurata singolarmente</b> ed è stata rifatta la meccanica di animazione stessa. La posa non nasce più <b>scegliendo una sola clip per fotogramma</b>: ora le clip sono <b>fuse con pesi che scorrono nel tempo</b>.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "<b>Mirare sembrava un arco perché era letteralmente la posa dell'arco.</b> L'arma restituiva {@code ItemUseAnimation.BOW}. Confermato nel bytecode di 26.2: in prima persona applica una traslazione di ∓0,2786/+0,1834/+0,1573, poi X −13,935°, Y ±35,3°, Z ∓9,785° e infine Y ∓45°; in terza persona sceglie {@code ArmPose.BOW_AND_ARROW}. Ora restituisce {@code NONE}",
+        "<b>Mirando, l'arma restava allungata del 20 % e vibrava 4,14 volte al secondo.</b> Il fattore di tensione dell'arco si blocca a 1,0 dopo 21 tick e la durata d'uso dell'arma è di 72000 tick: {@code scale(1, 1, 1.2)} valeva quindi per sempre. Una rotazione composta dopo una scala non uniforme è <b>uno scorrimento, non una rotazione</b>. Anche un tremolio di ±0,0036 blocchi non si fermava mai",
+        "<b>Mirare non spostava l'arma da nessuna parte.</b> Girava solo {@code idle_aimed}: tre chiavi di rotazione, picco 0,203°, e <b>nessuna traccia di traslazione</b>. La clip che porta lo scostamento vero della mira ({@code aim_in}, −1,2/−4,5/−2,4 unità) <b>non veniva mai riprodotta</b>. Delle 19–24 clip per arma, <b>solo 6 erano raggiungibili</b> — 84 su 282",
+        "<b>Ogni clic destro faceva scendere l'arma di 0,6 blocchi.</b> {@code Minecraft.startUseItem} chiama sempre {@code itemUsed()} quando l'interazione riesce, e {@code CONSUME} — ciò che restituisce l'arma — è un successo. Questo azzerava {@code mainHandHeight} e faceva ripartire da capo il movimento di cambio oggetto. Ora quella riga è saltata solo per le armi",
+        "<b>La posa di scatto spariva in un solo fotogramma.</b> Nessuna estremità della clip di scatto è a riposo (rotazione −26/+22/−14°, traslazione 0/+5/−3 unità) e i fotogrammi chiave si applicano <b>per somma</b>. Smettendo di scattare, 26° e 7 unità — il 17 % dell'altezza dell'arma — sparivano in un fotogramma. Sparare o ricaricare faceva lo stesso",
+        "<b>Animazione e tempo reale di ricarica non coincidevano su nessuna delle 14 armi.</b> Durata clip ÷ ricarica reale: lanciarazzi 185,1 %, pistola 184,3 %, laser/crio 168,0 %, fucile pesante 162,7 %, pistola d'ordinanza 161,2 %, mitraglietta 147,0 %, carabina di precisione 141,8 %, fucile d'assalto 120,0 %, cecchino 110,0 %, minigun 85,0 % — e <b>il fucile a pompa 11,7 %</b>. Ora la clip si adatta al tempo reale (tra 0,5× e 2×)",
+        "<b>La ricarica del fucile a pompa riproduceva solo i primi 0,42 secondi.</b> Le clip di «ciclo» e «fine» scritte per caricare cartuccia per cartuccia <b>non avevano alcun chiamante</b>; i restanti 3,18 secondi restavano fermi. Ora è a stadi: inizio → un ciclo per cartuccia → fine",
+        "<b>Due animazioni di ricarica giravano insieme.</b> La clip delle ossa e un abbassamento applicato a parte nello spazio camera (−0,55 blocchi, X 34°, Z 8°) con una sinusoide di periodo estraneo. La seconda è stata eliminata; l'abbassamento è passato alle ossa, sincronizzato con l'uscita del caricatore e la chiusura dell'otturatore",
+        "<b>È cambiato il metodo stesso.</b> Più clip vengono ora applicate <b>con pesi</b> nello stesso fotogramma. È possibile grazie a due fatti verificati nel bytecode: il secondo argomento di {@code apply(tempo, peso)} viene moltiplicato con {@code fmul} in ogni componente, e {@code offsetPos}/{@code offsetRotation} <b>sommano</b>. Se i pesi sommano a 1, il risultato è una fusione lineare corretta"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "<b>Nessuno ha ancora visto niente di tutto ciò a gioco avviato.</b> I numeri sopra sono stati misurati senza client, pilotando il vero {@code ModelPart.render} e il vero controllore. <b>Che risulti bello all'occhio non è dimostrato.</b>",
+        "<b>Che lo sfarfallio delle porte sia sparito resta non dimostrato.</b> La V4.3.3.1 ha rimosso 182 coppie di facce complanari, ma non si sa se siano lo sfarfallio che vedi",
+        "<b>La segnalazione che anche altri oggetti volino via quando li si lascia cadere non è ancora stata misurata.</b>"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Il nuovo controllo <b>fa avanzare il tempo lungo un copione</b>, registra tutti i vertici a ogni fotogramma e misura la <b>variazione del movimento</b> rispetto al precedente. Il vecchio metodo dà <b>0,44377 blocchi</b>; questo dà <b>0,0089–0,0166 blocchi</b> su tutte e 14 le armi (la soglia è 0,020). Dopo il copione, la differenza rispetto a un'esecuzione di solo riposo della stessa durata è <b>esattamente 0</b>. Mirare ora sposta l'arma di 0,035–0,093 blocchi; prima, di 0",
+        "Su questa macchina di sviluppo non c'è un client Minecraft. <b>Nulla viene descritto come risolto prima di essere stato visto funzionare.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Pose senjata menumpuk setiap frame — hanya tulang akar yang direset",
+   "summary": "Membidik, berlari, dan mengisi ulang senjata dibangun ulang — pose busur dihapus dan gerakannya menjadi menyambung",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Membidik, berlari, dan mengisi ulang senjata dibangun ulang — pose busur dihapus dan gerakannya menjadi menyambung",
+     "summary": "Untuk ketiga laporan — «gerakan isi ulang tidak wajar», «cara memegang jadi salah saat berlari», dan «membidik terlihat sama seperti menarik busur» — penyebabnya <b>diukur satu per satu</b> dan mekanisme animasinya sendiri dibangun ulang. Pose tidak lagi dihasilkan dengan <b>memilih satu klip per bingkai</b>, melainkan <b>dicampur dengan bobot yang bergerak seiring waktu</b>.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>Membidik terlihat seperti busur karena itu memang benar-benar pose busur.</b> Senjata mengembalikan {@code ItemUseAnimation.BOW}. Sesuai yang dipastikan pada bytecode 26.2: pada sudut pandang orang pertama diterapkan translasi ∓0,2786/+0,1834/+0,1573, lalu X −13,935°, Y ±35,3°, Z ∓9,785°, dan terakhir Y ∓45°; pada orang ketiga dipilih {@code ArmPose.BOW_AND_ARROW}. Kini menjadi {@code NONE}",
+        "<b>Selama membidik, senjata terus meregang 20 % dan bergetar 4,14 kali per detik.</b> Faktor tarikan busur terkunci di 1,0 setelah 21 tik, sedangkan durasi pemakaian senjata 72000 tik, sehingga {@code scale(1, 1, 1.2)} berlaku selamanya. Rotasi yang disusun setelah penskalaan tak seragam adalah <b>geseran, bukan rotasi</b>. Getaran vertikal ±0,0036 blok pun tak pernah berhenti",
+        "<b>Membidik sama sekali tidak menggerakkan senjata.</b> Yang berjalan saat membidik hanya {@code idle_aimed}: tiga kunci rotasi, puncak 0,203°, dan <b>nol kanal translasi</b>. Klip yang membawa pergeseran bidik yang sebenarnya ({@code aim_in}, −1,2/−4,5/−2,4 satuan) <b>tidak pernah dimainkan</b>. Dari 19–24 klip tiap senjata, <b>hanya 6 yang bisa terpilih</b> — 84 dari 282",
+        "<b>Setiap klik kanan menjatuhkan senjata sejauh 0,6 blok.</b> {@code Minecraft.startUseItem} selalu memanggil {@code itemUsed()} saat interaksi berhasil, dan {@code CONSUME} — yang dikembalikan senjata — juga sebuah keberhasilan. Itu menolkan {@code mainHandHeight} dan memutar ulang gerakan «baru saja berganti barang» dari awal. Baris itu kini dilewati khusus untuk senjata",
+        "<b>Pose berlari lenyap dalam satu bingkai.</b> Kedua ujung klip berlari tidak berada di posisi diam (rotasi −26/+22/−14°, translasi 0/+5/−3 satuan) dan bingkai kunci diterapkan secara <b>penjumlahan</b>. Jadi begitu berhenti berlari, 26 derajat dan 7 satuan — 17 % dari tinggi senjata — hilang dalam satu bingkai. Menembak atau mengisi ulang pun sama",
+        "<b>Animasi dan waktu isi ulang sebenarnya tidak cocok pada keempat belas senjata.</b> Panjang klip ÷ waktu sebenarnya: peluncur roket 185,1 %, pistol 184,3 %, laser/krio 168,0 %, penembak jitu berat 162,7 %, pistol dinas 161,2 %, senapan mesin ringan 147,0 %, karabin penembak 141,8 %, senapan serbu 120,0 %, penembak jitu 110,0 %, minigun 85,0 % — dan <b>senapan gentel 11,7 %</b>. Kini klip diregangkan ke waktu sebenarnya (dalam rentang 0,5×–2×)",
+        "<b>Isi ulang senapan gentel hanya memainkan 0,42 detik pertamanya.</b> Klip «ulangan» dan «akhir» yang ditulis untuk memasukkan peluru satu per satu <b>tidak punya pemanggil di mana pun</b>, sehingga sisa 3,18 detik membeku pada pose memuat. Kini bertahap: awal → satu ulangan per peluru → akhir",
+        "<b>Ada dua animasi isi ulang berjalan bersamaan.</b> Klip pada tulang, ditambah penurunan yang diterapkan terpisah oleh penggambar orang pertama di ruang kamera (−0,55 blok, X 34°, Z 8°) dengan gelombang sinus berperiode tak terkait. Yang kedua dihapus; gerakan menurunkan senjata dipindah ke tulang dan diselaraskan dengan keluarnya magasin serta menutupnya kokang",
+        "<b>Metodenya sendiri berubah.</b> Beberapa klip kini diterapkan <b>dengan bobot</b> dalam satu bingkai. Ini dimungkinkan oleh dua fakta yang diperiksa pada bytecode: argumen kedua {@code apply(waktu, bobot)} dikalikan dengan {@code fmul} ke setiap komponen — jadi itu sebuah <b>bobot</b> — dan {@code offsetPos}/{@code offsetRotation} <b>menjumlah</b>. Selama jumlah bobotnya 1, hasilnya adalah campuran linier yang benar"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>Belum ada seorang pun yang melihat semua ini di dalam permainan yang berjalan.</b> Angka-angka di atas diukur tanpa klien, dengan menjalankan {@code ModelPart.render} yang sebenarnya dan pengendali yang sebenarnya. <b>Apakah hasilnya enak dipandang belum terbukti.</b>",
+        "<b>Apakah kedipan pada pintu sudah hilang masih belum terbukti.</b> V4.3.3.1 menghapus 182 pasang muka yang sebidang, tetapi apakah itu kedipan yang Anda lihat masih belum diketahui",
+        "<b>Laporan bahwa barang selain senjata juga melayang saat dijatuhkan masih belum diukur.</b>"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Pemeriksaan baru <b>memajukan waktu mengikuti skenario</b>, mencatat seluruh titik sudut tiap bingkai, dan mengukur <b>perubahan besarnya gerakan</b> terhadap bingkai sebelumnya. Cara lama menghasilkan <b>0,44377 blok</b>; cara ini <b>0,0089–0,0166 blok</b> pada keempat belas senjata (batasnya 0,020). Setelah skenario, selisih terhadap jalannya diam saja dengan durasi sama adalah <b>tepat 0</b>. Membidik kini menggerakkan senjata 0,035–0,093 blok; sebelumnya 0",
+        "Tidak ada klien Minecraft di mesin pengembangan ini. <b>Tidak ada yang ditulis sudah diperbaiki sebelum terlihat berjalan.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",

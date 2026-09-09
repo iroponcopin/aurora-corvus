@@ -7,8 +7,46 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "La pose del arma se acumulaba en cada fotograma: solo se reiniciaba el hueso raíz",
+   "summary": "Se han rehecho el apuntado, el esprint y la recarga de las armas — la postura de arco ha desaparecido y el movimiento es continuo",
    "releases": [
+    {
+     "version": "V4.3.3.4",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Se han rehecho el apuntado, el esprint y la recarga de las armas — la postura de arco ha desaparecido y el movimiento es continuo",
+     "summary": "Para los tres avisos — «el movimiento de recarga no es natural», «al esprintar el agarre se descoloca» y «apuntar se ve igual que tensar un arco» — la causa se <b>midió por separado</b> y se ha rehecho la propia maquinaria de animación. La postura ya no se obtiene <b>eligiendo un solo clip por fotograma</b>: ahora los clips se <b>mezclan con pesos que avanzan en el tiempo</b>.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "<b>Apuntar parecía un arco porque era literalmente la postura del arco.</b> El arma devolvía {@code ItemUseAnimation.BOW}. Confirmado en el bytecode de 26.2: en primera persona aplica una traslación de ∓0,2786/+0,1834/+0,1573, luego X −13,935°, Y ±35,3°, Z ∓9,785° y por último Y ∓45°; en tercera persona selecciona {@code ArmPose.BOW_AND_ARROW}. Ahora devuelve {@code NONE}",
+        "<b>Al apuntar, el arma quedaba estirada un 20 % de forma permanente y temblaba 4,14 veces por segundo.</b> El factor de tensado del arco se fija en 1,0 tras 21 ticks y la duración de uso del arma es de 72000 ticks, así que {@code scale(1, 1, 1.2)} se aplicaba para siempre. Una rotación compuesta tras una escala no uniforme es <b>un cizallamiento, no una rotación</b>. Un temblor de ±0,0036 bloques tampoco cesaba nunca",
+        "<b>Apuntar no movía el arma a ninguna parte.</b> Solo sonaba {@code idle_aimed}: tres claves de rotación, pico 0,203°, y <b>ninguna pista de traslación</b>. El clip que lleva el desplazamiento real de apuntado ({@code aim_in}, −1,2/−4,5/−2,4 unidades) <b>nunca se reproducía</b>. De los 19–24 clips por arma, <b>solo 6 eran alcanzables</b> — 84 de 282",
+        "<b>Cada clic derecho hundía el arma 0,6 bloques.</b> {@code Minecraft.startUseItem} siempre llama a {@code itemUsed()} cuando la interacción tiene éxito, y {@code CONSUME} — lo que devuelve el arma — es un éxito. Eso ponía {@code mainHandHeight} a 0 y repetía desde el principio el movimiento de cambio de objeto. Esa línea ahora se omite solo para las armas",
+        "<b>La postura de esprint desaparecía en un solo fotograma.</b> Ningún extremo del clip de esprint está en reposo (rotación −26/+22/−14°, traslación 0/+5/−3 unidades) y los fotogramas clave se aplican <b>sumando</b>. Al dejar de esprintar, 26° y 7 unidades — el 17 % de la altura del arma — desaparecían en un fotograma. Disparar o recargar hacía lo mismo",
+        "<b>La animación y el tiempo real de recarga no coincidían en ninguna de las 14 armas.</b> Duración del clip ÷ recarga real: lanzacohetes 185,1 %, pistola 184,3 %, láser/crio 168,0 %, rifle pesado 162,7 %, pistola reglamentaria 161,2 %, subfusil 147,0 %, carabina de tirador 141,8 %, fusil de asalto 120,0 %, francotirador 110,0 %, minigun 85,0 % — y <b>la escopeta 11,7 %</b>. Ahora el clip se ajusta al tiempo real (entre 0,5× y 2×)",
+        "<b>La recarga de la escopeta solo reproducía sus primeros 0,42 segundos.</b> Los clips de «bucle» y «fin» escritos para cargar cartucho a cartucho <b>no tenían ninguna llamada en todo el código</b>; los 3,18 segundos restantes quedaban congelados. Ahora va por etapas: inicio → un bucle por cartucho → fin",
+        "<b>Había dos animaciones de recarga a la vez.</b> El clip de los huesos, más un descenso que el renderizado en primera persona aplicaba aparte en el espacio de cámara (−0,55 bloques, X 34°, Z 8°) con una sinusoide de periodo ajeno. Se ha eliminado el segundo; el descenso pasa a los huesos, sincronizado con la salida del cargador y el cierre del cerrojo",
+        "<b>Ha cambiado el método en sí.</b> Ahora se aplican varios clips <b>con pesos</b> en un mismo fotograma. Es posible por dos hechos comprobados en el bytecode: el segundo argumento de {@code apply(tiempo, peso)} se multiplica con {@code fmul} en cada componente, y {@code offsetPos}/{@code offsetRotation} <b>suman</b>. Si los pesos suman 1, el resultado es una mezcla lineal correcta"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "<b>Nadie ha visto todavía nada de esto con el juego en marcha.</b> Las cifras anteriores se midieron sin cliente, accionando el {@code ModelPart.render} real y el controlador real. <b>Que quede bien a la vista no está demostrado.</b>",
+        "<b>Sigue sin demostrarse que el parpadeo de las puertas haya desaparecido.</b> V4.3.3.1 quitó 182 pares de caras coplanares, pero no se sabe si son el parpadeo que usted ve",
+        "<b>El aviso de que otros objetos también salen volando al soltarlos sigue sin medirse.</b>"
+       ]
+      },
+      {
+       "title": "Lo que aún no estaba implementado o confirmado en este momento",
+       "items": [
+        "El nuevo control <b>hace avanzar el tiempo según un guion</b>, registra todos los vértices en cada fotograma y mide el <b>cambio del movimiento</b> respecto al anterior. El método antiguo da <b>0,44377 bloques</b>; este da <b>0,0089–0,0166 bloques</b> en las 14 armas (el límite es 0,020). Después del guion, la diferencia con una ejecución en reposo de igual duración es <b>exactamente 0</b>. Apuntar mueve ahora el arma 0,035–0,093 bloques; antes, 0",
+        "En esta máquina de desarrollo no hay cliente de Minecraft. <b>Nada se describe como corregido hasta haberlo visto funcionar.</b>"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.3.3",
      "date": "2026-09-09",
