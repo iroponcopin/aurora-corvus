@@ -1,14 +1,56 @@
 {
  "lang": "it",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Changelog",
- "updated_label": "Aggiornato il 2026-09-08",
+ "updated_label": "Aggiornato il 2026-09-09",
  "note": "I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell'introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Armi che si muovono in mano, uno sfarfallio sparito dalle porte, telai e i venti pezzi industriali",
+   "summary": "Disciplina d'officina: stalli e ganci, carburante allagato e una tabella del traffico",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Disciplina d'officina: stalli e ganci, carburante allagato e una tabella del traffico",
+     "summary": "I telai, il passero e la benzina arrivati con la V4.3.2 finalmente <b>incontrano</b> le bufere e le piene della V4.3.1, l'Anello Filtrante e i treni. Traccia uno stallo col gesso, appendi il passero a un gancio, filtra l'acqua di piena dal serbatoio e paga alla pompa. Cosa succede in uno scontro è scritto una volta sola, in una tabella di nove righe. Sei questioni lasciate aperte dalla V4.3.2 sono chiuse.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "Il <b>gesso da parcheggio</b> (16 usi) traccia uno stallo 3x5 a terra. Attacca solo sulle quattro lastre della città di cenere — lastra di scoria, impalcato del viadotto, mattone degli Stackworks e cemento prefabbricato — e altrove non si consuma. Puoi tenere otto stalli; il nono <b>cancella il più vecchio</b>",
+        "Arriva il <b>gancio da hangar</b>. Fissalo a una parete o al soffitto e, a mani vuote, accovacciati e clic destro: un passero entro due blocchi si aggancia. Agganciato, la sua posizione è congelata e consuma 1 mB ogni 80 tick. Un gancio ora sta accanto al banco di montaggio nella Sala delle Linee",
+        "<b>Il banco di montaggio ricorda cosa gli sta sopra.</b> Traina il veicolo oltre sei blocchi e se ne dimentica; rompi il banco e chi era a bordo scende — nessun veicolo resta legato a un banco che non c'è più",
+        "<b>L'acqua di piena entra nel serbatoio.</b> Venti tick nell'acqua corrente della città di cenere dimezzano la velocità e fanno uscire cenere dallo scarico. Un <b>filtro carburante</b> (8 usi) lo pulisce e scarica con sé 500 mB. <b>Su un serbatoio pulito non si consuma</b>",
+        "<b>La tempesta di polvere rallenta.</b> Finché chi guida è accecato dalla cenere, un telaio va al 75 % e il passero sale e scende al 60 %. Dentro l'Anello Filtrante la tempesta non ti raggiunge mai, e nemmeno il rallentamento",
+        "<b>La pompa ora fa pagare.</b> Due pieni per pompa e per giornata di gioco sono gratis; dal terzo serve una piastra stampata, oppure una pepita di ferro se non l'hai. La modalità creativa passa senza pagare",
+        "<b>Ogni collisione è scritta una volta sola.</b> Due telai si respingono (2 danni ciascuno oltre 0,8 di velocità relativa); un telaio colpisce un passero a terra per 4; un passero in volo non attraversa un telaio — subisce 3 e interrompe la discesa; treno o carrello infliggono 8 <b>solo a noi</b> e ci spostano di 1,5 blocchi; il colosso d'assemblaggio infligge 20 e disarciona; sanguisughe di condotta e strisciatori a bobina subiscono 4 e non infliggono nulla. <b>Nulla tocca l'interno di Create</b>",
+        "Una <b>ruota di scorta</b> (in pile da 8) restituisce 8 punti a un telaio. <b>/garage park</b> sistema il veicolo che stai guardando nello stallo o nel banco più vicino"
+       ]
+      },
+      {
+       "title": "Bilanciamento",
+       "items": [
+        "Un serbatoio contaminato va a metà velocità finché non viene filtrato. Si moltiplica con il rallentamento della bufera",
+        "La chiave dinamometrica ha ora 128 usi. La specifica della V4.3.2 diceva «durabilità 128» fin dall'inizio, ma la chiave pubblicata <b>non si consumava mai</b>. Le chiavi già in gioco partono piene",
+        "La benzina non può più essere versata nelle Piane di Residuo, nel Pozzo delle Vene o nell'Anello Filtrante («Qui il carburante evapora.»). La tanica non viene consumata"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "Le descrizioni di una riga del banco di montaggio e della pompa compaiono a schermo per la prima volta. Il testo è nei file di lingua dalla V4.3.2, ma nulla lo mostrava: non se n'è mai visto un carattere"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "Le lastre su cui si può tracciare e il segnale della tempesta appartengono entrambi alla città di cenere (sorakaze_fallout). Senza quel modulo il gesso non segna alcun suolo e il rallentamento della bufera non scatta mai — non dà errore, semplicemente non accade nulla"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

@@ -1,14 +1,56 @@
 {
  "lang": "es",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Historial de actualizaciones",
- "updated_label": "Actualizado el 2026-09-08",
+ "updated_label": "Actualizado el 2026-09-09",
  "note": "Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Armas que se mueven en la mano, un parpadeo que desaparece de las puertas, chasis y las veinte piezas industriales",
+   "summary": "Disciplina de garaje: plazas y ganchos, combustible inundado y una tabla de tráfico",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Disciplina de garaje: plazas y ganchos, combustible inundado y una tabla de tráfico",
+     "summary": "Los chasis, el gorrión y la gasolina que trajo la V4.3.2 por fin <b>se encuentran</b> con las ventiscas y las crecidas de la V4.3.1, el Anillo Filtrante y los trenes. Marca una plaza con tiza, cuelga el gorrión de un gancho, filtra el agua de la crecida del depósito y paga en el surtidor. Lo que ocurre en un choque queda escrito una sola vez, en una tabla de nueve filas. Se cierran seis cabos sueltos de la V4.3.2.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "La <b>tiza de aparcamiento</b> (16 usos) marca una plaza de 3x5 en el suelo. Solo prende en las cuatro losas de la ciudad ceniza — losa de escoria, tablero del viaducto, ladrillo de Stackworks y hormigón prefabricado — y no se gasta en ningún otro sitio. Puedes tener ocho plazas; la novena <b>borra la más antigua</b>",
+        "Se añade un <b>gancho de hangar</b>. Fíjalo a una pared o al techo y agáchate y haz clic derecho con las manos vacías: un gorrión a menos de dos bloques queda colgado. Colgado, su posición se congela y consume 1 mB cada 80 ticks. Ya hay un gancho junto al banco de montaje de la Nave de Líneas",
+        "<b>El banco de montaje recuerda qué tiene encima.</b> Remolca el vehículo más de seis bloques y lo olvida; rompe el banco y quien iba a bordo se baja — ningún vehículo queda atado a un banco que ya no existe",
+        "<b>El agua de la crecida entra en el depósito.</b> Veinte ticks en el agua corriente de la ciudad ceniza reducen tu velocidad a la mitad y sacan ceniza por el escape. Un <b>filtro de combustible</b> (8 usos) lo limpia y suelta 500 mB con ello. <b>En un depósito limpio no se gasta</b>",
+        "<b>La tormenta de polvo frena.</b> Mientras el conductor esté cegado por la ceniza, un chasis va al 75 % y el gorrión sube y baja al 60 %. Dentro del Anillo Filtrante la tormenta nunca te alcanza, y el frenado tampoco",
+        "<b>El surtidor ahora cobra.</b> Dos llenados por surtidor y día de juego son gratis; a partir del tercero cuesta una placa estampada, o una pepita de hierro si no la tienes. El modo creativo pasa sin pagar",
+        "<b>Cada choque está escrito una sola vez.</b> Dos chasis se repelen (2 de daño cada uno por encima de 0,8 de velocidad relativa); un chasis golpea a un gorrión en tierra por 4; un gorrión en vuelo no atraviesa un chasis — recibe 3 y aborta el descenso; un tren o vagoneta hace 8 <b>solo a los nuestros</b> y nos aparta 1,5 bloques; el coloso de montaje hace 20 y desmonta; sanguijuelas de tubería y reptadores de bobina reciben 4 y no hacen nada. <b>Nada toca el interior de Create</b>",
+        "Una <b>rueda de repuesto</b> (apila hasta 8) devuelve 8 puntos a un chasis. <b>/garage park</b> coloca el vehículo que estés mirando en la plaza o el banco más cercano"
+       ]
+      },
+      {
+       "title": "Ajustes de balance",
+       "items": [
+        "Un depósito contaminado va a media velocidad hasta que se filtre. Se multiplica con el frenado de la ventisca",
+        "La llave dinamométrica tiene ahora 128 usos. La especificación de la V4.3.2 decía «durabilidad 128» desde el principio, pero la llave que se publicó <b>nunca se desgastaba</b>. Las llaves ya existentes empiezan llenas",
+        "La gasolina ya no puede verterse en los Llanos de Residuo, el Pozo de Vetas ni el Anillo Filtrante («Aquí el combustible hierve y se va.»). La garrafa no se consume"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Las descripciones de una línea del banco de montaje y del surtidor aparecen en pantalla por primera vez. El texto está en los archivos de idioma desde la V4.3.2, pero nada lo mostraba: nunca se vio ni un carácter"
+       ]
+      },
+      {
+       "title": "Lo que aún no estaba implementado o confirmado en este momento",
+       "items": [
+        "Las losas que admiten tiza y la señal de la tormenta pertenecen a la ciudad ceniza (sorakaze_fallout). Sin ese módulo la tiza no marca ningún suelo y el frenado de ventisca no se activa nunca — no da error, sencillamente no ocurre nada"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

@@ -1,14 +1,56 @@
 {
  "lang": "en",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Changelog",
- "updated_label": "Updated 2026-09-08",
+ "updated_label": "Updated 2026-09-09",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Guns that move in the hand, a flicker gone from the doors, chassis and the industrial twenty",
+   "summary": "Garage discipline: bays and hooks, flooded fuel, and a traffic table",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Garage discipline: bays and hooks, flooded fuel, and a traffic table",
+     "summary": "The chassis, the sparrow and the gasoline that V4.3.2 dropped into the city now <b>meet</b> the blizzards and floods of V4.3.1, the Filter Ring, and the trains. Chalk out a bay, hang the sparrow on a hook, strain flood water out of a tank, and pay the pump. What happens when two things collide is written down once, in a table of nine rows. Six loose ends from V4.3.2 are closed.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "<b>Parking chalk</b> (16 uses) marks a 3x5 bay on the ground. It only works on the four deck blocks of the ashen city — cinder deck, viaduct deck, stackworks brick and precast concrete — and spends nothing anywhere else. You may hold eight bays; marking a ninth <b>deletes the oldest</b>",
+        "A <b>hangar hook</b> has been added. Fix it to a wall or a ceiling and sneak-right-click it empty-handed: a sparrow within two blocks docks. While docked its position is frozen and it sips 1 mB of fuel every 80 ticks. One hook now stands beside the assembly stand in the Line Hall",
+        "<b>The assembly stand remembers what is standing on it.</b> Tow the vehicle more than six blocks away and it forgets; break the stand and whoever was aboard is put down — no vehicle is left tied to a stand that no longer exists",
+        "<b>Flood water gets into the tank.</b> Twenty ticks in the flowing water of the ashen city halves your speed and puts ash out of the exhaust. A <b>fuel filter</b> (8 uses) strains it clean and dumps 500 mB with it. <b>Using one on a clean tank spends nothing</b>",
+        "<b>A grit storm slows you down.</b> While the driver is grit-blinded a chassis runs at 75% and the sparrow climbs and descends at 60%. Inside the Filter Ring the storm never reaches you, so neither does the slow",
+        "<b>The fuel pump now charges.</b> Two fills per pump per in-game day are free; from the third it takes one stamped plate, or one iron nugget if you have no plate. Creative mode passes straight through",
+        "<b>Every collision is written down once.</b> Chassis bump each other (2 damage each above 0.8 relative speed); a chassis hits a grounded sparrow for 4; a flying sparrow does not clip through a chassis — it takes 3 and its descent stops; a train or minecart deals 8 to <b>us only</b> and knocks us 1.5 blocks aside; the assembly colossus deals 20 and dismounts; pipe leeches and coil crawlers take 4 and deal nothing. <b>Nothing reaches inside Create</b>",
+        "A <b>spare wheel</b> (stacks to 8) puts 8 points of damage back on a chassis. <b>/garage park</b> snaps the vehicle you are looking at onto the nearest bay or stand"
+       ]
+      },
+      {
+       "title": "Balance changes",
+       "items": [
+        "A contaminated tank runs at half speed until it is filtered. This multiplies with the blizzard slow",
+        "The torque wrench now has 128 uses. The V4.3.2 specification said \"durability 128\" from the start, but the wrench that shipped <b>never wore out at all</b>. Wrenches already in your world start full",
+        "Gasoline can no longer be poured in the Residue Flats, the Vein Pit or the Filter Ring (\"Fuel boils off here.\"). The canister is not spent"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "The one-line descriptions on the assembly stand and the fuel pump appear on screen for the first time. The text has been in the language files since V4.3.2, but nothing displayed it, so not one character was ever visible"
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "The decks you can chalk and the signal for the storm both belong to the ashen city (sorakaze_fallout). Without that module the chalk marks no floor and the blizzard slow never fires — it does not error, it simply does nothing"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

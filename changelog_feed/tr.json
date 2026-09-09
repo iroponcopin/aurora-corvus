@@ -1,14 +1,56 @@
 {
  "lang": "tr",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-09-08 tarihinde güncellendi",
+ "updated_label": "2026-09-09 tarihinde güncellendi",
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Elde hareket eden silahlar, kapılardan kaybolan titreşim, şasiler ve yirmi endüstriyel parça",
+   "summary": "Garaj disiplini: park yerleri ve kancalar, sele bulanmış yakıt ve bir trafik tablosu",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Garaj disiplini: park yerleri ve kancalar, sele bulanmış yakıt ve bir trafik tablosu",
+     "summary": "V4.3.2 ile gelen şasiler, kül serçesi ve benzin artık V4.3.1'in tipileriyle, sel sularıyla, Filtre Halkası'yla ve trenlerle <b>karşılaşıyor</b>. Tebeşirle bir yer çiz, serçeyi kancaya as, depodaki sel suyunu süz ve pompada öde. Çarpışmada ne olacağı yalnızca bir kez, dokuz satırlık bir tabloda yazılı. V4.3.2'den kalan altı açık uç da kapandı.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "<b>Park tebeşiri</b> (16 kullanım) yere 3x5 bir yer çizer. Yalnızca kül şehrinin dört zemininde tutar — cüruf döşeme, viyadük tabliyesi, Stackworks tuğlası ve prekast beton — başka hiçbir yerde eksilmez. En fazla sekiz yeriniz olur; dokuzuncusu <b>en eskisini siler</b>",
+        "<b>Hangar kancası</b> eklendi. Duvara ya da tavana tak, elin boşken çömelip sağ tıkla: iki blok içindeki serçe asılır. Asılıyken konumu donar ve her 80 tikte 1 mB yakıt çeker. Hat Salonu'ndaki montaj sehpasının yanında artık bir kanca duruyor",
+        "<b>Montaj sehpası üstünde ne durduğunu hatırlıyor.</b> Aracı altı bloktan uzağa çekerseniz unutur; sehpayı kırarsanız içindekiler iner — artık var olmayan bir sehpaya bağlı araç kalmaz",
+        "<b>Sel suyu depoya giriyor.</b> Kül şehrinin akan suyunda yirmi tik, hızınızı yarıya indirir ve egzozdan kül çıkarır. <b>Yakıt filtresi</b> (8 kullanım) depoyu temizler ve beraberinde 500 mB boşaltır. <b>Temiz depoda hiç eksilmez</b>",
+        "<b>Toz fırtınası yavaşlatır.</b> Sürücü kül körlüğündeyken şasi %75, serçenin iniş çıkışı %60 hızla gider. Filtre Halkası'nın içinde fırtına zaten size ulaşmaz, yavaşlama da ulaşmaz",
+        "<b>Pompa artık ücret alıyor.</b> Pompa başına oyun günü başına iki dolum bedava; üçüncüden itibaren bir pres levha, yoksa bir demir külçe parçası alınır. Yaratıcı mod ödemeden geçer",
+        "<b>Her çarpışma tam bir kez yazılı.</b> Şasiler birbirini iter (0,8 bağıl hızın üstünde ikişer hasar); şasi yerdeki serçeye 4 vurur; uçan serçe şasinin içinden geçmez — 3 alır ve alçalışı kesilir; tren ya da vagonet <b>yalnızca bize</b> 8 verir ve bizi 1,5 blok yana savurur; montaj devi 20 verip bindirdiğini indirir; boru sülükleri ve bobin sürüngenleri 4 alır, hiç vermez. <b>Create'in içine hiç dokunulmaz</b>",
+        "<b>Yedek tekerlek</b> (8'e kadar yığılır) şasinin 8 hasarını geri verir. <b>/garage park</b> baktığınız aracı en yakın yere ya da sehpaya oturtur"
+       ]
+      },
+      {
+       "title": "Denge Ayarları",
+       "items": [
+        "Kirlenmiş depo süzülene kadar yarı hızla gider. Bu, tipi yavaşlamasıyla çarpılır",
+        "Tork anahtarının artık 128 kullanımı var. V4.3.2 şartnamesi en baştan «dayanıklılık 128» diyordu, ama çıkan anahtar <b>hiç aşınmıyordu</b>. Elinizdeki anahtarlar dolu başlar",
+        "Benzin artık Tortu Düzlükleri'nde, Damar Kuyusu'nda ve Filtre Halkası'nda dökülemiyor («Burada yakıt kaynayıp gider.»). Bidon harcanmaz"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Montaj sehpasının ve pompanın tek satırlık açıklamaları ilk kez ekranda görünüyor. Metin V4.3.2'den beri dil dosyalarındaydı ama onu gösteren hiçbir şey yoktu; tek bir harf bile görülmemişti"
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "Tebeşirin tuttuğu zeminler de fırtına işareti de kül şehrine (sorakaze_fallout) ait. O modül olmadan tebeşir hiçbir zemine çizmez ve tipi yavaşlaması hiç tetiklenmez — hata vermez, sadece hiçbir şey olmaz"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

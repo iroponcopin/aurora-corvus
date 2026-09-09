@@ -1,14 +1,56 @@
 {
  "lang": "fr",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-09-08",
+ "updated_label": "Mis à jour le 2026-09-09",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Des armes qui bougent dans la main, un scintillement disparu des portes, des châssis et les vingt pièces industrielles",
+   "summary": "Discipline de garage : places et crochets, carburant inondé, et une table de circulation",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Discipline de garage : places et crochets, carburant inondé, et une table de circulation",
+     "summary": "Les châssis, le moineau et l'essence livrés par la V4.3.2 <b>rencontrent</b> enfin les blizzards et les crues de la V4.3.1, l'Anneau filtrant et les trains. Tracez une place à la craie, accrochez le moineau, filtrez l'eau de crue du réservoir, et payez à la pompe. Ce qui se passe lors d'une collision est écrit une seule fois, dans une table de neuf lignes. Six points laissés ouverts en V4.3.2 sont réglés.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "La <b>craie de stationnement</b> (16 usages) trace une place de 3x5 au sol. Elle ne prend que sur les quatre dalles de la ville cendrée — dalle de mâchefer, tablier de viaduc, brique des Stackworks et béton préfabriqué — et ne s'use nulle part ailleurs. Huit places au maximum ; la neuvième <b>efface la plus ancienne</b>",
+        "Un <b>crochet de hangar</b> fait son entrée. Fixez-le à un mur ou à un plafond, mains vides, accroupi, clic droit : un moineau à moins de deux blocs s'y accroche. Accroché, sa position est figée et il consomme 1 mB toutes les 80 ticks. Un crochet se dresse désormais à côté du banc d'assemblage dans la Halle des lignes",
+        "<b>Le banc d'assemblage retient ce qui se trouve dessus.</b> Remorquez le véhicule à plus de six blocs et il l'oublie ; cassez le banc et l'équipage descend — aucun véhicule ne reste lié à un banc qui n'existe plus",
+        "<b>L'eau de crue entre dans le réservoir.</b> Vingt ticks dans l'eau courante de la ville cendrée réduisent votre vitesse de moitié et font sortir de la cendre à l'échappement. Un <b>filtre à carburant</b> (8 usages) le nettoie et vide 500 mB avec. <b>Sur un réservoir propre, il ne s'use pas</b>",
+        "<b>La tempête de poussière ralentit.</b> Tant que le conducteur est aveuglé par la cendre, un châssis roule à 75 % et le moineau monte et descend à 60 %. Dans l'Anneau filtrant la tempête ne vous atteint jamais, donc le ralentissement non plus",
+        "<b>La pompe est désormais taxée.</b> Deux pleins par pompe et par journée de jeu sont gratuits ; à partir du troisième, il faut une plaque estampée, ou une pépite de fer à défaut. Le mode créatif passe sans payer",
+        "<b>Chaque collision est écrite une fois pour toutes.</b> Deux châssis se repoussent (2 dégâts chacun au-delà de 0,8 de vitesse relative) ; un châssis touche un moineau au sol pour 4 ; un moineau en vol ne traverse pas un châssis — il prend 3 et sa descente s'interrompt ; un train ou un wagonnet inflige 8 <b>à nous seuls</b> et nous écarte de 1,5 bloc ; le colosse d'assemblage inflige 20 et désarçonne ; sangsues de conduite et rampants à bobine prennent 4 et n'infligent rien. <b>Rien ne touche à l'intérieur de Create</b>",
+        "Une <b>roue de secours</b> (par piles de 8) rend 8 points à un châssis. <b>/garage park</b> range le véhicule que vous regardez sur la place ou le banc le plus proche"
+       ]
+      },
+      {
+       "title": "Ajustements d'équilibrage",
+       "items": [
+        "Un réservoir contaminé roule à mi-vitesse jusqu'au filtrage. Cela se multiplie avec le ralentissement de tempête",
+        "La clé dynamométrique a maintenant 128 usages. La spécification V4.3.2 disait « durabilité 128 » dès le départ, mais la clé livrée <b>ne s'usait jamais</b>. Les clés déjà en jeu démarrent pleines",
+        "L'essence ne peut plus être versée dans les Plaines de résidu, le Puits de veine ni l'Anneau filtrant (« Ici le carburant s'évapore. »). Le bidon n'est pas consommé"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Les descriptions d'une ligne du banc d'assemblage et de la pompe apparaissent enfin à l'écran. Le texte est dans les fichiers de langue depuis la V4.3.2, mais rien ne l'affichait : pas un caractère n'a jamais été visible"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les dalles traçables et le signal de tempête appartiennent tous deux à la ville cendrée (sorakaze_fallout). Sans ce module, la craie ne marque aucun sol et le ralentissement de blizzard ne se déclenche jamais — sans erreur, il ne se passe simplement rien"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

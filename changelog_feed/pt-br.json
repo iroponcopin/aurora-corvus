@@ -1,14 +1,56 @@
 {
  "lang": "pt-br",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Histórico de atualizações",
- "updated_label": "Atualizado em 2026-09-08",
+ "updated_label": "Atualizado em 2026-09-09",
  "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Armas que se movem na mão, uma cintilação que sumiu das portas, chassis e os vinte itens industriais",
+   "summary": "Disciplina de garagem: vagas e ganchos, combustível alagado e uma tabela de tráfego",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Disciplina de garagem: vagas e ganchos, combustível alagado e uma tabela de tráfego",
+     "summary": "Os chassis, o pardal e a gasolina que a V4.3.2 trouxe agora <b>se encontram</b> com as nevascas e as cheias da V4.3.1, o Anel Filtrante e os trens. Marque uma vaga com giz, pendure o pardal num gancho, filtre a água da cheia do tanque e pague na bomba. O que acontece numa colisão está escrito uma única vez, numa tabela de nove linhas. Seis pontas soltas da V4.3.2 foram fechadas.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "O <b>giz de estacionamento</b> (16 usos) marca uma vaga 3x5 no chão. Só pega nas quatro lajes da cidade de cinzas — laje de escória, tabuleiro do viaduto, tijolo dos Stackworks e concreto pré-moldado — e não se gasta em nenhum outro lugar. São oito vagas no máximo; a nona <b>apaga a mais antiga</b>",
+        "Chega o <b>gancho de hangar</b>. Fixe-o numa parede ou no teto e, de mãos vazias, agache e clique com o botão direito: um pardal a até dois blocos se pendura. Pendurado, sua posição fica congelada e ele consome 1 mB a cada 80 ticks. Já há um gancho ao lado da bancada de montagem no Salão das Linhas",
+        "<b>A bancada de montagem lembra o que está sobre ela.</b> Reboque o veículo mais de seis blocos e ela esquece; quebre a bancada e quem estava a bordo desce — nenhum veículo fica preso a uma bancada que não existe mais",
+        "<b>A água da cheia entra no tanque.</b> Vinte ticks na água corrente da cidade de cinzas cortam sua velocidade pela metade e soltam cinza pelo escapamento. Um <b>filtro de combustível</b> (8 usos) limpa o tanque e descarta 500 mB junto. <b>Num tanque limpo ele não se gasta</b>",
+        "<b>A tempestade de pó freia.</b> Enquanto quem dirige estiver cego pela cinza, um chassi anda a 75 % e o pardal sobe e desce a 60 %. Dentro do Anel Filtrante a tempestade nunca alcança você — e a frenagem também não",
+        "<b>A bomba agora cobra.</b> Dois abastecimentos por bomba por dia de jogo são livres; a partir do terceiro custa uma placa estampada, ou uma pepita de ferro se não houver placa. O modo criativo passa direto",
+        "<b>Toda colisão está escrita uma vez só.</b> Dois chassis se repelem (2 de dano cada acima de 0,8 de velocidade relativa); um chassi acerta um pardal em terra por 4; um pardal em voo não atravessa um chassi — leva 3 e aborta a descida; trem ou carrinho causam 8 <b>só em nós</b> e nos jogam 1,5 bloco para o lado; o colosso de montagem causa 20 e desmonta; sanguessugas de tubulação e rastejadores de bobina levam 4 e não causam nada. <b>Nada mexe por dentro do Create</b>",
+        "Uma <b>roda sobressalente</b> (empilha até 8) devolve 8 pontos a um chassi. <b>/garage park</b> encaixa o veículo que você está olhando na vaga ou bancada mais próxima"
+       ]
+      },
+      {
+       "title": "Ajustes de balanceamento",
+       "items": [
+        "Um tanque contaminado anda a meia velocidade até ser filtrado. Isso se multiplica com a frenagem da nevasca",
+        "A chave de torque agora tem 128 usos. A especificação da V4.3.2 já dizia «durabilidade 128», mas a chave publicada <b>nunca se desgastava</b>. Chaves que já existem começam cheias",
+        "A gasolina não pode mais ser despejada nas Planícies de Resíduo, no Poço de Veios ou no Anel Filtrante («Aqui o combustível ferve e some.»). O galão não é consumido"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "As descrições de uma linha da bancada de montagem e da bomba aparecem na tela pela primeira vez. O texto está nos arquivos de idioma desde a V4.3.2, mas nada o exibia: nunca se viu um único caractere"
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "As lajes que aceitam giz e o sinal da tempestade pertencem à cidade de cinzas (sorakaze_fallout). Sem esse módulo o giz não marca chão algum e a frenagem da nevasca nunca dispara — não dá erro, simplesmente nada acontece"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

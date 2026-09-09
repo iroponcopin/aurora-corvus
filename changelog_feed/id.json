@@ -1,14 +1,56 @@
 {
  "lang": "id",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Riwayat Pembaruan",
- "updated_label": "Diperbarui 2026-09-08",
+ "updated_label": "Diperbarui 2026-09-09",
  "note": "Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Senjata yang bergerak di tangan, kedipan yang hilang dari pintu, sasis dan dua puluh barang industri",
+   "summary": "Disiplin garasi: petak dan kait, bahan bakar terendam banjir, dan satu tabel tabrakan",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Disiplin garasi: petak dan kait, bahan bakar terendam banjir, dan satu tabel tabrakan",
+     "summary": "Sasis, si burung pipit abu, dan bensin yang dibawa V4.3.2 kini <b>bertemu</b> dengan badai debu dan banjir V4.3.1, Cincin Penyaring, serta kereta. Tandai petak dengan kapur, gantung pipit pada kait, saring air banjir dari tangki, dan bayar di pompa. Apa yang terjadi saat bertabrakan ditulis sekali saja, dalam tabel sembilan baris. Enam hal yang tertinggal dari V4.3.2 ikut dituntaskan.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>Kapur parkir</b> (16 pemakaian) menandai petak 3x5 di tanah. Hanya menempel pada empat lantai kota abu — dek sinder, dek viaduk, bata Stackworks, dan beton pracetak — dan tidak berkurang sedikit pun di tempat lain. Anda boleh punya delapan petak; yang kesembilan <b>menghapus yang tertua</b>",
+        "<b>Kait hanggar</b> ditambahkan. Pasang di dinding atau langit-langit, lalu menunduk dan klik kanan dengan tangan kosong: pipit dalam radius dua blok tergantung. Selama tergantung posisinya membeku dan menyedot 1 mB tiap 80 tik. Satu kait kini berdiri di samping meja rakit di Aula Lini",
+        "<b>Meja rakit mengingat apa yang ada di atasnya.</b> Tarik kendaraan lebih dari enam blok maka ia lupa; hancurkan mejanya maka penumpang turun — tak ada kendaraan yang tetap terikat pada meja yang sudah tiada",
+        "<b>Air banjir masuk ke tangki.</b> Dua puluh tik di air mengalir kota abu memotong kecepatan jadi separuh dan mengeluarkan abu dari knalpot. <b>Filter bahan bakar</b> (8 pemakaian) menyaringnya bersih dan membuang 500 mB sekalian. <b>Pada tangki bersih ia tidak berkurang</b>",
+        "<b>Badai debu memperlambat.</b> Selama pengemudi terkena buta abu, sasis berjalan 75% dan pipit naik-turun 60%. Di dalam Cincin Penyaring badai memang tak sampai, jadi perlambatannya pun tidak",
+        "<b>Pompa kini menarik biaya.</b> Dua kali isi per pompa per hari permainan gratis; mulai yang ketiga dikenakan satu pelat tempa, atau satu butir besi bila tak ada pelat. Mode kreatif lewat begitu saja",
+        "<b>Setiap tabrakan ditulis satu kali.</b> Sasis saling memantul (2 damage masing-masing di atas kecepatan relatif 0,8); sasis menghantam pipit yang mendarat sebesar 4; pipit yang terbang tidak menembus sasis — ia kena 3 dan turunnya dibatalkan; kereta atau lori memberi 8 <b>hanya kepada kita</b> dan melemparkan kita 1,5 blok; kolosus rakit memberi 20 dan menurunkan penumpang; lintah pipa dan perayap kumparan kena 4 dan tidak memberi apa-apa. <b>Isi dalam Create tidak disentuh sama sekali</b>",
+        "<b>Roda cadangan</b> (menumpuk sampai 8) mengembalikan 8 poin pada sasis. <b>/garage park</b> memarkir kendaraan yang Anda pandang ke petak atau meja terdekat"
+       ]
+      },
+      {
+       "title": "Penyesuaian Balance",
+       "items": [
+        "Tangki yang tercemar berjalan setengah kecepatan sampai disaring. Ini berlipat dengan perlambatan badai",
+        "Kunci torsi kini punya 128 pemakaian. Spesifikasi V4.3.2 sejak awal menulis «ketahanan 128», tetapi kunci yang dirilis <b>tidak pernah aus sama sekali</b>. Kunci yang sudah ada dimulai penuh",
+        "Bensin tidak bisa lagi dituang di Dataran Residu, Sumur Urat, maupun Cincin Penyaring («Di sini bahan bakar mendidih dan habis.»). Jeriken tidak berkurang"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Keterangan satu baris pada meja rakit dan pompa muncul di layar untuk pertama kalinya. Teksnya sudah ada di berkas bahasa sejak V4.3.2, tetapi tak ada yang menampilkannya — satu huruf pun tak pernah terlihat"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "Lantai yang bisa dikapur dan sinyal badai sama-sama milik kota abu (sorakaze_fallout). Tanpa modul itu kapur tidak menandai lantai apa pun dan perlambatan badai tidak pernah aktif — bukan galat, hanya saja tidak terjadi apa-apa"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",

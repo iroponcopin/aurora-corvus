@@ -1,14 +1,56 @@
 {
  "lang": "de",
- "updated": "2026-09-08",
+ "updated": "2026-09-09",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-09-08",
+ "updated_label": "Aktualisiert am 2026-09-09",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
   {
    "label": "V4.3",
-   "summary": "Waffen, die sich in der Hand bewegen, ein verschwundenes Flackern an den Türen, Chassis und die zwanzig Industrieteile",
+   "summary": "Werkstattdisziplin: Buchten und Haken, geflutetes Benzin und eine Verkehrstabelle",
    "releases": [
+    {
+     "version": "V4.3.3",
+     "date": "2026-09-09",
+     "type": "release",
+     "title": "Werkstattdisziplin: Buchten und Haken, geflutetes Benzin und eine Verkehrstabelle",
+     "summary": "Fahrgestelle, Sperling und Benzin aus V4.3.2 <b>treffen</b> jetzt auf die Schneestürme und Fluten von V4.3.1, den Filterring und die Züge. Markiere eine Bucht, häng den Sperling an einen Haken, filtere Flutwasser aus dem Tank und zahl an der Zapfsäule. Was bei einem Zusammenstoß passiert, steht einmal fest — in einer Tabelle mit neun Zeilen. Sechs offene Punkte aus V4.3.2 sind erledigt.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "<b>Parkkreide</b> (16 Anwendungen) zeichnet eine 3x5-Bucht auf den Boden. Sie greift nur auf den vier Deckblöcken der Aschestadt — Schlackendeck, Viaduktdeck, Stackworks-Ziegel und Betonfertigteil — und verbraucht sich sonst nirgends. Acht Buchten sind erlaubt; die neunte <b>löscht die älteste</b>",
+        "Ein <b>Hangarhaken</b> ist neu. An Wand oder Decke anbringen, leere Hand, schleichen und rechtsklicken: ein Sperling im Umkreis von zwei Blöcken hängt sich ein. Angehängt ist seine Position eingefroren und er zieht alle 80 Ticks 1 mB Treibstoff. Ein Haken steht jetzt neben dem Montagestand in der Linienhalle",
+        "<b>Der Montagestand merkt sich, was auf ihm steht.</b> Zieh das Fahrzeug mehr als sechs Blöcke weg, und er vergisst es; zerschlägst du den Stand, steigt die Besatzung ab — kein Fahrzeug bleibt an einen Stand gebunden, den es nicht mehr gibt",
+        "<b>Flutwasser kommt in den Tank.</b> Zwanzig Ticks im fließenden Wasser der Aschestadt halbieren dein Tempo und treiben Asche aus dem Auspuff. Ein <b>Kraftstofffilter</b> (8 Anwendungen) reinigt ihn und lässt dabei 500 mB ab. <b>An einem sauberen Tank verbraucht er sich nicht</b>",
+        "<b>Ein Staubsturm bremst.</b> Solange die Fahrerin oder der Fahrer staubblind ist, fährt ein Fahrgestell mit 75 %, der Sperling steigt und sinkt mit 60 %. Im Filterring erreicht dich der Sturm nie — und damit auch die Bremsung nicht",
+        "<b>Die Zapfsäule verlangt jetzt Gebühr.</b> Zwei Füllungen pro Säule und Spieltag sind frei; ab der dritten kostet es eine Pressplatte, ersatzweise einen Eisenbarren-Nugget. Der Kreativmodus geht durch",
+        "<b>Jeder Zusammenstoß steht genau einmal geschrieben.</b> Fahrgestelle stoßen sich ab (je 2 Schaden über 0,8 Relativgeschwindigkeit); ein Fahrgestell trifft einen gelandeten Sperling für 4; ein fliegender Sperling geht nicht durch ein Fahrgestell hindurch — er nimmt 3 und bricht den Sinkflug ab; Zug oder Lore machen 8 <b>nur bei uns</b> und werfen uns 1,5 Blöcke zur Seite; der Montagekoloss macht 20 und wirft ab; Rohregel und Spulenkriecher nehmen 4 und geben nichts. <b>Nichts greift in Create hinein</b>",
+        "Ein <b>Ersatzrad</b> (stapelt bis 8) gibt einem Fahrgestell 8 Schadenspunkte zurück. <b>/garage park</b> setzt das anvisierte Fahrzeug auf die nächste Bucht oder den nächsten Stand"
+       ]
+      },
+      {
+       "title": "Balance-Anpassungen",
+       "items": [
+        "Ein verunreinigter Tank läuft bis zur Filterung mit halbem Tempo. Das multipliziert sich mit der Sturmbremsung",
+        "Der Drehmomentschlüssel hat jetzt 128 Anwendungen. Die Spezifikation von V4.3.2 nannte von Anfang an „Haltbarkeit 128“, aber der ausgelieferte Schlüssel <b>nutzte sich nie ab</b>. Vorhandene Schlüssel starten voll",
+        "Benzin lässt sich in den Rückstandsebenen, im Adernschacht und im Filterring nicht mehr ausgießen („Hier verkocht der Treibstoff.“). Der Kanister wird nicht verbraucht"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "Die einzeiligen Beschreibungen von Montagestand und Zapfsäule erscheinen erstmals auf dem Bildschirm. Der Text liegt seit V4.3.2 in den Sprachdateien, aber niemand zeigte ihn an — kein einziges Zeichen war je sichtbar"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "Die bekreidbaren Decks und das Signal für den Sturm gehören beide zur Aschestadt (sorakaze_fallout). Ohne dieses Modul markiert die Kreide keinen Boden und die Sturmbremsung greift nie — kein Fehler, es passiert schlicht nichts"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.2",
      "date": "2026-09-08",
