@@ -2666,6 +2666,212 @@
     "Measured: the particle gate's three negative controls all go red. Direction correct on 14 of 14 (14 of 14 fail under the old sign). The reload's jump on the median vertex is 0.0062–0.0146 blocks (bar 0.020; the old path reads 0.307). Residue after the script is <b>exactly 0</b>. Rendered length runs 1.07 blocks for a pistol to 1.89 for the anti-materiel rifle",
     "There is no Minecraft client on this development machine. <b>Nothing is described as fixed until it has been seen working.</b>"
    ]
+  },
+  {
+   "id": "v4.3.6",
+   "release": "V4.3.6",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Aiming twisted every gun by 7 degrees — the ADS tilt, a sound of its own for every gun, the rocket's load, and ownership",
+   "summary": "Measuring “the gun sits slightly crooked” showed that <b>all 14 guns</b> were twisted at full aim by yaw −6.9 to −7.3°, pitch +0.5 to +1.5° and roll +0.3 to +2.1°, and <b>the rear sight sat 0.06 to 0.76 blocks off the screen centre</b> — you were not even looking through the sights. Alongside that, the reload and dry-fire sounds all 14 guns shared are now <b>independent per gun</b> (69 events / 115 files), the rocket launcher's blast power drops from 396 to 36, and V4.3.4Update.md's ownership, recipe book and line card are in.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6",
+    "sorakaze_boss": "4.3.6",
+    "sorakaze_deco": "4.3.6",
+    "sorakaze_fallout": "4.3.6",
+    "sorakaze_guns": "4.3.6",
+    "sorakaze_phone": "4.3.6",
+    "sorakaze_planarcadia": "4.3.6",
+    "sorakaze_power": "4.3.6",
+    "sorakaze_rail": "4.3.6",
+    "sorakaze_sapporo": "4.3.6",
+    "sorakaze_sky": "4.3.6",
+    "sorakaze_survival": "4.3.6",
+    "sorakaze_vehicles": "4.3.6"
+   },
+   "highlights": [
+    "<b>The ADS tilt, measured.</b> Measuring the {@code sight_rear} → {@code sight_front} line in camera space at full aim showed <b>all 14 guns</b> twisted — yaw <b>−6.92 to −7.32°</b>, pitch +0.46 to +1.50°, roll +0.30 to +2.12°. The breakdown is known: {@code firstperson_righthand.rotation} in {@code <style>_in_hand.json} contributes <b>+5°</b> and the end of the {@code aim_in} bone clip <b>+2.5°</b>. Both are hand-placed numbers meant to flavour the hip pose, and <b>nothing cancelled them when you aimed</b>",
+    "<b>You were not even looking through the sights.</b> The same measurement put the rear sight <b>0.056 to 0.755 blocks</b> off the screen centre. The cause: the aim correction table {@code SightAlignment} had been derived from the <b>old element geometry</b> — a shape that has <b>not been drawn once</b> since the guns moved onto bones in V4.3.2. The check guarding the table compared it against that undrawn shape, so it stayed green throughout",
+    "<b>The fix:</b> seven numbers — a 4-component rotation plus a 3-component translation — are measured from the baked bones and written out at build time ({@code ./gradlew emitGunAdsAlignment}). Nothing is eyeballed. Result: <b>yaw, pitch and roll all 0.000°, rear-sight offset 0.0000 blocks</b> (14 guns)",
+    "<b>That gate has a negative control.</b> Removing the correction — returning to the pose shipped up to V4.3.5 — turns <b>all 14 guns red</b> (worst 7.32°). If it did not go red, the check itself fails as “this instrument is not measuring tilt”",
+    "<b>Every gun now has its own sounds.</b> The shipped state, measured: 14 guns shared 12 fire sounds (marksman_carbine pointed <b>straight</b> at sniper_fire, breaching_shotgun at shotgun_fire, service_pistol at handgun_fire), <b>all 14</b> shared 3 reload sounds, and <b>all 14</b> shared 1 dry-fire sound",
+    "<b>The sounds are derived, not styled.</b> Hand-voicing 14 guns would only line up 14 guesses, so each gun's sound comes from that gun's own numbers — barrel length gives the open-tube first resonance {@code c/(2L)}, receiver dimensions give the box resonance, muzzle energy gives the blast's positive phase ({@code t+ ∝ E^(1/3)}), calibre and velocity give the supersonic N-wave, the brake's port count gives the treble lift, and magazine length and drop give the reload's timing. The source is <b>the same one</b> the models are built from ({@code gun_standard.CLASS_REFERENCE} and {@code gun_mesh.resolved_spec()})",
+    "<b>69 events / 115 files.</b> Five roles per gun: fire (3 variants), magazine out, magazine in, bolt close, dry fire. Manual bolts and pumps close in <b>two strokes</b>, and a pistol with the magazine in the grip has a higher-pitched magazine catch. sounds.json, subtitles (English and Japanese) and the Java registry are all <b>generated</b>, so one of the 69 can no longer go missing (a missing one only stays silent while the game still starts, so by hand it would never have been noticed)",
+    "<b>That check caught a defect in my own sounds.</b> Both pistols' fire sounds had only 0.4% of their energy below 200 Hz and went red as “no low-end body”. With a short barrel the resonance sits at 1.2 kHz, and the roll-off I had scaled to it stopped at 160 Hz. What decides how low it reaches is <b>the volume of expanding gas</b> (radius ∝ E^(1/3)), so it is now derived from that",
+    "<b>Rocket launcher blast power 396 → 36.</b> The request lists “lower the power” and “reduce the load” as two items, but in 26.2 they are <b>one and the same number</b>. What the bytecode actually does: an explosion casts <b>1,352</b> rays from the faces of a 16×16×16 lattice, losing 0.315 per 0.3-block step in air. At 396 each ray ran 1,634 steps = <b>about 490 blocks</b>, so a single impact ran <b>about 2.21 million</b> {@code getBlockState} + {@code getFluidState} pairs",
+    "<b>The entity search was heavier still.</b> Vanilla calls {@code getEntities} on a box inflated by {@code power × 2} around the blast. At 396 that is a <b>radius of 792 blocks</b> — a cube 1,584 on a side, about <b>99×99 chunks</b>, scanned through the full height. At 36 the radius is 72 (9×9 chunks) — <b>1/1,331</b> of the volume. Both run on the server thread; that is what “the rocket's load” actually was",
+    "<b>The pistol is slightly smaller.</b> Two mismeasurements turned up on the way. ① The scale formula used “the model's longest side” as its length, but <b>a pistol is taller than it is long</b> (measured height 0.7944 / length 0.7806 blocks), so for pistols alone the <b>height</b> was going into the curve. ② The display transform's factor was <b>hard-coded as 1.5</b>, while the shipped values come in three steps: 1.35 / 1.5 / 1.65",
+    "<b>So each gun now declares how many blocks long it should look on screen.</b> Length comes from the real weapon in mm rather than the model's box, and the renderer <b>only solves</b> for the scale that meets that target. The check now measures <b>agreement with the declaration</b> (within 0.005 blocks) instead of a lower bound. The pistol goes from 0.949 to <b>0.904 blocks</b> on screen (95.3% of what the owner saw). The sniper rifle, carbine and rocket launcher were 10% too big the other way, and those shrank",
+    "<b>V4.3.4Update.md is in (streams O / R / C / Q).</b> Whoever places a vehicle, or first boards it, owns it. <b>Locking it with the lock collar</b> stops anyone else boarding, refuelling, filtering or fitting kits (<b>ramming still works as before</b> — the spec says so), and cutting a <b>spare key</b> lets one other person through for that one vehicle. {@code /garage owner} shows the owner; {@code set} / {@code clear} need permission level 2",
+    "<b>The recipe book was empty.</b> {@code sorakaze_vehicles} has <b>149</b> recipes and not a single advancement that unlocks them — 26.2's recipe book only shows unlocked recipes, so even holding the materials, <b>there was no way to learn they could be crafted</b>. All 149 now unlock when you pick up rolled plate (the list is generated too, so a recipe added later joins it automatically)",
+    "<b>The line card is added.</b> Right-click for 8 pages — the residue line, condensate and the pump tax, the ring main's cold start, the eastern viaduct and western Cinder Ridge, blizzards and floods, kits and navigation, ownership, and traffic, trains and the leviathans. It uses <b>not one byte of network traffic</b> (the page number lives only on the client). It is in two Ashen Conurbation chests at 40%",
+    "<b>Q1 to Q6 are settled too.</b> Q4 (fuel filtering in flight is <b>allowed but kills lift for 10 ticks</b>) is new code; for Q1 (the pump tax recovers over 24000 ticks), Q2 (parking bays are per-player persistent data), Q3 (breaking the hook releases the craft by itself) and Q5 (coreRequiresPlate stays default true) I confirmed each <b>already behaves that way</b> and left a {@code // RF4.3.4-Qn} marker"
+   ],
+   "balance_changes": [
+    "Rocket launcher: blast power 396.0 → <b>36.0</b> (99× vanilla TNT → 9×). The 960 direct-hit damage is <b>unchanged</b>. Excavation in stone goes from roughly 73 blocks to 6.6 blocks (an estimate, not a spec — for the measured value see the MEASURED line of {@code RocketLauncherTests})",
+    "Handgun / service pistol: on-screen length 0.949 → <b>0.904</b> blocks",
+    "Sniper rifle 1.915 → 1.743, heavy sniper 2.078 → 1.890, rocket launcher 1.890 → 1.682, marksman carbine 1.697 → 1.568 blocks (the four guns whose display factor is 1.65 were 10% too big because of the hard-coded 1.5)",
+    "An existing config holding 396.0 is corrected to 36.0 at start-up (generation-10 repair item)"
+   ],
+   "warnings": [
+    "<b>This version introduces ownership.</b> From now on, a vehicle you <b>place</b>, or an <b>ownerless vehicle you board first</b>, becomes yours. Vehicles placed up to 4.3.5 stay <b>ownerless</b>, so they are not locked and anyone can use them — existing vehicles behave exactly as before, down to the bit",
+    "<b>15 old fire-sound files are deleted.</b> {@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code rocket_fire} and their variants. If a resource pack replaced these, <b>that replacement no longer takes effect</b> (the new names are {@code <gun id>_fire})"
+   ],
+   "known_limitations": [
+    "<b>I have not yet seen the ADS tilt fixed on an actual screen.</b> What is measured is the camera-space pose rebuilt from the shipped chain of transforms, with a residual of 0.000° in yaw, pitch and roll. It has not been checked on the owner's screen",
+    "<b>The ADS correction is derived for the fully equipped state.</b> While switching weapons ({@code equippedProgress} > 0) the whole arm drops, so for about 0.2 seconds the rear sight sits below the screen centre",
+    "<b>I have not listened to a single one of the 115 sounds.</b> Every waveform property (attack, low end, overlap, distinctness) is measured numerically, but this development machine has no Minecraft client, so none has been checked by ear",
+    "<b>I have not seen one pixel of the line card screen either.</b> Page count, subtitle keys and not crashing on a dedicated server are covered; how it looks is unverified",
+    "The recipe unlock for V4.3.4Update.md §5's “residue line (crystal → crush → wash → stabilise)” is <b>not included</b>. Those recipes belong to {@code sorakaze_fallout}, and naming them from here would make the advancement fail to load in worlds without fallout. The same shape has to be built on that side",
+    "The door flicker and “items other than guns fly off when dropped” remain <b>unverified and unmeasured</b>"
+   ]
+  },
+  {
+   "id": "v4.3.6.1",
+   "release": "V4.3.6.1",
+   "date": "2026-09-10",
+   "type": "hotfix",
+   "title": "Hotfix: V4.3.6 would not start — the same sound ID was registered twice",
+   "summary": "With V4.3.6 installed the game crashed with “Could not execute entrypoint stage 'main'” and <b>did not run for a single second.</b> There is one cause — when per-gun sounds went in, of the new-style names {@code <gun id>_fire}, <b>three were spelled the same as old IDs</b>, and the old registrations were still there. Registering the same key twice makes the registry fail. <b>None of my pre-release checks could see this.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6.1",
+    "sorakaze_boss": "4.3.6.1",
+    "sorakaze_deco": "4.3.6.1",
+    "sorakaze_fallout": "4.3.6.1",
+    "sorakaze_guns": "4.3.6.1",
+    "sorakaze_phone": "4.3.6.1",
+    "sorakaze_planarcadia": "4.3.6.1",
+    "sorakaze_power": "4.3.6.1",
+    "sorakaze_rail": "4.3.6.1",
+    "sorakaze_sapporo": "4.3.6.1",
+    "sorakaze_sky": "4.3.6.1",
+    "sorakaze_survival": "4.3.6.1",
+    "sorakaze_vehicles": "4.3.6.1"
+   },
+   "highlights": [
+    "<b>The cause.</b> {@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire} happened to be <b>spelled exactly like</b> the new per-gun naming ({@code <gun id>_fire}). {@code GunSounds} registered them and {@code ModSounds} still did too, so the second {@code Registry.register} failed on the same key and took the whole {@code sorakaze_guns} entrypoint down with it",
+    "<b>The fix.</b> The 10 old constants that moved to per-gun sounds ({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire}) are deleted from {@code ModSounds}. Registration now happens in one place only, {@code GunSounds}",
+    "<b>All my checks were green.</b> Waveforms, files, sounds.json, subtitles, the registry table, models, hitboxes, tilt — all of them were watched. <b>Not one of them looked at whether registration goes through.</b> A GameTest could catch it, but running one needs a dedicated server, which stops at the EULA on this machine",
+    "<b>So two gates that actually register were added.</b> {@code checkGunSoundRegistration} <b>really calls</b> the real {@code ModSounds.init()} and {@code GunSounds.init()}, in the same order as the game. {@code checkRegistration} (the vehicle side) does the same, actually registering the 3 items and 1 component added in V4.3.6",
+    "<b>That gate has a negative control.</b> Deliberately restoring this duplicate ({@code handgun_fire}) makes the gate fail. If it did not, the gate would not be measuring registration, and would mean nothing",
+    "<b>A static check over all 13 modules was added too.</b> It looks for the same registry ID written in two places. However, 4 modules ({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo}) <b>do not fit the way this check reads code and are not covered</b> — shown as “not covered”, never mixed in with green"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Do not install V4.3.6.</b> It does not start. Replace it with this 4.3.6.1"
+   ],
+   "known_limitations": [
+    "<b>I have not yet seen this fix start on a real machine.</b> Registration was checked by actually running it (87 sounds, 26 items), but this development machine has no Minecraft client, so I have not seen the game come up",
+    "Everything in V4.3.6 (ADS tilt, per-gun sounds, rocket load, ownership) is <b>still in</b>. The only things removed are the 10 old sound constants that were no longer used",
+    "The static duplicate check covers only 9 of the 13 modules (see above)"
+   ]
+  },
+  {
+   "id": "v4.3.7",
+   "release": "V4.3.7",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Aiming hid the target behind the gun, and the magazine popped out upwards",
+   "summary": "Making the gun sit straight when aimed in V4.3.6 <b>put the rear sight on the screen centre</b>, and all 14 guns covered <b>81 to 100%</b> of the reticle. A real shooter puts the target <b>above the front sight, through the notch</b> — not in the middle of the metal. Alongside that, the reason the magazine <b>popped out upwards instead of dropping</b> during a reload (vanilla was inverting the position's Y) has been found, and the insertion motion rebuilt.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.7",
+    "sorakaze_boss": "4.3.7",
+    "sorakaze_deco": "4.3.7",
+    "sorakaze_fallout": "4.3.7",
+    "sorakaze_guns": "4.3.7",
+    "sorakaze_phone": "4.3.7",
+    "sorakaze_planarcadia": "4.3.7",
+    "sorakaze_power": "4.3.7",
+    "sorakaze_rail": "4.3.7",
+    "sorakaze_sapporo": "4.3.7",
+    "sorakaze_sky": "4.3.7",
+    "sorakaze_survival": "4.3.7",
+    "sorakaze_vehicles": "4.3.7"
+   },
+   "highlights": [
+    "<b>Aiming hid the target.</b> Casting real sight lines from the camera showed all 14 guns covering the centre — the centre ray hit the gun <b>0.19 to 0.66 blocks out</b>, and <b>81 to 100%</b> of a 2° disc around the centre was gun. That was because in V4.3.6 I aimed to “put the rear sight on the screen centre”. The rear sight is <b>a solid block of steel</b>, so putting its centroid on the centre always covers it",
+    "<b>The fix.</b> How far to move it is not eyeballed. Sight lines are cast against the pose as shipped, and a binary search finds <b>the smallest drop</b> that clears the disc (0.048 to 0.087 blocks, per gun). Result: <b>the centre is completely clear</b> and disc coverage is 0.0 to 0.7%. The gun sits a little lower, and the target rests above the front sight",
+    "<b>That gate has a negative control too.</b> Cancelling the drop returns to the V4.3.6 pose, and all 14 guns go red (worst 100% covered)",
+    "<b>The magazine popped out upwards — exactly as the owner said.</b> Tracking the magazine's on-screen height through a reload, it <b>rose from 0.3945 at rest to 0.6853 blocks</b> before returning to its seat. It was not dropping out; it was <b>popping out the top</b>",
+    "<b>The cause was vanilla's sign.</b> In 26.2, {@code KeyframeAnimations.posVec(x, y, z)} returns <b>{@code (x, -y, z)}</b>, confirmed in the bytecode ({@code fload_1; fneg}). This rig is authored “+Y down”, so that inversion put <b>every position channel upside down</b> — ever since the guns moved onto bones in V4.3.2. The generator now compensates for it",
+    "<b>“Nowhere near the feel of inserting” could be measured as well.</b> In the last stretch before seating, the magazine moved <b>1.7 to 19.7 times more sideways</b> than it rose, and dropped by <b>93 to 393%</b> during the part where it should rise. That is not an insertion; it is “drop it, swing it sideways, and let it get sucked in at the end”",
+    "<b>Rebuilt.</b> Three stages: take it out → <b>line it up directly beneath the magwell (x and z both 0, tilt 0)</b> → <b>straight up</b>. Sideways wander is now <b>0.10 to 0.18 times</b> the rise (threshold 0.34) and backtracking <b>0.1 to 0.2%</b> (threshold 2%)",
+    "<b>The swap instant is fixed too.</b> The magazine is swapped while hidden with a scale of 1→0→1. The pistol's reload is only 1.4 seconds and that window was 0.14 seconds, so a vertex moved 0.164 blocks in a single frame and the continuity gate rightly went red. The window was widened: <b>0.095</b>",
+    "<b>SMG magazine capacity.</b> From the model magazine's 190 mm height and the 9×19 <b>case-head</b> diameter of 9.93 mm, a double-stack box magazine holds <b>36 rounds</b>. The config said <b>60</b> (<b>66% over</b>) — a number that would not fit in the magazine you could see. It is now 36",
+    "<b>Running the same calculation over all 14 guns, this was the only one over</b> (assault rifle 25 / fits 33, handgun 12 / 21, carbine 10 / 34). A gate that checks this every time was added. At first I ran the calculation with <b>the bullet diameter</b> and even the assault rifle came out “over”, but what governs a magazine is <b>the case-head diameter</b> (5.56: bullet 5.6 mm, case head 9.6 mm)",
+    "<b>Sniper rifle design.</b> Of the 14 guns, <b>this was the only one with not a single style override</b>, so the bare class dimensions went out as they were — it had nothing that made it look like a precision rifle. It now has <b>a large scope, elevation/windage turrets, a magnification ring, a 12-flute barrel, a 6-port muzzle brake, a bipod and a bolt knob</b> (1,014 → 1,050 cubes)",
+    "<b>Those turrets overshot at first and a gate stopped them.</b> A fixed 4.3-unit turret went onto every gun, so the pistol's small optic grew the same turret, and the model gate went red with “looks like a chimney”. It is now <b>proportional to the tube radius</b>",
+    "<b>Rocket launcher block destruction cut by 25%.</b> The destroyed <b>volume</b> scales with the cube of blast power, so the factor is not 0.75 but <b>0.75^(1/3) = 0.9086</b>. 36.0 → <b>32.71</b>. Applying 0.75 directly would make the volume 0.42× = a 58% cut, more than twice what was asked",
+    "<b>A generator said it wrote a file and did not.</b> {@code gen_gun_model_java.py} assembled the style dispatch table and <b>never wrote it out</b>; only its last line reported “wrote dispatcher GunGeometry.java”. The cube-count table had drifted into hand maintenance, and with the models rebuilt this time, 10 guns went red with “one bone short” (nothing was short — the table was stale). It now really writes the file"
+   ],
+   "balance_changes": [
+    "SMG: magazine 60 → <b>36</b> (what fits in the model's magazine)",
+    "Rocket launcher: blast power 36.0 → <b>32.708</b> (destroyed volume −25%). The 960 direct-hit damage is unchanged",
+    "Sniper rifle: 1,014 → 1,050 cubes. <b>Not one performance figure changed</b> (appearance only)"
+   ],
+   "warnings": [
+    "<b>Where the gun sits when aimed changes.</b> The rear sight is no longer on the screen centre but <b>slightly below the reticle</b>. This follows real sighting (the target rests above the front sight); without it, the gun hides the target"
+   ],
+   "known_limitations": [
+    "<b>None of this has been seen on a real screen.</b> Occlusion was measured with cast sight lines and the magazine path with both the bone offset and the rendered height, but this development machine has no Minecraft client, so nothing has been checked by eye",
+    "<b>I read “magazine size” as capacity.</b> If it meant “the size of the model's magazine”, the fix goes the other way (lengthen the magazine to hold 60). Please say so if that was the meaning",
+    "The capacity gate <b>cannot read service_pistol</b> (its definition JSON has no magazine entry and falls back to the class default). It says “NOT READ” instead of mixing that in with green",
+    "V4.4.0Update.md (the Ashen Airfield, North Taxi strip, Hangar One) is <b>not in yet</b>. This release put the start-up crash fix and these five reports first"
+   ]
+  },
+  {
+   "id": "v4.3.8",
+   "release": "V4.3.8",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "The gunshots had no core — only 0.0 to 2.6% below 80 Hz. And Cherry begins",
+   "summary": "“Overall they sound like toys” was measured. <b>Energy below 80 Hz was 0.0 to 2.6%</b> (pistol 0.0%) — the core you feel in your body was missing entirely. On top of that, all 14 guns peaked at exactly 0.720, so a .50 calibre and a 9mm sounded equally loud. The check's floor was only “0.5% below 200 Hz”, which let this straight through. Alongside it, the rocket drops another 25%, and work begins on the next-generation brand <b>Cherry</b>.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.8",
+    "sorakaze_boss": "4.3.8",
+    "sorakaze_deco": "4.3.8",
+    "sorakaze_fallout": "4.3.8",
+    "sorakaze_guns": "4.3.8",
+    "sorakaze_phone": "4.3.8",
+    "sorakaze_planarcadia": "4.3.8",
+    "sorakaze_power": "4.3.8",
+    "sorakaze_rail": "4.3.8",
+    "sorakaze_sapporo": "4.3.8",
+    "sorakaze_sky": "4.3.8",
+    "sorakaze_survival": "4.3.8",
+    "sorakaze_vehicles": "4.3.8"
+   },
+   "highlights": [
+    "<b>Why they sounded like toys comes down to one thing:</b> no low end. Measured below 80 Hz: assault 0.8% / handgun <b>0.0%</b> / sniper 2.5% / shotgun 2.6%. A real gunshot's muzzle gas makes <b>a low-frequency pressure pulse you feel in your body</b>. Without it you get a sharp “snap” with no core",
+    "<b>A low-end body is added.</b> Two decaying sines (fundamental + second harmonic), with the frequency <b>set by the charge</b> (the bigger the expanding gas mass, the lower — 26 to 62 Hz). Below 80 Hz is now <b>7.3 to 28.8%</b>. Guns with bigger charges have bigger cores, <b>3.19×</b> between largest and smallest",
+    "<b>Every gun was equally loud.</b> All 14 peaked at exactly 0.720 — a .50 calibre and a 9mm at the same level. Loudness now follows muzzle energy: pistol 0.518 / rifle 0.720, a <b>+2.9 dB</b> difference",
+    "<b>The tails were too short as well.</b> Only 0.45 to 1.01 seconds — sound on the spot, then gone. Adding the sound returned from the terrain makes them <b>0.43 to 1.33 seconds</b>. The bigger the charge, the further it carries and the longer it returns",
+    "<b>The check's floor is raised.</b> It only looked at “0.5% below 200 Hz”, so <b>a toy sound could meet 0.5% and ship</b>. Now it requires 12% below 200 Hz and 6% below 80 Hz, and also measures that <b>bigger charges have bigger cores</b> (at least 1.8×) and that <b>loudness differs between guns</b> (at least 1.25×)",
+    "<b>The rocket launcher drops another 25%.</b> 32.708 → <b>29.717</b>. Across both cuts, the destroyed volume is <b>56%</b> of what it was at 36.0",
+    "<b>Lowering power alone does not cut the load.</b> In 26.2, even with a cap, <b>the rays keep running to the end</b>, so the number of {@code getBlockState} calls — the load itself — does not drop at all. Beyond the cap radius the explosion now <b>returns a huge blast resistance so the ray stops right there</b>, and hand-held rockets get a cap for the first time (radius 14). The work done is <b>capped by radius, not by blast power</b>",
+    "<b>Cherry — work begins on the next-generation brand.</b> Named for the cherry blossom, it sits above Alpha. The logo is <b>a five-petal sakura</b> built from geometry — the <b>notch</b> at each petal tip (the one feature that says cherry, not plum), the <b>waist</b> towards the centre, the stamens and anthers. It matches itself exactly under a 72° rotation",
+    "<b>The logo was drawn out three times and fixed by actually looking.</b> The first time the petals overlapped into a blob; the second time the shoulders crossed, leaving angular seams. It was never passed on numbers alone — every version was rendered and checked",
+    "<b>The blossom opens while turning.</b> When the page opens, the five petals unfold one after another from the centre, each growing as it rotates into its own 72° seat. CSS only, and only once (repeating it would turn a bloom into a loading spinner). With {@code prefers-reduced-motion} it starts fully open",
+    "<b>Aurora Corvus is renamed Corvus.</b> Display name only — the repository name and public URL are unchanged (changing them would 404 every launcher already out there)",
+    "<b>The colour moves from aurora to Apple's sky blue.</b> Green and violet are gone, replaced by sky tones built around #5AC8FA. Body text and links reach <b>10.5:1 to 13.3:1</b> against the dark ground (WCAG AAA). The Corvus app's background moved to the same family (with the lightness matched to the original three colours)",
+    "<b>The white/black theme toggle is abolished.</b> The toggle, its storage, the migration code and 8 CSS blocks that could no longer be reached are <b>deleted</b>. Leaving unused code “just in case” makes the next reader treat it as if there were still two themes",
+    "<b>There is now a Store tab.</b> Its mega menu lists <b>Alpha / Aureum / Cherry</b>. Alpha <b>had never had a brand page</b> — there was a way to download it but no single page saying what Alpha is, so of the three, one had nowhere to point"
+   ],
+   "balance_changes": [
+    "Rocket launcher: blast power 32.708 → <b>29.717</b> (destroyed volume 56% of 36.0)",
+    "Rocket launcher: hand-held rockets get a cap too (radius 14 blocks / 4,000 blocks). Beyond the cap, rays stop",
+    "Gunshots: pistol and SMG peaks drop from 0.720 to 0.518–0.552 (rifles sound relatively louder)"
+   ],
+   "warnings": [
+    "<b>The theme toggle is gone.</b> If you had chosen the white theme, only the dark one remains",
+    "<b>The site's display name becomes Corvus.</b> The URL does not change"
+   ],
+   "known_limitations": [
+    "<b>I have not listened to a single sound.</b> Low end, loudness spread, length, attack and overlap are all measured numerically, but this development machine has no Minecraft client, so nothing has been checked by ear",
+    "<b>Cherry is a brand only.</b> Not one line of a mod has been written. The page says so too, in all 13 languages",
+    "<b>The Corvus app has not been rebuilt.</b> The colour change is in the source, but the launcher's download has to ship separately as its own version",
+    "V4.4.0Update.md (the Ashen Airfield) is <b>not in yet</b>. This release put the sound, the rocket, Cherry and the site first"
+   ]
   }
  ],
  "roadmap": {

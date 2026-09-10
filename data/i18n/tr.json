@@ -2552,6 +2552,212 @@
     "Ölçülen: parçacık denetiminin üç negatif kontrolü de kırmızıya dönüyor. Yön 14'te 14 doğru. Şarjör değişiminin sıçraması ortanca köşe noktasında 0,0062–0,0146 blok (eşik 0,020; eski yol 0,307). Senaryodan sonraki kalıntı <b>tam olarak 0</b>. Çizilen uzunluk 1,07 ila 1,89 blok",
     "Bu geliştirme makinesinde Minecraft istemcisi yok. <b>Çalıştığı görülmeden hiçbir şey düzeltildi diye yazılmaz.</b>"
    ]
+  },
+  {
+   "id": "v4.3.6",
+   "release": "V4.3.6",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Nişan alınca her silah 7 derece bükülüyordu — ADS eğimi, her silaha kendi sesi, roketin yükü ve sahiplik",
+   "summary": "“Silah biraz yamuk duruyor” ölçüldüğünde <b>14 silahın tamamının</b> tam nişanda sapma (yaw) −6,9 ile −7,3°, yunuslama +0,5 ile +1,5° ve yatış +0,3 ile +2,1° büküldüğü, <b>gez'in ekran merkezinden 0,06–0,76 blok uzakta durduğu</b> görüldü — nişangahtan bakmıyordunuz bile. Ayrıca 14 silahın ortak kullandığı şarjör değiştirme ve boş tetik sesleri artık <b>her silah için ayrı</b> (69 olay / 115 dosya), roketatarın patlama gücü 396'dan 36'ya iniyor ve V4.3.4Update.md'deki sahiplik, tarif kitabı ve hat kartı uygulandı.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6",
+    "sorakaze_boss": "4.3.6",
+    "sorakaze_deco": "4.3.6",
+    "sorakaze_fallout": "4.3.6",
+    "sorakaze_guns": "4.3.6",
+    "sorakaze_phone": "4.3.6",
+    "sorakaze_planarcadia": "4.3.6",
+    "sorakaze_power": "4.3.6",
+    "sorakaze_rail": "4.3.6",
+    "sorakaze_sapporo": "4.3.6",
+    "sorakaze_sky": "4.3.6",
+    "sorakaze_survival": "4.3.6",
+    "sorakaze_vehicles": "4.3.6"
+   },
+   "highlights": [
+    "<b>ADS eğimi, ölçüldü.</b> Tam nişanda kamera uzayında {@code sight_rear} → {@code sight_front} çizgisi ölçülünce <b>14 silahın tamamı</b> bükük çıktı — sapma <b>−6,92 ile −7,32°</b>, yunuslama +0,46 ile +1,50°, yatış +0,30 ile +2,12°. Dağılımı biliniyor: {@code <style>_in_hand.json} içindeki {@code firstperson_righthand.rotation} <b>+5°</b>, {@code aim_in} kemik klibinin sonu <b>+2,5°</b> katıyor. İkisi de kalça duruşuna tat vermek için elle konmuş sayılar ve <b>nişan alınca hiçbir şey onları iptal etmiyordu</b>",
+    "<b>Nişangahtan bakmıyordunuz bile.</b> Aynı ölçüm gez'i ekran merkezinden <b>0,056–0,755 blok</b> uzağa koydu. Nedeni: nişan düzeltme tablosu {@code SightAlignment}, <b>eski öğe geometrisinden</b> türetilmişti — silahlar V4.3.2'de kemiklere geçtiğinden beri <b>bir kez bile çizilmemiş</b> bir şekil. Tabloyu koruyan denetim onu bu hiç çizilmeyen şekille karşılaştırıyordu, bu yüzden baştan sona yeşil kaldı",
+    "<b>Düzeltme:</b> yedi sayı — 4 bileşenli bir dönme artı 3 bileşenli bir öteleme — pişirilmiş kemiklerden ölçülüp derleme sırasında yazılıyor ({@code ./gradlew emitGunAdsAlignment}). Göz kararı hiçbir şey yok. Sonuç: <b>sapma, yunuslama ve yatış hepsi 0,000°, gez kayması 0,0000 blok</b> (14 silah)",
+    "<b>Bu kapının negatif kontrolü var.</b> Düzeltmeyi kaldırmak — V4.3.5'e kadar yayımlanan duruşa dönmek — <b>14 silahın tamamını kırmızıya çeviriyor</b> (en kötü 7,32°). Kırmızıya dönmezse denetimin kendisi “bu alet eğimi ölçmüyor” diye başarısız olur",
+    "<b>Artık her silahın kendi sesleri var.</b> Yayımlanan durum, ölçüldü: 14 silah 12 atış sesini paylaşıyordu (marksman_carbine <b>doğrudan</b> sniper_fire'ı, breaching_shotgun shotgun_fire'ı, service_pistol handgun_fire'ı gösteriyordu), <b>14'ü birden</b> 3 şarjör sesini ve <b>14'ü birden</b> tek bir boş tetik sesini paylaşıyordu",
+    "<b>Sesler türetildi, keyfe göre tasarlanmadı.</b> 14 silahı elle seslendirmek yalnızca 14 tahmini yan yana dizmek olurdu; bu yüzden her ses silahın kendi sayılarından geliyor — namlu uzunluğu açık borunun ilk rezonansını {@code c/(2L)}, gövde ölçüleri kutu rezonansını, namlu enerjisi patlamanın pozitif fazını ({@code t+ ∝ E^(1/3)}), kalibre ve hız süpersonik N dalgasını, namlu freninin delik sayısı tizlerdeki yükselmeyi, şarjör uzunluğu ve düşüşü değiştirme zamanlamasını veriyor. Kaynak, modellerin kurulduğu kaynağın <b>aynısı</b> ({@code gun_standard.CLASS_REFERENCE} ve {@code gun_mesh.resolved_spec()})",
+    "<b>69 olay / 115 dosya.</b> Silah başına beş rol: atış (3 çeşit), şarjör çıkar, şarjör tak, kilit kapanır, boş tetik. Elle kurmalı ve pompalı silahlar <b>iki vuruşta</b> kapanır, şarjörü kabzasında olan tabancanın şarjör mandalı daha tiz çıkar. sounds.json, altyazılar (İngilizce ve Japonca) ve Java kaydı hepsi <b>üretilmiş</b> olduğundan 69'dan biri artık eksik kalamaz (eksik olan yalnızca sessiz kalır, oyun yine açılır — elle olsa asla fark edilmezdi)",
+    "<b>O denetim kendi seslerimdeki bir kusuru yakaladı.</b> İki tabancanın atış seslerinde enerjinin yalnızca %0,4'ü 200 Hz'in altındaydı ve “alçak gövde yok” diye kırmızıya döndüler. Kısa namluda rezonans 1,2 kHz'de ve ona göre ölçeklediğim düşüş 160 Hz'de duruyordu. Ne kadar aşağı ineceğini belirleyen <b>genleşen gazın hacmi</b> (yarıçap ∝ E^(1/3)); artık ondan türetiliyor",
+    "<b>Roketatar patlama gücü 396 → 36.</b> İstek “gücü düşür” ve “yükü azalt”ı iki madde olarak sayıyor, ama 26.2'de ikisi <b>tek ve aynı sayı</b>. Bytecode'un gerçekte yaptığı: bir patlama 16×16×16 kafesin yüzlerinden <b>1.352</b> ışın atar ve havada 0,3 bloklik her adımda 0,315 kaybeder. 396'da her ışın 1.634 adım = <b>yaklaşık 490 blok</b> gidiyordu, yani tek bir isabet <b>yaklaşık 2,21 milyon</b> {@code getBlockState} + {@code getFluidState} çifti çalıştırıyordu",
+    "<b>Varlık araması daha da ağırdı.</b> Vanilla, patlamanın çevresinde {@code power × 2} kadar şişirilmiş bir kutuda {@code getEntities} çağırır. 396'da bu <b>792 bloklik yarıçap</b> — kenarı 1.584 olan bir küp, yaklaşık <b>99×99 chunk</b>, tüm yükseklik boyunca taranıyor. 36'da yarıçap 72 (9×9 chunk) — hacmin <b>1/1.331</b>'i. İkisi de sunucu iş parçacığında çalışır; “roketin yükü” aslında buydu",
+    "<b>Tabanca biraz küçüldü.</b> Yolda iki ölçüm hatası çıktı. ① Ölçek formülü uzunluk olarak “modelin en uzun kenarını” alıyordu, ama <b>tabanca uzunluğundan daha yüksek</b> (ölçülen yükseklik 0,7944 / uzunluk 0,7806 blok), bu yüzden yalnızca tabancalarda eğriye <b>yükseklik</b> giriyordu. ② Görüntü dönüşümünün katsayısı <b>1,5 olarak sabit yazılmıştı</b>, oysa yayımlanan değerler üç basamaklı: 1,35 / 1,5 / 1,65",
+    "<b>Bu yüzden her silah artık ekranda kaç blok uzun görünmesi gerektiğini bildiriyor.</b> Uzunluk modelin kutusundan değil, gerçek silahın mm cinsinden ölçüsünden geliyor ve oluşturucu <b>yalnızca bu hedefi tutan ölçeği çözüyor</b>. Denetim artık alt sınır yerine <b>bildirimle uyumu</b> ölçüyor (0,005 blok içinde). Tabanca ekranda 0,949'dan <b>0,904 bloğa</b> iniyor (sahibinin gördüğünün %95,3'ü). Keskin nişancı tüfeği, karabina ve roketatar ise tersine %10 fazla büyüktü; onlar küçüldü",
+    "<b>V4.3.4Update.md uygulandı (akışlar O / R / C / Q).</b> Aracı yerleştiren ya da ona ilk binen, aracın sahibidir. <b>Kilit halkasıyla kilitlenince</b> başkası binemez, yakıt alamaz, filtreleyemez, kit takamaz (<b>çarpma eskisi gibi çalışır</b> — şartname öyle diyor), bir <b>yedek anahtar</b> kesmek ise yalnızca o araç için bir kişiyi daha geçirir. {@code /garage owner} sahibi gösterir; {@code set} / {@code clear} izin düzeyi 2 ister",
+    "<b>Tarif kitabı boştu.</b> {@code sorakaze_vehicles}'in <b>149</b> tarifi var ve bunları açan tek bir ilerleme bile yoktu — 26.2'nin tarif kitabı yalnızca açılmışları gösterir, yani malzemeler elinizde olsa bile <b>yapılabildiklerini öğrenmenin yolu yoktu</b>. Artık haddelenmiş sac aldığınızda 149'u birden açılıyor (liste de üretilmiş; sonradan eklenen tarif kendiliğinden katılır)",
+    "<b>Hat kartı eklendi.</b> Sağ tıkla 8 sayfa — kalıntı hattı, kondensat ve pompa vergisi, ana halkanın soğuk başlatması, doğu viyadüğü ve batıdaki Kül Sırtı, tipiler ve seller, kitler ve seyrüsefer, sahiplik ile trafik, trenler ve leviatanlar. <b>Tek bir bayt ağ trafiği kullanmaz</b> (sayfa numarası yalnızca istemcide yaşar). Kül Kentsel Alanı'ndaki iki sandıkta %40 olasılıkla çıkar",
+    "<b>Q1'den Q6'ya kadar da halledildi.</b> Q4 (uçuşta yakıt filtrelemek <b>serbest ama 10 tick boyunca kaldırmayı öldürür</b>) yeni kod; Q1 (pompa vergisi 24000 tick'te geri gelir), Q2 (park yerleri oyuncu başına kalıcı veridir), Q3 (kancayı kırmak aracı kendiliğinden bırakır) ve Q5 (coreRequiresPlate varsayılan olarak true kalır) için <b>zaten öyle davrandıklarını</b> doğruladım ve bir {@code // RF4.3.4-Qn} işareti bıraktım"
+   ],
+   "balance_changes": [
+    "Roketatar: patlama gücü 396,0 → <b>36,0</b> (vanilla TNT'nin 99 katı → 9 katı). 960 doğrudan isabet hasarı <b>değişmedi</b>. Taşta kazı kabaca 73 bloktan 6,6 bloğa iniyor (bir tahmin, şartname değil — ölçülen değer için {@code RocketLauncherTests}'in MEASURED satırına bakın)",
+    "El silahı / hizmet tabancası: ekrandaki uzunluk 0,949 → <b>0,904</b> blok",
+    "Keskin nişancı tüfeği 1,915 → 1,743, ağır keskin nişancı 2,078 → 1,890, roketatar 1,890 → 1,682, nişancı karabinası 1,697 → 1,568 blok (görüntü katsayısı 1,65 olan dört silah, sabit yazılmış 1,5 yüzünden %10 fazla büyüktü)",
+    "396,0 içeren mevcut bir yapılandırma açılışta 36,0'a düzeltilir (10. nesil onarım maddesi)"
+   ],
+   "warnings": [
+    "<b>Bu sürüm sahipliği getiriyor.</b> Bundan sonra <b>yerleştirdiğiniz</b> bir araç ya da <b>ilk bindiğiniz sahipsiz bir araç</b> sizin olur. 4.3.5'e kadar yerleştirilmiş araçlar <b>sahipsiz kalır</b>; kilitli değildir ve herkes kullanabilir — mevcut araçlar bitine kadar eskisi gibi davranır",
+    "<b>15 eski atış sesi dosyası silindi.</b> {@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code rocket_fire} ve çeşitleri. Bir kaynak paketi bunları değiştiriyorsa <b>o değişiklik artık etkili olmaz</b> (yeni adlar {@code <silah kimliği>_fire})"
+   ],
+   "known_limitations": [
+    "<b>Düzeltilmiş ADS eğimini henüz gerçek bir ekranda görmedim.</b> Ölçülen, yayımlanan dönüşüm zincirinden yeniden kurulan kamera uzayı duruşu; sapma, yunuslama ve yatışta kalan 0,000°. Sahibinin ekranında doğrulanmadı",
+    "<b>ADS düzeltmesi tamamen kuşanılmış durum için türetildi.</b> Silah değiştirirken ({@code equippedProgress} > 0) kol bütünüyle iner, bu yüzden yaklaşık 0,2 saniye gez ekran merkezinin altında kalır",
+    "<b>115 sesin tek birini bile dinlemedim.</b> Dalga biçimi özellikleri (atak, alçak frekans, örtüşme, ayırt edilebilirlik) sayısal olarak ölçüldü, ama bu geliştirme makinesinde Minecraft istemcisi yok; kulakla hiçbir şey denetlenmedi",
+    "<b>Hat kartı ekranının tek bir pikselini de görmedim.</b> Sayfa sayısı, altyazı anahtarları ve adanmış sunucuda çökmemesi kapsanıyor; görünüşü doğrulanmadı",
+    "V4.3.4Update.md §5'teki “kalıntı hattı (kristal → kır → yıka → kararlılaştır)” tarif kilidi açma <b>dahil değil</b>. O tarifler {@code sorakaze_fallout}'a ait; buradan adlarını anmak fallout olmayan dünyalarda ilerlemenin yüklenmemesine yol açar. Aynı yapı o tarafta kurulmalı",
+    "Kapı titremesi ve “silah dışı eşyalar bırakılınca uçup gidiyor” hâlâ <b>doğrulanmadı ve ölçülmedi</b>"
+   ]
+  },
+  {
+   "id": "v4.3.6.1",
+   "release": "V4.3.6.1",
+   "date": "2026-09-10",
+   "type": "hotfix",
+   "title": "Acil düzeltme: V4.3.6 açılmıyordu — aynı ses kimliği iki kez kaydediliyordu",
+   "summary": "V4.3.6 kuruluyken oyun “Could not execute entrypoint stage 'main'” ile çöktü ve <b>tek bir saniye bile çalışmadı.</b> Tek bir neden var — silah başına sesler eklenirken, yeni tarz {@code <silah kimliği>_fire} adlarından <b>üçü eski kimliklerle aynı yazılıyordu</b> ve eski kayıtlar hâlâ duruyordu. Aynı anahtarı iki kez kaydetmek kaydı çökertir. <b>Yayın öncesi denetimlerimin hiçbiri bunu göremedi.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6.1",
+    "sorakaze_boss": "4.3.6.1",
+    "sorakaze_deco": "4.3.6.1",
+    "sorakaze_fallout": "4.3.6.1",
+    "sorakaze_guns": "4.3.6.1",
+    "sorakaze_phone": "4.3.6.1",
+    "sorakaze_planarcadia": "4.3.6.1",
+    "sorakaze_power": "4.3.6.1",
+    "sorakaze_rail": "4.3.6.1",
+    "sorakaze_sapporo": "4.3.6.1",
+    "sorakaze_sky": "4.3.6.1",
+    "sorakaze_survival": "4.3.6.1",
+    "sorakaze_vehicles": "4.3.6.1"
+   },
+   "highlights": [
+    "<b>Neden.</b> {@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire}, yeni silah başına adlandırmayla ({@code <silah kimliği>_fire}) <b>birebir aynı yazıldı</b>. {@code GunSounds} bunları kaydetti, {@code ModSounds} de hâlâ kaydediyordu; bu yüzden ikinci {@code Registry.register} aynı anahtarda çöktü ve {@code sorakaze_guns} giriş noktasını da beraberinde götürdü",
+    "<b>Düzeltme.</b> Silah başına seslere taşınan 10 eski sabit ({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire}) {@code ModSounds}'tan silindi. Kayıt artık tek bir yerde, {@code GunSounds}'ta yapılıyor",
+    "<b>Bütün denetimlerim yeşildi.</b> Dalga biçimleri, dosyalar, sounds.json, altyazılar, kayıt tablosu, modeller, isabet kutuları, eğim — hepsi izleniyordu. <b>Hiçbiri kaydın geçip geçmediğine bakmıyordu.</b> Bir GameTest yakalayabilirdi, ama adanmış sunucu gerekir ve bu makinede EULA'da durur",
+    "<b>Bu yüzden gerçekten kayıt yapan iki kapı eklendi.</b> {@code checkGunSoundRegistration}, gerçek {@code ModSounds.init()} ve {@code GunSounds.init()}'i oyunla aynı sırada <b>gerçekten çağırır</b>. {@code checkRegistration} (araç tarafı) da aynısını yapar; V4.3.6'da eklenen 3 eşyayı ve 1 bileşeni gerçekten kaydeder",
+    "<b>Bu kapının negatif kontrolü var.</b> Bu kopyayı ({@code handgun_fire}) bilerek geri getirmek kapıyı başarısız kılar. Kılmasaydı kayıt ölçmüyor olurdu ve hiçbir anlamı olmazdı",
+    "<b>13 modülün tamamına statik bir denetim de eklendi.</b> Aynı kayıt kimliğinin iki yerde yazılıp yazılmadığına bakar. Ancak <b>4 modül ({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo}) bu denetimin kodu okuma biçimine uymuyor ve kapsanmıyor</b> — “kapsanmıyor” olarak gösterilir, asla yeşille karıştırılmaz"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>V4.3.6'yı kurmayın.</b> Açılmaz. Bu 4.3.6.1 ile değiştirin"
+   ],
+   "known_limitations": [
+    "<b>Bu düzeltmenin gerçek bir makinede açıldığını henüz görmedim.</b> Kayıt gerçekten çalıştırılarak denetlendi (87 ses, 26 eşya), ama bu geliştirme makinesinde Minecraft istemcisi yok; oyunun açıldığını görmedim",
+    "V4.3.6'daki her şey (ADS eğimi, silah başına sesler, roket yükü, sahiplik) <b>hâlâ içinde</b>. Yalnızca artık kullanılmayan 10 eski ses sabiti kaldırıldı",
+    "Statik kopya denetimi 13 modülün yalnızca 9'unu kapsıyor (yukarıya bakın)"
+   ]
+  },
+  {
+   "id": "v4.3.7",
+   "release": "V4.3.7",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Nişan alınca silah hedefi saklıyordu, şarjör de yukarı fırlıyordu",
+   "summary": "V4.3.6'da silahı nişanda düzeltmek <b>gez'i ekranın merkezine koydu</b> ve 14 silahın tamamı artı işaretinin <b>%81–100</b>'ünü kapattı. Gerçek bir atıcı hedefi <b>gez yarığından, arpacığın üstüne</b> koyar — metalin ortasına değil. Ayrıca şarjörün değiştirme sırasında <b>düşmek yerine yukarı fırlamasının</b> nedeni (vanilla konumun Y'sini ters çeviriyordu) bulundu ve takma hareketi yeniden yapıldı.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.7",
+    "sorakaze_boss": "4.3.7",
+    "sorakaze_deco": "4.3.7",
+    "sorakaze_fallout": "4.3.7",
+    "sorakaze_guns": "4.3.7",
+    "sorakaze_phone": "4.3.7",
+    "sorakaze_planarcadia": "4.3.7",
+    "sorakaze_power": "4.3.7",
+    "sorakaze_rail": "4.3.7",
+    "sorakaze_sapporo": "4.3.7",
+    "sorakaze_sky": "4.3.7",
+    "sorakaze_survival": "4.3.7",
+    "sorakaze_vehicles": "4.3.7"
+   },
+   "highlights": [
+    "<b>Nişan alınca hedef gizleniyordu.</b> Kameradan gerçek görüş çizgileri atınca 14 silahın tamamının merkezi kapattığı görüldü — merkez ışını silaha <b>0,19–0,66 blok ileride</b> çarpıyordu ve merkez çevresindeki 2°'lik diskin <b>%81–100</b>'ü silahtı. Bunun nedeni V4.3.6'da “gez'i ekran merkezine koymayı” hedeflemem. Gez <b>dolu bir çelik blok</b>; ağırlık merkezini merkeze koymak her zaman kapatır",
+    "<b>Düzeltme.</b> Ne kadar kaydırılacağı göz kararı belirlenmiyor. Yayımlanan duruşa karşı görüş çizgileri atılıyor ve ikili arama diski boşaltan <b>en küçük indirmeyi</b> buluyor (silah başına 0,048–0,087 blok). Sonuç: <b>merkez tamamen açık</b>, disk örtüşmesi %0,0–0,7. Silah biraz aşağıda duruyor ve hedef arpacığın üstüne oturuyor",
+    "<b>Bu kapının da negatif kontrolü var.</b> İndirmeyi iptal etmek V4.3.6 duruşuna döndürür ve 14 silahın tamamı kırmızı olur (en kötü %100 örtüşme)",
+    "<b>Şarjör yukarı fırlıyordu — sahibinin dediği gibi.</b> Değiştirme boyunca şarjörün ekrandaki yüksekliği izlenince, yerine dönmeden önce <b>durgun hâldeki 0,3945'ten 0,6853 bloğa yükseldiği</b> görüldü. Düşmüyordu; <b>üstten fırlıyordu</b>",
+    "<b>Neden vanilla'nın işaretiydi.</b> 26.2'de {@code KeyframeAnimations.posVec(x, y, z)}, bytecode'da doğrulandığı gibi ({@code fload_1; fneg}) <b>{@code (x, -y, z)}</b> döndürür. Bu rig “+Y aşağı” yazılmış; bu yüzden o ters çevirme <b>her konum kanalını baş aşağı</b> yapıyordu — silahlar V4.3.2'de kemiklere geçtiğinden beri. Üreteç artık bunu telafi ediyor",
+    "<b>“Takma hissinden çok uzak” da ölçülebildi.</b> Oturmadan önceki son kesimde şarjör, yükseldiğinden <b>1,7–19,7 kat daha fazla yana</b> gidiyor ve yükselmesi gereken kısımda <b>%93–393</b> düşüyordu. Bu takma değil; “düşür, yana savur, sonunda içeri çekilsin”",
+    "<b>Yeniden yapıldı.</b> Üç aşama: çıkar → <b>şarjör yuvasının tam altına hizala (x ve z ikisi de 0, eğim 0)</b> → <b>dümdüz yukarı</b>. Yana sapma artık yükselişin <b>0,10–0,18 katı</b> (eşik 0,34), geri gitme <b>%0,1–0,2</b> (eşik %2)",
+    "<b>Değişim anı da düzeltildi.</b> Şarjör görünmezken 1→0→1 ölçekle değiştiriliyor. Tabancanın değiştirmesi yalnızca 1,4 saniye ve o pencere 0,14 saniyeydi; bu yüzden bir köşe tek karede 0,164 blok hareket ediyordu ve süreklilik kapısı haklı olarak kırmızı oldu. Pencere genişletildi: <b>0,095</b>",
+    "<b>SMG şarjör kapasitesi.</b> Model şarjörünün 190 mm yüksekliği ve 9×19'un 9,93 mm'lik <b>kovan dibi</b> çapından, çift sıralı kutu şarjör <b>36 fişek</b> alır. Yapılandırma <b>60</b> diyordu (<b>%66 fazla</b>) — görünen şarjöre sığmayan bir sayı. Artık 36",
+    "<b>Aynı hesap 14 silaha uygulanınca, sınırı aşan yalnızca buydu</b> (piyade tüfeği 25 / sığan 33, el silahı 12 / 21, karabina 10 / 34). Bunu her seferinde denetleyen bir kapı eklendi. Başta hesabı <b>mermi çekirdeği çapıyla</b> yaptım ve piyade tüfeği bile “aşıyor” çıktı, oysa şarjörü belirleyen <b>kovan dibi çapı</b> (5.56: çekirdek 5,6 mm, kovan dibi 9,6 mm)",
+    "<b>Keskin nişancı tüfeği tasarımı.</b> 14 silah içinde <b>tek bir stil geçersiz kılması bile olmayan tek silah buydu</b>; sınıfın çıplak ölçüleri olduğu gibi çıkıyordu — onu hassas tüfek gibi gösteren hiçbir şey yoktu. Artık <b>büyük bir dürbün, yükseklik/rüzgâr kuleleri, büyütme halkası, 12 oluklu namlu, 6 delikli namlu freni, iki ayak ve kurma kolunda top</b> var (1.014 → 1.050 küp)",
+    "<b>O kuleler önce aşırıya kaçtı ve bir kapı onları durdurdu.</b> Sabit 4,3 birimlik kule her silaha kondu; tabancanın küçük optiğine de aynısı çıktı ve model kapısı “baca gibi görünüyor” diye kırmızı oldu. Artık <b>tüp yarıçapıyla orantılı</b>",
+    "<b>Roketatarın blok yıkımı %25 azaltıldı.</b> Yıkılan <b>hacim</b> gücün küpüyle değişir, bu yüzden katsayı 0,75 değil <b>0,75^(1/3) = 0,9086</b>. 36,0 → <b>32,71</b>. 0,75'i doğrudan uygulamak hacmi 0,42 katına = %58 azalmaya indirirdi, istenenin iki katından fazla",
+    "<b>Bir üreteç dosya yazdığını söyleyip yazmıyordu.</b> {@code gen_gun_model_java.py} stil dağıtım tablosunu kuruyor ve <b>hiç yazmıyordu</b>; yalnızca son satırı “wrote dispatcher GunGeometry.java” diyordu. Küp sayısı tablosu elle bakıma kaymıştı; modeller bu kez yeniden yapılınca 10 silah “bir kemik eksik” diye kırmızı oldu (hiçbir şey eksik değildi — tablo eskiydi). Artık dosyayı gerçekten yazıyor"
+   ],
+   "balance_changes": [
+    "SMG: şarjör 60 → <b>36</b> (modelin şarjörüne sığan)",
+    "Roketatar: patlama gücü 36,0 → <b>32,708</b> (yıkılan hacim −%25). 960 doğrudan isabet hasarı değişmedi",
+    "Keskin nişancı tüfeği: 1.014 → 1.050 küp. <b>Tek bir performans değeri değişmedi</b> (yalnızca görünüş)"
+   ],
+   "warnings": [
+    "<b>Nişandayken silahın yeri değişiyor.</b> Gez artık ekran merkezinde değil, <b>artı işaretinin biraz altında</b>. Bu gerçek nişan almaya uyar (hedef arpacığın üstüne oturur); aksi hâlde silah hedefi saklar"
+   ],
+   "known_limitations": [
+    "<b>Bunların hiçbiri gerçek bir ekranda görülmedi.</b> Örtüşme atılan görüş çizgileriyle, şarjör yolu hem kemik kaymasıyla hem çizilen yükseklikle ölçüldü, ama bu geliştirme makinesinde Minecraft istemcisi yok; gözle hiçbir şey denetlenmedi",
+    "<b>“Şarjör boyutu”nu kapasite olarak okudum.</b> Eğer “modelin şarjörünün büyüklüğü” kastedildiyse, düzeltme ters yöne gider (şarjörü 60 alacak kadar uzatmak). Kastedilen buysa lütfen söyleyin",
+    "Kapasite kapısı <b>service_pistol'u okuyamıyor</b> (tanım JSON'unda şarjör girdisi yok ve sınıf varsayılanına düşüyor). Bunu yeşille karıştırmak yerine “NOT READ” gösteriyor",
+    "V4.4.0Update.md (Kül Havaalanı, Kuzey taksi yolu, Birinci Hangar) <b>henüz dahil değil</b>. Bu sürüm açılış çökmesi düzeltmesini ve bu beş bildirimi öne aldı"
+   ]
+  },
+  {
+   "id": "v4.3.8",
+   "release": "V4.3.8",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Atışların özü yoktu — 80 Hz'in altında yalnızca %0,0–2,6. Ve Cherry başlıyor",
+   "summary": "“Genel olarak oyuncak gibi ses çıkarıyorlar” ölçüldü. <b>80 Hz'in altındaki enerji %0,0–2,6'ydı</b> (tabanca %0,0) — vücutta hissedilen öz tamamen eksikti. Üstelik 14 silahın hepsi tam 0,720 tepe değerindeydi; .50 kalibre ile 9mm aynı yükseklikte çalıyordu. Denetimin alt sınırı yalnızca “200 Hz altında %0,5” idi ve bu, sorunu doğrudan geçirdi. Bunun yanında roket %25 daha iniyor ve yeni nesil marka <b>Cherry</b> üzerinde çalışma başlıyor.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.8",
+    "sorakaze_boss": "4.3.8",
+    "sorakaze_deco": "4.3.8",
+    "sorakaze_fallout": "4.3.8",
+    "sorakaze_guns": "4.3.8",
+    "sorakaze_phone": "4.3.8",
+    "sorakaze_planarcadia": "4.3.8",
+    "sorakaze_power": "4.3.8",
+    "sorakaze_rail": "4.3.8",
+    "sorakaze_sapporo": "4.3.8",
+    "sorakaze_sky": "4.3.8",
+    "sorakaze_survival": "4.3.8",
+    "sorakaze_vehicles": "4.3.8"
+   },
+   "highlights": [
+    "<b>Neden oyuncak gibi duyulduğu tek bir şeye iniyor:</b> alçak frekans yok. 80 Hz altında ölçülen: piyade %0,8 / el silahı <b>%0,0</b> / keskin nişancı %2,5 / pompalı %2,6. Gerçek bir atışta namludan çıkan gaz <b>vücutta hissedilen alçak frekanslı bir basınç darbesi</b> üretir. O olmadan geriye özü olmayan keskin bir “çıt” kalır",
+    "<b>Alçak frekans gövdesi eklendi.</b> Sönümlenen iki sinüs (temel + ikinci harmonik); frekansı <b>barut hakkı belirliyor</b> (genleşen gaz kütlesi büyüdükçe daha pes — 26–62 Hz). 80 Hz altı artık <b>%7,3–28,8</b>. Barut hakkı büyük silahların özü de büyük; en büyükle en küçük arasında <b>3,19 kat</b>",
+    "<b>Her silah aynı yükseklikteydi.</b> 14'ü de tam 0,720 tepede — .50 kalibre ile 9mm aynı seviyede. Ses yüksekliği artık namlu enerjisini izliyor: tabanca 0,518 / tüfek 0,720, <b>+2,9 dB</b> fark",
+    "<b>Kuyruklar da çok kısaydı.</b> Yalnızca 0,45–1,01 saniye — yerinde çalıp bitiyordu. Araziden geri dönen sesi eklemek bunları <b>0,43–1,33 saniyeye</b> çıkarıyor. Barut hakkı büyüdükçe ses daha uzağa taşınır ve daha uzun geri döner",
+    "<b>Denetimin alt sınırı yükseltildi.</b> Yalnızca “200 Hz altında %0,5”e bakıyordu; bu yüzden <b>oyuncak bir ses %0,5'i karşılayıp yayımlanabildi</b>. Artık 200 Hz altında %12 ve 80 Hz altında %6 istiyor, ayrıca <b>büyük barut hakkının büyük öz verdiğini</b> (en az 1,8 kat) ve <b>ses yüksekliğinin silahlar arasında farklı olduğunu</b> (en az 1,25 kat) ölçüyor",
+    "<b>Roketatar %25 daha iniyor.</b> 32,708 → <b>29,717</b>. İki indirimle birlikte yıkılan hacim, 36,0'dakinin <b>%56</b>'sı",
+    "<b>Yalnızca gücü düşürmek yükü azaltmaz.</b> 26.2'de sınır konsa bile <b>ışınlar sonuna kadar gitmeye devam eder</b>; bu yüzden {@code getBlockState} çağrılarının sayısı — yükün kendisi — hiç düşmez. Sınır yarıçapının ötesinde patlama artık <b>ışının orada durması için devasa bir patlama direnci döndürüyor</b> ve elde tutulan roketler ilk kez bir sınır alıyor (yarıçap 14). Yapılan iş <b>patlama gücüyle değil, yarıçapla sınırlanıyor</b>",
+    "<b>Cherry — yeni nesil marka üzerinde çalışma başlıyor.</b> Kiraz çiçeğinden adını alan marka Alpha'nın üstünde yer alıyor. Logo, geometriden kurulmuş <b>beş taç yapraklı bir sakura</b> — her yaprağın ucundaki <b>çentik</b> (erik değil kiraz olduğunu söyleyen tek özellik), merkeze doğru <b>bel</b>, erkek organlar ve başçıklar. 72°'lik dönmede kendisiyle birebir örtüşüyor",
+    "<b>Logo üç kez çizildi ve gerçekten bakılarak düzeltildi.</b> İlkinde yapraklar üst üste binip bir yığın oldu; ikincisinde omuzlar kesişip köşeli dikişler bıraktı. Hiçbir zaman yalnızca sayılarla geçirilmedi — her sürüm oluşturulup denetlendi",
+    "<b>Çiçek dönerek açılıyor.</b> Sayfa açılınca beş yaprak merkezden birer birer açılıyor, her biri kendi 72°'lik yerine dönerken büyüyor. Yalnızca CSS ve yalnızca bir kez (tekrarlamak açılmayı yükleme göstergesine çevirirdi). {@code prefers-reduced-motion} ile baştan açık başlar",
+    "<b>Aurora Corvus'un adı Corvus oldu.</b> Yalnızca görünen ad — depo adı ve genel URL değişmedi (değiştirmek, dağıtılmış her başlatıcıyı 404'e düşürürdü)",
+    "<b>Renk auroradan Apple'ın gök mavisine geçiyor.</b> Yeşil ve mor gitti, yerini #5AC8FA etrafında kurulan gök tonları aldı. Metin ve bağlantılar koyu zemin üzerinde <b>10,5:1–13,3:1</b>'e ulaşıyor (WCAG AAA). Corvus uygulamasının arka planı da aynı aileye geçti (parlaklık özgün üç renge eşlendi)",
+    "<b>Beyaz/siyah tema değiştirici kaldırıldı.</b> Değiştirici, kaydı, geçiş kodu ve artık ulaşılamayan 8 CSS bloğu <b>silindi</b>. Kullanılmayan kodu “ne olur ne olmaz” diye bırakmak, sonraki okuyucunun hâlâ iki tema varmış gibi davranmasına yol açar",
+    "<b>Artık bir Store sekmesi var.</b> Mega menüsü <b>Alpha / Aureum / Cherry</b>'yi listeliyor. Alpha'nın <b>hiç marka sayfası olmamıştı</b> — indirme yolu vardı ama Alpha'nın ne olduğunu söyleyen tek bir sayfa yoktu; üçünden birinin gidecek yeri yoktu"
+   ],
+   "balance_changes": [
+    "Roketatar: patlama gücü 32,708 → <b>29,717</b> (yıkılan hacim 36,0'dakinin %56'sı)",
+    "Roketatar: elde tutulan roketler de sınır aldı (yarıçap 14 blok / 4.000 blok). Sınırın ötesinde ışınlar durur",
+    "Atış sesleri: tabanca ve SMG tepeleri 0,720'den 0,518–0,552'ye iniyor (tüfekler görece daha yüksek duyulur)"
+   ],
+   "warnings": [
+    "<b>Tema değiştirici artık yok.</b> Beyaz temayı seçtiyseniz yalnızca koyu olan kalır",
+    "<b>Sitenin görünen adı Corvus oluyor.</b> URL değişmiyor"
+   ],
+   "known_limitations": [
+    "<b>Tek bir sesi bile dinlemedim.</b> Alçak frekans, ses yüksekliği farkı, süre, atak ve örtüşme hepsi sayısal olarak ölçüldü, ama bu geliştirme makinesinde Minecraft istemcisi yok; kulakla hiçbir şey denetlenmedi",
+    "<b>Cherry yalnızca bir marka.</b> Tek bir satır mod yazılmadı. Sayfa da bunu 13 dilin tamamında söylüyor",
+    "<b>Corvus uygulaması yeniden derlenmedi.</b> Renk değişikliği kaynakta var, ama başlatıcının indirmesi ayrı bir sürüm olarak ayrıca çıkmalı",
+    "V4.4.0Update.md (Kül Havaalanı) <b>henüz dahil değil</b>. Bu sürüm sesi, roketi, Cherry'yi ve siteyi öne aldı"
+   ]
   }
  ],
  "roadmap": {

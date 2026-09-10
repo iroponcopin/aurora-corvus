@@ -23,9 +23,11 @@
      * will-change is applied only to things that are actually mid-animation,
        and is dropped again (see main.js's transitionend cleanup).
 
-   Dark is the flagship theme and the default (bare :root). Light remains as
-   a secondary theme via [data-theme="light"] — the theme toggle cycles the
-   two and persists in localStorage (see main.js + the inline boot script).
+   ONE theme. 2026-09-10 の発注「白と黒のテーマ変更を廃止に」で、明暗の
+   切り替えは廃止した。:root だけが見た目を決め、shell の boot script が
+   data-theme を dark に固定する。[data-theme="light"] の規則 8 ブロックは
+   <b>削除済み</b> —— 到達しない CSS を残すと、次に読む人がまだ 2 テーマ
+   あるものとして扱う。
 
    Action-color rule (owner requirement):
      decision/primary controls  -> Apple Liquid Glass BLUE  (--action-rgb)
@@ -45,16 +47,28 @@
   --border: rgba(255, 255, 255, 0.10);
   --hairline: rgba(255, 255, 255, 0.08);
 
-  /* Aurora accent light (used as light, not as loud fills) */
-  --aurora-green: #57e6ae;
-  --aurora-violet: #8b7bff;
-  --aurora-blue: #46a8ff;
-  --accent: #5fe0b2;
-  --accent-strong: #8cf0cd;
-  --accent-contrast: #04110b;
-  --accent-rgb: 95, 224, 178;
-  --link: #8ce6c4;
-  --link-visited: #b9a9f2;
+  /* --- Sky-blue accent (2026-09-10) ------------------------------------
+     所有者:「Corvus のカラーをオーロラカラーから Apple のスカイブルー
+     っぽい色合いに調節して」。
+
+     基準は Apple のシステムカラーの sky/cyan 側 —— iOS の systemBlue の
+     ダーク版 #0A84FF、systemTeal の #64D2FF、そして #5AC8FA。
+     ここではその帯の中から、暗い地(--bg #07090f)に載せて
+     <b>本文リンクとして読める</b>ものを選んである(下の実測値)。
+
+     ★ 名前は --aurora-* のまま残す。トークン名を変えると
+       hero-mark.css / changelog.css / aureum.css の参照を一斉に
+       書き換えることになり、1 か所落とすと<b>その要素だけ色が消える</b>。
+       名前ではなく値を変えるほうが、変更の範囲が読める。 */
+  --aurora-green: #64d2ff;   /* was #57e6ae — now the teal end of the sky band */
+  --aurora-violet: #4a9dff;  /* was #8b7bff — now the deep end, no purple */
+  --aurora-blue: #5ac8fa;
+  --accent: #5ac8fa;
+  --accent-strong: #9adcff;
+  --accent-contrast: #04121c;
+  --accent-rgb: 90, 200, 250;
+  --link: #7fd1ff;
+  --link-visited: #a9c8ff;
 
   /* Glass surface recipe (cards, panels, quiet buttons).
      Slightly denser than the pre-pass values to compensate for the
@@ -145,51 +159,6 @@
 }
 
 /* --- Secondary light theme --- */
-:root[data-theme="light"] {
-  --bg: #f3f5fa;
-  --bg-elevated: #ffffff;
-  --bg-sunken: #e9ecf4;
-  --text: #131722;
-  --text-muted: #515a6c;
-  --border: rgba(23, 27, 38, 0.14);
-  --hairline: rgba(23, 27, 38, 0.10);
-
-  --accent: #0e8f68;
-  --accent-strong: #0a6b4e;
-  --accent-contrast: #f2fffa;
-  --accent-rgb: 14, 143, 104;
-  --link: #0b6f52;
-  --link-visited: #6c4bb8;
-
-  --glass-bg: linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72));
-  --glass-bg-hover: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.85));
-  --glass-border: rgba(23, 27, 38, 0.12);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  --glass-shadow: 0 10px 28px rgba(35, 45, 75, 0.12);
-  --header-bg: rgba(248, 250, 253, 0.72);
-  --mega-bg: rgba(252, 253, 255, 0.97);
-  --scrim: rgba(24, 32, 52, 0.30);
-
-  --danger-bg: #fdecea;
-  --danger-border: #e0a49a;
-  --danger-text: #7a2418;
-  --warn-bg: #fdf3df;
-  --warn-border: #e3c684;
-  --warn-text: #6b4c0c;
-  --info-bg: #e8f1fb;
-  --info-border: #a9c9e8;
-  --info-text: #1d4468;
-  --ok-bg: #e9f5e6;
-  --ok-border: #a9d29b;
-  --ok-text: #2b5c1d;
-
-  --shadow: 0 1px 2px rgba(35, 45, 75, 0.08), 0 8px 24px rgba(35, 45, 75, 0.10);
-  --elevate-shadow: 0 8px 24px rgba(35, 45, 75, 0.14);
-  color-scheme: light;
-
-  --action-rgb: 0, 122, 255;
-  --cancel-rgb: 255, 59, 48;
-}
 
 [dir="rtl"] { --drawer-from: -102%; }
 
@@ -336,8 +305,6 @@ strong, b { font-weight: 600; }
   50%  { transform: translate3d(2.5%, 2%, 0); }
   100% { transform: translate3d(-1%, 3.5%, 0); }
 }
-:root[data-theme="light"] .sky::before { opacity: 0; }
-:root[data-theme="light"] .sky__aurora { opacity: 0.55; }
 
 /* ==========================================================================
    Header — floating glass navigation bar with an Apple-style mega menu
@@ -830,10 +797,6 @@ main:has(> .film) { padding-block: 0; }
     0 34px 78px rgba(0, 0, 0, 0.55),
     0 0 110px rgba(var(--accent-rgb), 0.07);
 }
-:root[data-theme="light"] .film__frame {
-  border-color: rgba(23, 27, 38, 0.14);
-  box-shadow: 0 2px 8px rgba(35, 45, 75, 0.14), 0 30px 70px rgba(35, 45, 75, 0.22);
-}
 .film__frame img { width: 100%; height: auto; display: block; }
 
 /* The update beat: the same region of the home screen, before and after.
@@ -849,10 +812,6 @@ main:has(> .film) { padding-block: 0; }
   border: 1px solid rgba(255, 255, 255, 0.10);
   background: #0b0e15;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), 0 26px 60px rgba(0, 0, 0, 0.5);
-}
-:root[data-theme="light"] .film__detail-layer {
-  border-color: rgba(23, 27, 38, 0.14);
-  box-shadow: 0 2px 8px rgba(35, 45, 75, 0.14), 0 24px 56px rgba(35, 45, 75, 0.2);
 }
 .film__detail-layer img {
   position: absolute; top: 0; left: 0;
@@ -1151,7 +1110,6 @@ a.card { text-decoration: none; }
   background: color-mix(in srgb, var(--mod-color) 16%, transparent); color: var(--mod-color);
   border: 1px solid color-mix(in srgb, var(--mod-color) 45%, transparent);
 }
-:root[data-theme="light"] .mod-badge { background: color-mix(in srgb, var(--mod-color) 14%, #ffffff); }
 .mod-badge--sm { font-size: 0.72rem; padding: 2px 8px; }
 .type-badge { display: inline-block; font-size: 0.76rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
 .type-release { background: var(--ok-bg); color: var(--ok-text); border: 1px solid var(--ok-border); }
@@ -1292,7 +1250,6 @@ a.card { text-decoration: none; }
   opacity: 0;
   transition: opacity var(--dur-menu) var(--ease-out-quart);
 }
-:root[data-theme="light"] .recipe-modal-backdrop { background: rgba(24, 32, 52, 0.45); }
 .recipe-modal-backdrop.open { display: flex; opacity: 1; }
 .recipe-modal {
   background: var(--bg-elevated);
@@ -1304,7 +1261,6 @@ a.card { text-decoration: none; }
   transform: translate3d(0, 16px, 0) scale(0.97); opacity: 0;
   transition: transform var(--dur-menu) var(--ease-out-expo), opacity var(--dur-menu) var(--ease-out-expo);
 }
-:root[data-theme="light"] .recipe-modal { box-shadow: var(--glass-highlight), 0 24px 64px rgba(35, 45, 75, 0.28); }
 .recipe-modal-backdrop.open .recipe-modal { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
 
 /* Cancel/dismiss control — Apple Liquid Glass RED (owner rule). */

@@ -2554,6 +2554,212 @@
     "Mesuré : les trois contrôles négatifs du contrôle des particules virent au rouge. Direction correcte sur 14 sur 14. Saut du rechargement au sommet médian 0,0062–0,0146 bloc (seuil 0,020 ; ancien chemin 0,307). Résidu après le scénario <b>exactement 0</b>. Longueur rendue de 1,07 à 1,89 bloc",
     "Il n'y a pas de client Minecraft sur cette machine de développement. <b>Rien n'est décrit comme corrigé avant d'avoir été vu fonctionner.</b>"
    ]
+  },
+  {
+   "id": "v4.3.6",
+   "release": "V4.3.6",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "À la visée, chaque arme était tordue de 7 degrés — l'inclinaison en ADS, un son propre à chaque arme, la charge de la roquette et la propriété",
+   "summary": "Mesurer « l'arme est légèrement de travers » a montré que <b>les 14 armes</b> étaient tordues en visée complète de −6,9 à −7,3° en lacet, +0,5 à +1,5° en tangage et +0,3 à +2,1° en roulis, et que <b>le cran de mire se trouvait à 0,06 à 0,76 bloc du centre de l'écran</b> — vous ne regardiez même pas dans les organes de visée. En outre, les sons de rechargement et de tir à vide que partageaient les 14 armes sont désormais <b>propres à chaque arme</b> (69 événements / 115 fichiers), la puissance d'explosion du lance-roquettes passe de 396 à 36, et la propriété, le livre de recettes et la carte de ligne de V4.3.4Update.md sont en place.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6",
+    "sorakaze_boss": "4.3.6",
+    "sorakaze_deco": "4.3.6",
+    "sorakaze_fallout": "4.3.6",
+    "sorakaze_guns": "4.3.6",
+    "sorakaze_phone": "4.3.6",
+    "sorakaze_planarcadia": "4.3.6",
+    "sorakaze_power": "4.3.6",
+    "sorakaze_rail": "4.3.6",
+    "sorakaze_sapporo": "4.3.6",
+    "sorakaze_sky": "4.3.6",
+    "sorakaze_survival": "4.3.6",
+    "sorakaze_vehicles": "4.3.6"
+   },
+   "highlights": [
+    "<b>L'inclinaison en ADS, mesurée.</b> La ligne {@code sight_rear} → {@code sight_front} mesurée dans l'espace caméra en visée complète montrait <b>les 14 armes</b> tordues — lacet <b>−6,92 à −7,32°</b>, tangage +0,46 à +1,50°, roulis +0,30 à +2,12°. La décomposition est connue : {@code firstperson_righthand.rotation} dans {@code <style>_in_hand.json} apporte <b>+5°</b> et la fin du clip d'os {@code aim_in} <b>+2,5°</b>. Ce sont deux nombres placés à la main pour donner du caractère à la position à la hanche, et <b>rien ne les annulait à la visée</b>",
+    "<b>Vous ne regardiez même pas dans les organes de visée.</b> La même mesure plaçait le cran de mire à <b>0,056 à 0,755 bloc</b> du centre de l'écran. La cause : la table de correction de visée {@code SightAlignment} avait été dérivée de <b>l'ancienne géométrie d'éléments</b> — une forme qui n'a <b>pas été dessinée une seule fois</b> depuis le passage aux os en V4.3.2. Le contrôle qui gardait la table la comparait à cette forme jamais dessinée, et il est donc resté vert tout du long",
+    "<b>La correction :</b> sept nombres — une rotation à 4 composantes et une translation à 3 — sont mesurés sur les os cuits et écrits à la compilation ({@code ./gradlew emitGunAdsAlignment}). Rien n'est estimé à l'œil. Résultat : <b>lacet, tangage et roulis tous à 0,000°, décalage du cran de mire 0,0000 bloc</b> (14 armes)",
+    "<b>Ce portail a un contrôle négatif.</b> Retirer la correction — revenir à la pose livrée jusqu'à V4.3.5 — fait passer <b>les 14 armes au rouge</b> (pire cas 7,32°). S'il ne passait pas au rouge, le contrôle lui-même échouerait : « cet instrument ne mesure pas l'inclinaison »",
+    "<b>Chaque arme a désormais ses propres sons.</b> L'état livré, mesuré : 14 armes partageaient 12 sons de tir (marksman_carbine pointait <b>directement</b> vers sniper_fire, breaching_shotgun vers shotgun_fire, service_pistol vers handgun_fire), <b>les 14</b> partageaient 3 sons de rechargement et <b>les 14</b> un seul son de tir à vide",
+    "<b>Les sons sont dérivés, pas stylisés.</b> Sonoriser 14 armes à la main n'aurait fait qu'aligner 14 suppositions ; chaque son vient donc des propres chiffres de l'arme — la longueur du canon donne la première résonance du tube ouvert {@code c/(2L)}, les dimensions de la carcasse la résonance de la boîte, l'énergie à la bouche la phase positive de la détonation ({@code t+ ∝ E^(1/3)}), le calibre et la vitesse l'onde N supersonique, le nombre d'évents du frein de bouche le relief des aigus, la longueur et la course du chargeur le rythme du rechargement. La source est <b>la même</b> que celle qui construit les modèles ({@code gun_standard.CLASS_REFERENCE} et {@code gun_mesh.resolved_spec()})",
+    "<b>69 événements / 115 fichiers.</b> Cinq rôles par arme : tir (3 variantes), chargeur retiré, chargeur inséré, fermeture de culasse, tir à vide. Les culasses manuelles et les pompes se ferment en <b>deux temps</b>, et un pistolet au chargeur dans la poignée a un arrêtoir de chargeur plus aigu. sounds.json, les sous-titres (anglais et japonais) et le registre Java sont tous <b>générés</b> : aucun des 69 ne peut plus manquer (un son manquant reste simplement muet pendant que le jeu démarre quand même — à la main, on ne l'aurait jamais remarqué)",
+    "<b>Ce contrôle a trouvé un défaut dans mes propres sons.</b> Les sons de tir des deux pistolets n'avaient que 0,4 % de leur énergie sous 200 Hz et sont passés au rouge pour « aucun corps grave ». Avec un canon court, la résonance se situe à 1,2 kHz, et la chute que j'y avais proportionnée s'arrêtait à 160 Hz. Ce qui décide jusqu'où descend le son, c'est <b>le volume de gaz en expansion</b> (rayon ∝ E^(1/3)) ; il en est désormais dérivé",
+    "<b>Puissance du lance-roquettes 396 → 36.</b> La demande cite « baisser la puissance » et « réduire la charge » comme deux points, mais en 26.2 c'est <b>un seul et même nombre</b>. Ce que fait réellement le bytecode : une explosion lance <b>1 352</b> rayons depuis les faces d'un réseau 16×16×16 et perd 0,315 par pas de 0,3 bloc dans l'air. À 396, chaque rayon parcourait 1 634 pas = <b>environ 490 blocs</b>, et un seul impact exécutait <b>environ 2,21 millions</b> de paires {@code getBlockState} + {@code getFluidState}",
+    "<b>La recherche d'entités pesait encore plus.</b> Vanilla appelle {@code getEntities} sur une boîte gonflée de {@code power × 2} autour de l'explosion. À 396, c'est un <b>rayon de 792 blocs</b> — un cube de 1 584 de côté, environ <b>99×99 chunks</b>, parcouru sur toute la hauteur. À 36 le rayon est de 72 (9×9 chunks) — <b>1/1 331</b> du volume. Les deux tournent sur le thread serveur ; voilà ce qu'était réellement « la charge de la roquette »",
+    "<b>Le pistolet est légèrement plus petit.</b> Deux erreurs de mesure sont apparues en chemin. ① La formule d'échelle prenait « le plus long côté du modèle » comme longueur, mais <b>un pistolet est plus haut que long</b> (mesuré : hauteur 0,7944 / longueur 0,7806 bloc) ; pour les seuls pistolets, c'est donc la <b>hauteur</b> qui entrait dans la courbe. ② Le facteur de la transformation d'affichage était <b>codé en dur à 1,5</b>, alors que les valeurs livrées sont en trois paliers : 1,35 / 1,5 / 1,65",
+    "<b>Chaque arme déclare donc désormais combien de blocs elle doit paraître mesurer à l'écran.</b> La longueur vient de l'arme réelle en mm plutôt que de la boîte du modèle, et le moteur de rendu <b>se contente de résoudre</b> l'échelle qui atteint cette cible. Le contrôle mesure désormais <b>l'accord avec la déclaration</b> (à 0,005 bloc près) plutôt qu'une borne inférieure. Le pistolet passe à l'écran de 0,949 à <b>0,904 bloc</b> (95,3 % de ce qu'a vu le propriétaire). Le fusil de précision, la carabine et le lance-roquettes étaient au contraire 10 % trop grands, et ils ont rétréci",
+    "<b>V4.3.4Update.md est en place (flux O / R / C / Q).</b> Celui qui pose un véhicule, ou y monte le premier, en est propriétaire. <b>Verrouillé avec le collier de verrouillage</b>, personne d'autre ne peut y monter, faire le plein, filtrer ni monter de kits (<b>l'éperonnage fonctionne toujours</b> — la spécification le prévoit), et tailler une <b>clé de secours</b> laisse passer une autre personne pour ce seul véhicule. {@code /garage owner} affiche le propriétaire ; {@code set} / {@code clear} exigent le niveau de permission 2",
+    "<b>Le livre de recettes était vide.</b> {@code sorakaze_vehicles} compte <b>149</b> recettes et pas un seul progrès pour les débloquer — le livre de recettes de 26.2 n'affiche que ce qui est débloqué ; même avec les matériaux en main, <b>il n'y avait aucun moyen d'apprendre qu'on pouvait les fabriquer</b>. Les 149 se débloquent désormais dès qu'on ramasse de la tôle laminée (la liste est générée elle aussi : une recette ajoutée plus tard la rejoint automatiquement)",
+    "<b>La carte de ligne est ajoutée.</b> Clic droit pour 8 pages — la ligne des résidus, le condensat et la taxe de pompe, le démarrage à froid de la boucle principale, le viaduc est et la crête de Cendre ouest, blizzards et crues, kits et navigation, propriété, et circulation, trains et léviathans. Elle n'utilise <b>pas un seul octet de réseau</b> (le numéro de page vit uniquement côté client). On la trouve à 40 % dans deux coffres de la Conurbation cendrée",
+    "<b>Q1 à Q6 sont réglées aussi.</b> Q4 (filtrer le carburant en vol est <b>permis mais coupe la portance pendant 10 ticks</b>) est du code neuf ; pour Q1 (la taxe de pompe se rétablit sur 24000 ticks), Q2 (les places de parking sont des données persistantes par joueur), Q3 (casser le crochet libère l'appareil de lui-même) et Q5 (coreRequiresPlate reste true par défaut), j'ai confirmé que c'est <b>déjà le cas</b> et laissé un marqueur {@code // RF4.3.4-Qn}"
+   ],
+   "balance_changes": [
+    "Lance-roquettes : puissance d'explosion 396,0 → <b>36,0</b> (99× la TNT vanilla → 9×). Les 960 dégâts d'impact direct sont <b>inchangés</b>. L'excavation dans la pierre passe d'environ 73 blocs à 6,6 blocs (une estimation, pas une spécification — pour la valeur mesurée, voir la ligne MEASURED de {@code RocketLauncherTests})",
+    "Arme de poing / pistolet de service : longueur à l'écran 0,949 → <b>0,904</b> bloc",
+    "Fusil de précision 1,915 → 1,743, fusil de précision lourd 2,078 → 1,890, lance-roquettes 1,890 → 1,682, carabine de tireur d'élite 1,697 → 1,568 blocs (les quatre armes au facteur d'affichage 1,65 étaient 10 % trop grandes à cause du 1,5 codé en dur)",
+    "Une configuration existante contenant 396,0 est corrigée à 36,0 au démarrage (élément de réparation de génération 10)"
+   ],
+   "warnings": [
+    "<b>Cette version introduit la propriété.</b> Désormais, un véhicule que vous <b>posez</b>, ou un <b>véhicule sans propriétaire dans lequel vous montez le premier</b>, devient le vôtre. Les véhicules posés jusqu'à 4.3.5 restent <b>sans propriétaire</b> : ils ne sont pas verrouillés et tout le monde peut les utiliser — les véhicules existants se comportent exactement comme avant, au bit près",
+    "<b>15 anciens fichiers de son de tir sont supprimés.</b> {@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code rocket_fire} et leurs variantes. Si un pack de ressources les remplaçait, <b>ce remplacement ne s'applique plus</b> (les nouveaux noms sont {@code <id de l'arme>_fire})"
+   ],
+   "known_limitations": [
+    "<b>Je n'ai pas encore vu l'inclinaison en ADS corrigée sur un écran réel.</b> Ce qui est mesuré est la pose en espace caméra reconstruite à partir de la chaîne de transformations livrée, avec un résidu de 0,000° en lacet, tangage et roulis. Cela n'a pas été vérifié sur l'écran du propriétaire",
+    "<b>La correction ADS est dérivée pour l'état entièrement équipé.</b> Pendant un changement d'arme ({@code equippedProgress} > 0) tout le bras descend ; pendant environ 0,2 seconde, le cran de mire se trouve sous le centre de l'écran",
+    "<b>Je n'ai écouté aucun des 115 sons.</b> Toutes les propriétés des formes d'onde (attaque, graves, recouvrement, distinction) sont mesurées numériquement, mais cette machine de développement n'a pas de client Minecraft ; rien n'a été vérifié à l'oreille",
+    "<b>Je n'ai pas non plus vu un seul pixel de l'écran de la carte de ligne.</b> Nombre de pages, clés de sous-titres et absence de plantage sur serveur dédié sont couverts ; l'aspect n'est pas vérifié",
+    "Le déblocage des recettes de la « ligne des résidus (cristal → broyage → lavage → stabilisation) » de V4.3.4Update.md §5 n'est <b>pas inclus</b>. Ces recettes appartiennent à {@code sorakaze_fallout}, et les nommer d'ici empêcherait le progrès de se charger dans les mondes sans fallout. La même forme doit être construite de ce côté-là",
+    "Le scintillement des portes et « les objets autres que les armes s'envolent quand on les lâche » restent <b>non vérifiés et non mesurés</b>"
+   ]
+  },
+  {
+   "id": "v4.3.6.1",
+   "release": "V4.3.6.1",
+   "date": "2026-09-10",
+   "type": "hotfix",
+   "title": "Correctif urgent : V4.3.6 ne démarrait pas — le même identifiant de son était enregistré deux fois",
+   "summary": "Avec V4.3.6, le jeu plantait avec « Could not execute entrypoint stage 'main' » et <b>ne fonctionnait pas une seule seconde.</b> Il y a une cause — à l'arrivée des sons par arme, parmi les noms de nouveau style {@code <id de l'arme>_fire}, <b>trois s'écrivaient comme d'anciens identifiants</b>, et les anciens enregistrements étaient toujours là. Enregistrer deux fois la même clé fait échouer le registre. <b>Aucun de mes contrôles avant publication ne pouvait le voir.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6.1",
+    "sorakaze_boss": "4.3.6.1",
+    "sorakaze_deco": "4.3.6.1",
+    "sorakaze_fallout": "4.3.6.1",
+    "sorakaze_guns": "4.3.6.1",
+    "sorakaze_phone": "4.3.6.1",
+    "sorakaze_planarcadia": "4.3.6.1",
+    "sorakaze_power": "4.3.6.1",
+    "sorakaze_rail": "4.3.6.1",
+    "sorakaze_sapporo": "4.3.6.1",
+    "sorakaze_sky": "4.3.6.1",
+    "sorakaze_survival": "4.3.6.1",
+    "sorakaze_vehicles": "4.3.6.1"
+   },
+   "highlights": [
+    "<b>La cause.</b> {@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire} se trouvaient <b>écrits exactement comme</b> le nouveau nommage par arme ({@code <id de l'arme>_fire}). {@code GunSounds} les enregistrait, {@code ModSounds} aussi, si bien que le second {@code Registry.register} échouait sur la même clé et emportait tout le point d'entrée de {@code sorakaze_guns}",
+    "<b>La correction.</b> Les 10 anciennes constantes passées aux sons par arme ({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire}) sont supprimées de {@code ModSounds}. L'enregistrement se fait désormais à un seul endroit, {@code GunSounds}",
+    "<b>Tous mes contrôles étaient verts.</b> Formes d'onde, fichiers, sounds.json, sous-titres, table du registre, modèles, zones de touche, inclinaison — tout était surveillé. <b>Aucun ne vérifiait si l'enregistrement passe.</b> Un GameTest pourrait l'attraper, mais il faut un serveur dédié, qui s'arrête à l'EULA sur cette machine",
+    "<b>Deux portails qui enregistrent vraiment ont donc été ajoutés.</b> {@code checkGunSoundRegistration} <b>appelle réellement</b> les vrais {@code ModSounds.init()} et {@code GunSounds.init()}, dans le même ordre que le jeu. {@code checkRegistration} (côté véhicules) fait de même et enregistre réellement les 3 objets et 1 composant ajoutés en V4.3.6",
+    "<b>Ce portail a un contrôle négatif.</b> Rétablir volontairement ce doublon ({@code handgun_fire}) fait échouer le portail. Sinon, il ne mesurerait pas l'enregistrement et ne signifierait rien",
+    "<b>Un contrôle statique sur les 13 modules a aussi été ajouté.</b> Il cherche le même identifiant de registre écrit à deux endroits. Cependant <b>4 modules ({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo}) ne correspondent pas à la façon dont ce contrôle lit le code et ne sont pas couverts</b> — affichés « non couvert », jamais mêlés au vert"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>N'installez pas V4.3.6.</b> Elle ne démarre pas. Remplacez-la par cette 4.3.6.1"
+   ],
+   "known_limitations": [
+    "<b>Je n'ai pas encore vu ce correctif démarrer sur une vraie machine.</b> L'enregistrement a été vérifié en l'exécutant réellement (87 sons, 26 objets), mais cette machine de développement n'a pas de client Minecraft ; je n'ai pas vu le jeu se lancer",
+    "Tout le contenu de V4.3.6 (inclinaison ADS, sons par arme, charge de la roquette, propriété) est <b>toujours là</b>. Seules les 10 anciennes constantes de son inutilisées ont été retirées",
+    "Le contrôle statique des doublons ne couvre que 9 des 13 modules (voir ci-dessus)"
+   ]
+  },
+  {
+   "id": "v4.3.7",
+   "release": "V4.3.7",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "À la visée, l'arme cachait la cible, et le chargeur jaillissait vers le haut",
+   "summary": "Redresser l'arme à la visée en V4.3.6 <b>a placé le cran de mire au centre de l'écran</b>, et les 14 armes couvraient <b>81 à 100 %</b> du réticule. Un vrai tireur place la cible <b>au-dessus du guidon, à travers l'encoche</b> — pas au milieu du métal. En outre, la raison pour laquelle le chargeur <b>jaillissait vers le haut au lieu de tomber</b> pendant le rechargement (vanilla inversait le Y de la position) est trouvée, et le mouvement d'insertion est reconstruit.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.7",
+    "sorakaze_boss": "4.3.7",
+    "sorakaze_deco": "4.3.7",
+    "sorakaze_fallout": "4.3.7",
+    "sorakaze_guns": "4.3.7",
+    "sorakaze_phone": "4.3.7",
+    "sorakaze_planarcadia": "4.3.7",
+    "sorakaze_power": "4.3.7",
+    "sorakaze_rail": "4.3.7",
+    "sorakaze_sapporo": "4.3.7",
+    "sorakaze_sky": "4.3.7",
+    "sorakaze_survival": "4.3.7",
+    "sorakaze_vehicles": "4.3.7"
+   },
+   "highlights": [
+    "<b>À la visée, la cible était cachée.</b> De vraies lignes de visée lancées depuis la caméra montraient les 14 armes couvrant le centre — le rayon central touchait l'arme <b>à 0,19 à 0,66 bloc</b>, et <b>81 à 100 %</b> d'un disque de 2° autour du centre était de l'arme. C'est parce qu'en V4.3.6 je visais à « poser le cran de mire au centre de l'écran ». Le cran de mire est <b>un bloc d'acier plein</b> : poser son centre de gravité au centre le masque toujours",
+    "<b>La correction.</b> Le déplacement n'est pas estimé à l'œil. Des lignes de visée sont lancées sur la pose livrée, et une recherche dichotomique trouve <b>le plus petit abaissement</b> qui dégage le disque (0,048 à 0,087 bloc, par arme). Résultat : <b>le centre est entièrement dégagé</b> et le disque est couvert à 0,0 à 0,7 %. L'arme est un peu plus basse, et la cible repose au-dessus du guidon",
+    "<b>Ce portail a lui aussi un contrôle négatif.</b> Annuler l'abaissement rend la pose de V4.3.6, et les 14 armes passent au rouge (pire cas 100 % couvert)",
+    "<b>Le chargeur jaillissait vers le haut — exactement comme l'a dit le propriétaire.</b> En suivant la hauteur du chargeur à l'écran pendant un rechargement, il <b>montait de 0,3945 au repos à 0,6853 bloc</b> avant de revenir à sa place. Il ne tombait pas : il <b>jaillissait par le haut</b>",
+    "<b>La cause était le signe de vanilla.</b> En 26.2, {@code KeyframeAnimations.posVec(x, y, z)} renvoie <b>{@code (x, -y, z)}</b>, confirmé dans le bytecode ({@code fload_1; fneg}). Ce rig est écrit « +Y vers le bas », et cette inversion mettait donc <b>chaque canal de position à l'envers</b> — depuis le passage aux os en V4.3.2. Le générateur la compense désormais",
+    "<b>« Loin de la sensation d'insérer » a pu être mesuré aussi.</b> Dans le dernier tronçon avant la mise en place, le chargeur se déplaçait <b>1,7 à 19,7 fois plus de côté</b> qu'il ne montait, et descendait de <b>93 à 393 %</b> dans la partie où il aurait dû monter. Ce n'est pas une insertion, c'est « le lâcher, le balancer de côté et le laisser aspirer à la fin »",
+    "<b>Reconstruit.</b> Trois étapes : le sortir → <b>l'aligner juste sous le puits de chargeur (x et z à 0, inclinaison 0)</b> → <b>tout droit vers le haut</b>. La dérive latérale vaut désormais <b>0,10 à 0,18 fois</b> la montée (seuil 0,34) et le retour en arrière <b>0,1 à 0,2 %</b> (seuil 2 %)",
+    "<b>L'instant de l'échange est corrigé aussi.</b> Le chargeur est échangé hors de vue avec une échelle de 1→0→1. Le rechargement du pistolet ne dure que 1,4 seconde et cette fenêtre faisait 0,14 seconde : un sommet se déplaçait de 0,164 bloc en une seule image, et le portail de continuité est passé au rouge à juste titre. La fenêtre a été élargie : <b>0,095</b>",
+    "<b>Capacité du chargeur du PM.</b> D'après la hauteur de 190 mm du chargeur du modèle et le diamètre de <b>culot de douille</b> de 9,93 mm du 9×19, un chargeur biface en contient <b>36 cartouches</b>. La configuration indiquait <b>60</b> (<b>66 % de trop</b>) — un nombre qui ne tenait pas dans le chargeur visible. C'est désormais 36",
+    "<b>Le même calcul sur les 14 armes : celle-ci était la seule au-delà</b> (fusil d'assaut 25 / tient 33, arme de poing 12 / 21, carabine 10 / 34). Un portail qui le vérifie à chaque fois a été ajouté. J'ai d'abord fait le calcul avec <b>le diamètre de la balle</b>, et même le fusil d'assaut sortait « au-delà », mais ce qui compte pour un chargeur est <b>le diamètre du culot</b> (5.56 : balle 5,6 mm, culot 9,6 mm)",
+    "<b>Design du fusil de précision.</b> Des 14 armes, <b>c'était la seule sans aucune surcharge de style</b> : les cotes brutes de sa classe partaient telles quelles — rien ne lui donnait l'air d'un fusil de précision. Il a désormais <b>une grande lunette, des tourelles de hausse et de dérive, une bague de grossissement, un canon à 12 cannelures, un frein de bouche à 6 évents, un bipied et une boule de levier de culasse</b> (1 014 → 1 050 cubes)",
+    "<b>Ces tourelles ont d'abord été excessives, et un portail les a arrêtées.</b> Une tourelle fixe de 4,3 unités allait sur chaque arme, si bien que la petite optique du pistolet recevait la même, et le portail des modèles est passé au rouge avec « ressemble à une cheminée ». Elle est désormais <b>proportionnelle au rayon du tube</b>",
+    "<b>Destruction de blocs du lance-roquettes réduite de 25 %.</b> Le <b>volume</b> détruit varie comme le cube de la puissance, donc le facteur n'est pas 0,75 mais <b>0,75^(1/3) = 0,9086</b>. 36,0 → <b>32,71</b>. Appliquer 0,75 directement donnerait 0,42× le volume = 58 % de moins, plus du double de ce qui était demandé",
+    "<b>Un générateur disait avoir écrit un fichier et ne l'avait pas fait.</b> {@code gen_gun_model_java.py} assemblait la table de répartition des styles et <b>ne l'écrivait jamais</b> ; seule sa dernière ligne annonçait « wrote dispatcher GunGeometry.java ». La table des nombres de cubes avait glissé vers une maintenance à la main, et avec les modèles reconstruits cette fois, 10 armes sont passées au rouge avec « un os en moins » (rien ne manquait — la table était périmée). Il écrit désormais vraiment le fichier"
+   ],
+   "balance_changes": [
+    "PM : chargeur 60 → <b>36</b> (ce qui tient dans le chargeur du modèle)",
+    "Lance-roquettes : puissance d'explosion 36,0 → <b>32,708</b> (volume détruit −25 %). Les 960 dégâts d'impact direct sont inchangés",
+    "Fusil de précision : 1 014 → 1 050 cubes. <b>Aucune valeur de performance n'a changé</b> (apparence seulement)"
+   ],
+   "warnings": [
+    "<b>La position de l'arme à la visée change.</b> Le cran de mire n'est plus au centre de l'écran mais <b>légèrement sous le réticule</b>. Cela suit la visée réelle (la cible repose au-dessus du guidon) ; sans cela, l'arme cache la cible"
+   ],
+   "known_limitations": [
+    "<b>Rien de tout cela n'a été vu sur un écran réel.</b> L'occultation est mesurée par lignes de visée lancées et la trajectoire du chargeur à la fois par le décalage de l'os et par la hauteur rendue, mais cette machine de développement n'a pas de client Minecraft ; rien n'a été vérifié à l'œil",
+    "<b>J'ai lu « taille du chargeur » comme la capacité.</b> Si cela voulait dire « la taille du chargeur du modèle », la correction va dans l'autre sens (allonger le chargeur pour 60). Dites-le si c'était le sens voulu",
+    "Le portail de capacité <b>ne peut pas lire service_pistol</b> (son JSON de définition n'a pas d'entrée de chargeur et retombe sur la valeur par défaut de la classe). Il affiche « NOT READ » au lieu de le mêler au vert",
+    "V4.4.0Update.md (l'aérodrome cendré, la voie de circulation nord, le hangar un) n'est <b>pas encore inclus</b>. Cette version a fait passer d'abord la correction du plantage au démarrage et ces cinq signalements"
+   ]
+  },
+  {
+   "id": "v4.3.8",
+   "release": "V4.3.8",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Les tirs n'avaient pas de cœur — seulement 0,0 à 2,6 % sous 80 Hz. Et Cherry commence",
+   "summary": "« Dans l'ensemble, on dirait des jouets » a été mesuré. <b>L'énergie sous 80 Hz était de 0,0 à 2,6 %</b> (pistolet 0,0 %) — le cœur qu'on sent dans le corps manquait entièrement. De plus, les 14 armes culminaient exactement à 0,720 : un calibre .50 et un 9mm sonnaient aussi fort l'un que l'autre. Le plancher du contrôle n'était que « 0,5 % sous 200 Hz », ce qui laissait tout passer. À côté de cela, la roquette baisse encore de 25 %, et le travail commence sur la marque de nouvelle génération <b>Cherry</b>.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.8",
+    "sorakaze_boss": "4.3.8",
+    "sorakaze_deco": "4.3.8",
+    "sorakaze_fallout": "4.3.8",
+    "sorakaze_guns": "4.3.8",
+    "sorakaze_phone": "4.3.8",
+    "sorakaze_planarcadia": "4.3.8",
+    "sorakaze_power": "4.3.8",
+    "sorakaze_rail": "4.3.8",
+    "sorakaze_sapporo": "4.3.8",
+    "sorakaze_sky": "4.3.8",
+    "sorakaze_survival": "4.3.8",
+    "sorakaze_vehicles": "4.3.8"
+   },
+   "highlights": [
+    "<b>Pourquoi on aurait dit des jouets tient en une chose :</b> pas de graves. Mesuré sous 80 Hz : assaut 0,8 % / arme de poing <b>0,0 %</b> / précision 2,5 % / fusil à pompe 2,6 %. Les gaz de bouche d'un vrai tir produisent <b>une impulsion de pression basse fréquence qu'on sent dans le corps</b>. Sans elle, il ne reste qu'un « clac » sec, sans cœur",
+    "<b>Un corps grave est ajouté.</b> Deux sinusoïdes amorties (fondamentale + deuxième harmonique), dont la fréquence est <b>fixée par la charge</b> (plus la masse de gaz en expansion est grande, plus c'est grave — 26 à 62 Hz). Sous 80 Hz, on est désormais à <b>7,3 à 28,8 %</b>. Les armes à plus forte charge ont un cœur plus grand, <b>3,19×</b> entre la plus grande et la plus petite",
+    "<b>Toutes les armes étaient aussi fortes.</b> Les 14 culminaient exactement à 0,720 — un calibre .50 et un 9mm au même niveau. Le volume suit désormais l'énergie à la bouche : pistolet 0,518 / fusil 0,720, soit <b>+2,9 dB</b> d'écart",
+    "<b>Les queues étaient trop courtes aussi.</b> Seulement 0,45 à 1,01 seconde — un son sur place, puis plus rien. Ajouter le son renvoyé par le terrain les porte à <b>0,43 à 1,33 seconde</b>. Plus la charge est forte, plus il porte loin et plus il revient longtemps",
+    "<b>Le plancher du contrôle est relevé.</b> Il ne regardait que « 0,5 % sous 200 Hz », donc <b>un son de jouet pouvait atteindre 0,5 % et être livré</b>. Il exige désormais 12 % sous 200 Hz et 6 % sous 80 Hz, et mesure aussi que <b>les charges plus fortes ont des cœurs plus grands</b> (au moins 1,8×) et que <b>le volume diffère d'une arme à l'autre</b> (au moins 1,25×)",
+    "<b>Le lance-roquettes baisse encore de 25 %.</b> 32,708 → <b>29,717</b>. Sur les deux baisses, le volume détruit représente <b>56 %</b> de ce qu'il était à 36,0",
+    "<b>Baisser la puissance seule ne réduit pas la charge.</b> En 26.2, même avec un plafond, <b>les rayons continuent jusqu'au bout</b> : le nombre d'appels {@code getBlockState} — la charge elle-même — ne baisse pas du tout. Au-delà du rayon plafond, l'explosion <b>renvoie désormais une énorme résistance à l'explosion pour arrêter le rayon sur place</b>, et les roquettes tenues en main reçoivent pour la première fois un plafond (rayon 14). Le travail est <b>plafonné par le rayon, pas par la puissance</b>",
+    "<b>Cherry — le travail commence sur la marque de nouvelle génération.</b> Nommée d'après la fleur de cerisier, elle se place au-dessus d'Alpha. Le logo est <b>un sakura à cinq pétales</b> construit par la géométrie — l'<b>échancrure</b> au bout de chaque pétale (le seul trait qui dit cerisier et non prunier), la <b>taille</b> vers le centre, les étamines et les anthères. Il coïncide exactement avec lui-même sous une rotation de 72°",
+    "<b>Le logo a été dessiné trois fois et corrigé en le regardant vraiment.</b> La première fois, les pétales se chevauchaient en une masse ; la deuxième, les épaules se croisaient et laissaient des coutures anguleuses. Il n'a jamais été validé sur les seuls chiffres — chaque version a été rendue et vérifiée",
+    "<b>La fleur s'ouvre en tournant.</b> À l'ouverture de la page, les cinq pétales se déploient l'un après l'autre depuis le centre, chacun grandissant en tournant jusqu'à sa place de 72°. CSS uniquement, et une seule fois (la répéter transformerait une floraison en indicateur de chargement). Avec {@code prefers-reduced-motion}, elle commence tout ouverte",
+    "<b>Aurora Corvus est renommé Corvus.</b> Nom d'affichage uniquement — le nom du dépôt et l'URL publique ne changent pas (les changer mettrait en 404 tous les lanceurs déjà distribués)",
+    "<b>La couleur passe de l'aurore au bleu ciel d'Apple.</b> Le vert et le violet disparaissent, remplacés par des tons de ciel autour de #5AC8FA. Le texte et les liens atteignent <b>10,5:1 à 13,3:1</b> sur le fond sombre (WCAG AAA). Le fond de l'application Corvus est passé à la même famille (avec la luminosité des trois couleurs d'origine)",
+    "<b>Le sélecteur de thème blanc/noir est supprimé.</b> Le sélecteur, sa mémorisation, le code de migration et 8 blocs CSS devenus inaccessibles sont <b>supprimés</b>. Garder du code inutilisé « au cas où » amène le lecteur suivant à croire qu'il y a encore deux thèmes",
+    "<b>Il y a désormais un onglet Store.</b> Son méga-menu liste <b>Alpha / Aureum / Cherry</b>. Alpha <b>n'avait jamais eu de page de marque</b> — on pouvait la télécharger, mais aucune page ne disait ce qu'est Alpha ; des trois, une n'avait nulle part où pointer"
+   ],
+   "balance_changes": [
+    "Lance-roquettes : puissance d'explosion 32,708 → <b>29,717</b> (volume détruit 56 % de 36,0)",
+    "Lance-roquettes : les roquettes tenues en main reçoivent aussi un plafond (rayon 14 blocs / 4 000 blocs). Au-delà, les rayons s'arrêtent",
+    "Tirs : les crêtes du pistolet et du PM passent de 0,720 à 0,518–0,552 (les fusils paraissent relativement plus forts)"
+   ],
+   "warnings": [
+    "<b>Le sélecteur de thème disparaît.</b> Si vous aviez choisi le thème blanc, il ne reste que le sombre",
+    "<b>Le nom d'affichage du site devient Corvus.</b> L'URL ne change pas"
+   ],
+   "known_limitations": [
+    "<b>Je n'ai écouté aucun son.</b> Graves, écart de volume, durée, attaque et recouvrement sont tous mesurés numériquement, mais cette machine de développement n'a pas de client Minecraft ; rien n'a été vérifié à l'oreille",
+    "<b>Cherry n'est qu'une marque.</b> Pas une ligne de mod n'a été écrite. La page le dit aussi, dans les 13 langues",
+    "<b>L'application Corvus n'a pas été recompilée.</b> Le changement de couleur est dans les sources, mais le téléchargement du lanceur doit sortir séparément, en version propre",
+    "V4.4.0Update.md (l'aérodrome cendré) n'est <b>pas encore inclus</b>. Cette version a fait passer d'abord le son, la roquette, Cherry et le site"
+   ]
   }
  ],
  "roadmap": {

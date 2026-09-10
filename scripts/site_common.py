@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Shared registry + page-shell template for the Aurora Corvus static site.
+Shared registry + page-shell template for the Corvus static site.
 Plain Python string templates (no Jinja2 dependency) — every other generator
 script imports from here so the header/nav/footer never drifts between pages.
 
@@ -32,7 +32,11 @@ DOWNLOADS_DIR = ROOT / "downloads"
 #                       Alpha" until the V2.5.0 rename; see below)
 #   LAUNCHER_APP_NAME   the desktop updater app  -> "Corvus" (was
 #                       "Glimpse Launcher" until the 1.3.0 rename)
-SITE_TITLE = "Aurora Corvus"  # brand name, unchanged across languages
+SITE_TITLE = "Corvus"  # brand name, unchanged across languages
+# 2026-09-10、所有者:「Aurora Corvus から Corvus に名称を変更」。
+# 旧名は Aurora Corvus。リポジトリ名(aurora-corvus)と公開 URL は
+# **変えない** —— 変えると既に配布したランチャーの取得先が 404 になる
+# (cross-repo filename coupling と同じ罠)。変わるのは表示名だけである。
 LAUNCHER_APP_NAME = "Corvus"
 
 # V2.5.0 renamed the pack "Glimpse Alpha" -> "Alpha" (the owner's instruction
@@ -195,6 +199,15 @@ def recipe_cat_index(cat_name):
 NAV_SECTIONS = [
     ("home", ""),
     ("aureum", "aureum/"),
+    # V4.3.8. Cherry — the tier above Alpha (owner, 2026-09-10). Sits beside
+    # Aureum in NAV_SOLO for the same reason: it is its own product, not part
+    # of the Alpha pack's get-started flow.
+    ("cherry", "cherry/"),
+    # 2026-09-10、所有者:「Aureum と Cherry、Alpha のページを作成して、
+    # それを Store という新規のタブを作成して、メガメニューに 3 つの Mods を
+    # 表示する。」Alpha はこれまで<b>ブランドのページを持っていなかった</b> ——
+    # ダウンロード導線(download/)はあっても「Alpha とは何か」の 1 枚が無かった。
+    ("alpha", "alpha/"),
     ("download", "download/"),
     ("changelog", "changelog/"),
     ("recipes", "recipes/"),
@@ -228,6 +241,11 @@ NAV_LABEL_FALLBACK = {
     # to fall back this way (see build_aureum.py's header for why every other
     # string on that page has a real translation in all 13 languages).
     "aureum": "Aureum",
+    # Same reasoning as "aureum": a brand name, not a description. Translating
+    # it into 11 more scripts would produce 11 wrong answers, not 11 right ones.
+    "cherry": "Cherry",
+    # Same reasoning again: "Alpha" is the pack's own name.
+    "alpha": "Alpha",
     "upcoming": "Coming next",
     # Same arrangement as "upcoming": the nav label falls back to English
     # until the bundles carry ui.nav.discord, while the page itself is fully
@@ -255,8 +273,12 @@ NAV_LABEL_FALLBACK = {
 # Alpha pack's own get-started flow) nor under "reference" (Aureum has no
 # recipes/gates/features of its own) nor "status" (it has no changelog page
 # of its own yet) -- it simply does not belong to any of those three stories.
-NAV_SOLO = ["home", "aureum"]
+NAV_SOLO = ["home"]
 NAV_GROUPS = [
+    # Store: the three mod brands, side by side. Aureum and Cherry used to sit
+    # in NAV_SOLO as one-offs; the owner asked for all three under one tab so a
+    # reader can see the range at a glance instead of discovering them apart.
+    ("store", ["alpha", "aureum", "cherry"]),
     ("start", ["download", "launcher", "guide", "skin"]),
     ("reference", ["recipes", "gates", "features"]),
     # "upcoming" sits with changelog/roadmap because it answers the same
@@ -276,6 +298,13 @@ NAV_GROUPS = [
 # in data/i18n/ja.json); the other 11 languages fall back to English here,
 # exactly the way NAV_LABEL_FALLBACK["launcher"] already does.
 NAV_GROUP_FALLBACK = {
+    # 2026-09-10、所有者:「Store という新規のタブを作成して、メガメニューに
+    # 3 つの Mods を表示する。」
+    "store": {
+        "label": "Store",
+        "lede": "Three mod lines: Alpha, the suite that ships today; Aureum, its own "
+                "separately-versioned build; and Cherry, the tier above.",
+    },
     "start": {
         "label": "Get started",
         "lede": "Download the pack, install it on your server, and let %s "
@@ -946,47 +975,16 @@ def page(
      and a hand-maintained one never share a build step. -->
 <link rel="stylesheet" href="{root_prefix}assets/css/lang-flags.css">
 <script>
-/* Boot: tag JS availability for the motion layer, and apply the persisted
-   theme before first paint. Dark is the flagship default; "light" is the
-   secondary theme (see style.css + main.js theme toggle).
+/* Boot: tag JS availability for the motion layer.
 
-   THE KEY NAME IS A CONTRACT with main.js. It was broken once: the site was
-   renamed glimpse-alpha-wiki -> aurora-corvus, this script was updated and
-   the toggle in main.js was not, so the toggle wrote one key and this read
-   another. Nothing errored — a visitor on light simply got a dark first
-   paint on every page load, i.e. exactly the flash this script exists to
-   prevent. Change one side and you must change the other; the constants are
-   named on both sides so a grep finds them together.
-
-   The legacy key is read once as a fallback and then migrated, because
-   anyone currently on light has their choice stored under the OLD name and
-   silently resetting them to the default would be a second bug on top of
-   the first. It is REMOVED after a successful write rather than left
-   behind: two keys holding a theme is how this went wrong in the first
-   place, and once the value is under the new name nothing reads the old
-   one. The remove only runs if the write did not throw, so a storage
-   failure can never drop the preference. */
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
 (function () {{
   var d = document.documentElement;
   d.classList.add("js");
-  var KEY = "aurora-corvus-theme";
-  var LEGACY_KEY = "glimpse-alpha-wiki-theme";
-  var t = "dark";
-  try {{
-    var s = localStorage.getItem(KEY);
-    if (s !== "light" && s !== "dark") {{
-      var legacy = localStorage.getItem(LEGACY_KEY);
-      if (legacy === "light" || legacy === "dark") {{
-        s = legacy;
-        try {{
-          localStorage.setItem(KEY, s);
-          localStorage.removeItem(LEGACY_KEY);
-        }} catch (e) {{ /* read-only storage: still honour the value this load */ }}
-      }}
-    }}
-    if (s === "light" || s === "dark") t = s;
-  }} catch (e) {{ /* storage unavailable: stay dark */ }}
-  d.setAttribute("data-theme", t);
+  d.setAttribute("data-theme", "dark");
 }})();
 </script>
 {extra_head}</head>
@@ -1015,7 +1013,6 @@ def page(
           {lang_switch}
         </ul>
       </div>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="{esc(ui['theme_toggle'])}" title="{esc(ui['theme_toggle'])}">🌓</button>
     </nav>
   </div>
 </header>

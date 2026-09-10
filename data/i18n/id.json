@@ -2551,6 +2551,212 @@
     "Terukur: ketiga kendali negatif pemeriksaan partikel memerah. Arah benar pada 14 dari 14. Lompatan isi ulang pada titik sudut median 0,0062–0,0146 blok (batas 0,020; jalur lama 0,307). Sisa setelah skenario <b>tepat 0</b>. Panjang tergambar 1,07 sampai 1,89 blok",
     "Tidak ada klien Minecraft di mesin pengembangan ini. <b>Tidak ada yang ditulis sudah diperbaiki sebelum terlihat berjalan.</b>"
    ]
+  },
+  {
+   "id": "v4.3.6",
+   "release": "V4.3.6",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Saat membidik, setiap senjata terpelintir 7 derajat — kemiringan ADS, suara sendiri untuk tiap senjata, beban roket, dan kepemilikan",
+   "summary": "Mengukur “senjata sedikit miring” menunjukkan bahwa <b>ke-14 senjata</b> terpelintir saat bidikan penuh sebesar yaw −6,9 s.d. −7,3°, pitch +0,5 s.d. +1,5°, dan roll +0,3 s.d. +2,1°, dan <b>takik bidik belakang berada 0,06–0,76 blok dari tengah layar</b> — Anda bahkan tidak melihat melalui alat bidik. Selain itu, suara isi ulang dan tembakan kosong yang dipakai bersama oleh ke-14 senjata kini <b>berdiri sendiri per senjata</b> (69 event / 115 berkas), daya ledak peluncur roket turun dari 396 ke 36, dan kepemilikan, buku resep, serta kartu jalur dari V4.3.4Update.md sudah diterapkan.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6",
+    "sorakaze_boss": "4.3.6",
+    "sorakaze_deco": "4.3.6",
+    "sorakaze_fallout": "4.3.6",
+    "sorakaze_guns": "4.3.6",
+    "sorakaze_phone": "4.3.6",
+    "sorakaze_planarcadia": "4.3.6",
+    "sorakaze_power": "4.3.6",
+    "sorakaze_rail": "4.3.6",
+    "sorakaze_sapporo": "4.3.6",
+    "sorakaze_sky": "4.3.6",
+    "sorakaze_survival": "4.3.6",
+    "sorakaze_vehicles": "4.3.6"
+   },
+   "highlights": [
+    "<b>Kemiringan ADS, diukur.</b> Mengukur garis {@code sight_rear} → {@code sight_front} di ruang kamera saat bidikan penuh menunjukkan <b>ke-14 senjata</b> terpelintir — yaw <b>−6,92 s.d. −7,32°</b>, pitch +0,46 s.d. +1,50°, roll +0,30 s.d. +2,12°. Rinciannya diketahui: {@code firstperson_righthand.rotation} di {@code <style>_in_hand.json} menyumbang <b>+5°</b> dan akhir klip tulang {@code aim_in} <b>+2,5°</b>. Keduanya angka yang dipasang tangan sebagai bumbu pose pinggul, dan <b>tidak ada yang membatalkannya saat membidik</b>",
+    "<b>Anda bahkan tidak melihat melalui alat bidik.</b> Pengukuran yang sama menempatkan takik belakang <b>0,056–0,755 blok</b> dari tengah layar. Penyebabnya: tabel koreksi bidik {@code SightAlignment} diturunkan dari <b>geometri elemen lama</b> — bentuk yang <b>tidak pernah digambar sekali pun</b> sejak senjata pindah ke tulang di V4.3.2. Pemeriksaan yang menjaga tabel membandingkannya dengan bentuk yang tak pernah digambar itu, sehingga tetap hijau sepanjang waktu",
+    "<b>Perbaikannya:</b> tujuh angka — rotasi 4 komponen ditambah translasi 3 komponen — diukur dari tulang yang sudah dipanggang dan ditulis saat build ({@code ./gradlew emitGunAdsAlignment}). Tidak ada yang dikira-kira. Hasil: <b>yaw, pitch, dan roll semuanya 0,000°, simpangan takik belakang 0,0000 blok</b> (14 senjata)",
+    "<b>Gerbang itu punya kontrol negatif.</b> Melepas koreksi — kembali ke pose yang dirilis hingga V4.3.5 — membuat <b>ke-14 senjata merah</b> (terburuk 7,32°). Jika tidak menjadi merah, pemeriksaan itu sendiri gagal sebagai “instrumen ini tidak mengukur kemiringan”",
+    "<b>Setiap senjata kini punya suara sendiri.</b> Keadaan yang dirilis, diukur: 14 senjata berbagi 12 suara tembak (marksman_carbine menunjuk <b>langsung</b> ke sniper_fire, breaching_shotgun ke shotgun_fire, service_pistol ke handgun_fire), <b>ke-14</b> berbagi 3 suara isi ulang, dan <b>ke-14</b> berbagi 1 suara tembakan kosong",
+    "<b>Suaranya diturunkan, bukan dirancang sesuka hati.</b> Menyuarakan 14 senjata dengan tangan hanya menjajarkan 14 tebakan, jadi setiap suara berasal dari angka senjata itu sendiri — panjang laras memberi resonansi pertama tabung terbuka {@code c/(2L)}, ukuran badan senjata memberi resonansi kotak, energi moncong memberi fase positif ledakan ({@code t+ ∝ E^(1/3)}), kaliber dan kecepatan memberi gelombang N supersonik, jumlah lubang rem moncong memberi penonjolan nada tinggi, panjang dan jatuhnya magasin memberi waktu isi ulang. Sumbernya <b>sama</b> dengan yang dipakai membangun model ({@code gun_standard.CLASS_REFERENCE} dan {@code gun_mesh.resolved_spec()})",
+    "<b>69 event / 115 berkas.</b> Lima peran per senjata: tembak (3 varian), magasin keluar, magasin masuk, pengunci menutup, tembakan kosong. Bolt manual dan pompa menutup dalam <b>dua ketukan</b>, dan pistol dengan magasin di gagang punya bunyi penahan magasin yang lebih tinggi. sounds.json, subtitle (Inggris dan Jepang), dan registri Java semuanya <b>dihasilkan</b>, sehingga tidak satu pun dari 69 bisa hilang lagi (yang hilang hanya diam sementara game tetap jalan — dengan tangan, tak akan pernah ketahuan)",
+    "<b>Pemeriksaan itu menangkap cacat pada suara buatan saya sendiri.</b> Suara tembak kedua pistol hanya punya 0,4 % energi di bawah 200 Hz dan menjadi merah sebagai “tanpa badan nada rendah”. Dengan laras pendek resonansinya di 1,2 kHz, dan penurunan yang saya skalakan ke sana berhenti di 160 Hz. Yang menentukan seberapa rendah jangkauannya adalah <b>volume gas yang mengembang</b> (radius ∝ E^(1/3)); kini diturunkan dari situ",
+    "<b>Daya ledak peluncur roket 396 → 36.</b> Permintaannya menyebut “turunkan daya” dan “kurangi beban” sebagai dua butir, tetapi di 26.2 keduanya <b>satu angka yang sama</b>. Yang sebenarnya dilakukan bytecode: sebuah ledakan menembakkan <b>1.352</b> sinar dari sisi kisi 16×16×16 dan kehilangan 0,315 per langkah 0,3 blok di udara. Pada 396 setiap sinar berjalan 1.634 langkah = <b>sekitar 490 blok</b>, jadi satu hantaman menjalankan <b>sekitar 2,21 juta</b> pasang {@code getBlockState} + {@code getFluidState}",
+    "<b>Pencarian entitas lebih berat lagi.</b> Vanilla memanggil {@code getEntities} pada kotak yang digelembungkan {@code power × 2} di sekitar ledakan. Pada 396 itu <b>radius 792 blok</b> — kubus bersisi 1.584, sekitar <b>99×99 chunk</b>, dipindai sepanjang tinggi penuh. Pada 36 radiusnya 72 (9×9 chunk) — <b>1/1.331</b> volumenya. Keduanya berjalan di thread server; itulah sebenarnya “beban roket”",
+    "<b>Pistol sedikit lebih kecil.</b> Di tengah jalan muncul dua salah ukur. ① Rumus skala memakai “sisi terpanjang model” sebagai panjang, padahal <b>pistol lebih tinggi daripada panjangnya</b> (terukur tinggi 0,7944 / panjang 0,7806 blok), sehingga khusus pistol yang masuk ke kurva adalah <b>tinggi</b>. ② Faktor transformasi tampilan <b>ditulis mati 1,5</b>, sedangkan nilai yang dirilis ada tiga tingkat: 1,35 / 1,5 / 1,65",
+    "<b>Maka setiap senjata kini menyatakan berapa blok panjangnya yang harus tampak di layar.</b> Panjang diambil dari senjata nyata dalam mm, bukan dari kotak model, dan perender <b>hanya menyelesaikan</b> skala yang mencapai target itu. Pemeriksaan kini mengukur <b>kecocokan dengan pernyataan</b> (dalam 0,005 blok) alih-alih batas bawah. Pistol berubah di layar dari 0,949 menjadi <b>0,904 blok</b> (95,3 % dari yang dilihat pemilik). Senapan runduk, karabin, dan peluncur roket justru 10 % terlalu besar, dan sudah menyusut",
+    "<b>V4.3.4Update.md sudah diterapkan (aliran O / R / C / Q).</b> Siapa yang menaruh kendaraan, atau pertama naik, menjadi pemiliknya. <b>Dikunci dengan kerah kunci</b>, orang lain tidak bisa naik, mengisi bahan bakar, menyaring, atau memasang kit (<b>menabrak tetap bisa</b> — spesifikasi menetapkan begitu), dan memotong <b>kunci cadangan</b> membolehkan satu orang lain untuk kendaraan itu saja. {@code /garage owner} menampilkan pemilik; {@code set} / {@code clear} memerlukan tingkat izin 2",
+    "<b>Buku resep kosong.</b> {@code sorakaze_vehicles} punya <b>149</b> resep dan tidak ada satu pun kemajuan yang membukanya — buku resep 26.2 hanya menampilkan yang sudah terbuka, jadi meski memegang bahannya, <b>tidak ada cara untuk tahu bahwa itu bisa dibuat</b>. Ke-149 kini terbuka saat Anda memungut pelat gilas (daftarnya juga dihasilkan, jadi resep yang ditambah kelak ikut masuk otomatis)",
+    "<b>Kartu jalur ditambahkan.</b> Klik kanan untuk 8 halaman — jalur residu, kondensat dan pajak pompa, awal dingin jalur cincin utama, viaduk timur dan Punggung Bara barat, badai salju dan banjir, kit dan navigasi, kepemilikan, serta lalu lintas, kereta, dan leviathan. Kartu ini <b>tidak memakai satu byte pun lalu lintas jaringan</b> (nomor halaman hanya ada di klien). Ada di dua peti Konurbasi Abu dengan peluang 40 %",
+    "<b>Q1 sampai Q6 juga beres.</b> Q4 (menyaring bahan bakar saat terbang <b>diizinkan tetapi mematikan daya angkat selama 10 tick</b>) adalah kode baru; untuk Q1 (pajak pompa pulih dalam 24000 tick), Q2 (tempat parkir adalah data persisten per pemain), Q3 (merusak kait melepaskan pesawat dengan sendirinya), dan Q5 (coreRequiresPlate tetap bawaan true) saya memastikan semuanya <b>sudah berperilaku begitu</b> dan memasang penanda {@code // RF4.3.4-Qn}"
+   ],
+   "balance_changes": [
+    "Peluncur roket: daya ledak 396,0 → <b>36,0</b> (99× TNT vanilla → 9×). Kerusakan hantaman langsung 960 <b>tidak berubah</b>. Galian di batu turun dari sekitar 73 blok ke 6,6 blok (perkiraan, bukan spesifikasi — nilai terukurnya ada di baris MEASURED pada {@code RocketLauncherTests})",
+    "Pistol genggam / pistol dinas: panjang di layar 0,949 → <b>0,904</b> blok",
+    "Senapan runduk 1,915 → 1,743, senapan runduk berat 2,078 → 1,890, peluncur roket 1,890 → 1,682, karabin penembak jitu 1,697 → 1,568 blok (empat senjata dengan faktor tampilan 1,65 terlalu besar 10 % karena 1,5 yang ditulis mati)",
+    "Konfigurasi lama yang berisi 396,0 dikoreksi ke 36,0 saat mulai (butir perbaikan generasi 10)"
+   ],
+   "warnings": [
+    "<b>Versi ini memperkenalkan kepemilikan.</b> Mulai sekarang, kendaraan yang Anda <b>taruh</b>, atau <b>kendaraan tanpa pemilik yang Anda naiki pertama</b>, menjadi milik Anda. Kendaraan yang ditaruh hingga 4.3.5 tetap <b>tanpa pemilik</b>, sehingga tidak terkunci dan siapa pun bisa memakainya — kendaraan yang ada berperilaku persis seperti sebelumnya, sampai ke bitnya",
+    "<b>15 berkas suara tembak lama dihapus.</b> {@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code rocket_fire} beserta variannya. Jika paket sumber daya mengganti berkas-berkas ini, <b>penggantian itu tidak berlaku lagi</b> (nama barunya {@code <id senjata>_fire})"
+   ],
+   "known_limitations": [
+    "<b>Saya belum melihat kemiringan ADS yang diperbaiki di layar sungguhan.</b> Yang diukur adalah pose di ruang kamera yang dibangun ulang dari rantai transformasi yang dirilis, dengan sisa 0,000° pada yaw, pitch, dan roll. Belum diperiksa di layar pemilik",
+    "<b>Koreksi ADS diturunkan untuk keadaan terpasang penuh.</b> Saat berganti senjata ({@code equippedProgress} > 0) seluruh lengan turun, sehingga selama sekitar 0,2 detik takik belakang berada di bawah tengah layar",
+    "<b>Saya belum mendengarkan satu pun dari 115 suara.</b> Semua sifat bentuk gelombang (serangan, nada rendah, tumpang tindih, keterbedaan) diukur secara numerik, tetapi mesin pengembangan ini tidak punya klien Minecraft, jadi belum ada yang diperiksa dengan telinga",
+    "<b>Saya juga belum melihat satu piksel pun dari layar kartu jalur.</b> Jumlah halaman, kunci subtitle, dan tidak mogok di server khusus sudah tercakup; tampilannya belum diverifikasi",
+    "Pembukaan resep untuk “jalur residu (kristal → hancurkan → cuci → stabilkan)” di V4.3.4Update.md §5 <b>tidak disertakan</b>. Resep itu milik {@code sorakaze_fallout}, dan menyebutnya dari sini akan membuat kemajuan gagal dimuat di dunia tanpa fallout. Bentuk yang sama harus dibangun di sisi sana",
+    "Kedipan pintu dan “barang selain senjata terbang saat dijatuhkan” masih <b>belum diverifikasi dan belum diukur</b>"
+   ]
+  },
+  {
+   "id": "v4.3.6.1",
+   "release": "V4.3.6.1",
+   "date": "2026-09-10",
+   "type": "hotfix",
+   "title": "Perbaikan darurat: V4.3.6 tidak mau mulai — ID suara yang sama didaftarkan dua kali",
+   "summary": "Dengan V4.3.6 terpasang, game mogok dengan “Could not execute entrypoint stage 'main'” dan <b>tidak berjalan satu detik pun.</b> Penyebabnya satu — saat suara per senjata masuk, dari nama gaya baru {@code <id senjata>_fire}, <b>tiga ejaannya sama dengan ID lama</b>, dan pendaftaran lama masih ada. Mendaftarkan kunci yang sama dua kali membuat registri gagal. <b>Tak satu pun pemeriksaan saya sebelum rilis bisa melihat ini.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.6.1",
+    "sorakaze_boss": "4.3.6.1",
+    "sorakaze_deco": "4.3.6.1",
+    "sorakaze_fallout": "4.3.6.1",
+    "sorakaze_guns": "4.3.6.1",
+    "sorakaze_phone": "4.3.6.1",
+    "sorakaze_planarcadia": "4.3.6.1",
+    "sorakaze_power": "4.3.6.1",
+    "sorakaze_rail": "4.3.6.1",
+    "sorakaze_sapporo": "4.3.6.1",
+    "sorakaze_sky": "4.3.6.1",
+    "sorakaze_survival": "4.3.6.1",
+    "sorakaze_vehicles": "4.3.6.1"
+   },
+   "highlights": [
+    "<b>Penyebabnya.</b> {@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire} kebetulan <b>dieja persis sama</b> dengan penamaan per senjata yang baru ({@code <id senjata>_fire}). {@code GunSounds} mendaftarkannya dan {@code ModSounds} juga masih, sehingga {@code Registry.register} kedua gagal pada kunci yang sama dan menjatuhkan seluruh titik masuk {@code sorakaze_guns}",
+    "<b>Perbaikannya.</b> 10 konstanta lama yang pindah ke suara per senjata ({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire}) dihapus dari {@code ModSounds}. Pendaftaran kini hanya di satu tempat, {@code GunSounds}",
+    "<b>Semua pemeriksaan saya hijau.</b> Bentuk gelombang, berkas, sounds.json, subtitle, tabel registri, model, hitbox, kemiringan — semuanya diawasi. <b>Tidak ada satu pun yang melihat apakah pendaftaran berhasil.</b> GameTest bisa menangkapnya, tetapi perlu server khusus, yang di mesin ini berhenti di EULA",
+    "<b>Maka ditambahkan dua gerbang yang benar-benar mendaftar.</b> {@code checkGunSoundRegistration} <b>benar-benar memanggil</b> {@code ModSounds.init()} dan {@code GunSounds.init()} yang asli, dalam urutan yang sama dengan game. {@code checkRegistration} (sisi kendaraan) melakukan hal serupa, benar-benar mendaftarkan 3 item dan 1 komponen yang ditambahkan di V4.3.6",
+    "<b>Gerbang itu punya kontrol negatif.</b> Sengaja mengembalikan duplikat ini ({@code handgun_fire}) membuat gerbang gagal. Jika tidak gagal, gerbang itu tidak mengukur pendaftaran dan tidak berarti apa-apa",
+    "<b>Pemeriksaan statis atas ke-13 modul juga ditambahkan.</b> Ia mencari ID registri yang sama yang ditulis di dua tempat. Namun, <b>4 modul ({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo}) tidak cocok dengan cara pemeriksaan ini membaca kode dan tidak tercakup</b> — ditampilkan sebagai “tidak tercakup”, tidak pernah dicampur dengan hijau"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Jangan pasang V4.3.6.</b> Ia tidak mau mulai. Ganti dengan 4.3.6.1 ini"
+   ],
+   "known_limitations": [
+    "<b>Saya belum melihat perbaikan ini berjalan di mesin sungguhan.</b> Pendaftaran diperiksa dengan benar-benar menjalankannya (87 suara, 26 item), tetapi mesin pengembangan ini tidak punya klien Minecraft, jadi saya belum melihat game menyala",
+    "Semua isi V4.3.6 (kemiringan ADS, suara per senjata, beban roket, kepemilikan) <b>masih ada</b>. Yang dihapus hanya 10 konstanta suara lama yang tidak dipakai lagi",
+    "Pemeriksaan duplikat statis hanya mencakup 9 dari 13 modul (lihat di atas)"
+   ]
+  },
+  {
+   "id": "v4.3.7",
+   "release": "V4.3.7",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Saat membidik senjata menutupi sasaran, dan magasin melompat keluar ke atas",
+   "summary": "Meluruskan senjata saat membidik di V4.3.6 <b>menaruh takik belakang di tengah layar</b>, dan ke-14 senjata menutupi <b>81–100 %</b> retikel. Penembak sungguhan menaruh sasaran <b>di atas pejera depan, melalui takik</b> — bukan di tengah logam. Selain itu, penyebab magasin <b>melompat keluar ke atas alih-alih jatuh</b> saat isi ulang (vanilla membalik Y posisi) sudah ditemukan, dan gerakan memasukkan dibangun ulang.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.7",
+    "sorakaze_boss": "4.3.7",
+    "sorakaze_deco": "4.3.7",
+    "sorakaze_fallout": "4.3.7",
+    "sorakaze_guns": "4.3.7",
+    "sorakaze_phone": "4.3.7",
+    "sorakaze_planarcadia": "4.3.7",
+    "sorakaze_power": "4.3.7",
+    "sorakaze_rail": "4.3.7",
+    "sorakaze_sapporo": "4.3.7",
+    "sorakaze_sky": "4.3.7",
+    "sorakaze_survival": "4.3.7",
+    "sorakaze_vehicles": "4.3.7"
+   },
+   "highlights": [
+    "<b>Saat membidik sasaran tertutup.</b> Menembakkan garis pandang sungguhan dari kamera menunjukkan ke-14 senjata menutupi tengah — sinar tengah mengenai senjata <b>0,19–0,66 blok di depan</b>, dan <b>81–100 %</b> cakram 2° di sekitar tengah adalah senjata. Itu karena di V4.3.6 saya menargetkan “menaruh takik belakang di tengah layar”. Takik belakang adalah <b>balok baja pejal</b>, jadi menaruh titik beratnya di tengah pasti menutupi",
+    "<b>Perbaikannya.</b> Seberapa jauh digeser tidak dikira-kira. Garis pandang ditembakkan ke pose yang dirilis, dan pencarian biner menemukan <b>penurunan terkecil</b> yang membebaskan cakram (0,048–0,087 blok, per senjata). Hasil: <b>tengah benar-benar bebas</b> dan tutupan cakram 0,0–0,7 %. Senjata sedikit lebih rendah, dan sasaran bertumpu di atas pejera depan",
+    "<b>Gerbang itu juga punya kontrol negatif.</b> Membatalkan penurunan mengembalikan pose V4.3.6, dan ke-14 senjata menjadi merah (terburuk 100 % tertutup)",
+    "<b>Magasin melompat keluar ke atas — persis seperti kata pemilik.</b> Mengikuti tinggi magasin di layar selama isi ulang, ia <b>naik dari 0,3945 saat diam ke 0,6853 blok</b> sebelum kembali ke dudukannya. Ia tidak jatuh keluar; ia <b>melompat keluar dari atas</b>",
+    "<b>Penyebabnya adalah tanda milik vanilla.</b> Di 26.2, {@code KeyframeAnimations.posVec(x, y, z)} mengembalikan <b>{@code (x, -y, z)}</b>, dikonfirmasi di bytecode ({@code fload_1; fneg}). Rig ini ditulis “+Y ke bawah”, sehingga pembalikan itu membuat <b>setiap kanal posisi terbalik</b> — sejak senjata pindah ke tulang di V4.3.2. Generator kini mengimbanginya",
+    "<b>“Jauh dari rasa memasukkan” juga bisa diukur.</b> Pada ruas terakhir sebelum terpasang, magasin bergerak <b>1,7–19,7 kali lebih banyak ke samping</b> daripada naiknya, dan turun <b>93–393 %</b> di bagian yang seharusnya naik. Itu bukan memasukkan; itu “menjatuhkannya, mengayunkannya ke samping, lalu membiarkannya tersedot di akhir”",
+    "<b>Dibangun ulang.</b> Tiga tahap: keluarkan → <b>sejajarkan tepat di bawah lubang magasin (x dan z keduanya 0, kemiringan 0)</b> → <b>lurus ke atas</b>. Goyangan samping kini <b>0,10–0,18 kali</b> kenaikan (ambang 0,34) dan gerak mundur <b>0,1–0,2 %</b> (ambang 2 %)",
+    "<b>Saat pertukaran juga diperbaiki.</b> Magasin ditukar saat tersembunyi dengan skala 1→0→1. Isi ulang pistol hanya 1,4 detik dan jendela itu 0,14 detik, sehingga satu verteks bergerak 0,164 blok dalam satu frame dan gerbang kontinuitas dengan tepat menjadi merah. Jendelanya diperlebar: <b>0,095</b>",
+    "<b>Kapasitas magasin SMG.</b> Dari tinggi magasin model 190 mm dan diameter <b>dasar selongsong</b> 9×19 sebesar 9,93 mm, magasin kotak dua baris memuat <b>36 butir</b>. Konfigurasinya <b>60</b> (<b>kelebihan 66 %</b>) — angka yang tidak muat di magasin yang terlihat. Kini 36",
+    "<b>Dengan hitungan yang sama pada ke-14 senjata, hanya ini yang melebihi</b> (senapan serbu 25 / muat 33, pistol genggam 12 / 21, karabin 10 / 34). Ditambahkan gerbang yang memeriksa ini setiap kali. Awalnya saya menghitung dengan <b>diameter peluru</b> dan bahkan senapan serbu keluar “melebihi”, padahal yang menentukan magasin adalah <b>diameter dasar selongsong</b> (5.56: peluru 5,6 mm, dasar selongsong 9,6 mm)",
+    "<b>Desain senapan runduk.</b> Dari 14 senjata, <b>hanya ini yang tidak punya satu pun penimpaan gaya</b>, sehingga ukuran polos kelasnya keluar apa adanya — tak ada yang membuatnya tampak seperti senapan presisi. Kini ia punya <b>teropong besar, menara elevasi dan angin, cincin pembesaran, laras beralur 12, rem moncong 6 lubang, bipod, dan bola pada tuas bolt</b> (1.014 → 1.050 kubus)",
+    "<b>Menara itu awalnya berlebihan dan dihentikan gerbang.</b> Menara tetap 4,3 unit dipasang di semua senjata, sehingga optik kecil pistol ikut ditumbuhi menara yang sama, dan gerbang model menjadi merah dengan “tampak seperti cerobong”. Kini <b>sebanding dengan radius tabung</b>",
+    "<b>Kerusakan blok peluncur roket dikurangi 25 %.</b> <b>Volume</b> yang hancur sebanding dengan pangkat tiga daya ledak, jadi faktornya bukan 0,75 melainkan <b>0,75^(1/3) = 0,9086</b>. 36,0 → <b>32,71</b>. Memakai 0,75 langsung akan membuat volume 0,42× = berkurang 58 %, lebih dari dua kali yang diminta",
+    "<b>Sebuah generator mengaku menulis berkas padahal tidak.</b> {@code gen_gun_model_java.py} merakit tabel pembagi gaya dan <b>tidak pernah menuliskannya</b>; hanya baris terakhirnya yang melaporkan “wrote dispatcher GunGeometry.java”. Tabel jumlah kubus sudah tergelincir menjadi perawatan tangan, dan saat model dibangun ulang kali ini, 10 senjata menjadi merah dengan “kurang satu tulang” (tidak ada yang kurang — tabelnya usang). Kini ia benar-benar menulis berkasnya"
+   ],
+   "balance_changes": [
+    "SMG: magasin 60 → <b>36</b> (yang muat di magasin model)",
+    "Peluncur roket: daya ledak 36,0 → <b>32,708</b> (volume hancur −25 %). Kerusakan hantaman langsung 960 tidak berubah",
+    "Senapan runduk: 1.014 → 1.050 kubus. <b>Tidak satu pun angka performa berubah</b> (hanya tampilan)"
+   ],
+   "warnings": [
+    "<b>Letak senjata saat membidik berubah.</b> Takik belakang tidak lagi di tengah layar, melainkan <b>sedikit di bawah retikel</b>. Ini mengikuti cara membidik sungguhan (sasaran bertumpu di atas pejera depan); tanpanya, senjata menutupi sasaran"
+   ],
+   "known_limitations": [
+    "<b>Belum ada yang dilihat di layar sungguhan.</b> Penutupan diukur dengan garis pandang yang ditembakkan dan lintasan magasin dengan offset tulang serta tinggi yang digambar, tetapi mesin pengembangan ini tidak punya klien Minecraft, jadi belum ada yang diperiksa dengan mata",
+    "<b>Saya membaca “ukuran magasin” sebagai kapasitas.</b> Jika maksudnya “besar magasin pada model”, perbaikannya berlawanan arah (memanjangkan magasin agar muat 60). Mohon sampaikan jika itu maksudnya",
+    "Gerbang kapasitas <b>tidak bisa membaca service_pistol</b> (JSON definisinya tidak punya entri magasin dan jatuh ke bawaan kelas). Ia menampilkan “NOT READ” alih-alih mencampurnya dengan hijau",
+    "V4.4.0Update.md (Lapangan Udara Abu, jalur taksi utara, Hangar Satu) <b>belum masuk</b>. Rilis ini mendahulukan perbaikan mogok saat mulai dan lima laporan ini"
+   ]
+  },
+  {
+   "id": "v4.3.8",
+   "release": "V4.3.8",
+   "date": "2026-09-10",
+   "type": "release",
+   "title": "Suara tembakan tak punya inti — hanya 0,0–2,6 % di bawah 80 Hz. Dan Cherry dimulai",
+   "summary": "“Secara keseluruhan terdengar seperti mainan” sudah diukur. <b>Energi di bawah 80 Hz hanya 0,0–2,6 %</b> (pistol 0,0 %) — inti yang terasa di tubuh hilang sama sekali. Ditambah lagi, ke-14 senjata memuncak tepat di 0,720, sehingga kaliber .50 dan 9mm terdengar sama kerasnya. Batas bawah pemeriksaan hanya “0,5 % di bawah 200 Hz”, dan itu meloloskannya begitu saja. Selain itu, roket turun 25 % lagi, dan pekerjaan pada merek generasi berikutnya <b>Cherry</b> dimulai.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.3.8",
+    "sorakaze_boss": "4.3.8",
+    "sorakaze_deco": "4.3.8",
+    "sorakaze_fallout": "4.3.8",
+    "sorakaze_guns": "4.3.8",
+    "sorakaze_phone": "4.3.8",
+    "sorakaze_planarcadia": "4.3.8",
+    "sorakaze_power": "4.3.8",
+    "sorakaze_rail": "4.3.8",
+    "sorakaze_sapporo": "4.3.8",
+    "sorakaze_sky": "4.3.8",
+    "sorakaze_survival": "4.3.8",
+    "sorakaze_vehicles": "4.3.8"
+   },
+   "highlights": [
+    "<b>Kenapa terdengar seperti mainan bermuara pada satu hal:</b> tidak ada nada rendah. Terukur di bawah 80 Hz: serbu 0,8 % / pistol genggam <b>0,0 %</b> / runduk 2,5 % / senapan tabur 2,6 %. Gas moncong tembakan sungguhan menghasilkan <b>denyut tekanan frekuensi rendah yang terasa di tubuh</b>. Tanpanya, yang tersisa hanya “ctak” tajam tanpa inti",
+    "<b>Badan nada rendah ditambahkan.</b> Dua sinus yang meluruh (nada dasar + harmonik kedua), dengan frekuensi <b>ditentukan oleh isian</b> (makin besar massa gas yang mengembang, makin rendah — 26–62 Hz). Di bawah 80 Hz kini <b>7,3–28,8 %</b>. Senjata berisian besar punya inti lebih besar, <b>3,19×</b> antara yang terbesar dan terkecil",
+    "<b>Semua senjata sama kerasnya.</b> Ke-14 memuncak tepat di 0,720 — kaliber .50 dan 9mm pada tingkat yang sama. Kekerasan kini mengikuti energi moncong: pistol 0,518 / senapan 0,720, selisih <b>+2,9 dB</b>",
+    "<b>Ekornya juga terlalu pendek.</b> Hanya 0,45–1,01 detik — berbunyi di tempat, lalu hilang. Menambahkan suara yang dipantulkan medan menjadikannya <b>0,43–1,33 detik</b>. Makin besar isian, makin jauh terbawa dan makin lama kembali",
+    "<b>Batas bawah pemeriksaan dinaikkan.</b> Ia hanya melihat “0,5 % di bawah 200 Hz”, jadi <b>suara mainan bisa memenuhi 0,5 % dan dirilis</b>. Kini ia mensyaratkan 12 % di bawah 200 Hz dan 6 % di bawah 80 Hz, dan juga mengukur bahwa <b>isian lebih besar punya inti lebih besar</b> (minimal 1,8×) serta bahwa <b>kekerasan berbeda antarsenjata</b> (minimal 1,25×)",
+    "<b>Peluncur roket turun 25 % lagi.</b> 32,708 → <b>29,717</b>. Dari kedua pemotongan, volume yang hancur adalah <b>56 %</b> dari saat 36,0",
+    "<b>Menurunkan daya saja tidak mengurangi beban.</b> Di 26.2, bahkan dengan batas, <b>sinar terus berjalan sampai habis</b>, sehingga jumlah panggilan {@code getBlockState} — beban itu sendiri — tidak turun sedikit pun. Di luar radius batas, ledakan kini <b>mengembalikan ketahanan ledak yang sangat besar sehingga sinar berhenti di situ</b>, dan roket genggam untuk pertama kalinya mendapat batas (radius 14). Kerja yang dijalankan <b>dibatasi oleh radius, bukan oleh daya ledak</b>",
+    "<b>Cherry — pekerjaan pada merek generasi berikutnya dimulai.</b> Dinamai dari bunga sakura, ia berada di atas Alpha. Logonya adalah <b>sakura lima kelopak</b> yang dibangun dari geometri — <b>takik</b> di ujung tiap kelopak (satu-satunya ciri yang berkata sakura, bukan plum), <b>pinggang</b> ke arah tengah, benang sari dan kepala sari. Ia cocok sempurna dengan dirinya sendiri di bawah rotasi 72°",
+    "<b>Logonya digambar tiga kali dan diperbaiki dengan benar-benar melihat.</b> Pertama kali kelopaknya bertumpuk menjadi gumpalan; kedua kali bahunya bersilangan dan meninggalkan sambungan bersudut. Tidak pernah diloloskan hanya dengan angka — setiap versi dirender dan diperiksa",
+    "<b>Bunga mekar sambil berputar.</b> Saat halaman dibuka, lima kelopak terbuka satu per satu dari tengah, masing-masing tumbuh sambil berputar ke dudukan 72° miliknya. Hanya CSS dan hanya sekali (mengulangnya akan mengubah mekar menjadi penanda memuat). Dengan {@code prefers-reduced-motion} ia mulai dalam keadaan sudah mekar",
+    "<b>Aurora Corvus berganti nama menjadi Corvus.</b> Hanya nama tampilan — nama repositori dan URL publik tidak berubah (mengubahnya akan membuat setiap peluncur yang sudah beredar kena 404)",
+    "<b>Warnanya beralih dari aurora ke biru langit Apple.</b> Hijau dan ungu dibuang, diganti nada langit berporos #5AC8FA. Teks dan tautan mencapai <b>10,5:1–13,3:1</b> di atas latar gelap (WCAG AAA). Latar aplikasi Corvus pindah ke keluarga yang sama (dengan kecerahan tiga warna aslinya)",
+    "<b>Pengalih tema putih/hitam dihapus.</b> Tombol pengalih, penyimpanannya, kode migrasi, dan 8 blok CSS yang tak lagi terjangkau <b>dihapus</b>. Menyisakan kode tak terpakai “untuk jaga-jaga” membuat pembaca berikutnya mengira masih ada dua tema",
+    "<b>Kini ada tab Store.</b> Mega menunya menampilkan <b>Alpha / Aureum / Cherry</b>. Alpha <b>belum pernah punya halaman merek</b> — ada cara mengunduhnya, tetapi tidak ada satu halaman pun yang mengatakan apa itu Alpha, sehingga dari ketiganya, satu tidak punya tujuan"
+   ],
+   "balance_changes": [
+    "Peluncur roket: daya ledak 32,708 → <b>29,717</b> (volume hancur 56 % dari 36,0)",
+    "Peluncur roket: roket genggam juga mendapat batas (radius 14 blok / 4.000 blok). Di luar batas, sinar berhenti",
+    "Suara tembakan: puncak pistol dan SMG turun dari 0,720 ke 0,518–0,552 (senapan terdengar relatif lebih keras)"
+   ],
+   "warnings": [
+    "<b>Pengalih tema sudah tidak ada.</b> Jika Anda memilih tema putih, yang tersisa hanya yang gelap",
+    "<b>Nama tampilan situs menjadi Corvus.</b> URL tidak berubah"
+   ],
+   "known_limitations": [
+    "<b>Saya belum mendengarkan satu suara pun.</b> Nada rendah, rentang kekerasan, panjang, serangan, dan tumpang tindih semuanya diukur secara numerik, tetapi mesin pengembangan ini tidak punya klien Minecraft, jadi belum ada yang diperiksa dengan telinga",
+    "<b>Cherry baru sebatas merek.</b> Belum ada satu baris mod pun yang ditulis. Halamannya juga menyatakan itu, dalam ke-13 bahasa",
+    "<b>Aplikasi Corvus belum dibangun ulang.</b> Perubahan warna sudah ada di sumber, tetapi unduhan peluncur harus dirilis terpisah sebagai versinya sendiri",
+    "V4.4.0Update.md (Lapangan Udara Abu) <b>belum masuk</b>. Rilis ini mendahulukan suara, roket, Cherry, dan situs"
+   ]
   }
  ],
  "roadmap": {

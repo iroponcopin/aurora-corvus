@@ -15,6 +15,10 @@ BUILD_SCRIPTS = [
     # page's <head> links to. First so a flag/language mismatch stops the
     # build before 143 pages are written against it.
     "build_lang_assets.py",
+    # V4.3.8: writes assets/img/cherry/blossom.svg and assets/css/cherry-tokens.css.
+    # Must precede build_cherry.py, which inlines that SVG so the five petals can
+    # be animated one at a time.
+    "gen_cherry_brand.py",
     "build_recipe_overlays.py",
     "build_home.py",
     "build_download.py",
@@ -23,6 +27,12 @@ BUILD_SCRIPTS = [
     # and this page's download CTA is a companion to that page's Aureum
     # section, not to anything below.
     "build_aureum.py",
+    # V4.3.8: Cherry's brand page. It inlines assets/img/cherry/blossom.svg,
+    # which gen_cherry_brand.py (first in this list) writes.
+    "build_cherry.py",
+    # 2026-09-10: Alpha finally gets a brand page of its own, so the Store
+    # mega-menu has three real destinations instead of two.
+    "build_alpha.py",
     "build_changelog.py",
     "build_recipes.py",
     "build_guide.py",

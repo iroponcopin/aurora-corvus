@@ -6,16 +6,16 @@
      iPhones; every edge-anchored surface (header, drawer, main, footer,
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Download | Aurora Corvus</title>
-<meta name="description" content="Download the Alpha mod pack (V4.3.7, all 13 mods) as a ZIP — with file size, SHA-256, and install instructions.">
-<meta property="og:title" content="Download | Aurora Corvus">
-<meta property="og:description" content="Download the Alpha mod pack (V4.3.7, all 13 mods) as a ZIP — with file size, SHA-256, and install instructions.">
+<title>Download | Corvus</title>
+<meta name="description" content="Download the Alpha mod pack (V4.3.8, all 13 mods) as a ZIP — with file size, SHA-256, and install instructions.">
+<meta property="og:title" content="Download | Corvus">
+<meta property="og:description" content="Download the Alpha mod pack (V4.3.8, all 13 mods) as a ZIP — with file size, SHA-256, and install instructions.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Aurora Corvus">
+<meta property="og:site_name" content="Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Aurora Corvus">
+<meta property="og:image:alt" content="Corvus">
 <meta name="twitter:card" content="summary_large_image">
     <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/download/">
 <link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/download/">
@@ -58,47 +58,16 @@
      and a hand-maintained one never share a build step. -->
 <link rel="stylesheet" href="../../assets/css/lang-flags.css">
 <script>
-/* Boot: tag JS availability for the motion layer, and apply the persisted
-   theme before first paint. Dark is the flagship default; "light" is the
-   secondary theme (see style.css + main.js theme toggle).
+/* Boot: tag JS availability for the motion layer.
 
-   THE KEY NAME IS A CONTRACT with main.js. It was broken once: the site was
-   renamed glimpse-alpha-wiki -> aurora-corvus, this script was updated and
-   the toggle in main.js was not, so the toggle wrote one key and this read
-   another. Nothing errored — a visitor on light simply got a dark first
-   paint on every page load, i.e. exactly the flash this script exists to
-   prevent. Change one side and you must change the other; the constants are
-   named on both sides so a grep finds them together.
-
-   The legacy key is read once as a fallback and then migrated, because
-   anyone currently on light has their choice stored under the OLD name and
-   silently resetting them to the default would be a second bug on top of
-   the first. It is REMOVED after a successful write rather than left
-   behind: two keys holding a theme is how this went wrong in the first
-   place, and once the value is under the new name nothing reads the old
-   one. The remove only runs if the write did not throw, so a storage
-   failure can never drop the preference. */
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
 (function () {
   var d = document.documentElement;
   d.classList.add("js");
-  var KEY = "aurora-corvus-theme";
-  var LEGACY_KEY = "glimpse-alpha-wiki-theme";
-  var t = "dark";
-  try {
-    var s = localStorage.getItem(KEY);
-    if (s !== "light" && s !== "dark") {
-      var legacy = localStorage.getItem(LEGACY_KEY);
-      if (legacy === "light" || legacy === "dark") {
-        s = legacy;
-        try {
-          localStorage.setItem(KEY, s);
-          localStorage.removeItem(LEGACY_KEY);
-        } catch (e) { /* read-only storage: still honour the value this load */ }
-      }
-    }
-    if (s === "light" || s === "dark") t = s;
-  } catch (e) { /* storage unavailable: stay dark */ }
-  d.setAttribute("data-theme", t);
+  d.setAttribute("data-theme", "dark");
 })();
 </script>
 </head>
@@ -110,7 +79,7 @@
   <div class="site-header__inner">
     <a class="brand" href="../">
       <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__text">Aurora Corvus</span>
+      <span class="brand__text">Corvus</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu">
       <span></span><span></span><span></span>
@@ -118,7 +87,25 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Início</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../aureum/">Aureum</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-store">
+            <span>Store</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-store" role="group" aria-label="Store">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Store</p>
+                <p class="mega-panel__lede">Three mod lines: Alpha, the suite that ships today; Aureum, its own separately-versioned build; and Cherry, the tier above.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
+            <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
+            <li><a class="mega-link" href="../cherry/"><span class="mega-link__label">Cherry</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega is-current" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -200,7 +187,6 @@
         <li><a href="../../tr/download/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
         </ul>
       </div>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema">🌓</button>
     </nav>
   </div>
 </header>
@@ -214,25 +200,25 @@
 
 <div class="card" style="margin-bottom:20px;">
   <div class="badge-row">
-    <span class="type-badge type-release">Versão 4.3.7</span>
+    <span class="type-badge type-release">Versão 4.3.8</span>
     <span class="timeline-entry__release">2026-09-10</span>
   </div>
-  <h3 style="margin-top:0">Alpha_MODs_v4.3.7+mc26.2.zip</h3>
+  <h3 style="margin-top:0">Alpha_MODs_v4.3.8+mc26.2.zip</h3>
   <table style="width:100%; border-collapse:collapse;">
     <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">Tamanho do arquivo</td>
-        <td><code>48.3 MB</code> (50,610,585 bytes)</td></tr>
+        <td><code>48.3 MB</code> (50,657,056 bytes)</td></tr>
     <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted); vertical-align:top">SHA-256</td>
-        <td style="word-break:break-all"><code>7793a768751d94adbaafd2acff5fe24518d65fec5e863f8cdf15c0daca958335</code></td></tr>
+        <td style="word-break:break-all"><code>119dc993e68f5313d5fd4791325fddf7a4b52fb091a2cb3b26e3e156c7994317</code></td></tr>
   </table>
   <p style="margin-top:16px">
-    <a class="btn" href="../../downloads/Alpha_MODs_v4.3.7+mc26.2.zip" download>Baixar</a>
+    <a class="btn" href="../../downloads/Alpha_MODs_v4.3.8+mc26.2.zip" download>Baixar</a>
   </p>
   <p class="callout callout--info">Para administradores de servidor: extraia os arquivos jar do ZIP direto na sua pasta mods. Só o MOD de Sapporo precisa, além disso, que você copie o arquivo sapporo_mode_a.spro que vem junto para a pasta config/sorakaze_sapporo/data/ do servidor (veja também “Como instalar” abaixo).</p>
   <p class="callout callout--warn">O MOD de Sapporo (sorakaze-sapporo) foi distribuído pela primeira vez na V2.2.0. É um mundo de geração urbana baseado no terreno e nos prédios reais de Sapporo, no Japão (a altura dos prédios é, por ora, uma estimativa, à espera dos dados 3D reais; será atualizada assim que eles estiverem disponíveis).</p>
 </div>
 
-<h2>O que mudou na V4.3.7</h2>
-<p>V4.3.6 で「構えたとき銃がまっすぐになる」ようにしたところ、&lt;b&gt;照門を画面中心へ乗せて&lt;/b&gt;しまい、14 挺すべてがレティクルを &lt;b&gt;81〜100%&lt;/b&gt; 塞いでいました。実物の射手は塊の真ん中ではなく&lt;b&gt;切り欠きを通して照星の上に&lt;/b&gt;標的を乗せます。あわせて、装填で弾倉が&lt;b&gt;下へ抜けず上へ飛び出して&lt;/b&gt;いた原因(バニラが位置の Y を反転していた)を突き止め、差し込みの動きを作り直しました。
+<h2>O que mudou na V4.3.8</h2>
+<p>“No geral, parecem brinquedos” foi medido. &lt;b&gt;A energia abaixo de 80 Hz era de 0,0 a 2,6 %&lt;/b&gt; (pistola 0,0 %) — o núcleo que se sente no corpo faltava por completo. Além disso, as 14 armas tinham pico de exatamente 0,720, então um calibre .50 e uma 9mm soavam igualmente altos. O piso da verificação era só “0,5 % abaixo de 200 Hz”, e isso deixava passar direto. Junto a isso, o foguete cai mais 25 %, e começa o trabalho na marca de nova geração &lt;b&gt;Cherry&lt;/b&gt;.
   <a href="../changelog/">Ver o histórico de atualizações →</a>
 </p>
 
@@ -241,7 +227,7 @@
   <a href="../guide/">Ver o guia de instalação →</a>
 </p>
 
-<p class="callout callout--info">Esta página distribui sempre a versão atual (V4.3.7). Se você precisar de uma versão anterior, peça diretamente ao administrador do seu servidor.</p>
+<p class="callout callout--info">Esta página distribui sempre a versão atual (V4.3.8). Se você precisar de uma versão anterior, peça diretamente ao administrador do seu servidor.</p>
 
 <h2>Corvus</h2>
 <p>O Corvus é um aplicativo de desktop que mantém o seu pacote de MODs Alpha atualizado automaticamente, conferindo cada download com este Wiki por SHA-256 — o Wiki continua sendo a única fonte em que ele confia.</p>
@@ -335,7 +321,7 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Aurora Corvus</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Corvus</p>
     <p>Referência não oficial dos MODs do Servidor Sorakazekarasu</p>
     <p class="site-footer__note">Este site é uma referência não oficial. A partir da V2.2.0, os arquivos (jars) dos MODs são distribuídos diretamente pela página &quot;Download&quot; deste site. As receitas e os valores podem estar diferentes dos que você encontra no jogo, dependendo da versão instalada e dos ajustes de configuração feitos no servidor. Minecraft é uma marca da Mojang Studios. Este site e os MODs distribuídos aqui não são oficiais e não têm vínculo com a Mojang Studios nem com a Microsoft.</p>
   </div>

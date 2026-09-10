@@ -6,16 +6,16 @@
      iPhones; every edge-anchored surface (header, drawer, main, footer,
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>更新履歴 | Aurora Corvus</title>
+<title>更新履歴 | Corvus</title>
 <meta name="description" content="Alpha (旧 Glimpse Alpha、さらにその前は Sorakaze) MOD パックの全アップデート履歴。初版から現在までの変更点・注意点をまとめています。">
-<meta property="og:title" content="更新履歴 | Aurora Corvus">
+<meta property="og:title" content="更新履歴 | Corvus">
 <meta property="og:description" content="Alpha (旧 Glimpse Alpha、さらにその前は Sorakaze) MOD パックの全アップデート履歴。初版から現在までの変更点・注意点をまとめています。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Aurora Corvus">
+<meta property="og:site_name" content="Corvus">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Aurora Corvus">
+<meta property="og:image:alt" content="Corvus">
 <meta name="twitter:card" content="summary_large_image">
     <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/changelog/">
 <link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/changelog/">
@@ -58,47 +58,16 @@
      and a hand-maintained one never share a build step. -->
 <link rel="stylesheet" href="../assets/css/lang-flags.css">
 <script>
-/* Boot: tag JS availability for the motion layer, and apply the persisted
-   theme before first paint. Dark is the flagship default; "light" is the
-   secondary theme (see style.css + main.js theme toggle).
+/* Boot: tag JS availability for the motion layer.
 
-   THE KEY NAME IS A CONTRACT with main.js. It was broken once: the site was
-   renamed glimpse-alpha-wiki -> aurora-corvus, this script was updated and
-   the toggle in main.js was not, so the toggle wrote one key and this read
-   another. Nothing errored — a visitor on light simply got a dark first
-   paint on every page load, i.e. exactly the flash this script exists to
-   prevent. Change one side and you must change the other; the constants are
-   named on both sides so a grep finds them together.
-
-   The legacy key is read once as a fallback and then migrated, because
-   anyone currently on light has their choice stored under the OLD name and
-   silently resetting them to the default would be a second bug on top of
-   the first. It is REMOVED after a successful write rather than left
-   behind: two keys holding a theme is how this went wrong in the first
-   place, and once the value is under the new name nothing reads the old
-   one. The remove only runs if the write did not throw, so a storage
-   failure can never drop the preference. */
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
 (function () {
   var d = document.documentElement;
   d.classList.add("js");
-  var KEY = "aurora-corvus-theme";
-  var LEGACY_KEY = "glimpse-alpha-wiki-theme";
-  var t = "dark";
-  try {
-    var s = localStorage.getItem(KEY);
-    if (s !== "light" && s !== "dark") {
-      var legacy = localStorage.getItem(LEGACY_KEY);
-      if (legacy === "light" || legacy === "dark") {
-        s = legacy;
-        try {
-          localStorage.setItem(KEY, s);
-          localStorage.removeItem(LEGACY_KEY);
-        } catch (e) { /* read-only storage: still honour the value this load */ }
-      }
-    }
-    if (s === "light" || s === "dark") t = s;
-  } catch (e) { /* storage unavailable: stay dark */ }
-  d.setAttribute("data-theme", t);
+  d.setAttribute("data-theme", "dark");
 })();
 </script>
 <link rel="stylesheet" href="../assets/css/changelog.css">
@@ -112,7 +81,7 @@
   <div class="site-header__inner">
     <a class="brand" href="../">
       <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__text">Aurora Corvus</span>
+      <span class="brand__text">Corvus</span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="メニューを開く">
       <span></span><span></span><span></span>
@@ -120,7 +89,25 @@
     <nav class="site-nav" id="siteNav">
       <ul class="nav-list">
         <li class="nav-item"><a class="nav-link nav-link--solo" href="../">ホーム</a></li>
-        <li class="nav-item"><a class="nav-link nav-link--solo" href="../aureum/">Aureum</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-store">
+            <span>Store</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-store" role="group" aria-label="Store">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Store</p>
+                <p class="mega-panel__lede">Three mod lines: Alpha, the suite that ships today; Aureum, its own separately-versioned build; and Cherry, the tier above.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
+            <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
+            <li><a class="mega-link" href="../cherry/"><span class="mega-link__label">Cherry</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
         <li class="nav-item nav-item--mega">
           <button class="nav-link nav-link--mega" type="button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
@@ -202,7 +189,6 @@
         <li><a href="../tr/changelog/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
         </ul>
       </div>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="配色を切り替え" title="配色を切り替え">🌓</button>
     </nav>
   </div>
 </header>
@@ -228,8 +214,15 @@
   <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.3">
       <h2 class="cl__groupTitle">V4.3</h2>
-      <p class="cl__groupSummary">構えると銃で的が見えなかった件と、弾倉が上へ飛び出していた件</p>
+      <p class="cl__groupSummary">銃声に芯が無かった ―― 80Hz 以下が 0.0〜2.6% しかありませんでした。そして Cherry を始めます</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.8">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-8">
+          <h3 class="cl__version">V4.3.8</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-10</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-v4-3-8" hidden><p class="cl__entryTitle">銃声に芯が無かった ―― 80Hz 以下が 0.0〜2.6% しかありませんでした。そして Cherry を始めます</p><p class="cl__lede">「全体的におもちゃの様な音」を実測しました。<strong>80 Hz 以下のエネルギーが 0.0〜2.6%</strong>(拳銃は 0.0%)しかなく、体で感じる芯がまるごと欠けていました。しかも 14 挺すべてがピーク 0.720 ちょうどで、.50 口径と 9mm が同じ大きさで鳴っていました。検査の下限が「200 Hz 以下 0.5%」しかなく、これを素通りさせていたのが原因です。あわせてロケットをもう 25% 下げ、次世代ブランド <strong>Cherry</strong> に着手しました。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(14)</span></h4><ul class="cl__list"><li><strong>おもちゃに聞こえた理由は 1 つに絞れました。</strong>低域が無いことです。実測で 80 Hz 以下は assault 0.8% / handgun <strong>0.0%</strong> / sniper 2.5% / shotgun 2.6%。実銃の発砲は銃口から吹き出したガスが<strong>体で感じる低周波の圧力パルス</strong>を作ります。それが無ければ、鋭いだけで芯の無い「パチン」です</li><li><strong>低域の胴を足しました。</strong>減衰する正弦 2 本(基音 + 第 2 高調波)で、周波数は<strong>装薬で決まります</strong>(膨張するガスの塊が大きいほど低い、26〜62 Hz)。結果、80 Hz 以下は <strong>7.3〜28.8%</strong> に。装薬の大きい銃ほど芯も大きく、最大 / 最小で <strong>3.19 倍</strong>の差が付きました</li><li><strong>全挺が同じ音量でした。</strong>14 挺ともピーク 0.720 ちょうど —— .50 口径と 9mm が同じ大きさで鳴っていたのです。いまは銃口エネルギーで決まり、拳銃 0.518 / 小銃 0.720 の <strong>+2.9 dB</strong> の差が付きます</li><li><strong>尾も短すぎました。</strong>0.45〜1.01 秒しかなく、その場で鳴って終わっていました。地形から返る音を足して <strong>0.43〜1.33 秒</strong>に。装薬が大きいほど遠くまで届いて長く返ります</li><li><strong>検査の下限を上げました。</strong>これまで「200 Hz 以下 0.5%」しか見ておらず、<strong>0.5% を満たしたままおもちゃの音で出荷できた</strong>のです。いまは 200 Hz 以下 12%・80 Hz 以下 6% に加えて、<strong>装薬の大きい銃ほど芯が大きいこと</strong>(1.8 倍以上)と<strong>音量が挺ごとに違うこと</strong>(1.25 倍以上)を測ります</li><li><strong>ロケットランチャーをさらに 25% 下げました。</strong>32.708 → <strong>29.717</strong>。2 回合わせて壊れる体積は 36.0 のときの <strong>56%</strong> です</li><li><strong>負荷は威力を下げるだけでは足りません。</strong>26.2 の爆発は上限を掛けても<strong>レイが最後まで走り続ける</strong>ので、<code>getBlockState</code> の回数 —— 負荷そのもの —— は 1 ミリも減りません。上限半径の外で<strong>大きな耐爆値を返してレイをその場で止める</strong>ようにし、手持ちロケットにも初めて上限(半径 14)を入れました。走る量が<strong>爆発力ではなく半径で頭打ち</strong>になります</li><li><strong>Cherry —— 次世代ブランドに着手しました。</strong>桜の名を持つ、Alpha の上位に置くブランドです。ロゴは<strong>五弁の桜</strong>を幾何から構成しました —— 花弁の先の<strong>切れ込み</strong>(梅ではなく桜だと分かる唯一の特徴)、中心へ向かう<strong>くびれ</strong>、雄しべと葯。72 度の回転で完全に一致します</li><li><strong>ロゴは 3 回描き出して、実際に見て直しました。</strong>1 回目は花弁が重なって塊になり、2 回目は肩が交差して角ばった継ぎ目が出ました。数字だけで通さず、毎回描いて確かめています</li><li><strong>桜が回転しながら咲きます。</strong>ページを開くと 5 枚が中心から順に開き、それぞれ 72 度の定位置へ回りながら育ちます。CSS だけで、1 回だけ(繰り返すと開花ではなく読み込み表示になります)。<code>prefers-reduced-motion</code> では最初から咲いた状態です</li><li><strong>Aurora Corvus を Corvus に改名しました。</strong>表示名だけです —— リポジトリ名と公開 URL は変えていません(変えると配布済みランチャーの取得先が 404 になります)</li><li><strong>色をオーロラから Apple のスカイブルーへ。</strong>緑と紫を落とし、#5AC8FA を軸にした空色に。本文・リンクとも暗い地に対して <strong>10.5:1〜13.3:1</strong>(WCAG AAA)です。Corvus アプリの背景も同じ一族へ揃えました(明度は元の 3 色に合わせてあります)</li><li><strong>白と黒のテーマ切り替えを廃止しました。</strong>トグル・保存・移行処理・到達しなくなった CSS 8 ブロックを<strong>削除</strong>しました。使われないコードを「念のため」残すと、次に読む人がまだ 2 テーマあるものとして扱います</li><li><strong>Store タブを作りました。</strong>メガメニューに <strong>Alpha / Aureum / Cherry</strong> の 3 つが並びます。Alpha は<strong>これまでブランドのページを持っていませんでした</strong> —— ダウンロード導線はあっても「Alpha とは何か」の 1 枚が無く、3 つを並べようにも 1 つだけ行き先がありませんでした</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">バランス調整 <span>(3)</span></h4><ul class="cl__list"><li>ロケットランチャー: 爆発力 32.708 → <strong>29.717</strong>(壊れる体積は 36.0 比 56%)</li><li>ロケットランチャー: 手持ちにも上限を新設(半径 14 ブロック / 4,000 ブロック)。上限の外はレイが止まります</li><li>銃声: 拳銃・SMG のピークが 0.720 → 0.518〜0.552 に下がります(相対的に小銃が大きく聞こえます)</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li><strong>テーマ切り替えが無くなります。</strong>白テーマを選んでいた場合、暗いほうだけになります</li><li><strong>サイトの表示名が Corvus になります。</strong>URL は変わりません</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(4)</span></h4><ul class="cl__list"><li><strong>音は 1 つも聴いていません。</strong>低域・音量差・長さ・立ち上がり・重なりはすべて数値で測ってありますが、この開発機に Minecraft のクライアントが無いので、耳で確かめてはいません</li><li><strong>Cherry はブランドだけです。</strong>MOD は 1 行も書いていません。ページにもその旨を 13 言語すべてで書いてあります</li><li><strong>Corvus アプリは再ビルドしていません。</strong>配色の変更はソースに入れましたが、ランチャーの配布物は別バージョンで別に出す必要があります</li><li>V4.4.0Update.md(灰飛行場)は<strong>まだ入っていません</strong>。今回は音・ロケット・Cherry・サイトを先に出しました</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.7">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-7">
           <h3 class="cl__version">V4.3.7</h3>
@@ -279,7 +272,7 @@
         </button>
         <div class="cl__detail" id="cl-v4-3-3-3" hidden><p class="cl__entryTitle">銃の姿勢が毎フレーム積み上がっていた ―― 根しか rest へ戻していなかった</p><p class="cl__lede">銃が<strong>手に持つと見えず、落とすと空に散らばっていた</strong>原因を特定しました。姿勢を rest へ戻す処理が<strong>根のボーンしか戻しておらず</strong>、動きを付けている<strong>子ボーンの変換が毎フレーム積み上がって</strong>いました。1 フレームあたり 0.36〜0.55 ブロック。約 5 秒で 36〜55 ブロック彼方へ飛びます。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(5)</span></h4><ul class="cl__list"><li><strong><code>ModelPart.resetPose()</code> は、そのパートだけを戻します。</strong>子ボーンには触れません —— 26.2 のバイトコードに children / forEach への参照が<strong>1 つもない</strong>ことを確認しました。動きを付けるのは子(反動・揺れ・遊底・弾倉・撃鉄)なので、根だけ戻しても意味がありませんでした</li><li><strong>直し方は木の全体を戻すことです。</strong><code>root.getAllParts().forEach(ModelPart::resetPose)</code></li><li><strong>なぜ 4 版も見つからなかったか。</strong>積み上がりは 2 フレーム目から始まるので、<strong>最初のフレームだけは常に正しい</strong>。静止画を 1 枚測る検査は、この欠陥を必ず緑で通します。位置・大きさ・外接箱・テクスチャ・描画呼び出しを実測してもすべて正常に見えたのはこのためです</li><li><strong>切り分けは二分探索で行いました。</strong>銃と同じ collector・同じ呼び出し形で、確実に見えるはずの立方体も描かせたところ<strong>立方体は見えた</strong> —— 描画経路は生きており、原因は模型・姿勢の側だと確定しました</li><li><strong>門を作り直しました。</strong>子ボーンを故意にずらしてから戻し、箱が rest に一致することを測ります。旧コードでは <strong>14/14 が赤</strong>(ずれ 0.36〜0.55 ブロック)になります</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(2)</span></h4><ul class="cl__list cl__list--warn"><li><strong>扉のちらつきが消えたかどうかは、まだ未確認です。</strong>V4.3.3.1 で同一平面の面 182 組を除去しましたが、それがあなたの見ているちらつきそのものかは、実際に見るまで分かりません</li><li><strong>「銃以外のアイテムもドロップで飛ぶ」件は、まだ測れていません。</strong>銃については上の積み上がりが原因と確定しましたが、他のアイテムについては何も測っていません</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">この時点で未実装・未確認だったこと <span>(1)</span></h4><ul class="cl__list"><li>この開発機に Minecraft クライアントはありません。<strong>実際に見て確認するまで「直った」とは書きません。</strong>今回の原因特定も、あなたの実機ログと画面が決め手でした</li></ul></div></div>
       </div>
-<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.2">
+<div class="cl__release" data-type="release" data-mods="backrooms boss deco guns planarcadia power rail sky survival vehicles" data-version="V4.3.3.2" hidden>
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-v4-3-3-2">
           <h3 class="cl__version">V4.3.3.2</h3>
           <span class="cl__right"><span class="cl__date">2026-09-09</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
@@ -1033,7 +1026,7 @@
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Aurora Corvus</p>
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Corvus</p>
     <p>そらかぜからす鯖 導入 MOD 非公式リファレンス</p>
     <p class="site-footer__note">本サイトは非公式のリファレンスです。MOD 本体(jar ファイル)は V2.2.0 からこの「ダウンロード」ページで直接配布しています。レシピ・数値は導入バージョンやサーバー側の config 調整により実際と異なる場合があります。 Minecraft は Mojang Studios の商標です。本サイトおよびここで配布している MOD は公式のものではなく、Mojang Studios・Microsoft とは関係ありません。</p>
   </div>

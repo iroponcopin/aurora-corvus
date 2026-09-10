@@ -7,55 +7,107 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "構えると銃で的が見えなかった件と、弾倉が上へ飛び出していた件",
+   "summary": "Os tiros não tinham núcleo — só 0,0 a 2,6 % abaixo de 80 Hz. E Cherry começa",
    "releases": [
     {
-     "version": "V4.3.7",
+     "version": "V4.3.8",
      "date": "2026-09-10",
      "type": "release",
-     "title": "構えると銃で的が見えなかった件と、弾倉が上へ飛び出していた件",
-     "summary": "V4.3.6 で「構えたとき銃がまっすぐになる」ようにしたところ、<b>照門を画面中心へ乗せて</b>しまい、14 挺すべてがレティクルを <b>81〜100%</b> 塞いでいました。実物の射手は塊の真ん中ではなく<b>切り欠きを通して照星の上に</b>標的を乗せます。あわせて、装填で弾倉が<b>下へ抜けず上へ飛び出して</b>いた原因(バニラが位置の Y を反転していた)を突き止め、差し込みの動きを作り直しました。",
+     "title": "Os tiros não tinham núcleo — só 0,0 a 2,6 % abaixo de 80 Hz. E Cherry começa",
+     "summary": "“No geral, parecem brinquedos” foi medido. <b>A energia abaixo de 80 Hz era de 0,0 a 2,6 %</b> (pistola 0,0 %) — o núcleo que se sente no corpo faltava por completo. Além disso, as 14 armas tinham pico de exatamente 0,720, então um calibre .50 e uma 9mm soavam igualmente altos. O piso da verificação era só “0,5 % abaixo de 200 Hz”, e isso deixava passar direto. Junto a isso, o foguete cai mais 25 %, e começa o trabalho na marca de nova geração <b>Cherry</b>.",
      "sections": [
       {
        "title": "O que mudou",
        "items": [
-        "<b>構えると的が見えなかった件。</b>カメラから視線を実際に飛ばして測ると、14 挺すべてが中心を塞いでいました —— 中心の光線は <b>0.19〜0.66 ブロック先</b>で銃に当たり、中心まわり 2 度の円板は <b>81〜100%</b> が銃でした。V4.3.6 で私が「照門を画面中心へ乗せる」ことを目標にしたせいです。照門は<b>中身の詰まった鉄の塊</b>なので、その重心を中心へ置けば必ず塞がります",
-        "<b>直しかた。</b>逃がす量は目分量では決めません。出荷する姿勢のまま視線を飛ばし、円板が空く<b>いちばん小さい下げ幅</b>を二分探索で求めます(0.048〜0.087 ブロック、銃ごと)。結果は<b>中心が完全に空き</b>、円板の遮蔽は 0.0〜0.7%。銃は少し下に来て、照星の上に標的が乗ります",
-        "<b>その門にも陰性対照があります。</b>逃がしを打ち消すと V4.3.6 の姿勢に戻り、14 挺すべてが赤(最悪 100% 遮蔽)になります",
-        "<b>弾倉が上へ飛び出していた件 —— 所有者の指摘どおりでした。</b>装填中の弾倉の画面上の高さを追うと、静止 0.3945 から <b>0.6853 ブロックまで上がって</b>から座へ戻っていました。下へ抜けずに<b>上へ飛び出して</b>いたのです",
-        "<b>原因はバニラの符号でした。</b>26.2 の {@code KeyframeAnimations.posVec(x, y, z)} はバイトコードで確かめたとおり <b>{@code (x, -y, z)}</b> を返します({@code fload_1; fneg})。このリグは「+Y が下」で書かれているので、間の反転により<b>すべての位置チャンネルが上下逆</b>に出ていました。骨に載せ替えた V4.3.2 以来ずっとです。生成器の側で反転しておくよう直しました",
-        "<b>「差し込みという感覚から程遠い」も測れました。</b>着座までの最後の区間で、弾倉は上がる量より<b>横へ動く量のほうが 1.7〜19.7 倍</b>大きく、上がるはずの区間で <b>93〜393%</b> ぶん下がっていました。あれは差し込みではなく「落として、横へ振って、最後に吸い込ませた」動きです",
-        "<b>作り直しました。</b>取り出す → <b>マグウェルの真下で整列(x も z も 0、傾きも 0)</b> → <b>まっすぐ上へ</b>、の 3 段にしました。いま横のふらつきは上昇量の <b>0.10〜0.18 倍</b>(判定線 0.34)、逆行は <b>0.1〜0.2%</b>(判定線 2%)です",
-        "<b>入れ替えの一瞬も直しました。</b>弾倉は見えない間に scale 1→0→1 で入れ替えます。拳銃は装填が 1.4 秒しかなく、その窓が 0.14 秒だったので頂点が 1 フレームで 0.164 ブロック動き、連続性の門が正しく赤にしました。窓を広げて <b>0.095</b> へ",
-        "<b>サブマシンガンの装弾数。</b>模型の弾倉の高さ 190 mm と 9×19 の<b>薬莢底面</b> 9.93 mm から、複列の箱弾倉に入るのは <b>36 発</b>です。config は <b>60 発</b>(<b>66% 超過</b>)でした —— 見えている弾倉に入らない数が出ていたわけです。36 発にしました",
-        "<b>同じ計算を 14 挺に当てると、超過はこの 1 挺だけ</b>でした(アサルト 25 / 入る 33、ハンドガン 12 / 21、カービン 10 / 34)。毎回それを確かめる門を足しました。最初この計算を<b>弾頭の直径</b>でやってアサルトまで「超過」と出しましたが、弾倉に効くのは<b>薬莢底面の直径</b>です(5.56 は弾頭 5.6 mm・底面 9.6 mm)",
-        "<b>スナイパーライフルのデザイン。</b>実は 14 挺で<b>この 1 挺だけ形式の上書きが 1 つも無く</b>、クラスの素の寸法がそのまま出ていました —— 精密狙撃銃らしい特徴を何も持っていなかったのです。<b>大型照準器・高低/左右の調整塔・倍率環・12 条の溝付き銃身・6 ポートの制退器・二脚・ボルトの握り玉</b>を与えました(1,014 → 1,050 立方体)",
-        "<b>その塔は最初やり過ぎて門に止められました。</b>固定 4.3 unit の塔を全銃に立てたので、拳銃の小さな照準器にまで同じ塔が生え、模型の門が「煙突に見える」と赤にしました。いまは<b>筒の半径に比例</b>させています",
-        "<b>ロケットランチャーのブロック破壊を 25% 減らしました。</b>壊れる<b>体積</b>は爆発力の 3 乗で効くので、掛けるのは 0.75 ではなく <b>0.75^(1/3) = 0.9086</b> です。36.0 → <b>32.71</b>。0.75 を直に掛けると体積が 0.42 倍 = 58% 減で、指示の 2 倍以上削ってしまいます",
-        "<b>生成器が「書いた」と言って書いていませんでした。</b>{@code gen_gun_model_java.py} は形式の振り分け表を組み立てて<b>一度も書き出さず</b>、最後の行だけが「dispatcher GunGeometry.java を書いた」と表示していました。立方体の数の表が手で保守される状態になっていて、模型を作り変えた今回、10 挺が「骨が 1 本足りない」と赤くなりました(足りないのではなく表が古かった)。本当に書き出すよう直しました"
+        "<b>Por que pareciam brinquedos se resume a uma coisa:</b> não havia graves. Medido abaixo de 80 Hz: assalto 0,8 % / arma curta <b>0,0 %</b> / precisão 2,5 % / escopeta 2,6 %. O gás de boca de um tiro real produz <b>um pulso de pressão de baixa frequência que se sente no corpo</b>. Sem ele, fica um “estalo” seco, sem núcleo",
+        "<b>Um corpo grave foi adicionado.</b> Duas senoides amortecidas (fundamental + segundo harmônico), com a frequência <b>definida pela carga</b> (quanto maior a massa de gás em expansão, mais grave — 26 a 62 Hz). Abaixo de 80 Hz agora há <b>7,3 a 28,8 %</b>. Armas com cargas maiores têm núcleos maiores, <b>3,19×</b> entre a maior e a menor",
+        "<b>Todas as armas soavam igualmente altas.</b> As 14 tinham pico de exatamente 0,720 — um calibre .50 e uma 9mm no mesmo nível. O volume agora segue a energia na boca: pistola 0,518 / fuzil 0,720, uma diferença de <b>+2,9 dB</b>",
+        "<b>As caudas também eram curtas demais.</b> Só 0,45 a 1,01 segundo — soava ali e sumia. Somando o som devolvido pelo terreno, ficam <b>0,43 a 1,33 segundo</b>. Quanto maior a carga, mais longe vai e mais tempo volta",
+        "<b>O piso da verificação subiu.</b> Ela só olhava “0,5 % abaixo de 200 Hz”, então <b>um som de brinquedo podia cumprir 0,5 % e ser publicado</b>. Agora exige 12 % abaixo de 200 Hz e 6 % abaixo de 80 Hz, e mede também que <b>cargas maiores tenham núcleos maiores</b> (pelo menos 1,8×) e que <b>o volume difira entre as armas</b> (pelo menos 1,25×)",
+        "<b>O lança-foguetes cai mais 25 %.</b> 32,708 → <b>29,717</b>. Somando os dois cortes, o volume destruído é <b>56 %</b> do que era com 36,0",
+        "<b>Baixar só a potência não reduz a carga.</b> No 26.2, mesmo com um teto, <b>os raios continuam até o fim</b>, então o número de chamadas {@code getBlockState} — a própria carga — não cai nada. Além do raio do teto, a explosão agora <b>retorna uma resistência enorme para o raio parar ali mesmo</b>, e foguetes de mão ganham um teto pela primeira vez (raio 14). O trabalho fica <b>limitado pelo raio, não pela potência</b>",
+        "<b>Cherry — começa o trabalho na marca de nova geração.</b> Com o nome da flor de cerejeira, ela fica acima do Alpha. O logotipo é <b>uma sakura de cinco pétalas</b> construída com geometria — o <b>entalhe</b> na ponta de cada pétala (o único traço que diz cerejeira e não ameixeira), a <b>cintura</b> em direção ao centro, os estames e as anteras. Coincide exatamente consigo mesma sob uma rotação de 72°",
+        "<b>O logotipo foi desenhado três vezes e corrigido olhando de verdade.</b> Na primeira, as pétalas se sobrepunham num bolo; na segunda, os ombros se cruzavam e deixavam emendas angulosas. Nunca foi aprovado só com números — cada versão foi renderizada e conferida",
+        "<b>A flor se abre girando.</b> Ao abrir a página, as cinco pétalas se desdobram uma após a outra a partir do centro, cada uma crescendo enquanto gira até seu próprio lugar de 72°. Só CSS e só uma vez (repetir transformaria uma floração num indicador de carregamento). Com {@code prefers-reduced-motion} ela já começa aberta",
+        "<b>Aurora Corvus passa a se chamar Corvus.</b> Só o nome exibido — o nome do repositório e a URL pública não mudam (mudá-los daria 404 em todo launcher já distribuído)",
+        "<b>A cor passa da aurora para o azul-céu da Apple.</b> Saem o verde e o violeta, substituídos por tons de céu em torno de #5AC8FA. Texto e links chegam a <b>10,5:1 a 13,3:1</b> sobre o fundo escuro (WCAG AAA). O fundo do app Corvus passou para a mesma família (com a luminosidade das três cores originais)",
+        "<b>A troca de tema branco/preto foi abolida.</b> O seletor, seu armazenamento, o código de migração e 8 blocos CSS que não eram mais alcançáveis foram <b>excluídos</b>. Deixar código sem uso “por via das dúvidas” faz o próximo leitor achar que ainda há dois temas",
+        "<b>Agora há uma aba Store.</b> Seu megamenu lista <b>Alpha / Aureum / Cherry</b>. O Alpha <b>nunca tinha tido uma página de marca</b> — havia como baixá-lo, mas nenhuma página dizendo o que é o Alpha, então, das três, uma não tinha para onde apontar"
        ]
       },
       {
        "title": "Ajustes de balanceamento",
        "items": [
-        "サブマシンガン: 装弾数 60 → <b>36</b>(模型の弾倉に入る数)",
-        "ロケットランチャー: 爆発力 36.0 → <b>32.708</b>(壊れる体積 −25%)。直撃ダメージ 960 は据え置き",
-        "スナイパーライフル: 立方体 1,014 → 1,050。<b>性能は 1 つも変えていません</b>(見た目だけ)"
+        "Lança-foguetes: potência de explosão 32,708 → <b>29,717</b> (volume destruído 56 % do de 36,0)",
+        "Lança-foguetes: foguetes de mão também ganham teto (raio 14 blocos / 4.000 blocos). Além do teto, os raios param",
+        "Tiros: os picos de pistola e submetralhadora caem de 0,720 para 0,518–0,552 (fuzis soam relativamente mais altos)"
        ]
       },
       {
        "title": "Pontos de atenção",
        "items": [
-        "<b>構えたときの銃の位置が変わります。</b>照門が画面中心ではなく、<b>レティクルの少し下</b>に来ます。これは実物の照準法(照星の上に標的を乗せる)に合わせたもので、そうしないと銃が的を隠します"
+        "<b>A troca de tema acabou.</b> Se você tinha escolhido o tema branco, só resta o escuro",
+        "<b>O nome exibido do site passa a ser Corvus.</b> A URL não muda"
        ]
       },
       {
        "title": "O que ainda não estava implementado ou confirmado nesse momento",
        "items": [
-        "<b>どれも実機の画面では見ていません。</b>遮蔽は視線を飛ばして、弾倉の軌跡は骨のオフセットと描かれた高さの両方で測ってありますが、この開発機に Minecraft のクライアントが無いので、見て確かめてはいません",
-        "<b>「マガジンサイズ」を装弾数と読みました。</b>もし「模型の弾倉の大きさ」という意味であれば、直す向きが逆になります(弾倉を 60 発ぶんに伸ばす)。そのときは言ってください",
-        "装弾数の門は <b>service_pistol を読めていません</b>(定義 JSON に magazine を書かず分類の既定へ落ちるため)。読めないことを緑と混ぜず「NOT READ」と表示します",
-        "V4.4.0Update.md(灰飛行場・北誘導路・第一格納庫)は<b>まだ入っていません</b>。今回は起動不能の修正と、この 5 件の指摘を先に出しました"
+        "<b>Não ouvi nenhum som.</b> Graves, diferença de volume, duração, ataque e sobreposição são todos medidos numericamente, mas esta máquina de desenvolvimento não tem cliente de Minecraft, então nada foi verificado de ouvido",
+        "<b>Cherry é só uma marca.</b> Nenhuma linha de mod foi escrita. A página também diz isso, nos 13 idiomas",
+        "<b>O app Corvus não foi recompilado.</b> A mudança de cor está no código-fonte, mas o download do launcher precisa sair separadamente, como versão própria",
+        "O V4.4.0Update.md (o aeródromo de Cinzas) <b>ainda não está incluído</b>. Esta versão pôs primeiro o som, o foguete, Cherry e o site"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V4.3.7",
+     "date": "2026-09-10",
+     "type": "release",
+     "title": "Ao mirar, a arma escondia o alvo, e o carregador saltava para cima",
+     "summary": "Endireitar a arma ao mirar na V4.3.6 <b>pôs a alça de mira no centro da tela</b>, e todas as 14 armas cobriam <b>81 a 100 %</b> do retículo. Um atirador de verdade põe o alvo <b>acima da massa de mira, através do entalhe</b> — não no meio do metal. Além disso, foi encontrado o motivo de o carregador <b>saltar para cima em vez de cair</b> na recarga (o vanilla invertia o Y da posição), e o movimento de inserção foi reconstruído.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "<b>Ao mirar, o alvo ficava escondido.</b> Lançar linhas de visada reais a partir da câmera mostrou todas as 14 armas cobrindo o centro — o raio central atingia a arma <b>a 0,19–0,66 bloco</b>, e <b>81 a 100 %</b> de um disco de 2° em torno do centro era arma. Isso porque na V4.3.6 eu mirei em “pôr a alça no centro da tela”. A alça é <b>um bloco maciço de aço</b>, então pôr seu centroide no centro sempre cobre",
+        "<b>A correção.</b> Quanto deslocar não é decidido no olho. Linhas de visada são lançadas contra a postura publicada, e uma busca binária encontra <b>o menor rebaixamento</b> que libera o disco (0,048–0,087 bloco, por arma). Resultado: <b>o centro fica totalmente livre</b> e a cobertura do disco é de 0,0–0,7 %. A arma fica um pouco mais baixa, e o alvo repousa acima da massa de mira",
+        "<b>Esse portão também tem um controle negativo.</b> Cancelar o rebaixamento volta à postura da V4.3.6, e todas as 14 armas ficam vermelhas (pior caso 100 % coberto)",
+        "<b>O carregador saltava para cima — exatamente como o dono disse.</b> Acompanhando a altura do carregador na tela durante uma recarga, ele <b>subia de 0,3945 em repouso para 0,6853 bloco</b> antes de voltar ao lugar. Não estava caindo: estava <b>saltando por cima</b>",
+        "<b>A causa era o sinal do vanilla.</b> No 26.2, {@code KeyframeAnimations.posVec(x, y, z)} retorna <b>{@code (x, -y, z)}</b>, confirmado no bytecode ({@code fload_1; fneg}). Este rig é escrito com “+Y para baixo”, então essa inversão deixava <b>todos os canais de posição de cabeça para baixo</b> — desde a passagem para ossos na V4.3.2. O gerador agora compensa isso",
+        "<b>“Longe da sensação de inserir” também pôde ser medido.</b> No último trecho antes de encaixar, o carregador se movia <b>1,7 a 19,7 vezes mais para o lado</b> do que subia, e descia <b>93 a 393 %</b> no trecho em que devia subir. Isso não é inserir; é “soltar, balançar de lado e deixar ser sugado no fim”",
+        "<b>Reconstruído.</b> Três etapas: tirar → <b>alinhar logo abaixo do poço do carregador (x e z ambos 0, inclinação 0)</b> → <b>reto para cima</b>. A oscilação lateral agora é <b>0,10 a 0,18 vez</b> a subida (limite 0,34) e o retrocesso <b>0,1 a 0,2 %</b> (limite 2 %)",
+        "<b>O instante da troca também foi corrigido.</b> O carregador é trocado enquanto escondido com escala 1→0→1. A recarga da pistola dura só 1,4 segundo e essa janela era de 0,14 segundo, então um vértice se movia 0,164 bloco num único quadro e o portão de continuidade ficou vermelho com razão. A janela foi ampliada: <b>0,095</b>",
+        "<b>Capacidade do carregador da submetralhadora.</b> Pela altura de 190 mm do carregador do modelo e pelo diâmetro do <b>culote do estojo</b> de 9,93 mm do 9×19, um carregador de fila dupla comporta <b>36 cartuchos</b>. A configuração dizia <b>60</b> (<b>66 % a mais</b>) — um número que não cabia no carregador visível. Agora são 36",
+        "<b>Fazendo o mesmo cálculo nas 14 armas, só esta passava do limite</b> (fuzil de assalto 25 / cabem 33, arma curta 12 / 21, carabina 10 / 34). Foi adicionado um portão que verifica isso sempre. No início fiz o cálculo com <b>o diâmetro do projétil</b> e até o fuzil de assalto saiu “acima”, mas o que manda num carregador é <b>o diâmetro do culote</b> (5.56: projétil 5,6 mm, culote 9,6 mm)",
+        "<b>Design do rifle de precisão.</b> Das 14 armas, <b>era a única sem nenhuma personalização de estilo</b>, então as medidas cruas da classe saíam como estavam — nada a fazia parecer um rifle de precisão. Agora tem <b>uma luneta grande, torres de elevação e deriva, um anel de aumento, um cano com 12 caneluras, um freio de boca de 6 portas, um bipé e uma bola na alavanca do ferrolho</b> (1.014 → 1.050 cubos)",
+        "<b>Essas torres exageraram no início e um portão as barrou.</b> Uma torre fixa de 4,3 unidades ia em toda arma, então a pequena óptica da pistola ganhou a mesma, e o portão de modelos ficou vermelho com “parece uma chaminé”. Agora é <b>proporcional ao raio do tubo</b>",
+        "<b>Destruição de blocos do lança-foguetes reduzida em 25 %.</b> O <b>volume</b> destruído varia com o cubo da potência, então o fator não é 0,75, e sim <b>0,75^(1/3) = 0,9086</b>. 36,0 → <b>32,71</b>. Aplicar 0,75 direto daria 0,42× o volume = 58 % a menos, mais que o dobro do pedido",
+        "<b>Um gerador dizia ter gravado um arquivo e não gravava.</b> {@code gen_gun_model_java.py} montava a tabela de despacho de estilos e <b>nunca a gravava</b>; só a última linha anunciava “wrote dispatcher GunGeometry.java”. A tabela de contagem de cubos tinha virado manutenção manual, e com os modelos reconstruídos desta vez, 10 armas ficaram vermelhas com “falta um osso” (não faltava nada — a tabela estava velha). Agora ele grava o arquivo de verdade"
+       ]
+      },
+      {
+       "title": "Ajustes de balanceamento",
+       "items": [
+        "Submetralhadora: carregador 60 → <b>36</b> (o que cabe no carregador do modelo)",
+        "Lança-foguetes: potência de explosão 36,0 → <b>32,708</b> (volume destruído −25 %). O dano de impacto direto de 960 fica inalterado",
+        "Rifle de precisão: 1.014 → 1.050 cubos. <b>Nenhum valor de desempenho mudou</b> (só a aparência)"
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "<b>Muda onde a arma fica ao mirar.</b> A alça não está mais no centro da tela, e sim <b>um pouco abaixo do retículo</b>. Isso segue a mira real (o alvo repousa acima da massa de mira); sem isso, a arma esconde o alvo"
+       ]
+      },
+      {
+       "title": "O que ainda não estava implementado ou confirmado nesse momento",
+       "items": [
+        "<b>Nada disso foi visto numa tela real.</b> A oclusão é medida com linhas de visada lançadas e o trajeto do carregador tanto pelo deslocamento do osso quanto pela altura renderizada, mas esta máquina de desenvolvimento não tem cliente de Minecraft, então nada foi verificado a olho",
+        "<b>Li “tamanho do carregador” como capacidade.</b> Se queria dizer “o tamanho do carregador do modelo”, a correção vai no sentido oposto (alongar o carregador para 60). Avise se era esse o sentido",
+        "O portão de capacidade <b>não consegue ler service_pistol</b> (seu JSON de definição não tem entrada de carregador e cai no padrão da classe). Ele mostra “NOT READ” em vez de misturar isso ao verde",
+        "O V4.4.0Update.md (o aeródromo de Cinzas, a pista de táxi norte, o hangar um) <b>ainda não está incluído</b>. Esta versão pôs primeiro a correção da falha na inicialização e estes cinco relatos"
        ]
       }
      ]
@@ -64,32 +116,32 @@
      "version": "V4.3.6.1",
      "date": "2026-09-10",
      "type": "hotfix",
-     "title": "緊急修正:V4.3.6 は起動しませんでした ―― 同じ音の ID を 2 度登録していました",
-     "summary": "V4.3.6 を入れるとゲームが「Could not execute entrypoint stage 'main'」で落ち、<b>1 秒も動きませんでした。</b>原因は 1 つです —— 銃ごとの音を入れたとき、新しい形式名 {@code <銃の id>_fire} のうち <b>3 つが旧 ID と綴りが同じ</b>で、古い側の登録が残っていました。同じ鍵で 2 度登録するとレジストリが落ちます。<b>私の出荷前の検査は、どれもこれを見られませんでした。</b>",
+     "title": "Correção urgente: a V4.3.6 não iniciava — o mesmo ID de som era registrado duas vezes",
+     "summary": "Com a V4.3.6 instalada o jogo travava com “Could not execute entrypoint stage 'main'” e <b>não rodava nem um segundo.</b> Há uma causa — quando os sons por arma entraram, entre os nomes de novo estilo {@code <id da arma>_fire}, <b>três eram escritos igual a IDs antigos</b>, e os registros antigos ainda estavam lá. Registrar a mesma chave duas vezes faz o registro falhar. <b>Nenhuma das minhas verificações antes da publicação conseguia ver isso.</b>",
      "sections": [
       {
        "title": "O que mudou",
        "items": [
-        "<b>原因。</b>{@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire} の 3 つが、新しい形式ごとの命名({@code <銃の id>_fire})と<b>たまたま同じ綴り</b>になりました。{@code GunSounds} が登録し、{@code ModSounds} も登録したままだったので、2 度目の {@code Registry.register} が同じ鍵で落ち、{@code sorakaze_guns} の entrypoint ごと死にました",
-        "<b>直しかた。</b>銃ごとの音へ移した 10 個の古い定数({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire})を {@code ModSounds} から削除しました。登録は {@code GunSounds} の 1 か所だけになります",
-        "<b>私の検査は全部緑でした。</b>波形・ファイル・sounds.json・字幕・登録表・モデル・当たり・傾き —— どれも見ていました。<b>「登録が通るか」を見ていたものが 1 つも無かった</b>のです。GameTest なら捕まえられますが、走らせるのに専用サーバーが要り、この機体では EULA で止まります",
-        "<b>だから、実際に登録する門を 2 つ足しました。</b>{@code checkGunSoundRegistration} は本物の {@code ModSounds.init()} と {@code GunSounds.init()} を、実機と同じ順で<b>本当に呼びます</b>。{@code checkRegistration}(乗り物側)も同じで、V4.3.6 で足した 3 品目と成分 1 つを実際に登録します",
-        "<b>その門には陰性対照があります。</b>今回の重複({@code handgun_fire})をわざと戻すと、門は落ちます。落ちなければ「この門は登録を測っていない」ということなので、意味がありません",
-        "<b>13 モジュール全部を見る静的な検査も足しました。</b>同じ登録 ID を 2 か所で書いていないかを見ます。ただし 4 モジュール({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo})は<b>この検査の見かたに当てはまらず、見られていません</b> —— 緑と混ぜず「未カバー」と表示します"
+        "<b>A causa.</b> {@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire} acabaram <b>escritos exatamente como</b> o novo nome por arma ({@code <id da arma>_fire}). {@code GunSounds} os registrava e {@code ModSounds} também, então o segundo {@code Registry.register} falhava na mesma chave e derrubava todo o ponto de entrada de {@code sorakaze_guns}",
+        "<b>A correção.</b> As 10 constantes antigas que passaram para sons por arma ({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire}) foram excluídas de {@code ModSounds}. O registro agora acontece num só lugar, {@code GunSounds}",
+        "<b>Todas as minhas verificações estavam verdes.</b> Formas de onda, arquivos, sounds.json, legendas, tabela de registro, modelos, hitboxes, inclinação — tudo era observado. <b>Nenhuma olhava se o registro passa.</b> Um GameTest pegaria, mas precisa de um servidor dedicado, que nesta máquina para na EULA",
+        "<b>Por isso foram adicionados dois portões que registram de verdade.</b> {@code checkGunSoundRegistration} <b>chama de verdade</b> os reais {@code ModSounds.init()} e {@code GunSounds.init()}, na mesma ordem do jogo. {@code checkRegistration} (lado dos veículos) faz o mesmo, registrando de fato os 3 itens e 1 componente adicionados na V4.3.6",
+        "<b>Esse portão tem um controle negativo.</b> Restaurar de propósito esta duplicata ({@code handgun_fire}) faz o portão falhar. Se não falhasse, não estaria medindo o registro e não significaria nada",
+        "<b>Também foi adicionada uma verificação estática dos 13 módulos.</b> Ela procura o mesmo ID de registro escrito em dois lugares. Porém, <b>4 módulos ({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo}) não se encaixam no jeito como esta verificação lê o código e não estão cobertos</b> — mostrados como “não coberto”, nunca misturados ao verde"
        ]
       },
       {
        "title": "Pontos de atenção",
        "items": [
-        "<b>V4.3.6 は導入しないでください。</b>起動しません。この 4.3.6.1 で置き換えてください"
+        "<b>Não instale a V4.3.6.</b> Ela não inicia. Substitua por esta 4.3.6.1"
        ]
       },
       {
        "title": "O que ainda não estava implementado ou confirmado nesse momento",
        "items": [
-        "<b>この修正が実機で起動することを、私はまだ見ていません。</b>登録は実際に走らせて確かめました(音 87 件・アイテム 26 件)が、この開発機に Minecraft のクライアントが無いので、ゲームが立ち上がるところは見ていません",
-        "V4.3.6 の内容(ADS の傾き・銃ごとの音・ロケットの負荷・所有権)は<b>そのまま入っています</b>。消したのは使わなくなった古い音の定数 10 個だけです",
-        "静的な重複検査は 13 モジュール中 9 しか見られていません(上記)"
+        "<b>Ainda não vi esta correção iniciar numa máquina real.</b> O registro foi verificado executando-o de verdade (87 sons, 26 itens), mas esta máquina de desenvolvimento não tem cliente de Minecraft, então não vi o jogo abrir",
+        "Tudo da V4.3.6 (inclinação no ADS, sons por arma, carga do foguete, posse) <b>continua dentro</b>. Só foram removidas as 10 constantes de som antigas que não eram mais usadas",
+        "A verificação estática de duplicatas cobre só 9 dos 13 módulos (veja acima)"
        ]
       }
      ]
@@ -98,55 +150,55 @@
      "version": "V4.3.6",
      "date": "2026-09-10",
      "type": "release",
-     "title": "構えると銃が 7 度ねじれていました ―― ADS の傾き、銃ごとの音、ロケットの負荷、そして所有権",
-     "summary": "「若干銃が斜めになる」を実測したところ、<b>14 挺すべて</b>が満構えでヨー −6.9〜−7.3 度・ピッチ +0.5〜+1.5 度・ロール +0.3〜+2.1 度ねじれており、<b>照門は画面中心から 0.06〜0.76 ブロック外れていました</b> —— 照準器を覗いてすらいませんでした。あわせて、14 挺が共有していた装填音と空撃ち音を<b>銃ごとに独立</b>させ(69 イベント / 115 ファイル)、ロケットランチャーの爆発力を 396 → 36 に下げ、V4.3.4Update.md の所有権・レシピ本・ラインカードを実装しました。",
+     "title": "Ao mirar, toda arma ficava torta 7 graus — a inclinação no ADS, um som próprio para cada arma, a carga do foguete e a posse",
+     "summary": "Medir “a arma fica levemente torta” mostrou que <b>todas as 14 armas</b> estavam tortas na mira completa em −6,9 a −7,3° de guinada, +0,5 a +1,5° de arfagem e +0,3 a +2,1° de rolagem, e <b>a alça de mira ficava a 0,06–0,76 bloco do centro da tela</b> — você nem estava olhando pelas miras. Além disso, os sons de recarga e de disparo em seco que as 14 armas compartilhavam agora são <b>independentes por arma</b> (69 eventos / 115 arquivos), a potência de explosão do lança-foguetes cai de 396 para 36, e a posse, o livro de receitas e o cartão de linha do V4.3.4Update.md estão implementados.",
      "sections": [
       {
        "title": "O que mudou",
        "items": [
-        "<b>ADS の傾きを実測しました。</b>{@code sight_rear} → {@code sight_front} の直線をカメラ空間で測ると、満構えで<b>14 挺すべて</b>がねじれていました —— ヨー <b>−6.92〜−7.32 度</b>、ピッチ +0.46〜+1.50 度、ロール +0.30〜+2.12 度。内訳も分かっています: {@code <style>_in_hand.json} の {@code firstperson_righthand.rotation} が <b>+5 度</b>、骨のクリップ {@code aim_in} の終端が <b>+2.5 度</b>。どちらも腰だめの味付けとして手で置かれた数で、<b>構えたときに打ち消す仕組みがありませんでした</b>",
-        "<b>照準器を覗いてすらいませんでした。</b>同じ測定で、照門は画面中心から <b>0.056〜0.755 ブロック</b>外れていました。原因は、構えの補正表 {@code SightAlignment} が<b>旧エレメントの幾何</b>から導かれていたことです —— V4.3.2 で骨に載せ替えて以降、その形は<b>1 度も描かれていません</b>。表を守っていた検査も、描かれていない形と表を突き合わせていたので、ずっと緑でした",
-        "<b>直しかた:</b>焼いた骨から実測して、回転 4 + 平行移動 3 の 7 数をビルド時に書き出します({@code ./gradlew emitGunAdsAlignment})。目分量はありません。結果は<b>ヨー・ピッチ・ロールとも 0.000 度、照門のずれ 0.0000 ブロック</b>(14 挺)",
-        "<b>その門には陰性対照があります。</b>補正を外す = V4.3.5 まで出荷していた姿勢に戻すと、<b>14 挺すべてが赤</b>(最悪 7.32 度)。赤くならなければ「この計器は傾きを測っていない」として検査自体を失敗させます",
-        "<b>全ての銃に独立した音を用意しました。</b>実測した出荷状態: 発砲音は 12 系統を 14 挺で使い回し(marksman_carbine は sniper_fire、breaching_shotgun は shotgun_fire、service_pistol は handgun_fire を<b>そのまま</b>指していた)、装填音は <b>3 つを 14 挺全部</b>が共有、空撃ちは <b>1 つを 14 挺全部</b>が共有していました",
-        "<b>音は「作り分け」ではなく「導出」です。</b>14 挺ぶんの音色を手で当てれば目分量が 14 個並ぶだけなので、その銃自身の数から導きました —— 銃身長から開管の第 1 共鳴 {@code c/(2L)}、機関部の寸法から箱の共鳴、銃口エネルギーから衝撃波の正圧相({@code t+ ∝ E^(1/3)})、口径と初速から超音速弾の N 波、制退器のポート数から高域の張り出し、弾倉長と落差から装填の間合い。出典は模型を組むのと<b>同じ 1 本</b>({@code gun_standard.CLASS_REFERENCE} と {@code gun_mesh.resolved_spec()})です",
-        "<b>69 イベント / 115 ファイル。</b>1 挺につき発砲(3 候補)・弾倉を外す・弾倉を入れる・遊底が閉じる・空撃ちの 5 役。手動ボルトとポンプ式は閉鎖が<b>2 打</b>になり、握りの中に弾倉がある拳銃は弾倉止めの音が高くなります。sounds.json・字幕(英日)・Java の登録表まで<b>生成物</b>にしたので、69 個のうち 1 つが抜けることはもう起きません(抜けても音が鳴らないだけで起動は通るので、手作業では気づけませんでした)",
-        "<b>その検査が自分の作った音の欠陥を捕まえました。</b>拳銃 2 挺の発砲音は 200 Hz 以下の成分が 0.4% しかなく「低域の胴が無い」で赤。銃身が短いぶん共鳴が 1.2 kHz あり、そこに比例させた落ち先が 160 Hz 止まりだったためです。低域まで伸びる度合いを決めるのは<b>膨張するガスの量</b>(半径 ∝ E^(1/3))なので、そちらから導き直しました",
-        "<b>ロケットランチャーの爆発力を 396 → 36 に下げました。</b>発注は「威力を下げ、負荷を低減」と 2 つ並んでいますが、26.2 では<b>同じ 1 つの数</b>です。バイトコードで確かめた実際: 爆発は 16×16×16 の格子面から <b>1,352 本</b>のレイを飛ばし、空気中は 1 歩(0.3 ブロック)あたり 0.315 減る。396 では 1 本 1,634 歩 = <b>約 490 ブロック</b>先まで進み、1 発の着弾で {@code getBlockState} + {@code getFluidState} が<b>約 221 万組</b>走っていました",
-        "<b>もっと重いのはエンティティ探索でした。</b>バニラは爆心から {@code power × 2} に膨らませた箱で {@code getEntities} します。396 では<b>半径 792 ブロック</b>、つまり一辺 1,584 の立方体 = 約 <b>99×99 チャンク</b>を全高さぶん走査していました。36 では半径 72(9×9 チャンク)—— 体積比で <b>1,331 分の 1</b> です。どちらもサーバースレッドで、これが「ロケットの負荷」の正体です",
-        "<b>ピストルを少しだけ小さくしました。</b>ただし、そこにも測り違いが 2 つありました。① 倍率の式が「模型のいちばん長い辺」を全長として使っていましたが、<b>拳銃は縦のほうが長い</b>(実測 高さ 0.7944 / 長さ 0.7806 ブロック)ので、拳銃だけ<b>高さ</b>を曲線に入れていました。② 表示変換の倍率が <b>1.5 のベタ書き</b>でしたが、出荷しているのは 1.35 / 1.5 / 1.65 の 3 段階です",
-        "<b>そこで「画面上で何ブロックに見せたいか」を銃ごとに宣言する形にしました。</b>全長は模型の箱ではなく実物の mm から取り、レンダラはその目標に合う倍率を<b>解くだけ</b>になります。検査も下限ではなく<b>宣言との一致</b>を測ります(誤差 0.005 ブロック以内)。結果、拳銃は画面上 0.949 → <b>0.904 ブロック</b>(所有者が見たものの 95.3%)。狙撃銃・カービン・ロケットランチャーは逆に 10% 大きすぎたので、こちらは縮みました",
-        "<b>V4.3.4Update.md を実装しました(ストリーム O / R / C / Q)。</b>置くか最初に乗った人がその車の持ち主になります。<b>ロックカラー</b>で施錠すると他人は乗車・給油・濾過・キット取り付けができなくなり(<b>体当たりは従来どおりできます</b> —— 仕様がそう定めています)、<b>予備鍵</b>を切れば 1 台にかぎり他人を通せます。{@code /garage owner} で持ち主を確認、権限 2 で {@code set} / {@code clear}",
-        "<b>レシピ本が空でした。</b>{@code sorakaze_vehicles} には <b>149 本</b>のレシピがあるのに、解禁する advancement が 1 つもありませんでした —— 26.2 のレシピ本は解禁されたものしか出さないので、素材を持っていても<b>作れることを知る方法がありません</b>でした。圧延板を手にした時点で 149 本すべてが解禁されます(この一覧も生成物で、レシピを足した日に自動で入ります)",
-        "<b>ラインカード</b>を追加しました。右クリックで 8 ページ —— 残渣ライン、凝縮液とポンプ税、環状本管の冷間始動、東の高架橋と西の燼の尾根、吹雪と洪水、キットと航法、所有権、交通と列車と巨獣。<b>ネットワークを 1 バイトも使いません</b>(ページ番号はクライアントの中だけ)。灰街圏の 2 つの宝箱に 40% で入ります",
-        "<b>Q1〜Q6 も片付けました。</b>Q4(飛行中の燃料フィルタは<b>許すが 10 tick 昇降を殺す</b>)が新規の実装で、Q1(ポンプ税は 24000 tick で戻る)・Q2(駐車枠はプレイヤーの持続データ)・Q3(フック破壊で機体が自分で外れる)・Q5(coreRequiresPlate は既定 true のまま)は<b>すでにそうなっている</b>ことを確かめて {@code // RF4.3.4-Qn} の印を置きました"
+        "<b>A inclinação no ADS, medida.</b> Medir a linha {@code sight_rear} → {@code sight_front} no espaço da câmera na mira completa mostrou <b>todas as 14 armas</b> tortas — guinada <b>−6,92 a −7,32°</b>, arfagem +0,46 a +1,50°, rolagem +0,30 a +2,12°. A decomposição é conhecida: {@code firstperson_righthand.rotation} em {@code <style>_in_hand.json} contribui <b>+5°</b> e o fim do clipe de osso {@code aim_in} <b>+2,5°</b>. Ambos são números postos à mão para dar tempero à postura de quadril, e <b>nada os cancelava ao mirar</b>",
+        "<b>Você nem estava olhando pelas miras.</b> A mesma medição colocava a alça a <b>0,056–0,755 bloco</b> do centro da tela. A causa: a tabela de correção de mira {@code SightAlignment} tinha sido derivada da <b>antiga geometria de elementos</b> — uma forma que <b>não foi desenhada nem uma vez</b> desde a passagem para ossos na V4.3.2. A verificação que guardava a tabela a comparava com essa forma nunca desenhada, e por isso ficou verde o tempo todo",
+        "<b>A correção:</b> sete números — uma rotação de 4 componentes mais uma translação de 3 — são medidos nos ossos assados e gravados na compilação ({@code ./gradlew emitGunAdsAlignment}). Nada no olho. Resultado: <b>guinada, arfagem e rolagem todas em 0,000°, desvio da alça 0,0000 bloco</b> (14 armas)",
+        "<b>Esse portão tem um controle negativo.</b> Remover a correção — voltar à postura publicada até a V4.3.5 — deixa <b>as 14 armas vermelhas</b> (pior caso 7,32°). Se não ficasse vermelho, a própria verificação falha: “este instrumento não mede inclinação”",
+        "<b>Cada arma agora tem seus próprios sons.</b> O estado publicado, medido: 14 armas compartilhavam 12 sons de disparo (marksman_carbine apontava <b>direto</b> para sniper_fire, breaching_shotgun para shotgun_fire, service_pistol para handgun_fire), <b>todas as 14</b> compartilhavam 3 sons de recarga e <b>todas as 14</b> um único som de disparo em seco",
+        "<b>Os sons são derivados, não estilizados.</b> Sonorizar 14 armas à mão só enfileiraria 14 palpites, então cada som vem dos próprios números da arma — o comprimento do cano dá a primeira ressonância de tubo aberto {@code c/(2L)}, as medidas da caixa da culatra a ressonância da caixa, a energia na boca a fase positiva do estampido ({@code t+ ∝ E^(1/3)}), calibre e velocidade a onda N supersônica, o número de portas do freio de boca o realce dos agudos, comprimento e queda do carregador o tempo da recarga. A fonte é <b>a mesma</b> de que os modelos são construídos ({@code gun_standard.CLASS_REFERENCE} e {@code gun_mesh.resolved_spec()})",
+        "<b>69 eventos / 115 arquivos.</b> Cinco papéis por arma: disparo (3 variantes), carregador fora, carregador dentro, fechamento do ferrolho, disparo em seco. Ferrolhos manuais e armas de bomba fecham em <b>dois tempos</b>, e uma pistola com o carregador na empunhadura tem um retém de carregador mais agudo. sounds.json, legendas (inglês e japonês) e o registro Java são todos <b>gerados</b>, então nenhum dos 69 pode mais faltar (um ausente só fica mudo enquanto o jogo inicia mesmo assim; à mão, nunca teria sido notado)",
+        "<b>Essa verificação pegou um defeito nos meus próprios sons.</b> Os disparos das duas pistolas tinham só 0,4 % da energia abaixo de 200 Hz e ficaram vermelhos como “sem corpo grave”. Com cano curto a ressonância fica em 1,2 kHz, e a queda que eu tinha escalado a ela parava em 160 Hz. O que decide até onde desce é <b>o volume de gás em expansão</b> (raio ∝ E^(1/3)); agora é derivado disso",
+        "<b>Potência do lança-foguetes 396 → 36.</b> O pedido lista “baixar a potência” e “reduzir a carga” como dois itens, mas no 26.2 são <b>um único e mesmo número</b>. O que o bytecode realmente faz: uma explosão lança <b>1.352</b> raios a partir das faces de uma grade 16×16×16 e perde 0,315 por passo de 0,3 bloco no ar. Com 396 cada raio corria 1.634 passos = <b>cerca de 490 blocos</b>, então um único impacto executava <b>cerca de 2,21 milhões</b> de pares {@code getBlockState} + {@code getFluidState}",
+        "<b>A busca de entidades pesava ainda mais.</b> O vanilla chama {@code getEntities} numa caixa inflada em {@code power × 2} ao redor da explosão. Com 396 é um <b>raio de 792 blocos</b> — um cubo de 1.584 de lado, cerca de <b>99×99 chunks</b>, varrido em toda a altura. Com 36 o raio é 72 (9×9 chunks) — <b>1/1.331</b> do volume. Ambos rodam na thread do servidor; era isso, de fato, “a carga do foguete”",
+        "<b>A pistola está um pouco menor.</b> No caminho apareceram dois erros de medida. ① A fórmula de escala usava “o lado mais longo do modelo” como comprimento, mas <b>uma pistola é mais alta que longa</b> (medido: altura 0,7944 / comprimento 0,7806 bloco), então só nas pistolas a <b>altura</b> entrava na curva. ② O fator da transformação de exibição estava <b>fixo em 1,5</b>, enquanto os valores publicados vêm em três degraus: 1,35 / 1,5 / 1,65",
+        "<b>Por isso cada arma agora declara quantos blocos deve parecer ter na tela.</b> O comprimento vem da arma real em mm, não da caixa do modelo, e o renderizador <b>apenas resolve</b> a escala que atinge esse alvo. A verificação agora mede <b>a concordância com o declarado</b> (dentro de 0,005 bloco) em vez de um mínimo. A pistola vai de 0,949 para <b>0,904 bloco</b> na tela (95,3 % do que o dono viu). O rifle de precisão, a carabina e o lança-foguetes estavam, ao contrário, 10 % grandes demais, e encolheram",
+        "<b>O V4.3.4Update.md está implementado (fluxos O / R / C / Q).</b> Quem coloca um veículo, ou embarca primeiro, é o dono. <b>Travado com o colar de trava</b>, ninguém mais pode embarcar, abastecer, filtrar ou montar kits (<b>abalroar continua funcionando</b> — a especificação diz isso), e fazer uma <b>chave reserva</b> deixa outra pessoa passar naquele único veículo. {@code /garage owner} mostra o dono; {@code set} / {@code clear} exigem nível de permissão 2",
+        "<b>O livro de receitas estava vazio.</b> {@code sorakaze_vehicles} tem <b>149</b> receitas e nem um único progresso que as desbloqueie — o livro de receitas do 26.2 só mostra o desbloqueado, então mesmo com os materiais na mão <b>não havia como saber que dava para fabricá-las</b>. As 149 agora são desbloqueadas ao pegar chapa laminada (a lista também é gerada: uma receita adicionada depois entra sozinha)",
+        "<b>O cartão de linha foi adicionado.</b> Clique direito para 8 páginas — a linha de resíduos, o condensado e o imposto de bomba, a partida a frio do anel principal, o viaduto leste e a crista de Cinza oeste, nevascas e enchentes, kits e navegação, posse, e trânsito, trens e os leviatãs. Não usa <b>nem um byte de rede</b> (o número da página vive só no cliente). Aparece com 40 % em dois baús da Conurbação de Cinzas",
+        "<b>Q1 a Q6 também estão resolvidas.</b> Q4 (filtrar combustível em voo é <b>permitido, mas anula a sustentação por 10 ticks</b>) é código novo; para Q1 (o imposto de bomba se recupera em 24000 ticks), Q2 (vagas de estacionamento são dados persistentes por jogador), Q3 (quebrar o gancho solta a aeronave sozinha) e Q5 (coreRequiresPlate continua true por padrão) confirmei que <b>já se comportam assim</b> e deixei uma marca {@code // RF4.3.4-Qn}"
        ]
       },
       {
        "title": "Ajustes de balanceamento",
        "items": [
-        "ロケットランチャー: 爆発力 396.0 → <b>36.0</b>(バニラ TNT の 99 倍 → 9 倍)。直撃ダメージ 960 は<b>据え置き</b>です。石の中の掘削はおおよそ 73 ブロック → 6.6 ブロック(見積もりであって仕様ではありません。実測は {@code RocketLauncherTests} の MEASURED 行を見てください)",
-        "ハンドガン / サービスピストル: 画面上の長さ 0.949 → <b>0.904</b> ブロック",
-        "スナイパーライフル 1.915 → 1.743、ヘビースナイパー 2.078 → 1.890、ロケットランチャー 1.890 → 1.682、マークスマンカービン 1.697 → 1.568 ブロック(表示変換の倍率が 1.65 の 4 挺は、1.5 のベタ書きのせいで 10% 大きすぎました)",
-        "既存の config が 396.0 を持っていても、起動時に 36.0 へ直ります(世代 10 の修理項目)"
+        "Lança-foguetes: potência de explosão 396,0 → <b>36,0</b> (99× o TNT vanilla → 9×). O dano de impacto direto de 960 fica <b>inalterado</b>. A escavação em pedra cai de cerca de 73 blocos para 6,6 blocos (uma estimativa, não uma especificação — o valor medido está na linha MEASURED de {@code RocketLauncherTests})",
+        "Arma curta / pistola de serviço: comprimento na tela 0,949 → <b>0,904</b> bloco",
+        "Rifle de precisão 1,915 → 1,743, rifle de precisão pesado 2,078 → 1,890, lança-foguetes 1,890 → 1,682, carabina de atirador 1,697 → 1,568 blocos (as quatro armas com fator de exibição 1,65 estavam 10 % grandes demais por causa do 1,5 fixo)",
+        "Uma configuração existente com 396,0 é corrigida para 36,0 na inicialização (item de reparo da geração 10)"
        ]
       },
       {
        "title": "Pontos de atenção",
        "items": [
-        "<b>この版は所有権を入れます。</b>これ以降に<b>置いた</b>車、または<b>持ち主の居ない車に最初に乗った</b>ときに、その車はあなたのものになります。4.3.5 までに置かれた車は<b>持ち主なしのまま</b>なので、施錠もされず誰でも触れます —— 既存の車の挙動は 1 ビットも変わりません",
-        "<b>旧い発砲音のファイル 15 個を削除しました。</b>{@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code rocket_fire} とその候補です。リソースパックでこれらを差し替えていた場合、<b>その差し替えは効かなくなります</b>(新しい名前は {@code <銃の id>_fire})"
+        "<b>Esta versão introduz a posse.</b> De agora em diante, um veículo que você <b>coloca</b>, ou um <b>veículo sem dono em que você embarca primeiro</b>, passa a ser seu. Veículos colocados até a 4.3.5 continuam <b>sem dono</b>, então não estão travados e qualquer um pode usá-los — os veículos existentes se comportam exatamente como antes, bit a bit",
+        "<b>15 arquivos antigos de som de disparo foram excluídos.</b> {@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code rocket_fire} e suas variantes. Se um pacote de recursos os substituía, <b>essa substituição deixa de ter efeito</b> (os nomes novos são {@code <id da arma>_fire})"
        ]
       },
       {
        "title": "O que ainda não estava implementado ou confirmado nesse momento",
        "items": [
-        "<b>ADS の傾きが直ったことを、実際の画面ではまだ見ていません。</b>測っているのは出荷している変換の連なりを積み直したカメラ空間の姿勢で、残差はヨー・ピッチ・ロールとも 0.000 度です。しかし所有者の画面で確かめてはいません",
-        "<b>ADS の補正は「装備し終えた状態」で導いてあります。</b>持ち替えの途中({@code equippedProgress} > 0)は腕ごと下がるので、その 0.2 秒ほどは照門が画面中心から下へずれます",
-        "<b>115 個の音は 1 つも聴いていません。</b>波形の性質(立ち上がり・低域・重なり・識別性)はすべて数値で測ってありますが、この開発機に Minecraft のクライアントが無いので、耳で確かめてはいません",
-        "<b>ラインカードの画面も 1 ピクセルも見ていません。</b>ページ数・字幕の鍵・専用サーバーで落ちないことは押さえてありますが、見た目は未確認です",
-        "V4.3.4Update.md §5 の「残渣ライン(結晶 → 粉砕 → 洗浄 → 安定化)」のレシピ解禁は<b>入っていません</b>。あれは {@code sorakaze_fallout} の持ち物で、こちらから名指しすると fallout の無いワールドで advancement が読み込みに失敗します。あちら側で同じ形を作る必要があります",
-        "扉のちらつきと「銃以外のアイテムを落とすと飛んでいく」は、<b>依然として未確認・未測定</b>のままです"
+        "<b>Ainda não vi a inclinação no ADS corrigida numa tela real.</b> O que está medido é a postura no espaço da câmera reconstruída a partir da cadeia de transformações publicada, com resíduo de 0,000° em guinada, arfagem e rolagem. Não foi verificado na tela do dono",
+        "<b>A correção do ADS é derivada para o estado totalmente equipado.</b> Durante a troca de arma ({@code equippedProgress} > 0) o braço inteiro desce, então por cerca de 0,2 segundo a alça fica abaixo do centro da tela",
+        "<b>Não ouvi nenhum dos 115 sons.</b> Todas as propriedades das formas de onda (ataque, graves, sobreposição, distinção) são medidas numericamente, mas esta máquina de desenvolvimento não tem cliente de Minecraft, então nada foi verificado de ouvido",
+        "<b>Também não vi um único pixel da tela do cartão de linha.</b> Número de páginas, chaves de legenda e não travar num servidor dedicado estão cobertos; a aparência não foi verificada",
+        "O desbloqueio de receitas da “linha de resíduos (cristal → triturar → lavar → estabilizar)” do V4.3.4Update.md §5 <b>não está incluído</b>. Essas receitas pertencem a {@code sorakaze_fallout}, e nomeá-las daqui faria o progresso não carregar em mundos sem fallout. A mesma forma precisa ser construída do lado de lá",
+        "A cintilação das portas e “itens que não são armas saem voando ao serem soltos” continuam <b>não verificados e não medidos</b>"
        ]
       }
      ]
