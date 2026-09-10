@@ -7,8 +7,42 @@
  "groups": [
   {
    "label": "V4.3",
-   "summary": "構えると銃が 7 度ねじれていました ―― ADS の傾き、銃ごとの音、ロケットの負荷、そして所有権",
+   "summary": "緊急修正:V4.3.6 は起動しませんでした ―― 同じ音の ID を 2 度登録していました",
    "releases": [
+    {
+     "version": "V4.3.6.1",
+     "date": "2026-09-10",
+     "type": "hotfix",
+     "title": "緊急修正:V4.3.6 は起動しませんでした ―― 同じ音の ID を 2 度登録していました",
+     "summary": "V4.3.6 を入れるとゲームが「Could not execute entrypoint stage 'main'」で落ち、<b>1 秒も動きませんでした。</b>原因は 1 つです —— 銃ごとの音を入れたとき、新しい形式名 {@code <銃の id>_fire} のうち <b>3 つが旧 ID と綴りが同じ</b>で、古い側の登録が残っていました。同じ鍵で 2 度登録するとレジストリが落ちます。<b>私の出荷前の検査は、どれもこれを見られませんでした。</b>",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "<b>原因。</b>{@code handgun_fire} / {@code minigun_fire} / {@code shotgun_fire} の 3 つが、新しい形式ごとの命名({@code <銃の id>_fire})と<b>たまたま同じ綴り</b>になりました。{@code GunSounds} が登録し、{@code ModSounds} も登録したままだったので、2 度目の {@code Registry.register} が同じ鍵で落ち、{@code sorakaze_guns} の entrypoint ごと死にました",
+        "<b>直しかた。</b>銃ごとの音へ移した 10 個の古い定数({@code assault_fire} / {@code smg_fire} / {@code sniper_fire} / {@code heavy_sniper_fire} / {@code laser_fire} / {@code cryo_fire} / {@code minigun_fire} / {@code rocket_fire} / {@code shotgun_fire} / {@code handgun_fire})を {@code ModSounds} から削除しました。登録は {@code GunSounds} の 1 か所だけになります",
+        "<b>私の検査は全部緑でした。</b>波形・ファイル・sounds.json・字幕・登録表・モデル・当たり・傾き —— どれも見ていました。<b>「登録が通るか」を見ていたものが 1 つも無かった</b>のです。GameTest なら捕まえられますが、走らせるのに専用サーバーが要り、この機体では EULA で止まります",
+        "<b>だから、実際に登録する門を 2 つ足しました。</b>{@code checkGunSoundRegistration} は本物の {@code ModSounds.init()} と {@code GunSounds.init()} を、実機と同じ順で<b>本当に呼びます</b>。{@code checkRegistration}(乗り物側)も同じで、V4.3.6 で足した 3 品目と成分 1 つを実際に登録します",
+        "<b>その門には陰性対照があります。</b>今回の重複({@code handgun_fire})をわざと戻すと、門は落ちます。落ちなければ「この門は登録を測っていない」ということなので、意味がありません",
+        "<b>13 モジュール全部を見る静的な検査も足しました。</b>同じ登録 ID を 2 か所で書いていないかを見ます。ただし 4 モジュール({@code phone} / {@code planarcadia} / {@code power} / {@code sapporo})は<b>この検査の見かたに当てはまらず、見られていません</b> —— 緑と混ぜず「未カバー」と表示します"
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "<b>V4.3.6 は導入しないでください。</b>起動しません。この 4.3.6.1 で置き換えてください"
+       ]
+      },
+      {
+       "title": "Yang Belum Diimplementasikan / Belum Dikonfirmasi Saat Itu",
+       "items": [
+        "<b>この修正が実機で起動することを、私はまだ見ていません。</b>登録は実際に走らせて確かめました(音 87 件・アイテム 26 件)が、この開発機に Minecraft のクライアントが無いので、ゲームが立ち上がるところは見ていません",
+        "V4.3.6 の内容(ADS の傾き・銃ごとの音・ロケットの負荷・所有権)は<b>そのまま入っています</b>。消したのは使わなくなった古い音の定数 10 個だけです",
+        "静的な重複検査は 13 モジュール中 9 しか見られていません(上記)"
+       ]
+      }
+     ]
+    },
     {
      "version": "V4.3.6",
      "date": "2026-09-10",
