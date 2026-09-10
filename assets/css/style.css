@@ -1,7 +1,7 @@
 /* ==========================================================================
    Aurora Corvus — shared stylesheet (Apple-grade typography + motion pass)
 
-   Design language: deep near-black night sky, aurora-tinted light washes,
+   Design language: deep near-black night sky, sky-tinted light washes,
    glassy translucent surfaces. Typography is the Apple system stack — SF Pro
    on macOS/iOS, Hiragino Sans for Japanese — NOT a decorative serif. The old
    Cormorant Garamond / Zen Kaku Gothic New pairing (and its Google Fonts
@@ -294,9 +294,13 @@ strong, b { font-weight: 600; }
 .sky__aurora {
   position: absolute; inset: -30%;
   background:
-    radial-gradient(38% 30% at 24% 20%, rgba(87, 230, 174, 0.20), transparent 72%),
-    radial-gradient(42% 32% at 76% 15%, rgba(139, 123, 255, 0.18), transparent 72%),
-    radial-gradient(52% 40% at 52% 48%, rgba(70, 168, 255, 0.13), transparent 74%);
+    /* 2026-09-10, owner: 「全体的にテーマがスカイブルーではなく、以前の Aurora
+       テーマが残っている」。これがその残りだった —— トークンを空色に変えても、
+       この 3 つの洗いは生の rgba(緑 87,230,174 と紫 139,123,255)のままで、
+       全ページの背景が依然オーロラだった。3 つとも空色の一族に。 */
+    radial-gradient(38% 30% at 24% 20%, rgba(90, 200, 250, 0.20), transparent 72%),
+    radial-gradient(42% 32% at 76% 15%, rgba(10, 132, 255, 0.17), transparent 72%),
+    radial-gradient(52% 40% at 52% 48%, rgba(120, 214, 255, 0.12), transparent 74%);
   animation: aurora-drift 42s var(--ease-in-out-soft) infinite alternate;
   will-change: transform;
 }
@@ -687,8 +691,8 @@ html:not(.js) .lang-switch:focus-within .lang-switch__menu { display: block; }
 .hero::before {
   content: ""; position: absolute; z-index: -1; inset: -80px -40px auto -40px; height: 380px;
   background:
-    radial-gradient(closest-side, rgba(87, 230, 174, 0.16), transparent 72%) 15% 30% / 62% 100% no-repeat,
-    radial-gradient(closest-side, rgba(139, 123, 255, 0.14), transparent 74%) 85% 55% / 52% 100% no-repeat;
+    radial-gradient(closest-side, rgba(90, 200, 250, 0.16), transparent 72%) 15% 30% / 62% 100% no-repeat,
+    radial-gradient(closest-side, rgba(10, 132, 255, 0.14), transparent 74%) 85% 55% / 52% 100% no-repeat;
   opacity: 0.9;
   translate: 0 calc(var(--parallax, 0) * -0.55px);
   animation: hero-glow-drift 16s var(--ease-in-out-soft) infinite alternate;
@@ -854,8 +858,8 @@ main:has(> .film) { padding-block: 0; }
   html.js .film__scene--sign::before {
     content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
     background:
-      radial-gradient(38% 34% at 50% 44%, rgba(87, 230, 174, 0.20), transparent 72%),
-      radial-gradient(46% 38% at 50% 56%, rgba(139, 123, 255, 0.16), transparent 76%);
+      radial-gradient(38% 34% at 50% 44%, rgba(90, 200, 250, 0.20), transparent 72%),
+      radial-gradient(46% 38% at 50% 56%, rgba(10, 132, 255, 0.16), transparent 76%);
     scale: calc(1 + 0.25 * var(--t, 0));
   }
 
@@ -1138,7 +1142,7 @@ a.card { text-decoration: none; }
 .timeline { position: relative; margin-top: 24px; }
 .timeline::before {
   content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px;
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.55), rgba(139, 123, 255, 0.30), var(--hairline));
+  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.55), rgba(10, 132, 255, 0.30), var(--hairline));
 }
 [dir="rtl"] .timeline::before { left: auto; right: 9px; }
 .timeline-entry { position: relative; padding-left: 34px; margin-bottom: 38px; }

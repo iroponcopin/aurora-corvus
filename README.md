@@ -1,4 +1,4 @@
-# Aurora Corvus
+# Corvus
 
 An unofficial reference site for **Alpha** (called *Glimpse Alpha* until V2.5.0,
 and *Sorakaze* before that), a set of

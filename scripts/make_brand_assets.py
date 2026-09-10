@@ -42,12 +42,16 @@ ROOT = Path(__file__).resolve().parent.parent
 BRAND = ROOT / "assets" / "img" / "brand"
 SRC = BRAND / "corvus-source.jpg"
 
-# Aurora Corvus palette, taken from the live site's dark theme (style.css).
+# Corvus palette, taken from the live site's dark theme (style.css).
+# 2026-09-10: the aurora mint (140,240,205) and violet (139,123,255) became the
+# sky-blue family the site moved to — the tile glow and the share card were the
+# last two surfaces still carrying the old colours. The names are kept so the
+# call sites below read the same; the values are what changed.
 INK = (10, 12, 16)          # near-black page ground
 TILE_TOP = (18, 24, 33)
 TILE_BOTTOM = (9, 12, 17)
-AURORA = (140, 240, 205)    # --accent-strong
-AURORA_VIOLET = (139, 123, 255)
+AURORA = (90, 200, 250)     # --accent  (#5ac8fa)
+AURORA_VIOLET = (10, 132, 255)   # Apple system blue, the deep end of the band
 
 # Candidate faces for the share card's wordmark, best first. Every entry is
 # optional: if none of them resolve the card is still rendered, just without
@@ -223,7 +227,7 @@ def og_card(mark, width=1200, height=630):
     bird = fit_into(tinted(mark, (255, 255, 255)), round(width * 0.30), round(height * 0.34))
 
     font, font_name = _load_font(round(height * 0.155))
-    text = "Aurora Corvus"
+    text = "Corvus"
     if font is not None:
         d = ImageDraw.Draw(card)
         bbox = d.textbbox((0, 0), text, font=font)

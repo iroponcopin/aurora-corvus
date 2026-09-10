@@ -4,45 +4,70 @@
 Owner directive (2026-09-10, IROHA, verbatim):
 
     次世代のModsを作りに着手を始めます。
-    Modsのブランド名称はCherryです。桜という意味が込められます。
+    Modsのブランド名称はCherryです。
     ブランドロゴも桜の花を採用すると共にCorvusの様にWebサイトを開くと
     桜の花びらが回転しながら咲くアニメーションが加えられ、Modsの紹介が
     行われます。
-    （…）全体的にAppleの様に美しく妥協のないデザインを採用し、Mods自体も
-    一切の妥協がない状態で機能することとなります。
     Alphaの上位ブランドという位置付けになるでしょう。
     Alpha Modsと併用して導入することができますが、バージョンは異なります。
     そしてCorvusランチャーにも対応し、自動でアップデート初回はダウンロード
     ボタンが表示されます。
 
---------------------------------------------------------------------------
-What this page IS, and what it is NOT
---------------------------------------------------------------------------
-It is the brand's front door: the mark, the blossom animation the owner asked
-for, the positioning against Alpha, and the launcher contract.
+Second directive (2026-09-10, IROHA, verbatim), after the first page was
+rejected — this one governs what the page says and how the mark behaves:
 
-It is NOT a download page, because **there is nothing to download yet**. Not a
-single Cherry mod has been written. Every other page on this site describes
-something that ships; this one describes something that has been *started*, and
-it says so in its own first paragraph in all 13 languages. The old V3 teaser
-(scripts/build_v3_teaser.py, deleted the day V3 shipped) is the precedent for
-how a "not yet" page is written here — state the status plainly, on the page,
-where the reader is; never imply a build exists.
+    Cherry は Alpha の上位に置くブランドです。Alpha と併せて導入でき、
+    バージョンは別に進みます。
+    ブランドの強さを説明するだけで良いです。名前の由来など説明しません。
+    Appleも同じようにAppleという名前に言及しないのと同じです。
+    妥協しないのは当たり前のことわりなのでわざわざ記載しないでください。
+    ブランドイメージが軽くなります。
+    ランチャー対応とAlphaと併用できること、そして今の状況という記載の仕方
+    ではなく、乞うご期待などに変更してください。
+    Cherryロゴが一歳動いていません。これは常時動いているロゴです。
+    着手したところです。まだ配布できるビルドはありません。こう言った余計な
+    文言は排除してください。書くならプレミア感がある文章を添えるだけです。
 
 --------------------------------------------------------------------------
-The animation — "桜の花びらが回転しながら咲く"
+What the page says — and what it must never say
+--------------------------------------------------------------------------
+Two things, and nothing else:
+
+  1. Cherry is the tier above Alpha — said once, as a fact, not argued.
+  2. A closing line in the register of 乞うご期待.
+
+NOT on this page, by the owner's word: where the name comes from; that there
+is no compromise (self-evident, and saying it cheapens the brand); that it
+works with the Corvus launcher; that it installs alongside Alpha or versions
+on its own (「ランチャー対応とAlphaと併用できること、そして今の状況という
+記載の仕方ではなく、乞うご期待などに変更してください」 — a rewrite on
+2026-09-10 read this backwards and kept both as "capability" cards; they are
+gone); any status, progress, "not yet", "coming later", build, or schedule.
+Every one of the 13 languages carries its own copy; nothing falls back to English.
+
+--------------------------------------------------------------------------
+The mark — it blooms once, then it never stops moving
 --------------------------------------------------------------------------
 On open, the five petals begin folded into the centre (scaled to nothing and
 rotated back by 90 degrees) and unfold outward one after another, each rotating
-into its final 72-degree position as it grows. The stamens fade in last. It
-runs ONCE on load, like a flower opening — not a loop, because a loop turns a
-bloom into a spinner.
+into its final 72-degree seat as it grows. The stamens fade in last.
 
-It is CSS only: transform + opacity on five <path> elements, which the
-compositor animates without touching layout or paint. No JavaScript, no canvas,
-no library. `prefers-reduced-motion: reduce` skips straight to the open flower —
-a bloom is decoration, and decoration must never be the thing that stops
-somebody reading the page.
+From the first frame and forever after, the whole flower turns — one
+revolution a minute, linear, on the <g class="ch-spin"> wrapper the generator
+provides. As each petal finishes opening it starts to breathe (scale 1 ->
+0.985 -> 1 over ~5 s, staggered), and a soft band of light glides from the
+heart of each petal to its tip every ~7 s, also staggered. All of it is CSS
+keyframes with `infinite` iteration; no JavaScript, no SMIL, no library.
+
+`prefers-reduced-motion: reduce` skips ONLY the one-time bloom (the flower
+starts open). The rotation, the breathing and the light are the identity of
+the mark — 「常時動いているロゴ」 — and stay on regardless.
+
+Two traps this file inherits from gen_cherry_brand.py (read its docstring):
+CSS `transform` REPLACES an element's own `transform` attribute, so the whole-
+flower rotation lives on the wrapper (which has no attribute) and every petal
+keyframe re-states the petal's seat angle as a literal; and var(--i) does not
+resolve per element inside @keyframes, so the generator writes five sets.
 """
 
 from __future__ import annotations
@@ -53,56 +78,97 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, available_langs, esc, load_bundle, page, write_page,
+    ROOT, available_langs, esc, page, write_page,
 )
 
 SECTION = "cherry/"
 
 # --- copy -------------------------------------------------------------------
-# Japanese is the owner's language and the site's default; English is the
-# fallback for the other eleven, exactly as build_skin_gate.py does. Where a
-# bundle has no Cherry strings yet, the reader gets English rather than a raw
-# key — and the page says which state it is in.
+# Every language the site ships has its own entry; there is no fallback. Brand
+# names (Cherry, Alpha, Corvus) are never translated. Keys, in every language:
+#   title, desc, lede, soon.
 COPY = {
     "ja": {
         "title": "Cherry",
-        "desc": "Alpha の上位ブランド。桜の名を持つ次世代 MOD。",
-        "status": "着手したところです。まだ配布できるビルドはありません。",
-        "lede": "Cherry は Alpha の上位に置くブランドです。名前には桜の意味を込めています。"
-                "Alpha と併せて導入でき、バージョンは別に進みます。",
-        "h_design": "妥協しない",
-        "p_design": "見た目も、動きも、音も、数字で確かめられるところまで作ります。"
-                    "Alpha でやってきたとおり、主張ではなく実測で通します。",
-        "h_along": "Alpha と一緒に入る",
-        "p_along": "Cherry は Alpha を置き換えません。同じワールドに両方入れられます。"
-                   "バージョンは互いに独立して進みます。",
-        "h_launcher": "Corvus ランチャー対応",
-        "p_launcher": "初回はダウンロードボタンが出ます。以後は自動で更新されます。"
-                      "Alpha と同じ仕組みの上に載ります。",
-        "h_state": "いまの状態",
-        "p_state": "ブランド名・ロゴ・このページまでができています。"
-                   "MOD 本体はこれからです。進捗はこのページで報告します。",
+        "desc": "Alpha の上位に位置するブランド。",
+        "lede": "Alpha の上位に位置するブランド。",
+        "soon": "ご期待ください。",
     },
     "en": {
         "title": "Cherry",
-        "desc": "The tier above Alpha. A next-generation mod line named for the cherry blossom.",
-        "status": "Just started. There is no build to download yet.",
-        "lede": "Cherry sits above Alpha. The name carries the meaning of sakura — the cherry "
-                "blossom. It installs alongside Alpha and versions independently.",
-        "h_design": "No compromise",
-        "p_design": "How it looks, how it moves, how it sounds — built until each can be checked "
-                    "with a number. The same standard Alpha is held to: measured, not asserted.",
-        "h_along": "Runs alongside Alpha",
-        "p_along": "Cherry does not replace Alpha. Both can be installed in the same world, and "
-                   "their versions advance independently of each other.",
-        "h_launcher": "Corvus launcher",
-        "p_launcher": "A download button the first time, automatic updates after that — on the "
-                      "same mechanism Alpha already uses.",
-        "h_state": "Where it stands",
-        "p_state": "The name, the mark and this page exist. The mods themselves do not yet. "
-                   "Progress will be reported here.",
+        "desc": "The tier above Alpha.",
+        "lede": "The tier above Alpha.",
+        "soon": "Coming soon.",
+    },
+    "es": {
+        "title": "Cherry",
+        "desc": "El nivel por encima de Alpha.",
+        "lede": "El nivel por encima de Alpha.",
+        "soon": "Muy pronto.",
+    },
+    "fr": {
+        "title": "Cherry",
+        "desc": "Le niveau au-dessus d'Alpha.",
+        "lede": "Le niveau au-dessus d'Alpha.",
+        "soon": "Bientôt disponible.",
+    },
+    "zh": {
+        "title": "Cherry",
+        "desc": "位于 Alpha 之上的品牌。",
+        "lede": "位于 Alpha 之上的品牌。",
+        "soon": "敬请期待。",
+    },
+    "ko": {
+        "title": "Cherry",
+        "desc": "Alpha 위에 자리한 브랜드입니다.",
+        "lede": "Alpha 위에 자리한 브랜드입니다.",
+        "soon": "기대해 주세요.",
+    },
+    "pt-br": {
+        "title": "Cherry",
+        "desc": "O nível acima do Alpha.",
+        "lede": "O nível acima do Alpha.",
+        "soon": "Em breve.",
+    },
+    "it": {
+        "title": "Cherry",
+        "desc": "Il livello sopra Alpha.",
+        "lede": "Il livello sopra Alpha.",
+        "soon": "In arrivo.",
+    },
+    "ar": {
+        "title": "Cherry",
+        "desc": "المستوى الأعلى من Alpha.",
+        "lede": "المستوى الأعلى من Alpha.",
+        "soon": "ترقّبوا قريباً.",
+    },
+    "ru": {
+        "title": "Cherry",
+        "desc": "Уровень выше Alpha.",
+        "lede": "Уровень выше Alpha.",
+        "soon": "Уже скоро.",
+    },
+    "id": {
+        "title": "Cherry",
+        "desc": "Tingkat di atas Alpha.",
+        "lede": "Tingkat di atas Alpha.",
+        "soon": "Segera hadir.",
+    },
+    "de": {
+        "title": "Cherry",
+        "desc": "Die Stufe über Alpha.",
+        "lede": "Die Stufe über Alpha.",
+        "soon": "Bald verfügbar.",
+    },
+    "tr": {
+        "title": "Cherry",
+        "desc": "Alpha'nın üzerindeki seviye.",
+        "lede": "Alpha'nın üzerindeki seviye.",
+        "soon": "Çok yakında.",
     },
 }
+
+KEYS = ("title", "desc", "lede", "soon")
 
 
 def _blossom_svg() -> str:
@@ -114,6 +180,17 @@ def _blossom_svg() -> str:
     return svg
 
 
+# --- timing (ms) --------------------------------------------------------------
+BLOOM_MS = 1150          # one petal, fold -> seat
+BLOOM_STEP_MS = 105      # petal-to-petal stagger of the bloom
+BLOOM_START_MS = 140     # petal 0 starts
+BREATHE_MS = 5200        # one breath (1 -> .985 -> 1)
+BREATHE_STEP_MS = 420    # petal-to-petal stagger of the breath
+SPIN_S = 60              # one revolution of the whole flower
+SHEEN_MS = 7000          # one pass of light along a petal, pause included
+SHEEN_STEP_MS = 260      # petal-to-petal stagger of the light
+
+
 HEAD = """<link rel="stylesheet" href="{root}assets/css/cherry-tokens.css">
 <style>
 .ch-wrap{{background:var(--ch-bg);color:var(--ch-text);padding:4rem 1.25rem 5rem;
@@ -123,21 +200,14 @@ HEAD = """<link rel="stylesheet" href="{root}assets/css/cherry-tokens.css">
   grid-template-columns:minmax(0,1fr)}}
 @media (min-width:52rem){{.ch-hero{{grid-template-columns:22rem minmax(0,1fr)}}}}
 .ch-mark{{width:min(22rem,68vw);aspect-ratio:1;margin-inline:auto}}
-.ch-name{{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .6rem;
+.ch-name{{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
   letter-spacing:-.02em;color:var(--ch-petal)}}
-.ch-lede{{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0 0 1rem}}
-.ch-status{{display:inline-block;border:1px solid var(--ch-blush);color:var(--ch-petal-deep);
-  border-radius:999px;padding:.3rem .9rem;font-size:.86rem;margin-bottom:1.1rem}}
-.ch-grid{{display:grid;gap:1.25rem;margin-top:3.5rem;
-  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}}
-.ch-card{{background:var(--ch-bg-lift);border:1px solid var(--ch-line);border-radius:14px;
-  padding:1.4rem 1.3rem}}
-.ch-card h2{{font-size:1.06rem;margin:0 0 .5rem;color:var(--ch-petal)}}
-.ch-card p{{margin:0;color:var(--ch-text-muted);line-height:1.7;font-size:.97rem}}
+.ch-lede{{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0}}
+.ch-soon{{margin:4rem 0 0;text-align:center;font-size:1.25rem;letter-spacing:.08em;
+  color:var(--ch-petal-deep)}}
 
-/* --- the bloom -----------------------------------------------------------
-   Each petal starts folded into the centre and unfolds into its own
-   72-degree seat.
+/* --- the mark ------------------------------------------------------------
+   Blooms once on load; from then on it never stops moving.
 
    ★ 角度は<b>1 枚ずつ literal で書き出す</b>。最初は
      `rotate(calc(var(--i) * 72deg))` を 1 つの @keyframes で共有していたが、
@@ -146,63 +216,107 @@ HEAD = """<link rel="stylesheet" href="{root}assets/css/cherry-tokens.css">
      畳まれて重なっていた。生成器が 5 組を書き出せば、その曖昧さは消える。
 
    ★ 原点もユーザー単位で明示する。50%% 50%% は view-box ではなく要素自身の
-     箱に対して解決されていた。viewBox は 512 なので中心は 256。 */
+     箱に対して解決されていた。viewBox は 512 なので中心は 256。
+
+   ★ CSS の transform は要素の transform 属性を<b>置き換える</b>。花全体の
+     回転は属性を持たない包み .ch-spin にだけ掛け、花弁の keyframe は
+     どれも自分の座席角を literal で書き直す。 */
+
+/* 1. the whole flower turns, forever, from the first frame */
+.ch-bloom .ch-spin{{transform-box:view-box;transform-origin:256px 256px;
+  animation:ch-spin {spin_s}s linear infinite}}
+@keyframes ch-spin{{from{{transform:rotate(0deg)}}to{{transform:rotate(360deg)}}}}
+
+/* 2. each petal: bloom once, then breathe forever (literal angle per petal) */
 {petals}
+
+/* 3. a soft light glides from the heart of each petal to its tip, forever */
+{sheen}
+@keyframes ch-sheen{{0%{{transform:translateY(0)}}58%{{transform:translateY(-560px)}}
+  100%{{transform:translateY(-560px)}}}}
+
+/* 4. the stamens fade in last (once) */
 .ch-bloom .ch-stamens,.ch-bloom .ch-anthers{{
   animation:ch-fade 700ms ease-out backwards;animation-delay:900ms}}
 @keyframes ch-fade{{from{{opacity:0}}to{{opacity:1}}}}
+
+/* Reduced motion skips ONLY the one-time bloom: the flower starts open. The
+   rotation, the breath and the light are the mark itself and stay on. */
 @media (prefers-reduced-motion:reduce){{
-  .ch-bloom .ch-petal,.ch-bloom .ch-stamens,.ch-bloom .ch-anthers{{animation:none}}}}
+  .ch-bloom .ch-stamens,.ch-bloom .ch-anthers{{animation:none}}
+{petals_reduced}
+}}
 </style>"""
 
 
-def _petal_css() -> str:
-    """5 枚ぶんの @keyframes と割り当て。角度は literal、原点は user unit。"""
-    out = []
+def _petal_css() -> tuple[str, str, str]:
+    """Per-petal rules: (normal, reduced-motion, sheen). Angles literal, origin user units.
+
+    ★ ここは HEAD.format() に<b>値として</b>差し込まれる。テンプレート側と違って
+      波括弧を {{ }} と二重にしてはいけない —— 最初の版はそうしていて、出力が
+      `{{transform-box:...}}` という<b>壊れた CSS</b> になり、花弁の規則が
+      丸ごと捨てられていた。所有者が見た「一切動かないロゴ」の正体はこれ。
+      生成後の cherry/index.html を grep して `{{` が無いことを確かめること。
+    """
+    normal, reduced, sheen = [], [], []
     for i in range(5):
         end = i * 72.0
         start = end - 90.0
-        out.append(
-            ".ch-bloom .ch-petal[style*='--i:%d']{{transform-box:view-box;"
-            "transform-origin:256px 256px;"
-            "animation:ch-open-%d 1150ms cubic-bezier(.16,.84,.28,1) backwards;"
-            "animation-delay:%dms}}" % (i, i, 140 + i * 105))
-        out.append(
-            "@keyframes ch-open-%d{{"
-            "from{{transform:rotate(%.1fdeg) scale(.04);opacity:0}}"
-            "60%%{{opacity:1}}"
-            "to{{transform:rotate(%.1fdeg) scale(1);opacity:1}}}}" % (i, start, end))
-    return "\n".join(out)
+        bloom_delay = BLOOM_START_MS + i * BLOOM_STEP_MS
+        breathe_delay = bloom_delay + BLOOM_MS + i * BREATHE_STEP_MS  # never before its bloom ends
+        sel = ".ch-bloom .ch-petal[style*='--i:%d']" % i
+        normal.append(
+            "%s{transform-box:view-box;transform-origin:256px 256px;"
+            "animation:ch-open-%d %dms cubic-bezier(.16,.84,.28,1) %dms backwards,"
+            "ch-breathe-%d %dms ease-in-out %dms infinite}"
+            % (sel, i, BLOOM_MS, bloom_delay, i, BREATHE_MS, breathe_delay))
+        normal.append(
+            "@keyframes ch-open-%d{"
+            "from{transform:rotate(%.1fdeg) scale(.04);opacity:0}"
+            "60%%{opacity:1}"
+            "to{transform:rotate(%.1fdeg) scale(1);opacity:1}}" % (i, start, end))
+        normal.append(
+            "@keyframes ch-breathe-%d{"
+            "0%%,100%%{transform:rotate(%.1fdeg) scale(1)}"
+            "50%%{transform:rotate(%.1fdeg) scale(.985)}}" % (i, end, end))
+        reduced.append(
+            "  %s{animation:ch-breathe-%d %dms ease-in-out %dms infinite}"
+            % (sel, i, BREATHE_MS, i * BREATHE_STEP_MS))
+        sheen.append(
+            "%s .ch-sheen{animation:ch-sheen %dms ease-in-out %dms infinite}"
+            % (sel, SHEEN_MS, bloom_delay + BLOOM_MS + 400 + i * SHEEN_STEP_MS))
+    return "\n".join(normal), "\n".join(reduced), "\n".join(sheen)
 
 
 def build_body(c: dict) -> str:
-    cards = []
-    for h, p in (("h_design", "p_design"), ("h_along", "p_along"),
-                 ("h_launcher", "p_launcher"), ("h_state", "p_state")):
-        cards.append('<div class="ch-card"><h2>%s</h2><p>%s</p></div>'
-                     % (esc(c[h]), esc(c[p])))
     return (
         '<div class="ch-wrap"><div class="ch-inner">'
         '<div class="ch-hero">'
         '<div class="ch-mark">%s</div>'
-        '<div><span class="ch-status">%s</span>'
-        '<h1 class="ch-name">%s</h1>'
+        '<div><h1 class="ch-name">%s</h1>'
         '<p class="ch-lede">%s</p></div>'
         '</div>'
-        '<div class="ch-grid">%s</div>'
+        '<p class="ch-soon">%s</p>'
         '</div></div>'
-        % (_blossom_svg(), esc(c["status"]), esc(c["title"]), esc(c["lede"]), "".join(cards))
+        % (_blossom_svg(), esc(c["title"]), esc(c["lede"]), esc(c["soon"]))
     )
 
 
 def main() -> int:
     langs = available_langs()
+    missing = [lang for lang in langs if lang not in COPY]
+    if missing:
+        print("build_cherry: no copy for %s (no fallback by design)" % ", ".join(missing))
+        return 1
+    for lang, c in COPY.items():
+        gaps = [k for k in KEYS if not c.get(k)]
+        if gaps:
+            print("build_cherry: %s is missing %s" % (lang, ", ".join(gaps)))
+            return 1
+    petals, petals_reduced, sheen = _petal_css()
     for lang in langs:
-        c = COPY.get(lang, COPY["en"])
-        # the mark's own rotation is applied by the CSS animation's `to` state,
-        # so the static SVG's transform must not fight it.
+        c = COPY[lang]
         body = build_body(c)
-        root = "" if lang == "ja" else "../"
         html = page(
             lang=lang,
             section=SECTION,
@@ -212,7 +326,8 @@ def main() -> int:
             body=body,
             depth=1,
             extra_head=HEAD.format(root="../" if lang == "ja" else "../../",
-                                   petals=_petal_css()),
+                                   spin_s=SPIN_S, petals=petals,
+                                   petals_reduced=petals_reduced, sheen=sheen),
         )
         write_page(lang, SECTION, html)
     print("build_cherry: %d language(s)" % len(langs))

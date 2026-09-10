@@ -7,11 +7,12 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cherry | Corvus</title>
-<meta name="description" content="The tier above Alpha. A next-generation mod line named for the cherry blossom.">
+<meta name="description" content="The tier above Alpha.">
 <meta property="og:title" content="Cherry | Corvus">
-<meta property="og:description" content="The tier above Alpha. A next-generation mod line named for the cherry blossom.">
+<meta property="og:description" content="The tier above Alpha.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
+<meta name="theme-color" content="#07090f">
 <meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -79,21 +80,14 @@
   grid-template-columns:minmax(0,1fr)}
 @media (min-width:52rem){.ch-hero{grid-template-columns:22rem minmax(0,1fr)}}
 .ch-mark{width:min(22rem,68vw);aspect-ratio:1;margin-inline:auto}
-.ch-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .6rem;
+.ch-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
   letter-spacing:-.02em;color:var(--ch-petal)}
-.ch-lede{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0 0 1rem}
-.ch-status{display:inline-block;border:1px solid var(--ch-blush);color:var(--ch-petal-deep);
-  border-radius:999px;padding:.3rem .9rem;font-size:.86rem;margin-bottom:1.1rem}
-.ch-grid{display:grid;gap:1.25rem;margin-top:3.5rem;
-  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
-.ch-card{background:var(--ch-bg-lift);border:1px solid var(--ch-line);border-radius:14px;
-  padding:1.4rem 1.3rem}
-.ch-card h2{font-size:1.06rem;margin:0 0 .5rem;color:var(--ch-petal)}
-.ch-card p{margin:0;color:var(--ch-text-muted);line-height:1.7;font-size:.97rem}
+.ch-lede{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0}
+.ch-soon{margin:4rem 0 0;text-align:center;font-size:1.25rem;letter-spacing:.08em;
+  color:var(--ch-petal-deep)}
 
-/* --- the bloom -----------------------------------------------------------
-   Each petal starts folded into the centre and unfolds into its own
-   72-degree seat.
+/* --- the mark ------------------------------------------------------------
+   Blooms once on load; from then on it never stops moving.
 
    ★ 角度は<b>1 枚ずつ literal で書き出す</b>。最初は
      `rotate(calc(var(--i) * 72deg))` を 1 つの @keyframes で共有していたが、
@@ -102,22 +96,58 @@
      畳まれて重なっていた。生成器が 5 組を書き出せば、その曖昧さは消える。
 
    ★ 原点もユーザー単位で明示する。50%% 50%% は view-box ではなく要素自身の
-     箱に対して解決されていた。viewBox は 512 なので中心は 256。 */
-.ch-bloom .ch-petal[style*='--i:0']{{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-0 1150ms cubic-bezier(.16,.84,.28,1) backwards;animation-delay:140ms}}
-@keyframes ch-open-0{{from{{transform:rotate(-90.0deg) scale(.04);opacity:0}}60%{{opacity:1}}to{{transform:rotate(0.0deg) scale(1);opacity:1}}}}
-.ch-bloom .ch-petal[style*='--i:1']{{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-1 1150ms cubic-bezier(.16,.84,.28,1) backwards;animation-delay:245ms}}
-@keyframes ch-open-1{{from{{transform:rotate(-18.0deg) scale(.04);opacity:0}}60%{{opacity:1}}to{{transform:rotate(72.0deg) scale(1);opacity:1}}}}
-.ch-bloom .ch-petal[style*='--i:2']{{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-2 1150ms cubic-bezier(.16,.84,.28,1) backwards;animation-delay:350ms}}
-@keyframes ch-open-2{{from{{transform:rotate(54.0deg) scale(.04);opacity:0}}60%{{opacity:1}}to{{transform:rotate(144.0deg) scale(1);opacity:1}}}}
-.ch-bloom .ch-petal[style*='--i:3']{{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-3 1150ms cubic-bezier(.16,.84,.28,1) backwards;animation-delay:455ms}}
-@keyframes ch-open-3{{from{{transform:rotate(126.0deg) scale(.04);opacity:0}}60%{{opacity:1}}to{{transform:rotate(216.0deg) scale(1);opacity:1}}}}
-.ch-bloom .ch-petal[style*='--i:4']{{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-4 1150ms cubic-bezier(.16,.84,.28,1) backwards;animation-delay:560ms}}
-@keyframes ch-open-4{{from{{transform:rotate(198.0deg) scale(.04);opacity:0}}60%{{opacity:1}}to{{transform:rotate(288.0deg) scale(1);opacity:1}}}}
+     箱に対して解決されていた。viewBox は 512 なので中心は 256。
+
+   ★ CSS の transform は要素の transform 属性を<b>置き換える</b>。花全体の
+     回転は属性を持たない包み .ch-spin にだけ掛け、花弁の keyframe は
+     どれも自分の座席角を literal で書き直す。 */
+
+/* 1. the whole flower turns, forever, from the first frame */
+.ch-bloom .ch-spin{transform-box:view-box;transform-origin:256px 256px;
+  animation:ch-spin 60s linear infinite}
+@keyframes ch-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* 2. each petal: bloom once, then breathe forever (literal angle per petal) */
+.ch-bloom .ch-petal[style*='--i:0']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-0 1150ms cubic-bezier(.16,.84,.28,1) 140ms backwards,ch-breathe-0 5200ms ease-in-out 1290ms infinite}
+@keyframes ch-open-0{from{transform:rotate(-90.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(0.0deg) scale(1);opacity:1}}
+@keyframes ch-breathe-0{0%,100%{transform:rotate(0.0deg) scale(1)}50%{transform:rotate(0.0deg) scale(.985)}}
+.ch-bloom .ch-petal[style*='--i:1']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-1 1150ms cubic-bezier(.16,.84,.28,1) 245ms backwards,ch-breathe-1 5200ms ease-in-out 1815ms infinite}
+@keyframes ch-open-1{from{transform:rotate(-18.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(72.0deg) scale(1);opacity:1}}
+@keyframes ch-breathe-1{0%,100%{transform:rotate(72.0deg) scale(1)}50%{transform:rotate(72.0deg) scale(.985)}}
+.ch-bloom .ch-petal[style*='--i:2']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-2 1150ms cubic-bezier(.16,.84,.28,1) 350ms backwards,ch-breathe-2 5200ms ease-in-out 2340ms infinite}
+@keyframes ch-open-2{from{transform:rotate(54.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(144.0deg) scale(1);opacity:1}}
+@keyframes ch-breathe-2{0%,100%{transform:rotate(144.0deg) scale(1)}50%{transform:rotate(144.0deg) scale(.985)}}
+.ch-bloom .ch-petal[style*='--i:3']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-3 1150ms cubic-bezier(.16,.84,.28,1) 455ms backwards,ch-breathe-3 5200ms ease-in-out 2865ms infinite}
+@keyframes ch-open-3{from{transform:rotate(126.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(216.0deg) scale(1);opacity:1}}
+@keyframes ch-breathe-3{0%,100%{transform:rotate(216.0deg) scale(1)}50%{transform:rotate(216.0deg) scale(.985)}}
+.ch-bloom .ch-petal[style*='--i:4']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-4 1150ms cubic-bezier(.16,.84,.28,1) 560ms backwards,ch-breathe-4 5200ms ease-in-out 3390ms infinite}
+@keyframes ch-open-4{from{transform:rotate(198.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(288.0deg) scale(1);opacity:1}}
+@keyframes ch-breathe-4{0%,100%{transform:rotate(288.0deg) scale(1)}50%{transform:rotate(288.0deg) scale(.985)}}
+
+/* 3. a soft light glides from the heart of each petal to its tip, forever */
+.ch-bloom .ch-petal[style*='--i:0'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 1690ms infinite}
+.ch-bloom .ch-petal[style*='--i:1'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 2055ms infinite}
+.ch-bloom .ch-petal[style*='--i:2'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 2420ms infinite}
+.ch-bloom .ch-petal[style*='--i:3'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 2785ms infinite}
+.ch-bloom .ch-petal[style*='--i:4'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 3150ms infinite}
+@keyframes ch-sheen{0%{transform:translateY(0)}58%{transform:translateY(-560px)}
+  100%{transform:translateY(-560px)}}
+
+/* 4. the stamens fade in last (once) */
 .ch-bloom .ch-stamens,.ch-bloom .ch-anthers{
   animation:ch-fade 700ms ease-out backwards;animation-delay:900ms}
 @keyframes ch-fade{from{opacity:0}to{opacity:1}}
+
+/* Reduced motion skips ONLY the one-time bloom: the flower starts open. The
+   rotation, the breath and the light are the mark itself and stay on. */
 @media (prefers-reduced-motion:reduce){
-  .ch-bloom .ch-petal,.ch-bloom .ch-stamens,.ch-bloom .ch-anthers{animation:none}}
+  .ch-bloom .ch-stamens,.ch-bloom .ch-anthers{animation:none}
+  .ch-bloom .ch-petal[style*='--i:0']{animation:ch-breathe-0 5200ms ease-in-out 0ms infinite}
+  .ch-bloom .ch-petal[style*='--i:1']{animation:ch-breathe-1 5200ms ease-in-out 420ms infinite}
+  .ch-bloom .ch-petal[style*='--i:2']{animation:ch-breathe-2 5200ms ease-in-out 840ms infinite}
+  .ch-bloom .ch-petal[style*='--i:3']{animation:ch-breathe-3 5200ms ease-in-out 1260ms infinite}
+  .ch-bloom .ch-petal[style*='--i:4']{animation:ch-breathe-4 5200ms ease-in-out 1680ms infinite}
+}
 </style></head>
 <body>
 <div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
@@ -246,13 +276,36 @@
 <stop offset="0.42" stop-color="#e8b4c6"/>
 <stop offset="1" stop-color="#f7dbe4"/>
 </radialGradient>
+<linearGradient id="chSheen" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#ffffff" stop-opacity="0.42"/>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+<path id="chPetalShape" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z"/>
+<clipPath id="chPetalClip"><use href="#chPetalShape"/></clipPath>
 </defs>
+<g class="ch-spin">
 <g class="ch-petals">
-<path class="ch-petal" style="--i:0" transform="rotate(0.000 256.000 256.000)" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<path class="ch-petal" style="--i:1" transform="rotate(72.000 256.000 256.000)" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<path class="ch-petal" style="--i:2" transform="rotate(144.000 256.000 256.000)" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<path class="ch-petal" style="--i:3" transform="rotate(216.000 256.000 256.000)" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<path class="ch-petal" style="--i:4" transform="rotate(288.000 256.000 256.000)" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
+<g class="ch-petal" style="--i:0" transform="rotate(0.000 256.000 256.000)">
+<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
+<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
+</g>
+<g class="ch-petal" style="--i:1" transform="rotate(72.000 256.000 256.000)">
+<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
+<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
+</g>
+<g class="ch-petal" style="--i:2" transform="rotate(144.000 256.000 256.000)">
+<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
+<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
+</g>
+<g class="ch-petal" style="--i:3" transform="rotate(216.000 256.000 256.000)">
+<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
+<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
+</g>
+<g class="ch-petal" style="--i:4" transform="rotate(288.000 256.000 256.000)">
+<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
+<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
+</g>
 </g>
 <g class="ch-stamens" stroke="#f6e6b8" stroke-width="2.82" stroke-linecap="round">
 <line x1="268.79" y1="255.57" x2="343.42" y2="253.08"/>
@@ -307,8 +360,9 @@
 <circle cx="338.64" cy="279.77" r="5.63"/>
 </g>
 <circle cx="256.00" cy="256.00" r="12.29" fill="#c9748f"/>
+</g>
 </svg>
-</div><div><span class="ch-status">Just started. There is no build to download yet.</span><h1 class="ch-name">Cherry</h1><p class="ch-lede">Cherry sits above Alpha. The name carries the meaning of sakura — the cherry blossom. It installs alongside Alpha and versions independently.</p></div></div><div class="ch-grid"><div class="ch-card"><h2>No compromise</h2><p>How it looks, how it moves, how it sounds — built until each can be checked with a number. The same standard Alpha is held to: measured, not asserted.</p></div><div class="ch-card"><h2>Runs alongside Alpha</h2><p>Cherry does not replace Alpha. Both can be installed in the same world, and their versions advance independently of each other.</p></div><div class="ch-card"><h2>Corvus launcher</h2><p>A download button the first time, automatic updates after that — on the same mechanism Alpha already uses.</p></div><div class="ch-card"><h2>Where it stands</h2><p>The name, the mark and this page exist. The mods themselves do not yet. Progress will be reported here.</p></div></div></div></div>
+</div><div><h1 class="ch-name">Cherry</h1><p class="ch-lede">The tier above Alpha.</p></div></div><p class="ch-soon">Coming soon.</p></div></div>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

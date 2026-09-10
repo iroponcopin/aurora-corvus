@@ -950,6 +950,7 @@ def page(
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(SITE_TITLE)}">
+<meta name="theme-color" content="#07090f">
 {og}{alternates}<link rel="icon" href="{root_prefix}assets/img/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="{root_prefix}assets/img/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="{root_prefix}assets/img/brand/favicon-16.png">

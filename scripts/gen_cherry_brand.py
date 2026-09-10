@@ -13,6 +13,14 @@ Cherry is the tier ABOVE Alpha: it installs alongside Alpha, versions
 independently, and is served through the Corvus launcher exactly as Alpha and
 Aureum are.
 
+Second directive (2026-09-10, IROHA, verbatim, after seeing the first page):
+
+    Cherryロゴが一歳動いていません。これは常時動いているロゴです。
+
+So the mark is a *moving* mark. The structure below is built for that: every
+element that the page animates has its own hook, and none of those hooks fight
+each other (see build_svg for the two traps that bit the first version).
+
 --------------------------------------------------------------------------
 The mark — a real five-petal sakura, constructed, not traced
 --------------------------------------------------------------------------
@@ -192,8 +200,23 @@ def build_svg(size=512):
 
       いまは<b>中心を座標に焼き込んで</b>包みを無くし、回転は
       {@code rotate(角度 cx cy)} で明示する。CSS 側も
-      {@code transform-box:view-box; transform-origin:50% 50%} で同じ点を回すので、
+      {@code transform-box:view-box; transform-origin:256px 256px} で同じ点を回すので、
       静止状態(CSS の無い favicon など)と動く状態が一致する。
+
+    ★ 常時動くロゴ(2 度目の指示)のための骨組み:
+
+      * {@code <g class="ch-spin">} が花全体を包む。<b>transform 属性を持たない</b>
+        ので、ページ側の CSS が回転を掛けても置き換えられる属性が無い。
+        花弁は自分の rotate 属性を持ったままなので、花全体の回転は必ず
+        この包みに掛け、花弁には掛けない。
+      * 花弁 1 枚は {@code <g class="ch-petal">} になった(以前は path)。
+        rotate 属性・{@code --i} はこの g が持ち、中に本体の path と、
+        花弁の形で切り抜いた光の帯 {@code <rect class="ch-sheen">} が入る。
+        帯は花弁の付け根より下(切り抜きの外)に置いてあるので、CSS で動かさ
+        ない限り<b>描かれない</b> —— favicon やランチャーの静止画は以前と同じ。
+        帯を動かすと、花弁の付け根から先端へ光が流れる。
+      * 切り抜き {@code #chPetalClip} は回転していない花弁 1 枚の形。
+        参照する側の g が花弁の局所座標にあるので、5 枚すべてに同じ 1 つで足りる。
     """
     r = size * 0.5
     length = r * 0.88
@@ -207,14 +230,36 @@ def build_svg(size=512):
         '<stop offset="0.42" stop-color="%s"/>' % PALETTE["--ch-petal-deep"],
         '<stop offset="1" stop-color="%s"/>' % PALETTE["--ch-petal"],
         "</radialGradient>",
+        # the light that drifts along a petal: a soft white band, transparent
+        # at both ends, drawn over the petal through a clip of its own shape.
+        '<linearGradient id="chSheen" x1="0" y1="0" x2="0" y2="1">',
+        '<stop offset="0" stop-color="#ffffff" stop-opacity="0"/>',
+        '<stop offset="0.5" stop-color="#ffffff" stop-opacity="0.42"/>',
+        '<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>',
+        "</linearGradient>",
+        '<path id="chPetalShape" d="%s"/>' % petal,
+        '<clipPath id="chPetalClip"><use href="#chPetalShape"/></clipPath>',
         "</defs>",
+        '<g class="ch-spin">',
         '<g class="ch-petals">',
     ]
+    # the sheen band sits BELOW the waist in the petal's local frame (the petal
+    # grows upward from cy), i.e. outside the clip, until CSS translates it.
+    band_x, band_w = r - 0.40 * r, 0.80 * r
+    band_y, band_h = r + 0.18 * r, 1.00 * r
     for i in range(5):
         parts.append(
-            '<path class="ch-petal" style="--i:%d" transform="rotate(%.3f %.3f %.3f)" d="%s" '
-            'fill="url(#chPetal)" stroke="%s" stroke-width="%.2f" stroke-linejoin="round"/>'
-            % (i, i * 72.0, r, r, petal, PALETTE["--ch-petal-deep"], size * 0.0045))
+            '<g class="ch-petal" style="--i:%d" transform="rotate(%.3f %.3f %.3f)">'
+            % (i, i * 72.0, r, r))
+        parts.append(
+            '<path d="%s" fill="url(#chPetal)" stroke="%s" stroke-width="%.2f" '
+            'stroke-linejoin="round"/>'
+            % (petal, PALETTE["--ch-petal-deep"], size * 0.0045))
+        parts.append(
+            '<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="%.2f" y="%.2f" '
+            'width="%.2f" height="%.2f" fill="url(#chSheen)"/></g>'
+            % (band_x, band_y, band_w, band_h))
+        parts.append("</g>")
     parts.append("</g>")
     parts.append('<g class="ch-stamens" stroke="%s" stroke-width="%.2f" stroke-linecap="round">'
                  % (PALETTE["--ch-stamen"], size * 0.0055))
@@ -228,6 +273,7 @@ def build_svg(size=512):
     parts.append("</g>")
     parts.append('<circle cx="%.2f" cy="%.2f" r="%.2f" fill="%s"/>'
                  % (r, r, r * 0.048, PALETTE["--ch-blush"]))
+    parts.append("</g>")  # /ch-spin
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 

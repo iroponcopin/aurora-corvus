@@ -43,7 +43,10 @@ import re
 import zipfile
 from pathlib import Path
 
-ROOT = Path("/Volumes/ORICO/Minecraft Sorakazekarasu Server developer")
+# The project root is this repo's parent. It was a typed absolute path until
+# 2026-09-10, when the owner renamed the folder to "Corvus developer" and the
+# typed path silently pointed at nothing.
+ROOT = Path(__file__).resolve().parents[2]
 OUT_HTML = ROOT / "レシピ早見表.html"  # unused here; original single-file output
 SITE_ROOT = Path(__file__).resolve().parent.parent
 OUT_DATA_DIR = SITE_ROOT / "data"
