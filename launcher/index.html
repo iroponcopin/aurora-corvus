@@ -204,7 +204,7 @@
     </div></div>
 <div id="installing"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Corvus の入れ方</h2>
-      <p>Corvus は、このWikiのダウンロードページから、MODパックのZIPと同じ場所に2つの形で配布されています。</p><ul><li><strong>OSごとのネイティブインストーラー</strong>(Windows用 <code>.msi</code>・macOS用 <code>.dmg</code>・Linux用 <code>.deb</code>) ―― 通常のデスクトップアプリと同じ手順で導入でき、Java は不要です。まだコード署名を行っていないため、初回起動時にOSから警告が表示されます。macOSでは、ダブルクリックの代わりにアプリを右クリックして「開く」を選んでください。Windowsでは、SmartScreenの警告で「詳細情報」→「実行」を選んでください。</li><li><strong>クロスプラットフォームのjar</strong> <code>corvus-1.8.3.jar</code> ―― 同じ1つのファイルが Windows・macOS・Linux のいずれでも動きますが、あらかじめ Java 21 以降が導入されている必要があります。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、<code>java -jar corvus-1.8.3.jar</code> を実行してください。</li></ul>
+      <p>Corvus は、このWikiのダウンロードページから、MODパックのZIPと同じ場所に2つの形で配布されています。</p><ul><li><strong>OSごとのネイティブインストーラー</strong>(Windows用 <code>.msi</code>・macOS用 <code>.dmg</code>・Linux用 <code>.deb</code>) ―― 通常のデスクトップアプリと同じ手順で導入でき、Java は不要です。まだコード署名を行っていないため、初回起動時にOSから警告が表示されます。macOSでは、ダブルクリックの代わりにアプリを右クリックして「開く」を選んでください。Windowsでは、SmartScreenの警告で「詳細情報」→「実行」を選んでください。</li><li><strong>クロスプラットフォームのjar</strong> <code>corvus-1.9.0.jar</code> ―― 同じ1つのファイルが Windows・macOS・Linux のいずれでも動きますが、あらかじめ Java 21 以降が導入されている必要があります。ダブルクリックで開かない場合は、ダウンロードしたフォルダーでターミナル(またはコマンドプロンプト)を開き、<code>java -jar corvus-1.9.0.jar</code> を実行してください。</li></ul>
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">既存の MOD パックフォルダーを指定する</h2>
@@ -216,7 +216,7 @@
     </div></div>
 <div id="confirming-an-update-applied"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">更新が本当に反映されたかの確認方法</h2>
-      <p>バージョン1.1.0以降、Update を押すと新しいMODファイルがパックの <code>mods</code> フォルダーに直接書き込まれます。更新後にフォルダーの中身を 実際に再確認し、期待通りのファイルが存在することを確認できるまで「Update complete」とは表示されません。途中で何か失敗した場合は、偽の成功表示ではなく失敗として報告されます。</p><p>macOSで実際に確認する方法: 設定画面に表示されているフォルダーを開き(Finderで <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> を押してパスを貼り付け)、<code>mods</code> の中を見て、Update前後で各 <code>alpha-*.jar</code> ファイル名内の版数を確認してください。</p><p class="callout callout--info">1.1.0より前のバージョンのランチャーで最後に触られたパックフォルダーから更新する場合、最初の1回だけ、そのMODの古い版数の jar が新しい jar と並んで残ることがあります(それ以前のランチャーには、自分がどのファイルを配置したかの記録が無かったためです)。次回以降の更新からは自動的に解消します。すぐに気になる場合は、新しい方の存在を確認した上で、古い版数の <code>alpha-*.jar</code> を手動で削除しても問題ありません。</p>
+      <p>バージョン1.1.0以降、Update を押すと新しいMODファイルがパックの <code>mods</code> フォルダーに直接書き込まれます。更新後にフォルダーの中身を 実際に再確認し、期待通りのファイルが存在することを確認できるまで「Update complete」とは表示されません。途中で何か失敗した場合は、偽の成功表示ではなく失敗として報告されます。</p><p>macOSで実際に確認する方法: 「一般」に表示されているフォルダーを開き(Finderで <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> を押してパスを貼り付け)、<code>mods</code> の中を見て、Update前後で各 <code>alpha-*.jar</code> ファイル名内の版数を確認してください。</p><p class="callout callout--info">1.1.0より前のバージョンのランチャーで最後に触られたパックフォルダーから更新する場合、最初の1回だけ、そのMODの古い版数の jar が新しい jar と並んで残ることがあります(それ以前のランチャーには、自分がどのファイルを配置したかの記録が無かったためです)。次回以降の更新からは自動的に解消します。すぐに気になる場合は、新しい方の存在を確認した上で、古い版数の <code>alpha-*.jar</code> を手動で削除しても問題ありません。</p>
     </div></div>
 <div id="restoring-from-backup"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">更新に失敗したときにバックアップから復元する</h2>
