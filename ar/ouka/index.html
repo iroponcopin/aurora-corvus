@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>OUKA | Corvus</title>
-<meta name="description" content="المستوى الأعلى من Cherry.">
+<meta name="description" content="المستوى الأعلى، فوق Cherry.">
 <meta property="og:title" content="OUKA | Corvus">
-<meta property="og:description" content="المستوى الأعلى من Cherry.">
+<meta property="og:description" content="المستوى الأعلى، فوق Cherry.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -72,50 +72,117 @@
 })();
 </script>
 <style>
-.ou-wrap{padding:4.5rem 0 2rem;display:grid;justify-items:center;text-align:center}
-.ou-mark{position:relative;width:min(26rem,74vw);aspect-ratio:1;
-  display:grid;place-items:center;margin-bottom:1.6rem}
-.ou-halo,.ou-halo--out{position:absolute;border-radius:50%;pointer-events:none}
-.ou-halo{inset:-2%;
-  background:radial-gradient(circle,rgba(254,209,221,.26),rgba(254,209,221,0) 68%);
-  animation:ou-halo 7000ms ease-in-out infinite}
-.ou-halo--out{inset:-14%;
-  background:radial-gradient(circle,rgba(231,219,225,.16),rgba(231,219,225,0) 72%);
-  animation:ou-halo-out 9000ms ease-in-out infinite}
-/* the turn lives alone on this wrapper: a CSS transform REPLACES the other */
-.ou-spin{display:block;width:72.7%;position:relative;
-  animation:ou-spin 90s linear infinite}
-.ou-breathe{display:block;
-  animation:ou-open 1400ms cubic-bezier(.16,.84,.28,1) 160ms backwards,
-            ou-breathe 6000ms ease-in-out 1560ms infinite}
-.ou-img{display:block;width:100%;height:auto}
+.ou-stage{--t0:0ms;padding:3.5rem 0 1rem;display:grid;justify-items:center;
+  text-align:center}
+.ou-mark{position:relative;width:min(30rem,80vw);aspect-ratio:1;margin-bottom:2.2rem}
+.ou-halo{position:absolute;border-radius:50%;pointer-events:none}
+.ou-halo--in{inset:6%;
+  background:radial-gradient(circle,rgba(254,209,221,.22),rgba(254,209,221,0) 66%);
+  animation:ou-halo-in 7000ms ease-in-out infinite;
+  animation-delay:var(--t0)}
+.ou-halo--out{inset:-8%;
+  background:radial-gradient(circle,rgba(230,219,225,.13),rgba(230,219,225,0) 70%);
+  animation:ou-halo-out 9000ms ease-in-out infinite;
+  animation-delay:var(--t0)}
+/* the turn lives alone on this element -- a transform replaces a transform */
+.ou-turn{position:absolute;inset:0;
+  animation:ou-turn 90s linear infinite;animation-delay:var(--t0)}
+.ou-breathe{position:absolute;inset:0;
+  animation:ou-breathe 6000ms ease-in-out infinite;
+  animation-delay:calc(var(--t0) + 2100ms)}
+/* the six layers share one box, so one transform-origin is the flower's
+   centre for all of them. The box is placed so that centre sits exactly on
+   the square's centre -- otherwise the blossom would orbit as it turned. */
+.ou-parts{position:absolute;left:50%;top:50%;width:69.5%;
+  aspect-ratio:584/552;transform:translate(-51.04%,-53.7%)}
+.ou-l{position:absolute;inset:0;width:100%;height:100%;
+  transform-origin:51.04% 53.7%}
+/* The alpha is the one part of this mark that is a LETTER, and a mark that
+   turns through 360 degrees would carry it upside down for a third of every
+   revolution -- which is exactly what the first build did. Its own wrapper
+   turns BACKWARDS at the rate .ou-turn turns forwards, about the same
+   measured centre, so the petals revolve and the alpha stays upright. This is
+   only possible because the alpha was cut out as a layer of its own. */
+.ou-core-anchor{position:absolute;inset:0;transform-origin:51.04% 53.7%;
+  animation:ou-unturn 90s linear infinite;animation-delay:var(--t0)}
+.ou-p{animation:ou-petal 1250ms cubic-bezier(.2,.82,.25,1) backwards;
+  animation-delay:calc(var(--t0) + var(--d))}
+.ou-core{animation:ou-core 1120ms cubic-bezier(.18,.9,.28,1) backwards;
+  animation-delay:calc(var(--t0) + 980ms)}
 
-.ou-name{font-size:clamp(2.8rem,8vw,5rem);line-height:1;margin:0 0 1rem;
-  letter-spacing:.06em;font-weight:700;
-  background:linear-gradient(100deg,rgb(254,209,221) 12%,#ffffff 48%,rgb(231,219,225) 88%);
-  -webkit-background-clip:text;background-clip:text;color:transparent}
+/* Light travelling across the metal. The bar is masked by the mark's own
+   alpha, so it lights the artwork and never the empty box around it; where
+   the mask is not supported there is simply no sheen, rather than a white
+   rectangle sweeping a blossom. The mask is the mark's body with its glow cut
+   away (alpha 60 -> 0, 200 -> 255), so the light travels across the metal and
+   not across the halo -- and it costs 4 KB instead of the 19 KB the full
+   soft-edged alpha channel cost. */
+.ou-sheen{display:none}
+@supports ((-webkit-mask-image:url(#a)) or (mask-image:url(#a))){
+  .ou-sheen{display:block;position:absolute;inset:0;overflow:hidden;
+    pointer-events:none;mix-blend-mode:screen;
+    -webkit-mask-image:url(../../assets/img/ouka/sheen-mask-192.webp);
+    mask-image:url(../../assets/img/ouka/sheen-mask-192.webp);
+    -webkit-mask-size:100% 100%;mask-size:100% 100%;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+}
+.ou-sheen::before{content:"";position:absolute;top:-40%;bottom:-40%;left:0;
+  width:34%;filter:blur(7px);
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.62),
+    rgba(255,255,255,0));
+  transform:translateX(-180%) rotate(14deg);
+  animation:ou-sheen 11000ms cubic-bezier(.42,0,.4,1) infinite;
+  animation-delay:calc(var(--t0) + 2600ms)}
+
+.ou-name{font-size:clamp(2.9rem,8.4vw,5.2rem);line-height:1;margin:0;
+  letter-spacing:.1em;font-weight:700;color:rgb(254,209,221)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ou-name{background:linear-gradient(100deg,rgb(254,209,221) 10%,#fff 47%,
+    rgb(230,219,225) 86%);-webkit-background-clip:text;background-clip:text;
+    color:transparent}
+}
 .ou-g{display:inline-block;animation:ou-glyph 700ms
-  cubic-bezier(.16,.84,.28,1) backwards;animation-delay:calc(var(--i) * 90ms + 160ms)}
-.ou-lede{font-size:1.14rem;line-height:1.78;color:var(--text);margin:0;max-width:34rem}
-.ou-soon{margin:4.5rem 0 0;font-size:1.25rem;letter-spacing:.08em;color:var(--text-muted)}
+  cubic-bezier(.16,.84,.28,1) backwards;
+  animation-delay:calc(var(--t0) + 1500ms + var(--i) * 90ms)}
+.ou-kanji{margin:1.1rem 0 0;font-size:1.02rem;letter-spacing:.42em;
+  text-indent:.42em;color:var(--text-muted);font-weight:500}
+.ou-lede{font-size:1.16rem;line-height:1.8;color:var(--text);
+  margin:1.9rem 0 0;max-width:34rem}
+.ou-soon{margin:5rem 0 1rem;font-size:1.22rem;letter-spacing:.08em;
+  color:var(--text-muted)}
+.ou-fade{animation:ou-fade 800ms cubic-bezier(.16,.84,.28,1) backwards;
+  animation-delay:calc(var(--t0) + var(--d))}
 
-@keyframes ou-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes ou-open{from{transform:rotate(-90deg) scale(.04);opacity:0}
-  55%{opacity:1}
-  to{transform:rotate(0deg) scale(1);opacity:1}}
-@keyframes ou-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.982)}}
-@keyframes ou-halo{0%,100%{opacity:.5;transform:scale(1)}
-  50%{opacity:1;transform:scale(1.05)}}
-@keyframes ou-halo-out{0%,100%{opacity:.9;transform:scale(1.04)}
-  50%{opacity:.45;transform:scale(1)}}
-@keyframes ou-glyph{from{opacity:0;transform:translateY(18px)}
+@keyframes ou-turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ou-unturn{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes ou-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.984)}}
+@keyframes ou-petal{from{transform:rotate(-26deg) scale(.62);opacity:0}
+  40%{opacity:1}
+  to{transform:none;opacity:1}}
+@keyframes ou-core{from{transform:rotate(-16deg) scale(.66);opacity:0}
+  45%{opacity:1}
+  to{transform:none;opacity:1}}
+@keyframes ou-glyph{from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:none}}
+@keyframes ou-fade{from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}}
+@keyframes ou-halo-in{0%,100%{opacity:.52;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.055)}}
+@keyframes ou-halo-out{0%,100%{opacity:.95;transform:scale(1.05)}
+  50%{opacity:.45;transform:scale(1)}}
+@keyframes ou-sheen{0%{transform:translateX(-180%) rotate(14deg)}
+  20%,100%{transform:translateX(340%) rotate(14deg)}}
 
-/* Reduced motion skips ONLY what happens once -- the bloom and the wordmark's
-   stagger. The turn, the breath and the haloes are the mark itself. */
+/* Reduced motion: the finished mark, assembled and still -- NOT frame 0.
+   Every element's base style already IS its finished state (the intro
+   animations only reach it, via `backwards` fill), so switching them off
+   leaves the blossom complete. */
 @media (prefers-reduced-motion:reduce){
-  .ou-breathe{animation:ou-breathe 6000ms ease-in-out infinite}
-  .ou-g{animation:none}
+  .ou-turn,.ou-core-anchor,.ou-breathe,.ou-p,.ou-core,.ou-g,.ou-fade,.ou-sheen::before{
+    animation:none}
+  .ou-halo--in{animation:none;opacity:.76}
+  .ou-halo--out{animation:none;opacity:.7}
+  .ou-sheen{display:none}
 }
 </style></head>
 <body>
@@ -239,7 +306,7 @@
   </div>
 </header>
 <main id="main">
-<div class="ou-wrap"><div class="ou-mark"><span class="ou-halo--out" aria-hidden="true"></span><span class="ou-halo" aria-hidden="true"></span><span class="ou-spin"><span class="ou-breathe"><img class="ou-img" src="../../assets/img/ouka/mark-584.webp" srcset="../../assets/img/ouka/mark-320.webp 320w, ../../assets/img/ouka/mark-584.webp 584w" sizes="calc(min(26rem,74vw) * 72.7 / 100)" width="584" height="552" alt="" decoding="async" fetchpriority="high" loading="eager"></span></span></div><h1 class="ou-name" aria-label="OUKA"><span class="ou-g" style="--i:0">O</span><span class="ou-g" style="--i:1">U</span><span class="ou-g" style="--i:2">K</span><span class="ou-g" style="--i:3">A</span></h1><p class="ou-lede">المستوى الأعلى من Cherry.</p><p class="ou-soon">ترقّبوا قريباً.</p></div>
+<div class="ou-stage"><div class="ou-mark" aria-hidden="true"><span class="ou-halo ou-halo--out"></span><span class="ou-halo ou-halo--in"></span><span class="ou-turn"><span class="ou-breathe"><span class="ou-parts"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-4-584.webp" srcset="../../assets/img/ouka/petal-4-320.webp 320w, ../../assets/img/ouka/petal-4-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:180ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-5-584.webp" srcset="../../assets/img/ouka/petal-5-320.webp 320w, ../../assets/img/ouka/petal-5-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:310ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-1-584.webp" srcset="../../assets/img/ouka/petal-1-320.webp 320w, ../../assets/img/ouka/petal-1-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:440ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-2-584.webp" srcset="../../assets/img/ouka/petal-2-320.webp 320w, ../../assets/img/ouka/petal-2-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:570ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-3-584.webp" srcset="../../assets/img/ouka/petal-3-320.webp 320w, ../../assets/img/ouka/petal-3-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:700ms" decoding="async" loading="eager"><span class="ou-core-anchor"><img class="ou-l ou-core" src="../../assets/img/ouka/core-584.webp" srcset="../../assets/img/ouka/core-320.webp 320w, ../../assets/img/ouka/core-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" decoding="async" loading="eager"></span><span class="ou-sheen"></span></span></span></span></div><h1 class="ou-name" aria-label="OUKA"><span class="ou-g" style="--i:0">O</span><span class="ou-g" style="--i:1">U</span><span class="ou-g" style="--i:2">K</span><span class="ou-g" style="--i:3">A</span></h1><p class="ou-lede ou-fade" style="--d:1800ms">المستوى الأعلى، فوق Cherry.</p><p class="ou-soon ou-fade" style="--d:2000ms">ترقّبوا قريباً.</p></div>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

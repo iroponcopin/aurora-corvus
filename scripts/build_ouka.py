@@ -14,10 +14,11 @@ Owner directive (2026-09-12, IROHA, verbatim):
 What the page says — and what it must never say
 --------------------------------------------------------------------------
 This page is built to the shape the owner arrived at for Cherry, after he
-rejected two earlier drafts of that page (see build_cherry.py's header for his
-words). Two things, and nothing else:
+rejected two earlier drafts of that page (his words are quoted in full in
+build_cherry.py's header). Two things, and nothing else:
 
-  1. OUKA is the tier above Cherry — said once, as a fact, not argued.
+  1. Where OUKA sits — said once, as a fact, not argued. He put it at the top
+     of the line: OUKA → Cherry → Alpha, 左から順に上位ブランド.
   2. A closing line in the register of 乞うご期待.
 
 NOT on this page, by his word on Cherry, which governs here because this is the
@@ -28,13 +29,14 @@ published build — and that is exactly why none of it may be written down, in
 either direction. Every one of the 13 languages carries its own copy; nothing
 falls back to English.
 
-漢字の「桜花」は意図的にこのページに出していない。所有者は英・漢の両方を
-ブランド名として挙げているが、片方を添えると「名前の説明」に読めてしまう
-——それは Cherry のページで名指しで禁じられたことである。出すかどうかは
-所有者の判断を待つ。
+日本語版にだけ「桜花」を名前として置いている。所有者自身が「ブランド名称:英→
+OUKA、漢→桜花」と両方を挙げているので、日本語の読者に日本語の表記を見せるのは
+**名前の提示**であって「名前の由来の説明」ではない——後者は Cherry のページで
+名指しで禁じられた。読みがな、括弧書き、語義の説明は一切付けない。所有者が不要
+と判断するなら KANJI を空にすれば消える(一行)。
 
 --------------------------------------------------------------------------
-The mark
+The mark, and the animation the owner asked for
 --------------------------------------------------------------------------
 The mark is cut out of the logo photograph the owner supplied, and it is the
 MARK ONLY — his standing instruction for every one of these logos is
@@ -42,25 +44,84 @@ MARK ONLY — his standing instruction for every one of these logos is
 使用してください」, so the word OUKA under it in the photograph is not used;
 the <h1> below the mark is the name.
 
-It never stops moving, the same contract the owner set for Cherry's logo
-(「常時動いているロゴ」), one tier more deliberate: it turns once every 90
-seconds against Cherry's 60. On open it blooms once, then breathes forever,
-between two haloes that breathe out of phase — the inner one the pink of the
-mark's left half, the outer one the silver of its right half. Both colours are
-MEASURED off the mark's own opaque pixels (479x453, 8766 samples: left mean
-#fed1dd, right mean #e7dbe1), not picked by eye.
+「今までにない圧倒的な品質とアニメーション」 is the brief, so the blossom is not
+animated as one flat picture. It was TAKEN APART, by measurement, into its five
+petals and the α at its centre (scripts written for this page, kept in the
+scratchpad; the parts they produced are committed as assets/img/ouka/petal-N-*
+and core-*):
 
-`prefers-reduced-motion: reduce` skips ONLY the one-time bloom and the wordmark
-stagger. The turn, the breath and the haloes are the mark itself and stay on.
+  * The centre of the mark's five-fold symmetry is at (51.04%, 53.70%) of the
+    image — found by minimising |A − A rotated 72°| over candidate centres.
+    Controls: the error rises monotonically as the centre is moved off it
+    (59.9 → 61.6 → 68.6 → 82.8 at +6/+12/+24 px), and a half-step rotation of
+    36° scores 112.8 against 59.9 for 72°.
+  * The petals are seated at 53.57° + 72k (image space, 0 = +x, y down). Found
+    as the phase of the 5th angular harmonic, which carries 0.246 of the mark's
+    angular mass against ≤ 0.043 for every other harmonic except its own 10th
+    (0.118 — each petal has one facet seam down its middle, which is why there
+    are ten half-petals below and not five).
+    ★ The first phase fit came out 36° wrong, i.e. pointing at the clefts. The
+      control that caught it: mean radial mass at the claimed tips must exceed
+      that at the claimed clefts, and it was 0.24× instead. A tip is where the
+      mark HAS mass. An animation built on the unchecked fit would have hinged
+      every petal about the gap between two petals.
+  * The split itself is by connected components at alpha ≥ 180 (ten half-petals
+    in five pairs, one per measured tip, plus the α glyph), after which every
+    remaining pixel with alpha > 0 — the anti-aliased edges and the whole outer
+    glow — is grown outward to the nearest part. So the six layers PARTITION
+    the mark: their composite is the mark itself, alpha max |Δ| = 0 at 584 px
+    (1 at 320 px, where 6 pixels of glow are lost), colour mean |Δ| 2.06 from
+    webp quantisation alone. There is no seam, no double-darkened edge, and no
+    lost glow, because no pixel is in two layers or in none.
+  * A circular clip for the α was measured and REJECTED: the glyph reaches
+    r = 123 px while the petals begin at r = 45 px — they interleave radially,
+    and a disc that held the whole glyph would have held four petals with it.
+    That is why the α is a cut layer and not a CSS circle().
 
-Three traps, all of which this repo has actually shipped (see build_cherry.py):
-  ★ CSS `transform` REPLACES the element's other transform, so the turn and the
-    bloom/breath cannot share an element — one silently erases the other.
+What the page then does with those parts, all in CSS, no JavaScript, no
+library, no video, no SMIL:
+
+  1. the five petals unfold into their seats — each hinged on the measured
+     centre, from folded (rotate −26°, scale .62) to seated, 1250 ms each,
+     staggered 130 ms apart, starting at the top petal and going clockwise
+  2. the α settles into the middle of them, 1120 ms, landing at 2100 ms
+  3. the wordmark's four glyphs rise, 90 ms apart
+  4. and then it LIVES: one revolution every 90 s, a slow breath, two haloes
+     breathing out of phase in the mark's own two colours, and a highlight
+     that travels across the metal every 11 s. The alpha counter-turns inside
+     that revolution so the letter never goes upside down -- see .ou-core-anchor.
+
+Both halo colours and the wordmark's gradient are MEASURED off the mark's own
+opaque pixels (alpha ≥ 235, 35,166 samples): the left half of the blossom is
+#fed1dd, the right half #e6dbe1. Nothing on this page is coloured by a palette
+someone invented next to the logo.
+
+--------------------------------------------------------------------------
+Traps, every one of which this repo has actually shipped
+--------------------------------------------------------------------------
+  ★ CSS `transform` REPLACES the element's other transform, so the turn, the
+    breath and each petal's unfold cannot share an element — one silently
+    erases the other. They are on .ou-turn, .ou-breathe and .ou-p.
   ★ The CSS below is NOT a format string. A mis-doubled brace once emitted
-    broken CSS and a logo that never moved. Substitution is str.replace() of
-    __TOKENS__, and main() refuses to write a page still holding one.
-  ★ A rotating rectangle sweeps its own DIAGONAL; the mark is sized from the
-    file's real pixels so it cannot swing outside its box.
+    broken CSS and a Cherry logo that never moved, for a day. Substitution is
+    str.replace() of __TOKENS__, and main() refuses to write a page that still
+    holds one.
+  ★ A rotating rectangle sweeps its own diagonal — and this one turns about
+    the FLOWER's centre, not the image's, so the sweep radius is the distance
+    from that centre to the farthest corner of the artwork (420 of 584 px),
+    not half the diagonal. FIT below is computed from the real pixels; at any
+    larger size the glow would swing out over the name on every revolution.
+  ★ Every animated element's BASE style is its FINISHED state, and the intro
+    animations reach it via `backwards` fill. That is what makes
+    prefers-reduced-motion correct: switching the animations off shows the
+    finished mark, assembled and still — never a frozen frame 0.
+  ★ --t0 (below) exists so the animation can be INSPECTED: a test copy of the
+    page sets .ou-stage{--t0:-2400ms} and animation-play-state:paused to freeze
+    every animation at a chosen moment with its stagger intact. Chrome's
+    --virtual-time-budget does NOT advance CSS animations (measured: a
+    10s/1000px box moved 5 px between budgets of 100 ms and 5000 ms), so
+    without this hook the page could only ever be screenshotted at whatever
+    instant the renderer happened to stop.
 """
 
 from __future__ import annotations
@@ -79,176 +140,337 @@ SECTION = "ouka/"
 
 # --- copy -------------------------------------------------------------------
 # Every language the site ships has its own entry; there is no fallback. Brand
-# names (OUKA, Cherry, Alpha) are never translated. Keys: title, desc, lede, soon.
-# The closing line is the one the owner accepted on the Cherry page, verbatim.
+# names (OUKA, Cherry, Alpha, Corvus, Aureum) are never translated.
+# The lede says one thing: OUKA is the top of the line, above Cherry. Both
+# halves of that come from the owner's own sentence and neither is inferred.
+# `soon` is the set the owner accepted on the Cherry page, kept word for word
+# so the two brand pages speak in one voice.
 COPY = {
-    "ja": {"title": "OUKA", "desc": "Cherry の上位に位置するブランド。",
-           "lede": "Cherry の上位に位置するブランド。", "soon": "ご期待ください。"},
-    "en": {"title": "OUKA", "desc": "The tier above Cherry.",
-           "lede": "The tier above Cherry.", "soon": "Coming soon."},
-    "es": {"title": "OUKA", "desc": "El nivel por encima de Cherry.",
-           "lede": "El nivel por encima de Cherry.", "soon": "Muy pronto."},
-    "fr": {"title": "OUKA", "desc": "Le niveau au-dessus de Cherry.",
-           "lede": "Le niveau au-dessus de Cherry.", "soon": "Bientôt disponible."},
-    "zh": {"title": "OUKA", "desc": "位于 Cherry 之上的品牌。",
-           "lede": "位于 Cherry 之上的品牌。", "soon": "敬请期待。"},
-    "ko": {"title": "OUKA", "desc": "Cherry 위에 자리한 브랜드입니다.",
-           "lede": "Cherry 위에 자리한 브랜드입니다.", "soon": "기대해 주세요."},
-    "pt-br": {"title": "OUKA", "desc": "O nível acima do Cherry.",
-              "lede": "O nível acima do Cherry.", "soon": "Em breve."},
-    "it": {"title": "OUKA", "desc": "Il livello sopra Cherry.",
-           "lede": "Il livello sopra Cherry.", "soon": "In arrivo."},
-    "ar": {"title": "OUKA", "desc": "المستوى الأعلى من Cherry.",
-           "lede": "المستوى الأعلى من Cherry.", "soon": "ترقّبوا قريباً."},
-    "ru": {"title": "OUKA", "desc": "Уровень выше Cherry.",
-           "lede": "Уровень выше Cherry.", "soon": "Уже скоро."},
-    "id": {"title": "OUKA", "desc": "Tingkat di atas Cherry.",
-           "lede": "Tingkat di atas Cherry.", "soon": "Segera hadir."},
-    "de": {"title": "OUKA", "desc": "Die Stufe über Cherry.",
-           "lede": "Die Stufe über Cherry.", "soon": "Bald verfügbar."},
-    "tr": {"title": "OUKA", "desc": "Cherry'nin üzerindeki seviye.",
-           "lede": "Cherry'nin üzerindeki seviye.", "soon": "Çok yakında."},
+    "ja": {"title": "OUKA",
+           "desc": "Cherry の上に立つ、最上位のブランド。",
+           "lede": "Cherry の上に立つ、最上位のブランド。",
+           "soon": "ご期待ください。"},
+    "en": {"title": "OUKA",
+           "desc": "The highest tier, above Cherry.",
+           "lede": "The highest tier, above Cherry.",
+           "soon": "Coming soon."},
+    "de": {"title": "OUKA",
+           "desc": "Die höchste Stufe, über Cherry.",
+           "lede": "Die höchste Stufe, über Cherry.",
+           "soon": "Bald verfügbar."},
+    "fr": {"title": "OUKA",
+           "desc": "Le niveau le plus élevé, au-dessus de Cherry.",
+           "lede": "Le niveau le plus élevé, au-dessus de Cherry.",
+           "soon": "Bientôt disponible."},
+    "es": {"title": "OUKA",
+           "desc": "El nivel más alto, por encima de Cherry.",
+           "lede": "El nivel más alto, por encima de Cherry.",
+           "soon": "Muy pronto."},
+    "it": {"title": "OUKA",
+           "desc": "Il livello più alto, sopra Cherry.",
+           "lede": "Il livello più alto, sopra Cherry.",
+           "soon": "In arrivo."},
+    "pt-br": {"title": "OUKA",
+              "desc": "O nível mais alto, acima do Cherry.",
+              "lede": "O nível mais alto, acima do Cherry.",
+              "soon": "Em breve."},
+    "ru": {"title": "OUKA",
+           "desc": "Высший уровень — выше Cherry.",
+           "lede": "Высший уровень — выше Cherry.",
+           "soon": "Уже скоро."},
+    "tr": {"title": "OUKA",
+           "desc": "En üst seviye; Cherry'nin üzerinde.",
+           "lede": "En üst seviye; Cherry'nin üzerinde.",
+           "soon": "Çok yakında."},
+    "ar": {"title": "OUKA",
+           "desc": "المستوى الأعلى، فوق Cherry.",
+           "lede": "المستوى الأعلى، فوق Cherry.",
+           "soon": "ترقّبوا قريباً."},
+    "id": {"title": "OUKA",
+           "desc": "Tingkat tertinggi, di atas Cherry.",
+           "lede": "Tingkat tertinggi, di atas Cherry.",
+           "soon": "Segera hadir."},
+    "ko": {"title": "OUKA",
+           "desc": "Cherry 위에 서는 최상위 브랜드입니다.",
+           "lede": "Cherry 위에 서는 최상위 브랜드입니다.",
+           "soon": "기대해 주세요."},
+    "zh": {"title": "OUKA",
+           "desc": "位于 Cherry 之上,最高级别的品牌。",
+           "lede": "位于 Cherry 之上,最高级别的品牌。",
+           "soon": "敬请期待。"},
 }
 
 KEYS = ("title", "desc", "lede", "soon")
 
-# --- the mark ---------------------------------------------------------------
-# Real files on disk, measured with PIL, not guessed.
-MARK = {"file": "mark-584.webp", "w": 584, "h": 552,
-        "small": "mark-320.webp", "small_w": 320}
-BOX = "min(26rem,74vw)"          # the square the mark turns inside
+# The name in kanji, on the Japanese page only — see the docstring. Empty for
+# every other language, and emptying this string removes it entirely.
+KANJI = {"ja": "桜花"}
 
-# A rotating rectangle needs its own diagonal to fit inside that square.
-FIT_PCT = round(100.0 * MARK["w"] / math.hypot(MARK["w"], MARK["h"]), 1)
+# --- the mark's parts -------------------------------------------------------
+# Real files on disk, measured with PIL, not guessed. Each layer is the FULL
+# canvas with only its own part opaque, so all six share one coordinate system
+# and one transform-origin.
+LAYER_W, LAYER_H = 584, 552
+SMALL_W, SMALL_H = 320, 303
+# The five petals in the order they open: the top petal first, then clockwise.
+# The numbers are the seats measured off the mark (petal N is the one whose
+# tip sits at 53.57 + 72*(N-1) degrees), so this list is a viewing order, not
+# a renaming of the files.
+PETAL_ORDER = [4, 5, 1, 2, 3]
+PETAL_TIP_DEG = {n: (53.57 + 72 * (n - 1)) % 360 for n in range(1, 6)}
 
-# Measured off the mark's own opaque pixels (alpha >= 235), sampled every 2px:
-# the left half of the blossom is pink, the right half silver. These two drive
-# the haloes and the wordmark's gradient, so the page is coloured by its own
-# logo rather than by a palette someone invented next to it.
-PINK = "254,209,221"             # #fed1dd, mean of the left half
-SILVER = "231,219,225"           # #e7dbe1, mean of the right half
+# The centre of the mark's five-fold symmetry, as a fraction of the layer box.
+# Every rotation and every scale on this page pivots here.
+CX_PCT, CY_PCT = 51.04, 53.70
 
-# --- timing -----------------------------------------------------------------
-SPIN_S = 90              # one revolution. Cherry turns in 60; the tier above
-                         # it moves more deliberately, and still visibly (4°/s).
-BLOOM_MS = 1400
-BLOOM_START_MS = 160
+# The farthest the artwork reaches from that centre, in layer pixels: the
+# corner distances are 420.1 / 411.6 / 393.0 / 384.3, so 420.1 governs.
+REACH_PX = 420.1
+# The mark turns about that centre inside a square box. To keep every corner of
+# the artwork inside the box at every angle, the layer may be no wider than:
+FIT_PCT = round(100.0 * LAYER_W / (2.0 * REACH_PX), 1)   # 69.5
+BOX = "min(30rem,80vw)"
+
+# Measured off the mark's own opaque pixels (alpha >= 235, sampled at the
+# centre split): left half 17,659 px, right half 17,507 px.
+PINK = "254,209,221"      # #fed1dd
+SILVER = "230,219,225"    # #e6dbe1
+
+# --- timing (ms) ------------------------------------------------------------
+PETAL_MS = 1250
+PETAL_START_MS = 180
+PETAL_STEP_MS = 130
+CORE_MS = 1120
+CORE_START_MS = 980
+GLYPH_MS = 700
+GLYPH_START_MS = 1500
+GLYPH_STEP_MS = 90
+LEDE_MS = 800
+LEDE_START_MS = 1800
+KANJI_START_MS = 1950
+SOON_START_MS = 2000
+# the mark is fully assembled here; everything that lives forever starts after
+ASSEMBLED_MS = CORE_START_MS + CORE_MS          # 2100
+SPIN_S = 90               # one revolution. Cherry turns in 60; the tier above
+                          # it moves more deliberately, and still visibly.
 BREATHE_MS = 6000
 HALO_IN_MS = 7000
-HALO_OUT_MS = 9000       # out of phase with the inner halo, on purpose
-GLYPH_MS = 700
-GLYPH_STEP_MS = 90
+HALO_OUT_MS = 9000        # out of phase with the inner halo, on purpose
+SHEEN_MS = 11000
+SHEEN_START_MS = ASSEMBLED_MS + 500
 
+# ★ NOT a format string. See the docstring's second trap.
 HEAD = """<style>
-.ou-wrap{padding:4.5rem 0 2rem;display:grid;justify-items:center;text-align:center}
-.ou-mark{position:relative;width:__BOX__;aspect-ratio:1;
-  display:grid;place-items:center;margin-bottom:1.6rem}
-.ou-halo,.ou-halo--out{position:absolute;border-radius:50%;pointer-events:none}
-.ou-halo{inset:-2%;
-  background:radial-gradient(circle,rgba(__PINK__,.26),rgba(__PINK__,0) 68%);
-  animation:ou-halo __HALO_IN_MS__ms ease-in-out infinite}
-.ou-halo--out{inset:-14%;
-  background:radial-gradient(circle,rgba(__SILVER__,.16),rgba(__SILVER__,0) 72%);
-  animation:ou-halo-out __HALO_OUT_MS__ms ease-in-out infinite}
-/* the turn lives alone on this wrapper: a CSS transform REPLACES the other */
-.ou-spin{display:block;width:__FIT__%;position:relative;
-  animation:ou-spin __SPIN_S__s linear infinite}
-.ou-breathe{display:block;
-  animation:ou-open __BLOOM_MS__ms cubic-bezier(.16,.84,.28,1) __BLOOM_DELAY__ms backwards,
-            ou-breathe __BREATHE_MS__ms ease-in-out __BREATHE_DELAY__ms infinite}
-.ou-img{display:block;width:100%;height:auto}
+.ou-stage{--t0:0ms;padding:3.5rem 0 1rem;display:grid;justify-items:center;
+  text-align:center}
+.ou-mark{position:relative;width:__BOX__;aspect-ratio:1;margin-bottom:2.2rem}
+.ou-halo{position:absolute;border-radius:50%;pointer-events:none}
+.ou-halo--in{inset:6%;
+  background:radial-gradient(circle,rgba(__PINK__,.22),rgba(__PINK__,0) 66%);
+  animation:ou-halo-in __HALO_IN_MS__ms ease-in-out infinite;
+  animation-delay:var(--t0)}
+.ou-halo--out{inset:-8%;
+  background:radial-gradient(circle,rgba(__SILVER__,.13),rgba(__SILVER__,0) 70%);
+  animation:ou-halo-out __HALO_OUT_MS__ms ease-in-out infinite;
+  animation-delay:var(--t0)}
+/* the turn lives alone on this element -- a transform replaces a transform */
+.ou-turn{position:absolute;inset:0;
+  animation:ou-turn __SPIN_S__s linear infinite;animation-delay:var(--t0)}
+.ou-breathe{position:absolute;inset:0;
+  animation:ou-breathe __BREATHE_MS__ms ease-in-out infinite;
+  animation-delay:calc(var(--t0) + __ASSEMBLED_MS__ms)}
+/* the six layers share one box, so one transform-origin is the flower's
+   centre for all of them. The box is placed so that centre sits exactly on
+   the square's centre -- otherwise the blossom would orbit as it turned. */
+.ou-parts{position:absolute;left:50%;top:50%;width:__FIT__%;
+  aspect-ratio:__LW__/__LH__;transform:translate(-__CX__%,-__CY__%)}
+.ou-l{position:absolute;inset:0;width:100%;height:100%;
+  transform-origin:__CX__% __CY__%}
+/* The alpha is the one part of this mark that is a LETTER, and a mark that
+   turns through 360 degrees would carry it upside down for a third of every
+   revolution -- which is exactly what the first build did. Its own wrapper
+   turns BACKWARDS at the rate .ou-turn turns forwards, about the same
+   measured centre, so the petals revolve and the alpha stays upright. This is
+   only possible because the alpha was cut out as a layer of its own. */
+.ou-core-anchor{position:absolute;inset:0;transform-origin:__CX__% __CY__%;
+  animation:ou-unturn __SPIN_S__s linear infinite;animation-delay:var(--t0)}
+.ou-p{animation:ou-petal __PETAL_MS__ms cubic-bezier(.2,.82,.25,1) backwards;
+  animation-delay:calc(var(--t0) + var(--d))}
+.ou-core{animation:ou-core __CORE_MS__ms cubic-bezier(.18,.9,.28,1) backwards;
+  animation-delay:calc(var(--t0) + __CORE_START_MS__ms)}
 
-.ou-name{font-size:clamp(2.8rem,8vw,5rem);line-height:1;margin:0 0 1rem;
-  letter-spacing:.06em;font-weight:700;
-  background:linear-gradient(100deg,rgb(__PINK__) 12%,#ffffff 48%,rgb(__SILVER__) 88%);
-  -webkit-background-clip:text;background-clip:text;color:transparent}
+/* Light travelling across the metal. The bar is masked by the mark's own
+   alpha, so it lights the artwork and never the empty box around it; where
+   the mask is not supported there is simply no sheen, rather than a white
+   rectangle sweeping a blossom. The mask is the mark's body with its glow cut
+   away (alpha 60 -> 0, 200 -> 255), so the light travels across the metal and
+   not across the halo -- and it costs 4 KB instead of the 19 KB the full
+   soft-edged alpha channel cost. */
+.ou-sheen{display:none}
+@supports ((-webkit-mask-image:url(#a)) or (mask-image:url(#a))){
+  .ou-sheen{display:block;position:absolute;inset:0;overflow:hidden;
+    pointer-events:none;mix-blend-mode:screen;
+    -webkit-mask-image:url(__ROOT__assets/img/ouka/sheen-mask-192.webp);
+    mask-image:url(__ROOT__assets/img/ouka/sheen-mask-192.webp);
+    -webkit-mask-size:100% 100%;mask-size:100% 100%;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+}
+.ou-sheen::before{content:"";position:absolute;top:-40%;bottom:-40%;left:0;
+  width:34%;filter:blur(7px);
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.62),
+    rgba(255,255,255,0));
+  transform:translateX(-180%) rotate(14deg);
+  animation:ou-sheen __SHEEN_MS__ms cubic-bezier(.42,0,.4,1) infinite;
+  animation-delay:calc(var(--t0) + __SHEEN_START_MS__ms)}
+
+.ou-name{font-size:clamp(2.9rem,8.4vw,5.2rem);line-height:1;margin:0;
+  letter-spacing:.1em;font-weight:700;color:rgb(__PINK__)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ou-name{background:linear-gradient(100deg,rgb(__PINK__) 10%,#fff 47%,
+    rgb(__SILVER__) 86%);-webkit-background-clip:text;background-clip:text;
+    color:transparent}
+}
 .ou-g{display:inline-block;animation:ou-glyph __GLYPH_MS__ms
-  cubic-bezier(.16,.84,.28,1) backwards;animation-delay:calc(var(--i) * __GLYPH_STEP_MS__ms + __BLOOM_DELAY__ms)}
-.ou-lede{font-size:1.14rem;line-height:1.78;color:var(--text);margin:0;max-width:34rem}
-.ou-soon{margin:4.5rem 0 0;font-size:1.25rem;letter-spacing:.08em;color:var(--text-muted)}
+  cubic-bezier(.16,.84,.28,1) backwards;
+  animation-delay:calc(var(--t0) + __GLYPH_START_MS__ms + var(--i) * __GLYPH_STEP_MS__ms)}
+.ou-kanji{margin:1.1rem 0 0;font-size:1.02rem;letter-spacing:.42em;
+  text-indent:.42em;color:var(--text-muted);font-weight:500}
+.ou-lede{font-size:1.16rem;line-height:1.8;color:var(--text);
+  margin:1.9rem 0 0;max-width:34rem}
+.ou-soon{margin:5rem 0 1rem;font-size:1.22rem;letter-spacing:.08em;
+  color:var(--text-muted)}
+.ou-fade{animation:ou-fade __LEDE_MS__ms cubic-bezier(.16,.84,.28,1) backwards;
+  animation-delay:calc(var(--t0) + var(--d))}
 
-@keyframes ou-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes ou-open{from{transform:rotate(-90deg) scale(.04);opacity:0}
-  55%{opacity:1}
-  to{transform:rotate(0deg) scale(1);opacity:1}}
-@keyframes ou-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.982)}}
-@keyframes ou-halo{0%,100%{opacity:.5;transform:scale(1)}
-  50%{opacity:1;transform:scale(1.05)}}
-@keyframes ou-halo-out{0%,100%{opacity:.9;transform:scale(1.04)}
-  50%{opacity:.45;transform:scale(1)}}
-@keyframes ou-glyph{from{opacity:0;transform:translateY(18px)}
+@keyframes ou-turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ou-unturn{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes ou-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.984)}}
+@keyframes ou-petal{from{transform:rotate(-26deg) scale(.62);opacity:0}
+  40%{opacity:1}
+  to{transform:none;opacity:1}}
+@keyframes ou-core{from{transform:rotate(-16deg) scale(.66);opacity:0}
+  45%{opacity:1}
+  to{transform:none;opacity:1}}
+@keyframes ou-glyph{from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:none}}
+@keyframes ou-fade{from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}}
+@keyframes ou-halo-in{0%,100%{opacity:.52;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.055)}}
+@keyframes ou-halo-out{0%,100%{opacity:.95;transform:scale(1.05)}
+  50%{opacity:.45;transform:scale(1)}}
+@keyframes ou-sheen{0%{transform:translateX(-180%) rotate(14deg)}
+  20%,100%{transform:translateX(340%) rotate(14deg)}}
 
-/* Reduced motion skips ONLY what happens once -- the bloom and the wordmark's
-   stagger. The turn, the breath and the haloes are the mark itself. */
+/* Reduced motion: the finished mark, assembled and still -- NOT frame 0.
+   Every element's base style already IS its finished state (the intro
+   animations only reach it, via `backwards` fill), so switching them off
+   leaves the blossom complete. */
 @media (prefers-reduced-motion:reduce){
-  .ou-breathe{animation:ou-breathe __BREATHE_MS__ms ease-in-out infinite}
-  .ou-g{animation:none}
+  .ou-turn,.ou-core-anchor,.ou-breathe,.ou-p,.ou-core,.ou-g,.ou-fade,.ou-sheen::before{
+    animation:none}
+  .ou-halo--in{animation:none;opacity:.76}
+  .ou-halo--out{animation:none;opacity:.7}
+  .ou-sheen{display:none}
 }
 </style>"""
 
-TOKENS = ("__BOX__", "__FIT__", "__PINK__", "__SILVER__", "__SPIN_S__",
-          "__BLOOM_MS__", "__BLOOM_DELAY__", "__BREATHE_MS__", "__BREATHE_DELAY__",
-          "__HALO_IN_MS__", "__HALO_OUT_MS__", "__GLYPH_MS__", "__GLYPH_STEP_MS__")
+TOKENS = ("__ROOT__", "__BOX__", "__FIT__", "__LW__", "__LH__", "__CX__",
+          "__CY__", "__PINK__", "__SILVER__", "__SPIN_S__", "__BREATHE_MS__",
+          "__ASSEMBLED_MS__", "__PETAL_MS__", "__CORE_MS__", "__CORE_START_MS__",
+          "__GLYPH_MS__", "__GLYPH_START_MS__", "__GLYPH_STEP_MS__",
+          "__LEDE_MS__", "__HALO_IN_MS__", "__HALO_OUT_MS__", "__SHEEN_MS__",
+          "__SHEEN_START_MS__")
 
 
-def head_css() -> str:
+def head_css(root: str) -> str:
     out = HEAD
     for token, value in (
+        ("__ROOT__", root),
         ("__BOX__", BOX),
         ("__FIT__", "%g" % FIT_PCT),
+        ("__LW__", str(LAYER_W)),
+        ("__LH__", str(LAYER_H)),
+        ("__CX__", "%g" % CX_PCT),
+        ("__CY__", "%g" % CY_PCT),
         ("__PINK__", PINK),
         ("__SILVER__", SILVER),
         ("__SPIN_S__", str(SPIN_S)),
-        ("__BLOOM_MS__", str(BLOOM_MS)),
-        ("__BLOOM_DELAY__", str(BLOOM_START_MS)),
         ("__BREATHE_MS__", str(BREATHE_MS)),
-        ("__BREATHE_DELAY__", str(BLOOM_START_MS + BLOOM_MS)),
+        ("__ASSEMBLED_MS__", str(ASSEMBLED_MS)),
+        ("__PETAL_MS__", str(PETAL_MS)),
+        ("__CORE_MS__", str(CORE_MS)),
+        ("__CORE_START_MS__", str(CORE_START_MS)),
+        ("__GLYPH_MS__", str(GLYPH_MS)),
+        ("__GLYPH_START_MS__", str(GLYPH_START_MS)),
+        ("__GLYPH_STEP_MS__", str(GLYPH_STEP_MS)),
+        ("__LEDE_MS__", str(LEDE_MS)),
         ("__HALO_IN_MS__", str(HALO_IN_MS)),
         ("__HALO_OUT_MS__", str(HALO_OUT_MS)),
-        ("__GLYPH_MS__", str(GLYPH_MS)),
-        ("__GLYPH_STEP_MS__", str(GLYPH_STEP_MS)),
+        ("__SHEEN_MS__", str(SHEEN_MS)),
+        ("__SHEEN_START_MS__", str(SHEEN_START_MS)),
     ):
         out = out.replace(token, value)
     return out
 
 
+def _layer(root: str, stem: str, cls: str, delay_ms: int | None) -> str:
+    """One cut part of the mark. alt="" on all six: the <h1> below already says
+    OUKA, and six images that each announced themselves would say it seven
+    times. sizes matches the CSS exactly -- the layer is FIT% of the box."""
+    base = root + "assets/img/ouka/"
+    style = ' style="--d:%dms"' % delay_ms if delay_ms is not None else ""
+    return (
+        '<img class="ou-l %s" src="%s%s-%d.webp" '
+        'srcset="%s%s-%d.webp %dw, %s%s-%d.webp %dw" '
+        'sizes="calc(%s * %g / 100)" width="%d" height="%d" alt=""%s '
+        'decoding="async" loading="eager">'
+        % (cls, base, stem, LAYER_W,
+           base, stem, SMALL_W, SMALL_W, base, stem, LAYER_W, LAYER_W,
+           BOX, FIT_PCT, LAYER_W, LAYER_H, style)
+    )
+
+
+def _mark_html(root: str) -> str:
+    petals = "".join(
+        _layer(root, "petal-%d" % n, "ou-p",
+               PETAL_START_MS + i * PETAL_STEP_MS)
+        for i, n in enumerate(PETAL_ORDER)
+    )
+    return (
+        '<div class="ou-mark" aria-hidden="true">'
+        '<span class="ou-halo ou-halo--out"></span>'
+        '<span class="ou-halo ou-halo--in"></span>'
+        '<span class="ou-turn"><span class="ou-breathe">'
+        '<span class="ou-parts">%s<span class="ou-core-anchor">%s</span>'
+        '<span class="ou-sheen"></span></span>'
+        '</span></span></div>'
+        % (petals, _layer(root, "core", "ou-core", None))
+    )
+
+
 def wordmark(text: str) -> str:
-    """One span per glyph so the reveal can stagger. Emitted at BUILD time, the
-    same discipline as build_aureum.py's: the split is in the served HTML, so
-    nothing depends on a script running for the name to be readable."""
+    """One span per glyph so the reveal can stagger. Emitted at BUILD time:
+    the split is in the served HTML, so nothing depends on a script running
+    for the name to be readable."""
     return "".join('<span class="ou-g" style="--i:%d">%s</span>' % (i, esc(ch))
                    for i, ch in enumerate(text))
 
 
-def _mark_html(root: str) -> str:
-    """The cut-out mark. alt="" on purpose: the <h1> directly below already
-    says OUKA, and an alt that repeated it would say the name twice."""
-    base = root + "assets/img/ouka/"
+def build_body(lang: str, c: dict, root: str) -> str:
+    kanji = KANJI.get(lang, "")
+    kanji_html = ('<p class="ou-kanji ou-fade" style="--d:%dms">%s</p>'
+                  % (KANJI_START_MS, esc(kanji))) if kanji else ""
     return (
-        '<div class="ou-mark">'
-        '<span class="ou-halo--out" aria-hidden="true"></span>'
-        '<span class="ou-halo" aria-hidden="true"></span>'
-        '<span class="ou-spin"><span class="ou-breathe">'
-        '<img class="ou-img" src="%s%s" srcset="%s%s %dw, %s%s %dw" '
-        'sizes="calc(%s * %g / 100)" width="%d" height="%d" alt="" '
-        'decoding="async" fetchpriority="high" loading="eager">'
-        '</span></span></div>'
-        % (base, MARK["file"], base, MARK["small"], MARK["small_w"],
-           base, MARK["file"], MARK["w"], BOX, FIT_PCT, MARK["w"], MARK["h"])
-    )
-
-
-def build_body(c: dict, root: str) -> str:
-    return (
-        '<div class="ou-wrap">'
+        '<div class="ou-stage">'
         '%s'
         '<h1 class="ou-name" aria-label="%s">%s</h1>'
-        '<p class="ou-lede">%s</p>'
-        '<p class="ou-soon">%s</p>'
+        '%s'
+        '<p class="ou-lede ou-fade" style="--d:%dms">%s</p>'
+        '<p class="ou-soon ou-fade" style="--d:%dms">%s</p>'
         '</div>'
-        % (_mark_html(root), esc(c["title"]), wordmark(c["title"]),
-           esc(c["lede"]), esc(c["soon"]))
+        % (_mark_html(root), esc(c["title"]), wordmark(c["title"]), kanji_html,
+           LEDE_START_MS, esc(c["lede"]), SOON_START_MS, esc(c["soon"]))
     )
 
 
@@ -256,14 +478,17 @@ def main() -> int:
     langs = available_langs()
     missing = [lang for lang in langs if lang not in COPY]
     if missing:
-        print("build_ouka: no copy for %s (no fallback by design)" % ", ".join(missing))
+        print("build_ouka: no copy for %s (no fallback by design)"
+              % ", ".join(missing))
         return 1
     for lang, c in COPY.items():
         gaps = [k for k in KEYS if not c.get(k)]
         if gaps:
             print("build_ouka: %s is missing %s" % (lang, ", ".join(gaps)))
             return 1
-    css = head_css()
+    if sorted(PETAL_ORDER) != [1, 2, 3, 4, 5]:
+        raise SystemExit("ERROR: build_ouka: PETAL_ORDER is not the five seats.")
+
     for lang in langs:
         c = COPY[lang]
         # NOT "../" for every language: /de/ouka/ is two levels below the site
@@ -275,33 +500,69 @@ def main() -> int:
             title=c["title"],
             description=c["desc"],
             active="ouka",
-            body=build_body(c, root),
+            body=build_body(lang, c, root),
             depth=1,
-            extra_head=css,
+            extra_head=head_css(root),
         )
-        # Everything below has a failure mode that looks fine: a surviving
-        # token discards the rule and the mark sits still; a missing <img>
-        # still renders a clean text hero; a wrong prefix 404s only in a
-        # browser. None of them turns anything red on its own.
+        # Every failure below looks FINE in a browser, which is why each one is
+        # refused here instead of being left to the eye.
+        # 1. a surviving token: the rule holding it is discarded, and the mark
+        #    silently stops moving (this repo has shipped exactly that).
         left = [tok for tok in TOKENS if tok in html]
         if left or "{{" in html:
             raise SystemExit(
                 "ERROR: build_ouka: %s still holds %s -- the CSS would be "
                 "discarded and the mark would not move." % (lang, left or ["{{"]))
-        for needed in ("ou-img", "@keyframes ou-spin", "@keyframes ou-open",
-                       "@keyframes ou-breathe", "prefers-reduced-motion"):
+        # 2. a missing animation: a still blossom still looks like a logo.
+        for needed in ("@keyframes ou-petal", "@keyframes ou-core",
+                       "@keyframes ou-turn", "@keyframes ou-breathe",
+                       "@keyframes ou-sheen", "@keyframes ou-glyph", "@keyframes ou-unturn",
+                       "prefers-reduced-motion", "--t0:0ms"):
             if needed not in html:
-                raise SystemExit("ERROR: build_ouka: %s is missing %r." % (lang, needed))
-        want = root + "assets/img/ouka/" + MARK["file"]
+                raise SystemExit("ERROR: build_ouka: %s is missing %r."
+                                 % (lang, needed))
+        # 3. a part that is not there: five petals and one core, no more and no
+        #    fewer. A four-petal blossom would still render, and would be wrong.
+        if html.count('class="ou-l ou-p"') != 5:
+            raise SystemExit("ERROR: build_ouka: %s has %d petal layers, not 5."
+                             % (lang, html.count('class="ou-l ou-p"')))
+        if html.count('class="ou-l ou-core"') != 1:
+            raise SystemExit("ERROR: build_ouka: %s has no single core layer."
+                             % lang)
+        # the alpha must sit inside the counter-turning anchor. Without it the
+        # letter rides the 360 degree turn and spends a third of every
+        # revolution upside down -- which renders perfectly and looks cheap.
+        if html.count('class="ou-core-anchor"') != 1 or (
+                '<span class="ou-core-anchor"><img class="ou-l ou-core"' not in html):
+            raise SystemExit("ERROR: build_ouka: %s does not seat the alpha in "
+                             "the counter-turning anchor." % lang)
+        # 4. an image path that resolves to nothing FROM THIS PAGE'S DEPTH:
+        #    a 404 the build cannot see, on a page whose whole subject is the
+        #    picture. The sheen mask is checked too -- without it the sheen
+        #    silently becomes a white bar over the blossom.
         target = ROOT / ("" if lang == "ja" else lang) / SECTION / "index.html"
-        probe = (target.parent / want).resolve()
-        if not probe.is_file():
-            raise SystemExit(
-                "ERROR: build_ouka: %s references %s, which resolves to %s -- no "
-                "such file. The mark would 404." % (lang, want, probe))
+        wanted = ["sheen-mask-192.webp"]
+        for stem in ["core"] + ["petal-%d" % n for n in range(1, 6)]:
+            wanted += ["%s-%d.webp" % (stem, LAYER_W),
+                       "%s-%d.webp" % (stem, SMALL_W)]
+        for name in wanted:
+            want = root + "assets/img/ouka/" + name
+            if want not in html:
+                raise SystemExit("ERROR: build_ouka: %s never references %s."
+                                 % (lang, name))
+            probe = (target.parent / want).resolve()
+            if not probe.is_file():
+                raise SystemExit(
+                    "ERROR: build_ouka: %s references %s, which resolves to %s "
+                    "-- no such file." % (lang, want, probe))
         write_page(lang, SECTION, html)
-    print("build_ouka: %d language(s), mark %s at %g%% of %s, one turn per %ds"
-          % (len(langs), MARK["file"], FIT_PCT, BOX, SPIN_S))
+
+    print("build_ouka: %d language(s); 6 cut layers at %g%% of %s, pivot "
+          "(%g%%, %g%%); petals open %s over %dms, assembled at %dms; "
+          "one turn per %ds"
+          % (len(langs), FIT_PCT, BOX, CX_PCT, CY_PCT,
+             "->".join(str(n) for n in PETAL_ORDER),
+             PETAL_START_MS + 4 * PETAL_STEP_MS + PETAL_MS, ASSEMBLED_MS, SPIN_S))
     return 0
 
 
