@@ -15,9 +15,15 @@ BUILD_SCRIPTS = [
     # page's <head> links to. First so a flag/language mismatch stops the
     # build before 143 pages are written against it.
     "build_lang_assets.py",
-    # V4.3.8: writes assets/img/cherry/blossom.svg and assets/css/cherry-tokens.css.
-    # Must precede build_cherry.py, which inlines that SVG so the five petals can
-    # be animated one at a time.
+    # V4.3.8: writes assets/img/cherry/blossom.svg, blossom-mark.svg and
+    # assets/css/cherry-tokens.css. Must precede build_cherry.py, which links
+    # those tokens.
+    # ⚠ 2026-09-12: the Cherry PAGE no longer inlines blossom.svg -- the owner
+    #   supplied a real Cherry logo and the page now carries the mark cut from
+    #   that photograph (assets/img/cherry/mark*.webp). The generated SVGs stay
+    #   because they are committed brand artefacts with their own uses, but
+    #   nothing on the site inlines them any more; only cherry-tokens.css is
+    #   still read by a page.
     "gen_cherry_brand.py",
     "build_recipe_overlays.py",
     "build_home.py",
@@ -27,9 +33,14 @@ BUILD_SCRIPTS = [
     # and this page's download CTA is a companion to that page's Aureum
     # section, not to anything below.
     "build_aureum.py",
-    # V4.3.8: Cherry's brand page. It inlines assets/img/cherry/blossom.svg,
-    # which gen_cherry_brand.py (first in this list) writes.
+    # V4.3.8: Cherry's brand page. It links assets/css/cherry-tokens.css, which
+    # gen_cherry_brand.py (first in this list) writes, and carries the mark cut
+    # from the owner's own Cherry logo.
     "build_cherry.py",
+    # 2026-09-12: OUKA -- the top of the brand line (OUKA -> Cherry -> Alpha).
+    # Beside the other two brand pages, and before build_alpha.py for the same
+    # reason the nav lists them in that order: this is the ranking, top first.
+    "build_ouka.py",
     # 2026-09-10: Alpha finally gets a brand page of its own, so the Store
     # mega-menu has three real destinations instead of two.
     "build_alpha.py",

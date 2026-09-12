@@ -26,10 +26,23 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, available_langs, esc, page, write_page,
+    ROOT, asset_root_prefix, available_langs, esc, page, write_page,
 )
 
 SECTION = "alpha/"
+
+# The Alpha mark, cut from the owner's own logo photograph (the wordmark in
+# that photograph is NOT used -- 「ロゴにはテキストが含まれていますがこれは一切
+# 使用せずロゴだけを切り取り使用してください」). The gradient wordmark below it
+# stays the page's h1: the mark is the picture of the name, the h1 IS the name,
+# so the image is decorative and carries alt="" rather than repeating "Alpha"
+# to a screen reader that is about to read the heading anyway.
+#
+# Intrinsic sizes are the real files on disk, measured, not guessed --
+# mark-584.webp is 584x384 and mark-320.webp is 320x211. width/height are
+# emitted so the hero reserves its box before the image arrives.
+MARK = {"file": "mark-584.webp", "w": 584, "h": 384,
+        "small": "mark-320.webp", "small_w": 320}
 
 
 def facts() -> dict:
@@ -94,6 +107,16 @@ HEAD = """<style>
    規則を丸ごと無効にする(実際に一度そうなり、カードが素の見出しになった)。 */
 .al-wrap{padding:3.5rem 0 1rem}
 .al-hero{max-width:52rem}
+/* The mark sits above the name at hero scale. It is capped in rem AND in vw so
+   it cannot outgrow a phone; height:auto keeps the measured 584x384 ratio. */
+.al-mark{display:block;width:min(19rem,58vw);height:auto;margin:0 0 1.15rem}
+/* One entrance, once. The mark is not an animated logo (that is Cherry's and
+   OUKA's job) -- it rises into place and then holds. */
+@media (prefers-reduced-motion:no-preference){
+  .al-mark{animation:al-mark-in 900ms cubic-bezier(.16,.84,.28,1) both}
+}
+@keyframes al-mark-in{from{opacity:0;transform:translateY(14px) scale(.985)}
+  to{opacity:1;transform:none}}
 .al-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
   letter-spacing:-.02em;
   background:linear-gradient(100deg,var(--text) 18%,var(--accent-strong) 62%,var(--aurora-green) 96%);
@@ -109,21 +132,32 @@ HEAD = """<style>
 </style>"""
 
 
-def build_body(c: dict, f: dict, lang_prefix: str) -> str:
+def build_body(c: dict, f: dict, lang_prefix: str, asset_prefix: str) -> str:
     lede = c["lede"].format(**f)
+    mark = (
+        '<img class="al-mark" src="%sassets/img/alpha/%s" '
+        'srcset="%sassets/img/alpha/%s %dw, %sassets/img/alpha/%s %dw" '
+        'sizes="min(19rem,58vw)" width="%d" height="%d" alt="" '
+        'decoding="async" fetchpriority="high" loading="eager">'
+        % (asset_prefix, MARK["file"],
+           asset_prefix, MARK["small"], MARK["small_w"],
+           asset_prefix, MARK["file"], MARK["w"],
+           MARK["w"], MARK["h"])
+    )
     cards = []
     for h, p in (("h_ship", "p_ship"), ("h_gate", "p_gate"), ("h_launcher", "p_launcher")):
         cards.append('<div class="al-card"><h2>%s</h2><p>%s</p></div>'
                      % (esc(c[h]), esc(c[p].format(**f))))
     return (
         '<div class="al-wrap"><div class="al-hero">'
+        '%s'
         '<h1 class="al-name">%s</h1><p class="al-lede">%s</p>'
         '<div class="al-cta">'
         '<a class="btn btn--action" href="%sdownload/">%s</a>'
         '<a class="btn" href="%schangelog/">%s</a>'
         '</div></div>'
         '<div class="al-grid">%s</div></div>'
-        % (esc(c["title"]), esc(lede), lang_prefix, esc(c["cta_dl"]),
+        % (mark, esc(c["title"]), esc(lede), lang_prefix, esc(c["cta_dl"]),
            lang_prefix, esc(c["cta_log"]), "".join(cards))
     )
 
@@ -134,19 +168,38 @@ def main() -> int:
     for lang in langs:
         c = COPY.get(lang, COPY["en"])
         lang_prefix = "../"
+        # NOT the same string as lang_prefix: /de/alpha/ is two levels below
+        # the site root but one below its language root. Hardcoding "../" here
+        # is the 404 that site_common.asset_root_prefix() exists to prevent.
+        asset_prefix = asset_root_prefix(1, lang)
         html = page(
             lang=lang,
             section=SECTION,
             title=c["title"],
             description=c["desc"],
             active="alpha",
-            body=build_body(c, f, lang_prefix),
+            body=build_body(c, f, lang_prefix, asset_prefix),
             depth=1,
             extra_head=HEAD,
         )
+        # The mark is the one thing on this page that can fail silently: a
+        # wrong prefix or a dropped <img> still renders a perfectly good text
+        # hero, and nothing goes red. Assert it is there, with a path that
+        # resolves from THIS page's depth, before the file is written.
+        want = '%sassets/img/alpha/%s' % (asset_prefix, MARK["file"])
+        if want not in html:
+            raise SystemExit(
+                "ERROR: build_alpha: the hero mark (%s) is not in the rendered "
+                "%s page." % (want, lang))
+        target = ROOT / ("" if lang == "ja" else lang) / SECTION / "index.html"
+        probe = (target.parent / want).resolve()
+        if not probe.is_file():
+            raise SystemExit(
+                "ERROR: build_alpha: %s references %s, which resolves to %s -- "
+                "no such file. The hero mark would 404." % (lang, want, probe))
         write_page(lang, SECTION, html)
-    print("build_alpha: %d language(s), version %s, %d modules"
-          % (len(langs), f["version"], f["modules"]))
+    print("build_alpha: %d language(s), version %s, %d modules, hero mark %s"
+          % (len(langs), f["version"], f["modules"], MARK["file"]))
     return 0
 
 

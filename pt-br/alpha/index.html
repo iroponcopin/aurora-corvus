@@ -76,6 +76,16 @@
    規則を丸ごと無効にする(実際に一度そうなり、カードが素の見出しになった)。 */
 .al-wrap{padding:3.5rem 0 1rem}
 .al-hero{max-width:52rem}
+/* The mark sits above the name at hero scale. It is capped in rem AND in vw so
+   it cannot outgrow a phone; height:auto keeps the measured 584x384 ratio. */
+.al-mark{display:block;width:min(19rem,58vw);height:auto;margin:0 0 1.15rem}
+/* One entrance, once. The mark is not an animated logo (that is Cherry's and
+   OUKA's job) -- it rises into place and then holds. */
+@media (prefers-reduced-motion:no-preference){
+  .al-mark{animation:al-mark-in 900ms cubic-bezier(.16,.84,.28,1) both}
+}
+@keyframes al-mark-in{from{opacity:0;transform:translateY(14px) scale(.985)}
+  to{opacity:1;transform:none}}
 .al-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
   letter-spacing:-.02em;
   background:linear-gradient(100deg,var(--text) 18%,var(--accent-strong) 62%,var(--aurora-green) 96%);
@@ -114,12 +124,13 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Store</p>
-                <p class="mega-panel__lede">Three mod lines: Alpha, the suite that ships today; Aureum, its own separately-versioned build; and Cherry, the tier above.</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
               </div>
               <ul class="mega-links">
+            <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
+            <li><a class="mega-link" href="../cherry/"><span class="mega-link__label">Cherry</span></a></li>
             <li><a class="mega-link is-current" href="../alpha/" aria-current="page"><span class="mega-link__label">Alpha</span></a></li>
             <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
-            <li><a class="mega-link" href="../cherry/"><span class="mega-link__label">Cherry</span></a></li>
               </ul>
             </div>
           </div>
@@ -209,7 +220,7 @@
   </div>
 </header>
 <main id="main">
-<div class="al-wrap"><div class="al-hero"><h1 class="al-name">Alpha</h1><p class="al-lede">Alpha is the pack that is actually out and running. Firearms, rail, vehicles, building, disasters and other dimensions — 13 modules that move together on one version.</p><div class="al-cta"><a class="btn btn--action" href="../download/">Download</a><a class="btn" href="../changelog/">Changelog</a></div></div><div class="al-grid"><div class="al-card"><h2>It ships</h2><p>Currently 4.3.8 on Minecraft 26.2, after 93 releases. Every change is published, every time.</p></div><div class="al-card"><h2>Measured before it ships</h2><p>Nothing is called fixed until it has been measured. Claims that cannot be measured do not go on the page, and a red gate does not ship.</p></div><div class="al-card"><h2>Installs with Corvus</h2><p>The Corvus launcher installs all 13 jars together and keeps them current. No swapping files by hand.</p></div></div></div>
+<div class="al-wrap"><div class="al-hero"><img class="al-mark" src="../../assets/img/alpha/mark-584.webp" srcset="../../assets/img/alpha/mark-320.webp 320w, ../../assets/img/alpha/mark-584.webp 584w" sizes="min(19rem,58vw)" width="584" height="384" alt="" decoding="async" fetchpriority="high" loading="eager"><h1 class="al-name">Alpha</h1><p class="al-lede">Alpha is the pack that is actually out and running. Firearms, rail, vehicles, building, disasters and other dimensions — 13 modules that move together on one version.</p><div class="al-cta"><a class="btn btn--action" href="../download/">Download</a><a class="btn" href="../changelog/">Changelog</a></div></div><div class="al-grid"><div class="al-card"><h2>It ships</h2><p>Currently 4.3.8 on Minecraft 26.2, after 93 releases. Every change is published, every time.</p></div><div class="al-card"><h2>Measured before it ships</h2><p>Nothing is called fixed until it has been measured. Claims that cannot be measured do not go on the page, and a red gate does not ship.</p></div><div class="al-card"><h2>Installs with Corvus</h2><p>The Corvus launcher installs all 13 jars together and keeps them current. No swapping files by hand.</p></div></div></div>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

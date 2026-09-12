@@ -199,10 +199,16 @@ def recipe_cat_index(cat_name):
 NAV_SECTIONS = [
     ("home", ""),
     ("aureum", "aureum/"),
-    # V4.3.8. Cherry — the tier above Alpha (owner, 2026-09-10). Sits beside
-    # Aureum in NAV_SOLO for the same reason: it is its own product, not part
-    # of the Alpha pack's get-started flow.
+    # V4.3.8. Cherry — above Alpha (owner, 2026-09-10), and since 2026-09-12
+    # BELOW OUKA: the line is OUKA → Cherry → Alpha. Sits beside Aureum in the
+    # Store group for the same reason: it is its own product, not part of the
+    # Alpha pack's get-started flow.
     ("cherry", "cherry/"),
+    # 2026-09-12、所有者:「新ブランドOUKAを展開 / ブランド名称:英→OUKA、漢→桜花 /
+    # ブランド位置:OUKA→Cherry→Alpha(※左から順に上位ブランド)
+    # (Aureum は別ジャンル Mods なので含まれない)」。OUKA は Cherry の上位、
+    # すなわちブランド線の最上位に立つ。
+    ("ouka", "ouka/"),
     # 2026-09-10、所有者:「Aureum と Cherry、Alpha のページを作成して、
     # それを Store という新規のタブを作成して、メガメニューに 3 つの Mods を
     # 表示する。」Alpha はこれまで<b>ブランドのページを持っていなかった</b> ——
@@ -246,6 +252,10 @@ NAV_LABEL_FALLBACK = {
     "cherry": "Cherry",
     # Same reasoning again: "Alpha" is the pack's own name.
     "alpha": "Alpha",
+    # And again for "OUKA". The owner gave the brand two names -- 英→OUKA,
+    # 漢→桜花 -- and neither is a description that could be translated; the
+    # Latin one is the one that goes in the navigation, in every language.
+    "ouka": "OUKA",
     "upcoming": "Coming next",
     # Same arrangement as "upcoming": the nav label falls back to English
     # until the bundles carry ui.nav.discord, while the page itself is fully
@@ -275,10 +285,18 @@ NAV_LABEL_FALLBACK = {
 # of its own yet) -- it simply does not belong to any of those three stories.
 NAV_SOLO = ["home"]
 NAV_GROUPS = [
-    # Store: the three mod brands, side by side. Aureum and Cherry used to sit
-    # in NAV_SOLO as one-offs; the owner asked for all three under one tab so a
-    # reader can see the range at a glance instead of discovering them apart.
-    ("store", ["alpha", "aureum", "cherry"]),
+    # Store: the mod brands, side by side. Aureum and Cherry used to sit in
+    # NAV_SOLO as one-offs; the owner asked for them under one tab so a reader
+    # can see the range at a glance instead of discovering them apart.
+    #
+    # ★ The ORDER is the owner's, and it is not alphabetical and not historical
+    #   (2026-09-12, verbatim): 「ブランド位置:OUKA→Cherry→Alpha
+    #   (※左から順に上位ブランド)(Aureum は別ジャンル Mods なので含まれない)」
+    #   -- so the brand line reads top-tier first, and AUREUM IS NOT IN THAT
+    #   LINE. It is a different genre with its own version line, so it sits
+    #   last, after the three that are ranked against each other, rather than
+    #   being interleaved with them where its position would read as a rank.
+    ("store", ["ouka", "cherry", "alpha", "aureum"]),
     ("start", ["download", "launcher", "guide", "skin"]),
     ("reference", ["recipes", "gates", "features"]),
     # "upcoming" sits with changelog/roadmap because it answers the same
@@ -302,8 +320,13 @@ NAV_GROUP_FALLBACK = {
     # 3 つの Mods を表示する。」
     "store": {
         "label": "Store",
-        "lede": "Three mod lines: Alpha, the suite that ships today; Aureum, its own "
-                "separately-versioned build; and Cherry, the tier above.",
+        # The brand line in the owner's own order, and nothing else about it.
+        # No feature claim and no status belongs here: OUKA has no published
+        # build, and a lede that hinted at one would be a promise the site
+        # cannot keep. Aureum is named apart because it is not ranked against
+        # the other three.
+        "lede": "The brand line, from the top: OUKA, then Cherry, then Alpha. "
+                "Aureum stands apart, in a genre of its own.",
     },
     "start": {
         "label": "Get started",

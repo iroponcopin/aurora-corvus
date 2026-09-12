@@ -33,7 +33,11 @@ What the page says — and what it must never say
 --------------------------------------------------------------------------
 Two things, and nothing else:
 
-  1. Cherry is the tier above Alpha — said once, as a fact, not argued.
+  1. Where Cherry sits — said once, as a fact, not argued. Until 2026-09-12
+     that was "the tier above Alpha"; OUKA now stands above it, so the line
+     reads "the tier between OUKA and Alpha" in all 13 languages. The fact
+     did not change — Cherry is still above Alpha — but the old wording left
+     a reader believing Cherry was the top of the line, and it no longer is.
   2. A closing line in the register of 乞うご期待.
 
 NOT on this page, by the owner's word: where the name comes from; that there
@@ -46,39 +50,55 @@ gone); any status, progress, "not yet", "coming later", build, or schedule.
 Every one of the 13 languages carries its own copy; nothing falls back to English.
 
 --------------------------------------------------------------------------
-The mark — it blooms once, then it never stops moving
+The mark — the owner's own logo, and it never stops moving
 --------------------------------------------------------------------------
-On open, the five petals begin folded into the centre (scaled to nothing and
-rotated back by 90 degrees) and unfold outward one after another, each rotating
-into its final 72-degree seat as it grows. The stamens fade in last.
+2026-09-12: the owner supplied a real Cherry logo, so this page no longer
+inlines the generated blossom SVG. It carries the mark cut out of that
+photograph (assets/img/cherry/mark*.webp) — the MARK only: 「ロゴにはテキストが
+含まれていますがこれは一切使用せずロゴだけを切り取り使用してください」, so the
+word CHERRY under it in the photograph is not on this page.
 
-From the first frame and forever after, the whole flower turns — one
-revolution a minute, linear, on the <g class="ch-spin"> wrapper the generator
-provides. As each petal finishes opening it starts to breathe (scale 1 ->
-0.985 -> 1 over ~5 s, staggered), and a soft band of light glides from the
-heart of each petal to its tip every ~7 s, also staggered. All of it is CSS
-keyframes with `infinite` iteration; no JavaScript, no SMIL, no library.
+A photograph cannot be taken apart into five petals the way the generated SVG
+could, so what was per-petal is now carried by the whole mark, and the
+behaviour the owner asked for is unchanged:
 
-`prefers-reduced-motion: reduce` skips ONLY the one-time bloom (the flower
-starts open). The rotation, the breathing and the light are the identity of
-the mark — 「常時動いているロゴ」 — and stay on regardless.
+  1. it TURNS, from the first frame and forever — one revolution a minute
+     (「Cherryロゴが一歳動いていません。これは常時動いているロゴです。」)
+  2. it blooms once on open: folded to nothing and rotated back 90 degrees,
+     unfolding as it turns into place
+  3. it breathes forever (scale 1 -> 0.985 -> 1 over ~5 s)
+  4. a soft halo behind it breathes out of phase, in the petal's own colour
 
-Two traps this file inherits from gen_cherry_brand.py (read its docstring):
-CSS `transform` REPLACES an element's own `transform` attribute, so the whole-
-flower rotation lives on the wrapper (which has no attribute) and every petal
-keyframe re-states the petal's seat angle as a literal; and var(--i) does not
-resolve per element inside @keyframes, so the generator writes five sets.
+All CSS keyframes with `infinite` iteration; no JavaScript, no SMIL, no library.
+
+`prefers-reduced-motion: reduce` skips ONLY the one-time bloom (the mark starts
+open). The turn, the breath and the halo are the identity of the mark —
+「常時動いているロゴ」 — and stay on regardless.
+
+Three traps this file has actually shipped:
+  ★ CSS `transform` REPLACES the element's other transform, so the turn and
+    the bloom/breath CANNOT live on the same element — one silently erases the
+    other. The turn is on .ch-spin, the bloom/breath on .ch-breathe inside it.
+  ★ The CSS below is NOT run through str.format(). An earlier version was, and
+    a mis-doubled brace emitted `{{transform-box:...}}` — broken CSS, the whole
+    petal rule discarded, and what the owner saw was a logo that never moved.
+    Substitution here is str.replace() of __TOKENS__ that cannot collide with
+    a brace, and main() refuses to write a page that still holds one.
+  ★ A rotating rectangle sweeps its own DIAGONAL. The mark is only as wide as
+    it can be and still stay inside its box at every angle — computed below
+    from the file's real pixel size, not eyeballed.
 """
 
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, available_langs, esc, page, write_page,
+    ROOT, asset_root_prefix, available_langs, esc, page, write_page,
 )
 
 SECTION = "cherry/"
@@ -90,80 +110,80 @@ SECTION = "cherry/"
 COPY = {
     "ja": {
         "title": "Cherry",
-        "desc": "Alpha の上位に位置するブランド。",
-        "lede": "Alpha の上位に位置するブランド。",
+        "desc": "OUKA と Alpha のあいだに位置するブランド。",
+        "lede": "OUKA と Alpha のあいだに位置するブランド。",
         "soon": "ご期待ください。",
     },
     "en": {
         "title": "Cherry",
-        "desc": "The tier above Alpha.",
-        "lede": "The tier above Alpha.",
+        "desc": "The tier between OUKA and Alpha.",
+        "lede": "The tier between OUKA and Alpha.",
         "soon": "Coming soon.",
     },
     "es": {
         "title": "Cherry",
-        "desc": "El nivel por encima de Alpha.",
-        "lede": "El nivel por encima de Alpha.",
+        "desc": "El nivel entre OUKA y Alpha.",
+        "lede": "El nivel entre OUKA y Alpha.",
         "soon": "Muy pronto.",
     },
     "fr": {
         "title": "Cherry",
-        "desc": "Le niveau au-dessus d'Alpha.",
-        "lede": "Le niveau au-dessus d'Alpha.",
+        "desc": "Le niveau entre OUKA et Alpha.",
+        "lede": "Le niveau entre OUKA et Alpha.",
         "soon": "Bientôt disponible.",
     },
     "zh": {
         "title": "Cherry",
-        "desc": "位于 Alpha 之上的品牌。",
-        "lede": "位于 Alpha 之上的品牌。",
+        "desc": "位于 OUKA 与 Alpha 之间的品牌。",
+        "lede": "位于 OUKA 与 Alpha 之间的品牌。",
         "soon": "敬请期待。",
     },
     "ko": {
         "title": "Cherry",
-        "desc": "Alpha 위에 자리한 브랜드입니다.",
-        "lede": "Alpha 위에 자리한 브랜드입니다.",
+        "desc": "OUKA와 Alpha 사이에 자리한 브랜드입니다.",
+        "lede": "OUKA와 Alpha 사이에 자리한 브랜드입니다.",
         "soon": "기대해 주세요.",
     },
     "pt-br": {
         "title": "Cherry",
-        "desc": "O nível acima do Alpha.",
-        "lede": "O nível acima do Alpha.",
+        "desc": "O nível entre OUKA e Alpha.",
+        "lede": "O nível entre OUKA e Alpha.",
         "soon": "Em breve.",
     },
     "it": {
         "title": "Cherry",
-        "desc": "Il livello sopra Alpha.",
-        "lede": "Il livello sopra Alpha.",
+        "desc": "Il livello tra OUKA e Alpha.",
+        "lede": "Il livello tra OUKA e Alpha.",
         "soon": "In arrivo.",
     },
     "ar": {
         "title": "Cherry",
-        "desc": "المستوى الأعلى من Alpha.",
-        "lede": "المستوى الأعلى من Alpha.",
+        "desc": "المستوى بين OUKA و Alpha.",
+        "lede": "المستوى بين OUKA و Alpha.",
         "soon": "ترقّبوا قريباً.",
     },
     "ru": {
         "title": "Cherry",
-        "desc": "Уровень выше Alpha.",
-        "lede": "Уровень выше Alpha.",
+        "desc": "Уровень между OUKA и Alpha.",
+        "lede": "Уровень между OUKA и Alpha.",
         "soon": "Уже скоро.",
     },
     "id": {
         "title": "Cherry",
-        "desc": "Tingkat di atas Alpha.",
-        "lede": "Tingkat di atas Alpha.",
+        "desc": "Tingkat di antara OUKA dan Alpha.",
+        "lede": "Tingkat di antara OUKA dan Alpha.",
         "soon": "Segera hadir.",
     },
     "de": {
         "title": "Cherry",
-        "desc": "Die Stufe über Alpha.",
-        "lede": "Die Stufe über Alpha.",
+        "desc": "Die Stufe zwischen OUKA und Alpha.",
+        "lede": "Die Stufe zwischen OUKA und Alpha.",
         "soon": "Bald verfügbar.",
     },
     "tr": {
         "title": "Cherry",
-        "desc": "Alpha'nın üzerindeki seviye.",
-        "lede": "Alpha'nın üzerindeki seviye.",
+        "desc": "OUKA ile Alpha arasındaki seviye.",
+        "lede": "OUKA ile Alpha arasındaki seviye.",
         "soon": "Çok yakında.",
     },
 }
@@ -171,134 +191,128 @@ COPY = {
 KEYS = ("title", "desc", "lede", "soon")
 
 
-def _blossom_svg() -> str:
-    """The generated mark, inlined so the petals can be animated individually."""
-    svg = (ROOT / "assets" / "img" / "cherry" / "blossom.svg").read_text(encoding="utf-8")
-    # inline it at the page's own size; the file carries width/height for
-    # standalone use (favicon, launcher), which must not win here.
-    svg = svg.replace('width="512" height="512"', 'class="ch-bloom" width="100%" height="100%"')
-    return svg
+# --- the mark ----------------------------------------------------------------
+# The real file on disk, measured (PIL), not guessed. mark-584.webp is the 1x
+# source for the hero; mark-320.webp serves narrow screens.
+MARK = {"file": "mark-584.webp", "w": 584, "h": 557,
+        "small": "mark-320.webp", "small_w": 320}
+BOX = "min(22rem,68vw)"          # the square the mark turns inside
 
+# A rotating rectangle needs its own diagonal to fit. 100 * w / hypot(w, h) is
+# the widest the mark can be and still stay inside that square at EVERY angle;
+# at 100% its corners would swing out over the copy beside it.
+FIT_PCT = round(100.0 * MARK["w"] / math.hypot(MARK["w"], MARK["h"]), 1)
 
 # --- timing (ms) --------------------------------------------------------------
-BLOOM_MS = 1150          # one petal, fold -> seat
-BLOOM_STEP_MS = 105      # petal-to-petal stagger of the bloom
-BLOOM_START_MS = 140     # petal 0 starts
+BLOOM_MS = 1150          # fold -> open
+BLOOM_START_MS = 140     # the bloom starts
 BREATHE_MS = 5200        # one breath (1 -> .985 -> 1)
-BREATHE_STEP_MS = 420    # petal-to-petal stagger of the breath
-SPIN_S = 60              # one revolution of the whole flower
-SHEEN_MS = 7000          # one pass of light along a petal, pause included
-SHEEN_STEP_MS = 260      # petal-to-petal stagger of the light
+SPIN_S = 60              # one revolution of the whole mark
+HALO_MS = 7000           # one breath of the halo behind it
+
+# The halo is the petal's own shaded colour, --ch-petal-deep (#e8b4c6) from
+# gen_cherry_brand.py's PALETTE, written as rgb so it can carry an alpha inside
+# the gradient stop.
+HALO_RGB = "232,180,198"
 
 
-HEAD = """<link rel="stylesheet" href="{root}assets/css/cherry-tokens.css">
+# ★ NOT a format string. See the docstring: a mis-doubled brace once emitted
+#   broken CSS and the mark stopped moving. __TOKENS__ cannot collide with a
+#   brace, and main() refuses to write a page that still contains one.
+HEAD = """<link rel="stylesheet" href="__ROOT__assets/css/cherry-tokens.css">
 <style>
-.ch-wrap{{background:var(--ch-bg);color:var(--ch-text);padding:4rem 1.25rem 5rem;
-  margin:0 calc(50% - 50vw);width:100vw}}
-.ch-inner{{max-width:60rem;margin:0 auto}}
-.ch-hero{{display:grid;gap:2.5rem;align-items:center;
-  grid-template-columns:minmax(0,1fr)}}
-@media (min-width:52rem){{.ch-hero{{grid-template-columns:22rem minmax(0,1fr)}}}}
-.ch-mark{{width:min(22rem,68vw);aspect-ratio:1;margin-inline:auto}}
-.ch-name{{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
-  letter-spacing:-.02em;color:var(--ch-petal)}}
-.ch-lede{{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0}}
-.ch-soon{{margin:4rem 0 0;text-align:center;font-size:1.25rem;letter-spacing:.08em;
-  color:var(--ch-petal-deep)}}
+.ch-wrap{background:var(--ch-bg);color:var(--ch-text);padding:4rem 1.25rem 5rem;
+  margin:0 calc(50% - 50vw);width:100vw}
+.ch-inner{max-width:60rem;margin:0 auto}
+.ch-hero{display:grid;gap:2.5rem;align-items:center;
+  grid-template-columns:minmax(0,1fr)}
+@media (min-width:52rem){.ch-hero{grid-template-columns:22rem minmax(0,1fr)}}
+.ch-mark{position:relative;width:__BOX__;aspect-ratio:1;margin-inline:auto;
+  display:grid;place-items:center}
+.ch-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
+  letter-spacing:-.02em;color:var(--ch-petal)}
+.ch-lede{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0}
+.ch-soon{margin:4rem 0 0;text-align:center;font-size:1.25rem;letter-spacing:.08em;
+  color:var(--ch-petal-deep)}
 
-/* --- the mark ------------------------------------------------------------
-   Blooms once on load; from then on it never stops moving.
+/* --- the mark: the owner's logo, always turning -------------------------- */
+.ch-halo{position:absolute;inset:-4%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(__HALO_RGB__,.30),rgba(__HALO_RGB__,0) 70%);
+  animation:ch-halo __HALO_MS__ms ease-in-out infinite}
+/* the turn lives alone on this wrapper -- see the docstring's first trap */
+.ch-spin{display:block;width:__FIT__%;
+  animation:ch-spin __SPIN_S__s linear infinite}
+.ch-breathe{display:block;
+  animation:ch-open __BLOOM_MS__ms cubic-bezier(.16,.84,.28,1) __BLOOM_DELAY__ms backwards,
+            ch-breathe __BREATHE_MS__ms ease-in-out __BREATHE_DELAY__ms infinite}
+.ch-img{display:block;width:100%;height:auto}
 
-   ★ 角度は<b>1 枚ずつ literal で書き出す</b>。最初は
-     `rotate(calc(var(--i) * 72deg))` を 1 つの @keyframes で共有していたが、
-     実際にブラウザで開くと<b>花弁が 1 枚しか見えなかった</b> ——
-     @keyframes の中の var() が花弁ごとに解決されず、5 枚とも rotate(0) に
-     畳まれて重なっていた。生成器が 5 組を書き出せば、その曖昧さは消える。
+@keyframes ch-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ch-open{from{transform:rotate(-90deg) scale(.04);opacity:0}
+  60%{opacity:1}
+  to{transform:rotate(0deg) scale(1);opacity:1}}
+@keyframes ch-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.985)}}
+@keyframes ch-halo{0%,100%{opacity:.55;transform:scale(1)}
+  50%{opacity:.95;transform:scale(1.045)}}
 
-   ★ 原点もユーザー単位で明示する。50%% 50%% は view-box ではなく要素自身の
-     箱に対して解決されていた。viewBox は 512 なので中心は 256。
-
-   ★ CSS の transform は要素の transform 属性を<b>置き換える</b>。花全体の
-     回転は属性を持たない包み .ch-spin にだけ掛け、花弁の keyframe は
-     どれも自分の座席角を literal で書き直す。 */
-
-/* 1. the whole flower turns, forever, from the first frame */
-.ch-bloom .ch-spin{{transform-box:view-box;transform-origin:256px 256px;
-  animation:ch-spin {spin_s}s linear infinite}}
-@keyframes ch-spin{{from{{transform:rotate(0deg)}}to{{transform:rotate(360deg)}}}}
-
-/* 2. each petal: bloom once, then breathe forever (literal angle per petal) */
-{petals}
-
-/* 3. a soft light glides from the heart of each petal to its tip, forever */
-{sheen}
-@keyframes ch-sheen{{0%{{transform:translateY(0)}}58%{{transform:translateY(-560px)}}
-  100%{{transform:translateY(-560px)}}}}
-
-/* 4. the stamens fade in last (once) */
-.ch-bloom .ch-stamens,.ch-bloom .ch-anthers{{
-  animation:ch-fade 700ms ease-out backwards;animation-delay:900ms}}
-@keyframes ch-fade{{from{{opacity:0}}to{{opacity:1}}}}
-
-/* Reduced motion skips ONLY the one-time bloom: the flower starts open. The
-   rotation, the breath and the light are the mark itself and stay on. */
-@media (prefers-reduced-motion:reduce){{
-  .ch-bloom .ch-stamens,.ch-bloom .ch-anthers{{animation:none}}
-{petals_reduced}
-}}
+/* Reduced motion skips ONLY the one-time bloom: the mark starts open. The
+   turn, the breath and the halo are the mark itself and stay on. */
+@media (prefers-reduced-motion:reduce){
+  .ch-breathe{animation:ch-breathe __BREATHE_MS__ms ease-in-out infinite}
+}
 </style>"""
 
-
-def _petal_css() -> tuple[str, str, str]:
-    """Per-petal rules: (normal, reduced-motion, sheen). Angles literal, origin user units.
-
-    ★ ここは HEAD.format() に<b>値として</b>差し込まれる。テンプレート側と違って
-      波括弧を {{ }} と二重にしてはいけない —— 最初の版はそうしていて、出力が
-      `{{transform-box:...}}` という<b>壊れた CSS</b> になり、花弁の規則が
-      丸ごと捨てられていた。所有者が見た「一切動かないロゴ」の正体はこれ。
-      生成後の cherry/index.html を grep して `{{` が無いことを確かめること。
-    """
-    normal, reduced, sheen = [], [], []
-    for i in range(5):
-        end = i * 72.0
-        start = end - 90.0
-        bloom_delay = BLOOM_START_MS + i * BLOOM_STEP_MS
-        breathe_delay = bloom_delay + BLOOM_MS + i * BREATHE_STEP_MS  # never before its bloom ends
-        sel = ".ch-bloom .ch-petal[style*='--i:%d']" % i
-        normal.append(
-            "%s{transform-box:view-box;transform-origin:256px 256px;"
-            "animation:ch-open-%d %dms cubic-bezier(.16,.84,.28,1) %dms backwards,"
-            "ch-breathe-%d %dms ease-in-out %dms infinite}"
-            % (sel, i, BLOOM_MS, bloom_delay, i, BREATHE_MS, breathe_delay))
-        normal.append(
-            "@keyframes ch-open-%d{"
-            "from{transform:rotate(%.1fdeg) scale(.04);opacity:0}"
-            "60%%{opacity:1}"
-            "to{transform:rotate(%.1fdeg) scale(1);opacity:1}}" % (i, start, end))
-        normal.append(
-            "@keyframes ch-breathe-%d{"
-            "0%%,100%%{transform:rotate(%.1fdeg) scale(1)}"
-            "50%%{transform:rotate(%.1fdeg) scale(.985)}}" % (i, end, end))
-        reduced.append(
-            "  %s{animation:ch-breathe-%d %dms ease-in-out %dms infinite}"
-            % (sel, i, BREATHE_MS, i * BREATHE_STEP_MS))
-        sheen.append(
-            "%s .ch-sheen{animation:ch-sheen %dms ease-in-out %dms infinite}"
-            % (sel, SHEEN_MS, bloom_delay + BLOOM_MS + 400 + i * SHEEN_STEP_MS))
-    return "\n".join(normal), "\n".join(reduced), "\n".join(sheen)
+TOKENS = ("__ROOT__", "__BOX__", "__FIT__", "__SPIN_S__", "__BLOOM_MS__",
+          "__BLOOM_DELAY__", "__BREATHE_MS__", "__BREATHE_DELAY__",
+          "__HALO_MS__", "__HALO_RGB__")
 
 
-def build_body(c: dict) -> str:
+def head_css(root: str) -> str:
+    out = HEAD
+    for token, value in (
+        ("__ROOT__", root),
+        ("__BOX__", BOX),
+        ("__FIT__", "%g" % FIT_PCT),
+        ("__SPIN_S__", str(SPIN_S)),
+        ("__BLOOM_MS__", str(BLOOM_MS)),
+        ("__BLOOM_DELAY__", str(BLOOM_START_MS)),
+        ("__BREATHE_MS__", str(BREATHE_MS)),
+        ("__BREATHE_DELAY__", str(BLOOM_START_MS + BLOOM_MS)),
+        ("__HALO_MS__", str(HALO_MS)),
+        ("__HALO_RGB__", HALO_RGB),
+    ):
+        out = out.replace(token, value)
+    return out
+
+
+def _mark_html(root: str) -> str:
+    """The cut-out mark, wrapped so the turn and the bloom cannot erase each
+    other. alt="" on purpose: the <h1> beside it already says Cherry, so a
+    screen reader that announced the image too would say the name twice."""
+    base = root + "assets/img/cherry/"
+    return (
+        '<div class="ch-mark"><span class="ch-halo" aria-hidden="true"></span>'
+        '<span class="ch-spin"><span class="ch-breathe">'
+        '<img class="ch-img" src="%s%s" srcset="%s%s %dw, %s%s %dw" '
+        'sizes="calc(%s * %g / 100)" width="%d" height="%d" alt="" '
+        'decoding="async" fetchpriority="high" loading="eager">'
+        '</span></span></div>'
+        % (base, MARK["file"], base, MARK["small"], MARK["small_w"],
+           base, MARK["file"], MARK["w"], BOX, FIT_PCT, MARK["w"], MARK["h"])
+    )
+
+
+def build_body(c: dict, root: str) -> str:
     return (
         '<div class="ch-wrap"><div class="ch-inner">'
         '<div class="ch-hero">'
-        '<div class="ch-mark">%s</div>'
+        '%s'
         '<div><h1 class="ch-name">%s</h1>'
         '<p class="ch-lede">%s</p></div>'
         '</div>'
         '<p class="ch-soon">%s</p>'
         '</div></div>'
-        % (_blossom_svg(), esc(c["title"]), esc(c["lede"]), esc(c["soon"]))
+        % (_mark_html(root), esc(c["title"]), esc(c["lede"]), esc(c["soon"]))
     )
 
 
@@ -313,24 +327,49 @@ def main() -> int:
         if gaps:
             print("build_cherry: %s is missing %s" % (lang, ", ".join(gaps)))
             return 1
-    petals, petals_reduced, sheen = _petal_css()
     for lang in langs:
         c = COPY[lang]
-        body = build_body(c)
+        # NOT "../" for every language: /de/cherry/ is two levels below the
+        # site root but one below its language root.
+        root = asset_root_prefix(1, lang)
         html = page(
             lang=lang,
             section=SECTION,
             title=c["title"],
             description=c["desc"],
             active="cherry",
-            body=body,
+            body=build_body(c, root),
             depth=1,
-            extra_head=HEAD.format(root="../" if lang == "ja" else "../../",
-                                   spin_s=SPIN_S, petals=petals,
-                                   petals_reduced=petals_reduced, sheen=sheen),
+            extra_head=head_css(root),
         )
+        # --- the three ways this page has failed silently, all refused here.
+        # 1. a substitution token surviving into the CSS (the broken-brace
+        #    defect's successor): the rule would be discarded and the mark
+        #    would sit still, with nothing red anywhere.
+        left = [tok for tok in TOKENS if tok in html]
+        if left or "{{" in html:
+            raise SystemExit(
+                "ERROR: build_cherry: %s still holds %s -- the CSS would be "
+                "discarded and the mark would not move."
+                % (lang, left or ["{{"]))
+        # 2. the mark missing, or its animations gone: a text-only hero still
+        #    renders perfectly well and looks intentional.
+        for needed in ("ch-img", "@keyframes ch-spin", "@keyframes ch-open",
+                       "@keyframes ch-breathe", "prefers-reduced-motion"):
+            if needed not in html:
+                raise SystemExit(
+                    "ERROR: build_cherry: %s is missing %r." % (lang, needed))
+        # 3. the image path resolving to nothing from THIS page's depth.
+        want = root + "assets/img/cherry/" + MARK["file"]
+        target = ROOT / ("" if lang == "ja" else lang) / SECTION / "index.html"
+        probe = (target.parent / want).resolve()
+        if not probe.is_file():
+            raise SystemExit(
+                "ERROR: build_cherry: %s references %s, which resolves to %s "
+                "-- no such file. The mark would 404." % (lang, want, probe))
         write_page(lang, SECTION, html)
-    print("build_cherry: %d language(s)" % len(langs))
+    print("build_cherry: %d language(s), mark %s at %g%% of %s"
+          % (len(langs), MARK["file"], FIT_PCT, BOX))
     return 0
 
 

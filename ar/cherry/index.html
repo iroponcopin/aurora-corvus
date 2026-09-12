@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cherry | Corvus</title>
-<meta name="description" content="المستوى الأعلى من Alpha.">
+<meta name="description" content="المستوى بين OUKA و Alpha.">
 <meta property="og:title" content="Cherry | Corvus">
-<meta property="og:description" content="المستوى الأعلى من Alpha.">
+<meta property="og:description" content="المستوى بين OUKA و Alpha.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -79,74 +79,38 @@
 .ch-hero{display:grid;gap:2.5rem;align-items:center;
   grid-template-columns:minmax(0,1fr)}
 @media (min-width:52rem){.ch-hero{grid-template-columns:22rem minmax(0,1fr)}}
-.ch-mark{width:min(22rem,68vw);aspect-ratio:1;margin-inline:auto}
+.ch-mark{position:relative;width:min(22rem,68vw);aspect-ratio:1;margin-inline:auto;
+  display:grid;place-items:center}
 .ch-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
   letter-spacing:-.02em;color:var(--ch-petal)}
 .ch-lede{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0}
 .ch-soon{margin:4rem 0 0;text-align:center;font-size:1.25rem;letter-spacing:.08em;
   color:var(--ch-petal-deep)}
 
-/* --- the mark ------------------------------------------------------------
-   Blooms once on load; from then on it never stops moving.
-
-   ★ 角度は<b>1 枚ずつ literal で書き出す</b>。最初は
-     `rotate(calc(var(--i) * 72deg))` を 1 つの @keyframes で共有していたが、
-     実際にブラウザで開くと<b>花弁が 1 枚しか見えなかった</b> ——
-     @keyframes の中の var() が花弁ごとに解決されず、5 枚とも rotate(0) に
-     畳まれて重なっていた。生成器が 5 組を書き出せば、その曖昧さは消える。
-
-   ★ 原点もユーザー単位で明示する。50%% 50%% は view-box ではなく要素自身の
-     箱に対して解決されていた。viewBox は 512 なので中心は 256。
-
-   ★ CSS の transform は要素の transform 属性を<b>置き換える</b>。花全体の
-     回転は属性を持たない包み .ch-spin にだけ掛け、花弁の keyframe は
-     どれも自分の座席角を literal で書き直す。 */
-
-/* 1. the whole flower turns, forever, from the first frame */
-.ch-bloom .ch-spin{transform-box:view-box;transform-origin:256px 256px;
+/* --- the mark: the owner's logo, always turning -------------------------- */
+.ch-halo{position:absolute;inset:-4%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(232,180,198,.30),rgba(232,180,198,0) 70%);
+  animation:ch-halo 7000ms ease-in-out infinite}
+/* the turn lives alone on this wrapper -- see the docstring's first trap */
+.ch-spin{display:block;width:72.4%;
   animation:ch-spin 60s linear infinite}
+.ch-breathe{display:block;
+  animation:ch-open 1150ms cubic-bezier(.16,.84,.28,1) 140ms backwards,
+            ch-breathe 5200ms ease-in-out 1290ms infinite}
+.ch-img{display:block;width:100%;height:auto}
+
 @keyframes ch-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ch-open{from{transform:rotate(-90deg) scale(.04);opacity:0}
+  60%{opacity:1}
+  to{transform:rotate(0deg) scale(1);opacity:1}}
+@keyframes ch-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.985)}}
+@keyframes ch-halo{0%,100%{opacity:.55;transform:scale(1)}
+  50%{opacity:.95;transform:scale(1.045)}}
 
-/* 2. each petal: bloom once, then breathe forever (literal angle per petal) */
-.ch-bloom .ch-petal[style*='--i:0']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-0 1150ms cubic-bezier(.16,.84,.28,1) 140ms backwards,ch-breathe-0 5200ms ease-in-out 1290ms infinite}
-@keyframes ch-open-0{from{transform:rotate(-90.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(0.0deg) scale(1);opacity:1}}
-@keyframes ch-breathe-0{0%,100%{transform:rotate(0.0deg) scale(1)}50%{transform:rotate(0.0deg) scale(.985)}}
-.ch-bloom .ch-petal[style*='--i:1']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-1 1150ms cubic-bezier(.16,.84,.28,1) 245ms backwards,ch-breathe-1 5200ms ease-in-out 1815ms infinite}
-@keyframes ch-open-1{from{transform:rotate(-18.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(72.0deg) scale(1);opacity:1}}
-@keyframes ch-breathe-1{0%,100%{transform:rotate(72.0deg) scale(1)}50%{transform:rotate(72.0deg) scale(.985)}}
-.ch-bloom .ch-petal[style*='--i:2']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-2 1150ms cubic-bezier(.16,.84,.28,1) 350ms backwards,ch-breathe-2 5200ms ease-in-out 2340ms infinite}
-@keyframes ch-open-2{from{transform:rotate(54.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(144.0deg) scale(1);opacity:1}}
-@keyframes ch-breathe-2{0%,100%{transform:rotate(144.0deg) scale(1)}50%{transform:rotate(144.0deg) scale(.985)}}
-.ch-bloom .ch-petal[style*='--i:3']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-3 1150ms cubic-bezier(.16,.84,.28,1) 455ms backwards,ch-breathe-3 5200ms ease-in-out 2865ms infinite}
-@keyframes ch-open-3{from{transform:rotate(126.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(216.0deg) scale(1);opacity:1}}
-@keyframes ch-breathe-3{0%,100%{transform:rotate(216.0deg) scale(1)}50%{transform:rotate(216.0deg) scale(.985)}}
-.ch-bloom .ch-petal[style*='--i:4']{transform-box:view-box;transform-origin:256px 256px;animation:ch-open-4 1150ms cubic-bezier(.16,.84,.28,1) 560ms backwards,ch-breathe-4 5200ms ease-in-out 3390ms infinite}
-@keyframes ch-open-4{from{transform:rotate(198.0deg) scale(.04);opacity:0}60%{opacity:1}to{transform:rotate(288.0deg) scale(1);opacity:1}}
-@keyframes ch-breathe-4{0%,100%{transform:rotate(288.0deg) scale(1)}50%{transform:rotate(288.0deg) scale(.985)}}
-
-/* 3. a soft light glides from the heart of each petal to its tip, forever */
-.ch-bloom .ch-petal[style*='--i:0'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 1690ms infinite}
-.ch-bloom .ch-petal[style*='--i:1'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 2055ms infinite}
-.ch-bloom .ch-petal[style*='--i:2'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 2420ms infinite}
-.ch-bloom .ch-petal[style*='--i:3'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 2785ms infinite}
-.ch-bloom .ch-petal[style*='--i:4'] .ch-sheen{animation:ch-sheen 7000ms ease-in-out 3150ms infinite}
-@keyframes ch-sheen{0%{transform:translateY(0)}58%{transform:translateY(-560px)}
-  100%{transform:translateY(-560px)}}
-
-/* 4. the stamens fade in last (once) */
-.ch-bloom .ch-stamens,.ch-bloom .ch-anthers{
-  animation:ch-fade 700ms ease-out backwards;animation-delay:900ms}
-@keyframes ch-fade{from{opacity:0}to{opacity:1}}
-
-/* Reduced motion skips ONLY the one-time bloom: the flower starts open. The
-   rotation, the breath and the light are the mark itself and stay on. */
+/* Reduced motion skips ONLY the one-time bloom: the mark starts open. The
+   turn, the breath and the halo are the mark itself and stay on. */
 @media (prefers-reduced-motion:reduce){
-  .ch-bloom .ch-stamens,.ch-bloom .ch-anthers{animation:none}
-  .ch-bloom .ch-petal[style*='--i:0']{animation:ch-breathe-0 5200ms ease-in-out 0ms infinite}
-  .ch-bloom .ch-petal[style*='--i:1']{animation:ch-breathe-1 5200ms ease-in-out 420ms infinite}
-  .ch-bloom .ch-petal[style*='--i:2']{animation:ch-breathe-2 5200ms ease-in-out 840ms infinite}
-  .ch-bloom .ch-petal[style*='--i:3']{animation:ch-breathe-3 5200ms ease-in-out 1260ms infinite}
-  .ch-bloom .ch-petal[style*='--i:4']{animation:ch-breathe-4 5200ms ease-in-out 1680ms infinite}
+  .ch-breathe{animation:ch-breathe 5200ms ease-in-out infinite}
 }
 </style></head>
 <body>
@@ -174,12 +138,13 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Store</p>
-                <p class="mega-panel__lede">Three mod lines: Alpha, the suite that ships today; Aureum, its own separately-versioned build; and Cherry, the tier above.</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
               </div>
               <ul class="mega-links">
+            <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
+            <li><a class="mega-link is-current" href="../cherry/" aria-current="page"><span class="mega-link__label">Cherry</span></a></li>
             <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
             <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
-            <li><a class="mega-link is-current" href="../cherry/" aria-current="page"><span class="mega-link__label">Cherry</span></a></li>
               </ul>
             </div>
           </div>
@@ -269,100 +234,7 @@
   </div>
 </header>
 <main id="main">
-<div class="ch-wrap"><div class="ch-inner"><div class="ch-hero"><div class="ch-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="ch-bloom" width="100%" height="100%" role="img" aria-label="Cherry">
-<defs>
-<radialGradient id="chPetal" cx="50%" cy="78%" r="78%">
-<stop offset="0" stop-color="#c9748f"/>
-<stop offset="0.42" stop-color="#e8b4c6"/>
-<stop offset="1" stop-color="#f7dbe4"/>
-</radialGradient>
-<linearGradient id="chSheen" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-<stop offset="0.5" stop-color="#ffffff" stop-opacity="0.42"/>
-<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-</linearGradient>
-<path id="chPetalShape" d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z"/>
-<clipPath id="chPetalClip"><use href="#chPetalShape"/></clipPath>
-</defs>
-<g class="ch-spin">
-<g class="ch-petals">
-<g class="ch-petal" style="--i:0" transform="rotate(0.000 256.000 256.000)">
-<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
-</g>
-<g class="ch-petal" style="--i:1" transform="rotate(72.000 256.000 256.000)">
-<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
-</g>
-<g class="ch-petal" style="--i:2" transform="rotate(144.000 256.000 256.000)">
-<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
-</g>
-<g class="ch-petal" style="--i:3" transform="rotate(216.000 256.000 256.000)">
-<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
-</g>
-<g class="ch-petal" style="--i:4" transform="rotate(288.000 256.000 256.000)">
-<path d="M 232.346 256 C 231.163 214.098 188.416 155.435 188.416 116.326 C 188.416 97.741 188.416 90.307 201.933 82.534 C 203.014 50.409 222.478 30.72 239.78 30.72 C 248.971 39.01 252.756 76.317 256 79.426 C 259.244 76.317 263.029 39.01 272.22 30.72 C 289.522 30.72 308.986 50.409 310.067 82.534 L 310.067 82.534 C 323.584 90.307 323.584 97.741 323.584 116.326 C 323.584 155.435 280.837 214.098 279.654 256 Z" fill="url(#chPetal)" stroke="#e8b4c6" stroke-width="2.30" stroke-linejoin="round"/>
-<g clip-path="url(#chPetalClip)"><rect class="ch-sheen" x="153.60" y="302.08" width="204.80" height="256.00" fill="url(#chSheen)"/></g>
-</g>
-</g>
-<g class="ch-stamens" stroke="#f6e6b8" stroke-width="2.82" stroke-linecap="round">
-<line x1="268.79" y1="255.57" x2="343.42" y2="253.08"/>
-<line x1="268.44" y1="253.00" x2="342.29" y2="235.20"/>
-<line x1="267.17" y1="249.75" x2="340.22" y2="208.88"/>
-<line x1="264.70" y1="246.61" x2="318.85" y2="188.20"/>
-<line x1="262.34" y1="244.88" x2="300.76" y2="177.44"/>
-<line x1="258.95" y1="243.54" x2="278.81" y2="159.58"/>
-<line x1="256.15" y1="243.20" x2="257.06" y2="167.06"/>
-<line x1="252.89" y1="243.58" x2="235.16" y2="172.76"/>
-<line x1="249.52" y1="244.96" x2="211.75" y2="180.55"/>
-<line x1="247.11" y1="246.79" x2="192.71" y2="190.39"/>
-<line x1="244.92" y1="249.59" x2="173.41" y2="208.25"/>
-<line x1="243.74" y1="252.31" x2="165.18" y2="228.68"/>
-<line x1="243.20" y1="255.91" x2="171.67" y2="255.40"/>
-<line x1="243.74" y1="259.68" x2="173.11" y2="280.89"/>
-<line x1="244.81" y1="262.21" x2="179.99" y2="298.15"/>
-<line x1="247.26" y1="265.35" x2="193.03" y2="323.43"/>
-<line x1="249.63" y1="267.10" x2="209.01" y2="337.96"/>
-<line x1="253.00" y1="268.44" x2="235.34" y2="341.75"/>
-<line x1="256.08" y1="268.80" x2="256.59" y2="348.26"/>
-<line x1="259.31" y1="268.36" x2="277.78" y2="337.28"/>
-<line x1="262.32" y1="267.13" x2="305.34" y2="342.99"/>
-<line x1="265.36" y1="264.73" x2="327.14" y2="322.29"/>
-<line x1="266.95" y1="262.62" x2="340.79" y2="307.26"/>
-<line x1="268.30" y1="259.54" x2="338.64" y2="279.77"/>
-</g>
-<g class="ch-anthers" fill="#d9a441">
-<circle cx="343.42" cy="253.08" r="5.63"/>
-<circle cx="342.29" cy="235.20" r="5.63"/>
-<circle cx="340.22" cy="208.88" r="5.63"/>
-<circle cx="318.85" cy="188.20" r="5.63"/>
-<circle cx="300.76" cy="177.44" r="5.63"/>
-<circle cx="278.81" cy="159.58" r="5.63"/>
-<circle cx="257.06" cy="167.06" r="5.63"/>
-<circle cx="235.16" cy="172.76" r="5.63"/>
-<circle cx="211.75" cy="180.55" r="5.63"/>
-<circle cx="192.71" cy="190.39" r="5.63"/>
-<circle cx="173.41" cy="208.25" r="5.63"/>
-<circle cx="165.18" cy="228.68" r="5.63"/>
-<circle cx="171.67" cy="255.40" r="5.63"/>
-<circle cx="173.11" cy="280.89" r="5.63"/>
-<circle cx="179.99" cy="298.15" r="5.63"/>
-<circle cx="193.03" cy="323.43" r="5.63"/>
-<circle cx="209.01" cy="337.96" r="5.63"/>
-<circle cx="235.34" cy="341.75" r="5.63"/>
-<circle cx="256.59" cy="348.26" r="5.63"/>
-<circle cx="277.78" cy="337.28" r="5.63"/>
-<circle cx="305.34" cy="342.99" r="5.63"/>
-<circle cx="327.14" cy="322.29" r="5.63"/>
-<circle cx="340.79" cy="307.26" r="5.63"/>
-<circle cx="338.64" cy="279.77" r="5.63"/>
-</g>
-<circle cx="256.00" cy="256.00" r="12.29" fill="#c9748f"/>
-</g>
-</svg>
-</div><div><h1 class="ch-name">Cherry</h1><p class="ch-lede">المستوى الأعلى من Alpha.</p></div></div><p class="ch-soon">ترقّبوا قريباً.</p></div></div>
+<div class="ch-wrap"><div class="ch-inner"><div class="ch-hero"><div class="ch-mark"><span class="ch-halo" aria-hidden="true"></span><span class="ch-spin"><span class="ch-breathe"><img class="ch-img" src="../../assets/img/cherry/mark-584.webp" srcset="../../assets/img/cherry/mark-320.webp 320w, ../../assets/img/cherry/mark-584.webp 584w" sizes="calc(min(22rem,68vw) * 72.4 / 100)" width="584" height="557" alt="" decoding="async" fetchpriority="high" loading="eager"></span></span></div><div><h1 class="ch-name">Cherry</h1><p class="ch-lede">المستوى بين OUKA و Alpha.</p></div></div><p class="ch-soon">ترقّبوا قريباً.</p></div></div>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
