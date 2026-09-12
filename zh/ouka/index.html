@@ -13,10 +13,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
-<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
+<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/ouka/og-ouka.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Corvus">
+<meta property="og:image:alt" content="OUKA">
 <meta name="twitter:card" content="summary_large_image">
     <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/ouka/">
 <link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/ouka/">
@@ -141,7 +141,21 @@
     rgb(230,219,225) 86%);-webkit-background-clip:text;background-clip:text;
     color:transparent}
 }
-.ou-g{display:inline-block;animation:ou-glyph 700ms
+/* The glyphs rise out of a clipping wrapper -- deliberately NOT with
+   transform or opacity. Measured, not reasoned: a descendant of a
+   background-clip:text element that runs a COMPOSITED animation is not
+   painted by the parent's clipped background, so it renders as
+   color:transparent -- nothing at all. Both halves were isolated separately
+   on this exact gradient: transform-only measured 0 bright pixels and
+   opacity-only also measured 0, against 2,924 with the animation switched
+   off. This page shipped that bug: the name was blank for the whole of its
+   entrance (0 px at t=1500/1700/1900/2100) and then snapped in one letter at
+   a time. `top` is not a compositable property, creates no stacking context,
+   and so the <h1> keeps painting the letter while it moves; the wrapper's
+   overflow does the hiding that opacity used to do. Guarded in main(). */
+.ou-gw{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding-top:.28em;margin-top:-.28em}
+.ou-g{display:inline-block;position:relative;animation:ou-glyph 700ms
   cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + 1500ms + var(--i) * 90ms)}
 .ou-kanji{margin:1.1rem 0 0;font-size:1.02rem;letter-spacing:.42em;
@@ -162,8 +176,7 @@
 @keyframes ou-core{from{transform:rotate(-16deg) scale(.66);opacity:0}
   45%{opacity:1}
   to{transform:none;opacity:1}}
-@keyframes ou-glyph{from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}}
+@keyframes ou-glyph{from{top:1.15em}to{top:0}}
 @keyframes ou-fade{from{opacity:0;transform:translateY(12px)}
   to{opacity:1;transform:none}}
 @keyframes ou-halo-in{0%,100%{opacity:.52;transform:scale(1)}
@@ -306,7 +319,7 @@
   </div>
 </header>
 <main id="main">
-<div class="ou-stage"><div class="ou-mark" aria-hidden="true"><span class="ou-halo ou-halo--out"></span><span class="ou-halo ou-halo--in"></span><span class="ou-turn"><span class="ou-breathe"><span class="ou-parts"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-4-584.webp" srcset="../../assets/img/ouka/petal-4-320.webp 320w, ../../assets/img/ouka/petal-4-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:180ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-5-584.webp" srcset="../../assets/img/ouka/petal-5-320.webp 320w, ../../assets/img/ouka/petal-5-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:310ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-1-584.webp" srcset="../../assets/img/ouka/petal-1-320.webp 320w, ../../assets/img/ouka/petal-1-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:440ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-2-584.webp" srcset="../../assets/img/ouka/petal-2-320.webp 320w, ../../assets/img/ouka/petal-2-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:570ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-3-584.webp" srcset="../../assets/img/ouka/petal-3-320.webp 320w, ../../assets/img/ouka/petal-3-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:700ms" decoding="async" loading="eager"><span class="ou-core-anchor"><img class="ou-l ou-core" src="../../assets/img/ouka/core-584.webp" srcset="../../assets/img/ouka/core-320.webp 320w, ../../assets/img/ouka/core-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" decoding="async" loading="eager"></span><span class="ou-sheen"></span></span></span></span></div><h1 class="ou-name" aria-label="OUKA"><span class="ou-g" style="--i:0">O</span><span class="ou-g" style="--i:1">U</span><span class="ou-g" style="--i:2">K</span><span class="ou-g" style="--i:3">A</span></h1><p class="ou-lede ou-fade" style="--d:1800ms">位于 Cherry 之上,最高级别的品牌。</p><p class="ou-soon ou-fade" style="--d:2000ms">敬请期待。</p></div>
+<div class="ou-stage"><div class="ou-mark" aria-hidden="true"><span class="ou-halo ou-halo--out"></span><span class="ou-halo ou-halo--in"></span><span class="ou-turn"><span class="ou-breathe"><span class="ou-parts"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-4-584.webp" srcset="../../assets/img/ouka/petal-4-320.webp 320w, ../../assets/img/ouka/petal-4-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:180ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-5-584.webp" srcset="../../assets/img/ouka/petal-5-320.webp 320w, ../../assets/img/ouka/petal-5-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:310ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-1-584.webp" srcset="../../assets/img/ouka/petal-1-320.webp 320w, ../../assets/img/ouka/petal-1-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:440ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-2-584.webp" srcset="../../assets/img/ouka/petal-2-320.webp 320w, ../../assets/img/ouka/petal-2-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:570ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-3-584.webp" srcset="../../assets/img/ouka/petal-3-320.webp 320w, ../../assets/img/ouka/petal-3-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:700ms" decoding="async" loading="eager"><span class="ou-core-anchor"><img class="ou-l ou-core" src="../../assets/img/ouka/core-584.webp" srcset="../../assets/img/ouka/core-320.webp 320w, ../../assets/img/ouka/core-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" decoding="async" loading="eager"></span><span class="ou-sheen"></span></span></span></span></div><h1 class="ou-name" aria-label="OUKA"><span class="ou-gw"><span class="ou-g" style="--i:0">O</span></span><span class="ou-gw"><span class="ou-g" style="--i:1">U</span></span><span class="ou-gw"><span class="ou-g" style="--i:2">K</span></span><span class="ou-gw"><span class="ou-g" style="--i:3">A</span></span></h1><p class="ou-lede ou-fade" style="--d:1800ms">位于 Cherry 之上,最高级别的品牌。</p><p class="ou-soon ou-fade" style="--d:2000ms">敬请期待。</p></div>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

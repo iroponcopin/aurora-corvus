@@ -29,11 +29,11 @@ published build — and that is exactly why none of it may be written down, in
 either direction. Every one of the 13 languages carries its own copy; nothing
 falls back to English.
 
-日本語版にだけ「桜花」を名前として置いている。所有者自身が「ブランド名称:英→
-OUKA、漢→桜花」と両方を挙げているので、日本語の読者に日本語の表記を見せるのは
-**名前の提示**であって「名前の由来の説明」ではない——後者は Cherry のページで
-名指しで禁じられた。読みがな、括弧書き、語義の説明は一切付けない。所有者が不要
-と判断するなら KANJI を空にすれば消える(一行)。
+「桜花」はこのページには出さない。所有者が挙げたのはブランド名称としての表記
+(「ブランド名称:英→OUKA、漢→桜花」)であって、ページに載せる文言としてではない。
+承認を得た Cherry のページの形は「ブランドの位置」と「結びの一行」だけで、漢字
+表記は無い。所有者が日本語版に置きたいと言えば KANJI = {"ja": "桜花"} と書けば
+戻る(一行)。それまでは出さない——見せていないものを勝手に足さない。
 
 --------------------------------------------------------------------------
 The mark, and the animation the owner asked for
@@ -133,10 +133,17 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, asset_root_prefix, available_langs, esc, page, write_page,
+    ROOT, SITE_BASE_URL, asset_root_prefix, available_langs, esc, page,
+    write_page,
 )
 
 SECTION = "ouka/"
+
+# The share card, so a link to the flagship brand page shows the brand's own
+# mark instead of the generic Corvus card. It is the cut mark on the site's
+# ground and nothing else -- no wordmark, by the owner's standing instruction.
+# Built by scripts/make_ouka_og.py; 1200x630, which is what page() declares.
+OG_CARD = f"{SITE_BASE_URL}/assets/img/ouka/og-ouka.png"
 
 # --- copy -------------------------------------------------------------------
 # Every language the site ships has its own entry; there is no fallback. Brand
@@ -202,9 +209,10 @@ COPY = {
 
 KEYS = ("title", "desc", "lede", "soon")
 
-# The name in kanji, on the Japanese page only — see the docstring. Empty for
-# every other language, and emptying this string removes it entirely.
-KANJI = {"ja": "桜花"}
+# The name in kanji — see the docstring. EMPTY on purpose: the owner gave 桜花
+# as the brand's name, not as copy for this page, and the shape he approved on
+# Cherry carries no such line. Putting it back is one entry: {"ja": "桜花"}.
+KANJI: dict[str, str] = {}
 
 # --- the mark's parts -------------------------------------------------------
 # Real files on disk, measured with PIL, not guessed. Each layer is the FULL
@@ -330,7 +338,21 @@ HEAD = """<style>
     rgb(__SILVER__) 86%);-webkit-background-clip:text;background-clip:text;
     color:transparent}
 }
-.ou-g{display:inline-block;animation:ou-glyph __GLYPH_MS__ms
+/* The glyphs rise out of a clipping wrapper -- deliberately NOT with
+   transform or opacity. Measured, not reasoned: a descendant of a
+   background-clip:text element that runs a COMPOSITED animation is not
+   painted by the parent's clipped background, so it renders as
+   color:transparent -- nothing at all. Both halves were isolated separately
+   on this exact gradient: transform-only measured 0 bright pixels and
+   opacity-only also measured 0, against 2,924 with the animation switched
+   off. This page shipped that bug: the name was blank for the whole of its
+   entrance (0 px at t=1500/1700/1900/2100) and then snapped in one letter at
+   a time. `top` is not a compositable property, creates no stacking context,
+   and so the <h1> keeps painting the letter while it moves; the wrapper's
+   overflow does the hiding that opacity used to do. Guarded in main(). */
+.ou-gw{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding-top:.28em;margin-top:-.28em}
+.ou-g{display:inline-block;position:relative;animation:ou-glyph __GLYPH_MS__ms
   cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + __GLYPH_START_MS__ms + var(--i) * __GLYPH_STEP_MS__ms)}
 .ou-kanji{margin:1.1rem 0 0;font-size:1.02rem;letter-spacing:.42em;
@@ -351,8 +373,7 @@ HEAD = """<style>
 @keyframes ou-core{from{transform:rotate(-16deg) scale(.66);opacity:0}
   45%{opacity:1}
   to{transform:none;opacity:1}}
-@keyframes ou-glyph{from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}}
+@keyframes ou-glyph{from{top:1.15em}to{top:0}}
 @keyframes ou-fade{from{opacity:0;transform:translateY(12px)}
   to{opacity:1;transform:none}}
 @keyframes ou-halo-in{0%,100%{opacity:.52;transform:scale(1)}
@@ -450,10 +471,13 @@ def _mark_html(root: str) -> str:
 
 
 def wordmark(text: str) -> str:
-    """One span per glyph so the reveal can stagger. Emitted at BUILD time:
-    the split is in the served HTML, so nothing depends on a script running
-    for the name to be readable."""
-    return "".join('<span class="ou-g" style="--i:%d">%s</span>' % (i, esc(ch))
+    """One span per glyph so the reveal can stagger, each inside the wrapper
+    it rises out of. Emitted at BUILD time: the split is in the served HTML,
+    so nothing depends on a script running for the name to be readable. The
+    wrapper's overflow is what hides a letter before its turn -- see .ou-gw
+    for why this cannot be done with opacity."""
+    return "".join('<span class="ou-gw"><span class="ou-g" style="--i:%d">%s'
+                   '</span></span>' % (i, esc(ch))
                    for i, ch in enumerate(text))
 
 
@@ -503,6 +527,8 @@ def main() -> int:
             body=build_body(lang, c, root),
             depth=1,
             extra_head=head_css(root),
+            og_image=OG_CARD,
+            og_image_alt="OUKA",
         )
         # Every failure below looks FINE in a browser, which is why each one is
         # refused here instead of being left to the eye.
@@ -521,6 +547,29 @@ def main() -> int:
             if needed not in html:
                 raise SystemExit("ERROR: build_ouka: %s is missing %r."
                                  % (lang, needed))
+        # 2b. the glyph reveal must animate NEITHER transform NOR opacity. A
+        #    descendant of the gradient-clipped <h1> that runs either one is
+        #    not painted at all while it animates -- the name goes blank for
+        #    its whole entrance and then snaps in. That shipped. Each half was
+        #    measured alone (transform-only 0 px, opacity-only 0 px, animation
+        #    off 2,924 px), so this refuses the regression instead of leaving
+        #    an invisible brand name to be noticed by eye.
+        kf = ""
+        if "@keyframes ou-glyph{" in html:
+            kf = html.split("@keyframes ou-glyph{", 1)[1].split("}}", 1)[0]
+        bad = [p for p in ("transform", "opacity") if p in kf]
+        if bad:
+            raise SystemExit(
+                "ERROR: build_ouka: %s animates %s on .ou-g. The gradient-"
+                "clipped <h1> cannot paint a composited descendant, so the "
+                "name would be invisible for its entire entrance."
+                % (lang, "/".join(bad)))
+        if html.count('class="ou-gw"') != html.count('class="ou-g" style='):
+            raise SystemExit(
+                "ERROR: build_ouka: %s has %d glyph wrappers for %d glyphs -- "
+                "an unwrapped glyph is visible before its turn."
+                % (lang, html.count('class="ou-gw"'),
+                   html.count('class="ou-g" style=')))
         # 3. a part that is not there: five petals and one core, no more and no
         #    fewer. A four-petal blossom would still render, and would be wrong.
         if html.count('class="ou-l ou-p"') != 5:

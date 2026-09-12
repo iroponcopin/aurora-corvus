@@ -908,6 +908,7 @@ def page(
     depth: int = 0,
     extra_head: str = "",
     og_image: str | None = None,
+    og_image_alt: str | None = None,
     absolute_base: str | None = None,
 ) -> str:
     """Wrap body HTML in the full site shell (head, nav, footer).
@@ -937,10 +938,11 @@ def page(
     # Every page gets a share card. og_image may override it per page, but it
     # must be absolute either way (see OG_IMAGE_URL).
     og_src = og_image or OG_IMAGE_URL
+    og_alt = og_image_alt or SITE_TITLE
     og = (f'<meta property="og:image" content="{esc(og_src)}">\n'
           f'<meta property="og:image:width" content="1200">\n'
           f'<meta property="og:image:height" content="630">\n'
-          f'<meta property="og:image:alt" content="{esc(SITE_TITLE)}">\n'
+          f'<meta property="og:image:alt" content="{esc(og_alt)}">\n'
           f'<meta name="twitter:card" content="summary_large_image">\n    ')
     lang_switch = _lang_switcher_html(lang, section, root_prefix)
 
