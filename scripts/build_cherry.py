@@ -208,6 +208,12 @@ BLOOM_MS = 1150          # fold -> open
 BLOOM_START_MS = 140     # the bloom starts
 BREATHE_MS = 5200        # one breath (1 -> .985 -> 1)
 SPIN_S = 60              # one revolution of the whole mark
+INTRO_HOLD_MS = BLOOM_START_MS + BLOOM_MS + 600   # then .is-intro comes off
+INTRO_SCRIPT = (
+    '<script>(function(){var s=document.querySelector(".ch-wrap");'
+    'if(!s)return;s.classList.add("is-intro");'
+    'setTimeout(function(){s.classList.remove("is-intro")},%d)})();</script>'
+    % INTRO_HOLD_MS)
 HALO_MS = 7000           # one breath of the halo behind it
 
 # The halo is the petal's own shaded colour, --ch-petal-deep (#e8b4c6) from
@@ -243,6 +249,15 @@ HEAD = """<link rel="stylesheet" href="__ROOT__assets/css/cherry-tokens.css">
 .ch-spin{display:block;width:__FIT__%;
   animation:ch-spin __SPIN_S__s linear infinite}
 .ch-breathe{display:block;
+  animation:ch-breathe __BREATHE_MS__ms ease-in-out __BREATHE_DELAY__ms infinite}
+/* The bloom is OPT-IN, for the reason written against .is-intro in
+   build_ouka.py: a renderer that runs script but never advances animation
+   time holds this `backwards` fill at frame 0 for ever, and frame 0 of
+   ch-open is rotate(-90deg) scale(.04) at opacity 0 -- an invisible mark on
+   a page whose whole subject is the mark. The class comes off on a timer,
+   which needs no frame, so such a renderer settles on the base style: the
+   mark, open and turning. */
+.is-intro .ch-breathe{
   animation:ch-open __BLOOM_MS__ms cubic-bezier(.16,.84,.28,1) __BLOOM_DELAY__ms backwards,
             ch-breathe __BREATHE_MS__ms ease-in-out __BREATHE_DELAY__ms infinite}
 .ch-img{display:block;width:100%;height:auto}
@@ -258,7 +273,8 @@ HEAD = """<link rel="stylesheet" href="__ROOT__assets/css/cherry-tokens.css">
 /* Reduced motion skips ONLY the one-time bloom: the mark starts open. The
    turn, the breath and the halo are the mark itself and stay on. */
 @media (prefers-reduced-motion:reduce){
-  .ch-breathe{animation:ch-breathe __BREATHE_MS__ms ease-in-out infinite}
+  .ch-breathe,.is-intro .ch-breathe{
+    animation:ch-breathe __BREATHE_MS__ms ease-in-out infinite}
 }
 </style>"""
 
@@ -311,8 +327,9 @@ def build_body(c: dict, root: str) -> str:
         '<p class="ch-lede">%s</p></div>'
         '</div>'
         '<p class="ch-soon">%s</p>'
-        '</div></div>'
-        % (_mark_html(root), esc(c["title"]), esc(c["lede"]), esc(c["soon"]))
+        '</div></div>%s'
+        % (_mark_html(root), esc(c["title"]), esc(c["lede"]), esc(c["soon"]),
+           INTRO_SCRIPT)
     )
 
 
@@ -359,6 +376,24 @@ def main() -> int:
             if needed not in html:
                 raise SystemExit(
                     "ERROR: build_cherry: %s is missing %r." % (lang, needed))
+        # 2b. the bloom must be opt-in and must switch itself off. Frame 0 of
+        #    ch-open is an invisible mark, and a renderer that never advances
+        #    animation time holds it for ever behind the `backwards` fill.
+        if ".is-intro .ch-breathe{\n  animation:ch-open" not in html:
+            raise SystemExit(
+                "ERROR: build_cherry: %s does not scope the bloom to "
+                ".is-intro. A renderer that never advances animation time "
+                "would hold frame 0 -- rotate(-90deg) scale(.04) at opacity "
+                "0, an invisible mark." % lang)
+        if ".ch-breathe{display:block;\n  animation:ch-open" in html:
+            raise SystemExit(
+                "ERROR: build_cherry: %s still blooms outside .is-intro." % lang)
+        for needed in ('classList.add("is-intro")',
+                       'classList.remove("is-intro")', str(INTRO_HOLD_MS)):
+            if needed not in html:
+                raise SystemExit(
+                    "ERROR: build_cherry: %s is missing %r -- without it the "
+                    "bloom either never runs or never ends." % (lang, needed))
         # 3. the image path resolving to nothing from THIS page's depth.
         want = root + "assets/img/cherry/" + MARK["file"]
         target = ROOT / ("" if lang == "ja" else lang) / SECTION / "index.html"

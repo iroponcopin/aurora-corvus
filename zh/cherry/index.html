@@ -95,6 +95,15 @@
 .ch-spin{display:block;width:72.4%;
   animation:ch-spin 60s linear infinite}
 .ch-breathe{display:block;
+  animation:ch-breathe 5200ms ease-in-out 1290ms infinite}
+/* The bloom is OPT-IN, for the reason written against .is-intro in
+   build_ouka.py: a renderer that runs script but never advances animation
+   time holds this `backwards` fill at frame 0 for ever, and frame 0 of
+   ch-open is rotate(-90deg) scale(.04) at opacity 0 -- an invisible mark on
+   a page whose whole subject is the mark. The class comes off on a timer,
+   which needs no frame, so such a renderer settles on the base style: the
+   mark, open and turning. */
+.is-intro .ch-breathe{
   animation:ch-open 1150ms cubic-bezier(.16,.84,.28,1) 140ms backwards,
             ch-breathe 5200ms ease-in-out 1290ms infinite}
 .ch-img{display:block;width:100%;height:auto}
@@ -110,7 +119,8 @@
 /* Reduced motion skips ONLY the one-time bloom: the mark starts open. The
    turn, the breath and the halo are the mark itself and stay on. */
 @media (prefers-reduced-motion:reduce){
-  .ch-breathe{animation:ch-breathe 5200ms ease-in-out infinite}
+  .ch-breathe,.is-intro .ch-breathe{
+    animation:ch-breathe 5200ms ease-in-out infinite}
 }
 </style></head>
 <body>
@@ -234,7 +244,7 @@
   </div>
 </header>
 <main id="main">
-<div class="ch-wrap"><div class="ch-inner"><div class="ch-hero"><div class="ch-mark"><span class="ch-halo" aria-hidden="true"></span><span class="ch-spin"><span class="ch-breathe"><img class="ch-img" src="../../assets/img/cherry/mark-584.webp" srcset="../../assets/img/cherry/mark-320.webp 320w, ../../assets/img/cherry/mark-584.webp 584w" sizes="calc(min(22rem,68vw) * 72.4 / 100)" width="584" height="557" alt="" decoding="async" fetchpriority="high" loading="eager"></span></span></div><div><h1 class="ch-name">Cherry</h1><p class="ch-lede">位于 OUKA 与 Alpha 之间的品牌。</p></div></div><p class="ch-soon">敬请期待。</p></div></div>
+<div class="ch-wrap"><div class="ch-inner"><div class="ch-hero"><div class="ch-mark"><span class="ch-halo" aria-hidden="true"></span><span class="ch-spin"><span class="ch-breathe"><img class="ch-img" src="../../assets/img/cherry/mark-584.webp" srcset="../../assets/img/cherry/mark-320.webp 320w, ../../assets/img/cherry/mark-584.webp 584w" sizes="calc(min(22rem,68vw) * 72.4 / 100)" width="584" height="557" alt="" decoding="async" fetchpriority="high" loading="eager"></span></span></div><div><h1 class="ch-name">Cherry</h1><p class="ch-lede">位于 OUKA 与 Alpha 之间的品牌。</p></div></div><p class="ch-soon">敬请期待。</p></div></div><script>(function(){var s=document.querySelector(".ch-wrap");if(!s)return;s.classList.add("is-intro");setTimeout(function(){s.classList.remove("is-intro")},1890)})();</script>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

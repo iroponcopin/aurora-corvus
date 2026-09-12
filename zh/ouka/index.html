@@ -105,10 +105,10 @@
    only possible because the alpha was cut out as a layer of its own. */
 .ou-core-anchor{position:absolute;inset:0;transform-origin:51.04% 53.7%;
   animation:ou-unturn 90s linear infinite;animation-delay:var(--t0)}
-.ou-p{animation:ou-petal 1250ms cubic-bezier(.2,.82,.25,1) backwards;
-  animation-delay:calc(var(--t0) + var(--d))}
-.ou-core{animation:ou-core 1120ms cubic-bezier(.18,.9,.28,1) backwards;
-  animation-delay:calc(var(--t0) + 980ms)}
+.is-intro .ou-p{animation:ou-petal 1250ms cubic-bezier(.2,.82,.25,1)
+  backwards;animation-delay:calc(var(--t0) + var(--d))}
+.is-intro .ou-core{animation:ou-core 1120ms cubic-bezier(.18,.9,.28,1)
+  backwards;animation-delay:calc(var(--t0) + 980ms)}
 
 /* Light travelling across the metal. The bar is masked by the mark's own
    alpha, so it lights the artwork and never the empty box around it; where
@@ -155,7 +155,8 @@
    overflow does the hiding that opacity used to do. Guarded in main(). */
 .ou-gw{display:inline-block;overflow:hidden;vertical-align:bottom;
   padding-top:.28em;margin-top:-.28em}
-.ou-g{display:inline-block;position:relative;animation:ou-glyph 700ms
+.ou-g{display:inline-block;position:relative}
+.is-intro .ou-g{animation:ou-glyph 700ms
   cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + 1500ms + var(--i) * 90ms)}
 .ou-kanji{margin:1.1rem 0 0;font-size:1.02rem;letter-spacing:.42em;
@@ -164,7 +165,8 @@
   margin:1.9rem 0 0;max-width:34rem}
 .ou-soon{margin:5rem 0 1rem;font-size:1.22rem;letter-spacing:.08em;
   color:var(--text-muted)}
-.ou-fade{animation:ou-fade 800ms cubic-bezier(.16,.84,.28,1) backwards;
+.is-intro .ou-fade{animation:ou-fade 800ms
+  cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + var(--d))}
 
 @keyframes ou-turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
@@ -191,7 +193,8 @@
    animations only reach it, via `backwards` fill), so switching them off
    leaves the blossom complete. */
 @media (prefers-reduced-motion:reduce){
-  .ou-turn,.ou-core-anchor,.ou-breathe,.ou-p,.ou-core,.ou-g,.ou-fade,.ou-sheen::before{
+  .ou-turn,.ou-core-anchor,.ou-breathe,.ou-sheen::before,
+  .is-intro .ou-p,.is-intro .ou-core,.is-intro .ou-g,.is-intro .ou-fade{
     animation:none}
   .ou-halo--in{animation:none;opacity:.76}
   .ou-halo--out{animation:none;opacity:.7}
@@ -319,7 +322,7 @@
   </div>
 </header>
 <main id="main">
-<div class="ou-stage"><div class="ou-mark" aria-hidden="true"><span class="ou-halo ou-halo--out"></span><span class="ou-halo ou-halo--in"></span><span class="ou-turn"><span class="ou-breathe"><span class="ou-parts"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-4-584.webp" srcset="../../assets/img/ouka/petal-4-320.webp 320w, ../../assets/img/ouka/petal-4-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:180ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-5-584.webp" srcset="../../assets/img/ouka/petal-5-320.webp 320w, ../../assets/img/ouka/petal-5-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:310ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-1-584.webp" srcset="../../assets/img/ouka/petal-1-320.webp 320w, ../../assets/img/ouka/petal-1-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:440ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-2-584.webp" srcset="../../assets/img/ouka/petal-2-320.webp 320w, ../../assets/img/ouka/petal-2-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:570ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-3-584.webp" srcset="../../assets/img/ouka/petal-3-320.webp 320w, ../../assets/img/ouka/petal-3-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:700ms" decoding="async" loading="eager"><span class="ou-core-anchor"><img class="ou-l ou-core" src="../../assets/img/ouka/core-584.webp" srcset="../../assets/img/ouka/core-320.webp 320w, ../../assets/img/ouka/core-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" decoding="async" loading="eager"></span><span class="ou-sheen"></span></span></span></span></div><h1 class="ou-name" aria-label="OUKA"><span class="ou-gw"><span class="ou-g" style="--i:0">O</span></span><span class="ou-gw"><span class="ou-g" style="--i:1">U</span></span><span class="ou-gw"><span class="ou-g" style="--i:2">K</span></span><span class="ou-gw"><span class="ou-g" style="--i:3">A</span></span></h1><p class="ou-lede ou-fade" style="--d:1800ms">位于 Cherry 之上,最高级别的品牌。</p><p class="ou-soon ou-fade" style="--d:2000ms">敬请期待。</p></div>
+<div class="ou-stage"><div class="ou-mark" aria-hidden="true"><span class="ou-halo ou-halo--out"></span><span class="ou-halo ou-halo--in"></span><span class="ou-turn"><span class="ou-breathe"><span class="ou-parts"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-4-584.webp" srcset="../../assets/img/ouka/petal-4-320.webp 320w, ../../assets/img/ouka/petal-4-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:180ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-5-584.webp" srcset="../../assets/img/ouka/petal-5-320.webp 320w, ../../assets/img/ouka/petal-5-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:310ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-1-584.webp" srcset="../../assets/img/ouka/petal-1-320.webp 320w, ../../assets/img/ouka/petal-1-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:440ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-2-584.webp" srcset="../../assets/img/ouka/petal-2-320.webp 320w, ../../assets/img/ouka/petal-2-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:570ms" decoding="async" loading="eager"><img class="ou-l ou-p" src="../../assets/img/ouka/petal-3-584.webp" srcset="../../assets/img/ouka/petal-3-320.webp 320w, ../../assets/img/ouka/petal-3-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" style="--d:700ms" decoding="async" loading="eager"><span class="ou-core-anchor"><img class="ou-l ou-core" src="../../assets/img/ouka/core-584.webp" srcset="../../assets/img/ouka/core-320.webp 320w, ../../assets/img/ouka/core-584.webp 584w" sizes="calc(min(30rem,80vw) * 69.5 / 100)" width="584" height="552" alt="" decoding="async" loading="eager"></span><span class="ou-sheen"></span></span></span></span></div><h1 class="ou-name" aria-label="OUKA"><span class="ou-gw"><span class="ou-g" style="--i:0">O</span></span><span class="ou-gw"><span class="ou-g" style="--i:1">U</span></span><span class="ou-gw"><span class="ou-g" style="--i:2">K</span></span><span class="ou-gw"><span class="ou-g" style="--i:3">A</span></span></h1><p class="ou-lede ou-fade" style="--d:1800ms">位于 Cherry 之上,最高级别的品牌。</p><p class="ou-soon ou-fade" style="--d:2000ms">敬请期待。</p></div><script>(function(){var s=document.querySelector(".ou-stage");if(!s)return;s.classList.add("is-intro");setTimeout(function(){s.classList.remove("is-intro")},3400)})();</script>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

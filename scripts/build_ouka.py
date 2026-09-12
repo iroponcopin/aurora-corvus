@@ -267,6 +267,25 @@ HALO_OUT_MS = 9000        # out of phase with the inner halo, on purpose
 SHEEN_MS = 11000
 SHEEN_START_MS = ASSEMBLED_MS + 500
 
+# The entrance is OPT-IN. Every intro animation is scoped to .is-intro, which
+# the script below the stage adds and then removes once the entrance is over.
+# The reason is measured, not reasoned: a renderer that runs script but never
+# advances animation time holds a `backwards` fill at frame 0 for ever, and
+# frame 0 of this mark is a blossom with no petals and a page with no text.
+# With the preview pane hidden, document.timeline.currentTime read 0 twice
+# across 2,355 ms of wall clock while all five petals sat at opacity 0 and
+# rotate(-26deg) scale(.62), and both lines at opacity 0. setTimeout does not
+# need a frame, so the class comes off even there and the base style -- which
+# IS the finished mark -- is what such a renderer captures.
+INTRO_END_MS = SOON_START_MS + LEDE_MS        # 2800: the last line has landed
+INTRO_HOLD_MS = INTRO_END_MS + 600            # a margin, then the class goes
+assert INTRO_HOLD_MS > INTRO_END_MS, "the class would come off mid-entrance"
+INTRO_SCRIPT = (
+    '<script>(function(){var s=document.querySelector(".ou-stage");'
+    'if(!s)return;s.classList.add("is-intro");'
+    'setTimeout(function(){s.classList.remove("is-intro")},%d)})();</script>'
+    % INTRO_HOLD_MS)
+
 # ★ NOT a format string. See the docstring's second trap.
 HEAD = """<style>
 .ou-stage{--t0:0ms;padding:3.5rem 0 1rem;display:grid;justify-items:center;
@@ -302,10 +321,10 @@ HEAD = """<style>
    only possible because the alpha was cut out as a layer of its own. */
 .ou-core-anchor{position:absolute;inset:0;transform-origin:__CX__% __CY__%;
   animation:ou-unturn __SPIN_S__s linear infinite;animation-delay:var(--t0)}
-.ou-p{animation:ou-petal __PETAL_MS__ms cubic-bezier(.2,.82,.25,1) backwards;
-  animation-delay:calc(var(--t0) + var(--d))}
-.ou-core{animation:ou-core __CORE_MS__ms cubic-bezier(.18,.9,.28,1) backwards;
-  animation-delay:calc(var(--t0) + __CORE_START_MS__ms)}
+.is-intro .ou-p{animation:ou-petal __PETAL_MS__ms cubic-bezier(.2,.82,.25,1)
+  backwards;animation-delay:calc(var(--t0) + var(--d))}
+.is-intro .ou-core{animation:ou-core __CORE_MS__ms cubic-bezier(.18,.9,.28,1)
+  backwards;animation-delay:calc(var(--t0) + __CORE_START_MS__ms)}
 
 /* Light travelling across the metal. The bar is masked by the mark's own
    alpha, so it lights the artwork and never the empty box around it; where
@@ -352,7 +371,8 @@ HEAD = """<style>
    overflow does the hiding that opacity used to do. Guarded in main(). */
 .ou-gw{display:inline-block;overflow:hidden;vertical-align:bottom;
   padding-top:.28em;margin-top:-.28em}
-.ou-g{display:inline-block;position:relative;animation:ou-glyph __GLYPH_MS__ms
+.ou-g{display:inline-block;position:relative}
+.is-intro .ou-g{animation:ou-glyph __GLYPH_MS__ms
   cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + __GLYPH_START_MS__ms + var(--i) * __GLYPH_STEP_MS__ms)}
 .ou-kanji{margin:1.1rem 0 0;font-size:1.02rem;letter-spacing:.42em;
@@ -361,7 +381,8 @@ HEAD = """<style>
   margin:1.9rem 0 0;max-width:34rem}
 .ou-soon{margin:5rem 0 1rem;font-size:1.22rem;letter-spacing:.08em;
   color:var(--text-muted)}
-.ou-fade{animation:ou-fade __LEDE_MS__ms cubic-bezier(.16,.84,.28,1) backwards;
+.is-intro .ou-fade{animation:ou-fade __LEDE_MS__ms
+  cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + var(--d))}
 
 @keyframes ou-turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
@@ -388,7 +409,8 @@ HEAD = """<style>
    animations only reach it, via `backwards` fill), so switching them off
    leaves the blossom complete. */
 @media (prefers-reduced-motion:reduce){
-  .ou-turn,.ou-core-anchor,.ou-breathe,.ou-p,.ou-core,.ou-g,.ou-fade,.ou-sheen::before{
+  .ou-turn,.ou-core-anchor,.ou-breathe,.ou-sheen::before,
+  .is-intro .ou-p,.is-intro .ou-core,.is-intro .ou-g,.is-intro .ou-fade{
     animation:none}
   .ou-halo--in{animation:none;opacity:.76}
   .ou-halo--out{animation:none;opacity:.7}
@@ -492,9 +514,10 @@ def build_body(lang: str, c: dict, root: str) -> str:
         '%s'
         '<p class="ou-lede ou-fade" style="--d:%dms">%s</p>'
         '<p class="ou-soon ou-fade" style="--d:%dms">%s</p>'
-        '</div>'
+        '</div>%s'
         % (_mark_html(root), esc(c["title"]), wordmark(c["title"]), kanji_html,
-           LEDE_START_MS, esc(c["lede"]), SOON_START_MS, esc(c["soon"]))
+           LEDE_START_MS, esc(c["lede"]), SOON_START_MS, esc(c["soon"]),
+           INTRO_SCRIPT)
     )
 
 
@@ -547,6 +570,35 @@ def main() -> int:
             if needed not in html:
                 raise SystemExit("ERROR: build_ouka: %s is missing %r."
                                  % (lang, needed))
+        # 2c. the entrance must be opt-in, and must switch itself off. Every
+        #    check above passes on a page whose mark never assembles, because
+        #    in a browser with a running clock it always does. Where the clock
+        #    never runs -- a card scraper, a print path, the hidden preview
+        #    pane this repo captures with -- `backwards` fill holds frame 0,
+        #    and frame 0 is five invisible petals and two invisible lines.
+        #    Measured with the pane hidden: timeline.currentTime 0 over
+        #    2,355 ms, every petal opacity 0 at rotate(-26deg) scale(.62).
+        for scoped in (".is-intro .ou-p{animation:", ".is-intro .ou-core{animation:",
+                       ".is-intro .ou-g{animation:", ".is-intro .ou-fade{animation:"):
+            if scoped not in html:
+                raise SystemExit(
+                    "ERROR: build_ouka: %s does not scope %r to .is-intro. A "
+                    "renderer that never advances animation time would hold "
+                    "frame 0 -- a blossom with no petals." % (lang, scoped))
+        for unscoped in ("\n.ou-p{animation:", "\n.ou-core{animation:",
+                         "\n.ou-fade{animation:",
+                         ".ou-g{display:inline-block;position:relative;animation"):
+            if unscoped in html:
+                raise SystemExit(
+                    "ERROR: build_ouka: %s still applies %r outside .is-intro."
+                    % (lang, unscoped.strip()))
+        for needed in ('classList.add("is-intro")',
+                       'classList.remove("is-intro")', str(INTRO_HOLD_MS)):
+            if needed not in html:
+                raise SystemExit(
+                    "ERROR: build_ouka: %s is missing %r -- without it the "
+                    "entrance either never runs or never ends."
+                    % (lang, needed))
         # 2b. the glyph reveal must animate NEITHER transform NOR opacity. A
         #    descendant of the gradient-clipped <h1> that runs either one is
         #    not painted at all while it animates -- the name goes blank for
