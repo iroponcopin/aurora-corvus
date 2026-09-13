@@ -50,8 +50,21 @@ Two things about this block are deliberate:
     because the file name is the thing that has already broken a cross-repo
     contract in this project once (the launcher jar glob). Typing "aureum" here
     would reintroduce exactly that class of drift, one layer down.
+
+The "cherry" block (2026-09-13, Corvus 2.1.0) is the same idea for a PACKAGE.
+The owner asked: 「Corvus からのダウンロードと自動アップデートに対応してください。」
+Cherry ships as a ZIP — its jar, the GeckoLib jar it needs, licence texts — so
+the block describes the ZIP and, in "jars", every jar Corvus is to install from
+it, keyed by the Fabric mod id each jar declares. Everything is read from the
+ZIP: the jars' ids, versions, sizes and hashes from the jars themselves; which
+jar is Cherry itself from the dependency graph (the one jar no other jar in the
+ZIP depends on), never from a typed name; and that jar's version must be the one
+in the ZIP's file name. Corvus 2.1.0 refuses a package whose mods/ holds a jar
+the block does not list, so "jars" lists every one. Installed 2.0.0 launchers
+ignore the block (their parser ignores unknown top-level keys on purpose).
 """
 import hashlib
+import io
 import json
 import sys
 import zipfile
@@ -68,6 +81,8 @@ from build_download import _aureum_facts  # noqa: E402  (single source of truth
 MC_VERSION = "26.2"
 DOWNLOAD_DIR = ROOT / "downloads"
 SITE_BASE_URL = "https://iroponcopin.github.io/aurora-corvus"
+CHERRY_ZIP_PREFIX = "Cherry_MODs_v"
+CHERRY_ZIP_SUFFIX = f"+mc{MC_VERSION}.zip"
 
 
 def _mod_version():
@@ -222,6 +237,82 @@ def _aureum_block():
     }
 
 
+def _cherry_block():
+    """The `cherry` block, or None when no Cherry ZIP has been published.
+
+    Every value is read from the ZIP in downloads/ (see the module docstring). The
+    same never-drop rule as the other optional blocks applies in build().
+    """
+    zips = sorted(p for p in DOWNLOAD_DIR.glob(f"{CHERRY_ZIP_PREFIX}*{CHERRY_ZIP_SUFFIX}") if p.is_file())
+    if not zips:
+        return None
+    if len(zips) > 1:
+        raise SystemExit(
+            f"ERROR: more than one Cherry ZIP in {DOWNLOAD_DIR} ({', '.join(z.name for z in zips)}). "
+            f"The manifest describes the current build only - publish exactly one."
+        )
+    zpath = zips[0]
+    zip_version = zpath.name[len(CHERRY_ZIP_PREFIX):-len(CHERRY_ZIP_SUFFIX)]
+    jars = {}
+    depends = {}
+    try:
+        with zipfile.ZipFile(zpath) as zf:
+            for info in zf.infolist():
+                name = info.filename
+                if not name.lower().endswith(".jar"):
+                    continue
+                if not name.startswith("mods/") or name.count("/") != 1:
+                    raise SystemExit(
+                        f"ERROR: {zpath.name} carries a jar outside mods/ ({name}). Corvus installs only "
+                        f"mods/<name>.jar, so a jar anywhere else would never be installed.")
+                data = zf.read(info)
+                try:
+                    with zipfile.ZipFile(io.BytesIO(data)) as jar:
+                        meta = json.loads(jar.read("fabric.mod.json").decode("utf-8"))
+                except (KeyError, ValueError, zipfile.BadZipFile) as exc:
+                    raise SystemExit(
+                        f"ERROR: could not read fabric.mod.json out of {name} in {zpath.name} ({exc}). "
+                        f"cherry.jars must come from the jars themselves - do not type it.")
+                mod_id, version = meta.get("id"), meta.get("version")
+                if not isinstance(mod_id, str) or not mod_id.strip() or not isinstance(version, str) or not version.strip():
+                    raise SystemExit(
+                        f"ERROR: {name} in {zpath.name} declares no usable id and version in its fabric.mod.json, "
+                        f"so Corvus would have nothing to match an installed copy against.")
+                mod_id = mod_id.strip()
+                if mod_id in jars:
+                    raise SystemExit(f"ERROR: {zpath.name} carries two jars declaring the mod id {mod_id!r}.")
+                jars[mod_id] = {
+                    "path": name,
+                    "version": version.strip(),
+                    "file_size": info.file_size,
+                    "sha256": hashlib.sha256(data).hexdigest(),
+                }
+                depends[mod_id] = set((meta.get("depends") or {}).keys())
+    except (OSError, zipfile.BadZipFile) as exc:
+        raise SystemExit(f"ERROR: could not read {zpath} ({exc}).")
+    if not jars:
+        raise SystemExit(f"ERROR: {zpath.name} carries no jar in mods/, so there is nothing for Corvus to install.")
+    roots = [m for m in jars if not any(m in needs for other, needs in depends.items() if other != m)]
+    if len(roots) != 1:
+        raise SystemExit(
+            f"ERROR: cannot tell which jar in {zpath.name} is Cherry itself: the jars no other jar depends on are "
+            f"{roots or 'none'}. The package's own mod must be the one jar nothing else in the ZIP depends on.")
+    own = roots[0]
+    if jars[own]["version"] != zip_version:
+        raise SystemExit(
+            f"ERROR: {zpath.name} is named for version {zip_version}, but its own jar {jars[own]['path']} declares "
+            f"{jars[own]['version']}. An installed Cherry would compare itself against the wrong number.")
+    return {
+        "mod_id": own,
+        "latest": jars[own]["version"],
+        "download_url": f"{SITE_BASE_URL}/downloads/{zpath.name}",
+        "file_name": zpath.name,
+        "file_size": zpath.stat().st_size,
+        "sha256": _sha256(zpath),
+        "jars": jars,
+    }
+
+
 def _previously_published_manifest():
     """The manifest currently committed at the repo root, or {} if there is none."""
     path = ROOT / "glimpse_manifest.json"
@@ -302,6 +393,25 @@ def build():
     else:
         print("glimpse_manifest.py: no Aureum jar found yet - writing manifest with no 'aureum' "
               "block (expected until the first Aureum build ships)")
+
+    cherry = _cherry_block()
+    if cherry is not None:
+        manifest["cherry"] = cherry
+        print(f"glimpse_manifest.py: Cherry {cherry['latest']} ({cherry['file_name']}, mod id "
+              f"{cherry['mod_id']!r}, jars {', '.join(cherry['jars'])}) selected, including 'cherry' block")
+    elif "cherry" in _previously_published_manifest():
+        # The never-drop rule once more: after the first Cherry release an absent ZIP means
+        # discovery broke, and dropping the block would switch off Cherry auto-update for
+        # every installed Corvus.
+        raise SystemExit(
+            f"ERROR: no Cherry ZIP found in {DOWNLOAD_DIR}, but the published glimpse_manifest.json "
+            f"already carries a 'cherry' block. Dropping it would silently disable Cherry "
+            f"auto-update for every installed Corvus. Publish the ZIP, or fix the naming - do not "
+            f"ship this."
+        )
+    else:
+        print("glimpse_manifest.py: no Cherry ZIP found yet - writing manifest with no 'cherry' "
+              "block (expected until the first Cherry build ships)")
 
     out_path = ROOT / "glimpse_manifest.json"
     out_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

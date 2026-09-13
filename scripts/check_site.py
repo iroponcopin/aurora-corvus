@@ -43,6 +43,12 @@ CHECKS = [
     # entry point must stay runnable by anyone.
     ("skin", "check_skin_page.py", [],
      "/skin/ in 13 languages + downloads/sparxie-skin.acsk vs the in-game skin"),
+    # Cherry V1.0.0 (2026-09-13). The brand page hands out the release: the link
+    # must resolve from every language's depth to the newest Cherry zip, and the
+    # version, size and SHA-256 it prints must be that file's own. Nothing else on
+    # the site reads a Cherry file.
+    ("cherry", "check_cherry_release.py", [],
+     "/cherry/ in 13 languages vs downloads/Cherry_MODs_v*.zip (link, size, hash)"),
 ]
 
 

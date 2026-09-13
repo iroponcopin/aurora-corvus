@@ -38,7 +38,12 @@ Two things, and nothing else:
      reads "the tier between OUKA and Alpha" in all 13 languages. The fact
      did not change — Cherry is still above Alpha — but the old wording left
      a reader believing Cherry was the top of the line, and it no longer is.
-  2. A closing line in the register of 乞うご期待.
+  2. The release that is on offer. Until V1.0.0 shipped (2026-09-13) this was
+     a closing line in the register of 乞うご期待. Now it is the release itself:
+     its version and name, ONE line in the same premium register, the download,
+     and the facts a player checks before installing (what it needs, how big
+     the file is, its SHA-256). Every figure is read from the file in
+     downloads/ and from the fabric.mod.json inside it — none is typed here.
 
 NOT on this page, by the owner's word: where the name comes from; that there
 is no compromise (self-evident, and saying it cheapens the brand); that it
@@ -47,7 +52,34 @@ on its own (「ランチャー対応とAlphaと併用できること、そして
 記載の仕方ではなく、乞うご期待などに変更してください」 — a rewrite on
 2026-09-10 read this backwards and kept both as "capability" cards; they are
 gone); any status, progress, "not yet", "coming later", build, or schedule.
+A feature list is not on it either: 「ブランドの強さを説明するだけで良いです」
+and 「書くならプレミア感がある文章を添えるだけです」 — the install and play
+guide travels inside the zip (README.txt), not on the brand page.
 Every one of the 13 languages carries its own copy; nothing falls back to English.
+
+--------------------------------------------------------------------------
+The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
+--------------------------------------------------------------------------
+  * The line claims only what a proof has shown. "From the launch pad, to the
+    Moon" is flown end to end by a real survival player on a dedicated server
+    (cherry-src boot proof B2: Earth pad -> Moon -> the same pad). The loading
+    screen being skipped at Y1000 is NOT claimed: nobody has watched it in a
+    client yet (risk register R-168), and this site has published an unseen
+    claim before.
+  * The page refuses to build without a Cherry zip of V1.0.0 or later. The
+    pre-release line is gone from the code, so a missing file cannot quietly
+    turn a released product back into "coming soon" — it stops the build.
+  * The line and the codename were written for one version (COPY_FOR). A newer
+    zip in downloads/ stops the build until its own line and name are written,
+    so an old line can never be printed over a new release.
+  * The download button is in the brand's own colours, the way the Aureum page
+    carries its own gold one; its label, "File size" and "SHA-256" are the
+    Download page's own translations (data/i18n/<lang>.json "download"), with
+    no fallback.
+  * Versions, the size and the hash carry dir="ltr": on the Arabic page bidi
+    mirroring would print "≥" as "≤" and reorder "0.154.2+26.2".
+  * scripts/check_cherry_release.py judges the rendered pages against the file
+    independently (it imports nothing from here) and is run by check_site.py.
 
 --------------------------------------------------------------------------
 The mark — the owner's own logo, and it never stops moving
@@ -91,14 +123,19 @@ Three traps this file has actually shipped:
 
 from __future__ import annotations
 
+import hashlib
+import io
+import json
 import math
+import re
 import sys
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, asset_root_prefix, available_langs, esc, page, write_page,
+    ROOT, asset_root_prefix, available_langs, esc, load_bundle, page, write_page,
 )
 
 SECTION = "cherry/"
@@ -106,89 +143,201 @@ SECTION = "cherry/"
 # --- copy -------------------------------------------------------------------
 # Every language the site ships has its own entry; there is no fallback. Brand
 # names (Cherry, Alpha, Corvus) are never translated. Keys, in every language:
-#   title, desc, lede, soon.
+#   title, desc, lede, line.
+# `line` belongs to the release named in COPY_FOR (see the docstring).
 COPY = {
     "ja": {
         "title": "Cherry",
         "desc": "OUKA と Alpha のあいだに位置するブランド。",
         "lede": "OUKA と Alpha のあいだに位置するブランド。",
-        "soon": "ご期待ください。",
+        "line": "発射台から、月へ。",
     },
     "en": {
         "title": "Cherry",
         "desc": "The tier between OUKA and Alpha.",
         "lede": "The tier between OUKA and Alpha.",
-        "soon": "Coming soon.",
+        "line": "From the launch pad, to the Moon.",
     },
     "es": {
         "title": "Cherry",
         "desc": "El nivel entre OUKA y Alpha.",
         "lede": "El nivel entre OUKA y Alpha.",
-        "soon": "Muy pronto.",
+        "line": "Desde la plataforma de lanzamiento, hasta la Luna.",
     },
     "fr": {
         "title": "Cherry",
         "desc": "Le niveau entre OUKA et Alpha.",
         "lede": "Le niveau entre OUKA et Alpha.",
-        "soon": "Bientôt disponible.",
+        "line": "De l'aire de lancement, jusqu'à la Lune.",
     },
     "zh": {
         "title": "Cherry",
         "desc": "位于 OUKA 与 Alpha 之间的品牌。",
         "lede": "位于 OUKA 与 Alpha 之间的品牌。",
-        "soon": "敬请期待。",
+        "line": "从发射台，直抵月球。",
     },
     "ko": {
         "title": "Cherry",
         "desc": "OUKA와 Alpha 사이에 자리한 브랜드입니다.",
         "lede": "OUKA와 Alpha 사이에 자리한 브랜드입니다.",
-        "soon": "기대해 주세요.",
+        "line": "발사대에서, 달까지.",
     },
     "pt-br": {
         "title": "Cherry",
         "desc": "O nível entre OUKA e Alpha.",
         "lede": "O nível entre OUKA e Alpha.",
-        "soon": "Em breve.",
+        "line": "Da plataforma de lançamento, até a Lua.",
     },
     "it": {
         "title": "Cherry",
         "desc": "Il livello tra OUKA e Alpha.",
         "lede": "Il livello tra OUKA e Alpha.",
-        "soon": "In arrivo.",
+        "line": "Dalla rampa di lancio, fino alla Luna.",
     },
     "ar": {
         "title": "Cherry",
         "desc": "المستوى بين OUKA و Alpha.",
         "lede": "المستوى بين OUKA و Alpha.",
-        "soon": "ترقّبوا قريباً.",
+        "line": "من منصة الإطلاق، إلى القمر.",
     },
     "ru": {
         "title": "Cherry",
         "desc": "Уровень между OUKA и Alpha.",
         "lede": "Уровень между OUKA и Alpha.",
-        "soon": "Уже скоро.",
+        "line": "От стартовой площадки — до Луны.",
     },
     "id": {
         "title": "Cherry",
         "desc": "Tingkat di antara OUKA dan Alpha.",
         "lede": "Tingkat di antara OUKA dan Alpha.",
-        "soon": "Segera hadir.",
+        "line": "Dari landasan peluncuran, menuju Bulan.",
     },
     "de": {
         "title": "Cherry",
         "desc": "Die Stufe zwischen OUKA und Alpha.",
         "lede": "Die Stufe zwischen OUKA und Alpha.",
-        "soon": "Bald verfügbar.",
+        "line": "Von der Startrampe bis zum Mond.",
     },
     "tr": {
         "title": "Cherry",
         "desc": "OUKA ile Alpha arasındaki seviye.",
         "lede": "OUKA ile Alpha arasındaki seviye.",
-        "soon": "Çok yakında.",
+        "line": "Fırlatma rampasından Ay'a.",
     },
 }
 
-KEYS = ("title", "desc", "lede", "soon")
+KEYS = ("title", "desc", "lede", "line")
+
+# --- the release ---------------------------------------------------------------
+# The release COPY's `line` and CODENAME were written for. A newer zip stops the
+# build until its own line and name exist (see the docstring).
+COPY_FOR = "1.0.0"
+CODENAME = "The Lunar Genesis Update"
+FIRST_RELEASE = (1, 0, 0)
+RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
+# The Download page's own translations (data/i18n/<lang>.json "download").
+DOWNLOAD_KEYS = ("primary_cta", "size_label", "sha_label")
+# What a player must have, read from the jar's fabric.mod.json "depends", in this order.
+REQUIREMENTS = (("minecraft", "Minecraft"), ("fabricloader", "Fabric Loader"),
+                ("fabric-api", "Fabric API"))
+
+
+def _version_key(text: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in text.split("."))
+
+
+def _fmt_size(num_bytes: int) -> str:
+    """The Download page's rule (build_download._fmt_size), kept identical:
+    one decimal in MB, and KB below 1 MB."""
+    mb = num_bytes / (1024 * 1024)
+    if mb >= 1:
+        return f"{mb:.1f} MB"
+    return f"{num_bytes / 1024:.1f} KB"
+
+
+def _requirement(spec: str) -> str:
+    """A fabric.mod.json version predicate, as a player reads it."""
+    spec = spec.strip()
+    if spec.startswith(">="):
+        return "≥ " + spec[2:].strip()
+    if spec.startswith("~"):
+        return spec[1:].strip()
+    if re.fullmatch(r"\d+(?:\.\d+)*(?:\+[0-9A-Za-z.]+)?", spec):
+        return spec
+    raise SystemExit(
+        "ERROR: build_cherry: cannot print the requirement %r on one line; "
+        "write the rule for that predicate here rather than printing it raw." % spec)
+
+
+def cherry_release() -> dict:
+    """The newest Cherry release in downloads/, every figure read from the file."""
+    downloads = ROOT / "downloads"
+    found = []
+    for path in (sorted(downloads.glob("Cherry*")) if downloads.is_dir() else []):
+        m = RELEASE_RE.match(path.name)
+        if not m:
+            raise SystemExit(
+                "ERROR: build_cherry: downloads/%s looks like a Cherry release but "
+                "does not parse as Cherry_MODs_v<ver>+mc<mc>.zip. Rename or remove "
+                "it -- the page cannot guess which release it is." % path.name)
+        found.append((_version_key(m["ver"]), m, path))
+    if not found:
+        raise SystemExit(
+            "ERROR: build_cherry: downloads/ holds no Cherry_MODs_v<ver>+mc<mc>.zip. "
+            "Cherry has been released (V1.0.0, 2026-09-13); without the file this "
+            "page would lose its download, and it must not quietly go back to "
+            "'coming soon'.")
+    versions = [key for key, _m, _p in found]
+    if len(set(versions)) != len(versions):
+        raise SystemExit(
+            "ERROR: build_cherry: downloads/ holds two Cherry zips of the same "
+            "version (%s); the page cannot tell which one it hands out."
+            % ", ".join(p.name for _k, _m, p in found))
+    key, m, path = max(found, key=lambda item: item[0])
+    ver, mc = m["ver"], m["mc"]
+    if key < FIRST_RELEASE:
+        raise SystemExit("ERROR: build_cherry: the newest Cherry zip is V%s, older "
+                         "than the first release V1.0.0." % ver)
+    if ver != COPY_FOR:
+        raise SystemExit(
+            "ERROR: build_cherry: downloads/ now offers Cherry V%s, but the release "
+            "line and codename on this page were written for V%s. Write V%s's own "
+            "line (13 languages) and name, then set COPY_FOR." % (ver, COPY_FOR, ver))
+    data = path.read_bytes()
+    jar_name = "mods/cherry-%s+mc%s.jar" % (ver, mc)
+    try:
+        with zipfile.ZipFile(io.BytesIO(data)) as outer:
+            jar = outer.read(jar_name)
+        with zipfile.ZipFile(io.BytesIO(jar)) as inner:
+            mod = json.loads(inner.read("fabric.mod.json"))
+    except (KeyError, zipfile.BadZipFile, ValueError) as e:
+        raise SystemExit("ERROR: build_cherry: cannot read %s!/fabric.mod.json inside "
+                         "downloads/%s (%s)." % (jar_name, path.name, e))
+    if mod.get("id") != "cherry" or mod.get("version") != ver:
+        raise SystemExit(
+            "ERROR: build_cherry: downloads/%s carries a jar that says id=%r "
+            "version=%r; the file name says cherry %s."
+            % (path.name, mod.get("id"), mod.get("version"), ver))
+    depends = mod.get("depends") or {}
+    requires = []
+    for dep, label in REQUIREMENTS:
+        if not depends.get(dep):
+            raise SystemExit("ERROR: build_cherry: the Cherry jar declares no %r "
+                             "dependency; the page would print an empty requirement."
+                             % dep)
+        requires.append((label, _requirement(depends[dep])))
+    if requires[0][1] != mc:
+        raise SystemExit(
+            "ERROR: build_cherry: the jar depends on Minecraft %s but the zip is "
+            "named for %s." % (requires[0][1], mc))
+    return {
+        "version": ver,
+        "mc": mc,
+        "name": path.name,
+        "bytes": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "requires": requires,
+    }
 
 
 # --- the mark ----------------------------------------------------------------
@@ -238,8 +387,41 @@ HEAD = """<link rel="stylesheet" href="__ROOT__assets/css/cherry-tokens.css">
 .ch-name{font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.02;margin:0 0 .8rem;
   letter-spacing:-.02em;color:var(--ch-petal)}
 .ch-lede{font-size:1.12rem;line-height:1.75;color:var(--ch-text);margin:0}
-.ch-soon{margin:4rem 0 0;text-align:center;font-size:1.25rem;letter-spacing:.08em;
-  color:var(--ch-petal-deep)}
+
+/* --- the release: what is on offer, and the download ---------------------- */
+.ch-release{margin:4.5rem auto 0;max-width:36rem;text-align:center}
+.ch-edition{margin:0;display:flex;flex-wrap:wrap;align-items:center;
+  justify-content:center;gap:.35rem .75rem;font-size:.8rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ch-text-muted)}
+.ch-ver{color:var(--ch-petal-deep);letter-spacing:.08em}
+.ch-dot{width:4px;height:4px;border-radius:50%;background:var(--ch-blush)}
+/* balance: at 375 px the English line otherwise leaves "Moon." alone on its own
+   line (seen, 2026-09-13); browsers without it simply wrap as before */
+.ch-line{margin:1rem 0 0;font-size:clamp(1.55rem,4.2vw,2.3rem);line-height:1.3;
+  letter-spacing:-.01em;color:var(--ch-petal);text-wrap:balance}
+.ch-cta{margin:2.25rem 0 0}
+/* the brand's own colours, the way the Aureum page carries its own gold */
+.ch-get{display:inline-flex;align-items:center;justify-content:center;
+  min-height:var(--tap,44px);padding:12px 30px;border-radius:999px;
+  font-weight:600;font-size:.98rem;letter-spacing:.01em;text-decoration:none;
+  color:var(--ch-bg) !important;
+  background:linear-gradient(100deg,var(--ch-petal) 0%,var(--ch-petal-deep) 100%);
+  box-shadow:0 10px 28px rgba(__HALO_RGB__,.26);
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s ease}
+.ch-get:hover,.ch-get:focus-visible{transform:translateY(-1px);
+  box-shadow:0 14px 34px rgba(__HALO_RGB__,.38)}
+.ch-get:focus-visible{outline:2px solid var(--ch-petal);outline-offset:3px}
+.ch-spec{margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;
+  justify-content:center;gap:.5rem 1.75rem}
+.ch-spec div{display:flex;align-items:baseline;gap:.5rem}
+.ch-spec dt{font-size:.8rem;color:var(--ch-text-muted)}
+.ch-spec dd{margin:0;font-size:.9rem;color:var(--ch-text);
+  font-variant-numeric:tabular-nums}
+.ch-sha{margin:1.1rem auto 0;max-width:32rem;font-size:.72rem;line-height:1.6;
+  color:var(--ch-text-muted)}
+.ch-sha-label{display:block;letter-spacing:.08em}
+.ch-sha code{display:block;word-break:break-all;background:none;border:0;
+  padding:0;font-size:.72rem;color:var(--ch-text-muted)}
 
 /* --- the mark: the owner's logo, always turning -------------------------- */
 .ch-halo{position:absolute;inset:-4%;border-radius:50%;pointer-events:none;
@@ -275,6 +457,7 @@ HEAD = """<link rel="stylesheet" href="__ROOT__assets/css/cherry-tokens.css">
 @media (prefers-reduced-motion:reduce){
   .ch-breathe,.is-intro .ch-breathe{
     animation:ch-breathe __BREATHE_MS__ms ease-in-out infinite}
+  .ch-get{transition:none}
 }
 </style>"""
 
@@ -318,7 +501,38 @@ def _mark_html(root: str) -> str:
     )
 
 
-def build_body(c: dict, root: str) -> str:
+def zip_href(root: str, release: dict) -> str:
+    # downloads/ sits at the wiki root, outside every language directory, so it
+    # takes the language-aware root prefix -- never a hardcoded "../".
+    return root + "downloads/" + release["name"]
+
+
+def _release_html(c: dict, dl: dict, release: dict, root: str) -> str:
+    spec = "".join(
+        '<div><dt>%s</dt><dd dir="ltr">%s</dd></div>' % (esc(label), esc(value))
+        for label, value in release["requires"])
+    spec += ('<div><dt>%s</dt><dd dir="ltr" data-bytes="%d">%s</dd></div>'
+             % (esc(dl["size_label"]), release["bytes"],
+                esc(_fmt_size(release["bytes"]))))
+    return (
+        '<section class="ch-release" aria-labelledby="ch-edition">'
+        '<p class="ch-edition" id="ch-edition">'
+        '<span class="ch-ver" dir="ltr">V%s</span>'
+        '<span class="ch-dot" aria-hidden="true"></span>'
+        '<span class="ch-codename" dir="ltr">%s</span></p>'
+        '<p class="ch-line">%s</p>'
+        '<p class="ch-cta"><a class="ch-get" href="%s" download>%s</a></p>'
+        '<dl class="ch-spec">%s</dl>'
+        '<p class="ch-sha"><span class="ch-sha-label">%s</span>'
+        '<code dir="ltr">%s</code></p>'
+        '</section>'
+        % (esc(release["version"]), esc(CODENAME), esc(c["line"]),
+           esc(zip_href(root, release)), esc(dl["primary_cta"]), spec,
+           esc(dl["sha_label"]), esc(release["sha256"]))
+    )
+
+
+def build_body(c: dict, dl: dict, release: dict, root: str) -> str:
     return (
         '<div class="ch-wrap"><div class="ch-inner">'
         '<div class="ch-hero">'
@@ -326,10 +540,10 @@ def build_body(c: dict, root: str) -> str:
         '<div><h1 class="ch-name">%s</h1>'
         '<p class="ch-lede">%s</p></div>'
         '</div>'
-        '<p class="ch-soon">%s</p>'
+        '%s'
         '</div></div>%s'
-        % (_mark_html(root), esc(c["title"]), esc(c["lede"]), esc(c["soon"]),
-           INTRO_SCRIPT)
+        % (_mark_html(root), esc(c["title"]), esc(c["lede"]),
+           _release_html(c, dl, release, root), INTRO_SCRIPT)
     )
 
 
@@ -344,8 +558,16 @@ def main() -> int:
         if gaps:
             print("build_cherry: %s is missing %s" % (lang, ", ".join(gaps)))
             return 1
+    release = cherry_release()
     for lang in langs:
         c = COPY[lang]
+        dl = load_bundle(lang).get("download") or {}
+        gaps = [k for k in DOWNLOAD_KEYS if not dl.get(k)]
+        if gaps:
+            raise SystemExit(
+                "ERROR: build_cherry: data/i18n/%s.json has no download.%s; the "
+                "release block takes the Download page's own words and has no "
+                "fallback." % (lang, ", download.".join(gaps)))
         # NOT "../" for every language: /de/cherry/ is two levels below the
         # site root but one below its language root.
         root = asset_root_prefix(1, lang)
@@ -355,11 +577,12 @@ def main() -> int:
             title=c["title"],
             description=c["desc"],
             active="cherry",
-            body=build_body(c, root),
+            body=build_body(c, dl, release, root),
             depth=1,
             extra_head=head_css(root),
         )
-        # --- the three ways this page has failed silently, all refused here.
+        target = ROOT / ("" if lang == "ja" else lang) / SECTION / "index.html"
+        # --- the ways this page has failed, or could fail, silently; all refused here.
         # 1. a substitution token surviving into the CSS (the broken-brace
         #    defect's successor): the rule would be discarded and the mark
         #    would sit still, with nothing red anywhere.
@@ -396,15 +619,35 @@ def main() -> int:
                     "bloom either never runs or never ends." % (lang, needed))
         # 3. the image path resolving to nothing from THIS page's depth.
         want = root + "assets/img/cherry/" + MARK["file"]
-        target = ROOT / ("" if lang == "ja" else lang) / SECTION / "index.html"
         probe = (target.parent / want).resolve()
         if not probe.is_file():
             raise SystemExit(
                 "ERROR: build_cherry: %s references %s, which resolves to %s "
                 "-- no such file. The mark would 404." % (lang, want, probe))
+        # 4. the download resolving to nothing from THIS page's depth, or the
+        #    page describing a file other than the one it links.
+        href = zip_href(root, release)
+        if ('href="%s"' % esc(href)) not in html:
+            raise SystemExit("ERROR: build_cherry: %s does not link %s." % (lang, href))
+        zprobe = (target.parent / href).resolve()
+        if zprobe != (ROOT / "downloads" / release["name"]).resolve() or not zprobe.is_file():
+            raise SystemExit(
+                "ERROR: build_cherry: %s links %s, which resolves to %s -- not "
+                "downloads/%s. The download would 404."
+                % (lang, href, zprobe, release["name"]))
+        for needed in (release["sha256"], 'data-bytes="%d"' % release["bytes"],
+                       '<span class="ch-ver" dir="ltr">V%s</span>' % release["version"]):
+            if needed not in html:
+                raise SystemExit("ERROR: build_cherry: %s is missing %r." % (lang, needed))
+        # 5. the pre-release line surviving beside the release.
+        if "ch-soon" in html:
+            raise SystemExit(
+                "ERROR: build_cherry: %s still carries the pre-release line." % lang)
         write_page(lang, SECTION, html)
-    print("build_cherry: %d language(s), mark %s at %g%% of %s"
-          % (len(langs), MARK["file"], FIT_PCT, BOX))
+    print("build_cherry: %d language(s), mark %s at %g%% of %s, release V%s "
+          "(%s, %d bytes, sha256 %s)"
+          % (len(langs), MARK["file"], FIT_PCT, BOX, release["version"],
+             release["name"], release["bytes"], release["sha256"]))
     return 0
 
 
