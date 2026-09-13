@@ -81,7 +81,7 @@ _DEFAULT_SECTIONS = [
             "warning: on macOS, right-click the app and choose Open instead of double-clicking; "
             "on Windows, click \"More info\" then \"Run anyway\" on the SmartScreen prompt.</li>"
             "<li><strong>The cross-platform jar</strong>, <code>{launcher_jar}</code> "
-            "— the same file runs on Windows, macOS, and Linux, but needs Java 21 or newer "
+            "— the same file runs on Windows, macOS, and Linux, but needs Java 25 or newer "
             "already installed. If double-clicking it doesn't open it, run "
             "<code>java -jar {launcher_jar}</code> from a terminal or command prompt "
             "in the folder you downloaded it to.</li>"

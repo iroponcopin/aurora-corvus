@@ -252,7 +252,7 @@ def _launcher_section_html(dl, lang, launcher):
   </div>
   <h3 style="margin-top:0">{esc(launcher['file_name'])}</h3>
   <p>{esc(dl.get('launcher_jar_note',
-        'Cross-platform (Windows, macOS, Linux) - needs Java 21 or newer already installed.'))}</p>
+        'Cross-platform (Windows, macOS, Linux) - needs Java 25 or newer already installed.'))}</p>
   <table style="width:100%; border-collapse:collapse;">
     <tr><td style="padding:4px 12px 4px 0; color:var(--text-muted)">{size_label}</td>
         <td><code>{esc(_fmt_size(launcher['size_bytes']))}</code> ({launcher['size_bytes']:,} bytes)</td></tr>

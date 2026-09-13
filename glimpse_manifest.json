@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "2.0.0",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0.jar",
-    "file_name": "corvus-2.0.0.jar",
-    "file_size": 10765138,
-    "sha256": "4d6e3398d5499a612d2233518252c83734f01439fcce207e89f978445c45849c",
-    "notes": "The window itself is now glass. On macOS Corvus puts AppKit's own blurred material behind a transparent window, so your desktop shows through the app the way it does through System Settings — not a picture of blur, the real thing, updating as what is behind it moves. A new Glass section on General holds two controls: Liquid Glass, which turns it on and off, and Glass tint, which sets how dark the glass is, from Clear to Dark. Turning Liquid Glass off gives the solid dark window 1.9.0 had, and that is also what Windows and Linux get: the material is a macOS API, and no attempt is made to fake it elsewhere.\n\nThe rows and cards inside the window are glass too, and much clearer than they were. Their fill was measured off a reference the owner supplied rather than chosen by eye: each card now sits 0.020 white over what is behind it, against the reference's own 0.015 to 0.054, and the shadow that used to hang under every card is gone — three of the reference's four cards have none, and a shadow is what made them read as slabs floating above the window rather than as part of it. The card border is unchanged at 0.15; the reference measures 0.149, so it was already right.\n\nTwo things that were painted on top of the glass have been removed. Three wide sky-blue fields were being drawn over the real material, which is what made the window read as droplets rather than as a pane; they now appear only when Liquid Glass is off, where they are the opaque window's atmosphere and belong. The wide blue halo behind your account picture is gone as well.\n\nVerified by photographing the running window over a flat neutral desktop, which is the only way to tell the app's own painting from the desktop showing through: with the glass on, the window's empty field is perfectly flat and the cards sit inside the reference's own range; with it off, the atmosphere returns as designed. The macOS, Windows and Linux installers for this version were built by CI on each of those systems, but only the macOS build has been run.",
+    "latest": "2.1.0",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0.jar",
+    "file_name": "corvus-2.1.0.jar",
+    "file_size": 10816682,
+    "sha256": "82219609ff0b5dfaf65d2e23d4b6b902c49706d250d8d992a24f7c7bd1c0f54e",
+    "notes": "Corvus can now install Cherry, the separate mod, and keep it up to date. Cherry has its own row on Update. The first install only ever happens when you press Download: Corvus fetches the Cherry package, checks its size and SHA-256, unpacks it into a temporary folder, checks every jar inside against the manifest — its size, SHA-256, mod id and version — and only then puts Cherry and the GeckoLib it needs into your mods folder, all together or not at all; if anything fails, the folder is put back exactly as it was. After that — and also for a Cherry you put in your mods folder yourself — new Cherry versions install automatically, even when Install updates automatically is off; that switch still governs the pack, the app and Aureum. GeckoLib is never downgraded: a copy that is already the same version or newer is kept. A package that carries a jar the manifest does not list, or another product's jar such as Aureum, is refused whole.\n\nInstalls into the mods folder now take turns: Cherry's and Aureum's installers share one lock, the Update pane never runs a pack update and a Cherry install at the same time, and quitting to apply a launcher update waits up to a minute for a running install to finish. The manifest's new cherry section is read leniently: if anything in it is wrong, Cherry is shown as not published and a line goes to the Log, while the pack and the app still update as before.\n\nVerified by installing the real Cherry V1.0.0 package, from the manifest the website builds from that package, through this version's own code: both jars arrived byte for byte with nothing left behind, and the same manifest with one wrong digit in the package's SHA-256 was refused before anything was written. The Update pane was photographed from the built jar in English and Japanese with an installed Cherry. Not yet seen: the Download and Update buttons against the live website, and an automatic Cherry update actually running. The macOS, Windows and Linux installers for this version are built by CI on each of those systems; none of them has been run yet.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0-macos.dmg",
-        "file_name": "corvus-2.0.0-macos.dmg",
-        "file_size": 59168705,
-        "sha256": "a4bf2be7b9bf6d1edcc002d7a3ecce391b2d28a3795afc06644de7c7ec9e97c9"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0-macos.dmg",
+        "file_name": "corvus-2.1.0-macos.dmg",
+        "file_size": 59214197,
+        "sha256": "288936c8b5bee235ea45a8c6afd92c6c839ad590abd0ca881bfce2f6c2d500f3"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0-windows.msi",
-        "file_name": "corvus-2.0.0-windows.msi",
-        "file_size": 58176348,
-        "sha256": "f9c3b5aa27aae620589d0f6b9ea53edcb90cac5473f11dcf03254df86f693e57"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0-windows.msi",
+        "file_name": "corvus-2.1.0-windows.msi",
+        "file_size": 58225500,
+        "sha256": "3f024dc1e7c642f9b3ce08191746065f46749f3cb5cdd2e0515466f0c2cb993c"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0-linux.deb",
-        "file_name": "corvus-2.0.0-linux.deb",
-        "file_size": 47588114,
-        "sha256": "ef457fa47abd71dc59c47e903e8854af0832e5381b33d7a72dc5664cbada566d"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0-linux.deb",
+        "file_name": "corvus-2.1.0-linux.deb",
+        "file_size": 47702980,
+        "sha256": "0f3c3aea573a73b00b0713bec77c23a372101e0a6ddf8174c3861171c8532b44"
       }
     }
   },

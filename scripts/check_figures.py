@@ -153,7 +153,7 @@ GATES = {
     "backrooms": ["3", "2", "1"],
 }
 
-LAUNCHER = {"__all__": ["21", "256"]}   # Java 21, SHA-256
+LAUNCHER = {"__all__": ["25", "256"]}   # Java 25 (the launcher jar is class-file version 69), SHA-256
 
 # The two emerald interest ceilings live in the roadmap block, not in features.
 # ja/zh/ko write them as 1,000万 / 1000 万 / 1,000만 and 5,000万 / 5000 万 /
