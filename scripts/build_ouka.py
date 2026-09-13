@@ -207,6 +207,31 @@ COPY = {
            "soon": "敬请期待。"},
 }
 
+# 2026-09-12 — the owner had the theme and the field made (Gemini; Grok was out of
+# its weekly quota) and asked for them on the page. A browser will not play audio
+# by itself, so the theme sits behind a control the visitor presses; these are that
+# control's two states. Not in COPY/KEYS because those four are the page's prose and
+# this is furniture.
+TRACK = "Silver and Petals"                 # the piece's own title, a name in every language
+PLAY = {
+    "ja": "テーマ曲を再生", "en": "Play the theme", "de": "Thema abspielen",
+    "fr": "Écouter le thème", "es": "Reproducir el tema", "it": "Riproduci il tema",
+    "pt-br": "Tocar o tema", "ru": "Включить тему", "tr": "Temayı çal",
+    "ar": "تشغيل اللحن", "id": "Putar tema", "ko": "테마 재생", "zh": "播放主题曲",
+}
+PAUSE = {
+    "ja": "一時停止", "en": "Pause", "de": "Pause", "fr": "Pause", "es": "Pausa",
+    "it": "Pausa", "pt-br": "Pausar", "ru": "Пауза", "tr": "Duraklat",
+    "ar": "إيقاف مؤقت", "id": "Jeda", "ko": "일시정지", "zh": "暂停",
+}
+
+# The field behind the mark. Measured on the delivered image: its pools peak at
+# luminance 216.7 against this site's ground (#07090f) at 9.0 - twenty-four times
+# the ground, where the brief asked for a pool at 8% opacity. The centre of the
+# frame is already clean (mean 12.1), so only the strength needed holding back.
+FIELD_OPACITY = 0.16
+FIELD_W, FIELD_SMALL = 1365, 900
+
 KEYS = ("title", "desc", "lede", "soon")
 
 # The name in kanji — see the docstring. EMPTY on purpose: the owner gave 桜花
@@ -290,6 +315,24 @@ INTRO_SCRIPT = (
 HEAD = """<style>
 .ou-stage{--t0:0ms;padding:3.5rem 0 1rem;display:grid;justify-items:center;
   text-align:center}
+/* The field behind the mark. position:fixed so it is full-bleed whatever the
+   container's padding is; z-index:-1 puts it under every painted thing on the
+   page and over the body's own ground. .ou-stage makes no stacking context
+   (no transform, no opacity, no isolation), so the -1 is not trapped. */
+.ou-field{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  opacity:__FIELD_OP__}
+.ou-field img{width:100%;height:100%;object-fit:cover;display:block}
+.ou-audio{display:flex;align-items:center;gap:.7rem;margin:2.2rem 0 0}
+.ou-play{width:2.6rem;height:2.6rem;flex:none;display:grid;place-items:center;
+  border-radius:50%;border:1px solid rgba(__SILVER__,.28);
+  background:rgba(__SILVER__,.05);color:rgba(__SILVER__,.9);cursor:pointer;
+  padding:0;transition:background .25s ease,border-color .25s ease}
+.ou-play:hover{background:rgba(__PINK__,.10);border-color:rgba(__PINK__,.45)}
+.ou-play svg{width:.85rem;height:.85rem;fill:currentColor}
+.ou-play .ou-pause-icon{display:none}
+.ou-play[aria-pressed="true"] .ou-play-icon{display:none}
+.ou-play[aria-pressed="true"] .ou-pause-icon{display:block}
+.ou-track{font-size:.94rem;letter-spacing:.10em;color:var(--text-muted)}
 .ou-mark{position:relative;width:__BOX__;aspect-ratio:1;margin-bottom:2.2rem}
 .ou-halo{position:absolute;border-radius:50%;pointer-events:none}
 .ou-halo--in{inset:6%;
@@ -423,7 +466,7 @@ TOKENS = ("__ROOT__", "__BOX__", "__FIT__", "__LW__", "__LH__", "__CX__",
           "__ASSEMBLED_MS__", "__PETAL_MS__", "__CORE_MS__", "__CORE_START_MS__",
           "__GLYPH_MS__", "__GLYPH_START_MS__", "__GLYPH_STEP_MS__",
           "__LEDE_MS__", "__HALO_IN_MS__", "__HALO_OUT_MS__", "__SHEEN_MS__",
-          "__SHEEN_START_MS__")
+          "__SHEEN_START_MS__", "__FIELD_OP__")
 
 
 def head_css(root: str) -> str:
@@ -438,6 +481,7 @@ def head_css(root: str) -> str:
         ("__CY__", "%g" % CY_PCT),
         ("__PINK__", PINK),
         ("__SILVER__", SILVER),
+        ("__FIELD_OP__", "%g" % FIELD_OPACITY),
         ("__SPIN_S__", str(SPIN_S)),
         ("__BREATHE_MS__", str(BREATHE_MS)),
         ("__ASSEMBLED_MS__", str(ASSEMBLED_MS)),
@@ -492,6 +536,58 @@ def _mark_html(root: str) -> str:
     )
 
 
+def _field_html(root: str) -> str:
+    """The field behind the mark (Gemini, 2026-09-12; watermark removed by solving
+    Laplace's equation inside the 48x48 glyph with the surrounding pixels as the
+    boundary, then matching the ring's own grain - the patch reads 0.00 of 255 away
+    from a smooth reading of its surroundings). aria-hidden: it says nothing."""
+    base = root + "assets/img/ouka/"
+    return (
+        '<div class="ou-field" aria-hidden="true">'
+        '<img src="%sfield-%d.webp" srcset="%sfield-%d.webp %dw, %sfield-%d.webp %dw" '
+        'sizes="100vw" width="%d" height="%d" alt="" decoding="async" '
+        'fetchpriority="low"></div>'
+        % (base, FIELD_W, base, FIELD_SMALL, FIELD_SMALL, base, FIELD_W, FIELD_W,
+           FIELD_W, round(FIELD_W * 768 / 1365)))
+
+
+def _audio_html(root: str, lang: str) -> str:
+    """The theme, behind a control. NEVER autoplay: every browser refuses sound a
+    visitor did not ask for, and a page that tries it either fails silently or is
+    punished (Chrome's media engagement index). preload="none" so a visitor who
+    never presses it pays nothing. Two sources because Firefox on some platforms
+    has no AAC decoder; the .mp3 is the same 56.8 s at the same level."""
+    base = root + "assets/audio/ouka/"
+    play, pause = PLAY[lang], PAUSE[lang]
+    return (
+        '<div class="ou-audio ou-fade" style="--d:%dms">'
+        '<button class="ou-play" type="button" aria-pressed="false" '
+        'aria-label="%s" data-play="%s" data-pause="%s">'
+        '<svg class="ou-play-icon" viewBox="0 0 12 14" aria-hidden="true">'
+        '<path d="M1 0.6 11 7 1 13.4Z"/></svg>'
+        '<svg class="ou-pause-icon" viewBox="0 0 12 14" aria-hidden="true">'
+        '<path d="M1 1h3.3v12H1Zm6.7 0H11v12H7.7Z"/></svg>'
+        '</button><span class="ou-track">%s</span>'
+        '<audio class="ou-track-audio" preload="none">'
+        '<source src="%ssilver-and-petals.m4a" type="audio/mp4">'
+        '<source src="%ssilver-and-petals.mp3" type="audio/mpeg">'
+        '</audio></div>'
+        % (SOON_START_MS, esc(play), esc(play), esc(pause), esc(TRACK), base, base))
+
+
+AUDIO_SCRIPT = (
+    '<script>(function(){var b=document.querySelector(".ou-play");'
+    'if(!b)return;var a=document.querySelector(".ou-track-audio");'
+    'function set(p){b.setAttribute("aria-pressed",p?"true":"false");'
+    'b.setAttribute("aria-label",b.getAttribute(p?"data-pause":"data-play"))}'
+    'b.addEventListener("click",function(){'
+    'if(a.paused){var q=a.play();if(q&&q.catch)q.catch(function(){set(false)})}'
+    'else{a.pause()}});'
+    'a.addEventListener("play",function(){set(true)});'
+    'a.addEventListener("pause",function(){set(false)});'
+    'a.addEventListener("ended",function(){set(false)})})();</script>')
+
+
 def wordmark(text: str) -> str:
     """One span per glyph so the reveal can stagger, each inside the wrapper
     it rises out of. Emitted at BUILD time: the split is in the served HTML,
@@ -509,15 +605,17 @@ def build_body(lang: str, c: dict, root: str) -> str:
                   % (KANJI_START_MS, esc(kanji))) if kanji else ""
     return (
         '<div class="ou-stage">'
-        '%s'
+        '%s%s'
         '<h1 class="ou-name" aria-label="%s">%s</h1>'
         '%s'
         '<p class="ou-lede ou-fade" style="--d:%dms">%s</p>'
         '<p class="ou-soon ou-fade" style="--d:%dms">%s</p>'
-        '</div>%s'
-        % (_mark_html(root), esc(c["title"]), wordmark(c["title"]), kanji_html,
+        '%s'
+        '</div>%s%s'
+        % (_field_html(root), _mark_html(root), esc(c["title"]),
+           wordmark(c["title"]), kanji_html,
            LEDE_START_MS, esc(c["lede"]), SOON_START_MS, esc(c["soon"]),
-           INTRO_SCRIPT)
+           _audio_html(root, lang), INTRO_SCRIPT, AUDIO_SCRIPT)
     )
 
 
@@ -535,6 +633,18 @@ def main() -> int:
             return 1
     if sorted(PETAL_ORDER) != [1, 2, 3, 4, 5]:
         raise SystemExit("ERROR: build_ouka: PETAL_ORDER is not the five seats.")
+    for lang in langs:
+        for table, what in ((PLAY, "play"), (PAUSE, "pause")):
+            if not table.get(lang):
+                raise SystemExit("ERROR: build_ouka: no %s label for %s (no fallback "
+                                 "by design)." % (what, lang))
+    for rel in ("assets/img/ouka/field-%d.webp" % FIELD_W,
+                "assets/img/ouka/field-%d.webp" % FIELD_SMALL,
+                "assets/audio/ouka/silver-and-petals.m4a",
+                "assets/audio/ouka/silver-and-petals.mp3"):
+        if not (ROOT / rel).is_file():
+            raise SystemExit("ERROR: build_ouka: %s is not on disk. The page would "
+                             "point at nothing and still look fine." % rel)
 
     for lang in langs:
         c = COPY[lang]
@@ -592,6 +702,21 @@ def main() -> int:
                 raise SystemExit(
                     "ERROR: build_ouka: %s still applies %r outside .is-intro."
                     % (lang, unscoped.strip()))
+        # 2d. the field and the theme. Both are files: a page that points at one
+        #    that is not there looks FINE (a missing backdrop is black, and a
+        #    control that 404s just never sounds), so the files are checked on
+        #    disk, not only in the HTML.
+        for needed in ('class="ou-field"', "field-%d.webp" % FIELD_W,
+                       'class="ou-play"', "silver-and-petals.m4a",
+                       "silver-and-petals.mp3", esc(PLAY[lang]), esc(PAUSE[lang]),
+                       'preload="none"', 'aria-pressed="false"'):
+            if needed not in html:
+                raise SystemExit("ERROR: build_ouka: %s is missing %r." % (lang, needed))
+        if "autoplay" in html:
+            raise SystemExit(
+                "ERROR: build_ouka: %s would try to autoplay. Every browser refuses "
+                "sound the visitor did not ask for." % lang)
+
         for needed in ('classList.add("is-intro")',
                        'classList.remove("is-intro")', str(INTRO_HOLD_MS)):
             if needed not in html:

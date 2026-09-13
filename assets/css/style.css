@@ -711,57 +711,59 @@ html:not(.js) .lang-switch:focus-within .lang-switch__menu { display: block; }
 }
 .hero h1 { margin-bottom: 16px; }
 
-/* The home page no longer uses a hero at all — it opens with the film (see
-   the "Film" block near the end of this file). .hero--cinema, .hero__title,
-   .hero__lede, .hero__notice, .hero__cta and .hero__scroll were only ever
-   emitted by build_home.py and went with the copy the owner asked to remove;
-   their rules were deleted rather than left behind as dead weight. Every
-   other page still uses .hero + .hero__eyebrow above. */
+/* The home page does not use .hero: it opens with the mark and the wordmark
+   (the "Film" block below — scene 0 of what used to be a six-scene film) and
+   continues as a product page (the "Home" block after it). Every other page
+   still uses .hero + .hero__eyebrow above. */
 
 /* ==========================================================================
-   Film — the home page's scroll-driven product sequence
+   Film — the home page's opening beat (scene 0)
    --------------------------------------------------------------------------
-   Six beats built from five real screenshots of Corvus. No video file, no
-   canvas, no library: a pinned (sticky) stage whose scenes are driven by two
-   custom properties per scene that main.js writes once per frame —
-     --t  linear 0..1 across the scene's scroll span
-     --e  the same span eased (easeOutExpo), for the beats that need weight
-   plus --p (0..1 across the whole film) on the stage itself. Everything they
-   feed is `transform` / `translate` / `scale` / `opacity` only, so the whole
-   film runs on the compositor.
+   2026-09-10: the six-scene scroll-driven film of Corvus 1.5.2 is gone, and
+   with it the pinned stage, the per-scene --t/--e/--o variables main.js used
+   to write, the cue and the progress rail. What remains is the opening: the
+   mark and the wordmark resolving out of the dark, which hero-mark.css and
+   hero-mark.js build ON TOP of the rules here. Those two files select
+   `.film__scene--title .film__mark.hm`, `#filmWord .hm-g`, `.film__word` and
+   `.film__stage:not(.is-live)` (main.js marks the stage live while it is on
+   screen, which is what pauses the mark's ambient light off screen), so the
+   class names and ids below are load-bearing — read hero-mark.css before
+   renaming anything here.
 
-   PROGRESSIVE ENHANCEMENT — the order of the two blocks below matters.
-   The DEFAULT rules (first) lay the same markup out as a static, complete,
-   fully legible vertical gallery: every frame visible, the before/after
-   update crop shown as two stacked panels, nothing hidden. That is what a
-   visitor gets with JS disabled AND what a visitor with
-   `prefers-reduced-motion: reduce` gets — the pinned stage only ever exists
-   inside the `html.js` + `prefers-reduced-motion: no-preference` block, so a
-   reduced-motion reader can never land on a page frozen at frame 0.
+   Progressive enhancement, unchanged: the DEFAULT rules lay the lockup out
+   static and complete, and the `film-in` entrances only exist inside
+   `html.js` + `prefers-reduced-motion: no-preference`.
    ========================================================================== */
 .film {
-  --film-w: min(60rem, 92vw, 1340px);   /* frames never upscale much past the
-                                           1196px native capture width */
-  --film-scroll: 560vh;
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  padding-block: 6vh 10vh;
+  width: 100%;
+  padding-block: clamp(28px, 6vh, 72px) clamp(16px, 3vh, 40px);
 }
-/* The film is the whole page; it supplies its own vertical rhythm. */
-main:has(> .film) { padding-block: 0; }
+/* The opening supplies its own top rhythm. */
+main:has(> .film) { padding-top: 0; }
 
-.film__stage {
-  display: flex; flex-direction: column; align-items: center;
-  gap: clamp(48px, 9vh, 112px);
-  padding-inline: max(var(--gutter), env(safe-area-inset-left))
-                  max(var(--gutter), env(safe-area-inset-right));
-}
+.film__stage { display: flex; flex-direction: column; align-items: center; }
 .film__scene {
   display: flex; flex-direction: column; align-items: center;
   gap: clamp(18px, 3vh, 40px);
-  width: 100%; max-width: var(--film-w);
+  width: 100%;
 }
-.film__scene--title { gap: clamp(22px, 4vh, 46px); }
+.film__scene--title {
+  position: relative; isolation: isolate;
+  justify-content: center;
+  gap: clamp(22px, 4vh, 46px);
+  /* The opening owns most of the first viewport; the first headline shows
+     just under the fold so the page reads as continuing. */
+  min-height: clamp(400px, calc(82svh - var(--header-h)), 820px);
+}
+/* One line under the name, set closer to the wordmark than the wordmark is
+   to the mark, so the two read as one lockup. */
+.film__tagline {
+  margin: calc(-1 * clamp(6px, 1.6vh, 18px)) 0 0;
+  font-size: clamp(1.05rem, 0.92rem + 0.6vw, 1.45rem);
+  line-height: 1.4; letter-spacing: -0.01em;
+  color: var(--text-muted); text-align: center; text-wrap: balance;
+  max-width: 34ch;
+}
 
 /* The owner's corvid mark, same currentColor-masked PNG the header uses. */
 .film__mark {
@@ -775,7 +777,8 @@ main:has(> .film) { padding-block: 0; }
   -webkit-mask-position: center;   mask-position: center;
   -webkit-mask-size: contain;      mask-size: contain;
 }
-.film__mark--sign { --mark-h: clamp(46px, 6vw, 96px); }
+/* The small static mark that opens the sign-off at the foot of the page. */
+.film__mark--sign { --mark-h: clamp(40px, 5vw, 72px); }
 .film__word {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 1.2rem + 6.2vw, 6rem);
@@ -785,278 +788,183 @@ main:has(> .film) { padding-block: 0; }
   background: linear-gradient(112deg, var(--text) 22%, var(--accent-strong) 56%, var(--aurora-violet) 94%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.film__word--sign { font-size: clamp(1.6rem, 0.9rem + 3.2vw, 3rem); }
 
-/* One app window. The screenshots already carry the macOS chrome, so the
-   frame adds only the corner radius, a hairline and the drop shadow that
-   makes it read as an object floating over the night sky. */
-.film__frame {
-  margin: 0; width: 100%;
-  border-radius: clamp(10px, 0.9vw, 18px);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: #0b0e15;
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.45),
-    0 34px 78px rgba(0, 0, 0, 0.55),
-    0 0 110px rgba(var(--accent-rgb), 0.07);
-}
-.film__frame img { width: 100%; height: auto; display: block; }
-
-/* The update beat: the same region of the home screen, before and after.
-   Both panels are CSS-cropped out of the full 1196x824 frames — no extra
-   image is shipped for the close-up. Numbers below are that crop, in source
-   pixels: x 298..1170, y 64..288 (the title, the state pill and the
-   INSTALLED / LATEST row). */
-.film__detail { display: grid; gap: clamp(14px, 2.4vh, 26px); width: 100%; }
-.film__detail-layer {
-  position: relative; overflow: hidden;
-  aspect-ratio: 872 / 224;
-  border-radius: clamp(10px, 0.9vw, 18px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: #0b0e15;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), 0 26px 60px rgba(0, 0, 0, 0.5);
-}
-.film__detail-layer img {
-  position: absolute; top: 0; left: 0;
-  width: 137.156%;                 /* 1196 / 872 */
-  max-width: none; height: auto;
-  transform: translate(-24.916%, -7.767%);   /* -298/1196, -64/824 */
-}
-/* Sweep, cue and progress rail are motion affordances only — they have no
-   meaning in the static layout, so they are simply not there. */
-.film__sweep, .film__cue, .film__progress { display: none; }
-
-/* --- the pinned film ---------------------------------------------------- */
+/* --- the entrance ------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .film { padding-block: 0; }
-  html.js .film__track {
-    position: relative;
-    height: calc(100svh + var(--film-scroll));
-  }
-  html.js .film__stage {
-    position: sticky; top: 0;
-    height: 100svh;
-    display: block; gap: 0; padding-inline: 0;
-    overflow: hidden;                /* the fanned stack must never widen the page */
-  }
-  html.js .film__scene {
-    position: absolute; inset: 0;
-    max-width: none; width: auto;
-    justify-content: center;
-    padding-inline: max(var(--gutter), env(safe-area-inset-left))
-                    max(var(--gutter), env(safe-area-inset-right));
-    opacity: var(--o, 0);
-    pointer-events: none;
-  }
-  html.js .film__scene--title { --o: 1; }   /* the composed opening still */
-  html.js .film__frame,
-  html.js .film__detail { max-width: var(--film-w); width: 100%; }
-
-  /* Aurora bloom behind the opening and closing wordmark. */
-  html.js .film__scene--title::before,
-  html.js .film__scene--sign::before {
-    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  /* Sky bloom behind the opening lockup — sky-blue only. */
+  html.js .film__scene--title::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -10% -20%;
     background:
       radial-gradient(38% 34% at 50% 44%, rgba(90, 200, 250, 0.20), transparent 72%),
       radial-gradient(46% 38% at 50% 56%, rgba(10, 132, 255, 0.16), transparent 76%);
-    scale: calc(1 + 0.25 * var(--t, 0));
+    animation: film-in 1.6s var(--ease-out-quart) both;
   }
-
-  /* 1 — the mark and the name resolve out of darkness, then recede. */
+  /* The mark's own fade is the FALLBACK: hero-mark.css replaces it on
+     `.film__mark.hm` with the composed arrival (its rule is more specific
+     and loads later). The wordmark's fade likewise yields to the per-glyph
+     resolve once hero-mark.js has lit the glyphs. */
   html.js .film__scene--title .film__mark {
-    translate: 0 calc(-5vh * var(--t, 0));
-    scale: calc(1 - 0.14 * var(--t, 0));
     animation: film-in 1.15s var(--ease-out-expo) 0.08s both;
   }
   html.js .film__scene--title .film__word {
-    translate: 0 calc(-3vh * var(--t, 0));
     animation: film-in 1.15s var(--ease-out-expo) 0.26s both;
+  }
+  html.js .film__scene--title .film__tagline {
+    animation: film-in 1.15s var(--ease-out-expo) 0.95s both;
   }
   @keyframes film-in {
     from { opacity: 0; transform: translate3d(0, 34px, 0) scale(0.966); }
     to   { opacity: 1; transform: none; }
   }
-
-  /* 2 — the app arrives: tips up off the floor, gains scale and weight, and
-         comes to rest at exactly the size and position beat 3 starts from,
-         so the cut between them is invisible and the fan appears to grow out
-         of the very window that just landed. */
-  html.js .film__scene--arrive { perspective: 1700px; }
-  html.js .film__scene--arrive .film__frame {
-    transform-origin: 50% 92%;
-    transform: rotateX(calc(15deg * (1 - var(--e, 0))));
-    translate: 0 calc(17vh * (1 - var(--e, 0)));
-    scale: calc(0.80 + 0.20 * var(--e, 0));
-  }
-
-  /* 3 — the surfaces fan apart: home in front, settings and log behind. */
-  html.js .film__scene--stack { perspective: 2100px; }
-  html.js .film__scene--stack .film__frame {
-    position: absolute; top: 50%; left: 50%;
-    width: min(var(--film-w), calc(100% - 2 * var(--gutter)));
-    translate: -50% -50%;
-  }
-  html.js .film__scene--stack .film__frame--front {
-    z-index: 3;
-    transform: translate3d(calc(-11% * var(--t, 0)), calc(7% * var(--t, 0)), 0)
-               rotateY(calc(9deg * var(--t, 0)))
-               scale(calc(1 - 0.10 * var(--t, 0)));
-  }
-  html.js .film__scene--stack .film__frame--back1 {
-    z-index: 2; opacity: calc(0.12 + 0.88 * var(--t, 0));
-    transform: translate3d(calc(11% * var(--t, 0)), calc(-7% * var(--t, 0)), 0)
-               rotateY(calc(9deg * var(--t, 0)))
-               scale(calc(0.97 - 0.14 * var(--t, 0)));
-  }
-  html.js .film__scene--stack .film__frame--back2 {
-    z-index: 1; opacity: calc(0.06 + 0.74 * var(--t, 0));
-    transform: translate3d(calc(29% * var(--t, 0)), calc(-17% * var(--t, 0)), 0)
-               rotateY(calc(9deg * var(--t, 0)))
-               scale(calc(0.94 - 0.20 * var(--t, 0)));
-  }
-
-  /* 4 — the update. One close-up, two real states, dissolved through a
-         travelling light band. Nothing is written; 2.4.8 becomes 2.4.9 and
-         "Update available" becomes "Up to date" on screen. */
-  html.js .film__scene--update .film__detail {
-    position: relative; display: block;
-    aspect-ratio: 872 / 224;
-    scale: calc(0.93 + 0.09 * var(--t, 0));
-    /* clips the travelling band to the panel — without this the sweep runs
-       out across the open page and reads as a rendering fault */
-    overflow: hidden;
-    border-radius: clamp(10px, 0.9vw, 18px);
-  }
-  html.js .film__scene--update .film__detail-layer { position: absolute; inset: 0; }
-  /* The handover is fast and deliberately timed against the band below.
-     The band's centre sits at (-22.5% + 153% * t) across the panel, so at
-     t=0.27 it covers roughly x=0..41% — exactly where the title, the state
-     pill and the INSTALLED number live. Flipping the state there means the
-     glare is over the only region where two different strings would
-     otherwise be legible on top of each other. */
-  html.js .film__detail-layer--b {
-    /* 0.04 wide, i.e. ~37px of scroll: short enough that landing on the
-       half-and-half frame takes deliberate effort, which is what makes
-       this read as a wipe rather than as a double exposure. */
-    opacity: clamp(0, calc((var(--t, 0) - 0.25) / 0.04), 1);
-  }
-  html.js .film__sweep {
-    display: block; position: absolute; top: -30%; bottom: -30%; left: -45%; width: 45%;
-    z-index: 2; pointer-events: none;
-    background: linear-gradient(100deg, transparent,
-      rgba(var(--accent-rgb), 0.26) 32%, rgba(255, 255, 255, 0.42) 50%,
-      rgba(var(--accent-rgb), 0.26) 68%, transparent);
-    transform: translate3d(calc(340% * var(--t, 0)), 0, 0) skewX(-14deg);
-    opacity: min(clamp(0, calc((var(--t, 0) - 0.08) / 0.12), 1),
-                 clamp(0, calc((0.88 - var(--t, 0)) / 0.14), 1));
-  }
-
-  /* 5 — the sheet. Crossfading the sharp home screen into the captured sheet
-         state IS the blur: the backdrop softens as the panel settles in. */
-  html.js .film__scene--sheet .film__frame {
-    position: absolute; top: 50%; left: 50%;
-    width: min(var(--film-w), calc(100% - 2 * var(--gutter)));
-    translate: -50% -50%;
-  }
-  /* The two frames are the same window, so the only real difference between
-     them is the softened backdrop and the sheet itself. The handover is kept
-     SHORT on purpose: a long 50/50 dissolve of two text-bearing screenshots
-     reads as a double exposure, not as a sheet arriving. The sharp layer is
-     gone by t=0.30 and pushes back slightly as it goes, the way a macOS
-     backdrop does, while the sheet settles the last of its scale after. */
-  html.js .film__scene--sheet .film__frame--blurred {
-    z-index: 1;
-    scale: calc(1.04 - 0.04 * clamp(0, calc(var(--t, 0) / 0.5), 1));
-  }
-  html.js .film__scene--sheet .film__frame--sharp {
-    z-index: 2;
-    opacity: clamp(0, calc((0.20 - var(--t, 0)) / 0.16), 1);
-    scale: calc(1 + 0.035 * clamp(0, calc(var(--t, 0) / 0.22), 1));
-  }
-
-  /* 6 — sign-off. */
-  html.js .film__scene--sign .film__mark {
-    translate: 0 calc(5vh * (1 - var(--e, 0)));
-    scale: calc(0.88 + 0.12 * var(--e, 0));
-  }
-  html.js .film__scene--sign .film__word {
-    translate: 0 calc(3vh * (1 - var(--e, 0)));
-  }
-
-  /* Scroll affordance: a cue that retires the instant the film starts, and a
-     hairline rail that shows how much of it is left. Both wordless. */
-  html.js .film__cue {
-    display: block; position: absolute; z-index: 5;
-    bottom: calc(28px + env(safe-area-inset-bottom)); left: 50%;
-    width: 26px; height: 42px; border-radius: 999px;
-    border: 1.5px solid rgba(var(--accent-rgb), 0.45);
-    transform: translateX(-50%);
-    opacity: clamp(0, calc((0.045 - var(--p, 0)) / 0.03), 1);
-    pointer-events: none;
-  }
-  html.js .film__cue::after {
-    content: ""; position: absolute; left: 50%; top: 8px;
-    width: 4px; height: 8px; border-radius: 4px; background: var(--accent-strong);
-    animation: film-cue 2.1s var(--ease-in-out-soft) infinite;
-  }
-  @keyframes film-cue {
-    0%   { opacity: 0; transform: translate(-50%, 0); }
-    30%  { opacity: 1; }
-    100% { opacity: 0; transform: translate(-50%, 14px); }
-  }
-  html.js .film__progress {
-    display: block; position: absolute; z-index: 5;
-    inset-inline: 0; bottom: 0; height: 2px;
-    background: var(--hairline); pointer-events: none;
-  }
-  html.js .film__progress i {
-    display: block; height: 100%; transform-origin: left center;
-    transform: scaleX(var(--p, 0));
-    background: linear-gradient(90deg, var(--aurora-green), var(--aurora-blue));
-  }
-  /* Arabic reads right-to-left, and so must the rail — otherwise the one
-     progress cue on the page runs backwards for that language. */
-  /* dir="rtl" sits on <html> itself (site_common.page()), so this is an
-     attribute on the SAME element as .js, not an ancestor of it. */
-  html.js[dir="rtl"] .film__progress i { transform-origin: right center; }
-
-  /* Promoted only while the stage is actually on screen (main.js toggles
-     is-live), and never on the gradient-clipped wordmark — a composited
-     layer there costs more than it saves. */
-  html.js .film__stage.is-live .film__scene { will-change: opacity; }
-  html.js .film__stage.is-live .film__frame,
-  html.js .film__stage.is-live .film__detail,
-  html.js .film__stage.is-live .film__mark { will-change: transform; }
 }
 
-/* Phones and small tablets: the film is re-framed, not shrunk. The close-up
-   crops to a narrower region of the same screenshot (x 298..738 instead of
-   x 298..1170) so the version numbers and the state pill stay legible at
-   375px, the fan travels less far, and the whole sequence is shorter. */
 @media (max-width: 700px) {
-  .film { --film-w: min(94vw, 620px); --film-scroll: 460vh; }
-  .film__detail-layer { aspect-ratio: 440 / 224; }
-  .film__detail-layer img { width: 271.818%; }   /* 1196 / 440 */
   .film__word { font-size: clamp(2.2rem, 1.1rem + 6vw, 3.4rem); }
-  /* same class specificity as the rule above, so it has to be restated here
-     or the sign-off would come back at full opening size */
-  .film__word--sign { font-size: clamp(1.45rem, 0.9rem + 3vw, 2.2rem); }
-  @media (prefers-reduced-motion: no-preference) {
-    html.js .film__scene--update .film__detail { aspect-ratio: 440 / 224; }
-    html.js .film__scene--stack .film__frame--front {
-      transform: translate3d(calc(-7% * var(--t, 0)), calc(6% * var(--t, 0)), 0)
-                 rotateY(calc(7deg * var(--t, 0))) scale(calc(1 - 0.10 * var(--t, 0)));
-    }
-    html.js .film__scene--stack .film__frame--back1 {
-      transform: translate3d(calc(8% * var(--t, 0)), calc(-8% * var(--t, 0)), 0)
-                 rotateY(calc(7deg * var(--t, 0))) scale(calc(0.97 - 0.13 * var(--t, 0)));
-    }
-    html.js .film__scene--stack .film__frame--back2 {
-      transform: translate3d(calc(20% * var(--t, 0)), calc(-19% * var(--t, 0)), 0)
-                 rotateY(calc(7deg * var(--t, 0))) scale(calc(0.94 - 0.19 * var(--t, 0)));
-    }
-  }
+}
+
+/* ==========================================================================
+   Home — the product page under the opening
+   --------------------------------------------------------------------------
+   Apple product-page structure: a headline and one line, then the object.
+   Sections reveal on scroll through main.js's existing .reveal system
+   (`main > section:not(.film)` is already one of its targets), so this page
+   adds no observer, and with JS off or under reduced motion everything is
+   simply visible where it stands.
+
+   The "imagery" is two real captures of Corvus 2.0.0 on macOS in
+   window-shaped cards, lit from behind by CSS light fields — no video, no
+   canvas, no library, no generated pictures. Sky-blue only: every light in
+   this block is rgba(90,200,250,x) or rgba(10,132,255,x), the same pair
+   .hero::before and .sky__aurora use; nothing green or violet.
+   ========================================================================== */
+.home-beat {
+  margin: clamp(72px, 12vh, 150px) 0 0;
+  text-align: center;
+}
+.home-beat__head { max-width: 42rem; margin-inline: auto; }
+.home-beat h2 {
+  font-size: clamp(1.9rem, 1.15rem + 2.7vw, 3.4rem);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 14px; padding-top: 0;
+}
+/* No section rule under a centred display headline. */
+.home-beat h2::before { content: none; }
+.home-beat__lede {
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  line-height: 1.5; color: var(--text-muted);
+  margin: 0 auto; max-width: 38rem; text-wrap: pretty;
+}
+
+/* One app window at its natural size (760x720pt), in a window-shaped card:
+   18px corners, a hairline, a deep soft shadow, and a faint sky-blue light
+   field behind it so the glass reads as lit rather than pasted on. */
+.home-frame {
+  position: relative; isolation: isolate;
+  width: min(100%, 47.5rem);
+  margin: clamp(32px, 6vh, 64px) auto 0;
+}
+.home-frame::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  inset: -14% -22%;
+  background:
+    radial-gradient(48% 42% at 50% 46%, rgba(90, 200, 250, 0.22), transparent 70%),
+    radial-gradient(40% 36% at 58% 64%, rgba(10, 132, 255, 0.18), transparent 72%);
+}
+.home-frame img {
+  display: block; width: 100%; height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0b0e15;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.45),
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    0 0 120px rgba(90, 200, 250, 0.10);
+}
+
+/* The three rules, as a glass strip. Text only. */
+.home-strip {
+  list-style: none; padding: 0;
+  margin: clamp(28px, 5vh, 52px) auto 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+  max-width: 58rem; text-align: start;
+}
+.home-strip li {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 22px 24px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+.home-strip h3 { margin: 0 0 6px; font-size: 1.04rem; color: var(--text); }
+.home-strip p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+
+/* Three brands. .card supplies the glass, the lift and the glow. */
+.home-brands {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
+  max-width: 58rem; margin: clamp(28px, 5vh, 52px) auto 0;
+}
+/* 2026-09-12, the owner's own words: 「ブランド位置:OUKA→Cherry→Alpha(※左から順に
+   上位ブランド)(Aureum は別ジャンル Mods なので含まれない)」. So the three ranked
+   brands fill the row and Aureum sits on its own line under them, centred - being
+   beside them would read as a rank it does not hold. */
+.home-brand--aureum { grid-column: 2; }
+/* .card comes later in this file and sets display:block, which at equal
+   specificity wins - the mark, the name and the line then run together as one
+   paragraph. Naming both classes settles it (measured 2026-09-12). */
+.card.home-brand {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px; padding: 30px 22px 28px; text-align: center;
+}
+.home-brand__art {
+  display: flex; align-items: center; justify-content: center;
+  width: 96px; height: 96px; margin-bottom: 14px;
+}
+/* Alpha has no mark of its own yet: a sky disc with its initial, in the
+   same idiom as the account monogram inside the app. */
+.home-brand__art--alpha {
+  border-radius: 50%;
+  font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1;
+  letter-spacing: -0.02em; color: #fff;
+  background:
+    radial-gradient(70% 70% at 30% 22%, rgba(255, 255, 255, 0.35), transparent 60%),
+    linear-gradient(160deg, #5ac8fa, #0a84ff);
+  box-shadow: 0 10px 30px rgba(10, 132, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+.home-brand__art--aureum img { width: 100%; height: auto; border-radius: 16px; display: block; }
+/* OUKA's mark is the one cut from the owner's own logo photograph - the same
+   file the brand page assembles petal by petal, here in one piece. */
+.home-brand__art--ouka img { width: 100%; height: auto; display: block; }
+.home-brand__art--cherry svg { width: 100%; height: 100%; display: block; overflow: visible; }
+/* The blossom turns, slowly, the way it does on its own page (one revolution
+   a minute; scripts/build_cherry.py). Origin in the mark's own 128-unit
+   view-box, because a CSS transform replaces the element's transform
+   attribute and the petals inside keep theirs. */
+.home-brand__art--cherry .ch-spin {
+  transform-box: view-box; transform-origin: 64px 64px;
+  animation: home-ch-spin 60s linear infinite;
+}
+@keyframes home-ch-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.home-brand__name {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.3rem;
+  letter-spacing: var(--tracking-title); color: var(--text);
+}
+.home-brand__line { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+
+/* Sign-off: the mark, then the two ways in. */
+.home-cta {
+  display: flex; flex-direction: column; align-items: center;
+  gap: clamp(22px, 4vh, 36px);
+  margin: clamp(80px, 14vh, 170px) 0 clamp(24px, 6vh, 72px);
+}
+.home-cta__row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+@media (max-width: 700px) {
+  .home-strip, .home-brands { grid-template-columns: 1fr; }
+  .home-brand__art { width: 72px; height: 72px; margin-bottom: 8px; }
+  .home-brand__art--alpha { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-brand__art--cherry .ch-spin { animation: none; }
 }
 
 /* ==========================================================================

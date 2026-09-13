@@ -2872,6 +2872,62 @@
     "<b>The Corvus app has not been rebuilt.</b> The colour change is in the source, but the launcher's download has to ship separately as its own version",
     "V4.4.0Update.md (the Ashen Airfield) is <b>not in yet</b>. This release put the sound, the rocket, Cherry and the site first"
    ]
+  },
+  {
+   "id": "v4.4.0",
+   "release": "V4.4.0",
+   "date": "2026-09-12",
+   "type": "release",
+   "title": "North — the Ashen Airfield and Hangar One. And the doors rebuilt to the same standard as the guns",
+   "summary": "From the Filter Ring's north gate, a <b>runway</b> the Ashen Sparrow can put down on now runs out. At the far end of the North Taxi stand the Ashen Airfield, Hangar One and the Avgas Bunker. Alongside it, the doors have been rebuilt. The flicker fix used until now (floating the face by 0.002 px) was measured, on this Mac's rendering, to <b>swap over again from 12 to 16 blocks away</b>, so the shapes of 12 doors and 2 locks were reassembled with no hidden faces. On top of that, <b>16 new doors</b> are added from the design drawings, to the same standard as the guns.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0",
+    "sorakaze_boss": "4.4.0",
+    "sorakaze_deco": "4.4.0",
+    "sorakaze_fallout": "4.4.0",
+    "sorakaze_guns": "4.4.0",
+    "sorakaze_phone": "4.4.0",
+    "sorakaze_planarcadia": "4.4.0",
+    "sorakaze_power": "4.4.0",
+    "sorakaze_rail": "4.4.0",
+    "sorakaze_sapporo": "4.4.0",
+    "sorakaze_sky": "4.4.0",
+    "sorakaze_survival": "4.4.0",
+    "sorakaze_vehicles": "4.4.0"
+   },
+   "highlights": [
+    "<b>The Ashen Airfield</b>. North of the Filter Ring, a circle of radius 80 centred on (0, −480). Fog from 18 to 120 blocks, colour RGB 50,48,46. The sky is the same as the other districts",
+    "<b>The North Taxi</b>. From z −128 (the north gate) to −480, an 11-wide stretch of <b>Runway Deck</b> runs on with a centreline drawn down it, and 23 lights at x=+5. It joins the gate's street (y 64) by a ramp in 2 stages",
+    "<b>Hangar One</b>. A 36 × 12 × 24 building. Inside are a Hangar Hook, an assembly bench, a fuel pump and crates (all of them present in a pack that has Alpha Vehicles in it), with a Windsock on the roof. Under the roof you take no dust blinding",
+    "<b>The Avgas Bunker</b>. 32,000 mB, and in a new world it starts with <b>8,000 mB</b> in it. A fuel pump within 24 blocks draws from the nearest bunker. In the boot proof, one empty can took it from 8,000 → 7,000 mB, and it was measured to carry on from 7,000 after a restart",
+    "<b>Soft landing</b>. When the Ashen Sparrow touches the Runway Deck at <b>under 7.0 m/s (0.35 blocks/tick)</b>, damage is 0. Above that, 8 on the damage meter. The crash and landing-gear rules still take effect first, as they did before",
+    "<b>The Approach Flare</b> (4 uses). Used while flying the Ashen Sparrow, it stops any new blinding for 8 seconds. The blizzard's slowdown carries on",
+    "<b>Taxi Chalk</b> (16 uses). Draws a 5 × 11 parking frame, and only on top of Runway Deck",
+    "Ground vehicles run at ×0.9 speed over Runway Deck. The Windsock turns to face the wind and sounds",
+    "<b>/fallout field</b> takes you to the Ashen Airfield. {@code /fallout assert} adds the two northern points and now looks at 13",
+    "Two advancements: <b>Land the Sparrow</b> (touch the Runway Deck) and <b>Hangar One</b> (open the door)",
+    "<b>Door flicker — the fourth cause, measured.</b> 26.2 draws with reversed Z, but this Mac's GPU (GL 4.1 Metal) has no GL_ARB_clip_control, so depth precision falls with the square of the distance. The smallest gap it can tell apart is 0.12 px at 64 blocks and 1.9 px at 256 blocks. V4.3.3.1's “float the face by 0.002 px” had been below that from 12 to 16 blocks",
+    "<b>12 doors and 2 locks are reassembled.</b> Faces hidden inside the leaf and overlapping faces are taken out (CSG), the rendering is changed so back-facing faces are not drawn, and the depth check is run over every pose",
+    "<b>Past 64 blocks, only the moving parts of a door were disappearing.</b> The frame comes out with the chunk all the way to the render distance, but the leaf, the handle and the bolt cut off at the default 64 blocks. They are now drawn by the same rule as the frame",
+    "<b>17 new doors.</b> One from each of the 16 design drawings, plus the Hangar Door of Hangar One. Cottage Door, Wheel Bulkhead Door, Roller Shutter, Lift Doors, Iris Hatch, Diamond Hatch, Chained Hatch, Dial Safe Door, Slot Door, Deposit Lockers, Barred Door, Knocker Door, Stable Door, Glazed Door, Sliding Glass Door, Picket Gate, Hangar Door",
+    "<b>They are built to the same standard as the guns.</b> The figures measured on the reference implementation (720 to 958 cubes, 71 to 87 bones and 19 to 24 clips for one rifle) were carried across to the doors, and fineness, part count and movement count are measured at a gate. No part is painted on — every hinge knuckle, bar, chain link, dial and single blade is its own cube",
+    "<b>21 movements on every one of them.</b> Open, close, redstone, unlock with a key, locked and will not open, wrong PIN, knock, peep, being mined, blast, wind, someone walking into it, and so on. Every one of them runs on a signal the server sends, and reversing the input part-way returns smoothly. Each movement carries its own sound",
+    "<b>Flicker is stopped at the point the model is made.</b> A gate confirms that in every pose (reversals and repeated inputs included) there is not one pair of faces closer together than the depth precision measured on this Mac. Hidden faces are taken out, and back-facing faces are not drawn",
+    "<b>You can get through, and nothing bites into anything else.</b> An open door lets someone standing walk through, an open hatch lets someone fall through, and a closed door cannot be got past even by crawling — all confirmed against the collision shape itself (in 4 directions). 204 places where parts bit into each other were found, and every one was fixed",
+    "<b>The final figures for the 17 doors.</b> 265 bones and 357 movements in total (21 per door). Sizes run from 1×1 to 4×4, fineness from 14 to 24 texels per block. The three floor hatches (Chained, Diamond, Iris) are 1×1 and 2×2, and you can fall through them when they are open",
+    "<b>A gate confirmed that 21 triggers have 21 movements.</b> Whether two movements on the same door are “the same movement with only the name and the sound different” is measured both by the separation in the world (2.0 texels) and by <b>how it looks on screen</b> (1.0 px of motion, 2.0 px² of change). On 5 doors, 96 pairs were the same movement — Chained Hatch 35 pairs, Sliding Glass Door 30, Roller Shutter 17, Hangar Door 9, Picket Gate 5. All of them were rewritten as separate movements",
+    "<b>Examples of what was fixed.</b> On the Chained Hatch, 13 triggers swung the padlock the same way (5 of them on the one door were word-for-word identical). On the Sliding Glass Door, 6 triggers flicked the crescent latch up at the same angle at the same instant. On the Roller Shutter, 6 turned the drum to the same angle. Each has been rewritten to a different swing at a different instant, scaled to how big the event was",
+    "<b>“Moving, yet not visible” is fixed too.</b> The bar hides in the shadow of its groove, so moving it 1.05 texels changes only 0.06 px on screen. The difference is now carried by the parts you can see — the drum, the curtain, the chain and the catch"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Behaviour change:</b> V4.3.0's exemption, the one that should have stopped sickness building up over the Cinder Spur, was not reaching anyone standing on it (the check only ever returned the pit cutting). It is fixed, so sickness does not build up over the Cinder Spur",
+    "At this site's ground level (y 58 to 60), the Avgas Bunker's shaft comes out above the ground as a 4 × 4 column"
+   ],
+   "known_limitations": [
+    "<b>I have not seen a single one of the new doors on screen.</b> The shapes, the movements and the sounds (23 sounds per door) were all confirmed from renders of the generated tables and from numbers, and none of it has been checked inside the game",
+    "<b>I have not seen a single one of them on screen.</b> How the runway, the fog, the Windsock, the flare and the doors look is unverified, because this development machine has no client (register R-163 and others)"
+   ]
   }
  ],
  "roadmap": {

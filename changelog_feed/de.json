@@ -1,10 +1,66 @@
 {
  "lang": "de",
- "updated": "2026-09-10",
+ "updated": "2026-09-12",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-09-10",
+ "updated_label": "Aktualisiert am 2026-09-12",
  "note": "Die angezeigten Werte für Schaden, Geschwindigkeit usw. sind die Standardwerte zum Zeitpunkt der Einführung. Durch Config-Anpassungen auf dem Server können die tatsächlich spürbaren Werte davon abweichen.",
  "groups": [
+  {
+   "label": "V4.4",
+   "summary": "Nach Norden — der Aschen-Flugplatz und Hangar Eins. Und die Türen nach demselben Maßstab wie die Waffen neu gebaut",
+   "releases": [
+    {
+     "version": "V4.4.0",
+     "date": "2026-09-12",
+     "type": "release",
+     "title": "Nach Norden — der Aschen-Flugplatz und Hangar Eins. Und die Türen nach demselben Maßstab wie die Waffen neu gebaut",
+     "summary": "Vom Nordtor des Filterrings zieht sich jetzt eine <b>Landebahn</b>, auf der der Ashen Sparrow aufsetzen kann. Am Ende des Nord-Rollwegs liegen der Aschen-Flugplatz, Hangar Eins und der Avgas-Bunker. Zugleich sind die Türen neu gebaut. Die bisherige Maßnahme gegen das Flackern (die Flächen um 0,002 px anheben) wurde nachgemessen: Auf der Darstellung dieses Macs <b>tauschen sie ab 12 bis 16 Blöcken wieder die Plätze</b>. Deshalb sind die Formen von 12 Türen und 2 Schlössern so neu zusammengesetzt, dass keine verdeckte Fläche mehr darin steckt. Dazu kommen <b>16 neue Türen</b> aus den Design-Renderings, auf demselben Niveau wie die Waffen.",
+     "sections": [
+      {
+       "title": "Änderungen",
+       "items": [
+        "<b>Der Aschen-Flugplatz (Ashen Airfield)</b>. Nördlich des Filterrings, ein Kreis mit Radius 80 um (0, −480). Der Nebel reicht von 18 bis 120 Blöcken, seine Farbe ist RGB 50,48,46. Der Himmel ist derselbe wie in den anderen Bezirken",
+        "<b>Der Nord-Rollweg</b>. Von z −128 (dem Nordtor) bis −480 zieht sich ein 11 breites <b>Landebahndeck</b> mit aufgemalter Mittellinie, und bei x=+5 stehen 23 Leuchten. Zur Straße am Tor (y 64) führen zwei Rampenstufen",
+        "<b>Hangar Eins</b>. Ein Gebäude von 36 × 12 × 24. Darin ein Haken, ein Montagebock, eine Zapfsäule und Kisten (vollständig in einem Pack, das Alpha Vehicles enthält), auf dem Dach ein Windsack. Unter dem Dach trifft dich die Blendung durch den Staub nicht",
+        "<b>Der Avgas-Bunker</b>. 32.000 mB; in einer neuen Welt beginnt er mit <b>8.000 mB</b> darin. Jede Zapfsäule im Umkreis von 24 Blöcken zieht aus dem nächstgelegenen Bunker. Im Startnachweis gemessen: pro leerem Kanister 8.000 → 7.000 mB, und nach einem Neustart geht es bei 7.000 weiter",
+        "<b>Sanfte Landung</b>. Berührt der Ashen Sparrow das Landebahndeck mit <b>weniger als 7,0 m/s (0,35 Blöcke/Tick)</b>, gibt es 0 Schaden. Darüber sind es 8 auf dem Schadenszähler. Die Regeln für Absturz und Fahrwerk greifen weiterhin zuerst",
+        "<b>Die Anflugfackel</b> (4 Anwendungen). Im Flug mit dem Ashen Sparrow benutzt, hält sie 8 Sekunden lang jede neue Blendung fern. Die Bremswirkung des Schneesturms bleibt",
+        "<b>Die Rollweg-Kreide</b> (16 Anwendungen). Sie zieht eine 5 × 11 große Abstellbucht, und nur auf dem Landebahndeck",
+        "Bodenfahrzeuge fahren auf dem Landebahndeck mit ×0,9 Geschwindigkeit. Der Windsack dreht sich in den Wind und knattert",
+        "Mit <b>/fallout field</b> geht es zum Aschen-Flugplatz. {@code /fallout assert} prüft mit den 2 neuen Punkten im Norden jetzt 13 Punkte",
+        "Zwei Fortschritte: <b>Lande den Ashen Sparrow</b> (das Landebahndeck berühren) und <b>Hangar Eins</b> (die Tür öffnen)",
+        "<b>Das Türflackern — die vierte Ursache ist gemessen.</b> 26.2 zeichnet mit umgekehrtem Z, aber dem Grafikchip dieses Macs (GL 4.1 Metal) fehlt GL_ARB_clip_control, und die Tiefenauflösung fällt mit dem Quadrat der Entfernung. Unterscheidbar sind auf 64 Blöcken noch 0,12 px, auf 256 Blöcken 1,9 px. Das „um 0,002 px anheben“ aus V4.3.3.1 lag ab 12 bis 16 Blöcken darunter",
+        "<b>12 Türen und 2 Schlösser sind neu zusammengesetzt.</b> Verdeckte und aufeinanderliegende Flächen im Blatt sind entfernt (CSG), abgewandte Flächen werden nicht mehr gezeichnet, und in jeder Stellung läuft eine Tiefenprüfung",
+        "<b>Ab 64 Blöcken verschwanden genau die beweglichen Teile der Tür.</b> Der Rahmen wird mit dem Chunk bis an die volle Sichtweite gezeichnet, Türblatt, Griff und Riegel brachen dagegen bei den voreingestellten 64 Blöcken ab. Sie folgen jetzt derselben Regel wie der Rahmen",
+        "<b>17 neue Türen.</b> Je eine nach jedem der 16 Design-Renderings, dazu das Hangartor von Hangar Eins. Landhaustür, Schottentür mit Handrad, Rollladen, Aufzugstüren, Irisluke, Rautenluke, Kettenluke, Tresortür mit Zahlenschloss, Tür mit Durchreiche, Bankschließfächer, Riegeltür, Haustür mit Türklopfer, Stalltür, Glastür, Glasschiebetür, Lattentor, Hangartor",
+        "<b>Gebaut nach demselben Maßstab wie die Waffen.</b> Die an der Referenzumsetzung gemessenen Zahlen (720 bis 958 Quader, 71 bis 87 Knochen, 19 bis 24 Clips je Gewehr) sind auf die Türen übertragen, und Feinheit, Zahl der Teile und Zahl der Bewegungen misst ein Tor. Kein Teil ist aufgemalt — jedes Scharniergelenk, der Riegelbalken, jedes Kettenglied, das Zahlenrad und jede einzelne Lamelle ist ein eigener Quader",
+        "<b>21 Bewegungen je Tür.</b> Öffnen, Schließen, Redstone, Aufschließen mit dem Schlüssel, das Klemmen einer verschlossenen Tür, eine falsche PIN, Klopfen, Spähen, Abgebaut-Werden, Druckwelle, Wind, jemand läuft dagegen, und weitere. Jede läuft auf ein Signal des Servers, und wer mittendrin umkehrt, wird sanft zurückgeführt. Zu jeder Bewegung gehört ein eigener Klang",
+        "<b>Das Flackern wird schon beim Bauen gestoppt.</b> In jeder Stellung — auch rückwärts laufend und bei Bedienung in Folge — bestätigt ein Tor, dass es kein einziges Flächenpaar gibt, das enger beieinanderliegt als die an diesem Mac gemessene Tiefenauflösung. Verdeckte Flächen sind entfernt, abgewandte werden nicht gezeichnet",
+        "<b>Durchgehen können, nicht ineinanderstecken.</b> Dass eine offene Tür einen stehenden Spieler durchlässt, eine offene Luke ihn fallen lässt und eine geschlossene Tür auch kriechend nicht passierbar ist, prüft die Kollisionsform selbst (in 4 Richtungen). 204 Stellen, an denen Teile ineinandersteckten, wurden gefunden und alle behoben",
+        "<b>Die Endzahlen der 17 Türen.</b> Zusammen 265 Knochen und 357 Bewegungen (21 je Tür). Die Größen reichen von 1×1 bis 4×4, die Feinheit von 14 bis 24 Texeln je Block. Die drei Bodenluken (Kette, Raute, Iris) sind 1×1 und 2×2 und lassen einen fallen, wenn sie offen sind",
+        "<b>Ein Tor bestätigt, dass 21 Auslöser auch 21 Bewegungen ergeben.</b> Ob zwei Bewegungen derselben Tür in Wahrheit „dieselbe Bewegung mit nur anderem Namen und anderem Klang“ sind, wird doppelt gemessen: am Abstand in der Welt (2,0 Texel) und an <b>dem, was auf dem Bildschirm ankommt</b> (1,0 px Weg, 2,0 px² Fläche). Bei 5 Türen waren 96 Paare dieselbe Bewegung — 35 an der Kettenluke, 30 an der Glasschiebetür, 17 am Rollladen, 9 am Hangartor, 5 am Lattentor. Alle sind zu eigenen Bewegungen umgeschrieben",
+        "<b>Beispiele für das Geänderte.</b> An der Kettenluke ließen 13 Auslöser das Vorhängeschloss auf dieselbe Weise schwingen (5 davon standen in einer Tür wortgleich da). An der Glasschiebetür schnellten 6 Auslöser den Halbmondgriff im selben Winkel und im selben Augenblick hoch. Am Rollladen drehten 6 die Welle in denselben Winkel. Jeder ist jetzt auf einen eigenen Ausschlag und einen eigenen Augenblick gesetzt, passend zur Größe dessen, was geschehen ist",
+        "<b>Auch „bewegt sich, ist aber nicht zu sehen“ ist behoben.</b> Der Riegelbalken liegt im Schatten seiner Nut: 1,05 Texel Weg ergeben auf dem Bildschirm nur 0,06 px. Der Unterschied liegt jetzt an sichtbaren Teilen — Welle, Vorhang, Kette und Klinke"
+       ]
+      },
+      {
+       "title": "Hinweise",
+       "items": [
+        "<b>Verhaltensänderung:</b> Die Ausnahme aus V4.3.0, nach der auf der Ruß-Stichstrecke keine Krankheit anwachsen soll, erreichte einen darauf stehenden Spieler nicht (die Abfrage gab nur den Grubeneinschnitt zurück). Das ist behoben: Auf der Ruß-Stichstrecke wächst die Krankheit nicht an",
+        "Der Schacht des Avgas-Bunkers steht an dieser Stelle (Bodenhöhe y 58 bis 60) als 4 × 4 großer Pfeiler über dem Boden"
+       ]
+      },
+      {
+       "title": "Zu diesem Zeitpunkt noch nicht umgesetzt bzw. nicht bestätigt",
+       "items": [
+        "<b>Keine einzige der neuen Türen habe ich auf dem Bildschirm gesehen.</b> Form, Bewegung und Klang (23 Klänge je Tür) sind alle an Renderings aus den erzeugten Tabellen und an Zahlen geprüft; im Spiel selbst ist nichts davon bestätigt",
+        "<b>Auf dem Bildschirm ist nichts davon gesehen.</b> Wie Landebahn, Nebel, Windsack, Fackel und Türen aussehen, ist unbestätigt, weil dieser Entwicklungsrechner keinen Client hat (Register R-163 und weitere)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.3",
    "summary": "Den Schüssen fehlte der Kern — nur 0,0 bis 2,6 % unter 80 Hz. Und Cherry beginnt",

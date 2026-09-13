@@ -2761,6 +2761,62 @@
     "<b>La app Corvus no se ha recompilado.</b> El cambio de color está en el código fuente, pero la descarga del lanzador debe salir por separado, como versión propia",
     "V4.4.0Update.md (el aeródromo de Ceniza) <b>aún no está incluido</b>. Esta versión priorizó el sonido, el cohete, Cherry y el sitio"
    ]
+  },
+  {
+   "id": "v4.4.0",
+   "release": "V4.4.0",
+   "date": "2026-09-12",
+   "type": "release",
+   "title": "Hacia el norte — el Aeródromo de Ceniza y el Hangar Uno. Y las puertas rehechas con el mismo listón que las armas",
+   "summary": "Desde la puerta norte del Anillo de Filtrado se extiende ahora una <b>pista</b> en la que el Ashen Sparrow puede posarse. Al final de la Calle de Rodaje Norte están el Aeródromo de Ceniza, el Hangar Uno y el Búnker de Avgas. A la vez se han rehecho las puertas. Se comprobó por medición que la solución anterior contra el parpadeo (levantar las caras 0,002 px) <b>vuelve a intercambiarlas a partir de 12–16 bloques</b> con el dibujado de este Mac, así que la forma de 12 puertas y 2 cerraduras se ha rearmado sin una sola cara oculta. Además se añaden <b>16 puertas nuevas</b> a partir de los renders de diseño, al mismo nivel que las armas.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0",
+    "sorakaze_boss": "4.4.0",
+    "sorakaze_deco": "4.4.0",
+    "sorakaze_fallout": "4.4.0",
+    "sorakaze_guns": "4.4.0",
+    "sorakaze_phone": "4.4.0",
+    "sorakaze_planarcadia": "4.4.0",
+    "sorakaze_power": "4.4.0",
+    "sorakaze_rail": "4.4.0",
+    "sorakaze_sapporo": "4.4.0",
+    "sorakaze_sky": "4.4.0",
+    "sorakaze_survival": "4.4.0",
+    "sorakaze_vehicles": "4.4.0"
+   },
+   "highlights": [
+    "<b>El Aeródromo de Ceniza (Ashen Airfield)</b>. Al norte del Anillo de Filtrado, un círculo de radio 80 centrado en (0, −480). La niebla va de 18 a 120 bloques y su color es RGB 50,48,46. El cielo es el mismo que el de los demás distritos",
+    "<b>La Calle de Rodaje Norte</b>. Desde z −128 (la puerta norte) hasta −480 corre un <b>Tablero de Pista</b> de 11 de ancho, con su línea central trazada y 23 luces en x=+5. Enlaza con la calle de la puerta (y 64) por una rampa de dos escalones",
+    "<b>El Hangar Uno</b>. Un edificio de 36 × 12 × 24. Dentro, un gancho, un banco de montaje, un surtidor y cajas (se completan en el pack que incluye Alpha Vehicles); en el tejado, una manga de viento. Bajo el tejado no te ciega el polvo",
+    "<b>El Búnker de Avgas</b>. 32.000 mB; en un mundo nuevo empieza con <b>8.000 mB</b> dentro. Los surtidores a 24 bloques o menos toman del búnker más cercano. En la prueba de arranque se midió que cada bidón vacío lo baja de 8.000 a 7.000 mB y que, tras reiniciar, sigue desde 7.000",
+    "<b>Aterrizaje suave</b>. Si el Ashen Sparrow toca el Tablero de Pista <b>por debajo de 7,0 m/s (0,35 bloques/tick)</b>, el daño es 0. Por encima, 8 en el contador de daño. Las reglas de choque y de patas siguen aplicándose antes, como hasta ahora",
+    "<b>Bengala de Aproximación</b> (4 usos). Usada mientras pilotas el Ashen Sparrow, durante 8 segundos no recibes cegueras nuevas. La ralentización de la ventisca continúa",
+    "<b>Tiza de Rodaje</b> (16 usos). Solo sobre el Tablero de Pista puede trazar una plaza de estacionamiento de 5 × 11",
+    "Los vehículos de tierra van a ×0,9 de velocidad sobre el Tablero de Pista. La manga de viento se orienta al viento y suena",
+    "<b>/fallout field</b> te lleva al Aeródromo de Ceniza. {@code /fallout assert} suma los 2 puntos del norte y comprueba 13 puntos",
+    "Dos logros: <b>Aterriza el Sparrow</b> (tocar el Tablero de Pista) y <b>Hangar Uno</b> (abrir la puerta)",
+    "<b>El parpadeo de las puertas — medida la cuarta causa.</b> 26.2 dibuja con Z invertida, pero la GPU de este Mac (GL 4.1 Metal) no tiene GL_ARB_clip_control, así que la resolución de profundidad cae con el cuadrado de la distancia. El intervalo distinguible es de 0,12 px a 64 bloques y de 1,9 px a 256 bloques. El «levantar 0,002 px» de V4.3.3.1 quedaba por debajo de eso ya a 12–16 bloques",
+    "<b>Se han rearmado 12 puertas y 2 cerraduras.</b> Se han quitado de los tableros las caras ocultas y las caras superpuestas (CSG), se ha pasado a un dibujado que no pinta las caras traseras y se aplica la inspección de profundidad en todas las posturas",
+    "<b>A 64 bloques desaparecían solo las partes móviles de la puerta.</b> El marco sale con el chunk hasta el límite de la distancia de dibujado, pero la hoja, la manilla y el pestillo se cortaban a los 64 bloques de serie. Ahora se dibujan con la misma regla que el marco",
+    "<b>17 puertas nuevas.</b> Una por cada uno de los 16 renders de diseño, más la Puerta de Hangar del Hangar Uno. La Puerta de Cabaña, la Puerta de Mamparo con Volante, la Persiana Enrollable, las Puertas de Ascensor, la Escotilla de Iris, la Escotilla de Rombos, la Escotilla Encadenada, la Puerta de Caja Fuerte con Dial, la Puerta de Ranura, las Taquillas de Depósito, la Puerta de Tranca, la Puerta con Aldaba, la Puerta de Establo, la Puerta Acristalada, la Puerta Corredera de Cristal, la Cancela de Estacas y la Puerta de Hangar",
+    "<b>Hechas con el mismo listón que las armas.</b> Las cifras medidas en la implementación de referencia (de 720 a 958 cubos, de 71 a 87 huesos y de 19 a 24 clips por fusil) se han trasladado a las puertas, y la finura, el número de piezas y el número de movimientos los mide una comprobación. No hay ninguna pieza pintada — cada nudillo de bisagra, la tranca, cada eslabón de la cadena, el dial y hasta cada hoja del iris son cubos aparte",
+    "<b>21 movimientos por hoja.</b> Abrir, cerrar, redstone, abrir con llave, no abrir por estar cerrada, PIN equivocado, llamar, espiar, ser picada, onda expansiva, viento, que alguien choque, y más. Todos se mueven con la señal que envía el servidor y, si se opera al revés a mitad de camino, vuelven con suavidad. Cada movimiento lleva su propio sonido",
+    "<b>El parpadeo se detiene ya en la fase de construcción.</b> Una comprobación verifica que en ninguna postura (incluidas la marcha atrás y las operaciones encadenadas) haya un solo par de caras más juntas que la resolución de profundidad medida en este Mac. Las caras ocultas se quitan y las caras traseras no se dibujan",
+    "<b>Que se pueda pasar y que nada se incruste.</b> Con la propia caja de colisión se comprueba que por una puerta abierta pase alguien de pie, que por una escotilla abierta se pueda caer y que una puerta cerrada no se pueda atravesar ni arrastrándose (en 4 direcciones). Se encontraron 204 sitios donde las piezas se incrustaban entre sí y se corrigieron todos",
+    "<b>Las cifras finales de las 17 puertas.</b> En total, 265 huesos y 357 movimientos (21 por hoja). Los tamaños van de 1×1 a 4×4 y la finura, de 14 a 24 texels por bloque. Las 3 escotillas de suelo (cadena, rombos e iris) son de 1×1 y 2×2, y al abrirse se puede caer por ellas",
+    "<b>Una comprobación verifica que los 21 disparadores tengan 21 movimientos.</b> Mide si dos movimientos de la misma puerta son «el mismo movimiento con distinto nombre y sonido», tanto por la separación dentro del mundo (2,0 texels) como por <b>cómo se ve en pantalla</b> (1,0 px de desplazamiento, 2,0 px² de cambio). En 5 hojas había 96 pares con el mismo movimiento — 35 en la Escotilla Encadenada, 30 en la Puerta Corredera de Cristal, 17 en la Persiana Enrollable, 9 en la Puerta de Hangar y 5 en la Cancela de Estacas. Todos se han reescrito como movimientos distintos",
+    "<b>Ejemplos de lo corregido.</b> En la Escotilla Encadenada, 13 disparadores hacían oscilar el candado de la misma manera (5 de ellos, dentro de una misma hoja, con una descripción absolutamente idéntica). En la Puerta Corredera de Cristal, 6 disparadores levantaban el cierre de media luna con el mismo ángulo y en el mismo instante. En la Persiana Enrollable, 6 giraban el tambor el mismo ángulo. Cada uno se ha corregido a una oscilación distinta y un instante distinto, según la magnitud del suceso ocurrido",
+    "<b>También se ha corregido el «se mueve pero no se ve».</b> Como la tranca queda oculta en la sombra de su ranura, moverla 1,05 texels solo cambia 0,06 px en pantalla. Las diferencias se han vuelto a marcar en las piezas visibles (el tambor, la lona, la cadena y el pestillo)"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Cambio de comportamiento:</b> la exención de V4.3.0 que debía impedir que la enfermedad se acumulara sobre el Ramal de Ceniza no llegaba a quien estaba de pie encima (la comprobación solo devolvía el Corte de la Fosa). Ya está corregido, así que sobre el Ramal de Ceniza la enfermedad no se acumula",
+    "El pozo vertical del Búnker de Avgas asoma, en la superficie de este lugar (y 58–60), como un pilar de 4 × 4 sobre el terreno"
+   ],
+   "known_limitations": [
+    "<b>No he visto en pantalla ni una sola de las puertas nuevas.</b> La forma, los movimientos y los sonidos (23 por hoja) se han comprobado todos con renders y cifras a partir de las tablas generadas, pero no están verificados dentro del juego",
+    "<b>No he visto ni una sola cosa en pantalla.</b> El aspecto de la pista, la niebla, la manga de viento, la bengala y las puertas queda sin verificar porque esta máquina de desarrollo no tiene cliente (registro R-163 y otros)"
+   ]
   }
  ],
  "roadmap": {

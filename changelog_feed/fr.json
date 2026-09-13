@@ -1,10 +1,66 @@
 {
  "lang": "fr",
- "updated": "2026-09-10",
+ "updated": "2026-09-12",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-09-10",
+ "updated_label": "Mis à jour le 2026-09-12",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
+  {
+   "label": "V4.4",
+   "summary": "Vers le nord — l'Aérodrome Cendré et le Hangar Un. Et les portes refaites au même niveau d'exigence que les armes",
+   "releases": [
+    {
+     "version": "V4.4.0",
+     "date": "2026-09-12",
+     "type": "release",
+     "title": "Vers le nord — l'Aérodrome Cendré et le Hangar Un. Et les portes refaites au même niveau d'exigence que les armes",
+     "summary": "Depuis la porte nord de l'Anneau de Filtrage, une <b>piste</b> où le moineau peut se poser s'étire vers le nord. Au bout de la voie de circulation nord se trouvent l'Aérodrome Cendré, le Hangar Un et la cuve d'avgas. Les portes ont été refaites en même temps. La parade au scintillement employée jusqu'ici (faire flotter les faces de 0,002 px) a été mesurée sur le rendu de ce Mac : elle <b>s'inverse de nouveau à 12–16 blocs</b>. Les 12 portes et les 2 serrures ont donc été reconstruites sans aucune face cachée. S'y ajoutent <b>16 portes neuves</b> tirées des rendus de conception, au même niveau que les armes.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "<b>L'Aérodrome Cendré (Ashen Airfield)</b>. Au nord de l'Anneau de Filtrage, un cercle de rayon 80 centré sur (0, −480). Le brouillard court de 18 à 120 blocs, sa couleur est RVB 50,48,46. Le ciel est le même que dans les autres quartiers",
+        "<b>La voie de circulation nord</b>. De z −128 (la porte nord) jusqu'à −480, un <b>tablier de piste</b> large de 11 se déroule, une ligne axiale y est tracée et 23 feux sont posés en x=+5. Deux rampes le relient à la rue de la porte (y 64)",
+        "<b>Le Hangar Un</b>. Un bâtiment de 36 × 12 × 24. À l'intérieur : un crochet, un banc de montage, une pompe à carburant et des caisses (au complet dans un pack qui contient Alpha Vehicles) ; sur le toit, une manche à air. Sous ce toit, la poussière ne vous aveugle pas",
+        "<b>La cuve d'avgas</b>. 32 000 mB ; dans un monde neuf, elle démarre avec <b>8 000 mB</b> dedans. Une pompe à carburant située à moins de 24 blocs puise dans la cuve la plus proche. La preuve au démarrage a mesuré 8 000 → 7 000 mB par jerrican vide rempli, et la reprise à 7 000 après un redémarrage",
+        "<b>Atterrissage en douceur</b>. Si le moineau touche le tablier de piste à <b>moins de 7,0 m/s (0,35 bloc/tick)</b>, les dégâts sont de 0. Au-delà, le compteur de dégâts prend 8. Les règles de crash et de train d'atterrissage s'appliquent toujours en premier, comme avant",
+        "<b>La fusée d'approche</b> (4 usages). Utilisée aux commandes du moineau, elle vous épargne tout nouvel aveuglement pendant 8 secondes. Le ralentissement du blizzard, lui, continue",
+        "<b>La craie de circulation</b> (16 usages). Elle ne trace une aire de stationnement de 5 × 11 que sur le tablier de piste",
+        "Au sol, les véhicules roulent à ×0,9 sur le tablier de piste. La manche à air s'oriente au vent et claque",
+        "<b>/fallout field</b> vous emmène à l'Aérodrome Cendré. {@code /fallout assert} ajoute les 2 points du nord et en vérifie désormais 13",
+        "Deux progrès : <b>Posez le moineau</b> (toucher le tablier de piste) et <b>Hangar Un</b> (ouvrir la porte)",
+        "<b>Le scintillement des portes — la quatrième cause a été mesurée.</b> La 26.2 dessine en Z inversé, mais le GPU de ce Mac (GL 4.1 Metal) n'a pas GL_ARB_clip_control : la précision de profondeur chute avec le carré de la distance. L'écart discernable est de 0,12 px à 64 blocs et de 1,9 px à 256 blocs. Le « flottement de 0,002 px » de la V4.3.3.1 passait déjà sous ce seuil à 12–16 blocs",
+        "<b>Les 12 portes et les 2 serrures ont été reconstruites.</b> Les faces cachées dans le panneau et les faces superposées ont été retirées (CSG), le rendu ne dessine plus les faces vues de dos, et un contrôle de profondeur passe sur toutes les poses",
+        "<b>À 64 blocs, seules les parties mobiles de la porte disparaissaient.</b> Le cadre sort avec le chunk jusqu'à la distance de rendu complète, mais le battant, la poignée et le verrou s'arrêtaient aux 64 blocs par défaut. Ils suivent désormais la même règle que le cadre",
+        "<b>17 portes neuves.</b> Une par rendu de conception pour 16 d'entre elles, plus la porte de hangar du Hangar Un. Porte de chaumière, porte étanche à volant, rideau roulant, portes d'ascenseur, trappe à iris, trappe de pierre à damier, trappe enchaînée, porte de coffre à cadran, porte à guichet, casiers de coffre-fort, porte à barre, porte à heurtoir, porte d'écurie, porte vitrée, porte vitrée coulissante, portillon à piquets, porte de hangar",
+        "<b>Faites au même niveau d'exigence que les armes.</b> Les chiffres mesurés sur l'implémentation de référence (720 à 958 cubes, 71 à 87 os et 19 à 24 clips par fusil) ont été reportés sur les portes, et la finesse, le nombre de pièces et le nombre de mouvements passent par un contrôle. Aucune pièce n'est peinte en texture — chaque nœud de charnière, chaque bâcle, chaque maillon de chaîne, chaque cadran et jusqu'à chaque lame est un cube à part",
+        "<b>21 mouvements par porte.</b> Ouvrir, fermer, redstone, déverrouiller avec la clé, rester verrouillée faute de clé, code erroné, frapper, regarder par le judas, se faire miner, souffle d'explosion, vent, quelqu'un qui vous rentre dedans, et d'autres encore. Tous partent d'un signal envoyé par le serveur, et une manœuvre inversée en cours de route revient en douceur. Chaque mouvement a son propre son",
+        "<b>Le scintillement est arrêté dès la fabrication.</b> Un contrôle vérifie que, dans toutes les poses (marche arrière et manœuvres enchaînées comprises), il n'existe pas une seule paire de faces plus rapprochées que la précision de profondeur mesurée sur ce Mac. Les faces cachées sont retirées et les faces vues de dos ne sont pas dessinées",
+        "<b>On passe, et rien ne s'interpénètre.</b> Qu'une porte ouverte laisse passer quelqu'un debout, qu'une trappe ouverte laisse tomber quelqu'un et qu'une porte fermée ne se franchisse pas même à plat ventre est vérifié sur la boîte de collision elle-même (dans les 4 directions). 204 endroits où des pièces s'interpénétraient ont été trouvés, et tous corrigés",
+        "<b>Les chiffres finaux des 17 portes.</b> 265 os et 357 mouvements au total (21 par porte). Les tailles vont de 1×1 à 4×4, la finesse de 14 à 24 texels par bloc. Les 3 trappes de sol (chaîne, damier, iris) font 1×1 et 2×2, et une fois ouvertes on peut y tomber",
+        "<b>Un contrôle vérifie que 21 déclencheurs donnent bien 21 mouvements.</b> Pour deux mouvements d'une même porte, il mesure s'il ne s'agit pas du « même mouvement à nom et son près », à la fois par l'écart dans le monde (2,0 texels) et par <b>ce que l'on voit à l'écran</b> (1,0 px de déplacement, 2,0 px² de variation). Sur 5 portes, 96 paires étaient le même mouvement — 35 pour la trappe enchaînée, 30 pour la porte vitrée coulissante, 17 pour le rideau roulant, 9 pour la porte de hangar et 5 pour le portillon à piquets. Toutes ont été réécrites en mouvements distincts",
+        "<b>Exemples de ce qui a été corrigé.</b> Sur la trappe enchaînée, 13 déclencheurs balançaient le cadenas exactement de la même façon (5 d'entre eux, sur une même porte, étaient écrits à l'identique). Sur la porte vitrée coulissante, 6 déclencheurs relevaient la crémone du même angle et au même instant. Sur le rideau roulant, 6 faisaient tourner le tambour du même angle. Chacun a été repris avec un balancement et un instant propres à l'ampleur de ce qui vient de se produire",
+        "<b>Le « ça bouge mais on ne le voit pas » est corrigé aussi.</b> La bâcle se cache dans l'ombre de sa rainure : la déplacer de 1,05 texel ne change que 0,06 px à l'écran. La différence a été reportée sur des pièces visibles — le tambour, le tablier, la chaîne et le loquet"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "<b>Changement de comportement :</b> l'exemption qui devait empêcher la maladie de s'accumuler sur l'Embranchement de Suie de la V4.3.0 n'atteignait pas la personne qui s'y tenait debout (le test ne renvoyait que la tranchée de la mine). C'est corrigé : sur l'Embranchement de Suie, la maladie ne s'accumule plus",
+        "Le puits de la cuve d'avgas ressort du sol en colonne de 4 × 4 au niveau du terrain de cet endroit (y 58 à 60)"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "<b>Je n'ai vu aucune des nouvelles portes à l'écran.</b> Les formes, les mouvements et les sons (23 sons par porte) ont tous été vérifiés par un rendu depuis les tables générées et par les chiffres ; rien n'a été vérifié dans le jeu",
+        "<b>Je n'ai rien vu à l'écran.</b> La piste, le brouillard, la manche à air, la fusée et l'aspect des portes n'ont pas été vérifiés, faute de client sur cette machine de développement (registre R-163 et autres)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.3",
    "summary": "Les tirs n'avaient pas de cœur — seulement 0,0 à 2,6 % sous 80 Hz. Et Cherry commence",

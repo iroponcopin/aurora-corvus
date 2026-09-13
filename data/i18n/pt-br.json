@@ -2760,6 +2760,62 @@
     "<b>O app Corvus não foi recompilado.</b> A mudança de cor está no código-fonte, mas o download do launcher precisa sair separadamente, como versão própria",
     "O V4.4.0Update.md (o aeródromo de Cinzas) <b>ainda não está incluído</b>. Esta versão pôs primeiro o som, o foguete, Cherry e o site"
    ]
+  },
+  {
+   "id": "v4.4.0",
+   "release": "V4.4.0",
+   "date": "2026-09-12",
+   "type": "release",
+   "title": "Rumo ao norte — o Aeródromo de Cinzas e o Hangar Um. E as portas refeitas no mesmo padrão das armas",
+   "summary": "Do portão norte do Anel de Filtragem estende-se agora uma <b>pista</b> onde o pardal consegue pousar. Depois da Pista de Táxi Norte ficam o Aeródromo de Cinzas, o Hangar Um e o Bunker de Avgas. Junto com isso, as portas foram refeitas. Ficou comprovado por medição que a medida contra a cintilação usada até aqui (afastar as faces em 0,002 px), no desenho deste Mac, <b>volta a trocar de ordem entre 12 e 16 blocos de distância</b>, e por isso as 12 portas e as 2 fechaduras foram remontadas com formas sem nenhuma face escondida. Além disso, a partir dos desenhos de projeto, <b>16 portas novas</b> entram no mesmo nível das armas.",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0",
+    "sorakaze_boss": "4.4.0",
+    "sorakaze_deco": "4.4.0",
+    "sorakaze_fallout": "4.4.0",
+    "sorakaze_guns": "4.4.0",
+    "sorakaze_phone": "4.4.0",
+    "sorakaze_planarcadia": "4.4.0",
+    "sorakaze_power": "4.4.0",
+    "sorakaze_rail": "4.4.0",
+    "sorakaze_sapporo": "4.4.0",
+    "sorakaze_sky": "4.4.0",
+    "sorakaze_survival": "4.4.0",
+    "sorakaze_vehicles": "4.4.0"
+   },
+   "highlights": [
+    "<b>Aeródromo de Cinzas</b>. Ao norte do Anel de Filtragem, um círculo de raio 80 com centro em (0, −480). A névoa vai de 18 a 120 blocos e a cor é RGB 50,48,46. O céu é o mesmo dos outros distritos",
+    "<b>Pista de Táxi Norte</b>. De z −128 (o portão norte) até −480 segue um <b>Tabuleiro de Pista</b> de 11 de largura, com a linha central traçada e 23 luminárias em x=+5. Liga-se à rua do portão (y 64) por uma rampa de dois degraus",
+    "<b>Hangar Um</b>. Um prédio de 36 × 12 × 24. Dentro dele há gancho de hangar, bancada de montagem, bomba de abastecimento e caixas (o conjunto fica completo no pack que inclui o Alpha Vehicles), e no telhado uma biruta. Sob o telhado você não sofre a cegueira do pó",
+    "<b>Bunker de Avgas</b>. 32.000 mB; num mundo novo ele começa com <b>8.000 mB</b> dentro. As bombas de abastecimento a até 24 blocos puxam do tanque mais próximo. Na prova de inicialização foi medido que cada galão vazio leva de 8.000 → 7.000 mB e que, depois de reiniciar, continua a partir de 7.000",
+    "<b>Pouso suave</b>. Se o pardal tocar o Tabuleiro de Pista a <b>menos de 7,0 m/s (0,35 bloco/tick)</b>, o dano é 0. Acima disso, 8 no medidor de dano. As regras de queda e de trem de pouso continuam agindo antes, como até agora",
+    "<b>Sinalizador de Aproximação</b> (4 usos). Usado enquanto se pilota o pardal, por 8 segundos você não recebe nenhuma cegueira nova. A desaceleração da nevasca continua",
+    "<b>Giz de Taxiamento</b> (16 usos). Permite traçar um quadro de estacionamento de 5 × 11, e só sobre o Tabuleiro de Pista",
+    "Os veículos terrestres andam a ×0,9 da velocidade sobre o Tabuleiro de Pista. A biruta vira conforme o vento e range",
+    "Com <b>/fallout field</b> se chega ao Aeródromo de Cinzas. O {@code /fallout assert} soma os 2 pontos do norte e passa a olhar 13 pontos",
+    "Duas conquistas: <b>Pouse o pardal</b> (tocar o Tabuleiro de Pista) e <b>Hangar Um</b> (abrir a porta)",
+    "<b>A cintilação das portas — a quarta causa foi medida.</b> O 26.2 desenha com Z invertido, mas a GPU deste Mac (GL 4.1 Metal) não tem GL_ARB_clip_control, e a resolução de profundidade cai com o quadrado da distância. O intervalo que dá para distinguir é de 0,12 px a 64 blocos e de 1,9 px a 256 blocos. O “afastar 0,002 px” da V4.3.3.1 ficava abaixo disso já entre 12 e 16 blocos",
+    "<b>As 12 portas e as 2 fechaduras foram remontadas.</b> As faces escondidas e as faces sobrepostas nas placas foram removidas (CSG), o desenho passou a não desenhar as faces voltadas para trás, e a inspeção de profundidade é aplicada em todas as poses",
+    "<b>A 64 blocos de distância, só as partes móveis das portas sumiam.</b> O batente sai junto com o chunk até o limite da distância de renderização, mas a folha, a maçaneta e o ferrolho eram cortados nos 64 blocos padrão. Agora são desenhados pela mesma regra do batente",
+    "<b>17 portas novas.</b> Uma para cada um dos 16 desenhos de projeto, mais o portão de hangar do Hangar Um. Porta de chalé, Porta estanque com volante, Portão de enrolar, Portas de elevador, Escotilha íris, Escotilha xadrez, Escotilha acorrentada, Porta de cofre com segredo, Porta com postigo, Armário de cofres, Porta com tranca, Porta com aldrava, Porta de estábulo, Porta envidraçada, Porta de vidro de correr, Portão de estacas, Portão de hangar",
+    "<b>Feitas no mesmo padrão das armas.</b> Os números medidos na implementação de referência (por fuzil, 720 a 958 cubos, 71 a 87 ossos, 19 a 24 clipes) foram transpostos para as portas, e o portão mede o nível de detalhe, o número de peças e o número de animações. Nenhuma peça é desenhada em textura — o nó da dobradiça, a tranca, o elo da corrente, o disco do segredo e até cada lâmina são cubos separados",
+    "<b>21 animações em cada porta.</b> Abrir, fechar, redstone, destrancar com chave, trancada e não abre, senha errada, batida da aldrava, espiar, ser escavada, sopro de explosão, vento, alguém esbarrando, entre outras. Todas se movem pelo sinal que o servidor envia e, mesmo se a operação for invertida no meio, voltam suavemente. Cada animação tem seu próprio som",
+    "<b>A cintilação é barrada já na etapa de fabricação.</b> O portão confirma que, em todas as poses (inclusive giro ao contrário e operações em sequência), não existe um único par de faces mais próximo do que a resolução de profundidade medida neste Mac. As faces escondidas são removidas e as faces voltadas para trás não são desenhadas",
+    "<b>Passar, e não interpenetrar.</b> Pela própria caixa de colisão foi verificado que uma porta aberta deixa passar quem está de pé, uma escotilha aberta deixa a pessoa cair e uma porta fechada não deixa passar nem rastejando (nas 4 direções). Foram encontrados 204 pontos em que as peças se interpenetravam, e todos foram corrigidos",
+    "<b>Os números finais das 17 portas.</b> No total, 265 ossos e 357 animações (21 por porta). O tamanho vai de 1×1 a 4×4 e o detalhe, de 14 a 24 texels por bloco. As 3 escotilhas de chão (acorrentada, xadrez, íris) são de 1×1 e 2×2, e ao abrir deixam a pessoa cair",
+    "<b>O portão confirmou que os 21 gatilhos têm 21 animações.</b> Se duas animações da mesma porta são ou não “a mesma animação, diferente só no nome e no som” é medido tanto pela separação dentro do mundo (2,0 texels) quanto pelo <b>que se vê na tela</b> (1,0 px de movimento, 2,0 px² de mudança). Em 5 portas, 96 pares eram a mesma animação — 35 pares na escotilha acorrentada, 30 na porta de vidro de correr, 17 no portão de enrolar, 9 no portão de hangar e 5 no portão de estacas. Todos foram reescritos como animações separadas",
+    "<b>Exemplos do que foi corrigido.</b> Na escotilha acorrentada, 13 gatilhos balançavam o cadeado do mesmo jeito (5 deles, dentro de uma mesma porta, com descrição inteiramente idêntica). Na porta de vidro de correr, 6 gatilhos levantavam o trinco no mesmo ângulo e no mesmo instante. No portão de enrolar, 6 giravam o tambor no mesmo ângulo. Cada um foi corrigido para um balanço próprio e um instante próprio, conforme o tamanho do que aconteceu",
+    "<b>O “se move, mas não se vê” também foi corrigido.</b> Como a tranca fica escondida na sombra do rasgo, mover 1,05 texel muda só 0,06 px na tela. A diferença foi refeita nas peças visíveis (tambor, lona, corrente, trinco)"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Mudança de comportamento:</b> a isenção da V4.3.0, que deveria impedir o acúmulo da doença sobre o Ramal de Cinzas, não chegava a quem estava em pé sobre ele (a verificação só devolvia o Corte do Poço). Como foi corrigida, sobre o Ramal de Cinzas a doença não se acumula",
+    "O poço vertical do Bunker de Avgas, na superfície deste lugar (y 58 a 60), aparece acima do chão como uma coluna de 4 × 4"
+   ],
+   "known_limitations": [
+    "<b>Não vi na tela nenhuma das portas novas.</b> Forma, animações e sons (23 sons por porta) foram todos confirmados por renderizações feitas a partir das tabelas geradas e por números; dentro do jogo, nada foi verificado",
+    "<b>Não vi nada disso na tela.</b> A pista, a névoa, a biruta, o sinalizador e a aparência das portas não foram verificados porque esta máquina de desenvolvimento não tem cliente (registro R-163 e outros)"
+   ]
   }
  ],
  "roadmap": {

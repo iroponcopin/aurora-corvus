@@ -1,10 +1,66 @@
 {
  "lang": "tr",
- "updated": "2026-09-10",
+ "updated": "2026-09-12",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-09-10 tarihinde güncellendi",
+ "updated_label": "2026-09-12 tarihinde güncellendi",
  "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
  "groups": [
+  {
+   "label": "V4.4",
+   "summary": "Kuzeye — Kül Havaalanı ve Birinci Hangar. Ve kapılar silahlarla aynı ölçütle yeniden yapıldı",
+   "releases": [
+    {
+     "version": "V4.4.0",
+     "date": "2026-09-12",
+     "type": "release",
+     "title": "Kuzeye — Kül Havaalanı ve Birinci Hangar. Ve kapılar silahlarla aynı ölçütle yeniden yapıldı",
+     "summary": "Filtre Halkası'nın kuzey kapısından, Ashen Sparrow'un inebileceği bir <b>pist</b> uzanıyor. Kuzey Taksi Yolu'nun ucunda Kül Havaalanı, Birinci Hangar ve Avgas Deposu var. Bununla birlikte kapılar da yeniden yapıldı. Şimdiye kadarki titreme önlemi (yüzeyi 0,002 px kaldırmak) bu Mac'in çiziminde <b>12–16 blok ötede yeniden yer değiştiriyor</b>; bunu ölçerek doğruladım ve 12 kapı ile 2 kilidin biçimini gizli yüzey kalmayacak şekilde yeniden kurdum. Ayrıca tasarım çizimlerinden <b>16 yeni kapı</b>, silahlarla aynı düzeyde eklendi.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "<b>Kül Havaalanı (Ashen Airfield)</b>. Filtre Halkası'nın kuzeyinde, merkezi (0, −480) olan 80 yarıçaplı bir daire. Sis 18–120 blok, rengi RGB 50,48,46. Gökyüzü diğer bölgelerle aynı",
+        "<b>Kuzey Taksi Yolu</b>. z −128'den (kuzey kapısı) −480'e kadar 11 genişliğinde bir <b>pist döşemesi</b> uzanıyor; orta çizgisi çekili ve x=+5'te 23 lamba var. Kapının caddesine (y 64) iki kademeli bir rampayla bağlanıyor",
+        "<b>Birinci Hangar</b>. 36 × 12 × 24'lük bir bina. İçinde kanca, montaj sehpası, yakıt pompası ve sandıklar (Alpha Vehicles'ın bulunduğu pack ile hepsi bir arada gelir), çatıda rüzgâr tulumu. Çatının altında toz körlüğüne yakalanmıyorsunuz",
+        "<b>Avgas Deposu</b>. 32.000 mB alır; yeni dünyalarda içinde <b>8.000 mB</b> varken başlar. 24 blok içindeki yakıt pompaları en yakın depodan çeker. Açılış kanıtında boş bidon başına 8.000 → 7.000 mB düştüğünü, yeniden başlatıldıktan sonra da 7.000'den devam ettiğini ölçtüm",
+        "<b>Yumuşak iniş</b>. Ashen Sparrow pist döşemesine <b>7,0 m/s'nin (0,35 blok/tick) altında</b> değerse hasar 0. Bunun üzerinde hasar sayacına 8. Düşme ve iniş takımı kuralları eskisi gibi önce işliyor",
+        "<b>Yaklaşma Fişeği</b> (4 kullanım). Ashen Sparrow'u kullanırken atarsanız 8 saniye boyunca yeni toz körlüğü almıyorsunuz. Tipinin yavaşlatması sürüyor",
+        "<b>Taksi Tebeşiri</b> (16 kullanım). Yalnızca pist döşemesinin üstüne 5 × 11'lik bir park çerçevesi çizebiliyorsunuz",
+        "Kara araçları pist döşemesinin üstünde ×0,9 hızla gidiyor. Rüzgâr tulumu rüzgâra göre yön değiştiriyor ve ses çıkarıyor",
+        "<b>/fallout field</b> ile Kül Havaalanı'na gidiliyor. {@code /fallout assert} kuzeydeki 2 noktayı da ekleyerek 13 noktaya bakıyor",
+        "İki ilerleme: <b>Sparrow'u İndir</b> (pist döşemesine değmek), <b>Birinci Hangar</b> (kapıyı açmak)",
+        "<b>Kapı titremesi — dördüncü nedeni ölçtüm.</b> 26.2 ters Z ile çiziyor, ama bu Mac'in GPU'sunda (GL 4.1 Metal) GL_ARB_clip_control yok ve derinlik çözünürlüğü mesafenin karesiyle düşüyor. Ayırt edilebilen aralık 64 blokta 0,12 px, 256 blokta 1,9 px. V4.3.3.1'in «0,002 px kaldırma»sı bunun altına 12–16 blokta düşüyordu",
+        "<b>12 kapı ve 2 kilit yeniden kuruldu.</b> Kanatta gizli kalan ve üst üste binen yüzeyler kaldırıldı (CSG), arka yüzleri çizmeyen bir çizime geçildi ve bütün duruşlarda derinlik denetimi uygulanıyor",
+        "<b>64 blok ötede kapının yalnızca hareketli parçaları kayboluyordu.</b> Kasa, yığınla birlikte çizim mesafesinin sonuna kadar görünürken kanat, kol ve sürgüler varsayılan 64 blokta kesiliyordu. Artık kasayla aynı kurala göre çiziliyorlar",
+        "<b>17 yeni kapı.</b> 16 tasarım çiziminin her birinden bir tane, üstüne Birinci Hangar'ın hangar kapısı. Kulübe Kapısı, Çarklı Bölme Kapısı, Rulo Kepenk, Asansör Kapıları, İris Kapağı, Damalı Kapak, Zincirli Kapak, Kadranlı Kasa Kapısı, Mazgallı Kapı, Kiralık Kasa Rafı, Sürgülü Kapı, Tokmaklı Kapı, Ahır Kapısı, Camlı Kapı, Sürme Cam Kapı, Kazıklı Çit Kapısı, Hangar Kapısı",
+        "<b>Silahlarla aynı ölçütle yapıldı.</b> Referans uygulamada ölçülen sayılar (tüfek başına 720–958 kutu, 71–87 kemik, 19–24 klip) kapılara taşındı; incelik, parça sayısı ve hareket sayısı denetimle ölçülüyor. Resimle çizilmiş tek bir parça yok — menteşe boğumu, sürgü kolu, zincir halkası, kadran ve tek bir bıçak yaprağı bile ayrı birer kutu",
+        "<b>Kapı başına 21 hareket.</b> Açılma, kapanma, kızıltaş, anahtarla açma, kilitli olduğu için açılmama, yanlış şifre, kapı çalma, gözetleme, kazılma, patlama dalgası, rüzgâr, birinin çarpması ve diğerleri. Hepsi sunucunun gönderdiği işaretle oynuyor ve ortasında ters yönde işlem yapsanız bile yumuşakça geri dönüyor. Her harekete kendine özel bir ses eşlik ediyor",
+        "<b>Titreme daha üretim aşamasında durduruluyor.</b> Bütün duruşlarda (ters oynatma ve art arda işlemler dahil), bu Mac'te ölçülen derinlik çözünürlüğünden daha yakın tek bir yüzey çifti kalmadığı denetimle doğrulanıyor. Gizli yüzeyler kaldırılıyor, arka yüzler çizilmiyor",
+        "<b>Geçilebilmesi ve parçaların birbirine girmemesi.</b> Açık kapıdan ayakta bir kişinin geçebildiği, açık kapaktan aşağı düşülebildiği ve kapalı kapıdan sürünerek bile geçilemediği, çarpışma kutularının kendisiyle doğrulanıyor (4 yön). Parçaların birbirine girdiği 204 yer bulundu ve hepsi düzeltildi",
+        "<b>17 kapının son sayıları.</b> Toplamda 265 kemik ve 357 hareket (kapı başına 21). Boyutlar 1×1'den 4×4'e, incelik blok başına 14–24 texel. Zemindeki üç kapak (zincirli, damalı, iris) 1×1 ve 2×2; açıldığında içinden aşağı düşülüyor",
+        "<b>21 tetikleyicinin 21 ayrı harekete karşılık geldiği denetimle doğrulandı.</b> Aynı kapının iki hareketinin «yalnızca adı ve sesi farklı, aynı hareket» olup olmadığı, hem dünyadaki ayrım (2,0 texel) hem de <b>ekranda görünen fark</b> (1,0 px hareket, 2,0 px² değişim) üzerinden ölçülüyor. Beş kapıda 96 çift aynı hareketti — Zincirli Kapak 35 çift, Sürme Cam Kapı 30 çift, Rulo Kepenk 17 çift, Hangar Kapısı 9 çift, Kazıklı Çit Kapısı 5 çift. Hepsi ayrı ayrı hareketler olarak yeniden yazıldı",
+        "<b>Düzeltmelerden örnekler.</b> Zincirli Kapak'ta 13 tetikleyici asma kilidi aynı biçimde sallıyordu (aynı kapıdaki beşi birebir aynı tanımdı). Sürme Cam Kapı'da 6 tetikleyici kremon kolunu aynı açıyla, aynı anda yukarı kaldırıyordu. Rulo Kepenk'te 6 tetikleyici gövdeyi aynı açıyla çeviriyordu. Her biri, olayın büyüklüğüne göre farklı bir salınıma ve farklı bir ana göre yeniden yazıldı",
+        "<b>«Hareket ediyor ama görünmüyor» durumu da düzeltildi.</b> Sürgü kolu oluğun gölgesinde kaldığı için 1,05 texel hareket etse bile ekranda yalnızca 0,06 px değişiyor. Fark artık görünen parçalarla (gövde, perde, zincir, mandal) veriliyor"
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "<b>Davranış değişikliği:</b> V4.3.0'daki Kül Kolu'nun üstünde hastalığın birikmemesini sağlayan muafiyet, orada duran oyunculara ulaşmıyordu (denetim yalnızca Çukur Yarması'nı döndürüyordu). Düzeltildi; artık Kül Kolu'nun üstünde hastalık birikmiyor",
+        "Avgas Deposu'nun düşey kuyusu, buradaki zemin yüksekliğinde (y 58–60) yerin üstüne 4 × 4'lük bir sütun olarak çıkıyor"
+       ]
+      },
+      {
+       "title": "Bu sürümde henüz eklenmemiş veya doğrulanmamış olanlar",
+       "items": [
+        "<b>Yeni kapıların tek birini bile ekranda görmedim.</b> Biçim, hareket ve ses (kapı başına 23 ses) yalnızca üretilen tablolardan yapılan çizimler ve sayılarla doğrulandı; oyunun içinde doğrulanmadı",
+        "<b>Ekranda hiçbirini görmedim.</b> Pist, sis, rüzgâr tulumu, fişek ve kapıların nasıl göründüğü, bu geliştirme makinesinde istemci olmadığı için doğrulanmadı (kayıt defteri R-163 ve diğerleri)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.3",
    "summary": "Atışların özü yoktu — 80 Hz'in altında yalnızca %0,0–2,6. Ve Cherry başlıyor",

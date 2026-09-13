@@ -1,10 +1,66 @@
 {
  "lang": "it",
- "updated": "2026-09-10",
+ "updated": "2026-09-12",
  "title": "Changelog",
- "updated_label": "Aggiornato il 2026-09-10",
+ "updated_label": "Aggiornato il 2026-09-12",
  "note": "I valori numerici mostrati (danno, velocità, ecc.) sono quelli predefiniti al momento dell'introduzione. In base alle modifiche apportate alla configurazione del server, i valori che riscontri effettivamente in gioco potrebbero differire.",
  "groups": [
+  {
+   "label": "V4.4",
+   "summary": "Verso nord — l'Ashen Airfield e l'Hangar One. E le porte rifatte con lo stesso standard delle armi",
+   "releases": [
+    {
+     "version": "V4.4.0",
+     "date": "2026-09-12",
+     "type": "release",
+     "title": "Verso nord — l'Ashen Airfield e l'Hangar One. E le porte rifatte con lo stesso standard delle armi",
+     "summary": "Dalla porta nord del Filter Ring si allunga una <b>pista</b> su cui l'Ashen Sparrow può atterrare. Oltre la North Taxi ci sono l'Ashen Airfield, l'Hangar One e l'Avgas Bunker. Insieme a questo sono state rifatte le porte. Il rimedio finora usato contro lo sfarfallio (sollevare le facce di 0,002 px) è stato misurato, e nel disegno di questo Mac <b>le facce tornano a scambiarsi di posto a 12–16 blocchi di distanza</b>; perciò la forma di 12 porte e 2 serrature è stata ricomposta senza facce nascoste. In più, dai disegni di progetto sono state aggiunte <b>16 porte nuove</b> allo stesso livello delle armi.",
+     "sections": [
+      {
+       "title": "Novità",
+       "items": [
+        "<b>Ashen Airfield</b>. A nord del Filter Ring, un cerchio di raggio 80 centrato su (0, −480). La nebbia va da 18 a 120 blocchi, il colore è RGB 50,48,46. Il cielo è lo stesso degli altri distretti",
+        "<b>North Taxi</b>. Da z −128 (la porta nord) fino a −480 prosegue un <b>Runway Deck</b> largo 11, con la mezzeria tracciata e 23 luci a x=+5. Si collega alla strada della porta (y 64) con una rampa a 2 gradini",
+        "<b>Hangar One</b>. Un edificio di 36 × 12 × 24. Dentro ci sono l'Hangar Hook, il banco di montaggio, la pompa di rifornimento e le casse (si trovano al completo nel pack che contiene Alpha Vehicles), sul tetto un Windsock. Sotto il tetto non si viene accecati dalla polvere",
+        "<b>Avgas Bunker</b>. 32.000 mB; in un mondo nuovo si parte con <b>8.000 mB</b> dentro. Le pompe di rifornimento entro 24 blocchi attingono dal serbatoio più vicino. Con la prova di avvio è stato misurato che per ogni tanica vuota si va da 8.000 a 7.000 mB, e che dopo un riavvio si riprende da 7.000",
+        "<b>Atterraggio morbido</b>. Se l'Ashen Sparrow tocca il Runway Deck a <b>meno di 7,0 m/s (0,35 blocchi/tick)</b> il danno è 0. Oltre, 8 sul contatore dei danni. Le regole dello schianto e del carrello continuano ad applicarsi prima, come finora",
+        "<b>Approach Flare</b> (4 usi). Usata mentre si pilota l'Ashen Sparrow, per 8 secondi non si riceve più alcun accecamento nuovo. Il rallentamento della tormenta rimane",
+        "<b>Taxi Chalk</b> (16 usi). Permette di tracciare una piazzola di sosta 5 × 11, solo sopra il Runway Deck",
+        "I veicoli di terra vanno a velocità ×0,9 sopra il Runway Deck. Il Windsock si gira verso il vento e suona",
+        "<b>/fallout field</b> porta all'Ashen Airfield. {@code /fallout assert} aggiunge i 2 punti del nord e ne controlla 13",
+        "Due progressi: <b>Land the Sparrow</b> (toccare il Runway Deck) e <b>Hangar One</b> (aprire la porta)",
+        "<b>Sfarfallio delle porte — misurata la quarta causa.</b> La 26.2 disegna con la Z invertita, ma la GPU di questo Mac (GL 4.1 Metal) non ha GL_ARB_clip_control e la risoluzione della profondità cala con il quadrato della distanza. L'intervallo distinguibile è di 0,12 px a 64 blocchi e di 1,9 px a 256 blocchi. Il «sollevare di 0,002 px» della V4.3.3.1 scendeva sotto questo valore già a 12–16 blocchi",
+        "<b>Ricomposte 12 porte e 2 serrature.</b> Sono state tolte le facce nascoste e le facce sovrapposte nei pannelli (CSG), il disegno è passato a non disegnare le facce rivolte all'indietro, e la verifica della profondità viene applicata in tutte le posizioni",
+        "<b>A 64 blocchi di distanza spariva solo la parte mobile delle porte.</b> Il telaio usciva insieme al chunk fino a tutta la distanza di rendering, mentre il battente, la maniglia e il chiavistello si tagliavano ai 64 blocchi predefiniti. Ora vengono disegnati con la stessa regola del telaio",
+        "<b>17 porte nuove.</b> Una per ciascuno dei 16 disegni di progetto, più la Hangar Door dell'Hangar One. Cottage Door, Wheel Bulkhead Door, Roller Shutter, Lift Doors, Iris Hatch, Diamond Hatch, Chained Hatch, Dial Safe Door, Slot Door, Deposit Lockers, Barred Door, Knocker Door, Stable Door, Glazed Door, Sliding Glass Door, Picket Gate, Hangar Door",
+        "<b>Costruite con lo stesso standard delle armi.</b> I numeri misurati sull'implementazione di riferimento (per un fucile: 720–958 cubi, 71–87 ossa, 19–24 clip) sono stati riportati sulle porte, e la finezza, il numero delle parti e il numero dei movimenti sono misurati da un controllo. Non c'è nessuna parte disegnata a pittura — il nodo della cerniera, il paletto, l'anello della catena, il disco della combinazione, fino a ogni singola lama sono cubi separati",
+        "<b>21 movimenti per ogni porta.</b> Aprire, chiudere, redstone, aprire con la chiave, restare chiusa perché serrata, codice sbagliato, bussare, sbirciare, essere scavata, onda d'urto, vento, qualcuno che ci sbatte contro, e altri. Tutti si muovono su un segnale inviato dal server e, se a metà si fa l'operazione contraria, tornano indietro in modo fluido. A ogni movimento è associato un suono dedicato",
+        "<b>Lo sfarfallio viene fermato già in fase di costruzione.</b> Un controllo verifica che in tutte le posizioni (compresi il movimento all'indietro e le operazioni consecutive) non ci sia nemmeno una coppia di facce più vicina della risoluzione della profondità misurata su questo Mac. Le facce nascoste vengono tolte e le facce rivolte all'indietro non vengono disegnate",
+        "<b>Si deve poter passare, e le parti non devono compenetrarsi.</b> Che da una porta aperta si passi in piedi, che da una botola aperta si possa cadere e che da una porta chiusa non si esca nemmeno strisciando è verificato sulle collisioni stesse (nelle 4 direzioni). I punti in cui le parti si compenetravano sono risultati 204, e sono stati corretti tutti",
+        "<b>I numeri finali delle 17 porte.</b> In totale 265 ossa e 357 movimenti (21 per porta). Le dimensioni vanno da 1×1 a 4×4, la finezza da 14 a 24 texel per blocco. Le 3 botole da pavimento (Chained Hatch, Diamond Hatch, Iris Hatch) sono 1×1 e 2×2, e da aperte ci si può far cadere",
+        "<b>Un controllo ha verificato che i 21 inneschi abbiano 21 movimenti.</b> Si misura se due movimenti della stessa porta non siano diventati «lo stesso movimento con solo il nome e il suono diversi», sia con la distanza nel mondo (2,0 texel) sia con <b>l'aspetto sullo schermo</b> (1,0 px di movimento, 2,0 px² di variazione). Su 5 porte 96 coppie erano lo stesso movimento — Chained Hatch 35 coppie, Sliding Glass Door 30, Roller Shutter 17, Hangar Door 9, Picket Gate 5. Sono state tutte riscritte come movimenti separati",
+        "<b>Esempi di ciò che è stato corretto.</b> Nella Chained Hatch 13 inneschi facevano oscillare il lucchetto nello stesso modo (all'interno di una stessa porta, 5 avevano una descrizione del tutto identica). Nella Sliding Glass Door 6 inneschi facevano scattare la mezzaluna con lo stesso angolo e nello stesso istante. Nel Roller Shutter 6 facevano girare il tamburo dello stesso angolo. Ognuno è stato corretto con un'oscillazione diversa e un istante diverso, secondo la grandezza dell'evento accaduto",
+        "<b>Corretto anche il «si muove ma non si vede».</b> Il paletto resta nascosto nell'ombra della scanalatura, quindi anche muovendolo di 1,05 texel sullo schermo cambia solo di 0,06 px. La differenza è stata rifatta sulle parti visibili (tamburo, telo, catena, gancio di chiusura)"
+       ]
+      },
+      {
+       "title": "Avvertenze",
+       "items": [
+        "<b>Cambio di comportamento:</b> l'esenzione della V4.3.0, per cui sopra il Cinder Spur la malattia non doveva accumularsi, non arrivava a chi ci stava sopra in piedi (il controllo restituiva solo la trincea della miniera). È stato corretto, quindi sopra il Cinder Spur la malattia non si accumula",
+        "Il pozzo verticale dell'Avgas Bunker, con la superficie del terreno di questo luogo (y 58–60), esce sopra il suolo come una colonna 4 × 4"
+       ]
+      },
+      {
+       "title": "Cosa non era ancora implementato o verificato a questo punto",
+       "items": [
+        "<b>Nessuna delle porte nuove è stata vista sullo schermo.</b> Forma, movimenti e suoni (23 suoni per porta) sono stati verificati tutti con il disegno e i numeri ricavati dalle tabelle generate, e dentro il gioco non sono confermati",
+        "<b>Sullo schermo non se n'è vista nemmeno una.</b> L'aspetto della pista, della nebbia, del Windsock, delle flare e delle porte non è confermato, perché su questa macchina di sviluppo non c'è un client (registro R-163 e altri)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V4.3",
    "summary": "Gli spari non avevano un nucleo — solo lo 0,0–2,6 % sotto 80 Hz. E Cherry comincia",

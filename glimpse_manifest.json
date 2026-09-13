@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "1.9.0",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.9.0.jar",
-    "file_name": "corvus-1.9.0.jar",
-    "file_size": 10747248,
-    "sha256": "13f77fb5ebcad9d0bf2fc6e607730bc84b26f48d3183656568bc60c1df7ecd88",
-    "notes": "Corvus now looks like macOS System Settings: a sidebar with a search field and coloured icons, and every setting laid out as rounded groups of rows. General opens with your computer account's own name and picture — on macOS read from Directory Services (verified on the developer's Mac); on Windows from the account's FullName and the AccountPicture registry entry, and on Linux from the passwd entry and ~/.face or AccountsService — those two are written to the documented locations but have NOT been run on a real Windows or Linux desktop yet, and fall back to your login name and initials if nothing can be read. Update holds the pack, the app, Aureum, and the auto-update and backup switches; Play moved to General. Nothing about how updates are checked, verified or applied changed. Verified by photographing every pane from the built jar on macOS in English, Japanese and Arabic.",
+    "latest": "2.0.0",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0.jar",
+    "file_name": "corvus-2.0.0.jar",
+    "file_size": 10765138,
+    "sha256": "4d6e3398d5499a612d2233518252c83734f01439fcce207e89f978445c45849c",
+    "notes": "The window itself is now glass. On macOS Corvus puts AppKit's own blurred material behind a transparent window, so your desktop shows through the app the way it does through System Settings — not a picture of blur, the real thing, updating as what is behind it moves. A new Glass section on General holds two controls: Liquid Glass, which turns it on and off, and Glass tint, which sets how dark the glass is, from Clear to Dark. Turning Liquid Glass off gives the solid dark window 1.9.0 had, and that is also what Windows and Linux get: the material is a macOS API, and no attempt is made to fake it elsewhere.\n\nThe rows and cards inside the window are glass too, and much clearer than they were. Their fill was measured off a reference the owner supplied rather than chosen by eye: each card now sits 0.020 white over what is behind it, against the reference's own 0.015 to 0.054, and the shadow that used to hang under every card is gone — three of the reference's four cards have none, and a shadow is what made them read as slabs floating above the window rather than as part of it. The card border is unchanged at 0.15; the reference measures 0.149, so it was already right.\n\nTwo things that were painted on top of the glass have been removed. Three wide sky-blue fields were being drawn over the real material, which is what made the window read as droplets rather than as a pane; they now appear only when Liquid Glass is off, where they are the opaque window's atmosphere and belong. The wide blue halo behind your account picture is gone as well.\n\nVerified by photographing the running window over a flat neutral desktop, which is the only way to tell the app's own painting from the desktop showing through: with the glass on, the window's empty field is perfectly flat and the cards sit inside the reference's own range; with it off, the atmosphere returns as designed. The macOS, Windows and Linux installers for this version were built by CI on each of those systems, but only the macOS build has been run.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.9.0-macos.dmg",
-        "file_name": "corvus-1.9.0-macos.dmg",
-        "file_size": 68140871,
-        "sha256": "47655514cb8735e46e56866f4d86cc492be6bdae28dfc0a4e902ebcc67d9ad58"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0-macos.dmg",
+        "file_name": "corvus-2.0.0-macos.dmg",
+        "file_size": 59168705,
+        "sha256": "a4bf2be7b9bf6d1edcc002d7a3ecce391b2d28a3795afc06644de7c7ec9e97c9"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.9.0-windows.msi",
-        "file_name": "corvus-1.9.0-windows.msi",
-        "file_size": 65810487,
-        "sha256": "38b66f5bbde22ffe46cdc1e8921dfbfc6bd0e63c9f512b81b251c75729e6b7b2"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0-windows.msi",
+        "file_name": "corvus-2.0.0-windows.msi",
+        "file_size": 58176348,
+        "sha256": "f9c3b5aa27aae620589d0f6b9ea53edcb90cac5473f11dcf03254df86f693e57"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-1.9.0-linux.deb",
-        "file_name": "corvus-1.9.0-linux.deb",
-        "file_size": 46833292,
-        "sha256": "0a7b8e663405838491a2d159b74969c9257b7392f442cfcc2559ea4079543740"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.0.0-linux.deb",
+        "file_name": "corvus-2.0.0-linux.deb",
+        "file_size": 47588114,
+        "sha256": "ef457fa47abd71dc59c47e903e8854af0832e5381b33d7a72dc5664cbada566d"
       }
     }
   },
