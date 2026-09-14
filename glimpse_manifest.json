@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "2.1.0",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0.jar",
-    "file_name": "corvus-2.1.0.jar",
-    "file_size": 10816682,
-    "sha256": "82219609ff0b5dfaf65d2e23d4b6b902c49706d250d8d992a24f7c7bd1c0f54e",
-    "notes": "Corvus can now install Cherry, the separate mod, and keep it up to date. Cherry has its own row on Update. The first install only ever happens when you press Download: Corvus fetches the Cherry package, checks its size and SHA-256, unpacks it into a temporary folder, checks every jar inside against the manifest — its size, SHA-256, mod id and version — and only then puts Cherry and the GeckoLib it needs into your mods folder, all together or not at all; if anything fails, the folder is put back exactly as it was. After that — and also for a Cherry you put in your mods folder yourself — new Cherry versions install automatically, even when Install updates automatically is off; that switch still governs the pack, the app and Aureum. GeckoLib is never downgraded: a copy that is already the same version or newer is kept. A package that carries a jar the manifest does not list, or another product's jar such as Aureum, is refused whole.\n\nInstalls into the mods folder now take turns: Cherry's and Aureum's installers share one lock, the Update pane never runs a pack update and a Cherry install at the same time, and quitting to apply a launcher update waits up to a minute for a running install to finish. The manifest's new cherry section is read leniently: if anything in it is wrong, Cherry is shown as not published and a line goes to the Log, while the pack and the app still update as before.\n\nVerified by installing the real Cherry V1.0.0 package, from the manifest the website builds from that package, through this version's own code: both jars arrived byte for byte with nothing left behind, and the same manifest with one wrong digit in the package's SHA-256 was refused before anything was written. The Update pane was photographed from the built jar in English and Japanese with an installed Cherry. Not yet seen: the Download and Update buttons against the live website, and an automatic Cherry update actually running. The macOS, Windows and Linux installers for this version are built by CI on each of those systems; none of them has been run yet.",
+    "latest": "2.2.0",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.2.0.jar",
+    "file_name": "corvus-2.2.0.jar",
+    "file_size": 10827415,
+    "sha256": "9de96695675bceec81be92679e2db1a443a40958f28e5d742c6ad607ea4c6619",
+    "notes": "The changelog can now show OUKA, Cherry, Alpha or Aureum. A row of brand buttons sits above it: choose one to read that brand's history, newest first, and \"Open on the website\" opens the same brand's page. OUKA shows its message for now. Corvus reads the list of brands from the website; if the list is missing or cannot be read, the changelog shows Alpha's history exactly as before and the reason goes to the Log. A brand whose history fails to load shows the failure and a Retry button, and the other brands still work.\n\nVerified: all 587 tests pass, twice, including checks that the list of brands is read strictly and that a broken list falls back to Alpha. This version was photographed reading the website's new files from a local copy, once with each brand chosen first. Not yet seen: switching between brands by clicking in the running app, and the macOS, Windows and Linux installers, which are built by CI on each of those systems and have not been run yet.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0-macos.dmg",
-        "file_name": "corvus-2.1.0-macos.dmg",
-        "file_size": 59214197,
-        "sha256": "288936c8b5bee235ea45a8c6afd92c6c839ad590abd0ca881bfce2f6c2d500f3"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.2.0-macos.dmg",
+        "file_name": "corvus-2.2.0-macos.dmg",
+        "file_size": 59219445,
+        "sha256": "f6e01bfb61309c87f1ba8d12231015a2379204485ef44843acc3bb95bdda995b"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0-windows.msi",
-        "file_name": "corvus-2.1.0-windows.msi",
-        "file_size": 58225500,
-        "sha256": "3f024dc1e7c642f9b3ce08191746065f46749f3cb5cdd2e0515466f0c2cb993c"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.2.0-windows.msi",
+        "file_name": "corvus-2.2.0-windows.msi",
+        "file_size": 58237788,
+        "sha256": "bfafc1991ef07c2feccb63110d0ab10f65d0f8bb2d924ae54290287eacc6ec48"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.1.0-linux.deb",
-        "file_name": "corvus-2.1.0-linux.deb",
-        "file_size": 47702980,
-        "sha256": "0f3c3aea573a73b00b0713bec77c23a372101e0a6ddf8174c3861171c8532b44"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-2.2.0-linux.deb",
+        "file_name": "corvus-2.2.0-linux.deb",
+        "file_size": 47719472,
+        "sha256": "f9f4791ce3dc6db7de11660077c0c433186210b6abbc70e61b9ea1c46e6c6014"
       }
     }
   },
