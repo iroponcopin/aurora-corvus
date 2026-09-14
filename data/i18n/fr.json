@@ -111,7 +111,8 @@
    "features_intro": "Un tour, du point de vue du joueur, des nouveautés de la V2.2.",
    "changelog_updated": "Mis à jour le {date}",
    "changelog_show_more": "Afficher plus",
-   "changelog_show_fewer": "Afficher moins"
+   "changelog_show_fewer": "Afficher moins",
+   "changelog_brand_label": "Marque"
   },
   "page_titles": {
    "home": "",
@@ -126,7 +127,7 @@
    "aureum": "Aureum"
   },
   "page_descriptions": {
-   "changelog": "Historique complet des mises à jour du pack de MOD Alpha (anciennement Glimpse Alpha, et Sorakaze avant cela) : tous les changements et points d'attention, de la version initiale à aujourd'hui.",
+   "changelog": "Historique des mises à jour d'OUKA, Cherry, Alpha et Aureum. Choisissez une marque pour voir les changements de chaque version et les points d'attention, de la plus récente à la plus ancienne.",
    "recipes": "Aide-mémoire des recettes de fabrication pour tous les objets du pack de MOD Alpha, avec recherche et filtrage par catégorie.",
    "guide": "Guide d'installation du pack de MOD Alpha : procédure d'installation côté serveur et réglages à effectuer côté joueur pour rejoindre la partie.",
    "roadmap": "Feuille de route du pack de mods Alpha. Ce qui a déjà été livré, la prochaine mise à jour majeure V3, et ce qui n'a pas encore été construit, présentés séparément.",
@@ -7030,5 +7031,50 @@
   "section_requirements": "Prérequis",
   "cta_secondary": "Détails complets du téléchargement et checksum",
   "closing_line": "Aureum est un mod séparé avec sa propre ligne de version, vérifié par SHA-256, mis à jour indépendamment du pack Alpha."
+ },
+ "changelog_brands": {
+  "ouka": [],
+  "cherry": [
+   {
+    "id": "cherry-v1.0.0",
+    "release": "V1.0.0",
+    "date": "2026-09-13",
+    "title": "The Lunar Genesis Update — de l'aire de lancement jusqu'à la Lune",
+    "summary": "Première version de Cherry : une marque de mods distincte, qui s'installe à côté d'Alpha. Construisez le Launch Pad Complex, pilotez le Cherry Apex-1 jusqu'à la Lune, puis revenez chez vous.",
+    "highlights": [
+     "La Lune : une nouvelle dimension avec des cratères, des gisements de minerai et des Helium-3 Geysers, et sa propre horloge.",
+     "Cherry Apex-1 et le Launch Pad Complex : montez dans la fusée amarrée, maintenez la touche de saut pendant le compte à rebours, et volez de l'Overworld jusqu'à la Lune puis de retour à l'aire de lancement, pilote à bord.",
+     "Règles lunaires : la gravité est d'un sixième, et le vide retire 15% de la santé maximale à travers n'importe quelle armure, sauf la Pressure Suit. À l'intérieur de la sphère d'un Pressure Field Projector, vous êtes en sécurité.",
+     "Overdrive Fusion : dans le Resonance Crucible, cette fusion donne à une arme, un outil ou une pièce d'armure ×3 en dégâts d'attaque, armure, robustesse d'armure ou vitesse de minage.",
+     "Ressources lunaires : l'Ultrasonic Cutter n'extrait les Regolith Core Deposits que lorsqu'il est en résonance, et le Cryo Canister ne capture l'Helium-3 que pendant l'éruption d'un geyser.",
+     "Des Micrometeorites frappent la surface lunaire et y laissent des cratères.",
+     "Deux compétences : Dimensional Cleave (300% de dégâts uniquement le long de sa croix) et Astral Lift, le vol avec un plastron passé par l'Overdrive Fusion.",
+     "Démarrage vérifié aux côtés des 13 mods d'Alpha 4.4.0, sans aucun conflit de mixin."
+    ],
+    "warnings": [
+     "Nécessite Minecraft 26.2, Fabric Loader 0.19.3 ou une version plus récente, Fabric API 0.154.2 ou une version plus récente, GeckoLib 5.5.5 ou une version plus récente, et Java 25."
+    ]
+   }
+  ],
+  "aureum": [
+   {
+    "id": "aureum-v1.0.0",
+    "release": "1.0.0",
+    "date": "2026-08-30",
+    "title": "Première version — des économies de mémoire qui ne touchent pas au rendu des chunks",
+    "summary": "Un mod d'optimisation distinct pour Minecraft 26.2 (Fabric), séparé d'Alpha. Il agit sur la logique du jeu, la mémoire et le tick serveur, ne touche jamais au rendu des chunks, et fonctionne donc à côté de Sodium et du pack Alpha. Pour plus de FPS, installez Sodium.",
+    "highlights": [
+     "Caches d'états de bloc partagés et un détecteur de contention de threads plus léger : 6,3 Mo de tas résident en moins avec 2 209 chunks chargés (deux mesures indépendantes concordent).",
+     "Une durée d'expiration pour le cache des modèles de structure : 17,2 Mo de tas en moins pendant la génération de nouveaux terrains (deux mesures concordent). Les modèles non enregistrés d'un bloc de structure ne sont jamais supprimés.",
+     "Chaque optimisation peut être désactivée individuellement dans config/aureum.json, et un élément désactivé laisse le code vanilla intact.",
+     "/aureum (nécessite des droits) indique ce qui est activé et quelle quantité est partagée."
+    ],
+    "warnings": [
+     "Le temps de tick (MSPT) reste inchangé dans la marge de bruit de mesure ; Aureum ne prétend pas être plus rapide.",
+     "Les deux réglages côté client (une limite de particules et un plafond de distance de rendu des blocs-entités) sont désactivés par défaut, et leur effet n'a pas été mesuré.",
+     "Nécessite Fabric Loader 0.19.3 ou une version plus récente, Fabric API, et Java 25 ou une version plus récente."
+    ]
+   }
+  ]
  }
 }

@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Historial de actualizaciones | Corvus</title>
-<meta name="description" content="Historial completo de actualizaciones del pack de MOD Alpha (antes Glimpse Alpha y, antes de eso, Sorakaze). Un resumen de los cambios y las advertencias desde la primera versión hasta hoy.">
+<meta name="description" content="Historial de actualizaciones de OUKA, Cherry, Alpha y Aureum. Elige una marca para ver qué cambió en cada versión y a qué prestar atención, de la más reciente a la más antigua.">
 <meta property="og:title" content="Historial de actualizaciones | Corvus">
-<meta property="og:description" content="Historial completo de actualizaciones del pack de MOD Alpha (antes Glimpse Alpha y, antes de eso, Sorakaze). Un resumen de los cambios y las advertencias desde la primera versión hasta hoy.">
+<meta property="og:description" content="Historial de actualizaciones de OUKA, Cherry, Alpha y Aureum. Elige una marca para ver qué cambió en cada versión y a qué prestar atención, de la más reciente a la más antigua.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -199,21 +199,51 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Historial de actualizaciones</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Actualizado el 2026-09-13</span></p>
-    <p class="cl__note">Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="Busca por MOD, versión o palabra clave…"
-           aria-label="Busca por MOD, versión o palabra clave…">
-    <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">Armas de fuego</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">Ferrocarril</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">Materiales y decoración</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">Jefes</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">Cielo</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">Supervivencia</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Vehículos</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">Electricidad</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">Backrooms</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">Planarcadia</button>
-    <label>Tipo:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">Novedad</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">Corrección de errores</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">Actualización visual</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="Marca" data-default="alpha" hidden><button class="cl__brandTab" type="button" role="tab" id="clTab-ouka" data-brand="ouka" aria-controls="clBrand-ouka" aria-selected="false" tabindex="-1">OUKA</button><button class="cl__brandTab" type="button" role="tab" id="clTab-cherry" data-brand="cherry" aria-controls="clBrand-cherry" aria-selected="false" tabindex="-1">Cherry</button><button class="cl__brandTab" type="button" role="tab" id="clTab-alpha" data-brand="alpha" aria-controls="clBrand-alpha" aria-selected="true">Alpha</button><button class="cl__brandTab" type="button" role="tab" id="clTab-aureum" data-brand="aureum" aria-controls="clBrand-aureum" aria-selected="false" tabindex="-1">Aureum</button></div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>No hay actualizaciones que coincidan con los criterios.</p>
+  <section class="cl__brand" id="clBrand-ouka" data-brand="ouka">
+    <h2 class="cl__brandName">OUKA</h2>
+    <p class="cl__soon">Muy pronto.</p>
+  </section>
+  <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
+    <h2 class="cl__brandName">Cherry</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Actualizado el 2026-09-13</span></p>
+    <p class="cl__note">Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.</p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="cherry-v1.0">
+      <h2 class="cl__groupTitle">V1.0</h2>
+      <p class="cl__groupSummary">The Lunar Genesis Update — desde la plataforma de lanzamiento hasta la Luna</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-0-0">
+          <h3 class="cl__version">V1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-13</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-0-0" hidden><p class="cl__entryTitle">The Lunar Genesis Update — desde la plataforma de lanzamiento hasta la Luna</p><p class="cl__lede">Primera versión de Cherry: una marca de mods aparte que se instala junto a Alpha. Construye el Launch Pad Complex, vuela en el Cherry Apex-1 hasta la Luna y vuelve a casa.</p><div class="cl__section"><h4 class="cl__sectionTitle">Cambios <span>(8)</span></h4><ul class="cl__list"><li>La Luna: una nueva dimensión con cráteres, yacimientos de mineral y Helium-3 Geysers, y con un reloj propio.</li><li>Cherry Apex-1 y el Launch Pad Complex: sube al cohete acoplado, mantén pulsado el botón de salto durante la cuenta atrás y vuela desde el Overworld hasta la Luna y de vuelta a la plataforma con el piloto a bordo.</li><li>Reglas lunares: la gravedad es de un sexto, y el vacío quita el 15% de la salud máxima a través de cualquier armadura salvo el Pressure Suit. Dentro de la esfera de un Pressure Field Projector estás a salvo.</li><li>Overdrive Fusion: en el Resonance Crucible, un arma, herramienta o pieza de armadura que pasa por la Overdrive Fusion obtiene ×3 de daño de ataque, armadura, dureza de armadura o velocidad de minado.</li><li>Recursos lunares: el Ultrasonic Cutter solo extrae Regolith Core Deposits mientras está en resonancia, y el Cryo Canister solo captura Helium-3 mientras un géiser está en erupción.</li><li>Los Micrometeorites impactan contra la superficie lunar y dejan cráteres.</li><li>Dos habilidades: Dimensional Cleave (300% de daño solo a lo largo de su cruz) y Astral Lift, vuelo con un peto que ha pasado por la Overdrive Fusion.</li><li>Se ha comprobado que arranca junto a los 13 mods de Alpha 4.4.0 sin conflictos de mixin.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Advertencias <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>Requiere Minecraft 26.2, Fabric Loader 0.19.3 o posterior, Fabric API 0.154.2 o posterior, GeckoLib 5.5.5 o posterior y Java 25.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-alpha" data-brand="alpha">
+    <h2 class="cl__brandName">Alpha</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Actualizado el 2026-09-13</span></p>
+    <p class="cl__note">Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.</p>
 
-  <div id="changelogGroups" data-cut="8">
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="Busca por MOD, versión o palabra clave…"
+             aria-label="Busca por MOD, versión o palabra clave…">
+      <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">Armas de fuego</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">Ferrocarril</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">Materiales y decoración</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">Jefes</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">Cielo</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">Supervivencia</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Vehículos</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">Electricidad</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">Backrooms</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">Planarcadia</button>
+      <label>Tipo:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">Novedad</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">Corrección de errores</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">Actualización visual</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>No hay actualizaciones que coincidan con los criterios.</p>
+
+    <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.4">
       <h2 class="cl__groupTitle">V4.4</h2>
       <p class="cl__groupSummary">Hacia el norte — el Aeródromo de Ceniza y el Hangar Uno. Y las puertas rehechas con el mismo listón que las armas</p>
@@ -1035,7 +1065,28 @@
       </div>
       
     </section>
-  </div>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-aureum" data-brand="aureum">
+    <h2 class="cl__brandName">Aureum</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Actualizado el 2026-08-30</span></p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="aureum-v1.0">
+      <h2 class="cl__groupTitle">1.0</h2>
+      <p class="cl__groupSummary">Primera versión — ahorro de memoria sin tocar el renderizado de chunks</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-aureum-v1-0-0">
+          <h3 class="cl__version">1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-30</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-aureum-v1-0-0" hidden><p class="cl__entryTitle">Primera versión — ahorro de memoria sin tocar el renderizado de chunks</p><p class="cl__lede">Un mod de optimización aparte para Minecraft 26.2 (Fabric), separado de Alpha. Actúa sobre la lógica del juego, la memoria y el tick del servidor, nunca toca el renderizado de chunks y, por eso, funciona junto a Sodium y al pack Alpha. Si quieres más FPS, instala Sodium.</p><div class="cl__section"><h4 class="cl__sectionTitle">Cambios <span>(4)</span></h4><ul class="cl__list"><li>Cachés de estados de bloque compartidas y un detector de contención de hilos más ligero: 6,3 MB menos de heap residente con 2.209 chunks cargados (dos mediciones independientes coinciden).</li><li>Un tiempo de caducidad para la caché de plantillas de estructura: 17,2 MB menos de heap mientras se genera terreno nuevo (dos mediciones coinciden). Las plantillas sin guardar de un bloque estructural nunca se descartan.</li><li>Cada optimización se puede desactivar por separado en config/aureum.json, y un elemento desactivado deja intacto el código vanilla.</li><li>/aureum (requiere permisos) muestra qué está activado y cuánto se está compartiendo.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Advertencias <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>El tiempo de tick (MSPT) no cambia dentro del margen de ruido de medición; Aureum no afirma ser más rápido.</li><li>Los dos ajustes del lado del cliente (un límite de partículas y un tope de distancia de renderizado de bloque-entidad) vienen desactivados por defecto, y su efecto no se ha medido.</li><li>Requiere Fabric Loader 0.19.3 o posterior, Fabric API y Java 25 o posterior.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
 </div>
 
 </main>

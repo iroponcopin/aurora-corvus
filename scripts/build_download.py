@@ -26,6 +26,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+# The changelog page's escape-then-readmit rule (<b> and {@code} only): the "what's new" paragraph is a changelog
+# summary, and escaping it plainly put literal "<b>" on every download page from V4.3.3 on (found 2026-09-13).
+from build_changelog import rich  # noqa: E402
 from site_common import (  # noqa: E402
     esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix,
     LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
@@ -399,7 +402,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
 </div>
 
 <h2>{esc(dl.get('whats_new_heading', ''))}</h2>
-<p>{esc(_whats_new_body(lang, bundle, dl))}
+<p>{rich(_whats_new_body(lang, bundle, dl))}
   <a href="../changelog/">{esc(dl.get('changelog_link_text', ''))}</a>
 </p>
 

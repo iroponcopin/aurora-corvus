@@ -1,0 +1,42 @@
+{
+ "lang": "pt-br",
+ "brand": "aureum",
+ "updated": "2026-08-30",
+ "title": "Histórico de atualizações",
+ "updated_label": "Atualizado em 2026-08-30",
+ "note": "",
+ "groups": [
+  {
+   "label": "1.0",
+   "summary": "Primeira versão — economia de memória sem mexer na renderização de chunks",
+   "releases": [
+    {
+     "version": "1.0.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "Primeira versão — economia de memória sem mexer na renderização de chunks",
+     "summary": "Um mod de otimização à parte para Minecraft 26.2 (Fabric), separado do Alpha. Ele atua na lógica do jogo, na memória e no tick do servidor, nunca toca na renderização de chunks e, por isso, roda ao lado do Sodium e do pack Alpha. Se quiser mais FPS, instale o Sodium.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Caches de estados de bloco compartilhados e um detector de contenção de threads mais leve: 6,3 MB a menos de heap residente com 2.209 chunks carregados (duas medições independentes coincidem).",
+        "Um tempo de expiração para o cache de modelos de estrutura: 17,2 MB a menos de heap durante a geração de terreno novo (duas medições coincidem). Modelos não salvos em um bloco de estrutura nunca são descartados.",
+        "Cada otimização pode ser desativada individualmente em config/aureum.json, e um item desativado deixa o código vanilla intocado.",
+        "/aureum (requer permissão) mostra o que está ativado e quanto está sendo compartilhado."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "O tempo de tick (MSPT) não muda dentro da margem de ruído da medição; o Aureum não afirma ser mais rápido.",
+        "Os dois ajustes do lado do cliente (um limite de partículas e um teto para a distância de renderização de bloco-entidade) vêm desativados por padrão, e o efeito deles não foi medido.",
+        "Requer Fabric Loader 0.19.3 ou mais novo, Fabric API e Java 25 ou mais novo."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "lang": "en",
+ "brand": "aureum",
+ "updated": "2026-08-30",
+ "title": "Changelog",
+ "updated_label": "Updated 2026-08-30",
+ "note": "",
+ "groups": [
+  {
+   "label": "1.0",
+   "summary": "First release — memory savings that stay out of chunk rendering",
+   "releases": [
+    {
+     "version": "1.0.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "First release — memory savings that stay out of chunk rendering",
+     "summary": "A separate optimisation mod for Minecraft 26.2 (Fabric), apart from Alpha. It works on game logic, memory and the server tick, never touches chunk rendering, and so runs beside Sodium and the Alpha pack. For higher FPS, install Sodium.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "Shared block-state caches and a lighter thread-contention detector: 6.3 MB less resident heap with 2,209 chunks loaded (two independent measurements agree).",
+        "An expiry time for the structure template cache: 17.2 MB less heap while generating new land (two measurements agree). Unsaved templates in a structure block are never dropped.",
+        "Each optimisation can be switched off on its own in config/aureum.json, and a switched-off item leaves vanilla code untouched.",
+        "/aureum (needs permission) shows what is enabled and how much is being shared."
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "Tick time (MSPT) is unchanged within measurement noise; Aureum makes no speed claim.",
+        "The two client-side settings (a particle limit and a block-entity render distance cap) are off by default, and their effect has not been measured.",
+        "Requires Fabric Loader 0.19.3 or later, Fabric API, and Java 25 or later."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

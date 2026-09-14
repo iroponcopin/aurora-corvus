@@ -1,0 +1,19 @@
+{
+ "_comment": [
+  "Structural changelog data for the brands other than Alpha: OUKA, Cherry, Aureum (never translated; prose lives in data/i18n/<lang>.json -> changelog_brands).",
+  "Owner, 2026-09-14: 「更新履歴をOUKA、Cherry、Alpha、Aureumを選べる様にしてください。選んだModsブランドの更新履歴を確認できます。」",
+  "Alpha's history stays in data/changelog.json, which every existing reader (the Corvus feed, Download 'What's new', Alpha's release count, releases.json, the manifest) treats as Alpha-only. Nothing here may be moved into that file.",
+  "Brand order on the page and in changelog_feed/brands.json is site_common.NAV_GROUPS['store'] (the owner's OUKA -> Cherry -> Alpha, then Aureum), not this file's order.",
+  "Every id is prefixed with its brand so no HTML id can collide with Alpha's (Alpha already has v1.0.0).",
+  "OUKA has no releases; its panel shows the OUKA page's own line (build_ouka.COPY[lang]['soon']), by the owner's answer of 2026-09-14."
+ ],
+ "brands": {
+  "ouka": [],
+  "cherry": [
+   {"id": "cherry-v1.0.0", "release": "V1.0.0", "date": "2026-09-13", "type": "release"}
+  ],
+  "aureum": [
+   {"id": "aureum-v1.0.0", "release": "1.0.0", "date": "2026-08-30", "type": "release"}
+  ]
+ }
+}

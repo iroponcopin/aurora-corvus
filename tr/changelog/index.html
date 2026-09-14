@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Güncelleme Geçmişi | Corvus</title>
-<meta name="description" content="Alpha (eski adıyla Glimpse Alpha, ondan önce Sorakaze) MOD paketinin tüm güncelleme geçmişi. İlk sürümden bugüne kadarki değişiklikler ve dikkat edilmesi gerekenler bir arada.">
+<meta name="description" content="OUKA, Cherry, Alpha ve Aureum&#x27;un güncelleme geçmişi. Her sürümde nelerin değiştiğini ve nelere dikkat edilmesi gerektiğini en yeniden başlayarak görmek için bir marka seçin.">
 <meta property="og:title" content="Güncelleme Geçmişi | Corvus">
-<meta property="og:description" content="Alpha (eski adıyla Glimpse Alpha, ondan önce Sorakaze) MOD paketinin tüm güncelleme geçmişi. İlk sürümden bugüne kadarki değişiklikler ve dikkat edilmesi gerekenler bir arada.">
+<meta property="og:description" content="OUKA, Cherry, Alpha ve Aureum&#x27;un güncelleme geçmişi. Her sürümde nelerin değiştiğini ve nelere dikkat edilmesi gerektiğini en yeniden başlayarak görmek için bir marka seçin.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -199,21 +199,51 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">Güncelleme Geçmişi</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>2026-09-13 tarihinde güncellendi</span></p>
-    <p class="cl__note">Gösterilen hasar, hız gibi değerler MOD&#x27;un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="MOD, sürüm veya anahtar kelimeyle ara…"
-           aria-label="MOD, sürüm veya anahtar kelimeyle ara…">
-    <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">Silahlar</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">Demiryolu</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">Yapı ve Dekorasyon</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">Gökyüzü</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">Hayatta Kalma</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Araçlar</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">Elektrik</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">Backrooms</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">Planarcadia</button>
-    <label>Tür:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">Yeni Özellik</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">Hata Düzeltmesi</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">Görsel Güncelleme</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="Marka" data-default="alpha" hidden><button class="cl__brandTab" type="button" role="tab" id="clTab-ouka" data-brand="ouka" aria-controls="clBrand-ouka" aria-selected="false" tabindex="-1">OUKA</button><button class="cl__brandTab" type="button" role="tab" id="clTab-cherry" data-brand="cherry" aria-controls="clBrand-cherry" aria-selected="false" tabindex="-1">Cherry</button><button class="cl__brandTab" type="button" role="tab" id="clTab-alpha" data-brand="alpha" aria-controls="clBrand-alpha" aria-selected="true">Alpha</button><button class="cl__brandTab" type="button" role="tab" id="clTab-aureum" data-brand="aureum" aria-controls="clBrand-aureum" aria-selected="false" tabindex="-1">Aureum</button></div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>Bu koşullara uyan bir güncelleme bulunamadı.</p>
+  <section class="cl__brand" id="clBrand-ouka" data-brand="ouka">
+    <h2 class="cl__brandName">OUKA</h2>
+    <p class="cl__soon">Çok yakında.</p>
+  </section>
+  <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
+    <h2 class="cl__brandName">Cherry</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>2026-09-13 tarihinde güncellendi</span></p>
+    <p class="cl__note">Gösterilen hasar, hız gibi değerler MOD&#x27;un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.</p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="cherry-v1.0">
+      <h2 class="cl__groupTitle">V1.0</h2>
+      <p class="cl__groupSummary">The Lunar Genesis Update — fırlatma rampasından Ay&#x27;a</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-0-0">
+          <h3 class="cl__version">V1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-13</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-0-0" hidden><p class="cl__entryTitle">The Lunar Genesis Update — fırlatma rampasından Ay&#x27;a</p><p class="cl__lede">Cherry&#x27;nin ilk sürümü: Alpha&#x27;nın yanına kurulan ayrı bir mod markası. Launch Pad Complex&#x27;i inşa edin, Cherry Apex-1 ile Ay&#x27;a uçun ve yeniden eve dönün.</p><div class="cl__section"><h4 class="cl__sectionTitle">Değişiklikler <span>(8)</span></h4><ul class="cl__list"><li>Ay: kraterler, maden yatakları ve Helium-3 Geysers bulunan yeni bir boyut; kendine ait bir saati de var.</li><li>Cherry Apex-1 ve Launch Pad Complex: kenetli rokete binin, geri sayım boyunca zıplama tuşunu basılı tutun ve pilot içindeyken Overworld&#x27;den Ay&#x27;a, oradan da rampaya geri uçun.</li><li>Ay kuralları: yer çekimi altıda birdir ve vakum, Pressure Suit dışındaki her zırhın içinden azami canın 15%&#x27;ini alır. Bir Pressure Field Projector küresinin içinde güvendesiniz.</li><li>Overdrive Fusion: Resonance Crucible&#x27;da Overdrive Fusion&#x27;dan geçen bir silah, alet veya zırh parçası saldırı hasarında, zırhta, zırh dayanıklılığında ya da kazma hızında ×3 kazanır.</li><li>Ay kaynakları: Ultrasonic Cutter yalnızca rezonans hâlindeyken Regolith Core Deposits çıkarır; Cryo Canister ise Helium-3&#x27;ü yalnızca bir gayzer fışkırırken yakalar.</li><li>Micrometeorites Ay yüzeyine çarpar ve krater bırakır.</li><li>İki yetenek: Dimensional Cleave (yalnızca haç şekli boyunca 300% hasar) ve Astral Lift, yani Overdrive Fusion&#x27;dan geçmiş bir göğüslükle uçuş.</li><li>Alpha 4.4.0&#x27;ın 13 modunun tamamıyla birlikte mixin çakışması olmadan başladığı doğrulandı.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Dikkat Edilmesi Gerekenler <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>Minecraft 26.2, Fabric Loader 0.19.3 veya daha yenisi, Fabric API 0.154.2 veya daha yenisi, GeckoLib 5.5.5 veya daha yenisi ve Java 25 gerekir.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-alpha" data-brand="alpha">
+    <h2 class="cl__brandName">Alpha</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>2026-09-13 tarihinde güncellendi</span></p>
+    <p class="cl__note">Gösterilen hasar, hız gibi değerler MOD&#x27;un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.</p>
 
-  <div id="changelogGroups" data-cut="8">
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="MOD, sürüm veya anahtar kelimeyle ara…"
+             aria-label="MOD, sürüm veya anahtar kelimeyle ara…">
+      <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">Silahlar</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">Demiryolu</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">Yapı ve Dekorasyon</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">Boss</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">Gökyüzü</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">Hayatta Kalma</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Araçlar</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">Elektrik</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">Backrooms</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">Planarcadia</button>
+      <label>Tür:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">Yeni Özellik</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">Hata Düzeltmesi</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">Görsel Güncelleme</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>Bu koşullara uyan bir güncelleme bulunamadı.</p>
+
+    <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.4">
       <h2 class="cl__groupTitle">V4.4</h2>
       <p class="cl__groupSummary">Kuzeye — Kül Havaalanı ve Birinci Hangar. Ve kapılar silahlarla aynı ölçütle yeniden yapıldı</p>
@@ -1035,7 +1065,28 @@
       </div>
       
     </section>
-  </div>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-aureum" data-brand="aureum">
+    <h2 class="cl__brandName">Aureum</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>2026-08-30 tarihinde güncellendi</span></p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="aureum-v1.0">
+      <h2 class="cl__groupTitle">1.0</h2>
+      <p class="cl__groupSummary">İlk sürüm — chunk render&#x27;ına dokunmayan bellek tasarrufu</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-aureum-v1-0-0">
+          <h3 class="cl__version">1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-30</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-aureum-v1-0-0" hidden><p class="cl__entryTitle">İlk sürüm — chunk render&#x27;ına dokunmayan bellek tasarrufu</p><p class="cl__lede">Minecraft 26.2 (Fabric) için, Alpha&#x27;dan ayrı bir optimizasyon modu. Oyun mantığı, bellek ve sunucu tick&#x27;i ile ilgilenir, chunk render&#x27;ına asla dokunmaz ve bu yüzden Sodium ile Alpha paketinin yanında çalışır. Daha yüksek FPS için Sodium&#x27;u kurun.</p><div class="cl__section"><h4 class="cl__sectionTitle">Değişiklikler <span>(4)</span></h4><ul class="cl__list"><li>Paylaşılan blok durumu önbellekleri ve daha hafif bir iş parçacığı çekişmesi dedektörü: 2.209 chunk yüklüyken kalıcı yığın belleği 6,3 MB azaldı (iki bağımsız ölçüm aynı sonucu veriyor).</li><li>Yapı şablonu önbelleği için bir sona erme süresi: yeni arazi oluşturulurken yığın belleği 17,2 MB azaldı (iki ölçüm aynı sonucu veriyor). Bir yapı bloğundaki kaydedilmemiş şablonlar asla atılmaz.</li><li>Her optimizasyon config/aureum.json içinde ayrı ayrı kapatılabilir ve kapatılan bir öğe vanilla koda hiç dokunmaz.</li><li>/aureum (yetki gerekir) neyin etkin olduğunu ve ne kadarının paylaşıldığını gösterir.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Dikkat Edilmesi Gerekenler <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>Tick süresi (MSPT) ölçüm gürültüsü sınırları içinde değişmez; Aureum daha hızlı olduğunu iddia etmez.</li><li>İstemci tarafındaki iki ayar (parçacık sınırı ve blok-varlık render mesafesi üst sınırı) varsayılan olarak kapalıdır ve etkileri ölçülmemiştir.</li><li>Fabric Loader 0.19.3 veya daha yenisi, Fabric API ve Java 25 veya daha yenisi gerekir.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
 </div>
 
 </main>

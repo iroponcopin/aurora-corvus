@@ -1,0 +1,42 @@
+{
+ "lang": "tr",
+ "brand": "aureum",
+ "updated": "2026-08-30",
+ "title": "Güncelleme Geçmişi",
+ "updated_label": "2026-08-30 tarihinde güncellendi",
+ "note": "",
+ "groups": [
+  {
+   "label": "1.0",
+   "summary": "İlk sürüm — chunk render'ına dokunmayan bellek tasarrufu",
+   "releases": [
+    {
+     "version": "1.0.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "İlk sürüm — chunk render'ına dokunmayan bellek tasarrufu",
+     "summary": "Minecraft 26.2 (Fabric) için, Alpha'dan ayrı bir optimizasyon modu. Oyun mantığı, bellek ve sunucu tick'i ile ilgilenir, chunk render'ına asla dokunmaz ve bu yüzden Sodium ile Alpha paketinin yanında çalışır. Daha yüksek FPS için Sodium'u kurun.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Paylaşılan blok durumu önbellekleri ve daha hafif bir iş parçacığı çekişmesi dedektörü: 2.209 chunk yüklüyken kalıcı yığın belleği 6,3 MB azaldı (iki bağımsız ölçüm aynı sonucu veriyor).",
+        "Yapı şablonu önbelleği için bir sona erme süresi: yeni arazi oluşturulurken yığın belleği 17,2 MB azaldı (iki ölçüm aynı sonucu veriyor). Bir yapı bloğundaki kaydedilmemiş şablonlar asla atılmaz.",
+        "Her optimizasyon config/aureum.json içinde ayrı ayrı kapatılabilir ve kapatılan bir öğe vanilla koda hiç dokunmaz.",
+        "/aureum (yetki gerekir) neyin etkin olduğunu ve ne kadarının paylaşıldığını gösterir."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Tick süresi (MSPT) ölçüm gürültüsü sınırları içinde değişmez; Aureum daha hızlı olduğunu iddia etmez.",
+        "İstemci tarafındaki iki ayar (parçacık sınırı ve blok-varlık render mesafesi üst sınırı) varsayılan olarak kapalıdır ve etkileri ölçülmemiştir.",
+        "Fabric Loader 0.19.3 veya daha yenisi, Fabric API ve Java 25 veya daha yenisi gerekir."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

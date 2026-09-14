@@ -49,6 +49,12 @@ CHECKS = [
     # the site reads a Cherry file.
     ("cherry", "check_cherry_release.py", [],
      "/cherry/ in 13 languages vs downloads/Cherry_MODs_v*.zip (link, size, hash)"),
+    # 2026-09-14 (owner): the changelog's brand tabs (OUKA -> Cherry -> Alpha, then Aureum) and the brand feeds Corvus
+    # reads. Alpha's panel and Alpha's feed must stay Alpha's alone; the self-test plants one defect per check.
+    ("changelog-brands", "check_changelog_brands.py", [],
+     "/changelog/ brand panels in 13 languages + changelog_feed/brands.json and every brand feed"),
+    ("changelog-brands-controls", "check_changelog_brands.py", ["--self-test"],
+     "the brand-changelog gate turns every planted defect red"),
 ]
 
 

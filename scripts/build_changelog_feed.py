@@ -29,7 +29,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import ROOT, load_bundle, available_langs  # noqa: E402
-from build_changelog import merged_entries, group_entries  # noqa: E402
+from build_changelog import (  # noqa: E402
+    merged_entries, group_entries, DEFAULT_BRAND, NOTE_BRANDS, brand_order, brand_name,
+    load_brand_structural, merged_brand_entries, group_brand_entries, brand_empty_line,
+)
 
 OUT_DIR = ROOT / "changelog_feed"
 
@@ -81,6 +84,68 @@ def feed_for(lang):
     }
 
 
+# ---------------------------------------------------------------------------
+# BRANDS (2026-09-14, owner): 「更新履歴をOUKA、Cherry、Alpha、Aureumを選べる様にしてください。」
+#   Corvus learns the brand line from changelog_feed/brands.json and fetches each
+#   brand's feed from the path written there. Alpha's feed stays EXACTLY where and
+#   what it was (changelog_feed/<lang>.json): every installed launcher reads that
+#   path, and a Corvus that predates brands must keep seeing Alpha's history and
+#   nothing else. The other brands get their own directories beside it, in the
+#   same shape plus "brand", and -- for a brand with no releases (OUKA) -- a
+#   "message" that is the brand page's own line instead of an empty history.
+# ---------------------------------------------------------------------------
+BRANDS_INDEX = OUT_DIR / "brands.json"
+
+
+def brand_feed_for(lang, brand, structural):
+    bundle = load_bundle(lang)
+    c = bundle["ui"]["common"]
+    entries_desc = list(reversed(merged_brand_entries(bundle, lang, brand, structural[brand])))
+    groups = []
+    for label, entries in group_brand_entries(entries_desc):
+        releases = []
+        for e in entries:
+            sections = []
+            for field, label_key in SECTIONS:
+                items = [str(x) for x in (e.get(field) or [])]
+                if items:
+                    sections.append({"title": c[label_key], "items": items})
+            releases.append({
+                "version": e["release"],
+                "date": e["date"],
+                "type": e.get("type", "release"),
+                "title": e.get("title", ""),
+                "summary": e.get("summary", ""),
+                "sections": sections,
+            })
+        groups.append({"label": label, "summary": entries[0].get("title", ""), "releases": releases})
+    newest = entries_desc[0]["date"] if entries_desc else ""
+    payload = {
+        "lang": lang,
+        "brand": brand,
+        "updated": newest,
+        "title": bundle["ui"]["page_titles"]["changelog"],
+        "updated_label": c["changelog_updated"].replace("{date}", newest) if newest else "",
+        "note": c["changelog_note"] if brand in NOTE_BRANDS else "",
+        "groups": groups,
+    }
+    if not entries_desc:
+        payload["message"] = brand_empty_line(lang, brand)
+    return payload
+
+
+def brands_index():
+    return {
+        "schema": 1,
+        "default": DEFAULT_BRAND,
+        "brands": [{
+            "id": b,
+            "name": brand_name(b),
+            "feed": "changelog_feed/{lang}.json" if b == DEFAULT_BRAND else f"changelog_feed/{b}/{{lang}}.json",
+        } for b in brand_order()],
+    }
+
+
 def build():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     written = 0
@@ -97,6 +162,25 @@ def build():
         raise SystemExit("ERROR: no language bundles found — the feed would be empty, "
                          "and an empty feed is indistinguishable in the app from "
                          "'this pack has no history'.")
+
+    structural = load_brand_structural()
+    for brand in brand_order():
+        if brand == DEFAULT_BRAND:
+            continue
+        brand_dir = OUT_DIR / brand
+        brand_dir.mkdir(parents=True, exist_ok=True)
+        for lang in available_langs():
+            path = brand_dir / f"{lang}.json"
+            payload = brand_feed_for(lang, brand, structural)
+            if not payload["groups"] and not payload.get("message"):
+                raise SystemExit(f"ERROR: {brand}/{lang}: no releases and no message -- Corvus would show an error "
+                                 f"where the brand should show its own line")
+            path.write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            total = sum(len(g["releases"]) for g in payload["groups"])
+            print(f"wrote {path.relative_to(ROOT)} ({total} releases{', message' if payload.get('message') else ''}, "
+                  f"{path.stat().st_size:,} bytes)")
+    BRANDS_INDEX.write_text(json.dumps(brands_index(), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"wrote {BRANDS_INDEX.relative_to(ROOT)} ({', '.join(brand_order())})")
 
 
 if __name__ == "__main__":

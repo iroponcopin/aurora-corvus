@@ -113,7 +113,8 @@
    "features_intro": "A player-facing tour of what's new or changed in V2.2. This covers what you actually see and use in-game, not internal settings or admin-only tooling.",
    "changelog_updated": "Updated {date}",
    "changelog_show_more": "Show more",
-   "changelog_show_fewer": "Show fewer"
+   "changelog_show_fewer": "Show fewer",
+   "changelog_brand_label": "Brand"
   },
   "page_titles": {
    "home": "",
@@ -129,7 +130,7 @@
    "aureum": "Aureum"
   },
   "page_descriptions": {
-   "changelog": "The full update history of the Alpha (formerly Glimpse Alpha, and Sorakaze before that) mod pack. Covers what's changed and what to watch out for, from the first release to now.",
+   "changelog": "The update history of OUKA, Cherry, Alpha and Aureum. Choose a brand to see what changed in each release, and what to watch out for, newest first.",
    "recipes": "A quick-reference table of crafting recipes for every item in the Alpha mod pack. Supports search and category filtering.",
    "guide": "The install guide for the Alpha mod pack. Covers server-side install steps and how players set things up to join.",
    "roadmap": "Roadmap for the Alpha mod pack. What has already shipped, the next major update V3, and what has not been built yet, kept separate from one another.",
@@ -7120,5 +7121,50 @@
   "section_requirements": "Requirements",
   "cta_secondary": "Full download details & checksum",
   "closing_line": "Aureum is a separate mod with its own version line, verified by SHA-256, updated independently of the Alpha pack."
+ },
+ "changelog_brands": {
+  "ouka": [],
+  "cherry": [
+   {
+    "id": "cherry-v1.0.0",
+    "release": "V1.0.0",
+    "date": "2026-09-13",
+    "title": "The Lunar Genesis Update — from the launch pad to the Moon",
+    "summary": "Cherry's first release: a separate mod brand that installs beside Alpha. Build the Launch Pad Complex, fly the Cherry Apex-1 to the Moon, and come home again.",
+    "highlights": [
+     "The Moon: a new dimension with craters, ore deposits and Helium-3 Geysers, and a clock of its own.",
+     "Cherry Apex-1 and the Launch Pad Complex: board the docked rocket, hold jump through the countdown, and fly from the Overworld to the Moon and back to the pad with the pilot aboard.",
+     "Lunar rules: gravity is one sixth, and the vacuum takes 15% of maximum health through any armour except the Pressure Suit. Inside a Pressure Field Projector's sphere you are safe.",
+     "Overdrive Fusion: in the Resonance Crucible, an overdriven weapon, tool or armour piece gets ×3 attack damage, armour, toughness or mining speed.",
+     "Lunar resources: the Ultrasonic Cutter extracts Regolith Core Deposits only while in resonance, and the Cryo Canister captures Helium-3 only while a geyser is erupting.",
+     "Micrometeorites strike the lunar surface and leave craters.",
+     "Two skills: Dimensional Cleave (300% damage along its cross only) and Astral Lift, flight with an overdriven chestplate.",
+     "Checked to start alongside all 13 Alpha 4.4.0 mods with no mixin conflicts."
+    ],
+    "warnings": [
+     "Requires Minecraft 26.2, Fabric Loader 0.19.3 or later, Fabric API 0.154.2 or later, GeckoLib 5.5.5 or later, and Java 25."
+    ]
+   }
+  ],
+  "aureum": [
+   {
+    "id": "aureum-v1.0.0",
+    "release": "1.0.0",
+    "date": "2026-08-30",
+    "title": "First release — memory savings that stay out of chunk rendering",
+    "summary": "A separate optimisation mod for Minecraft 26.2 (Fabric), apart from Alpha. It works on game logic, memory and the server tick, never touches chunk rendering, and so runs beside Sodium and the Alpha pack. For higher FPS, install Sodium.",
+    "highlights": [
+     "Shared block-state caches and a lighter thread-contention detector: 6.3 MB less resident heap with 2,209 chunks loaded (two independent measurements agree).",
+     "An expiry time for the structure template cache: 17.2 MB less heap while generating new land (two measurements agree). Unsaved templates in a structure block are never dropped.",
+     "Each optimisation can be switched off on its own in config/aureum.json, and a switched-off item leaves vanilla code untouched.",
+     "/aureum (needs permission) shows what is enabled and how much is being shared."
+    ],
+    "warnings": [
+     "Tick time (MSPT) is unchanged within measurement noise; Aureum makes no speed claim.",
+     "The two client-side settings (a particle limit and a block-entity render distance cap) are off by default, and their effect has not been measured.",
+     "Requires Fabric Loader 0.19.3 or later, Fabric API, and Java 25 or later."
+    ]
+   }
+  ]
  }
 }

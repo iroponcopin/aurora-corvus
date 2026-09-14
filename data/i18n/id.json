@@ -111,7 +111,8 @@
    "features_intro": "Tur fitur baru V2.2 dari sudut pandang pemain.",
    "changelog_updated": "Diperbarui {date}",
    "changelog_show_more": "Tampilkan lebih banyak",
-   "changelog_show_fewer": "Tampilkan lebih sedikit"
+   "changelog_show_fewer": "Tampilkan lebih sedikit",
+   "changelog_brand_label": "Merek"
   },
   "page_titles": {
    "home": "",
@@ -126,7 +127,7 @@
    "aureum": "Aureum"
   },
   "page_descriptions": {
-   "changelog": "Seluruh riwayat pembaruan MOD pack Alpha (dahulu Glimpse Alpha, sebelumnya Sorakaze). Merangkum perubahan dan catatan penting dari versi pertama hingga sekarang.",
+   "changelog": "Riwayat pembaruan OUKA, Cherry, Alpha, dan Aureum. Pilih merek untuk melihat apa yang berubah di setiap rilis dan hal yang perlu diperhatikan, diurutkan dari yang terbaru.",
    "recipes": "Tabel referensi cepat resep crafting untuk semua item MOD pack Alpha. Mendukung pencarian dan penyaringan berdasarkan kategori.",
    "guide": "Panduan pemasangan MOD pack Alpha. Merangkum langkah pemasangan di server dan pengaturan untuk bergabung sebagai pemain.",
    "roadmap": "Peta jalan pengembangan paket mod Alpha. Apa yang sudah dirilis, pembaruan besar berikutnya V3, dan apa yang belum dibuat, dipisahkan satu per satu.",
@@ -7027,5 +7028,50 @@
   "section_requirements": "Persyaratan",
   "cta_secondary": "Detail unduhan lengkap & checksum",
   "closing_line": "Aureum adalah mod terpisah dengan jalur versinya sendiri, diverifikasi dengan SHA-256, dan diperbarui secara independen dari paket Alpha."
+ },
+ "changelog_brands": {
+  "ouka": [],
+  "cherry": [
+   {
+    "id": "cherry-v1.0.0",
+    "release": "V1.0.0",
+    "date": "2026-09-13",
+    "title": "The Lunar Genesis Update — dari landasan peluncuran menuju Bulan",
+    "summary": "Rilis pertama Cherry: merek mod terpisah yang dipasang berdampingan dengan Alpha. Bangun Launch Pad Complex, terbangkan Cherry Apex-1 ke Bulan, lalu pulang kembali.",
+    "highlights": [
+     "Bulan: dimensi baru dengan kawah, endapan bijih, dan Helium-3 Geysers, serta jamnya sendiri.",
+     "Cherry Apex-1 dan Launch Pad Complex: naiki roket yang tertambat, tahan tombol lompat selama hitung mundur, lalu terbang dari Overworld ke Bulan dan kembali ke landasan dengan pilot tetap berada di dalamnya.",
+     "Aturan Bulan: gravitasinya seperenam, dan vakum mengambil 15% nyawa maksimum menembus zirah apa pun kecuali Pressure Suit. Di dalam bola Pressure Field Projector, Anda aman.",
+     "Overdrive Fusion: di Resonance Crucible, senjata, alat, atau bagian zirah yang melalui Overdrive Fusion mendapat ×3 damage serangan, zirah, ketangguhan zirah, atau kecepatan menambang.",
+     "Sumber daya Bulan: Ultrasonic Cutter hanya menambang Regolith Core Deposits saat sedang beresonansi, dan Cryo Canister hanya menangkap Helium-3 saat sebuah geiser sedang menyembur.",
+     "Micrometeorites menghantam permukaan Bulan dan meninggalkan kawah.",
+     "Dua kemampuan: Dimensional Cleave (300% damage hanya di sepanjang bentuk salibnya) dan Astral Lift, terbang dengan pelindung dada yang telah melalui Overdrive Fusion.",
+     "Sudah diperiksa dapat berjalan bersama ke-13 mod Alpha 4.4.0 tanpa konflik mixin."
+    ],
+    "warnings": [
+     "Membutuhkan Minecraft 26.2, Fabric Loader 0.19.3 atau yang lebih baru, Fabric API 0.154.2 atau yang lebih baru, GeckoLib 5.5.5 atau yang lebih baru, dan Java 25."
+    ]
+   }
+  ],
+  "aureum": [
+   {
+    "id": "aureum-v1.0.0",
+    "release": "1.0.0",
+    "date": "2026-08-30",
+    "title": "Rilis pertama — penghematan memori yang tidak menyentuh render chunk",
+    "summary": "Mod optimisasi terpisah untuk Minecraft 26.2 (Fabric), di luar Alpha. Mod ini bekerja pada logika permainan, memori, dan tick server, tidak pernah menyentuh render chunk, sehingga dapat berjalan berdampingan dengan Sodium dan paket Alpha. Untuk FPS yang lebih tinggi, pasang Sodium.",
+    "highlights": [
+     "Cache status blok yang dipakai bersama dan detektor perebutan utas yang lebih ringan: heap residen berkurang 6,3 MB dengan 2.209 chunk dimuat (dua pengukuran independen cocok).",
+     "Waktu kedaluwarsa untuk cache templat struktur: heap berkurang 17,2 MB selama menghasilkan medan baru (dua pengukuran cocok). Templat yang belum disimpan di blok struktur tidak pernah dibuang.",
+     "Setiap optimisasi dapat dimatikan secara terpisah di config/aureum.json, dan item yang dimatikan membiarkan kode vanilla tidak tersentuh.",
+     "/aureum (perlu izin) menampilkan apa yang aktif dan seberapa banyak yang sedang dipakai bersama."
+    ],
+    "warnings": [
+     "Waktu tick (MSPT) tidak berubah dalam batas noise pengukuran; Aureum tidak mengklaim menjadi lebih cepat.",
+     "Dua pengaturan sisi klien (batas partikel dan batas jarak render block-entity) nonaktif secara default, dan efeknya belum diukur.",
+     "Membutuhkan Fabric Loader 0.19.3 atau yang lebih baru, Fabric API, dan Java 25 atau yang lebih baru."
+    ]
+   }
+  ]
  }
 }

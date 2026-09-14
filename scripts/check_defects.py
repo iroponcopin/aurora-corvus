@@ -107,9 +107,18 @@ def defect1(fails):
                          f"(untranslated Japanese): {ctx}")
     # B2: a rendered page must not show the same entry title twice -- that is
     #     what the duplicated-key collapse looked like from outside.
+    #
+    #     2026-09-14: this selector still read the pre-V3.2 markup
+    #     (`timeline-entry__release`), which no page has had since the Alcove
+    #     restyle -- it matched 0 titles on all 13 pages, so this check could
+    #     not fire at all. Moved to the per-release title the restyled page
+    #     renders (`cl__entryTitle`, 94 per page, 0 duplicates in every
+    #     language when moved). The assertion is unchanged. The brand panels
+    #     (OUKA/Cherry/Aureum) render their titles with the same class, and a
+    #     brand release that repeated an Alpha title would be the same defect.
     for lang in LANGS:
         rel = page_path(lang, "changelog")
-        titles = re.findall(r'timeline-entry__release">.*?</span> — (.*?)\s*</h3>',
+        titles = re.findall(r'<p class="cl__entryTitle">(.*?)</p>',
                             (ROOT / rel).read_text(encoding="utf-8"), re.S)
         dup = [t for t, n in Counter(titles).items() if n > 1]
         if dup:

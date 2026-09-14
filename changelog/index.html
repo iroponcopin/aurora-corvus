@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>更新履歴 | Corvus</title>
-<meta name="description" content="Alpha (旧 Glimpse Alpha、さらにその前は Sorakaze) MOD パックの全アップデート履歴。初版から現在までの変更点・注意点をまとめています。">
+<meta name="description" content="OUKA・Cherry・Alpha・Aureum の更新履歴。ブランドを選ぶと、そのブランドの変更点と注意点を新しい順に確認できます。">
 <meta property="og:title" content="更新履歴 | Corvus">
-<meta property="og:description" content="Alpha (旧 Glimpse Alpha、さらにその前は Sorakaze) MOD パックの全アップデート履歴。初版から現在までの変更点・注意点をまとめています。">
+<meta property="og:description" content="OUKA・Cherry・Alpha・Aureum の更新履歴。ブランドを選ぶと、そのブランドの変更点と注意点を新しい順に確認できます。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -199,21 +199,51 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">更新履歴</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-13</span></p>
-    <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="MODやバージョン・キーワードで検索…"
-           aria-label="MODやバージョン・キーワードで検索…">
-    <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">銃火器</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">鉄道</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">建材・装飾</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">ボス</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">サバイバル</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">乗り物</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">電力</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">バックルームズ</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">二相楽園</button>
-    <label>種類:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">新機能</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">不具合修正</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">見た目の更新</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">情報公開</button>
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="ブランド" data-default="alpha" hidden><button class="cl__brandTab" type="button" role="tab" id="clTab-ouka" data-brand="ouka" aria-controls="clBrand-ouka" aria-selected="false" tabindex="-1">OUKA</button><button class="cl__brandTab" type="button" role="tab" id="clTab-cherry" data-brand="cherry" aria-controls="clBrand-cherry" aria-selected="false" tabindex="-1">Cherry</button><button class="cl__brandTab" type="button" role="tab" id="clTab-alpha" data-brand="alpha" aria-controls="clBrand-alpha" aria-selected="true">Alpha</button><button class="cl__brandTab" type="button" role="tab" id="clTab-aureum" data-brand="aureum" aria-controls="clBrand-aureum" aria-selected="false" tabindex="-1">Aureum</button></div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>条件に一致する更新はありません。</p>
+  <section class="cl__brand" id="clBrand-ouka" data-brand="ouka">
+    <h2 class="cl__brandName">OUKA</h2>
+    <p class="cl__soon">ご期待ください。</p>
+  </section>
+  <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
+    <h2 class="cl__brandName">Cherry</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-13</span></p>
+    <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="cherry-v1.0">
+      <h2 class="cl__groupTitle">V1.0</h2>
+      <p class="cl__groupSummary">The Lunar Genesis Update —— 発射台から、月へ</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-0-0">
+          <h3 class="cl__version">V1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-13</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-0-0" hidden><p class="cl__entryTitle">The Lunar Genesis Update —— 発射台から、月へ</p><p class="cl__lede">Cherry の最初のリリース。Alpha と並べて入れる、別ブランドの MOD です。発射台コンプレックスを建て、Cherry Apex-1 で月へ飛び、帰ってこられます。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(8)</span></h4><ul class="cl__list"><li>月: クレーター、鉱床、ヘリウム3・ガイザーのある新しいディメンション。月には月の時計があります。</li><li>Cherry Apex-1 と発射台コンプレックス: 係留されたロケットに乗り、ジャンプ長押しでカウントダウンして、オーバーワールドから月へ、そして発射台まで操縦士を乗せたまま飛べます。</li><li>月の決まり: 重力は 6 分の 1。真空は、与圧スーツ以外のどんな防具越しにも最大体力の 15% を奪います。気密フィールド投射機の球の中は安全です。</li><li>超越融合: 分子共鳴融合炉で耐久値のある武器・道具・防具を超越させると、攻撃力・防御力・防具強度・採掘速度が ×3 になります。</li><li>月の資源: 超音波カッターは共鳴しているときだけレゴリス・コア鉱床を採れ、クライオ・キャニスターはガイザーの噴出中だけヘリウム3を捕まえます。</li><li>微小隕石が月面に落ち、クレーターを残します。</li><li>2 つの技: 次元断裂(十字の上だけに 300% のダメージ)と、超越させたチェストプレートで飛ぶアストラル・リフト。</li><li>Alpha 4.4.0 の 13 個の MOD と同時に起動し、mixin の衝突が無いことを確かめています。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>Minecraft 26.2、Fabric Loader 0.19.3 以上、Fabric API 0.154.2 以上、GeckoLib 5.5.5 以上、Java 25 が必要です。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-alpha" data-brand="alpha">
+    <h2 class="cl__brandName">Alpha</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-13</span></p>
+    <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
 
-  <div id="changelogGroups" data-cut="8">
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="MODやバージョン・キーワードで検索…"
+             aria-label="MODやバージョン・キーワードで検索…">
+      <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">銃火器</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">鉄道</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">建材・装飾</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">ボス</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">天空</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">サバイバル</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">乗り物</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">電力</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">バックルームズ</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">二相楽園</button>
+      <label>種類:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">新機能</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">不具合修正</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">見た目の更新</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">情報公開</button>
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>条件に一致する更新はありません。</p>
+
+    <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.4">
       <h2 class="cl__groupTitle">V4.4</h2>
       <p class="cl__groupSummary">北へ —— 灰飛行場と第一格納庫。そして扉を銃と同じ基準で作り直しました</p>
@@ -1035,7 +1065,28 @@
       </div>
       
     </section>
-  </div>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-aureum" data-brand="aureum">
+    <h2 class="cl__brandName">Aureum</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-08-30</span></p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="aureum-v1.0">
+      <h2 class="cl__groupTitle">1.0</h2>
+      <p class="cl__groupSummary">最初のリリース —— チャンク描画に触れずにメモリを減らす</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-aureum-v1-0-0">
+          <h3 class="cl__version">1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-30</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-aureum-v1-0-0" hidden><p class="cl__entryTitle">最初のリリース —— チャンク描画に触れずにメモリを減らす</p><p class="cl__lede">Alpha とは別の、Minecraft 26.2(Fabric)用の軽量化 MOD。ゲームロジック・メモリ・サーバーの tick の側を受け持ち、チャンク描画には一切触れないので、Sodium や Alpha パックと並べて使えます。FPS を上げたいときは Sodium を入れてください。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(4)</span></h4><ul class="cl__list"><li>ブロック状態のキャッシュの共有と、軽いスレッド競合検出器: 2,209 チャンクを読み込んだ状態で常駐ヒープが 6.3 MB 減りました(2 回の独立した測定で一致)。</li><li>構造物テンプレートのキャッシュに保持期限: 新しい土地を生成する間のヒープが 17.2 MB 減りました(2 回の測定で一致)。ストラクチャーブロックで作成中の未保存のテンプレートは捨てません。</li><li>最適化はそれぞれ config/aureum.json で個別に切れます。切った項目は、バニラのコードに一切触れません。</li><li>/aureum(要権限)で、いま何が有効か・どれだけ共有されているかを確認できます。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>tick 時間(MSPT)は、測定のばらつきの範囲で変わりません。速くなったとは主張しません。</li><li>クライアント側の 2 つの設定(パーティクル数の上限、ブロックエンティティの描画距離の上限)は既定で off で、効果は未計測です。</li><li>Fabric Loader 0.19.3 以上、Fabric API、Java 25 以上が必要です。</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
 </div>
 
 </main>

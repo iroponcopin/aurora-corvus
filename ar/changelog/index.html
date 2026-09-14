@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>سجل التحديثات | Corvus</title>
-<meta name="description" content="سجل كامل لتحديثات حزمة إضافات Alpha (المعروفة سابقًا باسم Glimpse Alpha، وقبلها Sorakaze). يجمع أبرز التغييرات والملاحظات الهامة من الإصدار الأول وحتى الآن.">
+<meta name="description" content="سجل تحديثات OUKA وCherry وAlpha وAureum. اختاروا علامة لتروا ما تغيّر في كل إصدار وما يجب الانتباه إليه، من الأحدث إلى الأقدم.">
 <meta property="og:title" content="سجل التحديثات | Corvus">
-<meta property="og:description" content="سجل كامل لتحديثات حزمة إضافات Alpha (المعروفة سابقًا باسم Glimpse Alpha، وقبلها Sorakaze). يجمع أبرز التغييرات والملاحظات الهامة من الإصدار الأول وحتى الآن.">
+<meta property="og:description" content="سجل تحديثات OUKA وCherry وAlpha وAureum. اختاروا علامة لتروا ما تغيّر في كل إصدار وما يجب الانتباه إليه، من الأحدث إلى الأقدم.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -199,21 +199,51 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">سجل التحديثات</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>آخر تحديث 2026-09-13</span></p>
-    <p class="cl__note">قيم الضرر والسرعة وغيرها المعروضة هنا هي القيم الافتراضية عند إصدار التحديث. قد تختلف عن القيم التي تشعر بها فعليًا أثناء اللعب بسبب تعديلات إعدادات (config) الخادم.</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="ابحث بالإضافة أو رقم الإصدار أو كلمة مفتاحية…"
-           aria-label="ابحث بالإضافة أو رقم الإصدار أو كلمة مفتاحية…">
-    <label>الإضافة:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">الأسلحة النارية</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">السكك الحديدية</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">مواد البناء والديكور</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">الزعماء</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">السماء</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">البقاء</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">المركبات</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">الكهرباء</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">الغرف الخلفية</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">بلاناركاديا</button>
-    <label>النوع:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">ميزة جديدة</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">إصلاح خلل</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">تحديث بصري</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="العلامة التجارية" data-default="alpha" hidden><button class="cl__brandTab" type="button" role="tab" id="clTab-ouka" data-brand="ouka" aria-controls="clBrand-ouka" aria-selected="false" tabindex="-1">OUKA</button><button class="cl__brandTab" type="button" role="tab" id="clTab-cherry" data-brand="cherry" aria-controls="clBrand-cherry" aria-selected="false" tabindex="-1">Cherry</button><button class="cl__brandTab" type="button" role="tab" id="clTab-alpha" data-brand="alpha" aria-controls="clBrand-alpha" aria-selected="true">Alpha</button><button class="cl__brandTab" type="button" role="tab" id="clTab-aureum" data-brand="aureum" aria-controls="clBrand-aureum" aria-selected="false" tabindex="-1">Aureum</button></div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>لا توجد تحديثات مطابقة للشروط المحددة.</p>
+  <section class="cl__brand" id="clBrand-ouka" data-brand="ouka">
+    <h2 class="cl__brandName">OUKA</h2>
+    <p class="cl__soon">ترقّبوا قريباً.</p>
+  </section>
+  <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
+    <h2 class="cl__brandName">Cherry</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>آخر تحديث 2026-09-13</span></p>
+    <p class="cl__note">قيم الضرر والسرعة وغيرها المعروضة هنا هي القيم الافتراضية عند إصدار التحديث. قد تختلف عن القيم التي تشعر بها فعليًا أثناء اللعب بسبب تعديلات إعدادات (config) الخادم.</p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="cherry-v1.0">
+      <h2 class="cl__groupTitle">V1.0</h2>
+      <p class="cl__groupSummary">The Lunar Genesis Update — من منصة الإطلاق إلى القمر</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-0-0">
+          <h3 class="cl__version">V1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-13</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-0-0" hidden><p class="cl__entryTitle">The Lunar Genesis Update — من منصة الإطلاق إلى القمر</p><p class="cl__lede">الإصدار الأول من Cherry: علامة مودات مستقلة تُثبَّت إلى جانب Alpha. ابنوا Launch Pad Complex، وحلّقوا بـCherry Apex-1 إلى القمر، ثم عودوا إلى الديار من جديد.</p><div class="cl__section"><h4 class="cl__sectionTitle">أبرز التغييرات <span>(8)</span></h4><ul class="cl__list"><li>القمر: بُعد جديد فيه فوهات ومكامن خامات وHelium-3 Geysers، وله ساعته الخاصة.</li><li>Cherry Apex-1 وLaunch Pad Complex: اركبوا الصاروخ الراسي، واضغطوا زر القفز مطوّلًا طوال العد التنازلي، ثم حلّقوا من Overworld إلى القمر وعودوا إلى المنصة والطيار على متنه.</li><li>قواعد القمر: الجاذبية سُدس المعتاد، والفراغ ينتزع 15% من الصحة القصوى عبر أي درع باستثناء Pressure Suit. أنتم في أمان داخل كرة Pressure Field Projector.</li><li>Overdrive Fusion: في Resonance Crucible يمنح هذا الدمج السلاح أو الأداة أو قطعة الدرع ×3 في ضرر الهجوم أو الدرع أو صلابة الدرع أو سرعة الحفر.</li><li>موارد القمر: لا يستخرج Ultrasonic Cutter مكامن Regolith Core Deposits إلا وهو في حالة رنين، ولا يلتقط Cryo Canister مادة Helium-3 إلا أثناء ثوران نافورة حارة.</li><li>ترتطم Micrometeorites بسطح القمر وتخلّف فوهات.</li><li>مهارتان: Dimensional Cleave (ضرر 300% على امتداد شكله المتصالب فقط) وAstral Lift، أي الطيران بصفيحة صدر مرّت عبر Overdrive Fusion.</li><li>تم التحقق من الإقلاع إلى جانب مودات Alpha 4.4.0 الـ13 كلها دون أي تعارض في mixin.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">ملاحظات هامة <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>يتطلب Minecraft 26.2، وFabric Loader 0.19.3 أو أحدث، وFabric API 0.154.2 أو أحدث، وGeckoLib 5.5.5 أو أحدث، وJava 25.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-alpha" data-brand="alpha">
+    <h2 class="cl__brandName">Alpha</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>آخر تحديث 2026-09-13</span></p>
+    <p class="cl__note">قيم الضرر والسرعة وغيرها المعروضة هنا هي القيم الافتراضية عند إصدار التحديث. قد تختلف عن القيم التي تشعر بها فعليًا أثناء اللعب بسبب تعديلات إعدادات (config) الخادم.</p>
 
-  <div id="changelogGroups" data-cut="8">
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="ابحث بالإضافة أو رقم الإصدار أو كلمة مفتاحية…"
+             aria-label="ابحث بالإضافة أو رقم الإصدار أو كلمة مفتاحية…">
+      <label>الإضافة:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">الأسلحة النارية</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">السكك الحديدية</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">مواد البناء والديكور</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">الزعماء</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">السماء</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">البقاء</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">المركبات</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">الكهرباء</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">الغرف الخلفية</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">بلاناركاديا</button>
+      <label>النوع:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">ميزة جديدة</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">إصلاح خلل</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">تحديث بصري</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>لا توجد تحديثات مطابقة للشروط المحددة.</p>
+
+    <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.4">
       <h2 class="cl__groupTitle">V4.4</h2>
       <p class="cl__groupSummary">شمالاً — مطار الرماد والحظيرة الأولى. وأُعيد بناء الأبواب بمعيار الأسلحة نفسه</p>
@@ -1035,7 +1065,28 @@
       </div>
       
     </section>
-  </div>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-aureum" data-brand="aureum">
+    <h2 class="cl__brandName">Aureum</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>آخر تحديث 2026-08-30</span></p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="aureum-v1.0">
+      <h2 class="cl__groupTitle">1.0</h2>
+      <p class="cl__groupSummary">الإصدار الأول — توفير في الذاكرة دون المساس بعرض القطع</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-aureum-v1-0-0">
+          <h3 class="cl__version">1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-30</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-aureum-v1-0-0" hidden><p class="cl__entryTitle">الإصدار الأول — توفير في الذاكرة دون المساس بعرض القطع</p><p class="cl__lede">مود تحسين مستقل لـMinecraft 26.2 (Fabric)، منفصل عن Alpha. يتناول منطق اللعبة والذاكرة وتِك الخادم، ولا يلمس عرض القطع أبدًا، ولذلك يعمل جنبًا إلى جنب مع Sodium وحزمة Alpha. للحصول على FPS أعلى، ثبّتوا Sodium.</p><div class="cl__section"><h4 class="cl__sectionTitle">أبرز التغييرات <span>(4)</span></h4><ul class="cl__list"><li>ذاكرات تخزين مؤقت مشتركة لحالات الكتل، وكاشف أخف لتنازع الخيوط: ذاكرة كومة دائمة أقل بمقدار 6.3 ميغابايت مع تحميل 2,209 قطعة (تتطابق نتيجتا قياسين مستقلين).</li><li>مدة صلاحية لذاكرة التخزين المؤقت لقوالب الهياكل: ذاكرة كومة أقل بمقدار 17.2 ميغابايت أثناء توليد أراضٍ جديدة (تتطابق نتيجتا القياسين). لا تُحذف أبدًا القوالب غير المحفوظة في كتلة الهيكل.</li><li>يمكن إيقاف كل تحسين وحده في config/aureum.json، والعنصر الموقوف يترك شيفرة اللعبة الأصلية دون أي مساس.</li><li>يعرض /aureum (يتطلب صلاحية) ما هو مفعّل ومقدار ما تجري مشاركته.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">ملاحظات هامة <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>زمن التِك (MSPT) لا يتغير ضمن هامش خطأ القياس؛ ولا يدّعي Aureum أنه أسرع.</li><li>الإعدادان على جانب العميل (حد للجسيمات وسقف لمسافة عرض كيانات الكتل) معطّلان افتراضيًا، ولم يُقَس أثرهما.</li><li>يتطلب Fabric Loader 0.19.3 أو أحدث، وFabric API، وJava 25 أو أحدث.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
 </div>
 
 </main>

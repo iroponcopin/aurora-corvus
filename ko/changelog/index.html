@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>업데이트 기록 | Corvus</title>
-<meta name="description" content="Alpha(구 Glimpse Alpha, 그 이전 Sorakaze) MOD 팩의 전체 업데이트 기록. 초판부터 현재까지의 변경 사항·주의 사항을 정리했습니다.">
+<meta name="description" content="OUKA·Cherry·Alpha·Aureum의 업데이트 기록. 브랜드를 선택하면 각 버전의 변경 사항과 주의 사항을 최신순으로 확인할 수 있습니다.">
 <meta property="og:title" content="업데이트 기록 | Corvus">
-<meta property="og:description" content="Alpha(구 Glimpse Alpha, 그 이전 Sorakaze) MOD 팩의 전체 업데이트 기록. 초판부터 현재까지의 변경 사항·주의 사항을 정리했습니다.">
+<meta property="og:description" content="OUKA·Cherry·Alpha·Aureum의 업데이트 기록. 브랜드를 선택하면 각 버전의 변경 사항과 주의 사항을 최신순으로 확인할 수 있습니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -199,21 +199,51 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">업데이트 기록</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-09-13</span></p>
-    <p class="cl__note">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="MOD, 버전, 키워드로 검색…"
-           aria-label="MOD, 버전, 키워드로 검색…">
-    <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">총기</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">철도</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">건축자재·장식</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">보스</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">천공</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">서바이벌</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">탈것</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">전력</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">백룸즈</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">플라나르카디아</button>
-    <label>종류:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">신규 기능</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">버그 수정</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">외형 업데이트</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="브랜드" data-default="alpha" hidden><button class="cl__brandTab" type="button" role="tab" id="clTab-ouka" data-brand="ouka" aria-controls="clBrand-ouka" aria-selected="false" tabindex="-1">OUKA</button><button class="cl__brandTab" type="button" role="tab" id="clTab-cherry" data-brand="cherry" aria-controls="clBrand-cherry" aria-selected="false" tabindex="-1">Cherry</button><button class="cl__brandTab" type="button" role="tab" id="clTab-alpha" data-brand="alpha" aria-controls="clBrand-alpha" aria-selected="true">Alpha</button><button class="cl__brandTab" type="button" role="tab" id="clTab-aureum" data-brand="aureum" aria-controls="clBrand-aureum" aria-selected="false" tabindex="-1">Aureum</button></div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>조건에 맞는 업데이트가 없습니다.</p>
+  <section class="cl__brand" id="clBrand-ouka" data-brand="ouka">
+    <h2 class="cl__brandName">OUKA</h2>
+    <p class="cl__soon">기대해 주세요.</p>
+  </section>
+  <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
+    <h2 class="cl__brandName">Cherry</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-09-13</span></p>
+    <p class="cl__note">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="cherry-v1.0">
+      <h2 class="cl__groupTitle">V1.0</h2>
+      <p class="cl__groupSummary">The Lunar Genesis Update — 발사대에서 달까지</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-0-0">
+          <h3 class="cl__version">V1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-13</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-0-0" hidden><p class="cl__entryTitle">The Lunar Genesis Update — 발사대에서 달까지</p><p class="cl__lede">Cherry의 첫 릴리스: Alpha와 나란히 설치하는 별도의 MOD 브랜드입니다. Launch Pad Complex를 건설하고, Cherry Apex-1을 몰고 달까지 날아갔다가 다시 집으로 돌아오세요.</p><div class="cl__section"><h4 class="cl__sectionTitle">변경 사항 <span>(8)</span></h4><ul class="cl__list"><li>달: 크레이터, 광상, Helium-3 Geyser가 있는 새로운 차원이며, 자체 시계도 있습니다.</li><li>Cherry Apex-1과 Launch Pad Complex: 계류된 로켓에 탑승해 카운트다운 동안 점프를 길게 누르고, 조종사를 태운 채 Overworld에서 달로, 그리고 다시 발사대까지 날아가세요.</li><li>달의 규칙: 중력은 6분의 1이며, 진공은 Pressure Suit를 제외한 어떤 방어구도 뚫고 최대 체력의 15%를 빼앗습니다. Pressure Field Projector의 구체 안에서는 안전합니다.</li><li>Overdrive Fusion: Resonance Crucible에서 Overdrive Fusion을 거친 무기, 도구 또는 방어구는 공격 데미지, 방어력, 방어 강도 또는 채굴 속도가 ×3이 됩니다.</li><li>달의 자원: Ultrasonic Cutter는 공명 중일 때만 Regolith Core Deposit을 채취하고, Cryo Canister는 간헐천이 분출하는 동안에만 Helium-3을 포집합니다.</li><li>Micrometeorite가 달 표면에 충돌해 크레이터를 남깁니다.</li><li>기술 2가지: Dimensional Cleave(십자 위에만 300% 데미지)와, Overdrive Fusion을 거친 흉갑으로 비행하는 Astral Lift.</li><li>Alpha 4.4.0의 MOD 13개 모두와 동시에 기동해도 mixin 충돌이 없음을 확인했습니다.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">주의 사항 <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>Minecraft 26.2, Fabric Loader 0.19.3 이상, Fabric API 0.154.2 이상, GeckoLib 5.5.5 이상, Java 25가 필요합니다.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-alpha" data-brand="alpha">
+    <h2 class="cl__brandName">Alpha</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-09-13</span></p>
+    <p class="cl__note">표시된 데미지·속도 등의 수치는 도입 시점의 기본값입니다. 서버 측 config 조정에 따라 실제 플레이 체감 수치와 다를 수 있습니다.</p>
 
-  <div id="changelogGroups" data-cut="8">
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="MOD, 버전, 키워드로 검색…"
+             aria-label="MOD, 버전, 키워드로 검색…">
+      <label>MOD:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">총기</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">철도</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">건축자재·장식</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">보스</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">천공</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">서바이벌</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">탈것</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">전력</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">백룸즈</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">플라나르카디아</button>
+      <label>종류:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">신규 기능</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">버그 수정</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">외형 업데이트</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>조건에 맞는 업데이트가 없습니다.</p>
+
+    <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.4">
       <h2 class="cl__groupTitle">V4.4</h2>
       <p class="cl__groupSummary">북으로 —— 잿빛 비행장과 제1격납고. 그리고 문을 총과 같은 기준으로 다시 만들었습니다</p>
@@ -1035,7 +1065,28 @@
       </div>
       
     </section>
-  </div>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-aureum" data-brand="aureum">
+    <h2 class="cl__brandName">Aureum</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>최종 업데이트 2026-08-30</span></p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="aureum-v1.0">
+      <h2 class="cl__groupTitle">1.0</h2>
+      <p class="cl__groupSummary">첫 릴리스 — 청크 렌더링에 손대지 않는 메모리 절감</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-aureum-v1-0-0">
+          <h3 class="cl__version">1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-30</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-aureum-v1-0-0" hidden><p class="cl__entryTitle">첫 릴리스 — 청크 렌더링에 손대지 않는 메모리 절감</p><p class="cl__lede">Alpha와는 별개인 Minecraft 26.2(Fabric)용 최적화 MOD. 게임 로직·메모리·서버 틱을 다루고 청크 렌더링에는 전혀 손대지 않으므로, Sodium 및 Alpha 팩과 나란히 사용할 수 있습니다. 더 높은 FPS를 원한다면 Sodium을 설치하세요.</p><div class="cl__section"><h4 class="cl__sectionTitle">변경 사항 <span>(4)</span></h4><ul class="cl__list"><li>블록 상태 캐시 공유와 더 가벼운 스레드 경합 감지기: 청크 2,209개를 로드한 상태에서 상주 힙 메모리가 6.3 MB 줄었습니다(두 차례의 독립 측정 결과가 일치).</li><li>구조물 템플릿 캐시에 만료 시간 도입: 새 지형을 생성하는 동안 힙 메모리가 17.2 MB 줄었습니다(두 차례 측정 결과가 일치). 구조물 블록에서 저장하지 않은 템플릿은 절대 버리지 않습니다.</li><li>각 최적화는 config/aureum.json에서 개별적으로 끌 수 있으며, 끈 항목은 바닐라 코드를 전혀 건드리지 않습니다.</li><li>/aureum(권한 필요)은 무엇이 켜져 있는지와 얼마나 공유되고 있는지를 보여 줍니다.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">주의 사항 <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>틱 시간(MSPT)은 측정 오차 범위 내에서 변화가 없으며, Aureum은 속도가 빨라진다고 주장하지 않습니다.</li><li>클라이언트 측 설정 2가지(파티클 수 상한, 블록 엔티티 렌더 거리 상한)는 기본적으로 꺼져 있으며, 효과는 측정되지 않았습니다.</li><li>Fabric Loader 0.19.3 이상, Fabric API, Java 25 이상이 필요합니다.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
 </div>
 
 </main>

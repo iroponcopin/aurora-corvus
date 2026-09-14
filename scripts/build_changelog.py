@@ -3,9 +3,25 @@
 Structural fields (release, date, type, mod_versions) come from
 data/changelog.json (never translated); prose fields (title, summary,
 highlights, ...) come from the language's bundle, matched by (release, date).
+
+BRANDS (2026-09-14, owner): 「更新履歴をOUKA、Cherry、Alpha、Aureumを選べる様にしてください。
+選んだModsブランドの更新履歴を確認できます。」
+  The page carries one panel per brand, switched by tabs, in the owner's brand
+  line exactly as the Store tab shows it (site_common.NAV_GROUPS 'store':
+  OUKA -> Cherry -> Alpha, then Aureum). Alpha's panel is the page this file
+  always built: the same markup, the same ids (#v3.2 deep links keep working),
+  the same search and filters. The other brands read data/changelog_brands.json
+  and data/i18n/<lang>.json -> changelog_brands, NEVER data/changelog.json:
+  every other reader of that file (the Corvus feed, Download "What's new",
+  Alpha's release count, releases.json, the manifest) treats it as Alpha's
+  alone, and a Cherry "V1.0.0" there would be filed with Alpha's July v1.0.0.
+  Without the script every panel stays open, one under the other with its own
+  brand heading, so the page is still the whole history.
 """
+import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -13,7 +29,9 @@ from site_common import (  # noqa: E402
     MODS_BY_ID, esc, page, write_page, mod_badge, type_badge,
     load_bundle, available_langs, asset_root_prefix,
     load_changelog_structural, index_bundle_changelog,
+    ROOT, NAV_GROUPS, NAV_LABEL_FALLBACK,
 )
+from build_ouka import COPY as OUKA_COPY  # noqa: E402
 
 PROSE_KEYS = ("title", "summary", "highlights", "balance_changes", "warnings",
               "known_limitations")
@@ -222,7 +240,7 @@ def release_html(bundle, e, index):
       </div>"""
 
 
-def group_html(bundle, label, entries, gi):
+def group_html(bundle, label, entries, gi, dom_id=None):
     c = bundle["ui"]["common"]
     # The group's one-line summary is the NEWEST release's own title in that
     # series. The reference hand-writes a sentence per series; taking the title
@@ -235,7 +253,8 @@ def group_html(bundle, label, entries, gi):
         more = (f'<button class="cl__more" type="button" data-more="{esc(c["changelog_show_more"])}"'
                 f' data-less="{esc(c["changelog_show_fewer"])}" aria-expanded="false">'
                 f'{esc(c["changelog_show_more"])}</button>')
-    return f"""<section class="cl__group" id="v{esc(label.lstrip('Vv'))}">
+    group_id = dom_id if dom_id is not None else "v" + label.lstrip("Vv")
+    return f"""<section class="cl__group" id="{esc(group_id)}">
       <h2 class="cl__groupTitle">{esc(label)}</h2>
       <p class="cl__groupSummary">{esc(summary)}</p>
       <div class="cl__releases">
@@ -245,8 +264,138 @@ def group_html(bundle, label, entries, gi):
     </section>"""
 
 
-def build_lang(lang):
-    bundle = load_bundle(lang)
+# --------------------------------------------------------------------------
+# Brands
+# --------------------------------------------------------------------------
+BRAND_DATA = ROOT / "data" / "changelog_brands.json"
+# The tab that is open when the page loads, and the only brand whose history is
+# data/changelog.json. Alpha stays the default so every existing link to this
+# page (the Download page, the Alpha page, the 404 page, the roadmap) still
+# lands on the history it always showed.
+DEFAULT_BRAND = "alpha"
+# Brands whose releases quote gameplay numbers, which is what the config note
+# ("the numbers shown are the defaults at release") speaks about. Aureum quotes
+# measured memory, which no server config changes; OUKA has no releases.
+NOTE_BRANDS = ("alpha", "cherry")
+
+DOC_ICON = ('<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" '
+            'stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">'
+            '<path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/>'
+            '<path d="M9.5 1.5V5H13"/></svg>')
+
+
+def brand_order():
+    """The owner's brand line, exactly as the Store tab shows it: OUKA -> Cherry
+    -> Alpha, then Aureum. Read from NAV_GROUPS rather than written again here,
+    so the changelog's tabs and the menu cannot disagree about the order."""
+    order = list(dict(NAV_GROUPS)["store"])
+    if DEFAULT_BRAND not in order:
+        raise SystemExit(f"ERROR: the Store brand line {order} has no '{DEFAULT_BRAND}'")
+    return order
+
+
+def brand_name(brand):
+    """Brand names are never translated (site_common.NAV_LABEL_FALLBACK)."""
+    return NAV_LABEL_FALLBACK[brand]
+
+
+def load_brand_structural(path=None):
+    """{brand: [structural entry, ...]} for every brand on the line except Alpha."""
+    p = BRAND_DATA if path is None else Path(path)
+    data = json.loads(p.read_text(encoding="utf-8"))["brands"]
+    expected = sorted(b for b in brand_order() if b != DEFAULT_BRAND)
+    if sorted(data) != expected:
+        raise SystemExit(f"ERROR: {p.name} lists brands {sorted(data)}; the Store line needs exactly {expected}")
+    seen = Counter()
+    for brand, entries in data.items():
+        for e in entries:
+            for key in ("id", "release", "date", "type"):
+                if not e.get(key):
+                    raise SystemExit(f"ERROR: {p.name} {brand}: an entry has no '{key}': {e}")
+            if not e["id"].startswith(brand + "-"):
+                raise SystemExit(f"ERROR: {p.name} {brand}: id {e['id']!r} must start with '{brand}-', "
+                                 f"so that no HTML id on the page can collide with another brand's "
+                                 f"(Alpha already owns v1.0.0)")
+            seen[e["id"]] += 1
+    dupes = sorted(i for i, n in seen.items() if n > 1)
+    if dupes:
+        raise SystemExit(f"ERROR: {p.name} has duplicate id(s) {dupes}")
+    return data
+
+
+def _brand_prose(bundle, brand, lang):
+    by_id = {}
+    for t in ((bundle.get("changelog_brands") or {}).get(brand) or []):
+        if not t.get("id"):
+            continue
+        if t["id"] in by_id:
+            raise SystemExit(f"ERROR: data/i18n/{lang}.json changelog_brands.{brand} has the id {t['id']!r} twice")
+        by_id[t["id"]] = t
+    return by_id
+
+
+def merged_brand_entries(bundle, lang, brand, structural):
+    """Structural entries from data/changelog_brands.json with prose from the
+    bundle's changelog_brands[brand], matched on id. A missing translation falls
+    back to the Japanese source (visible on the page), with a warning -- the
+    same rule merged_entries() follows for Alpha."""
+    own = _brand_prose(bundle, brand, lang)
+    ja = own if lang == "ja" else _brand_prose(load_bundle("ja"), brand, "ja")
+    out, fallback = [], []
+    for s in structural:
+        t = own.get(s["id"])
+        if t is None:
+            t = ja.get(s["id"])
+            if t is None:
+                raise SystemExit(f"ERROR: {brand} release {s['id']} has no prose, not even in ja -- it would "
+                                 f"render as a bare version number")
+            fallback.append(s["id"])
+        merged = dict(s)
+        for k in PROSE_KEYS:
+            if k in t:
+                merged[k] = t[k]
+        out.append(merged)
+    if fallback and lang != "ja":
+        print(f"  WARNING: {lang}: {brand} release(s) {', '.join(fallback)} have no translation and will render in Japanese")
+    return out
+
+
+def brand_group_label(release):
+    """'V1.0.0' -> 'V1.0' and '1.0.0' -> '1.0': a brand's series is named in that
+    brand's own version style (Aureum writes 1.0.0, not V1.0.0)."""
+    m = re.match(r"^([Vv]?)(\d+)\.(\d+)", str(release))
+    return f"{m.group(1)}{m.group(2)}.{m.group(3)}" if m else "-"
+
+
+def group_brand_entries(entries_desc):
+    groups, order = {}, []
+    for e in entries_desc:
+        key = brand_group_label(e["release"])
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(e)
+    return [(k, groups[k]) for k in order]
+
+
+def brand_empty_line(lang, brand):
+    """What a brand with no releases shows. Only OUKA has none, and the owner's
+    answer (2026-09-14) is the OUKA page's own line and nothing else: no "no
+    releases yet", which the OUKA page's rules forbid (build_ouka.py)."""
+    if brand != "ouka":
+        raise SystemExit(f"ERROR: {brand} has no releases in {BRAND_DATA.name}; only OUKA has an agreed empty state")
+    return OUKA_COPY[lang]["soon"]
+
+
+def group_dom_id(brand, label):
+    """Alpha keeps the ids its deep links already use (#v3.2); every other
+    brand's series id carries the brand, so Cherry's V1.0 and Aureum's 1.0 can
+    never collide with Alpha's v1.0 or with each other."""
+    tail = "v" + label.lstrip("Vv")
+    return tail if brand == DEFAULT_BRAND else f"{brand}-{tail}"
+
+
+def alpha_panel_inner(bundle, lang):
     ui = bundle["ui"]
     c = ui["common"]
     entries = merged_entries(bundle, lang)
@@ -264,34 +413,72 @@ def build_lang(lang):
         f'{esc(ui["type_badge"].get(t, t))}</button>'
         for t in ("release", "hotfix", "visual-update", "disclosure")
     )
-
     updated = c["changelog_updated"].replace("{date}", entries_desc[0]["date"]) if entries_desc else ""
-    doc_icon = ('<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" '
-                'stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">'
-                '<path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/>'
-                '<path d="M9.5 1.5V5H13"/></svg>')
+    return f"""
+    <p class="cl__updated">{DOC_ICON}<span>{esc(updated)}</span></p>
+    <p class="cl__note">{esc(c['changelog_note'])}</p>
+
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="{esc(c['search_placeholder_changelog'])}"
+             aria-label="{esc(c['search_placeholder_changelog'])}">
+      <label>{esc(c['filter_mod_label'])}</label>{mod_chips}
+      <label>{esc(c['filter_type_label'])}</label>{type_chips}
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>{esc(c['empty_changelog'])}</p>
+
+    <div id="changelogGroups" data-cut="{COLLAPSE_AFTER}">
+{"".join(group_html(bundle, label, es, i) for i, (label, es) in enumerate(groups))}
+    </div>"""
+
+
+def brand_panel_inner(bundle, lang, brand, structural):
+    c = bundle["ui"]["common"]
+    entries_desc = list(reversed(merged_brand_entries(bundle, lang, brand, structural[brand])))
+    if not entries_desc:
+        return f'\n    <p class="cl__soon">{esc(brand_empty_line(lang, brand))}</p>'
+    updated = c["changelog_updated"].replace("{date}", entries_desc[0]["date"])
+    note = f'\n    <p class="cl__note">{esc(c["changelog_note"])}</p>' if brand in NOTE_BRANDS else ""
+    groups = "".join(group_html(bundle, label, es, i, group_dom_id(brand, label))
+                     for i, (label, es) in enumerate(group_brand_entries(entries_desc)))
+    return f"""
+    <p class="cl__updated">{DOC_ICON}<span>{esc(updated)}</span></p>{note}
+    <div class="cl__groups" data-cut="{COLLAPSE_AFTER}">
+{groups}
+    </div>"""
+
+
+def build_lang(lang):
+    bundle = load_bundle(lang)
+    ui = bundle["ui"]
+    c = ui["common"]
+    order = brand_order()
+    structural = load_brand_structural()
+
+    tabs = []
+    for b in order:
+        selected = "true" if b == DEFAULT_BRAND else "false"
+        tabindex = "" if b == DEFAULT_BRAND else ' tabindex="-1"'
+        tabs.append(f'<button class="cl__brandTab" type="button" role="tab" id="clTab-{b}" data-brand="{b}" '
+                    f'aria-controls="clBrand-{b}" aria-selected="{selected}"{tabindex}>{esc(brand_name(b))}</button>')
+
+    panels = []
+    for b in order:
+        inner = alpha_panel_inner(bundle, lang) if b == DEFAULT_BRAND else brand_panel_inner(bundle, lang, b, structural)
+        panels.append(f"""  <section class="cl__brand" id="clBrand-{b}" data-brand="{b}">
+    <h2 class="cl__brandName">{esc(brand_name(b))}</h2>{inner}
+  </section>""")
 
     body = f"""
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">{esc(ui['page_titles']['changelog'])}</h1>
-    <p class="cl__updated">{doc_icon}<span>{esc(updated)}</span></p>
-    <p class="cl__note">{esc(c['changelog_note'])}</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="{esc(c['search_placeholder_changelog'])}"
-           aria-label="{esc(c['search_placeholder_changelog'])}">
-    <label>{esc(c['filter_mod_label'])}</label>{mod_chips}
-    <label>{esc(c['filter_type_label'])}</label>{type_chips}
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="{esc(c['changelog_brand_label'])}" data-default="{DEFAULT_BRAND}" hidden>{"".join(tabs)}</div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>{esc(c['empty_changelog'])}</p>
-
-  <div id="changelogGroups" data-cut="{COLLAPSE_AFTER}">
-{"".join(group_html(bundle, label, es, i) for i, (label, es) in enumerate(groups))}
-  </div>
+{chr(10).join(panels)}
 </div>
 """
     prefix = asset_root_prefix(1, lang)

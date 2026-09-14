@@ -111,7 +111,8 @@
    "features_intro": "V2.2'deki yeniliklerin oyuncu gözünden bir turu.",
    "changelog_updated": "{date} tarihinde güncellendi",
    "changelog_show_more": "Daha fazla göster",
-   "changelog_show_fewer": "Daha az göster"
+   "changelog_show_fewer": "Daha az göster",
+   "changelog_brand_label": "Marka"
   },
   "page_titles": {
    "home": "",
@@ -126,7 +127,7 @@
    "aureum": "Aureum"
   },
   "page_descriptions": {
-   "changelog": "Alpha (eski adıyla Glimpse Alpha, ondan önce Sorakaze) MOD paketinin tüm güncelleme geçmişi. İlk sürümden bugüne kadarki değişiklikler ve dikkat edilmesi gerekenler bir arada.",
+   "changelog": "OUKA, Cherry, Alpha ve Aureum'un güncelleme geçmişi. Her sürümde nelerin değiştiğini ve nelere dikkat edilmesi gerektiğini en yeniden başlayarak görmek için bir marka seçin.",
    "recipes": "Alpha MOD paketindeki tüm eşyaların yapım tarifleri bir arada. Arama ve kategoriye göre filtreleme destekli.",
    "guide": "Alpha MOD paketi kurulum rehberi. Sunucuya kurulum adımları ve oyuncu tarafındaki katılım ayarları bir arada.",
    "roadmap": "Alpha mod paketinin yol haritası. Şimdiye kadar yayımlananlar, bir sonraki büyük güncelleme V3 ve henüz yapılmamış olanlar ayrı ayrı listelenmiştir.",
@@ -7028,5 +7029,50 @@
   "section_requirements": "Gereksinimler",
   "cta_secondary": "Tam indirme ayrıntıları ve sağlama toplamı",
   "closing_line": "Aureum, kendi sürüm hattına sahip, SHA-256 ile doğrulanan ve Alpha paketinden bağımsız olarak güncellenen ayrı bir moddur."
+ },
+ "changelog_brands": {
+  "ouka": [],
+  "cherry": [
+   {
+    "id": "cherry-v1.0.0",
+    "release": "V1.0.0",
+    "date": "2026-09-13",
+    "title": "The Lunar Genesis Update — fırlatma rampasından Ay'a",
+    "summary": "Cherry'nin ilk sürümü: Alpha'nın yanına kurulan ayrı bir mod markası. Launch Pad Complex'i inşa edin, Cherry Apex-1 ile Ay'a uçun ve yeniden eve dönün.",
+    "highlights": [
+     "Ay: kraterler, maden yatakları ve Helium-3 Geysers bulunan yeni bir boyut; kendine ait bir saati de var.",
+     "Cherry Apex-1 ve Launch Pad Complex: kenetli rokete binin, geri sayım boyunca zıplama tuşunu basılı tutun ve pilot içindeyken Overworld'den Ay'a, oradan da rampaya geri uçun.",
+     "Ay kuralları: yer çekimi altıda birdir ve vakum, Pressure Suit dışındaki her zırhın içinden azami canın 15%'ini alır. Bir Pressure Field Projector küresinin içinde güvendesiniz.",
+     "Overdrive Fusion: Resonance Crucible'da Overdrive Fusion'dan geçen bir silah, alet veya zırh parçası saldırı hasarında, zırhta, zırh dayanıklılığında ya da kazma hızında ×3 kazanır.",
+     "Ay kaynakları: Ultrasonic Cutter yalnızca rezonans hâlindeyken Regolith Core Deposits çıkarır; Cryo Canister ise Helium-3'ü yalnızca bir gayzer fışkırırken yakalar.",
+     "Micrometeorites Ay yüzeyine çarpar ve krater bırakır.",
+     "İki yetenek: Dimensional Cleave (yalnızca haç şekli boyunca 300% hasar) ve Astral Lift, yani Overdrive Fusion'dan geçmiş bir göğüslükle uçuş.",
+     "Alpha 4.4.0'ın 13 modunun tamamıyla birlikte mixin çakışması olmadan başladığı doğrulandı."
+    ],
+    "warnings": [
+     "Minecraft 26.2, Fabric Loader 0.19.3 veya daha yenisi, Fabric API 0.154.2 veya daha yenisi, GeckoLib 5.5.5 veya daha yenisi ve Java 25 gerekir."
+    ]
+   }
+  ],
+  "aureum": [
+   {
+    "id": "aureum-v1.0.0",
+    "release": "1.0.0",
+    "date": "2026-08-30",
+    "title": "İlk sürüm — chunk render'ına dokunmayan bellek tasarrufu",
+    "summary": "Minecraft 26.2 (Fabric) için, Alpha'dan ayrı bir optimizasyon modu. Oyun mantığı, bellek ve sunucu tick'i ile ilgilenir, chunk render'ına asla dokunmaz ve bu yüzden Sodium ile Alpha paketinin yanında çalışır. Daha yüksek FPS için Sodium'u kurun.",
+    "highlights": [
+     "Paylaşılan blok durumu önbellekleri ve daha hafif bir iş parçacığı çekişmesi dedektörü: 2.209 chunk yüklüyken kalıcı yığın belleği 6,3 MB azaldı (iki bağımsız ölçüm aynı sonucu veriyor).",
+     "Yapı şablonu önbelleği için bir sona erme süresi: yeni arazi oluşturulurken yığın belleği 17,2 MB azaldı (iki ölçüm aynı sonucu veriyor). Bir yapı bloğundaki kaydedilmemiş şablonlar asla atılmaz.",
+     "Her optimizasyon config/aureum.json içinde ayrı ayrı kapatılabilir ve kapatılan bir öğe vanilla koda hiç dokunmaz.",
+     "/aureum (yetki gerekir) neyin etkin olduğunu ve ne kadarının paylaşıldığını gösterir."
+    ],
+    "warnings": [
+     "Tick süresi (MSPT) ölçüm gürültüsü sınırları içinde değişmez; Aureum daha hızlı olduğunu iddia etmez.",
+     "İstemci tarafındaki iki ayar (parçacık sınırı ve blok-varlık render mesafesi üst sınırı) varsayılan olarak kapalıdır ve etkileri ölçülmemiştir.",
+     "Fabric Loader 0.19.3 veya daha yenisi, Fabric API ve Java 25 veya daha yenisi gerekir."
+    ]
+   }
+  ]
  }
 }

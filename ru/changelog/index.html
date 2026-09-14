@@ -7,9 +7,9 @@
      modal) pads itself with max(gutter, inset) in style.css. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>История обновлений | Corvus</title>
-<meta name="description" content="Полная история обновлений сборки модов Alpha (ранее Glimpse Alpha, до этого Sorakaze): все изменения и важные моменты от первой версии до текущей.">
+<meta name="description" content="История обновлений OUKA, Cherry, Alpha и Aureum. Выберите бренд, чтобы увидеть, что изменилось в каждой версии и на что обратить внимание, — от новых к старым.">
 <meta property="og:title" content="История обновлений | Corvus">
-<meta property="og:description" content="Полная история обновлений сборки модов Alpha (ранее Glimpse Alpha, до этого Sorakaze): все изменения и важные моменты от первой версии до текущей.">
+<meta property="og:description" content="История обновлений OUKA, Cherry, Alpha и Aureum. Выберите бренд, чтобы увидеть, что изменилось в каждой версии и на что обратить внимание, — от новых к старым.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Corvus">
 <meta name="theme-color" content="#07090f">
@@ -199,21 +199,51 @@
 <div class="cl">
   <header class="cl__head">
     <h1 class="cl__title">История обновлений</h1>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Обновлено 2026-09-13</span></p>
-    <p class="cl__note">Указанные значения урона, скорости и других характеристик — значения по умолчанию на момент установки. Из-за настроек (config) на сервере фактически ощущаемые в игре цифры могут отличаться.</p>
   </header>
 
-  <div class="cl__tools" role="group">
-    <input type="search" id="changelogSearch" class="cl__search"
-           placeholder="Поиск по моду, версии или ключевым словам…"
-           aria-label="Поиск по моду, версии или ключевым словам…">
-    <label>МОД:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">Огнестрельное оружие</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">Железная дорога</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">Стройматериалы и декор</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">Боссы</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">Небеса</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">Выживание</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Транспорт</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">Электричество</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">Бэкрумс</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">Планаркадия</button>
-    <label>Тип:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">Новое</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">Исправление</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">Визуальное обновление</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
-  </div>
+  <div class="cl__brands" role="tablist" aria-label="Бренд" data-default="alpha" hidden><button class="cl__brandTab" type="button" role="tab" id="clTab-ouka" data-brand="ouka" aria-controls="clBrand-ouka" aria-selected="false" tabindex="-1">OUKA</button><button class="cl__brandTab" type="button" role="tab" id="clTab-cherry" data-brand="cherry" aria-controls="clBrand-cherry" aria-selected="false" tabindex="-1">Cherry</button><button class="cl__brandTab" type="button" role="tab" id="clTab-alpha" data-brand="alpha" aria-controls="clBrand-alpha" aria-selected="true">Alpha</button><button class="cl__brandTab" type="button" role="tab" id="clTab-aureum" data-brand="aureum" aria-controls="clBrand-aureum" aria-selected="false" tabindex="-1">Aureum</button></div>
 
-  <p id="changelogEmpty" class="cl__empty" hidden>Обновлений, соответствующих условиям поиска, не найдено.</p>
+  <section class="cl__brand" id="clBrand-ouka" data-brand="ouka">
+    <h2 class="cl__brandName">OUKA</h2>
+    <p class="cl__soon">Уже скоро.</p>
+  </section>
+  <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
+    <h2 class="cl__brandName">Cherry</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Обновлено 2026-09-13</span></p>
+    <p class="cl__note">Указанные значения урона, скорости и других характеристик — значения по умолчанию на момент установки. Из-за настроек (config) на сервере фактически ощущаемые в игре цифры могут отличаться.</p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="cherry-v1.0">
+      <h2 class="cl__groupTitle">V1.0</h2>
+      <p class="cl__groupSummary">The Lunar Genesis Update — от стартовой площадки до Луны</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-0-0">
+          <h3 class="cl__version">V1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-13</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-0-0" hidden><p class="cl__entryTitle">The Lunar Genesis Update — от стартовой площадки до Луны</p><p class="cl__lede">Первый выпуск Cherry: отдельный бренд модов, который устанавливается рядом с Alpha. Постройте Launch Pad Complex, долетите на Cherry Apex-1 до Луны и вернитесь домой.</p><div class="cl__section"><h4 class="cl__sectionTitle">Изменения <span>(8)</span></h4><ul class="cl__list"><li>Луна: новое измерение с кратерами, рудными залежами и Helium-3 Geysers, а также с собственными часами.</li><li>Cherry Apex-1 и Launch Pad Complex: сядьте в пристыкованную ракету, удерживайте прыжок во время обратного отсчёта и летите из Overworld на Луну и обратно к стартовой площадке с пилотом на борту.</li><li>Лунные правила: гравитация составляет одну шестую, а вакуум отнимает 15% максимального здоровья сквозь любую броню, кроме Pressure Suit. Внутри сферы Pressure Field Projector вы в безопасности.</li><li>Overdrive Fusion: в Resonance Crucible это слияние даёт оружию, инструменту или элементу брони ×3 к урону от атаки, броне, стойкости брони или скорости добычи.</li><li>Лунные ресурсы: Ultrasonic Cutter добывает Regolith Core Deposits только в состоянии резонанса, а Cryo Canister собирает Helium-3 только во время извержения гейзера.</li><li>Micrometeorites врезаются в лунную поверхность и оставляют кратеры.</li><li>Два навыка: Dimensional Cleave (300% урона только вдоль его креста) и Astral Lift — полёт с нагрудником, прошедшим Overdrive Fusion.</li><li>Проверено: запускается вместе со всеми 13 модами Alpha 4.4.0 без конфликтов mixin.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Важно <span>(1)</span></h4><ul class="cl__list cl__list--warn"><li>Требуются Minecraft 26.2, Fabric Loader 0.19.3 или новее, Fabric API 0.154.2 или новее, GeckoLib 5.5.5 или новее и Java 25.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-alpha" data-brand="alpha">
+    <h2 class="cl__brandName">Alpha</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Обновлено 2026-09-13</span></p>
+    <p class="cl__note">Указанные значения урона, скорости и других характеристик — значения по умолчанию на момент установки. Из-за настроек (config) на сервере фактически ощущаемые в игре цифры могут отличаться.</p>
 
-  <div id="changelogGroups" data-cut="8">
+    <div class="cl__tools" role="group">
+      <input type="search" id="changelogSearch" class="cl__search"
+             placeholder="Поиск по моду, версии или ключевым словам…"
+             aria-label="Поиск по моду, версии или ключевым словам…">
+      <label>МОД:</label><button class="cl__chip" type="button" data-filter-mod="guns" aria-pressed="false">Огнестрельное оружие</button><button class="cl__chip" type="button" data-filter-mod="rail" aria-pressed="false">Железная дорога</button><button class="cl__chip" type="button" data-filter-mod="deco" aria-pressed="false">Стройматериалы и декор</button><button class="cl__chip" type="button" data-filter-mod="boss" aria-pressed="false">Боссы</button><button class="cl__chip" type="button" data-filter-mod="sky" aria-pressed="false">Небеса</button><button class="cl__chip" type="button" data-filter-mod="survival" aria-pressed="false">Выживание</button><button class="cl__chip" type="button" data-filter-mod="vehicles" aria-pressed="false">Транспорт</button><button class="cl__chip" type="button" data-filter-mod="power" aria-pressed="false">Электричество</button><button class="cl__chip" type="button" data-filter-mod="backrooms" aria-pressed="false">Бэкрумс</button><button class="cl__chip" type="button" data-filter-mod="planarcadia" aria-pressed="false">Планаркадия</button>
+      <label>Тип:</label><button class="cl__chip" type="button" data-filter-type="release" aria-pressed="false">Новое</button><button class="cl__chip" type="button" data-filter-type="hotfix" aria-pressed="false">Исправление</button><button class="cl__chip" type="button" data-filter-type="visual-update" aria-pressed="false">Визуальное обновление</button><button class="cl__chip" type="button" data-filter-type="disclosure" aria-pressed="false">disclosure</button>
+    </div>
+
+    <p id="changelogEmpty" class="cl__empty" hidden>Обновлений, соответствующих условиям поиска, не найдено.</p>
+
+    <div id="changelogGroups" data-cut="8">
 <section class="cl__group" id="v4.4">
       <h2 class="cl__groupTitle">V4.4</h2>
       <p class="cl__groupSummary">На север — Пепельный аэродром и Ангар один. И двери пересобраны по той же мерке, что и оружие</p>
@@ -1035,7 +1065,28 @@
       </div>
       
     </section>
-  </div>
+    </div>
+  </section>
+  <section class="cl__brand" id="clBrand-aureum" data-brand="aureum">
+    <h2 class="cl__brandName">Aureum</h2>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>Обновлено 2026-08-30</span></p>
+    <div class="cl__groups" data-cut="8">
+<section class="cl__group" id="aureum-v1.0">
+      <h2 class="cl__groupTitle">1.0</h2>
+      <p class="cl__groupSummary">Первая версия — экономия памяти без вмешательства в рендеринг чанков</p>
+      <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="1.0.0">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-aureum-v1-0-0">
+          <h3 class="cl__version">1.0.0</h3>
+          <span class="cl__right"><span class="cl__date">2026-08-30</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-aureum-v1-0-0" hidden><p class="cl__entryTitle">Первая версия — экономия памяти без вмешательства в рендеринг чанков</p><p class="cl__lede">Отдельный мод оптимизации для Minecraft 26.2 (Fabric), не связанный с Alpha. Он занимается игровой логикой, памятью и тиком сервера, никогда не трогает рендеринг чанков и поэтому работает вместе с Sodium и сборкой Alpha. Для более высокого FPS установите Sodium.</p><div class="cl__section"><h4 class="cl__sectionTitle">Изменения <span>(4)</span></h4><ul class="cl__list"><li>Общие кэши состояний блоков и облегчённый детектор конкуренции потоков: на 6,3 МБ меньше постоянно занятой кучи при 2209 загруженных чанках (два независимых измерения совпадают).</li><li>Срок хранения для кэша шаблонов структур: на 17,2 МБ меньше кучи при генерации новой местности (два измерения совпадают). Несохранённые шаблоны в структурном блоке никогда не отбрасываются.</li><li>Каждую оптимизацию можно отключить отдельно в config/aureum.json, и отключённый пункт оставляет ванильный код нетронутым.</li><li>/aureum (нужны права) показывает, что включено и сколько сейчас используется совместно.</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">Важно <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>Время тика (MSPT) не меняется в пределах погрешности измерения; Aureum не утверждает, что работает быстрее.</li><li>Две клиентские настройки (лимит частиц и ограничение дистанции отрисовки блок-сущностей) по умолчанию отключены, и их эффект не измерялся.</li><li>Требуются Fabric Loader 0.19.3 или новее, Fabric API и Java 25 или новее.</li></ul></div></div>
+      </div>
+      </div>
+      
+    </section>
+    </div>
+  </section>
 </div>
 
 </main>

@@ -111,7 +111,8 @@
    "features_intro": "以玩家视角介绍 V2.2 新增或改动的主要功能,聚焦你能实际看到并使用的内容,而非内部设置或管理员专用工具。",
    "changelog_updated": "更新于 {date}",
    "changelog_show_more": "显示更多",
-   "changelog_show_fewer": "收起"
+   "changelog_show_fewer": "收起",
+   "changelog_brand_label": "品牌"
   },
   "page_titles": {
    "home": "",
@@ -126,7 +127,7 @@
    "aureum": "Aureum"
   },
   "page_descriptions": {
-   "changelog": "Alpha（原名 Glimpse Alpha，更早为 Sorakaze）MOD 包的完整更新历史，汇总了从初版到现在的所有变更内容与注意事项。",
+   "changelog": "OUKA、Cherry、Alpha 与 Aureum 的更新历史。选择一个品牌，即可按从新到旧的顺序查看每个版本的变更内容与注意事项。",
    "recipes": "Alpha MOD 包全部物品的合成配方速查表，支持搜索与分类筛选。",
    "guide": "Alpha MOD 包的导入指南，汇总了服务器端的导入步骤与玩家端的加入设置。",
    "roadmap": "Alpha MOD 整合包的开发路线图。已经发布的内容、下一次大版本更新 V3，以及尚未着手制作的部分，分开列出。",
@@ -7027,5 +7028,50 @@
   "section_requirements": "运行要求",
   "cta_secondary": "查看完整下载详情与校验码",
   "closing_line": "Aureum 是一个拥有独立版本线的单独模组，经 SHA-256 校验，更新与 Alpha 整合包相互独立。"
+ },
+ "changelog_brands": {
+  "ouka": [],
+  "cherry": [
+   {
+    "id": "cherry-v1.0.0",
+    "release": "V1.0.0",
+    "date": "2026-09-13",
+    "title": "The Lunar Genesis Update —— 从发射台，直抵月球",
+    "summary": "Cherry 的首个版本：一个可与 Alpha 并列安装的独立模组品牌。建造 Launch Pad Complex，驾驶 Cherry Apex-1 飞往月球，然后再回家。",
+    "highlights": [
+     "月球：一个新维度，有陨坑、矿床和 Helium-3 Geyser，还有它自己的时钟。",
+     "Cherry Apex-1 与 Launch Pad Complex：登上停靠的火箭，在倒计时期间按住跳跃键，然后载着驾驶员从 Overworld 飞往月球，再返回发射台。",
+     "月球规则：重力为六分之一；真空会穿透除 Pressure Suit 以外的任何护甲，夺走最大生命值的 15%。在 Pressure Field Projector 的球体内是安全的。",
+     "Overdrive Fusion：在 Resonance Crucible 中经此融合的武器、工具或护甲，可获得 ×3 的攻击伤害、护甲值、盔甲韧性或挖掘速度。",
+     "月球资源：Ultrasonic Cutter 只有在共振状态下才能开采 Regolith Core Deposit；Cryo Canister 只有在间歇泉喷发时才能捕获 Helium-3。",
+     "Micrometeorite 会撞击月面并留下陨坑。",
+     "两个技能：Dimensional Cleave（仅沿其十字造成 300% 伤害），以及 Astral Lift，即凭借经过 Overdrive Fusion 的胸甲飞行。",
+     "已确认可与 Alpha 4.4.0 的全部 13 个模组同时启动，且没有 mixin 冲突。"
+    ],
+    "warnings": [
+     "需要 Minecraft 26.2、Fabric Loader 0.19.3 或更高版本、Fabric API 0.154.2 或更高版本、GeckoLib 5.5.5 或更高版本，以及 Java 25。"
+    ]
+   }
+  ],
+  "aureum": [
+   {
+    "id": "aureum-v1.0.0",
+    "release": "1.0.0",
+    "date": "2026-08-30",
+    "title": "首个版本 —— 在不触碰区块渲染的前提下节省内存",
+    "summary": "与 Alpha 相互独立、面向 Minecraft 26.2（Fabric）的单独优化模组。它作用于游戏逻辑、内存与服务器 tick，从不触碰区块渲染，因此可与 Sodium 和 Alpha 整合包一起运行。若想获得更高的 FPS，请安装 Sodium。",
+    "highlights": [
+     "共享方块状态缓存，并采用更轻量的线程争用检测器：加载 2,209 个区块时，常驻堆内存减少 6.3 MB（两次独立测量结果一致）。",
+     "为结构模板缓存设置过期时间：生成新地形期间，堆内存减少 17.2 MB（两次测量结果一致）。结构方块中尚未保存的模板永远不会被丢弃。",
+     "每项优化都可以在 config/aureum.json 中单独关闭；被关闭的项目完全不会改动原版代码。",
+     "/aureum（需要权限）会显示当前启用了哪些项，以及共享了多少。"
+    ],
+    "warnings": [
+     "Tick 耗时（MSPT）在测量误差范围内没有变化；Aureum 不宣称会变快。",
+     "两个客户端设置（粒子数量上限与方块实体渲染距离上限）默认关闭，其效果尚未测量。",
+     "需要 Fabric Loader 0.19.3 或更高版本、Fabric API，以及 Java 25 或更高版本。"
+    ]
+   }
+  ]
  }
 }

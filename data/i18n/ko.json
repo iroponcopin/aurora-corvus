@@ -111,7 +111,8 @@
    "features_intro": "V2.2에서 새로 추가되거나 바뀐 주요 기능을 플레이어 시점에서 정리했습니다.",
    "changelog_updated": "최종 업데이트 {date}",
    "changelog_show_more": "더 보기",
-   "changelog_show_fewer": "접기"
+   "changelog_show_fewer": "접기",
+   "changelog_brand_label": "브랜드"
   },
   "page_titles": {
    "home": "",
@@ -126,7 +127,7 @@
    "aureum": "Aureum"
   },
   "page_descriptions": {
-   "changelog": "Alpha(구 Glimpse Alpha, 그 이전 Sorakaze) MOD 팩의 전체 업데이트 기록. 초판부터 현재까지의 변경 사항·주의 사항을 정리했습니다.",
+   "changelog": "OUKA·Cherry·Alpha·Aureum의 업데이트 기록. 브랜드를 선택하면 각 버전의 변경 사항과 주의 사항을 최신순으로 확인할 수 있습니다.",
    "recipes": "Alpha MOD 팩 전체 아이템 제작 레시피 모음. 검색·카테고리 필터링 지원.",
    "guide": "Alpha MOD 팩 설치 가이드. 서버 설치 절차와 플레이어 참가 설정을 정리했습니다.",
    "roadmap": "Alpha MOD 팩의 개발 로드맵. 이미 출시된 것, 다음 대형 업데이트인 V3, 그리고 아직 만들어지지 않은 것을 나누어 정리했습니다.",
@@ -7028,5 +7029,50 @@
   "section_requirements": "요구 사항",
   "cta_secondary": "전체 다운로드 정보 및 체크섬 보기",
   "closing_line": "Aureum은 독자적인 버전 체계를 가진 별도의 모드이며, SHA-256으로 검증되고 Alpha 팩과 독립적으로 업데이트됩니다."
+ },
+ "changelog_brands": {
+  "ouka": [],
+  "cherry": [
+   {
+    "id": "cherry-v1.0.0",
+    "release": "V1.0.0",
+    "date": "2026-09-13",
+    "title": "The Lunar Genesis Update — 발사대에서 달까지",
+    "summary": "Cherry의 첫 릴리스: Alpha와 나란히 설치하는 별도의 MOD 브랜드입니다. Launch Pad Complex를 건설하고, Cherry Apex-1을 몰고 달까지 날아갔다가 다시 집으로 돌아오세요.",
+    "highlights": [
+     "달: 크레이터, 광상, Helium-3 Geyser가 있는 새로운 차원이며, 자체 시계도 있습니다.",
+     "Cherry Apex-1과 Launch Pad Complex: 계류된 로켓에 탑승해 카운트다운 동안 점프를 길게 누르고, 조종사를 태운 채 Overworld에서 달로, 그리고 다시 발사대까지 날아가세요.",
+     "달의 규칙: 중력은 6분의 1이며, 진공은 Pressure Suit를 제외한 어떤 방어구도 뚫고 최대 체력의 15%를 빼앗습니다. Pressure Field Projector의 구체 안에서는 안전합니다.",
+     "Overdrive Fusion: Resonance Crucible에서 Overdrive Fusion을 거친 무기, 도구 또는 방어구는 공격 데미지, 방어력, 방어 강도 또는 채굴 속도가 ×3이 됩니다.",
+     "달의 자원: Ultrasonic Cutter는 공명 중일 때만 Regolith Core Deposit을 채취하고, Cryo Canister는 간헐천이 분출하는 동안에만 Helium-3을 포집합니다.",
+     "Micrometeorite가 달 표면에 충돌해 크레이터를 남깁니다.",
+     "기술 2가지: Dimensional Cleave(십자 위에만 300% 데미지)와, Overdrive Fusion을 거친 흉갑으로 비행하는 Astral Lift.",
+     "Alpha 4.4.0의 MOD 13개 모두와 동시에 기동해도 mixin 충돌이 없음을 확인했습니다."
+    ],
+    "warnings": [
+     "Minecraft 26.2, Fabric Loader 0.19.3 이상, Fabric API 0.154.2 이상, GeckoLib 5.5.5 이상, Java 25가 필요합니다."
+    ]
+   }
+  ],
+  "aureum": [
+   {
+    "id": "aureum-v1.0.0",
+    "release": "1.0.0",
+    "date": "2026-08-30",
+    "title": "첫 릴리스 — 청크 렌더링에 손대지 않는 메모리 절감",
+    "summary": "Alpha와는 별개인 Minecraft 26.2(Fabric)용 최적화 MOD. 게임 로직·메모리·서버 틱을 다루고 청크 렌더링에는 전혀 손대지 않으므로, Sodium 및 Alpha 팩과 나란히 사용할 수 있습니다. 더 높은 FPS를 원한다면 Sodium을 설치하세요.",
+    "highlights": [
+     "블록 상태 캐시 공유와 더 가벼운 스레드 경합 감지기: 청크 2,209개를 로드한 상태에서 상주 힙 메모리가 6.3 MB 줄었습니다(두 차례의 독립 측정 결과가 일치).",
+     "구조물 템플릿 캐시에 만료 시간 도입: 새 지형을 생성하는 동안 힙 메모리가 17.2 MB 줄었습니다(두 차례 측정 결과가 일치). 구조물 블록에서 저장하지 않은 템플릿은 절대 버리지 않습니다.",
+     "각 최적화는 config/aureum.json에서 개별적으로 끌 수 있으며, 끈 항목은 바닐라 코드를 전혀 건드리지 않습니다.",
+     "/aureum(권한 필요)은 무엇이 켜져 있는지와 얼마나 공유되고 있는지를 보여 줍니다."
+    ],
+    "warnings": [
+     "틱 시간(MSPT)은 측정 오차 범위 내에서 변화가 없으며, Aureum은 속도가 빨라진다고 주장하지 않습니다.",
+     "클라이언트 측 설정 2가지(파티클 수 상한, 블록 엔티티 렌더 거리 상한)는 기본적으로 꺼져 있으며, 효과는 측정되지 않았습니다.",
+     "Fabric Loader 0.19.3 이상, Fabric API, Java 25 이상이 필요합니다."
+    ]
+   }
+  ]
  }
 }
