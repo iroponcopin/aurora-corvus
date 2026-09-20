@@ -35,7 +35,7 @@ from site_common import (  # noqa: E402
     load_latest_changelog_entry, PACK_NAME, pack_zip_path,
 )
 
-MC_VERSION = "26.2"
+MC_VERSION = "26.3"
 DOWNLOAD_DIR = ROOT / "downloads"
 
 # bundle["download"] keys that are rendered with an EMPTY fallback, i.e. the

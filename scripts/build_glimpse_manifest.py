@@ -78,7 +78,7 @@ from site_common import (  # noqa: E402
 from build_download import _aureum_facts  # noqa: E402  (single source of truth
 # for which Aureum jar is current -- same import build_aureum.py already makes)
 
-MC_VERSION = "26.2"
+MC_VERSION = "26.3"
 DOWNLOAD_DIR = ROOT / "downloads"
 SITE_BASE_URL = "https://iroponcopin.github.io/aurora-corvus"
 CHERRY_ZIP_PREFIX = "Cherry_MODs_v"

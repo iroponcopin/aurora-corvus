@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import ROOT, PACK_NAME, pack_zip_path  # noqa: E402
 
-MC_VERSION = "26.2"
+MC_VERSION = "26.3"
 DOWNLOAD_DIR = ROOT / "downloads"
 SITE_BASE_URL = "https://iroponcopin.github.io/aurora-corvus"
 

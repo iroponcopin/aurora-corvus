@@ -320,7 +320,7 @@ def load_food_specials():
             "天空"))
     return out
 
-VANILLA_CLIENT_JAR = Path.home() / ".gradle/caches/fabric-loom/26.2/minecraft-client.jar"
+VANILLA_CLIENT_JAR = Path.home() / ".gradle/caches/fabric-loom/26.3/minecraft-client.jar"
 
 VANILLA_JA_NAMES = {
     "furnace": "かまど",

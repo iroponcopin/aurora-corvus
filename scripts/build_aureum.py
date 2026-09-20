@@ -131,7 +131,7 @@ MONOGRAM = {"file": "monogram.webp", "w": 584, "h": 455}
 # Technical requirements — universal (version numbers, product names), so
 # unlike everything else on this page these are NOT run through translation;
 # see aureum-src/README.md's own opening lines for the source facts.
-REQUIREMENTS = ["Minecraft 26.2 (Fabric)", "Fabric Loader 0.19.3+", "Fabric API", "Java 25+"]
+REQUIREMENTS = ["Minecraft 26.3 (Fabric)", "Fabric Loader 0.19.5+", "Fabric API", "Java 25+"]
 
 # The two measured memory deltas, reproduced exactly from aureum-src/docs/
 # BENCHMARKS.md (resident dedupe+detector pair, and the genrun TTL pair).
