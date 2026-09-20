@@ -38,8 +38,12 @@ project's recipes or textures change, same as the original.
 """
 import json
 import base64
+import hashlib
+import io
 import math
 import re
+import subprocess
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -51,6 +55,29 @@ OUT_HTML = ROOT / "レシピ早見表.html"  # unused here; original single-file
 SITE_ROOT = Path(__file__).resolve().parent.parent
 OUT_DATA_DIR = SITE_ROOT / "data"
 OUT_IMG_DIR = SITE_ROOT / "assets" / "img" / "recipes"
+
+# ---------------------------------------------------------------------------
+# モジュールの資源がどこにあるか(2026-09-20)
+# ---------------------------------------------------------------------------
+# Alpha の 13 モジュールは mods-src の作業木にソースとして在る。Cherry と OUKA は
+# **別ブランドの別リポジトリ**で、この機械には jar でしか来ない —— だから配布済みの
+# zip(downloads/)から取り出して、同じ "src/main/resources" の形に並べ直したものを
+# ここに登録する。
+#
+# ⚠ **出典は配布物であって、誰かの作業木ではない。**作業木を読むと、まだ配られて
+#    いないレシピを早見表に載せてしまう(= 手元にないアイテムの作り方が載る)。
+#    extract_versions.py が「downloads/ に実在する zip」を読むのと同じ理由。
+MOD_RESOURCE_ROOT = {}
+BRAND_JAR = {}      # block -> 配布済み jar の写し(コードの中のレシピを読むため)
+
+
+def mod_resources(mod_dir):
+    """そのモジュールの src/main/resources に当たる場所。"""
+    staged = MOD_RESOURCE_ROOT.get(mod_dir)
+    if staged is not None:
+        return staged
+    return ROOT / "mods-src" / mod_dir / "src/main/resources"
+
 
 MODS = [
     ("sorakaze-guns", "sorakaze_guns", "銃"),
@@ -76,6 +103,235 @@ MODS = [
     # `check_mods_roster()` が V4.2.2 の抽出で初めて名指しで止めた(13 レシピ)。
     ("sorakaze-fallout", "sorakaze_fallout", "灰街圏"),
 ]
+
+# ---------------------------------------------------------------------------
+# 別ブランド(Cherry / OUKA)を配布物から取り込む(2026-09-20)
+# ---------------------------------------------------------------------------
+# 所有者の指示:「レシピ集に Cherry Mods のアイテム、OUKA のアイテムの作成方法が
+# 書かれていない」。これらは Alpha の 13 モジュールではなく **別の製品**なので、
+# 独立したタブとして載せる(「同梱 MOD が 15 個になった」のではない)。
+#
+# ⚠ **一覧を手で書かない。**どのブランドが配布済みかは glimpse_manifest.json が
+#    知っている —— ここに名前を書き写せば、次に増えるブランドがまた黙って落ちる
+#    (§31.4 / §39 の planarcadia・fallout と同じ形)。マニフェストを**数えて**、
+#    数えたものが全部取り込めたかを検証する。
+BRAND_CATEGORY = {
+    "cherry": "Cherry",
+    "ouka": "OUKA",
+}
+BRAND_TAB_ICON = {
+    "Cherry": "cherry:apex1_rocket",
+    "OUKA": "ouka:ouka_caster",
+}
+
+
+def stage_published_brands(staging_root):
+    """配布済みブランドの jar を downloads/ から取り出し、資源を mods-src と同じ形に並べる。
+
+    戻り値: [(mod_dir, modid, category), ...] —— MODS に足すぶん。
+    マニフェストが数えたブランドのうち 1 つでも取り込めなければ **止まる**。
+    """
+    manifest_path = SITE_ROOT / "glimpse_manifest.json"
+    if not manifest_path.exists():
+        raise SystemExit(f"ERROR: {manifest_path} is missing - run build_glimpse_manifest.py first. "
+                         f"Without it there is no list of published brands, and an empty list "
+                         f"would make 'every brand was staged' vacuously true.")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    # ブランドの見分け方は名前ではなく**形**: mod_id と jars を持つブロック。
+    blocks = {k: v for k, v in manifest.items()
+              if isinstance(v, dict) and "mod_id" in v and isinstance(v.get("jars"), dict)}
+    if not blocks:
+        raise SystemExit("ERROR: glimpse_manifest.json declares no brand block (mod_id + jars). "
+                         "That is not 'no brands are published' - it means this reader is looking "
+                         "at the wrong shape, and nothing would be added without a word.")
+
+    staged = []
+    unknown = []
+    for block, info in sorted(blocks.items()):
+        modid = info["mod_id"]
+        cat = BRAND_CATEGORY.get(block)
+        if cat is None:
+            unknown.append(block)
+            continue
+        zip_path = SITE_ROOT / "downloads" / info["file_name"]
+        if not zip_path.exists():
+            raise SystemExit(f"ERROR: the manifest publishes {block} as {info['file_name']}, but "
+                             f"{zip_path} is not there. The sheet must be generated from the bytes "
+                             f"players download, not from a working tree.")
+        jar_entry = info["jars"].get(modid)
+        if jar_entry is None:
+            raise SystemExit(f"ERROR: {block}'s manifest block has no jar named {modid!r} "
+                             f"(it lists {sorted(info['jars'])}). Its own jar is what carries the "
+                             f"recipes, so there is nothing to read.")
+        with zipfile.ZipFile(zip_path) as zf:
+            jar_bytes = zf.read(jar_entry["path"])
+        got = hashlib.sha256(jar_bytes).hexdigest()
+        if got != jar_entry["sha256"]:
+            raise SystemExit(f"ERROR: {jar_entry['path']} inside {info['file_name']} hashes {got}, "
+                             f"but the manifest says {jar_entry['sha256']}. Refusing to document "
+                             f"a jar that is not the published one.")
+
+        dest = staging_root / block / "src/main/resources"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        jar_copy = dest.parent / "published.jar"
+        jar_copy.write_bytes(jar_bytes)
+        BRAND_JAR[block] = jar_copy
+        wanted = (f"assets/{modid}/", f"data/{modid}/")
+        n = 0
+        with zipfile.ZipFile(io.BytesIO(jar_bytes)) as jf:
+            for member in jf.namelist():
+                if member.endswith("/") or not member.startswith(wanted):
+                    continue
+                out = dest / member
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_bytes(jf.read(member))
+                n += 1
+        recipes = len(list((dest / "data" / modid / "recipe").glob("*.json")))
+        if recipes == 0:
+            raise SystemExit(f"ERROR: {block} staged {n} resource file(s) but no recipe json. "
+                             f"A brand with zero recipes would be added as an empty tab, which "
+                             f"reads as 'this brand has nothing to craft' rather than as a fault.")
+        MOD_RESOURCE_ROOT[block] = dest
+        staged.append((block, modid, cat))
+        print(f"brand staged: {block} {jar_entry['version']} from {info['file_name']} "
+              f"({n} resource file(s), {recipes} recipe json)")
+
+    if unknown:
+        raise SystemExit(
+            "ERROR: the manifest publishes %d brand(s) this script has no category for: %s. "
+            "Add them to BRAND_CATEGORY and BRAND_TAB_ICON - leaving them out is how a whole "
+            "product's recipes go missing without a word."
+            % (len(unknown), ", ".join(sorted(unknown))))
+    if len(staged) != len(blocks):
+        raise SystemExit(f"ERROR: the manifest counts {len(blocks)} brand(s) but only "
+                         f"{len(staged)} were staged.")
+    return staged
+
+
+# ---------------------------------------------------------------------------
+# コードの中にしか無いレシピ(2026-09-20)
+# ---------------------------------------------------------------------------
+# Cherry の「分子共鳴融合炉」は data/cherry/recipe/ を使わない —— 融合の式は
+# FusionRecipes.catalystFormula() に**コードとして**書かれている。だから json だけを
+# 読むと、アストラル触媒は「レシピの無いアイテム」として出てしまう。実際には
+# 炉で作れるので、それは嘘になる。
+#
+# ⚠ **式を手で書き写さない。**配布済み jar のバイトコードから読む。写した瞬間、
+#    次に係数が変わったときに早見表だけが古いことを言い続ける(§電力ガイドの
+#    「134 値すべて実装から読む」と同じ規律)。読めなければ**止まる**。
+FUSION_READERS = {
+    # block -> (クラス, メソッド, 生成物の item id, 装置の item id)
+    "cherry": ("com/cherry/v1/common/block/FusionRecipes.class", "catalystFormula",
+               "cherry:astral_catalyst", "cherry:resonance_crucible"),
+}
+
+
+def read_code_only_recipes(reg):
+    """コードの中だけにあるレシピを SPECIAL_ITEMS と同じ形のタプル列にして返す。"""
+    out = []
+    for block, (cls, method, result_id, device_id) in sorted(FUSION_READERS.items()):
+        jar = BRAND_JAR.get(block)
+        if jar is None:
+            raise SystemExit(f"ERROR: {block} has a code-only recipe to read but was never staged.")
+        with zipfile.ZipFile(jar) as jf:
+            if cls not in jf.namelist():
+                raise SystemExit(
+                    f"ERROR: {cls} is not in the published {block} jar any more. The fusion "
+                    f"formula was read from it, so the sheet would quietly stop describing how "
+                    f"{result_id} is made. Find where the recipe moved to.")
+            with tempfile.TemporaryDirectory(prefix="fusion-") as td:
+                target = Path(td) / "K.class"
+                target.write_bytes(jf.read(cls))
+                try:
+                    dis = subprocess.run(["javap", "-p", "-c", str(target)],
+                                         capture_output=True, text=True, timeout=120)
+                except (OSError, subprocess.TimeoutExpired) as e:
+                    raise SystemExit(
+                        f"ERROR: cannot run javap to read {block}'s fusion formula ({e}). The "
+                        f"formula is not written down anywhere else on purpose - typing it here "
+                        f"by hand is what this check exists to prevent. Install a JDK.")
+        if dis.returncode != 0:
+            raise SystemExit(f"ERROR: javap failed on {cls}: {dis.stderr.strip()[:300]}")
+
+        # catalystFormula() の本体だけを見る。put(ITEM, N) が並んでいる。
+        body = dis.stdout.split(f"{method}();", 1)
+        if len(body) < 2:
+            raise SystemExit(f"ERROR: {cls} no longer has a {method}() to read.")
+        body = body[1].split("\n  public ", 1)[0].split("\n  private ", 1)[0]
+        pairs = re.findall(
+            r"Field com/cherry/v1/common/item/CherryItems\.([A-Z0-9_]+):.*?\n\s*\d+:\s*"
+            r"(?:iconst_(\d)|bipush\s+(\d+)|sipush\s+(\d+))",
+            body, flags=re.S)
+        formula = []
+        for name, a, b, c in pairs:
+            formula.append((f"{block}:{name.lower()}", int(a or b or c)))
+        if not formula:
+            raise SystemExit(
+                f"ERROR: read {cls}'s {method}() but found no ingredient at all. An empty "
+                f"formula would print '{result_id} is made from nothing', which is worse than "
+                f"not printing it. The bytecode shape has changed.")
+
+        parts = []
+        for item_id, count in formula:
+            ja, _en, _tex = reg.register(item_id)
+            if ja == item_id.split(":", 1)[1]:
+                raise SystemExit(
+                    f"ERROR: {item_id} has no display name, so the fusion recipe would read "
+                    f"'{ja} x{count}'. Either the id was renamed or the lang file lost a key.")
+            parts.append(f"{ja} {count} 個")
+        device_ja, _e, _t = reg.register(device_id)
+        how = "%sに、%sを入れて融合させる(作業台では作れない)" % (device_ja, "・".join(parts))
+        modid, name = result_id.split(":", 1)
+        out.append((modid, name, how, BRAND_CATEGORY[block]))
+        print(f"code-only recipe: {result_id} <- {' + '.join(f'{i} x{c}' for i, c in formula)} "
+              f"(read from {jar.name})")
+    return out
+
+
+# ---------------------------------------------------------------------------
+# 配られていないレシピを載せない(2026-09-20)
+# ---------------------------------------------------------------------------
+# この生成器は Alpha のレシピを **作業木**(mods-src)から読む。作業木には、まだ
+# 配布されていない版の作業が入っていることがある —— 実際 2026-09-20 の時点で
+# `sorakaze_fallout/approach_flare_from_stubs.json` が木にだけ在り、配布済みの
+# alpha-fallout-4.4.0.1 には無かった(V4.4.1 は保留中)。そのまま作り直すと
+# **手元のゲームでは作れない作り方**を早見表に載せることになる。
+#
+# ⚠ これは「載せ忘れ」の逆側の失敗で、見つけにくい: 出力は増えるので、数が減る
+#    検査には引っかからない。だから配布物のほうを**正**として突き合わせる。
+def published_recipe_names():
+    """配布済み zip のなかに実在するレシピ名を modid ごとに集める。
+
+    戻り値: {modid: {"foo.json", ...}}。ここに無い名前は早見表に載せない。
+    """
+    manifest_path = SITE_ROOT / "glimpse_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    pack = manifest.get("pack") or {}
+    zip_name = pack.get("file_name")
+    if not zip_name:
+        raise SystemExit("ERROR: glimpse_manifest.json has no pack.file_name, so there is no "
+                         "published pack to check the recipes against. Refusing to guess.")
+    zip_path = SITE_ROOT / "downloads" / zip_name
+    if not zip_path.exists():
+        raise SystemExit(f"ERROR: the manifest publishes the pack as {zip_name}, but {zip_path} "
+                         f"is not there.")
+    by_modid = {}
+    with zipfile.ZipFile(zip_path) as zf:
+        jars = [n for n in zf.namelist() if n.endswith(".jar")]
+        if not jars:
+            raise SystemExit(f"ERROR: {zip_name} contains no jar at all - this reader is looking "
+                             f"at the wrong shape, and an empty answer would withhold EVERY "
+                             f"recipe rather than none.")
+        for name in jars:
+            with zipfile.ZipFile(io.BytesIO(zf.read(name))) as jf:
+                for member in jf.namelist():
+                    m = re.match(r"^data/([a-z0-9_]+)/recipe/(.+\.json)$", member)
+                    if m:
+                        by_modid.setdefault(m.group(1), set()).add(m.group(2))
+    if not by_modid:
+        raise SystemExit(f"ERROR: no recipe json found in any jar inside {zip_name}.")
+    return by_modid
+
 
 # ---------------------------------------------------------------------------
 # MODS の取りこぼし検出(V2.1.0 で新設)
@@ -125,7 +381,8 @@ def check_mods_roster():
             f"'the suite has no modules' - it means this walk is looking in the wrong place, "
             f"and an empty roster would make every check below vacuously true.")
 
-    listed = {mod_dir for mod_dir, _, _ in MODS}
+    # 取り込んだ別ブランドは mods-src に無くて当たり前なので、この検査の対象外。
+    listed = {mod_dir for mod_dir, _, _ in MODS if mod_dir not in MOD_RESOURCE_ROOT}
     with_recipes = {name for name, n in found.items() if n > 0}
 
     missing = sorted(with_recipes - listed)
@@ -455,6 +712,43 @@ MOD_TEXTURE_OVERRIDE = {
 # (照合は常に「その位置で一致する最長のキー」を選ぶ)。
 #   例) 「金庫」を入れておかないと「金」+「庫」に割れる。「格子戸」は「格子」に勝つ。
 YOMI = {
+    # --- 別ブランド Cherry / OUKA(2026-09-20)。所有者の「レシピ集に Cherry と
+    #     OUKA の作り方が無い」への対応で早見表に入った 19 枚ぶん。ここを足さないと
+    #     V4.3.2 の 22 枚と同じで、五十音順の**間違った場所に並ぶ**カードになる。 ---
+    # --- ついでに片づけた Alpha の 10 枚(2026-09-20)。Cherry / OUKA を足すために
+    #     この表を開いたところ、V4.2〜V4.4 の扉・建材・灰街圏の語が未登録のまま
+    #     残っていた —— どれも五十音順の**間違った場所**に並んでいたということなので、
+    #     同じ手で直しておく(1240/1250 → 1250/1250)。 ---
+    "ノッカーの玄関扉": "のっかーのげんかんとびら", "玄関": "げんかん", "玄": "げん",
+    "厩の扉": "うまやのとびら", "厩": "うまや",
+    "市松の石蓋": "いちまつのいしぶた", "市松": "いちまつ", "市": "いち", "松": "まつ",
+    "石蓋": "いしぶた", "蓋": "ふた",
+    "引き違いのガラス戸": "ひきちがいのがらすど", "引き違い": "ひきちがい", "違": "ちがい",
+    "絞りのハッチ": "しぼりのはっち", "絞": "しぼり",
+    "閂の扉": "かんぬきのとびら", "閂": "かんぬき",
+    "杭の木戸": "くいのきど", "杭": "くい",
+    "貸金庫の棚": "かしきんこのたな", "貸金庫": "かしきんこ", "貸": "かし",
+    "吹流し": "ふきながし", "吹流": "ふきなが", "吹": "ふき", "流": "なが",
+    "滑走路床": "かっそうろゆか", "滑走路": "かっそうろ", "滑走": "かっそう",
+    "滑": "かつ", "走": "そう", "路": "ろ",
+    # Cherry(月と軌道)
+    "発射台コンプレックス": "はっしゃだいこんぷれっくす", "発射台": "はっしゃだい",
+    "発射": "はっしゃ", "発": "はつ", "射": "しゃ",
+    "気密フィールド投射機": "きみつふぃーるどとうしゃき", "気密": "きみつ", "密": "みつ",
+    "投射機": "とうしゃき", "投射": "とうしゃ", "投": "とう",
+    "与圧スーツ": "よあつすーつ", "与圧": "よあつ", "与": "よ",
+    "推進剤キャニスター": "すいしんざいきゃにすたー", "推進剤": "すいしんざい",
+    "推進": "すいしん", "推": "すい", "進": "しん", "剤": "ざい",
+    "分子共鳴融合炉": "ぶんしきょうめいゆうごうろ", "共鳴": "きょうめい",
+    "融合炉": "ゆうごうろ", "融合": "ゆうごう", "分子": "ぶんし",
+    "分": "ぶん", "子": "し", "融": "ゆう", "炉": "ろ",
+    "超音波カッター": "ちょうおんぱかったー", "超音波": "ちょうおんぱ",
+    "超音": "ちょうおん", "超": "ちょう", "音波": "おんぱ", "波": "は",
+    # OUKA(桜花)
+    "桜花合金インゴット": "おうかごうきんいんごっと", "桜花合金": "おうかごうきん",
+    "桜花の杖": "おうかのつえ", "桜花": "おうか", "桜": "おう",
+    "弾幕の焦点": "だんまくのしょうてん", "弾幕": "だんまく", "幕": "まく",
+    "焦点": "しょうてん", "焦": "しょう",
     # --- V4.3.2 の工業 20 種 + V4.3.3 の 4 種(2026-09-09)。 ---
     #     ⚠ V4.3.2 はこの 22 語を足さずに出荷していた —— 生成器は毎回
     #     「未登録の文字」と名指しで警告していたが、その警告は読み飛ばされ、
@@ -1095,8 +1389,7 @@ def _png_b64_for_ref(ref, default_ns):
             return None
     for mdir, mid, _ in MODS:
         if mid == ns:
-            p = (ROOT / "mods-src" / mdir / "src/main/resources/assets" / mid
-                 / "textures" / f"{path}.png")
+            p = mod_resources(mdir) / "assets" / mid / "textures" / f"{path}.png"
             if p.exists():
                 return base64.b64encode(p.read_bytes()).decode()
     return None
@@ -1119,8 +1412,7 @@ def _model_chain_texture(model_id, depth=0):
     else:
         for mdir, mid, _ in MODS:
             if mid == ns:
-                p = (ROOT / "mods-src" / mdir / "src/main/resources/assets" / mid
-                     / "models" / f"{path}.json")
+                p = mod_resources(mdir) / "assets" / mid / "models" / f"{path}.json"
                 if p.exists():
                     try:
                         data = json.loads(p.read_text(encoding="utf-8"))
@@ -1186,7 +1478,7 @@ def _gui_model_of_item_definition(node, depth=0):
 
 
 def mod_texture_b64(mod_dir, modid, name):
-    assets = ROOT / "mods-src" / mod_dir / "src/main/resources/assets" / modid
+    assets = mod_resources(mod_dir) / "assets" / modid
     textures = assets / "textures"
     override = MOD_TEXTURE_OVERRIDE.get(f"{modid}:{name}")
     if override:
@@ -1243,8 +1535,7 @@ def mod_texture_b64(mod_dir, modid, name):
             else:
                 for mdir, mid, _ in MODS:
                     if mid == ref_ns:
-                        p = (ROOT / "mods-src" / mdir / "src/main/resources/assets"
-                             / mid / "textures" / f"{ref_path}.png")
+                        p = mod_resources(mdir) / "assets" / mid / "textures" / f"{ref_path}.png"
                         if p.exists():
                             return base64.b64encode(p.read_bytes()).decode()
             break
@@ -1276,7 +1567,7 @@ def mod_texture_b64(mod_dir, modid, name):
                     pass
             for mdir, mid, _ in MODS:
                 if mid == chosen_ns:
-                    p = ROOT / "mods-src" / mdir / "src/main/resources/assets" / mid / "textures" / f"{chosen_path}.png"
+                    p = mod_resources(mdir) / "assets" / mid / "textures" / f"{chosen_path}.png"
                     if p.exists():
                         return base64.b64encode(p.read_bytes()).decode()
     # v1.8.4: ここまでで解決できないのは、**平面テクスチャも block/<name>.json も持たず、
@@ -1302,7 +1593,7 @@ def mod_texture_b64(mod_dir, modid, name):
 
 
 def load_lang(mod_dir, modid, locale="ja_jp"):
-    p = ROOT / "mods-src" / mod_dir / "src/main/resources/assets" / modid / f"lang/{locale}.json"
+    p = mod_resources(mod_dir) / "assets" / modid / f"lang/{locale}.json"
     return json.loads(p.read_text(encoding="utf-8"))
 
 
@@ -1653,6 +1944,8 @@ CATEGORY_TAB_ICON = {
     "電力": "sorakaze_power:breaker",
     "二相楽園": "sorakaze_planarcadia:portal_amethyst_block",
     "灰街圏": "sorakaze_fallout:filter_mask",
+    # 別ブランド(Alpha の同梱 MOD ではない)。2026-09-20。
+    **BRAND_TAB_ICON,
 }
 ALL_TAB_ICON = "minecraft:crafting_table"
 
@@ -5399,6 +5692,15 @@ def main():
     # ⚠ いちばん先に走らせる。ここを通らないと「1 つのモジュールが丸ごと無い」ことに
     #    誰も気づけない —— 出力は正常に見え、終了コードは 0 のままだからである。
     check_mods_roster()
+    # 別ブランド(Cherry / OUKA)は配布済み zip から取り出して MODS に足す。
+    # MODS を歩くものより先に置く —— 後ろに置くと、テクスチャ解決やレシピの走査が
+    # 「まだ MODS に無いもの」を静かに読み飛ばす。
+    with tempfile.TemporaryDirectory(prefix="wiki-brands-") as tmp:
+        MODS.extend(stage_published_brands(Path(tmp)))
+        return _main_body()
+
+
+def _main_body():
     zf = vanilla_zip()
     lang_by_modid = {modid: load_lang(mod_dir, modid) for mod_dir, modid, _ in MODS}
     lang_en_by_modid = {modid: load_lang(mod_dir, modid, "en_us") for mod_dir, modid, _ in MODS}
@@ -5408,9 +5710,29 @@ def main():
 
     cards = []       # dict: cat / id / cells(9 個の id or None) / count / how / s
     no_yomi = []     # 読みを組み立てられなかったカード名(黙って捨てずに報告する)
+    published = published_recipe_names()
+    withheld = []    # 作業木にしか無いレシピ(配られていないので載せない)
+    seen_published = set()   # 実際に読んだ配布済みレシピ(取りこぼしを後で数える)
     for mod_dir, modid, mod_cat in MODS:
-        recipe_dir = ROOT / "mods-src" / mod_dir / "src/main/resources/data" / modid / "recipe"
+        recipe_dir = mod_resources(mod_dir) / "data" / modid / "recipe"
+        if mod_dir in MOD_RESOURCE_ROOT:
+            # 別ブランドは配布済み jar そのものを展開したものなので、ここに在る = 配られている。
+            # (jar の sha256 はマニフェストと突き合わせ済み。stage_published_brands を見よ)
+            known = {q.name for q in recipe_dir.glob("*.json")}
+            published[modid] = known
+        else:
+            known = published.get(modid)
+        if not known:
+            raise SystemExit(
+                f"ERROR: {modid} is in MODS but no published archive carries a recipe for it. "
+                f"Either the module is not shipped, or this check is reading the wrong archive; "
+                f"both are worse than the sheet being out of date.")
         for path in sorted(recipe_dir.glob("*.json")):
+            if path.name not in known:
+                # 作業木のほうが先に進んでいる。配布済みの版では作れないので載せない。
+                withheld.append(f"{modid}/{path.name}")
+                continue
+            seen_published.add(f"{modid}/{path.name}")
             parsed = parse_recipe(path)
             if parsed is None:
                 continue
@@ -5434,7 +5756,8 @@ def main():
                           "s": search_blob(tokens)})
 
     # クラフト不可の特別入手アイテム(強化ビーコン等)+食料品 300 種は「入手方法」カード。
-    for modid, item_name, how_to_get, cat in SPECIAL_ITEMS + load_food_specials():
+    for modid, item_name, how_to_get, cat in (SPECIAL_ITEMS + load_food_specials()
+                                              + read_code_only_recipes(reg)):
         item_id = f"{modid}:{item_name}"
         ja, en, _tex = reg.register(item_id)
         _, unknown = reading_of(ja)
@@ -5447,8 +5770,29 @@ def main():
     # V1.4.1: 「天空」を追加。<b>この一覧に無いカテゴリのカードは黙って捨てられる。</b>
     # MODS に足すだけでは早見表に出ない(実際に天空 MOD が丸ごと欠落した)ので、
     # MOD を増やしたら必ずここにも足すこと。
+    # ---- 配布物との突き合わせ(両方向)--------------------------------------
+    # こちら向き: 配られているのに読めなかったもの。早見表が**少なく**なる側の失敗で、
+    # 黙って通ると「そのアイテムは作れない」と書いたことになる。
+    expected = {f"{modid}/{name}"
+                for _d, modid, _c in MODS
+                for name in published.get(modid, ())}
+    unread = sorted(expected - seen_published)
+    if unread:
+        raise SystemExit(
+            "ERROR: %d recipe(s) are in the published archives but were not read from the source "
+            "tree, so the sheet would say they cannot be crafted: %s"
+            % (len(unread), ", ".join(unread[:12]) + (" ..." if len(unread) > 12 else "")))
+    if withheld:
+        print("withheld %d unpublished recipe(s) - present in the working tree, absent from the "
+              "published archives, so nobody can craft them yet: %s"
+              % (len(withheld), ", ".join(withheld)))
+    print("published cross-check: %d recipe(s) read, all of them present in the shipped jars"
+          % len(seen_published))
+
     cat_order = ["銃", "電車", "建材", "ドア", "乗り物", "ボス", "天空", "サバイバル", "電力",
-                 "二相楽園", "灰街圏"]
+                 "二相楽園", "灰街圏",
+                 # 別ブランドは Alpha のジャンルの後ろに、サイトの並び(OUKA→Cherry)で置く。
+                 *[BRAND_CATEGORY[b] for b in ("ouka", "cherry")]]
     missing = {c["cat"] for c in cards} - set(cat_order)
     if missing:
         raise SystemExit(

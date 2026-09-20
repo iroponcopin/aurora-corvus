@@ -41,8 +41,16 @@ def build():
 
         cat_names = recipes.get("cat_names", [])
         if len(cat_names) != len(master["cats"]):
-            print(f"WARNING [{lang}]: expected {len(master['cats'])} category names, "
-                  f"got {len(cat_names)}")
+            # 2026-09-20: ここは WARNING だった。警告のまま短い一覧を書き出すと、
+            # **タブの名前が 1 つずつずれる**か、最後のタブが無名で出る —— どちらも
+            # 「生成は成功しました」と言いながら壊れたページを配ることになる。
+            # Cherry と OUKA を足したときに 12 言語ぶんこれが出て、それで気づいた。
+            raise SystemExit(
+                f"ERROR [{lang}]: data/recipes.json has {len(master['cats'])} categories "
+                f"{[c[0] for c in master['cats']]} but this bundle names {len(cat_names)} "
+                f"{cat_names}. The two lists are matched by position, so a short one renames "
+                f"every tab after the gap. Add the missing name(s) to "
+                f"data/i18n/{lang}.json -> recipes.cat_names.")
 
         overlay = {
             "cat_names": cat_names,
