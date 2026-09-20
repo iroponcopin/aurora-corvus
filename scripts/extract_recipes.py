@@ -125,6 +125,98 @@ BRAND_TAB_ICON = {
 }
 
 
+def recipe_sources():
+    """この実行が読んだ配布物の版。data/recipes.json に書き、検査が突き合わせる。"""
+    manifest = json.loads((SITE_ROOT / "glimpse_manifest.json").read_text(encoding="utf-8"))
+    out = {}
+    pack = manifest.get("pack") or {}
+    if pack.get("latest"):
+        out["pack"] = pack["latest"]
+    for block in sorted(BRAND_CATEGORY):
+        info = manifest.get(block) or {}
+        if info.get("latest"):
+            out[block] = info["latest"]
+    if not out:
+        raise SystemExit("ERROR: no published version could be recorded, so nothing would ever "
+                         "notice this sheet going stale.")
+    return out
+
+
+def stage_published_pack(staging_root):
+    """Alpha の 13 モジュールも、配布済み pack zip の jar から並べ直す。
+
+    2026-09-20、Alpha セッションの指摘で入った。この生成器は Alpha を作業木
+    (mods-src)から読んでいたが、**作業木は 26.2、配布されている jar は 26.3**
+    (mods-src-mc263 から作られたもの)である。中身は当時たまたま一致していたが、
+    「配布物を説明するのに別の木を読む」こと自体が誤りで、実測すると
+    `sorakaze_boss/enhanced_beacon_{alpha,beta}.json` の 2 件は**内容が違って**いた
+    (published 側だけ fabric:load_conditions を持つ)。
+
+    ⚠ **名前ではなく中身で一致を見る**のが要点。旧版の突き合わせはファイル名しか
+      見ておらず、その 2 件を素通りさせていた([[a gate can measure the wrong
+      quantity]] と同じ形)。配布物そのものから読めば、突き合わせる相手がいなくなる。
+
+    戻り値: 並べ直したモジュール数。
+    """
+    manifest = json.loads((SITE_ROOT / "glimpse_manifest.json").read_text(encoding="utf-8"))
+    zip_name = (manifest.get("pack") or {}).get("file_name")
+    if not zip_name:
+        raise SystemExit("ERROR: glimpse_manifest.json has no pack.file_name.")
+    zip_path = SITE_ROOT / "downloads" / zip_name
+    if not zip_path.exists():
+        raise SystemExit(f"ERROR: {zip_path} is not there; the pack cannot be read.")
+
+    # 別ブランドは既に自分の zip から並べ済みなので、ここでは対象外にする
+    # (混ぜると「pack から 12 個」と、配布物が違うものまで数えてしまう)。
+    wanted = {modid: mod_dir for mod_dir, modid, _cat in MODS
+              if mod_dir not in MOD_RESOURCE_ROOT}
+    staged = 0
+    staged_dirs = set()
+    with zipfile.ZipFile(zip_path) as zf:
+        jars = [n for n in zf.namelist() if n.endswith(".jar")]
+        if not jars:
+            raise SystemExit(f"ERROR: {zip_name} contains no jar.")
+        for name in jars:
+            data = zf.read(name)
+            with zipfile.ZipFile(io.BytesIO(data)) as jf:
+                members = jf.namelist()
+                ids = {m.split("/")[1] for m in members
+                       if m.startswith("assets/") and m.count("/") > 1}
+                ids |= {m.split("/")[1] for m in members
+                        if m.startswith("data/") and m.count("/") > 1}
+                mine = sorted(i for i in ids if i in wanted)
+                if not mine:
+                    continue
+                for modid in mine:
+                    mod_dir = wanted[modid]
+                    dest = staging_root / mod_dir / "src/main/resources"
+                    for member in members:
+                        if member.endswith("/"):
+                            continue
+                        if not member.startswith((f"assets/{modid}/", f"data/{modid}/")):
+                            continue
+                        out = dest / member
+                        out.parent.mkdir(parents=True, exist_ok=True)
+                        out.write_bytes(jf.read(member))
+                    # 同じ modid の資源が複数の jar に散っていることがある。dest は
+                    # modid ごとに 1 つなので、後から来たぶんは**足される**(上書き
+                    # ではない)。だから数えるのは「寄与した jar の数」であって
+                    # モジュールの数ではない —— そこを取り違えた数え方を一度書いた。
+                    MOD_RESOURCE_ROOT[mod_dir] = dest
+                    staged_dirs.add(mod_dir)
+                    staged += 1
+    missing = sorted(set(wanted.values()) - staged_dirs)
+    if missing:
+        raise SystemExit(
+            "ERROR: %d module(s) in MODS were not found in the published pack %s: %s. "
+            "Reading them from the working tree instead is what this staging exists to stop."
+            % (len(missing), zip_name, ", ".join(missing)))
+    print(f"pack staged: {len(staged_dirs)} module(s) from {zip_name} in {staged} jar "
+          f"contribution(s) - recipes, textures and names now come from the jars players "
+          f"install")
+    return staged
+
+
 def stage_published_brands(staging_root):
     """配布済みブランドの jar を downloads/ から取り出し、資源を mods-src と同じ形に並べる。
 
@@ -5696,7 +5788,10 @@ def main():
     # MODS を歩くものより先に置く —— 後ろに置くと、テクスチャ解決やレシピの走査が
     # 「まだ MODS に無いもの」を静かに読み飛ばす。
     with tempfile.TemporaryDirectory(prefix="wiki-brands-") as tmp:
+        # Alpha も別ブランドも、レシピ・テクスチャ・表示名は**配布物**から読む。
+        # Java の実装から読む数値(電力ガイド等)だけは mods-src のソースのまま。
         MODS.extend(stage_published_brands(Path(tmp)))
+        stage_published_pack(Path(tmp))
         return _main_body()
 
 
@@ -5783,9 +5878,15 @@ def _main_body():
             "tree, so the sheet would say they cannot be crafted: %s"
             % (len(unread), ", ".join(unread[:12]) + (" ..." if len(unread) > 12 else "")))
     if withheld:
-        print("withheld %d unpublished recipe(s) - present in the working tree, absent from the "
-              "published archives, so nobody can craft them yet: %s"
-              % (len(withheld), ", ".join(withheld)))
+        # 2026-09-20 の後半以降、レシピの出典は配布物そのものなので、ここは
+        # **本来ぜったいに通らない**。通ったということは、どれかのモジュールが
+        # 作業木から読まれている(= 並べ直しが効いていない)ということ。
+        raise SystemExit(
+            "ERROR: %d recipe(s) were read from a source the published archives do not carry: "
+            "%s. Since the pack and the brands are both staged from what players download, "
+            "this can only mean a module fell back to the working tree - which is the thing "
+            "the staging exists to prevent."
+            % (len(withheld), ", ".join(withheld)))
     print("published cross-check: %d recipe(s) read, all of them present in the shipped jars"
           % len(seen_published))
 
@@ -6031,6 +6132,9 @@ def _main_body():
     OUT_DATA_DIR.mkdir(parents=True, exist_ok=True)
     recipes_data = {
         "total": total,
+        # この早見表がどの配布物から作られたか。サイトが新しい版を配り始めたのに
+        # 作り直していなければ、check_recipe_sources.py がここを見て赤くする。
+        "sources": recipe_sources(),
         "cats": cats_meta,       # [[name, icon_item_id, count], ...]
         "all_tab_icon": ALL_TAB_ICON,
         "items": items_map,      # id -> [ja, en, tex_key_or_null]

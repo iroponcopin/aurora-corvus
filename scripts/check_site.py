@@ -60,6 +60,11 @@ CHECKS = [
      "/changelog/ brand panels in 13 languages + changelog_feed/brands.json and every brand feed"),
     ("changelog-brands-controls", "check_changelog_brands.py", ["--self-test"],
      "the brand-changelog gate turns every planted defect red"),
+    # 2026-09-20: レシピ集は配布物(pack zip とブランド zip)から作られる。新しい版を
+    # 配り始めたのに作り直していなければ、サイトは新しい zip を配りながら古い作り方を
+    # 表示し続ける —— 出力は正常に見え、リンクも切れないので誰も気づかない。
+    ("recipe-sources", "check_recipe_sources.py", [],
+     "data/recipes.json was generated from the versions the site currently publishes"),
 ]
 
 
