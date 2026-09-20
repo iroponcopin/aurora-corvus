@@ -19,21 +19,53 @@ build_cherry.py's header). Two things, and nothing else:
 
   1. Where OUKA sits — said once, as a fact, not argued. He put it at the top
      of the line: OUKA → Cherry → Alpha, 左から順に上位ブランド.
-  2. A closing line in the register of 乞うご期待.
+  2. The release that is on offer. Until V1.0.0 this was a closing line in the
+     register of 乞うご期待. Now it is the release itself, in the shape Cherry's
+     page gave its own: the version and name, ONE line in the same register,
+     the download, and the facts a player checks before installing (what it
+     needs, how big the file is, its SHA-256). Every figure is read from the
+     file in downloads/ and from the fabric.mod.json inside it — none is typed
+     here.
 
 NOT on this page, by his word on Cherry, which governs here because this is the
 same kind of page: where the name comes from; that there is no compromise
-(self-evident, and saying it cheapens the brand); what it will contain; any
-status, progress, "not yet", "coming later", build, or schedule. OUKA has no
-published build — and that is exactly why none of it may be written down, in
-either direction. Every one of the 13 languages carries its own copy; nothing
-falls back to English.
+(self-evident, and saying it cheapens the brand); what it contains — there is
+no feature list, and the install and play guide travels inside the zip
+(README.txt); any status, progress, "not yet", "coming later", build, or
+schedule. Before V1.0.0 OUKA had no published build, and that is why none of
+this could be written down, in either direction; the release block now states
+only what the file itself proves. Every one of the 13 languages carries its own
+copy; nothing falls back to English.
 
 「桜花」はこのページには出さない。所有者が挙げたのはブランド名称としての表記
 (「ブランド名称:英→OUKA、漢→桜花」)であって、ページに載せる文言としてではない。
 承認を得た Cherry のページの形は「ブランドの位置」と「結びの一行」だけで、漢字
 表記は無い。所有者が日本語版に置きたいと言えば KANJI = {"ja": "桜花"} と書けば
 戻る(一行)。それまでは出さない——見せていないものを勝手に足さない。
+
+--------------------------------------------------------------------------
+The release block (OUKA V1.0.0 "Sealed With a Smile", staged 2026-09-15)
+--------------------------------------------------------------------------
+  * The line claims only what the zip's own README.txt states: the box
+    addressed to the player arrives at dawn ("HOW IT BEGINS"). It names no
+    feature and makes no promise.
+  * The page refuses to build without an OUKA zip of V1.0.0 or later. The
+    pre-release line is gone from the code, so a missing file cannot quietly
+    turn a released product back into "coming soon" — it stops the build.
+  * The line and the codename were written for one version (COPY_FOR). A newer
+    zip in downloads/ stops the build until its own line and name are written,
+    so an old line can never be printed over a new release.
+  * The download button is in the mark's own two colours; its label, "File
+    size" and "SHA-256" are the Download page's own translations
+    (data/i18n/<lang>.json "download"), with no fallback.
+  * Versions, the size, the hash and the codename carry dir="ltr": on the
+    Arabic page bidi mirroring would print "≥" as "≤" and reorder
+    "0.154.2+26.2". The codename also carries lang="en", because the edition
+    line is set in capitals and a Turkish page would capitalise its i as İ.
+  * The block enters where the closing line did (.ou-fade at RELEASE_START_MS,
+    the same moment), so the entrance keeps its order and its timing.
+  * scripts/check_ouka_release.py judges the rendered pages against the file
+    independently (it imports nothing from here) and is run by check_site.py.
 
 --------------------------------------------------------------------------
 The mark, and the animation the owner asked for
@@ -126,15 +158,20 @@ Traps, every one of which this repo has actually shipped
 
 from __future__ import annotations
 
+import hashlib
+import io
+import json
 import math
+import re
 import sys
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, SITE_BASE_URL, asset_root_prefix, available_langs, esc, page,
-    write_page,
+    ROOT, SITE_BASE_URL, asset_root_prefix, available_langs, esc, load_bundle,
+    page, write_page,
 )
 
 SECTION = "ouka/"
@@ -150,60 +187,75 @@ OG_CARD = f"{SITE_BASE_URL}/assets/img/ouka/og-ouka.png"
 # names (OUKA, Cherry, Alpha, Corvus, Aureum) are never translated.
 # The lede says one thing: OUKA is the top of the line, above Cherry. Both
 # halves of that come from the owner's own sentence and neither is inferred.
-# `soon` is the set the owner accepted on the Cherry page, kept word for word
-# so the two brand pages speak in one voice.
+# `line` belongs to the release named in COPY_FOR (see the docstring). It took
+# the place of `soon`, the closing line the owner accepted on the Cherry page,
+# when V1.0.0 was staged; the English and Japanese lines were put to the owner
+# as a proposal on 2026-09-15, and the other eleven follow them.
 COPY = {
     "ja": {"title": "OUKA",
            "desc": "Cherry の上に立つ、最上位のブランド。",
            "lede": "Cherry の上に立つ、最上位のブランド。",
+           "line": "夜明けに、届く。",
            "soon": "ご期待ください。"},
     "en": {"title": "OUKA",
            "desc": "The highest tier, above Cherry.",
            "lede": "The highest tier, above Cherry.",
+           "line": "Delivered at dawn.",
            "soon": "Coming soon."},
     "de": {"title": "OUKA",
            "desc": "Die höchste Stufe, über Cherry.",
            "lede": "Die höchste Stufe, über Cherry.",
+           "line": "Im Morgengrauen zugestellt.",
            "soon": "Bald verfügbar."},
     "fr": {"title": "OUKA",
            "desc": "Le niveau le plus élevé, au-dessus de Cherry.",
            "lede": "Le niveau le plus élevé, au-dessus de Cherry.",
+           "line": "Livré à l'aube.",
            "soon": "Bientôt disponible."},
     "es": {"title": "OUKA",
            "desc": "El nivel más alto, por encima de Cherry.",
            "lede": "El nivel más alto, por encima de Cherry.",
+           "line": "Entregado al amanecer.",
            "soon": "Muy pronto."},
     "it": {"title": "OUKA",
            "desc": "Il livello più alto, sopra Cherry.",
            "lede": "Il livello più alto, sopra Cherry.",
+           "line": "Consegnato all'alba.",
            "soon": "In arrivo."},
     "pt-br": {"title": "OUKA",
               "desc": "O nível mais alto, acima do Cherry.",
               "lede": "O nível mais alto, acima do Cherry.",
-              "soon": "Em breve."},
+              "line": "Entregue ao amanhecer.",
+           "soon": "Em breve."},
     "ru": {"title": "OUKA",
            "desc": "Высший уровень — выше Cherry.",
            "lede": "Высший уровень — выше Cherry.",
+           "line": "Доставлено на рассвете.",
            "soon": "Уже скоро."},
     "tr": {"title": "OUKA",
            "desc": "En üst seviye; Cherry'nin üzerinde.",
            "lede": "En üst seviye; Cherry'nin üzerinde.",
+           "line": "Şafakta teslim edildi.",
            "soon": "Çok yakında."},
     "ar": {"title": "OUKA",
            "desc": "المستوى الأعلى، فوق Cherry.",
            "lede": "المستوى الأعلى، فوق Cherry.",
+           "line": "يصل مع الفجر.",
            "soon": "ترقّبوا قريباً."},
     "id": {"title": "OUKA",
            "desc": "Tingkat tertinggi, di atas Cherry.",
            "lede": "Tingkat tertinggi, di atas Cherry.",
+           "line": "Diantar saat fajar.",
            "soon": "Segera hadir."},
     "ko": {"title": "OUKA",
            "desc": "Cherry 위에 서는 최상위 브랜드입니다.",
            "lede": "Cherry 위에 서는 최상위 브랜드입니다.",
+           "line": "새벽에, 도착합니다.",
            "soon": "기대해 주세요."},
     "zh": {"title": "OUKA",
            "desc": "位于 Cherry 之上,最高级别的品牌。",
            "lede": "位于 Cherry 之上,最高级别的品牌。",
+           "line": "黎明时分，送达。",
            "soon": "敬请期待。"},
 }
 
@@ -232,7 +284,126 @@ PAUSE = {
 FIELD_OPACITY = 0.16
 FIELD_W, FIELD_SMALL = 1365, 900
 
-KEYS = ("title", "desc", "lede", "soon")
+KEYS = ("title", "desc", "lede", "line")
+
+# --- the release ---------------------------------------------------------------
+# The release COPY's `line` and CODENAME were written for. A newer zip stops the
+# build until its own line and name exist (see the docstring).
+# !!! 所有者の判断待ち(2026-09-20) !!!
+# 下の CODENAME と、COPY 各言語の "line" は、**保留中の版**(戸口に届く小包と相棒)のために
+# 2026-09-15 に書かれ、所有者に承認されたものです。配信しようとしている V1(Apex)は祭壇と
+# 弾幕で、内容が違います。COPY_FOR は MOD の版(1.0.0)しか見ないため、Minecraft の版だけが
+# 26.2 -> 26.3 に変わった今回、**この門は作動しませんでした**。
+# 判断は Update/OUKA_V1_Apex_page_copy_decision.md に出してあります。決まるまで公開しないこと。
+COPY_FOR = "1.0.0"
+CODENAME = "Sealed With a Smile"
+FIRST_RELEASE = (1, 0, 0)
+RELEASE_RE = re.compile(r"^OUKA_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
+# The Download page's own translations (data/i18n/<lang>.json "download").
+DOWNLOAD_KEYS = ("primary_cta", "size_label", "sha_label")
+# What a player must have, read from the jar's fabric.mod.json "depends", in this
+# order -- the same three the Cherry page prints. GeckoLib is not among them: it
+# travels inside the zip.
+REQUIREMENTS = (("minecraft", "Minecraft"), ("fabricloader", "Fabric Loader"),
+                ("fabric-api", "Fabric API"))
+
+
+def _version_key(text: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in text.split("."))
+
+
+def _fmt_size(num_bytes: int) -> str:
+    """The Download page's rule (build_download._fmt_size), kept identical:
+    one decimal in MB, and KB below 1 MB."""
+    mb = num_bytes / (1024 * 1024)
+    if mb >= 1:
+        return f"{mb:.1f} MB"
+    return f"{num_bytes / 1024:.1f} KB"
+
+
+def _requirement(spec: str) -> str:
+    """A fabric.mod.json version predicate, as a player reads it."""
+    spec = spec.strip()
+    if spec.startswith(">="):
+        return "≥ " + spec[2:].strip()
+    if spec.startswith("~"):
+        return spec[1:].strip()
+    if re.fullmatch(r"\d+(?:\.\d+)*(?:\+[0-9A-Za-z.]+)?", spec):
+        return spec
+    raise SystemExit(
+        "ERROR: build_ouka: cannot print the requirement %r on one line; "
+        "write the rule for that predicate here rather than printing it raw." % spec)
+
+
+def ouka_release() -> dict:
+    """The newest OUKA release in downloads/, every figure read from the file."""
+    downloads = ROOT / "downloads"
+    found = []
+    for path in (sorted(downloads.glob("OUKA*")) if downloads.is_dir() else []):
+        m = RELEASE_RE.match(path.name)
+        if not m:
+            raise SystemExit(
+                "ERROR: build_ouka: downloads/%s looks like an OUKA release but "
+                "does not parse as OUKA_MODs_v<ver>+mc<mc>.zip. Rename or remove "
+                "it -- the page cannot guess which release it is." % path.name)
+        found.append((_version_key(m["ver"]), m, path))
+    if not found:
+        raise SystemExit(
+            "ERROR: build_ouka: downloads/ holds no OUKA_MODs_v<ver>+mc<mc>.zip. "
+            "OUKA has been released (V1.0.0); without the file this page would "
+            "lose its download, and it must not quietly go back to 'coming soon'.")
+    versions = [key for key, _m, _p in found]
+    if len(set(versions)) != len(versions):
+        raise SystemExit(
+            "ERROR: build_ouka: downloads/ holds two OUKA zips of the same "
+            "version (%s); the page cannot tell which one it hands out."
+            % ", ".join(p.name for _k, _m, p in found))
+    key, m, path = max(found, key=lambda item: item[0])
+    ver, mc = m["ver"], m["mc"]
+    if key < FIRST_RELEASE:
+        raise SystemExit("ERROR: build_ouka: the newest OUKA zip is V%s, older "
+                         "than the first release V1.0.0." % ver)
+    if ver != COPY_FOR:
+        raise SystemExit(
+            "ERROR: build_ouka: downloads/ now offers OUKA V%s, but the release "
+            "line and codename on this page were written for V%s. Write V%s's own "
+            "line (13 languages) and name, then set COPY_FOR." % (ver, COPY_FOR, ver))
+    data = path.read_bytes()
+    jar_name = "mods/ouka-%s+mc%s.jar" % (ver, mc)
+    try:
+        with zipfile.ZipFile(io.BytesIO(data)) as outer:
+            jar = outer.read(jar_name)
+        with zipfile.ZipFile(io.BytesIO(jar)) as inner:
+            mod = json.loads(inner.read("fabric.mod.json"))
+    except (KeyError, zipfile.BadZipFile, ValueError) as e:
+        raise SystemExit("ERROR: build_ouka: cannot read %s!/fabric.mod.json inside "
+                         "downloads/%s (%s)." % (jar_name, path.name, e))
+    if mod.get("id") != "ouka" or mod.get("version") != ver:
+        raise SystemExit(
+            "ERROR: build_ouka: downloads/%s carries a jar that says id=%r "
+            "version=%r; the file name says ouka %s."
+            % (path.name, mod.get("id"), mod.get("version"), ver))
+    depends = mod.get("depends") or {}
+    requires = []
+    for dep, label in REQUIREMENTS:
+        if not depends.get(dep):
+            raise SystemExit("ERROR: build_ouka: the OUKA jar declares no %r "
+                             "dependency; the page would print an empty requirement."
+                             % dep)
+        requires.append((label, _requirement(depends[dep])))
+    if requires[0][1] != mc:
+        raise SystemExit(
+            "ERROR: build_ouka: the jar depends on Minecraft %s but the zip is "
+            "named for %s." % (requires[0][1], mc))
+    return {
+        "version": ver,
+        "mc": mc,
+        "name": path.name,
+        "bytes": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "requires": requires,
+    }
+
 
 # The name in kanji — see the docstring. EMPTY on purpose: the owner gave 桜花
 # as the brand's name, not as copy for this page, and the shape he approved on
@@ -281,7 +452,9 @@ GLYPH_STEP_MS = 90
 LEDE_MS = 800
 LEDE_START_MS = 1800
 KANJI_START_MS = 1950
-SOON_START_MS = 2000
+# The release block (V1.0.0) enters at the moment the closing line used to, and
+# the theme control with it.
+RELEASE_START_MS = 2000
 # the mark is fully assembled here; everything that lives forever starts after
 ASSEMBLED_MS = CORE_START_MS + CORE_MS          # 2100
 SPIN_S = 90               # one revolution. Cherry turns in 60; the tier above
@@ -302,7 +475,7 @@ SHEEN_START_MS = ASSEMBLED_MS + 500
 # rotate(-26deg) scale(.62), and both lines at opacity 0. setTimeout does not
 # need a frame, so the class comes off even there and the base style -- which
 # IS the finished mark -- is what such a renderer captures.
-INTRO_END_MS = SOON_START_MS + LEDE_MS        # 2800: the last line has landed
+INTRO_END_MS = RELEASE_START_MS + LEDE_MS     # 2800: the release block has landed
 INTRO_HOLD_MS = INTRO_END_MS + 600            # a margin, then the class goes
 assert INTRO_HOLD_MS > INTRO_END_MS, "the class would come off mid-entrance"
 INTRO_SCRIPT = (
@@ -422,8 +595,39 @@ HEAD = """<style>
   text-indent:.42em;color:var(--text-muted);font-weight:500}
 .ou-lede{font-size:1.16rem;line-height:1.8;color:var(--text);
   margin:1.9rem 0 0;max-width:34rem}
-.ou-soon{margin:5rem 0 1rem;font-size:1.22rem;letter-spacing:.08em;
+/* The release (V1.0.0): what is on offer, and the download. The section is an
+   .ou-fade, so it enters where the closing line did; the button is in the
+   mark's own two colours, the way the Cherry page's is in its petals'. */
+.ou-release{margin:4.5rem 0 0;width:100%;max-width:36rem}
+.ou-edition{margin:0;display:flex;flex-wrap:wrap;align-items:center;
+  justify-content:center;gap:.35rem .75rem;font-size:.8rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--text-muted)}
+.ou-ver{color:rgb(__PINK__);letter-spacing:.08em}
+.ou-dot{width:4px;height:4px;border-radius:50%;background:rgba(__SILVER__,.55)}
+.ou-line{margin:1rem 0 0;font-size:clamp(1.55rem,4.2vw,2.3rem);line-height:1.3;
+  letter-spacing:.02em;color:rgb(__PINK__);text-wrap:balance}
+.ou-cta{margin:2.25rem 0 0}
+.ou-get{display:inline-flex;align-items:center;justify-content:center;
+  min-height:var(--tap,44px);padding:12px 30px;border-radius:999px;
+  font-weight:600;font-size:.98rem;letter-spacing:.01em;text-decoration:none;
+  color:var(--bg,#07090f) !important;
+  background:linear-gradient(100deg,rgb(__PINK__) 0%,rgb(__SILVER__) 100%);
+  box-shadow:0 10px 28px rgba(__PINK__,.22);
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s ease}
+.ou-get:hover,.ou-get:focus-visible{transform:translateY(-1px);
+  box-shadow:0 14px 34px rgba(__PINK__,.34)}
+.ou-get:focus-visible{outline:2px solid rgb(__PINK__);outline-offset:3px}
+.ou-spec{margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;
+  justify-content:center;gap:.5rem 1.75rem}
+.ou-spec div{display:flex;align-items:baseline;gap:.5rem}
+.ou-spec dt{font-size:.8rem;color:var(--text-muted)}
+.ou-spec dd{margin:0;font-size:.9rem;color:var(--text);
+  font-variant-numeric:tabular-nums}
+.ou-sha{margin:1.1rem auto 0;max-width:32rem;font-size:.72rem;line-height:1.6;
   color:var(--text-muted)}
+.ou-sha-label{display:block;letter-spacing:.08em}
+.ou-sha code{display:block;word-break:break-all;background:none;border:0;
+  padding:0;font-size:.72rem;color:var(--text-muted)}
 .is-intro .ou-fade{animation:ou-fade __LEDE_MS__ms
   cubic-bezier(.16,.84,.28,1) backwards;
   animation-delay:calc(var(--t0) + var(--d))}
@@ -458,6 +662,7 @@ HEAD = """<style>
   .ou-halo--in{animation:none;opacity:.76}
   .ou-halo--out{animation:none;opacity:.7}
   .ou-sheen{display:none}
+  .ou-get{transition:none}
 }
 </style>"""
 
@@ -572,7 +777,7 @@ def _audio_html(root: str, lang: str) -> str:
         '<source src="%ssilver-and-petals.m4a" type="audio/mp4">'
         '<source src="%ssilver-and-petals.mp3" type="audio/mpeg">'
         '</audio></div>'
-        % (SOON_START_MS, esc(play), esc(play), esc(pause), esc(TRACK), base, base))
+        % (RELEASE_START_MS, esc(play), esc(play), esc(pause), esc(TRACK), base, base))
 
 
 AUDIO_SCRIPT = (
@@ -593,28 +798,69 @@ def wordmark(text: str) -> str:
     it rises out of. Emitted at BUILD time: the split is in the served HTML,
     so nothing depends on a script running for the name to be readable. The
     wrapper's overflow is what hides a letter before its turn -- see .ou-gw
-    for why this cannot be done with opacity."""
+    for why this cannot be done with opacity.
+
+    Each wrapper is an inline block, and a right-to-left page lays inline
+    blocks out from the right, so the <h1> holding them carries dir="ltr"
+    (build_body). Without it the Arabic page printed the name as "AKUO":
+    plain text keeps its letter order under bidi, split glyphs do not. Seen on
+    the rendered page on 2026-09-15; check_ouka_release.py now refuses it."""
     return "".join('<span class="ou-gw"><span class="ou-g" style="--i:%d">%s'
                    '</span></span>' % (i, esc(ch))
                    for i, ch in enumerate(text))
 
 
-def build_body(lang: str, c: dict, root: str) -> str:
+def zip_href(root: str, release: dict) -> str:
+    # downloads/ sits at the wiki root, outside every language directory, so it
+    # takes the language-aware root prefix -- never a hardcoded "../".
+    return root + "downloads/" + release["name"]
+
+
+def _release_html(c: dict, dl: dict, release: dict, root: str) -> str:
+    """The release, in the Cherry page's markup under this page's own prefix.
+    The section is an .ou-fade at RELEASE_START_MS: it takes the closing line's
+    place in the entrance."""
+    spec = "".join(
+        '<div><dt>%s</dt><dd dir="ltr">%s</dd></div>' % (esc(label), esc(value))
+        for label, value in release["requires"])
+    spec += ('<div><dt>%s</dt><dd dir="ltr" data-bytes="%d">%s</dd></div>'
+             % (esc(dl["size_label"]), release["bytes"],
+                esc(_fmt_size(release["bytes"]))))
+    return (
+        '<section class="ou-release ou-fade" style="--d:%dms" '
+        'aria-labelledby="ou-edition">'
+        '<p class="ou-edition" id="ou-edition">'
+        '<span class="ou-ver" dir="ltr">V%s</span>'
+        '<span class="ou-dot" aria-hidden="true"></span>'
+        '<span class="ou-codename" dir="ltr" lang="en">%s</span></p>'
+        '<p class="ou-line">%s</p>'
+        '<p class="ou-cta"><a class="ou-get" href="%s" download>%s</a></p>'
+        '<dl class="ou-spec">%s</dl>'
+        '<p class="ou-sha"><span class="ou-sha-label">%s</span>'
+        '<code dir="ltr">%s</code></p>'
+        '</section>'
+        % (RELEASE_START_MS, esc(release["version"]), esc(CODENAME),
+           esc(c["line"]), esc(zip_href(root, release)), esc(dl["primary_cta"]),
+           spec, esc(dl["sha_label"]), esc(release["sha256"]))
+    )
+
+
+def build_body(lang: str, c: dict, dl: dict, release: dict, root: str) -> str:
     kanji = KANJI.get(lang, "")
     kanji_html = ('<p class="ou-kanji ou-fade" style="--d:%dms">%s</p>'
                   % (KANJI_START_MS, esc(kanji))) if kanji else ""
     return (
         '<div class="ou-stage">'
         '%s%s'
-        '<h1 class="ou-name" aria-label="%s">%s</h1>'
+        '<h1 class="ou-name" dir="ltr" aria-label="%s">%s</h1>'
         '%s'
         '<p class="ou-lede ou-fade" style="--d:%dms">%s</p>'
-        '<p class="ou-soon ou-fade" style="--d:%dms">%s</p>'
+        '%s'
         '%s'
         '</div>%s%s'
         % (_field_html(root), _mark_html(root), esc(c["title"]),
            wordmark(c["title"]), kanji_html,
-           LEDE_START_MS, esc(c["lede"]), SOON_START_MS, esc(c["soon"]),
+           LEDE_START_MS, esc(c["lede"]), _release_html(c, dl, release, root),
            _audio_html(root, lang), INTRO_SCRIPT, AUDIO_SCRIPT)
     )
 
@@ -645,9 +891,17 @@ def main() -> int:
         if not (ROOT / rel).is_file():
             raise SystemExit("ERROR: build_ouka: %s is not on disk. The page would "
                              "point at nothing and still look fine." % rel)
+    release = ouka_release()
 
     for lang in langs:
         c = COPY[lang]
+        dl = load_bundle(lang).get("download") or {}
+        gaps = [k for k in DOWNLOAD_KEYS if not dl.get(k)]
+        if gaps:
+            raise SystemExit(
+                "ERROR: build_ouka: data/i18n/%s.json has no download.%s; the "
+                "release block takes the Download page's own words and has no "
+                "fallback." % (lang, ", download.".join(gaps)))
         # NOT "../" for every language: /de/ouka/ is two levels below the site
         # root but one below its language root.
         root = asset_root_prefix(1, lang)
@@ -657,7 +911,7 @@ def main() -> int:
             title=c["title"],
             description=c["desc"],
             active="ouka",
-            body=build_body(lang, c, root),
+            body=build_body(lang, c, dl, release, root),
             depth=1,
             extra_head=head_css(root),
             og_image=OG_CARD,
@@ -781,14 +1035,45 @@ def main() -> int:
                 raise SystemExit(
                     "ERROR: build_ouka: %s references %s, which resolves to %s "
                     "-- no such file." % (lang, want, probe))
+        # 5. the download resolving to nothing from THIS page's depth, or the
+        #    page describing a file other than the one it links.
+        href = zip_href(root, release)
+        if ('href="%s"' % esc(href)) not in html:
+            raise SystemExit("ERROR: build_ouka: %s does not link %s." % (lang, href))
+        zprobe = (target.parent / href).resolve()
+        if zprobe != (ROOT / "downloads" / release["name"]).resolve() or not zprobe.is_file():
+            raise SystemExit(
+                "ERROR: build_ouka: %s links %s, which resolves to %s -- not "
+                "downloads/%s. The download would 404."
+                % (lang, href, zprobe, release["name"]))
+        for needed in (release["sha256"], 'data-bytes="%d"' % release["bytes"],
+                       '<span class="ou-ver" dir="ltr">V%s</span>' % release["version"]):
+            if needed not in html:
+                raise SystemExit("ERROR: build_ouka: %s is missing %r." % (lang, needed))
+        # 6. one release block, and it is part of the entrance: an .ou-fade at
+        #    the closing line's old moment. Outside the entrance it would sit on
+        #    the page before the mark had assembled.
+        if html.count('<section class="ou-release') != 1:
+            raise SystemExit("ERROR: build_ouka: %s has %d release sections, not 1."
+                             % (lang, html.count('<section class="ou-release')))
+        if ('<section class="ou-release ou-fade" style="--d:%dms"'
+                % RELEASE_START_MS) not in html:
+            raise SystemExit(
+                "ERROR: build_ouka: %s: the release block is not an .ou-fade at "
+                "%dms, so it is outside the entrance." % (lang, RELEASE_START_MS))
+        # 7. the pre-release line surviving beside the release.
+        if "ou-soon" in html:
+            raise SystemExit(
+                "ERROR: build_ouka: %s still carries the pre-release line." % lang)
         write_page(lang, SECTION, html)
 
     print("build_ouka: %d language(s); 6 cut layers at %g%% of %s, pivot "
           "(%g%%, %g%%); petals open %s over %dms, assembled at %dms; "
-          "one turn per %ds"
+          "one turn per %ds; release V%s (%s, %d bytes, sha256 %s)"
           % (len(langs), FIT_PCT, BOX, CX_PCT, CY_PCT,
              "->".join(str(n) for n in PETAL_ORDER),
-             PETAL_START_MS + 4 * PETAL_STEP_MS + PETAL_MS, ASSEMBLED_MS, SPIN_S))
+             PETAL_START_MS + 4 * PETAL_STEP_MS + PETAL_MS, ASSEMBLED_MS, SPIN_S,
+             release["version"], release["name"], release["bytes"], release["sha256"]))
     return 0
 
 

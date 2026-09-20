@@ -62,6 +62,17 @@ ZIP depends on), never from a typed name; and that jar's version must be the one
 in the ZIP's file name. Corvus 2.1.0 refuses a package whose mods/ holds a jar
 the block does not list, so "jars" lists every one. Installed 2.0.0 launchers
 ignore the block (their parser ignores unknown top-level keys on purpose).
+
+The "ouka" block (OUKA V1.0.0, staged 2026-09-15) is the same package block for
+the second brand that ships as a ZIP -- its own jar and the GeckoLib jar it
+needs -- read from the ZIP by the same rules: "jars" keyed by the Fabric mod id
+each jar declares, OUKA's own jar found from the dependency graph, and that
+jar's version equal to the one in the ZIP's file name. _ouka_block() is a
+separate copy of _cherry_block() on purpose, so adding OUKA cannot change a byte
+of the published cherry block. Corvus 2.1.0 and 2.2.0 have no field for it and
+ignore it, as 2.0.0 ignored "cherry" -- which has to be shown with both shipped
+jars (ManifestCompat) before the block is published. From the first build that
+writes it, the never-drop rule applies to it as well.
 """
 import hashlib
 import io
@@ -83,6 +94,8 @@ DOWNLOAD_DIR = ROOT / "downloads"
 SITE_BASE_URL = "https://iroponcopin.github.io/aurora-corvus"
 CHERRY_ZIP_PREFIX = "Cherry_MODs_v"
 CHERRY_ZIP_SUFFIX = f"+mc{MC_VERSION}.zip"
+OUKA_ZIP_PREFIX = "OUKA_MODs_v"
+OUKA_ZIP_SUFFIX = f"+mc{MC_VERSION}.zip"
 
 
 def _mod_version():
@@ -313,6 +326,83 @@ def _cherry_block():
     }
 
 
+def _ouka_block():
+    """The `ouka` block, or None when no OUKA ZIP has been published.
+
+    The same rules as _cherry_block(), in a separate copy so that adding OUKA can
+    never change a byte of the published cherry block (see the module docstring).
+    The same never-drop rule applies in build().
+    """
+    zips = sorted(p for p in DOWNLOAD_DIR.glob(f"{OUKA_ZIP_PREFIX}*{OUKA_ZIP_SUFFIX}") if p.is_file())
+    if not zips:
+        return None
+    if len(zips) > 1:
+        raise SystemExit(
+            f"ERROR: more than one OUKA ZIP in {DOWNLOAD_DIR} ({', '.join(z.name for z in zips)}). "
+            f"The manifest describes the current build only - publish exactly one."
+        )
+    zpath = zips[0]
+    zip_version = zpath.name[len(OUKA_ZIP_PREFIX):-len(OUKA_ZIP_SUFFIX)]
+    jars = {}
+    depends = {}
+    try:
+        with zipfile.ZipFile(zpath) as zf:
+            for info in zf.infolist():
+                name = info.filename
+                if not name.lower().endswith(".jar"):
+                    continue
+                if not name.startswith("mods/") or name.count("/") != 1:
+                    raise SystemExit(
+                        f"ERROR: {zpath.name} carries a jar outside mods/ ({name}). A package is installed from "
+                        f"mods/<name>.jar only, so a jar anywhere else would never be installed.")
+                data = zf.read(info)
+                try:
+                    with zipfile.ZipFile(io.BytesIO(data)) as jar:
+                        meta = json.loads(jar.read("fabric.mod.json").decode("utf-8"))
+                except (KeyError, ValueError, zipfile.BadZipFile) as exc:
+                    raise SystemExit(
+                        f"ERROR: could not read fabric.mod.json out of {name} in {zpath.name} ({exc}). "
+                        f"ouka.jars must come from the jars themselves - do not type it.")
+                mod_id, version = meta.get("id"), meta.get("version")
+                if not isinstance(mod_id, str) or not mod_id.strip() or not isinstance(version, str) or not version.strip():
+                    raise SystemExit(
+                        f"ERROR: {name} in {zpath.name} declares no usable id and version in its fabric.mod.json, "
+                        f"so nothing could match an installed copy against it.")
+                mod_id = mod_id.strip()
+                if mod_id in jars:
+                    raise SystemExit(f"ERROR: {zpath.name} carries two jars declaring the mod id {mod_id!r}.")
+                jars[mod_id] = {
+                    "path": name,
+                    "version": version.strip(),
+                    "file_size": info.file_size,
+                    "sha256": hashlib.sha256(data).hexdigest(),
+                }
+                depends[mod_id] = set((meta.get("depends") or {}).keys())
+    except (OSError, zipfile.BadZipFile) as exc:
+        raise SystemExit(f"ERROR: could not read {zpath} ({exc}).")
+    if not jars:
+        raise SystemExit(f"ERROR: {zpath.name} carries no jar in mods/, so there is nothing to install.")
+    roots = [m for m in jars if not any(m in needs for other, needs in depends.items() if other != m)]
+    if len(roots) != 1:
+        raise SystemExit(
+            f"ERROR: cannot tell which jar in {zpath.name} is OUKA itself: the jars no other jar depends on are "
+            f"{roots or 'none'}. The package's own mod must be the one jar nothing else in the ZIP depends on.")
+    own = roots[0]
+    if jars[own]["version"] != zip_version:
+        raise SystemExit(
+            f"ERROR: {zpath.name} is named for version {zip_version}, but its own jar {jars[own]['path']} declares "
+            f"{jars[own]['version']}. An installed OUKA would compare itself against the wrong number.")
+    return {
+        "mod_id": own,
+        "latest": jars[own]["version"],
+        "download_url": f"{SITE_BASE_URL}/downloads/{zpath.name}",
+        "file_name": zpath.name,
+        "file_size": zpath.stat().st_size,
+        "sha256": _sha256(zpath),
+        "jars": jars,
+    }
+
+
 def _previously_published_manifest():
     """The manifest currently committed at the repo root, or {} if there is none."""
     path = ROOT / "glimpse_manifest.json"
@@ -412,6 +502,24 @@ def build():
     else:
         print("glimpse_manifest.py: no Cherry ZIP found yet - writing manifest with no 'cherry' "
               "block (expected until the first Cherry build ships)")
+
+    ouka = _ouka_block()
+    if ouka is not None:
+        manifest["ouka"] = ouka
+        print(f"glimpse_manifest.py: OUKA {ouka['latest']} ({ouka['file_name']}, mod id "
+              f"{ouka['mod_id']!r}, jars {', '.join(ouka['jars'])}) selected, including 'ouka' block")
+    elif "ouka" in _previously_published_manifest():
+        # The never-drop rule for OUKA: once its block is published, an absent ZIP means
+        # discovery broke (a rename, a moved folder), and dropping the block would silently
+        # withdraw the published OUKA release from everything that reads this manifest.
+        raise SystemExit(
+            f"ERROR: no OUKA ZIP found in {DOWNLOAD_DIR}, but the published glimpse_manifest.json "
+            f"already carries an 'ouka' block. Dropping it would silently withdraw the OUKA release "
+            f"from every reader of the manifest. Publish the ZIP, or fix the naming - do not ship this."
+        )
+    else:
+        print("glimpse_manifest.py: no OUKA ZIP found yet - writing manifest with no 'ouka' "
+              "block (expected until the first OUKA build ships)")
 
     out_path = ROOT / "glimpse_manifest.json"
     out_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

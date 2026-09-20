@@ -3,8 +3,9 @@
 
 2026-09-14, owner: 「更新履歴をOUKA、Cherry、Alpha、Aureumを選べる様にしてください。
 選んだModsブランドの更新履歴を確認できます。」 Answers the same day: both the site
-and Corvus; OUKA, which has no releases, shows its page's own line; Cherry and
-Aureum are written from verified facts only.
+and Corvus; OUKA, which had no releases then, shows its page's own line; Cherry and
+Aureum are written from verified facts only. Since OUKA V1.0.0 (staged 2026-09-15)
+OUKA has releases, and its panel is judged the way Cherry's is.
 
 WHAT CAN GO WRONG, AND WHY EACH CHECK EXISTS
   A  The tabs or panels are not the Store brand line (OUKA -> Cherry -> Alpha,
@@ -14,8 +15,10 @@ WHAT CAN GO WRONG, AND WHY EACH CHECK EXISTS
      brand's panel. Alpha's history is what the page always was.
   C  Another brand's panel does not hold exactly its own releases, each with its
      own translated title. A title is what tells a reader what a version was.
-  D  OUKA's panel says anything but its page's own line, or holds release rows.
-     The owner's answer, and the OUKA page's rule against status wording.
+  D  While OUKA has no releases, its panel says anything but its page's own
+     closing line (build_ouka.COPY[lang]['soon']), or that line no longer exists;
+     and any brand that has releases also shows an empty-state line. The owner's
+     answer, and the OUKA page's rule against status wording.
   E  An HTML id appears twice. Cherry and Aureum are both at 1.0 while Alpha has
      v1.0.0, so un-namespaced ids WOULD collide, and a duplicate id silently
      breaks the row buttons (aria-controls) and deep links.
@@ -74,7 +77,10 @@ def load_world():
         "alpha_feeds": {lang: _json_or_none(ROOT / "changelog_feed" / f"{lang}.json") for lang in langs},
         "brand_feeds": {f"{b}/{lang}": _json_or_none(ROOT / "changelog_feed" / b / f"{lang}.json")
                         for b in order if b != DEFAULT_BRAND for lang in langs},
-        "ouka": {lang: OUKA_COPY[lang]["soon"] for lang in langs},
+        # OUKA's pre-release closing line. It is compared only while OUKA has no releases (checks D
+        # and F). Since V1.0.0 build_ouka.COPY carries the release `line` instead, so this is None and
+        # OUKA's panel and feed are judged like those of every other brand that has releases.
+        "ouka": {lang: (OUKA_COPY.get(lang) or {}).get("soon") for lang in langs},
     }
 
 
@@ -130,6 +136,9 @@ def check(world):
             if not entries:
                 if b != "ouka":
                     fails.append(f"[D] {rel}: {b} has no releases and no agreed empty state")
+                elif not world["ouka"].get(lang):
+                    fails.append(f"[D] {rel}: OUKA has no releases, but build_ouka.COPY[{lang!r}] no longer "
+                                 f"carries the closing line its panel would show instead")
                 elif panel[b].count(f'<p class="cl__soon">{esc(world["ouka"][lang])}</p>') != 1:
                     fails.append(f"[D] {rel}: OUKA's panel does not show its page's own line "
                                  f"{world['ouka'][lang]!r} exactly once")
@@ -224,7 +233,23 @@ def _wrong_cherry_title(w):
 
 
 def _ouka_status_line(w):
-    _in_panel(w, "ja", "ouka", f'<p class="cl__soon">{esc(w["ouka"]["ja"])}</p>', '<p class="cl__soon">まだリリースはありません。</p>')
+    """A real [D] defect in either state. Before OUKA's first release, its one line is swapped for
+    status wording; once it has releases, an empty-state line is planted beside them."""
+    if w["brands"]["ouka"]:
+        _in_panel(w, "ja", "ouka", '<div class="cl__groups"',
+                  '<p class="cl__soon">まだリリースはありません。</p><div class="cl__groups"')
+    else:
+        _in_panel(w, "ja", "ouka", f'<p class="cl__soon">{esc(w["ouka"]["ja"])}</p>',
+                  '<p class="cl__soon">まだリリースはありません。</p>')
+
+
+def _ouka_rows(w):
+    """A real [C] defect in either state: OUKA's panel stops holding exactly its releases. Before its
+    first release a row is planted in it; once it has releases, one of them is lost."""
+    if w["brands"]["ouka"]:
+        _in_panel(w, "pt-br", "ouka", ROW, '<div class="cl__gone"')
+    else:
+        _in_panel(w, "pt-br", "ouka", '<p class="cl__soon">', ROW + '></div><p class="cl__soon">')
 
 
 def _duplicate_id(w):
@@ -253,7 +278,8 @@ PLANTS = [
     ("B", "Alpha's panel loses a release", _lose_alpha_row),
     ("C", "Cherry's panel gains a release row", _double_cherry_row),
     ("C", "a Cherry release renders someone else's title", _wrong_cherry_title),
-    ("D", "OUKA shows status wording", _ouka_status_line),
+    ("C", "OUKA's panel does not hold exactly its releases", _ouka_rows),
+    ("D", "OUKA's panel shows a status line", _ouka_status_line),
     ("E", "Aureum's series reuses Cherry's id", _duplicate_id),
     ("F", "a brand feed is missing", _missing_feed),
     ("F", "brands.json is out of order", _index_reversed),

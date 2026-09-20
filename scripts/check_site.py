@@ -49,6 +49,11 @@ CHECKS = [
     # the site reads a Cherry file.
     ("cherry", "check_cherry_release.py", [],
      "/cherry/ in 13 languages vs downloads/Cherry_MODs_v*.zip (link, size, hash)"),
+    # OUKA V1.0.0 (staged 2026-09-15). The same gate for the OUKA page: the link must resolve from
+    # every language's depth to the newest OUKA zip, the version, size and SHA-256 it prints must be
+    # that file's own, and the manifest's ouka block must describe the same file.
+    ("ouka", "check_ouka_release.py", [],
+     "/ouka/ in 13 languages vs downloads/OUKA_MODs_v*.zip (link, size, hash)"),
     # 2026-09-14 (owner): the changelog's brand tabs (OUKA -> Cherry -> Alpha, then Aureum) and the brand feeds Corvus
     # reads. Alpha's panel and Alpha's feed must stay Alpha's alone; the self-test plants one defect per check.
     ("changelog-brands", "check_changelog_brands.py", [],
