@@ -6,7 +6,7 @@
 数える対象で答えが変わる。しかもどの数も単独では可否を決められない。**履歴まで書き換えれば
 「0 件になった」と言えてしまう**からである。数ではなく性質で見る。
 
-判定する性質は 5 つで、**すべて同時に**成り立って初めて合格:
+判定する性質は 6 つで、**すべて同時に**成り立って初めて合格:
 
   1. 現行のリンクが古い版の zip を 1 つも指していない
      （`download/`・`cherry/`・`glimpse_manifest.json`・`releases.json`）
@@ -20,7 +20,12 @@
        存在しないファイル名を探すことになる）
   5. **かつ** manifest のどのブランドも、**中身**が新しい版を宣言している成果物を指している
      （zip なら中の jar、jar ならそれ自身の fabric.mod.json を読む。1〜4 はファイル名を見るので、
-       `aureum-1.0.0.jar` のように名前に mc の版を持たない配布物を構造的に見られない）
+       `aureum-1.0.0.jar` のように名前に mc の版を持たない配布物を構造的に見られない。
+       **判定できなかったブランドがあれば、それ自体が赤** —— 「見なかった」は「合格」ではない）
+  6. **かつ** manifest の `sha256` と `file_size` が、指しているファイルを今も正しく説明している
+     （生成器は実ファイルから計算するので構造的には正しい。壊れるのは manifest を手で直したときと、
+       成果物だけ差し替えて生成器を回さなかったとき。ランチャーは manifest を信じて検証するので、
+       食い違えば配布物は届かない）
 
 使い方:
     python3 scripts/check_release_version_switch.py --old 26.2 --new 26.3 --baseline <表>
@@ -29,7 +34,7 @@
 
 `--write-baseline` は**切り替えの前に**走らせて、履歴の現状を記録する。
 
-**この検査自身の試験**: `--self-test` は木の写しを作り、5 つの性質それぞれを壊して
+**この検査自身の試験**: `--self-test` は木の写しを作り、6 つの性質それぞれを壊して
 **赤くなることを確かめる**。緑の自己試験は飾りにすぎない（2026-09-20、Cherry が
 自己試験の全部緑のまま中心の判定を丸ごと削除しても緑だった例を報告している）。
 """
@@ -232,15 +237,24 @@ def check(root, old, new, baseline):
             failures.append("5. %s が読めないので、配っているものを数えられない: %s"
                             % (manifest_rel, exc))
         else:
+            # **飛ばしたものを数える。**この輪は block["file_name"] を読むので、その鍵の綴りが
+            # 違うブランドは黙って抜けて緑のまま残る —— 性質 5 が防ぐはずの欠陥を、性質 5 自身が
+            # 持っていた（2026-09-20、OUKA セッションの指摘）。判定した数と、判定すべき数を
+            # 突き合わせ、差があれば赤にする。「見なかった」を「合格」に化けさせない。
+            judged = []
+            skipped = []
             for brand in sorted(manifest):
                 if brand == "launcher":       # ランチャーは MOD ではないので mc を宣言しない
                     continue
                 block = manifest[brand]
                 if not isinstance(block, dict):
+                    skipped.append("%s（辞書ではない）" % brand)
                     continue
                 file_name = block.get("file_name")
                 if not file_name:
+                    skipped.append("%s（file_name が無い）" % brand)
                     continue
+                judged.append(brand)
                 art = os.path.join(root, "downloads", file_name)
                 if not os.path.isfile(art):
                     failures.append("5. manifest の %s が指すファイルが downloads に無い: %s"
@@ -259,11 +273,61 @@ def check(root, old, new, baseline):
                                     "見えない。" % (brand, file_name, new, ", ".join(stale),
                                                     ", ".join(where)))
 
+            if skipped:
+                failures.append("5. manifest に、性質 5 が判定できなかったブランドがある (%d 件): %s"
+                                "。判定した %d 件が緑でも、この %d 件については**何も確かめていない**。"
+                                % (len(skipped), ", ".join(skipped), len(judged), len(skipped)))
+
+            # 性質 6: manifest の sha256 と file_size が、いま指しているファイルを正しく説明している
+            # build_glimpse_manifest.py は実ファイルから計算するので構造的には正しい。壊れるのは
+            # **manifest を手で直したとき**と**成果物だけ差し替えて生成器を回さなかったとき**で、
+            # 後者は corvus-pack-update-is-version-only の形（版数だけ動いて中身が届かない）になる。
+            # ブランドごとの検査は cherry と ouka にしかなく、pack・launcher・aureum には無かった
+            # （2026-09-20、OUKA セッションの指摘。当日の実測は 5 ブランドとも一致）。
+            import hashlib
+            for brand in sorted(manifest):
+                block = manifest[brand]
+                if not isinstance(block, dict):
+                    continue
+                file_name = block.get("file_name")
+                want_sha = block.get("sha256")
+                want_size = block.get("file_size")
+                if not file_name or (want_sha is None and want_size is None):
+                    continue
+                art = os.path.join(root, "downloads", file_name)
+                if not os.path.isfile(art):
+                    continue                     # 不在は性質 5 が既に赤にしている
+                try:
+                    digest = hashlib.sha256()
+                    size = 0
+                    with open(art, "rb") as fh:
+                        while True:
+                            chunk = fh.read(1 << 20)
+                            if not chunk:
+                                break
+                            size += len(chunk)
+                            digest.update(chunk)
+                    got_sha = digest.hexdigest()
+                except Exception as exc:
+                    failures.append("6. manifest の %s (%s) を読めないので照合できない: %s"
+                                    % (brand, file_name, exc))
+                    continue
+                if want_size is not None and int(want_size) != size:
+                    failures.append("6. manifest の %s (%s) の file_size が実物と違う —— "
+                                    "manifest %s / 実物 %d。**ランチャーは manifest を信じて"
+                                    "検証するので、配布物は届かない。**"
+                                    % (brand, file_name, want_size, size))
+                if want_sha is not None and str(want_sha).lower() != got_sha:
+                    failures.append("6. manifest の %s (%s) の sha256 が実物と違う —— "
+                                    "manifest %s… / 実物 %s…。**生成器を回さずに成果物だけ"
+                                    "差し替えると、この形になる。**"
+                                    % (brand, file_name, str(want_sha)[:16], got_sha[:16]))
+
     return failures, notes
 
 
 def self_test(root, old, new):
-    """**わざと壊して、5 つの性質がそれぞれ赤くなることを確かめる。**
+    """**わざと壊して、6 つの性質がそれぞれ赤くなることを確かめる。**
 
     緑の自己試験は何も証明しない。ここで求めるのは「壊したら赤くなる」であって
     「今は緑」ではない。壊しても緑なら、その性質は飾りである。
@@ -376,11 +440,55 @@ def self_test(root, old, new):
         print("  %-52s -> %s%s" % (label, "緑 OK（対照）" if ok else "**赤い = この対照は無効**",
                                    ("  " + hit[0][:80]) if hit else ""))
 
+    def drop_file_name(work):
+        """1 ブランドの file_name を消す = 性質 5 が**黙って飛ばす**状態を作る。
+
+        これが赤くならないなら、性質 5 は「判定したものが緑」と「全部を判定した」を
+        取り違えている（2026-09-20、OUKA セッションの指摘で見つかった実際の穴）。
+        """
+        man = _stage_downloads(work)
+        for brand in sorted(man):
+            if brand != "launcher" and isinstance(man[brand], dict) and man[brand].get("file_name"):
+                man[brand].pop("file_name")
+                break
+        with open(os.path.join(work, "glimpse_manifest.json"), "w", encoding="utf-8") as fh:
+            json.dump(man, fh, ensure_ascii=False, indent=2)
+            fh.write("\n")
+
+    def wrong_sha(work):
+        """manifest の sha256 だけを 1 文字変える = 生成器を回さず手で直した形。"""
+        man = _stage_downloads(work)
+        for brand in sorted(man):
+            b = man[brand]
+            if isinstance(b, dict) and b.get("sha256") and b.get("file_name"):
+                h = b["sha256"]
+                b["sha256"] = ("f" if h[0] != "f" else "0") + h[1:]
+                break
+        with open(os.path.join(work, "glimpse_manifest.json"), "w", encoding="utf-8") as fh:
+            json.dump(man, fh, ensure_ascii=False, indent=2)
+            fh.write("\n")
+
+    def wrong_size(work):
+        """manifest の file_size だけを 1 増やす = 成果物だけ差し替えた形。"""
+        man = _stage_downloads(work)
+        for brand in sorted(man):
+            b = man[brand]
+            if isinstance(b, dict) and b.get("file_size") and b.get("file_name"):
+                b["file_size"] = int(b["file_size"]) + 1
+                break
+        with open(os.path.join(work, "glimpse_manifest.json"), "w", encoding="utf-8") as fh:
+            json.dump(man, fh, ensure_ascii=False, indent=2)
+            fh.write("\n")
+
     run_green("成果物を置いただけ（壊していない）", stage_only, 5)
     run("1 ブランドだけ中身が古い成果物を指させる", stale_artefact, 5)
+    run("1 ブランドの file_name を消す（黙って飛ばされる形）", drop_file_name, 5)
+    run_green("成果物を置いただけ（性質 6 の対照）", stage_only, 6)
+    run("manifest の sha256 を 1 文字変える", wrong_sha, 6)
+    run("manifest の file_size を 1 増やす", wrong_size, 6)
 
     ok = all(results)
-    print("=== 自己試験 = %s（5 つの性質すべてが、壊されたときに赤くなる必要がある）"
+    print("=== 自己試験 = %s（6 つの性質すべてが、壊されたときに赤くなる必要がある）"
           % ("PASS" if ok else "FAIL"))
     return ok
 
