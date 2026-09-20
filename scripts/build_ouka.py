@@ -44,7 +44,7 @@ copy; nothing falls back to English.
 戻る(一行)。それまでは出さない——見せていないものを勝手に足さない。
 
 --------------------------------------------------------------------------
-The release block (OUKA V1.0.0 "Sealed With a Smile", staged 2026-09-15)
+The release block (OUKA V1.0.0 "The Apex Artifact", released 2026-09-20)
 --------------------------------------------------------------------------
   * The line claims only what the zip's own README.txt states: the box
     addressed to the player arrives at dawn ("HOW IT BEGINS"). It names no
@@ -195,67 +195,67 @@ COPY = {
     "ja": {"title": "OUKA",
            "desc": "Cherry の上に立つ、最上位のブランド。",
            "lede": "Cherry の上に立つ、最上位のブランド。",
-           "line": "夜明けに、届く。",
+           "line": "祭壇が灯り、十二の色が咲く。",
            "soon": "ご期待ください。"},
     "en": {"title": "OUKA",
            "desc": "The highest tier, above Cherry.",
            "lede": "The highest tier, above Cherry.",
-           "line": "Delivered at dawn.",
+           "line": "The altar wakes, and twelve colours bloom.",
            "soon": "Coming soon."},
     "de": {"title": "OUKA",
            "desc": "Die höchste Stufe, über Cherry.",
            "lede": "Die höchste Stufe, über Cherry.",
-           "line": "Im Morgengrauen zugestellt.",
+           "line": "Der Altar erwacht, und zwölf Farben erblühen.",
            "soon": "Bald verfügbar."},
     "fr": {"title": "OUKA",
            "desc": "Le niveau le plus élevé, au-dessus de Cherry.",
            "lede": "Le niveau le plus élevé, au-dessus de Cherry.",
-           "line": "Livré à l'aube.",
+           "line": "L'autel s'éveille, et douze couleurs éclosent.",
            "soon": "Bientôt disponible."},
     "es": {"title": "OUKA",
            "desc": "El nivel más alto, por encima de Cherry.",
            "lede": "El nivel más alto, por encima de Cherry.",
-           "line": "Entregado al amanecer.",
+           "line": "El altar despierta y florecen doce colores.",
            "soon": "Muy pronto."},
     "it": {"title": "OUKA",
            "desc": "Il livello più alto, sopra Cherry.",
            "lede": "Il livello più alto, sopra Cherry.",
-           "line": "Consegnato all'alba.",
+           "line": "L'altare si desta e dodici colori sbocciano.",
            "soon": "In arrivo."},
     "pt-br": {"title": "OUKA",
               "desc": "O nível mais alto, acima do Cherry.",
               "lede": "O nível mais alto, acima do Cherry.",
-              "line": "Entregue ao amanhecer.",
+              "line": "O altar desperta, e doze cores florescem.",
            "soon": "Em breve."},
     "ru": {"title": "OUKA",
            "desc": "Высший уровень — выше Cherry.",
            "lede": "Высший уровень — выше Cherry.",
-           "line": "Доставлено на рассвете.",
+           "line": "Алтарь пробуждается, и расцветают двенадцать цветов.",
            "soon": "Уже скоро."},
     "tr": {"title": "OUKA",
            "desc": "En üst seviye; Cherry'nin üzerinde.",
            "lede": "En üst seviye; Cherry'nin üzerinde.",
-           "line": "Şafakta teslim edildi.",
+           "line": "Sunak uyanır ve on iki renk açar.",
            "soon": "Çok yakında."},
     "ar": {"title": "OUKA",
            "desc": "المستوى الأعلى، فوق Cherry.",
            "lede": "المستوى الأعلى، فوق Cherry.",
-           "line": "يصل مع الفجر.",
+           "line": "يستيقظ المذبح، فتتفتّح اثنا عشر لونًا.",
            "soon": "ترقّبوا قريباً."},
     "id": {"title": "OUKA",
            "desc": "Tingkat tertinggi, di atas Cherry.",
            "lede": "Tingkat tertinggi, di atas Cherry.",
-           "line": "Diantar saat fajar.",
+           "line": "Altar terbangun, dan dua belas warna bermekaran.",
            "soon": "Segera hadir."},
     "ko": {"title": "OUKA",
            "desc": "Cherry 위에 서는 최상위 브랜드입니다.",
            "lede": "Cherry 위에 서는 최상위 브랜드입니다.",
-           "line": "새벽에, 도착합니다.",
+           "line": "제단이 깨어나고, 열두 빛깔이 피어납니다.",
            "soon": "기대해 주세요."},
     "zh": {"title": "OUKA",
            "desc": "位于 Cherry 之上,最高级别的品牌。",
            "lede": "位于 Cherry 之上,最高级别的品牌。",
-           "line": "黎明时分，送达。",
+           "line": "祭坛苏醒，十二色绽放。",
            "soon": "敬请期待。"},
 }
 
@@ -289,14 +289,8 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-# !!! 所有者の判断待ち(2026-09-20) !!!
-# 下の CODENAME と、COPY 各言語の "line" は、**保留中の版**(戸口に届く小包と相棒)のために
-# 2026-09-15 に書かれ、所有者に承認されたものです。配信しようとしている V1(Apex)は祭壇と
-# 弾幕で、内容が違います。COPY_FOR は MOD の版(1.0.0)しか見ないため、Minecraft の版だけが
-# 26.2 -> 26.3 に変わった今回、**この門は作動しませんでした**。
-# 判断は Update/OUKA_V1_Apex_page_copy_decision.md に出してあります。決まるまで公開しないこと。
 COPY_FOR = "1.0.0"
-CODENAME = "Sealed With a Smile"
+CODENAME = "The Apex Artifact"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^OUKA_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
 # The Download page's own translations (data/i18n/<lang>.json "download").
