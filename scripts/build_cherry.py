@@ -72,6 +72,12 @@ The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
   * The line and the codename were written for one version (COPY_FOR). A newer
     zip in downloads/ stops the build until its own line and name are written,
     so an old line can never be printed over a new release.
+  * 2026-09-19, V1.0.1 (the move to Minecraft 26.3, by the owner's
+    「Cherry Modsの対応バージョンを26.2から26.3へ」): the line and the codename
+    carry over unchanged, and COPY_FOR moved to 1.0.1 with the claim re-proven.
+    V1.0.1 adds no content. B2 flew Earth pad -> Moon -> the same pad again on
+    26.3, twice, before COPY_FOR moved, so "From the launch pad, to the Moon" is
+    shown again for this jar, not inherited.
   * The download button is in the brand's own colours, the way the Aureum page
     carries its own gold one; its label, "File size" and "SHA-256" are the
     Download page's own translations (data/i18n/<lang>.json "download"), with
@@ -231,7 +237,7 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-COPY_FOR = "1.0.0"
+COPY_FOR = "1.0.1"
 CODENAME = "The Lunar Genesis Update"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
