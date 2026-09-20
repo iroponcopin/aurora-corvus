@@ -6,7 +6,7 @@
 数える対象で答えが変わる。しかもどの数も単独では可否を決められない。**履歴まで書き換えれば
 「0 件になった」と言えてしまう**からである。数ではなく性質で見る。
 
-判定する性質は 3 つで、**すべて同時に**成り立って初めて合格:
+判定する性質は 5 つで、**すべて同時に**成り立って初めて合格:
 
   1. 現行のリンクが古い版の zip を 1 つも指していない
      （`download/`・`cherry/`・`glimpse_manifest.json`・`releases.json`）
@@ -18,6 +18,9 @@
   3. **かつ** 現行の導入手順に古い版の例示が残っていない
      （`guide/`・`data/guide.json`。リンクではないので切れはしないが、読んだ人は
        存在しないファイル名を探すことになる）
+  5. **かつ** manifest のどのブランドも、**中身**が新しい版を宣言している成果物を指している
+     （zip なら中の jar、jar ならそれ自身の fabric.mod.json を読む。1〜4 はファイル名を見るので、
+       `aureum-1.0.0.jar` のように名前に mc の版を持たない配布物を構造的に見られない）
 
 使い方:
     python3 scripts/check_release_version_switch.py --old 26.2 --new 26.3 --baseline <表>
@@ -26,7 +29,7 @@
 
 `--write-baseline` は**切り替えの前に**走らせて、履歴の現状を記録する。
 
-**この検査自身の試験**: `--self-test` は木の写しを作り、3 つの性質それぞれを壊して
+**この検査自身の試験**: `--self-test` は木の写しを作り、5 つの性質それぞれを壊して
 **赤くなることを確かめる**。緑の自己試験は飾りにすぎない（2026-09-20、Cherry が
 自己試験の全部緑のまま中心の判定を丸ごと削除しても緑だった例を報告している）。
 """
@@ -102,6 +105,46 @@ def history_counts(root, old):
     return out
 
 
+def declared_mc_versions(path):
+    """成果物の**中身**が宣言している Minecraft 版を全部返す。
+
+    ファイル名は見ない。`aureum-1.0.0.jar` のように名前に mc の版を持たない配布物が
+    あるので、名前を見る検査は構造的にそれを取りこぼす（2026-09-20、Aureum の 26.3 版が
+    版数もファイル名も 1.0.0 のまま published になり、所有者の実機でだけ表に出た）。
+
+    zip なら中の jar すべて、jar ならそれ自身の fabric.mod.json の depends.minecraft を読む。
+    返すのは {宣言文字列: [どこで]} 。読めない場合は例外を投げず空を返す —— 判定不能を
+    「合格」に化けさせないため、呼び側が「1 つも読めなかった」ことを失敗として扱う。
+    """
+    import zipfile, io, json as _json
+    found = {}
+
+    def from_jar(fp, label):
+        try:
+            with zipfile.ZipFile(fp) as jz:
+                if "fabric.mod.json" not in jz.namelist():
+                    return
+                d = _json.loads(jz.read("fabric.mod.json").decode("utf-8", "replace"))
+        except Exception:
+            return
+        mc = (d.get("depends") or {}).get("minecraft")
+        if mc is not None:
+            found.setdefault(str(mc), []).append(label)
+
+    try:
+        if path.lower().endswith(".jar"):
+            with open(path, "rb") as fh:
+                from_jar(io.BytesIO(fh.read()), os.path.basename(path))
+        elif path.lower().endswith(".zip"):
+            with zipfile.ZipFile(path) as z:
+                for name in z.namelist():
+                    if name.lower().endswith(".jar"):
+                        from_jar(io.BytesIO(z.read(name)), name)
+    except Exception:
+        return {}
+    return found
+
+
 def check(root, old, new, baseline):
     failures = []
     notes = []
@@ -173,11 +216,54 @@ def check(root, old, new, baseline):
         failures.append("3. 現行の導入手順に %s の例示が残っている (%d 件): %s"
                         % (old, len(guide_bad), ", ".join(sorted(guide_bad)[:6])))
 
+    # 性質 5: manifest の**どのブランドも**、中身が新しい版を宣言している成果物を指している
+    # 性質 1 と 4 はファイル名（`..._MODs_v<版>+mc26.3.zip`）を見るので、**名前に mc の版を
+    # 持たない配布物を構造的に見られない**。2026-09-20、Aureum の 26.3 版は版数もファイル名も
+    # 1.0.0 のままで published になり、Alpha と Cherry を 26.3 へ出した同じ日に取り残された。
+    # 門は 4 性質すべて緑だった。**数えていたのは綴りで、配っているものの一覧ではなかった。**
+    # ここでは名前を一切見ず、zip なら中の jar、jar ならそれ自身の fabric.mod.json を読む。
+    manifest_rel = "glimpse_manifest.json"
+    manifest_path = os.path.join(root, manifest_rel)
+    if os.path.isfile(manifest_path):
+        try:
+            with open(manifest_path, encoding="utf-8") as fh:
+                manifest = json.load(fh)
+        except Exception as exc:
+            failures.append("5. %s が読めないので、配っているものを数えられない: %s"
+                            % (manifest_rel, exc))
+        else:
+            for brand in sorted(manifest):
+                if brand == "launcher":       # ランチャーは MOD ではないので mc を宣言しない
+                    continue
+                block = manifest[brand]
+                if not isinstance(block, dict):
+                    continue
+                file_name = block.get("file_name")
+                if not file_name:
+                    continue
+                art = os.path.join(root, "downloads", file_name)
+                if not os.path.isfile(art):
+                    failures.append("5. manifest の %s が指すファイルが downloads に無い: %s"
+                                    % (brand, file_name))
+                    continue
+                declared = declared_mc_versions(art)
+                if not declared:
+                    failures.append("5. manifest の %s (%s) から Minecraft の宣言を 1 つも読めな"
+                                    "かったので判定できない" % (brand, file_name))
+                    continue
+                stale = sorted(v for v in declared if new not in v)
+                if stale:
+                    where = declared[stale[0]][:3]
+                    failures.append("5. manifest の %s (%s) の中身が %s 向けではない —— 宣言は %s"
+                                    " (例: %s)。**名前ではなく中身が古い**ので、性質 1 と 4 では"
+                                    "見えない。" % (brand, file_name, new, ", ".join(stale),
+                                                    ", ".join(where)))
+
     return failures, notes
 
 
 def self_test(root, old, new):
-    """**わざと壊して、3 つの性質がそれぞれ赤くなることを確かめる。**
+    """**わざと壊して、5 つの性質がそれぞれ赤くなることを確かめる。**
 
     緑の自己試験は何も証明しない。ここで求めるのは「壊したら赤くなる」であって
     「今は緑」ではない。壊しても緑なら、その性質は飾りである。
@@ -233,8 +319,68 @@ def self_test(root, old, new):
 
     run("追跡されていない zip を指すリンクを植える", untrack_zip, 4)
 
+    # --- 性質 5 ---
+    # run() は downloads を複製しないので、そのままでは性質 5 が**常に**赤くなり、
+    # 変異試験が空振りになる（「壊したから赤い」ではなく「素材が無いから赤い」）。
+    # そこで素材を置く段と壊す段を分け、**置いただけでは緑**であることを対照で示す。
+    def _stage_downloads(work):
+        """manifest が指す成果物を作業複製へ持ち込む（ここまでは壊していない）。"""
+        src = os.path.join(root, "downloads")
+        dst = os.path.join(work, "downloads")
+        os.makedirs(dst, exist_ok=True)
+        with open(os.path.join(work, "glimpse_manifest.json"), encoding="utf-8") as fh:
+            man = json.load(fh)
+        for brand, block in man.items():
+            if brand == "launcher" or not isinstance(block, dict):
+                continue
+            name = block.get("file_name")
+            if name and os.path.isfile(os.path.join(src, name)):
+                shutil.copy2(os.path.join(src, name), os.path.join(dst, name))
+        return man
+
+    def stage_only(work):
+        _stage_downloads(work)
+
+    def stale_artefact(work):
+        """素材を置いたうえで、1 ブランドだけ**古い版の中身**を指させる。
+
+        名前も版数も変えない手もあるが、ここでは実際に起きた形を再現する:
+        2026-09-20、aureum は published のまま中身だけ 26.2 だった。
+        """
+        man = _stage_downloads(work)
+        src = os.path.join(root, "downloads")
+        old_jars = sorted(n for n in os.listdir(src)
+                          if n.startswith("aureum-") and n.endswith(".jar")
+                          and declared_mc_versions(os.path.join(src, n))
+                          and all(new not in v for v in declared_mc_versions(os.path.join(src, n))))
+        if not old_jars:
+            return                                  # 素材が無ければ何も壊せない
+        stale = old_jars[0]
+        shutil.copy2(os.path.join(src, stale), os.path.join(work, "downloads", stale))
+        man["aureum"]["file_name"] = stale
+        with open(os.path.join(work, "glimpse_manifest.json"), "w", encoding="utf-8") as fh:
+            json.dump(man, fh, ensure_ascii=False, indent=2)
+            fh.write("\n")
+
+    def run_green(label, mutate, must_not_fire):
+        """**壊していないときは緑**であることを確かめる。赤が空振りでない証拠。"""
+        tmp = tempfile.mkdtemp(prefix="relswitch-")
+        work = os.path.join(tmp, "site")
+        shutil.copytree(root, work, ignore=shutil.ignore_patterns(".git", "downloads", "assets", "node_modules"))
+        mutate(work)
+        fails, _ = check(work, old, new, base)
+        hit = [f for f in fails if f.startswith("%d." % must_not_fire)]
+        shutil.rmtree(tmp, ignore_errors=True)
+        ok = not hit
+        results.append(ok)
+        print("  %-52s -> %s%s" % (label, "緑 OK（対照）" if ok else "**赤い = この対照は無効**",
+                                   ("  " + hit[0][:80]) if hit else ""))
+
+    run_green("成果物を置いただけ（壊していない）", stage_only, 5)
+    run("1 ブランドだけ中身が古い成果物を指させる", stale_artefact, 5)
+
     ok = all(results)
-    print("=== 自己試験 = %s（3 つの性質すべてが、壊されたときに赤くなる必要がある）"
+    print("=== 自己試験 = %s（5 つの性質すべてが、壊されたときに赤くなる必要がある）"
           % ("PASS" if ok else "FAIL"))
     return ok
 
