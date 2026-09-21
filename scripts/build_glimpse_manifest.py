@@ -250,21 +250,65 @@ def _aureum_block():
     }
 
 
+def _release_version_key(name, prefix, suffix):
+    """The numeric version in ``<prefix><version><suffix>``, for ordering releases.
+
+    Numeric, never lexicographic: as strings "1.10.0" sorts before "1.9.0".
+    Trailing zeros are dropped so that "1.0.1" and "1.0.1.0" compare equal, which is
+    how Corvus's VersionComparator treats them (missing parts count as 0) — two such
+    files would be the same release to every installed launcher.
+    """
+    middle = name[len(prefix):-len(suffix)]
+    parts = middle.split(".")
+    if not middle or not all(part.isdigit() for part in parts):
+        raise SystemExit(
+            f"ERROR: {name} does not parse as {prefix}<version>{suffix}. "
+            f"Rename or remove it - an unparseable name cannot be ordered against the others.")
+    key = [int(part) for part in parts]
+    while len(key) > 1 and key[-1] == 0:
+        key.pop()
+    return tuple(key)
+
+
+def _newest_release_zip(zips, prefix, suffix):
+    """The newest release among ``zips`` by numeric version.
+
+    **Older releases stay in downloads/ and stay downloadable.** The manifest names
+    only the current build, but a published file is never deleted to make room for the
+    next one: Discord links and bookmarks keep working, and the history stays
+    reproducible. Alpha's pack has always worked this way (48 releases side by side);
+    this is the same rule for a brand whose builder used to refuse a second file, which
+    forced every release to delete the previous one (2026-09-21, Cherry 1.1.0 was about
+    to delete 1.0.1 for that reason alone). build_cherry.py and check_cherry_release.py
+    already choose the newest by numeric version, so the manifest and the page now agree
+    by construction.
+
+    Two files that are the same version to the launcher are refused rather than guessed.
+    """
+    ranked = sorted(zips, key=lambda p: _release_version_key(p.name, prefix, suffix))
+    if len(ranked) > 1:
+        top = _release_version_key(ranked[-1].name, prefix, suffix)
+        runner_up = _release_version_key(ranked[-2].name, prefix, suffix)
+        if top == runner_up:
+            raise SystemExit(
+                f"ERROR: {ranked[-2].name} and {ranked[-1].name} are the same version to Corvus "
+                f"(missing parts count as 0), so neither can be called the current build. Remove one.")
+    return ranked[-1]
+
+
 def _cherry_block():
     """The `cherry` block, or None when no Cherry ZIP has been published.
 
     Every value is read from the ZIP in downloads/ (see the module docstring). The
     same never-drop rule as the other optional blocks applies in build().
+
+    When several Cherry ZIPs for this Minecraft version are present, the block
+    describes the newest; the older ones remain published (see _newest_release_zip).
     """
     zips = sorted(p for p in DOWNLOAD_DIR.glob(f"{CHERRY_ZIP_PREFIX}*{CHERRY_ZIP_SUFFIX}") if p.is_file())
     if not zips:
         return None
-    if len(zips) > 1:
-        raise SystemExit(
-            f"ERROR: more than one Cherry ZIP in {DOWNLOAD_DIR} ({', '.join(z.name for z in zips)}). "
-            f"The manifest describes the current build only - publish exactly one."
-        )
-    zpath = zips[0]
+    zpath = _newest_release_zip(zips, CHERRY_ZIP_PREFIX, CHERRY_ZIP_SUFFIX)
     zip_version = zpath.name[len(CHERRY_ZIP_PREFIX):-len(CHERRY_ZIP_SUFFIX)]
     jars = {}
     depends = {}
