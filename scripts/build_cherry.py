@@ -85,6 +85,10 @@ The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
     and AirportTests, and a vessel sails a channel under her own autopilot in
     HelmTests and AutopilotTests. The brand line ("the tier between OUKA and
     Alpha") does not change: it is about the brand, not the release.
+  * 2026-09-21, V1.1.1: a hotfix -- with Improved Transparency on, lighting the
+    Aegis-X afterburner crashed the game (notes 14.65). The line and the codename
+    carry over unchanged: the release adds no content, and the flights and voyages
+    behind "Into the air, and out to sea." are the same gates, run again for this jar.
   * The download button is in the brand's own colours, the way the Aureum page
     carries its own gold one; its label, "File size" and "SHA-256" are the
     Download page's own translations (data/i18n/<lang>.json "download"), with
@@ -244,7 +248,7 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-COPY_FOR = "1.1.0"
+COPY_FOR = "1.1.1"
 CODENAME = "The Aerospace and Naval Update"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
