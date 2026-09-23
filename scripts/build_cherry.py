@@ -89,6 +89,13 @@ The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
     Aegis-X afterburner crashed the game (notes 14.65). The line and the codename
     carry over unchanged: the release adds no content, and the flights and voyages
     behind "Into the air, and out to sea." are the same gates, run again for this jar.
+  * 2026-09-23, V1.1.2: the ships finished -- their real models and interiors, every
+    station usable from the game (in 1.1.0/1.1.1 the railgun, the VLS and the chart
+    table had no client sender and could not be used, notes 14.69), two triple
+    turrets, salvo/VLS/wake effects and the ferry's bow visor and ramps (notes
+    14.67-14.75). The line and the codename carry over: the release finishes the
+    voyage "Into the air, and out to sea." promised, proven by the client suite
+    twice, 21 ship client controls twice and 27 ship server controls twice.
   * The download button is in the brand's own colours, the way the Aureum page
     carries its own gold one; its label, "File size" and "SHA-256" are the
     Download page's own translations (data/i18n/<lang>.json "download"), with
@@ -248,7 +255,7 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-COPY_FOR = "1.1.1"
+COPY_FOR = "1.1.2"
 CODENAME = "The Aerospace and Naval Update"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
