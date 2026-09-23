@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cherry 操作方法 | Corvus</title>
+<meta name="description" content="驾驶 Stratos-900 与 Aegis-X，操纵 Leviathan 级与 Dreadnought 级舰船：默认按键及其作用。">
+<meta property="og:title" content="Cherry 操作方法 | Corvus">
+<meta property="og:description" content="驾驶 Stratos-900 与 Aegis-X，操纵 Leviathan 级与 Dreadnought 级舰船：默认按键及其作用。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Corvus">
+<meta name="theme-color" content="#07090f">
+<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/cherry-controls/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/cherry-controls/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/cherry-controls/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/cherry-controls/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/cherry-controls/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/cherry-controls/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/cherry-controls/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/cherry-controls/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/cherry-controls/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/cherry-controls/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/cherry-controls/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/cherry-controls/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"zh","h":{"ar":"../../ar/cherry-controls/","de":"../../de/cherry-controls/","en":"../../en/cherry-controls/","es":"../../es/cherry-controls/","fr":"../../fr/cherry-controls/","id":"../../id/cherry-controls/","it":"../../it/cherry-controls/","ja":"../../cherry-controls/","ko":"../../ko/cherry-controls/","pt-br":"../../pt-br/cherry-controls/","ru":"../../ru/cherry-controls/","tr":"../../tr/cherry-controls/","zh":"../../zh/cherry-controls/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"cherry-controls/"});</script>
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
+<script>
+/* Boot: tag JS availability for the motion layer.
+
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  d.setAttribute("data-theme", "dark");
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/cherry-tokens.css">
+<style>
+.cc-wrap{background:var(--ch-bg);color:var(--ch-text);padding:3.5rem 1rem 5rem;
+  margin:0 calc(50% - 50vw);width:100vw}
+.cc-inner{max-width:48rem;margin:0 auto}
+.cc-eyebrow{margin:0 0 .6rem;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+.cc-eyebrow a{color:var(--ch-petal-deep);text-decoration:none;display:inline-flex;
+  align-items:center;min-height:var(--tap,44px)}
+.cc-eyebrow a:hover,.cc-eyebrow a:focus-visible{color:var(--ch-petal);text-decoration:underline;
+  text-underline-offset:.3em}
+.cc-eyebrow a:focus-visible{outline:2px solid var(--ch-petal);outline-offset:3px}
+.cc-title{font-size:clamp(2.2rem,6vw,3.3rem);line-height:1.1;margin:0 0 1.2rem;
+  letter-spacing:-.01em;color:var(--ch-petal)}
+.cc-note{margin:0 0 .75rem;font-size:.98rem;line-height:1.8;color:var(--ch-text)}
+.cc-note.cc-layout{color:var(--ch-text-muted);font-size:.92rem}
+.cc-path{white-space:normal}
+.cc-nb{white-space:nowrap}
+.cc-step{font-weight:600;color:var(--ch-petal)}
+.cc-card{margin:2.25rem 0 0;padding:clamp(1.25rem,4vw,2rem);border-radius:18px;
+  background:var(--ch-bg-lift);border:1px solid var(--ch-line)}
+.cc-h2{margin:0 0 1rem;padding:0;border:0;font-size:clamp(1.2rem,3.4vw,1.45rem);
+  line-height:1.4;color:var(--ch-petal)}
+/* style.css marks every h2 with the site's aurora-green bar; these pages are in the Cherry colours */
+.cc-h2::before{content:none}
+.cc-h3{margin:1.75rem 0 .6rem;padding:0;border:0;font-size:1rem;line-height:1.5;
+  color:var(--ch-petal-deep)}
+.cc-list{margin:0;padding-inline-start:1.2rem;line-height:1.8}
+.cc-list li{margin:.35rem 0;color:var(--ch-text)}
+.cc-list li::marker{color:var(--ch-blush)}
+.cc-keys{width:100%;margin:1.25rem 0 0;border-collapse:collapse;font-size:.95rem;
+  line-height:1.7}
+/* style.css sets every th in small muted capitals (and uppercase Turkish would print a
+   dotted capital I); these are action names, read as sentences, in the page's own case */
+.cc-keys th,.cc-keys td{padding:.7rem 0;border-top:1px solid var(--ch-line);border-bottom:0;
+  vertical-align:top;text-align:start;background:none}
+.cc-keys th{width:34%;padding-inline-end:1rem;font-weight:600;color:var(--ch-text);
+  font-size:inherit;text-transform:none;letter-spacing:normal}
+.cc-keys td{color:var(--ch-text)}
+.cc-key{display:inline-block;min-width:1.9em;margin:0 .1em;padding:0 .45em;
+  border:1px solid rgba(232,180,198,.5);border-bottom-width:2px;border-radius:6px;
+  background:rgba(232,180,198,.08);color:var(--ch-petal);text-align:center;
+  font:600 .86em/1.65 ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  white-space:nowrap;box-shadow:none}
+@media (max-width:34rem){
+  .cc-keys th,.cc-keys td{display:block;width:auto;padding-inline-end:0}
+  .cc-keys th{padding-bottom:.1rem}
+  .cc-keys td{border-top:0;padding-top:0}
+}
+</style></head>
+<body>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
+<a class="skip-link" href="#main">跳转到正文</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">Corvus</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">首页</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-store">
+            <span>Store</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-store" role="group" aria-label="Store">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Store</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
+            <li><a class="mega-link is-current" href="../cherry/" aria-current="page"><span class="mega-link__label">Cherry</span></a></li>
+            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
+            <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>Get started</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="Get started">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Get started</p>
+                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">下载</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">导入指南</span></a></li>
+            <li><a class="mega-link" href="../skin/"><span class="mega-link__label">Sparxie skin</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>Reference</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="Reference">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Reference</p>
+                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">合成配方</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">传送门</span><span class="mega-link__sub">传送门大全</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">特色内容</span><span class="mega-link__sub">功能介绍</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>Status</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="Status">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Status</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">更新日志</span></a></li>
+            <li><a class="mega-link" href="../upcoming/"><span class="mega-link__label">Coming next</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">开发路线图</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">已知问题</span></a></li>
+            <li><a class="mega-link" href="../discord/"><span class="mega-link__label">Discord bot</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="语言 / Language">
+          <span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span><span>简体中文</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../cherry-controls/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/cherry-controls/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/cherry-controls/" data-lang="es" hreflang="es"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/cherry-controls/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/cherry-controls/" data-lang="zh" hreflang="zh" class="active" aria-current="true"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/cherry-controls/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/cherry-controls/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/cherry-controls/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/cherry-controls/" data-lang="ar" hreflang="ar"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/cherry-controls/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/cherry-controls/" data-lang="id" hreflang="id"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/cherry-controls/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/cherry-controls/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="cc-wrap"><div class="cc-inner"><p class="cc-eyebrow"><a href="../cherry/" lang="en" dir="ltr">Cherry</a></p><h1 class="cc-title">操作方法</h1><p class="cc-note">以下为 <span lang="en" dir="ltr">Cherry 1.1.2</span> 的默认按键。<kbd class="cc-key" dir="ltr">W</kbd> <kbd class="cc-key" dir="ltr">A</kbd> <kbd class="cc-key" dir="ltr">S</kbd> <kbd class="cc-key" dir="ltr">D</kbd> 与 <kbd class="cc-key" dir="ltr">空格</kbd> 是游戏自身“移动”类的按键，其余位于“<span lang="en" dir="ltr">Cherry Flight</span>”和“<span lang="en" dir="ltr">Cherry Ship Stations</span>”中。均可在<span class="cc-path"><span class="cc-step">选项</span> › <span class="cc-step">按键控制</span> › <span class="cc-step">按键绑定</span></span>中修改。</p><p class="cc-note cc-layout">按键以其在美式键盘上的位置命名。你的键盘可能给同一个键标注不同的名称；“按键绑定”会以你的键盘所用的名称显示每个键。</p><section class="cc-card" aria-labelledby="cc-air"><h2 class="cc-h2" id="cc-air">飞机：客机 <span class="cc-nb">Stratos-900</span> 与战斗机 <span class="cc-nb">Aegis-X</span></h2><ul class="cc-list"><li>放置：在有足够空间的地面上使用该物品，飞机会停在那里，机头朝向你注视的方向。</li><li>登机：右键点击飞机中部。第一个登机的人驾驶（<span class="cc-nb">Stratos-900</span> 有 18 个座位）。按“潜行”离机；在空中无法离机。</li><li>燃料：在地面上对飞机使用<span lang="en" dir="ltr">Propellant Canister</span>，每次一罐。</li><li>回收：飞机停在地面且无人乘坐时，按住“潜行”并空手右键点击。</li></ul><table class="cc-keys"><tbody><tr><th scope="row">俯仰与横滚</th><td>鼠标（向上抬机头，向右右滚转）或 <kbd class="cc-key" dir="ltr">↑</kbd> <kbd class="cc-key" dir="ltr">↓</kbd> <kbd class="cc-key" dir="ltr">←</kbd> <kbd class="cc-key" dir="ltr">→</kbd>。鼠标一停下或松开按键，操纵杆就会回中。</td></tr><tr><th scope="row">推力</th><td><kbd class="cc-key" dir="ltr">W</kbd> 增加，<kbd class="cc-key" dir="ltr">S</kbd> 减少。油门杆停在你松开的位置。</td></tr><tr><th scope="row">方向舵</th><td><kbd class="cc-key" dir="ltr">A</kbd> / <kbd class="cc-key" dir="ltr">D</kbd>（在地面上也会转动前轮）</td></tr><tr><th scope="row">机轮刹车</th><td><kbd class="cc-key" dir="ltr">空格</kbd></td></tr><tr><th scope="row">环顾四周</th><td>按住 <kbd class="cc-key" dir="ltr">左Alt</kbd>（Mac 上为 <kbd class="cc-key" dir="ltr">左Option</kbd>）；此时鼠标不控制操纵杆。</td></tr><tr><th scope="row">襟翼</th><td><kbd class="cc-key" dir="ltr">R</kbd> 每按一次放下一档；最后一档之后收起。</td></tr><tr><th scope="row">起落架</th><td><kbd class="cc-key" dir="ltr">U</kbd>。机轮承重时不会收起。</td></tr><tr><th scope="row">座舱盖 / 尾部跳板</th><td><kbd class="cc-key" dir="ltr">Y</kbd>：<span class="cc-nb">Aegis-X</span> 为座舱盖，<span class="cc-nb">Stratos-900</span> 为尾部跳板。只有在地面上且低于 1 m/s 时才能打开，飞机一动就会自动关闭。跳板仅为外观，登机请右键点击。</td></tr><tr><th scope="row">着舰钩（<span class="cc-nb">Aegis-X</span>）</th><td><kbd class="cc-key" dir="ltr">K</kbd></td></tr><tr><th scope="row">加力 / 反推</th><td><kbd class="cc-key" dir="ltr">Z</kbd>：<span class="cc-nb">Aegis-X</span> 按住时开启加力；不开加力时，满油门只有 60% 推力。<span class="cc-nb">Stratos-900</span> 切换反推开关，反推随油门增加，最高 40%。</td></tr></tbody></table><h3 class="cc-h3">起飞与降落</h3><ul class="cc-list"><li>起飞：按 <kbd class="cc-key" dir="ltr">R</kbd> 放襟翼，按 <kbd class="cc-key" dir="ltr">W</kbd> 推满油门（<span class="cc-nb">Aegis-X</span> 还要按住 <kbd class="cc-key" dir="ltr">Z</kbd>）；速度足够后用鼠标抬起机头，再按 <kbd class="cc-key" dir="ltr">U</kbd> 收起落架。</li><li>降落：按 <kbd class="cc-key" dir="ltr">S</kbd> 收油门，按 <kbd class="cc-key" dir="ltr">U</kbd> 放起落架，按 <kbd class="cc-key" dir="ltr">R</kbd> 放襟翼。接地后按 <kbd class="cc-key" dir="ltr">空格</kbd> 刹车；<span class="cc-nb">Stratos-900</span> 可按 <kbd class="cc-key" dir="ltr">Z</kbd> 后用 <kbd class="cc-key" dir="ltr">W</kbd> 加油门来反推，下次起飞前再按一次 <kbd class="cc-key" dir="ltr">Z</kbd> 关闭。</li></ul><h3 class="cc-h3"><span class="cc-nb">Aegis-X</span> 的武器</h3><ul class="cc-list"><li>装填：对地面上的 <span class="cc-nb">Aegis-X</span> 使用<span lang="en" dir="ltr">Cherry Guided Missile</span>，每次装一枚。最多两枚，新飞机自带两枚。</li><li>雷达监视机头周围 30° 以内、512 格以内的范围，持续捕捉离机头最近的目标约 1.5 秒后锁定。<kbd class="cc-key" dir="ltr">N</kbd> 切换对空与对地，<kbd class="cc-key" dir="ltr">M</kbd> 换到下一个目标并重新锁定。</li><li><kbd class="cc-key" dir="ltr">J</kbd> 向锁定的目标发射导弹：仅限空中，每秒最多一枚。</li></ul></section><section class="cc-card" aria-labelledby="cc-sea"><h2 class="cc-h2" id="cc-sea">舰船：Leviathan 级渡轮与 Dreadnought 级驱逐舰</h2><ul class="cc-list"><li>放置：对水底使用该物品，整个船身长度上的水深都要不小于吃水（Leviathan 级 3.5 m，Dreadnought 级 4 m）。准星会穿过水面，所以在深水处要游到该位置上方，直到够得着水底。舰船会浮在那里，船首朝向你注视的方向。</li><li>可以在甲板和舱内行走。站在岗位处按 <kbd class="cc-key" dir="ltr">H</kbd> 就位，再按一次 <kbd class="cc-key" dir="ltr">H</kbd> 离开。海图桌会打开一个界面：关闭它即离开。</li><li>在 1.1.2 中，生存模式下无法把舰船收回成物品：需要点击的位置在船体内部，从甲板以外够不着。</li></ul><table class="cc-keys"><tbody><tr><th scope="row">舵</th><td><kbd class="cc-key" dir="ltr">,</kbd> 和 <kbd class="cc-key" dir="ltr">.</kbd> 转动舵轮；舵轮停在你松开的位置，两键同时按下回正。在 1.1.2 中，舰船的转向与按键名称和舵角显示相反：<kbd class="cc-key" dir="ltr">,</kbd> 使船首转向右舷（右），<kbd class="cc-key" dir="ltr">.</kbd> 转向左舷（左）。</td></tr><tr><th scope="row">主机</th><td><kbd class="cc-key" dir="ltr">=</kbd> 前进；<kbd class="cc-key" dir="ltr">-</kbd> 回到停车方向。车钟停在你松开的位置。在 1.1.2 中，后退（低于 0）不产生推力。</td></tr><tr><th scope="row">保持航向</th><td><kbd class="cc-key" dir="ltr">;</kbd> 保持按下时的航向（舵轮回中期间）。</td></tr><tr><th scope="row">仪表</th><td>在舵轮岗位时显示在快捷栏上方。</td></tr></tbody></table><h3 class="cc-h3">海图桌</h3><ul class="cc-list"><li>在海图桌按 <kbd class="cc-key" dir="ltr">H</kbd> 打开海图。左键添加航路点，鼠标滚轮缩放。</li><li>按钮可开关自动航行、清除航线。穿越陆地或浅水的航段会被拒绝。自动航行只负责操舵：请先在舵轮处把主机设为前进；到达最后一个航路点时它会停车。</li></ul><h3 class="cc-h3">舱门（Leviathan 级）</h3><ul class="cc-list"><li>停船（低于 0.3 m/s、主机为 0）并在舵轮岗位时，按 <kbd class="cc-key" dir="ltr">&#x27;</kbd> 开关艏门和跳板。</li><li>舱门完全关闭前主机不会产生推力。跳板完全放下后可以在上面行走。</li></ul><h3 class="cc-h3">CIC（Dreadnought 级）</h3><ul class="cc-list"><li>火炮岗位：两座三联装炮塔指向你注视的位置。左键齐射，每 10 秒一次；右键在舱盖打开后，向雷达锁定的目标发射垂直发射系统。</li><li>声呐岗位：在扫描屏上显示周围的舰船、小船、游泳者和水下目标。</li></ul></section></div></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Corvus</p>
+    <p>Sorakazekarasu 服务器导入 MOD 非官方参考手册</p>
+    <p class="site-footer__note">本站是非官方参考站点。自 V2.2.0 起，MOD 本体（jar 文件）已在本站的「下载」页面直接提供。配方与数值可能因导入版本或服务器端 config 调整而与实际情况有出入。 Minecraft 是 Mojang Studios 的商标。本站及此处分发的 MOD 均非官方内容，与 Mojang Studios、Microsoft 无关。</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

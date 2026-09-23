@@ -37,6 +37,11 @@ BUILD_SCRIPTS = [
     # gen_cherry_brand.py (first in this list) writes, and carries the mark cut
     # from the owner's own Cherry logo.
     "build_cherry.py",
+    # 2026-09-23 (owner: 「飛行機と戦闘機の操作方法と船の操作方法を教えてください」
+    # 「Corvus Webに公開してください」): how to fly Cherry's aircraft and sail its
+    # ships, a page of its own. After build_cherry.py: it checks that the brand
+    # page's link to it resolves, which needs the brand page written first.
+    "build_cherry_controls.py",
     # 2026-09-12: OUKA -- the top of the brand line (OUKA -> Cherry -> Alpha).
     # Beside the other two brand pages, and before build_alpha.py for the same
     # reason the nav lists them in that order: this is the ranking, top first.

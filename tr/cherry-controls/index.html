@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cherry kontrolleri | Corvus</title>
+<meta name="description" content="Stratos-900 ve Aegis-X nasıl uçurulur, Leviathan ve Dreadnought sınıfı gemiler nasıl yönetilir: varsayılan tuşlar ve işlevleri.">
+<meta property="og:title" content="Cherry kontrolleri | Corvus">
+<meta property="og:description" content="Stratos-900 ve Aegis-X nasıl uçurulur, Leviathan ve Dreadnought sınıfı gemiler nasıl yönetilir: varsayılan tuşlar ve işlevleri.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Corvus">
+<meta name="theme-color" content="#07090f">
+<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/cherry-controls/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/cherry-controls/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/cherry-controls/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/cherry-controls/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/cherry-controls/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/cherry-controls/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/cherry-controls/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/cherry-controls/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/cherry-controls/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/cherry-controls/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/cherry-controls/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/cherry-controls/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"tr","h":{"ar":"../../ar/cherry-controls/","de":"../../de/cherry-controls/","en":"../../en/cherry-controls/","es":"../../es/cherry-controls/","fr":"../../fr/cherry-controls/","id":"../../id/cherry-controls/","it":"../../it/cherry-controls/","ja":"../../cherry-controls/","ko":"../../ko/cherry-controls/","pt-br":"../../pt-br/cherry-controls/","ru":"../../ru/cherry-controls/","tr":"../../tr/cherry-controls/","zh":"../../zh/cherry-controls/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"cherry-controls/"});</script>
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
+<script>
+/* Boot: tag JS availability for the motion layer.
+
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  d.setAttribute("data-theme", "dark");
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/cherry-tokens.css">
+<style>
+.cc-wrap{background:var(--ch-bg);color:var(--ch-text);padding:3.5rem 1rem 5rem;
+  margin:0 calc(50% - 50vw);width:100vw}
+.cc-inner{max-width:48rem;margin:0 auto}
+.cc-eyebrow{margin:0 0 .6rem;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+.cc-eyebrow a{color:var(--ch-petal-deep);text-decoration:none;display:inline-flex;
+  align-items:center;min-height:var(--tap,44px)}
+.cc-eyebrow a:hover,.cc-eyebrow a:focus-visible{color:var(--ch-petal);text-decoration:underline;
+  text-underline-offset:.3em}
+.cc-eyebrow a:focus-visible{outline:2px solid var(--ch-petal);outline-offset:3px}
+.cc-title{font-size:clamp(2.2rem,6vw,3.3rem);line-height:1.1;margin:0 0 1.2rem;
+  letter-spacing:-.01em;color:var(--ch-petal)}
+.cc-note{margin:0 0 .75rem;font-size:.98rem;line-height:1.8;color:var(--ch-text)}
+.cc-note.cc-layout{color:var(--ch-text-muted);font-size:.92rem}
+.cc-path{white-space:normal}
+.cc-nb{white-space:nowrap}
+.cc-step{font-weight:600;color:var(--ch-petal)}
+.cc-card{margin:2.25rem 0 0;padding:clamp(1.25rem,4vw,2rem);border-radius:18px;
+  background:var(--ch-bg-lift);border:1px solid var(--ch-line)}
+.cc-h2{margin:0 0 1rem;padding:0;border:0;font-size:clamp(1.2rem,3.4vw,1.45rem);
+  line-height:1.4;color:var(--ch-petal)}
+/* style.css marks every h2 with the site's aurora-green bar; these pages are in the Cherry colours */
+.cc-h2::before{content:none}
+.cc-h3{margin:1.75rem 0 .6rem;padding:0;border:0;font-size:1rem;line-height:1.5;
+  color:var(--ch-petal-deep)}
+.cc-list{margin:0;padding-inline-start:1.2rem;line-height:1.8}
+.cc-list li{margin:.35rem 0;color:var(--ch-text)}
+.cc-list li::marker{color:var(--ch-blush)}
+.cc-keys{width:100%;margin:1.25rem 0 0;border-collapse:collapse;font-size:.95rem;
+  line-height:1.7}
+/* style.css sets every th in small muted capitals (and uppercase Turkish would print a
+   dotted capital I); these are action names, read as sentences, in the page's own case */
+.cc-keys th,.cc-keys td{padding:.7rem 0;border-top:1px solid var(--ch-line);border-bottom:0;
+  vertical-align:top;text-align:start;background:none}
+.cc-keys th{width:34%;padding-inline-end:1rem;font-weight:600;color:var(--ch-text);
+  font-size:inherit;text-transform:none;letter-spacing:normal}
+.cc-keys td{color:var(--ch-text)}
+.cc-key{display:inline-block;min-width:1.9em;margin:0 .1em;padding:0 .45em;
+  border:1px solid rgba(232,180,198,.5);border-bottom-width:2px;border-radius:6px;
+  background:rgba(232,180,198,.08);color:var(--ch-petal);text-align:center;
+  font:600 .86em/1.65 ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  white-space:nowrap;box-shadow:none}
+@media (max-width:34rem){
+  .cc-keys th,.cc-keys td{display:block;width:auto;padding-inline-end:0}
+  .cc-keys th{padding-bottom:.1rem}
+  .cc-keys td{border-top:0;padding-top:0}
+}
+</style></head>
+<body>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">Corvus</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menüyü aç">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Ana Sayfa</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-store">
+            <span>Store</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-store" role="group" aria-label="Store">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Store</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
+            <li><a class="mega-link is-current" href="../cherry/" aria-current="page"><span class="mega-link__label">Cherry</span></a></li>
+            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
+            <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>Get started</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="Get started">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Get started</p>
+                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">İndir</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Kurulum Rehberi</span></a></li>
+            <li><a class="mega-link" href="../skin/"><span class="mega-link__label">Sparxie skin</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>Reference</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="Reference">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Reference</p>
+                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">Tarif Rehberi</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">Geçitler</span><span class="mega-link__sub">Geçitler ve Portallar</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">Özellikler</span><span class="mega-link__sub">Özellik Rehberi</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>Status</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="Status">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Status</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Güncelleme Geçmişi</span></a></li>
+            <li><a class="mega-link" href="../upcoming/"><span class="mega-link__label">Coming next</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">Yol Haritası</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Bilinen Sorunlar</span></a></li>
+            <li><a class="mega-link" href="../discord/"><span class="mega-link__label">Discord bot</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Dil / Language">
+          <span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span><span>Türkçe</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../cherry-controls/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/cherry-controls/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/cherry-controls/" data-lang="es" hreflang="es"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/cherry-controls/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/cherry-controls/" data-lang="zh" hreflang="zh"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/cherry-controls/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/cherry-controls/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/cherry-controls/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/cherry-controls/" data-lang="ar" hreflang="ar"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/cherry-controls/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/cherry-controls/" data-lang="id" hreflang="id"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/cherry-controls/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/cherry-controls/" data-lang="tr" hreflang="tr" class="active" aria-current="true"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="cc-wrap"><div class="cc-inner"><p class="cc-eyebrow"><a href="../cherry/" lang="en" dir="ltr">Cherry</a></p><h1 class="cc-title">Kontroller</h1><p class="cc-note">Bunlar <span lang="en" dir="ltr">Cherry 1.1.2</span> sürümünün varsayılan tuşlarıdır. <kbd class="cc-key" dir="ltr">W</kbd> <kbd class="cc-key" dir="ltr">A</kbd> <kbd class="cc-key" dir="ltr">S</kbd> <kbd class="cc-key" dir="ltr">D</kbd> ve <kbd class="cc-key" dir="ltr">Boşluk</kbd>, oyunun kendi “Hareket” tuşlarıdır; diğerleri “<span lang="en" dir="ltr">Cherry Flight</span>” ve “<span lang="en" dir="ltr">Cherry Ship Stations</span>” altındadır. Hepsini <span class="cc-path"><span class="cc-step">Ayarlar</span> › <span class="cc-step">Kontroller</span> › <span class="cc-step">Tuş Atamaları</span></span> içinde değiştirebilirsiniz.</p><p class="cc-note cc-layout">Tuşlar ABD klavyesindeki yerlerine göre adlandırılmıştır. Sizin klavyenizde aynı tuş başka bir adla işaretli olabilir; “Tuş Atamaları” her tuşu klavyenizin verdiği adla gösterir.</p><section class="cc-card" aria-labelledby="cc-air"><h2 class="cc-h2" id="cc-air">Uçaklar: yolcu uçağı <span class="cc-nb">Stratos-900</span> ve savaş uçağı <span class="cc-nb">Aegis-X</span></h2><ul class="cc-list"><li>Yerleştirme: eşyayı yeterince yer olan bir zeminde kullanın; uçak orada, baktığınız yöne burnunu çevirip durur.</li><li>Binme: uçağın ortasına sağ tıklayın. İlk binen pilottur (<span class="cc-nb">Stratos-900</span>’de 18 koltuk var). İnmek için “Eğilme”; havadayken inilemez.</li><li>Yakıt: yerdeyken uçağa bir <span lang="en" dir="ltr">Propellant Canister</span> kullanın; her kullanımda bir tane.</li><li>Geri alma: uçak yerde dururken ve kimse binmemişken “Eğilme”yi basılı tutup boş elle sağ tıklayın.</li></ul><table class="cc-keys"><tbody><tr><th scope="row">Yunuslama ve yatış</th><td>Fare (yukarı burnu kaldırır, sağa sağa yatırır) ya da <kbd class="cc-key" dir="ltr">↑</kbd> <kbd class="cc-key" dir="ltr">↓</kbd> <kbd class="cc-key" dir="ltr">←</kbd> <kbd class="cc-key" dir="ltr">→</kbd>. Fare durduğu ya da tuş bırakıldığı anda lövye ortaya döner.</td></tr><tr><th scope="row">İtki</th><td><kbd class="cc-key" dir="ltr">W</kbd> artır, <kbd class="cc-key" dir="ltr">S</kbd> azalt. Kol bıraktığınız yerde kalır.</td></tr><tr><th scope="row">İstikamet dümeni</th><td><kbd class="cc-key" dir="ltr">A</kbd> / <kbd class="cc-key" dir="ltr">D</kbd> (yerde burun tekerini de çevirir).</td></tr><tr><th scope="row">Tekerlek frenleri</th><td><kbd class="cc-key" dir="ltr">Boşluk</kbd></td></tr><tr><th scope="row">Etrafa bakma</th><td><kbd class="cc-key" dir="ltr">Sol Alt</kbd> basılıyken (Mac’te <kbd class="cc-key" dir="ltr">Sol Option</kbd>); bu sırada fare lövyeyi hareket ettirmez.</td></tr><tr><th scope="row">Flaplar</th><td><kbd class="cc-key" dir="ltr">R</kbd>, her basışta bir kademe; sonuncudan sonra toplanır.</td></tr><tr><th scope="row">İniş takımı</th><td><kbd class="cc-key" dir="ltr">U</kbd>. Tekerlekler yük taşırken toplanmaz.</td></tr><tr><th scope="row">Kanopi / arka rampa</th><td><kbd class="cc-key" dir="ltr">Y</kbd>: <span class="cc-nb">Aegis-X</span>’in kanopisi, <span class="cc-nb">Stratos-900</span>’ün arka rampası. Yalnızca yerde 1 m/s’nin altında açılır ve uçak hareket edince kendiliğinden kapanır. Rampa yalnızca görünüş içindir: binmek için sağ tıklayın.</td></tr><tr><th scope="row">Kuyruk kancası (<span class="cc-nb">Aegis-X</span>)</th><td><kbd class="cc-key" dir="ltr">K</kbd></td></tr><tr><th scope="row">Art yakıcı / ters itki</th><td><kbd class="cc-key" dir="ltr">Z</kbd>: <span class="cc-nb">Aegis-X</span>’te basılı tutulduğu sürece art yakıcı; o olmadan tam itki yalnızca %60 verir. <span class="cc-nb">Stratos-900</span>’de ters itkiyi açar ya da kapatır; ters itki kola göre, en fazla %40 iter.</td></tr></tbody></table><h3 class="cc-h3">Kalkış ve iniş</h3><ul class="cc-list"><li>Kalkış: <kbd class="cc-key" dir="ltr">R</kbd> ile flaplar, <kbd class="cc-key" dir="ltr">W</kbd> ile tam itki (<span class="cc-nb">Aegis-X</span>’te <kbd class="cc-key" dir="ltr">Z</kbd>’yi de basılı tutun); hızlanınca fareyle burnu kaldırın, ardından <kbd class="cc-key" dir="ltr">U</kbd> ile iniş takımını toplayın.</li><li>İniş: <kbd class="cc-key" dir="ltr">S</kbd> ile itkiyi azaltın, <kbd class="cc-key" dir="ltr">U</kbd> ile iniş takımını, <kbd class="cc-key" dir="ltr">R</kbd> ile flapları indirin. Teker koyduktan sonra <kbd class="cc-key" dir="ltr">Boşluk</kbd> ile frenleyin; <span class="cc-nb">Stratos-900</span>’de ters itki için <kbd class="cc-key" dir="ltr">Z</kbd>’ye basıp <kbd class="cc-key" dir="ltr">W</kbd> ile itki verin ve bir sonraki kalkıştan önce <kbd class="cc-key" dir="ltr">Z</kbd>’ye yeniden basın.</li></ul><h3 class="cc-h3"><span class="cc-nb">Aegis-X</span> silahları</h3><ul class="cc-list"><li>Yükleme: yerdeki bir <span class="cc-nb">Aegis-X</span>’e <span lang="en" dir="ltr">Cherry Guided Missile</span> kullanın; her kullanımda bir füze. İki füze taşır ve yeni uçak dolu gelir.</li><li>Radar, burnun çevresindeki 30° içini 512 bloğa kadar izler ve burna en yakın teması yaklaşık 1,5 saniye tuttuktan sonra kilitler. <kbd class="cc-key" dir="ltr">N</kbd> hava ve kara hedefleri arasında geçiş yapar; <kbd class="cc-key" dir="ltr">M</kbd> sonraki temasa geçer ve kilitleme yeniden başlar.</li><li><kbd class="cc-key" dir="ltr">J</kbd> kilitli hedefe füze ateşler: yalnızca havadayken, saniyede en fazla bir tane.</li></ul></section><section class="cc-card" aria-labelledby="cc-sea"><h2 class="cc-h2" id="cc-sea">Gemiler: Leviathan sınıfı feribot ve Dreadnought sınıfı muhrip</h2><ul class="cc-list"><li>Yerleştirme: eşyayı, boyu boyunca en az su çekimi kadar derin suyun (Leviathan sınıfı 3,5 m, Dreadnought sınıfı 4 m) altındaki zeminde kullanın. Nişangâh suyun içinden geçer; derin suda zemine uzanabilene kadar o noktanın üstünde yüzün. Gemi orada, baktığınız yöne pruvasını çevirip yüzer.</li><li>Güvertelerinde ve iç mekânlarında yürüyebilirsiniz. Bir görev yerinde durup <kbd class="cc-key" dir="ltr">H</kbd> tuşuna basarak görevi alın; ayrılmak için <kbd class="cc-key" dir="ltr">H</kbd> tuşuna yeniden basın. Harita masası bir ekran açar: ayrılmak için ekranı kapatın.</li><li>1.1.2’de gemi hayatta kalma modunda yeniden eşyaya dönüştürülemez: tıklanması gereken yer gövdenin içindedir ve güverte dışından erişilemez.</li></ul><table class="cc-keys"><tbody><tr><th scope="row">Dümen</th><td><kbd class="cc-key" dir="ltr">,</kbd> ve <kbd class="cc-key" dir="ltr">.</kbd> dümen dolabını çevirir; dolap bıraktığınız yerde kalır, ikisine birlikte basmak ortalar. 1.1.2’de gemi, tuşların adlarının ve dümen göstergesinin tersine döner: <kbd class="cc-key" dir="ltr">,</kbd> pruvayı sancağa (sağa), <kbd class="cc-key" dir="ltr">.</kbd> iskeleye (sola) çevirir.</td></tr><tr><th scope="row">Makine</th><td><kbd class="cc-key" dir="ltr">=</kbd> ileri; <kbd class="cc-key" dir="ltr">-</kbd> durmaya doğru geri alır. Kol bıraktığınız yerde kalır. 1.1.2’de tornistan (0’ın altı) itki vermez.</td></tr><tr><th scope="row">Rota tutma</th><td><kbd class="cc-key" dir="ltr">;</kbd> basıldığı andaki rotayı, dümen dolabı ortadayken korur.</td></tr><tr><th scope="row">Göstergeler</th><td>Dümendeyken araç çubuğunun üstünde görünür.</td></tr></tbody></table><h3 class="cc-h3">Harita masası</h3><ul class="cc-list"><li>Harita masasında <kbd class="cc-key" dir="ltr">H</kbd> haritayı açar. Sol tık rota noktası ekler; fare tekerleği ölçeği değiştirir.</li><li>Düğmeleri otomatik seyri açar ya da kapatır ve rotayı siler. Karayı ya da sığ suyu geçen bir ayak reddedilir. Otomatik seyir yalnızca dümeni kullanır: makineyi dümende ileriye alın; son noktada makineyi durdurur.</li></ul><h3 class="cc-h3">Kapılar (Leviathan sınıfı)</h3><ul class="cc-list"><li>Dururken (0,3 m/s altında, makine 0) ve dümendeyken <kbd class="cc-key" dir="ltr">&#x27;</kbd> pruva vizörünü ve rampaları açıp kapatır.</li><li>Kapılar kapanana kadar makine itki vermez. Rampalar tamamen indiğinde üzerlerinde yürünebilir.</li></ul><h3 class="cc-h3">Muharebe Bilgi Merkezi (Dreadnought sınıfı)</h3><ul class="cc-list"><li>Topçu görev yeri: iki üçlü top kulesi baktığınız noktaya döner. Sol tık 10 saniyede bir yaylım ateşi açar; sağ tık, kapağı açıldıktan sonra dikey atış sistemini radarın kilitlendiği hedefe ateşler.</li><li>Sonar: gemiler, tekneler, yüzücüler ve su altındaki temaslar, dönen bir tarama ekranında.</li></ul></section></div></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Corvus</p>
+    <p>Sorakazekarasu Sunucusuna Kurulu MOD&#x27;lar İçin Resmî Olmayan Kaynak</p>
+    <p class="site-footer__note">Bu site resmî olmayan bir kaynaktır. V2.2.0&#x27;dan itibaren MOD dosyaları (jar), bu sitenin &quot;İndir&quot; sayfasından doğrudan dağıtılmaktadır. Tarifler ve değerler, kurulu sürüme ve sunucu tarafındaki config ayarlarına göre gerçek oyundakinden farklı olabilir. Minecraft, Mojang Studios&#x27;un ticari markasıdır. Bu site ve burada dağıtılan MOD&#x27;lar resmî değildir ve Mojang Studios ya da Microsoft ile bağlantılı değildir.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

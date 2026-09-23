@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="id" dir="ltr">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kontrol Cherry | Corvus</title>
+<meta name="description" content="Cara menerbangkan Stratos-900 dan Aegis-X serta melayarkan kapal kelas Leviathan dan Dreadnought: tombol bawaan dan fungsinya.">
+<meta property="og:title" content="Kontrol Cherry | Corvus">
+<meta property="og:description" content="Cara menerbangkan Stratos-900 dan Aegis-X serta melayarkan kapal kelas Leviathan dan Dreadnought: tombol bawaan dan fungsinya.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Corvus">
+<meta name="theme-color" content="#07090f">
+<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/cherry-controls/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/cherry-controls/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/cherry-controls/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/cherry-controls/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/cherry-controls/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/cherry-controls/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/cherry-controls/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/cherry-controls/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/cherry-controls/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/cherry-controls/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/cherry-controls/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/cherry-controls/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"id","h":{"ar":"../../ar/cherry-controls/","de":"../../de/cherry-controls/","en":"../../en/cherry-controls/","es":"../../es/cherry-controls/","fr":"../../fr/cherry-controls/","id":"../../id/cherry-controls/","it":"../../it/cherry-controls/","ja":"../../cherry-controls/","ko":"../../ko/cherry-controls/","pt-br":"../../pt-br/cherry-controls/","ru":"../../ru/cherry-controls/","tr":"../../tr/cherry-controls/","zh":"../../zh/cherry-controls/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"cherry-controls/"});</script>
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
+<script>
+/* Boot: tag JS availability for the motion layer.
+
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  d.setAttribute("data-theme", "dark");
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/cherry-tokens.css">
+<style>
+.cc-wrap{background:var(--ch-bg);color:var(--ch-text);padding:3.5rem 1rem 5rem;
+  margin:0 calc(50% - 50vw);width:100vw}
+.cc-inner{max-width:48rem;margin:0 auto}
+.cc-eyebrow{margin:0 0 .6rem;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+.cc-eyebrow a{color:var(--ch-petal-deep);text-decoration:none;display:inline-flex;
+  align-items:center;min-height:var(--tap,44px)}
+.cc-eyebrow a:hover,.cc-eyebrow a:focus-visible{color:var(--ch-petal);text-decoration:underline;
+  text-underline-offset:.3em}
+.cc-eyebrow a:focus-visible{outline:2px solid var(--ch-petal);outline-offset:3px}
+.cc-title{font-size:clamp(2.2rem,6vw,3.3rem);line-height:1.1;margin:0 0 1.2rem;
+  letter-spacing:-.01em;color:var(--ch-petal)}
+.cc-note{margin:0 0 .75rem;font-size:.98rem;line-height:1.8;color:var(--ch-text)}
+.cc-note.cc-layout{color:var(--ch-text-muted);font-size:.92rem}
+.cc-path{white-space:normal}
+.cc-nb{white-space:nowrap}
+.cc-step{font-weight:600;color:var(--ch-petal)}
+.cc-card{margin:2.25rem 0 0;padding:clamp(1.25rem,4vw,2rem);border-radius:18px;
+  background:var(--ch-bg-lift);border:1px solid var(--ch-line)}
+.cc-h2{margin:0 0 1rem;padding:0;border:0;font-size:clamp(1.2rem,3.4vw,1.45rem);
+  line-height:1.4;color:var(--ch-petal)}
+/* style.css marks every h2 with the site's aurora-green bar; these pages are in the Cherry colours */
+.cc-h2::before{content:none}
+.cc-h3{margin:1.75rem 0 .6rem;padding:0;border:0;font-size:1rem;line-height:1.5;
+  color:var(--ch-petal-deep)}
+.cc-list{margin:0;padding-inline-start:1.2rem;line-height:1.8}
+.cc-list li{margin:.35rem 0;color:var(--ch-text)}
+.cc-list li::marker{color:var(--ch-blush)}
+.cc-keys{width:100%;margin:1.25rem 0 0;border-collapse:collapse;font-size:.95rem;
+  line-height:1.7}
+/* style.css sets every th in small muted capitals (and uppercase Turkish would print a
+   dotted capital I); these are action names, read as sentences, in the page's own case */
+.cc-keys th,.cc-keys td{padding:.7rem 0;border-top:1px solid var(--ch-line);border-bottom:0;
+  vertical-align:top;text-align:start;background:none}
+.cc-keys th{width:34%;padding-inline-end:1rem;font-weight:600;color:var(--ch-text);
+  font-size:inherit;text-transform:none;letter-spacing:normal}
+.cc-keys td{color:var(--ch-text)}
+.cc-key{display:inline-block;min-width:1.9em;margin:0 .1em;padding:0 .45em;
+  border:1px solid rgba(232,180,198,.5);border-bottom-width:2px;border-radius:6px;
+  background:rgba(232,180,198,.08);color:var(--ch-petal);text-align:center;
+  font:600 .86em/1.65 ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  white-space:nowrap;box-shadow:none}
+@media (max-width:34rem){
+  .cc-keys th,.cc-keys td{display:block;width:auto;padding-inline-end:0}
+  .cc-keys th{padding-bottom:.1rem}
+  .cc-keys td{border-top:0;padding-top:0}
+}
+</style></head>
+<body>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
+<a class="skip-link" href="#main">Lompat ke konten utama</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">Corvus</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">Beranda</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-store">
+            <span>Store</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-store" role="group" aria-label="Store">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Store</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
+            <li><a class="mega-link is-current" href="../cherry/" aria-current="page"><span class="mega-link__label">Cherry</span></a></li>
+            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
+            <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>Get started</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="Get started">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Get started</p>
+                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">Unduh</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Panduan Pemasangan</span></a></li>
+            <li><a class="mega-link" href="../skin/"><span class="mega-link__label">Sparxie skin</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>Reference</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="Reference">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Reference</p>
+                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">Kumpulan Resep</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">Gerbang</span><span class="mega-link__sub">Gerbang &amp; Portal</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">Fitur</span><span class="mega-link__sub">Panduan Fitur</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>Status</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="Status">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Status</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Riwayat Pembaruan</span></a></li>
+            <li><a class="mega-link" href="../upcoming/"><span class="mega-link__label">Coming next</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">Peta Jalan Pengembangan</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Bug yang Diketahui</span></a></li>
+            <li><a class="mega-link" href="../discord/"><span class="mega-link__label">Discord bot</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="Bahasa / Language">
+          <span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span><span>Bahasa Indonesia</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../cherry-controls/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/cherry-controls/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/cherry-controls/" data-lang="es" hreflang="es"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/cherry-controls/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/cherry-controls/" data-lang="zh" hreflang="zh"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/cherry-controls/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/cherry-controls/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/cherry-controls/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/cherry-controls/" data-lang="ar" hreflang="ar"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/cherry-controls/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/cherry-controls/" data-lang="id" hreflang="id" class="active" aria-current="true"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/cherry-controls/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/cherry-controls/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="cc-wrap"><div class="cc-inner"><p class="cc-eyebrow"><a href="../cherry/" lang="en" dir="ltr">Cherry</a></p><h1 class="cc-title">Kontrol</h1><p class="cc-note">Ini tombol bawaan <span lang="en" dir="ltr">Cherry 1.1.2</span>. <kbd class="cc-key" dir="ltr">W</kbd> <kbd class="cc-key" dir="ltr">A</kbd> <kbd class="cc-key" dir="ltr">S</kbd> <kbd class="cc-key" dir="ltr">D</kbd> dan <kbd class="cc-key" dir="ltr">Spasi</kbd> adalah tombol “Pergerakan” milik game itu sendiri; sisanya ada di “<span lang="en" dir="ltr">Cherry Flight</span>” dan “<span lang="en" dir="ltr">Cherry Ship Stations</span>”. Semuanya bisa diubah di <span class="cc-path"><span class="cc-step">Opsi</span> › <span class="cc-step">Kendali</span> › <span class="cc-step">Tombol Pintas</span></span>.</p><p class="cc-note cc-layout">Tombol disebut menurut letaknya pada papan ketik AS. Papan ketikmu bisa menandai tombol yang sama secara berbeda; “Tombol Pintas” menampilkan setiap tombol dengan nama dari papan ketikmu.</p><section class="cc-card" aria-labelledby="cc-air"><h2 class="cc-h2" id="cc-air">Pesawat: pesawat penumpang <span class="cc-nb">Stratos-900</span> dan jet tempur <span class="cc-nb">Aegis-X</span></h2><ul class="cc-list"><li>Menaruh: gunakan itemnya di tanah yang cukup lapang; pesawat berdiri di sana menghadap ke arah pandanganmu.</li><li>Naik: klik kanan bagian tengah pesawat. Yang naik pertama menjadi pilot (<span class="cc-nb">Stratos-900</span> punya 18 kursi). Turun dengan “Jongkok”; tidak bisa turun di udara.</li><li>Bahan bakar: di darat, gunakan <span lang="en" dir="ltr">Propellant Canister</span> pada pesawat, satu per penggunaan.</li><li>Mengambil kembali: saat diam di darat dan tak ada yang naik, tahan “Jongkok” lalu klik kanan dengan tangan kosong.</li></ul><table class="cc-keys"><tbody><tr><th scope="row">Angguk dan guling</th><td>Mouse (ke atas mengangkat hidung, ke kanan berguling ke kanan) atau <kbd class="cc-key" dir="ltr">↑</kbd> <kbd class="cc-key" dir="ltr">↓</kbd> <kbd class="cc-key" dir="ltr">←</kbd> <kbd class="cc-key" dir="ltr">→</kbd>. Tongkat kembali ke tengah begitu mouse berhenti atau tombol dilepas.</td></tr><tr><th scope="row">Daya dorong</th><td><kbd class="cc-key" dir="ltr">W</kbd> tambah, <kbd class="cc-key" dir="ltr">S</kbd> kurangi. Tuasnya tetap di posisi terakhir.</td></tr><tr><th scope="row">Kemudi arah</th><td><kbd class="cc-key" dir="ltr">A</kbd> / <kbd class="cc-key" dir="ltr">D</kbd> (di darat juga membelokkan roda depan).</td></tr><tr><th scope="row">Rem roda</th><td><kbd class="cc-key" dir="ltr">Spasi</kbd></td></tr><tr><th scope="row">Melihat sekitar</th><td>Tahan <kbd class="cc-key" dir="ltr">Alt Kiri</kbd> (di Mac, <kbd class="cc-key" dir="ltr">Option Kiri</kbd>); selama itu mouse tidak menggerakkan tongkat.</td></tr><tr><th scope="row">Flap</th><td><kbd class="cc-key" dir="ltr">R</kbd>, satu tingkat tiap tekan; setelah yang terakhir, naik kembali.</td></tr><tr><th scope="row">Roda pendarat</th><td><kbd class="cc-key" dir="ltr">U</kbd>. Tidak terlipat selama roda menahan beban.</td></tr><tr><th scope="row">Kanopi / ramp belakang</th><td><kbd class="cc-key" dir="ltr">Y</kbd>: kanopi <span class="cc-nb">Aegis-X</span>, ramp belakang <span class="cc-nb">Stratos-900</span>. Hanya terbuka di darat di bawah 1 m/s dan menutup sendiri begitu pesawat bergerak. Ramp itu hanya tampilan: naiklah dengan klik kanan.</td></tr><tr><th scope="row">Kait pendaratan (<span class="cc-nb">Aegis-X</span>)</th><td><kbd class="cc-key" dir="ltr">K</kbd></td></tr><tr><th scope="row">Afterburner / dorong balik</th><td><kbd class="cc-key" dir="ltr">Z</kbd>: pada <span class="cc-nb">Aegis-X</span>, afterburner selama ditahan; tanpa itu, daya penuh hanya memberi 60%. Pada <span class="cc-nb">Stratos-900</span>, menyalakan atau mematikan dorong balik, yang mendorong sesuai tuas, sampai 40%.</td></tr></tbody></table><h3 class="cc-h3">Lepas landas dan mendarat</h3><ul class="cc-list"><li>Lepas landas: flap dengan <kbd class="cc-key" dir="ltr">R</kbd>, daya penuh dengan <kbd class="cc-key" dir="ltr">W</kbd> (pada <span class="cc-nb">Aegis-X</span>, tahan juga <kbd class="cc-key" dir="ltr">Z</kbd>); setelah cukup cepat, angkat hidung dengan mouse, lalu lipat roda dengan <kbd class="cc-key" dir="ltr">U</kbd>.</li><li>Mendarat: kurangi daya dengan <kbd class="cc-key" dir="ltr">S</kbd>, turunkan roda dengan <kbd class="cc-key" dir="ltr">U</kbd> dan flap dengan <kbd class="cc-key" dir="ltr">R</kbd>. Setelah menyentuh landasan, rem dengan <kbd class="cc-key" dir="ltr">Spasi</kbd>; pada <span class="cc-nb">Stratos-900</span>, tekan <kbd class="cc-key" dir="ltr">Z</kbd> lalu tambah daya dengan <kbd class="cc-key" dir="ltr">W</kbd> untuk dorong balik, dan tekan <kbd class="cc-key" dir="ltr">Z</kbd> lagi sebelum lepas landas berikutnya.</li></ul><h3 class="cc-h3">Persenjataan <span class="cc-nb">Aegis-X</span></h3><ul class="cc-list"><li>Mengisi: gunakan <span lang="en" dir="ltr">Cherry Guided Missile</span> pada <span class="cc-nb">Aegis-X</span> di darat, satu per penggunaan. Ia membawa dua, dan yang baru datang sudah terisi.</li><li>Radar mengawasi 30° di sekitar hidung sejauh 512 blok dan mengunci kontak yang paling dekat dengan hidung setelah menahannya sekitar 1,5 detik. <kbd class="cc-key" dir="ltr">N</kbd> beralih antara sasaran udara dan darat; <kbd class="cc-key" dir="ltr">M</kbd> pindah ke kontak berikutnya, dan penguncian dimulai lagi.</li><li><kbd class="cc-key" dir="ltr">J</kbd> menembakkan rudal ke sasaran yang terkunci: hanya di udara, paling banyak satu per detik.</li></ul></section><section class="cc-card" aria-labelledby="cc-sea"><h2 class="cc-h2" id="cc-sea">Kapal: feri kelas Leviathan dan kapal perusak kelas Dreadnought</h2><ul class="cc-list"><li>Menaruh: gunakan itemnya pada dasar di bawah air yang setidaknya sedalam sarat airnya di sepanjang lambung (3,5 m untuk kelas Leviathan, 4 m untuk kelas Dreadnought). Bidikan menembus air, jadi di air dalam berenanglah di atas tempat itu sampai dasarnya terjangkau. Kapal mengapung di sana menghadap arah pandanganmu.</li><li>Jelajahi dek dan bagian dalamnya. Berdirilah di sebuah pos dan tekan <kbd class="cc-key" dir="ltr">H</kbd> untuk mengambilnya; tekan <kbd class="cc-key" dir="ltr">H</kbd> lagi untuk pergi. Meja peta membuka layar: tutup layarnya untuk pergi.</li><li>Di 1.1.2, kapal tidak bisa dijadikan item lagi dalam mode bertahan hidup: titik yang harus diklik ada di dalam lambung, di luar jangkauan dari luar dek.</li></ul><table class="cc-keys"><tbody><tr><th scope="row">Kemudi</th><td><kbd class="cc-key" dir="ltr">,</kbd> dan <kbd class="cc-key" dir="ltr">.</kbd> memutar roda kemudi; roda tetap di posisi terakhir, dan keduanya bersamaan mengembalikannya ke tengah. Di 1.1.2, kapal berbelok berlawanan dengan nama tombol dan tampilan kemudi: <kbd class="cc-key" dir="ltr">,</kbd> membelokkan haluan ke kanan (starboard), <kbd class="cc-key" dir="ltr">.</kbd> ke kiri (port).</td></tr><tr><th scope="row">Mesin</th><td><kbd class="cc-key" dir="ltr">=</kbd> maju; <kbd class="cc-key" dir="ltr">-</kbd> kembali ke arah berhenti. Tuasnya tetap di posisi terakhir. Di 1.1.2, mundur (di bawah 0) tidak memberi daya dorong.</td></tr><tr><th scope="row">Tahan haluan</th><td><kbd class="cc-key" dir="ltr">;</kbd> menahan haluan saat tombol ditekan, selama roda kemudi di tengah.</td></tr><tr><th scope="row">Instrumen</th><td>Tampil di atas bilah benda selama kamu memegang kemudi.</td></tr></tbody></table><h3 class="cc-h3">Meja peta</h3><ul class="cc-list"><li>Di meja peta, <kbd class="cc-key" dir="ltr">H</kbd> membuka peta. Klik kiri menambah titik rute; roda mouse mengubah skala.</li><li>Tombolnya menyalakan atau mematikan autopilot dan menghapus rute. Ruas yang melintasi daratan atau perairan dangkal ditolak. Autopilot hanya mengemudi: majukan mesin di roda kemudi; di titik terakhir ia menghentikan mesin.</li></ul><h3 class="cc-h3">Pintu (kelas Leviathan)</h3><ul class="cc-list"><li>Saat diam (di bawah 0,3 m/s, mesin 0) dan memegang kemudi, <kbd class="cc-key" dir="ltr">&#x27;</kbd> membuka dan menutup visor haluan dan ramp.</li><li>Mesin tidak memberi daya dorong sampai pintu tertutup. Ramp bisa diinjak setelah turun sepenuhnya.</li></ul><h3 class="cc-h3">CIC (kelas Dreadnought)</h3><ul class="cc-list"><li>Penembak: kedua turet berlaras tiga membidik titik yang kamu lihat. Klik kiri menembakkan satu salvo, tiap 10 detik; klik kanan meluncurkan VLS ke sasaran yang dikunci radar, setelah palkanya terbuka.</li><li>Sonar: kapal, perahu, perenang, dan kontak di bawah air pada layar pindai berputar.</li></ul></section></div></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Corvus</p>
+    <p>Referensi Tidak Resmi MOD Server Sorakazekarasu</p>
+    <p class="site-footer__note">Situs ini adalah referensi tidak resmi. Mulai V2.2.0, file MOD (jar) didistribusikan langsung dari halaman &quot;Unduh&quot; situs ini. Resep dan angka yang ditampilkan bisa berbeda dari kondisi sebenarnya tergantung versi yang terpasang dan penyesuaian config di sisi server. Minecraft adalah merek dagang Mojang Studios. Situs ini dan MOD yang didistribusikan di sini bukan produk resmi dan tidak berafiliasi dengan Mojang Studios maupun Microsoft.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

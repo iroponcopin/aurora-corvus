@@ -96,6 +96,13 @@ The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
     14.67-14.75). The line and the codename carry over: the release finishes the
     voyage "Into the air, and out to sea." promised, proven by the client suite
     twice, 21 ship client controls twice and 27 ship server controls twice.
+  * 2026-09-23, the controls (owner: 「飛行機と戦闘機の操作方法と船の操作方法を
+    教えてください」「Corvus Webに公開してください」): how to fly the aircraft and
+    sail the ships is a page of its own, cherry-controls/ (build_cherry_controls.py),
+    because this page carries no play guide (above). This page gains exactly one
+    quiet link to it, below the release block and outside it, so the release's one
+    link is still the download. The codename span now carries lang="en": the V1.0.0
+    codename rendered "GENESİS" under text-transform: uppercase on /tr/.
   * The download button is in the brand's own colours, the way the Aureum page
     carries its own gold one; its label, "File size" and "SHA-256" are the
     Download page's own translations (data/i18n/<lang>.json "download"), with
@@ -160,6 +167,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
     ROOT, asset_root_prefix, available_langs, esc, load_bundle, page, write_page,
+)
+from build_cherry_controls import (  # noqa: E402
+    SECTION as CONTROLS_SECTION, link_label as controls_link_label,
 )
 
 SECTION = "cherry/"
@@ -446,6 +456,14 @@ HEAD = """<link rel="stylesheet" href="__ROOT__assets/css/cherry-tokens.css">
 .ch-sha-label{display:block;letter-spacing:.08em}
 .ch-sha code{display:block;word-break:break-all;background:none;border:0;
   padding:0;font-size:.72rem;color:var(--ch-text-muted)}
+/* the one way on to the controls page: quiet, below the release, never a button */
+.ch-more{margin:2.75rem 0 0;text-align:center}
+.ch-more-link{display:inline-flex;align-items:center;min-height:var(--tap,44px);
+  padding:0 .5rem;font-size:.95rem;color:var(--ch-petal-deep);text-decoration:underline;
+  text-decoration-color:rgba(__HALO_RGB__,.45);text-underline-offset:.35em}
+.ch-more-link:hover,.ch-more-link:focus-visible{color:var(--ch-petal);
+  text-decoration-color:var(--ch-petal)}
+.ch-more-link:focus-visible{outline:2px solid var(--ch-petal);outline-offset:3px}
 
 /* --- the mark: the owner's logo, always turning -------------------------- */
 .ch-halo{position:absolute;inset:-4%;border-radius:50%;pointer-events:none;
@@ -543,7 +561,7 @@ def _release_html(c: dict, dl: dict, release: dict, root: str) -> str:
         '<p class="ch-edition" id="ch-edition">'
         '<span class="ch-ver" dir="ltr">V%s</span>'
         '<span class="ch-dot" aria-hidden="true"></span>'
-        '<span class="ch-codename" dir="ltr">%s</span></p>'
+        '<span class="ch-codename" lang="en" dir="ltr">%s</span></p>'
         '<p class="ch-line">%s</p>'
         '<p class="ch-cta"><a class="ch-get" href="%s" download>%s</a></p>'
         '<dl class="ch-spec">%s</dl>'
@@ -556,7 +574,14 @@ def _release_html(c: dict, dl: dict, release: dict, root: str) -> str:
     )
 
 
-def build_body(c: dict, dl: dict, release: dict, root: str) -> str:
+def _controls_link_html(lang: str) -> str:
+    """One quiet link to the controls page, outside the release block (whose one
+    link check_cherry_release.py counts). Its words are that page's own heading."""
+    return ('<p class="ch-more"><a class="ch-more-link" href="../%s">%s</a></p>'
+            % (CONTROLS_SECTION, esc(controls_link_label(lang))))
+
+
+def build_body(c: dict, dl: dict, release: dict, root: str, lang: str) -> str:
     return (
         '<div class="ch-wrap"><div class="ch-inner">'
         '<div class="ch-hero">'
@@ -564,10 +589,10 @@ def build_body(c: dict, dl: dict, release: dict, root: str) -> str:
         '<div><h1 class="ch-name">%s</h1>'
         '<p class="ch-lede">%s</p></div>'
         '</div>'
-        '%s'
+        '%s%s'
         '</div></div>%s'
         % (_mark_html(root), esc(c["title"]), esc(c["lede"]),
-           _release_html(c, dl, release, root), INTRO_SCRIPT)
+           _release_html(c, dl, release, root), _controls_link_html(lang), INTRO_SCRIPT)
     )
 
 
@@ -601,7 +626,7 @@ def main() -> int:
             title=c["title"],
             description=c["desc"],
             active="cherry",
-            body=build_body(c, dl, release, root),
+            body=build_body(c, dl, release, root, lang),
             depth=1,
             extra_head=head_css(root),
         )

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover so env(safe-area-inset-*) is non-zero on notched
+     iPhones; every edge-anchored surface (header, drawer, main, footer,
+     modal) pads itself with max(gutter, inset) in style.css. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>طريقة التحكم في Cherry | Corvus</title>
+<meta name="description" content="كيف تقود Stratos-900 وAegis-X وتُبحر بسفن فئتي Leviathan وDreadnought: المفاتيح الافتراضية وما تفعله.">
+<meta property="og:title" content="طريقة التحكم في Cherry | Corvus">
+<meta property="og:description" content="كيف تقود Stratos-900 وAegis-X وتُبحر بسفن فئتي Leviathan وDreadnought: المفاتيح الافتراضية وما تفعله.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Corvus">
+<meta name="theme-color" content="#07090f">
+<meta property="og:image" content="https://iroponcopin.github.io/aurora-corvus/assets/img/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Corvus">
+<meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="ja" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="alternate" hreflang="en" href="https://iroponcopin.github.io/aurora-corvus/en/cherry-controls/">
+<link rel="alternate" hreflang="es" href="https://iroponcopin.github.io/aurora-corvus/es/cherry-controls/">
+<link rel="alternate" hreflang="fr" href="https://iroponcopin.github.io/aurora-corvus/fr/cherry-controls/">
+<link rel="alternate" hreflang="zh" href="https://iroponcopin.github.io/aurora-corvus/zh/cherry-controls/">
+<link rel="alternate" hreflang="ko" href="https://iroponcopin.github.io/aurora-corvus/ko/cherry-controls/">
+<link rel="alternate" hreflang="pt-BR" href="https://iroponcopin.github.io/aurora-corvus/pt-br/cherry-controls/">
+<link rel="alternate" hreflang="it" href="https://iroponcopin.github.io/aurora-corvus/it/cherry-controls/">
+<link rel="alternate" hreflang="ar" href="https://iroponcopin.github.io/aurora-corvus/ar/cherry-controls/">
+<link rel="alternate" hreflang="ru" href="https://iroponcopin.github.io/aurora-corvus/ru/cherry-controls/">
+<link rel="alternate" hreflang="id" href="https://iroponcopin.github.io/aurora-corvus/id/cherry-controls/">
+<link rel="alternate" hreflang="de" href="https://iroponcopin.github.io/aurora-corvus/de/cherry-controls/">
+<link rel="alternate" hreflang="tr" href="https://iroponcopin.github.io/aurora-corvus/tr/cherry-controls/">
+<link rel="alternate" hreflang="x-default" href="https://iroponcopin.github.io/aurora-corvus/cherry-controls/">
+<link rel="icon" href="../../assets/img/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/brand/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/brand/apple-touch-icon.png">
+<!-- Entry-time language detection + the flag-emoji capability probe. Placed
+     AHEAD of the stylesheet links deliberately: a <script> does not execute
+     until every preceding stylesheet has loaded, and one of those is a
+     third-party fonts.googleapis.com request — a visitor who is about to be
+     redirected should not be held behind it. See scripts/lang_detect.py. -->
+<script src="../../assets/js/lang.js"></script>
+<script>window.__auroraCorvusLangInit&&__auroraCorvusLangInit({"c":"ar","h":{"ar":"../../ar/cherry-controls/","de":"../../de/cherry-controls/","en":"../../en/cherry-controls/","es":"../../es/cherry-controls/","fr":"../../fr/cherry-controls/","id":"../../id/cherry-controls/","it":"../../it/cherry-controls/","ja":"../../cherry-controls/","ko":"../../ko/cherry-controls/","pt-br":"../../pt-br/cherry-controls/","ru":"../../ru/cherry-controls/","tr":"../../tr/cherry-controls/","zh":"../../zh/cherry-controls/"},"l":["ja","en","es","fr","zh","ko","pt-br","it","ar","ru","id","de","tr"],"s":"cherry-controls/"});</script>
+<!-- Typography is the Apple system stack (SF Pro on macOS/iOS, Hiragino Sans
+     for Japanese) — see style.css. Cormorant Garamond and Zen Kaku Gothic New
+     were dropped on owner directive (hard to read), and their font request
+     went with them rather than being left behind as a dead download. Inter is
+     the cross-platform stand-in for SF and sits after the native names in the
+     stack, so on Apple hardware the face files are never fetched at all. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Flag artwork for the language switcher, used only where the platform
+     cannot compose regional-indicator emoji. Generated by
+     scripts/build_lang_assets.py; kept out of style.css so a generated file
+     and a hand-maintained one never share a build step. -->
+<link rel="stylesheet" href="../../assets/css/lang-flags.css">
+<script>
+/* Boot: tag JS availability for the motion layer.
+
+   2026-09-10、所有者:「白と黒のテーマ変更を廃止に。」テーマの切り替えは
+   無くなったので、保存も読み出しもしない。データ属性は<b>常に dark</b>で、
+   これが唯一の見た目である。以前ここに在った localStorage の移行処理は
+   切り替え自体が消えたので不要になった。 */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  d.setAttribute("data-theme", "dark");
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/cherry-tokens.css">
+<style>
+.cc-wrap{background:var(--ch-bg);color:var(--ch-text);padding:3.5rem 1rem 5rem;
+  margin:0 calc(50% - 50vw);width:100vw}
+.cc-inner{max-width:48rem;margin:0 auto}
+.cc-eyebrow{margin:0 0 .6rem;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+.cc-eyebrow a{color:var(--ch-petal-deep);text-decoration:none;display:inline-flex;
+  align-items:center;min-height:var(--tap,44px)}
+.cc-eyebrow a:hover,.cc-eyebrow a:focus-visible{color:var(--ch-petal);text-decoration:underline;
+  text-underline-offset:.3em}
+.cc-eyebrow a:focus-visible{outline:2px solid var(--ch-petal);outline-offset:3px}
+.cc-title{font-size:clamp(2.2rem,6vw,3.3rem);line-height:1.1;margin:0 0 1.2rem;
+  letter-spacing:-.01em;color:var(--ch-petal)}
+.cc-note{margin:0 0 .75rem;font-size:.98rem;line-height:1.8;color:var(--ch-text)}
+.cc-note.cc-layout{color:var(--ch-text-muted);font-size:.92rem}
+.cc-path{white-space:normal}
+.cc-nb{white-space:nowrap}
+.cc-step{font-weight:600;color:var(--ch-petal)}
+.cc-card{margin:2.25rem 0 0;padding:clamp(1.25rem,4vw,2rem);border-radius:18px;
+  background:var(--ch-bg-lift);border:1px solid var(--ch-line)}
+.cc-h2{margin:0 0 1rem;padding:0;border:0;font-size:clamp(1.2rem,3.4vw,1.45rem);
+  line-height:1.4;color:var(--ch-petal)}
+/* style.css marks every h2 with the site's aurora-green bar; these pages are in the Cherry colours */
+.cc-h2::before{content:none}
+.cc-h3{margin:1.75rem 0 .6rem;padding:0;border:0;font-size:1rem;line-height:1.5;
+  color:var(--ch-petal-deep)}
+.cc-list{margin:0;padding-inline-start:1.2rem;line-height:1.8}
+.cc-list li{margin:.35rem 0;color:var(--ch-text)}
+.cc-list li::marker{color:var(--ch-blush)}
+.cc-keys{width:100%;margin:1.25rem 0 0;border-collapse:collapse;font-size:.95rem;
+  line-height:1.7}
+/* style.css sets every th in small muted capitals (and uppercase Turkish would print a
+   dotted capital I); these are action names, read as sentences, in the page's own case */
+.cc-keys th,.cc-keys td{padding:.7rem 0;border-top:1px solid var(--ch-line);border-bottom:0;
+  vertical-align:top;text-align:start;background:none}
+.cc-keys th{width:34%;padding-inline-end:1rem;font-weight:600;color:var(--ch-text);
+  font-size:inherit;text-transform:none;letter-spacing:normal}
+.cc-keys td{color:var(--ch-text)}
+.cc-key{display:inline-block;min-width:1.9em;margin:0 .1em;padding:0 .45em;
+  border:1px solid rgba(232,180,198,.5);border-bottom-width:2px;border-radius:6px;
+  background:rgba(232,180,198,.08);color:var(--ch-petal);text-align:center;
+  font:600 .86em/1.65 ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  white-space:nowrap;box-shadow:none}
+@media (max-width:34rem){
+  .cc-keys th,.cc-keys td{display:block;width:auto;padding-inline-end:0}
+  .cc-keys th{padding-bottom:.1rem}
+  .cc-keys td{border-top:0;padding-top:0}
+}
+</style></head>
+<body>
+<div class="sky" aria-hidden="true"><div class="sky__aurora"></div></div>
+<a class="skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="../">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">Corvus</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="فتح القائمة">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link nav-link--solo" href="../">الرئيسية</a></li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega is-current" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-store">
+            <span>Store</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-store" role="group" aria-label="Store">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Store</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
+            <li><a class="mega-link is-current" href="../cherry/" aria-current="page"><span class="mega-link__label">Cherry</span></a></li>
+            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
+            <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-start">
+            <span>Get started</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-start" role="group" aria-label="Get started">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Get started</p>
+                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../download/"><span class="mega-link__label">التنزيل</span></a></li>
+            <li><a class="mega-link" href="../launcher/"><span class="mega-link__label">Corvus</span></a></li>
+            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">دليل التثبيت</span></a></li>
+            <li><a class="mega-link" href="../skin/"><span class="mega-link__label">Sparxie skin</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-reference">
+            <span>Reference</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-reference" role="group" aria-label="Reference">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Reference</p>
+                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">دليل الوصفات</span></a></li>
+            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">البوابات</span><span class="mega-link__sub">البوابات والمداخل</span></a></li>
+            <li><a class="mega-link" href="../features/"><span class="mega-link__label">الميزات</span><span class="mega-link__sub">دليل الميزات</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-item--mega">
+          <button class="nav-link nav-link--mega" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="mega-status">
+            <span>Status</span><span class="nav-link__caret" aria-hidden="true"></span>
+          </button>
+          <div class="mega-panel" id="mega-status" role="group" aria-label="Status">
+            <div class="mega-panel__inner">
+              <div class="mega-panel__blurb">
+                <p class="mega-panel__title">Status</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+              </div>
+              <ul class="mega-links">
+            <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">سجل التحديثات</span></a></li>
+            <li><a class="mega-link" href="../upcoming/"><span class="mega-link__label">Coming next</span></a></li>
+            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">خارطة الطريق</span></a></li>
+            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">المشاكل المعروفة</span></a></li>
+            <li><a class="mega-link" href="../discord/"><span class="mega-link__label">Discord bot</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-switch__toggle" id="langToggle" type="button" aria-expanded="false" aria-controls="langMenu" title="اللغة / Language">
+          <span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span><span>العربية</span>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu">
+          <li><a href="../../cherry-controls/" data-lang="ja" hreflang="ja"><span class="lang-flag lang-flag--ja" aria-hidden="true"><span class="lang-flag__emoji">🇯🇵</span></span>日本語</a></li>
+        <li><a href="../../en/cherry-controls/" data-lang="en" hreflang="en"><span class="lang-flag lang-flag--en" aria-hidden="true"><span class="lang-flag__emoji">🇬🇧</span></span>English</a></li>
+        <li><a href="../../es/cherry-controls/" data-lang="es" hreflang="es"><span class="lang-flag lang-flag--es" aria-hidden="true"><span class="lang-flag__emoji">🇪🇸</span></span>Español</a></li>
+        <li><a href="../../fr/cherry-controls/" data-lang="fr" hreflang="fr"><span class="lang-flag lang-flag--fr" aria-hidden="true"><span class="lang-flag__emoji">🇫🇷</span></span>Français</a></li>
+        <li><a href="../../zh/cherry-controls/" data-lang="zh" hreflang="zh"><span class="lang-flag lang-flag--zh" aria-hidden="true"><span class="lang-flag__emoji">🇨🇳</span></span>简体中文</a></li>
+        <li><a href="../../ko/cherry-controls/" data-lang="ko" hreflang="ko"><span class="lang-flag lang-flag--ko" aria-hidden="true"><span class="lang-flag__emoji">🇰🇷</span></span>한국어</a></li>
+        <li><a href="../../pt-br/cherry-controls/" data-lang="pt-br" hreflang="pt-BR"><span class="lang-flag lang-flag--pt-br" aria-hidden="true"><span class="lang-flag__emoji">🇧🇷</span></span>Português (Brasil)</a></li>
+        <li><a href="../../it/cherry-controls/" data-lang="it" hreflang="it"><span class="lang-flag lang-flag--it" aria-hidden="true"><span class="lang-flag__emoji">🇮🇹</span></span>Italiano</a></li>
+        <li><a href="../../ar/cherry-controls/" data-lang="ar" hreflang="ar" class="active" aria-current="true"><span class="lang-flag lang-flag--ar" aria-hidden="true"><span class="lang-flag__emoji">🇸🇦</span></span>العربية</a></li>
+        <li><a href="../../ru/cherry-controls/" data-lang="ru" hreflang="ru"><span class="lang-flag lang-flag--ru" aria-hidden="true"><span class="lang-flag__emoji">🇷🇺</span></span>Русский</a></li>
+        <li><a href="../../id/cherry-controls/" data-lang="id" hreflang="id"><span class="lang-flag lang-flag--id" aria-hidden="true"><span class="lang-flag__emoji">🇮🇩</span></span>Bahasa Indonesia</a></li>
+        <li><a href="../../de/cherry-controls/" data-lang="de" hreflang="de"><span class="lang-flag lang-flag--de" aria-hidden="true"><span class="lang-flag__emoji">🇩🇪</span></span>Deutsch</a></li>
+        <li><a href="../../tr/cherry-controls/" data-lang="tr" hreflang="tr"><span class="lang-flag lang-flag--tr" aria-hidden="true"><span class="lang-flag__emoji">🇹🇷</span></span>Türkçe</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="cc-wrap"><div class="cc-inner"><p class="cc-eyebrow"><a href="../cherry/" lang="en" dir="ltr">Cherry</a></p><h1 class="cc-title">طريقة التحكم</h1><p class="cc-note">هذه هي المفاتيح الافتراضية في <span lang="en" dir="ltr">Cherry 1.1.2</span>. <kbd class="cc-key" dir="ltr">W</kbd> <kbd class="cc-key" dir="ltr">A</kbd> <kbd class="cc-key" dir="ltr">S</kbd> <kbd class="cc-key" dir="ltr">D</kbd> و<kbd class="cc-key" dir="ltr">Space</kbd> هي مفاتيح «حركة» في اللعبة نفسها، والباقي ضمن «<span lang="en" dir="ltr">Cherry Flight</span>» و«<span lang="en" dir="ltr">Cherry Ship Stations</span>». يمكنك تغييرها كلها من <span class="cc-path"><span class="cc-step">الخيارات</span> › <span class="cc-step">التحكم</span> › <span class="cc-step">روابط المفاتيح</span></span>.</p><p class="cc-note cc-layout">أسماء المفاتيح هنا بحسب مواضعها في لوحة المفاتيح الأمريكية. قد تحمل لوحتك المفتاح نفسه باسم آخر، وتعرض شاشة «روابط المفاتيح» كل مفتاح بالاسم الذي تعطيه له لوحتك.</p><section class="cc-card" aria-labelledby="cc-air"><h2 class="cc-h2" id="cc-air">الطائرات: طائرة الركاب <span class="cc-nb">Stratos-900</span> والمقاتلة <span class="cc-nb">Aegis-X</span></h2><ul class="cc-list"><li>الوضع: استخدم العنصر على الأرض حيث يتسع لها المكان، فتقف هناك متجهةً إلى حيث تنظر.</li><li>الصعود: انقر بالزر الأيمن على منتصف الطائرة. أول من يصعد هو الطيار (في <span class="cc-nb">Stratos-900</span> ثمانية عشر مقعدًا). للنزول استخدم «التسلل»، ولا يمكن النزول في الجو.</li><li>الوقود: على الأرض، استخدم <span lang="en" dir="ltr">Propellant Canister</span> على الطائرة، واحدًا في كل مرة.</li><li>الاسترداد: والطائرة متوقفة على الأرض ولا أحد على متنها، اضغط «التسلل» مطوّلًا وانقر بالزر الأيمن بيد فارغة.</li></ul><table class="cc-keys"><tbody><tr><th scope="row">الانحدار والدوران</th><td>الفأرة (إلى الأعلى ترفع المقدّمة، وإلى اليمين تدور يمينًا) أو <kbd class="cc-key" dir="ltr">↑</kbd> <kbd class="cc-key" dir="ltr">↓</kbd> <kbd class="cc-key" dir="ltr">←</kbd> <kbd class="cc-key" dir="ltr">→</kbd>. يعود عمود التحكم إلى المنتصف بمجرد توقف الفأرة أو ترك المفتاح.</td></tr><tr><th scope="row">قوة الدفع</th><td><kbd class="cc-key" dir="ltr">W</kbd> زيادة، <kbd class="cc-key" dir="ltr">S</kbd> إنقاص. تبقى الذراع حيث تتركها.</td></tr><tr><th scope="row">الدفّة</th><td><kbd class="cc-key" dir="ltr">A</kbd> / <kbd class="cc-key" dir="ltr">D</kbd> (وعلى الأرض تديران العجلة الأمامية أيضًا).</td></tr><tr><th scope="row">مكابح العجلات</th><td><kbd class="cc-key" dir="ltr">Space</kbd></td></tr><tr><th scope="row">النظر حولك</th><td>اضغط <kbd class="cc-key" dir="rtl">Alt الأيسر</kbd> مطوّلًا (على Mac: <kbd class="cc-key" dir="ltr">Left Option</kbd>)، وفي أثناء ذلك لا تحرّك الفأرة عمود التحكم.</td></tr><tr><th scope="row">القلابات</th><td><kbd class="cc-key" dir="ltr">R</kbd>، درجة واحدة لكل ضغطة، وبعد الأخيرة تُرفع.</td></tr><tr><th scope="row">عجلات الهبوط</th><td><kbd class="cc-key" dir="ltr">U</kbd>. لا تُطوى ما دامت العجلات تحمل وزنًا.</td></tr><tr><th scope="row">غطاء قمرة القيادة / المنحدر الخلفي</th><td><kbd class="cc-key" dir="ltr">Y</kbd>: غطاء القمرة في <span class="cc-nb">Aegis-X</span>، والمنحدر الخلفي في <span class="cc-nb">Stratos-900</span>. لا يُفتحان إلا على الأرض بسرعة أقل من 1 م/ث، ويُغلقان من تلقاء نفسيهما حين تتحرك الطائرة. المنحدر للمظهر فقط: اصعد بالنقر الأيمن.</td></tr><tr><th scope="row">خطّاف الهبوط (<span class="cc-nb">Aegis-X</span>)</th><td><kbd class="cc-key" dir="ltr">K</kbd></td></tr><tr><th scope="row">الحارق اللاحق / عكس الدفع</th><td><kbd class="cc-key" dir="ltr">Z</kbd>: في <span class="cc-nb">Aegis-X</span> الحارق اللاحق ما دمت تضغطه، ومن دونه لا يعطي الدفع الكامل إلا 60%. وفي <span class="cc-nb">Stratos-900</span> يشغّل عكس الدفع أو يوقفه، ويدفع إلى الخلف بحسب الذراع حتى 40%.</td></tr></tbody></table><h3 class="cc-h3">الإقلاع والهبوط</h3><ul class="cc-list"><li>الإقلاع: القلابات بـ<kbd class="cc-key" dir="ltr">R</kbd>، والدفع الكامل بـ<kbd class="cc-key" dir="ltr">W</kbd> (وفي <span class="cc-nb">Aegis-X</span> اضغط <kbd class="cc-key" dir="ltr">Z</kbd> أيضًا)، وحين تكتسب السرعة ارفع المقدّمة بالفأرة، ثم اطوِ العجلات بـ<kbd class="cc-key" dir="ltr">U</kbd>.</li><li>الهبوط: خفّف الدفع بـ<kbd class="cc-key" dir="ltr">S</kbd>، وأنزل العجلات بـ<kbd class="cc-key" dir="ltr">U</kbd> والقلابات بـ<kbd class="cc-key" dir="ltr">R</kbd>. بعد ملامسة الأرض فرمل بـ<kbd class="cc-key" dir="ltr">Space</kbd>؛ وفي <span class="cc-nb">Stratos-900</span> اضغط <kbd class="cc-key" dir="ltr">Z</kbd> ثم زِد الدفع بـ<kbd class="cc-key" dir="ltr">W</kbd> لعكس الدفع، واضغط <kbd class="cc-key" dir="ltr">Z</kbd> مرة أخرى قبل الإقلاع التالي.</li></ul><h3 class="cc-h3">تسليح <span class="cc-nb">Aegis-X</span></h3><ul class="cc-list"><li>التحميل: استخدم <span lang="en" dir="ltr">Cherry Guided Missile</span> على <span class="cc-nb">Aegis-X</span> وهي على الأرض، صاروخًا في كل مرة. تحمل صاروخين، والطائرة الجديدة تأتي محمّلة.</li><li>يراقب الرادار 30° حول المقدّمة حتى 512 كتلة، ويقفل على أقرب هدف إلى المقدّمة بعد أن يبقيه نحو 1.5 ثانية. <kbd class="cc-key" dir="ltr">N</kbd> يبدّل بين أهداف الجو والأرض، و<kbd class="cc-key" dir="ltr">M</kbd> ينتقل إلى الهدف التالي ويبدأ القفل من جديد.</li><li><kbd class="cc-key" dir="ltr">J</kbd> يطلق صاروخًا على الهدف المقفل: في الجو فقط، وصاروخًا واحدًا في الثانية على الأكثر.</li></ul></section><section class="cc-card" aria-labelledby="cc-sea"><h2 class="cc-h2" id="cc-sea">السفن: العبّارة من فئة Leviathan والمدمّرة من فئة Dreadnought</h2><ul class="cc-list"><li>الوضع: استخدم العنصر على القاع، تحت ماء لا يقل عمقه عن غاطسها على طول بدنها كله (3.5 م لفئة Leviathan و4 م لفئة Dreadnought). مؤشر التصويب يمر عبر الماء، فاسبح في المياه العميقة فوق الموضع حتى يصبح القاع في متناولك. تطفو السفينة هناك متجهةً إلى حيث تنظر.</li><li>تجوّل على أسطحها وفي داخلها. قف عند موقع عمل واضغط <kbd class="cc-key" dir="ltr">H</kbd> لتتولاه، واضغط <kbd class="cc-key" dir="ltr">H</kbd> مجددًا لتتركه. طاولة الخرائط تفتح شاشة: أغلقها لتتركها.</li><li>في 1.1.2 لا يمكن إعادة السفينة إلى عنصر في وضع البقاء: الموضع الذي يجب النقر عليه داخل البدن، بعيدًا عن المتناول من خارج السطح.</li></ul><table class="cc-keys"><tbody><tr><th scope="row">الدفّة</th><td><kbd class="cc-key" dir="ltr">,</kbd> و<kbd class="cc-key" dir="ltr">.</kbd> يديران عجلة القيادة، وتبقى حيث تتركها، والضغط على الاثنين معًا يعيدها إلى المنتصف. في 1.1.2 تدور السفينة عكس اسميهما وعكس ما يعرضه مؤشر الدفّة: <kbd class="cc-key" dir="ltr">,</kbd> يدير المقدّمة إلى الميمنة (اليمين)، و<kbd class="cc-key" dir="ltr">.</kbd> إلى الميسرة (اليسار).</td></tr><tr><th scope="row">المحرّك</th><td><kbd class="cc-key" dir="ltr">=</kbd> إلى الأمام؛ <kbd class="cc-key" dir="ltr">-</kbd> يعيد الذراع نحو التوقف. تبقى الذراع حيث تتركها. في 1.1.2 لا يعطي الرجوع إلى الخلف (أقل من 0) أي دفع.</td></tr><tr><th scope="row">تثبيت الاتجاه</th><td><kbd class="cc-key" dir="ltr">;</kbd> يثبّت الاتجاه الذي تكون عليه لحظة الضغط، ما دامت عجلة القيادة في المنتصف.</td></tr><tr><th scope="row">العدّادات</th><td>تظهر فوق شريط المهام ما دمت عند عجلة القيادة.</td></tr></tbody></table><h3 class="cc-h3">طاولة الخرائط</h3><ul class="cc-list"><li>عند طاولة الخرائط يفتح <kbd class="cc-key" dir="ltr">H</kbd> الخريطة. النقر الأيسر يضيف نقطة مسار، وعجلة الفأرة تغيّر المقياس.</li><li>أزرارها تشغّل الملاحة الآلية أو توقفها وتمسح المسار. يُرفض أي مقطع يعبر اليابسة أو المياه الضحلة. الملاحة الآلية تتولى الدفّة فقط: اجعل المحرّك إلى الأمام من عجلة القيادة، وهي توقفه عند آخر نقطة.</li></ul><h3 class="cc-h3">الأبواب (فئة Leviathan)</h3><ul class="cc-list"><li>والسفينة متوقفة (أقل من 0.3 م/ث والمحرّك على 0) وأنت عند عجلة القيادة، يفتح <kbd class="cc-key" dir="ltr">&#x27;</kbd> واقي المقدّمة والمنحدرات ويغلقها.</li><li>لا يعطي المحرّك دفعًا حتى تُغلق الأبواب. ويمكن المشي على المنحدرات حين تنزل تمامًا.</li></ul><h3 class="cc-h3">مركز المعلومات القتالية (فئة Dreadnought)</h3><ul class="cc-list"><li>موقع المدفعية: يتجه البرجان الثلاثيان إلى النقطة التي تنظر إليها. النقر الأيسر يطلق رشقة كل 10 ثوانٍ، والنقر الأيمن يطلق منظومة الإطلاق العمودي على الهدف الذي أقفل عليه الرادار بعد انفتاح فتحتها.</li><li>السونار: السفن والقوارب والسبّاحون والأهداف المغمورة على شاشة مسح دوّارة.</li></ul></section></div></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__brand"><span class="brand__mark" aria-hidden="true"></span> Corvus</p>
+    <p>مرجع غير رسمي لإضافات (MOD) خادم Sorakazekarasu</p>
+    <p class="site-footer__note">هذا الموقع مرجع غير رسمي. اعتبارًا من الإصدار V2.2.0، تُوزَّع ملفات الإضافة (jar) مباشرة من صفحة &quot;التنزيل&quot; في هذا الموقع. قد تختلف الوصفات والقيم المعروضة عن الواقع الفعلي حسب إصدار الإضافة المثبتة أو تعديلات إعدادات (config) الخادم. Minecraft علامة تجارية لشركة Mojang Studios. هذا الموقع والإضافات الموزعة هنا ليست رسمية ولا ترتبط بشركة Mojang Studios أو Microsoft.</p>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
