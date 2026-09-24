@@ -74,7 +74,8 @@ from site_common import (  # noqa: E402
 
 SECTION = "cherry-controls/"
 BRAND_SECTION = "cherry/"
-CONTROLS_FOR = "1.1.3"
+# 1.1.4 changed no key (only the sound managers, their tests, the version and the README; 525d6f5..1.1.4): the copy stays true
+CONTROLS_FOR = "1.1.4"
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
 
 # The game's own names for the keys whose names are translated (vanilla 26.3 lang files).

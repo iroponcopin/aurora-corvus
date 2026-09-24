@@ -275,7 +275,8 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-COPY_FOR = "1.1.3"
+# 1.1.4 is a sound fix: the line "Into the air, and out to sea." and the codename stay true
+COPY_FOR = "1.1.4"
 CODENAME = "The Aerospace and Naval Update"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
