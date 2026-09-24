@@ -103,6 +103,16 @@ The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
     quiet link to it, below the release block and outside it, so the release's one
     link is still the download. The codename span now carries lang="en": the V1.0.0
     codename rendered "GENESİS" under text-transform: uppercase on /tr/.
+  * 2026-09-23, V1.1.3 (owner: 「操作を非常に簡単にしてください。視点固定を廃止して、
+    誰でも簡単に操縦ができることを条件とします」): the aircraft fly where you look
+    and the ships answer to W/A/S/D at the wheel (notes 14.79), the four ship
+    defects found while writing the controls page are fixed (notes 14.78), and the
+    destroyer's main gun damages what it hits (notes 14.77). The line and the
+    codename carry over: the release changes how you fly and sail, not where to,
+    and "Into the air, and out to sea." rests on the same gates, run again for this
+    jar -- the aircraft take off, fly and land in AircraftTests (with the new
+    look-to-fly GA27/GA28) and AirportTests, and a vessel sails a channel in
+    HelmTests and AutopilotTests.
   * The download button is in the brand's own colours, the way the Aureum page
     carries its own gold one; its label, "File size" and "SHA-256" are the
     Download page's own translations (data/i18n/<lang>.json "download"), with
@@ -265,7 +275,7 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-COPY_FOR = "1.1.2"
+COPY_FOR = "1.1.3"
 CODENAME = "The Aerospace and Naval Update"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")

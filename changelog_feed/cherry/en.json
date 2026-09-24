@@ -1,15 +1,48 @@
 {
  "lang": "en",
  "brand": "cherry",
- "updated": "2026-09-23",
+ "updated": "2026-09-24",
  "title": "Changelog",
- "updated_label": "Updated 2026-09-23",
+ "updated_label": "Updated 2026-09-24",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
    "label": "V1.1",
-   "summary": "The ships, finished: real models, working stations and the ferry's doors",
+   "summary": "Easy controls, and the railgun hits",
    "releases": [
+    {
+     "version": "V1.1.3",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Easy controls, and the railgun hits",
+     "summary": "Flying and sailing are rebuilt so that anyone can do it. The view is no longer locked: the aircraft fly where you look, and the ships answer to W, A, S and D like a boat. The Dreadnought's railgun now strikes what it hits; in 1.1.0 to 1.1.2 its shells damaged nothing.",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "Aircraft fly where you look: turn your head and the Stratos-900 or the Aegis-X banks, turns, climbs or dives towards it by herself. W and S set the throttle; left-click fires the Aegis-X's missiles at the target the radar picks by itself.",
+        "Flaps, landing gear, brakes, reverse thrust, the afterburner, the canopy and the arresting hook now work by themselves, and a short guide on the screen shows the controls when you board.",
+        "The view is yours: it no longer locks to first person or tilts with the aircraft, F5 works in flight, and holding Left Alt lets you look around while she keeps her course.",
+        "Ships: standing at a station shows the key that takes it. At the wheel, W and S drive the engine (astern below zero), A and D steer, and letting go centres the wheel and holds her heading; Sneak leaves. The ferry's doors are on Y.",
+        "With nobody at the gunnery console, the Dreadnought's helmsman fires the guns from the wheel: left-click for a salvo, right-click for the VLS.",
+        "Fixed from 1.1.2: the rudder turned the ship the opposite way to its keys, astern gave no thrust, a ship could not be launched from the shore (she now floats with her stern just past the water you aim at), and a ship could not be picked back up in survival.",
+        "The railgun's shells burst on the first block, creature, ship or aircraft in their path and damage what lies within 4 m; when a salvo lands on one target, all six shells count. Look at any part of a hull and both turrets train on that point.",
+        "The gun spares the ship that fired it and her crew, and it never breaks blocks. No ship or aircraft is sunk or brought down by a single salvo, and manning the guns no longer loads distant chunks.",
+        "A death message from one of Cherry's weapons no longer shows an untranslated key when the attacker holds a renamed item.",
+        "The Aegis-X's missile count at the bottom left of the flight display is no longer cut off by the bottom of the screen. With the automatic GUI scale this happened at many screen sizes, among them 720p, 1440p, 4K and the game's default window.",
+        "Chart waypoints are accepted only within the chart's widest view, about 1.4 km from the ship, which also protects servers from malformed waypoint requests."
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "The controls have changed: 1.1.2's flight keys (R, U, Y, K, Z, N, M, J and the arrow keys) and helm keys (, . = - ; ') are gone, and any of them you rebound are no longer used.",
+        "Railgun shells now hurt whatever they strike, including other players' ships and aircraft. The crew member directing the guns is credited with the damage.",
+        "Requires Minecraft 26.3, Fabric Loader 0.19.5 or newer, Fabric API 0.161.0 or newer, GeckoLib 5.5.6 or newer and Java 25."
+       ]
+      }
+     ]
+    },
     {
      "version": "V1.1.2",
      "date": "2026-09-23",

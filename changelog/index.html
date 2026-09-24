@@ -238,13 +238,20 @@
   </section>
   <section class="cl__brand" id="clBrand-cherry" data-brand="cherry">
     <h2 class="cl__brandName">Cherry</h2>
-    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-23</span></p>
+    <p class="cl__updated"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></svg><span>最終更新 2026-09-24</span></p>
     <p class="cl__note">表示されているダメージ・速度などの数値は導入時点の既定値です。サーバー側の config 調整により、実際にプレイして体感する数値とは異なる場合があります。</p>
     <div class="cl__groups" data-cut="8">
 <section class="cl__group" id="cherry-v1.1">
       <h2 class="cl__groupTitle">V1.1</h2>
-      <p class="cl__groupSummary">艦の完成 —— 本番の模型、使える持ち場、フェリーの扉</p>
+      <p class="cl__groupSummary">かんたんな操縦と、当たる主砲</p>
       <div class="cl__releases">
+<div class="cl__release" data-type="release" data-mods="" data-version="V1.1.3">
+        <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-1-3">
+          <h3 class="cl__version">V1.1.3</h3>
+          <span class="cl__right"><span class="cl__date">2026-09-24</span><svg class="cl__chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span>
+        </button>
+        <div class="cl__detail" id="cl-cherry-v1-1-3" hidden><p class="cl__entryTitle">かんたんな操縦と、当たる主砲</p><p class="cl__lede">飛行機と艦の操縦を、誰でも動かせるよう作り直しました。視点の固定をやめ、飛行機は見た方へ飛び、艦はボートと同じ W・A・S・D で動きます。Dreadnought の主砲の弾も、当たった物に傷を与えるようになりました(1.1.0〜1.1.2 の弾は何も傷つけていませんでした)。</p><div class="cl__section"><h4 class="cl__sectionTitle">変更点 <span>(11)</span></h4><ul class="cl__list"><li>飛行機は見た方へ飛びます。頭を向けると、Stratos-900 も Aegis-X もひとりでに傾いて、その方へ回り、上り、下ります。W と S で推力、左クリックで Aegis-X のミサイル(目標はレーダーが自動で選びます)。</li><li>フラップ・脚・ブレーキ・逆推力・アフターバーナー・キャノピー・着艦フックは自動になりました。乗ると、操作の案内が画面に出ます。</li><li>視点は自由です。一人称に固定されず、機体と一緒に傾きません。飛行中も F5 が使え、左 Alt を押している間は、機体の向きを保ったまま見回せます。</li><li>艦: 持ち場に立つと、就くキーが画面に出ます。舵輪では W と S で機関(0 より下で後進)、A と D で舵。離すと舵は中央に戻り、その方位を保ちます。スニークで離れます。フェリーの扉は Y です。</li><li>砲術士のいない Dreadnought では、操舵手が舵輪から撃てます(左クリックで斉射、右クリックで VLS)。</li><li>1.1.2 の艦の不具合を直しました: 舵がキーと逆に回った、後進が効かなかった、岸から艦を降ろせなかった(いまは狙った水面のすぐ先に、艦尾を手前にして浮かびます)、サバイバルで艦を回収できなかった。</li><li>主砲の弾は、進む先で最初に当たったブロック・生き物・艦・飛行機で炸裂し、周り 4 m に傷を与えます。1 つの目標に落ちた斉射は 6 発すべてが数えられます。艦や飛行機のどこを見ても、2 基の砲塔はその点へ向きます。</li><li>撃った艦とその乗組員は傷つけず、ブロックは決して壊しません。1 回の斉射で沈む艦や落ちる飛行機はありません。砲を扱っている間に、遠くのチャンクを読み込まなくなりました。</li><li>名前を付けた物を手に持った人が Cherry の兵器で倒したとき、死亡メッセージが翻訳されない文字列のまま出なくなりました。</li><li>Aegis-X の飛行表示の左下にあるミサイルの数が、画面の下端で切れなくなりました。GUI の大きさが「自動」のとき、720p・1440p・4K やゲームの既定の窓など、多くの画面の大きさで切れていました。</li><li>海図の航路の点は、いちばん広い縮尺で見える範囲(艦から約 1.4 km)の中だけ受け付けます。不正な航路の要求からサーバーを守るためでもあります。</li></ul></div><div class="cl__section"><h4 class="cl__sectionTitle">注意点 <span>(3)</span></h4><ul class="cl__list cl__list--warn"><li>操作のキーが変わりました。1.1.2 の飛行機のキー(R・U・Y・K・Z・N・M・J と矢印キー)と舵輪のキー(, . = - ; &#x27;)は無くなり、割り当て直していても使われません。</li><li>主砲の弾は、ほかのプレイヤーの艦や飛行機も含め、当たった物を傷つけます。傷は砲を指揮している乗組員のものとして数えられます。</li><li>Minecraft 26.3、Fabric Loader 0.19.5 以上、Fabric API 0.161.0 以上、GeckoLib 5.5.6 以上、Java 25 が必要です。</li></ul></div></div>
+      </div>
 <div class="cl__release" data-type="release" data-mods="" data-version="V1.1.2">
         <button class="cl__row" type="button" aria-expanded="false" aria-controls="cl-cherry-v1-1-2">
           <h3 class="cl__version">V1.1.2</h3>
