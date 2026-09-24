@@ -29,6 +29,12 @@ WHAT CAN GO WRONG, AND WHY EACH CHECK EXISTS
      changelog_feed/<lang>.json and must keep seeing Alpha's history exactly.
   H  A language lacks a brand entry's translation (it would fall back to
      Japanese) or carries one the structural file does not have.
+  I  A brand's releases are out of time order. data/changelog_brands.json
+     keeps each brand oldest-first and the builders reverse it, so a row put
+     in FRONT sends the newest release to the bottom of the panel and the feed
+     and dates the feed by the oldest release. OUKA's rows sat newest-first
+     from V1.1.0 (2026-09-20) until V1.2.0's staging caught it on 2026-09-25;
+     every other check here counts rows, so none of them could see it.
 
 --self-test plants one defect per check into copies of the real data and
 requires each to turn red with its own letter. A clean run must be green first,
@@ -53,6 +59,16 @@ ALPHA_FEED_KEYS = {"lang", "updated", "title", "updated_label", "note", "groups"
 TAB = re.compile(r'<button class="cl__brandTab"[^>]*?data-brand="([a-z]+)"[^>]*?aria-selected="(true|false)"')
 PANEL = re.compile(r'<section class="cl__brand" id="clBrand-([a-z]+)" data-brand="([a-z]+)">')
 ROW = '<div class="cl__release"'
+RELEASE_ROW = re.compile(r'<div class="cl__release"[^>]*?data-version="([^"]*)".*?<span class="cl__date">([^<]*)</span>', re.S)
+
+
+def release_key(date, release):
+    """(date, numeric version): two releases on one day (Cherry V1.1.3 and V1.1.4) are ordered by version."""
+    return str(date), tuple(int(n) for n in re.findall(r"\d+", str(release)))
+
+
+def newest_first(keys):
+    return all(x > y for x, y in zip(keys, keys[1:]))
 
 
 def page_rel(lang):
@@ -94,6 +110,13 @@ def check(world):
     fails = []
     order = world["order"]
     alpha_count = len(world["alpha"])
+    for b in order:
+        if b == DEFAULT_BRAND:
+            continue
+        stored = world["brands"][b]
+        if not newest_first([release_key(e["date"], e["release"]) for e in reversed(stored)]):
+            fails.append(f"[I] data/changelog_brands.json: {b}'s releases are not stored oldest-first "
+                         f"{[e['release'] for e in stored]} -- the builders reverse this list")
     for lang in world["langs"]:
         rel = page_rel(lang)
         html = world["pages"][lang]
@@ -144,6 +167,9 @@ def check(world):
                                  f"{world['ouka'][lang]!r} exactly once")
             elif '<p class="cl__soon">' in panel[b]:
                 fails.append(f"[D] {rel}: {b} has releases but also shows an empty-state line")
+            shown = RELEASE_ROW.findall(panel[b])
+            if not newest_first([release_key(d, v) for v, d in shown]):
+                fails.append(f"[I] {rel}: {b}'s panel does not list its newest release first: {[v for v, _ in shown]}")
 
         ids = re.findall(r'\sid="([^"]+)"', html)
         dup = sorted(i for i, n in Counter(ids).items() if n > 1)
@@ -174,6 +200,13 @@ def check(world):
             total = sum(len(g.get("releases", [])) for g in bf.get("groups", []))
             if total != len(entries):
                 fails.append(f"[F] changelog_feed/{key}.json holds {total} releases, the structural file has {len(entries)}")
+            flat = [r for g in bf.get("groups", []) for r in g.get("releases", [])]
+            if not newest_first([release_key(r.get("date"), r.get("version")) for r in flat]):
+                fails.append(f"[I] changelog_feed/{key}.json does not list its newest release first: "
+                             f"{[r.get('version') for r in flat]}")
+            if entries and bf.get("updated") != max(e["date"] for e in entries):
+                fails.append(f"[I] changelog_feed/{key}.json is dated {bf.get('updated')!r}, but its newest release "
+                             f"is {max(e['date'] for e in entries)}")
             if not entries:
                 if bf.get("groups") != [] or bf.get("message") != world["ouka"].get(lang):
                     fails.append(f"[F] changelog_feed/{key}.json: a brand with no releases must carry no groups and "
@@ -272,6 +305,34 @@ def _translation_missing(w):
     w["bundles"]["tr"]["changelog_brands"]["cherry"] = []
 
 
+def _rows_newest_first(w):
+    """OUKA's V1.1.0 and V1.2.0 defect: the new release put in front of the list instead of after it."""
+    w["brands"]["cherry"] = list(reversed(w["brands"]["cherry"]))
+
+
+def _feed_oldest_first(w):
+    feed = w["brand_feeds"]["cherry/ja"]
+    w["brand_feeds"]["cherry/ja"] = dict(feed, groups=[dict(g, releases=list(reversed(g["releases"])))
+                                                         for g in reversed(feed["groups"])])
+
+
+def _feed_dated_by_oldest(w):
+    w["brand_feeds"]["cherry/id"] = dict(w["brand_feeds"]["cherry/id"],
+                                         updated=min(e["date"] for e in w["brands"]["cherry"]))
+
+
+def _panel_rows_swapped(w):
+    html = w["pages"]["zh"]
+    starts, panel = panels_of(html)
+    start = next(s for s, b, _ in starts if b == "cherry")
+    body = panel["cherry"]
+    first, second = re.findall(r'data-version="([^"]*)"', body)[:2]
+    swapped = (body.replace(f'data-version="{first}"', "\0", 1)
+               .replace(f'data-version="{second}"', f'data-version="{first}"', 1)
+               .replace("\0", f'data-version="{second}"', 1))
+    w["pages"]["zh"] = html[:start] + swapped + html[start + len(body):]
+
+
 PLANTS = [
     ("A", "the tab row swaps OUKA and Cherry", _swap_first_two_tabs),
     ("A", "OUKA opens instead of Alpha", _select_ouka),
@@ -285,6 +346,10 @@ PLANTS = [
     ("F", "brands.json is out of order", _index_reversed),
     ("G", "Alpha's feed gains a brand field", _alpha_feed_gains_brand),
     ("H", "a language loses a Cherry translation", _translation_missing),
+    ("I", "Cherry's releases are stored newest-first", _rows_newest_first),
+    ("I", "Cherry's ja feed lists its oldest release first", _feed_oldest_first),
+    ("I", "Cherry's id feed is dated by its oldest release", _feed_dated_by_oldest),
+    ("I", "two of Cherry's rows swap places in the zh panel", _panel_rows_swapped),
 ]
 
 
