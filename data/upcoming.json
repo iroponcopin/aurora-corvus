@@ -2,6 +2,13 @@
  "_comment": "Content for /upcoming/ (scripts/build_upcoming.py) AND for the machine-readable upcoming.json feed the Discord bot polls. Structure (id/status/target) is shared; prose is per language, keyed by the same ids -- the split data/changelog.json uses. The bot announces an entry ONCE, keyed by id, so changing an entry's prose does not re-announce it but adding a new id does. An empty board is allowed only when every language has an 'empty' line (V4.0.1); the feed then carries entries: [].",
  "entries": [
   {
+   "id": "cherry-v1-2-0",
+   "status": "in_progress",
+   "target": "2026-10-03 予定 / planned",
+   "kind": "cherry",
+   "url_path": "cherry/"
+  },
+  {
    "id": "v4-4-1",
    "status": "planned",
    "target": "未定 / TBD",
@@ -91,6 +98,19 @@
      "أوضاع ثابتة: مرحّلا قاعة الترسيب وحلقة الترشيح مقفلان على المكثّف، ومرحّل قبو وقود الطائرات على البنزين؛ والمشرف الذي يحاول تغييرها يُخبَر بأنّ ذلك المحور يفرض وضعه. ولم يعد بإمكان مسار المكثّف سحب وقود الطائرات إلى الخزّان العلوي، ولا يبدأ المرحّل المعزول نقل 50 mB أبدًا، ومع إيقاف الشبكة لا يتحرّك شيء إطلاقًا",
      "إصلاحات لوحة التسيير: تعطي اللوحة الآن إشارة مقارن — 0 ما دامت حلقة الترشيح غير مضغوطة، و8 حين تكون مضغوطة وفي الخزّان العلوي 200 mB على الأقل، و15 حين يكون وقود الطائرات عند 1000 mB أو أكثر فوق ذلك. وتحتفظ اللوحة بآخر قراءة، فقد تُظهر في أوّل 2 ثانية بعد إعادة تحميل قطعة الأرض الأرقام القديمة قبل أن تصبح حيّة. وتُقبل بوليصة الشحن الموجّهة إلى العلّية الآن عند مرحّل العلّية أو عند اللوحة، وتتبع مصابيح العلّية قواعد ضغط V4.2.4 بدل أن تبقى مضاءة"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: أسلحة، وزعيم للقمر، والمريخ",
+    "target_label": "مخطط له في 3 أكتوبر",
+    "body": "نعمل الآن على التحديث التالي لـ Cherry، الإصدار V1.2.0 «Celestial Crucible & Tactical Superiority». الأسلحة ومخلوقات القمر اكتملت واختُبرت، والزعيم في مراحله الأخيرة، ثم يأتي المريخ وجهاز Fabricator. الموعد المخطط له 3 أكتوبر، وقد يتغير الموعد والمحتوى.",
+    "items": [
+     "خمسة أسلحة نارية بمقذوفات حقيقية: بندقية CR-14، ورشاش CP-9، وبندقية القنص السككية CS-50، وبندقية الخرطوش المغناطيسية CX-12، ومسدس C-Pistol — ارتداد، وأظرف فارغة تتطاير، ووميض الفوهة، وتصويب حديدي ومناظير هولوغرافية.",
+     "مخلوقات القمر: Selenite Stalker، وVoid Drifter (نبضته الكهرومغناطيسية تشوّش المناظير وواجهة العرض)، وRegolith Devourer.",
+     "Lunaris Prime، زعيم القمر: يستيقظ في Astraea Shackle، أطلال في فوهة عملاقة على بعد أكثر من 8000 كتلة. كرات دروع، وآبار جاذبية، ودرع يتفجر عند نصف الصحة، وتبدّل بين الجاذبية الفائقة وانعدام الجاذبية، وسماء قرمزية.",
+     "ثلاث بقايا لا يُسقطها سواه: Coreshard of Lunaris، وGraviton Siphon (يفتح ثقبًا أسود)، وCrown of Selene (أكسجين لا ينفد، ولا ضرر من السقوط، ومناورة انعدام الجاذبية).",
+     "المريخ والملاحة النجمية: بُعد جديد بجاذبية 0.38 g، وعواصف غبارية، وبرد قارس، يُبلغ عبر شاشة وجهات هولوغرافية في الصاروخ.",
+     "Advanced Cherry Fabricator: آلة واحدة لصنع الأسلحة وذخيرتها والمركبات وأجزاء الصواريخ."
+    ]
    }
   },
   "empty": "لا شيء مجدول الآن. عندما يتقرر التحديث التالي سيُعلن عنه هنا قبل صدوره."
@@ -155,6 +175,19 @@
      "Relais-Optik und der Befehl /fallout relay: ein Netzrelais zeigt jetzt seinen eigenen Zustand — ein dunkler Kern, wenn es isoliert ist, ein türkises Blinken für Kondensat, ein bernsteinfarbenes Blinken für Benzin, Grau für Signal. Die Leitungen aus V4.2.4 werden nicht umgefärbt. Schau ein Relais im Umkreis von 8 Blöcken an, und /fallout relay gibt dieselbe Zeile aus wie die Sonde",
      "Feste Modi: die Relais der Sumpfhalle und des Filterrings sind auf Kondensat festgelegt, das Relais des Flugbenzin-Bunkers auf Benzin; ein Operator, der sie ändern will, erfährt, dass dieser Stützpunkt seinen Modus erzwingt. Der Kondensatpfad kann kein Flugbenzin mehr in den Kopftank ziehen, ein isoliertes Relais startet nie eine 50-mB-Bewegung, und bei abgeschaltetem Netz bewegt sich gar nichts",
      "Leitstandtafel-Korrekturen: die Tafel gibt jetzt ein Komparatorsignal — 0, solange der Filterring ohne Druck ist, 8, wenn er unter Druck steht und der Kopftank mindestens 200 mB hält, 15, wenn obendrein Flugbenzin bei 1000 mB oder mehr liegt. Die Tafel behält ihre letzte Ablesung, sodass sie in den ersten 2 Sekunden nach dem Neuladen eines Chunks die alten Zahlen zeigen kann, bevor sie live geht. Ein Frachtbrief für das Loft wird jetzt am Relais des Lofts oder an der Tafel angenommen, und die Loft-Lampen folgen den Druckregeln aus V4.2.4, statt dauerhaft zu leuchten"
+    ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: Waffen, ein Mond-Boss und der Mars",
+    "target_label": "Geplant für den 3. Oktober",
+    "body": "Cherrys nächstes Update, V1.2.0 „Celestial Crucible & Tactical Superiority“, entsteht gerade. Die Waffen und die Mondkreaturen sind fertig und getestet, der Boss wird gerade fertiggestellt, Mars und der Fabricator folgen. Geplant für den 3. Oktober; Zeitpunkt und Inhalt können sich ändern.",
+    "items": [
+     "Fünf Schusswaffen mit echter Ballistik: das Gewehr CR-14, die Maschinenpistole CP-9, das Schienen-Scharfschützengewehr CS-50, die Magpuls-Schrotflinte CX-12 und die C-Pistol — Rückstoß, ausgeworfene Hülsen, Mündungsfeuer, Kimme und Korn sowie Holovisiere.",
+     "Mondkreaturen: Selenite Stalker, Void Drifter (sein EMP stört Visiere und HUDs) und Regolith Devourer.",
+     "Lunaris Prime, der Boss des Mondes: Er erwacht im Astraea Shackle, einer Ruine in einem riesigen Krater jenseits von 8.000 Blöcken. Schildkugeln, Gravitationsbrunnen, ein Panzerbruch bei halber Gesundheit, Wechsel zwischen Supergravitation und Schwerelosigkeit und ein purpurroter Himmel.",
+     "Drei Relikte, die nur er fallen lässt: Coreshard of Lunaris, Graviton Siphon (öffnet ein Schwarzes Loch) und Crown of Selene (unbegrenzt Sauerstoff, kein Fallschaden, das Null-G-Manöver).",
+     "Mars und Sternennavigation: eine neue Dimension mit 0,38 g, Staubstürmen und tiefer Kälte, erreichbar über einen holografischen Zielbildschirm in der Rakete.",
+     "Der Advanced Cherry Fabricator: eine Maschine für die Waffen, ihre Munition, Fahrzeuge und Raketenteile."
     ]
    }
   },
@@ -221,6 +254,19 @@
      "Fixed modes: the Sump Hall and Filter Ring relays are locked to condensate and the avgas bunker relay to gasoline; an operator who tries to change them is told that hub forces its mode. The condensate path can no longer pull avgas into the header tank, an isolated relay never starts a 50 mB move, and with the grid switched off nothing moves at all",
      "Dispatch Board fixes: the board now gives a comparator signal — 0 while the Filter Ring is unpressurised, 8 when it is pressurised and the header tank holds at least 200 mB, 15 when avgas is at 1000 mB or more on top of that. The board keeps its last reading, so for the first 2 seconds after a chunk reloads it may show the old numbers before going live. A Freight Waybill for the loft is now accepted at the loft's relay or at the board, and the loft lamps follow the V4.2.4 pressure rules instead of staying lit"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: guns, a Moon boss, and Mars",
+    "target_label": "Planned for 3 October",
+    "body": "Cherry's next update, V1.2.0 \"Celestial Crucible & Tactical Superiority\", is being built now. The guns and the Moon's creatures are finished and tested, the boss is being finished, and Mars and the Fabricator come next. Planned for 3 October; timing and contents may change.",
+    "items": [
+     "Five firearms with real ballistics: the CR-14 rifle, the CP-9 sub-machine gun, the CS-50 rail sniper, the CX-12 magpulse shotgun and the C-Pistol — recoil, ejected casings, muzzle flash, iron sights and holographic sights.",
+     "Moon creatures: the Selenite Stalker, the Void Drifter (its EMP jams sights and HUDs) and the Regolith Devourer.",
+     "Lunaris Prime, the Moon's boss: it wakes at the Astraea Shackle, a ruin in a giant crater beyond 8,000 blocks. Shield bits, gravity wells, an armour burst at half health, flips between super-gravity and zero G, and a crimson sky.",
+     "Three relics only it drops: the Coreshard of Lunaris, the Graviton Siphon (it opens a black hole) and the Crown of Selene (endless oxygen, no fall damage, the zero-G manoeuvre).",
+     "Mars and stellar navigation: a new dimension at 0.38 g with dust storms and deep cold, reached from a holographic destination screen in the rocket.",
+     "The Advanced Cherry Fabricator: one machine that makes the guns, their ammunition, vehicles and rocket parts."
+    ]
    }
   },
   "empty": "Nothing is scheduled right now. When the next update is decided, it will be announced here before it ships."
@@ -285,6 +331,19 @@
      "Aspecto de los relés y el comando /fallout relay: un Relé de Red muestra ahora su propio estado: núcleo oscuro si está aislado, destello cian para condensado, destello ámbar para gasolina, gris para señal. Las tuberías de V4.2.4 no cambian de color. Mira un relé a menos de 8 bloques y /fallout relay imprime la misma línea que la sonda",
      "Modos fijos: los relés de la Sala del Sumidero y del Anillo de Filtrado quedan fijados a condensado, y el del búnker de avgas a gasolina; a un operador que intente cambiarlos se le dice que ese nudo impone su modo. La ruta de condensado ya no puede arrastrar avgas al depósito de cabecera, un relé aislado nunca inicia un movimiento de 50 mB, y con la red apagada no se mueve nada en absoluto",
      "Correcciones del Panel de Despacho: el panel da ahora señal de comparador: 0 mientras el Anillo de Filtrado está sin presión, 8 cuando está presurizado y el depósito de cabecera tiene al menos 200 mB, 15 cuando además el avgas está en 1000 mB o más. El panel conserva su última lectura, así que durante los 2 primeros segundos tras recargarse un chunk puede mostrar los números antiguos antes de ponerse al día. Una Carta de Porte para el altillo se acepta ahora en el relé del altillo o en el panel, y las lámparas del altillo siguen las reglas de presión de V4.2.4 en vez de quedarse encendidas"
+    ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: armas, un jefe lunar y Marte",
+    "target_label": "Previsto para el 3 de octubre",
+    "body": "Estamos construyendo la próxima actualización de Cherry, V1.2.0 «Celestial Crucible & Tactical Superiority». Las armas y las criaturas lunares están terminadas y probadas, el jefe se está terminando, y Marte y el Fabricator vienen después. Prevista para el 3 de octubre; la fecha y el contenido pueden cambiar.",
+    "items": [
+     "Cinco armas de fuego con balística real: el fusil CR-14, el subfusil CP-9, el francotirador de riel CS-50, la escopeta magpulse CX-12 y la C-Pistol — retroceso, casquillos expulsados, fogonazo, miras de hierro y miras holográficas.",
+     "Criaturas lunares: el Selenite Stalker, el Void Drifter (su PEM interfiere con miras y HUD) y el Regolith Devourer.",
+     "Lunaris Prime, el jefe de la Luna: despierta en el Astraea Shackle, unas ruinas en un cráter gigante más allá de los 8000 bloques. Orbes de escudo, pozos de gravedad, un estallido de armadura a media vida, cambios entre supergravedad y gravedad cero, y un cielo carmesí.",
+     "Tres reliquias que solo él suelta: el Coreshard of Lunaris, el Graviton Siphon (abre un agujero negro) y la Crown of Selene (oxígeno infinito, sin daño por caída, la maniobra de gravedad cero).",
+     "Marte y navegación estelar: una nueva dimensión con 0,38 g, tormentas de polvo y frío extremo, a la que se llega desde una pantalla holográfica de destinos en el cohete.",
+     "El Advanced Cherry Fabricator: una sola máquina para fabricar las armas, su munición, vehículos y piezas de cohete."
     ]
    }
   },
@@ -351,6 +410,19 @@
      "Modes fixes : les relais de la Salle du Bassin et de l'Anneau de Filtrage sont verrouillés sur le condensat, et celui de la Soute à Avgas sur l'essence ; un opérateur qui tente de les changer apprend que ce pôle impose son mode. Le chemin du condensat ne peut plus aspirer d'avgas dans le réservoir de tête, un relais isolé ne lance jamais un transfert de 50 mB, et réseau coupé, plus rien ne bouge du tout",
      "Correctifs du Tableau de Régulation : le tableau émet désormais un signal de comparateur — 0 tant que l'Anneau de Filtrage n'est pas sous pression, 8 quand il l'est et que le réservoir de tête contient au moins 200 mB, 15 quand, en plus, l'avgas est à 1 000 mB ou davantage. Le tableau garde sa dernière lecture, si bien que pendant les 2 premières secondes après le rechargement d'un chunk il peut montrer les anciens chiffres avant de passer en direct. Une Lettre de Voiture pour le loft est désormais acceptée au relais du loft ou au tableau, et les lampes du loft suivent les règles de pression de la V4.2.4 au lieu de rester allumées"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority : des armes, un boss lunaire et Mars",
+    "target_label": "Prévu pour le 3 octobre",
+    "body": "La prochaine mise à jour de Cherry, V1.2.0 « Celestial Crucible & Tactical Superiority », est en cours de construction. Les armes et les créatures lunaires sont terminées et testées, le boss est en cours de finition, Mars et le Fabricator viennent ensuite. Prévue pour le 3 octobre ; la date et le contenu peuvent changer.",
+    "items": [
+     "Cinq armes à feu à balistique réelle : le fusil CR-14, le pistolet-mitrailleur CP-9, le fusil de précision à rail CS-50, le fusil à pompe magpulse CX-12 et le C-Pistol — recul, douilles éjectées, flamme de bouche, organes de visée et viseurs holographiques.",
+     "Créatures lunaires : le Selenite Stalker, le Void Drifter (son IEM brouille viseurs et HUD) et le Regolith Devourer.",
+     "Lunaris Prime, le boss de la Lune : il s'éveille dans l'Astraea Shackle, une ruine au cœur d'un cratère géant au-delà de 8 000 blocs. Orbes de bouclier, puits de gravité, une armure qui éclate à mi-vie, alternance de supergravité et de gravité zéro, et un ciel cramoisi.",
+     "Trois reliques qu'il est le seul à lâcher : le Coreshard of Lunaris, le Graviton Siphon (il ouvre un trou noir) et la Crown of Selene (oxygène illimité, aucun dégât de chute, la manœuvre en gravité zéro).",
+     "Mars et la navigation stellaire : une nouvelle dimension à 0,38 g, avec tempêtes de poussière et froid extrême, atteinte depuis un écran holographique de destinations dans la fusée.",
+     "L'Advanced Cherry Fabricator : une seule machine pour fabriquer les armes, leurs munitions, les véhicules et les pièces de fusée."
+    ]
    }
   },
   "empty": "Rien n'est prévu pour le moment. Quand la prochaine mise à jour sera décidée, elle sera annoncée ici avant sa sortie."
@@ -415,6 +487,19 @@
      "Tampilan relai dan perintah /fallout relay: Relai Grid kini menunjukkan keadaannya sendiri — inti gelap saat terisolasi, kilatan sian untuk kondensat, kilatan kuning ambar untuk bensin, abu-abu untuk sinyal. Pipa utama V4.2.4 tidak diwarnai ulang. Lihat relai dalam 8 balok dan /fallout relay mencetak baris yang sama dengan probe",
      "Mode tetap: relai Aula Endapan dan Cincin Filter dikunci pada kondensat dan relai bunker avgas pada bensin; operator yang mencoba mengubahnya diberi tahu bahwa pusat itu memaksakan modenya. Jalur kondensat tidak lagi bisa menarik avgas ke tangki kepala, relai terisolasi tidak pernah memulai perpindahan 50 mB, dan dengan grid dimatikan tidak ada yang berpindah sama sekali",
      "Perbaikan Papan Dispatch: papan kini memberi sinyal komparator — 0 selagi Cincin Filter tidak bertekanan, 8 saat bertekanan dan tangki kepala berisi sedikitnya 200 mB, 15 saat avgas 1.000 mB atau lebih di atas itu. Papan menyimpan bacaan terakhirnya, jadi selama 2 detik pertama setelah chunk dimuat ulang ia mungkin menampilkan angka lama sebelum menjadi aktif. Surat Jalan Barang untuk loteng kini diterima di relai loteng atau di papan, dan lampu loteng mengikuti aturan tekanan V4.2.4 alih-alih menyala terus"
+    ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: senjata, bos Bulan, dan Mars",
+    "target_label": "Direncanakan 3 Oktober",
+    "body": "Pembaruan Cherry berikutnya, V1.2.0 \"Celestial Crucible & Tactical Superiority\", sedang dibuat. Senjata dan makhluk Bulan sudah selesai dan diuji, bosnya sedang diselesaikan, lalu Mars dan Fabricator menyusul. Direncanakan 3 Oktober; waktu dan isi bisa berubah.",
+    "items": [
+     "Lima senjata api dengan balistik nyata: senapan CR-14, SMG CP-9, senapan runduk rel CS-50, senapan tabur magpulse CX-12, dan C-Pistol — hentakan, selongsong yang terlempar, kilatan moncong, bidikan besi, dan bidikan holografis.",
+     "Makhluk Bulan: Selenite Stalker, Void Drifter (EMP-nya mengacaukan bidikan dan HUD), dan Regolith Devourer.",
+     "Lunaris Prime, bos Bulan: ia bangkit di Astraea Shackle, reruntuhan di kawah raksasa lebih dari 8.000 blok jauhnya. Bola perisai, sumur gravitasi, zirah yang meledak saat nyawa tinggal separuh, pergantian gravitasi super dan gravitasi nol, serta langit merah tua.",
+     "Tiga relik yang hanya dijatuhkannya: Coreshard of Lunaris, Graviton Siphon (membuka lubang hitam), dan Crown of Selene (oksigen tanpa batas, tanpa kerusakan jatuh, manuver gravitasi nol).",
+     "Mars dan navigasi bintang: dimensi baru dengan gravitasi 0,38 g, badai debu, dan dingin ekstrem, dicapai lewat layar tujuan holografis di roket.",
+     "Advanced Cherry Fabricator: satu mesin untuk membuat senjata, amunisinya, kendaraan, dan suku cadang roket."
     ]
    }
   },
@@ -481,6 +566,19 @@
      "Modalità fisse: i relè della Sala della Vasca e dell'Anello di Filtraggio sono bloccati sul condensato e il relè del deposito avgas sulla benzina; a un operatore che prova a cambiarli viene detto che quel nodo impone la sua modalità. Il percorso del condensato non può più tirare avgas nel serbatoio di testa, un relè isolato non avvia mai un trasferimento da 50 mB, e con la rete spenta non si muove proprio nulla",
      "Correzioni al Quadro di Smistamento: il quadro ora dà un segnale di comparatore — 0 finché l'Anello di Filtraggio non è in pressione, 8 quando è in pressione e il serbatoio di testa ha almeno 200 mB, 15 quando in più l'avgas è a 1000 mB o oltre. Il quadro conserva l'ultima lettura, quindi nei primi 2 secondi dopo il ricaricamento di un chunk può mostrare i vecchi numeri prima di passare a quelli vivi. Una Lettera di Vettura per il loft ora viene accettata al relè del loft o al quadro, e le lampade del loft seguono le regole di pressione della V4.2.4 invece di restare accese"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: armi, un boss lunare e Marte",
+    "target_label": "Previsto per il 3 ottobre",
+    "body": "Il prossimo aggiornamento di Cherry, V1.2.0 «Celestial Crucible & Tactical Superiority», è in costruzione. Le armi e le creature lunari sono finite e collaudate, il boss è in via di completamento, poi arriveranno Marte e il Fabricator. Previsto per il 3 ottobre; data e contenuti possono cambiare.",
+    "items": [
+     "Cinque armi da fuoco con balistica reale: il fucile CR-14, il mitra CP-9, il fucile di precisione a rotaia CS-50, il fucile a pompa magpulse CX-12 e la C-Pistol — rinculo, bossoli espulsi, vampa di bocca, mire metalliche e mirini olografici.",
+     "Creature lunari: il Selenite Stalker, il Void Drifter (il suo EMP disturba mirini e HUD) e il Regolith Devourer.",
+     "Lunaris Prime, il boss della Luna: si risveglia nell'Astraea Shackle, una rovina al centro di un cratere gigante oltre gli 8.000 blocchi. Sfere scudo, pozzi gravitazionali, un'armatura che esplode a metà salute, alternanza tra supergravità e gravità zero, e un cielo cremisi.",
+     "Tre reliquie che lascia cadere solo lui: il Coreshard of Lunaris, il Graviton Siphon (apre un buco nero) e la Crown of Selene (ossigeno infinito, nessun danno da caduta, la manovra in gravità zero).",
+     "Marte e navigazione stellare: una nuova dimensione a 0,38 g, con tempeste di polvere e freddo estremo, raggiungibile da uno schermo olografico delle destinazioni nel razzo.",
+     "L'Advanced Cherry Fabricator: una sola macchina per costruire le armi, le munizioni, i veicoli e i pezzi dei razzi."
+    ]
    }
   },
   "empty": "Al momento non c'è nulla in programma. Quando il prossimo aggiornamento sarà deciso, verrà annunciato qui prima dell'uscita."
@@ -545,6 +643,19 @@
      "中継の見た目とコマンド /fallout relay: グリッド中継が自分の状態を見せるようになります —— 孤立なら芯が暗く、凝縮液なら水色、ガソリンなら琥珀色に光り、信号なら灰色です。V4.2.4 の圧本管は塗り替えません。8 ブロック以内の中継を見ながら /fallout relay を打つと、プローブと同じ 1 行が読めます",
      "固定モード: 槽ホールと濾過輪の中継は凝縮液、航空燃料槽の中継はガソリンに固定です。管理者が変えようとしても「そのハブはモードが固定だ」と断られます。凝縮液の経路が航空燃料をヘッダータンクへ吸うことはなくなり、孤立した中継は 50 mB の移送を始めず、グリッドを切っていれば 1 mB も動きません",
      "配車盤の手当て: 配車盤がコンパレータ信号を出します —— 濾過輪に圧が来ていなければ 0、圧が来ていてヘッダータンクに 200 mB 以上あれば 8、さらに航空燃料が 1000 mB 以上あれば 15。盤は最後の読みを覚えており、チャンクを読み直した直後の 2 秒は古い値が出てから生の値に切り替わります。貨物送り状の行き先「ロフト」は配車ロフトの中継か配車盤で通るようになり、ロフトの灯りは常時点灯ではなく V4.2.4 の圧の規則に従います"
+    ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: 5 丁の銃、月のボス、そして火星へ",
+    "target_label": "10月3日(土)予定",
+    "body": "Cherry の次の更新 V1.2.0「Celestial Crucible & Tactical Superiority」を作っています。銃と月の生き物は完成して試験済み、月のボスは仕上げ中、火星と分子加工機はこれからです。配信は 10月3日の予定です。時期と内容は変わることがあります。",
+    "items": [
+     "実弾の弾道を持つ 5 丁の銃: CR-14 ライフル、CP-9 サブマシンガン、CS-50 レールスナイパー、CX-12 マグパルス・ショットガン、C-Pistol。反動、飛ぶ薬莢、銃口の炎、アイアンサイトとホログラフィック・サイト。",
+     "月の生き物: セレナイト・ストーカー、ヴォイド・ドリフター(EMP で照準器と HUD を狂わせる)、レゴリス・デバウラー。",
+     "月のボス《ルナリス・プライム》: 8,000 ブロックより先の巨大クレーターにある遺跡「星核の牢獄」で目覚める。シールドビット、グラビティ・ウェル、体力半分での外殻の爆砕、超重力とゼロGの反転、深紅の空。",
+     "ボスだけが落とす至高遺物 3 つ: ルナリスの星核破片、重力崩壊砲(ブラックホールを開く)、セレーネの天球冠(無限の酸素、落下無効、ゼロGマニューバ)。",
+     "火星とステラ・ナビゲーション: 重力 0.38 G・砂塵嵐・極低温の新しい次元へ、ロケットのホログラフィック目的地画面から。",
+     "高度分子加工機: 銃・弾薬・乗り物・ロケット部品を 1 台で作る。"
     ]
    }
   },
@@ -611,6 +722,19 @@
      "고정 모드: 침전 홀과 여과 고리의 중계기는 응축액으로, 항공 연료조의 중계기는 휘발유로 고정됩니다. 운영자가 바꾸려 하면 '그 거점은 모드가 고정되어 있다'고 거절합니다. 응축액 경로가 항공 연료를 헤더 탱크로 끌어오는 일은 더 이상 없고, 고립된 중계기는 50 mB 이송을 시작하지 않으며, 그리드를 꺼 두면 아무것도 움직이지 않습니다",
      "배차판 손질: 배차판이 비교기 신호를 냅니다 — 여과 고리에 압력이 없으면 0, 압력이 있고 헤더 탱크에 200 mB 이상이면 8, 거기에 더해 항공 연료가 1000 mB 이상이면 15. 배차판은 마지막 읽은 값을 기억하므로, 청크를 다시 불러온 뒤 처음 2초 동안은 옛 숫자를 보였다가 실제 값으로 바뀔 수 있습니다. 목적지가 '로프트'인 화물 송장은 이제 로프트의 중계기나 배차판에서 통하고, 로프트의 등불은 계속 켜져 있는 대신 V4.2.4의 압력 규칙을 따릅니다"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: 총기, 달의 보스, 그리고 화성",
+    "target_label": "10월 3일 예정",
+    "body": "Cherry의 다음 업데이트 V1.2.0 \"Celestial Crucible & Tactical Superiority\"를 만들고 있습니다. 총기와 달의 생물은 완성되어 테스트를 마쳤고, 보스는 마무리 중이며, 화성과 Fabricator는 그다음입니다. 10월 3일 배포 예정이며, 시기와 내용은 바뀔 수 있습니다.",
+    "items": [
+     "실제 탄도를 가진 총기 5종: CR-14 소총, CP-9 기관단총, CS-50 레일 저격총, CX-12 마그펄스 산탄총, C-Pistol — 반동, 튀어나오는 탄피, 총구 화염, 가늠자와 홀로그램 조준경.",
+     "달의 생물: Selenite Stalker, Void Drifter(EMP로 조준경과 HUD를 교란), Regolith Devourer.",
+     "달의 보스 Lunaris Prime: 8,000블록 너머 거대한 크레이터 속 유적 Astraea Shackle에서 깨어납니다. 방어 비트, 중력 우물, 체력 절반에서 터지는 외장갑, 초중력과 무중력의 전환, 그리고 진홍빛 하늘.",
+     "보스만 떨어뜨리는 유물 3종: Coreshard of Lunaris, Graviton Siphon(블랙홀을 엽니다), Crown of Selene(무한 산소, 낙하 피해 없음, 무중력 기동).",
+     "화성과 항성 항법: 중력 0.38 G, 모래폭풍, 극한의 추위가 있는 새 차원으로, 로켓의 홀로그램 목적지 화면에서 떠납니다.",
+     "Advanced Cherry Fabricator: 총기, 탄약, 탈것, 로켓 부품을 한 대로 만드는 기계."
+    ]
    }
   },
   "empty": "지금은 예고 중인 항목이 없습니다. 다음 업데이트가 정해지면 배포보다 먼저 여기에서 알립니다."
@@ -675,6 +799,19 @@
      "Aparência dos relés e o comando /fallout relay: um Relé da Rede agora mostra o próprio estado — núcleo escuro quando isolado, um lampejo ciano para condensado, um lampejo âmbar para gasolina, cinza para sinal. As tubulações da V4.2.4 não mudam de cor. Olhe para um relé num raio de 8 blocos e /fallout relay mostra a mesma linha que a sonda",
      "Modos fixos: os relés do Salão do Poço e do Anel de Filtragem ficam travados em condensado e o relé do depósito de avgas em gasolina; um operador que tente mudá-los recebe o aviso de que aquele polo força o próprio modo. O caminho do condensado não consegue mais puxar avgas para o tanque de cabeceira, um relé isolado nunca inicia uma transferência de 50 mB, e com a rede desligada nada se move",
      "Correções do Painel de Despacho: o painel agora emite sinal de comparador — 0 enquanto o Anel de Filtragem está sem pressão, 8 quando está pressurizado e o tanque de cabeceira tem pelo menos 200 mB, 15 quando, além disso, a avgas está em 1.000 mB ou mais. O painel guarda a última leitura, então nos primeiros 2 segundos depois que um chunk recarrega ele pode mostrar os números antigos antes de ficar ao vivo. Uma Guia de Carga para o loft agora é aceita no relé do loft ou no painel, e as lâmpadas do loft seguem as regras de pressão da V4.2.4 em vez de ficarem sempre acesas"
+    ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: armas, um chefe lunar e Marte",
+    "target_label": "Previsto para 3 de outubro",
+    "body": "A próxima atualização do Cherry, V1.2.0 \"Celestial Crucible & Tactical Superiority\", está sendo construída. As armas e as criaturas da Lua estão prontas e testadas, o chefe está sendo finalizado, e Marte e o Fabricator vêm em seguida. Prevista para 3 de outubro; data e conteúdo podem mudar.",
+    "items": [
+     "Cinco armas de fogo com balística real: o fuzil CR-14, a submetralhadora CP-9, o rifle de precisão de trilho CS-50, a escopeta magpulse CX-12 e a C-Pistol — recuo, cartuchos ejetados, clarão na boca do cano, miras de ferro e miras holográficas.",
+     "Criaturas da Lua: o Selenite Stalker, o Void Drifter (seu PEM embaralha miras e HUDs) e o Regolith Devourer.",
+     "Lunaris Prime, o chefe da Lua: desperta no Astraea Shackle, uma ruína numa cratera gigante a mais de 8.000 blocos. Orbes de escudo, poços de gravidade, uma armadura que explode com metade da vida, alternância entre supergravidade e gravidade zero, e um céu carmesim.",
+     "Três relíquias que só ele deixa cair: o Coreshard of Lunaris, o Graviton Siphon (abre um buraco negro) e a Crown of Selene (oxigênio infinito, sem dano de queda, a manobra em gravidade zero).",
+     "Marte e navegação estelar: uma nova dimensão com 0,38 g, tempestades de poeira e frio extremo, alcançada por uma tela holográfica de destinos no foguete.",
+     "O Advanced Cherry Fabricator: uma única máquina para fabricar as armas, a munição, os veículos e as peças de foguete."
     ]
    }
   },
@@ -741,6 +878,19 @@
      "Фиксированные режимы: реле Отстойного зала и Фильтрующего кольца намертво стоят на конденсате, а реле бункера авиабензина — на бензине; оператору, который попробует их переключить, отвечают, что этот узел навязывает свой режим. Путь конденсата больше не может затянуть авиабензин в напорный бак, изолированное реле никогда не начинает перекачку 50 мВ, а при выключенной сети не движется вообще ничего",
      "Правки Диспетчерского табло: табло теперь выдаёт сигнал компаратора — 0, пока Фильтрующее кольцо без давления, 8, когда оно под давлением и в напорном баке не меньше 200 мВ, 15, когда вдобавок авиабензина 1000 мВ и больше. Табло помнит последнее показание, так что первые 2 секунды после перезагрузки чанка оно может показывать старые числа, прежде чем ожить. Грузовая накладная на надстройку теперь принимается у реле надстройки или у табло, а лампы надстройки следуют правилам давления V4.2.4 вместо того, чтобы гореть постоянно"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: оружие, лунный босс и Марс",
+    "target_label": "Запланировано на 3 октября",
+    "body": "Мы делаем следующее обновление Cherry — V1.2.0 «Celestial Crucible & Tactical Superiority». Оружие и лунные существа готовы и проверены, босс доделывается, затем будут Марс и Fabricator. Выход запланирован на 3 октября; сроки и содержание могут измениться.",
+    "items": [
+     "Пять видов огнестрельного оружия с настоящей баллистикой: винтовка CR-14, пистолет-пулемёт CP-9, рельсовая снайперская винтовка CS-50, магнитно-импульсный дробовик CX-12 и C-Pistol — отдача, вылетающие гильзы, дульное пламя, механические и голографические прицелы.",
+     "Лунные существа: Selenite Stalker, Void Drifter (его ЭМИ сбивает прицелы и HUD) и Regolith Devourer.",
+     "Lunaris Prime, босс Луны: он пробуждается в Astraea Shackle — руинах в гигантском кратере дальше 8000 блоков. Щитовые сферы, гравитационные колодцы, разлетающаяся броня на половине здоровья, смена сверхгравитации и невесомости и багровое небо.",
+     "Три реликвии, которые выпадают только из него: Coreshard of Lunaris, Graviton Siphon (открывает чёрную дыру) и Crown of Selene (бесконечный кислород, нет урона от падения, манёвр в невесомости).",
+     "Марс и звёздная навигация: новое измерение с гравитацией 0,38 g, пыльными бурями и сильным холодом; путь туда — через голографический экран выбора цели в ракете.",
+     "Advanced Cherry Fabricator: одна машина для создания оружия, боеприпасов, транспорта и деталей ракет."
+    ]
    }
   },
   "empty": "Сейчас ничего не запланировано. Когда следующее обновление будет решено, о нём объявят здесь до выхода."
@@ -806,6 +956,19 @@
      "Sabit modlar: Çökeltme Salonu ve Filtre Halkası röleleri yoğuşuğa, avgas bunkeri rölesi benzine kilitli; onları değiştirmeye çalışan bir operatöre o merkezin modunu zorladığı söyleniyor. Yoğuşuk yolu artık avgası başlık tankına çekemiyor, izole bir röle asla 50 mB'lik bir aktarım başlatmıyor ve şebeke kapalıyken hiçbir şey hareket etmiyor",
      "Sevk Panosu düzeltmeleri: pano artık karşılaştırıcı sinyali veriyor — Filtre Halkası basınçsızken 0, basınçlıyken ve başlık tankında en az 200 mB varken 8, bunun üstüne avgas 1000 mB ve üzerindeyken 15. Pano son okumasını saklıyor; bu yüzden bir yığın yeniden yüklendikten sonraki ilk 2 saniyede canlıya geçmeden önce eski sayıları gösterebiliyor. Loft için bir Yük İrsaliyesi artık loftun rölesinde ya da panoda kabul ediliyor ve loft lambaları yanık kalmak yerine V4.2.4 basınç kurallarına uyuyor"
     ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority: silahlar, bir Ay bossu ve Mars",
+    "target_label": "3 Ekim için planlandı",
+    "body": "Cherry'nin bir sonraki güncellemesi V1.2.0 \"Celestial Crucible & Tactical Superiority\" hazırlanıyor. Silahlar ve Ay yaratıkları bitti ve test edildi, boss tamamlanıyor; ardından Mars ve Fabricator geliyor. 3 Ekim için planlandı; zaman ve içerik değişebilir.",
+    "items": [
+     "Gerçek balistiğe sahip beş ateşli silah: CR-14 tüfek, CP-9 hafif makineli tabanca, CS-50 raylı keskin nişancı tüfeği, CX-12 manyetik darbeli pompalı tüfek ve C-Pistol — geri tepme, fırlayan kovanlar, namlu alevi, gez-arpacık ve holografik nişangâhlar.",
+     "Ay yaratıkları: Selenite Stalker, Void Drifter (EMP'si nişangâhları ve HUD'ı bozar) ve Regolith Devourer.",
+     "Ay'ın bossu Lunaris Prime: 8.000 bloğun ötesindeki dev bir kraterdeki Astraea Shackle harabesinde uyanır. Kalkan küreleri, yerçekimi kuyuları, can yarıya inince parçalanan zırh, süper yerçekimi ile sıfır yerçekimi arasında geçişler ve kızıl bir gökyüzü.",
+     "Yalnızca onun düşürdüğü üç kalıntı: Coreshard of Lunaris, Graviton Siphon (bir kara delik açar) ve Crown of Selene (sonsuz oksijen, düşme hasarı yok, sıfır yerçekimi manevrası).",
+     "Mars ve yıldız navigasyonu: 0,38 g yerçekimi, toz fırtınaları ve dondurucu soğuğuyla yeni bir boyut; roketteki holografik hedef ekranından gidilir.",
+     "Advanced Cherry Fabricator: silahları, mühimmatlarını, araçları ve roket parçalarını tek makinede üretir."
+    ]
    }
   },
   "empty": "Şu anda planlanmış bir şey yok. Bir sonraki güncelleme kararlaştırıldığında, yayınlanmadan önce burada duyurulacak."
@@ -870,6 +1033,19 @@
      "中继的外观与命令 /fallout relay:网格中继现在会亮出自己的状态 —— 孤立时核心变暗,冷凝液闪青色,汽油闪琥珀色,信号则是灰色。V4.2.4 的总管不改色。注视 8 格内的中继输入 /fallout relay,会打出与探针相同的一行",
      "固定模式:沉淀厅与滤环的中继锁定为冷凝液,航空燃油槽的中继锁定为汽油;管理员试图更改时会被告知该枢纽的模式是固定的。冷凝液的路径不再能把航空燃油抽进顶部水箱,孤立的中继绝不会启动 50 mB 的输送,网格关闭时则什么都不流动",
      "调度板的修补:调度板现在会输出比较器信号 —— 滤环无压时为 0,有压且顶部水箱至少有 200 mB 时为 8,在此之上航空燃油达到 1000 mB 及以上时为 15。调度板会保留上一次读数,所以区块重新加载后的头 2 秒可能先显示旧数字再切换为实时值。目的地为阁楼的货运单现在可以在阁楼的中继或调度板上使用,阁楼的灯也改为遵循 V4.2.4 的压力规则,而不再常亮"
+    ]
+   },
+   "cherry-v1-2-0": {
+    "headline": "Cherry V1.2.0 — Celestial Crucible & Tactical Superiority:枪械、月球首领与火星",
+    "target_label": "计划于 10 月 3 日",
+    "body": "Cherry 的下一次更新 V1.2.0「Celestial Crucible & Tactical Superiority」正在制作中。枪械和月球生物已经完成并通过测试，首领正在收尾，接下来是火星和 Fabricator。计划于 10 月 3 日发布；时间和内容可能会变。",
+    "items": [
+     "五把拥有真实弹道的枪械：CR-14 步枪、CP-9 冲锋枪、CS-50 轨道狙击枪、CX-12 磁脉冲霰弹枪和 C-Pistol——后坐力、抛出的弹壳、枪口焰、机械瞄具和全息瞄准镜。",
+     "月球生物：Selenite Stalker、Void Drifter(它的 EMP 会干扰瞄准镜和 HUD)和 Regolith Devourer。",
+     "月球首领 Lunaris Prime：在 8,000 格以外一座巨型陨石坑中的遗迹 Astraea Shackle 里苏醒。护盾浮游球、重力井、半血时装甲爆裂、超重力与零重力的交替，以及深红色的天空。",
+     "只有它会掉落的三件遗物：Coreshard of Lunaris、Graviton Siphon(能打开黑洞)和 Crown of Selene(无限氧气、免疫摔落伤害、零重力机动)。",
+     "火星与星际导航：重力 0.38 g、有沙尘暴和极寒的新维度，从火箭里的全息目的地屏幕出发。",
+     "Advanced Cherry Fabricator：一台机器即可制造枪械、弹药、载具和火箭部件。"
     ]
    }
   },
