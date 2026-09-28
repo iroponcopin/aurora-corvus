@@ -310,8 +310,8 @@ NAV_GROUPS = [
 ]
 
 # English fallbacks for the group heading + one-line blurb shown in each
-# panel. Japanese lives in data/ui-strings.ja.json -> ui.nav_groups (and so
-# in data/i18n/ja.json); the other 11 languages fall back to English here,
+# panel. Japanese lives in data/i18n/ja.json -> ui.nav_groups; the other 12
+# languages fall back to English here,
 # exactly the way NAV_LABEL_FALLBACK["launcher"] already does.
 NAV_GROUP_FALLBACK = {
     # 2026-09-10、所有者:「Store という新規のタブを作成して、メガメニューに

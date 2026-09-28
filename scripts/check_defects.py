@@ -209,8 +209,9 @@ def defect5_changelog_identity(fails):
                          f"under their id: {absent[:5]}")
     # A2: both consumers must actually key on it.
     for f, needle in (("scripts/build_changelog.py", "index_bundle_changelog"),
-                      ("scripts/site_common.py", "by_id.get(s[\"id\"]"),
-                      ("scripts/extract_bundle.py", '"id": e["id"]')):
+                      ("scripts/site_common.py", "by_id.get(s[\"id\"]")):
+        # (scripts/extract_bundle.py was the third consumer; it read the erased Alpha sources and was
+        #  removed with them on 2026-09-28.)
         if needle not in (ROOT / f).read_text(encoding="utf-8"):
             _fail(fails, f"[5.2A] {f} no longer uses the entry id ({needle!r}) -- it has gone "
                          f"back to an ambiguous key")
