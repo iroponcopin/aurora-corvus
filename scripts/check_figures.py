@@ -87,81 +87,14 @@ def text_tokens(body_html: str) -> set:
 # changelog: keyed on the entry's stable `id` (NOT on release -- see
 # site_common.load_changelog_structural for why release/date is not an identity).
 CHANGELOG = {
-    # Boss HP. A drifted boss HP is not cosmetic: a player who reads 2400 and
-    # brings gear for 2400 dies to a 4000-HP boss.
-    "v1.3.0": ["900", "3"],
-    "v1.4.0-bosses": ["1024", "2400", "4000", "3000", "3400", "2800"],
-    "v1.5.6": ["6000", "9000", "3000", "16", "32"],
-    "v1.9.0": ["600", "24000"],
-    "v2.2.0": ["24", "12", "52", "18", "17", "15", "16", "9"],
-    "v2.2.1": ["4"],
-    "v2.4.0": [],
-    "v2.4.1": [],
-    "v2.4.3": ["17", "3"],
-    "v2.4.4": ["3"],
-    "v2.4.5": ["2000"],
-    "v2.4.6": ["2000"],
-    "v2.4.7": ["30", "10", "6000", "4"],
-    "v2.4.8": ["30", "50", "10", "4"],
-    "v2.4.9": ["60", "180", "100", "50", "200", "36", "3"],
-    "v2.5.0": ["11", "2.5.0", "26.2", "1.5.1", "13"],
-    "v2.5.1": ["1.7.0"],
-    # "seven mechanics" is spelled out in every language that has a word for
-    # it, so the count is not in this list; the figures a player acts on are.
-    "disclosure": ["814", "320", "10", "100", "5", "6", "4"],
-}
-
-# features: the undocumented-mechanics disclosure is the reason this gate
-# exists. These are mechanics that can kill a character or destroy a base, and
-# the numbers are the whole content -- a drifted one is worse than clumsy prose.
-FEATURES = {
-    "glass-lanterns": ["52", "17", "18", "15"],
-    "backrooms": ["1"],
-    "overworld-raids": ["12"],
-    "turrets": [],
-    "video": ["4", "16", "9"],
-    "sparxie-staff": ["24"],
-    "firearm-rebalance": [],
-    "drone": ["16", "9"],
-    # NOT "3": the only 3 in this section is the "3D" of PLATEAU's dataset
-    # name, which ar (correctly) writes as ثلاثي الأبعاد and other languages
-    # may spell out too. It is part of a proper noun, not a figure a reader
-    # acts on, and requiring it made this gate RED on a correct translation.
-    "sapporo": ["100", "20"],
-    "undocumented-mechanics": [
-        "814",          # mask durability
-        "320", "6400",  # revival delay, in seconds and in ticks
-        "800",          # the "about 800" the original spec called for
-        "4",            # 1 diamond = 4 emeralds; also 1 HP / 4 s
-        "10000000",     # interest ceiling, emeralds
-        "1000000", "1000000000",   # Singapore real estate, before and after
-        "1152",         # what a vanilla trade slot can hold
-        "0.05", "24", "6",         # eruption chance, vent clearance, crater
-        "1800", "90", "12000",     # hydration tick rate, escalation delay
-        "0.1", "1.4", "0.35",      # escalating dehydration damage
-        "54", "60",     # air purifier, measured and by design
-        "20",           # hydration scale 0-20
-        "1.0",          # legacyVehicleFillFraction
-    ],
-}
-
-GATES = {
-    "nether": ["2", "21", "3", "4", "5"],
-    "end": ["12", "5"],
-    "amethyst": ["2", "21", "3"],
-    "heaven": ["4", "5", "2", "3"],
-    "backrooms": ["3", "2", "1"],
+    # 2026-09-28: Alpha's changelog history was erased with the rest of Alpha (owner: 「抹消」); the one
+    # entry left is the notice that ended it. The figures a reader acts on there: the 13 mods replaced, and the
+    # overworld ceiling the sky placeholder keeps (Y up to 1023) against the vanilla one (Y=319) -- a drifted
+    # 319 would tell a player the wrong height above which their build is deleted.
+    "v4.4.0.2": ["13", "1023", "319"],
 }
 
 LAUNCHER = {"__all__": ["25", "256"]}   # Java 25 (the launcher jar is class-file version 69), SHA-256
-
-# The two emerald interest ceilings live in the roadmap block, not in features.
-# ja/zh/ko write them as 1,000万 / 1000 万 / 1,000만 and 5,000万 / 5000 万 /
-# 5,000만 -- correct values in local notation, which norm() expands.
-# 600/800/750/1200 are the four Planarcadia bosses' HP, which the roadmap block
-# recounts (they are NOT in the v2.0.0 changelog entry -- that entry describes
-# the release without listing them).
-ROADMAP = ["10000000", "50000000", "600", "800", "750", "1200"]
 
 FIELDS = ("title", "summary", "highlights", "balance_changes", "warnings",
           "known_limitations")
@@ -172,26 +105,6 @@ def entry_text(e):
     for k in FIELDS[2:]:
         out.extend(e.get(k) or [])
     return "\n".join(out)
-
-
-def _check_sections(fails, lang, sections, table, what):
-    by_id = {s["id"]: s for s in sections if isinstance(s, dict) and s.get("id")}
-    if not by_id:
-        fails.append(f"{lang} {what}: no sections at all (untranslated?)")
-        print(f"  RED  {lang} {what}: block is empty -- nothing to check")
-        return
-    for sid, wanted in table.items():
-        s = by_id.get(sid)
-        if s is None:
-            fails.append(f"{lang} {what}.{sid}: section missing")
-            print(f"  RED  {lang} {what}.{sid}: section missing entirely")
-            continue
-        have = text_tokens(s.get("title", "") + " " + s.get("body_html", ""))
-        missing = [w for w in wanted if w not in have]
-        if missing:
-            fails.append(f"{lang} {what}.{sid}: {missing}")
-            print(f"  RED  {lang} {what}.{sid}: figures missing from the translation: "
-                  f"{', '.join(missing)}")
 
 
 def main(langs, repo):
@@ -212,17 +125,6 @@ def main(langs, repo):
                 fails.append(f"{lang} changelog {eid}: {missing}")
                 print(f"  RED  {lang} changelog.{eid}: figures missing from the "
                       f"translation: {', '.join(missing)}")
-
-        _check_sections(fails, lang, bundle.get("features") or [], FEATURES, "features")
-        _check_sections(fails, lang, bundle.get("gates") or [], GATES, "gates")
-
-        rm = bundle.get("roadmap") or {}
-        have = text_tokens(json.dumps(rm, ensure_ascii=False))
-        missing = [w for w in ROADMAP if w not in have]
-        if missing:
-            fails.append(f"{lang} roadmap: {missing}")
-            print(f"  RED  {lang} roadmap: figure(s) missing from the "
-                  f"translation: {', '.join(missing)}")
 
         lp = bundle.get("launcher_page")
         if not lp:

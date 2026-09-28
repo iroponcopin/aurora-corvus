@@ -289,8 +289,10 @@ def brand_order():
     -> Alpha, then Aureum. Read from NAV_GROUPS rather than written again here,
     so the changelog's tabs and the menu cannot disagree about the order."""
     order = list(dict(NAV_GROUPS)["store"])
+    # 2026-09-28: Alpha left the Store menu (it ended distribution), but its one remaining changelog entry,
+    # the notice that ended it, keeps its tab, in its old place: after Cherry, before Aureum.
     if DEFAULT_BRAND not in order:
-        raise SystemExit(f"ERROR: the Store brand line {order} has no '{DEFAULT_BRAND}'")
+        order.insert(order.index("cherry") + 1, DEFAULT_BRAND)
     return order
 
 

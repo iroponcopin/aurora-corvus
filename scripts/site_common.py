@@ -213,18 +213,16 @@ NAV_SECTIONS = [
     # それを Store という新規のタブを作成して、メガメニューに 3 つの Mods を
     # 表示する。」Alpha はこれまで<b>ブランドのページを持っていなかった</b> ——
     # ダウンロード導線(download/)はあっても「Alpha とは何か」の 1 枚が無かった。
-    ("alpha", "alpha/"),
+    # 2026-09-28 (owner: 「Alphaは公式に配信を終了したことを記載し、抹消」): Alpha's brand page, install
+    # guide, gates, features, roadmap and known-issues are gone from the navigation and from the site.
+    # alpha/ still exists as ONE page, the official notice that distribution has ended (build_alpha.py);
+    # it is reached from the download, changelog and launcher pages, not from the menu.
     ("download", "download/"),
     ("changelog", "changelog/"),
     ("recipes", "recipes/"),
-    ("guide", "guide/"),
     ("launcher", "launcher/"),
-    ("gates", "gates/"),
-    ("features", "features/"),
     ("upcoming", "upcoming/"),
     ("discord", "discord/"),
-    ("roadmap", "roadmap/"),
-    ("issues", "known-issues/"),
     # V4.3.0. The Sparxie skin, behind its PIN. Filed under "start" with the
     # download/launcher/guide: it is a thing you fetch and install, not a
     # reference page and not a status page.
@@ -296,9 +294,9 @@ NAV_GROUPS = [
     #   LINE. It is a different genre with its own version line, so it sits
     #   last, after the three that are ranked against each other, rather than
     #   being interleaved with them where its position would read as a rank.
-    ("store", ["ouka", "cherry", "alpha", "aureum"]),
-    ("start", ["download", "launcher", "guide", "skin"]),
-    ("reference", ["recipes", "gates", "features"]),
+    ("store", ["ouka", "cherry", "aureum"]),
+    ("start", ["download", "launcher", "skin"]),
+    ("reference", ["recipes"]),
     # "upcoming" sits with changelog/roadmap because it answers the same
     # question at a different distance: changelog = what shipped, upcoming =
     # what is next, roadmap = the long view.
@@ -308,7 +306,7 @@ NAV_GROUPS = [
     # server hears those things as they happen -- and how a player tells us
     # about the one that is broken. It is NOT under "start": you do not need
     # Discord to install or play the pack.
-    ("status", ["changelog", "upcoming", "roadmap", "issues", "discord"]),
+    ("status", ["changelog", "upcoming", "discord"]),
 ]
 
 # English fallbacks for the group heading + one-line blurb shown in each
@@ -325,23 +323,21 @@ NAV_GROUP_FALLBACK = {
         # build, and a lede that hinted at one would be a promise the site
         # cannot keep. Aureum is named apart because it is not ranked against
         # the other three.
-        "lede": "The brand line, from the top: OUKA, then Cherry, then Alpha. "
+        "lede": "The brand line, from the top: OUKA, then Cherry. "
                 "Aureum stands apart, in a genre of its own.",
     },
     "start": {
         "label": "Get started",
-        "lede": "Download the pack, install it on your server, and let %s "
-                "keep every module up to date." % LAUNCHER_APP_NAME,
+        "lede": "Get %s, and let it keep every mod up to date." % LAUNCHER_APP_NAME,
     },
     "reference": {
         "label": "Reference",
-        "lede": "Every crafting recipe, every dimensional gate, and a tour of what the "
-                "suite actually adds to the game.",
+        "lede": "Every crafting recipe for Cherry and OUKA.",
     },
     "status": {
         "label": "Status",
-        "lede": "What shipped in each release, what is planned next, and what is still "
-                "known to be broken.",
+        "lede": "What shipped in each release, what is planned next, and how to hear about it "
+                "on Discord.",
     },
 }
 

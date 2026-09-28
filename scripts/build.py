@@ -51,11 +51,7 @@ BUILD_SCRIPTS = [
     "build_alpha.py",
     "build_changelog.py",
     "build_recipes.py",
-    "build_guide.py",
     "build_launcher.py",
-    "build_gates.py",
-    "build_features.py",
-    "build_roadmap.py",
     # After the roadmap (same family of page) and before the feeds/sitemap,
     # because it writes upcoming.json at the site root for the Discord bot.
     "build_upcoming.py",
@@ -64,7 +60,6 @@ BUILD_SCRIPTS = [
     # and on the Download page cannot diverge, and it reads the command export
     # copied from the bot repo (data/discord_commands.json).
     "build_discord.py",
-    "build_known_issues.py",
     # V4.3.0: the Sparxie skin behind its PIN. After the download page (it is a
     # companion to it) and before the feeds, which walk whatever pages exist.
     # Without AURORA_SKIN_PIN in the environment this re-publishes the committed

@@ -49,16 +49,13 @@ def main():
     # (mod_id と jars を持つブロック)。次にブランドが増えたとき黙って外れないように。
     live = {}
     pack = manifest.get("pack") or {}
-    if pack.get("latest"):
+    # 2026-09-28: Alpha is retired (data/retirement.json) and its recipes are no longer part of the sheet at
+    # all (extract_recipes.py: RETIRED). The pack is then NOT a source: a `pack` entry left in `sources` is a
+    # sheet still describing it, and is named as such below (nothing publishes it as a recipe source now).
+    rp = ROOT / "data" / "retirement.json"
+    retired = rp.exists() and bool((json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {}).get("retired"))
+    if pack.get("latest") and not retired:
         live["pack"] = pack["latest"]
-        # 2026-09-28: the retirement release is 13 placeholder jars with no recipes; the sheet is then
-        # generated from the last playable pack (extract_recipes.py: _recipe_pack_source), and that is the
-        # version it must say. Only while the manifest publishes exactly the retirement release.
-        rp = ROOT / "data" / "retirement.json"
-        if rp.exists():
-            block = json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {}
-            if block.get("retired") and pack["latest"] == block.get("retired_version"):
-                live["pack"] = str(block.get("last_playable", ""))
     for block, info in manifest.items():
         if isinstance(info, dict) and "mod_id" in info and isinstance(info.get("jars"), dict):
             if info.get("latest"):

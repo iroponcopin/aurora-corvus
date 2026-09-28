@@ -97,12 +97,11 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Store</p>
-                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry. Aureum stands apart, in a genre of its own.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
             <li><a class="mega-link" href="../cherry/"><span class="mega-link__label">Cherry</span></a></li>
-            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
             <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
               </ul>
             </div>
@@ -117,12 +116,11 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Get started</p>
-                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+                <p class="mega-panel__lede">Get Corvus, and let it keep every mod up to date.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../download/"><span class="mega-link__label">Скачать</span></a></li>
             <li><a class="mega-link is-current" href="../launcher/" aria-current="page"><span class="mega-link__label">Corvus</span></a></li>
-            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Инструкция по установке</span></a></li>
             <li><a class="mega-link" href="../skin/"><span class="mega-link__label">Sparxie skin</span></a></li>
               </ul>
             </div>
@@ -137,12 +135,10 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Reference</p>
-                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+                <p class="mega-panel__lede">Every crafting recipe for Cherry and OUKA.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">Рецепты</span></a></li>
-            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">Порталы</span><span class="mega-link__sub">Порталы и врата</span></a></li>
-            <li><a class="mega-link" href="../features/"><span class="mega-link__label">Особенности</span><span class="mega-link__sub">Обзор функций</span></a></li>
               </ul>
             </div>
           </div>
@@ -156,13 +152,11 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Status</p>
-                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and how to hear about it on Discord.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">История обновлений</span></a></li>
             <li><a class="mega-link" href="../upcoming/"><span class="mega-link__label">Coming next</span></a></li>
-            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">Дорожная карта</span></a></li>
-            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Известные проблемы</span></a></li>
             <li><a class="mega-link" href="../discord/"><span class="mega-link__label">Discord bot</span></a></li>
               </ul>
             </div>
@@ -197,20 +191,20 @@
 <div class="hero">
   <span class="hero__eyebrow">Corvus</span>
   <h1>Corvus</h1>
-  <p class="lede">Corvus — небольшое настольное приложение, которое автоматически поддерживает сборку модов Alpha в актуальном состоянии. Оно сверяется с этим Wiki, чтобы узнать текущий выпуск, скачивает обновления и, прежде чем что-либо менять в папке сборки, проверяет каждый скачанный файл по контрольной сумме SHA-256, опубликованной на этом Wiki. Единственный источник, которому оно доверяет, — этот Wiki.</p>
+  <p class="lede">Corvus — небольшое настольное приложение, которое автоматически поддерживает ваши моды в актуальном состоянии. Оно проверяет на этой вики текущий выпуск, скачивает обновления за вас и перед тем, как тронуть папку mods, сверяет каждый скачанный файл с опубликованной здесь контрольной суммой SHA-256. Эта вики — единственный источник, которому оно доверяет.</p>
 </div>
 <div class="toc"><div class="toc__title">Содержание</div><ol><li><a href="#what-it-is">Что такое Corvus и зачем он создан</a></li><li><a href="#installing">Как установить Corvus</a></li><li><a href="#pointing-at-existing-pack">Указать существующую папку со сборкой модов</a></li><li><a href="#update-modes">Чем отличаются автоматический и ручной режимы обновления</a></li><li><a href="#confirming-an-update-applied">Как убедиться, что обновление действительно применилось</a></li><li><a href="#restoring-from-backup">Восстановление из резервной копии, если обновление не удалось</a></li></ol></div>
 <div id="what-it-is"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Что такое Corvus и зачем он создан</h2>
-      <p>Чтобы вручную поддерживать большую сборку модов в актуальном состоянии, при каждом выпуске нужно заходить на страницу загрузки, сличать номера версий, скачивать новый ZIP и заново распаковывать его в нужную папку. Corvus делает это за вас: он читает сведения о выпуске с этого Wiki, сравнивает их с уже установленной у вас сборкой и забирает только то, что изменилось.</p><p>Каждый файл, который скачивает лаунчер, перед использованием обязательно сверяется с контрольной суммой SHA-256, опубликованной на этом Wiki. Если она не совпадает, файл не устанавливается. В вопросе «какая версия последняя» единственный источник, которому лаунчер доверяет, — этот Wiki.</p>
+      <p>Поддерживать моды в актуальном состоянии вручную — значит при каждом выпуске снова заходить на страницу загрузки, сравнивать номера версий, скачивать новый файл и класть его в нужную папку. Corvus делает это сам: читает манифест выпусков этой вики, сравнивает его с тем, что у вас уже установлено, и скачивает только изменившееся.</p><p>Каждая загрузка лаунчера перед использованием проверяется по контрольной сумме SHA-256, опубликованной этой викой. Если скачанный файл не совпадает, лаунчер его не устанавливает. Эта вика — единственный источник истины лаунчера о том, какой выпуск «текущий».</p>
     </div></div>
 <div id="installing"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Как установить Corvus</h2>
-      <p>Corvus распространяется со страницы загрузки этого Wiki, оттуда же, откуда и ZIP со сборкой модов, в двух видах.</p><ul><li><strong>Нативные установщики для каждой ОС</strong> (<code>.msi</code> для Windows, <code>.dmg</code> для macOS, <code>.deb</code> для Linux) — ставятся так же, как обычное настольное приложение, и Java для них не нужна. Подпись кода мы пока не оформили, поэтому при первом запуске ОС покажет предупреждение. В macOS вместо двойного щелчка щёлкните по приложению правой кнопкой и выберите «Открыть». В Windows в предупреждении SmartScreen выберите «Подробнее» → «Выполнить в любом случае».</li><li><strong>Кроссплатформенный jar</strong> <code>corvus-2.3.0.jar</code> — один и тот же файл работает и в Windows, и в macOS, и в Linux, но заранее должна быть установлена Java 25 или новее. Если по двойному щелчку он не открывается, откройте терминал (или командную строку) в папке, куда вы его скачали, и выполните <code>java -jar corvus-2.3.0.jar</code>.</li></ul>
+      <p>Corvus доступен на странице загрузки этой вики в двух видах:</p><ul><li><strong>Нативные установщики для каждой ОС</strong> (<code>.msi</code> для Windows, <code>.dmg</code> для macOS, <code>.deb</code> для Linux) — ставятся так же, как обычное настольное приложение, и Java для них не нужна. Подпись кода мы пока не оформили, поэтому при первом запуске ОС покажет предупреждение. В macOS вместо двойного щелчка щёлкните по приложению правой кнопкой и выберите «Открыть». В Windows в предупреждении SmartScreen выберите «Подробнее» → «Выполнить в любом случае».</li><li><strong>Кроссплатформенный jar</strong> <code>corvus-2.3.0.jar</code> — один и тот же файл работает и в Windows, и в macOS, и в Linux, но заранее должна быть установлена Java 25 или новее. Если по двойному щелчку он не открывается, откройте терминал (или командную строку) в папке, куда вы его скачали, и выполните <code>java -jar corvus-2.3.0.jar</code>.</li></ul>
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Указать существующую папку со сборкой модов</h2>
-      <p>Даже если вы уже установили сборку модов Alpha вручную, начинать всё заново не нужно. При первом запуске вместо создания новой папки можно выбрать ту, в которой сборка модов уже лежит. Укажите существующую папку mods — и дальше лаунчер будет считать эту установку той, которой он управляет.</p>
+      <p>Если вы уже установили моды вручную, начинать заново не нужно. При первом запуске лаунчер позволяет выбрать папку, где ваши моды уже лежат, вместо создания новой. Укажите свою существующую папку mods, и лаунчер будет считать эту установку той, которой он управляет.</p>
     </div></div>
 <div id="update-modes"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Чем отличаются автоматический и ручной режимы обновления</h2>
@@ -218,7 +212,7 @@
     </div></div>
 <div id="confirming-an-update-applied"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Как убедиться, что обновление действительно применилось</h2>
-      <p>Начиная с версии 1.1.0, по нажатию Update новые файлы модов записываются прямо в папку <code>mods</code> вашей сборки. Надпись «Update complete» не появится, пока лаунчер после обновления действительно не перепроверит содержимое папки и не убедится, что нужные файлы на месте. Если что-то не удалось на полпути, он сообщит об ошибке, а не покажет ложный успех.</p><p>Как проверить это самому в macOS: откройте папку, показанную в разделе «Основные» (в Finder нажмите <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> и вставьте путь), загляните в <code>mods</code> и сравните номер версии в имени каждого файла <code>alpha-*.jar</code> до и после нажатия Update.</p><p class="callout callout--info">Если вы обновляетесь из папки сборки, к которой последним обращался лаунчер версии старше 1.1.0, то ровно один первый раз рядом с новым jar может остаться jar с прежним номером версии того же мода (у прежних лаунчеров не было записи о том, какие файлы они сами положили). Со следующего обновления это устраняется само. Если хочется убрать это сразу, можно, убедившись в наличии нового файла, вручную удалить <code>alpha-*.jar</code> со старым номером версии.</p>
+      <p>Начиная с версии 1.1.0, по нажатию Update новые файлы модов записываются прямо в папку <code>mods</code> вашей сборки. Надпись «Update complete» не появится, пока лаунчер после обновления действительно не перепроверит содержимое папки и не убедится, что нужные файлы на месте. Если что-то не удалось на полпути, он сообщит об ошибке, а не покажет ложный успех.</p><p>Как проверить это самому в macOS: откройте папку, показанную в разделе «Основные» (в Finder нажмите <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> и вставьте путь), загляните в <code>mods</code> и сравните номер версии в имени каждого файла <code>cherry-*.jar</code> до и после нажатия Update.</p><p class="callout callout--info">Если вы обновляетесь из папки сборки, к которой последним обращался лаунчер версии старше 1.1.0, то ровно один первый раз рядом с новым jar может остаться jar с прежним номером версии того же мода (у прежних лаунчеров не было записи о том, какие файлы они сами положили). Со следующего обновления это устраняется само. Если хочется убрать это сразу, можно, убедившись в наличии нового файла, вручную удалить <code>cherry-*.jar</code> со старым номером версии.</p>
     </div></div>
 <div id="restoring-from-backup"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Восстановление из резервной копии, если обновление не удалось</h2>

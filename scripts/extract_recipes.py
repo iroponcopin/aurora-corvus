@@ -125,30 +125,29 @@ BRAND_TAB_ICON = {
 }
 
 
-def _recipe_pack_source(manifest):
-    """(version, zip file name) of the pack zip the recipe sheet is generated from.
+def _alpha_retired():
+    """True once data/retirement.json says Alpha is retired (2026-09-28, owner: 「抹消」).
 
-    Normally that is what the manifest publishes. 2026-09-28: Alpha was retired, and the release that
-    retires it (data/retirement.json) is 13 placeholder jars with no recipes, textures or names at all.
-    Reading it would stop this script ("no recipe json found"), and reading nothing would empty the Alpha
-    part of the sheet. So while the manifest publishes the retirement release, the sheet keeps being
-    generated from the LAST PLAYABLE pack zip, which stays in downloads/, and says so in `sources`.
-    Anything else in that file (a version that is not the retirement release) is ignored, so the switch
-    cannot outlive the release it was written for.
+    Retired means Alpha is not part of the recipe sheet at all: its 13 modules, its special and food cards
+    and the 使い方 tab (Alpha's wiring guide) are all left out, and the downloads folder no longer carries
+    the pack zip this script used to read them from. The sheet is Cherry + OUKA.
     """
-    pack = manifest.get("pack") or {}
-    latest, file_name = pack.get("latest"), pack.get("file_name")
     rp = SITE_ROOT / "data" / "retirement.json"
-    if rp.exists():
-        block = (json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {})
-        if block.get("retired") and latest and latest == block.get("retired_version"):
-            last = str(block.get("last_playable", "")).strip()
-            if not last or not file_name or block["retired_version"] not in file_name:
-                raise SystemExit("ERROR: data/retirement.json says Alpha is retired, but its last_playable "
-                                 "version or the manifest's pack.file_name cannot be turned into the last "
-                                 "playable zip's name.")
-            return last, file_name.replace(block["retired_version"], last)
-    return latest, file_name
+    if not rp.exists():
+        return False
+    return bool((json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {}).get("retired"))
+
+
+RETIRED = _alpha_retired()
+
+
+def _recipe_pack_source(manifest):
+    """(version, zip file name) of the pack zip the recipe sheet is generated from, or (None, None)
+    when Alpha is retired and the pack is not a source of the sheet any more."""
+    if RETIRED:
+        return None, None
+    pack = manifest.get("pack") or {}
+    return pack.get("latest"), pack.get("file_name")
 
 
 def recipe_sources():
@@ -5851,7 +5850,11 @@ apply();
 def main():
     # ⚠ いちばん先に走らせる。ここを通らないと「1 つのモジュールが丸ごと無い」ことに
     #    誰も気づけない —— 出力は正常に見え、終了コードは 0 のままだからである。
-    check_mods_roster()
+    if RETIRED:
+        # Alpha's 13 modules are not part of the sheet: nothing to count and nothing to stage.
+        MODS.clear()
+    else:
+        check_mods_roster()
     # 別ブランド(Cherry / OUKA)は配布済み zip から取り出して MODS に足す。
     # MODS を歩くものより先に置く —— 後ろに置くと、テクスチャ解決やレシピの走査が
     # 「まだ MODS に無いもの」を静かに読み飛ばす。
@@ -5859,7 +5862,8 @@ def main():
         # Alpha も別ブランドも、レシピ・テクスチャ・表示名は**配布物**から読む。
         # Java の実装から読む数値(電力ガイド等)だけは mods-src のソースのまま。
         MODS.extend(stage_published_brands(Path(tmp)))
-        stage_published_pack(Path(tmp))
+        if not RETIRED:
+            stage_published_pack(Path(tmp))
         return _main_body()
 
 
@@ -5873,7 +5877,7 @@ def _main_body():
 
     cards = []       # dict: cat / id / cells(9 個の id or None) / count / how / s
     no_yomi = []     # 読みを組み立てられなかったカード名(黙って捨てずに報告する)
-    published = published_recipe_names()
+    published = {} if RETIRED else published_recipe_names()
     withheld = []    # 作業木にしか無いレシピ(配られていないので載せない)
     seen_published = set()   # 実際に読んだ配布済みレシピ(取りこぼしを後で数える)
     for mod_dir, modid, mod_cat in MODS:
@@ -5919,8 +5923,8 @@ def _main_body():
                           "s": search_blob(tokens)})
 
     # クラフト不可の特別入手アイテム(強化ビーコン等)+食料品 300 種は「入手方法」カード。
-    for modid, item_name, how_to_get, cat in (SPECIAL_ITEMS + load_food_specials()
-                                              + read_code_only_recipes(reg)):
+    alpha_specials = [] if RETIRED else SPECIAL_ITEMS + load_food_specials()
+    for modid, item_name, how_to_get, cat in (alpha_specials + read_code_only_recipes(reg)):
         item_id = f"{modid}:{item_name}"
         ja, en, _tex = reg.register(item_id)
         _, unknown = reading_of(ja)
@@ -6022,7 +6026,7 @@ def _main_body():
             "       Add the lang entries and rebuild that module, or - only if this is "
             "deliberate - add the id to KNOWN_UNNAMED with a note saying why."
             % (len(regressions), ", ".join(regressions)))
-    fixed = sorted(KNOWN_UNNAMED - unnamed)
+    fixed = [] if RETIRED else sorted(KNOWN_UNNAMED - unnamed)   # the list is Alpha's; nothing of it is read now
     if fixed:
         raise SystemExit(
             "ERROR: %d id(s) in KNOWN_UNNAMED now have a proper name - remove them from that "
@@ -6038,138 +6042,144 @@ def _main_body():
     # 手引きが参照する id が 1 つでも解決できないと、ページ上は「?」の四角が
     # 出るだけで生成は成功してしまう(§31.4 で 309 個のアイテムが黙って表から
     # 落ちていたのと、§37 で「?」カード 1 枚として現れたのと同じ形)。
-    # ⓪ 先に `{fact}` を実装から読んだ値へ置きかえる。**以降はこの GUIDES_FILLED を使う。**
-    #    未知の名前があればここで生成が止まる(fill_facts)。
-    guides_filled = fill_facts(GUIDES)
-    unused = sorted(set(POWER_FACTS) - USED_FACTS)
-    if unused:
-        raise SystemExit(
-            "ERROR: %d value(s) are read out of the implementation for the 使い方 tab but are "
-            "used by no guide - a dead reading looks maintained while it is not. Either use "
-            "them or stop reading them: %s" % (len(unused), ", ".join(unused)))
+    # 2026-09-28: Alpha is retired (data/retirement.json) and the sheet is Cherry + OUKA only. The 使い方 tab
+    # is Alpha's wiring / power / sorting guide, and every check below asserts something about Alpha's
+    # cards, so none of it can hold; the tab is empty rather than half-checked.
+    if RETIRED:
+        guides_filled, guide_ids, guides_json, n_examples = [], [], [], 0
+    else:
+        # ⓪ 先に `{fact}` を実装から読んだ値へ置きかえる。**以降はこの GUIDES_FILLED を使う。**
+        #    未知の名前があればここで生成が止まる(fill_facts)。
+        guides_filled = fill_facts(GUIDES)
+        unused = sorted(set(POWER_FACTS) - USED_FACTS)
+        if unused:
+            raise SystemExit(
+                "ERROR: %d value(s) are read out of the implementation for the 使い方 tab but are "
+                "used by no guide - a dead reading looks maintained while it is not. Either use "
+                "them or stop reading them: %s" % (len(unused), ", ".join(unused)))
 
-    guide_ids = []
-    for g in guides_filled:
-        guide_ids.append(g["icon"])
-        for sec in g["sections"]:
-            for row in (sec.get("diagram") or {}).get("rows", []):
-                for cell in row:
-                    if cell and cell[0] == "i":
-                        guide_ids.append(cell[1])
-            for side in ("in", "out"):
-                for pair in (sec.get("io") or {}).get(side, []):
-                    guide_ids.append(pair[0])
+        guide_ids = []
+        for g in guides_filled:
+            guide_ids.append(g["icon"])
+            for sec in g["sections"]:
+                for row in (sec.get("diagram") or {}).get("rows", []):
+                    for cell in row:
+                        if cell and cell[0] == "i":
+                            guide_ids.append(cell[1])
+                for side in ("in", "out"):
+                    for pair in (sec.get("io") or {}).get(side, []):
+                        guide_ids.append(pair[0])
 
-    # ① 手引きが触れる id は、全部テクスチャつきで解決できること。
-    broken = []
-    for iid in dict.fromkeys(guide_ids):
-        ja, en, tex = reg.register(iid)
-        if not tex:
-            broken.append(iid)
-    if broken:
-        raise SystemExit(
-            "ERROR: the 使い方 tab references %d item(s) with no texture - they would render "
-            "as a '?' box while the build still 'succeeded': %s" % (len(broken), ", ".join(broken)))
+        # ① 手引きが触れる id は、全部テクスチャつきで解決できること。
+        broken = []
+        for iid in dict.fromkeys(guide_ids):
+            ja, en, tex = reg.register(iid)
+            if not tex:
+                broken.append(iid)
+        if broken:
+            raise SystemExit(
+                "ERROR: the 使い方 tab references %d item(s) with no texture - they would render "
+                "as a '?' box while the build still 'succeeded': %s" % (len(broken), ", ".join(broken)))
 
-    # ② 自動仕分け一式が、早見表のカードとして実在すること(改名・綴り違いの検出)。
-    card_ids = {c["id"] for c in ordered}
-    missing_cards = [i for i in SORTING_KIT if i not in card_ids]
-    if missing_cards:
-        raise SystemExit(
-            "ERROR: SORTING_KIT lists %d id(s) that are not cards in this sheet (renamed or "
-            "misspelled?): %s" % (len(missing_cards), ", ".join(missing_cards)))
+        # ② 自動仕分け一式が、早見表のカードとして実在すること(改名・綴り違いの検出)。
+        card_ids = {c["id"] for c in ordered}
+        missing_cards = [i for i in SORTING_KIT if i not in card_ids]
+        if missing_cards:
+            raise SystemExit(
+                "ERROR: SORTING_KIT lists %d id(s) that are not cards in this sheet (renamed or "
+                "misspelled?): %s" % (len(missing_cards), ", ".join(missing_cards)))
 
-    # ③ 一式の全部が、どれかの図に出ていること(= 説明されていない部品が無い)。
-    #    部品を増やして手引きに足し忘れたら、ここで生成が止まる。
-    shown = set(guide_ids)
-    undocumented = [i for i in SORTING_KIT if i not in shown]
-    if undocumented:
-        raise SystemExit(
-            "ERROR: %d sorting part(s) never appear in any 使い方 diagram - the owner would have "
-            "no way to learn what they do: %s" % (len(undocumented), ", ".join(undocumented)))
+        # ③ 一式の全部が、どれかの図に出ていること(= 説明されていない部品が無い)。
+        #    部品を増やして手引きに足し忘れたら、ここで生成が止まる。
+        shown = set(guide_ids)
+        undocumented = [i for i in SORTING_KIT if i not in shown]
+        if undocumented:
+            raise SystemExit(
+                "ERROR: %d sorting part(s) never appear in any 使い方 diagram - the owner would have "
+                "no way to learn what they do: %s" % (len(undocumented), ", ".join(undocumented)))
 
-    # ④ 一式の 10 枚が、**互いに違う絵**で出ていること。
-    #
-    # これは v1.8.0 で実際に起きた失敗そのものを二度と通さないための検査である。
-    # あのとき 9 枚のカードは同じ texture key(t140 = 共有の天面)を指していて、
-    # 早見表の上では見分けが付かなかった。カードは 9 枚あるので枚数の検査は通り、
-    # WARNING も出ず、**誰も気付けなかった**。
-    kit_tex = {}
-    for iid in SORTING_KIT:
-        tex = reg.items[iid][2]
-        kit_tex.setdefault(tex, []).append(iid)
-    dupes = {t: ids for t, ids in kit_tex.items() if len(ids) > 1}
-    if dupes:
-        raise SystemExit(
-            "ERROR: sorting parts share a picture in this sheet - the owner could not tell them "
-            "apart on the page (this is the v1.8.0 defect): "
-            + "; ".join("%s <- %s" % (t, ", ".join(ids)) for t, ids in dupes.items()))
+        # ④ 一式の 10 枚が、**互いに違う絵**で出ていること。
+        #
+        # これは v1.8.0 で実際に起きた失敗そのものを二度と通さないための検査である。
+        # あのとき 9 枚のカードは同じ texture key(t140 = 共有の天面)を指していて、
+        # 早見表の上では見分けが付かなかった。カードは 9 枚あるので枚数の検査は通り、
+        # WARNING も出ず、**誰も気付けなかった**。
+        kit_tex = {}
+        for iid in SORTING_KIT:
+            tex = reg.items[iid][2]
+            kit_tex.setdefault(tex, []).append(iid)
+        dupes = {t: ids for t, ids in kit_tex.items() if len(ids) > 1}
+        if dupes:
+            raise SystemExit(
+                "ERROR: sorting parts share a picture in this sheet - the owner could not tell them "
+                "apart on the page (this is the v1.8.0 defect): "
+                + "; ".join("%s <- %s" % (t, ", ".join(ids)) for t, ids in dupes.items()))
 
-    # ④.5 **HTML が素通しできない場所にタグを書いていないこと。**
-    #
-    # 描画側は場所によって innerHTML と textContent を使い分けている:
-    #   innerHTML  … lede / goal / steps / notes(強調を効かせたい文章)
-    #   textContent … 図の caption / セルの下の説明 / 文字だけのセル
-    # 後者に <b> を書くと、**画面に「<b>」という 3 文字がそのまま出る**。
-    # 生成は成功し、警告も出ず、ブラウザで見るまで分からない —— 実際に一度そうなった。
-    text_only = []
-    for g in guides_filled:
-        for sec in g["sections"]:
-            dia = sec.get("diagram") or {}
-            if dia.get("caption"):
-                text_only.append(("diagram caption", dia["caption"]))
-            for row in dia.get("rows", []):
-                for cell in row:
-                    if cell and cell[0] == "n":
-                        text_only.append(("text cell", cell[1]))
-                    elif cell and cell[0] == "i" and len(cell) > 2 and cell[2]:
-                        text_only.append(("icon caption", cell[2]))
-            for side in ("in", "out"):
-                for pair in (sec.get("io") or {}).get(side, []):
-                    text_only.append(("io chip", pair[1]))
-    tagged = [(where, s) for where, s in text_only if re.search(r"<[a-zA-Z/]", s)]
-    if tagged:
-        raise SystemExit(
-            "ERROR: %d 使い方 string(s) contain HTML in a place the page renders as plain text - "
-            "the markup would be shown to the owner as literal characters: %s"
-            % (len(tagged), "; ".join("%s %r" % (w, s[:60]) for w, s in tagged)))
+        # ④.5 **HTML が素通しできない場所にタグを書いていないこと。**
+        #
+        # 描画側は場所によって innerHTML と textContent を使い分けている:
+        #   innerHTML  … lede / goal / steps / notes(強調を効かせたい文章)
+        #   textContent … 図の caption / セルの下の説明 / 文字だけのセル
+        # 後者に <b> を書くと、**画面に「<b>」という 3 文字がそのまま出る**。
+        # 生成は成功し、警告も出ず、ブラウザで見るまで分からない —— 実際に一度そうなった。
+        text_only = []
+        for g in guides_filled:
+            for sec in g["sections"]:
+                dia = sec.get("diagram") or {}
+                if dia.get("caption"):
+                    text_only.append(("diagram caption", dia["caption"]))
+                for row in dia.get("rows", []):
+                    for cell in row:
+                        if cell and cell[0] == "n":
+                            text_only.append(("text cell", cell[1]))
+                        elif cell and cell[0] == "i" and len(cell) > 2 and cell[2]:
+                            text_only.append(("icon caption", cell[2]))
+                for side in ("in", "out"):
+                    for pair in (sec.get("io") or {}).get(side, []):
+                        text_only.append(("io chip", pair[1]))
+        tagged = [(where, s) for where, s in text_only if re.search(r"<[a-zA-Z/]", s)]
+        if tagged:
+            raise SystemExit(
+                "ERROR: %d 使い方 string(s) contain HTML in a place the page renders as plain text - "
+                "the markup would be shown to the owner as literal characters: %s"
+                % (len(tagged), "; ".join("%s %r" % (w, s[:60]) for w, s in tagged)))
 
-    # ⑤ 電力 MOD のカードが全部どれかの図に出ていること。
-    #    **ブロックを増やして手引きに足し忘れたら、ここで生成が止まる。**
-    #    (§39 で「MODS に足し忘れて 10 レシピが丸ごと落ちた」のと同じ穴を、手引き側で塞ぐ。)
-    power_cards = sorted(i for i in card_ids if i.startswith("sorakaze_power:"))
-    if not power_cards:
-        raise SystemExit(
-            "ERROR: this sheet has no sorakaze_power cards at all - the 電力 guide would be "
-            "describing blocks that do not exist (an empty set makes every check below "
-            "vacuously true, which is exactly the CLAUDE.md section 30.4 failure)")
-    undoc_power = [i for i in power_cards if i not in shown]
-    if undoc_power:
-        raise SystemExit(
-            "ERROR: %d 電力 block(s) never appear in any 使い方 diagram - the owner would have "
-            "no way to learn what they do: %s" % (len(undoc_power), ", ".join(undoc_power)))
+        # ⑤ 電力 MOD のカードが全部どれかの図に出ていること。
+        #    **ブロックを増やして手引きに足し忘れたら、ここで生成が止まる。**
+        #    (§39 で「MODS に足し忘れて 10 レシピが丸ごと落ちた」のと同じ穴を、手引き側で塞ぐ。)
+        power_cards = sorted(i for i in card_ids if i.startswith("sorakaze_power:"))
+        if not power_cards:
+            raise SystemExit(
+                "ERROR: this sheet has no sorakaze_power cards at all - the 電力 guide would be "
+                "describing blocks that do not exist (an empty set makes every check below "
+                "vacuously true, which is exactly the CLAUDE.md section 30.4 failure)")
+        undoc_power = [i for i in power_cards if i not in shown]
+        if undoc_power:
+            raise SystemExit(
+                "ERROR: %d 電力 block(s) never appear in any 使い方 diagram - the owner would have "
+                "no way to learn what they do: %s" % (len(undoc_power), ", ".join(undoc_power)))
 
-    # ⑥ 「電気が要る機器」の一覧が、タグと 1 個ずれても止まること。
-    #    出典は data の block タグなので、相手の MOD に機器が増えれば自動で効く。
-    if not POWERED_DEVICE_IDS:
-        raise SystemExit("ERROR: the power_devices block tag resolved to nothing - the "
-                         "「電気が要る機器」 list would be vacuously complete")
-    undoc_dev = [i for i in (POWERED_DEVICE_IDS + POWERED_EXTRA_IDS)
-                 if i not in shown and not i.endswith("_part")]
-    if undoc_dev:
-        raise SystemExit(
-            "ERROR: %d device(s) now need electricity but are not shown in the 使い方 tab - "
-            "the owner would find them dead with no explanation: %s"
-            % (len(undoc_dev), ", ".join(undoc_dev)))
+        # ⑥ 「電気が要る機器」の一覧が、タグと 1 個ずれても止まること。
+        #    出典は data の block タグなので、相手の MOD に機器が増えれば自動で効く。
+        if not POWERED_DEVICE_IDS:
+            raise SystemExit("ERROR: the power_devices block tag resolved to nothing - the "
+                             "「電気が要る機器」 list would be vacuously complete")
+        undoc_dev = [i for i in (POWERED_DEVICE_IDS + POWERED_EXTRA_IDS)
+                     if i not in shown and not i.endswith("_part")]
+        if undoc_dev:
+            raise SystemExit(
+                "ERROR: %d device(s) now need electricity but are not shown in the 使い方 tab - "
+                "the owner would find them dead with no explanation: %s"
+                % (len(undoc_dev), ", ".join(undoc_dev)))
 
-    guides_json = guides_filled
-    n_examples = sum(len(g["sections"]) for g in guides_filled)
-    print(f"sorting kit: {len(SORTING_KIT)} parts -> {len(kit_tex)} distinct pictures")
-    print(f"使い方 tab: {len(guides_filled)} topic(s), {n_examples} worked example(s), "
-          f"{len(set(guide_ids))} distinct icons - all resolved")
-    print(f"電力 guide: {len(POWER_FACTS)} value(s) read live out of the implementation "
-          f"(none hand-typed); {len(power_cards)} 電力 block(s) and "
-          f"{len(POWERED_DEVICE_IDS) + len(POWERED_EXTRA_IDS)} powered device(s) all documented")
+        guides_json = guides_filled
+        n_examples = sum(len(g["sections"]) for g in guides_filled)
+        print(f"sorting kit: {len(SORTING_KIT)} parts -> {len(kit_tex)} distinct pictures")
+        print(f"使い方 tab: {len(guides_filled)} topic(s), {n_examples} worked example(s), "
+              f"{len(set(guide_ids))} distinct icons - all resolved")
+        print(f"電力 guide: {len(POWER_FACTS)} value(s) read live out of the implementation "
+              f"(none hand-typed); {len(power_cards)} 電力 block(s) and "
+              f"{len(POWERED_DEVICE_IDS) + len(POWERED_EXTRA_IDS)} powered device(s) all documented")
 
     cat_index = {cat: i for i, (cat, _icon, _n) in enumerate(cats_meta)}
     cards_json = []

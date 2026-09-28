@@ -178,6 +178,13 @@ def check(root, old, new, baseline):
         # 項目が 13 言語ぶん増える）。増えた履歴が古い版に言及するのは正当で、たとえば
         # 「1.0.0 は 26.2 向けだった」は事実である。性質 2 が禁じるのは **既存の履歴を書き換える/消す**
         # ことだけで、増やすことではない。消しても改名しても、基準表側の件数が減るので上で捕まる。
+        if not baseline:
+            # 2026-09-28: Alpha's history was erased on the owner's instruction (「抹消」). The one entry that
+            # named the old version (v2.5.0, the jar rename) went with it, so there is NO history left that
+            # mentions it, and this property has nothing to protect. Said on every run, not passed in silence;
+            # the self-test keeps a synthetic control so the property can still be seen to fire.
+            notes.append("2. 履歴の基準表が空: 26.2 に言及する履歴が 1 件も残っていない"
+                         "（Alpha の履歴は 2026-09-28 に所有者の指示で消した）。この性質は今は守る物が無い")
         added = sorted(set(now) - set(baseline))
         if added:
             notes.append("2. 履歴が増えている（正当な追記として許す）: %s"
@@ -336,12 +343,12 @@ def self_test(root, old, new):
     base = history_counts(root, old)
     results = []
 
-    def run(label, mutate, want_property):
+    def run(label, mutate, want_property, baseline=None):
         tmp = tempfile.mkdtemp(prefix="relswitch-")
         work = os.path.join(tmp, "site")
         shutil.copytree(root, work, ignore=shutil.ignore_patterns(".git", "downloads", "assets", "node_modules"))
         mutate(work)
-        fails, _ = check(work, old, new, base)
+        fails, _ = check(work, old, new, base if baseline is None else baseline)
         hit = [f for f in fails if f.startswith("%d." % want_property)]
         shutil.rmtree(tmp, ignore_errors=True)
         ok = bool(hit)
@@ -371,7 +378,8 @@ def self_test(root, old, new):
             handle.write("\n<code>alpha-guns-1.0.0+mc%s.jar</code>\n" % old)
 
     run("現行のリンクに古い zip を 1 つ植える", plant_live, 1)
-    run("履歴を 1 ファイルだけ新しい版に書き換える", erase_history, 2)
+    if base:
+        run("履歴を 1 ファイルだけ新しい版に書き換える", erase_history, 2)
     run("導入手順に古い例示を 1 つ植える", plant_guide, 3)
 
     def untrack_zip(work):
@@ -426,13 +434,13 @@ def self_test(root, old, new):
             json.dump(man, fh, ensure_ascii=False, indent=2)
             fh.write("\n")
 
-    def run_green(label, mutate, must_not_fire):
+    def run_green(label, mutate, must_not_fire, baseline=None):
         """**壊していないときは緑**であることを確かめる。赤が空振りでない証拠。"""
         tmp = tempfile.mkdtemp(prefix="relswitch-")
         work = os.path.join(tmp, "site")
         shutil.copytree(root, work, ignore=shutil.ignore_patterns(".git", "downloads", "assets", "node_modules"))
         mutate(work)
-        fails, _ = check(work, old, new, base)
+        fails, _ = check(work, old, new, base if baseline is None else baseline)
         hit = [f for f in fails if f.startswith("%d." % must_not_fire)]
         shutil.rmtree(tmp, ignore_errors=True)
         ok = not hit
@@ -479,6 +487,22 @@ def self_test(root, old, new):
         with open(os.path.join(work, "glimpse_manifest.json"), "w", encoding="utf-8") as fh:
             json.dump(man, fh, ensure_ascii=False, indent=2)
             fh.write("\n")
+
+    if not base:
+        # 2026-09-28: no real history mentions the old version any more (see check()), so there is nothing
+        # to erase. The property is exercised on a SYNTHETIC baseline instead -- a history file that "used to"
+        # carry one mention and now carries none -- with the matching green control first, so that a red
+        # here means the property fired and not that the material was missing.
+        synthetic = {"changelog/index.html": 1}
+
+        def plant_one_mention(work):
+            path = os.path.join(work, "changelog", "index.html")
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "a", encoding="utf-8") as handle:
+                handle.write("\n<p>+mc%s</p>\n" % old)
+
+        run_green("履歴が基準表どおり（合成の基準表・対照）", plant_one_mention, 2, baseline=synthetic)
+        run("履歴の 1 件が消えた（合成の基準表）", lambda work: None, 2, baseline=synthetic)
 
     run_green("成果物を置いただけ（壊していない）", stage_only, 5)
     run("1 ブランドだけ中身が古い成果物を指させる", stale_artefact, 5)

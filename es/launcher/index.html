@@ -97,12 +97,11 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Store</p>
-                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry, then Alpha. Aureum stands apart, in a genre of its own.</p>
+                <p class="mega-panel__lede">The brand line, from the top: OUKA, then Cherry. Aureum stands apart, in a genre of its own.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../ouka/"><span class="mega-link__label">OUKA</span></a></li>
             <li><a class="mega-link" href="../cherry/"><span class="mega-link__label">Cherry</span></a></li>
-            <li><a class="mega-link" href="../alpha/"><span class="mega-link__label">Alpha</span></a></li>
             <li><a class="mega-link" href="../aureum/"><span class="mega-link__label">Aureum</span></a></li>
               </ul>
             </div>
@@ -117,12 +116,11 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Get started</p>
-                <p class="mega-panel__lede">Download the pack, install it on your server, and let Corvus keep every module up to date.</p>
+                <p class="mega-panel__lede">Get Corvus, and let it keep every mod up to date.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../download/"><span class="mega-link__label">Descargas</span></a></li>
             <li><a class="mega-link is-current" href="../launcher/" aria-current="page"><span class="mega-link__label">Corvus</span></a></li>
-            <li><a class="mega-link" href="../guide/"><span class="mega-link__label">Guía de instalación</span></a></li>
             <li><a class="mega-link" href="../skin/"><span class="mega-link__label">Sparxie skin</span></a></li>
               </ul>
             </div>
@@ -137,12 +135,10 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Reference</p>
-                <p class="mega-panel__lede">Every crafting recipe, every dimensional gate, and a tour of what the suite actually adds to the game.</p>
+                <p class="mega-panel__lede">Every crafting recipe for Cherry and OUKA.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../recipes/"><span class="mega-link__label">Recetas</span></a></li>
-            <li><a class="mega-link" href="../gates/"><span class="mega-link__label">Portales</span><span class="mega-link__sub">Portales y puertas</span></a></li>
-            <li><a class="mega-link" href="../features/"><span class="mega-link__label">Novedades</span><span class="mega-link__sub">Guía de funciones</span></a></li>
               </ul>
             </div>
           </div>
@@ -156,13 +152,11 @@
             <div class="mega-panel__inner">
               <div class="mega-panel__blurb">
                 <p class="mega-panel__title">Status</p>
-                <p class="mega-panel__lede">What shipped in each release, what is planned next, and what is still known to be broken.</p>
+                <p class="mega-panel__lede">What shipped in each release, what is planned next, and how to hear about it on Discord.</p>
               </div>
               <ul class="mega-links">
             <li><a class="mega-link" href="../changelog/"><span class="mega-link__label">Historial</span><span class="mega-link__sub">Historial de actualizaciones</span></a></li>
             <li><a class="mega-link" href="../upcoming/"><span class="mega-link__label">Coming next</span></a></li>
-            <li><a class="mega-link" href="../roadmap/"><span class="mega-link__label">Hoja de ruta</span></a></li>
-            <li><a class="mega-link" href="../known-issues/"><span class="mega-link__label">Problemas conocidos</span></a></li>
             <li><a class="mega-link" href="../discord/"><span class="mega-link__label">Discord bot</span></a></li>
               </ul>
             </div>
@@ -197,20 +191,20 @@
 <div class="hero">
   <span class="hero__eyebrow">Corvus</span>
   <h1>Corvus</h1>
-  <p class="lede">Corvus es una pequeña aplicación de escritorio que mantiene al día automáticamente el pack de MODs Alpha. Consulta este Wiki para comprobar cuál es la última versión publicada, descarga lo que haya cambiado y, antes de tocar la carpeta del pack, coteja todos los archivos descargados con la suma de comprobación SHA-256 que publica este Wiki. La única fuente en la que confía es este Wiki.</p>
+  <p class="lede">Corvus es una pequeña aplicación de escritorio que mantiene tus mods al día automáticamente. Consulta este Wiki para saber cuál es la versión actual, descarga las actualizaciones por ti y verifica cada archivo descargado con una suma SHA-256 publicada aquí antes de tocar tu carpeta mods. Este Wiki es la única fuente en la que confía.</p>
 </div>
 <div class="toc"><div class="toc__title">Índice</div><ol><li><a href="#what-it-is">Qué es Corvus y por qué se creó</a></li><li><a href="#installing">Cómo instalar Corvus</a></li><li><a href="#pointing-at-existing-pack">Indicar una carpeta de pack de MODs que ya tengas</a></li><li><a href="#update-modes">Diferencia entre el modo de actualización automática y el manual</a></li><li><a href="#confirming-an-update-applied">Cómo comprobar que la actualización se ha aplicado de verdad</a></li><li><a href="#restoring-from-backup">Restaurar desde una copia de seguridad cuando una actualización sale mal</a></li></ol></div>
 <div id="what-it-is"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Qué es Corvus y por qué se creó</h2>
-      <p>Mantener a mano un pack de MODs grande obliga a visitar la página de descarga, comparar los números de versión, descargar el ZIP nuevo y volver a extraerlo en la carpeta correcta cada vez que sale una versión. Corvus automatiza todo eso: lee la información de publicación de este Wiki, la compara con el pack que ya tienes instalado y descarga solo lo que haya cambiado.</p><p>Los archivos que descarga el lanzador se cotejan siempre, antes de usarlos, con la suma de comprobación SHA-256 que publica este Wiki. Si no coinciden, ese archivo no se instala. Sobre qué es «la última versión», la única fuente en la que confía el lanzador es este Wiki.</p>
+      <p>Mantener los mods al día a mano significa volver a la página de descarga, comparar números de versión, descargar un archivo nuevo y ponerlo en la carpeta correcta cada vez que sale una versión. Corvus lo automatiza: lee el manifiesto de versiones de este Wiki, lo compara con lo que ya tienes instalado y descarga solo lo que ha cambiado.</p><p>Cada descarga que hace el lanzador se comprueba con una suma SHA-256 publicada por este Wiki antes de usarse. Si un archivo descargado no coincide, el lanzador no lo instala. Este Wiki es la única fuente de verdad del lanzador sobre cuál es la versión «actual».</p>
     </div></div>
 <div id="installing"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Cómo instalar Corvus</h2>
-      <p>Corvus se distribuye en 2 formatos desde la página de descarga de este Wiki, en el mismo sitio que el ZIP del pack de MODs.</p><ul><li><strong>Instaladores nativos para cada sistema operativo</strong> (<code>.msi</code> para Windows, <code>.dmg</code> para macOS y <code>.deb</code> para Linux): se instalan con los mismos pasos que cualquier aplicación de escritorio y no necesitan Java. Como todavía no están firmados digitalmente, el sistema operativo muestra un aviso la primera vez que los abres. En macOS, en lugar de hacer doble clic, haz clic derecho sobre la aplicación y elige «Abrir». En Windows, en el aviso de SmartScreen elige «Más información» → «Ejecutar de todas formas».</li><li><strong>El jar multiplataforma</strong> <code>corvus-2.3.0.jar</code>: un mismo archivo funciona en Windows, macOS y Linux, pero necesita tener ya instalado Java 25 o posterior. Si al hacer doble clic no se abre, abre una terminal (o el símbolo del sistema) en la carpeta donde lo hayas descargado y ejecuta <code>java -jar corvus-2.3.0.jar</code>.</li></ul>
+      <p>Corvus está disponible en la página de descarga de este Wiki en dos formas:</p><ul><li><strong>Instaladores nativos para cada sistema operativo</strong> (<code>.msi</code> para Windows, <code>.dmg</code> para macOS y <code>.deb</code> para Linux): se instalan con los mismos pasos que cualquier aplicación de escritorio y no necesitan Java. Como todavía no están firmados digitalmente, el sistema operativo muestra un aviso la primera vez que los abres. En macOS, en lugar de hacer doble clic, haz clic derecho sobre la aplicación y elige «Abrir». En Windows, en el aviso de SmartScreen elige «Más información» → «Ejecutar de todas formas».</li><li><strong>El jar multiplataforma</strong> <code>corvus-2.3.0.jar</code>: un mismo archivo funciona en Windows, macOS y Linux, pero necesita tener ya instalado Java 25 o posterior. Si al hacer doble clic no se abre, abre una terminal (o el símbolo del sistema) en la carpeta donde lo hayas descargado y ejecuta <code>java -jar corvus-2.3.0.jar</code>.</li></ul>
     </div></div>
 <div id="pointing-at-existing-pack"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Indicar una carpeta de pack de MODs que ya tengas</h2>
-      <p>Aunque ya hayas instalado a mano el pack de MODs Alpha, no tienes que empezar de cero. La primera vez que lo abres, en lugar de crear una carpeta nueva, puedes elegir la carpeta donde ya está tu pack de MODs. Si le indicas tu carpeta mods actual, a partir de ahí el lanzador trata esa instalación como la que gestiona él.</p>
+      <p>Si ya instalaste los mods a mano, no necesitas empezar de nuevo. En el primer arranque, el lanzador te deja elegir la carpeta donde ya están tus mods en lugar de crear una nueva. Apunta a tu carpeta mods existente y el lanzador tratará esa instalación como la que gestiona desde entonces.</p>
     </div></div>
 <div id="update-modes"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Diferencia entre el modo de actualización automática y el manual</h2>
@@ -218,7 +212,7 @@
     </div></div>
 <div id="confirming-an-update-applied"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Cómo comprobar que la actualización se ha aplicado de verdad</h2>
-      <p>A partir de la versión 1.1.0, al pulsar Update los archivos de MOD nuevos se escriben directamente en la carpeta <code>mods</code> del pack. El mensaje «Update complete» no aparece hasta que el lanzador ha vuelto a revisar de verdad el contenido de la carpeta después de actualizar y ha confirmado que los archivos esperados están ahí. Si algo falla por el camino, se informa del fallo en lugar de mostrar un éxito falso.</p><p>Cómo comprobarlo tú mismo en macOS: abre la carpeta que aparece en la sección General (en el Finder, pulsa <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> y pega la ruta), mira dentro de <code>mods</code> y comprueba el número de versión que aparece en el nombre de cada archivo <code>alpha-*.jar</code> antes y después de pulsar Update.</p><p class="callout callout--info">Si actualizas desde una carpeta de pack que tocó por última vez un lanzador anterior a la 1.1.0, solo la primera vez puede quedar el jar de la versión antigua de ese MOD junto al nuevo (los lanzadores anteriores no llevaban ningún registro de qué archivos habían colocado ellos mismos). A partir de la siguiente actualización se resuelve solo. Si te molesta antes, no hay problema en borrar a mano el <code>alpha-*.jar</code> de la versión antigua, una vez que hayas comprobado que el nuevo está ahí.</p>
+      <p>A partir de la versión 1.1.0, al pulsar Update los archivos de MOD nuevos se escriben directamente en la carpeta <code>mods</code> del pack. El mensaje «Update complete» no aparece hasta que el lanzador ha vuelto a revisar de verdad el contenido de la carpeta después de actualizar y ha confirmado que los archivos esperados están ahí. Si algo falla por el camino, se informa del fallo en lugar de mostrar un éxito falso.</p><p>Cómo comprobarlo tú mismo en macOS: abre la carpeta que aparece en la sección General (en el Finder, pulsa <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>G</kbd> y pega la ruta), mira dentro de <code>mods</code> y comprueba el número de versión que aparece en el nombre de cada archivo <code>cherry-*.jar</code> antes y después de pulsar Update.</p><p class="callout callout--info">Si actualizas desde una carpeta de pack que tocó por última vez un lanzador anterior a la 1.1.0, solo la primera vez puede quedar el jar de la versión antigua de ese MOD junto al nuevo (los lanzadores anteriores no llevaban ningún registro de qué archivos habían colocado ellos mismos). A partir de la siguiente actualización se resuelve solo. Si te molesta antes, no hay problema en borrar a mano el <code>cherry-*.jar</code> de la versión antigua, una vez que hayas comprobado que el nuevo está ahí.</p>
     </div></div>
 <div id="restoring-from-backup"><div class="card" style="margin-bottom:20px;">
       <h2 style="margin-top:0;border-top:none;padding-top:0;">Restaurar desde una copia de seguridad cuando una actualización sale mal</h2>
