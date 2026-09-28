@@ -113,6 +113,13 @@ The release block (2026-09-13, Cherry V1.0.0 "The Lunar Genesis Update")
     jar -- the aircraft take off, fly and land in AircraftTests (with the new
     look-to-fly GA27/GA28) and AirportTests, and a vessel sails a channel in
     HelmTests and AutopilotTests.
+  * 2026-09-28, V1.2.0 "Celestial Crucible & Tactical Superiority" (the V1.2.0
+    specification; owner 2026-09-27: 「仮のままで良いです」): the line becomes
+    "Beyond the Moon, to Mars." and the codename changes with it. The line claims
+    only what the MARS client test shows: the Apex-1's Stellar Navigation console
+    sends the rocket from the Earth pad to Mars, the thin air burns on the way
+    down, and it lands on the red ground at 0.38 g (MarsClientTest; MarsTests;
+    notes 1.24-1.32).
   * The download button is in the brand's own colours, the way the Aureum page
     carries its own gold one; its label, "File size" and "SHA-256" are the
     Download page's own translations (data/i18n/<lang>.json "download"), with
@@ -194,79 +201,79 @@ COPY = {
         "title": "Cherry",
         "desc": "OUKA と Alpha のあいだに位置するブランド。",
         "lede": "OUKA と Alpha のあいだに位置するブランド。",
-        "line": "空へ、そして海へ。",
+        "line": "月の先へ、火星へ。",
     },
     "en": {
         "title": "Cherry",
         "desc": "The tier between OUKA and Alpha.",
         "lede": "The tier between OUKA and Alpha.",
-        "line": "Into the air, and out to sea.",
+        "line": "Beyond the Moon, to Mars.",
     },
     "es": {
         "title": "Cherry",
         "desc": "El nivel entre OUKA y Alpha.",
         "lede": "El nivel entre OUKA y Alpha.",
-        "line": "Al aire, y a la mar.",
+        "line": "Más allá de la Luna, hacia Marte.",
     },
     "fr": {
         "title": "Cherry",
         "desc": "Le niveau entre OUKA et Alpha.",
         "lede": "Le niveau entre OUKA et Alpha.",
-        "line": "Dans les airs, et sur la mer.",
+        "line": "Au-delà de la Lune, vers Mars.",
     },
     "zh": {
         "title": "Cherry",
         "desc": "位于 OUKA 与 Alpha 之间的品牌。",
         "lede": "位于 OUKA 与 Alpha 之间的品牌。",
-        "line": "飞向天空，驶向大海。",
+        "line": "越过月球，前往火星。",
     },
     "ko": {
         "title": "Cherry",
         "desc": "OUKA와 Alpha 사이에 자리한 브랜드입니다.",
         "lede": "OUKA와 Alpha 사이에 자리한 브랜드입니다.",
-        "line": "하늘로, 그리고 바다로.",
+        "line": "달 너머, 화성으로.",
     },
     "pt-br": {
         "title": "Cherry",
         "desc": "O nível entre OUKA e Alpha.",
         "lede": "O nível entre OUKA e Alpha.",
-        "line": "Para o ar, e para o mar.",
+        "line": "Além da Lua, rumo a Marte.",
     },
     "it": {
         "title": "Cherry",
         "desc": "Il livello tra OUKA e Alpha.",
         "lede": "Il livello tra OUKA e Alpha.",
-        "line": "In volo, e per mare.",
+        "line": "Oltre la Luna, verso Marte.",
     },
     "ar": {
         "title": "Cherry",
         "desc": "المستوى بين OUKA و Alpha.",
         "lede": "المستوى بين OUKA و Alpha.",
-        "line": "إلى الجو، وإلى البحر.",
+        "line": "ما وراء القمر، نحو المريخ.",
     },
     "ru": {
         "title": "Cherry",
         "desc": "Уровень между OUKA и Alpha.",
         "lede": "Уровень между OUKA и Alpha.",
-        "line": "В небо — и в море.",
+        "line": "За Луну — к Марсу.",
     },
     "id": {
         "title": "Cherry",
         "desc": "Tingkat di antara OUKA dan Alpha.",
         "lede": "Tingkat di antara OUKA dan Alpha.",
-        "line": "Ke udara, dan ke laut.",
+        "line": "Melampaui Bulan, menuju Mars.",
     },
     "de": {
         "title": "Cherry",
         "desc": "Die Stufe zwischen OUKA und Alpha.",
         "lede": "Die Stufe zwischen OUKA und Alpha.",
-        "line": "In die Luft, und auf die See.",
+        "line": "Über den Mond hinaus, zum Mars.",
     },
     "tr": {
         "title": "Cherry",
         "desc": "OUKA ile Alpha arasındaki seviye.",
         "lede": "OUKA ile Alpha arasındaki seviye.",
-        "line": "Göğe ve denize.",
+        "line": "Ay'ın ötesine, Mars'a.",
     },
 }
 
@@ -275,9 +282,8 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-# 1.1.4 is a sound fix: the line "Into the air, and out to sea." and the codename stay true
-COPY_FOR = "1.1.4"
-CODENAME = "The Aerospace and Naval Update"
+COPY_FOR = "1.2.0"
+CODENAME = "Celestial Crucible & Tactical Superiority"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^Cherry_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
 # The Download page's own translations (data/i18n/<lang>.json "download").

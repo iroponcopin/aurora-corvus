@@ -326,10 +326,12 @@ def _panel_rows_swapped(w):
     starts, panel = panels_of(html)
     start = next(s for s, b, _ in starts if b == "cherry")
     body = panel["cherry"]
-    first, second = re.findall(r'data-version="([^"]*)"', body)[:2]
-    swapped = (body.replace(f'data-version="{first}"', "\0", 1)
-               .replace(f'data-version="{second}"', f'data-version="{first}"', 1)
-               .replace("\0", f'data-version="{second}"', 1))
+    # swap the first two WHOLE rows, dates and all. Swapping only their version labels was caught only while the two
+    # newest releases shared a day (V1.1.3 and V1.1.4, ordered by the version tie-break); with V1.2.0 (09-28) above V1.1.4
+    # (09-24) the dates stayed in order, the page was not misordered at all, and the plant went unseen (2026-09-28)
+    cuts = [m.start() for m in re.finditer(r'<div class="cl__release"', body)]
+    a, b, c = cuts[0], cuts[1], cuts[2]
+    swapped = body[:a] + body[b:c] + body[a:b] + body[c:]
     w["pages"]["zh"] = html[:start] + swapped + html[start + len(body):]
 
 
