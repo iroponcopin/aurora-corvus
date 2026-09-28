@@ -1,14 +1,45 @@
 {
  "lang": "en",
- "updated": "2026-09-20",
+ "updated": "2026-09-28",
  "title": "Changelog",
- "updated_label": "Updated 2026-09-20",
+ "updated_label": "Updated 2026-09-28",
  "note": "The damage, speed, and other numbers shown here are the default values at the time of that release. Server-side config adjustments may mean the numbers you actually experience in-game are different.",
  "groups": [
   {
    "label": "V4.4",
-   "summary": "Minecraft 26.3 support: nothing new has been added",
+   "summary": "Alpha is retired: this update switches it off",
    "releases": [
+    {
+     "version": "v4.4.0.2",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Alpha is retired: this update switches it off",
+     "summary": "<b>This is the last Alpha release. It switches Alpha off.</b> The 13 mods are replaced by placeholders that add nothing to the game, and nothing new has been added. Blocks that Alpha added turn into empty air, and once a world has been saved that way they do not come back. <b>Back up your worlds before you update.</b>",
+     "sections": [
+      {
+       "title": "Highlights",
+       "items": [
+        "Alpha is switched off. The 13 mods are replaced by placeholders that add nothing to the game (Cherry, OUKA and Aureum are not touched)",
+        "Only the overworld's height limit (Y up to 1023) stays, so that nothing you built above Y=319 with ordinary blocks is deleted",
+        "Corvus removes the old jars, places the placeholders and keeps a backup of the files it replaced. If you installed by hand, or run a server, delete the old jars as the pack's README says"
+       ]
+      },
+      {
+       "title": "Warnings",
+       "items": [
+        "<b>Back up your worlds first.</b> Blocks that Alpha added turn into empty air when a world is opened without Alpha, and once it has been saved that way they are gone for good. Putting Alpha back does not restore them (checked on a dedicated server). Alpha's items and creatures are expected to go the same way (not tested)",
+        "A server and its players must move together: a player who still has Alpha cannot join a server that no longer does, and the other way round",
+        "If \"Install updates automatically\" is on in Corvus, this update is applied without asking. Corvus's backup covers the mods folder, not your worlds"
+       ]
+      },
+      {
+       "title": "Not yet implemented/confirmed at this point",
+       "items": [
+        "The Alpha pages on this Wiki, such as the recipes, gates, features and the install guide, are left as they were in the last playable version, V4.4.0.1"
+       ]
+      }
+     ]
+    },
     {
      "version": "v4.4.0.1",
      "date": "2026-09-20",

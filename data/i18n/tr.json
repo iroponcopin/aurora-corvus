@@ -2849,6 +2849,43 @@
     "26.2 için yapılmış V4.4.0 ile karıştırmayın. mods klasörünüzün içeriğini değiştirin"
    ],
    "known_limitations": []
+  },
+  {
+   "id": "v4.4.0.2",
+   "release": "v4.4.0.2",
+   "date": "2026-09-28",
+   "type": "release",
+   "title": "Alpha emekli oluyor: bu güncelleme onu kapatır",
+   "summary": "<b>Bu, Alpha'nın son sürümüdür. Alpha'yı kapatır.</b> 13 mod, oyuna hiçbir şey eklemeyen yer tutucularla değiştirilir; yeni bir şey eklenmedi. Alpha'nın eklediği bloklar boş havaya dönüşür ve dünya böyle kaydedildikten sonra geri gelmez. <b>Güncellemeden önce dünyalarınızı yedekleyin.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0.2",
+    "sorakaze_boss": "4.4.0.2",
+    "sorakaze_deco": "4.4.0.2",
+    "sorakaze_fallout": "4.4.0.2",
+    "sorakaze_guns": "4.4.0.2",
+    "sorakaze_phone": "4.4.0.2",
+    "sorakaze_planarcadia": "4.4.0.2",
+    "sorakaze_power": "4.4.0.2",
+    "sorakaze_rail": "4.4.0.2",
+    "sorakaze_sapporo": "4.4.0.2",
+    "sorakaze_sky": "4.4.0.2",
+    "sorakaze_survival": "4.4.0.2",
+    "sorakaze_vehicles": "4.4.0.2"
+   },
+   "highlights": [
+    "Alpha kapatılır. 13 mod, oyuna hiçbir şey eklemeyen yer tutucularla değiştirilir (Cherry, OUKA ve Aureum'a dokunulmaz)",
+    "Yalnızca Ana Dünya'nın yükseklik sınırı (Y=1023'e kadar) kalır; böylece Y=319'un üstünde sıradan bloklarla yaptığınız şeyler silinmez",
+    "Corvus eski jar dosyalarını kaldırır, yer tutucuları koyar ve değiştirdiği dosyaların yedeğini tutar. Elle kurduysanız veya sunucu işletiyorsanız, paketin README'sinde anlatıldığı gibi eski jar dosyalarını silin"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Önce dünyalarınızı yedekleyin.</b> Alpha'nın eklediği bloklar, dünya Alpha olmadan açıldığında boş havaya dönüşür ve bu şekilde kaydedildikten sonra kalıcı olarak yok olur. Alpha'yı geri koymak onları geri getirmez (özel bir sunucuda doğrulandı). Alpha'nın eşyalarının ve yaratıklarının da aynı akıbete uğraması beklenir (denenmedi)",
+    "Sunucu ve oyuncular birlikte geçmelidir: hâlâ Alpha'sı olan bir oyuncu, artık Alpha'sı olmayan bir sunucuya katılamaz; tersi de geçerlidir",
+    "Corvus'ta «Güncellemeleri otomatik kur» açıksa bu güncelleme sormadan uygulanır. Corvus'un yedeği mods klasörünü kapsar, dünyalarınızı değil"
+   ],
+   "known_limitations": [
+    "Bu Wiki'deki Alpha sayfaları (tarifler, geçitler, özellikler ve kurulum kılavuzu) son oynanabilir sürüm V4.4.0.1'deki hâliyle bırakılmıştır"
+   ]
   }
  ],
  "roadmap": {
@@ -7017,6 +7054,13 @@
   "aureum_body": "Aureum, Alpha paketinden bağımsız, ayrı bir moddur. Oyun mantığını, belleği ve sunucu tick maliyetini optimize eder ve kasıtlı olarak chunk render hattına asla dokunmaz. Sodium'un yerini almaz — Sodium'un dokunmadığı tarafı optimize eder, bu yüzden onunla birlikte güvenle çalıştırılabilir. Daha yüksek FPS isterseniz Sodium'u ayrıca kurun.",
   "aureum_cta": "Aureum'u indir",
   "aureum_note": "Şimdiye kadar ölçülen: 2.209 yüklü chunk'ta -6,3 MB, benzer boyutta yeni bir alan üretildikten sonra -17,2 MB (iki bağımsız çalıştırmada aynı sonuç). MSPT (tick süresi) ölçüm gürültüsü sınırları içinde değişmedi. İki istemci tarafı seçeneği (parçacık sınırı, blok-varlık render mesafesi) varsayılan olarak kapalı ve ölçülmemiştir, çünkü bu geliştirme ortamında istemci bulunmuyor. Kurulum ve yapılandırma için GitHub'daki README'ye bakın."
+ },
+ "download_retired": {
+  "intro": "Alpha emekli oldu. Bu sayfa, Alpha'yı kapatan son sürümü, V{pack_version}'i sunar. ZIP, oyuna hiçbir şey eklemeyen {mod_count} yer tutucu jar ve bir README içerir. İçinde Alpha içeriği yoktur.",
+  "server_note": "Kurmadan önce dünyalarınızı yedekleyin. Alpha'nın eklediği bloklar boş havaya dönüşür ve dünya Alpha olmadan kaydedildiğinde kalıcı olarak yok olur; Alpha'yı geri koymak onları geri getirmez. Sunucu yöneticileri: sunucu ve oyuncular birlikte geçmelidir.",
+  "install_heading": "Alpha nasıl kapatılır",
+  "install_body": "Corvus kullanıyorsanız bunu normal bir güncelleme olarak sizin yerinize yapar. Elle kurduysanız veya sunucu işletiyorsanız, adımlar ZIP içindeki README'de listelenir.",
+  "older_versions_note": "Bu sayfa her zaman güncel sürümü (V{pack_version}) sunar ve bu sonuncusudur. Önceki sürümler artık burada sunulmuyor; birine hâlâ ihtiyacınız varsa doğrudan sunucu yöneticinize sorun."
  },
  "launcher_page": {
   "intro": "Corvus, Alpha MOD paketini kendiliğinden güncel tutan küçük bir masaüstü uygulamasıdır. Bu Wiki'ye bakarak en son sürümü denetler, güncellemeleri indirir ve paket klasörünüze dokunmadan önce indirdiği bütün dosyaları bu Wiki'de yayımlanan SHA-256 sağlama toplamlarıyla karşılaştırır. Güvendiği tek kaynak bu Wiki'dir.",

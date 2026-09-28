@@ -578,6 +578,32 @@ def available_langs() -> list[str]:
     return [c for c in LANG_CODES if (I18N_DIR / f"{c}.json").exists()]
 
 
+def alpha_retirement() -> dict:
+    """data/retirement.json's "alpha" block, or {} when Alpha has not been retired.
+
+    2026-09-28 (owner: 「Alphaは廃止されます。Alphaを無効化するアップデートを行なってください」).
+    The retirement release is 13 placeholder jars, so it carries no recipes, textures or names: the
+    builders and checkers that read "the newest pack zip" must know that, or they stop (extract_recipes.py)
+    or compare the recipe sheet against a version it was never meant to be generated from
+    (check_recipe_sources.py). One file says it; every reader goes through here.
+    """
+    p = ROOT / "data" / "retirement.json"
+    if not p.exists():
+        return {}
+    block = json.loads(p.read_text(encoding="utf-8")).get("alpha") or {}
+    if block.get("retired"):
+        missing = [k for k in ("retired_version", "last_playable") if not str(block.get(k, "")).strip()]
+        if missing:
+            raise SystemExit(f"ERROR: data/retirement.json says Alpha is retired but has no {', '.join(missing)}.")
+    return block
+
+
+def alpha_retired_for(version: str) -> bool:
+    """True when `version` is the retirement release (the pack the site is distributing now)."""
+    block = alpha_retirement()
+    return bool(block.get("retired")) and str(version) == str(block.get("retired_version"))
+
+
 def load_changelog_structural(path=None) -> list:
     """data/changelog.json, with the identity of every entry validated.
 

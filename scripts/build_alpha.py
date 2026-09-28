@@ -26,7 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from site_common import (  # noqa: E402
-    ROOT, asset_root_prefix, available_langs, esc, page, write_page,
+    ROOT, asset_root_prefix, available_langs, esc, page, write_page, alpha_retired_for,
 )
 
 SECTION = "alpha/"
@@ -102,6 +102,39 @@ COPY = {
     },
 }
 
+# 2026-09-28: Alpha was retired (data/retirement.json). While the current release IS the retirement release,
+# these lines replace the ones that say Alpha "ships today" and that Corvus "installs all 13 jars": both are
+# false for a release made of 13 placeholder jars. Like COPY above, only ja and en exist; the other languages
+# use the English copy, as they always have on this page.
+RETIRED_COPY = {
+    "ja": {
+        "desc": "Alpha は廃止されました。最後の版がこれを止めています。",
+        "lede": "Alpha は廃止されました。銃火器・鉄道・車両・建材・災害・異次元まで、{modules} のモジュールが"
+                "1 つのバージョンで足並みを揃えて出ていたパックです。最後の版 {version} が Alpha を止めます。",
+        "h_ship": "いまの状態",
+        "p_ship": "廃止済みです。最後の版は {version}(Minecraft {mc})、これまでに {releases} 回配信しました。"
+                  "{modules} の MOD を、ゲームに何も足さないプレースホルダーに置き換えるので、"
+                  "更新の前にワールドのバックアップを取ってください。",
+        "p_launcher": "Corvus は廃止を通常の更新として案内し、置き換えるファイルのバックアップを残します。"
+                      "手で入れた場合とサーバーは、ダウンロードに入っている README のとおりに削除してください。",
+        "cta_dl": "廃止の更新",
+    },
+    "en": {
+        "desc": "Alpha has been retired. Its last release switched it off.",
+        "lede": "Alpha has been retired. It was a pack of {modules} modules \u2014 firearms, rail, vehicles, "
+                "building, disasters and other dimensions \u2014 that moved together on one version. "
+                "Its last release, {version}, switches it off.",
+        "h_ship": "Where it stands",
+        "p_ship": "Retired. {version} is the last release, on Minecraft {mc}, after {releases} releases. "
+                  "It replaces the {modules} mods with placeholders that add nothing to the game, "
+                  "so back up your worlds before you update.",
+        "p_launcher": "Corvus offers the retirement as a normal update and keeps a backup of the files it "
+                      "replaces. If you installed by hand or run a server, the README in the download says "
+                      "what to delete.",
+        "cta_dl": "Retirement update",
+    },
+}
+
 HEAD = """<style>
 /* ★ この HEAD は .format() を通さない。二重波括弧はそのまま CSS に出て
    規則を丸ごと無効にする(実際に一度そうなり、カードが素の見出しになった)。 */
@@ -167,6 +200,8 @@ def main() -> int:
     langs = available_langs()
     for lang in langs:
         c = COPY.get(lang, COPY["en"])
+        if alpha_retired_for(f["version"]):
+            c = {**c, **RETIRED_COPY.get(lang, RETIRED_COPY["en"])}
         lang_prefix = "../"
         # NOT the same string as lang_prefix: /de/alpha/ is two levels below
         # the site root but one below its language root. Hardcoding "../" here

@@ -51,6 +51,14 @@ def main():
     pack = manifest.get("pack") or {}
     if pack.get("latest"):
         live["pack"] = pack["latest"]
+        # 2026-09-28: the retirement release is 13 placeholder jars with no recipes; the sheet is then
+        # generated from the last playable pack (extract_recipes.py: _recipe_pack_source), and that is the
+        # version it must say. Only while the manifest publishes exactly the retirement release.
+        rp = ROOT / "data" / "retirement.json"
+        if rp.exists():
+            block = json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {}
+            if block.get("retired") and pack["latest"] == block.get("retired_version"):
+                live["pack"] = str(block.get("last_playable", ""))
     for block, info in manifest.items():
         if isinstance(info, dict) and "mod_id" in info and isinstance(info.get("jars"), dict):
             if info.get("latest"):

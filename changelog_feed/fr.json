@@ -1,14 +1,45 @@
 {
  "lang": "fr",
- "updated": "2026-09-20",
+ "updated": "2026-09-28",
  "title": "Historique des mises à jour",
- "updated_label": "Mis à jour le 2026-09-20",
+ "updated_label": "Mis à jour le 2026-09-28",
  "note": "Les valeurs affichées (dégâts, vitesse, etc.) sont les valeurs par défaut au moment de la sortie. Selon les réglages de configuration appliqués côté serveur, les valeurs réellement ressenties en jeu peuvent différer.",
  "groups": [
   {
    "label": "V4.4",
-   "summary": "Prise en charge de Minecraft 26.3 : aucun ajout",
+   "summary": "Alpha est retiré : cette mise à jour le désactive",
    "releases": [
+    {
+     "version": "v4.4.0.2",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Alpha est retiré : cette mise à jour le désactive",
+     "summary": "<b>C'est la dernière version d'Alpha. Elle désactive Alpha.</b> Les 13 mods sont remplacés par des substituts qui n'ajoutent rien au jeu, et rien de nouveau n'a été ajouté. Les blocs qu'Alpha avait ajoutés deviennent de l'air vide et, une fois le monde sauvegardé ainsi, ils ne reviennent pas. <b>Sauvegardez vos mondes avant de mettre à jour.</b>",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Alpha est désactivé. Les 13 mods sont remplacés par des substituts qui n'ajoutent rien au jeu (Cherry, OUKA et Aureum ne sont pas touchés)",
+        "Seule la limite de hauteur de l'Overworld (jusqu'à Y=1023) est conservée, pour que rien de ce que vous avez construit au-dessus de Y=319 avec des blocs ordinaires ne soit supprimé",
+        "Corvus supprime les anciens jar, place les substituts et garde une sauvegarde des fichiers remplacés. Si vous avez installé à la main ou gérez un serveur, supprimez les anciens jar comme l'indique le README du pack"
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "<b>Sauvegardez d'abord vos mondes.</b> Les blocs qu'Alpha avait ajoutés deviennent de l'air vide quand un monde est ouvert sans Alpha, et disparaissent définitivement une fois sauvegardé ainsi. Remettre Alpha ne les restaure pas (vérifié sur un serveur dédié). Les objets et créatures d'Alpha devraient connaître le même sort (non testé)",
+        "Un serveur et ses joueurs doivent passer ensemble : un joueur qui a encore Alpha ne peut pas rejoindre un serveur qui ne l'a plus, et inversement",
+        "Si « Installer les mises à jour automatiquement » est activé dans Corvus, cette mise à jour est appliquée sans demander. La sauvegarde de Corvus couvre le dossier mods, pas vos mondes"
+       ]
+      },
+      {
+       "title": "Ce qui n'était pas encore implémenté ou vérifié à ce stade",
+       "items": [
+        "Les pages Alpha de ce Wiki (recettes, portails, fonctionnalités et guide d'installation) restent telles qu'elles étaient dans la dernière version jouable, la V4.4.0.1"
+       ]
+      }
+     ]
+    },
     {
      "version": "v4.4.0.1",
      "date": "2026-09-20",

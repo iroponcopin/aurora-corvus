@@ -73,6 +73,12 @@ def _english_summary(entry):
     English restatement of the release type + headline count, not a
     translation of the Japanese summary field - deliberately modest rather
     than inventing prose we can't stand behind."""
+    # 2026-09-28: an entry may carry its own honest English text (`english_summary`). The
+    # retirement release needs it: "Release v4.4.0.2. 3 change(s)" would announce, to every Discord
+    # server and in the manifest, an update that switches Alpha off as if it were a new feature drop.
+    own = str(entry.get("english_summary", "")).strip()
+    if own:
+        return own
     kind = "Hotfix" if entry.get("type") == "hotfix" else "Release"
     highlight_count = len(entry.get("highlights", []))
     if highlight_count:

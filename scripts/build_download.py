@@ -32,7 +32,7 @@ from build_changelog import rich  # noqa: E402
 from site_common import (  # noqa: E402
     esc, page, write_page, load_bundle, available_langs, ROOT, asset_root_prefix,
     LAUNCHER_APP_NAME, newest_launcher_jar, launcher_native_files,
-    load_latest_changelog_entry, PACK_NAME, pack_zip_path,
+    load_latest_changelog_entry, PACK_NAME, pack_zip_path, alpha_retired_for,
 )
 
 MC_VERSION = "26.3"
@@ -312,6 +312,27 @@ def _discord_section_html(dl, invite_url, discord_configured):
     return f'<p class="callout callout--info">{pending}</p>'
 
 
+# The five paragraphs that describe "the Alpha pack you install" and are false for the retirement release.
+# data/i18n/<lang>.json carries a `download_retired` block with a replacement for each, in all 13 languages.
+RETIRED_KEYS = ("intro", "server_note", "install_heading", "install_body", "older_versions_note")
+
+
+def _apply_retired(dl, bundle, lang):
+    """The download block, with the retirement wording laid over it. Refuses (never falls back to the
+    ordinary wording) when a language lacks any of the five: "The ZIP contains all 13 mod jars ..." next
+    to a 10 KB placeholder ZIP is a fluent, confident lie."""
+    block = bundle.get("download_retired") or {}
+    missing = [k for k in RETIRED_KEYS if not str(block.get(k, "")).strip()]
+    if missing:
+        raise SystemExit(
+            f"ERROR: Alpha is retired (data/retirement.json) but data/i18n/{lang}.json's 'download_retired' "
+            f"block is missing or blank for: {', '.join(missing)}. The ordinary wording would describe a ZIP "
+            f"of 13 mods that this release does not contain.")
+    merged = dict(dl)
+    merged.update({k: block[k] for k in RETIRED_KEYS})
+    return merged
+
+
 def _whats_new_body(lang, bundle, dl):
     """The "what's new" paragraph is sourced from the newest changelog entry
     (translated when the bundle has it, JA structural text otherwise) — the
@@ -366,6 +387,9 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     ui = bundle["ui"]
     c = ui["common"]
     dl = _require_download_block(bundle, lang)
+    retired = alpha_retired_for(version)
+    if retired:
+        dl = _apply_retired(dl, bundle, lang)
     invite_url, discord_configured = _discord_invite()
     launcher = _launcher_facts()
     aureum = _aureum_facts()
@@ -398,7 +422,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
     <a class="btn" href="{esc(zip_href)}" download>{esc(dl.get('primary_cta', 'Download'))}</a>
   </p>
   <p class="callout callout--info">{esc(dl.get('server_note', ''))}</p>
-  <p class="callout callout--warn">{esc(dl.get('sapporo_note', ''))}</p>
+  {'' if retired else '<p class="callout callout--warn">' + esc(dl.get('sapporo_note', '')) + '</p>'}
 </div>
 
 <h2>{esc(dl.get('whats_new_heading', ''))}</h2>
@@ -408,7 +432,7 @@ def build_lang(lang, version, zip_name, size_bytes, sha256_hex, release_date):
 
 <h2>{esc(dl.get('install_heading', ''))}</h2>
 <p>{esc(dl.get('install_body', ''))}
-  <a href="../guide/">{esc(dl.get('guide_link_text', ''))}</a>
+  {'' if retired else '<a href="../guide/">' + esc(dl.get('guide_link_text', '')) + '</a>'}
 </p>
 
 <p class="callout callout--info">{esc(dl.get('older_versions_note', ''))}</p>

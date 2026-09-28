@@ -2848,6 +2848,43 @@
     "请勿与面向 26.2 的 V4.4.0 混用。请替换 mods 文件夹中的内容"
    ],
    "known_limitations": []
+  },
+  {
+   "id": "v4.4.0.2",
+   "release": "v4.4.0.2",
+   "date": "2026-09-28",
+   "type": "release",
+   "title": "Alpha 退役：本次更新将其停用",
+   "summary": "<b>这是 Alpha 的最后一个版本，它会停用 Alpha。</b>13 个模组被替换为不给游戏添加任何内容的占位文件，没有新增任何东西。Alpha 添加的方块会变成空气，世界以这种状态保存后就不会再回来。<b>更新前请先备份你的世界。</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0.2",
+    "sorakaze_boss": "4.4.0.2",
+    "sorakaze_deco": "4.4.0.2",
+    "sorakaze_fallout": "4.4.0.2",
+    "sorakaze_guns": "4.4.0.2",
+    "sorakaze_phone": "4.4.0.2",
+    "sorakaze_planarcadia": "4.4.0.2",
+    "sorakaze_power": "4.4.0.2",
+    "sorakaze_rail": "4.4.0.2",
+    "sorakaze_sapporo": "4.4.0.2",
+    "sorakaze_sky": "4.4.0.2",
+    "sorakaze_survival": "4.4.0.2",
+    "sorakaze_vehicles": "4.4.0.2"
+   },
+   "highlights": [
+    "Alpha 被停用。13 个模组被替换为不给游戏添加任何内容的占位文件（不会触碰 Cherry、OUKA 和 Aureum）",
+    "只保留主世界的高度上限（最高 Y=1023），这样你在 Y=319 以上用普通方块建造的东西不会被删除",
+    "Corvus 会移除旧的 jar，放入占位文件，并保留被替换文件的备份。如果你是手动安装的，或者运行服务器，请按整合包 README 的说明删除旧的 jar"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>请先备份你的世界。</b>Alpha 添加的方块在没有 Alpha 的情况下打开世界时会变成空气，以这种状态保存后就永久消失。把 Alpha 装回去也无法恢复（已在专用服务器上验证）。Alpha 的物品和生物预计也会同样消失（未测试）",
+    "服务器和玩家必须同时迁移：仍装着 Alpha 的玩家无法加入已不再使用 Alpha 的服务器，反过来也一样",
+    "如果在 Corvus 中开启了“自动安装更新”，本次更新会在不询问的情况下应用。Corvus 的备份涵盖 mods 文件夹，不包括你的世界"
+   ],
+   "known_limitations": [
+    "本 Wiki 中 Alpha 的页面（配方、传送门、功能和安装指南）保持在最后一个可玩版本 V4.4.0.1 时的样子"
+   ]
   }
  ],
  "roadmap": {
@@ -7016,6 +7053,13 @@
   "aureum_body": "Aureum 是与 Alpha 整合包完全独立的模组。它优化游戏逻辑、内存与服务器 tick 开销，且刻意从不触碰区块渲染管线。它不是 Sodium 的替代品——它优化的正是 Sodium 未涉及的那一侧，因此可以与 Sodium 一起安全使用。若想提升帧率，请另行安装 Sodium。",
   "aureum_cta": "下载 Aureum",
   "aureum_note": "目前实测：加载 2,209 个区块时减少 6.3 MB，生成同等规模的新地形后减少 17.2 MB（两次独立测量结果一致）。MSPT（tick 用时）在测量误差范围内无变化。两个客户端功能（粒子数量上限、方块实体渲染距离）默认关闭且未经测量，因为本开发环境没有客户端。安装与配置方法请参阅 GitHub 上的 README。"
+ },
+ "download_retired": {
+  "intro": "Alpha 已退役。本页提供它的最后一个版本 V{pack_version}，该版本会停用 Alpha。ZIP 内含 {mod_count} 个不给游戏添加任何内容的占位 jar 和一份 README，不含任何 Alpha 内容。",
+  "server_note": "安装前请先备份你的世界。Alpha 添加的方块会变成空气，世界在没有 Alpha 的情况下保存后就永久消失；把 Alpha 装回去也无法恢复。服务器管理员：服务器和玩家必须同时迁移。",
+  "install_heading": "如何停用 Alpha",
+  "install_body": "如果你使用 Corvus，它会作为一次普通更新替你完成。如果你是手动安装的或运行服务器，ZIP 里的 README 列出了步骤。",
+  "older_versions_note": "本页始终提供当前版本（V{pack_version}），也就是最后一个版本。更早的版本不再在此提供；如果仍然需要，请直接询问你的服务器管理员。"
  },
  "launcher_page": {
   "intro": "Corvus 是一款小巧的桌面应用，它会自动把 Alpha 整合包保持在最新状态。它会查阅本 Wiki 确认最新的发布版本，下载更新的部分，并在改动整合包文件夹之前，把下载到的所有文件与本 Wiki 公开的 SHA-256 校验和逐一比对。它唯一信任的信息来源就是本 Wiki。",

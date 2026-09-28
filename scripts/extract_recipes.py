@@ -125,13 +125,39 @@ BRAND_TAB_ICON = {
 }
 
 
+def _recipe_pack_source(manifest):
+    """(version, zip file name) of the pack zip the recipe sheet is generated from.
+
+    Normally that is what the manifest publishes. 2026-09-28: Alpha was retired, and the release that
+    retires it (data/retirement.json) is 13 placeholder jars with no recipes, textures or names at all.
+    Reading it would stop this script ("no recipe json found"), and reading nothing would empty the Alpha
+    part of the sheet. So while the manifest publishes the retirement release, the sheet keeps being
+    generated from the LAST PLAYABLE pack zip, which stays in downloads/, and says so in `sources`.
+    Anything else in that file (a version that is not the retirement release) is ignored, so the switch
+    cannot outlive the release it was written for.
+    """
+    pack = manifest.get("pack") or {}
+    latest, file_name = pack.get("latest"), pack.get("file_name")
+    rp = SITE_ROOT / "data" / "retirement.json"
+    if rp.exists():
+        block = (json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {})
+        if block.get("retired") and latest and latest == block.get("retired_version"):
+            last = str(block.get("last_playable", "")).strip()
+            if not last or not file_name or block["retired_version"] not in file_name:
+                raise SystemExit("ERROR: data/retirement.json says Alpha is retired, but its last_playable "
+                                 "version or the manifest's pack.file_name cannot be turned into the last "
+                                 "playable zip's name.")
+            return last, file_name.replace(block["retired_version"], last)
+    return latest, file_name
+
+
 def recipe_sources():
     """この実行が読んだ配布物の版。data/recipes.json に書き、検査が突き合わせる。"""
     manifest = json.loads((SITE_ROOT / "glimpse_manifest.json").read_text(encoding="utf-8"))
     out = {}
-    pack = manifest.get("pack") or {}
-    if pack.get("latest"):
-        out["pack"] = pack["latest"]
+    pack_version, _pack_zip = _recipe_pack_source(manifest)
+    if pack_version:
+        out["pack"] = pack_version
     for block in sorted(BRAND_CATEGORY):
         info = manifest.get(block) or {}
         if info.get("latest"):
@@ -159,7 +185,7 @@ def stage_published_pack(staging_root):
     戻り値: 並べ直したモジュール数。
     """
     manifest = json.loads((SITE_ROOT / "glimpse_manifest.json").read_text(encoding="utf-8"))
-    zip_name = (manifest.get("pack") or {}).get("file_name")
+    _pack_version, zip_name = _recipe_pack_source(manifest)
     if not zip_name:
         raise SystemExit("ERROR: glimpse_manifest.json has no pack.file_name.")
     zip_path = SITE_ROOT / "downloads" / zip_name
@@ -398,8 +424,7 @@ def published_recipe_names():
     """
     manifest_path = SITE_ROOT / "glimpse_manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    pack = manifest.get("pack") or {}
-    zip_name = pack.get("file_name")
+    _pack_version, zip_name = _recipe_pack_source(manifest)
     if not zip_name:
         raise SystemExit("ERROR: glimpse_manifest.json has no pack.file_name, so there is no "
                          "published pack to check the recipes against. Refusing to guess.")

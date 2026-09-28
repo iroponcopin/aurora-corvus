@@ -1,14 +1,45 @@
 {
  "lang": "es",
- "updated": "2026-09-20",
+ "updated": "2026-09-28",
  "title": "Historial de actualizaciones",
- "updated_label": "Actualizado el 2026-09-20",
+ "updated_label": "Actualizado el 2026-09-28",
  "note": "Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.",
  "groups": [
   {
    "label": "V4.4",
-   "summary": "Compatibilidad con Minecraft 26.3: no se añade nada nuevo",
+   "summary": "Alpha se retira: esta actualización lo desactiva",
    "releases": [
+    {
+     "version": "v4.4.0.2",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Alpha se retira: esta actualización lo desactiva",
+     "summary": "<b>Esta es la última versión de Alpha. Desactiva Alpha.</b> Los 13 mods se sustituyen por marcadores de posición que no añaden nada al juego, y no se ha añadido nada nuevo. Los bloques que Alpha añadió se convierten en aire vacío y, una vez guardado el mundo así, no vuelven. <b>Haz una copia de seguridad de tus mundos antes de actualizar.</b>",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Alpha se desactiva. Los 13 mods se sustituyen por marcadores de posición que no añaden nada al juego (Cherry, OUKA y Aureum no se tocan)",
+        "Solo se conserva el límite de altura del mundo principal (hasta Y=1023), para que no se borre lo que construiste por encima de Y=319 con bloques normales",
+        "Corvus elimina los jar antiguos, coloca los marcadores y guarda una copia de los archivos que sustituye. Si instalaste a mano o gestionas un servidor, borra los jar antiguos como indica el README del paquete"
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "<b>Haz primero una copia de seguridad de tus mundos.</b> Los bloques que Alpha añadió se convierten en aire vacío cuando se abre un mundo sin Alpha y desaparecen para siempre una vez guardado así. Volver a poner Alpha no los recupera (comprobado en un servidor dedicado). Se espera que los objetos y criaturas de Alpha corran la misma suerte (no probado)",
+        "Un servidor y sus jugadores deben pasarse a la vez: quien aún tenga Alpha no puede entrar en un servidor que ya no lo tiene, y al revés",
+        "Si «Instalar actualizaciones automáticamente» está activado en Corvus, esta actualización se aplica sin preguntar. La copia de seguridad de Corvus cubre la carpeta mods, no tus mundos"
+       ]
+      },
+      {
+       "title": "Lo que aún no estaba implementado o confirmado en este momento",
+       "items": [
+        "Las páginas de Alpha de este Wiki (recetas, portales, funciones y guía de instalación) quedan como estaban en la última versión jugable, la V4.4.0.1"
+       ]
+      }
+     ]
+    },
     {
      "version": "v4.4.0.1",
      "date": "2026-09-20",

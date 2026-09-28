@@ -2848,6 +2848,43 @@
     "Jangan dicampur dengan V4.4.0 yang dibuat untuk 26.2. Ganti isi folder mods kamu"
    ],
    "known_limitations": []
+  },
+  {
+   "id": "v4.4.0.2",
+   "release": "v4.4.0.2",
+   "date": "2026-09-28",
+   "type": "release",
+   "title": "Alpha dipensiunkan: pembaruan ini mematikannya",
+   "summary": "<b>Ini rilis Alpha yang terakhir. Rilis ini mematikan Alpha.</b> Ke-13 mod diganti dengan pengganti yang tidak menambahkan apa pun ke permainan, dan tidak ada hal baru yang ditambahkan. Blok yang ditambahkan Alpha menjadi udara kosong, dan setelah dunia disimpan seperti itu, blok tersebut tidak kembali. <b>Cadangkan duniamu sebelum memperbarui.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0.2",
+    "sorakaze_boss": "4.4.0.2",
+    "sorakaze_deco": "4.4.0.2",
+    "sorakaze_fallout": "4.4.0.2",
+    "sorakaze_guns": "4.4.0.2",
+    "sorakaze_phone": "4.4.0.2",
+    "sorakaze_planarcadia": "4.4.0.2",
+    "sorakaze_power": "4.4.0.2",
+    "sorakaze_rail": "4.4.0.2",
+    "sorakaze_sapporo": "4.4.0.2",
+    "sorakaze_sky": "4.4.0.2",
+    "sorakaze_survival": "4.4.0.2",
+    "sorakaze_vehicles": "4.4.0.2"
+   },
+   "highlights": [
+    "Alpha dimatikan. Ke-13 mod diganti dengan pengganti yang tidak menambahkan apa pun ke permainan (Cherry, OUKA, dan Aureum tidak disentuh)",
+    "Hanya batas ketinggian Overworld (sampai Y=1023) yang dipertahankan, agar bangunan biasa yang kamu buat di atas Y=319 tidak terhapus",
+    "Corvus menghapus jar lama, memasang pengganti, dan menyimpan cadangan file yang diganti. Jika kamu memasang manual atau menjalankan server, hapus jar lama seperti yang dijelaskan README di dalam paket"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Cadangkan duniamu dulu.</b> Blok yang ditambahkan Alpha menjadi udara kosong saat dunia dibuka tanpa Alpha, dan hilang selamanya setelah disimpan seperti itu. Memasang Alpha kembali tidak memulihkannya (diperiksa di server khusus). Item dan makhluk Alpha diperkirakan bernasib sama (belum diuji)",
+    "Server dan pemainnya harus pindah bersamaan: pemain yang masih memakai Alpha tidak bisa masuk ke server yang sudah tidak memakainya, dan sebaliknya",
+    "Jika \"Pasang pembaruan secara otomatis\" aktif di Corvus, pembaruan ini diterapkan tanpa bertanya. Cadangan Corvus mencakup folder mods, bukan duniamu"
+   ],
+   "known_limitations": [
+    "Halaman Alpha di Wiki ini (resep, gerbang, fitur, dan panduan pemasangan) dibiarkan seperti pada versi terakhir yang bisa dimainkan, V4.4.0.1"
+   ]
   }
  ],
  "roadmap": {
@@ -7016,6 +7053,13 @@
   "aureum_body": "Aureum adalah mod independen yang terpisah dari paket Alpha. Ia mengoptimalkan logika permainan, memori, dan biaya tick server, serta secara sengaja tidak pernah menyentuh alur render chunk. Ini bukan pengganti Sodium — ia mengoptimalkan sisi yang tidak disentuh Sodium, jadi aman dipakai berdampingan dengannya. Jika ingin FPS lebih tinggi, pasang Sodium secara terpisah.",
   "aureum_cta": "Unduh Aureum",
   "aureum_note": "Terukur sejauh ini: -6,3 MB pada 2.209 chunk yang dimuat, -17,2 MB setelah menghasilkan area baru dengan ukuran serupa (direproduksi dalam dua kali pengujian independen). MSPT (waktu tick) tidak berubah dalam batas noise pengukuran. Dua sakelar sisi klien (batas partikel, jarak render block-entity) default mati dan belum terukur, karena lingkungan pengembangan ini tidak memiliki klien. Lihat README di GitHub untuk instalasi dan konfigurasi."
+ },
+ "download_retired": {
+  "intro": "Alpha telah dipensiunkan. Halaman ini memuat rilis terakhirnya, V{pack_version}, yang mematikan Alpha. ZIP berisi {mod_count} jar pengganti yang tidak menambahkan apa pun ke permainan, dan sebuah README. Tidak ada konten Alpha di dalamnya.",
+  "server_note": "Cadangkan duniamu sebelum memasangnya. Blok yang ditambahkan Alpha menjadi udara kosong dan hilang selamanya begitu dunia disimpan tanpa Alpha; memasang Alpha kembali tidak memulihkannya. Admin server: server dan pemainnya harus pindah bersamaan.",
+  "install_heading": "Cara mematikan Alpha",
+  "install_body": "Jika kamu memakai Corvus, semuanya dilakukan sebagai pembaruan biasa. Jika kamu memasang manual atau menjalankan server, langkah-langkahnya ada di README di dalam ZIP.",
+  "older_versions_note": "Halaman ini selalu menyediakan rilis terkini (V{pack_version}), yang sekaligus rilis terakhir. Versi lama tidak lagi ditawarkan di sini; jika masih membutuhkannya, tanyakan langsung ke admin server kamu."
  },
  "launcher_page": {
   "intro": "Corvus adalah aplikasi desktop kecil yang menjaga paket MOD Alpha tetap mutakhir secara otomatis. Aplikasi ini memeriksa Wiki ini untuk mengetahui rilis terbaru, mengunduh bagian yang diperbarui, dan mencocokkan seluruh berkas yang diunduhnya dengan checksum SHA-256 yang diterbitkan Wiki ini sebelum menyentuh folder paket. Satu-satunya sumber yang dipercayainya adalah Wiki ini.",

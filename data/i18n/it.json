@@ -2853,6 +2853,43 @@
     "Non mescolarla con la V4.4.0, che è fatta per la 26.2. Sostituisci il contenuto della cartella mods"
    ],
    "known_limitations": []
+  },
+  {
+   "id": "v4.4.0.2",
+   "release": "v4.4.0.2",
+   "date": "2026-09-28",
+   "type": "release",
+   "title": "Alpha viene ritirato: questo aggiornamento lo disattiva",
+   "summary": "<b>Questa è l'ultima versione di Alpha. Disattiva Alpha.</b> I 13 mod vengono sostituiti da segnaposto che non aggiungono nulla al gioco, e non è stato aggiunto nulla di nuovo. I blocchi che Alpha aveva aggiunto diventano aria vuota e, una volta salvato il mondo così, non tornano. <b>Fai una copia di sicurezza dei tuoi mondi prima di aggiornare.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0.2",
+    "sorakaze_boss": "4.4.0.2",
+    "sorakaze_deco": "4.4.0.2",
+    "sorakaze_fallout": "4.4.0.2",
+    "sorakaze_guns": "4.4.0.2",
+    "sorakaze_phone": "4.4.0.2",
+    "sorakaze_planarcadia": "4.4.0.2",
+    "sorakaze_power": "4.4.0.2",
+    "sorakaze_rail": "4.4.0.2",
+    "sorakaze_sapporo": "4.4.0.2",
+    "sorakaze_sky": "4.4.0.2",
+    "sorakaze_survival": "4.4.0.2",
+    "sorakaze_vehicles": "4.4.0.2"
+   },
+   "highlights": [
+    "Alpha viene disattivato. I 13 mod sono sostituiti da segnaposto che non aggiungono nulla al gioco (Cherry, OUKA e Aureum non vengono toccati)",
+    "Resta solo il limite di altezza del mondo principale (fino a Y=1023), così non viene cancellato ciò che hai costruito sopra Y=319 con blocchi normali",
+    "Corvus rimuove i vecchi jar, mette i segnaposto e conserva una copia dei file sostituiti. Se hai installato a mano o gestisci un server, elimina i vecchi jar come indica il README del pacchetto"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Fai prima una copia di sicurezza dei tuoi mondi.</b> I blocchi che Alpha aveva aggiunto diventano aria vuota quando un mondo viene aperto senza Alpha e scompaiono per sempre una volta salvato così. Rimettere Alpha non li ripristina (verificato su un server dedicato). Si prevede che oggetti e creature di Alpha seguano la stessa sorte (non testato)",
+    "Server e giocatori devono passare insieme: chi ha ancora Alpha non può entrare in un server che non lo ha più, e viceversa",
+    "Se in Corvus è attivo «Installa gli aggiornamenti automaticamente», questo aggiornamento viene applicato senza chiedere. La copia di sicurezza di Corvus riguarda la cartella mods, non i tuoi mondi"
+   ],
+   "known_limitations": [
+    "Le pagine di Alpha di questo Wiki (ricette, portali, funzioni e guida all'installazione) restano com'erano nell'ultima versione giocabile, la V4.4.0.1"
+   ]
   }
  ],
  "roadmap": {
@@ -7021,6 +7058,13 @@
   "aureum_body": "Aureum è una mod indipendente, separata dal pack Alpha. Ottimizza la logica di gioco, la memoria e il costo dei tick del server, e non tocca deliberatamente mai la pipeline di rendering dei chunk. Non sostituisce Sodium: ottimizza il lato che Sodium non tocca, quindi è sicuro usarla insieme ad esso. Per più FPS, installa Sodium separatamente.",
   "aureum_cta": "Scarica Aureum",
   "aureum_note": "Misurato finora: -6,3 MB con 2.209 chunk caricati, -17,2 MB dopo aver generato un'area nuova di dimensioni simili (riprodotto su due esecuzioni indipendenti). L'MSPT (tempo di tick) resta invariato entro il margine di rumore della misurazione. Due opzioni lato client (limite particelle, distanza di rendering dei block-entity) sono disattivate di default e non misurate, poiché questo ambiente di sviluppo non ha un client. Vedi il README su GitHub per installazione e configurazione."
+ },
+ "download_retired": {
+  "intro": "Alpha è stato ritirato. Questa pagina offre la sua ultima versione, la V{pack_version}, che disattiva Alpha. Lo ZIP contiene {mod_count} jar segnaposto che non aggiungono nulla al gioco e un README. Non contiene contenuti di Alpha.",
+  "server_note": "Fai una copia di sicurezza dei tuoi mondi prima di installarla. I blocchi che Alpha aveva aggiunto diventano aria vuota e scompaiono per sempre una volta salvato il mondo senza Alpha; rimettere Alpha non li ripristina. Amministratori di server: server e giocatori devono passare insieme.",
+  "install_heading": "Come disattivare Alpha",
+  "install_body": "Se usi Corvus, lo fa lui come un normale aggiornamento. Se hai installato a mano o gestisci un server, il README dentro lo ZIP elenca i passaggi.",
+  "older_versions_note": "Questa pagina offre sempre la versione attuale (V{pack_version}), che è l'ultima. Le versioni precedenti non sono più offerte qui; se ti serve una, chiedila direttamente all'amministratore del tuo server."
  },
  "launcher_page": {
   "intro": "Corvus è una piccola applicazione desktop che mantiene automaticamente aggiornato il pacchetto di mod Alpha. Consulta questo Wiki per verificare qual è l’ultima versione pubblicata, scarica gli aggiornamenti e, prima di toccare la cartella del pacchetto, confronta ogni file scaricato con il checksum SHA-256 pubblicato da questo Wiki. L’unica fonte di cui si fida è questo Wiki.",

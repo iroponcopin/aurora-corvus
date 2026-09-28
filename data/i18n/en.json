@@ -2963,6 +2963,43 @@
     "Do not mix this with V4.4.0, which is built for 26.2. Replace the contents of your mods folder"
    ],
    "known_limitations": []
+  },
+  {
+   "id": "v4.4.0.2",
+   "release": "v4.4.0.2",
+   "date": "2026-09-28",
+   "type": "release",
+   "title": "Alpha is retired: this update switches it off",
+   "summary": "<b>This is the last Alpha release. It switches Alpha off.</b> The 13 mods are replaced by placeholders that add nothing to the game, and nothing new has been added. Blocks that Alpha added turn into empty air, and once a world has been saved that way they do not come back. <b>Back up your worlds before you update.</b>",
+   "mod_versions": {
+    "sorakaze_backrooms": "4.4.0.2",
+    "sorakaze_boss": "4.4.0.2",
+    "sorakaze_deco": "4.4.0.2",
+    "sorakaze_fallout": "4.4.0.2",
+    "sorakaze_guns": "4.4.0.2",
+    "sorakaze_phone": "4.4.0.2",
+    "sorakaze_planarcadia": "4.4.0.2",
+    "sorakaze_power": "4.4.0.2",
+    "sorakaze_rail": "4.4.0.2",
+    "sorakaze_sapporo": "4.4.0.2",
+    "sorakaze_sky": "4.4.0.2",
+    "sorakaze_survival": "4.4.0.2",
+    "sorakaze_vehicles": "4.4.0.2"
+   },
+   "highlights": [
+    "Alpha is switched off. The 13 mods are replaced by placeholders that add nothing to the game (Cherry, OUKA and Aureum are not touched)",
+    "Only the overworld's height limit (Y up to 1023) stays, so that nothing you built above Y=319 with ordinary blocks is deleted",
+    "Corvus removes the old jars, places the placeholders and keeps a backup of the files it replaced. If you installed by hand, or run a server, delete the old jars as the pack's README says"
+   ],
+   "balance_changes": [],
+   "warnings": [
+    "<b>Back up your worlds first.</b> Blocks that Alpha added turn into empty air when a world is opened without Alpha, and once it has been saved that way they are gone for good. Putting Alpha back does not restore them (checked on a dedicated server). Alpha's items and creatures are expected to go the same way (not tested)",
+    "A server and its players must move together: a player who still has Alpha cannot join a server that no longer does, and the other way round",
+    "If \"Install updates automatically\" is on in Corvus, this update is applied without asking. Corvus's backup covers the mods folder, not your worlds"
+   ],
+   "known_limitations": [
+    "The Alpha pages on this Wiki, such as the recipes, gates, features and the install guide, are left as they were in the last playable version, V4.4.0.1"
+   ]
   }
  ],
  "roadmap": {
@@ -7109,6 +7146,13 @@
   "aureum_body": "Aureum is a separate, independent mod from the Alpha pack. It optimises game logic, memory, and server tick cost, and deliberately never touches the chunk-render pipeline. It is not a replacement for Sodium — it optimises the side Sodium does not touch, so it is safe to run alongside it. If you want higher FPS, install Sodium separately.",
   "aureum_cta": "Download Aureum",
   "aureum_note": "Measured so far: -6.3 MB at 2,209 loaded chunks, -17.2 MB after generating a similarly sized area of new terrain (both reproduced across two independent runs). MSPT (tick time) is unchanged within measurement noise. Two client-side toggles (particle limit, block-entity render distance) ship off by default and unmeasured, because this development environment has no client. See the README on GitHub for installation and configuration."
+ },
+ "download_retired": {
+  "intro": "Alpha has been retired. This page carries its last release, V{pack_version}, which switches Alpha off. The ZIP holds {mod_count} placeholder jars that add nothing to the game, and a README. It contains no Alpha content.",
+  "server_note": "Back up your worlds before you install it. Blocks that Alpha added turn into empty air, and once a world has been saved without Alpha they are gone for good; putting Alpha back does not restore them. Server admins: the server and its players must move together.",
+  "install_heading": "How to switch Alpha off",
+  "install_body": "If you use Corvus, it does this for you as a normal update. If you installed by hand or run a server, the README inside the ZIP lists the steps.",
+  "older_versions_note": "This page always distributes the current release (V{pack_version}), which is the last one. Earlier versions are no longer offered here; if you still need one, please ask your server admin directly."
  },
  "launcher_page": {
   "intro": "Corvus is a small desktop app that keeps your Alpha mod pack up to date automatically. It checks this Wiki for the current release, downloads updates for you, and verifies every file it downloads against a SHA-256 checksum published here before it touches your pack folder. This Wiki is the only source it trusts.",
