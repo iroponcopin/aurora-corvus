@@ -60,6 +60,11 @@ CHECKS = [
      "/changelog/ brand panels in 13 languages + changelog_feed/brands.json and every brand feed"),
     ("changelog-brands-controls", "check_changelog_brands.py", ["--self-test"],
      "the brand-changelog gate turns every planted defect red"),
+    # Portal only (runs when portal/build.json exists): the half of the brand-changelog gate that reads DATA and FEEDS
+    # (data/changelog_brands.json, the i18n titles, changelog_feed/brands.json and every brand feed the launcher reads),
+    # without the pages, whose markup is the portal's now.
+    ("changelog-feeds", "check_changelog_brands.py", ["--feeds-only"],
+     "data/changelog_brands.json + changelog_feed/brands.json and every brand feed (the pages are not read)"),
     # 2026-09-20: レシピ集は配布物(pack zip とブランド zip)から作られる。新しい版を
     # 配り始めたのに作り直していなければ、サイトは新しい zip を配りながら古い作り方を
     # 表示し続ける —— 出力は正常に見え、リンクも切れないので誰も気づかない。
@@ -72,7 +77,9 @@ CHECKS = [
 # are about HTML that is no longer there, so they would go red for the right reason and prove nothing; they are retired
 # here, and their jobs are done by the portal's own gates (`npm run check:all` in Minecraft/corvus-web:
 # check:urls/links/i18n/rtl/live and the installer entries compared with the manifest). What stays is what reads DATA.
-RETIRED_AT_PORTAL = {"defects", "404", "lang", "discord", "skin", "cherry", "ouka", "changelog-brands"}
+RETIRED_AT_PORTAL = {"defects", "404", "lang", "discord", "skin", "cherry", "ouka", "changelog-brands",
+                     "changelog-brands-controls"}
+PORTAL_ONLY = {"changelog-feeds"}
 
 
 def portal_is_in_place():
@@ -84,11 +91,14 @@ def main():
     portal = portal_is_in_place()
     if "--list" in argv:
         for name, script, _a, what in CHECKS:
-            mark = "  [retired: the portal is the site]" if portal and name in RETIRED_AT_PORTAL else ""
+            mark = "  [retired: the portal is the site]" if portal and name in RETIRED_AT_PORTAL else (
+                "  [only once the portal is the site]" if not portal and name in PORTAL_ONLY else "")
             print(f"  {name:9} {script:24} {what}{mark}")
         return 0
     want = [a for a in argv if not a.startswith("-")]
     todo = [c for c in CHECKS if not want or c[0] in want]
+    if not portal:
+        todo = [c for c in todo if c[0] not in PORTAL_ONLY]
     if portal:
         retired = [c[0] for c in todo if c[0] in RETIRED_AT_PORTAL]
         todo = [c for c in todo if c[0] not in RETIRED_AT_PORTAL]

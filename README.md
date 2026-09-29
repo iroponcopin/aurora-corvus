@@ -71,7 +71,8 @@ writes them. A release (a new pack, a new brand version, a new launcher) is:
 2. **Rebuild what is read by machines:** `python3 scripts/build.py --feeds` (manifest, releases feed, changelog feeds,
    `upcoming.json`). `build.py` without `--feeds` refuses to run: it would write the old pages over the portal.
 3. **The wiki's data gates:** `python3 scripts/check_site.py` (with the portal in place it runs only the data checks:
-   `figures`, `recipe-sources` and the changelog-brand controls, and says which page checkers it retired) and
+   `figures`, `recipe-sources` and `changelog-feeds` — the brand-changelog checker's feed half, `check_changelog_brands.py
+   --feeds-only` — and says which page checkers it retired) and
    `python3 scripts/check_release_version_switch.py --baseline scripts/release_history_baseline_26.2.json`.
 4. **Rebuild the pages:** in `Minecraft/corvus-web`, on the branch that ships, `WIKI_DIR=<this checkout> npm run
    build:portal`, then `npm run check:all`. The Download, Corvus Store and brand pages print the manifest's names,

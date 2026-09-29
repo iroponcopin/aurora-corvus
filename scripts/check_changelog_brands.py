@@ -79,7 +79,7 @@ def _json_or_none(path):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
 
 
-def load_world():
+def load_world(feeds_only=False):
     langs = [c for c in LANG_CODES if (ROOT / "data" / "i18n" / f"{c}.json").exists()]
     order = brand_order()
     return {
@@ -87,7 +87,9 @@ def load_world():
         "order": order,
         "alpha": json.loads((ROOT / "data" / "changelog.json").read_text(encoding="utf-8")),
         "brands": load_brand_structural(),
-        "pages": {lang: (ROOT / page_rel(lang)).read_text(encoding="utf-8") for lang in langs},
+        # feeds_only: after the portal cutover the pages are the portal's, whose markup these page checks were not
+        # written for; the data and the feeds (what the launcher reads) are still this checker's.
+        "pages": {lang: ("" if feeds_only else (ROOT / page_rel(lang)).read_text(encoding="utf-8")) for lang in langs},
         "bundles": {lang: json.loads((ROOT / "data" / "i18n" / f"{lang}.json").read_text(encoding="utf-8")) for lang in langs},
         "index": _json_or_none(ROOT / "changelog_feed" / "brands.json"),
         "alpha_feeds": {lang: _json_or_none(ROOT / "changelog_feed" / f"{lang}.json") for lang in langs},
@@ -106,7 +108,7 @@ def panels_of(html):
     return starts, {starts[i][1]: html[bounds[i]:bounds[i + 1]] for i in range(len(starts))}
 
 
-def check(world):
+def check(world, feeds_only=False):
     fails = []
     order = world["order"]
     alpha_count = len(world["alpha"])
@@ -122,22 +124,25 @@ def check(world):
         html = world["pages"][lang]
         bundle = world["bundles"][lang]
 
-        tabs = TAB.findall(html)
-        if [b for b, _ in tabs] != order:
-            fails.append(f"[A] {rel}: tabs {[b for b, _ in tabs]} are not the brand line {order}")
-        selected = [b for b, s in tabs if s == "true"]
-        if selected != [DEFAULT_BRAND]:
-            fails.append(f"[A] {rel}: the tab that opens is {selected}, expected ['{DEFAULT_BRAND}']")
-        starts, panel = panels_of(html)
-        if [s[1] for s in starts] != order or any(a != b for _, a, b in starts):
-            fails.append(f"[A] {rel}: panels {[s[1] for s in starts]} are not the brand line {order}")
-            continue
+        panel = {}
+        rows = {}
+        if not feeds_only:
+            tabs = TAB.findall(html)
+            if [b for b, _ in tabs] != order:
+                fails.append(f"[A] {rel}: tabs {[b for b, _ in tabs]} are not the brand line {order}")
+            selected = [b for b, s in tabs if s == "true"]
+            if selected != [DEFAULT_BRAND]:
+                fails.append(f"[A] {rel}: the tab that opens is {selected}, expected ['{DEFAULT_BRAND}']")
+            starts, panel = panels_of(html)
+            if [s[1] for s in starts] != order or any(a != b for _, a, b in starts):
+                fails.append(f"[A] {rel}: panels {[s[1] for s in starts]} are not the brand line {order}")
+                continue
 
-        rows = {b: panel[b].count(ROW) for b in order}
-        if ROW in html[:starts[0][0]]:
-            fails.append(f"[B] {rel}: a release row sits outside every brand panel")
-        if rows[DEFAULT_BRAND] != alpha_count:
-            fails.append(f"[B] {rel}: Alpha's panel holds {rows[DEFAULT_BRAND]} releases, data/changelog.json has {alpha_count}")
+            rows = {b: panel[b].count(ROW) for b in order}
+            if ROW in html[:starts[0][0]]:
+                fails.append(f"[B] {rel}: a release row sits outside every brand panel")
+            if rows[DEFAULT_BRAND] != alpha_count:
+                fails.append(f"[B] {rel}: Alpha's panel holds {rows[DEFAULT_BRAND]} releases, data/changelog.json has {alpha_count}")
 
         for b in order:
             if b == DEFAULT_BRAND:
@@ -147,16 +152,18 @@ def check(world):
             extra = sorted(set(prose) - {e["id"] for e in entries} - {None})
             if extra:
                 fails.append(f"[H] data/i18n/{lang}.json: changelog_brands.{b} has id(s) the structural file does not: {extra}")
-            if rows[b] != len(entries):
+            if not feeds_only and rows[b] != len(entries):
                 fails.append(f"[C] {rel}: {b}'s panel holds {rows[b]} releases, data/changelog_brands.json has {len(entries)}")
             for e in entries:
                 t = prose.get(e["id"])
                 if not t or not t.get("title"):
                     fails.append(f"[H] data/i18n/{lang}.json: no translated title for {b} release {e['id']}")
                     continue
-                if f'<p class="cl__entryTitle">{rich(t["title"])}</p>' not in panel[b]:
+                if not feeds_only and f'<p class="cl__entryTitle">{rich(t["title"])}</p>' not in panel[b]:
                     fails.append(f"[C] {rel}: {b} release {e['id']} does not render its own title")
-            if not entries:
+            if feeds_only:
+                pass
+            elif not entries:
                 if b != "ouka":
                     fails.append(f"[D] {rel}: {b} has no releases and no agreed empty state")
                 elif not world["ouka"].get(lang):
@@ -167,7 +174,7 @@ def check(world):
                                  f"{world['ouka'][lang]!r} exactly once")
             elif '<p class="cl__soon">' in panel[b]:
                 fails.append(f"[D] {rel}: {b} has releases but also shows an empty-state line")
-            shown = RELEASE_ROW.findall(panel[b])
+            shown = [] if feeds_only else RELEASE_ROW.findall(panel[b])
             if not newest_first([release_key(d, v) for v, d in shown]):
                 fails.append(f"[I] {rel}: {b}'s panel does not list its newest release first: {[v for v, _ in shown]}")
 
@@ -379,13 +386,15 @@ def self_test():
 def main(argv):
     if "--self-test" in argv:
         return self_test()
-    world = load_world()
-    fails = check(world)
+    feeds_only = "--feeds-only" in argv
+    world = load_world(feeds_only)
+    fails = check(world, feeds_only)
     for f in fails:
         print("FAIL " + f)
     pages = len(world["langs"])
     feeds = sum(1 for v in world["brand_feeds"].values() if v is not None)
-    print(f"changelog brands: {pages} pages, {feeds} brand feeds, line {' -> '.join(world['order'])}: "
+    what = "pages not read (the portal's), " if feeds_only else f"{pages} pages, "
+    print(f"changelog brands: {what}{feeds} brand feeds, line {' -> '.join(world['order'])}: "
           f"{'GREEN' if not fails else f'RED ({len(fails)})'}")
     return 0 if not fails else 1
 
