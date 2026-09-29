@@ -192,6 +192,15 @@ def write_feed(data, entries):
 
 def main():
     data, entries = _load()
+    if "--feed-only" in sys.argv[1:]:
+        # After the portal cutover (portal/build.json exists) the pages are the portal's; only the feed the bot polls
+        # is this script's to write. The prose the feed carries is checked first, exactly as for the pages.
+        for e in entries:
+            if e["id"] not in data[FEED_LANG]["entries"]:
+                raise SystemExit(f"upcoming: {FEED_LANG} has no prose for entry {e['id']!r}; the feed would lack it.")
+        write_feed(data, entries)
+        print(f"upcoming: feed only, {len(entries)} entries (no page written)")
+        return
     langs = available_langs()
     built = 0
     for lang in langs:

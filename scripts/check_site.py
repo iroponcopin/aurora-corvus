@@ -68,14 +68,33 @@ CHECKS = [
 ]
 
 
+# The checkers that read the OLD pages' markup. Once the portal is the site (portal/build.json exists) their expectations
+# are about HTML that is no longer there, so they would go red for the right reason and prove nothing; they are retired
+# here, and their jobs are done by the portal's own gates (`npm run check:all` in Minecraft/corvus-web:
+# check:urls/links/i18n/rtl/live and the installer entries compared with the manifest). What stays is what reads DATA.
+RETIRED_AT_PORTAL = {"defects", "404", "lang", "discord", "skin", "cherry", "ouka", "changelog-brands"}
+
+
+def portal_is_in_place():
+    return (HERE.parent / "portal" / "build.json").exists()
+
+
 def main():
     argv = sys.argv[1:]
+    portal = portal_is_in_place()
     if "--list" in argv:
         for name, script, _a, what in CHECKS:
-            print(f"  {name:9} {script:24} {what}")
+            mark = "  [retired: the portal is the site]" if portal and name in RETIRED_AT_PORTAL else ""
+            print(f"  {name:9} {script:24} {what}{mark}")
         return 0
     want = [a for a in argv if not a.startswith("-")]
     todo = [c for c in CHECKS if not want or c[0] in want]
+    if portal:
+        retired = [c[0] for c in todo if c[0] in RETIRED_AT_PORTAL]
+        todo = [c for c in todo if c[0] not in RETIRED_AT_PORTAL]
+        if retired:
+            print("retired at the portal cutover (they read the old pages' markup): " + ", ".join(retired))
+            print("  the portal's gates replace them: cd Minecraft/corvus-web && npm run check:all")
     unknown = [w for w in want if w not in {c[0] for c in CHECKS}]
     if unknown:
         raise SystemExit(f"ERROR: no such check: {', '.join(unknown)}. "

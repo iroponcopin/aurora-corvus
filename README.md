@@ -30,7 +30,13 @@ Live site: served via GitHub Pages from this repository.
   that the `scripts/build_*.py` generators render into the static HTML above.
 - `scripts/` — the static-site generator and its gates. Plain Python, no framework.
 
-## Rebuilding the site
+> **Since the portal cutover (29 September 2026) the pages of this site are the 3D portal's**, built from this
+> repository's data by `Minecraft/corvus-web` (`npm run build:portal`) and laid over this tree. `scripts/build.py`
+> refuses to write the old pages while `portal/build.json` exists; the section "Releasing" below is the routine.
+> The section after it describes how the pages were generated BEFORE the cutover and is kept for the rollback
+> (`git revert` of the cutover commit restores those pages byte for byte).
+
+## Rebuilding the site (before the cutover; kept for the rollback)
 
 The site is pre-rendered static HTML committed to this repo (no build step runs
 on GitHub Pages). To regenerate it after editing content:
@@ -49,6 +55,37 @@ python3 scripts/check_release_version_switch.py --baseline scripts/release_histo
 ```
 
 Each language only renders once its bundle exists at `data/i18n/<lang>.json`.
+
+## Releasing (since the portal cutover)
+
+What the launcher and the Discord bot read are the **contract files** — `glimpse_manifest.json`, `releases.json`,
+`upcoming.json`, `changelog_feed/**`, `downloads/**`, `data/**`, `robots.txt`, `.nojekyll` — and the portal never
+writes them. A release (a new pack, a new brand version, a new launcher) is:
+
+1. **Edit the data** the release changes (the brand's inputs, all read by the portal too, read-only):
+   `build_<brand>.py`'s copy tables (`COPY`, `COPY_FOR`, `CONTROLS_FOR` — the brand page's line and codename; these
+   files must stay importable, the portal reads them through `scripts/portal/extract_wiki.py`),
+   `data/i18n/<lang>.json` ×13, `data/changelog_brands.json` (a brand's history — never `data/changelog.json`),
+   `data/upcoming.json`, `data/recipes*.json` (from `extract_recipes.py`, which keeps running), and the new files in
+   `downloads/`.
+2. **Rebuild what is read by machines:** `python3 scripts/build.py --feeds` (manifest, releases feed, changelog feeds,
+   `upcoming.json`). `build.py` without `--feeds` refuses to run: it would write the old pages over the portal.
+3. **The wiki's data gates:** `python3 scripts/check_site.py` (with the portal in place it runs only the data checks:
+   `figures`, `recipe-sources` and the changelog-brand controls, and says which page checkers it retired) and
+   `python3 scripts/check_release_version_switch.py --baseline scripts/release_history_baseline_26.2.json`.
+4. **Rebuild the pages:** in `Minecraft/corvus-web`, on the branch that ships, `WIKI_DIR=<this checkout> npm run
+   build:portal`, then `npm run check:all`. The Download, Corvus Store and brand pages print the manifest's names,
+   sizes and SHA-256 **at build time**: a release that rebuilds the manifest but not the portal leaves pages that
+   describe files that are no longer the ones served (`check:live` step 4 turns that red).
+5. **Lay the export over this tree, without `--delete`:** `rm -rf _next portal && rsync -a
+   <corvus-web>/dist-portal/ ./`, then the diff filter and the contract check of `corvus-web/docs/CUTOVER.md` §1
+   step 4 (only pages, `404.html`, `sitemap.xml`, `_next/`, `portal/` and `index.txt` files may change; no contract
+   file may).
+6. **Commit, push, and after Pages has deployed** (about a minute to ten): `node <corvus-web>/scripts/gates/check-live.mjs
+   --live` and `python3 scripts/check_published_artefacts.py`.
+
+Tell the other brand sessions before pushing (they share this repository). Going back is `git revert` of the cutover
+or release commit; nothing the launcher or the bot reads is in a page diff.
 
 ## License
 
