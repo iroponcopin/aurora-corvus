@@ -70,6 +70,14 @@ CHECKS = [
     # 表示し続ける —— 出力は正常に見え、リンクも切れないので誰も気づかない。
     ("recipe-sources", "check_recipe_sources.py", [],
      "data/recipes.json was generated from the versions the site currently publishes"),
+    # ASTRAEA V1.0.0 (2026-09-30), the first brand released after the portal cutover. Not a page gate (those are the
+    # portal's now) but the DATA the Store and the Discord bot act on: the zip in downloads/ is tracked (an untracked one
+    # 404s live), holds ASTRAEA's one jar with no foreign dependency and no Alpha trace (owner, D-1), the manifest's
+    # astraea block describes exactly that zip, and all 13 changelog feeds lead with its version. Live at the portal.
+    ("astraea", "check_astraea_release.py", [],
+     "downloads/ASTRAEA_MODs_v*.zip (tracked, one jar, no Alpha) vs the manifest's astraea block and the 13 feeds"),
+    ("astraea-controls", "check_astraea_release.py", ["--self-test"],
+     "the ASTRAEA release gate turns every planted defect red"),
 ]
 
 

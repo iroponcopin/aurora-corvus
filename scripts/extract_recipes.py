@@ -118,10 +118,13 @@ MODS = [
 BRAND_CATEGORY = {
     "cherry": "Cherry",
     "ouka": "OUKA",
+    # ASTRAEA V1.0.0 (2026-09-30): its own product, its own tab, like Cherry and OUKA.
+    "astraea": "ASTRAEA",
 }
 BRAND_TAB_ICON = {
     "Cherry": "cherry:apex1_rocket",
     "OUKA": "ouka:ouka_caster",
+    "ASTRAEA": "astraea:celestial_blade",
 }
 
 
@@ -779,6 +782,9 @@ VANILLA_TEXTURE_OVERRIDE = {
     # v1.8.2(太陽光パネルのレシピ材料・「使い方」タブの感知器の図)。日照センサーも
     # 面ごとに別テクスチャ(daylight_detector_top / _side)で、item も block も持たない。
     "daylight_detector": "block/daylight_detector_top",
+    # ASTRAEA 1.0.0(油圧式重装ゲートの材料)。ピストンと同じく面ごとに別テクスチャで、
+    # 指定しないと空欄のカードになる(粘着面は piston_top_sticky)。
+    "sticky_piston": "block/piston_top_sticky",
     # ※ 盾は 1 枚のテクスチャで表せないので compose_shield_icon() で合成する。
 }
 
@@ -828,6 +834,16 @@ MOD_TEXTURE_OVERRIDE = {
 # (照合は常に「その位置で一致する最長のキー」を選ぶ)。
 #   例) 「金庫」を入れておかないと「金」+「庫」に割れる。「格子戸」は「格子」に勝つ。
 YOMI = {
+    # --- ASTRAEA V1.0.0(2026-09-30)の 17 枚。語ごとに入れる(漢字 1 字ずつでは「天星」を「あまほし」とも読める)。
+    #     出典: 名前は所有者の仕様書(ASTRAEA_V1.0_Update.md)と MOD の ja_jp.json だが、どちらにも読みは無い。
+    #     (1) ふつうの語 —— 辞書どおりの読み: 天球・暗号・暗証・錠・極低温・断熱・重装・豊穣・削岩・地鎮・鎌・鍬。
+    #     (2) ASTRAEA の造語 —— **仮の読み**(所有者の確認待ち、2026-09-30): 天星・宿星・宿星刀・大伐斧・
+    #         豊穣鎌・削岩鎚・地鎮鍬・聖槍。確認で変われば、ここだけを直して作り直す。 ---
+    "天球": "てんきゅう", "暗号": "あんごう", "暗証": "あんしょう", "錠": "じょう", "暗証錠": "あんしょうじょう",
+    "極低温": "ごくていおん", "断熱": "だんねつ", "重装": "じゅうそう", "豊穣": "ほうじょう", "削岩": "さくがん",
+    "地鎮": "じちん", "鎌": "かま", "鍬": "くわ", "鎚": "つい",
+    "天星": "てんせい", "宿星": "しゅくせい", "宿星刀": "しゅくせいとう", "大伐斧": "だいばつふ",  # 仮
+    "豊穣鎌": "ほうじょうがま", "削岩鎚": "さくがんつい", "地鎮鍬": "じちんくわ", "聖槍": "せいそう",  # 仮
     # --- 別ブランド Cherry / OUKA(2026-09-20)。所有者の「レシピ集に Cherry と
     #     OUKA の作り方が無い」への対応で早見表に入った 19 枚ぶん。ここを足さないと
     #     V4.3.2 の 22 枚と同じで、五十音順の**間違った場所に並ぶ**カードになる。 ---
@@ -2004,6 +2020,58 @@ def recompress_png(data):
     return best
 
 
+def _git_bytes(*args):
+    import subprocess as _sp
+    out = _sp.run(["git", "-C", str(SITE_ROOT), *args], capture_output=True)
+    if out.returncode != 0:
+        raise SystemExit(f"ERROR: git {' '.join(args)} failed: {out.stderr.decode(errors='replace').strip()}")
+    return out.stdout
+
+
+PUBLISHED_REF = "origin/main"
+
+
+def published_textures():
+    """[(\"t<N>\", base64 payload), ...] of the recipe textures on the published branch, in numeric order.
+
+    The published numbers must be kept: data/recipes.json names a texture by its t<N>, and the portal's recipe page
+    loads assets/img/recipes/t<N>.png. The list must be contiguous from t0, or the append rule (new = next number)
+    would reuse a hole."""
+    names = _git_bytes("ls-tree", "--name-only", PUBLISHED_REF, "assets/img/recipes/").decode().split()
+    numbered = sorted((int(re.fullmatch(r"assets/img/recipes/t(\d+)\.png", n).group(1)), n)
+                      for n in names if re.fullmatch(r"assets/img/recipes/t(\d+)\.png", n))
+    if [n for n, _ in numbered] != list(range(len(numbered))):
+        raise SystemExit(f"ERROR: the published textures on {PUBLISHED_REF} are not t0..t{len(numbered) - 1} without gaps.")
+    return [(f"t{n}", base64.b64encode(_git_bytes("show", f"{PUBLISHED_REF}:{path}")).decode()) for n, path in numbered]
+
+
+def guard_published_textures():
+    """Every item the published sheet had keeps its texture key, and the PNG at that path keeps its bytes.
+
+    Compares the files this run wrote with PUBLISHED_REF, never with themselves. Returns the problems (empty = green)."""
+    problems = []
+    old = json.loads(_git_bytes("show", f"{PUBLISHED_REF}:data/recipes.json"))
+    new = json.loads((OUT_DATA_DIR / "recipes.json").read_text(encoding="utf-8"))
+    for item, entry in old["items"].items():
+        if item not in new["items"]:
+            problems.append(f"{item} was on the published sheet and is gone")
+            continue
+        key_old, key_new = entry[2], new["items"][item][2]
+        if key_old != key_new:
+            problems.append(f"{item}: texture {key_old} became {key_new}")
+            continue
+        if key_old is None:
+            continue
+        path = f"assets/img/recipes/{key_old}.png"
+        if (SITE_ROOT / path).read_bytes() != _git_bytes("show", f"{PUBLISHED_REF}:{path}"):
+            problems.append(f"{path} (the texture of {item}) is not byte-identical to the published one")
+    for key, payload in published_textures():
+        path = SITE_ROOT / f"assets/img/recipes/{key}.png"
+        if not path.exists() or path.read_bytes() != base64.b64decode(payload):
+            problems.append(f"assets/img/recipes/{key}.png changed or vanished")
+    return problems
+
+
 class ItemRegistry:
     """item id -> (日本語名, 英語名, テクスチャ key) を 1 回だけ解決して覚える。
 
@@ -2022,6 +2090,14 @@ class ItemRegistry:
         self.tex_payloads = {}   # b64 payload -> tex_key
         self.tex_order = []      # tex_key -> payload (emission order)
         self.raw_bytes = 0       # 再圧縮前の合計(統計用)
+        # 公開済みの画像の番号を先に確保する(2026-09-30、ASTRAEA を足したとき): 番号は最初に登録された順に
+        # 振られ、ブランドは名前順に読まれるので、"astraea" が "cherry" / "ouka" の前に来て既存の 198 枚が
+        # 全部振り直された(中身は同じ、番号だけ別)。ポータルのレシピ頁は t<N> を使うので、公開済みの番号は
+        # 動かさない —— 新しい画像だけが後ろ(t198…)に付く。種は origin/main の画像(公開物)で、この実行が
+        # 上書きする作業木ではない。
+        for key, payload in published_textures():
+            self.tex_payloads[payload] = key
+            self.tex_order.append(payload)
 
     def _tex_key(self, b64):
         if b64 is None:
@@ -6010,7 +6086,9 @@ def _main_body():
     cat_order = ["銃", "電車", "建材", "ドア", "乗り物", "ボス", "天空", "サバイバル", "電力",
                  "二相楽園", "灰街圏",
                  # 別ブランドは Alpha のジャンルの後ろに、サイトの並び(OUKA→Cherry)で置く。
-                 *[BRAND_CATEGORY[b] for b in ("ouka", "cherry")]]
+                 # ASTRAEA(2026-09-30)は Cherry の後ろ: 既存のタブの番号(OUKA 0・Cherry 1)と札の並びを
+                 # 一つも動かさない(ポータルのレシピ頁は #0/#1 の深いリンクと t<N> を使う)。
+                 *[BRAND_CATEGORY[b] for b in ("ouka", "cherry", "astraea")]]
     missing = {c["cat"] for c in cards} - set(cat_order)
     if missing:
         raise SystemExit(
@@ -6282,7 +6360,21 @@ def _main_body():
           f"written as individual PNGs, verified-lossless)")
     print(f"wrote {out_json} ({total} recipes, {out_json.stat().st_size / 1048576:.2f} MiB) "
           f"+ {len(reg.tex_order)} PNGs in {OUT_IMG_DIR}")
+    guard = guard_published_textures()
+    if guard:
+        for problem in guard[:20]:
+            print("  GUARD: " + problem)
+        raise SystemExit(f"ERROR: {len(guard)} published texture(s) moved or changed - the portal's t<N> links would point "
+                         f"at other pictures. Nothing published may be renumbered.")
+    print(f"published textures guard: every item of the published sheet keeps its texture and its bytes: GREEN")
 
 
 if __name__ == "__main__":
+    import sys as _sys
+    if "--guard-only" in _sys.argv[1:]:
+        _problems = guard_published_textures()
+        for _p in _problems[:20]:
+            print("  GUARD: " + _p)
+        print("published textures guard:", "GREEN" if not _problems else f"RED ({len(_problems)} problem(s))")
+        _sys.exit(1 if _problems else 0)
     main()
