@@ -256,6 +256,9 @@ NAV_LABEL_FALLBACK = {
     "ouka": "OUKA",
     # And for "ASTRAEA" (V1.0.0, 2026-09-30): the brand's own name, never translated.
     "astraea": "ASTRAEA",
+    # And "Tsubomi" (V1.0.0, 2026-09-30): the Latin name goes in the navigation, as OUKA's
+    # does; the portal shows 蕾 itself, so the label never needs it.
+    "tsubomi": "Tsubomi",
     "upcoming": "Coming next",
     # Same arrangement as "upcoming": the nav label falls back to English
     # until the bundles carry ui.nav.discord, while the page itself is fully
@@ -299,7 +302,9 @@ NAV_GROUPS = [
     #   2026-09-30: ASTRAEA V1.0.0 joins the line after Aureum, in the portal's own Store order
     #   (corvus-web/lib/products.ts STORE_ORDER: ouka, cherry, aureum, astraea, ...), so the changelog's
     #   tabs and the Store cannot disagree. ASTRAEA has no compatibility with Alpha (owner, D-1).
-    ("store", ["ouka", "cherry", "aureum", "astraea"]),
+    #   2026-09-30: Tsubomi V1.0.0 follows ASTRAEA, in the same order as the portal's STORE_ORDER.
+    #   Tsubomi is not compatible with Alpha either (the owner; its jar declares it).
+    ("store", ["ouka", "cherry", "aureum", "astraea", "tsubomi"]),
     ("start", ["download", "launcher", "skin"]),
     ("reference", ["recipes"]),
     # "upcoming" sits with changelog/roadmap because it answers the same

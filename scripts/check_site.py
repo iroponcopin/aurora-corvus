@@ -78,6 +78,14 @@ CHECKS = [
      "downloads/ASTRAEA_MODs_v*.zip (tracked, one jar, no Alpha) vs the manifest's astraea block and the 13 feeds"),
     ("astraea-controls", "check_astraea_release.py", ["--self-test"],
      "the ASTRAEA release gate turns every planted defect red"),
+    # Tsubomi V1.0.0 (2026-09-30), a BARE JAR like Aureum: the jar in downloads/ is tracked and the only one, is id
+    # "tsubomi" at its file name's version, depends on Fabric only (Cherry at most as a suggestion), DECLARES that it is
+    # incompatible with Alpha (owner, 2026-09-30; the opposite of ASTRAEA's D-1 rule), the manifest's tsubomi block
+    # (Aureum's shape, no "jars") describes exactly that jar, and all 13 changelog feeds lead with its version.
+    ("tsubomi", "check_tsubomi_release.py", [],
+     "downloads/tsubomi-*.jar (tracked, Fabric-only, declares Alpha incompatible) vs the manifest's tsubomi block and the 13 feeds"),
+    ("tsubomi-controls", "check_tsubomi_release.py", ["--self-test"],
+     "the Tsubomi release gate turns every planted defect red"),
 ]
 
 

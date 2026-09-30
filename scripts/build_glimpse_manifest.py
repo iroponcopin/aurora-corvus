@@ -82,6 +82,15 @@ equal to the ZIP's). _astraea_block() is a separate copy of _ouka_block() on
 purpose, so adding ASTRAEA cannot change a byte of the published cherry or ouka
 blocks. ASTRAEA has no compatibility with Alpha (the owner's decision D-1). From
 the first build that writes it, the never-drop rule applies to it as well.
+
+The "tsubomi" block (Tsubomi V1.0.0, 2026-09-30) is Aureum's shape, not a package's:
+Tsubomi ships as a bare jar, so there is no "jars" and no notes. _tsubomi_block() reads
+everything from the jar -- the mod id from its fabric.mod.json (it must be "tsubomi", the
+name the Store and the Discord bot key the brand by) and its version, which must equal the
+one in the file name. Exactly one Tsubomi jar is published at a time, as for ASTRAEA's ZIP
+(check_tsubomi_release.py holds the same rule). It is a separate function, so adding Tsubomi cannot change a
+byte of any other block. Tsubomi is not compatible with Alpha (the owner, 2026-09-30; the jar
+declares it). From the first build that writes it, the never-drop rule applies to it as well.
 """
 import hashlib
 import io
@@ -107,6 +116,9 @@ OUKA_ZIP_PREFIX = "OUKA_MODs_v"
 OUKA_ZIP_SUFFIX = f"+mc{MC_VERSION}.zip"
 ASTRAEA_ZIP_PREFIX = "ASTRAEA_MODs_v"
 ASTRAEA_ZIP_SUFFIX = f"+mc{MC_VERSION}.zip"
+TSUBOMI_JAR_PREFIX = "tsubomi-"
+TSUBOMI_JAR_SUFFIX = ".jar"
+TSUBOMI_MOD_ID = "tsubomi"
 
 
 def _mod_version():
@@ -541,6 +553,51 @@ def _astraea_block():
     }
 
 
+def _tsubomi_block():
+    """The `tsubomi` block, or None when no Tsubomi jar has been published.
+
+    Aureum's shape (a bare jar: no `jars`, no notes), in a function of its own so that
+    adding Tsubomi can never change a byte of another block (see the module docstring).
+    The mod id and the version are read out of the jar, never typed: the id must be
+    "tsubomi" and the version must equal the file name's, or an installed Tsubomi would
+    be matched or compared against the wrong thing. The same never-drop rule applies in
+    build().
+    """
+    jars = sorted(p for p in DOWNLOAD_DIR.glob(f"{TSUBOMI_JAR_PREFIX}*{TSUBOMI_JAR_SUFFIX}") if p.is_file())
+    if not jars:
+        return None
+    if len(jars) > 1:
+        raise SystemExit(
+            f"ERROR: more than one Tsubomi jar in {DOWNLOAD_DIR} ({', '.join(j.name for j in jars)}). "
+            f"The manifest describes the current build only - publish exactly one.")
+    jpath = jars[0]
+    name_version = jpath.name[len(TSUBOMI_JAR_PREFIX):-len(TSUBOMI_JAR_SUFFIX)]
+    try:
+        with zipfile.ZipFile(jpath) as zf:
+            meta = json.loads(zf.read("fabric.mod.json").decode("utf-8"))
+    except (OSError, KeyError, ValueError, zipfile.BadZipFile) as exc:
+        raise SystemExit(
+            f"ERROR: could not read fabric.mod.json out of {jpath} ({exc}). The manifest's "
+            f"tsubomi.mod_id and tsubomi.latest must come from the jar itself - do not type them.")
+    mod_id, version = meta.get("id"), meta.get("version")
+    if mod_id != TSUBOMI_MOD_ID:
+        raise SystemExit(
+            f"ERROR: {jpath.name} declares the mod id {mod_id!r}, not {TSUBOMI_MOD_ID!r}. The Store and the "
+            f"Discord bot know the brand by that id, so an installed copy would never be matched.")
+    if version != name_version:
+        raise SystemExit(
+            f"ERROR: {jpath.name} is named for version {name_version}, but its fabric.mod.json declares "
+            f"{version!r}. An installed Tsubomi would compare itself against the wrong number.")
+    return {
+        "mod_id": mod_id,
+        "latest": version,
+        "download_url": f"{SITE_BASE_URL}/downloads/{jpath.name}",
+        "file_name": jpath.name,
+        "file_size": jpath.stat().st_size,
+        "sha256": _sha256(jpath),
+    }
+
+
 def _previously_published_manifest():
     """The manifest currently committed at the repo root, or {} if there is none."""
     path = ROOT / "glimpse_manifest.json"
@@ -676,6 +733,23 @@ def build():
     else:
         print("glimpse_manifest.py: no ASTRAEA ZIP found yet - writing manifest with no 'astraea' "
               "block (expected until the first ASTRAEA build ships)")
+
+    tsubomi = _tsubomi_block()
+    if tsubomi is not None:
+        manifest["tsubomi"] = tsubomi
+        print(f"glimpse_manifest.py: Tsubomi {tsubomi['latest']} ({tsubomi['file_name']}, mod id "
+              f"{tsubomi['mod_id']!r}) selected, including 'tsubomi' block")
+    elif "tsubomi" in _previously_published_manifest():
+        # The never-drop rule for Tsubomi: once its block is published, an absent jar means
+        # discovery broke (a rename, a moved folder), and dropping the block would silently
+        # withdraw the published Tsubomi release from everything that reads this manifest.
+        raise SystemExit(
+            f"ERROR: no Tsubomi jar found in {DOWNLOAD_DIR}, but the published glimpse_manifest.json "
+            f"already carries a 'tsubomi' block. Dropping it would silently withdraw the Tsubomi release "
+            f"from every reader of the manifest. Publish the jar, or fix the naming - do not ship this.")
+    else:
+        print("glimpse_manifest.py: no Tsubomi jar found yet - writing manifest with no 'tsubomi' "
+              "block (expected until the first Tsubomi build ships)")
 
     out_path = ROOT / "glimpse_manifest.json"
     out_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
