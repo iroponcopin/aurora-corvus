@@ -289,7 +289,8 @@ KEYS = ("title", "desc", "lede", "line")
 # --- the release ---------------------------------------------------------------
 # The release COPY's `line` and CODENAME were written for. A newer zip stops the
 # build until its own line and name exist (see the docstring).
-COPY_FOR = "1.3.0"
+# V1.3.1 (2026-09-30) is a fix release of V1.3: the V1.3 line and codename still describe it, so they carry over unchanged.
+COPY_FOR = "1.3.1"
 CODENAME = "The Washitsu Architectural Masterpiece"
 FIRST_RELEASE = (1, 0, 0)
 RELEASE_RE = re.compile(r"^OUKA_MODs_v(?P<ver>\d+(?:\.\d+)*)\+mc(?P<mc>\d+(?:\.\d+)*)\.zip$")
