@@ -31,10 +31,12 @@ Live site: served via GitHub Pages from this repository.
 - `scripts/` — the static-site generator and its gates. Plain Python, no framework.
 
 > **Since the portal cutover (29 September 2026) the pages of this site are the 3D portal's**, built from this
-> repository's data by `Minecraft/corvus-web` (`npm run build:portal`) and laid over this tree. `scripts/build.py`
-> refuses to write the old pages while `portal/build.json` exists; the section "Releasing" below is the routine.
-> The section after it describes how the pages were generated BEFORE the cutover and is kept for the rollback
-> (`git revert` of the cutover commit restores those pages byte for byte).
+> repository's data and laid over this tree. Portal 4.0 (October 2026) is built by `web/` in this repository
+> (Next.js 15, static export; `cd web && npm run build && npm run apply`); the 3.x exports were built by
+> `Minecraft/corvus-web` (`npm run build:portal`). `scripts/build.py` refuses to write the old pages while
+> `portal/build.json` exists; the section "Releasing" below is the routine. The section after it describes how the
+> pages were generated BEFORE the cutover and is kept for the rollback (`git revert` of the cutover commit restores
+> those pages byte for byte).
 
 ## Rebuilding the site (before the cutover; kept for the rollback)
 
@@ -74,16 +76,17 @@ writes them. A release (a new pack, a new brand version, a new launcher) is:
    `figures`, `recipe-sources` and `changelog-feeds` — the brand-changelog checker's feed half, `check_changelog_brands.py
    --feeds-only` — and says which page checkers it retired) and
    `python3 scripts/check_release_version_switch.py --baseline scripts/release_history_baseline_26.2.json`.
-4. **Rebuild the pages:** in `Minecraft/corvus-web`, on the branch that ships, `WIKI_DIR=<this checkout> npm run
-   build:portal`, then `npm run check:all`. The Download, Corvus Store and brand pages print the manifest's names,
-   sizes and SHA-256 **at build time**: a release that rebuilds the manifest but not the portal leaves pages that
-   describe files that are no longer the ones served (`check:live` step 4 turns that red).
-5. **Lay the export over this tree, without `--delete`:** `rm -rf _next portal && rsync -a
-   <corvus-web>/dist-portal/ ./`, then the diff filter and the contract check of `corvus-web/docs/CUTOVER.md` §1
-   step 4 (only pages, `404.html`, `sitemap.xml`, `_next/`, `portal/` and `index.txt` files may change; no contract
-   file may).
-6. **Commit, push, and after Pages has deployed** (about a minute to ten): `node <corvus-web>/scripts/gates/check-live.mjs
-   --live` and `python3 scripts/check_published_artefacts.py`.
+4. **Rebuild the pages:** `cd web && npm ci && npm run build` (it reads this checkout's data, the same files and
+   copy tables as before, through `web/scripts/extract_wiki.py`; nothing in it writes outside `web/`), then
+   `npm run typecheck && npm run lint && npm run check:export`. The Download, Corvus Store and brand pages print the
+   manifest's names, sizes and SHA-256 **at build time**: a release that rebuilds the manifest but not the portal
+   leaves pages that describe files that are no longer the ones served.
+5. **Lay the export over this tree:** `npm run apply` (in `web/`). It runs `check:export` first, replaces `_next/`
+   and `portal/`, copies `web/out/` over the root without deleting anything else, then applies the diff filter: only
+   pages, `404.html`, `sitemap.xml`, `_next/`, `portal/` and `index.txt` files may change, and no contract file may;
+   anything else stops it with the list.
+6. **Commit, push, and after Pages has deployed** (about a minute to ten): `python3 scripts/check_published_artefacts.py`,
+   and a look at the live pages (the export's own gate can be pointed at any served copy of the tree).
 
 Tell the other brand sessions before pushing (they share this repository). Going back is `git revert` of the cutover
 or release commit; nothing the launcher or the bot reads is in a page diff.

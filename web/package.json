@@ -1,0 +1,45 @@
+{
+  "name": "aurora-corvus-portal",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Aurora Corvus portal: the Next.js static export laid over this repository's root. Reads the wiki's data at build time; never writes a contract file.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "prepare:data": "PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/extract_wiki.py && node scripts/prepare-public.mjs",
+    "dev": "npm run prepare:data && next dev",
+    "build": "npm run prepare:data && next build && node scripts/finalize-export.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "check:export": "node scripts/check-export.mjs",
+    "check:all": "npm run typecheck && npm run lint && npm run build && npm run check:export",
+    "apply": "node scripts/apply-export.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@fontsource-variable/noto-sans-arabic": "5.3.0",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "next": "15.5.27",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.7",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@types/three": "0.186.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "15.5.27",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}

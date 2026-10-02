@@ -91,8 +91,9 @@ CHECKS = [
 
 # The checkers that read the OLD pages' markup. Once the portal is the site (portal/build.json exists) their expectations
 # are about HTML that is no longer there, so they would go red for the right reason and prove nothing; they are retired
-# here, and their jobs are done by the portal's own gates (`npm run check:all` in Minecraft/corvus-web:
-# check:urls/links/i18n/rtl/live and the installer entries compared with the manifest). What stays is what reads DATA.
+# here, and their jobs are done by the portal's own gates (`npm run check:all` in web/: typecheck, lint, the build,
+# which refuses to export a contract file, and check:export — every page's head, every link and anchor, the 404 rule,
+# and each printed SHA-256 against the file actually served). What stays is what reads DATA.
 RETIRED_AT_PORTAL = {"defects", "404", "lang", "discord", "skin", "cherry", "ouka", "changelog-brands",
                      "changelog-brands-controls"}
 PORTAL_ONLY = {"changelog-feeds"}
@@ -120,7 +121,7 @@ def main():
         todo = [c for c in todo if c[0] not in RETIRED_AT_PORTAL]
         if retired:
             print("retired at the portal cutover (they read the old pages' markup): " + ", ".join(retired))
-            print("  the portal's gates replace them: cd Minecraft/corvus-web && npm run check:all")
+            print("  the portal's gates replace them: cd web && npm run check:all")
     unknown = [w for w in want if w not in {c[0] for c in CHECKS}]
     if unknown:
         raise SystemExit(f"ERROR: no such check: {', '.join(unknown)}. "

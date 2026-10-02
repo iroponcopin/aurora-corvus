@@ -74,7 +74,7 @@ BUILD_SCRIPTS = [
 
 
 # What produces the files the launcher and the bot read (the CONTRACT files) and nothing else: no page. After the portal
-# cutover this is what a release runs; the pages are the portal's (Minecraft/corvus-web, `npm run build:portal`).
+# cutover this is what a release runs; the pages are the portal's (web/: `npm run build && npm run apply`).
 FEED_SCRIPTS = [
     ("build_upcoming.py", ["--feed-only"]),
     ("build_changelog_feed.py", []),
@@ -97,9 +97,9 @@ def main():
     if portal_is_in_place() and "--legacy-pages" not in argv:
         raise SystemExit(
             "build.py refuses to run: portal/build.json exists, so the pages of this site are the 3D portal's "
-            "(Minecraft/corvus-web, `npm run build:portal`), and this script would WRITE THE OLD PAGES OVER THEM.\n"
+            "(web/: `npm run build && npm run apply`), and this script would WRITE THE OLD PAGES OVER THEM.\n"
             "  * to rebuild what the launcher and the bot read (manifest, feeds):   python3 scripts/build.py --feeds\n"
-            "  * to rebuild the pages after a release: see README.md, 'Releasing' (data -> --feeds -> build:portal -> copy)\n"
+            "  * to rebuild the pages after a release: see README.md, 'Releasing' (data -> --feeds -> web: build -> apply)\n"
             "  * to really write the old pages anyway (a rollback rehearsal):        python3 scripts/build.py --legacy-pages")
     for name in BUILD_SCRIPTS:
         script = HERE / name
