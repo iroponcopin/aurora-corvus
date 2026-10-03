@@ -12,7 +12,12 @@ SITE_URL = "https://iroponcopin.github.io/aurora-corvus"
 
 
 def build():
-    pages = sorted(ROOT.rglob("index.html"))
+    # The site's own pages only: not web/ (the portal's source, its build output and node_modules)
+    # and nothing under a dot directory.
+    pages = sorted(
+        p for p in ROOT.rglob("index.html")
+        if p.relative_to(ROOT).parts[0] != "web" and not any(x.startswith(".") for x in p.relative_to(ROOT).parts)
+    )
     urls = []
     for p in pages:
         rel = p.relative_to(ROOT).parent
@@ -30,11 +35,16 @@ def build():
     (ROOT / "sitemap.xml").write_text(xml, encoding="utf-8")
     print(f"wrote sitemap.xml ({len(urls)} URLs)")
 
+    # Exactly one Sitemap: line, pointing at this site. A line left by an earlier name of the site
+    # (glimpse-alpha-wiki) is replaced, not kept: it sent crawlers to another site's sitemap.
     robots = ROOT / "robots.txt"
     text = robots.read_text(encoding="utf-8")
-    if "Sitemap:" not in text:
-        robots.write_text(text.rstrip() + f"\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
-        print("appended Sitemap: line to robots.txt")
+    line = f"Sitemap: {SITE_URL}/sitemap.xml"
+    kept = [x for x in text.splitlines() if not x.lower().startswith("sitemap:")]
+    fixed = "\n".join(kept).rstrip() + f"\n{line}\n"
+    if fixed != text:
+        robots.write_text(fixed, encoding="utf-8")
+        print(f"robots.txt: {line}")
 
 
 if __name__ == "__main__":
