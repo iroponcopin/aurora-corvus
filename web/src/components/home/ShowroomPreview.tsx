@@ -1,29 +1,35 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { Texture } from "three";
 import { chime } from "@/engine/audio";
 import { addFrameHook } from "@/engine/loop";
 import { engine } from "@/engine/store";
 import { Stage3D } from "@/engine/View";
 import { type Pose, SkinModel } from "@/realms/SkinModel";
-import { asset } from "@/lib/site";
+import { skinTexture } from "@/realms/skinTexture";
+import { asset, wikiFile } from "@/lib/site";
 import { Icon } from "../Icon";
 
 type Motion = "idle" | "walk" | "combat";
 
 /**
- * The showroom realm on the home page: Sparxie's skeleton as a hologram (the skin itself stays
- * sealed until the skin page opens it with the PIN), turning slowly by itself, with the three
- * motions. Drag turns her.
+ * The showroom realm on the home page: Sparxie wearing her skin (public since the owner opened it,
+ * data/skin_public.json), turning slowly by itself, with the three motions. Drag turns her. While
+ * the skin is sealed she is a hologram of the skeleton, with her in-game render beside it.
  */
 export function ShowroomPreview({
   bladeIcon,
+  skinFile,
   labels,
 }: {
   bladeIcon: string | null;
+  /** The public skin's file (data/skin_public.json), or null while it is sealed. */
+  skinFile: string | null;
   labels: { idle: string; walk: string; combat: string; motion: string; drag: string; sealed: string; noWebgl: string; portrait: string };
 }) {
   const [motion, setMotion] = useState<Motion>("idle");
+  const [texture, setTexture] = useState<Texture | null>(null);
   const yaw = useRef(0.5);
   const pitch = useRef(0.05);
   const drag = useRef<{ x: number; y: number; id: number } | null>(null);
@@ -36,6 +42,25 @@ export function ShowroomPreview({
       }),
     [],
   );
+
+  // The public skin goes on the model; if it cannot be read she stays the hologram.
+  useEffect(() => {
+    if (skinFile === null) return;
+    let live = true;
+    void (async () => {
+      try {
+        const res = await fetch(wikiFile(skinFile));
+        if (!res.ok) return;
+        const tex = await skinTexture(new Uint8Array(await res.arrayBuffer()));
+        if (live) setTexture(tex);
+      } catch {
+        // The hologram stays.
+      }
+    })();
+    return () => {
+      live = false;
+    };
+  }, [skinFile]);
 
   const pose: Pose = motion === "combat" ? "draw" : "stand";
   const choose = (m: Motion): void => {
@@ -86,7 +111,7 @@ export function ShowroomPreview({
           }
         >
           <SkinModel
-            texture={null}
+            texture={texture}
             pose={pose}
             walk={motion === "walk"}
             breathe={motion === "idle"}
@@ -97,14 +122,18 @@ export function ShowroomPreview({
             pitch={pitch}
           />
         </Stage3D>
-        <figure className="ac-sr-portrait">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset("wiki/skin/sparxie-front.png")} alt={labels.portrait} width={321} height={722} loading="lazy" />
-        </figure>
-        <p className="ac-preview-caption">
-          <Icon name="lock" size={13} />
-          <span className="ac-small">{labels.sealed}</span>
-        </p>
+        {skinFile === null ? (
+          <>
+            <figure className="ac-sr-portrait">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={asset("wiki/skin/sparxie-front.png")} alt={labels.portrait} width={321} height={722} loading="lazy" />
+            </figure>
+            <p className="ac-preview-caption">
+              <Icon name="lock" size={13} />
+              <span className="ac-small">{labels.sealed}</span>
+            </p>
+          </>
+        ) : null}
       </div>
       <div className="ac-preview-controls">
         <span className="ac-small">{labels.motion}</span>

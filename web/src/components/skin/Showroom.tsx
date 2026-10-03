@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Texture } from "three";
+import type { Texture } from "three";
 import { chime } from "@/engine/audio";
 import { burst } from "@/engine/store";
 import { Stage3D } from "@/engine/View";
 import { openSealed, sha256Hex, WrongPin } from "@/realms/acsk";
 import { type Pose, type Rig, SkinModel } from "@/realms/SkinModel";
+import { skinTexture } from "@/realms/skinTexture";
 import { asset, wikiFile } from "@/lib/site";
 import type { SkinLabels } from "@/lib/wiki-types";
 import { Icon } from "../Icon";
@@ -25,47 +26,30 @@ export interface ShowroomFresh {
   sealedModel: string;
 }
 
-async function textureFrom(png: Uint8Array): Promise<Texture> {
-  const blob = new Blob([png.slice().buffer], { type: "image/png" });
-  try {
-    const bitmap = await createImageBitmap(blob, { imageOrientation: "flipY" });
-    const t = new Texture(bitmap);
-    t.flipY = false;
-    t.needsUpdate = true;
-    return t;
-  } catch {
-    // Browsers without ImageBitmap orientation: an <img> and three's own flip.
-    const url = URL.createObjectURL(blob);
-    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
-      const i = new Image();
-      i.onload = () => resolve(i);
-      i.onerror = reject;
-      i.src = url;
-    });
-    const t = new Texture(img);
-    t.needsUpdate = true;
-    return t;
-  }
-}
 
 /**
- * Sparxie's showroom. The skin is sealed on the server (downloads/sparxie-skin.acsk); the PIN,
- * which the owner hands out and which is written nowhere on this site, opens it in this
- * browser alone. Until then the model is a hologram of the skeleton; afterwards it wears the
- * skin, and the PNG can be saved.
+ * Sparxie's showroom. Since the owner made the skin public (data/skin_public.json) the model wears
+ * it for everyone and the PNG downloads directly. Without that file the sealed path stands: the
+ * skin waits on the server (downloads/sparxie-skin.acsk) for the PIN, which opens it in this
+ * browser alone, and until then the model is a hologram of the skeleton.
  */
 export function Showroom({
   labels,
   fresh,
   preview,
   gate,
+  publicSkin,
+  publicLede,
   bladeIcon,
 }: {
   labels: SkinLabels;
   fresh: ShowroomFresh;
-  /** Sparxie's two public renders (front, three-quarter): what she looks like, for everyone. */
-  preview: { title: string; note: string; front: string; side: string };
+  /** Sparxie's two in-game renders (front, three-quarter). */
+  preview: { title: string; front: string; side: string };
   gate: { blob: string; plainName: string; plainSha256: string; plainBytes: number };
+  /** The public skin (data/skin_public.json), or null while it is sealed. */
+  publicSkin: { file: string; name: string } | null;
+  publicLede: string;
   bladeIcon: string | null;
 }) {
   const [status, setStatus] = useState<Status>("locked");
@@ -84,10 +68,33 @@ export function Showroom({
 
   useEffect(
     () => () => {
-      if (href !== null) URL.revokeObjectURL(href);
+      if (href !== null && href.startsWith("blob:")) URL.revokeObjectURL(href);
     },
     [href],
   );
+
+  // The public skin: on the model from the start, and its file is the download.
+  useEffect(() => {
+    if (publicSkin === null) return;
+    let live = true;
+    const url = wikiFile(publicSkin.file);
+    void (async () => {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const tex = await skinTexture(new Uint8Array(await res.arrayBuffer()));
+        if (!live) return;
+        setTexture(tex);
+        setHref(url);
+        setStatus("open");
+      } catch {
+        if (live) setStatus("error");
+      }
+    })();
+    return () => {
+      live = false;
+    };
+  }, [publicSkin]);
 
   const unlock = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -100,7 +107,7 @@ export function Showroom({
       const plain = await openSealed(sealed, pin);
       if (plain.length !== gate.plainBytes || (await sha256Hex(plain)) !== gate.plainSha256) throw new Error("checksum");
       setPin("");
-      setTexture(await textureFrom(plain));
+      setTexture(await skinTexture(plain));
       setHref(URL.createObjectURL(new Blob([plain.slice().buffer], { type: "image/png" })));
       setStatus("open");
       chime("unlock");
@@ -175,10 +182,12 @@ export function Showroom({
               pitch={pitch}
             />
           </Stage3D>
-          <div className="ac-sk-badge" data-open={status === "open"}>
-            <Icon name={status === "open" ? "unlock" : "lock"} size={14} />
-            <span>{status === "open" ? labels.unlocked : labels.locked}</span>
-          </div>
+          {publicSkin === null ? (
+            <div className="ac-sk-badge" data-open={status === "open"}>
+              <Icon name={status === "open" ? "unlock" : "lock"} size={14} />
+              <span>{status === "open" ? labels.unlocked : labels.locked}</span>
+            </div>
+          ) : null}
           <button
             type="button"
             className="ac-iconbtn ac-sk-reset"
@@ -196,9 +205,7 @@ export function Showroom({
       </div>
 
       <div className="ac-sk-side">
-        <p className="ac-lead">
-          <Rich text={labels.lede} />
-        </p>
+        <p className="ac-lead">{publicSkin !== null ? publicLede : <Rich text={labels.lede} />}</p>
 
         <figure className="ac-sk-preview">
           <div className="ac-sk-preview-row">
@@ -209,7 +216,6 @@ export function Showroom({
           </div>
           <figcaption>
             <b>{preview.title}</b>
-            <span className="ac-small">{preview.note}</span>
           </figcaption>
         </figure>
 
@@ -266,7 +272,28 @@ export function Showroom({
           ))}
         </div>
 
-        {status !== "open" ? (
+        {publicSkin !== null ? (
+          <div className="ac-sk-open ac-card">
+            <a
+              className="ac-btn ac-sk-download"
+              href={wikiFile(publicSkin.file)}
+              download={publicSkin.name}
+              onClick={() => {
+                setSaved(true);
+                chime("unlock");
+                burst(0, 0, 0, 0.8);
+              }}
+            >
+              <Icon name="download" size={16} />
+              {labels.downloadPng}
+            </a>
+            {saved ? (
+              <p className="ac-small" role="status">
+                {labels.done}
+              </p>
+            ) : null}
+          </div>
+        ) : status !== "open" ? (
           <form className="ac-sk-pin ac-card" autoComplete="off" onSubmit={(e) => void unlock(e)}>
             <label htmlFor="sk-pin" className="ac-small">
               {labels.pinLabel}

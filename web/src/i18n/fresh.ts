@@ -112,8 +112,10 @@ export interface Fresh {
     search: string;
     empty: string;
   };
-  /** Sparxie's public preview pictures, shown while the skin itself is sealed. */
-  skinPreview: { title: string; note: string; front: string; side: string };
+  /** Sparxie's two in-game renders beside the 3D model. */
+  skinPreview: { title: string; front: string; side: string };
+  /** The skin page once the skin is public (data/skin_public.json). */
+  skinPublic: { lede: string };
 }
 
 export const FRESH: Record<Lang, Fresh> = {
@@ -134,7 +136,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "ショールーム",
         title: "Sparxie を、あらゆる角度から。",
-        lede: "回して、照らして、歩かせる。スキンは封印されたまま届き、PIN を入れたブラウザの中でだけ姿を現します。",
+        lede: "回して、照らして、歩かせて。スキンは誰でも無料でダウンロードできます。",
         cta: "スキンを見る",
       },
       store: {
@@ -219,7 +221,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "全モデルのリリースを、ブランド別に検索。",
         upcoming: "いま作っているもの、次に来るもの。",
         teasers: "公開したティザーを、もう一度再生。",
-        skin: "Sparxie を 3D で。スキンは PIN で開きます。",
+        skin: "Sparxie を 3D で。スキンは無料でダウンロード。",
       },
     },
     teasers: {
@@ -243,7 +245,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "ティザーを検索",
       empty: "一致するティザーはありません。",
     },
-    skinPreview: { title: "ゲームの中の Sparxie", note: "プレビュー画像は誰でも見られます。スキンのファイルそのものは、PIN で開くまで封印されたままです。", front: "正面", side: "斜め" },
+    skinPreview: { title: "ゲームの中の Sparxie", front: "正面", side: "斜め" },
+    skinPublic: { lede: "Sparxie は Minecraft のスキンとして、誰でも無料で使えます。ここで回して、ポーズを試して、そのままダウンロードできます。" },
   },
   en: {
     heroLine1: "Aurora Corvus.",
@@ -262,7 +265,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Showroom",
         title: "Sparxie, in the round.",
-        lede: "Turn her, light her, set her walking. The skin arrives sealed and only appears inside the browser that holds the PIN.",
+        lede: "Turn her, light her, set her walking. Her skin is free for everyone to download.",
         cta: "See the skin",
       },
       store: {
@@ -347,7 +350,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Every release of every model, searchable by brand.",
         upcoming: "What is being built, and what comes next.",
         teasers: "Replay every teaser we have published.",
-        skin: "Sparxie in 3D. The skin opens with the PIN.",
+        skin: "Sparxie in 3D, and her skin to download, free.",
       },
     },
     teasers: {
@@ -371,7 +374,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Search teasers",
       empty: "No teaser matches.",
     },
-    skinPreview: { title: "Sparxie, as she looks in game", note: "The preview pictures are for everyone. The skin file itself stays sealed until the PIN opens it.", front: "Front", side: "Three-quarter" },
+    skinPreview: { title: "Sparxie, as she looks in game", front: "Front", side: "Three-quarter" },
+    skinPublic: { lede: "Sparxie is available as a Minecraft skin, free for everyone: turn her around and try her poses here, then download the skin." },
   },
   es: {
     heroLine1: "Aurora Corvus.",
@@ -390,7 +394,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Sala de exposición",
         title: "Sparxie, desde todos los ángulos.",
-        lede: "Gírala, ilumínala, ponla a caminar. La skin llega sellada y solo aparece en el navegador que tiene el PIN.",
+        lede: "Gírala, ilumínala, hazla caminar. Su skin se descarga gratis, para todos.",
         cta: "Ver la skin",
       },
       store: {
@@ -475,7 +479,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Todas las versiones de cada modelo, con filtro por marca.",
         upcoming: "Lo que se está construyendo y lo que viene.",
         teasers: "Vuelve a ver cada adelanto publicado.",
-        skin: "Sparxie en 3D. La skin se abre con el PIN.",
+        skin: "Sparxie en 3D, y su skin para descargar gratis.",
       },
     },
     teasers: {
@@ -499,7 +503,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Buscar adelantos",
       empty: "Ningún adelanto coincide.",
     },
-    skinPreview: { title: "Sparxie tal como se ve en el juego", note: "Las imágenes de vista previa son para todos. El archivo de la skin sigue sellado hasta que el PIN lo abre.", front: "Frente", side: "Tres cuartos" },
+    skinPreview: { title: "Sparxie tal como se ve en el juego", front: "Frente", side: "Tres cuartos" },
+    skinPublic: { lede: "Sparxie está disponible como skin de Minecraft, gratis para todos: gírala y prueba sus poses aquí, y luego descarga la skin." },
   },
   fr: {
     heroLine1: "Aurora Corvus.",
@@ -518,7 +523,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Salle d’exposition",
         title: "Sparxie, sous tous les angles.",
-        lede: "Faites-la pivoter, éclairez-la, faites-la marcher. Le skin arrive scellé et n’apparaît que dans le navigateur qui détient le PIN.",
+        lede: "Faites-la tourner, éclairez-la, faites-la marcher. Son skin se télécharge gratuitement, pour tous.",
         cta: "Voir le skin",
       },
       store: {
@@ -603,7 +608,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Toutes les versions de chaque modèle, filtrables par marque.",
         upcoming: "Ce qui se construit, et ce qui arrive.",
         teasers: "Revoyez chaque teaser publié.",
-        skin: "Sparxie en 3D. Le skin s’ouvre avec le PIN.",
+        skin: "Sparxie en 3D, et son skin à télécharger gratuitement.",
       },
     },
     teasers: {
@@ -627,7 +632,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Rechercher des teasers",
       empty: "Aucun teaser ne correspond.",
     },
-    skinPreview: { title: "Sparxie telle qu’elle apparaît en jeu", note: "Les images d’aperçu sont pour tous. Le fichier du skin reste scellé jusqu’à ce que le PIN l’ouvre.", front: "Face", side: "Trois-quarts" },
+    skinPreview: { title: "Sparxie telle qu’elle apparaît en jeu", front: "Face", side: "Trois-quarts" },
+    skinPublic: { lede: "Sparxie est disponible comme skin Minecraft, gratuit pour tous : faites-la tourner, essayez ses poses ici, puis téléchargez le skin." },
   },
   zh: {
     heroLine1: "Aurora Corvus.",
@@ -646,7 +652,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "展厅",
         title: "从每个角度看 Sparxie。",
-        lede: "转动她、照亮她、让她走起来。皮肤以封存状态送达，只会在持有 PIN 的浏览器中显现。",
+        lede: "转动她、照亮她、让她走起来。她的皮肤人人可免费下载。",
         cta: "查看皮肤",
       },
       store: {
@@ -731,7 +737,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "每个型号的每次发布，可按品牌筛选。",
         upcoming: "正在打造的，以及接下来的。",
         teasers: "重播已发布的每一则预告。",
-        skin: "3D 的 Sparxie。皮肤凭 PIN 解锁。",
+        skin: "3D 的 Sparxie，皮肤免费下载。",
       },
     },
     teasers: {
@@ -755,7 +761,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "搜索预告",
       empty: "没有匹配的预告。",
     },
-    skinPreview: { title: "游戏中的 Sparxie", note: "预览图人人可见。皮肤文件本身在用 PIN 解锁之前始终保持封存。", front: "正面", side: "斜侧" },
+    skinPreview: { title: "游戏中的 Sparxie", front: "正面", side: "斜侧" },
+    skinPublic: { lede: "Sparxie 作为 Minecraft 皮肤向所有人免费开放：在这里转动她、试试各种姿势，然后下载皮肤。" },
   },
   ko: {
     heroLine1: "Aurora Corvus.",
@@ -774,7 +781,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "쇼룸",
         title: "모든 각도에서 보는 Sparxie.",
-        lede: "돌려 보고, 비춰 보고, 걷게 해 보세요. 스킨은 봉인된 채 도착하며 PIN을 가진 브라우저 안에서만 모습을 드러냅니다.",
+        lede: "돌려 보고, 조명을 비추고, 걷게 해 보세요. 스킨은 누구나 무료로 내려받을 수 있습니다.",
         cta: "스킨 보기",
       },
       store: {
@@ -859,7 +866,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "모든 모델의 릴리스를 브랜드별로 검색.",
         upcoming: "지금 만들고 있는 것, 그리고 다음에 올 것.",
         teasers: "공개했던 티저를 다시 재생.",
-        skin: "3D로 만나는 Sparxie. 스킨은 PIN으로 열립니다.",
+        skin: "3D로 만나는 Sparxie, 스킨은 무료로 다운로드.",
       },
     },
     teasers: {
@@ -883,7 +890,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "티저 검색",
       empty: "일치하는 티저가 없습니다.",
     },
-    skinPreview: { title: "게임 속 Sparxie", note: "미리보기 이미지는 누구나 볼 수 있습니다. 스킨 파일 자체는 PIN으로 열기 전까지 봉인되어 있습니다.", front: "정면", side: "비스듬히" },
+    skinPreview: { title: "게임 속 Sparxie", front: "정면", side: "비스듬히" },
+    skinPublic: { lede: "Sparxie는 누구나 무료로 쓸 수 있는 Minecraft 스킨입니다. 여기서 돌려 보고 포즈를 바꿔 본 뒤 스킨을 내려받으세요." },
   },
   "pt-br": {
     heroLine1: "Aurora Corvus.",
@@ -902,7 +910,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Showroom",
         title: "Sparxie, de todos os ângulos.",
-        lede: "Gire, ilumine, faça-a andar. A skin chega lacrada e só aparece no navegador que tem o PIN.",
+        lede: "Gire, ilumine, faça-a andar. A skin dela é grátis para todos baixarem.",
         cta: "Ver a skin",
       },
       store: {
@@ -987,7 +995,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Todas as versões de cada modelo, com filtro por marca.",
         upcoming: "O que está sendo construído e o que vem a seguir.",
         teasers: "Reveja cada teaser publicado.",
-        skin: "Sparxie em 3D. A skin abre com o PIN.",
+        skin: "Sparxie em 3D, e a skin dela para baixar grátis.",
       },
     },
     teasers: {
@@ -1011,7 +1019,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Buscar teasers",
       empty: "Nenhum teaser corresponde.",
     },
-    skinPreview: { title: "Sparxie como aparece no jogo", note: "As imagens de prévia são para todos. O arquivo da skin continua selado até o PIN abri-lo.", front: "Frente", side: "Três quartos" },
+    skinPreview: { title: "Sparxie como aparece no jogo", front: "Frente", side: "Três quartos" },
+    skinPublic: { lede: "Sparxie está disponível como skin de Minecraft, grátis para todos: gire-a e experimente as poses aqui, depois baixe a skin." },
   },
   it: {
     heroLine1: "Aurora Corvus.",
@@ -1030,7 +1039,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Showroom",
         title: "Sparxie, da ogni angolazione.",
-        lede: "Girala, illuminala, falla camminare. La skin arriva sigillata e appare solo nel browser che ha il PIN.",
+        lede: "Falla girare, illuminala, falla camminare. La sua skin si scarica gratis, per tutti.",
         cta: "Guarda la skin",
       },
       store: {
@@ -1115,7 +1124,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Tutte le versioni di ogni modello, filtrabili per marchio.",
         upcoming: "Ciò che si sta costruendo e ciò che arriva.",
         teasers: "Rivedi ogni teaser pubblicato.",
-        skin: "Sparxie in 3D. La skin si apre con il PIN.",
+        skin: "Sparxie in 3D, e la sua skin da scaricare gratis.",
       },
     },
     teasers: {
@@ -1139,7 +1148,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Cerca teaser",
       empty: "Nessun teaser corrisponde.",
     },
-    skinPreview: { title: "Sparxie come appare nel gioco", note: "Le immagini di anteprima sono per tutti. Il file della skin resta sigillato finché il PIN non lo apre.", front: "Fronte", side: "Tre quarti" },
+    skinPreview: { title: "Sparxie come appare nel gioco", front: "Fronte", side: "Tre quarti" },
+    skinPublic: { lede: "Sparxie è disponibile come skin di Minecraft, gratis per tutti: falla girare e prova le sue pose qui, poi scarica la skin." },
   },
   ar: {
     heroLine1: "Aurora Corvus.",
@@ -1158,7 +1168,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "صالة العرض",
         title: "Sparxie من كل زاوية.",
-        lede: "أدِرها، أضئها، اجعلها تمشي. يصل السكن مختومًا ولا يظهر إلا في المتصفح الذي يملك رمز PIN.",
+        lede: "أدِرها، وأضئها، ودعها تمشي. مظهرها متاح للتنزيل مجانًا للجميع.",
         cta: "شاهد السكن",
       },
       store: {
@@ -1243,7 +1253,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "كل إصدارات كل طراز، مع التصفية حسب العلامة.",
         upcoming: "ما يُبنى الآن، وما سيأتي بعده.",
         teasers: "أعِد تشغيل كل إعلان تشويقي نشرناه.",
-        skin: "Sparxie بالأبعاد الثلاثية. يُفتح المظهر برمز PIN.",
+        skin: "Sparxie بالأبعاد الثلاثية، ومظهرها للتنزيل مجانًا.",
       },
     },
     teasers: {
@@ -1267,7 +1277,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "ابحث في الإعلانات التشويقية",
       empty: "لا يوجد إعلان تشويقي مطابق.",
     },
-    skinPreview: { title: "Sparxie كما تظهر في اللعبة", note: "صور المعاينة متاحة للجميع. أما ملف المظهر نفسه فيبقى مختومًا حتى يفتحه رمز PIN.", front: "من الأمام", side: "منظر جانبي" },
+    skinPreview: { title: "Sparxie كما تظهر في اللعبة", front: "من الأمام", side: "منظر جانبي" },
+    skinPublic: { lede: "Sparxie متاحة كمظهر لـ Minecraft مجانًا للجميع: أدِرها وجرّب وضعياتها هنا، ثم نزّل المظهر." },
   },
   ru: {
     heroLine1: "Aurora Corvus.",
@@ -1286,7 +1297,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Шоурум",
         title: "Sparxie со всех сторон.",
-        lede: "Поворачивайте, освещайте, заставьте её идти. Скин приходит запечатанным и появляется только в браузере, где введён PIN.",
+        lede: "Покрутите, осветите, заставьте пройтись. Её скин можно скачать бесплатно — всем.",
         cta: "Посмотреть скин",
       },
       store: {
@@ -1371,7 +1382,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Все выпуски каждой модели, с отбором по бренду.",
         upcoming: "Что сейчас строится и что будет дальше.",
         teasers: "Пересмотрите каждый опубликованный тизер.",
-        skin: "Sparxie в 3D. Скин открывается PIN-кодом.",
+        skin: "Sparxie в 3D и её скин — бесплатно.",
       },
     },
     teasers: {
@@ -1395,7 +1406,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Поиск по тизерам",
       empty: "Подходящих тизеров нет.",
     },
-    skinPreview: { title: "Sparxie в игре", note: "Изображения для предпросмотра видны всем. Сам файл скина остаётся запечатанным, пока его не откроет PIN-код.", front: "Спереди", side: "Вполоборота" },
+    skinPreview: { title: "Sparxie в игре", front: "Спереди", side: "Вполоборота" },
+    skinPublic: { lede: "Sparxie доступна как скин для Minecraft — бесплатно для всех: покрутите её и примерьте позы здесь, а затем скачайте скин." },
   },
   id: {
     heroLine1: "Aurora Corvus.",
@@ -1414,7 +1426,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Ruang Pamer",
         title: "Sparxie, dari segala sudut.",
-        lede: "Putar, sinari, buat dia berjalan. Skin tiba dalam keadaan tersegel dan hanya muncul di peramban yang memegang PIN.",
+        lede: "Putar, beri cahaya, buat dia berjalan. Skin-nya bisa diunduh gratis oleh siapa saja.",
         cta: "Lihat skin",
       },
       store: {
@@ -1499,7 +1511,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Semua rilis setiap model, bisa disaring per merek.",
         upcoming: "Yang sedang dibangun, dan yang akan datang.",
         teasers: "Putar ulang setiap teaser yang pernah terbit.",
-        skin: "Sparxie dalam 3D. Skin terbuka dengan PIN.",
+        skin: "Sparxie dalam 3D, dan skin-nya untuk diunduh gratis.",
       },
     },
     teasers: {
@@ -1523,7 +1535,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Cari teaser",
       empty: "Tidak ada teaser yang cocok.",
     },
-    skinPreview: { title: "Sparxie di dalam game", note: "Gambar pratinjau bisa dilihat semua orang. Berkas skin-nya tetap tersegel sampai PIN membukanya.", front: "Depan", side: "Tiga perempat" },
+    skinPreview: { title: "Sparxie di dalam game", front: "Depan", side: "Tiga perempat" },
+    skinPublic: { lede: "Sparxie tersedia sebagai skin Minecraft, gratis untuk semua: putar dia dan coba pose-posenya di sini, lalu unduh skin-nya." },
   },
   de: {
     heroLine1: "Aurora Corvus.",
@@ -1542,7 +1555,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Showroom",
         title: "Sparxie, von allen Seiten.",
-        lede: "Drehen, beleuchten, laufen lassen. Der Skin kommt versiegelt an und erscheint nur in dem Browser, der die PIN kennt.",
+        lede: "Dreh sie, beleuchte sie, lass sie laufen. Ihren Skin kann jeder kostenlos herunterladen.",
         cta: "Den Skin ansehen",
       },
       store: {
@@ -1627,7 +1640,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Jede Version jedes Modells, nach Marke filterbar.",
         upcoming: "Was gerade entsteht und was als Nächstes kommt.",
         teasers: "Jeden veröffentlichten Teaser noch einmal abspielen.",
-        skin: "Sparxie in 3D. Der Skin öffnet sich mit der PIN.",
+        skin: "Sparxie in 3D, und ihr Skin zum kostenlosen Download.",
       },
     },
     teasers: {
@@ -1651,7 +1664,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Teaser durchsuchen",
       empty: "Kein Teaser passt.",
     },
-    skinPreview: { title: "Sparxie, wie sie im Spiel aussieht", note: "Die Vorschaubilder sind für alle. Die Skin-Datei selbst bleibt versiegelt, bis die PIN sie öffnet.", front: "Vorne", side: "Dreiviertel" },
+    skinPreview: { title: "Sparxie, wie sie im Spiel aussieht", front: "Vorne", side: "Dreiviertel" },
+    skinPublic: { lede: "Sparxie gibt es als Minecraft-Skin, kostenlos für alle: Dreh sie hier herum, probier ihre Posen aus und lade dann den Skin herunter." },
   },
   tr: {
     heroLine1: "Aurora Corvus.",
@@ -1670,7 +1684,7 @@ export const FRESH: Record<Lang, Fresh> = {
       showroom: {
         eyebrow: "Sergi Salonu",
         title: "Sparxie, her açıdan.",
-        lede: "Döndürün, aydınlatın, yürütün. Skin mühürlü gelir ve yalnızca PIN’i bilen tarayıcıda görünür.",
+        lede: "Döndürün, aydınlatın, yürütün. Skin’i herkes için ücretsiz indirilebilir.",
         cta: "Skin’i gör",
       },
       store: {
@@ -1755,7 +1769,7 @@ export const FRESH: Record<Lang, Fresh> = {
         changelog: "Her modelin tüm sürümleri, markaya göre süzülebilir.",
         upcoming: "Şu an yapılanlar ve sırada olanlar.",
         teasers: "Yayımlanan her fragmanı yeniden oynatın.",
-        skin: "Sparxie 3D’de. Skin PIN ile açılır.",
+        skin: "Sparxie 3D’de; skin’i ücretsiz indirin.",
       },
     },
     teasers: {
@@ -1779,7 +1793,8 @@ export const FRESH: Record<Lang, Fresh> = {
       search: "Fragman ara",
       empty: "Eşleşen fragman yok.",
     },
-    skinPreview: { title: "Sparxie oyunda böyle görünür", note: "Önizleme görselleri herkese açık. Skin dosyasının kendisi PIN açana dek mühürlü kalır.", front: "Önden", side: "Dörtte üç" },
+    skinPreview: { title: "Sparxie oyunda böyle görünür", front: "Önden", side: "Dörtte üç" },
+    skinPublic: { lede: "Sparxie, herkes için ücretsiz bir Minecraft skin’i olarak hazır: burada döndürün, pozlarını deneyin, sonra skin’i indirin." },
   },
 };
 

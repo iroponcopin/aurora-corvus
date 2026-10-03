@@ -462,6 +462,8 @@ export interface Wiki {
     iterations: number;
     magic: string;
   };
+  /** The public skin (data/skin_public.json), or null while the skin is sealed. */
+  skinPublic: { file: string; name: string; sha256: string; bytes: number } | null;
   recipes: RecipeShared;
   alpha: { retired: boolean; version: string; date: string; modules: number };
   langs: Record<Lang, LangData>;

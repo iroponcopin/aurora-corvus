@@ -221,6 +221,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
           <ShowroomPreview
             bladeIcon={blade}
+            skinFile={w.skinPublic?.file ?? null}
             labels={{
               idle: f.skin.idle,
               walk: d.skin.labels.walk,
