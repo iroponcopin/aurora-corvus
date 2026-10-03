@@ -57,11 +57,14 @@ async function textureFrom(png: Uint8Array): Promise<Texture> {
 export function Showroom({
   labels,
   fresh,
+  preview,
   gate,
   bladeIcon,
 }: {
   labels: SkinLabels;
   fresh: ShowroomFresh;
+  /** Sparxie's two public renders (front, three-quarter): what she looks like, for everyone. */
+  preview: { title: string; note: string; front: string; side: string };
   gate: { blob: string; plainName: string; plainSha256: string; plainBytes: number };
   bladeIcon: string | null;
 }) {
@@ -196,6 +199,19 @@ export function Showroom({
         <p className="ac-lead">
           <Rich text={labels.lede} />
         </p>
+
+        <figure className="ac-sk-preview">
+          <div className="ac-sk-preview-row">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={asset("wiki/skin/sparxie-front.png")} alt={`Sparxie — ${preview.front}`} width={321} height={722} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={asset("wiki/skin/sparxie-model.png")} alt={`Sparxie — ${preview.side}`} width={332} height={750} />
+          </div>
+          <figcaption>
+            <b>{preview.title}</b>
+            <span className="ac-small">{preview.note}</span>
+          </figcaption>
+        </figure>
 
         <div className="ac-sk-controls" role="group" aria-label={labels.pose}>
           <span className="ac-small">{labels.pose}</span>

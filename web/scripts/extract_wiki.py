@@ -55,7 +55,7 @@ SCHEMA = "aurora-corvus.wiki/4"
 BASE_URL = SC.SITE_BASE_URL
 BASE_PATH = "/aurora-corvus"
 LANGS = SC.available_langs()
-SECTIONS = ["", "launcher/", "download/", "recipes/", "changelog/", "upcoming/", "skin/", "discord/",
+SECTIONS = ["", "launcher/", "download/", "recipes/", "changelog/", "upcoming/", "teasers/", "skin/", "discord/",
             "ouka/", "cherry/", "cherry-controls/", "aureum/", "alpha/"]
 
 
@@ -646,6 +646,19 @@ def build_lang(lang: str, ctx: dict) -> dict:
         ],
     }
 
+    # Every advance notice the board has published (data/teasers.json, scripts/build_teaser_archive.py), newest first.
+    teasers = []
+    for t in ctx["teasers"]:
+        p = (t.get("prose") or {}).get(lang) or die(f"data/teasers.json: {t['id']} has no {lang} prose")
+        brand = "alpha" if t.get("kind") in (None, "pack") else t["kind"]
+        teasers.append({
+            "id": t["id"], "brand": brand, "name": (products.get(brand) or {}).get("name", brand),
+            "icon": f"icons/{brand}.png", "announced": t["announced"], "retired": t.get("retired"),
+            "headline": p["headline"], "target": p.get("target_label", ""), "body": p.get("body", ""),
+            "items": list(p.get("items") or []), "href": t.get("url_path") or "upcoming/",
+        })
+    teasers.sort(key=lambda x: (x["announced"], x["id"]), reverse=True)
+
     commands = ctx["discordCommands"]
     groups = []
     for g in commands["groups"]:
@@ -669,7 +682,7 @@ def build_lang(lang: str, ctx: dict) -> dict:
         "lang": lang, "dir": SC.LANG_DIR[lang], "hreflang": SC.HREFLANG_TAG[lang], "name": SC.LANG_NAME[lang],
         "chrome": chrome, "home": home, "products": products, "launcher": launcher_page, "launcherFiles": launcher_files,
         "download": download_page, "brands": brands, "alpha": alpha, "changelog": changelog, "recipes": recipes,
-        "skin": skin, "upcoming": upcoming, "discord": discord,
+        "skin": skin, "upcoming": upcoming, "teasers": teasers, "discord": discord,
         "notFound": {"heading": nf[0], "body": nf[1]},
         "typeBadge": ui.get("type_badge", {}),
         "pageTitles": ui.get("page_titles", {}),
@@ -703,6 +716,7 @@ def main() -> None:
         "discordCommands": read_json("data/discord_commands.json"),
         "launcherNotes": read_json("data/launcher_notes.json"),
         "skinGate": read_json("data/skin_gate.json"),
+        "teasers": read_json("data/teasers.json")["teasers"],
         "recipes": recipes_shared(legacy),
     }
     langs = {lang: build_lang(lang, ctx) for lang in LANGS}

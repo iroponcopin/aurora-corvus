@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { DebugHud } from "@/components/DebugHud";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Header, type ModelLink, type UpdateLink } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Experience } from "@/engine/Experience";
 import { FRESH } from "@/i18n/fresh";
-import { asset, BASE_PATH, isLang, LANG_CODES } from "@/lib/site";
+import { MODELS } from "@/lib/models";
+import { asset, BASE_PATH, isLang, LANG_CODES, pathOf } from "@/lib/site";
 import { langData } from "@/lib/wiki";
 import type { Lang } from "@/lib/wiki-types";
 
@@ -59,6 +60,18 @@ export default async function LangLayout({ children, params }: { children: React
   const d = langData(lang);
   const f = FRESH[lang];
   const c = d.chrome;
+  const t = d.launcher.text;
+  // The Models menu, in the owner's order; a line the Store lists as "soon" says so (today, Noctua).
+  const models: ModelLink[] = MODELS.map(([key, name, href]) => {
+    const soon = d.products[key]?.availability === "soon";
+    return { key, label: d.products[key]?.name ?? name, href: pathOf(lang, href), status: soon ? t.comingSoon : t.available, soon };
+  });
+  const updates: UpdateLink[] = [
+    { key: "changelog", label: c.changelog, desc: f.nav.updatesDesc.changelog, href: pathOf(lang, "changelog/"), icon: "library" },
+    { key: "upcoming", label: c.upcoming, desc: f.nav.updatesDesc.upcoming, href: pathOf(lang, "upcoming/"), icon: "compass" },
+    { key: "teasers", label: f.teasers.title, desc: f.nav.updatesDesc.teasers, href: pathOf(lang, "teasers/"), icon: "play" },
+    { key: "skin", label: c.skin, desc: f.nav.updatesDesc.skin, href: pathOf(lang, "skin/"), icon: "user" },
+  ];
   return (
     <html lang={lang} dir={d.dir} suppressHydrationWarning>
       <head>
@@ -76,15 +89,15 @@ export default async function LangLayout({ children, params }: { children: React
         <Reveal />
         <Header
           lang={lang}
+          models={models}
+          updates={updates}
           labels={{
             siteTitle: c.siteTitle,
             home: c.home,
             launcher: c.launcher,
-            brands: c.brands,
+            models: f.nav.models,
+            updates: f.nav.updates,
             recipes: c.recipes,
-            changelog: c.changelog,
-            upcoming: c.upcoming,
-            skin: c.skin,
             discord: c.discord,
             download: c.download,
             menu: c.menu,

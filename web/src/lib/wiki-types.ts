@@ -370,6 +370,8 @@ export interface LangData {
     catNames: string[];
   };
   skin: { title: string; description: string; labels: SkinLabels };
+  /** Every advance notice the Coming-next board has published (data/teasers.json), newest first. */
+  teasers: Teaser[];
   upcoming: {
     title: string;
     description: string;
@@ -463,4 +465,22 @@ export interface Wiki {
   recipes: RecipeShared;
   alpha: { retired: boolean; version: string; date: string; modules: number };
   langs: Record<Lang, LangData>;
+}
+
+/** One advance notice of the Coming-next board, kept after it left the board. */
+export interface Teaser {
+  id: string;
+  /** The brand it announced (ouka, cherry, ...): the icon, the colour and the changelog filter. */
+  brand: string;
+  name: string;
+  icon: string;
+  /** The day it first appeared on the board, and the day it left it (null while it is still there). */
+  announced: string;
+  retired: string | null;
+  headline: string;
+  target: string;
+  body: string;
+  items: string[];
+  /** The page it pointed at (the brand's own page), relative to the language root. */
+  href: string;
 }
