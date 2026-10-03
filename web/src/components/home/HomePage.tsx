@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Formation } from "@/engine/store";
 import { FRESH, fill } from "@/i18n/fresh";
 import { asset, pathOf, recipeIcon } from "@/lib/site";
-import { langData, wiki } from "@/lib/wiki";
+import { langData, lineupFor, wiki } from "@/lib/wiki";
 import type { Lang, Release } from "@/lib/wiki-types";
 import { BRAND_COLOR, ChronoDriver } from "../ChronoDriver";
 import { CopyButton } from "../CopyButton";
@@ -133,7 +133,7 @@ export function HomePage({ lang }: { lang: Lang }) {
             <br />
             <Stagger text={f.heroLine2} lang={lang} offset={f.heroLine1.length} className="ac-hero-line2" />
           </h1>
-          <p className="ac-lead ac-hero-sub">{h.sub}</p>
+          <p className="ac-lead ac-hero-sub">{lineupFor(lang)}</p>
           <div className="ac-hero-cta">
             <Link className="ac-btn" href={pathOf(lang, "launcher/")}>
               {h.ctaStore}

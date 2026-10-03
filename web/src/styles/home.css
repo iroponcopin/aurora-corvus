@@ -80,7 +80,10 @@
 
 .ac-hero-hint {
   position: absolute;
-  top: calc(var(--header-h) + 34px);
+  /* Just above the astrolabe's outer ring. On wide screens its centre sits at 34% of the hero and
+     its radius is 21% of the height (HomePage's anchor, World.fitScale), so the ring's top is at
+     13%; a fixed offset under the header ran into the ring on screens under ~850px tall. */
+  top: max(calc(var(--header-h) + 6px), calc(13svh - 1.5em - 12px));
   inset-inline: 0;
   margin: 0;
   text-align: center;
@@ -90,6 +93,13 @@
 
 .ac-hero-hint[data-ready="true"] {
   opacity: 0.85;
+}
+
+@media (max-height: 600px) {
+  /* No room between the header and the ring; the marks still open on a click. */
+  .ac-hero-hint {
+    display: none;
+  }
 }
 
 .ac-hero-scroll {

@@ -90,7 +90,10 @@ export function StorePreview({
           <ActionButton product={product} index={0} state={state} t={text} jar={jar} clock={clock} onPress={press} small />
         </div>
       </article>
-      {state.phase === "downloading" ? <DownloadLine speed={speedText(speed, product.id)} index={0} clock={clock} /> : null}
+      {/* The line's room is kept when it goes, so the realm's column doesn't jump at the end. */}
+      <div className="ac-store-preview-line">
+        {state.phase === "downloading" ? <DownloadLine speed={speedText(speed, product.id)} index={0} clock={clock} /> : null}
+      </div>
       <p className="ac-small ac-store-preview-note">{text.demoNote}</p>
       <p className="sr-only" role="status" aria-live="polite">
         {note}

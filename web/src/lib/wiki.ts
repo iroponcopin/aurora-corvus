@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { FRESH } from "@/i18n/fresh";
+import { composeLineup, LINEUP } from "./lineup";
 import type { Lang, LangData, Wiki } from "./wiki-types";
 
 /**
@@ -29,4 +31,17 @@ export function langData(lang: Lang): LangData {
   const d = wiki().langs[lang];
   if (d === undefined) throw new Error(`no data for language ${lang}`);
   return d;
+}
+
+/** The hero's line-up sentence (and the home page's description), from the Store's availability. */
+export function lineupFor(lang: Lang): string {
+  const p = langData(lang).products;
+  const out: string[] = [];
+  const coming: string[] = [];
+  for (const [id, name] of LINEUP) {
+    const a = p[id]?.availability;
+    if (a === "available") out.push(name);
+    else if (a === "soon") coming.push(name);
+  }
+  return composeLineup(FRESH[lang].lineup, out, coming);
 }
