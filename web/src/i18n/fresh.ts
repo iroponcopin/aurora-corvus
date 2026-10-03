@@ -120,7 +120,7 @@ export interface Fresh {
 
 export const FRESH: Record<Lang, Fresh> = {
   ja: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "次元の限界を超えて。",
     heroScroll: "スクロールして探索",
     sound: "サウンド",
@@ -226,7 +226,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "ティザー",
-      description: "Aurora Corvus が公開したティザーの記録。もう一度再生し、読み返せます。",
+      description: "Corvus が公開したティザーの記録。もう一度再生し、読み返せます。",
       lede: "どれも、約束したリリースより前に告知したときの言葉のまま。再生すればもう一度流れ、開けば全文を読めます。",
       player: "ティザー再生",
       play: "再生",
@@ -249,7 +249,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie は Minecraft のスキンとして、誰でも無料で使えます。ここで回して、ポーズを試して、そのままダウンロードできます。" },
   },
   en: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Beyond Dimensional Limits.",
     heroScroll: "Scroll to explore",
     sound: "Sound",
@@ -355,7 +355,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Teasers",
-      description: "Every teaser Aurora Corvus has published, kept to replay and to read again.",
+      description: "Every teaser Corvus has published, kept to replay and to read again.",
       lede: "Each one in the words it was announced in, before the release it promised. Play it to watch it again, or open it to read it in full.",
       player: "Teaser player",
       play: "Play",
@@ -378,7 +378,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie is available as a Minecraft skin, free for everyone: turn her around and try her poses here, then download the skin." },
   },
   es: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Más allá de los límites dimensionales.",
     heroScroll: "Desplázate para explorar",
     sound: "Sonido",
@@ -484,7 +484,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Adelantos",
-      description: "Cada adelanto que Aurora Corvus ha publicado, para volver a verlo y leerlo.",
+      description: "Cada adelanto que Corvus ha publicado, para volver a verlo y leerlo.",
       lede: "Cada uno con las palabras con que se anunció, antes de la versión que prometía. Reprodúcelo para verlo de nuevo o ábrelo para leerlo completo.",
       player: "Reproductor de adelantos",
       play: "Reproducir",
@@ -507,7 +507,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie está disponible como skin de Minecraft, gratis para todos: gírala y prueba sus poses aquí, y luego descarga la skin." },
   },
   fr: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Au-delà des limites dimensionnelles.",
     heroScroll: "Faites défiler pour explorer",
     sound: "Son",
@@ -613,7 +613,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Teasers",
-      description: "Chaque teaser publié par Aurora Corvus, à revoir et à relire.",
+      description: "Chaque teaser publié par Corvus, à revoir et à relire.",
       lede: "Chacun dans les mots de son annonce, avant la version qu’il promettait. Lancez-le pour le revoir ou ouvrez-le pour le lire en entier.",
       player: "Lecteur de teasers",
       play: "Lire",
@@ -636,7 +636,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie est disponible comme skin Minecraft, gratuit pour tous : faites-la tourner, essayez ses poses ici, puis téléchargez le skin." },
   },
   zh: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "超越维度的极限。",
     heroScroll: "滚动以探索",
     sound: "声音",
@@ -742,7 +742,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "预告",
-      description: "Aurora Corvus 发布过的每一则预告，可重播，也可重读。",
+      description: "Corvus 发布过的每一则预告，可重播，也可重读。",
       lede: "每一则都保留着在它所承诺的版本发布之前预告时的原话。播放即可重温，展开即可读完全文。",
       player: "预告播放器",
       play: "播放",
@@ -765,7 +765,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie 作为 Minecraft 皮肤向所有人免费开放：在这里转动她、试试各种姿势，然后下载皮肤。" },
   },
   ko: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "차원의 한계를 넘어서.",
     heroScroll: "스크롤하여 탐색",
     sound: "사운드",
@@ -871,7 +871,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "티저",
-      description: "Aurora Corvus가 공개한 모든 티저를 다시 재생하고 읽을 수 있습니다.",
+      description: "Corvus가 공개한 모든 티저를 다시 재생하고 읽을 수 있습니다.",
       lede: "약속한 릴리스보다 먼저 공개했던 그때의 문장 그대로입니다. 재생하면 다시 보고, 펼치면 전문을 읽을 수 있습니다.",
       player: "티저 플레이어",
       play: "재생",
@@ -894,7 +894,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie는 누구나 무료로 쓸 수 있는 Minecraft 스킨입니다. 여기서 돌려 보고 포즈를 바꿔 본 뒤 스킨을 내려받으세요." },
   },
   "pt-br": {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Além dos limites dimensionais.",
     heroScroll: "Role para explorar",
     sound: "Som",
@@ -1000,7 +1000,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Teasers",
-      description: "Cada teaser que a Aurora Corvus publicou, para rever e reler.",
+      description: "Cada teaser que o Corvus publicou, para rever e reler.",
       lede: "Cada um com as palavras do anúncio, antes da versão que prometia. Reproduza para ver de novo ou abra para ler por inteiro.",
       player: "Player de teasers",
       play: "Reproduzir",
@@ -1023,7 +1023,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie está disponível como skin de Minecraft, grátis para todos: gire-a e experimente as poses aqui, depois baixe a skin." },
   },
   it: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Oltre i limiti dimensionali.",
     heroScroll: "Scorri per esplorare",
     sound: "Suono",
@@ -1129,7 +1129,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Teaser",
-      description: "Ogni teaser pubblicato da Aurora Corvus, da rivedere e rileggere.",
+      description: "Ogni teaser pubblicato da Corvus, da rivedere e rileggere.",
       lede: "Ognuno con le parole con cui fu annunciato, prima della versione promessa. Avvialo per rivederlo o aprilo per leggerlo tutto.",
       player: "Lettore di teaser",
       play: "Riproduci",
@@ -1152,7 +1152,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie è disponibile come skin di Minecraft, gratis per tutti: falla girare e prova le sue pose qui, poi scarica la skin." },
   },
   ar: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "ما وراء حدود الأبعاد.",
     heroScroll: "مرّر للاستكشاف",
     sound: "الصوت",
@@ -1258,7 +1258,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "الإعلانات التشويقية",
-      description: "كل إعلان تشويقي نشرته Aurora Corvus، لإعادة تشغيله وقراءته من جديد.",
+      description: "كل إعلان تشويقي نشرته Corvus، لإعادة تشغيله وقراءته من جديد.",
       lede: "كلٌّ منها بالكلمات التي أُعلن بها، قبل الإصدار الذي وعد به. شغّله لتشاهده من جديد، أو افتحه لتقرأه كاملًا.",
       player: "مشغّل الإعلانات التشويقية",
       play: "تشغيل",
@@ -1281,7 +1281,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie متاحة كمظهر لـ Minecraft مجانًا للجميع: أدِرها وجرّب وضعياتها هنا، ثم نزّل المظهر." },
   },
   ru: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "За пределами измерений.",
     heroScroll: "Прокрутите, чтобы исследовать",
     sound: "Звук",
@@ -1387,7 +1387,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Тизеры",
-      description: "Все тизеры, которые опубликовал Aurora Corvus, — чтобы пересмотреть и перечитать.",
+      description: "Все тизеры, которые опубликовал Corvus, — чтобы пересмотреть и перечитать.",
       lede: "Каждый — теми словами, какими он был объявлен, до обещанного выпуска. Запустите, чтобы посмотреть снова, или раскройте, чтобы прочитать целиком.",
       player: "Проигрыватель тизеров",
       play: "Воспроизвести",
@@ -1410,7 +1410,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie доступна как скин для Minecraft — бесплатно для всех: покрутите её и примерьте позы здесь, а затем скачайте скин." },
   },
   id: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Melampaui batas dimensi.",
     heroScroll: "Gulir untuk menjelajah",
     sound: "Suara",
@@ -1516,7 +1516,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Teaser",
-      description: "Setiap teaser yang pernah diterbitkan Aurora Corvus, untuk diputar dan dibaca ulang.",
+      description: "Setiap teaser yang pernah diterbitkan Corvus, untuk diputar dan dibaca ulang.",
       lede: "Masing-masing dengan kata-kata saat diumumkan, sebelum rilis yang dijanjikannya. Putar untuk menontonnya lagi, atau buka untuk membacanya utuh.",
       player: "Pemutar teaser",
       play: "Putar",
@@ -1539,7 +1539,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie tersedia sebagai skin Minecraft, gratis untuk semua: putar dia dan coba pose-posenya di sini, lalu unduh skin-nya." },
   },
   de: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Jenseits der Grenzen der Dimensionen.",
     heroScroll: "Zum Erkunden scrollen",
     sound: "Ton",
@@ -1645,7 +1645,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Teaser",
-      description: "Jeder Teaser, den Aurora Corvus veröffentlicht hat – zum erneuten Abspielen und Nachlesen.",
+      description: "Jeder Teaser, den Corvus veröffentlicht hat – zum erneuten Abspielen und Nachlesen.",
       lede: "Jeder in den Worten seiner Ankündigung, vor dem Release, das er versprach. Abspielen, um ihn noch einmal zu sehen, oder öffnen, um ihn ganz zu lesen.",
       player: "Teaser-Player",
       play: "Abspielen",
@@ -1668,7 +1668,7 @@ export const FRESH: Record<Lang, Fresh> = {
     skinPublic: { lede: "Sparxie gibt es als Minecraft-Skin, kostenlos für alle: Dreh sie hier herum, probier ihre Posen aus und lade dann den Skin herunter." },
   },
   tr: {
-    heroLine1: "Aurora Corvus.",
+    heroLine1: "Corvus.",
     heroLine2: "Boyutların sınırlarının ötesinde.",
     heroScroll: "Keşfetmek için kaydırın",
     sound: "Ses",
@@ -1774,7 +1774,7 @@ export const FRESH: Record<Lang, Fresh> = {
     },
     teasers: {
       title: "Fragmanlar",
-      description: "Aurora Corvus’un yayımladığı her fragman; yeniden oynatmak ve okumak için.",
+      description: "Corvus’un yayımladığı her fragman; yeniden oynatmak ve okumak için.",
       lede: "Her biri, vaat ettiği sürümden önce duyurulduğu sözlerle. Yeniden izlemek için oynatın ya da tamamını okumak için açın.",
       player: "Fragman oynatıcı",
       play: "Oynat",
