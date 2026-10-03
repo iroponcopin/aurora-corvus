@@ -12,7 +12,8 @@
  *  - a link to an anchor (#id) that the target page does not contain;
  *  - a SHA-256 printed on a page that is not the SHA-256 of a file that page links to, as the
  *    file is actually served from downloads/ (a release that rebuilt the manifest but not the
- *    pages), or a download link to a file the manifest does not list;
+ *    pages), or a download link to a file the manifest does not list (the public skin is listed by
+ *    data/skin_public.json instead, while the file served is the one it records);
  *  - a 404.html that is missing or that uses a relative reference (it is served at any depth);
  *  - a contract file inside the export.
  */
@@ -188,6 +189,14 @@ function servedHash(sitePath) {
     hashes.set(sitePath, r.file ? createHash("sha256").update(readFileSync(r.file)).digest("hex") : null);
   }
   return hashes.get(sitePath);
+}
+// The public skin is the one download outside the manifest: data/skin_public.json lists it, and only
+// while the file as served is the one that record describes.
+if (existsSync(join(REPO, "data", "skin_public.json"))) {
+  const pub = JSON.parse(readFileSync(join(REPO, "data", "skin_public.json"), "utf8"));
+  const sitePath = `${BASE}/${pub.file}`;
+  if (servedHash(sitePath) === pub.sha256) listed.add(sitePath);
+  else problem("data/skin_public.json", `${pub.file} as served is not the file this record describes`);
 }
 let printed = 0;
 for (const f of pages) {

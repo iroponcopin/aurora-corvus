@@ -119,7 +119,11 @@ void main() {
   float NdV = max(dot(N, V), 0.0);
   float F = 0.04 + 0.96 * pow(1.0 - NdV, 5.0);
   vec2 cell = vec2(mod(vCell, uAtlasGrid.x), floor(vCell / uAtlasGrid.x));
-  vec2 uv = (cell + clamp(vFaceUv, 0.0, 1.0)) / uAtlasGrid;
+  // Cells are drawn top-down on the canvas, and the texture is uploaded flipped (flipY), so v runs
+  // bottom-up: the face's top (vFaceUv.y = 1) must land on the top of its cell. Flipping only the
+  // row and not the face too had every icon upside down (the sakura and the blossoms hid it).
+  vec2 f = vec2(clamp(vFaceUv.x, 0.0, 1.0), 1.0 - clamp(vFaceUv.y, 0.0, 1.0));
+  vec2 uv = (cell + f) / uAtlasGrid;
   uv.y = 1.0 - uv.y;
   // The atlas is an sRGB texture: the GPU hands us linear values already.
   vec3 icon = texture2D(uAtlas, uv).rgb * uReady;

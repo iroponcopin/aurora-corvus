@@ -19,6 +19,7 @@ disagree about) stops the build with the reason, exactly as the old generators d
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import io
 import json
 import os
@@ -689,6 +690,22 @@ def build_lang(lang: str, ctx: dict) -> dict:
     }
 
 
+def skin_public() -> dict | None:
+    """The public skin, checked: the file must be the skin the sealed blob carries, byte for byte."""
+    path = WIKI / "data" / "skin_public.json"
+    if not path.exists():
+        return None
+    pub = json.loads(path.read_text(encoding="utf-8"))
+    data = (WIKI / pub["file"]).read_bytes()
+    gate = read_json("data/skin_gate.json")
+    digest = hashlib.sha256(data).hexdigest()
+    if digest != pub["sha256"] or len(data) != pub["bytes"]:
+        die(f"{pub['file']} is not the file data/skin_public.json describes ({digest[:12]}…, {len(data)} B)")
+    if digest != gate["plain_sha256"]:
+        die(f"{pub['file']} is not the skin the sealed blob carries (data/skin_gate.json plain_sha256)")
+    return {"file": pub["file"], "name": pub["name"], "sha256": digest, "bytes": len(data)}
+
+
 def main() -> None:
     legacy = json.loads((WEB / "src" / "i18n" / "legacy.json").read_text(encoding="utf-8"))
     manifest = read_json("glimpse_manifest.json")
@@ -746,6 +763,8 @@ def main() -> None:
         },
         "skinGate": {k: ctx["skinGate"][k] for k in ("blob", "plain_name", "plain_sha256", "plain_bytes", "salt_hex",
                                                       "iterations", "magic")},
+        # The owner made the skin public (data/skin_public.json): the model wears it and the file downloads as is.
+        "skinPublic": skin_public(),
         "recipes": ctx["recipes"],
         "alpha": {"retired": bool(retirement.get("retired")), "version": retirement.get("retired_version", ""),
                   "date": retirement.get("date", alpha_facts.get("date", "")), "modules": alpha_facts["modules"]},
