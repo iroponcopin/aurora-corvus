@@ -40,6 +40,12 @@ Live site: served via GitHub Pages from this repository.
 
 ## Rebuilding the site (before the cutover; kept for the rollback)
 
+> **The old brand marks are retired** (owner, 2026-10-03: 「旧アイコンは完全廃止です。」): the Corvus bird
+> (`corvus-mark.png`, `corvus-source.jpg`), OUKA's α sakura (`assets/img/ouka/mark*`, its core, petals, sheen mask
+> and share card), Cherry's blossom (`assets/img/cherry/`), Aureum's gold A (`assets/img/aureum/`) and the app
+> screenshots that carried the bird (`assets/img/film/`) are deleted. The generators below that drew them no
+> longer have them, so a rollback would need the new icons (`web/brand/`) wired in first.
+
 The site is pre-rendered static HTML committed to this repo (no build step runs
 on GitHub Pages). To regenerate it after editing content:
 
