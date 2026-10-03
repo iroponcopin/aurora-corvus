@@ -15,7 +15,7 @@ Live site: served via GitHub Pages from this repository.
 
 ## What's here
 
-- `index.html`, `download/`, `changelog/`, `recipes/`, `launcher/`, `upcoming/`,
+- `index.html`, `download/`, `changelog/`, `recipes/`, `launcher/`, `upcoming/`, `teasers/`,
   `discord/`, `skin/`, `ouka/`, `cherry/`, `cherry-controls/`, `aureum/`, `alpha/` —
   the Japanese (primary) site, generated as static HTML.
 - `en/`, `es/`, `fr/`, `zh/`, `ko/`, `pt-br/`, `it/`, `ar/`, `ru/`, `id/`, `de/`, `tr/` —
@@ -72,6 +72,10 @@ writes them. A release (a new pack, a new brand version, a new launcher) is:
    `downloads/`.
 2. **Rebuild what is read by machines:** `python3 scripts/build.py --feeds` (manifest, releases feed, changelog feeds,
    `upcoming.json`). `build.py` without `--feeds` refuses to run: it would write the old pages over the portal.
+   Writing `upcoming.json` also archives the board in `data/teasers.json` (`scripts/build_teaser_archive.py`): a new
+   id is stamped `announced`, and the day an entry leaves the board it is stamped `retired` and keeps its last
+   wording, which is what the portal's Teasers page plays. `python3 scripts/build_teaser_archive.py --check` says
+   whether the archive is behind the board.
 3. **The wiki's data gates:** `python3 scripts/check_site.py` (with the portal in place it runs only the data checks:
    `figures`, `recipe-sources` and `changelog-feeds` — the brand-changelog checker's feed half, `check_changelog_brands.py
    --feeds-only` — and says which page checkers it retired) and
