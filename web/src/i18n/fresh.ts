@@ -71,6 +71,18 @@ export interface Fresh {
     filter: string;
   };
   debug: { drawCalls: string; fps: string };
+  /**
+   * The hero's line-up sentence, composed by lib/lineup.ts from what the Store says is out and
+   * what is coming. `{0}` is the list of names; `{p}` (Korean) is the topic particle after it.
+   * Each pair is [one name, several names]. `join` goes between the sentences.
+   */
+  lineup: {
+    out: [string, string];
+    coming: [string, string];
+    keeps: string;
+    list: { sep: string; last: string; pair: string };
+    join: string;
+  };
 }
 
 export const FRESH: Record<Lang, Fresh> = {
@@ -162,6 +174,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "コマンドを絞り込む…",
     },
     debug: { drawCalls: "描画コール", fps: "FPS" },
+    lineup: {
+      out: ["{0} は公開中。", "{0} は公開中。"],
+      coming: ["{0} は近日公開。", "{0} は近日公開。"],
+      keeps: "Corvus Store がすべてを最新に保ちます。",
+      list: { sep: "・", last: "・", pair: "・" },
+      join: "",
+    },
   },
   en: {
     heroLine1: "Aurora Corvus.",
@@ -251,6 +270,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Filter commands…",
     },
     debug: { drawCalls: "Draw calls", fps: "FPS" },
+    lineup: {
+      out: ["{0} is out.", "{0} are out."],
+      coming: ["{0} is coming.", "{0} are coming."],
+      keeps: "Corvus Store keeps it all up to date.",
+      list: { sep: ", ", last: " and ", pair: " and " },
+      join: " ",
+    },
   },
   es: {
     heroLine1: "Aurora Corvus.",
@@ -340,6 +366,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Filtrar comandos…",
     },
     debug: { drawCalls: "Llamadas de dibujo", fps: "FPS" },
+    lineup: {
+      out: ["{0} ya está disponible.", "{0} ya están disponibles."],
+      coming: ["{0} llega pronto.", "{0} llegan pronto."],
+      keeps: "Corvus Store lo mantiene todo al día.",
+      list: { sep: ", ", last: " y ", pair: " y " },
+      join: " ",
+    },
   },
   fr: {
     heroLine1: "Aurora Corvus.",
@@ -429,6 +462,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Filtrer les commandes…",
     },
     debug: { drawCalls: "Appels de rendu", fps: "IPS" },
+    lineup: {
+      out: ["{0} est disponible.", "{0} sont disponibles."],
+      coming: ["{0} arrive bientôt.", "{0} arrivent bientôt."],
+      keeps: "Corvus Store garde le tout à jour.",
+      list: { sep: ", ", last: " et ", pair: " et " },
+      join: " ",
+    },
   },
   zh: {
     heroLine1: "Aurora Corvus.",
@@ -518,6 +558,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "筛选命令…",
     },
     debug: { drawCalls: "绘制调用", fps: "FPS" },
+    lineup: {
+      out: ["{0} 已经推出。", "{0} 已经推出。"],
+      coming: ["{0} 即将到来。", "{0} 即将到来。"],
+      keeps: "Corvus Store 让一切保持最新。",
+      list: { sep: "、", last: " 和 ", pair: " 和 " },
+      join: "",
+    },
   },
   ko: {
     heroLine1: "Aurora Corvus.",
@@ -607,6 +654,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "명령어 필터…",
     },
     debug: { drawCalls: "드로 콜", fps: "FPS" },
+    lineup: {
+      out: ["{0}{p} 공개 중입니다.", "{0}{p} 공개 중입니다."],
+      coming: ["{0}{p} 곧 공개됩니다.", "{0}{p} 곧 공개됩니다."],
+      keeps: "Corvus Store가 모든 것을 최신 상태로 유지합니다.",
+      list: { sep: ", ", last: ", ", pair: ", " },
+      join: " ",
+    },
   },
   "pt-br": {
     heroLine1: "Aurora Corvus.",
@@ -696,6 +750,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Filtrar comandos…",
     },
     debug: { drawCalls: "Chamadas de desenho", fps: "FPS" },
+    lineup: {
+      out: ["{0} já está disponível.", "{0} já estão disponíveis."],
+      coming: ["{0} está chegando.", "{0} estão chegando."],
+      keeps: "O Corvus Store mantém tudo atualizado.",
+      list: { sep: ", ", last: " e ", pair: " e " },
+      join: " ",
+    },
   },
   it: {
     heroLine1: "Aurora Corvus.",
@@ -785,6 +846,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Filtra i comandi…",
     },
     debug: { drawCalls: "Chiamate di disegno", fps: "FPS" },
+    lineup: {
+      out: ["{0} è disponibile.", "{0} sono disponibili."],
+      coming: ["{0} arriva presto.", "{0} arrivano presto."],
+      keeps: "Corvus Store mantiene tutto aggiornato.",
+      list: { sep: ", ", last: " e ", pair: " e " },
+      join: " ",
+    },
   },
   ar: {
     heroLine1: "Aurora Corvus.",
@@ -874,6 +942,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "صفِّ الأوامر…",
     },
     debug: { drawCalls: "استدعاءات الرسم", fps: "إطار/ث" },
+    lineup: {
+      out: ["{0} متاحة الآن.", "{0} متاحة الآن."],
+      coming: ["أما {0} فقادمة قريبًا.", "أما {0} فقادمة قريبًا."],
+      keeps: "ويُبقي Corvus Store كل شيء محدَّثًا.",
+      list: { sep: " و", last: " و", pair: " و" },
+      join: " ",
+    },
   },
   ru: {
     heroLine1: "Aurora Corvus.",
@@ -963,6 +1038,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Фильтр команд…",
     },
     debug: { drawCalls: "Вызовы отрисовки", fps: "FPS" },
+    lineup: {
+      out: ["{0} уже вышел.", "{0} уже вышли."],
+      coming: ["{0} скоро появится.", "{0} скоро появятся."],
+      keeps: "Corvus Store поддерживает всё в актуальном состоянии.",
+      list: { sep: ", ", last: " и ", pair: " и " },
+      join: " ",
+    },
   },
   id: {
     heroLine1: "Aurora Corvus.",
@@ -1052,6 +1134,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Saring perintah…",
     },
     debug: { drawCalls: "Panggilan gambar", fps: "FPS" },
+    lineup: {
+      out: ["{0} sudah tersedia.", "{0} sudah tersedia."],
+      coming: ["{0} segera hadir.", "{0} segera hadir."],
+      keeps: "Corvus Store menjaga semuanya tetap mutakhir.",
+      list: { sep: ", ", last: ", dan ", pair: " dan " },
+      join: " ",
+    },
   },
   de: {
     heroLine1: "Aurora Corvus.",
@@ -1141,6 +1230,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Befehle filtern…",
     },
     debug: { drawCalls: "Draw-Calls", fps: "FPS" },
+    lineup: {
+      out: ["{0} ist erschienen.", "{0} sind erschienen."],
+      coming: ["{0} folgt.", "{0} folgen."],
+      keeps: "Corvus Store hält alles auf dem neuesten Stand.",
+      list: { sep: ", ", last: " und ", pair: " und " },
+      join: " ",
+    },
   },
   tr: {
     heroLine1: "Aurora Corvus.",
@@ -1230,6 +1326,13 @@ export const FRESH: Record<Lang, Fresh> = {
       filter: "Komutları süz…",
     },
     debug: { drawCalls: "Çizim çağrıları", fps: "FPS" },
+    lineup: {
+      out: ["{0} çıktı.", "{0} çıktı."],
+      coming: ["{0} yolda.", "{0} yolda."],
+      keeps: "Corvus Store hepsini güncel tutar.",
+      list: { sep: ", ", last: " ve ", pair: " ve " },
+      join: " ",
+    },
   },
 };
 
