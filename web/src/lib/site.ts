@@ -63,9 +63,21 @@ export function urlOf(lang: Lang, section: string): string {
   return `${BASE_URL}${pathOf(lang, section)}`;
 }
 
-/** A file under the portal's own assets (`/portal/...`), basePath included, for <img> and fetch. */
+/**
+ * Content hashes of the portal's own files (scripts/prepare-public.mjs, through next.config.ts).
+ * Recipe icons carry none (stable ids); outside a build the table is empty.
+ */
+const VERSIONS = JSON.parse(process.env.NEXT_PUBLIC_ASSET_VERSIONS ?? "{}") as Record<string, string>;
+
+/**
+ * A file under the portal's own assets (`/portal/...`), basePath included, for <img> and fetch.
+ * The file's content hash rides in the URL (`?v=`), so a file replaced in place — an icon, a
+ * favicon, the share card — gets a new URL, and no cache can go on serving the old one.
+ */
 export function asset(path: string): string {
-  return `${BASE_PATH}/portal/${path.replace(/^\/+/, "")}`;
+  const p = path.replace(/^\/+/, "");
+  const v = VERSIONS[p];
+  return `${BASE_PATH}/portal/${p}${v === undefined ? "" : `?v=${v}`}`;
 }
 
 /** A recipe icon by its stable id (`t62` → /portal/wiki/recipes/t62.png). */
