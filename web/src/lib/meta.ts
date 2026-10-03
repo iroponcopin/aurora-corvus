@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { BASE_PATH, BASE_URL, LANGUAGES, urlOf } from "./site";
+import { asset, BASE_URL, LANGUAGES, urlOf } from "./site";
 import { wiki } from "./wiki";
 import type { Lang } from "./wiki-types";
 
-const OG_IMAGE = `${BASE_URL}/portal/wiki/brand/og-image.png`;
+const OG_IMAGE = new URL(asset("wiki/brand/og-image.png"), BASE_URL).href;
 
 let checked = false;
 
@@ -47,11 +47,11 @@ export function pageMeta(lang: Lang, section: string, title: string | null, desc
     twitter: { card: "summary_large_image", title: full, description, images: [image] },
     icons: {
       icon: [
-        { url: `${BASE_PATH}/portal/wiki/brand/favicon.ico`, sizes: "any" },
-        { url: `${BASE_PATH}/portal/wiki/brand/favicon-32.png`, sizes: "32x32", type: "image/png" },
-        { url: `${BASE_PATH}/portal/wiki/brand/favicon-16.png`, sizes: "16x16", type: "image/png" },
+        { url: asset("wiki/brand/favicon.ico"), sizes: "any" },
+        { url: asset("wiki/brand/favicon-32.png"), sizes: "32x32", type: "image/png" },
+        { url: asset("wiki/brand/favicon-16.png"), sizes: "16x16", type: "image/png" },
       ],
-      apple: [{ url: `${BASE_PATH}/portal/wiki/brand/apple-touch-icon.png` }],
+      apple: [{ url: asset("wiki/brand/apple-touch-icon.png") }],
     },
   };
 }

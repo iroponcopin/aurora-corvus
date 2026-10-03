@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { NextConfig } from "next";
 
 /**
@@ -12,13 +14,17 @@ const PREFIXED = ["en", "es", "fr", "zh", "ko", "pt-br", "it", "ar", "ru", "id",
 
 const isDev = process.env.NODE_ENV === "development";
 
+/** The content hashes scripts/prepare-public.mjs wrote: asset() puts them in the portal's URLs. */
+const versionsFile = join(process.cwd(), ".data", "asset-versions.json");
+const ASSET_VERSIONS = existsSync(versionsFile) ? JSON.stringify(JSON.parse(readFileSync(versionsFile, "utf8"))) : "{}";
+
 const config: NextConfig = {
   basePath: BASE_PATH,
   trailingSlash: true,
   reactStrictMode: true,
   poweredByHeader: false,
   images: { unoptimized: true },
-  env: { NEXT_PUBLIC_BASE_PATH: BASE_PATH },
+  env: { NEXT_PUBLIC_BASE_PATH: BASE_PATH, NEXT_PUBLIC_ASSET_VERSIONS: ASSET_VERSIONS },
   ...(isDev
     ? {
         async rewrites() {

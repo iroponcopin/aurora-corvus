@@ -26,7 +26,7 @@ export default function NotFound() {
         <title>{w.site.notFoundTitle}</title>
         <meta name="robots" content="noindex" />
         <meta name="theme-color" content="#000000" />
-        <link rel="icon" href={`${BASE_PATH}/portal/wiki/brand/favicon.ico`} sizes="any" />
+        <link rel="icon" href={asset("wiki/brand/favicon.ico")} sizes="any" />
         <style dangerouslySetInnerHTML={{ __html: css }} />
         <script dangerouslySetInnerHTML={{ __html: pick }} />
       </head>

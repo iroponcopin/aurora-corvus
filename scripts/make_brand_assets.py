@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Turn the owner's Aurora Corvus artwork into the brand assets this site
-actually uses: the header mark, the favicon set, and the Open Graph share card.
+"""Turn the owner's Corvus icon into the brand assets this site uses: the
+favicon set and the Open Graph share card.
 
-Since 2026-10-03 the favicon set and the share card are the owner's raven icon
-(assets/img/brand/corvus-tile.png: the black-metal raven with the cyan edge,
-cut from their artwork on its own rounded tile). The bird silhouette below
-(corvus-source.jpg) now makes only the header mark the old stylesheet masks.
+The icon is the raven (assets/img/brand/corvus-tile.png: the black-metal raven
+with the cyan edge, cut from the owner's artwork on its own rounded tile), since
+2026-10-03. The old bird — its silhouette, the header mark made from it, and the
+artwork behind both — is retired: 「旧アイコンは完全廃止です。」 (owner,
+2026-10-03). Nothing here draws it any more, and its files are gone.
 
 Run it only when the source artwork changes:
 
@@ -14,17 +15,10 @@ Run it only when the source artwork changes:
 It is NOT part of scripts/build.py — the outputs are committed binaries, and
 regenerating them on every page build would churn the repo for nothing.
 
-Sources of truth: assets/img/brand/corvus-tile.png (the icon) and
-corvus-source.jpg (the silhouette), committed next to this script so the whole
-set is reproducible instead of being a pile of mystery binaries. Requires
-Pillow (`pip install Pillow`); if it is missing this script says so and exits,
-it does not silently skip outputs.
-
-Key technique: the source is a clean black-on-white silhouette, so the
-INVERTED luminance is already a perfect alpha channel — black (lum 0)
-becomes fully opaque, white (lum 255) fully transparent, and the JPEG's
-antialiased edges survive as partial alpha instead of being thresholded
-into jaggies. No tracing or upscaling guesswork needed.
+Source of truth: assets/img/brand/corvus-tile.png, committed next to this
+script so the whole set is reproducible instead of being a pile of mystery
+binaries. Requires Pillow (`pip install Pillow`); if it is missing this script
+says so and exits, it does not silently skip outputs.
 
 Honest caveat: the raven icon is black on black with one cyan edge, so at
 16px a favicon is mostly a dark tile with a cyan arc. It is the owner's design
@@ -34,7 +28,7 @@ import sys
 from pathlib import Path
 
 try:
-    from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
+    from PIL import Image, ImageDraw, ImageFilter, ImageFont
 except ImportError:  # pragma: no cover - environment problem, not a code path
     raise SystemExit(
         "ERROR: Pillow is not installed, so the brand assets cannot be regenerated. "
@@ -43,7 +37,6 @@ except ImportError:  # pragma: no cover - environment problem, not a code path
 
 ROOT = Path(__file__).resolve().parent.parent
 BRAND = ROOT / "assets" / "img" / "brand"
-SRC = BRAND / "corvus-source.jpg"
 TILE = BRAND / "corvus-tile.png"
 RAVEN_EDGE = (64, 196, 255)   # the cyan of the raven's edge, for the share card's halo
 
@@ -68,30 +61,6 @@ _WORDMARK_FONTS = [
 ]
 
 
-def load_mark():
-    """RGBA image of just the bird, transparent background, cropped tight."""
-    if not SRC.exists():
-        raise SystemExit(
-            f"ERROR: {SRC} is missing. The brand assets are generated from the owner's "
-            f"original artwork, which is committed alongside this script - restore it "
-            f"before regenerating, rather than editing the PNGs by hand.")
-    im = Image.open(SRC).convert("L")
-    alpha = ImageOps.invert(im)     # alpha = how dark the pixel is
-
-    # The source is a JPEG, so its "white" background is really 250-254 with
-    # compression noise scattered through it. Without this clamp every stray
-    # speck counts as content, getbbox() returns almost the whole canvas, and
-    # the mark never gets cropped. Linear ramp between the two knees so the
-    # antialiased edges survive instead of turning into jaggies.
-    LO, HI = 45, 205
-    alpha = alpha.point(lambda v: 0 if v <= LO else (255 if v >= HI else
-                                                     round((v - LO) * 255 / (HI - LO))))
-    alpha = alpha.crop(alpha.getbbox())
-    mark = Image.new("RGBA", alpha.size, (0, 0, 0, 255))
-    mark.putalpha(alpha)
-    return mark
-
-
 def load_tile():
     """The owner's raven icon: RGBA, the rounded tile opaque, transparent round it."""
     if not TILE.exists():
@@ -109,12 +78,6 @@ def icon_square(tile, size, ground=None):
     canvas = Image.new("RGBA", (size, size), ground + (255,) if ground else (0, 0, 0, 0))
     canvas.alpha_composite(t, ((size - t.width) // 2, (size - t.height) // 2))
     return canvas
-
-
-def tinted(mark, rgb):
-    solid = Image.new("RGBA", mark.size, rgb + (255,))
-    solid.putalpha(mark.getchannel("A"))
-    return solid
 
 
 def fit_into(mark, box_w, box_h):
@@ -245,16 +208,8 @@ def og_card(tile, width=1200, height=630):
 
 def main():
     BRAND.mkdir(parents=True, exist_ok=True)
-    mark = load_mark()
-    print(f"source mark cropped to {mark.size} ({mark.size[0] / mark.size[1]:.3f}:1)")
 
-    # 1. The header mark. Only ONE file ships: style.css uses it as a
-    #    mask-image filled with currentColor, so the same silhouette comes out
-    #    white on the dark theme and ink on the light one. Its alpha channel is
-    #    the payload; the white fill is just so it is viewable on its own.
-    tinted(mark, (255, 255, 255)).save(BRAND / "corvus-mark.png")
-
-    # 2. Favicons: the owner's raven icon, as drawn.
+    # 1. Favicons: the owner's raven icon, as drawn.
     tile = load_tile()
     icon = icon_square(tile, 1024)
     icon_square(tile, 180, ground=(0, 0, 0)).save(BRAND / "apple-touch-icon.png")
@@ -262,7 +217,7 @@ def main():
     icon.resize((16, 16), Image.LANCZOS).save(BRAND / "favicon-16.png")
     _ico(BRAND / "favicon.ico", icon, icon, [16, 32, 48, 64, 128, 256])
 
-    # 3. Open Graph / Twitter share card.
+    # 2. Open Graph / Twitter share card.
     og_card(tile).save(BRAND / "og-image.png", optimize=True)
 
     for p in sorted(BRAND.iterdir()):
