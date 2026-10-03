@@ -3,7 +3,7 @@
  * After `next build` (output: "export"): turn out/ into the tree GitHub Pages serves.
  *
  *  1. Japanese is the root language: move out/ja/** to out/** (the app routes it as /ja/).
- *  2. Write sitemap.xml exactly as scripts/build_sitemap.py did: 169 absolute <loc>s, sorted by URL.
+ *  2. Write sitemap.xml exactly as scripts/build_sitemap.py did: one absolute <loc> per page, sorted by URL.
  *  3. Write portal/build.json (provenance: which wiki commit and versions this export shows).
  *  4. Refuse to finish if the export contains anything that is a contract file of the wiki —
  *     the launcher and the Discord bot read those, and the portal must never write them.
@@ -17,7 +17,7 @@ const OUT = join(WEB, "out");
 const BASE_URL = "https://iroponcopin.github.io/aurora-corvus";
 const LANGS = ["ja", "en", "es", "fr", "zh", "ko", "pt-br", "it", "ar", "ru", "id", "de", "tr"];
 const SECTIONS = ["", "alpha/", "aureum/", "changelog/", "cherry-controls/", "cherry/", "discord/", "download/",
-  "launcher/", "ouka/", "recipes/", "skin/", "upcoming/"];
+  "launcher/", "ouka/", "recipes/", "skin/", "teasers/", "upcoming/"];
 /** What the launcher and the bot read (README "Releasing"); the export may contain none of it. */
 const CONTRACT = ["glimpse_manifest.json", "releases.json", "upcoming.json", "changelog_feed", "downloads", "data",
   "robots.txt", ".nojekyll", "assets", "scripts", "README.md", "web", ".gitignore"];

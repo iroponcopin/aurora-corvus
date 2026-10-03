@@ -40,6 +40,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import (  # noqa: E402
     ROOT, SITE_BASE_URL, esc, page, write_page, available_langs, asset_root_prefix,
 )
+import build_teaser_archive  # noqa: E402  (the board's notices outlive the board: data/teasers.json)
 
 DATA_PATH = ROOT / "data" / "upcoming.json"
 FEED_PATH = ROOT / "upcoming.json"
@@ -199,6 +200,7 @@ def main():
             if e["id"] not in data[FEED_LANG]["entries"]:
                 raise SystemExit(f"upcoming: {FEED_LANG} has no prose for entry {e['id']!r}; the feed would lack it.")
         write_feed(data, entries)
+        print(build_teaser_archive.update())
         print(f"upcoming: feed only, {len(entries)} entries (no page written)")
         return
     langs = available_langs()
@@ -221,6 +223,7 @@ def main():
     if built == 0:
         raise SystemExit("upcoming: built ZERO pages; available_langs() returned nothing.")
     write_feed(data, entries)
+    print(build_teaser_archive.update())
     print(f"upcoming: {built} languages, {len(entries)} entries")
 
 

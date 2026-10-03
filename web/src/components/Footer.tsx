@@ -1,22 +1,25 @@
 import Link from "next/link";
 import { FooterLanguages } from "./FooterLanguages";
+import { FRESH } from "@/i18n/fresh";
+import { MODELS } from "@/lib/models";
 import { pathOf } from "@/lib/site";
 import type { Lang, LangData } from "@/lib/wiki-types";
 
 /**
- * The footer the pre-4.0 portal carried, column for column: Brands, Get started, Reference,
- * Status; the thirteen languages; the legal block.
+ * The footer the pre-4.0 portal carried, column for column: Models (the header's six), Get
+ * started, Reference, Status (with the Teasers); the thirteen languages; the legal block.
  */
 export function Footer({ lang, d }: { lang: Lang; d: LangData }) {
   const c = d.chrome;
-  const cols: { heading: string; links: { label: string; href: string }[] }[] = [
+  const f = FRESH[lang];
+  const cols: { heading: string; links: { label: string; href: string; note?: string }[] }[] = [
     {
-      heading: c.footerBrands,
-      links: [
-        { label: "OUKA", href: pathOf(lang, "ouka/") },
-        { label: "Cherry", href: pathOf(lang, "cherry/") },
-        { label: "Aureum", href: pathOf(lang, "aureum/") },
-      ],
+      heading: f.nav.models,
+      links: MODELS.map(([id, name, href]) => ({
+        label: d.products[id]?.name ?? name,
+        href: pathOf(lang, href),
+        note: d.products[id]?.availability === "soon" ? d.launcher.text.comingSoon : undefined,
+      })),
     },
     {
       heading: c.footerGetStarted,
@@ -32,6 +35,7 @@ export function Footer({ lang, d }: { lang: Lang; d: LangData }) {
       links: [
         { label: c.changelog, href: pathOf(lang, "changelog/") },
         { label: c.upcoming, href: pathOf(lang, "upcoming/") },
+        { label: f.teasers.title, href: pathOf(lang, "teasers/") },
         { label: c.discord, href: pathOf(lang, "discord/") },
       ],
     },
@@ -47,6 +51,7 @@ export function Footer({ lang, d }: { lang: Lang; d: LangData }) {
                 {col.links.map((l) => (
                   <li key={l.href}>
                     <Link href={l.href}>{l.label}</Link>
+                    {l.note ? <small className="ac-footer-note"> · {l.note}</small> : null}
                   </li>
                 ))}
               </ul>

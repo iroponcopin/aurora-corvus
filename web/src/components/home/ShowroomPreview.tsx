@@ -21,7 +21,7 @@ export function ShowroomPreview({
   labels,
 }: {
   bladeIcon: string | null;
-  labels: { idle: string; walk: string; combat: string; motion: string; drag: string; sealed: string; noWebgl: string };
+  labels: { idle: string; walk: string; combat: string; motion: string; drag: string; sealed: string; noWebgl: string; portrait: string };
 }) {
   const [motion, setMotion] = useState<Motion>("idle");
   const yaw = useRef(0.5);
@@ -97,6 +97,10 @@ export function ShowroomPreview({
             pitch={pitch}
           />
         </Stage3D>
+        <figure className="ac-sr-portrait">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={asset("wiki/skin/sparxie-front.png")} alt={labels.portrait} width={321} height={722} loading="lazy" />
+        </figure>
         <p className="ac-preview-caption">
           <Icon name="lock" size={13} />
           <span className="ac-small">{labels.sealed}</span>

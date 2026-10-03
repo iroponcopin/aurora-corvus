@@ -24,6 +24,7 @@ export function SkinPage({ lang }: { lang: Lang }) {
         <Showroom
           labels={s.labels}
           fresh={f}
+          preview={FRESH[lang].skinPreview}
           gate={{ blob: w.skinGate.blob, plainName: w.skinGate.plain_name, plainSha256: w.skinGate.plain_sha256, plainBytes: w.skinGate.plain_bytes }}
           bladeIcon={blade}
         />

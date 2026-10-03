@@ -113,8 +113,152 @@
   transform: rotate(180deg);
 }
 
-.ac-nav-brands {
+.ac-nav-menu {
   position: relative;
+}
+
+/* Models: the six lines, two to a row, each with the Store's word for it. */
+.ac-pop--models {
+  width: 420px;
+  padding: 10px;
+}
+
+.ac-models {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.ac-model {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 14px;
+  color: var(--color-fg);
+  transition: background-color 0.15s;
+}
+
+.ac-model:hover,
+.ac-model:focus-visible {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.ac-model img {
+  flex: none;
+  border-radius: 9px;
+}
+
+.ac-model span {
+  display: grid;
+  min-width: 0;
+}
+
+.ac-model b {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ac-model small {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.ac-model small[data-soon="true"] {
+  color: var(--color-amber);
+}
+
+.ac-model[aria-current="page"] b {
+  color: #fff;
+}
+
+/* Updates: a mega menu, centred under its button, each entry with a line about it. */
+.ac-mega {
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  width: min(580px, calc(100vw - 32px));
+  padding: 10px;
+}
+
+[dir="rtl"] .ac-mega {
+  translate: 50% 0;
+}
+
+.ac-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.ac-mega-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  height: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  color: var(--color-fg);
+  transition: background-color 0.15s;
+}
+
+.ac-mega-item:hover,
+.ac-mega-item:focus-visible {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.ac-mega-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(135deg, #0071e3, #2997ff);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
+}
+
+.ac-mega-icon[data-k="upcoming"] {
+  background: linear-gradient(135deg, #ff9f0a, #ffd60a);
+}
+
+.ac-mega-icon[data-k="teasers"] {
+  background: linear-gradient(135deg, #ff375f, #ff9fc4);
+}
+
+.ac-mega-icon[data-k="skin"] {
+  background: linear-gradient(135deg, #bf5af2, #a68bff);
+}
+
+.ac-mega-text {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ac-mega-text b {
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ac-mega-text small {
+  color: var(--color-muted);
+  font-size: 12.5px;
+  line-height: 1.38;
+}
+
+.ac-mega-item[aria-current="page"] b {
+  color: var(--color-link);
+}
+
+.ac-sheet-soon {
+  margin-inline-start: 10px;
+  color: var(--color-amber);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .ac-pop {
@@ -124,6 +268,9 @@
   min-width: 220px;
   padding: 8px;
   border-radius: 18px;
+  /* Nearly opaque: inside the header's own glass the panel cannot blur the page behind it (the pill is
+     its backdrop root), so a translucent panel let the hero's text show through its own. */
+  background: rgb(24 24 26 / 0.96);
   box-shadow:
     inset 0 0 0 1px rgb(255 255 255 / 0.1),
     0 30px 80px -20px rgb(0 0 0 / 0.95);
@@ -417,6 +564,11 @@
 
 .ac-footer a:hover {
   color: var(--color-fg);
+}
+
+.ac-footer-note {
+  color: var(--color-amber);
+  font-size: 12px;
 }
 
 .ac-footer-langs {

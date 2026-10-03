@@ -14,11 +14,9 @@ export interface HeaderLabels {
   siteTitle: string;
   home: string;
   launcher: string;
-  brands: string;
+  models: string;
+  updates: string;
   recipes: string;
-  changelog: string;
-  upcoming: string;
-  skin: string;
   discord: string;
   download: string;
   menu: string;
@@ -30,8 +28,28 @@ export interface HeaderLabels {
   soundOff: string;
 }
 
+/** One line in the Models menu: its icon is icons/<key>.png; `status` is the Store's own word for it. */
+export interface ModelLink {
+  key: string;
+  label: string;
+  href: string;
+  status: string;
+  soon: boolean;
+}
+
+/** One entry of the Updates mega menu. */
+export interface UpdateLink {
+  key: string;
+  label: string;
+  desc: string;
+  href: string;
+  icon: "library" | "compass" | "play" | "user";
+}
+
 const LANG_KEY = "aurora-corvus-lang";
-const BRAND_SECTIONS = new Set(["ouka", "cherry", "aureum", "cherry-controls", "alpha"]);
+const MODEL_SECTIONS = new Set(["ouka", "cherry", "aureum", "cherry-controls"]);
+const UPDATE_SECTIONS = new Set(["changelog", "upcoming", "teasers", "skin"]);
+type Menu = "models" | "updates" | null;
 
 function rememberLang(code: string): void {
   try {
@@ -62,35 +80,49 @@ function useDismiss(open: boolean, close: () => void, refs: React.RefObject<HTML
   }, [open, close, refs]);
 }
 
-export function Header({ lang, labels }: { lang: Lang; labels: HeaderLabels }) {
+export function Header({
+  lang,
+  labels,
+  models,
+  updates,
+}: {
+  lang: Lang;
+  labels: HeaderLabels;
+  models: ModelLink[];
+  updates: UpdateLink[];
+}) {
   const pathname = usePathname();
   const { section } = splitPath(pathname);
   const key = sectionKey(section);
-  const [brandsOpen, setBrandsOpen] = useState(false);
+  const [menu, setMenu] = useState<Menu>(null);
   const [langOpen, setLangOpen] = useState(false);
   const [sheet, setSheet] = useState(false);
   const [suffix, setSuffix] = useState("");
   const [compact, setCompact] = useState(false);
-  const brandsBtn = useRef<HTMLButtonElement>(null);
-  const brandsPop = useRef<HTMLDivElement>(null);
+  const modelsBtn = useRef<HTMLButtonElement>(null);
+  const modelsPop = useRef<HTMLDivElement>(null);
+  const updatesBtn = useRef<HTMLButtonElement>(null);
+  const updatesPop = useRef<HTMLDivElement>(null);
   const langBtn = useRef<HTMLButtonElement>(null);
   const langPop = useRef<HTMLDivElement>(null);
-  const brandsId = useId();
+  const modelsId = useId();
+  const updatesId = useId();
   const langId = useId();
   const sheetId = useId();
 
-  const closeBrands = useCallback(() => setBrandsOpen(false), []);
+  const closeMenu = useCallback(() => setMenu(null), []);
   const closeLang = useCallback(() => {
     setLangOpen(false);
     langBtn.current?.focus();
   }, []);
-  useDismiss(brandsOpen, closeBrands, [brandsBtn, brandsPop]);
+  useDismiss(menu === "models", closeMenu, [modelsBtn, modelsPop]);
+  useDismiss(menu === "updates", closeMenu, [updatesBtn, updatesPop]);
   useDismiss(langOpen, closeLang, [langBtn, langPop]);
 
   // The language links carry the query and hash of the page (so ?brand= survives a switch).
   useEffect(() => {
     setSuffix(window.location.search + window.location.hash);
-    setBrandsOpen(false);
+    setMenu(null);
     setSheet(false);
   }, [pathname]);
 
@@ -157,21 +189,8 @@ export function Header({ lang, labels }: { lang: Lang; labels: HeaderLabels }) {
     return () => pop?.removeEventListener("keydown", onKey);
   }, [langOpen]);
 
-  const links: { key: string; label: string; href: string }[] = [
-    { key: "recipes", label: labels.recipes, href: pathOf(lang, "recipes/") },
-    { key: "changelog", label: labels.changelog, href: pathOf(lang, "changelog/") },
-    { key: "upcoming", label: labels.upcoming, href: pathOf(lang, "upcoming/") },
-    { key: "skin", label: labels.skin, href: pathOf(lang, "skin/") },
-    { key: "discord", label: labels.discord, href: pathOf(lang, "discord/") },
-  ];
-  const brands = [
-    { key: "ouka", label: "OUKA", href: pathOf(lang, "ouka/") },
-    { key: "cherry", label: "Cherry", href: pathOf(lang, "cherry/") },
-    { key: "aureum", label: "Aureum", href: pathOf(lang, "aureum/") },
-  ];
-  const brandsCurrent = BRAND_SECTIONS.has(key);
   const current = (k: string): "page" | undefined => (k === key ? "page" : undefined);
-
+  const toggle = (m: Exclude<Menu, null>): void => setMenu((v) => (v === m ? null : m));
   return (
     <header className="ac-header" data-compact={compact ? "true" : "false"}>
       <div className="ac-header-pill ac-glass">
@@ -185,41 +204,75 @@ export function Header({ lang, labels }: { lang: Lang; labels: HeaderLabels }) {
           <Link href={pathOf(lang, "launcher/")} className="ac-nav-link" aria-current={current("launcher")}>
             {labels.launcher}
           </Link>
-          <div className="ac-nav-brands">
+          <div className="ac-nav-menu">
             <button
-              ref={brandsBtn}
+              ref={modelsBtn}
               type="button"
               className="ac-nav-link"
-              aria-expanded={brandsOpen}
+              aria-expanded={menu === "models"}
               aria-haspopup="true"
-              aria-controls={brandsId}
-              aria-current={brandsCurrent ? "page" : undefined}
-              onClick={() => setBrandsOpen((v) => !v)}
+              aria-controls={modelsId}
+              aria-current={MODEL_SECTIONS.has(key) ? "page" : undefined}
+              onClick={() => toggle("models")}
             >
-              {labels.brands}
-              <Icon name="chevronDown" size={13} className="ac-chev" data-open={brandsOpen} />
+              {labels.models}
+              <Icon name="chevronDown" size={13} className="ac-chev" data-open={menu === "models"} />
             </button>
-            <div ref={brandsPop} id={brandsId} className="ac-pop ac-glass" hidden={!brandsOpen}>
-              {brands.map((b) => (
-                <Link
-                  key={b.key}
-                  href={b.href}
-                  className="ac-pop-item"
-                  aria-current={b.key === key ? "page" : undefined}
-                  onClick={closeBrands}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={asset(`icons/${b.key}.png`)} alt="" width={28} height={28} />
-                  <span>{b.label}</span>
-                </Link>
-              ))}
+            <div ref={modelsPop} id={modelsId} className="ac-pop ac-pop--models ac-glass" hidden={menu !== "models"}>
+              <ul className="ac-models">
+                {models.map((m) => (
+                  <li key={m.key}>
+                    <Link href={m.href} className="ac-model" aria-current={current(m.key)} onClick={closeMenu}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={asset(`icons/${m.key}.png`)} alt="" width={36} height={36} />
+                      <span>
+                        <b>{m.label}</b>
+                        <small data-soon={m.soon}>{m.status}</small>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          {links.map((l) => (
-            <Link key={l.key} href={l.href} className="ac-nav-link" aria-current={current(l.key)}>
-              {l.label}
-            </Link>
-          ))}
+          <Link href={pathOf(lang, "recipes/")} className="ac-nav-link" aria-current={current("recipes")}>
+            {labels.recipes}
+          </Link>
+          <div className="ac-nav-menu">
+            <button
+              ref={updatesBtn}
+              type="button"
+              className="ac-nav-link"
+              aria-expanded={menu === "updates"}
+              aria-haspopup="true"
+              aria-controls={updatesId}
+              aria-current={UPDATE_SECTIONS.has(key) ? "page" : undefined}
+              onClick={() => toggle("updates")}
+            >
+              {labels.updates}
+              <Icon name="chevronDown" size={13} className="ac-chev" data-open={menu === "updates"} />
+            </button>
+            <div ref={updatesPop} id={updatesId} className="ac-pop ac-mega ac-glass" hidden={menu !== "updates"}>
+              <ul className="ac-mega-grid">
+                {updates.map((u) => (
+                  <li key={u.key}>
+                    <Link href={u.href} className="ac-mega-item" aria-current={current(u.key)} onClick={closeMenu}>
+                      <span className="ac-mega-icon" data-k={u.key} aria-hidden="true">
+                        <Icon name={u.icon} size={18} />
+                      </span>
+                      <span className="ac-mega-text">
+                        <b>{u.label}</b>
+                        <small>{u.desc}</small>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <Link href={pathOf(lang, "discord/")} className="ac-nav-link" aria-current={current("discord")}>
+            {labels.discord}
+          </Link>
         </nav>
 
         <div className="ac-header-end">
@@ -285,20 +338,31 @@ export function Header({ lang, labels }: { lang: Lang; labels: HeaderLabels }) {
             <Link href={pathOf(lang, "launcher/")} onClick={() => setSheet(false)} aria-current={current("launcher")}>
               {labels.launcher}
             </Link>
-            <p className="ac-eyebrow">{labels.brands}</p>
-            {brands.map((b) => (
-              <Link key={b.key} href={b.href} onClick={() => setSheet(false)} aria-current={current(b.key)}>
-                {b.label}
+            <p className="ac-eyebrow">{labels.models}</p>
+            {models.map((m) => (
+              <Link key={m.key} href={m.href} onClick={() => setSheet(false)} aria-current={current(m.key)}>
+                {m.label}
+                {m.soon ? <small className="ac-sheet-soon">{m.status}</small> : null}
               </Link>
             ))}
             <p className="ac-eyebrow" aria-hidden="true">
-              {" "}
+              {" "}
             </p>
-            {links.map((l) => (
-              <Link key={l.key} href={l.href} onClick={() => setSheet(false)} aria-current={current(l.key)}>
-                {l.label}
+            <Link href={pathOf(lang, "recipes/")} onClick={() => setSheet(false)} aria-current={current("recipes")}>
+              {labels.recipes}
+            </Link>
+            <p className="ac-eyebrow">{labels.updates}</p>
+            {updates.map((u) => (
+              <Link key={u.key} href={u.href} onClick={() => setSheet(false)} aria-current={current(u.key)}>
+                {u.label}
               </Link>
             ))}
+            <p className="ac-eyebrow" aria-hidden="true">
+              {" "}
+            </p>
+            <Link href={pathOf(lang, "discord/")} onClick={() => setSheet(false)} aria-current={current("discord")}>
+              {labels.discord}
+            </Link>
             <Link
               href={pathOf(lang, "download/")}
               className="ac-btn ac-sheet-cta"

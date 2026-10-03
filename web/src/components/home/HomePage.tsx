@@ -229,6 +229,7 @@ export function HomePage({ lang }: { lang: Lang }) {
               drag: d.skin.labels.drag,
               sealed: f.skin.sealedModel,
               noWebgl: d.skin.labels.noWebgl,
+              portrait: f.skinPreview.title,
             }}
           />
         </div>
