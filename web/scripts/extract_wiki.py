@@ -442,21 +442,22 @@ MODEL_USED: set[tuple[str, str]] = set()
 # shows ("badge · category" in the list, the pill on the hub's card), so a tiered model's badge is its
 # tier and an untiered one has none (Noctua's "Server Sovereign" read as a rank there). OUKA's and
 # Cherry's lines stated their old places ("the highest tier, above Cherry", "the tier just below OUKA");
-# they now state the tier. The Pinnacle word is each language's own from ASTRAEA's old badge.
+# they now state the tier. Pinnacle is a name, like Xhigh and High, in every language (owner, 2026-10-04:
+# 「日英どちらもPinnacleを使用します。」); Medium is ミディアム in Japanese, 미디엄 in Korean.
 TIERS: dict[str, dict[str, str]] = {
-    "ja": {"astraea": "頂点モデル", "ouka": "Xhighモデル", "cherry": "Highモデル", "tsubomi": "ミディアムモデル"},
+    "ja": {"astraea": "Pinnacleモデル", "ouka": "Xhighモデル", "cherry": "Highモデル", "tsubomi": "ミディアムモデル"},
     "en": {"astraea": "Pinnacle Model", "ouka": "Xhigh Model", "cherry": "High Model", "tsubomi": "Medium Model"},
-    "es": {"astraea": "Modelo Cumbre", "ouka": "Modelo Xhigh", "cherry": "Modelo High", "tsubomi": "Modelo Medium"},
-    "fr": {"astraea": "Modèle Sommet", "ouka": "Modèle Xhigh", "cherry": "Modèle High", "tsubomi": "Modèle Medium"},
-    "zh": {"astraea": "巅峰型号", "ouka": "Xhigh 型号", "cherry": "High 型号", "tsubomi": "Medium 型号"},
-    "ko": {"astraea": "정점 모델", "ouka": "Xhigh 모델", "cherry": "High 모델", "tsubomi": "미디엄 모델"},
-    "pt-br": {"astraea": "Modelo Pináculo", "ouka": "Modelo Xhigh", "cherry": "Modelo High", "tsubomi": "Modelo Medium"},
-    "it": {"astraea": "Modello Apice", "ouka": "Modello Xhigh", "cherry": "Modello High", "tsubomi": "Modello Medium"},
-    "ar": {"astraea": "طراز القمّة", "ouka": "طراز Xhigh", "cherry": "طراز High", "tsubomi": "طراز Medium"},
-    "ru": {"astraea": "Модель «Вершина»", "ouka": "Модель Xhigh", "cherry": "Модель High", "tsubomi": "Модель Medium"},
-    "id": {"astraea": "Model Puncak", "ouka": "Model Xhigh", "cherry": "Model High", "tsubomi": "Model Medium"},
-    "de": {"astraea": "Gipfel-Modell", "ouka": "Xhigh-Modell", "cherry": "High-Modell", "tsubomi": "Medium-Modell"},
-    "tr": {"astraea": "Zirve Modeli", "ouka": "Xhigh Modeli", "cherry": "High Modeli", "tsubomi": "Medium Modeli"},
+    "es": {"astraea": "Modelo Pinnacle", "ouka": "Modelo Xhigh", "cherry": "Modelo High", "tsubomi": "Modelo Medium"},
+    "fr": {"astraea": "Modèle Pinnacle", "ouka": "Modèle Xhigh", "cherry": "Modèle High", "tsubomi": "Modèle Medium"},
+    "zh": {"astraea": "Pinnacle 型号", "ouka": "Xhigh 型号", "cherry": "High 型号", "tsubomi": "Medium 型号"},
+    "ko": {"astraea": "Pinnacle 모델", "ouka": "Xhigh 모델", "cherry": "High 모델", "tsubomi": "미디엄 모델"},
+    "pt-br": {"astraea": "Modelo Pinnacle", "ouka": "Modelo Xhigh", "cherry": "Modelo High", "tsubomi": "Modelo Medium"},
+    "it": {"astraea": "Modello Pinnacle", "ouka": "Modello Xhigh", "cherry": "Modello High", "tsubomi": "Modello Medium"},
+    "ar": {"astraea": "طراز Pinnacle", "ouka": "طراز Xhigh", "cherry": "طراز High", "tsubomi": "طراز Medium"},
+    "ru": {"astraea": "Модель Pinnacle", "ouka": "Модель Xhigh", "cherry": "Модель High", "tsubomi": "Модель Medium"},
+    "id": {"astraea": "Model Pinnacle", "ouka": "Model Xhigh", "cherry": "Model High", "tsubomi": "Model Medium"},
+    "de": {"astraea": "Pinnacle-Modell", "ouka": "Xhigh-Modell", "cherry": "High-Modell", "tsubomi": "Medium-Modell"},
+    "tr": {"astraea": "Pinnacle Modeli", "ouka": "Xhigh Modeli", "cherry": "High Modeli", "tsubomi": "Medium Modeli"},
 }
 TIER_LINES: dict[str, list[tuple[str, str]]] = {
     "ja": [("Cherry の上に立つ、最上位のモデル。", "Xhighモデル。"), ("OUKA のすぐ下に位置するモデル。", "Highモデル。")],
