@@ -150,6 +150,11 @@ def declared_mc_versions(path):
     return found
 
 
+#: Minecraft ではない配布物。性質 5 の「Minecraft の版を宣言しているか」は意味を持たない。
+#: 2026-10-04: Noctua（Palworld のサーバー側 MOD）。
+NOT_MINECRAFT = frozenset({"noctua"})
+
+
 def check(root, old, new, baseline):
     failures = []
     notes = []
@@ -266,6 +271,11 @@ def check(root, old, new, baseline):
                 if not os.path.isfile(art):
                     failures.append("5. manifest の %s が指すファイルが downloads に無い: %s"
                                     % (brand, file_name))
+                    continue
+                if brand in NOT_MINECRAFT:
+                    # 名指しで除外する（黙って飛ばさない）。Noctua は Palworld のサーバー側 MOD で、
+                    # Minecraft の版を宣言する物が存在しない。ファイルがあることは上で確かめ、
+                    # sha256 と file_size は性質 6 が同じ輪で確かめる。
                     continue
                 declared = declared_mc_versions(art)
                 if not declared:
