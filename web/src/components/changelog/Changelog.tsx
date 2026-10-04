@@ -11,8 +11,9 @@ const BRANDS = ["all", "ouka", "cherry", "alpha", "aureum", "astraea", "tsubomi"
 const COLLAPSE_AFTER = 8;
 
 /**
- * The update history of every brand, as the pre-4.0 portal behaved: `?brand=` is read once on
- * mount and chip clicks rewrite it in place; free-text search over every field; a series
+ * The update history of every model, as the pre-4.0 portal behaved: `?model=` is read once on
+ * mount (an old `?brand=` link still works, and is rewritten) and chip clicks rewrite it in
+ * place; free-text search over every field; a series
  * (major.minor) select; the first eight rows until "Show more"; "Updated" is the newest date
  * among the current matches. Every row stays in the DOM — filtering only hides.
  */
@@ -32,8 +33,16 @@ export function Changelog({
   const [open, setOpen] = useState<Set<string>>(() => new Set());
 
   useEffect(() => {
-    const b = new URLSearchParams(window.location.search).get("brand");
+    const params = new URLSearchParams(window.location.search);
+    const b = params.get("model") ?? params.get("brand");
     if (b !== null && (BRANDS as readonly string[]).includes(b)) setBrand(b);
+    if (params.has("brand")) {
+      // The links before 4.2.2 said ?brand=; the address bar says ?model= from here on.
+      const url = new URL(window.location.href);
+      url.searchParams.delete("brand");
+      if (b !== null && b !== "all" && (BRANDS as readonly string[]).includes(b)) url.searchParams.set("model", b);
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+    }
   }, []);
 
   const names = useMemo(() => Object.fromEntries(brands.map((b) => [b.id, b.name])), [brands]);
@@ -75,8 +84,8 @@ export function Changelog({
     setSeries("");
     chime("tick");
     const url = new URL(window.location.href);
-    if (b === "all") url.searchParams.delete("brand");
-    else url.searchParams.set("brand", b);
+    if (b === "all") url.searchParams.delete("model");
+    else url.searchParams.set("model", b);
     window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
   };
 

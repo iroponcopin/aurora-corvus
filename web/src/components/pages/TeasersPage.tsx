@@ -41,7 +41,7 @@ export function TeasersPage({ lang }: { lang: Lang }) {
       body: x.body,
       items: x.items,
       pageHref: pathOf(lang, x.href),
-      notesHref: `${pathOf(lang, "changelog/")}?brand=${encodeURIComponent(x.brand)}`,
+      notesHref: `${pathOf(lang, "changelog/")}?model=${encodeURIComponent(x.brand)}`,
     };
   });
   return (

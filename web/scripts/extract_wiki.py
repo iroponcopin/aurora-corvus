@@ -387,6 +387,83 @@ def controls_lang(lang: str) -> dict:
     }
 
 
+# ------------------------------------------------------------------ "model", never "brand"
+
+# Owner, 2026-10-04: 「ライブサイトからブランドという単語を全て削除 モデルに置き換えてください」. The
+# portal's own copy (web/src/i18n) says "model" already; this rewrites the word where it reaches the site
+# from elsewhere — the Store catalogue inside the launcher jar, the wiki's page copy, the changelog history
+# — phrase by phrase, so each language's genders, articles and particles still agree. Only what the site
+# shows changes: the files themselves stay as they are (the launcher and the bot read them).
+# scripts/check-export.mjs fails any page that still shows the word.
+MODEL_WORDS: dict[str, list[tuple[str, str]]] = {
+    "ja": [("最上位のブランド", "最上位のモデル"), ("に位置するブランド", "に位置するモデル"), ("基礎ブランド", "基礎モデル"),
+           ("注目のブランド", "注目のモデル"), ("は別のブランドで", "は別のモデルで"), ("ブランドを選ぶと", "モデルを選ぶと"),
+           ("別ブランドの MOD", "別モデルの MOD")],
+    "en": [("Foundation Brand", "Foundation Model"), ("Featured brand", "Featured model"),
+           ("Choose a brand to see", "Choose a model to see"),
+           ("a separate mod brand that installs", "a separate model that installs")],
+    "es": [("Marca Cimiento", "Modelo Cimiento"), ("Marca destacada", "Modelo destacado"),
+           ("Elige una marca para ver", "Elige un modelo para ver"),
+           ("una marca de mods aparte que se instala", "un modelo aparte que se instala")],
+    "fr": [("Marque Fondation", "Modèle Fondation"), ("Marque à l'honneur", "Modèle à l'honneur"),
+           ("Choisissez une marque pour voir", "Choisissez un modèle pour voir"),
+           ("une marque de mods distincte, qui s'installe", "un modèle distinct, qui s'installe")],
+    "zh": [("最高级别的品牌", "最高级别的型号"), ("之下的品牌", "之下的型号"), ("基石品牌", "基石型号"),
+           ("精选品牌", "精选型号"), ("选择一个品牌", "选择一个型号"), ("独立模组品牌", "独立型号")],
+    "ko": [("최상위 브랜드입니다", "최상위 모델입니다"), ("자리한 브랜드입니다", "자리한 모델입니다"), ("토대 브랜드", "토대 모델"),
+           ("추천 브랜드", "추천 모델"), ("별개의 브랜드이며", "별개의 모델이며"), ("브랜드를 고르면", "모델을 고르면"),
+           ("별도의 MOD 브랜드입니다", "별도의 MOD 모델입니다")],
+    "pt-br": [("Marca Fundação", "Modelo Fundação"), ("Marca em destaque", "Modelo em destaque"),
+              ("Escolha uma marca para ver", "Escolha um modelo para ver"),
+              ("uma marca de mods à parte, que se instala", "um modelo à parte, que se instala")],
+    "it": [("Marchio Fondamenta", "Modello Fondamenta"), ("Brand in evidenza", "Modello in evidenza"),
+           ("Scegli un marchio per vedere", "Scegli un modello per vedere"),
+           ("un marchio di mod a sé, che si installa", "un modello a sé, che si installa")],
+    "ar": [("علامة الأساس", "طراز الأساس"), ("علامة مميزة", "طراز مميز"), ("اختر علامة لترى", "اختر طرازًا لترى"),
+           ("علامة مودات مستقلة تُثبَّت", "طراز مستقل يُثبَّت")],
+    "ru": [("Бренд-фундамент", "Модель-фундамент"), ("Избранный бренд", "Избранная модель"),
+           ("Выберите бренд, чтобы", "Выберите модель, чтобы"),
+           ("отдельный бренд модов, который устанавливается", "отдельная модель, которая устанавливается")],
+    "id": [("Merek Fondasi", "Model Fondasi"), ("Merek unggulan", "Model unggulan"),
+           ("Pilih merek untuk melihat", "Pilih model untuk melihat"),
+           ("merek mod terpisah yang dipasang", "model terpisah yang dipasang")],
+    "de": [("Fundament-Marke", "Fundament-Modell"), ("Ausgewählte Marke", "Ausgewähltes Modell"),
+           ("Wähle eine Marke, um zu sehen", "Wähle ein Modell, um zu sehen"),
+           ("eine eigene Mod-Marke, die neben Alpha installiert wird", "ein eigenes Modell, das neben Alpha installiert wird")],
+    "tr": [("Temel Taş Markası", "Temel Taş Modeli"), ("Öne çıkan marka", "Öne çıkan model"),
+           ("bir marka seçin", "bir model seçin"), ("ayrı bir mod markası", "ayrı bir model")],
+}
+# The Corvus Store's own release notes (data/launcher_notes.json) are English on every language's page.
+ENGLISH_BRAND = re.compile(r"\b([Bb])rand(s|'s)?\b")
+MODEL_USED: set[tuple[str, str]] = set()
+
+
+def _walk_strings(obj, fn):
+    if isinstance(obj, dict):
+        return {k: _walk_strings(v, fn) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_walk_strings(v, fn) for v in obj]
+    return fn(obj) if isinstance(obj, str) else obj
+
+
+def say_model(lang: str, data):
+    """Every string of one language's page data, with "brand" said as "model" (MODEL_WORDS)."""
+    pairs = MODEL_WORDS.get(lang, [])
+
+    def fix(s: str) -> str:
+        for old, new in pairs:
+            if old in s:
+                s = s.replace(old, new)
+                MODEL_USED.add((lang, old))
+        return s
+    return _walk_strings(data, fix)
+
+
+def english_model(data):
+    """English text (the launcher's release notes): brand → model, brands → models, brand's → model's."""
+    return _walk_strings(data, lambda s: ENGLISH_BRAND.sub(lambda m: ("M" if m.group(1) == "B" else "m") + "odel" + (m.group(2) or ""), s))
+
+
 # ------------------------------------------------------------------ per language
 
 def build_lang(lang: str, ctx: dict) -> dict:
@@ -731,12 +808,16 @@ def main() -> None:
         "alphaFacts": alpha_facts, "requires": requires, "store": store_catalogue(manifest),
         "upcoming": read_json("data/upcoming.json"), "discordBot": read_json("data/discord_bot.json"),
         "discordCommands": read_json("data/discord_commands.json"),
-        "launcherNotes": read_json("data/launcher_notes.json"),
+        "launcherNotes": english_model(read_json("data/launcher_notes.json")),
         "skinGate": read_json("data/skin_gate.json"),
         "teasers": read_json("data/teasers.json")["teasers"],
         "recipes": recipes_shared(legacy),
     }
-    langs = {lang: build_lang(lang, ctx) for lang in LANGS}
+    langs = {lang: say_model(lang, build_lang(lang, ctx)) for lang in LANGS}
+    stale = [f"{lang}: {old!r}" for lang in LANGS for old, _ in MODEL_WORDS.get(lang, []) if (lang, old) not in MODEL_USED]
+    if stale:
+        # Not fatal: the wiki may have reworded a line itself. check-export still fails a page that shows "brand".
+        print(f"extract_wiki: {len(stale)} MODEL_WORDS phrase(s) no longer occur: " + "; ".join(stale), file=sys.stderr)
     rel0 = (releases.get("releases") or [releases])[0] if isinstance(releases, dict) else releases[0]
     out = {
         "schema": SCHEMA,

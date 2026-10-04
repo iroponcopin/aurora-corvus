@@ -3,7 +3,7 @@ import { asset, BASE_URL, LANGUAGES, urlOf } from "./site";
 import { wiki } from "./wiki";
 import type { Lang } from "./wiki-types";
 
-const OG_IMAGE = new URL(asset("wiki/brand/og-image.png"), BASE_URL).href;
+const OG_IMAGE = new URL(asset("wiki/corvus/og-image.png"), BASE_URL).href;
 
 let checked = false;
 
@@ -47,11 +47,11 @@ export function pageMeta(lang: Lang, section: string, title: string | null, desc
     twitter: { card: "summary_large_image", title: full, description, images: [image] },
     icons: {
       icon: [
-        { url: asset("wiki/brand/favicon.ico"), sizes: "any" },
-        { url: asset("wiki/brand/favicon-32.png"), sizes: "32x32", type: "image/png" },
-        { url: asset("wiki/brand/favicon-16.png"), sizes: "16x16", type: "image/png" },
+        { url: asset("wiki/corvus/favicon.ico"), sizes: "any" },
+        { url: asset("wiki/corvus/favicon-32.png"), sizes: "32x32", type: "image/png" },
+        { url: asset("wiki/corvus/favicon-16.png"), sizes: "16x16", type: "image/png" },
       ],
-      apple: [{ url: asset("wiki/brand/apple-touch-icon.png") }],
+      apple: [{ url: asset("wiki/corvus/apple-touch-icon.png") }],
     },
   };
 }

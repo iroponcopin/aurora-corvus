@@ -83,7 +83,7 @@ export function OukaPage({ lang }: { lang: Lang }) {
               <a className="ac-btn" href={b.release.file.url} download>
                 {c.primaryCta}
               </a>
-              <Link className="ac-link" href={pathOf(lang, "changelog/?brand=ouka")}>
+              <Link className="ac-link" href={pathOf(lang, "changelog/?model=ouka")}>
                 {c.changelog} <span className="ac-flip">{c.arrow}</span>
               </Link>
             </div>
@@ -121,7 +121,7 @@ export function CherryPage({ lang }: { lang: Lang }) {
               <a className="ac-btn" href={b.release.file.url} download>
                 {c.primaryCta}
               </a>
-              <Link className="ac-link" href={pathOf(lang, "changelog/?brand=cherry")}>
+              <Link className="ac-link" href={pathOf(lang, "changelog/?model=cherry")}>
                 {c.changelog} <span className="ac-flip">{c.arrow}</span>
               </Link>
               <Link className="ac-link" href={pathOf(lang, "cherry-controls/")}>
@@ -200,7 +200,7 @@ export function AureumPage({ lang }: { lang: Lang }) {
           <code className="ac-hash">{a.sha256}</code>
         </p>
         <p className="ac-aureum-log">
-          <Link className="ac-link" href={pathOf(lang, "changelog/?brand=aureum")}>
+          <Link className="ac-link" href={pathOf(lang, "changelog/?model=aureum")}>
             {c.changelog} <span className="ac-flip">{c.arrow}</span>
           </Link>
         </p>
@@ -223,7 +223,7 @@ export function AlphaPage({ lang }: { lang: Lang }) {
               {a.lede}
             </p>
             <div className="ac-brand-actions ac-reveal">
-              <Link className="ac-btn" href={pathOf(lang, "changelog/?brand=alpha")}>
+              <Link className="ac-btn" href={pathOf(lang, "changelog/?model=alpha")}>
                 {a.ctaRetirement}
               </Link>
               <Link className="ac-btn ac-btn--ghost" href={pathOf(lang, "changelog/")}>

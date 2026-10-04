@@ -314,7 +314,7 @@ export function HomePage({ lang }: { lang: Lang }) {
               <p className="ac-small ac-time-summary" lang={brand.id === "corvus" ? "en" : undefined}>
                 {release.summary}
               </p>
-              <Link className="ac-link" href={`${pathOf(lang, "changelog/")}?brand=${brand.id}`}>
+              <Link className="ac-link" href={`${pathOf(lang, "changelog/")}?model=${brand.id}`}>
                 {f.chrono.open} <span className="ac-flip">{d.chrome.arrow}</span>
               </Link>
             </li>

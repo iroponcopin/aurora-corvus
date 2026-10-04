@@ -177,7 +177,7 @@ export function LauncherPage({ lang }: { lang: Lang }) {
         </div>
         <p className="ac-small ac-dl-note">
           {l.notesEnglishOnly}{" "}
-          <Link className="ac-link" href={`${pathOf(lang, "changelog/")}?brand=corvus`}>
+          <Link className="ac-link" href={`${pathOf(lang, "changelog/")}?model=corvus`}>
             {l.versionHistory} <span className="ac-flip">{d.chrome.arrow}</span>
           </Link>
         </p>
