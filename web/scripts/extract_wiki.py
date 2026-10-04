@@ -437,6 +437,44 @@ MODEL_WORDS: dict[str, list[tuple[str, str]]] = {
 ENGLISH_BRAND = re.compile(r"\b([Bb])rand(s|'s)?\b")
 MODEL_USED: set[tuple[str, str]] = set()
 
+# The model tiers (owner, 2026-10-04): 「ASTRAEA→頂点モデル OUKA→Xhighモデル Cherry→Highモデル
+# Tsubomi→ミディアムモデル AureumとNoctuaには階級はありません。」 The Store's badge slot is where a tier
+# shows ("badge · category" in the list, the pill on the hub's card), so a tiered model's badge is its
+# tier and an untiered one has none (Noctua's "Server Sovereign" read as a rank there). OUKA's and
+# Cherry's lines stated their old places ("the highest tier, above Cherry", "the tier just below OUKA");
+# they now state the tier. The Pinnacle word is each language's own from ASTRAEA's old badge.
+TIERS: dict[str, dict[str, str]] = {
+    "ja": {"astraea": "頂点モデル", "ouka": "Xhighモデル", "cherry": "Highモデル", "tsubomi": "ミディアムモデル"},
+    "en": {"astraea": "Pinnacle Model", "ouka": "Xhigh Model", "cherry": "High Model", "tsubomi": "Medium Model"},
+    "es": {"astraea": "Modelo Cumbre", "ouka": "Modelo Xhigh", "cherry": "Modelo High", "tsubomi": "Modelo Medium"},
+    "fr": {"astraea": "Modèle Sommet", "ouka": "Modèle Xhigh", "cherry": "Modèle High", "tsubomi": "Modèle Medium"},
+    "zh": {"astraea": "巅峰型号", "ouka": "Xhigh 型号", "cherry": "High 型号", "tsubomi": "Medium 型号"},
+    "ko": {"astraea": "정점 모델", "ouka": "Xhigh 모델", "cherry": "High 모델", "tsubomi": "미디엄 모델"},
+    "pt-br": {"astraea": "Modelo Pináculo", "ouka": "Modelo Xhigh", "cherry": "Modelo High", "tsubomi": "Modelo Medium"},
+    "it": {"astraea": "Modello Apice", "ouka": "Modello Xhigh", "cherry": "Modello High", "tsubomi": "Modello Medium"},
+    "ar": {"astraea": "طراز القمّة", "ouka": "طراز Xhigh", "cherry": "طراز High", "tsubomi": "طراز Medium"},
+    "ru": {"astraea": "Модель «Вершина»", "ouka": "Модель Xhigh", "cherry": "Модель High", "tsubomi": "Модель Medium"},
+    "id": {"astraea": "Model Puncak", "ouka": "Model Xhigh", "cherry": "Model High", "tsubomi": "Model Medium"},
+    "de": {"astraea": "Gipfel-Modell", "ouka": "Xhigh-Modell", "cherry": "High-Modell", "tsubomi": "Medium-Modell"},
+    "tr": {"astraea": "Zirve Modeli", "ouka": "Xhigh Modeli", "cherry": "High Modeli", "tsubomi": "Medium Modeli"},
+}
+TIER_LINES: dict[str, list[tuple[str, str]]] = {
+    "ja": [("Cherry の上に立つ、最上位のモデル。", "Xhighモデル。"), ("OUKA のすぐ下に位置するモデル。", "Highモデル。")],
+    "en": [("The highest tier, above Cherry.", "The Xhigh model."), ("The tier just below OUKA.", "The High model.")],
+    "es": [("El nivel más alto, por encima de Cherry.", "El modelo Xhigh."), ("El nivel justo por debajo de OUKA.", "El modelo High.")],
+    "fr": [("Le niveau le plus élevé, au-dessus de Cherry.", "Le modèle Xhigh."),
+           ("Le niveau juste en dessous d'OUKA.", "Le modèle High.")],
+    "zh": [("位于 Cherry 之上,最高级别的型号。", "Xhigh 型号。"), ("位于 OUKA 之下的型号。", "High 型号。")],
+    "ko": [("Cherry 위에 서는 최상위 모델입니다.", "Xhigh 모델입니다."), ("OUKA 바로 아래에 자리한 모델입니다.", "High 모델입니다.")],
+    "pt-br": [("O nível mais alto, acima do Cherry.", "O modelo Xhigh."), ("O nível logo abaixo de OUKA.", "O modelo High.")],
+    "it": [("Il livello più alto, sopra Cherry.", "Il modello Xhigh."), ("Il livello appena sotto OUKA.", "Il modello High.")],
+    "ar": [("المستوى الأعلى، فوق Cherry.", "طراز Xhigh."), ("المستوى الذي يلي OUKA مباشرة.", "طراز High.")],
+    "ru": [("Высший уровень — выше Cherry.", "Модель Xhigh."), ("Уровень сразу под OUKA.", "Модель High.")],
+    "id": [("Tingkat tertinggi, di atas Cherry.", "Model Xhigh."), ("Tingkat tepat di bawah OUKA.", "Model High.")],
+    "de": [("Die höchste Stufe, über Cherry.", "Das Xhigh-Modell."), ("Die Stufe direkt unter OUKA.", "Das High-Modell.")],
+    "tr": [("En üst seviye; Cherry'nin üzerinde.", "Xhigh modeli."), ("OUKA'nın hemen altındaki seviye.", "High modeli.")],
+}
+
 
 def _walk_strings(obj, fn):
     if isinstance(obj, dict):
@@ -447,8 +485,9 @@ def _walk_strings(obj, fn):
 
 
 def say_model(lang: str, data):
-    """Every string of one language's page data, with "brand" said as "model" (MODEL_WORDS)."""
-    pairs = MODEL_WORDS.get(lang, [])
+    """Every string of one language's page data, with "brand" said as "model" (MODEL_WORDS) and OUKA's and
+    Cherry's lines stating their tiers (TIER_LINES)."""
+    pairs = MODEL_WORDS.get(lang, []) + TIER_LINES.get(lang, [])
 
     def fix(s: str) -> str:
         for old, new in pairs:
@@ -457,6 +496,23 @@ def say_model(lang: str, data):
                 MODEL_USED.add((lang, old))
         return s
     return _walk_strings(data, fix)
+
+
+def with_tiers(lang: str, data: dict) -> dict:
+    """The tier in the badge slot: a tiered model's badge is its tier (TIERS); Aureum, Noctua and Alpha have none."""
+    tiers = TIERS[lang]
+    for pid, product in data["products"].items():
+        product["badge"] = tiers.get(pid)
+    strings = data["launcher"]["storeStrings"]
+    for key in [k for k in strings if re.fullmatch(r"store\.[a-z]+\.badge", k)]:
+        pid = key.split(".")[1]
+        if pid in tiers:
+            strings[key] = tiers[pid]
+        else:
+            del strings[key]
+    for pid, tier in tiers.items():
+        strings[f"store.{pid}.badge"] = tier
+    return data
 
 
 def english_model(data):
@@ -813,11 +869,13 @@ def main() -> None:
         "teasers": read_json("data/teasers.json")["teasers"],
         "recipes": recipes_shared(legacy),
     }
-    langs = {lang: say_model(lang, build_lang(lang, ctx)) for lang in LANGS}
-    stale = [f"{lang}: {old!r}" for lang in LANGS for old, _ in MODEL_WORDS.get(lang, []) if (lang, old) not in MODEL_USED]
+    langs = {lang: with_tiers(lang, say_model(lang, build_lang(lang, ctx))) for lang in LANGS}
+    stale = [f"{lang}: {old!r}" for lang in LANGS for old, _ in MODEL_WORDS.get(lang, []) + TIER_LINES.get(lang, [])
+             if (lang, old) not in MODEL_USED]
     if stale:
         # Not fatal: the wiki may have reworded a line itself. check-export still fails a page that shows "brand".
-        print(f"extract_wiki: {len(stale)} MODEL_WORDS phrase(s) no longer occur: " + "; ".join(stale), file=sys.stderr)
+        print(f"extract_wiki: {len(stale)} MODEL_WORDS/TIER_LINES phrase(s) no longer occur: " + "; ".join(stale),
+              file=sys.stderr)
     rel0 = (releases.get("releases") or [releases])[0] if isinstance(releases, dict) else releases[0]
     out = {
         "schema": SCHEMA,
