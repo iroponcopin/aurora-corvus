@@ -50,6 +50,9 @@ export const SECTIONS = [
   "cherry-controls/",
   "aureum/",
   "alpha/",
+  "astraea/",
+  "tsubomi/",
+  "noctua/",
 ] as const;
 export type Section = (typeof SECTIONS)[number];
 

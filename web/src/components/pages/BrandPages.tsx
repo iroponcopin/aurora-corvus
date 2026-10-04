@@ -12,6 +12,9 @@ const PINK: readonly [number, number, number] = [1, 0.58, 0.74];
 const ROSE: readonly [number, number, number] = [1, 0.42, 0.55];
 const GOLD: readonly [number, number, number] = [1, 0.72, 0.3];
 const ASH: readonly [number, number, number] = [0.7, 0.55, 0.45];
+const VIOLET: readonly [number, number, number] = [0.65, 0.55, 1];
+const SPRING: readonly [number, number, number] = [0.7, 1, 0.72];
+const NIGHT: readonly [number, number, number] = [0.45, 0.55, 1];
 
 function ReleaseCard({
   lang,
@@ -205,6 +208,62 @@ export function AureumPage({ lang }: { lang: Lang }) {
           </Link>
         </p>
       </div>
+    </>
+  );
+}
+
+/** The models whose page is built from the store catalogue and the manifest alone. */
+export type CatalogueModel = "astraea" | "tsubomi" | "noctua";
+
+const CATALOGUE_STAGE: Record<CatalogueModel, { formation: number; tint: readonly [number, number, number] }> = {
+  astraea: { formation: Formation.Horizon, tint: VIOLET },
+  tsubomi: { formation: Formation.Bloom, tint: SPRING },
+  noctua: { formation: Formation.Nexus, tint: NIGHT },
+};
+
+/** ASTRAEA, Tsubomi and Noctua: the same hero, stage and release card as OUKA and Cherry. */
+export function CatalogueModelPage({ lang, id }: { lang: Lang; id: CatalogueModel }) {
+  const d = langData(lang);
+  const p = d.products[id];
+  if (!p) throw new Error(`${id}: not in the store catalogue`);
+  const dl = d.download[id];
+  const c = d.chrome;
+  const stage = CATALOGUE_STAGE[id];
+  const hasLog = d.changelog.brands.some((b) => b.id === id);
+  return (
+    <>
+      <RealmAnchor className="ac-brand-hero" config={{ formation: stage.formation, x: 0.72, xNarrow: 0.5, scale: 0.32, scaleNarrow: 0.26, tint: stage.tint }}>
+        <div className="ac-wrap ac-brand-grid">
+          <div className="ac-brand-copy">
+            <p className="ac-eyebrow ac-reveal">{p.badge ?? p.category}</p>
+            <h1 className="ac-display ac-brand-name ac-reveal">{p.name}</h1>
+            <p className="ac-brand-version ac-reveal">
+              <b className="ac-ltr">V{dl?.version ?? p.version}</b>
+              {p.jp ? <span lang="ja">{p.jp}</span> : null}
+            </p>
+            <p className="ac-brand-line ac-reveal">{p.headline}</p>
+            {p.tagline !== p.headline ? (
+              <p className="ac-lead ac-reveal" style={{ maxWidth: "36ch" }}>
+                {p.tagline}
+              </p>
+            ) : null}
+            <div className="ac-brand-actions ac-reveal">
+              {dl ? (
+                <a className="ac-btn" href={dl.file.url} download>
+                  {c.primaryCta}
+                </a>
+              ) : null}
+              {hasLog ? (
+                <Link className="ac-link" href={pathOf(lang, `changelog/?model=${id}`)}>
+                  {c.changelog} <span className="ac-flip">{c.arrow}</span>
+                </Link>
+              ) : null}
+            </div>
+          </div>
+          <BrandStage icon={`icons/${id}.png`} label={p.name} />
+        </div>
+      </RealmAnchor>
+      {dl ? <ReleaseCard lang={lang} requirements={dl.requirements} file={dl.file} /> : null}
     </>
   );
 }

@@ -28,6 +28,13 @@ export interface Requirement {
 
 export type Availability = "available" | "soon" | "archived";
 
+/** A model's current file on its own page (ASTRAEA, Tsubomi, Noctua). */
+export interface ModelDownload {
+  version: string;
+  requirements: Requirement[];
+  file: FileFacts;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -296,8 +303,9 @@ export interface LangData {
     nativeNote: string;
     changelogLink: string;
     aureum: { heading: string; body: string; note: string; cta: string; version: string; file: FileFacts };
-    astraea: { version: string; file: FileFacts } | null;
-    tsubomi: { version: string; file: FileFacts } | null;
+    astraea: ModelDownload | null;
+    tsubomi: ModelDownload | null;
+    noctua: ModelDownload | null;
     discord: { heading: string; body: string; cta: string };
     alphaNote: string;
     alphaVersion: string;

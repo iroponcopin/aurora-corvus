@@ -56,8 +56,10 @@ SCHEMA = "aurora-corvus.wiki/4"
 BASE_URL = SC.SITE_BASE_URL
 BASE_PATH = "/aurora-corvus"
 LANGS = SC.available_langs()
+# The models with a page of their own (src/app/[lang]/<id>/).
+MODEL_PAGES = ("ouka", "cherry", "aureum", "alpha", "astraea", "tsubomi", "noctua")
 SECTIONS = ["", "launcher/", "download/", "recipes/", "changelog/", "upcoming/", "teasers/", "skin/", "discord/",
-            "ouka/", "cherry/", "cherry-controls/", "aureum/", "alpha/"]
+            "ouka/", "cherry/", "cherry-controls/", "aureum/", "alpha/", "astraea/", "tsubomi/", "noctua/"]
 
 
 def die(msg: str) -> None:
@@ -594,9 +596,10 @@ def build_lang(lang: str, ctx: dict) -> dict:
             "icon": f"icons/{pid}.png",
             "art": {"ouka": "art/ouka.png", "cherry": "art/cherry.png", "aureum": "art/aureum.jpg"}.get(pid),
             "version": (man.get(pid) or {}).get("latest") or (retired.get("retired_version") if pid == "alpha" else ""),
-            "compat": f"Minecraft {ctx['mc']} · Fabric" if avail == "available" and pid != "alpha" else "",
-            "href": {"ouka": "ouka/", "cherry": "cherry/", "aureum": "aureum/", "alpha": "alpha/"}.get(pid,
-                                                                                                    f"launcher/#{pid}"),
+            "compat": ("" if avail != "available" or pid == "alpha" else
+                       "Palworld · Dedicated Server" if pid == "noctua" else f"Minecraft {ctx['mc']} · Fabric"),
+            # Every model has a page of its own; launcher/ only as a fallback for one added before its page.
+            "href": f"{pid}/" if pid in MODEL_PAGES else f"launcher/#{pid}",
         }
         if pid in ("ouka", "cherry"):
             p["requires"] = [f"{r['label']} {r['value']}" for r in ctx["requires"][pid]]
@@ -675,6 +678,8 @@ def build_lang(lang: str, ctx: dict) -> dict:
     aureum_file = man["aureum"]
     astraea_file = man.get("astraea")
     tsubomi_file = man.get("tsubomi")
+    noctua_file = man.get("noctua")
+    mc_reqs = [{"label": "Minecraft", "value": f"{ctx['mc']} · Fabric"}]
     download_page = {
         "title": ui["page_titles"]["download"],
         "heading": ui["nav"]["download"],
@@ -687,12 +692,16 @@ def build_lang(lang: str, ctx: dict) -> dict:
                    "cta": dl["aureum_cta"], "version": aureum_file["latest"],
                    "file": file_facts(aureum_file["file_name"], aureum_file["download_url"],
                                       aureum_file["file_size"], aureum_file["sha256"])},
-        "astraea": astraea_file and {"version": astraea_file["latest"],
+        "astraea": astraea_file and {"version": astraea_file["latest"], "requirements": mc_reqs,
                                      "file": file_facts(astraea_file["file_name"], astraea_file["download_url"],
                                                         astraea_file["file_size"], astraea_file["sha256"])},
-        "tsubomi": tsubomi_file and {"version": tsubomi_file["latest"],
+        "tsubomi": tsubomi_file and {"version": tsubomi_file["latest"], "requirements": mc_reqs,
                                      "file": file_facts(tsubomi_file["file_name"], tsubomi_file["download_url"],
                                                         tsubomi_file["file_size"], tsubomi_file["sha256"])},
+        "noctua": noctua_file and {"version": noctua_file["latest"],
+                                   "requirements": [{"label": "Palworld", "value": "Dedicated Server"}],
+                                   "file": file_facts(noctua_file["file_name"], noctua_file["download_url"],
+                                                      noctua_file["file_size"], noctua_file["sha256"])},
         "discord": {"heading": dl["discord_heading"], "body": dl["discord_body"], "cta": dl["discord_invite_cta"]},
         "alphaNote": leg["download"]["alphaNote"],
         "alphaVersion": retired.get("retired_version", ""),
@@ -776,7 +785,7 @@ def build_lang(lang: str, ctx: dict) -> dict:
         "disclaimer": up["disclaimer"], "more": leg["upcoming"]["more"],
         "nodes": [
             {"id": pid, "kind": "product", "icon": f"icons/{pid}.png", "status": "soon", "headline": products[pid]["name"],
-             "body": products[pid]["tagline"], "href": f"launcher/#{pid}", "linkName": products[pid]["name"]}
+             "body": products[pid]["tagline"], "href": products[pid]["href"], "linkName": products[pid]["name"]}
             for pid in product_ids() if products[pid]["availability"] == "soon"
         ],
     }
