@@ -12,30 +12,30 @@
     "changelog_url": "https://iroponcopin.github.io/aurora-corvus/en/changelog/"
   },
   "launcher": {
-    "latest": "3.0.1",
-    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.1.jar",
-    "file_name": "corvus-3.0.1.jar",
-    "file_size": 13703701,
-    "sha256": "dd91fe56f347253eb653088dee8f16ba596954200c78bb14bebd5b58a3bd704d",
-    "notes": "Corvus Store 3.0.1 is a small release with two changes.\n\nThe Updates page now works the way the App Store's does. It has no \"Check for Updates\" button and no line about when it last checked. It checks by itself when you open it (unless it checked a moment ago), every fifteen minutes while Corvus Store is open, and when you press Cmd+R (Ctrl+R on Windows and Linux). When two or more updates are waiting, an \"Update All\" button (すべてアップデート in Japanese) appears at the right end of the page's title and updates them one after another, Corvus Store itself last; with only one waiting there is no such button. It never starts a first install, it does not try an update twice, and if something else is writing into your mods folder it stops instead of refusing card by card.\n\nThe picture beside your name was a black disc in 3.0.0 — in the sidebar and at the top of the account sheet, for every account picture and every monogram. The ring that outlines the picture had lost its style when the old settings panels were removed, and a circle is filled black unless told otherwise. It is now a hairline and nothing else, and a picture with see-through pixels sits on the card's grey. That was a fault of 3.0.0, and nothing you did.\n\nThe official icons of OUKA, Cherry, Aureum, Tsubomi, Noctua and ASTRAEA, which came with 3.0.0, are unchanged. Everything else is 3.0.0.\n\nVerified: 913 unit tests pass on each of two clean builds, with the compiler set to refuse any warning, and the two builds made byte-identical programs. The Store was drawn without a window in all 13 languages (138 checks each, English, Japanese and Arabic included), including a check that reads the account picture pixel by pixel — with the 3.0.0 code it reads black, and with this one it reads the picture — and the Updates page: no check button, one check when it is entered, Update All appearing at two waiting updates and gone at one, and going through them in turn with Corvus Store last. It was run against the real update check with a manifest served from this machine (38 checks). The built application was driven in a real window twice: all 94 of the window instrument's claims held, none failed, none were undecided, including that Cmd+R starts one check and that opening Updates after a while starts one. Perch's own instrument, on this build: 47 claims held in each of two runs, none failed, and three in each could not be decided because the machine was busy (Perch is unchanged since 3.0.0). The macOS installer, built by CI, was opened here and the app inside it run: it reports 3.0.1, opens its window and draws all five screens, with no check button on Updates and the account picture showing; it is built for Apple Silicon Macs only.\nNot verified, and worth saying: the fifteen-minute wait itself (the decision is tested, the timer is the system's); an Update All run against real downloads (the order and the stopping are tested with stand-ins; the installs it presses are the same ones GET and UPDATE press); a slow check is invisible, because the cards keep showing what they showed while one runs; Corvus Store replacing itself on an installed copy; the Windows and Linux installers, which nobody has installed or run; and the words \"Update All\" in the twelve languages other than Japanese, which nobody who speaks them has read.",
+    "latest": "3.0.2",
+    "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.2.jar",
+    "file_name": "corvus-3.0.2.jar",
+    "file_size": 14692902,
+    "sha256": "dc6cd9856c1a33bd2b296a178444546631536d5ca30c7f8fe6064437989a8da6",
+    "notes": "Corvus Store 3.0.2 is a small release with two changes.\n\nTsubomi can now be installed from the Store. Tsubomi is published as one jar rather than a package of several, and Corvus Store 3.0.0 and 3.0.1 did not know that shape, so its card said \"Coming soon\". The card now has a GET button like OUKA, Cherry, ASTRAEA and Aureum have. Pressing it downloads the jar, checks its size and SHA-256 against the site, and puts it in your mods folder; once it is installed, Tsubomi updates itself in place, and an installed copy is found by what the jar is, not by what the file is called. Tsubomi cannot run beside Alpha: its own jar says so, and Minecraft would refuse to start. So if your mods folder holds any Alpha module, the Store says so in one plain sentence that names the jars, and changes nothing. That applies to updates too.\n\nThe icons are the new ones. OUKA, Cherry, Aureum and Corvus Store itself now show the same icons as the website; they are the website's own files, not redrawn copies, and the big pictures on the Today cards of OUKA, Cherry and Aureum are the website's new banners. In a language that reads right to left the banner is arranged for it, with the emblem on the left and drawn as it is, not mirrored. The old marks are gone from the application, from the macOS, Windows and Linux installers' icons, and from the Today cards. One thing to know: the largest size inside the macOS icon is the 512 pixel logo enlarged, because 512 pixels is all the studio supplied.\n\nEverything else is 3.0.1.\n\nVerified: 933 unit tests pass, with the compiler set to refuse any warning, and two clean builds made byte-identical programs. The Store was drawn without a window in all 13 languages (138 checks each, English, Japanese and Arabic included), and no icon, banner or preview in the program has the bytes of an old one (a test keeps the old marks out and holds the new ones to the website's files). It was run against the real update check with a manifest served from this machine (50 checks, 12 of them new for Tsubomi): with no Tsubomi block the card says Coming soon; with one it offers GET at 1.0.0 and does not install by itself; beside an Alpha module it refuses and leaves the folder unchanged; once installed it shows OPEN and updates itself to 1.0.1. The real Tsubomi 1.0.0 jar from this site went through the installer too: its thirteen Alpha module ids are found, it installs into a clean folder and is refused beside an Alpha module. The built application was driven in a real window twice: all 94 of the window instrument's claims held in each run, none failed, none were undecided. Perch's own instrument, on this build: 47 claims held in one run and 49 in the other, none failed, and three and one could not be decided because the machine was busy (Perch is unchanged since 3.0.0). The macOS installer, built by CI, was opened here and the app inside it run: it reports 3.0.2, its icon file is the one in the repository, and it draws all five screens with the new icons and a GET button on Tsubomi; it is built for Apple Silicon Macs only.\nNot verified, and worth saying: Tsubomi in a real Minecraft client (nobody has run it there yet); a Tsubomi download from this site through a real Store window (the real jar went through the installer directly, and the check against the update code used a copy served from this machine); how the refusal dialog's long sentence is laid out; that sentence is in English in every language, like the other install failures; the Windows and Linux installers, which nobody has installed or run; and the Tsubomi words in the twelve languages other than English, which are the ASTRAEA wording with the name swapped and which nobody who speaks them has read.",
     "native": {
       "macos": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.1-macos.dmg",
-        "file_name": "corvus-3.0.1-macos.dmg",
-        "file_size": 62074300,
-        "sha256": "9e21ef87637d2ed97584281f5bdb03b8e7300664eb0e93d9f770779c0d611e8e"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.2-macos.dmg",
+        "file_name": "corvus-3.0.2-macos.dmg",
+        "file_size": 64441072,
+        "sha256": "bb55261f67209990adef50ed0edbbdb67a0514b29dce8a2412103d72e11fe807"
       },
       "windows": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.1-windows.msi",
-        "file_name": "corvus-3.0.1-windows.msi",
-        "file_size": 61096796,
-        "sha256": "8e9cc44febe4e6aab4bf0c44fca89f13c9c2ecfcc5a166d78ebd2607b60daaba"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.2-windows.msi",
+        "file_name": "corvus-3.0.2-windows.msi",
+        "file_size": 62137180,
+        "sha256": "704659e54036759268493b8a04ee0ca3408d09584d5b5d5951661d154b4a7db2"
       },
       "linux": {
-        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.1-linux.deb",
-        "file_name": "corvus-3.0.1-linux.deb",
-        "file_size": 50565802,
-        "sha256": "a66eefa86dd3682751da85e3f8af20cd7336cb84aa800f7e5d9c9c8e350231e4"
+        "download_url": "https://iroponcopin.github.io/aurora-corvus/downloads/corvus-3.0.2-linux.deb",
+        "file_name": "corvus-3.0.2-linux.deb",
+        "file_size": 51532032,
+        "sha256": "67097c33dfe21418fa1e8753919b9de919c12d270f4d6b00ef26f3d0710dc1cd"
       }
     }
   },
