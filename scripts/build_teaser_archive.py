@@ -23,6 +23,8 @@ to remember. Run it by hand with no arguments to do the same.
 `--from-git` replays every commit that touched data/upcoming.json (a full or a blobless clone will
 do: `git clone --bare --filter=blob:none ...`), which is how the archive was first filled.
 """
+from __future__ import annotations  # `str | None` in annotations on Python 3.9, the owner's default python3
+
 import json
 import subprocess
 import sys
