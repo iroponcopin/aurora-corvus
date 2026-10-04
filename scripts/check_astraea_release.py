@@ -11,7 +11,8 @@ other checker here reads for ASTRAEA, is checked here — a live gate, not a ret
      and a Store card whose download 404s on the live site (three sessions nearly shipped that on 2026-09-15);
   2. its mods/ holds exactly one jar, and that jar's own fabric.mod.json says id "astraea" and the zip name's version;
   3. that jar depends on nothing but fabricloader, minecraft, java and fabric-api, and names no other mod in
-     recommends / suggests / breaks / conflicts: ASTRAEA bundles nothing and has no compatibility with Alpha (the
+     recommends / suggests / breaks / conflicts (since V1.1.0 it may suggest "ouka", its optional power partner, and
+     only that): ASTRAEA bundles nothing and has no compatibility with Alpha (the
      owner's decision D-1). No entry of the zip or of the jar is named after Alpha's modules ("sorakaze");
   4. glimpse_manifest.json carries an "astraea" block for that zip: mod_id "astraea", latest <ver>, the zip's file name,
      address, size and SHA-256, and "jars" exactly {astraea: {path, version, file_size, sha256}} read from the zip. The
@@ -44,6 +45,7 @@ LANGS = ["ja", "en", "es", "fr", "zh", "ko", "pt-br", "it", "ar", "ru", "id", "d
 ZIP_RE = re.compile(r"^ASTRAEA_MODs_v(\d+(?:\.\d+)*)\+mc(\d+(?:\.\d+)*)\.zip$")
 SITE = "https://iroponcopin.github.io/aurora-corvus"
 ALLOWED_DEPENDS = {"fabricloader", "minecraft", "java", "fabric-api"}
+ALLOWED_SUGGESTS = {"ouka"}
 
 
 def git_tracked(root: Path, rel: str) -> bool:
@@ -98,8 +100,11 @@ def check(root: Path, tracked=git_tracked):
         if extra:
             problems.append(f"the astraea jar depends on {extra}: it may depend only on {sorted(ALLOWED_DEPENDS)} (D-1, no bundled mod)")
         for field in ("recommends", "suggests", "breaks", "conflicts"):
-            if meta.get(field):
-                problems.append(f"the astraea jar's fabric.mod.json names other mods under {field}: {meta[field]}")
+            # V1.1.0 (2026-10-04): OUKA is an optional partner — it powers the security devices when installed, and
+            # ASTRAEA runs without it — so the jar may suggest "ouka" and nothing else (and never depend on it).
+            named = {k: v for k, v in (meta.get(field) or {}).items() if not (field == "suggests" and k in ALLOWED_SUGGESTS)}
+            if named:
+                problems.append(f"the astraea jar's fabric.mod.json names other mods under {field}: {named}")
     manifest_path = root / "glimpse_manifest.json"
     try:
         block = json.loads(manifest_path.read_text(encoding="utf-8")).get("astraea")
