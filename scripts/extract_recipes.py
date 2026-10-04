@@ -120,11 +120,21 @@ BRAND_CATEGORY = {
     "ouka": "OUKA",
     # ASTRAEA V1.0.0 (2026-09-30): its own product, its own tab, like Cherry and OUKA.
     "astraea": "ASTRAEA",
+    # Tsubomi V1.0.1 (2026-10-05): its own product, its own tab. Unlike the three above it is published as ONE
+    # bare jar (downloads/tsubomi-<v>.jar), not a zip of jars - see stage_published_brands().
+    "tsubomi": "Tsubomi",
 }
 BRAND_TAB_ICON = {
     "Cherry": "cherry:apex1_rocket",
     "OUKA": "ouka:ouka_caster",
     "ASTRAEA": "astraea:celestial_blade",
+    "Tsubomi": "tsubomi:teleport_elevator",
+}
+# Manifest blocks that are published as a bare jar AND have no recipe at all, so they are deliberately not a
+# recipe source. This is a CLAIM, not an exemption: stage_published_brands() opens each such jar and counts its
+# recipe json, so the day one of them gains a recipe the generation stops (the NO_RECIPE_MODULES rule).
+BARE_JAR_WITHOUT_RECIPES = {
+    "aureum": "an optimisation mod; its jar carries no data/ at all",
 }
 
 
@@ -257,9 +267,17 @@ def stage_published_brands(staging_root):
                          f"Without it there is no list of published brands, and an empty list "
                          f"would make 'every brand was staged' vacuously true.")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    # ブランドの見分け方は名前ではなく**形**: mod_id と jars を持つブロック。
-    blocks = {k: v for k, v in manifest.items()
-              if isinstance(v, dict) and "mod_id" in v and isinstance(v.get("jars"), dict)}
+    # ブランドの見分け方は名前ではなく**形**: mod_id を持ち、(a) jars を持つ zip の束、または (b) file_name が
+    # .jar の**裸の jar**(Tsubomi、Aureum。2026-10-05 に (b) を足した)。(a) だけ見ていたので、Tsubomi は
+    # 「ブランドが 1 つも無い」のではなく**黙って数えられない**ブロックだった。
+    def is_zip_brand(v):
+        return isinstance(v, dict) and "mod_id" in v and isinstance(v.get("jars"), dict)
+
+    def is_bare_jar_brand(v):
+        return (isinstance(v, dict) and "mod_id" in v and "jars" not in v
+                and str(v.get("file_name", "")).endswith(".jar"))
+
+    blocks = {k: v for k, v in manifest.items() if is_zip_brand(v) or is_bare_jar_brand(v)}
     if not blocks:
         raise SystemExit("ERROR: glimpse_manifest.json declares no brand block (mod_id + jars). "
                          "That is not 'no brands are published' - it means this reader is looking "
@@ -267,29 +285,61 @@ def stage_published_brands(staging_root):
 
     staged = []
     unknown = []
+    skipped_no_recipe = []
     for block, info in sorted(blocks.items()):
         modid = info["mod_id"]
+        bare = is_bare_jar_brand(info)
         cat = BRAND_CATEGORY.get(block)
+        zip_path = SITE_ROOT / "downloads" / info["file_name"]
+        if cat is None and bare and block in BARE_JAR_WITHOUT_RECIPES:
+            # The claim "this jar has no recipe" is checked, not trusted.
+            if not zip_path.exists():
+                raise SystemExit(f"ERROR: the manifest publishes {block} as {info['file_name']}, but "
+                                 f"{zip_path} is not there.")
+            with zipfile.ZipFile(zip_path) as jf:
+                recipes_in = [m for m in jf.namelist()
+                              if m.startswith(f"data/{modid}/recipe/") and m.endswith(".json")]
+            if recipes_in:
+                raise SystemExit(f"ERROR: {block} is listed in BARE_JAR_WITHOUT_RECIPES ("
+                                 f"{BARE_JAR_WITHOUT_RECIPES[block]}), but {info['file_name']} carries "
+                                 f"{len(recipes_in)} recipe json. Give it a BRAND_CATEGORY entry instead.")
+            skipped_no_recipe.append(block)
+            continue
         if cat is None:
             unknown.append(block)
             continue
-        zip_path = SITE_ROOT / "downloads" / info["file_name"]
         if not zip_path.exists():
             raise SystemExit(f"ERROR: the manifest publishes {block} as {info['file_name']}, but "
                              f"{zip_path} is not there. The sheet must be generated from the bytes "
                              f"players download, not from a working tree.")
-        jar_entry = info["jars"].get(modid)
-        if jar_entry is None:
-            raise SystemExit(f"ERROR: {block}'s manifest block has no jar named {modid!r} "
-                             f"(it lists {sorted(info['jars'])}). Its own jar is what carries the "
-                             f"recipes, so there is nothing to read.")
-        with zipfile.ZipFile(zip_path) as zf:
-            jar_bytes = zf.read(jar_entry["path"])
-        got = hashlib.sha256(jar_bytes).hexdigest()
-        if got != jar_entry["sha256"]:
-            raise SystemExit(f"ERROR: {jar_entry['path']} inside {info['file_name']} hashes {got}, "
-                             f"but the manifest says {jar_entry['sha256']}. Refusing to document "
-                             f"a jar that is not the published one.")
+        if bare:
+            # The published artefact IS the mod jar. Its bytes must be the ones the manifest names.
+            jar_bytes = zip_path.read_bytes()
+            got = hashlib.sha256(jar_bytes).hexdigest()
+            if got != info["sha256"]:
+                raise SystemExit(f"ERROR: {info['file_name']} hashes {got}, but the manifest says "
+                                 f"{info['sha256']}. Refusing to document a jar that is not the "
+                                 f"published one.")
+            with zipfile.ZipFile(io.BytesIO(jar_bytes)) as jf:
+                meta = json.loads(jf.read("fabric.mod.json").decode("utf-8"))
+            if meta.get("id") != modid or meta.get("version") != info["latest"]:
+                raise SystemExit(f"ERROR: {info['file_name']}'s own fabric.mod.json says "
+                                 f"{meta.get('id')!r} {meta.get('version')!r}, the manifest says "
+                                 f"{modid!r} {info['latest']!r}.")
+            jar_entry = {"version": meta["version"]}
+        else:
+            jar_entry = info["jars"].get(modid)
+            if jar_entry is None:
+                raise SystemExit(f"ERROR: {block}'s manifest block has no jar named {modid!r} "
+                                 f"(it lists {sorted(info['jars'])}). Its own jar is what carries the "
+                                 f"recipes, so there is nothing to read.")
+            with zipfile.ZipFile(zip_path) as zf:
+                jar_bytes = zf.read(jar_entry["path"])
+            got = hashlib.sha256(jar_bytes).hexdigest()
+            if got != jar_entry["sha256"]:
+                raise SystemExit(f"ERROR: {jar_entry['path']} inside {info['file_name']} hashes {got}, "
+                                 f"but the manifest says {jar_entry['sha256']}. Refusing to document "
+                                 f"a jar that is not the published one.")
 
         dest = staging_root / block / "src/main/resources"
         dest.parent.mkdir(parents=True, exist_ok=True)
@@ -322,9 +372,12 @@ def stage_published_brands(staging_root):
             "Add them to BRAND_CATEGORY and BRAND_TAB_ICON - leaving them out is how a whole "
             "product's recipes go missing without a word."
             % (len(unknown), ", ".join(sorted(unknown))))
-    if len(staged) != len(blocks):
+    if len(staged) + len(skipped_no_recipe) != len(blocks):
         raise SystemExit(f"ERROR: the manifest counts {len(blocks)} brand(s) but only "
-                         f"{len(staged)} were staged.")
+                         f"{len(staged)} were staged and {len(skipped_no_recipe)} set aside as "
+                         f"recipe-less.")
+    if skipped_no_recipe:
+        print("brand set aside (bare jar, verified to carry no recipe): " + ", ".join(skipped_no_recipe))
     return staged
 
 
@@ -844,6 +897,12 @@ YOMI = {
     "地鎮": "じちん", "鎌": "かま", "鍬": "くわ", "鎚": "つい",
     "天星": "てんせい", "宿星": "しゅくせい", "宿星刀": "しゅくせいとう", "大伐斧": "だいばつふ",  # 仮
     "豊穣鎌": "ほうじょうがま", "削岩鎚": "さくがんつい", "地鎮鍬": "じちんくわ", "聖槍": "せいそう",  # 仮
+    # --- Tsubomi V1.0.1(2026-10-05)。名前は配布済み jar の ja_jp.json。**全部ふつうの辞書語**で、造語は無い
+    #     (仮の読みは 0 個)。ただし「石英」は表にあった「石」(いし)に割れて「どういし英」と読まれ、
+    #     「茶葉」は「葉」(は)で「ちゃは」と読まれていた —— **警告が出ない誤読**なので、語として入れる。
+    #     「樹液」はカードの無い材料だが、検索語の読みに使われる。 ---
+    "卓上": "たくじょう", "盆栽": "ぼんさい", "携帯": "けいたい", "石英": "せきえい",
+    "冒険者": "ぼうけんしゃ", "茶葉": "ちゃば", "樹液": "じゅえき",
     # --- 別ブランド Cherry / OUKA(2026-09-20)。所有者の「レシピ集に Cherry と
     #     OUKA の作り方が無い」への対応で早見表に入った 19 枚ぶん。ここを足さないと
     #     V4.3.2 の 22 枚と同じで、五十音順の**間違った場所に並ぶ**カードになる。 ---
@@ -1467,6 +1526,41 @@ SKULL_ENTITY_TEXTURE = {
 }
 
 
+def compose_water_bottle_icon(zf):
+    """The icon of a Water Bottle, composed from the client jar (2026-10-05, for Tsubomi's herbal tea).
+
+    The vanilla potion item is two layers (models/item/potion.json): layer0 = potion_overlay (the liquid, grey)
+    tinted by the item definition's potion tint, layer1 = potion (the glass bottle) untinted. Water has no
+    effect colour, so the tint is the definition's own default. Nothing is typed here: the layer names and the
+    tint come out of the jar, and a jar that changes either stops the generation instead of drawing a wrong
+    bottle."""
+    from PIL import Image
+    model = json.loads(zf.read("assets/minecraft/models/item/potion.json").decode("utf-8"))
+    tex = model["textures"]
+    if list(tex) != ["layer0", "layer1"]:
+        raise SystemExit("ERROR: models/item/potion.json no longer has exactly layer0 + layer1 (%s) - the "
+                         "water bottle icon cannot be composed as before." % list(tex))
+    tints = json.loads(zf.read("assets/minecraft/items/potion.json").decode("utf-8"))["model"]["tints"]
+    if len(tints) != 1 or tints[0].get("type") != "minecraft:potion" or "default" not in tints[0]:
+        raise SystemExit("ERROR: items/potion.json no longer carries one potion tint with a default.")
+    argb = tints[0]["default"] & 0xFFFFFFFF
+    r, g, b = (argb >> 16) & 255, (argb >> 8) & 255, argb & 255
+
+    def load(ref):
+        ns, name = ref.split(":", 1)
+        return Image.open(io.BytesIO(zf.read(f"assets/{ns}/textures/{name}.png"))).convert("RGBA")
+    liquid, bottle = load(tex["layer0"]), load(tex["layer1"])
+    px = liquid.load()
+    for y in range(liquid.height):
+        for x in range(liquid.width):
+            pr, pg, pb, pa = px[x, y]
+            px[x, y] = (pr * r // 255, pg * g // 255, pb * b // 255, pa)
+    liquid.alpha_composite(bottle)
+    buf = io.BytesIO()
+    liquid.save(buf, format="PNG", optimize=True)
+    return base64.b64encode(buf.getvalue()).decode()
+
+
 def vanilla_texture_b64(zf, name):
     if name == "chest":
         return compose_chest_icon(zf)
@@ -2072,6 +2166,51 @@ def guard_published_textures():
     return problems
 
 
+_MOD_TAG_CACHE = {}
+
+
+def mod_item_tag(ns, name, _seen=None):
+    """`#<modid>:<name>` -> the real item ids, read from that mod's own published data (2026-10-05, Tsubomi).
+
+    Vanilla tags come out of the client jar (vanilla_item_tag); a tag of a staged brand lives in the brand's
+    jar at data/<ns>/tags/item/<name>.json. Nested `#...` members are opened, vanilla ones through the client
+    jar. A tag that cannot be read stops the generation: a card with an unresolvable ingredient must not ship."""
+    key = (ns, name)
+    if key in _MOD_TAG_CACHE:
+        return _MOD_TAG_CACHE[key]
+    seen = _seen or set()
+    if key in seen:
+        raise SystemExit("ERROR: item tag #%s:%s refers to itself (cycle)" % key)
+    seen.add(key)
+    for mod_dir, modid, _cat in MODS:
+        if modid == ns:
+            path = mod_resources(mod_dir) / "data" / ns / "tags" / "item" / f"{name}.json"
+            break
+    else:
+        raise SystemExit("ERROR: a recipe uses the item tag #%s:%s, but no staged mod owns the namespace %r."
+                         % (ns, name, ns))
+    if not path.exists():
+        raise SystemExit("ERROR: a recipe uses the item tag #%s:%s, but %s is not in the published jar."
+                         % (ns, name, path))
+    out = []
+    for v in json.loads(path.read_text(encoding="utf-8"))["values"]:
+        vid = v["id"] if isinstance(v, dict) else v
+        if vid.startswith("#"):
+            tns, tname = vid[1:].split(":", 1)
+            members = (vanilla_item_tag(tname) if tns == "minecraft"
+                       else mod_item_tag(tns, tname, seen))
+        else:
+            members = [vid]
+        for m in members:
+            if m not in out:
+                out.append(m)
+    if not out:
+        raise SystemExit("ERROR: item tag #%s:%s resolved to nothing - the card would show an empty slot "
+                         "where an ingredient belongs" % key)
+    _MOD_TAG_CACHE[key] = out
+    return out
+
+
 class ItemRegistry:
     """item id -> (日本語名, 英語名, テクスチャ key) を 1 回だけ解決して覚える。
 
@@ -2118,6 +2257,36 @@ class ItemRegistry:
         if entry is not None:
             return entry
         ns, name = item_id.split(":", 1)
+        if "[" in name:
+            # An ingredient that is a data-component stack (2026-10-05): `minecraft:potion[water]`, from
+            # {"fabric:type":"fabric:components","base":"minecraft:potion","components":{potion_contents:...}}.
+            # Only the Water Bottle is understood; any other qualifier stops the generation (see ingredient_id).
+            if item_id != "minecraft:potion[water]":
+                raise SystemExit("ERROR: register() does not know the qualified ingredient %s" % item_id)
+            ja = self.van_ja.get("item.minecraft.potion.effect.water")
+            en = self.van_en.get("item.minecraft.potion.effect.water")
+            if not ja or not en:
+                raise SystemExit("ERROR: the vanilla lang files have no item.minecraft.potion.effect.water")
+            b64 = compose_water_bottle_icon(vanilla_zip())
+            entry = [ja, en, self._tex_key(b64)]
+            self.items[item_id] = entry
+            return entry
+        if ns.startswith("#") and ns != "#minecraft":
+            # A tag of a staged mod (`#tsubomi:copper_quartz_repair`): shown as the vanilla tags are - one
+            # representative icon (the first member) and a name that says any of them will do.
+            members = mod_item_tag(ns[1:], name)
+            member_entries = [self.register(m) for m in members]
+            mem_ja = [e[0] for e in member_entries]
+            mem_en = [e[1] for e in member_entries]
+            if len(members) > 4:
+                ja = "・".join(mem_ja[:4]) + f" ほか {len(members) - 4} 種のどれか"
+                en = ", ".join(mem_en[:4]) + f" or {len(members) - 4} more"
+            else:
+                ja = "・".join(mem_ja) + " のどれか" if len(members) > 1 else mem_ja[0]
+                en = " or ".join(mem_en)
+            entry = [ja, en, member_entries[0][2]]
+            self.items[item_id] = entry
+            return entry
         if ns == "minecraft":
             ja = (self.van_ja.get(f"item.minecraft.{name}")
                   or self.van_ja.get(f"block.minecraft.{name}")
@@ -2234,6 +2403,24 @@ def first(v):
     return v[0] if isinstance(v, list) else v
 
 
+def ingredient_id(ing):
+    """One ingredient -> the id string the sheet keys it by.
+
+    A plain id or `#tag` is itself (a list means "any of these"; the first is shown, as before). A
+    data-component stack (Tsubomi's herbal tea asks for a Water Bottle, 2026-10-05) becomes
+    `minecraft:potion[water]`. Anything else with components stops the generation: guessing would draw a plain
+    potion for a recipe that needs water."""
+    ing = first(ing)
+    if isinstance(ing, dict):
+        comp = ing.get("components") or {}
+        pot = (comp.get("minecraft:potion_contents") or {}).get("potion")
+        if (ing.get("fabric:type") == "fabric:components" and ing.get("base") == "minecraft:potion"
+                and list(comp) == ["minecraft:potion_contents"] and pot == "minecraft:water"):
+            return "minecraft:potion[water]"
+        raise SystemExit("ERROR: parse_recipe met an ingredient it cannot show: %s" % json.dumps(ing))
+    return ing
+
+
 def parse_recipe(path):
     data = json.loads(path.read_text(encoding="utf-8"))
     rtype = data.get("type", "")
@@ -2245,14 +2432,38 @@ def parse_recipe(path):
             for col_i, ch in enumerate(row):
                 if ch == " ":
                     continue
-                cells[row_i * 3 + col_i] = first(key.get(ch))
+                cells[row_i * 3 + col_i] = ingredient_id(key.get(ch))
     elif rtype == "minecraft:crafting_shapeless":
         for i, ing in enumerate(data["ingredients"][:9]):
-            cells[i] = first(ing)
+            cells[i] = ingredient_id(ing)
     else:
         return None  # skip non-crafting-table recipe types (none expected currently)
     result = data.get("result", {})
     return {"cells": cells, "result_id": result.get("id"), "count": result.get("count", 1)}
+
+
+# Brands whose published recipes must ALL appear as a card (2026-10-05). The older brands skip the recipe types a
+# 3x3 grid cannot show (smelting, smithing, machine recipes) - a long-standing, unchanged choice. Tsubomi has
+# fifteen recipes and the owner asked for the revived Teleport Elevator to be listed, so for it a skipped recipe
+# is a fault: the generation stops and names the file.
+EVERY_RECIPE_SHOWN = {"tsubomi"}
+
+
+def parse_campfire_recipe(path, reg):
+    """A `minecraft:campfire_cooking` recipe -> (result id, how-to text, ingredient ids), else None.
+
+    The text is assembled from the recipe's own fields (ingredient, cookingtime in ticks); nothing about the
+    recipe is typed here. The ingredient is registered, so a tag is opened and named like any other."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("type") != "minecraft:campfire_cooking":
+        return None
+    ing = ingredient_id(data["ingredient"])
+    ing_ja, _en, _t = reg.register(ing)
+    ticks = data["cookingtime"]
+    secs = ticks / 20.0
+    secs_txt = ("%d" % secs) if secs == int(secs) else ("%g" % secs)
+    how = "焚き火で、%sを焼く(%s 秒。作業台では作れない)" % (ing_ja, secs_txt)
+    return data["result"]["id"], how, [ing]
 
 
 def cat_tokens(cat):
@@ -6001,6 +6212,7 @@ def _main_body():
     published = {} if RETIRED else published_recipe_names()
     withheld = []    # 作業木にしか無いレシピ(配られていないので載せない)
     seen_published = set()   # 実際に読んだ配布済みレシピ(取りこぼしを後で数える)
+    cards_per_mod = {}       # mod_dir -> このループで作ったカード数(EVERY_RECIPE_SHOWN の照合用)
     for mod_dir, modid, mod_cat in MODS:
         recipe_dir = mod_resources(mod_dir) / "data" / modid / "recipe"
         if mod_dir in MOD_RESOURCE_ROOT:
@@ -6023,7 +6235,31 @@ def _main_body():
             seen_published.add(f"{modid}/{path.name}")
             parsed = parse_recipe(path)
             if parsed is None:
+                cooked = parse_campfire_recipe(path, reg)
+                if cooked is not None:
+                    # 焚き火の調理: 作業台の 3x3 ではないので「入手方法」カード(how)で出す。
+                    cooked_id, cooked_how, cooked_ids = cooked
+                    _ns, cooked_name = cooked_id.split(":", 1)
+                    ja, en, _tex = reg.register(cooked_id)
+                    cat = category_of(mod_cat, cooked_name)
+                    _, unknown = reading_of(ja)
+                    if unknown:
+                        no_yomi.append((cat, ja, "".join(sorted(set(unknown)))))
+                    tokens = cat_tokens(cat) + item_tokens(cooked_id, ja) + [en, cooked_how]
+                    for cid in cooked_ids:
+                        cja, cen, _ = reg.register(cid)
+                        tokens += item_tokens(cid, cja)
+                        tokens.append(cen)
+                    cards.append({"cat": cat, "id": cooked_id, "cells": None, "count": None,
+                                  "how": cooked_how, "s": search_blob(tokens)})
+                    cards_per_mod[mod_dir] = cards_per_mod.get(mod_dir, 0) + 1
+                elif mod_dir in EVERY_RECIPE_SHOWN:
+                    raise SystemExit(
+                        f"ERROR: {modid}/{path.name} (type {json.loads(path.read_text(encoding='utf-8')).get('type')}) "
+                        f"produces no card, but {mod_dir} is in EVERY_RECIPE_SHOWN: its recipes must all appear on "
+                        f"the sheet. Teach parse_recipe/parse_campfire_recipe the type instead of skipping it.")
                 continue
+            cards_per_mod[mod_dir] = cards_per_mod.get(mod_dir, 0) + 1
             result_id = parsed["result_id"]
             _result_ns, result_name = result_id.split(":", 1)
             ja, en, _tex = reg.register(result_id)
@@ -6082,13 +6318,22 @@ def _main_body():
             % (len(withheld), ", ".join(withheld)))
     print("published cross-check: %d recipe(s) read, all of them present in the shipped jars"
           % len(seen_published))
+    for mod_dir in sorted(EVERY_RECIPE_SHOWN):
+        n_json = sum(1 for _d, modid, _c in MODS if _d == mod_dir
+                     for name in published.get(modid, ()))
+        n_cards = cards_per_mod.get(mod_dir, 0)
+        if n_json != n_cards or n_json == 0:
+            raise SystemExit(f"ERROR: {mod_dir}: {n_json} recipe json in the published jar but {n_cards} card(s) "
+                             f"made from them - EVERY_RECIPE_SHOWN says there must be one each (and at least one).")
+        print(f"{mod_dir}: all {n_json} recipe json in the published jar became a card")
 
     cat_order = ["銃", "電車", "建材", "ドア", "乗り物", "ボス", "天空", "サバイバル", "電力",
                  "二相楽園", "灰街圏",
                  # 別ブランドは Alpha のジャンルの後ろに、サイトの並び(OUKA→Cherry)で置く。
+                 # Tsubomi(2026-10-05)は ASTRAEA の後ろ(同じ理由: 既存のタブ番号 #0〜#2 を動かさない)。
                  # ASTRAEA(2026-09-30)は Cherry の後ろ: 既存のタブの番号(OUKA 0・Cherry 1)と札の並びを
                  # 一つも動かさない(ポータルのレシピ頁は #0/#1 の深いリンクと t<N> を使う)。
-                 *[BRAND_CATEGORY[b] for b in ("ouka", "cherry", "astraea")]]
+                 *[BRAND_CATEGORY[b] for b in ("ouka", "cherry", "astraea", "tsubomi")]]
     missing = {c["cat"] for c in cards} - set(cat_order)
     if missing:
         raise SystemExit(

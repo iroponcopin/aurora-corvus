@@ -20,8 +20,10 @@ Cherry V1.1.0 はレシピを 9 件足すと予告されている(2026-09-20、C
 直しかた: `python3 scripts/extract_recipes.py` を走らせ直して、
 `scripts/build.py` でページを作り直す。
 """
+import hashlib
 import json
 import sys
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,17 +58,42 @@ def main():
     retired = rp.exists() and bool((json.loads(rp.read_text(encoding="utf-8")).get("alpha") or {}).get("retired"))
     if pack.get("latest") and not retired:
         live["pack"] = pack["latest"]
+    bare_checked = {}      # block -> (recipe result ids in its jar, recipe json count)
+    recipe_less = []
+    bad = []
     for block, info in manifest.items():
-        if isinstance(info, dict) and "mod_id" in info and isinstance(info.get("jars"), dict):
+        if not (isinstance(info, dict) and "mod_id" in info):
+            continue
+        if isinstance(info.get("jars"), dict):
             if info.get("latest"):
                 live[block] = info["latest"]
+        elif str(info.get("file_name", "")).endswith(".jar"):
+            # 2026-10-05: a brand published as ONE bare jar (Tsubomi, Aureum). The old shape test (mod_id + a
+            # jars dict) could not see it, so Tsubomi was invisible to this gate. Whether such a jar is a
+            # recipe source is decided by OPENING it, not by a list typed here.
+            jar = ROOT / "downloads" / info["file_name"]
+            if not jar.exists():
+                bad.append(f"{block}: the manifest publishes {info['file_name']} but downloads/ does not have it")
+                continue
+            if hashlib.sha256(jar.read_bytes()).hexdigest() != info.get("sha256"):
+                bad.append(f"{block}: {info['file_name']} does not hash to the manifest's sha256")
+                continue
+            with zipfile.ZipFile(jar) as jf:
+                names = [n for n in jf.namelist()
+                         if n.startswith(f"data/{info['mod_id']}/recipe/") and n.endswith(".json")]
+                results = sorted({json.loads(jf.read(n).decode("utf-8"))["result"]["id"] for n in names})
+            if names:
+                if info.get("latest"):
+                    live[block] = info["latest"]
+                bare_checked[block] = (results, len(names))
+            else:
+                recipe_less.append(block)
 
     if not live:
         print("RED: the manifest declares no published version at all - this checker is reading "
               "the wrong shape, and an empty comparison would pass for the wrong reason.")
         return 1
 
-    bad = []
     for name in sorted(set(live) | set(sources)):
         was, now = sources.get(name), live.get(name)
         if was is None:
@@ -75,6 +102,25 @@ def main():
             bad.append(f"{name}: the sheet was generated from {was}, but nothing publishes it now")
         elif was != now:
             bad.append(f"{name}: the sheet was generated from {was}, the site now serves {now}")
+
+    # A matching version does not prove the sheet is COMPLETE. For a bare-jar brand every recipe json must have
+    # become a card of the brand's own tab (extract_recipes.py: EVERY_RECIPE_SHOWN); count that here, from the
+    # jar and from the sheet, so a sheet that recorded the right version but lost the revived Teleport Elevator
+    # (or any other recipe) goes RED.
+    for block, (results, n_json) in sorted(bare_checked.items()):
+        tab = [i for i, c in enumerate(recipes.get("cats", [])) if str(c[0]).lower() == block]
+        if len(tab) != 1:
+            bad.append(f"{block}: its jar carries {n_json} recipe json but the sheet has no single tab named "
+                       f"{block!r} (tabs: {[c[0] for c in recipes.get('cats', [])]})")
+            continue
+        cards = [c for c in recipes.get("cards", []) if c[0] == tab[0]]
+        if len(cards) != n_json:
+            bad.append(f"{block}: its jar carries {n_json} recipe json but its tab has {len(cards)} card(s)")
+        have = {c[1] for c in cards}
+        gone = [r for r in results if r not in have]
+        if gone:
+            bad.append(f"{block}: the jar's recipes make {', '.join(gone)}, which has no card in the "
+                       f"{block!r} tab")
 
     if bad:
         print("RED: the recipe sheet is out of step with what the site publishes:")
@@ -85,7 +131,9 @@ def main():
 
     print("GREEN: recipe sheet generated from " +
           ", ".join(f"{k} {v}" for k, v in sorted(sources.items())) +
-          " - the same versions the site publishes")
+          " - the same versions the site publishes" +
+          "".join(f"; {b}: all {n} jar recipe(s) have a card" for b, (_r, n) in sorted(bare_checked.items())) +
+          ("; bare jar(s) with no recipe, not a source: " + ", ".join(recipe_less) if recipe_less else ""))
     return 0
 
 
