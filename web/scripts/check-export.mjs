@@ -216,6 +216,50 @@ for (const f of pages) {
   }
 }
 
+// "Model", never "brand" (owner, 2026-10-04: 「ライブサイトからブランドという単語を全て削除 モデルに置き換えてください」):
+// no page shows the word in any of its 13 languages — not in its text, its titles and descriptions, its alt and
+// aria labels, nor in the client data that renders the rest. Kept, because they do not mean "brand": the
+// trademark line ("Minecraft is a trademark of Mojang Studios"), the Discord glosses' verb "mark", and
+// Spanish "you mark the route". Class names, data-* attributes, file paths and code identifiers are not text.
+const BRAND_WORD = /\bbrand(?:s|'s|ed)?\b|ブランド|品牌|브랜드|бренд|\bmarcas?\b|\bmarchi[oa]?\b|\bmarques?\b|\bmerek\b|\bmarken?\b|\bmarka\p{L}*|علامة|علامات|العلامة|ماركة/giu;
+const NOT_BRAND = [/Mojang/u, /\b(?:Marca|Marque) (?:un|una|um|une) /u, /يضع علامة على/u, /marcas la ruta/u];
+const ENTITIES = { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", nbsp: " " };
+const decode = (t) =>
+  t.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) =>
+    e[0] === "#" ? String.fromCodePoint(e[1] === "x" || e[1] === "X" ? parseInt(e.slice(2), 16) : Number(e.slice(1))) : ENTITIES[e] ?? m,
+  );
+function brandWords(where, text) {
+  for (const m of text.matchAll(BRAND_WORD)) {
+    // A file path is an identifier, not a word: changelog_feed/brands.json is the feed the launcher and the bot read.
+    if (text[m.index - 1] === "/") continue;
+    const around = text.slice(Math.max(0, m.index - 90), m.index + 90);
+    if (NOT_BRAND.some((r) => r.test(around))) continue;
+    problem(where, `shows "${m[0]}" (say "model"): …${around.replace(/\s+/g, " ").trim()}…`);
+  }
+}
+let brandChecked = 0;
+for (const f of pages) {
+  const html = readFileSync(f, "utf8").replace(/<script\b[\s\S]*?<\/script>/g, " ").replace(/<style\b[\s\S]*?<\/style>/g, " ");
+  const attrs = Array.from(html.matchAll(/\s(?:alt|title|aria-label|placeholder|content)="([^"]*)"/g), (m) => m[1]);
+  brandWords(rel(f), decode(`${html.replace(/<[^>]+>/g, " ")}\n${attrs.join("\n")}`));
+  brandChecked += 1;
+  // The client data: every string literal that reads as prose (identifiers, class names and paths are not text).
+  const payload = join(dirname(f), "index.txt");
+  if (existsSync(payload)) {
+    for (const m of readFileSync(payload, "utf8").matchAll(/"((?:[^"\\]|\\.)*)"/g)) {
+      let str;
+      try {
+        str = JSON.parse(`"${m[1]}"`);
+      } catch {
+        continue;
+      }
+      if (/^[\w$.\/:#?=&%@+-]*$/.test(str)) continue;
+      if (/^[\w-]+(?: [\w-]+)*$/.test(str) && /(?:^| )ac-/.test(str)) continue; // a className list
+      brandWords(`${rel(payload)} (client data)`, str);
+    }
+  }
+}
+
 // 404 and contract files
 if (!existsSync(join(OUT, "404.html"))) problem("404.html", "missing");
 for (const c of CONTRACT) if (existsSync(join(OUT, c))) problem(c, "a contract file is inside the export");
@@ -223,11 +267,13 @@ for (const c of CONTRACT) if (existsSync(join(OUT, c))) problem(c, "a contract f
 const unique = Array.from(new Set(problems));
 if (unique.length > 0) {
   console.error(`check-export: ${unique.length} problem(s)`);
-  for (const p of unique.slice(0, 80)) console.error(`  ${p}`);
-  if (unique.length > 80) console.error(`  … and ${unique.length - 80} more`);
+  const shown = Number(process.env.CHECK_EXPORT_SHOW ?? 80);
+  for (const p of unique.slice(0, shown)) console.error(`  ${p}`);
+  if (unique.length > shown) console.error(`  … and ${unique.length - shown} more (CHECK_EXPORT_SHOW=n shows more)`);
   process.exit(1);
 }
 console.log(
   `check-export: ${pages.length} pages, ${refs} references, ${seenChunks.size} chunk paths: all resolve; ` +
-    `${printed} printed SHA-256 match the files served; no contract file in the export`,
+    `${printed} printed SHA-256 match the files served; no contract file in the export; ` +
+    `no page says "brand" (${brandChecked} pages and their client data, 13 languages)`,
 );

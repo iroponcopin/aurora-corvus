@@ -119,7 +119,7 @@ export function Header({
   useDismiss(menu === "updates", closeMenu, [updatesBtn, updatesPop]);
   useDismiss(langOpen, closeLang, [langBtn, langPop]);
 
-  // The language links carry the query and hash of the page (so ?brand= survives a switch).
+  // The language links carry the query and hash of the page (so ?model= survives a switch).
   useEffect(() => {
     setSuffix(window.location.search + window.location.hash);
     setMenu(null);

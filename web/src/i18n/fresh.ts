@@ -218,7 +218,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "モデル",
       updates: "アップデート",
       updatesDesc: {
-        changelog: "全モデルのリリースを、ブランド別に検索。",
+        changelog: "すべてのリリースを、モデル別に検索。",
         upcoming: "いま作っているもの、次に来るもの。",
         teasers: "公開したティザーを、もう一度再生。",
         skin: "Sparxie を 3D で。スキンは無料でダウンロード。",
@@ -347,7 +347,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Models",
       updates: "Updates",
       updatesDesc: {
-        changelog: "Every release of every model, searchable by brand.",
+        changelog: "Every release, filterable by model.",
         upcoming: "What is being built, and what comes next.",
         teasers: "Replay every teaser we have published.",
         skin: "Sparxie in 3D, and her skin to download, free.",
@@ -476,7 +476,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Modelos",
       updates: "Novedades",
       updatesDesc: {
-        changelog: "Todas las versiones de cada modelo, con filtro por marca.",
+        changelog: "Todas las versiones, con filtro por modelo.",
         upcoming: "Lo que se está construyendo y lo que viene.",
         teasers: "Vuelve a ver cada adelanto publicado.",
         skin: "Sparxie en 3D, y su skin para descargar gratis.",
@@ -605,7 +605,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Modèles",
       updates: "Nouveautés",
       updatesDesc: {
-        changelog: "Toutes les versions de chaque modèle, filtrables par marque.",
+        changelog: "Toutes les versions, filtrables par modèle.",
         upcoming: "Ce qui se construit, et ce qui arrive.",
         teasers: "Revoyez chaque teaser publié.",
         skin: "Sparxie en 3D, et son skin à télécharger gratuitement.",
@@ -734,7 +734,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "型号",
       updates: "动态",
       updatesDesc: {
-        changelog: "每个型号的每次发布，可按品牌筛选。",
+        changelog: "每一次发布，都可按型号筛选。",
         upcoming: "正在打造的，以及接下来的。",
         teasers: "重播已发布的每一则预告。",
         skin: "3D 的 Sparxie，皮肤免费下载。",
@@ -863,7 +863,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "모델",
       updates: "업데이트",
       updatesDesc: {
-        changelog: "모든 모델의 릴리스를 브랜드별로 검색.",
+        changelog: "모든 릴리스를 모델별로 검색.",
         upcoming: "지금 만들고 있는 것, 그리고 다음에 올 것.",
         teasers: "공개했던 티저를 다시 재생.",
         skin: "3D로 만나는 Sparxie, 스킨은 무료로 다운로드.",
@@ -992,7 +992,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Modelos",
       updates: "Novidades",
       updatesDesc: {
-        changelog: "Todas as versões de cada modelo, com filtro por marca.",
+        changelog: "Todas as versões, com filtro por modelo.",
         upcoming: "O que está sendo construído e o que vem a seguir.",
         teasers: "Reveja cada teaser publicado.",
         skin: "Sparxie em 3D, e a skin dela para baixar grátis.",
@@ -1121,7 +1121,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Modelli",
       updates: "Novità",
       updatesDesc: {
-        changelog: "Tutte le versioni di ogni modello, filtrabili per marchio.",
+        changelog: "Tutte le versioni, filtrabili per modello.",
         upcoming: "Ciò che si sta costruendo e ciò che arriva.",
         teasers: "Rivedi ogni teaser pubblicato.",
         skin: "Sparxie in 3D, e la sua skin da scaricare gratis.",
@@ -1250,7 +1250,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "الطرازات",
       updates: "المستجدات",
       updatesDesc: {
-        changelog: "كل إصدارات كل طراز، مع التصفية حسب العلامة.",
+        changelog: "كل الإصدارات، مع التصفية حسب الطراز.",
         upcoming: "ما يُبنى الآن، وما سيأتي بعده.",
         teasers: "أعِد تشغيل كل إعلان تشويقي نشرناه.",
         skin: "Sparxie بالأبعاد الثلاثية، ومظهرها للتنزيل مجانًا.",
@@ -1379,7 +1379,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Модели",
       updates: "Обновления",
       updatesDesc: {
-        changelog: "Все выпуски каждой модели, с отбором по бренду.",
+        changelog: "Все выпуски, с отбором по модели.",
         upcoming: "Что сейчас строится и что будет дальше.",
         teasers: "Пересмотрите каждый опубликованный тизер.",
         skin: "Sparxie в 3D и её скин — бесплатно.",
@@ -1508,7 +1508,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Model",
       updates: "Pembaruan",
       updatesDesc: {
-        changelog: "Semua rilis setiap model, bisa disaring per merek.",
+        changelog: "Semua rilis, bisa disaring per model.",
         upcoming: "Yang sedang dibangun, dan yang akan datang.",
         teasers: "Putar ulang setiap teaser yang pernah terbit.",
         skin: "Sparxie dalam 3D, dan skin-nya untuk diunduh gratis.",
@@ -1637,7 +1637,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Modelle",
       updates: "Neuigkeiten",
       updatesDesc: {
-        changelog: "Jede Version jedes Modells, nach Marke filterbar.",
+        changelog: "Jede Version, nach Modell filterbar.",
         upcoming: "Was gerade entsteht und was als Nächstes kommt.",
         teasers: "Jeden veröffentlichten Teaser noch einmal abspielen.",
         skin: "Sparxie in 3D, und ihr Skin zum kostenlosen Download.",
@@ -1766,7 +1766,7 @@ export const FRESH: Record<Lang, Fresh> = {
       models: "Modeller",
       updates: "Güncellemeler",
       updatesDesc: {
-        changelog: "Her modelin tüm sürümleri, markaya göre süzülebilir.",
+        changelog: "Tüm sürümler, modele göre süzülebilir.",
         upcoming: "Şu an yapılanlar ve sırada olanlar.",
         teasers: "Yayımlanan her fragmanı yeniden oynatın.",
         skin: "Sparxie 3D’de; skin’i ücretsiz indirin.",
