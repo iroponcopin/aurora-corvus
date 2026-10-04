@@ -42,7 +42,7 @@ export const SECTIONS = [
   "download/",
   "recipes/",
   "changelog/",
-  "upcoming/",
+  "announcement/",
   "skin/",
   "discord/",
   "ouka/",

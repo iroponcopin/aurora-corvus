@@ -438,8 +438,22 @@ export interface LangData {
   pageTitles: Record<string, string>;
 }
 
+/** One film the studio has posted (data/announcements.json). */
+export interface Film {
+  id: string;
+  brand: string;
+  kind: "trailer" | "launch" | "teaser" | "film" | "indev";
+  date: string;
+  title: string;
+  seconds: number;
+  file: string;
+  poster: string;
+  bytes: number;
+}
+
 export interface Wiki {
   schema: string;
+  films: Film[];
   build: { commit: string; branch: string; dataDirty: boolean };
   site: {
     title: string;

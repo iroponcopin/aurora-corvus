@@ -83,11 +83,21 @@ export interface Fresh {
     list: { sep: string; last: string; pair: string };
     join: string;
   };
-  /** The header's two menus: Models (the six lines) and Updates (changelog, coming next, teasers, skin). */
+  /** The header's two menus: Models (the six lines) and Updates (changelog, announcement, teasers, skin). */
   nav: {
     models: string;
     updates: string;
-    updatesDesc: { changelog: string; upcoming: string; teasers: string; skin: string };
+    updatesDesc: { changelog: string; announcement: string; teasers: string; skin: string };
+  };
+  /** The Announcement page: every film the studio has published (data/announcements.json). */
+  announcement: {
+    title: string;
+    description: string;
+    lede: string;
+    /** `{0}` is a date. */
+    published: string;
+    notes: string;
+    kinds: { trailer: string; launch: string; teaser: string; film: string; indev: string };
   };
   /** The Teasers page: every advance notice the Coming-next board published, to replay and to read. */
   teasers: {
@@ -150,7 +160,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "リリースからリリースへ、時を進む。",
         lede: "スクロールすると、カメラが時間の軌道を進みます。届いたもの、そして次に来るもの。",
         cta: "更新履歴を見る",
-        ctaNext: "次回予告を見る",
+        ctaNext: "映像を見る",
       },
       nexus: {
         eyebrow: "Discord ネクサス",
@@ -219,10 +229,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "アップデート",
       updatesDesc: {
         changelog: "すべてのリリースを、モデル別に検索。",
-        upcoming: "いま作っているもの、次に来るもの。",
+        announcement: "公開したトレーラーとローンチ映像を、ここに集約。",
         teasers: "公開したティザーを、もう一度再生。",
         skin: "Sparxie を 3D で。スキンは無料でダウンロード。",
       },
+    },
+    announcement: {
+      title: "アナウンス",
+      description: "公開したトレーラーとローンチ映像を、すべてここに。",
+      lede: "実際に公開した映像だけを、新しい順に。もう一度再生でき、対応するリリースノートへも移れます。",
+      published: "{0} 公開",
+      notes: "リリースノート",
+      kinds: { trailer: "トレーラー", launch: "ローンチ映像", teaser: "ティザー", film: "紹介映像", indev: "開発中のお知らせ" },
     },
     teasers: {
       title: "ティザー",
@@ -279,7 +297,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Through time, release by release.",
         lede: "Scroll, and the camera travels the orbit of time: what has shipped, and what comes next.",
         cta: "See the changelog",
-        ctaNext: "See what's next",
+        ctaNext: "Watch the films",
       },
       nexus: {
         eyebrow: "Discord Nexus",
@@ -348,10 +366,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Updates",
       updatesDesc: {
         changelog: "Every release, filterable by model.",
-        upcoming: "What is being built, and what comes next.",
+        announcement: "Every trailer and launch film we have published.",
         teasers: "Replay every teaser we have published.",
         skin: "Sparxie in 3D, and her skin to download, free.",
       },
+    },
+    announcement: {
+      title: "Announcement",
+      description: "Every film we have published: trailers, launch films and teasers.",
+      lede: "Only films that have actually been published, newest first. Play one again, or open the release notes it belongs to.",
+      published: "Published {0}",
+      notes: "Release notes",
+      kinds: { trailer: "Trailer", launch: "Launch film", teaser: "Teaser", film: "Film", indev: "In development" },
     },
     teasers: {
       title: "Teasers",
@@ -408,7 +434,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "A través del tiempo, versión a versión.",
         lede: "Desplázate y la cámara recorre la órbita del tiempo: lo que ya se publicó y lo que viene.",
         cta: "Ver el historial",
-        ctaNext: "Ver lo próximo",
+        ctaNext: "Ver los vídeos",
       },
       nexus: {
         eyebrow: "Nexo de Discord",
@@ -477,10 +503,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Novedades",
       updatesDesc: {
         changelog: "Todas las versiones, con filtro por modelo.",
-        upcoming: "Lo que se está construyendo y lo que viene.",
+        announcement: "Cada tráiler y vídeo de lanzamiento que hemos publicado.",
         teasers: "Vuelve a ver cada adelanto publicado.",
         skin: "Sparxie en 3D, y su skin para descargar gratis.",
       },
+    },
+    announcement: {
+      title: "Anuncios",
+      description: "Todos los vídeos que hemos publicado: tráileres, vídeos de lanzamiento y adelantos.",
+      lede: "Solo vídeos publicados de verdad, los más recientes primero. Reprodúcelos de nuevo o abre las notas de la versión.",
+      published: "Publicado el {0}",
+      notes: "Notas de la versión",
+      kinds: { trailer: "Tráiler", launch: "Vídeo de lanzamiento", teaser: "Adelanto", film: "Vídeo", indev: "En desarrollo" },
     },
     teasers: {
       title: "Adelantos",
@@ -537,7 +571,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "À travers le temps, version après version.",
         lede: "Faites défiler : la caméra parcourt l’orbite du temps, ce qui est sorti et ce qui arrive.",
         cta: "Voir les mises à jour",
-        ctaNext: "Voir la suite",
+        ctaNext: "Voir les vidéos",
       },
       nexus: {
         eyebrow: "Nexus Discord",
@@ -606,10 +640,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Nouveautés",
       updatesDesc: {
         changelog: "Toutes les versions, filtrables par modèle.",
-        upcoming: "Ce qui se construit, et ce qui arrive.",
+        announcement: "Chaque bande-annonce et vidéo de lancement publiées.",
         teasers: "Revoyez chaque teaser publié.",
         skin: "Sparxie en 3D, et son skin à télécharger gratuitement.",
       },
+    },
+    announcement: {
+      title: "Annonces",
+      description: "Toutes les vidéos que nous avons publiées : bandes-annonces, vidéos de lancement et teasers.",
+      lede: "Seulement des vidéos réellement publiées, les plus récentes d'abord. Relancez-les, ou ouvrez les notes de version.",
+      published: "Publié le {0}",
+      notes: "Notes de version",
+      kinds: { trailer: "Bande-annonce", launch: "Vidéo de lancement", teaser: "Teaser", film: "Vidéo", indev: "En développement" },
     },
     teasers: {
       title: "Teasers",
@@ -666,7 +708,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "穿越时间，一个版本接一个版本。",
         lede: "滚动页面，镜头便沿着时间的轨道前行：已经发布的，以及即将到来的。",
         cta: "查看更新日志",
-        ctaNext: "查看即将推出",
+        ctaNext: "观看影片",
       },
       nexus: {
         eyebrow: "Discord 枢纽",
@@ -735,10 +777,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "动态",
       updatesDesc: {
         changelog: "每一次发布，都可按型号筛选。",
-        upcoming: "正在打造的，以及接下来的。",
+        announcement: "我们发布过的所有预告片和发布影片。",
         teasers: "重播已发布的每一则预告。",
         skin: "3D 的 Sparxie，皮肤免费下载。",
       },
+    },
+    announcement: {
+      title: "公告",
+      description: "我们公开发布过的所有影片:预告片、发布影片和先导短片。",
+      lede: "只收录已经公开发布的影片,最新的在前。可以再次播放,也可以打开对应的发布说明。",
+      published: "{0} 发布",
+      notes: "发布说明",
+      kinds: { trailer: "预告片", launch: "发布影片", teaser: "先导短片", film: "介绍影片", indev: "开发中" },
     },
     teasers: {
       title: "预告",
@@ -795,7 +845,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "릴리스에서 릴리스로, 시간을 따라.",
         lede: "스크롤하면 카메라가 시간의 궤도를 따라 나아갑니다. 이미 나온 것, 그리고 다음에 올 것.",
         cta: "업데이트 기록 보기",
-        ctaNext: "다음 예고 보기",
+        ctaNext: "영상 보기",
       },
       nexus: {
         eyebrow: "Discord 넥서스",
@@ -864,10 +914,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "업데이트",
       updatesDesc: {
         changelog: "모든 릴리스를 모델별로 검색.",
-        upcoming: "지금 만들고 있는 것, 그리고 다음에 올 것.",
+        announcement: "공개한 트레일러와 출시 영상을 한곳에.",
         teasers: "공개했던 티저를 다시 재생.",
         skin: "3D로 만나는 Sparxie, 스킨은 무료로 다운로드.",
       },
+    },
+    announcement: {
+      title: "공지",
+      description: "공개한 모든 영상: 트레일러, 출시 영상, 티저.",
+      lede: "실제로 공개한 영상만 최신순으로 모았습니다. 다시 재생하거나 해당 릴리스 노트를 열 수 있습니다.",
+      published: "{0} 공개",
+      notes: "릴리스 노트",
+      kinds: { trailer: "트레일러", launch: "출시 영상", teaser: "티저", film: "소개 영상", indev: "개발 중" },
     },
     teasers: {
       title: "티저",
@@ -924,7 +982,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Pelo tempo, versão após versão.",
         lede: "Role, e a câmera percorre a órbita do tempo: o que já saiu e o que vem por aí.",
         cta: "Ver o histórico",
-        ctaNext: "Ver o que vem aí",
+        ctaNext: "Ver os vídeos",
       },
       nexus: {
         eyebrow: "Nexo do Discord",
@@ -993,10 +1051,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Novidades",
       updatesDesc: {
         changelog: "Todas as versões, com filtro por modelo.",
-        upcoming: "O que está sendo construído e o que vem a seguir.",
+        announcement: "Cada trailer e vídeo de lançamento que publicamos.",
         teasers: "Reveja cada teaser publicado.",
         skin: "Sparxie em 3D, e a skin dela para baixar grátis.",
       },
+    },
+    announcement: {
+      title: "Anúncios",
+      description: "Todos os vídeos que publicamos: trailers, vídeos de lançamento e teasers.",
+      lede: "Apenas vídeos realmente publicados, os mais recentes primeiro. Assista de novo ou abra as notas da versão.",
+      published: "Publicado em {0}",
+      notes: "Notas da versão",
+      kinds: { trailer: "Trailer", launch: "Vídeo de lançamento", teaser: "Teaser", film: "Vídeo", indev: "Em desenvolvimento" },
     },
     teasers: {
       title: "Teasers",
@@ -1053,7 +1119,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Attraverso il tempo, versione dopo versione.",
         lede: "Scorri, e la telecamera percorre l’orbita del tempo: ciò che è uscito e ciò che arriverà.",
         cta: "Vedi il changelog",
-        ctaNext: "Vedi le novità in arrivo",
+        ctaNext: "Guarda i video",
       },
       nexus: {
         eyebrow: "Nexus Discord",
@@ -1122,10 +1188,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Novità",
       updatesDesc: {
         changelog: "Tutte le versioni, filtrabili per modello.",
-        upcoming: "Ciò che si sta costruendo e ciò che arriva.",
+        announcement: "Ogni trailer e video di lancio che abbiamo pubblicato.",
         teasers: "Rivedi ogni teaser pubblicato.",
         skin: "Sparxie in 3D, e la sua skin da scaricare gratis.",
       },
+    },
+    announcement: {
+      title: "Annunci",
+      description: "Tutti i video che abbiamo pubblicato: trailer, video di lancio e teaser.",
+      lede: "Solo video davvero pubblicati, dal più recente. Riguardali, o apri le note di rilascio.",
+      published: "Pubblicato il {0}",
+      notes: "Note di rilascio",
+      kinds: { trailer: "Trailer", launch: "Video di lancio", teaser: "Teaser", film: "Video", indev: "In sviluppo" },
     },
     teasers: {
       title: "Teaser",
@@ -1182,7 +1256,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "عبر الزمن، إصدارًا بعد إصدار.",
         lede: "مرّر، فتسير الكاميرا على مدار الزمن: ما صدر بالفعل، وما سيأتي.",
         cta: "اطّلع على سجل التحديثات",
-        ctaNext: "اطّلع على القادم",
+        ctaNext: "شاهد المقاطع",
       },
       nexus: {
         eyebrow: "محور Discord",
@@ -1251,10 +1325,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "المستجدات",
       updatesDesc: {
         changelog: "كل الإصدارات، مع التصفية حسب الطراز.",
-        upcoming: "ما يُبنى الآن، وما سيأتي بعده.",
+        announcement: "كل عرض دعائي ومقطع إطلاق نشرناه.",
         teasers: "أعِد تشغيل كل إعلان تشويقي نشرناه.",
         skin: "Sparxie بالأبعاد الثلاثية، ومظهرها للتنزيل مجانًا.",
       },
+    },
+    announcement: {
+      title: "الإعلانات",
+      description: "كل مقاطع الفيديو التي نشرناها: العروض الدعائية ومقاطع الإطلاق.",
+      lede: "مقاطع نُشرت فعلًا فقط، الأحدث أولًا. شغّل أيًّا منها مجددًا أو افتح ملاحظات الإصدار الخاصة به.",
+      published: "نُشر في {0}",
+      notes: "ملاحظات الإصدار",
+      kinds: { trailer: "عرض دعائي", launch: "مقطع إطلاق", teaser: "لمحة مسبقة", film: "مقطع تعريفي", indev: "قيد التطوير" },
     },
     teasers: {
       title: "الإعلانات التشويقية",
@@ -1311,7 +1393,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Сквозь время, от выпуска к выпуску.",
         lede: "Прокручивайте — камера движется по орбите времени: что уже вышло и что впереди.",
         cta: "История обновлений",
-        ctaNext: "Что будет дальше",
+        ctaNext: "Смотреть видео",
       },
       nexus: {
         eyebrow: "Discord-нексус",
@@ -1380,10 +1462,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Обновления",
       updatesDesc: {
         changelog: "Все выпуски, с отбором по модели.",
-        upcoming: "Что сейчас строится и что будет дальше.",
+        announcement: "Каждый трейлер и релизное видео, которые мы выпустили.",
         teasers: "Пересмотрите каждый опубликованный тизер.",
         skin: "Sparxie в 3D и её скин — бесплатно.",
       },
+    },
+    announcement: {
+      title: "Анонсы",
+      description: "Все видео, которые мы опубликовали: трейлеры, видео к релизам и тизеры.",
+      lede: "Только действительно опубликованные видео, сначала новые. Смотрите снова или откройте заметки к релизу.",
+      published: "Опубликовано {0}",
+      notes: "Заметки к релизу",
+      kinds: { trailer: "Трейлер", launch: "Видео к релизу", teaser: "Тизер", film: "Видеоролик", indev: "В разработке" },
     },
     teasers: {
       title: "Тизеры",
@@ -1440,7 +1530,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Menembus waktu, rilis demi rilis.",
         lede: "Gulir, dan kamera menyusuri orbit waktu: apa yang sudah dirilis, dan apa yang akan datang.",
         cta: "Lihat riwayat pembaruan",
-        ctaNext: "Lihat yang berikutnya",
+        ctaNext: "Tonton videonya",
       },
       nexus: {
         eyebrow: "Nexus Discord",
@@ -1509,10 +1599,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Pembaruan",
       updatesDesc: {
         changelog: "Semua rilis, bisa disaring per model.",
-        upcoming: "Yang sedang dibangun, dan yang akan datang.",
+        announcement: "Setiap trailer dan video peluncuran yang kami terbitkan.",
         teasers: "Putar ulang setiap teaser yang pernah terbit.",
         skin: "Sparxie dalam 3D, dan skin-nya untuk diunduh gratis.",
       },
+    },
+    announcement: {
+      title: "Pengumuman",
+      description: "Semua video yang telah kami terbitkan: trailer, video peluncuran, dan teaser.",
+      lede: "Hanya video yang benar-benar diterbitkan, terbaru lebih dulu. Putar lagi, atau buka catatan rilisnya.",
+      published: "Terbit {0}",
+      notes: "Catatan rilis",
+      kinds: { trailer: "Trailer", launch: "Video peluncuran", teaser: "Teaser", film: "Video", indev: "Dalam pengembangan" },
     },
     teasers: {
       title: "Teaser",
@@ -1569,7 +1667,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Durch die Zeit, Version für Version.",
         lede: "Scrollen Sie, und die Kamera folgt der Umlaufbahn der Zeit: was erschienen ist und was als Nächstes kommt.",
         cta: "Zum Änderungsprotokoll",
-        ctaNext: "Was als Nächstes kommt",
+        ctaNext: "Videos ansehen",
       },
       nexus: {
         eyebrow: "Discord-Nexus",
@@ -1638,10 +1736,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Neuigkeiten",
       updatesDesc: {
         changelog: "Jede Version, nach Modell filterbar.",
-        upcoming: "Was gerade entsteht und was als Nächstes kommt.",
+        announcement: "Jeder Trailer und jedes Launch-Video, das wir veröffentlicht haben.",
         teasers: "Jeden veröffentlichten Teaser noch einmal abspielen.",
         skin: "Sparxie in 3D, und ihr Skin zum kostenlosen Download.",
       },
+    },
+    announcement: {
+      title: "Ankündigungen",
+      description: "Alle Videos, die wir veröffentlicht haben: Trailer, Launch-Videos und Teaser.",
+      lede: "Nur wirklich veröffentlichte Videos, die neuesten zuerst. Spiel sie erneut ab oder öffne die Versionshinweise.",
+      published: "Veröffentlicht am {0}",
+      notes: "Versionshinweise",
+      kinds: { trailer: "Trailer", launch: "Launch-Video", teaser: "Teaser", film: "Video", indev: "In Entwicklung" },
     },
     teasers: {
       title: "Teaser",
@@ -1698,7 +1804,7 @@ export const FRESH: Record<Lang, Fresh> = {
         title: "Zamanın içinden, sürüm sürüm.",
         lede: "Kaydırın; kamera zamanın yörüngesinde ilerlesin: yayımlananlar ve sırada olanlar.",
         cta: "Güncelleme geçmişine bak",
-        ctaNext: "Sıradakilere bak",
+        ctaNext: "Videoları izle",
       },
       nexus: {
         eyebrow: "Discord Nexus",
@@ -1767,10 +1873,18 @@ export const FRESH: Record<Lang, Fresh> = {
       updates: "Güncellemeler",
       updatesDesc: {
         changelog: "Tüm sürümler, modele göre süzülebilir.",
-        upcoming: "Şu an yapılanlar ve sırada olanlar.",
+        announcement: "Yayımladığımız her fragman ve çıkış videosu.",
         teasers: "Yayımlanan her fragmanı yeniden oynatın.",
         skin: "Sparxie 3D’de; skin’i ücretsiz indirin.",
       },
+    },
+    announcement: {
+      title: "Duyurular",
+      description: "Yayımladığımız tüm videolar: fragmanlar, çıkış videoları ve teaser'lar.",
+      lede: "Yalnızca gerçekten yayımlanmış videolar, en yeniler önce. Yeniden oynatın ya da sürüm notlarını açın.",
+      published: "{0} tarihinde yayımlandı",
+      notes: "Sürüm notları",
+      kinds: { trailer: "Fragman", launch: "Çıkış videosu", teaser: "Teaser", film: "Video", indev: "Geliştirme aşamasında" },
     },
     teasers: {
       title: "Fragmanlar",

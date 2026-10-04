@@ -33,6 +33,7 @@ const copies = [
   [join(WIKI, "assets", "audio", "ouka", "silver-and-petals.m4a"), "wiki/audio/silver-and-petals.m4a"],
   [join(WIKI, "assets", "audio", "ouka", "silver-and-petals.mp3"), "wiki/audio/silver-and-petals.mp3"],
   [join(WIKI, "assets", "img", "recipes"), "wiki/recipes"],
+  [join(WIKI, "assets", "video", "announcement"), "wiki/announcement"],
   [join(WIKI, "assets", "img", "sparxie-front.png"), "wiki/skin/sparxie-front.png"],
   [join(WIKI, "assets", "img", "sparxie-model.png"), "wiki/skin/sparxie-model.png"],
 ];

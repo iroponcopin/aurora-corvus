@@ -48,7 +48,7 @@ export interface UpdateLink {
 
 const LANG_KEY = "aurora-corvus-lang";
 const MODEL_SECTIONS = new Set(["ouka", "cherry", "aureum", "cherry-controls"]);
-const UPDATE_SECTIONS = new Set(["changelog", "upcoming", "teasers", "skin"]);
+const UPDATE_SECTIONS = new Set(["changelog", "announcement", "teasers", "skin"]);
 type Menu = "models" | "updates" | null;
 
 function rememberLang(code: string): void {

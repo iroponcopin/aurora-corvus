@@ -68,7 +68,7 @@ export default async function LangLayout({ children, params }: { children: React
   });
   const updates: UpdateLink[] = [
     { key: "changelog", label: c.changelog, desc: f.nav.updatesDesc.changelog, href: pathOf(lang, "changelog/"), icon: "library" },
-    { key: "upcoming", label: c.upcoming, desc: f.nav.updatesDesc.upcoming, href: pathOf(lang, "upcoming/"), icon: "compass" },
+    { key: "announcement", label: f.announcement.title, desc: f.nav.updatesDesc.announcement, href: pathOf(lang, "announcement/"), icon: "play" },
     { key: "teasers", label: f.teasers.title, desc: f.nav.updatesDesc.teasers, href: pathOf(lang, "teasers/"), icon: "play" },
     { key: "skin", label: c.skin, desc: f.nav.updatesDesc.skin, href: pathOf(lang, "skin/"), icon: "user" },
   ];

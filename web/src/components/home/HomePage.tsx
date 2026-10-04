@@ -94,7 +94,6 @@ export function HomePage({ lang }: { lang: Lang }) {
       .slice()
       .reverse()
       .map((x, i) => ({ u: 0.05 + i * 0.045, color: BRAND_COLOR[x.brand.id] ?? "#2997ff" })),
-    ...d.upcoming.nodes.map((n, i) => ({ u: 0.05 + latest.length * 0.045 + 0.05 + i * 0.05, color: BRAND_COLOR[n.id] ?? "#ffb340" })),
   ];
   const lastBeacon = beacons[beacons.length - 1]?.u ?? 0.3;
 
@@ -104,7 +103,7 @@ export function HomePage({ lang }: { lang: Lang }) {
 
   const explore = [
     { href: "launcher/", title: d.launcher.title, body: d.launcher.description },
-    { href: "upcoming/", title: d.upcoming.title, body: d.upcoming.description },
+    { href: "announcement/", title: f.announcement.title, body: f.announcement.description },
     { href: "changelog/", title: c.title, body: c.description },
     { href: "recipes/", title: d.recipes.navTitle, body: d.recipes.description },
     { href: "skin/", title: d.skin.title, body: h.skinTile },
@@ -319,29 +318,12 @@ export function HomePage({ lang }: { lang: Lang }) {
               </Link>
             </li>
           ))}
-          {d.upcoming.nodes.map((n) => (
-            <li key={n.id} className="ac-time-card ac-time-card--next ac-card ac-reveal" data-side="next" data-brand={n.id}>
-              <span className="ac-time-dot" aria-hidden="true" style={{ background: BRAND_COLOR[n.id] ?? "#ffb340" }} />
-              <div className="ac-time-top">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset(n.icon)} alt="" width={44} height={44} />
-                <div>
-                  <p className="ac-eyebrow">{f.chrono.next}</p>
-                  <h3>{n.headline}</h3>
-                </div>
-              </div>
-              <p className="ac-small ac-time-summary">{n.body}</p>
-              <Link className="ac-link" href={pathOf(lang, n.href)}>
-                {n.linkName} <span className="ac-flip">{d.upcoming.more}</span>
-              </Link>
-            </li>
-          ))}
         </ol>
         <div className="ac-wrap ac-time-foot ac-reveal">
           <Link className="ac-btn" href={pathOf(lang, "changelog/")}>
             {f.realms.chronology.cta}
           </Link>
-          <Link className="ac-btn ac-btn--ghost" href={pathOf(lang, "upcoming/")}>
+          <Link className="ac-btn ac-btn--ghost" href={pathOf(lang, "announcement/")}>
             {f.realms.chronology.ctaNext}
           </Link>
         </div>

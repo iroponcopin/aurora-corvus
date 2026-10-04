@@ -4415,3 +4415,49 @@ html:lang(ar) .ac-st-eyebrow {
     transform: scaleX(1);
   }
 }
+
+/* Announcement: the published films. */
+.ac-film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ac-film {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.ac-film-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  object-fit: contain;
+}
+
+.ac-film-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px 18px;
+}
+
+.ac-film-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+.ac-film-title {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.3;
+}

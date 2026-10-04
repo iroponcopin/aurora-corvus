@@ -34,7 +34,7 @@ export function Footer({ lang, d }: { lang: Lang; d: LangData }) {
       heading: c.footerStatus,
       links: [
         { label: c.changelog, href: pathOf(lang, "changelog/") },
-        { label: c.upcoming, href: pathOf(lang, "upcoming/") },
+        { label: f.announcement.title, href: pathOf(lang, "announcement/") },
         { label: f.teasers.title, href: pathOf(lang, "teasers/") },
         { label: c.discord, href: pathOf(lang, "discord/") },
       ],

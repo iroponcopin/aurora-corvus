@@ -58,7 +58,7 @@ BASE_PATH = "/aurora-corvus"
 LANGS = SC.available_langs()
 # The models with a page of their own (src/app/[lang]/<id>/).
 MODEL_PAGES = ("ouka", "cherry", "aureum", "alpha", "astraea", "tsubomi", "noctua")
-SECTIONS = ["", "launcher/", "download/", "recipes/", "changelog/", "upcoming/", "teasers/", "skin/", "discord/",
+SECTIONS = ["", "launcher/", "download/", "recipes/", "changelog/", "announcement/", "teasers/", "skin/", "discord/",
             "ouka/", "cherry/", "cherry-controls/", "aureum/", "alpha/", "astraea/", "tsubomi/", "noctua/"]
 
 
@@ -916,6 +916,8 @@ def main() -> None:
         # The owner made the skin public (data/skin_public.json): the model wears it and the file downloads as is.
         "skinPublic": skin_public(),
         "recipes": ctx["recipes"],
+        # The films the studio has posted (data/announcements.json), newest first, for the Announcement page.
+        "films": read_json("data/announcements.json")["films"],
         "alpha": {"retired": bool(retirement.get("retired")), "version": retirement.get("retired_version", ""),
                   "date": retirement.get("date", alpha_facts.get("date", "")), "modules": alpha_facts["modules"]},
         "langs": langs,
