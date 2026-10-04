@@ -196,7 +196,7 @@ def og_card(tile, width=1200, height=630):
         # Brand line, not a disclaimer. The "unofficial" wording lives in the
         # site footer where a disclaimer belongs; a share card that leads with
         # what the site ISN'T reads as apologetic in every feed it appears in.
-        sub = "Sorakazekarasu Server — Mod Reference"
+        sub = "Beyond the Limits of Dimension"
         bb = d.textbbox((0, 0), sub, font=small)
         d.text(((width - (bb[2] - bb[0])) // 2 - bb[0], round(height * 0.74)),
                sub, font=small, fill=(170, 180, 198, 255))
