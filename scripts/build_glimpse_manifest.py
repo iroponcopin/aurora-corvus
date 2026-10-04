@@ -95,6 +95,7 @@ declares it). From the first build that writes it, the never-drop rule applies t
 import hashlib
 import io
 import json
+import re
 import sys
 import zipfile
 from pathlib import Path
@@ -119,6 +120,8 @@ ASTRAEA_ZIP_SUFFIX = f"+mc{MC_VERSION}.zip"
 TSUBOMI_JAR_PREFIX = "tsubomi-"
 TSUBOMI_JAR_SUFFIX = ".jar"
 TSUBOMI_MOD_ID = "tsubomi"
+NOCTUA_ZIP_PREFIX = "Noctua_v"
+NOCTUA_ZIP_SUFFIX = ".zip"
 
 
 def _mod_version():
@@ -598,6 +601,51 @@ def _tsubomi_block():
     }
 
 
+def _noctua_block():
+    """The `noctua` block, or None when no Noctua package has been published.
+
+    Noctua (2026-10-04) is a SERVER-side Palworld mod (UE4SS Lua), so there is no jar and no
+    mod id: the block is the package's file name, size and SHA-256, and the Store lists the
+    brand as available because it exists. The version is the file name's
+    (Noctua_v<version>+pal<game>.zip) and must be the version CHANGELOG.md inside the package
+    leads with, so a renamed older package cannot masquerade as a newer one. Exactly one
+    package is published at a time; a separate function, so adding Noctua cannot change a
+    byte of any other block. The never-drop rule applies in build().
+    """
+    zips = sorted(p for p in DOWNLOAD_DIR.glob(f"{NOCTUA_ZIP_PREFIX}*{NOCTUA_ZIP_SUFFIX}") if p.is_file())
+    if not zips:
+        return None
+    if len(zips) > 1:
+        raise SystemExit(
+            f"ERROR: more than one Noctua package in {DOWNLOAD_DIR} ({', '.join(z.name for z in zips)}). "
+            f"The manifest describes the current build only - publish exactly one.")
+    zpath = zips[0]
+    stem = zpath.name[len(NOCTUA_ZIP_PREFIX):-len(NOCTUA_ZIP_SUFFIX)]
+    version = stem.split("+", 1)[0]
+    if not re.fullmatch(r"\d+\.\d+\.\d+", version) or "+pal" not in stem:
+        raise SystemExit(f"ERROR: {zpath.name} is not named Noctua_v<major.minor.patch>+pal<game version>.zip.")
+    try:
+        with zipfile.ZipFile(zpath) as zf:
+            names = set(zf.namelist())
+            changelog = zf.read("CHANGELOG.md").decode("utf-8")
+    except (OSError, KeyError, ValueError, zipfile.BadZipFile) as exc:
+        raise SystemExit(f"ERROR: could not read CHANGELOG.md out of {zpath} ({exc}).")
+    if not any(n.endswith("NoctuaCore/scripts/main.lua") for n in names):
+        raise SystemExit(f"ERROR: {zpath.name} holds no NoctuaCore/scripts/main.lua - it is not a Noctua package.")
+    heading = re.search(r"^## (\d+\.\d+\.\d+)", changelog, re.MULTILINE)
+    if not heading or heading.group(1) != version:
+        raise SystemExit(
+            f"ERROR: {zpath.name} is named for version {version}, but its CHANGELOG.md leads with "
+            f"{heading.group(1) if heading else 'no version'}.")
+    return {
+        "latest": version,
+        "download_url": f"{SITE_BASE_URL}/downloads/{zpath.name}",
+        "file_name": zpath.name,
+        "file_size": zpath.stat().st_size,
+        "sha256": _sha256(zpath),
+    }
+
+
 def _previously_published_manifest():
     """The manifest currently committed at the repo root, or {} if there is none."""
     path = ROOT / "glimpse_manifest.json"
@@ -750,6 +798,19 @@ def build():
     else:
         print("glimpse_manifest.py: no Tsubomi jar found yet - writing manifest with no 'tsubomi' "
               "block (expected until the first Tsubomi build ships)")
+
+    noctua = _noctua_block()
+    if noctua is not None:
+        manifest["noctua"] = noctua
+        print(f"glimpse_manifest.py: Noctua {noctua['latest']} ({noctua['file_name']}) selected, "
+              f"including 'noctua' block")
+    elif "noctua" in _previously_published_manifest():
+        raise SystemExit(
+            f"ERROR: no Noctua package found in {DOWNLOAD_DIR}, but the published glimpse_manifest.json "
+            f"already carries a 'noctua' block. Dropping it would silently withdraw the release. "
+            f"Publish the package, or fix the naming - do not ship this.")
+    else:
+        print("glimpse_manifest.py: no Noctua package found yet - writing manifest with no 'noctua' block")
 
     out_path = ROOT / "glimpse_manifest.json"
     out_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
