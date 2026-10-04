@@ -231,14 +231,15 @@ def recipes_shared(legacy: dict) -> dict:
             if fusion:
                 rec["fusion"] = [f for _, f in sorted(fusion, key=lambda t: t[0])]
         recipes.append(rec)
-    counts = {"workbench": 0, "crucible": 0, "fabricator": 0, "tsubomi": 0}
+    counts = {"workbench": 0, "crucible": 0, "fabricator": 0}
     for rec in recipes:
         counts[rec["station"]] += 1
     stations = [
         {"id": "workbench", "item": "minecraft:crafting_table", "count": counts["workbench"]},
         {"id": "crucible", "item": "cherry:resonance_crucible", "count": counts["crucible"]},
         {"id": "fabricator", "item": "cherry:advanced_cherry_fabricator", "count": counts["fabricator"]},
-        {"id": "tsubomi", "item": None, "count": counts["tsubomi"]},
+        # 2026-10-05: the "tsubomi" placeholder chip (a brewing station that never had a recipe, with the
+        # message "Tsubomi has not been released") is gone: Tsubomi is released and has its own tab.
     ]
     missing_kind = sorted(k for k in items if k not in kinds)
     return {

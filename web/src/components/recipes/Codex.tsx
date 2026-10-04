@@ -121,7 +121,6 @@ export function Codex({
 
   const stationName = (id: string): string => {
     const st = data.stations.find((s) => s.id === id);
-    if (id === "tsubomi") return labels.tsubomiName;
     return st?.item ? (data.items[st.item]?.name ?? id) : id;
   };
 
@@ -253,7 +252,6 @@ export function Codex({
           })}
         </div>
         {station === "fabricator" ? <p className="ac-small ac-codex-note">{labels.stationNoneFabricator}</p> : null}
-        {station === "tsubomi" ? <p className="ac-small ac-codex-note">{labels.stationNoneTsubomi}</p> : null}
       </div>
 
       <div className="ac-codex-body">
@@ -371,7 +369,11 @@ export function Codex({
                 </div>
               ) : null}
 
-              <p className="ac-small ac-made-in">{fill(labels.madeIn, stationName(recipe.station))}</p>
+              {/* A how-to card is for something a workbench cannot make (a campfire, a machine). Only a machine that
+          was named in its text is a station; the default "workbench" would be a false statement. */}
+              {recipe.how && recipe.station === "workbench" ? null : (
+                <p className="ac-small ac-made-in">{fill(labels.madeIn, stationName(recipe.station))}</p>
+              )}
               {recipe.grid ? (
                 <div className="ac-craft" dir="ltr">
                   <div className="ac-craft-grid">
