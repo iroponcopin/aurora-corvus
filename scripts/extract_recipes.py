@@ -2157,23 +2157,64 @@ def published_textures():
     return [(f"t{n}", base64.b64encode(_git_bytes("show", f"{PUBLISHED_REF}:{path}")).decode()) for n, path in numbered]
 
 
-def guard_published_textures():
-    """Every item the published sheet had keeps its texture key, and the PNG at that path keeps its bytes.
+# 公開済みの絵のうち、意図して変える 1 件ずつの表(2026-10-05、Corvus の判断 A)。見張りは、ここに書いた品を、ここに書いた「前の鍵 → 新しい鍵」の
+# 組にかぎって通す(別の鍵・別の品は今までどおり止まる)。前の鍵の絵(PNG)は、そのまま残さなければならない(下の見張りが、バイトまで見る)。
+INTENDED_ICON_CHANGES = {
+    "ouka:operating_shelter_block": ("t157", "t269", "V1.4 new shelter look, owner-intended 2026-10-05"),
+}
 
-    Compares the files this run wrote with PUBLISHED_REF, never with themselves. Returns the problems (empty = green)."""
-    problems = []
-    old = json.loads(_git_bytes("show", f"{PUBLISHED_REF}:data/recipes.json"))
-    new = json.loads((OUT_DATA_DIR / "recipes.json").read_text(encoding="utf-8"))
-    for item, entry in old["items"].items():
-        if item not in new["items"]:
+
+def icon_problems(old_items, new_items, allowed=None):
+    """Compare the items of the published sheet with the new one. Returns (problems, keys whose old PNG must still be byte-identical)."""
+    allowed = INTENDED_ICON_CHANGES if allowed is None else allowed
+    problems, keep = [], []
+    for item, entry in old_items.items():
+        if item not in new_items:
             problems.append(f"{item} was on the published sheet and is gone")
             continue
-        key_old, key_new = entry[2], new["items"][item][2]
+        key_old, key_new = entry[2], new_items[item][2]
         if key_old != key_new:
-            problems.append(f"{item}: texture {key_old} became {key_new}")
-            continue
-        if key_old is None:
-            continue
+            grant = allowed.get(item)
+            if not (grant and grant[0] == key_old and grant[1] == key_new):
+                problems.append(f"{item}: texture {key_old} became {key_new}")
+                continue
+        if key_old is not None:
+            keep.append((item, key_old))
+    return problems, keep
+
+
+def icon_guard_self_test():
+    """Mutation check: the one intended change passes, and every other change still reddens the guard."""
+    old = {"ouka:a": ["a", "A", "t157"], "ouka:b": ["b", "B", "t5"], "ouka:c": ["c", "C", None]}
+    grant = {"ouka:a": ("t157", "t269", "test")}
+    cases = [
+        ("the intended pair passes", {"ouka:a": ["a", "A", "t269"], "ouka:b": ["b", "B", "t5"], "ouka:c": ["c", "C", None]}, True),
+        ("an unchanged sheet passes", {"ouka:a": ["a", "A", "t157"], "ouka:b": ["b", "B", "t5"], "ouka:c": ["c", "C", None]}, True),
+        ("the granted item moved to another key reddens", {"ouka:a": ["a", "A", "t270"], "ouka:b": ["b", "B", "t5"], "ouka:c": ["c", "C", None]}, False),
+        ("another item changed reddens", {"ouka:a": ["a", "A", "t269"], "ouka:b": ["b", "B", "t6"], "ouka:c": ["c", "C", None]}, False),
+        ("an item that gained a picture reddens", {"ouka:a": ["a", "A", "t269"], "ouka:b": ["b", "B", "t5"], "ouka:c": ["c", "C", "t7"]}, False),
+        ("a vanished item reddens", {"ouka:a": ["a", "A", "t269"], "ouka:c": ["c", "C", None]}, False),
+    ]
+    bad = []
+    for name, new_items, expect_green in cases:
+        problems, _keep = icon_problems(old, new_items, grant)
+        if bool(problems) == expect_green:
+            bad.append(name)
+    # 表が空なら、ふつうの見張りと同じ(許しは何も効かない)
+    problems, _keep = icon_problems(old, {"ouka:a": ["a", "A", "t269"], "ouka:b": ["b", "B", "t5"], "ouka:c": ["c", "C", None]}, {})
+    if not problems:
+        bad.append("an empty allowance table must not pass the changed icon")
+    return bad
+
+
+def guard_published_textures():
+    """Every item the published sheet had keeps its texture key (but for the named intended changes), and the PNG at that path keeps its bytes.
+
+    Compares the files this run wrote with PUBLISHED_REF, never with themselves. Returns the problems (empty = green)."""
+    old = json.loads(_git_bytes("show", f"{PUBLISHED_REF}:data/recipes.json"))
+    new = json.loads((OUT_DATA_DIR / "recipes.json").read_text(encoding="utf-8"))
+    problems, keep = icon_problems(old["items"], new["items"])
+    for item, key_old in keep:
         path = f"assets/img/recipes/{key_old}.png"
         if (SITE_ROOT / path).read_bytes() != _git_bytes("show", f"{PUBLISHED_REF}:{path}"):
             problems.append(f"{path} (the texture of {item}) is not byte-identical to the published one")
@@ -6634,6 +6675,12 @@ def _main_body():
 
 if __name__ == "__main__":
     import sys as _sys
+    if "--guard-self-test" in _sys.argv[1:]:
+        _bad = icon_guard_self_test()
+        for _b in _bad:
+            print("  SELF-TEST RED: " + _b)
+        print("icon guard self-test:", "GREEN" if not _bad else f"RED ({len(_bad)})")
+        _sys.exit(1 if _bad else 0)
     if "--guard-only" in _sys.argv[1:]:
         _problems = guard_published_textures()
         for _p in _problems[:20]:
