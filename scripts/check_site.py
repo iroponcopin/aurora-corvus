@@ -70,6 +70,11 @@ CHECKS = [
     # 表示し続ける —— 出力は正常に見え、リンクも切れないので誰も気づかない。
     ("recipe-sources", "check_recipe_sources.py", [],
      "data/recipes.json was generated from the versions the site currently publishes"),
+    # 2026-10-07 (owner): every recipe a published jar holds is on the recipe page, the machine ones too (OUKA's
+    # assembly line, crusher, centrifuge, culture vat and bore, Cherry's fabricator, furnaces). The sheet above reads
+    # crafting grids only; this one reads the rest from the same zips and must match them.
+    ("machine-recipes", "extract_machine_recipes.py", ["--check"],
+     "data/recipes_machines.json holds every machine recipe of the zips the site currently publishes"),
     # ASTRAEA V1.0.0 (2026-09-30), the first brand released after the portal cutover. Not a page gate (those are the
     # portal's now) but the DATA the Store and the Discord bot act on: the zip in downloads/ is tracked (an untracked one
     # 404s live), holds ASTRAEA's one jar with no foreign dependency and no Alpha trace (owner, D-1), the manifest's
