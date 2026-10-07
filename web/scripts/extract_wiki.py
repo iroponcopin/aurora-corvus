@@ -203,6 +203,50 @@ def normalise(s: str) -> str:
     return _KATA.sub(lambda m: chr(ord(m.group(0)) - 0x60), s)
 
 
+# The words the machine recipes need (inputs a tag or alternatives stand for, chances, times, the bore's veins).
+MACHINE_LABELS = {
+    "ja": {"any": "または同じ種類の物", "outputs": "取れる物", "chance": "{0}% の確率", "time": "{0} 秒",
+           "water": "水 {0} mB", "xp": "経験値 {0}", "vein": "{0}で掘れる鉱脈の {1}%", "drill": "素材は要らない",
+           "overworld": "オーバーワールド", "nether": "ネザー", "end": "エンド"},
+    "en": {"any": "or another of its kind", "outputs": "What comes out", "chance": "{0}% chance", "time": "{0} s",
+           "water": "{0} mB of water", "xp": "{0} XP", "vein": "{1}% of the veins in the {0}",
+           "drill": "No ingredients", "overworld": "Overworld", "nether": "Nether", "end": "End"},
+    "es": {"any": "u otro de su tipo", "outputs": "Lo que sale", "chance": "{0} % de probabilidad", "time": "{0} s",
+           "water": "{0} mB de agua", "xp": "{0} PX", "vein": "{1} % de las vetas en el {0}",
+           "drill": "Sin ingredientes", "overworld": "Mundo Normal", "nether": "Nether", "end": "End"},
+    "fr": {"any": "ou un autre du même type", "outputs": "Ce qui en sort", "chance": "{0} % de chances",
+           "time": "{0} s", "water": "{0} mB d’eau", "xp": "{0} XP", "vein": "{1} % des filons dans {0}",
+           "drill": "Aucun ingrédient", "overworld": "la Surface", "nether": "le Nether", "end": "l’End"},
+    "zh": {"any": "或同类物品", "outputs": "产出", "chance": "{0}% 概率", "time": "{0} 秒", "water": "{0} mB 水",
+           "xp": "{0} 经验", "vein": "{0}中 {1}% 的矿脉", "drill": "无需材料",
+           "overworld": "主世界", "nether": "下界", "end": "末地"},
+    "ko": {"any": "또는 같은 종류", "outputs": "나오는 것", "chance": "{0}% 확률", "time": "{0}초",
+           "water": "물 {0} mB", "xp": "경험치 {0}", "vein": "{0} 광맥의 {1}%", "drill": "재료 없음",
+           "overworld": "오버월드", "nether": "네더", "end": "엔드"},
+    "pt-br": {"any": "ou outro do mesmo tipo", "outputs": "O que sai", "chance": "{0}% de chance", "time": "{0} s",
+              "water": "{0} mB de água", "xp": "{0} XP", "vein": "{1}% dos veios no {0}",
+              "drill": "Sem ingredientes", "overworld": "Mundo Superior", "nether": "Nether", "end": "End"},
+    "it": {"any": "o un altro dello stesso tipo", "outputs": "Cosa si ottiene", "chance": "{0}% di probabilità",
+           "time": "{0} s", "water": "{0} mB d’acqua", "xp": "{0} PE", "vein": "{1}% dei filoni nel {0}",
+           "drill": "Nessun ingrediente", "overworld": "Sopramondo", "nether": "Nether", "end": "End"},
+    "ar": {"any": "أو غيره من النوع نفسه", "outputs": "الناتج", "chance": "احتمال {0}%", "time": "{0} ث",
+           "water": "{0} mB من الماء", "xp": "{0} خبرة", "vein": "{1}% من العروق في {0}",
+           "drill": "بلا مكوّنات", "overworld": "العالم العلوي", "nether": "النذر", "end": "النهاية"},
+    "ru": {"any": "или другой того же вида", "outputs": "Что получается", "chance": "шанс {0}%", "time": "{0} с",
+           "water": "{0} mB воды", "xp": "{0} опыта", "vein": "{1}% жил в мире «{0}»",
+           "drill": "Без ингредиентов", "overworld": "Верхний мир", "nether": "Незер", "end": "Энд"},
+    "id": {"any": "atau yang sejenis", "outputs": "Hasilnya", "chance": "peluang {0}%", "time": "{0} dtk",
+           "water": "{0} mB air", "xp": "{0} XP", "vein": "{1}% urat di {0}", "drill": "Tanpa bahan",
+           "overworld": "Overworld", "nether": "Nether", "end": "End"},
+    "de": {"any": "oder ein anderes der Art", "outputs": "Was herauskommt", "chance": "{0} % Chance",
+           "time": "{0} s", "water": "{0} mB Wasser", "xp": "{0} EP", "vein": "{1} % der Adern ({0})",
+           "drill": "Keine Zutaten", "overworld": "Oberwelt", "nether": "Nether", "end": "End"},
+    "tr": {"any": "ya da aynı türden biri", "outputs": "Çıkanlar", "chance": "%{0} şans", "time": "{0} sn",
+           "water": "{0} mB su", "xp": "{0} TP", "vein": "{0} damarlarının %{1}'i", "drill": "Malzeme gerekmez",
+           "overworld": "Üst Dünya", "nether": "Nether", "end": "End"},
+}
+
+
 def recipes_shared(legacy: dict) -> dict:
     r = read_json("data/recipes.json")
     items = r["items"]
@@ -231,25 +275,49 @@ def recipes_shared(legacy: dict) -> dict:
             if fusion:
                 rec["fusion"] = [f for _, f in sorted(fusion, key=lambda t: t[0])]
         recipes.append(rec)
-    counts = {"workbench": 0, "crucible": 0, "fabricator": 0}
+    # Every recipe the sheet does not show (machines, furnaces; scripts/extract_machine_recipes.py). A recipe
+    # with several outputs (the centrifuge) is listed under each of them, so every output can be looked up.
+    m = read_json("data/recipes_machines.json")
+    machine_kind = {}
+    for k, v in m["items"].items():
+        items.setdefault(k, v[:3])
+        machine_kind[k] = v[3]
+    cat_of = {str(c[0]).lower(): i for i, c in enumerate(r["cats"])}
+    machine_per_cat = [0] * len(r["cats"])
+    for mr in m["recipes"]:
+        if mr["brand"] not in cat_of:
+            die(f"{mr['id']}: no recipe tab for {mr['brand']}")
+        cat = cat_of[mr["brand"]]
+        machine_per_cat[cat] += 1
+        facts = {k: mr[k] for k in ("time", "water", "xp", "dimension", "share") if k in mr}
+        for o in mr["outputs"]:
+            recipes.append({
+                "key": f"{mr['id']}>{o['id']}", "cat": cat, "result": o["id"], "count": o["n"], "grid": None,
+                "station": mr["station"], "search": m["search"][mr["id"]],
+                "fusion": [{"id": i["id"], "n": i["n"]} for i in mr["inputs"]],
+                "inputs": mr["inputs"], "outputs": mr["outputs"], "facts": facts,
+            })
+    counts = {"workbench": 0, "crucible": 0}
+    for st in m["stations"]:
+        counts[st["id"]] = 0
     for rec in recipes:
-        counts[rec["station"]] += 1
-    stations = [
-        {"id": "workbench", "item": "minecraft:crafting_table", "count": counts["workbench"]},
-        {"id": "crucible", "item": "cherry:resonance_crucible", "count": counts["crucible"]},
-        {"id": "fabricator", "item": "cherry:advanced_cherry_fabricator", "count": counts["fabricator"]},
-        # 2026-10-05: the "tsubomi" placeholder chip (a brewing station that never had a recipe, with the
-        # message "Tsubomi has not been released") is gone: Tsubomi is released and has its own tab.
-    ]
-    missing_kind = sorted(k for k in items if k not in kinds)
+        counts[rec["station"]] = counts.get(rec["station"], 0) + 1
+    station_item = {"workbench": "minecraft:crafting_table", "crucible": "cherry:resonance_crucible",
+                    **{st["id"]: st["item"] for st in m["stations"]}}
+    # 2026-10-05: the "tsubomi" placeholder chip (a brewing station that never had a recipe, with the
+    # message "Tsubomi has not been released") is gone: Tsubomi is released and has its own tab.
+    stations = [{"id": sid, "item": station_item[sid], "count": n} for sid, n in counts.items()]
+    missing_kind = sorted(k for k in items if k not in kinds and k not in machine_kind)
     return {
-        "total": r["total"],
+        "total": r["total"] + len(m["recipes"]),
         "sources": r["sources"],
-        "cats": [{"index": i, "name": c[0], "icon": items.get(c[1], [None, None, None])[2], "count": c[2]}
+        "cats": [{"index": i, "name": c[0], "icon": items.get(c[1], [None, None, None])[2],
+                  "count": c[2] + machine_per_cat[i]}
                  for i, c in enumerate(r["cats"])],
         "allTabIcon": items.get(r["all_tab_icon"], [None, None, None])[2],
         "items": {k: {"ja": v[0], "en": v[1], "icon": v[2],
-                      "kind": kinds.get(k) or ("none" if v[2] is None else "flat")} for k, v in items.items()},
+                      "kind": kinds.get(k) or machine_kind.get(k) or ("none" if v[2] is None else "flat")}
+                  for k, v in items.items()},
         "recipes": recipes,
         "stations": stations,
         "kindsUnknown": missing_kind,
@@ -760,6 +828,7 @@ def build_lang(lang: str, ctx: dict) -> dict:
     }
 
     rec_labels = dict(leg["recipes"]["labels"])
+    rec_labels["machine"] = MACHINE_LABELS[lang]
     recipes = {
         "title": ui["page_titles"]["recipes"],
         "navTitle": ui["nav"]["recipes"],

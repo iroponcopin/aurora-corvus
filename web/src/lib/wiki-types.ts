@@ -107,10 +107,14 @@ export interface RecipeShared {
     result: string;
     count: number;
     grid: (string | 0)[] | null;
-    station: "workbench" | "crucible" | "fabricator" | "tsubomi";
+    station: string;
     search: string;
     how?: string;
     fusion?: { id: string; n: number }[];
+    /** A machine recipe (data/recipes_machines.json): its inputs ("any": a tag or alternatives), every output. */
+    inputs?: { id: string; n: number; any?: boolean }[];
+    outputs?: { id: string; n: number; nMax?: number; chance?: number }[];
+    facts?: { time?: number; water?: number; xp?: number; dimension?: "overworld" | "nether" | "end"; share?: number };
   }[];
   stations: { id: string; item: string | null; count: number }[];
   kindsUnknown: string[];
@@ -132,6 +136,19 @@ export interface RecipeLabels {
   recipeN: string;
   tsubomiName: string;
   preview: { title: string; pause: string; rotate: string; drag: string; note: Record<"flat" | "cube" | "icon" | "none", string> };
+  machine: {
+    any: string;
+    outputs: string;
+    chance: string;
+    time: string;
+    water: string;
+    xp: string;
+    vein: string;
+    drill: string;
+    overworld: string;
+    nether: string;
+    end: string;
+  };
 }
 
 export interface ChangelogLabels {

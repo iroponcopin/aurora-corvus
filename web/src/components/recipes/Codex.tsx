@@ -26,8 +26,39 @@ function normalise(s: string): string {
     .replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }
 
-function fill(t: string, v: string): string {
-  return t.replace("{0}", v);
+function fill(t: string, v: string, w = ""): string {
+  return t.replace("{0}", v).replace("{1}", w);
+}
+
+/** A percentage as a player reads it: 25, 2.5, 0.25. */
+function pct(v: number): string {
+  return String(Number(v.toPrecision(3)));
+}
+
+function ItemLine({ data, id, n, note }: { data: CodexData; id: string; n: string; note?: string }) {
+  const it = data.items[id];
+  const icon = recipeIcon(it?.icon ?? null);
+  return (
+    <li>
+      {icon ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={icon} alt="" width={24} height={24} className="ac-pixel" />
+      ) : null}
+      <span dir="auto">{it?.name ?? id}</span>
+      <small className="ac-ltr">{n}</small>
+      {note ? <small className="ac-small">{note}</small> : null}
+    </li>
+  );
+}
+
+/** Time, water, experience, and the bore's share of a dimension's veins. */
+function MachineFacts({ facts, labels }: { facts: NonNullable<CodexData["recipes"][number]["facts"]>; labels: RecipeLabels["machine"] }) {
+  const parts: string[] = [];
+  if (facts.dimension && facts.share !== undefined) parts.push(fill(labels.vein, labels[facts.dimension], pct(facts.share)));
+  if (facts.time) parts.push(fill(labels.time, pct(facts.time / 20)));
+  if (facts.water) parts.push(fill(labels.water, String(facts.water)));
+  if (facts.xp) parts.push(fill(labels.xp, pct(facts.xp)));
+  return parts.length ? <p className="ac-small ac-machine-facts">{parts.join(" · ")}</p> : null;
 }
 
 /**
@@ -78,12 +109,12 @@ export function Codex({
 
   useEffect(() => {
     const h = decodeURIComponent(window.location.hash.slice(1));
-    if (/^[0-2]$/.test(h)) setCat(Number(h));
+    if (/^\d+$/.test(h) && Number(h) < data.cats.length) setCat(Number(h));
     else if (h.startsWith("item=")) {
       const id = h.slice(5);
       if (byResult.has(id)) setSelected(id);
     }
-  }, [byResult]);
+  }, [byResult, data.cats.length]);
 
   const q = normalise(query.trim());
   const visible = useMemo(
@@ -251,7 +282,9 @@ export function Codex({
             );
           })}
         </div>
-        {station === "fabricator" ? <p className="ac-small ac-codex-note">{labels.stationNoneFabricator}</p> : null}
+        {station === "fabricator" && (data.stations.find((s) => s.id === "fabricator")?.count ?? 0) === 0 ? (
+          <p className="ac-small ac-codex-note">{labels.stationNoneFabricator}</p>
+        ) : null}
       </div>
 
       <div className="ac-codex-body">
@@ -408,22 +441,29 @@ export function Codex({
               ) : (
                 <div className="ac-fusion">
                   <p className="ac-small">{labels.howTo}</p>
+                  {recipe.outputs && (recipe.inputs ?? []).length === 0 ? <p className="ac-small">{labels.machine.drill}</p> : null}
                   <ul>
-                    {(recipe.fusion ?? []).map((f) => {
-                      const it = data.items[f.id];
-                      const icon = recipeIcon(it?.icon ?? null);
-                      return (
-                        <li key={f.id}>
-                          {icon ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={icon} alt="" width={24} height={24} className="ac-pixel" />
-                          ) : null}
-                          <span>{it?.name ?? f.id}</span>
-                          <small className="ac-ltr">×{f.n}</small>
-                        </li>
-                      );
-                    })}
+                    {(recipe.inputs ?? recipe.fusion ?? []).map((f) => (
+                      <ItemLine key={f.id} data={data} id={f.id} n={`×${f.n}`} note={"any" in f && f.any ? labels.machine.any : undefined} />
+                    ))}
                   </ul>
+                  {recipe.outputs && (recipe.outputs.length > 1 || recipe.outputs.some((o) => o.chance !== undefined || o.nMax !== undefined)) ? (
+                    <>
+                      <p className="ac-small">{labels.machine.outputs}</p>
+                      <ul>
+                        {recipe.outputs.map((o) => (
+                          <ItemLine
+                            key={o.id}
+                            data={data}
+                            id={o.id}
+                            n={o.nMax !== undefined && o.nMax !== o.n ? `×${o.n}–${o.nMax}` : `×${o.n}`}
+                            note={o.chance !== undefined ? fill(labels.machine.chance, pct(o.chance * 100)) : undefined}
+                          />
+                        ))}
+                      </ul>
+                    </>
+                  ) : null}
+                  {recipe.facts ? <MachineFacts facts={recipe.facts} labels={labels.machine} /> : null}
                 </div>
               )}
 
