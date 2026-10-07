@@ -301,7 +301,10 @@ def recipes_shared(legacy: dict) -> dict:
     for st in m["stations"]:
         counts[st["id"]] = 0
     for rec in recipes:
-        counts[rec["station"]] = counts.get(rec["station"], 0) + 1
+        if not rec.get("outputs"):
+            counts[rec["station"]] = counts.get(rec["station"], 0) + 1
+    for mr in m["recipes"]:
+        counts[mr["station"]] += 1
     station_item = {"workbench": "minecraft:crafting_table", "crucible": "cherry:resonance_crucible",
                     **{st["id"]: st["item"] for st in m["stations"]}}
     # 2026-10-05: the "tsubomi" placeholder chip (a brewing station that never had a recipe, with the

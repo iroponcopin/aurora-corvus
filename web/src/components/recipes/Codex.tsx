@@ -172,10 +172,12 @@ export function Codex({
   }, [recipe, data.items]);
 
   // The tree: each ingredient's first recipe, three levels deep.
-  const tree = (id: string, depth: number, seen: Set<string>): React.ReactNode => {
-    const rs = byResult.get(id);
-    if (!rs || depth >= 3 || seen.has(id)) return null;
-    const r = rs[0]!;
+  // A part's own recipe in the tree is the first one that reliably makes it: not a centrifuge's chance nor a bore's vein.
+  const sureRecipe = (id: string): CodexData["recipes"][number] | undefined =>
+    (byResult.get(id) ?? []).find((r) => !(r.outputs ?? []).some((o) => o.chance !== undefined || o.nMax !== undefined));
+  const tree = (id: string, depth: number, seen: Set<string>, root?: CodexData["recipes"][number]): React.ReactNode => {
+    const r = root ?? sureRecipe(id);
+    if (!r || depth >= 3 || seen.has(id)) return null;
     const parts = new Map<string, number>();
     if (r.grid) for (const c of r.grid) if (c !== 0) parts.set(c, (parts.get(c) ?? 0) + 1);
     for (const f of r.fusion ?? []) parts.set(f.id, (parts.get(f.id) ?? 0) + f.n);
@@ -187,7 +189,7 @@ export function Codex({
           const icon = recipeIcon(p?.icon ?? null);
           return (
             <li key={pid}>
-              <button type="button" className="ac-tree-node" onClick={() => (byResult.has(pid) ? choose(pid) : undefined)} data-leaf={!byResult.has(pid)}>
+              <button type="button" className="ac-tree-node" onClick={() => (byResult.has(pid) ? choose(pid) : undefined)} data-leaf={!sureRecipe(pid)}>
                 {icon ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={icon} alt="" width={20} height={20} />
@@ -197,7 +199,7 @@ export function Codex({
                 <span>{p?.name ?? pid}</span>
                 <small className="ac-ltr">×{n}</small>
               </button>
-              {byResult.has(pid) ? tree(pid, depth + 1, next) : null}
+              {sureRecipe(pid) ? tree(pid, depth + 1, next) : null}
             </li>
           );
         })}
@@ -467,10 +469,12 @@ export function Codex({
                 </div>
               )}
 
-              <div className="ac-tree">
-                <h3 className="ac-eyebrow">{labels.tree}</h3>
-                {tree(current!, 0, new Set()) ?? <p className="ac-small">{labels.noRecipe}</p>}
-              </div>
+              {recipe.outputs && (recipe.inputs ?? []).length === 0 ? null : (
+                <div className="ac-tree">
+                  <h3 className="ac-eyebrow">{labels.tree}</h3>
+                  {tree(current!, 0, new Set(), recipe) ?? <p className="ac-small">{labels.noRecipe}</p>}
+                </div>
+              )}
             </>
           )}
         </aside>
