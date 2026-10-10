@@ -18,6 +18,12 @@ export interface HeaderLabels {
   updates: string;
   recipes: string;
   discord: string;
+  /** The Halia override tab: the name, the small word after it, and the name it reads to a screen reader. */
+  halia: string;
+  haliaOverride: string;
+  haliaAria: string;
+  /** The predecessor the tab strikes through. */
+  astraea: string;
   download: string;
   menu: string;
   close: string;
@@ -235,6 +241,13 @@ export function Header({
               </ul>
             </div>
           </div>
+          <Link href={pathOf(lang, "halia/")} className="ac-nav-link ac-nav-override" aria-current={current("halia")} aria-label={labels.haliaAria}>
+            <span className="ac-ovr" aria-hidden="true">
+              <s className="ac-ovr-old">{labels.astraea}</s>
+              <b className="ac-ovr-new">{labels.halia}</b>
+              <small className="ac-ovr-tag">{labels.haliaOverride}</small>
+            </span>
+          </Link>
           <Link href={pathOf(lang, "recipes/")} className="ac-nav-link" aria-current={current("recipes")}>
             {labels.recipes}
           </Link>
@@ -348,6 +361,13 @@ export function Header({
             <p className="ac-eyebrow" aria-hidden="true">
               {" "}
             </p>
+            <Link href={pathOf(lang, "halia/")} onClick={() => setSheet(false)} aria-current={current("halia")} aria-label={labels.haliaAria}>
+              <span className="ac-ovr" aria-hidden="true">
+                <s className="ac-ovr-old">{labels.astraea}</s>
+                <b className="ac-ovr-new">{labels.halia}</b>
+                <small className="ac-ovr-tag">{labels.haliaOverride}</small>
+              </span>
+            </Link>
             <Link href={pathOf(lang, "recipes/")} onClick={() => setSheet(false)} aria-current={current("recipes")}>
               {labels.recipes}
             </Link>

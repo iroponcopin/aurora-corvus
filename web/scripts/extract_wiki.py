@@ -59,7 +59,7 @@ LANGS = SC.available_langs()
 # The models with a page of their own (src/app/[lang]/<id>/).
 MODEL_PAGES = ("ouka", "cherry", "aureum", "alpha", "astraea", "tsubomi", "noctua")
 SECTIONS = ["", "launcher/", "download/", "recipes/", "changelog/", "announcement/", "teasers/", "skin/", "discord/",
-            "ouka/", "cherry/", "cherry-controls/", "aureum/", "alpha/", "astraea/", "tsubomi/", "noctua/"]
+            "ouka/", "cherry/", "cherry-controls/", "aureum/", "alpha/", "astraea/", "tsubomi/", "noctua/", "halia/"]
 
 
 def die(msg: str) -> None:
