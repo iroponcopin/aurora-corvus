@@ -1,0 +1,42 @@
+{
+ "lang": "fr",
+ "brand": "aureum",
+ "updated": "2026-08-30",
+ "title": "Historique des mises à jour",
+ "updated_label": "Mis à jour le 2026-08-30",
+ "note": "",
+ "groups": [
+  {
+   "label": "1.0",
+   "summary": "Première version — des économies de mémoire qui ne touchent pas au rendu des chunks",
+   "releases": [
+    {
+     "version": "1.0.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "Première version — des économies de mémoire qui ne touchent pas au rendu des chunks",
+     "summary": "Un mod d'optimisation distinct pour Minecraft 26.2 (Fabric), séparé d'Alpha. Il agit sur la logique du jeu, la mémoire et le tick serveur, ne touche jamais au rendu des chunks, et fonctionne donc à côté de Sodium et du pack Alpha. Pour plus de FPS, installez Sodium.",
+     "sections": [
+      {
+       "title": "Changements",
+       "items": [
+        "Caches d'états de bloc partagés et un détecteur de contention de threads plus léger : 6,3 Mo de tas résident en moins avec 2 209 chunks chargés (deux mesures indépendantes concordent).",
+        "Une durée d'expiration pour le cache des modèles de structure : 17,2 Mo de tas en moins pendant la génération de nouveaux terrains (deux mesures concordent). Les modèles non enregistrés d'un bloc de structure ne sont jamais supprimés.",
+        "Chaque optimisation peut être désactivée individuellement dans config/aureum.json, et un élément désactivé laisse le code vanilla intact.",
+        "/aureum (nécessite des droits) indique ce qui est activé et quelle quantité est partagée."
+       ]
+      },
+      {
+       "title": "Points d'attention",
+       "items": [
+        "Le temps de tick (MSPT) reste inchangé dans la marge de bruit de mesure ; Aureum ne prétend pas être plus rapide.",
+        "Les deux réglages côté client (une limite de particules et un plafond de distance de rendu des blocs-entités) sont désactivés par défaut, et leur effet n'a pas été mesuré.",
+        "Nécessite Fabric Loader 0.19.3 ou une version plus récente, Fabric API, et Java 25 ou une version plus récente."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

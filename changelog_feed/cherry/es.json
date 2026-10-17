@@ -1,0 +1,265 @@
+{
+ "lang": "es",
+ "brand": "cherry",
+ "updated": "2026-10-13",
+ "title": "Historial de actualizaciones",
+ "updated_label": "Actualizado el 2026-10-13",
+ "note": "Los valores de daño, velocidad y demás que aparecen aquí son los que trae el MOD por defecto en el momento de cada actualización. Con los ajustes de configuración del servidor, los valores que notes al jugar pueden ser distintos.",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Guardias, robots, torretas y transporte",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-13",
+     "type": "release",
+     "title": "Guardias, robots, torretas y transporte",
+     "summary": "La actualización de defensa de bases y transporte de Cherry: las aldeas tienen aldeanos guardia, un terminal de seguridad y un robot protegen tu propia base, una torreta automática dispara el arma de Cherry que montes en ella, y un ascensor de cristal, un montacargas pesado y una escalera mecánica te llevan a ti, tu carga y tus vehículos. El robot, el terminal, la torreta y ambos elevadores funcionan con energía: una señal de redstone o, con OUKA V1.2 o posterior instalado, la red de OUKA.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Aldeanos guardia: la primera vez que un jugador se acerca a una aldea con campana, cama y aldeano, se le asignan 2 guardias (3 con diez o más camas, 4 con veinte o más). Llevan alabarda, ballesta y escudo, combaten a los mobs hostiles en un radio de 16 bloques, retroceden ante los creepers y les disparan a distancia, y llega un reemplazo cada 5 minutos mientras la aldea esté por debajo de su cupo.",
+        "Los guardias solo se vuelven contra un jugador que haya herido a un aldeano o a un guardia, y lo dejan en paz 2 minutos después de la última ofensa. Nunca combaten entre sí, ni contra aldeanos o golems, ni se vuelven contra un jugador en Pacífico.",
+        "El Security Terminal y el Security Robot: quien coloca un terminal es su administrador, y al hacer clic derecho en él se registra al jugador más cercano dentro de 2,5 bloques. Un robot enlazado a un terminal patrulla a 12 bloques de su puesto y, ante cualquier jugador no registrado que vea a menos de 16 bloques, hace sonar una sirena, avisa durante 2 segundos y luego dispara su fusil aturdidor cada 1,5 segundos: 2 de daño y 3 segundos de aturdimiento. Los jugadores registrados, los guardias y los jugadores en Creativo o Espectador nunca son aturdidos.",
+        "El fusil aturdidor del robot funciona con una batería de 400 kJ que da para 20 disparos. El robot se recarga a menos de 16 bloques de su terminal mientras este tenga energía, y el terminal se llena con una señal de redstone a su lado. Un robot sin batería sigue haciendo sonar la sirena y apuntando, pero no dispara hasta recargarse. Con OUKA V1.2 o posterior instalado, un robot o terminal dentro del alcance de un pilón de OUKA también se carga desde la red de OUKA.",
+        "La Automatic Turret se monta en un techo, una pared o un suelo y gira 360 grados. Coloca en ella un arma de Cherry y aliméntala con los cargadores de esa arma (sirve una tolva): entonces sigue a los mobs hostiles, y a los neutrales enfadados, a menos de 32 bloques o del alcance del arma, lo que sea menor, y dispara con la cadencia y el sonido propios de esa arma. Nunca dispara a jugadores, aldeanos, guardias, robots, golems ni mascotas. Solo su dueño y los operadores pueden abrirla o romperla, y una torreta rota conserva su arma, su reserva y su puntería.",
+        "La energía de la torreta, el ascensor de cristal, el montacargas, el terminal y el robot procede de una señal de redstone junto al dispositivo (junto al controlador, en un elevador), y es todo lo que necesita una partida sin OUKA. Con OUKA V1.2 o posterior instalado, un dispositivo dentro del alcance de un pilón de OUKA (64 bloques) toma en su defecto energía de la red de OUKA, incluidas sus baterías SMES. Un dispositivo sin energía indica qué está esperando.",
+        "El Aero-Glass High-Speed Elevator: una cabina de cristal de 3x3 sobre un controlador y una columna de rieles maglev, en un hueco que construyes de hasta 128 bloques de alto. Viaja a hasta 16 bloques por segundo con arranque y parada suaves, suena un timbre al llegar y abre las puertas un instante después. Elige piso en el panel holográfico de la cabina o en el botón de llamada del rellano; las puertas se reabren si alguien está en ellas, y una puerta de rellano nunca se abre a un hueco vacío. Cerrada, la cabina mantiene el aire dentro en la Luna y el frío fuera en Marte.",
+        "El Titan-Hydraulic Heavy Cargo Lift: una plataforma cuadrada de 3x3 a 7x7 bloques sobre patas de tijera, sobre un foso que enmarcas, que sube hasta 24 bloques a 2 bloques por segundo. Mientras se mueve se cierran portones amarillo y negro a su alrededor y gira una baliza ámbar. Lleva a jugadores, vagonetas con cofre, barcos y vehículos de Cherry que quepan en la plataforma, inmovilizados mientras se mueve, y se detiene y regresa si algo se interpone. Se maneja con un pedestal en la plataforma y un botón de llamada en cada rellano; la redstone también sirve.",
+        "La Kinetic Modular Escalator: dos rellanos, un módulo de cercha por cada columna y un panel de control forman un tramo de 30 grados, 45 grados o plano de hasta 32 bloques (los más largos se encadenan por rellanos). Te quedas de pie sobre los peldaños móviles, que avanzan a 4 bloques por segundo, y una señal de redstone invierte el sentido. No necesita energía. En barcos y aeronaves, que comparten la misma física de cubierta móvil, quien se baja o salta de la cubierta la abandona al instante, y agacharse sobre una cubierta móvil permite caminar en lugar de quedarse bloqueado."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25.",
+        "La torreta, el ascensor de cristal, el montacargas, el terminal de seguridad y el fusil del robot no hacen nada sin energía: una señal de redstone junto al dispositivo o, con OUKA V1.2 o posterior instalado, el alcance de un pilón de OUKA. Cherry funciona sin OUKA, y entonces la redstone es su única fuente."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Armas, vida en la Luna, Lunaris Prime y Marte",
+     "summary": "La mayor actualización de Cherry: cinco armas de nueva generación con animación en primera persona y retroceso, tres tipos de vida en la Luna, el jefe Lunaris Prime sellado en unas ruinas remotas de la Luna, el planeta rojo Marte con su frío y sus tormentas de polvo de hierro, una consola de navegación que lleva el Apex-1 a cualquiera de tres mundos y el Advanced Cherry Fabricator, que fabrica todas las armas, cargadores y piezas de vehículos.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Cinco armas: el fusil bullpup CR-14, el subfusil CP-9, el francotirador de riel CS-50, la escopeta magpulse CX-12 y la C-Pistol. El clic derecho apunta y desenfoca suavemente lo que queda más cerca o más lejos de tu punto de mira, R recarga (en supervivencia con un cargador de esa arma) y F inspecciona; con retroceso, fogonazo, casquillos, miras holográficas, la mira térmica de 6 aumentos del CS-50 y la mira láser de la C-Pistol.",
+        "Vida en la Luna: el Selenite Stalker se oculta bajo el regolito, salta sobre quien camina sin agacharse y perfora los trajes presurizados; el EMP del Void Drifter apaga las miras y los contadores de munición de tus armas; el Regolith Devourer golpea el suelo para lanzarte por los aires y arroja meteoros fundidos.",
+        "Lunaris Prime: más allá de los 8.000 bloques en la Luna, un cráter gigante alberga el Astraea Shackle (/locate lo encuentra). Un Astral Catalyst en su consola del sello despierta al jefe; el cielo se tiñe de carmesí y, con la mitad de la vida, su armadura sale despedida para una segunda fase más rápida.",
+        "Sus reliquias: el Coreshard of Lunaris, el Graviton Siphon (su disparo abre un agujero negro) y la Crown of Selene.",
+        "Marte: en la plataforma de lanzamiento, pulsa la tecla de lanzamiento para abrir la consola Stellar Navigation del Apex-1 y elige la Tierra, la Luna o Marte. Marte tiene 0,38 g y un aire irrespirable a −60 °C: el traje presurizado deja fuera el aire, y un Thermal Lining cosido en la mesa de herrería deja fuera el frío.",
+        "Aproximadamente cada 20 minutos soplan sobre Marte tormentas de polvo de hierro: la niebla se cierra a unos pocos bloques y las interferencias recorren los HUD de Cherry.",
+        "Recursos de Marte: Martian Ferrite y Perchlorate Energy Salt. El Perchlorate Propellant es combustible para cohetes que equivale a tres bidones.",
+        "El Advanced Cherry Fabricator: elige una receta y llena sus seis entradas; fabrica las armas, sus cargadores, piezas de armas, combustible y todos los vehículos, y construye el Apex-1 con propulsores y el Dreadnought con cañones de riel que produce en serie a partir de helio-3 y núcleos de regolito; las tolvas pueden abastecerlo."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Los sonidos vuelven tras cambiar el dispositivo de audio",
+   "releases": [
+    {
+     "version": "V1.1.4",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Los sonidos vuelven tras cambiar el dispositivo de audio",
+     "summary": "Cuando cambia el dispositivo de audio (al conectar o desconectar los auriculares, o al elegir un dispositivo en las opciones), el juego reinicia su motor de sonido y detiene todos los sonidos en bucle. De la 1.1.0 a la 1.1.3, los motores de las aeronaves de Cherry, la poscombustión, los motores de los misiles, los tonos de fijación de blanco y la respiración del traje presurizado quedaban en silencio hasta volver a subir o ponerse de nuevo el casco. Ahora vuelven a sonar solos.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Tras cambiar el dispositivo de audio, los motores del Stratos-900 y del Aegis-X, la poscombustión del Aegis-X, los motores de los misiles y los tonos de fijación vuelven a sonar solos al instante.",
+        "En la Luna, la respiración del traje presurizado hace lo mismo."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.3",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Controles sencillos, y el railgún acierta",
+     "summary": "Volar y navegar se han rehecho para que cualquiera pueda hacerlo. La vista ya no está bloqueada: las aeronaves vuelan hacia donde miras y los buques responden a W, A, S y D como un bote. El railgún del Dreadnought ahora daña lo que alcanza; de la 1.1.0 a la 1.1.2 sus proyectiles no dañaban nada.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Las aeronaves vuelan hacia donde miras: gira la cabeza y el Stratos-900 o el Aegis-X alabea, vira, sube o baja hacia allí por sí solo. W y S regulan la potencia; el clic izquierdo dispara los misiles del Aegis-X contra el objetivo que el radar elige por sí solo.",
+        "Los flaps, el tren de aterrizaje, los frenos, la inversión de empuje, el posquemador, la cubierta de la cabina y el gancho de apontaje ahora funcionan solos, y al subir una breve guía en pantalla muestra los controles.",
+        "La vista es tuya: ya no se bloquea en primera persona ni se inclina con la aeronave, F5 funciona en vuelo y, manteniendo Left Alt, puedes mirar alrededor mientras la aeronave sigue su rumbo.",
+        "Buques: al ponerte en un puesto aparece la tecla para ocuparlo. Al timón, W y S mueven la máquina (atrás por debajo de cero), A y D gobiernan, y al soltar, la rueda se centra y el buque mantiene el rumbo; «Agacharse» deja el puesto. Las puertas del transbordador van con Y.",
+        "Si no hay nadie en el puesto de artillería, el timonel del Dreadnought dispara los cañones desde el timón: clic izquierdo para una salva, clic derecho para el VLS.",
+        "Corregidos los fallos de la 1.1.2: el timón giraba el buque al revés que sus teclas, la marcha atrás no daba empuje, no se podía botar un buque desde la orilla (ahora flota con la popa justo más allá del agua a la que apuntas) y no se podía recuperar un buque en supervivencia.",
+        "Los proyectiles del railgún estallan contra el primer bloque, criatura, buque o aeronave en su trayectoria y dañan lo que haya a menos de 4 m; cuando una salva cae sobre un mismo objetivo, cuentan los seis proyectiles. Mira cualquier parte de un casco y las dos torres apuntan a ese punto.",
+        "El cañón no daña al buque que disparó ni a su tripulación, y nunca rompe bloques. Ninguna salva por sí sola hunde un buque ni derriba una aeronave, y manejar los cañones ya no carga chunks lejanos.",
+        "El mensaje de muerte de un arma de Cherry ya no muestra una clave sin traducir cuando el atacante lleva en la mano un objeto renombrado.",
+        "El número de misiles del Aegis-X, abajo a la izquierda de la pantalla de vuelo, ya no queda cortado por el borde inferior de la pantalla. Con la escala de interfaz automática ocurría en muchos tamaños de pantalla, entre ellos 720p, 1440p, 4K y la ventana predeterminada del juego.",
+        "Los puntos de ruta de la carta solo se aceptan dentro de su vista más amplia, a unos 1,4 km del barco, lo que también protege a los servidores de peticiones de ruta malformadas."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Los controles han cambiado: las teclas de vuelo de la 1.1.2 (R, U, Y, K, Z, N, M, J y las flechas) y las del timón (, . = - ; ') ya no existen, y las que hayas reasignado ya no se usan.",
+        "Los proyectiles del railgún dañan ahora todo lo que alcanzan, incluidos los buques y las aeronaves de otros jugadores. El daño se atribuye al tripulante que dirige los cañones.",
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.2",
+     "date": "2026-09-23",
+     "type": "release",
+     "title": "Los buques, terminados: modelos reales, puestos que funcionan y las puertas del transbordador",
+     "summary": "El Leviathan y el Dreadnought reciben sus modelos e interiores reales, y todos los puestos a bordo ya funcionan desde el juego. En la 1.1.0 y la 1.1.1 el railgún, el VLS y la mesa de cartas no se podían usar de verdad; ahora sí.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Buques reales: cascos, cubiertas e interiores modelados por completo —la cubierta de vehículos, el salón, la cubierta mirador y el puente del transbordador; el puente, el CIC y el hangar del destructor—, con ventanas por las que se ve y que se iluminan de noche. Toda cubierta que ves es una cubierta por la que puedes caminar.",
+        "Puestos: colócate junto al timón, la mesa de cartas o los puestos de artillería o de sonar del destructor y pulsa la tecla de puesto (H por defecto) para ocuparlo. La mesa de cartas abre una carta en la que marcas la ruta con clics; el nuevo puesto de sonar muestra los contactos en una pantalla de barrido.",
+        "El Dreadnought lleva ahora dos torres triples de railgún de 406 mm. Ambas apuntan al punto que miras y disparan una sola salva con clic izquierdo, con fogonazos, anillos de onda expansiva, trazadoras y cañones que retroceden. Con clic derecho, el VLS dispara al objetivo fijado por el radar cuando su escotilla se ha abierto, soltando humo blanco.",
+        "La visera de proa y las rampas de proa y popa del Leviathan: con el buque detenido, en el timón, pulsa la tecla de puertas (' por defecto). La visera sube antes de que baje la rampa, el motor queda bloqueado hasta que todo vuelve a cerrarse y puedes subir andando por las rampas bajadas.",
+        "Estela y burbujas: un buque en marcha levanta una ola de proa con el ángulo de Kelvin y deja estela, y una hélice que gira remueve burbujas.",
+        "Las teclas del timón ya no chocan con las propias de Minecraft: , y . giran el timón, = y - regulan el motor y ; mantiene el rumbo. Los instrumentos del timón aparecen ahora por encima de la barra de objetos y de los corazones, en lugar de taparlos."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Las teclas del timón tienen nombres nuevos, así que una asignación que cambiaste en la 1.1.0 o la 1.1.1 no se conserva. Vuelve a asignarla.",
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.1",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "Corregido: el posquemador ya no cierra el juego",
+     "summary": "Con el ajuste de vídeo «Transparencia mejorada» activado, encender el posquemador del Cherry Aegis-X cerraba el juego. Ya no ocurre.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Con «Transparencia mejorada» activado, encender el posquemador en vuelo (Z por defecto) ya no cierra el juego, y sus diamantes de choque se siguen viendo a través de la cabina."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "The Aerospace & Naval Update: al aire y al mar",
+     "summary": "Cherry incorpora aeronaves, aeropuertos y buques. Puedes caminar por una aeronave en vuelo o por un buque en navegación.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Dos aeronaves: el Cherry Stratos-900, de pasaje y carga, y el caza furtivo Cherry Aegis-X, con cabina en primera persona, horizonte artificial y retícula, tren retráctil, flaps y poscombustión.",
+        "Instalaciones de aeropuerto: luces PAPI que cambian de color según tu ángulo de aproximación, una catapulta que lanza la aeronave, un cable de frenado que atrapa el gancho de cola y un radar de control que muestra las aeronaves cercanas.",
+        "Dos buques: el transbordador oceánico Cherry Leviathan-Class, de 48 m, y el destructor lanzamisiles Cherry Dreadnought-Class, de 64 m. Ponlo sobre el agua, toma el timón o traza una ruta en la mesa de cartas y navegará solo, evitando los bajíos.",
+        "Solo la clase Dreadnought va armada: una torre de railgún de 406 mm que gira y eleva de forma independiente y sacude el casco al disparar, y un VLS que solo lanza con la escotilla completamente abierta. El transbordador no lleva armamento.",
+        "Caminar por cubierta: corre y salta sobre una aeronave o un buque en movimiento. La cubierta te lleva consigo.",
+        "Un buque vuelve a tu mano cuando está detenido y no hay nadie en cubierta. Recuerda los daños recibidos, así que volver a botarlo no lo repara."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Ahora en Minecraft 26.3",
+   "releases": [
+    {
+     "version": "V1.0.1",
+     "date": "2026-09-20",
+     "type": "release",
+     "title": "Ahora en Minecraft 26.3",
+     "summary": "Cherry ya funciona en Minecraft 26.3. Todo lo de V1.0.0 se conserva, y en una Luna que ya visitaste, el terreno recién generado se une al anterior.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Todo lo que añadió V1.0.0 funciona en Minecraft 26.3: la Luna, el Cherry Apex-1 y el Launch Pad Complex, las reglas lunares, la Overdrive Fusion, los recursos lunares, los Micrometeorites y ambas habilidades.",
+        "Los mundos de V1.0.0 continúan: en la Luna, el terreno recién generado tiene el mismo relieve y los mismos cráteres que en V1.0.0, así que se une al terreno que ya exploraste."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0 o posterior, GeckoLib 5.5.6 o posterior y Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.0.0",
+     "date": "2026-09-13",
+     "type": "release",
+     "title": "The Lunar Genesis Update — desde la plataforma de lanzamiento hasta la Luna",
+     "summary": "Primera versión de Cherry: una marca de mods aparte que se instala junto a Alpha. Construye el Launch Pad Complex, vuela en el Cherry Apex-1 hasta la Luna y vuelve a casa.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "La Luna: una nueva dimensión con cráteres, yacimientos de mineral y Helium-3 Geysers, y con un reloj propio.",
+        "Cherry Apex-1 y el Launch Pad Complex: sube al cohete acoplado, mantén pulsado el botón de salto durante la cuenta atrás y vuela desde el Overworld hasta la Luna y de vuelta a la plataforma con el piloto a bordo.",
+        "Reglas lunares: la gravedad es de un sexto, y el vacío quita el 15% de la salud máxima a través de cualquier armadura salvo el Pressure Suit. Dentro de la esfera de un Pressure Field Projector estás a salvo.",
+        "Overdrive Fusion: en el Resonance Crucible, un arma, herramienta o pieza de armadura que pasa por la Overdrive Fusion obtiene ×3 de daño de ataque, armadura, dureza de armadura o velocidad de minado.",
+        "Recursos lunares: el Ultrasonic Cutter solo extrae Regolith Core Deposits mientras está en resonancia, y el Cryo Canister solo captura Helium-3 mientras un géiser está en erupción.",
+        "Los Micrometeorites impactan contra la superficie lunar y dejan cráteres.",
+        "Dos habilidades: Dimensional Cleave (300% de daño solo a lo largo de su cruz) y Astral Lift, vuelo con un peto que ha pasado por la Overdrive Fusion.",
+        "Se ha comprobado que arranca junto a los 13 mods de Alpha 4.4.0 sin conflictos de mixin."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.2, Fabric Loader 0.19.3 o posterior, Fabric API 0.154.2 o posterior, GeckoLib 5.5.5 o posterior y Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

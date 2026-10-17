@@ -1,0 +1,265 @@
+{
+ "lang": "id",
+ "brand": "cherry",
+ "updated": "2026-10-13",
+ "title": "Riwayat Pembaruan",
+ "updated_label": "Diperbarui 2026-10-13",
+ "note": "Angka seperti damage dan kecepatan yang ditampilkan adalah nilai bawaan (default) saat dipasang. Angka yang benar-benar terasa saat bermain bisa berbeda karena penyesuaian config di sisi server.",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Penjaga, robot, turret, dan transportasi",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-13",
+     "type": "release",
+     "title": "Penjaga, robot, turret, dan transportasi",
+     "summary": "Pembaruan pertahanan pangkalan dan transportasi Cherry: desa kini punya penduduk penjaga, terminal keamanan dan robot menjaga pangkalanmu, turret otomatis menembakkan senjata Cherry yang kamu pasang di dalamnya, dan lift kaca, lift kargo berat, serta eskalator membawa kamu, muatanmu, dan kendaraanmu. Robot, terminal, turret, dan kedua lift berjalan dengan daya: sinyal redstone atau, dengan OUKA V1.2 atau yang lebih baru terpasang, jaringan listrik OUKA.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Penduduk penjaga: saat pemain pertama kali mendekati desa yang punya lonceng, tempat tidur, dan penduduk, desa itu diberi 2 penjaga (3 dengan sepuluh tempat tidur atau lebih, 4 dengan dua puluh atau lebih). Mereka membawa halberd, panah silang, dan perisai, melawan mob musuh dalam 16 blok, mundur dari creeper lalu menembaknya dari jauh, dan satu pengganti datang tiap 5 menit selama desa masih di bawah kuotanya.",
+        "Penjaga hanya menyerang pemain yang telah melukai penduduk atau penjaga, dan berhenti 2 menit setelah pelanggaran terakhir. Mereka tidak pernah saling bertarung, melawan penduduk, atau melawan golem, dan tidak pernah menyerang pemain di mode Damai.",
+        "Security Terminal dan Security Robot: siapa pun yang memasang terminal menjadi administratornya, dan klik kanan padanya mendaftarkan pemain terdekat dalam 2,5 blok. Robot yang terhubung ke terminal berpatroli dalam 12 blok dari posnya dan, pada pemain tak terdaftar yang terlihat dalam 16 blok, membunyikan sirene, memperingatkan selama 2 detik, lalu menembakkan senapan setrumnya tiap 1,5 detik: 2 kerusakan dan setrum 3 detik. Pemain terdaftar, penjaga, dan pemain di mode Kreatif atau Penonton tidak pernah disetrum.",
+        "Senapan setrum robot berjalan dengan baterai 400 kJ yang cukup untuk 20 tembakan. Robot mengisi daya dalam 16 blok dari terminalnya selama terminal menyimpan energi, dan terminal terisi dari sinyal redstone di sampingnya. Robot yang kosong tetap membunyikan sirene dan membidik, tetapi menahan tembakan sampai terisi. Dengan OUKA V1.2 atau yang lebih baru terpasang, robot atau terminal dalam jangkauan pilon OUKA juga mengisi daya dari jaringan listrik OUKA.",
+        "Automatic Turret dipasang di langit-langit, dinding, atau lantai dan berputar 360 derajat. Masukkan satu senjata Cherry dan isi dengan magasin senjata itu (hopper juga bisa): turret lalu membidik mob musuh, dan mob netral yang marah, dalam 32 blok atau jangkauan senjata, mana yang lebih pendek, dan menembak dengan kecepatan tembak dan suara senjata itu sendiri. Turret tidak pernah menembak pemain, penduduk, penjaga, robot, golem, atau hewan peliharaan. Hanya pemiliknya dan operator yang bisa membuka atau menghancurkannya, dan turret yang hancur tetap menyimpan senjata, cadangan, dan arah bidiknya.",
+        "Daya untuk turret, lift kaca, lift kargo, terminal, dan robot datang dari sinyal redstone di samping perangkat (di samping kontroler, untuk lift), dan itu satu-satunya yang dibutuhkan permainan tanpa OUKA. Dengan OUKA V1.2 atau yang lebih baru terpasang, perangkat dalam jangkauan pilon OUKA (64 blok) selain itu mengambil daya dari jaringan listrik OUKA, termasuk baterai SMES-nya. Perangkat tanpa daya menyebutkan apa yang ditunggunya.",
+        "Aero-Glass High-Speed Elevator: kabin kaca 3x3 di atas kontroler dan kolom rel maglev, dalam poros yang kamu bangun setinggi hingga 128 blok. Lift melaju hingga 16 blok per detik dengan start dan berhenti yang halus, membunyikan bel saat tiba, dan membuka pintu sesaat kemudian. Pilih lantai di panel holografik dalam kabin atau tombol panggil di lantai; pintu terbuka lagi jika ada yang berdiri di sana, dan pintu lantai tidak pernah terbuka ke poros kosong. Saat tertutup, kabin menahan udara di Bulan dan menahan dingin di Mars.",
+        "Titan-Hydraulic Heavy Cargo Lift: platform persegi 3x3 hingga 7x7 blok di atas kaki gunting, di atas lubang yang kamu bingkai, naik hingga 24 blok dengan 2 blok per detik. Gerbang kuning-hitam menutup di sekelilingnya dan suar kuning ambar berputar saat bergerak. Ia membawa kamu, minecart peti, perahu, dan kendaraan Cherry yang muat di platform, yang ditahan selama bergerak, dan berhenti lalu kembali jika ada yang menghalangi. Podium di platform dan tombol panggil di tiap lantai mengoperasikannya; redstone juga bisa.",
+        "Kinetic Modular Escalator: dua pendaratan, satu modul rangka untuk tiap kolom, dan panel kontrol membentuk lintasan 30 derajat, 45 derajat, atau datar hingga 32 blok (yang lebih panjang disambung lewat pendaratan). Kamu berdiri di anak tangga yang bergerak dengan kecepatan 4 blok per detik, dan sinyal redstone membalik arahnya. Ia tidak butuh daya. Di kapal dan pesawat, yang memakai fisika dek bergerak yang sama, penumpang yang turun atau melompat dari dek langsung meninggalkannya, dan berjongkok di dek bergerak membuat berjalan, bukan membeku."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25.",
+        "Turret, lift kaca, lift kargo, terminal keamanan, dan senapan robot tidak berfungsi tanpa daya: sinyal redstone di samping perangkat atau, dengan OUKA V1.2 atau yang lebih baru terpasang, jangkauan pilon OUKA. Cherry berjalan tanpa OUKA, dan redstone lalu menjadi satu-satunya sumbernya."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Senjata, kehidupan di Bulan, Lunaris Prime, dan Mars",
+     "summary": "Pembaruan terbesar Cherry: lima senjata generasi baru dengan animasi orang pertama dan rekoil, tiga jenis makhluk hidup di Bulan, bos Lunaris Prime yang tersegel di reruntuhan jauh di Bulan, planet merah Mars dengan hawa dingin dan badai debu besinya, konsol navigasi yang menerbangkan Apex-1 ke salah satu dari tiga dunia, serta Advanced Cherry Fabricator yang membuat semua senjata, magasin, dan suku cadang kendaraan.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Lima senjata: senapan bullpup CR-14, SMG CP-9, sniper rel CS-50, shotgun magpulse CX-12, dan C-Pistol. Klik kanan membidik dan mengaburkan lembut apa pun yang lebih dekat atau lebih jauh dari bidikanmu, R untuk reload (di mode survival memakai satu magasin senjata itu), dan F untuk memeriksa; lengkap dengan rekoil, kilatan moncong, selongsong, bidikan holografik, teropong termal 6× CS-50, dan bidikan laser C-Pistol.",
+        "Kehidupan di Bulan: Selenite Stalker bersembunyi di bawah regolit, menerkam siapa pun yang berjalan tanpa menyelinap, dan melubangi pakaian bertekanan; EMP dari Void Drifter memadamkan bidikan dan penghitung amunisi senjatamu; Regolith Devourer menghantam tanah hingga melontarkanmu tinggi ke langit dan melemparkan meteor yang meleleh.",
+        "Lunaris Prime: lebih dari 8.000 blok jauhnya di Bulan, sebuah kawah raksasa menyimpan Astraea Shackle (/locate bisa menemukannya). Astral Catalyst yang dimasukkan ke konsol segelnya membangunkan sang bos; langit berubah merah tua, dan saat nyawanya tinggal setengah, zirahnya terlempar lepas untuk fase kedua yang lebih cepat.",
+        "Relik-reliknya: Coreshard of Lunaris, Graviton Siphon (tembakannya membuka lubang hitam), dan Crown of Selene.",
+        "Mars: di landasan peluncuran, tekan tombol luncur untuk membuka konsol Stellar Navigation milik Apex-1 dan pilih Bumi, Bulan, atau Mars. Mars bergravitasi 0,38 g dengan udara yang tak bisa dihirup pada −60 °C: baju bertekanan melindungimu dari udaranya, dan Thermal Lining yang dijahitkan di meja tempa melindungimu dari dingin.",
+        "Badai debu besi melanda Mars kira-kira setiap 20 menit: kabut merapat hingga tinggal beberapa blok, dan derau melintas di HUD Cherry.",
+        "Sumber daya Mars: Martian Ferrite dan Perchlorate Energy Salt. Perchlorate Propellant adalah bahan bakar roket senilai tiga tabung.",
+        "Advanced Cherry Fabricator: pilih resep lalu isi enam slot masukannya; mesin ini membuat senjata, magasinnya, suku cadang senjata, bahan bakar, dan semua kendaraan, merakit Apex-1 dari booster dan Dreadnought dari laras railgun yang diproduksi massal dari helium-3 dan inti regolit; hopper bisa mengisinya."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Suara kembali setelah perangkat audio berganti",
+   "releases": [
+    {
+     "version": "V1.1.4",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Suara kembali setelah perangkat audio berganti",
+     "summary": "Saat perangkat audio berganti (earphone dicolok atau dicabut, atau perangkat dipilih di opsi), game memulai ulang mesin suaranya dan menghentikan semua suara yang berulang. Di 1.1.0 hingga 1.1.3, mesin pesawat Cherry, afterburner, motor rudal, nada kunci sasaran, dan napas di dalam baju bertekanan lalu tetap senyap sampai kamu naik lagi atau memakai helm kembali. Kini semuanya berbunyi lagi dengan sendirinya.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Setelah perangkat audio berganti, mesin Stratos-900 dan Aegis-X, afterburner Aegis-X, motor rudal, dan nada kunci sasaran berbunyi lagi dengan sendirinya dalam sekejap.",
+        "Di Bulan, napas di dalam baju bertekanan juga kembali terdengar."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.3",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Kontrol yang mudah, dan railgun kini mengenai sasaran",
+     "summary": "Terbang dan berlayar dibuat ulang agar siapa pun bisa melakukannya. Sudut pandang tidak lagi terkunci: pesawat terbang ke arah pandanganmu, dan kapal menurut pada W, A, S, dan D seperti perahu. Railgun Dreadnought kini merusak apa yang dikenainya; pada 1.1.0 hingga 1.1.2 pelurunya tidak merusak apa pun.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Pesawat terbang ke arah pandanganmu: putar kepalamu, dan Stratos-900 atau Aegis-X akan miring, berbelok, menanjak, atau menukik ke sana dengan sendirinya. W dan S mengatur daya dorong; klik kiri menembakkan rudal Aegis-X ke sasaran yang dipilih radar dengan sendirinya.",
+        "Flap, roda pendarat, rem, dorong balik, afterburner, kanopi, dan kait pendaratan kini bekerja sendiri, dan panduan singkat di layar menampilkan kontrolnya saat kamu naik.",
+        "Sudut pandang milikmu: tidak lagi terkunci ke orang pertama atau ikut miring bersama pesawat, F5 berfungsi saat terbang, dan menahan Left Alt memungkinkanmu melihat sekitar sementara pesawat tetap pada arahnya.",
+        "Kapal: saat kamu berdiri di sebuah pos, tombol untuk mengambilnya ditampilkan. Di kemudi, W dan S menjalankan mesin (mundur di bawah nol), A dan D mengemudikan, dan saat dilepas, roda kemudi kembali ke tengah dan kapal menahan haluannya; “Jongkok” untuk pergi. Pintu feri ada di Y.",
+        "Bila tak ada orang di pos penembak, juru mudi Dreadnought menembakkan meriam dari kemudi: klik kiri untuk salvo, klik kanan untuk VLS.",
+        "Masalah dari 1.1.2 diperbaiki: kemudi membelokkan kapal berlawanan dengan tombolnya, mundur tidak memberi daya dorong, kapal tidak bisa diturunkan dari pantai (kini kapal mengapung dengan buritan tepat melewati air yang kamu bidik), dan kapal tidak bisa diambil kembali dalam mode bertahan hidup.",
+        "Peluru railgun meledak pada blok, makhluk, kapal, atau pesawat pertama di lintasannya dan merusak apa yang ada dalam jarak 4 m; saat satu salvo jatuh pada satu sasaran, keenam peluru dihitung. Lihat bagian mana pun dari sebuah lambung, dan kedua turet membidik titik itu.",
+        "Meriam tidak melukai kapal yang menembakkannya maupun awaknya, dan tidak pernah menghancurkan blok. Tidak ada kapal yang tenggelam atau pesawat yang jatuh oleh satu salvo saja, dan mengawaki meriam tidak lagi memuat chunk yang jauh.",
+        "Pesan kematian dari senjata Cherry tidak lagi menampilkan kunci yang belum diterjemahkan saat penyerang memegang item yang diganti namanya.",
+        "Jumlah rudal Aegis-X di kiri bawah tampilan penerbangan tidak lagi terpotong oleh tepi bawah layar. Dengan skala GUI otomatis, hal ini terjadi di banyak ukuran layar, di antaranya 720p, 1440p, 4K, dan jendela bawaan game.",
+        "Titik rute peta hanya diterima dalam tampilan terluasnya, sekitar 1,4 km dari kapal, yang juga melindungi server dari permintaan titik rute yang salah bentuk."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Kontrol telah berubah: tombol terbang 1.1.2 (R, U, Y, K, Z, N, M, J dan tombol panah) dan tombol kemudi (, . = - ; ') sudah dihapus, dan tombol mana pun yang pernah kamu atur ulang tidak lagi dipakai.",
+        "Peluru railgun kini melukai apa pun yang dikenainya, termasuk kapal dan pesawat milik pemain lain. Kerusakan dikreditkan kepada awak yang mengarahkan meriam.",
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.2",
+     "date": "2026-09-23",
+     "type": "release",
+     "title": "Kapal-kapal rampung: model sungguhan, pos yang berfungsi, dan pintu feri",
+     "summary": "Leviathan dan Dreadnought mendapat model dan interior sungguhan, dan setiap pos di atas kapal kini berfungsi dari dalam game. Di 1.1.0 dan 1.1.1, railgun, VLS, dan meja peta sebenarnya tidak bisa dipakai; sekarang bisa.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Kapal sungguhan: lambung, geladak, dan interior dimodelkan sepenuhnya — geladak kendaraan, lounge, geladak observasi, dan anjungan feri; anjungan, CIC, dan hanggar kapal perusak — dengan jendela tembus pandang yang menyala di malam hari. Setiap geladak yang kamu lihat bisa kamu jalani.",
+        "Pos: berdirilah di kemudi, meja peta, atau pos meriam atau sonar kapal perusak, lalu tekan tombol pos (bawaan H) untuk mengambilnya. Meja peta membuka peta tempat kamu menarik rute dengan klik; pos sonar yang baru menampilkan kontak di layar sapuan yang berputar.",
+        "Dreadnought kini membawa dua turet railgun 406 mm berlaras tiga. Keduanya membidik titik yang kamu lihat dan menembakkan satu salvo dengan klik kiri: kilatan moncong, cincin gelombang kejut, peluru jejak, dan laras yang terdorong mundur. Dengan klik kanan, VLS menembak target yang dikunci radar setelah palkanya terbuka, sambil menyemburkan asap putih.",
+        "Visor haluan serta ramp haluan dan buritan Leviathan: saat kapal berhenti, tekan tombol pintu (bawaan ') di kemudi. Visor naik sebelum ramp turun, mesin tetap terkunci sampai semuanya tertutup lagi, dan kamu bisa berjalan menaiki ramp yang diturunkan.",
+        "Ombak dan gelembung: kapal yang berlayar membangkitkan ombak haluan pada sudut Kelvin dan meninggalkan jejak buih, dan baling-baling yang berputar mengaduk gelembung.",
+        "Tombol kemudi tidak lagi bentrok dengan tombol bawaan Minecraft: , dan . memutar kemudi, = dan - mengatur mesin, dan ; menahan haluan. Instrumen kemudi kini tampil di atas hotbar dan hati, tidak lagi menutupinya."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Tombol kemudi berganti nama, jadi pengaturan tombol yang kamu ubah di 1.1.0 atau 1.1.1 tidak terbawa. Atur lagi.",
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.1",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "Diperbaiki: afterburner tidak lagi membuat game mogok",
+     "summary": "Dengan pengaturan video “Peningkatan Transparansi” menyala, menyalakan afterburner Cherry Aegis-X membuat game mogok. Sekarang tidak lagi.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Dengan “Peningkatan Transparansi” menyala, menyalakan afterburner saat terbang (Z secara bawaan) tidak lagi membuat game mogok, dan shock diamond-nya tetap terlihat dari kokpit menembus kanopi."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "The Aerospace & Naval Update — ke udara dan ke laut",
+     "summary": "Cherry menghadirkan pesawat, bandara, dan kapal. Kamu bisa berjalan-jalan di atas pesawat yang sedang terbang atau di geladak kapal yang sedang berlayar.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Dua pesawat: Cherry Stratos-900 pengangkut penumpang dan kargo, serta jet tempur siluman Cherry Aegis-X, dengan kokpit orang pertama, cakrawala buatan dan retikel, roda pendarat yang dapat dilipat, flap, dan afterburner.",
+        "Perlengkapan bandara: lampu PAPI yang berubah warna mengikuti sudut pendekatanmu, katapel yang melontarkan pesawat, kawat penahan yang menangkap kait ekor, dan radar kendali yang menampilkan pesawat di sekitarnya.",
+        "Dua kapal: feri mobil samudra Cherry Leviathan-Class sepanjang 48 m dan kapal perusak peluru kendali Cherry Dreadnought-Class sepanjang 64 m. Turunkan ke air lalu pegang kemudi, atau tarik rute di meja peta dan kapal akan berlayar sendiri sambil menghindari perairan dangkal.",
+        "Hanya kelas Dreadnought yang bersenjata: turet railgun 406 mm yang berputar dan terangkat secara terpisah serta mengguncang lambung saat menembak, dan VLS yang baru meluncur setelah palkanya terbuka penuh. Feri tidak membawa persenjataan.",
+        "Berjalan di geladak: berlari dan melompatlah di atas pesawat atau kapal yang bergerak. Geladak di bawahmu ikut membawamu.",
+        "Kapal kembali ke tanganmu bila sedang berhenti dan tidak ada orang di geladaknya. Kerusakan yang pernah dialaminya diingat, jadi menurunkannya kembali ke air tidak memperbaikinya."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau lebih baru, Fabric API 0.161.0 atau lebih baru, GeckoLib 5.5.6 atau lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Kini di Minecraft 26.3",
+   "releases": [
+    {
+     "version": "V1.0.1",
+     "date": "2026-09-20",
+     "type": "release",
+     "title": "Kini di Minecraft 26.3",
+     "summary": "Cherry kini berjalan di Minecraft 26.3. Semua dari V1.0.0 tetap ada, dan di Bulan yang pernah Anda kunjungi, daratan yang baru dihasilkan menyambung dengan yang lama.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Semua yang ditambahkan V1.0.0 berjalan di Minecraft 26.3: Bulan, Cherry Apex-1 dan Launch Pad Complex, aturan Bulan, Overdrive Fusion, sumber daya Bulan, Micrometeorites, dan kedua kemampuan.",
+        "Dunia dari V1.0.0 berlanjut: di Bulan, daratan yang baru dihasilkan memiliki medan dan kawah yang sama seperti di V1.0.0, sehingga menyambung dengan daratan yang sudah Anda jelajahi."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.3, Fabric Loader 0.19.5 atau yang lebih baru, Fabric API 0.161.0 atau yang lebih baru, GeckoLib 5.5.6 atau yang lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.0.0",
+     "date": "2026-09-13",
+     "type": "release",
+     "title": "The Lunar Genesis Update — dari landasan peluncuran menuju Bulan",
+     "summary": "Rilis pertama Cherry: merek mod terpisah yang dipasang berdampingan dengan Alpha. Bangun Launch Pad Complex, terbangkan Cherry Apex-1 ke Bulan, lalu pulang kembali.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Bulan: dimensi baru dengan kawah, endapan bijih, dan Helium-3 Geysers, serta jamnya sendiri.",
+        "Cherry Apex-1 dan Launch Pad Complex: naiki roket yang tertambat, tahan tombol lompat selama hitung mundur, lalu terbang dari Overworld ke Bulan dan kembali ke landasan dengan pilot tetap berada di dalamnya.",
+        "Aturan Bulan: gravitasinya seperenam, dan vakum mengambil 15% nyawa maksimum menembus zirah apa pun kecuali Pressure Suit. Di dalam bola Pressure Field Projector, Anda aman.",
+        "Overdrive Fusion: di Resonance Crucible, senjata, alat, atau bagian zirah yang melalui Overdrive Fusion mendapat ×3 damage serangan, zirah, ketangguhan zirah, atau kecepatan menambang.",
+        "Sumber daya Bulan: Ultrasonic Cutter hanya menambang Regolith Core Deposits saat sedang beresonansi, dan Cryo Canister hanya menangkap Helium-3 saat sebuah geiser sedang menyembur.",
+        "Micrometeorites menghantam permukaan Bulan dan meninggalkan kawah.",
+        "Dua kemampuan: Dimensional Cleave (300% damage hanya di sepanjang bentuk salibnya) dan Astral Lift, terbang dengan pelindung dada yang telah melalui Overdrive Fusion.",
+        "Sudah diperiksa dapat berjalan bersama ke-13 mod Alpha 4.4.0 tanpa konflik mixin."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Membutuhkan Minecraft 26.2, Fabric Loader 0.19.3 atau yang lebih baru, Fabric API 0.154.2 atau yang lebih baru, GeckoLib 5.5.5 atau yang lebih baru, dan Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,167 @@
+{
+ "lang": "es",
+ "brand": "halia",
+ "updated": "2026-10-16",
+ "title": "Historial de actualizaciones",
+ "updated_label": "Actualizado el 2026-10-16",
+ "note": "",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Halia V1.2.1 — corrección de un cierre al abrir el inventario",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-16",
+     "type": "hotfix",
+     "title": "Halia V1.2.1 — corrección de un cierre al abrir el inventario",
+     "summary": "Halia V1.2.1 corrige un cierre inesperado: con OUKA instalado, abrir el inventario en modo creativo cerraba el juego.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Corregido: abrir el inventario en modo creativo ya no cierra el juego cuando OUKA está instalado junto a Halia. La pestaña creativa del Aerie mostraba el Aerie Heart dos veces."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Los requisitos no cambian respecto a V1.2.0: Minecraft 26.3, Fabric Loader 0.19.5 o posterior, Fabric API 0.161.0+26.3 o posterior, Java 25. No hay más cambios."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-10-16",
+     "type": "release",
+     "title": "Halia V1.2 — la red de almacenamiento Aerie, 20 hojas nuevas con 7 técnicas nuevas, y SS-05",
+     "summary": "Halia V1.2 añade el Aerie, una red de almacenamiento que construyes con un Aerie Heart, conductos y celdas: todos los objetos y fluidos que tienes, buscables desde una sola consola, se mueven hacia dentro y hacia fuera mediante Talon Intakes y Outlets, y los Artificers los fabrican a demanda. La Halia Blade gana 20 hojas con nombre, 7 técnicas de corte y almas que una hoja recoge y gasta.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "El Aerie: coloca un Aerie Heart, une los dispositivos con Aerie Conduits, pon Clutch Cells en una Clutch Bay y abre una Roost Console para ver y buscar todo lo almacenado. Hay 37 tipos de dispositivo, la mayoría en 16 colores.",
+        "Movimiento y fabricación: Talon Intakes y Outlets mueven objetos y fluidos entre el Aerie y cualquier cofre o máquina; los Artificers fabrican a demanda a partir de patrones escritos en una Scribe Console; Updraft Masts y Field Consoles llegan al Aerie sin cables.",
+        "Energía con OUKA: si OUKA está instalado, el Aerie Heart toma su energía de la red de pilones Tesla de OUKA. Sin OUKA, el Aerie no necesita energía.",
+        "20 hojas nuevas con nombre: las líneas Gale Fang y Tempest Fang, Ironcrag, Ashen Crag, seis Plumes, de madera a netherita, la Weathered Blade, Evenfall, Heartwood y los Raptors. La mayoría se forja en el yunque a partir de una caja de materiales; algunas caen de jefes; los zombis a veces llevan una Weathered Blade; y una hoja sin nombre en un soporte que queda atrapada en la explosión de un Wither se convierte en Ashen Crag.",
+        "7 técnicas de corte nuevas: Blossom End, Void Slash, Circle Slash, Vertical Drive y Horizontal Drive, Wave Edge y Piercing. Los Drives lanzan un corte volador hacia delante.",
+        "Almas: una hoja que sostienes mientras derrotas enemigos reúne almas de su experiencia. Las espadas invocadas ahora cuestan almas en lugar de experiencia, y refinar una hoja en el yunque le da almas.",
+        "Durabilidad y refinado: cada hoja con nombre tiene ahora su propia durabilidad, y refinar sube el daño de la hoja y su durabilidad máxima (hasta refinado 200).",
+        "Stellar Remote SS-05 Tesseract: un quinto ataque, con su propio vídeo. Un cubo de luz de 640 bloques por lado se alza alrededor de tu punto de mira; su suelo se divide en celdas que se levantan, giran y cuelgan en el aire anillo por anillo desde el centro hacia fuera, y un cubo de luz se fija en el cielo."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requisitos: Minecraft 26.3, Fabric Loader 0.19.5 o más reciente, Fabric API 0.161.0+26.3 o más reciente, Java 25. En multijugador, Halia también debe estar instalado en el servidor.",
+        "Cambios en las hojas de V1.1: el golpe de una hoja es 1 menor que antes con el mismo valor base; las hojas con nombre recién fabricadas tienen menos ataque base y durabilidad que en V1.1 (por ejemplo, Yamato: ataque 9 → 7, durabilidad 100 → 40); las espadas invocadas necesitan almas. Las hojas que ya están en tu mundo conservan la durabilidad con la que se hicieron.",
+        "Con OUKA instalado, el Aerie no funciona hasta que su Heart esté dentro del alcance de un pilón con energía. Para usarlo sin energía junto a OUKA, pon powerFromOukaGrid en false en config/halia-aerie.json.",
+        "Los mundos de V1.1 se abren tal como están. No vuelvas a 1.1 con un mundo que tenga dispositivos Aerie o las hojas nuevas: se borrarían.",
+        "Stellar Remote destruye áreas muy grandes de forma permanente, y SS-05 remodela de una vez un área de 640 bloques: haz una copia de seguridad de tu mundo. Quien esté dentro del cubo cuando pase su onda, muere."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Halia V1.1.1 — corrección de un cierre con «Improved Transparency»",
+   "releases": [
+    {
+     "version": "V1.1.1",
+     "date": "2026-10-12",
+     "type": "hotfix",
+     "title": "Halia V1.1.1 — corrección de un cierre con «Improved Transparency»",
+     "summary": "Halia V1.1.1 corrige un fallo de V1.1.0: con el ajuste de vídeo «Improved Transparency» activado, el juego se cerraba en cuanto aparecía en pantalla un objeto Halia brillante, por ejemplo los materiales de alma que caen al romper una caja de materiales de hoja, y el mundo no se podía volver a abrir mientras esos objetos estuvieran allí. No cambió nada más.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Corregido: el juego ya no se cierra cuando se dibuja un objeto Halia brillante con «Improved Transparency» activado. Los mundos que no se podían abrir por esto vuelven a abrirse.",
+        "Lo demás es igual que en V1.1.0: la Halia Blade, sus 90 movimientos de combo, los materiales, los expositores y el Stellar Remote no cambian."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o superior, Fabric API 0.161.0+26.3 o superior y Java 25. En multijugador, Halia también debe estar instalado en el servidor.",
+        "Mientras «Improved Transparency» esté activado, dos cosas se ven distintas: los objetos Halia no muestran el brillo de encantamiento, y la esfera de Judgement Cut aparece oscura. Con el ajuste desactivado, ambas se ven como antes.",
+        "Los mundos de V1.1.0 se abren tal como están. El Stellar Remote sigue destruyendo de forma permanente zonas muy grandes del mundo; haz una copia de seguridad antes de pulsar su botón."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-10-12",
+     "type": "release",
+     "title": "Halia V1.1 — la Halia Blade: un katana, 90 combos y espadas invocadas",
+     "summary": "Halia V1.1 añade la Halia Blade, un katana que se lleva en la cadera y se maneja con el ritmo justo: combos en el suelo y en el aire, artes cargadas, espadas invocadas, fijación de objetivo, guardia y movimientos de truco. Incluye 8 materiales de fabricación, 6 soportes para hojas y 11 hojas con nombre. El Stellar Remote de V1.0 no cambia.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Halia Blade: fabrícala con Soulsteel Ingots, una Corvus Soul, una espada de hierro y un ladrillo del Nether. Usa (clic derecho) para atacar; pulsar de nuevo a tiempo continúa el combo. En total hay 90 movimientos de combo, en el suelo y en el aire.",
+        "Artes cargadas: mantén usar y suelta cuando aparezcan partículas para Judgement Cut; suelta justo antes de que aparezcan para la versión más fuerte. Agacharse + avanzar + usar es Rapid Slash, agacharse + retroceder + usar es Upper Slash.",
+        "Espadas invocadas: el botón de seleccionar bloque (clic central) lanza una espada a tu objetivo por 1 punto de experiencia; 4 patrones más grandes — Spiral, Storm, Blistering y Heavy Rain Swords — cuestan 5 cada uno.",
+        "Fijación, guardia y movimiento: mantén agachado para fijar un enemigo; agacharte quieto protege de los ataques a distancia; los trucos con el botón de correr te lanzan hacia un enemigo, por encima de él o lejos de él; en el aire puedes saltar desde un enemigo o desde una pared.",
+        "Rango de concentración: al acertar golpes sube un rango que se muestra arriba a la derecha, de D hasta SSS; baja de nuevo cuando dejas de luchar. Los rangos altos aumentan el daño.",
+        "Desgaste, refinado y reforja: una hoja se rompe tras 101 golpes y suelta un alma que conserva su registro. En un yunque, una Corvus Soul refina una hoja (1 nivel por alma), y una hoja rota puede reforjarse.",
+        "Materiales y soportes: 8 materiales, desde Tiny Corvus Soul hasta Abyssal Geode, cada uno con su receta, y 6 Halia Stands (de suelo y de pared) para exponer una hoja.",
+        "Guía en el juego: 57 logros. La rama «Blade MoveSets» enumera cada movimiento con las teclas asignadas en tu ordenador, y al pulsar un logro de material o de hoja se muestra su receta."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o superior, Fabric API 0.161.0+26.3 o superior y Java 25. En multijugador, Halia también debe estar instalado en el servidor.",
+        "El Stellar Remote sigue destruyendo de forma permanente zonas muy grandes del mundo. Haz una copia de seguridad de tu mundo antes de pulsar su botón. Nada de esto cambió en esta versión.",
+        "Los mundos de V1.0.0 se abren tal como están; esta versión solo añade contenido. No vuelvas a 1.0.0 con un mundo que tenga hojas, materiales o soportes: se borrarían.",
+        "Aún no confirmado por el estudio: jugar en un servidor multijugador dedicado, en Windows y usarlo junto con otros mods de Corvus Store. En primera persona, la hoja envainada se mantiene casi siempre fuera de la vista hasta que atacas."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Halia V1.0 — el Stellar Remote y tres ataques desde la órbita",
+   "releases": [
+    {
+     "version": "V1.0.0",
+     "date": "2026-10-11",
+     "type": "release",
+     "title": "Halia V1.0 — el Stellar Remote y tres ataques desde la órbita",
+     "summary": "La primera versión de Halia (The Max Model), para Minecraft 26.3: el Stellar Remote, un único botón rojo que desata tres ataques — SS-01 Railgun, SS-03 Gungnir y SS-04 Seven Stars. Destruyen de forma permanente zonas muy grandes del mundo; lee las advertencias antes de pulsarlo.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "Stellar Remote: un botón rojo bajo una tapa abatible, con su propio modelo 3D. Está en la pestaña del modo Creativo «Halia». En esta versión no tiene receta de fabricación.",
+        "Controles: sujeta el mando y pulsa K, I o U para elegir SS-01, SS-03 o SS-04; con clic derecho lanzas el ataque elegido sobre el suelo al que apunta la mira; agacharse + clic derecho elige el siguiente. Las teclas se pueden reasignar. Una tarjeta junto a la barra rápida muestra el ataque elegido, su tecla y su tiempo de recarga.",
+        "SS-01 Railgun: un láser rojo señala el suelo y, unos 18 segundos después de pulsar el botón, baja un rayo de 200 bloques de radio que elimina toda la columna del mundo, desde el límite de construcción hasta el vacío.",
+        "SS-03 Gungnir: unos 16 segundos después de pulsar el botón, una aguja negra cae en vertical. Un anillo de choque se extiende hasta 400 bloques, arrasa el terreno hasta la altura del impacto y deja un cráter fundido. La aguja se queda, en pie desde el fondo del mundo hasta el límite de construcción.",
+        "SS-04 Seven Stars: el Carro de la Osa Mayor se proyecta sobre el terreno, 7 nodos a lo largo de unos 1440 bloques. Caen 7 estrellas, una tras otra; cada una excava un cráter y deja dentro un cristal de Star Core. Después, las 7 líneas de la figura quedan grabadas como zanjas, con Star Trace en el fondo.",
+        "Películas: cada ataque reproduce, para el jugador que lo lanzó, una película dentro del juego — cámara, HUD y escenas en el espacio. Pulsa J para saltar una película en curso; si no hay ninguna en curso, J desactiva o activa las películas. El ataque ocurre en cualquier caso.",
+        "Tiempo de recarga: cada ataque tiene su propio tiempo de recarga de 60 segundos (1 segundo en modo Creativo). Mientras tu último ataque del mismo tipo siga en curso, no puedes volver a lanzarlo.",
+        "Quedan cuatro bloques que se pueden picar y llevar: Block of Tungsten y Thermal Conduit de la aguja de Gungnir, Star Core y Star Trace de Seven Stars. Tres necesitan un pico de diamante o mejor; el Block of Tungsten necesita un pico de netherita. Los cuatro están también en la pestaña del modo Creativo."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5 o superior, Fabric API 0.161.0+26.3 o superior y Java 25. En multijugador, Halia también debe estar instalado en el servidor.",
+        "Los ataques destruyen el terreno de forma permanente y a muy gran escala; no se puede deshacer. SS-01 elimina todo lo que hay a menos de 200 bloques del objetivo, desde el límite de construcción hasta el vacío. Gungnir arrasa, a menos de 400 bloques del impacto, todo lo que queda por encima de la altura del impacto, y excava un cráter en el centro. Seven Stars excava 7 cráteres y 7 zanjas a lo largo de unos 1440 bloques. Haz antes una copia de seguridad de tu mundo, y no uses el Stellar Remote en un mundo o servidor del que no estés dispuesto a perder partes.",
+        "Un ataque mata a todo ser vivo dentro de su zona, incluido el jugador que lo lanzó; solo se salvan los jugadores en modo Creativo o Espectador. Las construcciones, los cofres y los objetos sueltos de la zona destruida se pierden. Fuera de su zona, el choque de Gungnir todavía lanza y hiere a las criaturas hasta a 1000 bloques del impacto.",
+        "Un solo ataque carga y reescribe de cientos a miles de chunks; el juego puede ir a tirones mientras dura."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

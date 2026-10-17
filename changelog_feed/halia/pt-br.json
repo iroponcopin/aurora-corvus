@@ -1,0 +1,167 @@
+{
+ "lang": "pt-br",
+ "brand": "halia",
+ "updated": "2026-10-16",
+ "title": "Histórico de atualizações",
+ "updated_label": "Atualizado em 2026-10-16",
+ "note": "",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Halia V1.2.1 — correção de um travamento ao abrir o inventário",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-16",
+     "type": "hotfix",
+     "title": "Halia V1.2.1 — correção de um travamento ao abrir o inventário",
+     "summary": "O Halia V1.2.1 corrige um travamento: com o OUKA instalado, abrir o inventário no modo criativo fechava o jogo.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Corrigido: abrir o inventário no modo criativo não fecha mais o jogo quando o OUKA está instalado junto com o Halia. A aba criativa do Aerie mostrava o Aerie Heart duas vezes."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Os requisitos são os mesmos da V1.2.0: Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0+26.3 ou mais recente, Java 25. Nada mais mudou."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-10-16",
+     "type": "release",
+     "title": "Halia V1.2 — a rede de armazenamento Aerie, 20 lâminas novas com 7 técnicas novas, e SS-05",
+     "summary": "O Halia V1.2 adiciona o Aerie, uma rede de armazenamento que você monta com um Aerie Heart, condutes e células: todo item e fluido que você possui, pesquisável em um único console, é movido para dentro e para fora por Talon Intakes e Outlets, e fabricado sob demanda pelos Artificers. A Halia Blade ganha 20 lâminas com nome, 7 técnicas de corte e almas que uma lâmina coleta e gasta.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "O Aerie: coloque um Aerie Heart, conecte dispositivos com Aerie Conduits, coloque Clutch Cells em uma Clutch Bay e abra um Roost Console para ver e pesquisar tudo o que está armazenado. São 37 tipos de dispositivo, a maioria em 16 cores.",
+        "Movimentação e fabricação: Talon Intakes e Outlets movem itens e fluidos entre o Aerie e qualquer baú ou máquina; os Artificers fabricam sob demanda a partir de padrões escritos em um Scribe Console; Updraft Masts e Field Consoles alcançam o Aerie sem fios.",
+        "Energia com OUKA: se o OUKA estiver instalado, o Aerie Heart retira sua energia da rede de pilones Tesla do OUKA. Sem o OUKA, o Aerie não precisa de energia.",
+        "20 lâminas novas com nome: as linhas Gale Fang e Tempest Fang, Ironcrag, Ashen Crag, seis Plumes, de madeira a netherita, a Weathered Blade, Evenfall, Heartwood e os Raptors. A maioria é forjada na bigorna a partir de uma caixa de materiais; algumas caem de chefes; zumbis às vezes carregam uma Weathered Blade; e uma lâmina sem nome em um suporte que é atingida pela explosão de um Wither se transforma em Ashen Crag.",
+        "7 técnicas de corte novas: Blossom End, Void Slash, Circle Slash, Vertical Drive e Horizontal Drive, Wave Edge e Piercing. Os Drives lançam um corte voador à sua frente.",
+        "Almas: uma lâmina que você segura enquanto derrota inimigos reúne almas da experiência deles. Espadas invocadas agora custam almas em vez de experiência, e refinar uma lâmina na bigorna lhe dá almas.",
+        "Durabilidade e refino: cada lâmina com nome agora tem sua própria durabilidade, e refinar aumenta o dano da lâmina e sua durabilidade máxima (até o refino 200).",
+        "Stellar Remote SS-05 Tesseract: um quinto ataque, com vídeo próprio. Um cubo de luz de 640 blocos por lado surge em volta da sua mira; seu chão é cortado em células que são erguidas, giradas e suspensas no ar anel por anel, do centro para fora, e um cubo de luz se fixa no céu."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requisitos: Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0+26.3 ou mais recente, Java 25. Para multijogador, o Halia também precisa estar instalado no servidor.",
+        "Mudanças nas lâminas da V1.1: o golpe de uma lâmina é 1 a menos do que antes com o mesmo valor base; lâminas com nome recém-fabricadas têm ataque base e durabilidade menores que na V1.1 (por exemplo, Yamato: ataque 9 → 7, durabilidade 100 → 40); espadas invocadas precisam de almas. As lâminas que já estão no seu mundo mantêm a durabilidade com que foram feitas.",
+        "Com o OUKA instalado, o Aerie não funciona até que seu Heart esteja ao alcance de um pilone energizado. Para usá-lo sem energia junto com o OUKA, defina powerFromOukaGrid como false em config/halia-aerie.json.",
+        "Os mundos da V1.1 abrem como estão. Não volte para a 1.1 com um mundo que tenha dispositivos Aerie ou as novas lâminas: eles seriam apagados.",
+        "O Stellar Remote destrói áreas muito grandes de forma permanente, e o SS-05 remodela uma área de 640 blocos de uma só vez: faça backup do seu mundo. Quem estiver dentro do cubo quando a onda passar, morre."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Halia V1.1.1 — correção de uma falha com «Improved Transparency»",
+   "releases": [
+    {
+     "version": "V1.1.1",
+     "date": "2026-10-12",
+     "type": "hotfix",
+     "title": "Halia V1.1.1 — correção de uma falha com «Improved Transparency»",
+     "summary": "O Halia V1.1.1 corrige um defeito da V1.1.0: com a opção de vídeo «Improved Transparency» ligada, o jogo fechava assim que um item brilhante do Halia aparecia na tela — por exemplo, os materiais de alma que caem ao quebrar uma caixa de materiais de lâmina — e o mundo não podia ser aberto de novo enquanto esses itens estivessem lá. Nada mais mudou.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Corrigido: o jogo não fecha mais quando um item brilhante do Halia é desenhado com «Improved Transparency» ligada. Mundos que não podiam ser abertos por causa disso voltam a abrir.",
+        "O resto é igual à V1.1.0: a Halia Blade, seus 90 movimentos de combo, os materiais, os expositores e o Stellar Remote não mudam."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0+26.3 ou mais recente e Java 25. No multijogador, o Halia também precisa estar instalado no servidor.",
+        "Enquanto «Improved Transparency» estiver ligada, duas coisas aparecem diferentes: os itens do Halia não mostram o brilho de encantamento, e a esfera de Judgement Cut fica escura. Com a opção desligada, as duas aparecem como antes.",
+        "Mundos da V1.1.0 abrem do jeito que estão. O Stellar Remote continua destruindo de forma permanente áreas muito grandes do mundo; faça um backup antes de apertar o botão."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-10-12",
+     "type": "release",
+     "title": "Halia V1.1 — a Halia Blade: uma katana, 90 combos e espadas invocadas",
+     "summary": "O Halia V1.1 adiciona a Halia Blade, uma katana usada na cintura e manejada no tempo certo: combos no chão e no ar, ataques carregados, espadas invocadas, mira travada, defesa e movimentos de manobra. Vêm 8 materiais de criação, 6 suportes de lâmina e 11 lâminas nomeadas. O Stellar Remote da V1.0 não muda.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Halia Blade: crie-a com Soulsteel Ingots, uma Corvus Soul, uma espada de ferro e um tijolo do Nether. Use (clique direito) para atacar; apertar de novo no momento certo continua o combo. São 90 movimentos de combo no total, no chão e no ar.",
+        "Ataques carregados: segure usar e solte quando as partículas aparecerem para Judgement Cut; solte logo antes de elas aparecerem para a versão mais forte. Agachar + para frente + usar é Rapid Slash, agachar + para trás + usar é Upper Slash.",
+        "Espadas invocadas: o botão de escolher bloco (clique do meio) lança uma espada no seu alvo por 1 ponto de experiência; 4 padrões maiores — Spiral, Storm, Blistering e Heavy Rain Swords — custam 5 cada.",
+        "Mira travada, defesa e movimento: segure agachar para travar em um inimigo; agachar parado protege contra ataques à distância; as manobras com o botão de correr lançam você até um inimigo, por cima dele ou para longe dele; no ar, você pode pular de um inimigo ou de uma parede.",
+        "Ranque de concentração: acertar golpes sobe um ranque mostrado no canto superior direito, de D até SSS; ele cai de novo quando você para de lutar. Ranques altos aumentam o dano.",
+        "Desgaste, aprimoramento e reforja: uma lâmina quebra após 101 golpes e deixa cair uma alma que guarda o seu registro. Na bigorna, uma Corvus Soul aprimora uma lâmina (1 nível por alma), e uma lâmina quebrada pode ser reforjada.",
+        "Materiais e suportes: 8 materiais, de Tiny Corvus Soul a Abyssal Geode, cada um com receita, e 6 Halia Stands (de piso e de parede) para exibir uma lâmina.",
+        "Guia no jogo: 57 progressos. O ramo “Blade MoveSets” lista cada movimento com as teclas definidas no seu computador, e clicar em um progresso de material ou de lâmina mostra a receita dele."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0+26.3 ou mais recente e Java 25. No multijogador, o Halia também precisa estar instalado no servidor.",
+        "O Stellar Remote continua destruindo de forma permanente áreas muito grandes do mundo: faça um backup do seu mundo antes de apertar o botão. Nada nele mudou nesta versão.",
+        "Mundos da V1.0.0 abrem do jeito que estão; esta versão apenas acrescenta conteúdo. Não volte para a 1.0.0 com um mundo que tenha lâminas, materiais ou suportes: eles seriam apagados.",
+        "Ainda não confirmado pelo estúdio: jogar em um servidor multijogador dedicado, no Windows e usar junto com outros mods do Corvus Store. Em primeira pessoa, a lâmina na bainha fica quase sempre fora de vista até você atacar."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Halia V1.0 — o Stellar Remote e três ataques vindos da órbita",
+   "releases": [
+    {
+     "version": "V1.0.0",
+     "date": "2026-10-11",
+     "type": "release",
+     "title": "Halia V1.0 — o Stellar Remote e três ataques vindos da órbita",
+     "summary": "A primeira versão do Halia (The Max Model), para Minecraft 26.3: o Stellar Remote, um único botão vermelho que dispara três ataques — SS-01 Railgun, SS-03 Gungnir e SS-04 Seven Stars. Eles destroem de forma permanente áreas muito grandes do mundo; leia os avisos antes de apertar.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Stellar Remote: um botão vermelho sob uma tampa articulada, com modelo 3D próprio. Fica na aba do modo Criativo \"Halia\". Nesta versão não há receita de fabricação para ele.",
+        "Controles: segure o controle e aperte K, I ou U para escolher SS-01, SS-03 ou SS-04; o clique direito lança o ataque escolhido no chão para onde a mira aponta; agachar + clique direito escolhe o próximo. As teclas podem ser reatribuídas. Um cartão ao lado da barra rápida mostra o ataque escolhido, a tecla dele e o tempo de recarga.",
+        "SS-01 Railgun: um laser vermelho sinaliza o chão e, cerca de 18 segundos depois de apertar o botão, desce um feixe com 200 blocos de raio que remove toda a coluna do mundo, do limite de construção até o vazio.",
+        "SS-03 Gungnir: cerca de 16 segundos depois de apertar o botão, uma agulha preta cai na vertical. Um anel de choque se espalha até 400 blocos, raspa o terreno até a altura do impacto e deixa uma cratera derretida. A agulha fica, de pé do fundo do mundo até o limite de construção.",
+        "SS-04 Seven Stars: as sete estrelas principais da Ursa Maior são projetadas no terreno, 7 nós ao longo de cerca de 1440 blocos. 7 estrelas caem uma após a outra; cada uma cava uma cratera e deixa nela um cristal de Star Core. Depois, as 7 linhas da figura ficam gravadas como valas, com Star Trace no fundo.",
+        "Filmes: cada ataque exibe, para o jogador que o lançou, um filme dentro do jogo — câmera, HUD e cenas no espaço. Aperte J para pular um filme em exibição; se nenhum estiver em exibição, J desliga ou liga os filmes. O ataque acontece de qualquer forma.",
+        "Tempo de recarga: cada ataque tem seu próprio tempo de recarga de 60 segundos (1 segundo no modo Criativo). Enquanto o seu último ataque do mesmo tipo estiver em andamento, você não pode lançá-lo de novo.",
+        "Ficam quatro blocos que podem ser minerados e levados: Block of Tungsten e Thermal Conduit da agulha de Gungnir, Star Core e Star Trace de Seven Stars. Três precisam de uma picareta de diamante ou melhor; o Block of Tungsten precisa de uma picareta de netherita. Os quatro também estão na aba do modo Criativo."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais novo, Fabric API 0.161.0+26.3 ou mais nova e Java 25. No multijogador, o Halia também precisa estar instalado no servidor.",
+        "Os ataques destroem o terreno de forma permanente e em escala muito grande; não há como desfazer. SS-01 remove tudo a até 200 blocos do alvo, do limite de construção até o vazio. Gungnir raspa, a até 400 blocos do impacto, tudo o que está acima da altura do impacto, e cava uma cratera no centro. Seven Stars cava 7 crateras e 7 valas ao longo de cerca de 1440 blocos. Faça antes um backup do seu mundo, e não use o Stellar Remote em um mundo ou servidor do qual você não esteja disposto a perder partes.",
+        "Um ataque mata todo ser vivo dentro da sua zona, inclusive o jogador que o lançou; só os jogadores no modo Criativo ou Espectador são poupados. Construções, baús e itens caídos na área destruída são perdidos. Fora da zona, o choque de Gungnir ainda arremessa e fere criaturas a até 1000 blocos do impacto.",
+        "Um único ataque carrega e reescreve de centenas a milhares de chunks; o jogo pode travar por instantes enquanto isso."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

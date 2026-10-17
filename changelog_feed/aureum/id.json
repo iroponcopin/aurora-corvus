@@ -1,0 +1,42 @@
+{
+ "lang": "id",
+ "brand": "aureum",
+ "updated": "2026-08-30",
+ "title": "Riwayat Pembaruan",
+ "updated_label": "Diperbarui 2026-08-30",
+ "note": "",
+ "groups": [
+  {
+   "label": "1.0",
+   "summary": "Rilis pertama — penghematan memori yang tidak menyentuh render chunk",
+   "releases": [
+    {
+     "version": "1.0.0",
+     "date": "2026-08-30",
+     "type": "release",
+     "title": "Rilis pertama — penghematan memori yang tidak menyentuh render chunk",
+     "summary": "Mod optimisasi terpisah untuk Minecraft 26.2 (Fabric), di luar Alpha. Mod ini bekerja pada logika permainan, memori, dan tick server, tidak pernah menyentuh render chunk, sehingga dapat berjalan berdampingan dengan Sodium dan paket Alpha. Untuk FPS yang lebih tinggi, pasang Sodium.",
+     "sections": [
+      {
+       "title": "Perubahan",
+       "items": [
+        "Cache status blok yang dipakai bersama dan detektor perebutan utas yang lebih ringan: heap residen berkurang 6,3 MB dengan 2.209 chunk dimuat (dua pengukuran independen cocok).",
+        "Waktu kedaluwarsa untuk cache templat struktur: heap berkurang 17,2 MB selama menghasilkan medan baru (dua pengukuran cocok). Templat yang belum disimpan di blok struktur tidak pernah dibuang.",
+        "Setiap optimisasi dapat dimatikan secara terpisah di config/aureum.json, dan item yang dimatikan membiarkan kode vanilla tidak tersentuh.",
+        "/aureum (perlu izin) menampilkan apa yang aktif dan seberapa banyak yang sedang dipakai bersama."
+       ]
+      },
+      {
+       "title": "Catatan Penting",
+       "items": [
+        "Waktu tick (MSPT) tidak berubah dalam batas noise pengukuran; Aureum tidak mengklaim menjadi lebih cepat.",
+        "Dua pengaturan sisi klien (batas partikel dan batas jarak render block-entity) nonaktif secara default, dan efeknya belum diukur.",
+        "Membutuhkan Fabric Loader 0.19.3 atau yang lebih baru, Fabric API, dan Java 25 atau yang lebih baru."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

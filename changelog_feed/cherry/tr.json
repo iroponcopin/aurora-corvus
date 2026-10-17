@@ -1,0 +1,265 @@
+{
+ "lang": "tr",
+ "brand": "cherry",
+ "updated": "2026-10-13",
+ "title": "Güncelleme Geçmişi",
+ "updated_label": "2026-10-13 tarihinde güncellendi",
+ "note": "Gösterilen hasar, hız gibi değerler MOD'un o an kurulan sürümündeki varsayılan değerlerdir. Sunucu tarafında yapılan config ayarlarına göre, oyun içinde hissettiğiniz gerçek değerler farklı olabilir.",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Muhafızlar, robotlar, taretler ve ulaşım",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-13",
+     "type": "release",
+     "title": "Muhafızlar, robotlar, taretler ve ulaşım",
+     "summary": "Cherry'nin üs savunması ve ulaşım güncellemesi: köylerde muhafız köylüler bulunur, güvenlik terminali ve robotu kendi üssünü korur, otomatik tarete monte ettiğin Cherry silahı ateş eder, cam asansör, ağır yük asansörü ve yürüyen merdiven seni, yükünü ve araçlarını taşır. Robot, terminal, taret ve iki asansör enerjiyle çalışır: bir kızıltaş sinyali ya da OUKA V1.2 veya üzeri kuruluysa OUKA'nın şebekesi.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Muhafız köylüler: bir oyuncu çan, yatak ve köylüsü olan bir köye ilk kez yaklaştığında köye 2 muhafız verilir (on veya daha fazla yatakla 3, yirmi veya daha fazlasıyla 4). Teber, tatar yayı ve kalkan taşırlar, 16 blok içindeki düşman yaratıklarla savaşırlar, creeper'lardan geri çekilip uzaktan vururlar ve köy kotasının altında kaldığı sürece her 5 dakikada bir yedek gelir.",
+        "Muhafızlar yalnızca bir köylüye ya da muhafıza zarar vermiş oyuncuya saldırır ve son saldırıdan 2 dakika sonra vazgeçer. Birbirleriyle, köylülerle ya da golemlerle asla savaşmazlar ve Barışçıl modda bir oyuncuya asla saldırmazlar.",
+        "Security Terminal ve Security Robot: bir terminali yerleştiren kişi yöneticisi olur ve sağ tık 2,5 blok içindeki en yakın oyuncuyu kaydeder. Bir terminale bağlı robot, görev yerinin 12 blok çevresinde devriye gezer ve 16 blok içinde gördüğü kayıtsız bir oyuncuya siren çalar, 2 saniye uyarır, sonra her 1,5 saniyede bir sersemletici tüfeğini ateşler: 2 hasar ve 3 saniye sersemletme. Kayıtlı oyuncular, muhafızlar ve Yaratıcı ya da İzleyici moddaki oyuncular asla sersemletilmez.",
+        "Robotun sersemletici tüfeği, 20 atış tutan 400 kJ'lik bir pille çalışır. Robot, terminalinde enerji olduğu sürece terminalinin 16 blok içinde şarj olur; terminal de yanındaki bir kızıltaş sinyaliyle dolar. Boş bir robot yine siren çalar ve nişan alır, ama şarj olana kadar ateş etmez. OUKA V1.2 veya üzeri kuruluysa, bir OUKA direğinin menzilindeki robot ya da terminal OUKA'nın şebekesinden de şarj olur.",
+        "Automatic Turret tavana, duvara veya zemine kurulur ve 360 derece döner. İçine bir Cherry silahı koy ve o silahın şarjörlerini ver (huni de olur): 32 blok içindeki ya da silahın menzilindeki, hangisi kısaysa, düşman yaratıkları ve öfkeli tarafsız yaratıkları izler ve o silahın kendi atış hızı ve sesiyle ateş eder. Oyunculara, köylülere, muhafızlara, robotlara, golemlere ve evcil hayvanlara asla ateş etmez. Onu yalnızca sahibi ve operatörler açabilir ya da kırabilir; kırılan taret silahını, yedeğini ve nişan yönünü korur.",
+        "Taret, cam asansör, yük asansörü, terminal ve robotun enerjisi cihazın yanındaki (asansörde kontrolcünün yanındaki) bir kızıltaş sinyalinden gelir ve OUKA'sız bir oyunun ihtiyacı yalnızca budur. OUKA V1.2 veya üzeri kuruluysa, bir OUKA direğinin menzilindeki (64 blok) cihaz, aksi halde SMES pilleri dahil OUKA'nın şebekesinden enerji çeker. Enerjisiz cihaz neyi beklediğini söyler.",
+        "Aero-Glass High-Speed Elevator: bir kontrolcü ve maglev ray sütunu üzerinde 3x3 bir cam kabin; kendin kurduğun 128 bloğa kadar yükseklikte bir kuyuda çalışır. Saniyede 16 bloğa kadar, yumuşak kalkış ve duruşla gider, vardığında zil çalar ve bir an sonra kapılarını açar. Kabin içindeki holografik panelden ya da sahanlıktaki çağrı düğmesinden seç; birisi kapıdaysa kapılar yeniden açılır ve bir kat kapısı asla boş bir kuyuya açılmaz. Kapalıyken kabin Ay'da havayı içeride, Mars'ta soğuğu dışarıda tutar.",
+        "Titan-Hydraulic Heavy Cargo Lift: çerçevelediğin bir çukurun üzerinde makas ayaklı, 3x3'ten 7x7 bloğa kadar kare bir platform; saniyede 2 blok hızla 24 bloğa kadar yükselir. Hareket ederken etrafında sarı-siyah kapılar kapanır ve kehribar renkli bir fener döner. Seni, sandıklı vagonları, tekneleri ve platforma sığan Cherry araçlarını taşır; araçlar hareket ederken sabitlenir; yoluna bir şey çıkarsa durur ve geri döner. Platformdaki bir kürsü ve her sahanlıktaki bir çağrı düğmesiyle kullanılır; kızıltaşla da çalışır.",
+        "Kinetic Modular Escalator: iki sahanlık, her sütun için bir kafes modülü ve bir kontrol paneli 30 derece, 45 derece ya da düz, 32 bloğa kadar bir hat oluşturur (daha uzunları sahanlıklarla birbirine eklenir). Saniyede 4 blok hızla giden hareketli basamakların üzerinde durursun ve bir kızıltaş sinyali yönünü tersine çevirir. Enerji gerektirmez. Aynı hareketli güverte fiziğini kullanan gemilerde ve hava araçlarında güverteden inen ya da atlayan biri güverteyi hemen terk eder ve hareketli güvertede eğilmek donmak yerine yürümeyi sağlar."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir.",
+        "Taret, cam asansör, yük asansörü, güvenlik terminali ve robotun tüfeği enerjisiz çalışmaz: cihazın yanında bir kızıltaş sinyali ya da OUKA V1.2 veya üzeri kuruluysa bir OUKA direğinin menzili gerekir. Cherry OUKA'sız da çalışır ve o zaman tek kaynağı kızıltaştır."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Silahlar, Ay'da yaşam, Lunaris Prime ve Mars",
+     "summary": "Cherry'nin en büyük güncellemesi: birinci şahıs animasyonu ve geri tepmesi olan beş yeni nesil silah, Ay'da üç tür canlı, Ay'ın uzak bir köşesindeki bir harabede mühürlü boss Lunaris Prime, soğuğu ve demir tozu fırtınalarıyla kızıl gezegen Mars, Apex-1'i üç dünyadan istediğinize uçuran bir navigasyon konsolu ve tüm silahları, şarjörleri ve araç parçalarını üreten Advanced Cherry Fabricator.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Beş silah: CR-14 bullpup tüfek, CP-9 hafif makineli tabanca, CS-50 raylı keskin nişancı tüfeği, CX-12 magpulse pompalı tüfek ve C-Pistol. Sağ tıkla nişan alınır ve nişan noktasından daha yakın ya da uzak olan her şey yumuşakça bulanıklaşır; R ile yeniden doldurulur (hayatta kalma modunda o silahın bir şarjörüyle), F ile incelenir; geri tepme, namlu alevi, kovanlar, holografik nişangâhlar, CS-50'nin 6× termal dürbünü ve C-Pistol'ün lazer nişangâhı da var.",
+        "Ay'da yaşam: Selenite Stalker regolitin altında saklanır, eğilmeden yürüyen herkesin üzerine atlar ve basınçlı giysileri deler; Void Drifter'in EMP'si silahlarının nişangâhlarını ve cephane göstergelerini söndürür; Regolith Devourer yere vurup seni gökyüzüne fırlatır ve erimiş meteorlar savurur.",
+        "Lunaris Prime: Ay'da 8.000 bloğun ötesinde dev bir krater Astraea Shackle'ı barındırır (/locate ile bulunur). Mühür konsoluna konan bir Astral Catalyst boss'u uyandırır; gökyüzü kızıla döner ve canı yarıya indiğinde zırhı fırlayıp dağılır, daha hızlı ikinci bir evre başlar.",
+        "Kalıntıları: Coreshard of Lunaris, Graviton Siphon (atışı bir kara delik açar) ve Crown of Selene.",
+        "Mars: Fırlatma rampasında fırlatma tuşuna basarak Apex-1'in Stellar Navigation konsolunu açın ve Dünya'yı, Ay'ı ya da Mars'ı seçin. Mars'ta yer çekimi 0,38 g, hava ise −60 °C'de ve solunamaz: basınçlı giysi havayı dışarıda tutar, demirci tezgâhında içine dikilen bir Thermal Lining de soğuğu dışarıda tutar.",
+        "Mars'ta yaklaşık her 20 dakikada bir demir tozu fırtınaları eser: sis birkaç bloğa kadar daralır ve Cherry'nin HUD'larından parazit geçer.",
+        "Mars'ın kaynakları: Martian Ferrite ve Perchlorate Energy Salt. Perchlorate Propellant, üç bidonluk roket yakıtıdır.",
+        "Advanced Cherry Fabricator: Bir tarif seçip altı girişini doldurun; silahları, şarjörlerini, silah parçalarını, yakıtı ve tüm araçları üretir; helyum-3 ve regolit çekirdeklerinden seri ürettiği iticilerle Apex-1'i, raylı top namlularıyla Dreadnought'u birleştirir; huniler de onu besleyebilir."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Ses aygıtı değişince sesler geri gelir",
+   "releases": [
+    {
+     "version": "V1.1.4",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Ses aygıtı değişince sesler geri gelir",
+     "summary": "Ses aygıtı değiştiğinde (kulaklık takıldığında ya da çıkarıldığında veya seçeneklerden bir aygıt seçildiğinde) oyun ses motorunu yeniden başlatır ve döngüdeki tüm sesleri durdurur. 1.1.0 ile 1.1.3 arasında Cherry'nin uçak motorları, art yakıcı, füze motorları, kilitlenme sesleri ve basınçlı giysinin nefes sesi bundan sonra yeniden binene ya da kaskı yeniden takana dek sessiz kalıyordu. Artık kendiliğinden yeniden çalıyorlar.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Ses aygıtı değiştikten sonra Stratos-900 ve Aegis-X motorları, Aegis-X'in art yakıcısı, füze motorları ve kilitlenme sesleri bir anda kendiliğinden yeniden çalar.",
+        "Ay'da basınçlı giysinin nefes sesi de aynı şekilde geri gelir."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.3",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Kolay kontroller, ana top da artık isabet ediyor",
+     "summary": "Uçmak ve seyretmek, herkes yapabilsin diye baştan yapıldı. Görünüm artık kilitli değil: uçaklar baktığınız yere uçar, gemiler de bir tekne gibi W, A, S ve D ile yönetilir. Dreadnought'un elektromanyetik topu artık vurduğu şeye hasar veriyor; 1.1.0'dan 1.1.2'ye kadar mermileri hiçbir şeye hasar vermiyordu.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Uçaklar baktığınız yere uçar: başınızı çevirin, Stratos-900 ya da Aegis-X kendiliğinden yatar, döner, tırmanır ya da alçalarak oraya yönelir. W ve S itkiyi ayarlar; sol tık, Aegis-X'in füzelerini radarın kendi seçtiği hedefe ateşler.",
+        "Flaplar, iniş takımı, frenler, ters itki, art yakıcı, kanopi ve kuyruk kancası artık kendiliğinden çalışıyor; bindiğinizde ekrandaki kısa bir rehber kontrolleri gösterir.",
+        "Görünüm sizin: artık birinci şahıs görünümüne kilitlenmiyor ve uçakla birlikte yatmıyor, F5 uçuşta çalışıyor ve Left Alt basılı tutulduğunda uçak rotasını korurken etrafa bakabilirsiniz.",
+        "Gemiler: bir görev yerinde durunca, orayı almanızı sağlayan tuş görünür. Dümende W ve S makineyi yönetir (sıfırın altında tornistan), A ve D dümeni çevirir; bıraktığınızda dümen dolabı ortalanır ve gemi rotasını korur. “Eğilme” ile ayrılırsınız. Feribotun kapıları Y tuşundadır.",
+        "Topçu görev yerinde kimse yokken Dreadnought'un dümencisi topları dümenden ateşler: yaylım ateşi için sol tık, dikey atış sistemi (VLS) için sağ tık.",
+        "1.1.2'deki hatalar düzeltildi: dümen gemiyi tuşlarının tersine çeviriyordu, tornistan itki vermiyordu, gemi kıyıdan suya indirilemiyordu (artık kıçı, nişan aldığınız suyun hemen ötesinde kalacak şekilde yüzüyor) ve gemi hayatta kalma modunda geri alınamıyordu.",
+        "Elektromanyetik topun mermileri yolundaki ilk blok, canlı, gemi veya uçakta patlar ve 4 m içindekilere hasar verir; bir yaylım ateşi tek bir hedefe düştüğünde altı merminin tamamı sayılır. Bir gövdenin herhangi bir yerine bakın; iki kule de o noktaya döner.",
+        "Top, ateş eden gemiye ve mürettebatına zarar vermez ve blokları asla kırmaz. Tek bir yaylım ateşi hiçbir gemiyi batırmaz, hiçbir uçağı düşürmez; topları kullanmak da artık uzaktaki chunk'ları yüklemiyor.",
+        "Saldıran kişi yeniden adlandırılmış bir eşya tutarken Cherry silahlarından gelen ölüm mesajı artık çevrilmemiş bir anahtar göstermiyor.",
+        "Uçuş göstergesinin sol altındaki Aegis-X füze sayısı artık ekranın alt kenarında kesilmiyor. Otomatik arayüz ölçeğinde bu, aralarında 720p, 1440p, 4K ve oyunun varsayılan penceresinin de bulunduğu birçok ekran boyutunda oluyordu.",
+        "Harita rota noktaları yalnızca haritanın en geniş görünümü içinde, gemiden yaklaşık 1,4 km uzaklığa kadar kabul edilir; bu, sunucuları hatalı rota noktası isteklerine karşı da korur."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Kontroller değişti: 1.1.2'nin uçuş tuşları (R, U, Y, K, Z, N, M, J ve ok tuşları) ile dümen tuşları (, . = - ; ') kaldırıldı; bunlardan yeniden atadıklarınız artık kullanılmıyor.",
+        "Elektromanyetik top mermileri artık diğer oyuncuların gemileri ve uçakları da dahil olmak üzere vurduğu her şeye zarar veriyor. Hasar, toplara komuta eden mürettebat üyesine yazılır.",
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.2",
+     "date": "2026-09-23",
+     "type": "release",
+     "title": "Gemiler tamamlandı: gerçek modeller, çalışan görev yerleri ve feribotun kapıları",
+     "summary": "Leviathan ve Dreadnought gerçek modellerine ve iç mekânlarına kavuştu; gemideki her görev yeri artık oyunun içinden çalışıyor. 1.1.0 ve 1.1.1'de elektromanyetik top, dikey atış sistemi ve harita masası aslında kullanılamıyordu; artık kullanılabiliyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Gerçek gemiler: tekneler, güverteler ve iç mekânlar eksiksiz modellendi — feribotun araç güvertesi, salonu, seyir güvertesi ve köprüsü; muhribin köprüsü, harekât merkezi (CIC) ve hangarı. Pencerelerden karşısı görünür, geceleri ışıkları yanar. Gördüğünüz her güvertede yürüyebilirsiniz.",
+        "Görev yerleri: dümenin, harita masasının ya da muhribin atış kontrol veya sonar yerinin önünde durup görev yeri tuşuna (varsayılan H) basarak yerinizi alın. Harita masası, rotayı tıklayarak çizdiğiniz bir harita açar; yeni sonar yeri temasları dönen bir tarama ekranında gösterir.",
+        "Dreadnought artık 406 mm'lik iki adet üçlü elektromanyetik top kulesi taşıyor. İki kule de baktığınız noktaya döner ve sol tıklamayla tek bir yaylım ateşi açar: namlu parlaması, şok dalgası halkaları, izli mermiler ve geri tepen namlular. Sağ tıklamayla dikey atış sistemi, kapağı açıldıktan sonra beyaz duman püskürterek radarın kilitlendiği hedefe ateş eder.",
+        "Leviathan'ın baş vizörü ile baş ve kıç rampaları: gemi dururken dümende kapı tuşuna (varsayılan ') basın. Vizör, rampa inmeden önce kalkar; her şey yeniden kapanana dek makine kilitli kalır ve indirilen rampalardan yürüyerek çıkabilirsiniz.",
+        "Dalga ve kabarcıklar: seyreden gemi Kelvin açısıyla açılan bir baş dalgası kaldırır ve arkasında iz bırakır; dönen pervane kabarcıkları çalkalar.",
+        "Dümen tuşları artık Minecraft'ın kendi tuşlarıyla çakışmıyor: , ve . dümeni çevirir, = ve - makineyi ayarlar, ; rotayı tutar. Dümen göstergeleri artık eşya çubuğunun ve kalplerin üstüne binmek yerine onların yukarısında görünür."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Dümen tuşlarının adları değişti; bu yüzden 1.1.0 ya da 1.1.1'de değiştirdiğiniz tuş ataması aktarılmaz. Yeniden atayın.",
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.1",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "Düzeltildi: art yakıcı artık oyunu çökertmiyor",
+     "summary": "“Geliştirilmiş Şeffaflık” video ayarı açıkken Cherry Aegis-X’in art yakıcısını yakmak oyunu çökertiyordu. Artık çökertmiyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "“Geliştirilmiş Şeffaflık” açıkken uçuşta art yakıcıyı yakmak (varsayılan Z) artık oyunu çökertmiyor; şok elmasları kokpitten kanopi üzerinden görünmeye devam ediyor."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "The Aerospace & Naval Update — göğe ve denize",
+     "summary": "Cherry'ye uçaklar, havalimanları ve gemiler ekleniyor. Uçmakta olan bir uçağın ya da seyir hâlindeki bir geminin güvertesinde dolaşabilirsiniz.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "İki uçak: yolcu ve yük taşıyan Cherry Stratos-900 ile hayalet avcı Cherry Aegis-X. Birinci şahıs kokpiti, suni ufuk ve nişan halkası, katlanır iniş takımı, flap ve art yakıcı ile.",
+        "Havalimanı donanımı: yaklaşma açınıza göre renk değiştiren PAPI ışıkları, uçağı fırlatan mancınık, indirilmiş kuyruk kancasını yakalayan durdurma halatı ve çevredeki uçakları gösteren kontrol radarı.",
+        "İki gemi: 48 m uzunluğundaki okyanus araba feribotu Cherry Leviathan sınıfı ve 64 m uzunluğundaki güdümlü füze muhribi Cherry Dreadnought sınıfı. Gemiyi suya indirip dümene geçin ya da harita masasında bir rota çizin; sığlıklardan kaçınarak kendi başına seyreder.",
+        "Silah yalnızca Dreadnought sınıfında: yatay ve dikey nişanı ayrı ayrı hareket eden, ateşlendiğinde tekneyi sarsan 406 mm elektromanyetik top kulesi ve ancak kapağı tamamen açıldıktan sonra ateşleyen dikey atış sistemi. Feribot silah taşımaz.",
+        "Güvertede yürüyüş: hareket hâlindeki bir uçağın ya da geminin üstünde koşun, zıplayın. Ayağınızın altındaki güverte sizi de birlikte taşır.",
+        "Gemi, durmuşken ve güvertesinde kimse yokken elinize geri döner. Aldığı hasarı hatırlar; yeniden suya indirmek onu onarmaz."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya üzeri, Fabric API 0.161.0 veya üzeri, GeckoLib 5.5.6 veya üzeri ve Java 25 gerektirir."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Artık Minecraft 26.3'te",
+   "releases": [
+    {
+     "version": "V1.0.1",
+     "date": "2026-09-20",
+     "type": "release",
+     "title": "Artık Minecraft 26.3'te",
+     "summary": "Cherry artık Minecraft 26.3'te çalışıyor. V1.0.0'daki her şey korunuyor ve daha önce ziyaret ettiğiniz bir Ay'da yeni oluşturulan arazi eskisiyle birleşiyor.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "V1.0.0'ın eklediği her şey Minecraft 26.3'te çalışıyor: Ay, Cherry Apex-1 ve Launch Pad Complex, Ay kuralları, Overdrive Fusion, Ay kaynakları, Micrometeorites ve iki yetenek.",
+        "V1.0.0 dünyaları devam ediyor: Ay'da yeni oluşturulan arazi V1.0.0'dakiyle aynı yüzey şekillerine ve aynı kraterlere sahip olur, böylece daha önce keşfettiğiniz araziyle birleşir."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5 veya daha yenisi, Fabric API 0.161.0 veya daha yenisi, GeckoLib 5.5.6 veya daha yenisi ve Java 25 gerekir."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.0.0",
+     "date": "2026-09-13",
+     "type": "release",
+     "title": "The Lunar Genesis Update — fırlatma rampasından Ay'a",
+     "summary": "Cherry'nin ilk sürümü: Alpha'nın yanına kurulan ayrı bir mod markası. Launch Pad Complex'i inşa edin, Cherry Apex-1 ile Ay'a uçun ve yeniden eve dönün.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Ay: kraterler, maden yatakları ve Helium-3 Geysers bulunan yeni bir boyut; kendine ait bir saati de var.",
+        "Cherry Apex-1 ve Launch Pad Complex: kenetli rokete binin, geri sayım boyunca zıplama tuşunu basılı tutun ve pilot içindeyken Overworld'den Ay'a, oradan da rampaya geri uçun.",
+        "Ay kuralları: yer çekimi altıda birdir ve vakum, Pressure Suit dışındaki her zırhın içinden azami canın 15%'ini alır. Bir Pressure Field Projector küresinin içinde güvendesiniz.",
+        "Overdrive Fusion: Resonance Crucible'da Overdrive Fusion'dan geçen bir silah, alet veya zırh parçası saldırı hasarında, zırhta, zırh dayanıklılığında ya da kazma hızında ×3 kazanır.",
+        "Ay kaynakları: Ultrasonic Cutter yalnızca rezonans hâlindeyken Regolith Core Deposits çıkarır; Cryo Canister ise Helium-3'ü yalnızca bir gayzer fışkırırken yakalar.",
+        "Micrometeorites Ay yüzeyine çarpar ve krater bırakır.",
+        "İki yetenek: Dimensional Cleave (yalnızca haç şekli boyunca 300% hasar) ve Astral Lift, yani Overdrive Fusion'dan geçmiş bir göğüslükle uçuş.",
+        "Alpha 4.4.0'ın 13 modunun tamamıyla birlikte mixin çakışması olmadan başladığı doğrulandı."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Minecraft 26.2, Fabric Loader 0.19.3 veya daha yenisi, Fabric API 0.154.2 veya daha yenisi, GeckoLib 5.5.5 veya daha yenisi ve Java 25 gerekir."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

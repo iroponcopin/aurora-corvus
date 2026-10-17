@@ -1,0 +1,265 @@
+{
+ "lang": "pt-br",
+ "brand": "cherry",
+ "updated": "2026-10-13",
+ "title": "Histórico de atualizações",
+ "updated_label": "Atualizado em 2026-10-13",
+ "note": "Os valores de dano, velocidade etc. mostrados aqui são os padrões de quando o item foi lançado. Como a administração do servidor pode ajustar a configuração, os números que você sente no jogo podem ser diferentes.",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Guardas, robôs, torres e transporte",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-13",
+     "type": "release",
+     "title": "Guardas, robôs, torres e transporte",
+     "summary": "A atualização de defesa de base e transporte do Cherry: as vilas têm aldeões guardas, um terminal de segurança e um robô protegem a sua base, uma torre automática dispara a arma do Cherry que você montar nela, e um elevador de vidro, um elevador de carga pesada e uma escada rolante levam você, sua carga e seus veículos. O robô, o terminal, a torre e os dois elevadores funcionam com energia: um sinal de redstone ou, com o OUKA V1.2 ou posterior instalado, a rede do OUKA.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Aldeões guardas: na primeira vez que um jogador se aproxima de uma vila com sino, cama e aldeão, ela recebe 2 guardas (3 com dez ou mais camas, 4 com vinte ou mais). Eles carregam alabarda, besta e escudo, combatem mobs hostis a até 16 blocos, recuam diante de creepers e atiram neles de longe, e chega um substituto a cada 5 minutos enquanto a vila estiver abaixo da cota.",
+        "Os guardas só se voltam contra um jogador que tenha ferido um aldeão ou um guarda, e desistem 2 minutos depois da última ofensa. Eles nunca lutam entre si, nem contra aldeões ou golens, e nunca se voltam contra um jogador no modo Pacífico.",
+        "O Security Terminal e o Security Robot: quem coloca um terminal é o administrador, e clicar com o botão direito nele registra o jogador mais próximo a até 2,5 blocos. Um robô ligado a um terminal patrulha a até 12 blocos do seu posto e, ao ver um jogador não registrado a menos de 16 blocos, toca uma sirene, avisa por 2 segundos e então dispara o rifle atordoante a cada 1,5 segundo: 2 de dano e 3 segundos de atordoamento. Jogadores registrados, guardas e jogadores em Criativo ou Espectador nunca são atordoados.",
+        "O rifle atordoante do robô funciona com uma bateria de 400 kJ que guarda 20 disparos. O robô recarrega a até 16 blocos do seu terminal enquanto o terminal tiver energia, e o terminal se enche com um sinal de redstone ao lado. Um robô sem bateria ainda toca a sirene e mira, mas não atira até ser recarregado. Com o OUKA V1.2 ou posterior instalado, um robô ou terminal dentro do alcance de um pilar do OUKA também recarrega pela rede do OUKA.",
+        "A Automatic Turret é montada em um teto, parede ou chão e gira 360 graus. Coloque nela uma arma do Cherry e abasteça com os carregadores dessa arma (um funil serve): ela passa a seguir mobs hostis, e neutros irritados, a até 32 blocos ou o alcance da arma, o que for menor, e atira na cadência e com o som próprios dessa arma. Nunca atira em jogadores, aldeões, guardas, robôs, golens ou pets. Só o dono e os operadores podem abri-la ou quebrá-la, e uma torre quebrada mantém sua arma, sua reserva e sua mira.",
+        "A energia da torre, do elevador de vidro, do elevador de carga, do terminal e do robô vem de um sinal de redstone ao lado do dispositivo (ao lado do controlador, no caso de um elevador), e é só isso que uma partida sem OUKA precisa. Com o OUKA V1.2 ou posterior instalado, um dispositivo dentro do alcance de um pilar do OUKA (64 blocos) recorre, na falta disso, à rede do OUKA, incluindo as baterias SMES. Um dispositivo sem energia diz o que está esperando.",
+        "O Aero-Glass High-Speed Elevator: uma cabine de vidro 3x3 sobre um controlador e uma coluna de trilhos maglev, em um poço que você constrói com até 128 blocos de altura. Ele viaja a até 16 blocos por segundo com partida e parada suaves, toca um sinal na chegada e abre as portas um instante depois. Escolha o andar no painel holográfico da cabine ou no botão de chamada do patamar; as portas reabrem se alguém estiver nelas, e uma porta de patamar nunca abre para um poço vazio. Fechada, a cabine mantém o ar dentro na Lua e o frio fora em Marte.",
+        "O Titan-Hydraulic Heavy Cargo Lift: uma plataforma quadrada de 3x3 a 7x7 blocos sobre pernas em tesoura, sobre um fosso que você emoldura, que sobe até 24 blocos a 2 blocos por segundo. Portões amarelos e pretos se fecham ao redor e um farol âmbar gira enquanto ela se move. Ela leva você, carrinhos com baú, barcos e veículos do Cherry que caibam na plataforma, imobilizados enquanto ela se move, e para e volta se algo estiver no caminho. Um pedestal na plataforma e um botão de chamada em cada patamar a operam; a redstone também.",
+        "A Kinetic Modular Escalator: dois patamares, um módulo de treliça por coluna e um painel de controle formam um trecho de 30 graus, 45 graus ou plano de até 32 blocos (os mais longos se encadeiam por patamares). Você fica de pé nos degraus em movimento, que andam a 4 blocos por segundo, e um sinal de redstone inverte o sentido. Ela não precisa de energia. Em navios e aeronaves, que compartilham a mesma física de convés móvel, quem desce ou pula do convés o deixa na hora, e agachar em um convés móvel faz andar em vez de travar."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou posterior, Fabric API 0.161.0 ou posterior, GeckoLib 5.5.6 ou posterior e Java 25.",
+        "A torre, o elevador de vidro, o elevador de carga, o terminal de segurança e o rifle do robô não fazem nada sem energia: um sinal de redstone ao lado do dispositivo ou, com o OUKA V1.2 ou posterior instalado, o alcance de um pilar do OUKA. O Cherry funciona sem o OUKA, e então a redstone é a sua única fonte."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-09-28",
+     "type": "release",
+     "title": "Armas, vida na Lua, Lunaris Prime e Marte",
+     "summary": "A maior atualização do Cherry: cinco armas de nova geração com animação em primeira pessoa e recuo, três tipos de vida na Lua, o chefe Lunaris Prime selado em ruínas nos confins da Lua, o planeta vermelho Marte, com seu frio e suas tempestades de poeira de ferro, um console de navegação que leva o Apex-1 a qualquer um de três mundos, e o Advanced Cherry Fabricator, que fabrica todas as armas, carregadores e peças de veículos.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Cinco armas: o fuzil bullpup CR-14, a submetralhadora CP-9, o sniper de trilhos CS-50, a espingarda magpulse CX-12 e a C-Pistol. O clique direito mira e desfoca suavemente o que fica mais perto ou mais longe do que você mira, R recarrega (no modo sobrevivência com um carregador daquela arma) e F inspeciona; com recuo, clarão do disparo, estojos, miras holográficas, a luneta térmica de 6× do CS-50 e a mira laser da C-Pistol.",
+        "Vida na Lua: o Selenite Stalker se esconde sob o regolito, salta sobre quem anda sem se agachar e perfura trajes pressurizados; o EMP do Void Drifter apaga as miras e os contadores de munição das suas armas; o Regolith Devourer golpeia o chão para lançar você bem alto e arremessa meteoros derretidos.",
+        "Lunaris Prime: na Lua, além dos 8.000 blocos, uma cratera gigante abriga o Astraea Shackle (/locate o encontra). Um Astral Catalyst no console do selo desperta o chefe; o céu fica carmesim e, com metade da vida, sua armadura voa pelos ares para uma segunda fase, mais rápida.",
+        "Suas relíquias: o Coreshard of Lunaris, o Graviton Siphon (seu tiro abre um buraco negro) e a Crown of Selene.",
+        "Marte: na plataforma de lançamento, aperte a tecla de lançamento para abrir o console Stellar Navigation do Apex-1 e escolher a Terra, a Lua ou Marte. Marte tem 0,38 g e ar irrespirável a −60 °C: o traje pressurizado protege do ar, e um Thermal Lining costurado na bancada de ferraria protege do frio.",
+        "Tempestades de poeira de ferro varrem Marte a cada 20 minutos, aproximadamente: a névoa se fecha a poucos blocos e interferências cruzam os HUDs do Cherry.",
+        "Recursos de Marte: Martian Ferrite e Perchlorate Energy Salt. O Perchlorate Propellant é um combustível de foguete que vale três galões.",
+        "O Advanced Cherry Fabricator: escolha uma receita e preencha suas seis entradas; ele fabrica as armas, seus carregadores, peças de armas, combustível e todos os veículos, montando o Apex-1 com propulsores e o Dreadnought com canos de canhão de trilhos que produz em série a partir de hélio-3 e núcleos de regolito; funis podem abastecê-lo."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0 ou mais recente, GeckoLib 5.5.6 ou mais recente e Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Os sons voltam após trocar o dispositivo de áudio",
+   "releases": [
+    {
+     "version": "V1.1.4",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Os sons voltam após trocar o dispositivo de áudio",
+     "summary": "Quando o dispositivo de áudio muda (fones conectados ou desconectados, ou um dispositivo escolhido nas opções), o jogo reinicia o motor de som e interrompe todos os sons em loop. Da 1.1.0 à 1.1.3, os motores das aeronaves do Cherry, o pós-combustor, os motores dos mísseis, os tons de travamento e a respiração do traje pressurizado ficavam em silêncio até você embarcar de novo ou recolocar o capacete. Agora eles voltam sozinhos.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Após trocar o dispositivo de áudio, os motores do Stratos-900 e do Aegis-X, o pós-combustor do Aegis-X, os motores dos mísseis e os tons de travamento voltam a tocar sozinhos em instantes.",
+        "Na Lua, a respiração do traje pressurizado faz o mesmo."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0 ou mais recente, GeckoLib 5.5.6 ou mais recente e Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.3",
+     "date": "2026-09-24",
+     "type": "release",
+     "title": "Controles fáceis, e o railgun acerta",
+     "summary": "Voar e navegar foram refeitos para que qualquer pessoa consiga. A visão não fica mais presa: as aeronaves voam para onde você olha, e os navios respondem a W, A, S e D como um barco. O railgun do Dreadnought agora causa dano ao que atinge; da 1.1.0 à 1.1.2 seus projéteis não danificavam nada.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "As aeronaves voam para onde você olha: vire a cabeça e o Stratos-900 ou o Aegis-X se inclina, faz a curva, sobe ou desce naquela direção sozinho. W e S ajustam a potência; o clique esquerdo dispara os mísseis do Aegis-X no alvo que o radar escolhe sozinho.",
+        "Flaps, trem de pouso, freios, reverso, pós-combustor, canopi e gancho de pouso agora funcionam sozinhos, e um guia curto na tela mostra os controles quando você embarca.",
+        "A visão é sua: não fica mais presa em primeira pessoa nem se inclina com a aeronave, o F5 funciona em voo, e segurar Left Alt permite olhar ao redor enquanto a aeronave mantém o rumo.",
+        "Navios: ao parar num posto, aparece a tecla para assumi-lo. No timão, W e S comandam a máquina (ré abaixo de zero), A e D governam o leme, e, ao soltá-las, o timão se centraliza e o navio mantém o rumo; “Agachar” sai do posto. As portas do ferry ficam no Y.",
+        "Sem ninguém no posto de artilharia, o timoneiro do Dreadnought dispara os canhões do timão: clique esquerdo para uma salva, clique direito para o VLS.",
+        "Problemas da 1.1.2 corrigidos: o leme virava o navio ao contrário das teclas, a ré não dava empuxo, não dava para lançar um navio da margem (agora ele flutua com a popa logo além da água para onde você mira) e não dava para recolher um navio no modo sobrevivência.",
+        "Os projéteis do railgun explodem no primeiro bloco, criatura, navio ou aeronave em sua trajetória e causam dano ao que estiver a até 4 m; quando uma salva cai sobre um mesmo alvo, os seis projéteis contam. Olhe para qualquer parte de um casco e as duas torres apontam para aquele ponto.",
+        "O canhão poupa o navio que disparou e a tripulação dele, e nunca quebra blocos. Nenhuma salva sozinha afunda um navio ou derruba uma aeronave, e operar os canhões não carrega mais chunks distantes.",
+        "A mensagem de morte de uma arma do Cherry não mostra mais uma chave sem tradução quando o atacante segura um item renomeado.",
+        "A contagem de mísseis do Aegis-X, no canto inferior esquerdo do display de voo, não é mais cortada pela borda inferior da tela. Com a escala de interface automática, isso acontecia em muitos tamanhos de tela, entre eles 720p, 1440p, 4K e a janela padrão do jogo.",
+        "Os pontos de rota da carta só são aceitos dentro da sua visão mais ampla, a cerca de 1,4 km do navio, o que também protege os servidores contra pedidos de rota malformados."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Os controles mudaram: as teclas de voo da 1.1.2 (R, U, Y, K, Z, N, M, J e as setas) e as do timão (, . = - ; ') deixaram de existir, e as que você tinha reatribuído não são mais usadas.",
+        "Os projéteis do railgun agora ferem tudo o que atingem, inclusive navios e aeronaves de outros jogadores. O dano é atribuído ao tripulante que comanda os canhões.",
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0 ou mais recente, GeckoLib 5.5.6 ou mais recente e Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.2",
+     "date": "2026-09-23",
+     "type": "release",
+     "title": "Os navios, concluídos: modelos de verdade, postos que funcionam e as portas do ferry",
+     "summary": "O Leviathan e o Dreadnought ganham seus modelos e interiores de verdade, e todos os postos a bordo agora funcionam dentro do jogo. Na 1.1.0 e na 1.1.1 o railgun, o VLS e a mesa de cartas não podiam ser usados de fato; agora podem.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Navios de verdade: cascos, conveses e interiores totalmente modelados — o convés de veículos, o salão, o convés panorâmico e a ponte do ferry; a ponte, o CIC e o hangar do contratorpedeiro —, com janelas pelas quais dá para ver e que se acendem à noite. Todo convés que você vê é um convés por onde pode andar.",
+        "Postos: pare junto ao leme, à mesa de cartas ou aos postos de artilharia ou de sonar do contratorpedeiro e aperte a tecla de posto (H por padrão) para assumi-lo. A mesa de cartas abre uma carta em que você traça a rota com cliques; o novo posto de sonar mostra os contatos numa tela de varredura.",
+        "O Dreadnought agora leva duas torres triplas de railgun de 406 mm. As duas apontam para o ponto que você olha e disparam uma única salva com o clique esquerdo: clarões na boca dos canos, anéis de onda de choque, traçantes e canos que recuam. Com o clique direito, o VLS dispara no alvo travado pelo radar depois que a escotilha abre, soltando fumaça branca.",
+        "O visor de proa e as rampas de proa e de popa do Leviathan: com o navio parado, no leme, aperte a tecla das portas (' por padrão). O visor sobe antes de a rampa descer, o motor fica travado até tudo fechar de novo e dá para subir a pé pelas rampas abaixadas.",
+        "Esteira e bolhas: um navio em marcha levanta uma onda de proa no ângulo de Kelvin e deixa esteira, e uma hélice girando agita bolhas.",
+        "As teclas do leme não conflitam mais com as do próprio Minecraft: , e . giram o leme, = e - ajustam o motor e ; mantém o rumo. Os instrumentos do leme agora aparecem acima da barra de itens e dos corações, em vez de cobri-los."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "As teclas do leme ganharam nomes novos, então uma atribuição que você mudou na 1.1.0 ou na 1.1.1 não é mantida. Atribua de novo.",
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0 ou mais recente, GeckoLib 5.5.6 ou mais recente e Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.1",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "Corrigido: o pós-combustor não fecha mais o jogo",
+     "summary": "Com a opção de vídeo “Transparência melhorada” ativada, acender o pós-combustor do Cherry Aegis-X fechava o jogo. Isso não acontece mais.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Com “Transparência melhorada” ativada, acender o pós-combustor em voo (Z por padrão) não fecha mais o jogo, e os diamantes de choque continuam visíveis através da cabine."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0 ou mais recente, GeckoLib 5.5.6 ou mais recente e Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-09-21",
+     "type": "release",
+     "title": "The Aerospace & Naval Update: para o ar e para o mar",
+     "summary": "O Cherry ganha aeronaves, aeroportos e navios. Dá para andar por uma aeronave em voo ou pelo convés de um navio em marcha.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Duas aeronaves: o Cherry Stratos-900, de passageiros e carga, e o caça furtivo Cherry Aegis-X, com cabine em primeira pessoa, horizonte artificial e retículo, trem retrátil, flapes e pós-combustão.",
+        "Instalações de aeroporto: luzes PAPI que mudam de cor conforme o ângulo de aproximação, uma catapulta que lança a aeronave, um cabo de detenção que prende o gancho de cauda e um radar de controle que mostra as aeronaves ao redor.",
+        "Dois navios: o ferry oceânico Cherry Leviathan-Class, de 48 m, e o contratorpedeiro lança-mísseis Cherry Dreadnought-Class, de 64 m. Coloque-o na água, assuma o leme ou trace uma rota na mesa de cartas e ele navegará sozinho, desviando dos baixios.",
+        "Só a classe Dreadnought é armada: uma torre de railgun de 406 mm que gira e eleva de forma independente e balança o casco ao disparar, e um VLS que só lança com a escotilha totalmente aberta. O ferry não leva armamento.",
+        "Caminhada no convés: corra e pule sobre uma aeronave ou um navio em movimento. O convés leva você junto.",
+        "Um navio volta para a sua mão quando está parado e não há ninguém no convés. Ele guarda os danos que sofreu, então recolocá-lo na água não o conserta."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, Fabric API 0.161.0 ou mais recente, GeckoLib 5.5.6 ou mais recente e Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Agora no Minecraft 26.3",
+   "releases": [
+    {
+     "version": "V1.0.1",
+     "date": "2026-09-20",
+     "type": "release",
+     "title": "Agora no Minecraft 26.3",
+     "summary": "Cherry agora roda no Minecraft 26.3. Tudo do V1.0.0 continua, e em uma Lua que você já visitou, o terreno recém-gerado se encontra com o antigo.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Tudo o que o V1.0.0 adicionou roda no Minecraft 26.3: a Lua, o Cherry Apex-1 e o Launch Pad Complex, as regras lunares, a Overdrive Fusion, os recursos lunares, os Micrometeorites e as duas habilidades.",
+        "Os mundos do V1.0.0 continuam: na Lua, o terreno recém-gerado tem o mesmo relevo e as mesmas crateras do V1.0.0, então se encontra com o terreno que você já explorou."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5 ou mais novo, Fabric API 0.161.0 ou mais novo, GeckoLib 5.5.6 ou mais novo e Java 25."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.0.0",
+     "date": "2026-09-13",
+     "type": "release",
+     "title": "The Lunar Genesis Update — da plataforma de lançamento até a Lua",
+     "summary": "Primeira versão de Cherry: uma marca de mods à parte, que se instala ao lado do Alpha. Construa o Launch Pad Complex, pilote o Cherry Apex-1 até a Lua e volte para casa.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "A Lua: uma nova dimensão com crateras, depósitos de minério e Helium-3 Geysers, e com um relógio próprio.",
+        "Cherry Apex-1 e o Launch Pad Complex: embarque no foguete acoplado, segure o botão de pulo durante a contagem regressiva e voe do Overworld até a Lua e de volta à plataforma com o piloto a bordo.",
+        "Regras lunares: a gravidade é de um sexto, e o vácuo tira 15% da vida máxima através de qualquer armadura, exceto o Pressure Suit. Dentro da esfera de um Pressure Field Projector você está seguro.",
+        "Overdrive Fusion: no Resonance Crucible, uma arma, ferramenta ou peça de armadura que passa pela Overdrive Fusion recebe ×3 de dano de ataque, armadura, resistência da armadura ou velocidade de mineração.",
+        "Recursos lunares: o Ultrasonic Cutter só extrai Regolith Core Deposits enquanto está em ressonância, e o Cryo Canister só captura Helium-3 enquanto um gêiser está em erupção.",
+        "Micrometeorites atingem a superfície lunar e deixam crateras.",
+        "Duas habilidades: Dimensional Cleave (300% de dano apenas ao longo da sua cruz) e Astral Lift, voo com um peitoral que passou pela Overdrive Fusion.",
+        "Verificado que inicia junto com os 13 mods do Alpha 4.4.0 sem conflitos de mixin."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Requer Minecraft 26.2, Fabric Loader 0.19.3 ou mais novo, Fabric API 0.154.2 ou mais novo, GeckoLib 5.5.5 ou mais novo e Java 25."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

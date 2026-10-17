@@ -1,0 +1,167 @@
+{
+ "lang": "zh",
+ "brand": "halia",
+ "updated": "2026-10-16",
+ "title": "更新日志",
+ "updated_label": "更新于 2026-10-16",
+ "note": "",
+ "groups": [
+  {
+   "label": "V1.2",
+   "summary": "Halia V1.2.1 —— 修复打开物品栏时崩溃的问题",
+   "releases": [
+    {
+     "version": "V1.2.1",
+     "date": "2026-10-16",
+     "type": "hotfix",
+     "title": "Halia V1.2.1 —— 修复打开物品栏时崩溃的问题",
+     "summary": "Halia V1.2.1 修复了一个崩溃问题：同时安装 OUKA 时，在创造模式下打开物品栏会导致游戏关闭。",
+     "sections": [
+      {
+       "title": "更新内容",
+       "items": [
+        "已修复：在与 Halia 一同安装 OUKA 的情况下，于创造模式打开物品栏不会再导致游戏崩溃。原因是 Aerie 的创造模式标签页中 Aerie Heart 被列出了两次。"
+       ]
+      },
+      {
+       "title": "注意事项",
+       "items": [
+        "运行要求与 V1.2.0 相同：Minecraft 26.3、Fabric Loader 0.19.5 或更新、Fabric API 0.161.0+26.3 或更新、Java 25。没有其他改动。"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.2.0",
+     "date": "2026-10-16",
+     "type": "release",
+     "title": "Halia V1.2 — Aerie 收纳网络、20 把新刀与 7 项新技，以及 SS-05",
+     "summary": "Halia V1.2 新增 Aerie 收纳网络：由 Aerie Heart、导管和单元搭建，你拥有的每一种物品和流体都能在同一个控制台中搜索，由 Talon Intakes 与 Talon Outlets 搬入搬出，并由 Artificers 按需合成。Halia Blade 新增 20 把带名字的刀、7 项斩击技，以及刀在你击败敌人时收集、使用时消耗的灵魂。",
+     "sections": [
+      {
+       "title": "更新内容",
+       "items": [
+        "Aerie：放置一个 Aerie Heart，用 Aerie Conduits 连接设备，在 Clutch Bay 中放入 Clutch Cells，再打开 Roost Console，即可查看并搜索所有已存储的内容。共有 37 种设备，其中大多数有 16 种颜色。",
+        "搬运与合成：Talon Intakes 与 Talon Outlets 在 Aerie 与任何箱子或机器之间搬运物品和流体；Artificers 会依据 Scribe Console 上写好的配方按需合成；Updraft Masts 与 Field Consoles 无需线缆即可连接到 Aerie。",
+        "与 OUKA 的供电：若安装了 OUKA，Aerie Heart 会从 OUKA 的特斯拉电塔电网取电。没有 OUKA 时，Aerie 不需要电力。",
+        "20 把新的带名字的刀：Gale Fang 与 Tempest Fang 系列、Ironcrag、Ashen Crag、从木制到下界合金的六种 Plumes、Weathered Blade、Evenfall、Heartwood 与 Raptors。多数需用材料箱在铁砧上锻造；部分由首领掉落；僵尸有时会携带 Weathered Blade；放在刀架上的无名刀若被凋灵的爆炸波及，就会变成 Ashen Crag。",
+        "7 项新斩击技：Blossom End、Void Slash、Circle Slash、Vertical Drive 与 Horizontal Drive、Wave Edge 和 Piercing。Drive 会向你的前方发出一道飞斩。",
+        "灵魂：手持刀击败敌人时，刀会从敌人的经验中收集灵魂。召唤剑现在消耗灵魂而非经验，在铁砧上精炼刀也会为其增加灵魂。",
+        "耐久与精炼：每把带名字的刀现在都有各自的耐久。精炼会提高刀的伤害和最大耐久（精炼值最高可达 200）。",
+        "Stellar Remote SS-05 Tesseract：第五种攻击，附有专属影片。一个边长 640 方块的光之立方体会在准星周围升起；它的地面被切成若干单元，这些单元从中心向外一圈一圈地被托起、转动并悬吊在空中，而光之立方体则锁定在天空中。"
+       ]
+      },
+      {
+       "title": "注意事项",
+       "items": [
+        "运行要求：Minecraft 26.3、Fabric Loader 0.19.5 或更新版本、Fabric API 0.161.0+26.3 或更新版本、Java 25。多人游戏时，服务器也必须安装 Halia。",
+        "V1.1 刀的变化：基础值相同时，刀的每次攻击伤害比以前低 1。新制作的带名字的刀，其基础攻击和耐久比 V1.1 更低（例如 Yamato：攻击 9 → 7，耐久 100 → 40）。召唤剑需要灵魂。世界中已有的刀保持其制作时的耐久。",
+        "安装了 OUKA 时，Aerie 要等到其心核进入通电电塔的覆盖范围后才会运行。若想在 OUKA 旁边不使用电力运行，请将 config/halia-aerie.json 中的 powerFromOukaGrid 设为 false。",
+        "V1.1 的世界可以原样打开。请勿将含有 Aerie 设备或新刀的世界退回 1.1：这些内容会被删除。",
+        "Stellar Remote 会永久破坏非常大的区域，SS-05 会一次性重塑一个 640 方块的区域，请备份你的世界。波经过时，站在立方体内的任何人都会死亡。"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.1",
+   "summary": "Halia V1.1.1 —— 修复开启 “Improved Transparency” 时的崩溃",
+   "releases": [
+    {
+     "version": "V1.1.1",
+     "date": "2026-10-12",
+     "type": "hotfix",
+     "title": "Halia V1.1.1 —— 修复开启 “Improved Transparency” 时的崩溃",
+     "summary": "Halia V1.1.1 修复了 V1.1.0 中的一个错误：当视频设置 “Improved Transparency” 开启时，只要画面中出现会发光的 Halia 物品（例如破坏刀的材料箱时掉落的灵魂材料），游戏就会关闭；这些物品留在世界中时，也无法重新进入该世界。其他内容没有改变。",
+     "sections": [
+      {
+       "title": "更新内容",
+       "items": [
+        "修复：开启 “Improved Transparency” 时，绘制发光的 Halia 物品不再导致游戏关闭。因此无法进入的世界可以重新打开。",
+        "其余内容与 V1.1.0 相同：Halia Blade、90 个连击招式、材料、刀架和 Stellar Remote 均未改变。"
+       ]
+      },
+      {
+       "title": "注意事项",
+       "items": [
+        "需要 Minecraft 26.3、Fabric Loader 0.19.5 或更高版本、Fabric API 0.161.0+26.3 或更高版本以及 Java 25。多人游戏时，服务器上也必须安装 Halia。",
+        "开启 “Improved Transparency” 期间，外观有两处不同：Halia 物品不再显示附魔光泽；次元斩的球体显得较暗。关闭该设置后，两者都与以前相同。",
+        "V1.1.0 的世界可以原样打开。Stellar Remote 仍会永久摧毁世界中非常大的范围——按下按钮前请备份世界。"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "V1.1.0",
+     "date": "2026-10-12",
+     "type": "release",
+     "title": "Halia V1.1 —— Halia Blade：武士刀、90 种连击招式与召唤剑",
+     "summary": "Halia V1.1 新增 Halia Blade：一把挂在腰间、靠出招时机来战斗的武士刀，包括地面与空中连击、蓄力技、召唤剑、锁定、格挡和特技动作。另有 8 种合成材料、6 个刀架和 11 把有名字的刀。V1.0 的 Stellar Remote 保持不变。",
+     "sections": [
+      {
+       "title": "更新内容",
+       "items": [
+        "Halia Blade：用 Soulsteel Ingots、Corvus Soul、铁剑和下界砖制作。使用（右键）进行攻击；在时机合适时再次按下即可接续连击。地面与空中的连击招式共 90 种。",
+        "蓄力技：按住使用键，在出现粒子时松开即可发动 Judgement Cut；在粒子出现前一刻松开则是强化版。潜行 + 前进 + 使用为 Rapid Slash，潜行 + 后退 + 使用为 Upper Slash。",
+        "召唤剑：按下选择方块键（鼠标中键），向目标射出一把剑，消耗 1 点经验值；4 个更大的招式 Spiral、Storm、Blistering 和 Heavy Rain Swords 各消耗 5 点。",
+        "锁定、格挡与移动：按住潜行可锁定敌人；站立不动时潜行可格挡远程攻击；冲刺键的特技可以让你冲向敌人、跃过敌人或远离敌人；在空中可以从敌人或墙壁上跳开。",
+        "集中等级：击中敌人会提升右上角显示的等级，从 D 到 SSS；停止战斗后会下降。等级越高伤害越大。",
+        "磨损、强化与重铸：刀被击中 101 次后会断裂，并掉落一个保留其记录的灵魂。在铁砧上，可用 Corvus Soul 强化刀（每个灵魂提升 1 级），断掉的刀也可以重铸。",
+        "材料与刀架：从 Tiny Corvus Soul 到 Abyssal Geode 共 8 种材料，每种都有配方；另有 6 种 Halia Stands（落地式和挂墙式）用于展示刀。",
+        "游戏内指南：共 57 个进度。“Blade MoveSets”分支列出每个招式及你电脑上绑定的按键；点击材料或刀的进度可以查看其配方。"
+       ]
+      },
+      {
+       "title": "注意事项",
+       "items": [
+        "需要 Minecraft 26.3、Fabric Loader 0.19.5 或更高版本、Fabric API 0.161.0+26.3 或更高版本以及 Java 25。多人游戏时，服务器上也必须安装 Halia。",
+        "Stellar Remote 仍会永久摧毁世界中非常大的范围——按下按钮前请备份你的世界。此版本未对它做任何改动。",
+        "V1.0.0 的世界可以原样打开；此版本只新增内容。不要用含有刀、材料或刀架的世界退回到 1.0.0，这些内容会被删除。",
+        "工作室尚未确认以下项目：在专用多人服务器上游玩、Windows 系统、与其他 Corvus Store 模组同时使用。第一人称视角下，收在鞘中的刀大多在你攻击前都看不到。"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "V1.0",
+   "summary": "Halia V1.0 —— Stellar Remote 与三种轨道打击",
+   "releases": [
+    {
+     "version": "V1.0.0",
+     "date": "2026-10-11",
+     "type": "release",
+     "title": "Halia V1.0 —— Stellar Remote 与三种轨道打击",
+     "summary": "Halia（The Max Model）的首个版本，适用于 Minecraft 26.3：Stellar Remote 只有一个红色按钮，可以召来三种打击——SS-01 Railgun、SS-03 Gungnir 和 SS-04 Seven Stars。它们会永久破坏世界中非常大的范围；按下之前请先阅读下面的警告。",
+     "sections": [
+      {
+       "title": "更新内容",
+       "items": [
+        "Stellar Remote：翻盖下只有一个红色按钮，有自己的 3D 模型。它在创造模式的“Halia”标签页中。此版本没有它的合成配方。",
+        "操作：手持遥控器，按 K、I 或 U 选择 SS-01、SS-03 或 SS-04；右键向准星所指的地面发动所选的打击；潜行 + 右键切换到下一种。按键可以重新绑定。快捷栏旁边的卡片会显示所选的打击、它的按键和冷却时间。",
+        "SS-01 Railgun：红色激光标记地面，按下按钮约 18 秒后，一道半径 200 格的光束落下，把从建筑高度上限到虚空的整根世界柱全部移除。",
+        "SS-03 Gungnir：按下按钮约 16 秒后，一根黑色长针从正上方击中目标。冲击环扩散到 400 格，把大地削到着弹点的高度，并留下熔融的坑。长针会留下来，从世界底部一直立到建筑高度上限。",
+        "SS-04 Seven Stars：北斗七星被投影到大地上，7 个节点，跨度约 1440 格。7 颗星依次落下，每颗都挖出一个坑并在其中留下 Star Core 晶体。随后图形的 7 条连线被烧成沟槽，沟底留下 Star Trace。",
+        "影片：每种打击都会为发动它的玩家播放一段游戏内影片——镜头、HUD 和太空场景。播放时按 J 可以跳过；没有影片播放时，按 J 可以关闭或开启影片。无论如何，打击本身都会发生。",
+        "冷却：每种打击各有 60 秒的冷却时间（创造模式下为 1 秒）。你上一次发动的同一种打击还在进行时，不能再次发动它。",
+        "打击会留下四种方块，可以挖掘并带走：Gungnir 长针的 Block of Tungsten 和 Thermal Conduit，Seven Stars 的 Star Core 和 Star Trace。其中三种需要钻石镐或更好的镐；Block of Tungsten 需要下界合金镐。这四种方块也在创造模式标签页中。"
+       ]
+      },
+      {
+       "title": "注意事项",
+       "items": [
+        "需要 Minecraft 26.3、Fabric Loader 0.19.5 或更高、Fabric API 0.161.0+26.3 或更高以及 Java 25。多人游戏时，服务器上也必须安装 Halia。",
+        "这些打击会永久破坏非常大范围的地形，无法撤销。SS-01 会移除目标周围 200 格以内、从建筑高度上限到虚空的一切。Gungnir 会削去着弹点周围 400 格以内、高于着弹点的一切，并在中心挖出一个坑。Seven Stars 会在约 1440 格的范围内挖出 7 个坑和 7 条沟槽。请先备份你的世界；如果你不能接受失去某个世界或服务器的一部分，就不要在那里使用 Stellar Remote。",
+        "打击会杀死其范围内的所有生物，包括发动它的玩家；只有处于创造模式或旁观模式的玩家不受影响。被破坏区域内的建筑、箱子和掉落的物品都会消失。在范围之外，Gungnir 的冲击仍会把距着弹点 1000 格以内的生物抛飞并造成伤害。",
+        "一次打击会加载并改写数百到数千个区块，因此进行期间游戏可能会卡顿。"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
