@@ -1,15 +1,37 @@
 {
  "lang": "tr",
  "brand": "halia",
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-10-25 tarihinde güncellendi",
+ "updated_label": "2026-10-26 tarihinde güncellendi",
  "note": "",
  "groups": [
   {
    "label": "V1.4",
-   "summary": "Halia V1.4 1141",
+   "summary": "Halia V1.4 1142",
    "releases": [
+    {
+     "version": "V1.4 1142",
+     "date": "2026-10-26",
+     "type": "release",
+     "title": "Halia V1.4 1142",
+     "summary": "Yıldız büyüleri artık arazilerini tek seferde değil, birkaç tick'e bölerek oyar.",
+     "sections": [
+      {
+       "title": "Değişiklikler",
+       "items": [
+        "Shooting Star, Gungnir ve Seven Stars'ın arazi oyma işlemi artık tek bir sunucu tick'inde bir kerede çalışmaz. Zaman bütçesiyle birkaç tick'e yayılır. Testlerde oymaya harcanan en uzun tek tick 10 ile 63 ms arasıydı.",
+        "Oyma bütçesi config/halia/carving.json içinde tick_budget_ms ve chunks_per_tick_cap ile ayarlanabilir."
+       ]
+      },
+      {
+       "title": "Dikkat Edilmesi Gerekenler",
+       "items": [
+        "Çok büyük bir büyü oyarken bitmesi eskisinden daha uzun sürer; yoğun bir sunucuda geniş bir alan bir dakika veya daha fazla sürebilir. Tesseract büyüsü sunucuyu yine kısa süre duraklatabilir. Bu bilinen bir sorun ve henüz düzeltilmedi. Bildirilen 60 saniyelik sunucu takılması düzelmiş olarak KANITLANMAMIŞTIR: yeniden üretilemedi ve gerçek oyunla adanmış sunucuda bir test yapılmadı."
+       ]
+      }
+     ]
+    },
     {
      "version": "V1.4 1141",
      "date": "2026-10-25",

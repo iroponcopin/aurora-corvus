@@ -1,15 +1,37 @@
 {
  "lang": "es",
  "brand": "halia",
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "title": "Historial de actualizaciones",
- "updated_label": "Actualizado el 2026-10-25",
+ "updated_label": "Actualizado el 2026-10-26",
  "note": "",
  "groups": [
   {
    "label": "V1.4",
-   "summary": "Halia V1.4 1141",
+   "summary": "Halia V1.4 1142",
    "releases": [
+    {
+     "version": "V1.4 1142",
+     "date": "2026-10-26",
+     "type": "release",
+     "title": "Halia V1.4 1142",
+     "summary": "Los hechizos estelares ahora tallan su terreno en varios ticks en lugar de en uno solo.",
+     "sections": [
+      {
+       "title": "Cambios",
+       "items": [
+        "El tallado del terreno de Shooting Star, Gungnir y Seven Stars ya no se ejecuta de una vez en un solo tick del servidor. Se reparte en varios ticks con un presupuesto de tiempo. En las pruebas, el tick individual más largo dedicado al tallado duró entre 10 y 63 ms.",
+        "El presupuesto de tallado se puede ajustar en config/halia/carving.json con tick_budget_ms y chunks_per_tick_cap."
+       ]
+      },
+      {
+       "title": "Advertencias",
+       "items": [
+        "Mientras un hechizo muy grande talla, terminar tarda más que antes; en un servidor cargado, un área grande puede tardar un minuto o más. El hechizo Tesseract todavía puede pausar el servidor brevemente. Es un problema conocido y no está corregido. La parada del servidor de 60 segundos reportada NO está demostrada como corregida: no se reprodujo y no hubo una prueba en servidor dedicado con juego real."
+       ]
+      }
+     ]
+    },
     {
      "version": "V1.4 1141",
      "date": "2026-10-25",
