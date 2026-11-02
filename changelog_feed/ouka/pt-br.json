@@ -1,15 +1,43 @@
 {
  "lang": "pt-br",
  "brand": "ouka",
- "updated": "2026-10-31",
+ "updated": "2026-11-02",
  "title": "Histórico de atualizações",
- "updated_label": "Atualizado em 2026-10-31",
+ "updated_label": "Atualizado em 2026-11-02",
  "note": "",
  "groups": [
   {
    "label": "V1.8",
-   "summary": "Ouka V1.8 5567 — Doze máquinas de próxima geração e uma Battery Charging Socket tão fácil quanto um baú",
+   "summary": "Ouka V1.8 6166 — Quatro geradores sem turbina",
    "releases": [
+    {
+     "version": "V1.8 6166",
+     "date": "2026-11-02",
+     "type": "release",
+     "title": "Ouka V1.8 6166 — Quatro geradores sem turbina",
+     "summary": "A V1.8 6166 adiciona quatro geradores que transformam calor diretamente em eletricidade, melhores em lugares quentes como o Nether, e corrige a ligação do transceptor espacial entre dimensões.",
+     "sections": [
+      {
+       "title": "O que mudou",
+       "items": [
+        "Núcleo de gradiente criotérmico: gera com a diferença entre o calor próximo e o gelo interno. Gelos comuns dão de 160 a 640 MJ/t, deutério e superiônico de 2.560 a 10.240 MJ/t, BEC e sakura de 40.960 a 163.840 MJ/t. O gelo se desgasta aos poucos, exceto o de sakura.",
+        "Célula TPV termofotovoltaica: uma placa fina para pisos, paredes e tetos, sem combustível. 80 MJ/t no Nether e até 2.400 MJ/t de frente para um mar de lava.",
+        "Canal de magma MHD: gera ao lado de lava corrente. 1.200 MJ/t por canal, +25% por canal alinhado até 8. A lava não é consumida.",
+        "Ressonador termoacústico: anéis de luz ondulam dentro da coluna. De 600 a 9.600 MJ/t, com o máximo em Deltas de Basalto e Ermos do Nether.",
+        "Abra qualquer um com a mão vazia para ver uma tela com a produção e um gráfico ao vivo.",
+        "Correção do transceptor espacial: agora é possível ligar um emissor de outra dimensão. Um par ligado continua funcionando enquanto uma das pontas estiver carregada. Quando o nível é baixo demais, a mensagem explica o motivo."
+       ]
+      },
+      {
+       "title": "Pontos de atenção",
+       "items": [
+        "Antes de instalar a V1.8 6166, remova o jar antigo da OUKA (1.8.5567 ou anterior) da pasta mods e mantenha apenas 1 cópia do GeckoLib 5.5.6. Ele precisa de Minecraft 26.3, Fabric Loader 0.19.5 ou mais recente, e Fabric API 0.161.0+26.3 ou mais recente. Instale no cliente e no servidor.",
+        "Verificado apenas com testes automatizados e clientes de teste, não em partidas multijogador reais.",
+        "O README deste zip ainda repete a redação da V1.7 88213 de que o limite de armazenamento por célula foi aumentado. Essa redação está errada; veja a correção nas notas da V1.7 91209."
+       ]
+      }
+     ]
+    },
     {
      "version": "V1.8 5567",
      "date": "2026-10-31",
