@@ -1,11 +1,53 @@
 {
  "lang": "id",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "Riwayat Pembaruan",
- "updated_label": "Diperbarui 2026-11-03",
+ "updated_label": "Diperbarui 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — Pembaruan dari Tsubomi, Dominasi Sculk & Peluncuran Raid",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — Pembaruan dari Tsubomi, Dominasi Sculk & Peluncuran Raid",
+     "summary": "Tsubomi kini menjadi Hokku V3.5. Dunia lama dimigrasikan secara otomatis, disertai ekspansi Sculk besar dan raid Sculk dengan acara peluncuran 14 hari.",
+     "sections": [
+      {
+       "title": "Fitur Baru",
+       "kind": "new_features",
+       "items": [
+        "Transisi resmi dari Tsubomi ke Hokku V3.5 (ID mod: hokku, build 3.5.20261119). Dunia Tsubomi yang ada dimigrasikan otomatis — termasuk kemajuan, statistik, buku resep, penanda kedalaman, dan data persisten — dilengkapi cadangan di hokku_migration_backup/ dan pemulihan otomatis jika gagal.",
+        "Ekspansi Sculk besar (163 resep baru, GeckoLib 5.5.6 disertakan): penyebaran node dan infestasi Sculk, mob Sculk baru, bos Angel of Reaping, alat pemurnian, ramuan Corroded, dan efek status baru.",
+        "Pembuatan baru melalui Soul Harvester: kumpulkan jiwa dari mob di sekitar untuk menanamkan Diascite, Ferriscite, dan Heart of the Dominion.",
+        "Raid Sculk aktif secara bawaan dengan siklus penuh 8 tahap (pengintaian, gelombang, dan bilah bos). Selama acara peluncuran 14 hari dari 2026-11-19 hingga 2026-12-02 (UTC), raid tetap terkunci aktif."
+       ]
+      },
+      {
+       "title": "Perbaikan Bug",
+       "kind": "bug_fixes",
+       "items": [
+        "Memperbaiki pembersihan target sehingga target yang masuk ke zona bebas raid (No-Raid Zone) dilepas dengan benar dari raid aktif.",
+        "Perintah lama /tsubomi kini diarahkan ke /hokku dan pemuatan cadangan config/tsubomi/depth.json tetap dipertahankan."
+       ]
+      },
+      {
+       "title": "Penyempurnaan",
+       "kind": "refinements",
+       "items": [
+        "Memerlukan Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+, dan Java 25. GeckoLib 5.5.6 sudah dikemas di dalam JAR.",
+        "Kompatibilitas telah diverifikasi bersama Cherry dan OUKA.",
+        "Pengaturan tombol di options.txt tidak dimigrasikan otomatis; atur ulang tombol Hokku sekali jika sebelumnya Anda menyesuaikannya."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — dunia lebih dalam, 70 bijih baru, dan 2000 blok baru",

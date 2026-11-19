@@ -1,0 +1,209 @@
+{
+ "lang": "ja",
+ "brand": "agent",
+ "updated": "2026-11-19",
+ "title": "更新履歴",
+ "updated_label": "最終更新 2026-11-19",
+ "note": "",
+ "groups": [
+  {
+   "label": "V7.0",
+   "summary": "Algorab V7.0 Beta 1",
+   "releases": [
+    {
+     "version": "V7.0 Beta 1",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Algorab V7.0 Beta 1",
+     "summary": "アプリと Algorab Agents のバージョンがひとつになりました。このベータ版では、Core Keeper のサーバー、サーバーごとの自動起動の切り替え、ワールドをより安全に扱う仕組みが加わります。",
+     "sections": [
+      {
+       "title": "新機能",
+       "kind": "new_features",
+       "items": [
+        "アプリと Algorab Agents が同じバージョンになりました。どちらも「V7.0 Beta 1」です。",
+        "Core Keeper のサーバーに対応しました（ベータ版、Windows）。フレンドが参加するときに入力するゲーム ID を、ページに表示します。",
+        "サーバーごとに「自動で起動する」を選べます。Algorab Agents と一緒に起動するサーバーを決められます。",
+        "ARK: Survival Ascended で、複数のマップをひとつのクラスターで動かし、生き物をマップ間で移動できます。",
+        "ゲームサーバーを削除しても、ワールドは残ります。ワールドは別の場所に残され、サーバーのページに一覧で表示されます。もう一度インストールしたとき、または好きなときに、元に戻せます。",
+        "ARK: Survival Ascended の各マップに必要なメモリの目安を、追加する前に表示します。目安がわからないマップは、わからないと表示します。"
+       ]
+      },
+      {
+       "title": "不具合の修正",
+       "kind": "bug_fixes",
+       "items": [
+        "Windows で、一度更新したあとの Algorab Agents が、次の更新に失敗することがありました。修正しました。前回の更新から Algorab Agents を一度も再起動していない場合は、このバージョンを受け取るために、一度だけ再起動してください。",
+        "Algorab Agents の更新で、動いているゲームサーバーが止まることはなくなりました。サーバーが止まり、誰も遊んでいない状態になるまで更新を待ちます。待っていることは、アプリに表示されます。",
+        "Algorab Agents が動いているのに応答しないとき、もう一度起動するよう促すのではなく、応答がないことを表示するようになりました。",
+        "自動起動をオフにしたサーバーは、更新のあともオフのままです。",
+        "ウィンドウの幅が狭いとき、日本語やアラビア語などで、見出しやボタンの文字が切れることがなくなりました。"
+       ]
+      },
+      {
+       "title": "改良",
+       "kind": "refinements",
+       "items": [
+        "サーバーのタブを Algorab Agents のページにまとめました。ドックのサーバーは、アルファベット順に並びます。",
+        "Mod「Halia」の名前が「Iliad」になりました。ワールドと設定は変わりません。",
+        "設定に、アプリと Algorab Agents のバージョンをまとめて表示します。",
+        "アラビア語で、シートと一覧が正しい向きに表示されます。",
+        "リリースノートを、新機能・不具合の修正・改良の 3 つに分けて掲載します。"
+       ]
+      }
+     ],
+     "channel": "beta",
+     "number": "7.0.1",
+     "covers": [
+      "agent"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "6.7",
+   "summary": "ベータ版：生き物の強さ、ARK: Survival Ascended の自動更新、ベータのチャンネル",
+   "releases": [
+    {
+     "version": "6.7.0",
+     "date": "2026-11-16",
+     "type": "release",
+     "title": "ベータ版：生き物の強さ、ARK: Survival Ascended の自動更新、ベータのチャンネル",
+     "summary": "対象：Windows・macOS・Linux",
+     "sections": [
+      {
+       "title": "新機能",
+       "kind": "new_features",
+       "items": [
+        "ARK: Survival Ascendedのゲーム設定に「Creature strength」のグループ（32項目）が加わりました。15種の生き物の与えるダメージと受けるダメージ、野生の最大レベル、6種の自動バランスを設定できます。設定ファイルに手で書いた行は変更されません。",
+        "起動中のARK: Survival Ascendedサーバーが自動で更新できるようになりました。Steamの新しいビルドを2回確認すると、10分前・5分前・1分前にチャットで知らせ、保存して開始し直します。初期状態ではオンで、オフにもできます。",
+        "Algorab Agentsのチャンネルを、安定版とベータ版（とカスタムのアドレス）で切り替えられます。切り替えに再起動は要りません。アプリから切り替えるにはAlgorab Agents 6.7.0が必要です。",
+        "ベータのチャンネルにいるときだけ、Algorab Agentsは、許可した項目と洗い出したSteamの行だけの限られたレポートをAlgorabに送ります。Algorab Agents自身のログや動作ログの文章は送りません。ほかのチャンネルでは何も送りません。"
+       ]
+      },
+      {
+       "title": "改良",
+       "kind": "refinements",
+       "items": [
+        "ARK: Survival Ascendedを導入した直後に起動しても、Steamの更新の手順が2回走らなくなりました。",
+        "待機中の起動は「停止」で取り消せます。起動に失敗したときは、ログとサーバーの状態に残るようになりました。",
+        "公開されている最新版の番号が「6.7.0」のような数字だけでなくても、Algorab Agentsは落ちずに動き続けます。"
+       ]
+      }
+     ],
+     "channel": "beta"
+    }
+   ]
+  },
+  {
+   "label": "6.6",
+   "summary": "ARK: Survival Ascended の起動の修正と、設定名の日本語対応",
+   "releases": [
+    {
+     "version": "6.6.1",
+     "date": "2026-11-15",
+     "type": "release",
+     "title": "ARK: Survival Ascended の起動の修正と、設定名の日本語対応",
+     "summary": "対象：Windows",
+     "sections": [
+      {
+       "title": "不具合の修正",
+       "kind": "bug_fixes",
+       "items": [
+        "ARK: Survival Ascendedサーバーの起動が、Steamが「すでに最新」と答えたときに失敗しなくなりました。",
+        "すでに起動しているARK: Survival Ascendedサーバーで「開始」を押してもエラーにならず、何も起きないようになりました（6.6.0より前の動作に戻りました）。"
+       ]
+      },
+      {
+       "title": "改良",
+       "kind": "refinements",
+       "items": [
+        "Steamに届かずARK: Survival Ascendedサーバーを更新できないときは、入っている版をそのまま起動し、理由をサーバーのログに書くようになりました。以前は起動しませんでした。",
+        "アプリの言語が日本語のとき（言語を選んでいない場合はPCの表示言語が日本語のとき）、アプリ6.2.3のまま、ARK: Survival Ascendedのゲーム設定名（304項目）が日本語で表示されます。新しいグループは「ブリーディング」「レベルごとのステータス」「ジェネシスとミッション」です。表示するには「ゲーム設定」の行を開き直すか、アプリを開き直してください。"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "6.6.0",
+     "date": "2026-11-14",
+     "type": "release",
+     "title": "Algorab Agents 6.6.0",
+     "summary": "対象：Windows",
+     "sections": [
+      {
+       "title": "新機能",
+       "kind": "new_features",
+       "items": [
+        "Windowsで、ARK: Survival Ascendedのゲーム設定が304項目に増え、ブリーディングの設定11項目が含まれます。"
+       ]
+      },
+      {
+       "title": "改良",
+       "kind": "refinements",
+       "items": [
+        "Windowsで、ARK: Survival Ascendedのサーバーが、起動の前にSteamの最新ビルドへ更新されるようになりました。"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "6.5",
+   "summary": "ARK: Survival Ascended は保存してから止まります。マップ選択にも対応",
+   "releases": [
+    {
+     "version": "6.5.1",
+     "date": "2026-11-10",
+     "type": "release",
+     "title": "ARK: Survival Ascended は保存してから止まります。マップ選択にも対応",
+     "summary": "対象：Windows",
+     "sections": [
+      {
+       "title": "新機能",
+       "kind": "new_features",
+       "items": [
+        "Windowsで、ARK: Survival Ascendedのマップを9種（The Island、Scorched Earth、The Center、Extinction、Astraeos、Ragnarok、Valguero、Lost Colony、Genesis）から選べます。マップごとに世界は別で、引き継いだサーバーは最新のセーブのマップを使います。",
+        "Windowsで、飛行生物の速度レベリングの2つの設定が、ARK: Survival Ascendedのゲーム設定に加わりました。設定ファイルのほかの行は変更されません。"
+       ]
+      },
+      {
+       "title": "不具合の修正",
+       "kind": "bug_fixes",
+       "items": [
+        "Windowsで、ARK: Survival Ascendedサーバーを停止・再起動するときに、先に世界を保存するようになりました。以前の6.5.0は保存せずに強制終了していました。保存できなかった場合は従来どおり終了し、アクティビティに「保存せずに停止した」と記録します。"
+       ]
+      }
+     ]
+    },
+    {
+     "version": "6.5.0",
+     "date": "2026-11-10",
+     "type": "release",
+     "title": "ARK: Survival Ascended サーバー対応（Windows）",
+     "summary": "対象：Windows・macOS・Linux",
+     "sections": [
+      {
+       "title": "新機能",
+       "kind": "new_features",
+       "items": [
+        "Windowsで、Algorab AgentsがARK: Survival Ascendedのサーバーを導入・起動・停止できるようになりました。",
+        "Windowsで、ARK: Survival Ascendedのゲーム設定199項目を、Algorab Agents経由で読み書きできます。",
+        "Windowsで、手作業で作ったARK: Survival Ascendedのサーバーのフォルダーを、Algorab Agentsが引き継げます。"
+       ]
+      },
+      {
+       "title": "改良",
+       "kind": "refinements",
+       "items": [
+        "Windowsで、ARK: Survival Ascendedサーバー自身の窓が表示されなくなりました。",
+        "Windowsで、ほかのプログラムが設定ファイルを一瞬開いていても、Algorab Agentsが少し待ってから保存するようになりました。"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

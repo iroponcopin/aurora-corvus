@@ -1,11 +1,53 @@
 {
  "lang": "es",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "Historial de actualizaciones",
- "updated_label": "Actualizado el 2026-11-03",
+ "updated_label": "Actualizado el 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — Evolución de Tsubomi, Dominio Sculk y lanzamiento de incursiones",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — Evolución de Tsubomi, Dominio Sculk y lanzamiento de incursiones",
+     "summary": "Tsubomi ahora es Hokku V3.5. Tus mundos existentes se migran automáticamente mientras llegan una gran expansión de Sculk y las incursiones Sculk con evento de lanzamiento de 14 días.",
+     "sections": [
+      {
+       "title": "Novedades",
+       "kind": "new_features",
+       "items": [
+        "Transición oficial de Tsubomi a Hokku V3.5 (ID de mod: hokku, compilación 3.5.20261119). Los mundos de Tsubomi se migran automáticamente —incluidos logros, estadísticas, libros de recetas, registros de profundidad y datos persistentes— con copias de seguridad en hokku_migration_backup/ y reversión automática ante fallos.",
+        "Nueva gran expansión de Sculk (163 recetas nuevas, GeckoLib 5.5.6 incluido): propagación de nodos e infestación Sculk, nuevos enemigos Sculk, el jefe Ángel de la Siega, herramientas de purificación, pociones corroídas y nuevos efectos de estado.",
+        "Nuevo sistema de fabricación con el Cosechador de Almas (Soul Harvester): reúne almas de criaturas cercanas para forjar Diascite, Ferriscite y el Corazón del Dominio.",
+        "Incursiones Sculk activadas por defecto con un ciclo completo de 8 estados (exploración, oleadas y barra de jefe). Durante el evento de lanzamiento de 14 días (2026-11-19 a 2026-12-02 UTC), las incursiones permanecen bloqueadas en activo."
+       ]
+      },
+      {
+       "title": "Correcciones de errores",
+       "kind": "bug_fixes",
+       "items": [
+        "Se corrigió la limpieza de objetivos para que quienes entren en una zona sin incursiones sean retirados correctamente de la incursión activa.",
+        "El comando anterior /tsubomi redirige ahora a /hokku y se mantiene la lectura de respaldo de config/tsubomi/depth.json."
+       ]
+      },
+      {
+       "title": "Mejoras",
+       "kind": "refinements",
+       "items": [
+        "Requiere Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+ y Java 25. GeckoLib 5.5.6 viene incluido en el JAR.",
+        "Compatibilidad verificada junto con Cherry y OUKA.",
+        "Los atajos de teclado de options.txt no se migran automáticamente; si personalizaste teclas, vuelve a asignarlas una vez para Hokku."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — un mundo más profundo, 70 menas nuevas y 2000 bloques nuevos",

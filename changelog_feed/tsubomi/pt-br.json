@@ -1,11 +1,53 @@
 {
  "lang": "pt-br",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "Histórico de atualizações",
- "updated_label": "Atualizado em 2026-11-03",
+ "updated_label": "Atualizado em 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — De Tsubomi para Hokku, Domínio Sculk e estreia dos ataques",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — De Tsubomi para Hokku, Domínio Sculk e estreia dos ataques",
+     "summary": "Tsubomi agora é Hokku V3.5. Mundos existentes são migrados automaticamente, enquanto esta versão traz uma grande expansão Sculk e ataques Sculk com evento de lançamento de 14 dias.",
+     "sections": [
+      {
+       "title": "Novidades",
+       "kind": "new_features",
+       "items": [
+        "Transição oficial de Tsubomi para Hokku V3.5 (ID do mod: hokku, build 3.5.20261119). Mundos Tsubomi existentes migram automaticamente — incluindo conquistas, estatísticas, livros de receitas, registros de profundidade e dados persistentes — protegidos por backups em hokku_migration_backup/ e reversão automática em caso de falha.",
+        "Grande expansão Sculk (163 novas receitas, GeckoLib 5.5.6 incluído): infestação e propagação de nós Sculk, novos inimigos Sculk, o chefe Anjo da Ceifa, ferramentas de purificação, poções corroídas e novos efeitos de status.",
+        "Nova fabricação no Ceifador de Almas (Soul Harvester): colete almas de criaturas próximas para infundir Diascite, Ferriscite e o Coração do Domínio.",
+        "Ataques Sculk ativados por padrão com ciclo completo de 8 estágios (reconhecimento, ondas e barra de chefe). Durante o evento de lançamento de 14 dias de 2026-11-19 a 2026-12-02 (UTC), os ataques permanecem bloqueados como ativos."
+       ]
+      },
+      {
+       "title": "Correções de bugs",
+       "kind": "bug_fixes",
+       "items": [
+        "Corrigida a limpeza de alvos para remover corretamente quem entrar em uma zona sem ataques (No-Raid Zone).",
+        "O comando antigo /tsubomi agora redireciona para /hokku, mantendo a leitura alternativa de config/tsubomi/depth.json."
+       ]
+      },
+      {
+       "title": "Melhorias",
+       "kind": "refinements",
+       "items": [
+        "Requer Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+ e Java 25. O GeckoLib 5.5.6 já vem embutido no JAR.",
+        "Compatibilidade verificada em conjunto com Cherry e OUKA.",
+        "Os atalhos de teclado em options.txt não são migrados automaticamente; reconfigure as teclas do Hokku uma vez caso as tenha personalizado."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — um mundo mais profundo, 70 minérios novos e 2000 blocos novos",

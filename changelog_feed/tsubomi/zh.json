@@ -1,11 +1,53 @@
 {
  "lang": "zh",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "更新日志",
- "updated_label": "更新于 2026-11-03",
+ "updated_label": "更新于 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — 由 Tsubomi 升级更名，幽匿支配圏与袭击上线",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — 由 Tsubomi 升级更名，幽匿支配圏与袭击上线",
+     "summary": "Tsubomi 现已正式升级为 Hokku V3.5。现有存档支持自动迁移，同时带来大型幽匿扩展内容与附带 14 天首发活动的幽匿袭击。",
+     "sections": [
+      {
+       "title": "新功能",
+       "kind": "new_features",
+       "items": [
+        "由 Tsubomi 正式迁移至 Hokku V3.5（模组 ID：hokku，构建 3.5.20261119）。现有 Tsubomi 存档将自动迁移进度、统计、配方书、深度层记录及持久数据，并在 hokku_migration_backup/ 留存备份，失败时自动回滚。",
+        "新增大型幽匿扩展内容（163 条新配方，内置 GeckoLib 5.5.6）：幽匿侵蚀与节点扩散、多种新幽匿生物、Boss「收割天使」、净化工具、腐蚀药水及全新状态效果。",
+        "新增「灵魂收割机（Soul Harvester）」合成：在附近收集生物灵魂，可灌注生成 Diascite、Ferriscite 与支配圏之心。",
+        "默认开启幽匿袭击，包含侦察、波次进攻与 Boss 血条等完整 8 阶段流程。2026-11-19 至 2026-12-02（UTC）的 14 天首发活动期间，袭击将保持锁定开启。"
+       ]
+      },
+      {
+       "title": "错误修复",
+       "kind": "bug_fixes",
+       "items": [
+        "修复了目标进入禁袭区（No-Raid Zone）时未正确清除袭击目标状态的问题。",
+        "保留旧版 /tsubomi 指令向 /hokku 的跳转指引，并支持自动回退读取 config/tsubomi/depth.json。"
+       ]
+      },
+      {
+       "title": "改进",
+       "kind": "refinements",
+       "items": [
+        "需配合 Minecraft 26.3、Fabric Loader 0.19.5+、Fabric API 0.161.0+26.3+ 与 Java 25 使用；GeckoLib 5.5.6 已打包在 JAR 内，无需额外安装依赖模组。",
+        "已验证可与 Cherry 和 OUKA 同时正常运行。",
+        "options.txt 中的按键绑定不会自动迁移；如曾自定义快捷键，请在 Hokku 中重新绑定一次。"
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — 更深的世界、70 种新矿石和 2000 种新方块",

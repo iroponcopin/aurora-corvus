@@ -1,0 +1,209 @@
+{
+ "lang": "ko",
+ "brand": "agent",
+ "updated": "2026-11-19",
+ "title": "업데이트 기록",
+ "updated_label": "최종 업데이트 2026-11-19",
+ "note": "",
+ "groups": [
+  {
+   "label": "V7.0",
+   "summary": "Algorab V7.0 Beta 1",
+   "releases": [
+    {
+     "version": "V7.0 Beta 1",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Algorab V7.0 Beta 1",
+     "summary": "앱과 Algorab Agents가 이제 하나의 버전을 공유합니다. 이번 베타에는 Core Keeper 서버, 서버별 자동 시작 전환, 월드를 더 안전하게 다루는 기능이 추가됩니다.",
+     "sections": [
+      {
+       "title": "새 기능",
+       "kind": "new_features",
+       "items": [
+        "앱과 Algorab Agents의 버전이 하나로 통일되었습니다. 둘 다 \"V7.0 Beta 1\"입니다.",
+        "Core Keeper 서버를 지원합니다(베타 채널, Windows). 페이지에 친구들이 참가할 때 입력하는 게임 ID를 표시합니다.",
+        "서버마다 \"자동으로 시작\"을 고를 수 있습니다. Algorab Agents와 함께 시작할 서버를 정할 수 있습니다.",
+        "ARK: Survival Ascended에서 여러 맵을 하나의 클러스터에서 실행하고, 맵 사이로 생물을 옮길 수 있습니다.",
+        "게임 서버를 삭제해도 월드는 남습니다. 월드는 따로 보관되어 서버 페이지에 목록으로 표시되며, 서버를 다시 설치할 때 또는 원할 때 되돌릴 수 있습니다.",
+        "ARK: Survival Ascended의 각 맵에 필요한 메모리를 추가하기 전에 보여 줍니다. 값을 알 수 없는 맵은 알 수 없다고 표시합니다."
+       ]
+      },
+      {
+       "title": "버그 수정",
+       "kind": "bug_fixes",
+       "items": [
+        "Windows에서 이전 업데이트 후 Algorab Agents가 스스로 업데이트하지 못할 수 있었습니다. 수정했습니다. 마지막 업데이트 후 Algorab Agents를 한 번도 다시 시작하지 않았다면, 이 버전을 받을 수 있도록 한 번 다시 시작해 주세요.",
+        "Algorab Agents를 업데이트해도 실행 중인 게임 서버가 멈추지 않습니다. 서버가 멈추고 아무도 플레이하지 않을 때까지 업데이트를 기다리며, 앱이 대기 중임을 알려 줍니다.",
+        "Algorab Agents가 실행 중이지만 응답하지 않을 때, 앱이 다시 시작하라고 권하지 않고 응답이 없다고 표시합니다.",
+        "자동 시작을 끈 서버는 업데이트 후에도 꺼진 상태로 남습니다.",
+        "좁은 창에서 일본어, 아랍어 등의 페이지 제목과 버튼 글자가 잘리지 않게 되었습니다."
+       ]
+      },
+      {
+       "title": "개선",
+       "kind": "refinements",
+       "items": [
+        "서버 탭이 Algorab Agents 페이지에 포함되었고, 독의 서버는 알파벳 순서로 나열됩니다.",
+        "모드 Halia의 이름이 Iliad로 바뀌었습니다. 월드와 설정은 바뀌지 않습니다.",
+        "설정에서 앱과 Algorab Agents의 버전을 한곳에서 볼 수 있습니다.",
+        "아랍어에서 시트와 목록이 올바른 방향으로 표시됩니다.",
+        "릴리스 노트가 새 기능, 버그 수정, 개선의 세 부분으로 나뉘어 제공됩니다."
+       ]
+      }
+     ],
+     "channel": "beta",
+     "number": "7.0.1",
+     "covers": [
+      "agent"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "6.7",
+   "summary": "Beta: creature strength, automatic ARK: Survival Ascended updates and the beta channel",
+   "releases": [
+    {
+     "version": "6.7.0",
+     "date": "2026-11-16",
+     "type": "release",
+     "title": "Beta: creature strength, automatic ARK: Survival Ascended updates and the beta channel",
+     "summary": "For Windows, macOS and Linux.",
+     "sections": [
+      {
+       "title": "새 기능",
+       "kind": "new_features",
+       "items": [
+        "The ARK: Survival Ascended game settings have a Creature strength group (32 settings): damage dealt and taken for 15 creature kinds, the wild maximum level, and automatic balancing for 6 kinds. Lines you wrote by hand in the settings file are left alone.",
+        "A running ARK: Survival Ascended server can update itself: when a newer Steam build is confirmed twice, Algorab Agents warns in chat 10, 5 and 1 minutes ahead, saves and restarts. It is on by default and can be switched off.",
+        "Algorab Agents can be switched between the stable and beta channels (and a custom address); the change needs no restart. Switching from the app needs Algorab Agents 6.7.0.",
+        "On the beta channel only, Algorab Agents sends Algorab a limited, scrubbed report (allowed fields and cleaned Steam lines); the Algorab Agents log itself and server log text are not sent. Other channels send nothing."
+       ]
+      },
+      {
+       "title": "개선",
+       "kind": "refinements",
+       "items": [
+        "Starting ARK: Survival Ascended right after installing no longer runs the Steam update step twice.",
+        "A start that is still waiting can be cancelled with Stop, and a failed start is now kept in the log and in the server status.",
+        "Algorab Agents keeps running when the published latest version is not a plain number such as 6.7.0."
+       ]
+      }
+     ],
+     "channel": "beta"
+    }
+   ]
+  },
+  {
+   "label": "6.6",
+   "summary": "ARK: Survival Ascended start fix and Japanese setting names",
+   "releases": [
+    {
+     "version": "6.6.1",
+     "date": "2026-11-15",
+     "type": "release",
+     "title": "ARK: Survival Ascended start fix and Japanese setting names",
+     "summary": "For Windows.",
+     "sections": [
+      {
+       "title": "버그 수정",
+       "kind": "bug_fixes",
+       "items": [
+        "A start of an ARK: Survival Ascended server no longer fails when Steam reports that the server is already up to date.",
+        "Pressing Start on an ARK: Survival Ascended server that is already running no longer produces an error; nothing happens, as before 6.6.0."
+       ]
+      },
+      {
+       "title": "개선",
+       "kind": "refinements",
+       "items": [
+        "If Steam cannot be reached to update the ARK: Survival Ascended server, it now starts the version that is already installed and writes the reason in the server log; before, it did not start.",
+        "ARK: Survival Ascended game setting names (304) now appear in Japanese in app 6.2.3 when the app language is Japanese, or when no language is chosen and the PC is set to Japanese; the new groups are named Breeding, Per-level stats and Genesis and missions in Japanese. Reopen the Game settings row or the app to see them."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "6.6.0",
+     "date": "2026-11-14",
+     "type": "release",
+     "title": "Algorab Agents 6.6.0",
+     "summary": "For Windows.",
+     "sections": [
+      {
+       "title": "새 기능",
+       "kind": "new_features",
+       "items": [
+        "On Windows, the ARK: Survival Ascended game settings grow to 304 settings, including 11 breeding settings."
+       ]
+      },
+      {
+       "title": "개선",
+       "kind": "refinements",
+       "items": [
+        "On Windows, an ARK: Survival Ascended server is now updated to the current Steam build before it starts."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "6.5",
+   "summary": "ARK: Survival Ascended saves before it stops, and map choice",
+   "releases": [
+    {
+     "version": "6.5.1",
+     "date": "2026-11-10",
+     "type": "release",
+     "title": "ARK: Survival Ascended saves before it stops, and map choice",
+     "summary": "For Windows.",
+     "sections": [
+      {
+       "title": "새 기능",
+       "kind": "new_features",
+       "items": [
+        "On Windows, you can choose the ARK: Survival Ascended map from nine (The Island, Scorched Earth, The Center, Extinction, Astraeos, Ragnarok, Valguero, Lost Colony, Genesis); each map keeps its own world, and an adopted server uses the map of its newest save.",
+        "On Windows, two flying-creature speed levelling settings were added to the ARK: Survival Ascended game settings; Algorab Agents writes them without changing the other lines of the settings file."
+       ]
+      },
+      {
+       "title": "버그 수정",
+       "kind": "bug_fixes",
+       "items": [
+        "On Windows, stopping or restarting an ARK: Survival Ascended server now saves the world first; before, 6.5.0 closed it without saving. If the save is not possible it closes as before and the activity log says it stopped without saving."
+       ]
+      }
+     ]
+    },
+    {
+     "version": "6.5.0",
+     "date": "2026-11-10",
+     "type": "release",
+     "title": "ARK: Survival Ascended servers (Windows)",
+     "summary": "For Windows, macOS and Linux.",
+     "sections": [
+      {
+       "title": "새 기능",
+       "kind": "new_features",
+       "items": [
+        "On Windows, Algorab Agents can install, start and stop an ARK: Survival Ascended server.",
+        "On Windows, 199 ARK: Survival Ascended game settings can be read and changed through Algorab Agents.",
+        "On Windows, Algorab Agents can take over an ARK: Survival Ascended server folder you created by hand."
+       ]
+      },
+      {
+       "title": "개선",
+       "kind": "refinements",
+       "items": [
+        "On Windows, the ARK: Survival Ascended server's own window is hidden.",
+        "On Windows, if another program has the settings file open for a moment, Algorab Agents now waits briefly and then saves instead of failing."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

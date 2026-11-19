@@ -1,11 +1,53 @@
 {
  "lang": "ko",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "업데이트 기록",
- "updated_label": "최종 업데이트 2026-11-03",
+ "updated_label": "최종 업데이트 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — Tsubomi에서 새 이름으로, 스컬크 지배권 및 습격 개막",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — Tsubomi에서 새 이름으로, 스컬크 지배권 및 습격 개막",
+     "summary": "Tsubomi가 Hokku V3.5로 새롭게 태어났습니다. 기존 월드 자동 마이그레이션을 지원하며 대규모 스컬크 확장 콘텐츠와 14일 출시 이벤트가 포함된 스컬크 습격을 추가합니다.",
+     "sections": [
+      {
+       "title": "새 기능",
+       "kind": "new_features",
+       "items": [
+        "Tsubomi에서 Hokku V3.5(모드 ID: hokku, 빌드 3.5.20261119)로 정식 전환되었습니다. 발전 과제, 통계, 레시피 책, 깊이 기록, 영구 데이터를 포함한 기존 Tsubomi 월드가 자동 마이그레이션되며 hokku_migration_backup/ 백업과 실패 시 자동 롤백으로 보호됩니다.",
+        "대규모 스컬크 확장(새 레시피 163종, GeckoLib 5.5.6 내장)을 추가했습니다. 스컬크 침식과 노드 확산, 새로운 스컬크 몹, 보스 '수확의 천사', 정화 도구, 부식 포션, 신규 상태 효과가 추가됩니다.",
+        "'영혼 수확기(Soul Harvester)' 제작을 추가했습니다. 주변 몹의 영혼을 모아 Diascite, Ferriscite, 지배권의 심장을 만들 수 있습니다.",
+        "스컬크 습격을 기본 활성화했습니다. 정찰·웨이브·보스 바를 포함한 8단계 진행 주기를 갖추며, 2026-11-19~2026-12-02(UTC) 14일 출시 이벤트 기간 동안 습격이 활성화 상태로 고정됩니다."
+       ]
+      },
+      {
+       "title": "버그 수정",
+       "kind": "bug_fixes",
+       "items": [
+        "대상이 습격 금지 구역(No-Raid Zone)에 들어갈 때 진행 중인 습격 대상에서 올바르게 정리되도록 수정했습니다.",
+        "기존 /tsubomi 명령을 /hokku로 안내·리디렉션하고 config/tsubomi/depth.json 폴백 로드를 유지했습니다."
+       ]
+      },
+      {
+       "title": "개선",
+       "kind": "refinements",
+       "items": [
+        "Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+, Java 25가 필요하며 GeckoLib 5.5.6이 JAR에 포함되어 별도 의존 모드가 필요 없습니다.",
+        "Cherry 및 OUKA와의 동시 실행 호환성을 검증했습니다.",
+        "options.txt의 키 설정은 자동 이전되지 않으므로, 이전에 키를 변경했다면 Hokku 키를 한 번 다시 지정해 주세요."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — 더 깊어진 세계, 새 광석 70종, 새 블록 2000종",

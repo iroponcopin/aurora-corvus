@@ -1,11 +1,53 @@
 {
  "lang": "en",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "Changelog",
- "updated_label": "Updated 2026-11-03",
+ "updated_label": "Updated 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — Renamed from Tsubomi, Sculk Dominion & Raid Launch",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — Renamed from Tsubomi, Sculk Dominion & Raid Launch",
+     "summary": "Tsubomi is now Hokku V3.5. Existing worlds migrate automatically while this release introduces a major Sculk expansion and Sculk raids with a 14-day launch event.",
+     "sections": [
+      {
+       "title": "New Features",
+       "kind": "new_features",
+       "items": [
+        "Transitioned from Tsubomi to Hokku V3.5 (mod ID: hokku, build 3.5.20261119). Existing Tsubomi worlds migrate automatically—including advancements, statistics, recipe books, depth floor stamps, and persistent data—protected by backups in hokku_migration_backup/ and automatic rollback on failure.",
+        "Added a major Sculk expansion (163 new recipes, GeckoLib 5.5.6 bundled): Sculk infestation and node spread, new Sculk mobs (Brood Hatcher, Brood Spitter, Harvester/Infector Bees, Sculk Creeper, Enderman, Witch, Golem of Wrath, and more), the Angel of Reaping boss, purification tools, Corroded potions, and new status effects.",
+        "Added Soul Harvester crafting: gather souls from nearby mobs to infuse Diascite, Ferriscite, and the Heart of the Dominion.",
+        "Enabled Sculk raids by default with a full 8-state raid lifecycle (scouting, waves, and boss bar). During the 14-day launch event from 2026-11-19 through 2026-12-02 (UTC), raids stay locked on."
+       ]
+      },
+      {
+       "title": "Bug Fixes",
+       "kind": "bug_fixes",
+       "items": [
+        "Fixed target cleanup so targets entering a No-Raid Zone are properly cleared from active raids.",
+        "Redirected the legacy /tsubomi command to /hokku and preserved fallback loading for config/tsubomi/depth.json."
+       ]
+      },
+      {
+       "title": "Refinements",
+       "kind": "refinements",
+       "items": [
+        "Requires Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+, and Java 25. GeckoLib 5.5.6 is bundled inside the JAR, so no extra dependency mod is needed.",
+        "Verified to run alongside Cherry and OUKA while keeping incompatible legacy modules blocked.",
+        "Key bindings stored in options.txt are not auto-migrated; if you customized keys previously, rebind Hokku keys once."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — a deeper world, 70 new ores and 2000 new blocks",

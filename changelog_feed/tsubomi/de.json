@@ -1,11 +1,53 @@
 {
  "lang": "de",
  "brand": "tsubomi",
- "updated": "2026-11-03",
+ "updated": "2026-11-19",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-11-03",
+ "updated_label": "Aktualisiert am 2026-11-19",
  "note": "",
  "groups": [
+  {
+   "label": "V3.5",
+   "summary": "Hokku V3.5 — Von Tsubomi zu Hokku, Sculk-Herrschaft & Raid-Start",
+   "releases": [
+    {
+     "version": "V3.5 20261119",
+     "date": "2026-11-19",
+     "type": "release",
+     "title": "Hokku V3.5 — Von Tsubomi zu Hokku, Sculk-Herrschaft & Raid-Start",
+     "summary": "Tsubomi heißt jetzt Hokku V3.5. Bestehende Welten werden automatisch migriert, begleitet von einer großen Sculk-Erweiterung und Sculk-Raids mit 14-tägigem Start-Event.",
+     "sections": [
+      {
+       "title": "Neue Funktionen",
+       "kind": "new_features",
+       "items": [
+        "Offizieller Übergang von Tsubomi zu Hokku V3.5 (Mod-ID: hokku, Build 3.5.20261119). Bestehende Tsubomi-Welten werden automatisch migriert – samt Fortschritten, Statistiken, Rezeptbüchern, Tiefenmarkierungen und persistenten Daten – abgesichert durch Backups in hokku_migration_backup/ und automatisches Rollback im Fehlerfall.",
+        "Große Sculk-Erweiterung (163 neue Rezepte, GeckoLib 5.5.6 integriert): Sculk-Befall und Knoten-Ausbreitung, neue Sculk-Mobs, der Boss Engel der Ernte, Reinigungs-Werkzeuge, Korrosions-Tränke und neue Statuseffekte.",
+        "Neues Handwerk am Seelenernter (Soul Harvester): Sammle Seelen naher Mobs, um Diascite, Ferriscite und das Herz der Herrschaft herzustellen.",
+        "Sculk-Raids standardmäßig aktiviert mit vollständigem 8-Phasen-Ablauf (Späher, Wellen und Bossleiste). Während des 14-tägigen Start-Events vom 2026-11-19 bis 2026-12-02 (UTC) bleiben Raids fest aktiviert."
+       ]
+      },
+      {
+       "title": "Fehlerbehebungen",
+       "kind": "bug_fixes",
+       "items": [
+        "Zielbereinigung korrigiert: Betritt ein Ziel eine raidfreie Zone (No-Raid Zone), wird es sauber aus dem laufenden Raid entfernt.",
+        "Der bisherige Befehl /tsubomi leitet nun auf /hokku um, und config/tsubomi/depth.json wird weiterhin als Fallback geladen."
+       ]
+      },
+      {
+       "title": "Verbesserungen",
+       "kind": "refinements",
+       "items": [
+        "Erfordert Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+ und Java 25. GeckoLib 5.5.6 ist direkt im JAR enthalten.",
+        "Zusammenspiel mit Cherry und OUKA erfolgreich geprüft.",
+        "Tastenbelegungen in options.txt werden nicht automatisch übernommen; falls angepasst, belege die Hokku-Tasten bitte einmal neu."
+       ]
+      }
+     ]
+    }
+   ]
+  },
   {
    "label": "V2.4",
    "summary": "Tsubomi V2.4 5000 — eine tiefere Welt, 70 neue Erze und 2000 neue Blöcke",
