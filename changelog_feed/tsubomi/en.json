@@ -1,15 +1,49 @@
 {
  "lang": "en",
  "brand": "tsubomi",
- "updated": "2026-11-19",
+ "updated": "2026-11-21",
  "title": "Changelog",
- "updated_label": "Updated 2026-11-19",
+ "updated_label": "Updated 2026-11-21",
  "note": "",
  "groups": [
   {
    "label": "V3.5",
-   "summary": "Hokku V3.5 — Renamed from Tsubomi, Sculk Dominion & Raid Launch",
+   "summary": "Hokku V3.5 20261121 — Underground Depth Removed, Y -64 Floor & 70 Ores Rescaled",
    "releases": [
+    {
+     "version": "V3.5 20261121",
+     "date": "2026-11-21",
+     "type": "release",
+     "title": "Hokku V3.5 20261121 — Underground Depth Removed, Y -64 Floor & 70 Ores Rescaled",
+     "summary": "Removed the 2000-block underground depth extension (Y -2032), unified the Overworld floor to standard Y -64 (ceiling Y 1999) for all worlds, and rescaled all 70 Hokku ores into Y -64 to 63.",
+     "sections": [
+      {
+       "title": "New Features",
+       "kind": "new_features",
+       "items": [
+        "Unified Overworld world height to Y -64 through 1999 (height 2064, terrain noise Y -64 to 320) across all worlds, keeping the tall sky build limit while restoring standard terrain generation speed.",
+        "Rescaled all 70 Hokku ores across all 7 rarity tiers into the standard Y -64 to 63 underground range so every ore is obtainable through normal exploration and mining."
+       ]
+      },
+      {
+       "title": "Bug Fixes",
+       "kind": "bug_fixes",
+       "items": [
+        "Removed the 2000-block underground extension and deep chunk floor rewrite that caused heavy chunk generation overhead.",
+        "Kept worlds saved under earlier deep_overworld and shallow_overworld dimension definitions compatible via unified Y -64 to 1999 definitions and dynamic aliases."
+       ]
+      },
+      {
+       "title": "Refinements",
+       "kind": "refinements",
+       "items": [
+        "Removed legacy underground depth configuration files (depth.json, hokku_floor.json) and related deep-floor hooks to streamline world startup and chunk loading.",
+        "Sculk Dominion content and the 14-day launch raid event (2026-11-19 through 2026-12-02 UTC) continue unchanged.",
+        "Requirements remain Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+, and Java 25 (with GeckoLib 5.5.6 bundled)."
+       ]
+      }
+     ]
+    },
     {
      "version": "V3.5 20261119",
      "date": "2026-11-19",

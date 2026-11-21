@@ -1,15 +1,49 @@
 {
  "lang": "tr",
  "brand": "tsubomi",
- "updated": "2026-11-19",
+ "updated": "2026-11-21",
  "title": "Güncelleme Geçmişi",
- "updated_label": "2026-11-19 tarihinde güncellendi",
+ "updated_label": "2026-11-21 tarihinde güncellendi",
  "note": "",
  "groups": [
   {
    "label": "V3.5",
-   "summary": "Hokku V3.5 — Tsubomi'den Hokku'ya Geçiş, Sculk Hâkimiyeti ve Baskın Başlangıcı",
+   "summary": "Hokku V3.5 20261121 — 2000 Blok Derinlik Kaldırıldı, Y -64 Tabanı ve 70 Cevher Yeniden Ölçeklendi",
    "releases": [
+    {
+     "version": "V3.5 20261121",
+     "date": "2026-11-21",
+     "type": "release",
+     "title": "Hokku V3.5 20261121 — 2000 Blok Derinlik Kaldırıldı, Y -64 Tabanı ve 70 Cevher Yeniden Ölçeklendi",
+     "summary": "2000 blokluk yer altı derinlik genişlemesi (Y -2032) kaldırıldı, tüm dünyalarda Üst Dünya tabanı standart Y -64'e (tavan Y 1999) sabitlendi ve 70 Hokku cevherinin tamamı Y -64 ile 63 arasına yeniden yerleştirildi.",
+     "sections": [
+      {
+       "title": "Yeni Özellikler",
+       "kind": "new_features",
+       "items": [
+        "Tüm dünyalarda Üst Dünya yüksekliği Y -64 ile 1999 arasında birleştirildi (yükseklik 2064, arazi gürültüsü Y -64 ile 320); yüksek inşa sınırı korunurken standart chunk oluşturma hızı geri kazanıldı.",
+        "7 nadirlik kademesindeki 70 Hokku cevherinin tamamı standart yer altı aralığı olan Y -64 ile 63 arasına yeniden ölçeklendi."
+       ]
+      },
+      {
+       "title": "Hata Düzeltmeleri",
+       "kind": "bug_fixes",
+       "items": [
+        "Chunk oluşturmayı ciddi biçimde yavaşlatan 2000 blokluk derinlik genişlemesi ve derin chunk yeniden yazma işlemi kaldırıldı.",
+        "Önceki deep_overworld ve shallow_overworld boyut tanımlarıyla kaydedilmiş dünyalar, birleştirilmiş Y -64..1999 tanımları ve dinamik takma adlarla uyumlu biçimde korunur."
+       ]
+      },
+      {
+       "title": "İyileştirmeler",
+       "kind": "refinements",
+       "items": [
+        "Eski derinlik yapılandırmaları (depth.json, hokku_floor.json) ve ilgili kancalar temizlenerek dünya açılışı ve chunk yüklemesi hafifletildi.",
+        "Sculk Hâkimiyeti içeriği ve 14 günlük açılış baskın etkinliği (2026-11-19 – 2026-12-02 UTC) kesintisiz devam eder.",
+        "Gereksinimler değişmedi: Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+ ve Java 25 (GeckoLib 5.5.6 dâhil)."
+       ]
+      }
+     ]
+    },
     {
      "version": "V3.5 20261119",
      "date": "2026-11-19",

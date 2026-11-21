@@ -1,15 +1,49 @@
 {
  "lang": "zh",
  "brand": "tsubomi",
- "updated": "2026-11-19",
+ "updated": "2026-11-21",
  "title": "更新日志",
- "updated_label": "更新于 2026-11-19",
+ "updated_label": "更新于 2026-11-21",
  "note": "",
  "groups": [
   {
    "label": "V3.5",
-   "summary": "Hokku V3.5 — 由 Tsubomi 升级更名，幽匿支配圏与袭击上线",
+   "summary": "Hokku V3.5 20261121 — 废除地下 2000 格扩展、统一底界至 Y -64 并重配全部 70 种矿物",
    "releases": [
+    {
+     "version": "V3.5 20261121",
+     "date": "2026-11-21",
+     "type": "release",
+     "title": "Hokku V3.5 20261121 — 废除地下 2000 格扩展、统一底界至 Y -64 并重配全部 70 种矿物",
+     "summary": "取消主世界地下 2000 格深度扩展（Y -2032），将所有世界的下限统一为标准 Y -64（上限 Y 1999），并把 Hokku 全部 70 种矿物重新分布至 Y -64 至 63。",
+     "sections": [
+      {
+       "title": "新功能",
+       "kind": "new_features",
+       "items": [
+        "所有世界的主世界高度统一为 Y -64 至 1999（总高 2064，地形噪声 Y -64 至 320），保留超高空建筑上限并恢复标准区块生成速度。",
+        "全部 70 种 Hokku 矿物（7 个稀有度层级）已重新调整至标准地下范围 Y -64 至 63，正常探索采矿即可获得全部矿物。"
+       ]
+      },
+      {
+       "title": "错误修复",
+       "kind": "bug_fixes",
+       "items": [
+        "移除了导致区块生成大幅变慢的地下 2000 格扩展与深层区块改写流程。",
+        "通过统一的 Y -64 至 1999 维度定义与动态别名，保持对旧有 deep_overworld 与 shallow_overworld 存档的兼容加载。"
+       ]
+      },
+      {
+       "title": "改进",
+       "kind": "refinements",
+       "items": [
+        "移除了 depth.json、hokku_floor.json 等地下深度配置及相关深层钩子，降低世界启动与加载开销。",
+        "幽匿支配圏内容与 14 天首发袭击活动（2026-11-19 至 2026-12-02 UTC）照常进行。",
+        "环境要求不变：Minecraft 26.3、Fabric Loader 0.19.5+、Fabric API 0.161.0+26.3+ 与 Java 25（内置 GeckoLib 5.5.6）。"
+       ]
+      }
+     ]
+    },
     {
      "version": "V3.5 20261119",
      "date": "2026-11-19",

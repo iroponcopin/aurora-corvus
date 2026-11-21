@@ -1,15 +1,49 @@
 {
  "lang": "id",
  "brand": "tsubomi",
- "updated": "2026-11-19",
+ "updated": "2026-11-21",
  "title": "Riwayat Pembaruan",
- "updated_label": "Diperbarui 2026-11-19",
+ "updated_label": "Diperbarui 2026-11-21",
  "note": "",
  "groups": [
   {
    "label": "V3.5",
-   "summary": "Hokku V3.5 — Pembaruan dari Tsubomi, Dominasi Sculk & Peluncuran Raid",
+   "summary": "Hokku V3.5 20261121 — Penghapusan Kedalaman 2000 Blok, Dasar Y -64 & Penataan Ulang 70 Bijih",
    "releases": [
+    {
+     "version": "V3.5 20261121",
+     "date": "2026-11-21",
+     "type": "release",
+     "title": "Hokku V3.5 20261121 — Penghapusan Kedalaman 2000 Blok, Dasar Y -64 & Penataan Ulang 70 Bijih",
+     "summary": "Perluasan bawah tanah 2000 blok (Y -2032) dihapus, dasar Overworld disatukan ke standar Y -64 (batas atas Y 1999) untuk semua dunia, dan seluruh 70 bijih Hokku ditata ulang ke rentang Y -64 hingga 63.",
+     "sections": [
+      {
+       "title": "Fitur Baru",
+       "kind": "new_features",
+       "items": [
+        "Tinggi Overworld disatukan menjadi Y -64 hingga 1999 (tinggi 2064, noise medan Y -64 hingga 320) di semua dunia, mempertahankan batas bangun langit yang tinggi sekaligus mengembalikan kecepatan pembuatan chunk standar.",
+        "Seluruh 70 bijih Hokku di semua 7 tingkat kelangkaan ditata ulang ke rentang bawah tanah standar Y -64 hingga 63."
+       ]
+      },
+      {
+       "title": "Perbaikan Bug",
+       "kind": "bug_fixes",
+       "items": [
+        "Menghapus perluasan kedalaman 2000 blok dan penulisan ulang chunk dalam yang sebelumnya memperlambat pembuatan dunia.",
+        "Menjaga kompatibilitas dunia yang disimpan dengan definisi dimensi deep_overworld dan shallow_overworld sebelumnya melalui definisi terpadu Y -64 hingga 1999 dan alias dinamis."
+       ]
+      },
+      {
+       "title": "Penyempurnaan",
+       "kind": "refinements",
+       "items": [
+        "Menghapus file konfigurasi kedalaman lama (depth.json, hokku_floor.json) beserta kait terkait agar startup dan pemuatan chunk lebih ringan.",
+        "Konten Dominasi Sculk dan acara raid peluncuran 14 hari (2026-11-19 hingga 2026-12-02 UTC) tetap berjalan seperti biasa.",
+        "Persyaratan tetap sama: Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+, dan Java 25 (termasuk GeckoLib 5.5.6)."
+       ]
+      }
+     ]
+    },
     {
      "version": "V3.5 20261119",
      "date": "2026-11-19",

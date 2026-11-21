@@ -1,15 +1,49 @@
 {
  "lang": "es",
  "brand": "tsubomi",
- "updated": "2026-11-19",
+ "updated": "2026-11-21",
  "title": "Historial de actualizaciones",
- "updated_label": "Actualizado el 2026-11-19",
+ "updated_label": "Actualizado el 2026-11-21",
  "note": "",
  "groups": [
   {
    "label": "V3.5",
-   "summary": "Hokku V3.5 — Evolución de Tsubomi, Dominio Sculk y lanzamiento de incursiones",
+   "summary": "Hokku V3.5 20261121 — Fin de la profundidad de 2000 bloques, suelo en Y -64 y 70 minerales reajustados",
    "releases": [
+    {
+     "version": "V3.5 20261121",
+     "date": "2026-11-21",
+     "type": "release",
+     "title": "Hokku V3.5 20261121 — Fin de la profundidad de 2000 bloques, suelo en Y -64 y 70 minerales reajustados",
+     "summary": "Se eliminó la extensión subterránea de 2000 bloques (Y -2032), se unificó el suelo del Mundo Normal en Y -64 (techo Y 1999) para todos los mundos y se reubicaron los 70 minerales de Hokku entre Y -64 y 63.",
+     "sections": [
+      {
+       "title": "Novedades",
+       "kind": "new_features",
+       "items": [
+        "Altura del Mundo Normal unificada de Y -64 a 1999 (altura 2064, ruido de terreno de Y -64 a 320) en todos los mundos, conservando el límite de construcción en altura y recuperando la velocidad estándar de generación.",
+        "Los 70 minerales de Hokku (7 niveles de rareza) se reajustaron dentro del rango subterráneo estándar de Y -64 a 63."
+       ]
+      },
+      {
+       "title": "Correcciones de errores",
+       "kind": "bug_fixes",
+       "items": [
+        "Se eliminaron la extensión subterránea de 2000 bloques y la reescritura profunda de chunks que ralentizaban la generación del mundo.",
+        "Se mantuvo la compatibilidad con mundos guardados con las definiciones anteriores deep_overworld y shallow_overworld mediante la definición unificada Y -64 a 1999 y alias dinámicos."
+       ]
+      },
+      {
+       "title": "Mejoras",
+       "kind": "refinements",
+       "items": [
+        "Se retiraron la configuración de profundidad subterránea (depth.json, hokku_floor.json) y los ganchos asociados para aligerar el arranque y la carga de chunks.",
+        "El contenido del Dominio Sculk y el evento de incursiones de 14 días (2026-11-19 a 2026-12-02 UTC) continúan sin cambios.",
+        "Los requisitos se mantienen: Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+ y Java 25 (con GeckoLib 5.5.6 incluido)."
+       ]
+      }
+     ]
+    },
     {
      "version": "V3.5 20261119",
      "date": "2026-11-19",

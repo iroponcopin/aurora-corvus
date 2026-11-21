@@ -1,15 +1,49 @@
 {
  "lang": "de",
  "brand": "tsubomi",
- "updated": "2026-11-19",
+ "updated": "2026-11-21",
  "title": "Änderungsprotokoll",
- "updated_label": "Aktualisiert am 2026-11-19",
+ "updated_label": "Aktualisiert am 2026-11-21",
  "note": "",
  "groups": [
   {
    "label": "V3.5",
-   "summary": "Hokku V3.5 — Von Tsubomi zu Hokku, Sculk-Herrschaft & Raid-Start",
+   "summary": "Hokku V3.5 20261121 — 2000-Block-Tiefe entfernt, Boden auf Y -64 vereinheitlicht & 70 Erze neu skaliert",
    "releases": [
+    {
+     "version": "V3.5 20261121",
+     "date": "2026-11-21",
+     "type": "release",
+     "title": "Hokku V3.5 20261121 — 2000-Block-Tiefe entfernt, Boden auf Y -64 vereinheitlicht & 70 Erze neu skaliert",
+     "summary": "Die 2000-Block-Tiefenerweiterung (Y -2032) wurde abgeschafft, der Boden der Oberwelt für alle Welten auf den Standard Y -64 (Obergrenze Y 1999) vereinheitlicht und alle 70 Hokku-Erze in den Bereich Y -64 bis 63 verschoben.",
+     "sections": [
+      {
+       "title": "Neue Funktionen",
+       "kind": "new_features",
+       "items": [
+        "Die Höhe der Oberwelt ist nun für alle Welten einheitlich Y -64 bis 1999 (Höhe 2064, Geländerauschen Y -64 bis 320) – das hohe Baulimit bleibt erhalten, während die normale Chunk-Generierungsgeschwindigkeit zurückkehrt.",
+        "Alle 70 Hokku-Erze aller 7 Seltenheitsstufen wurden in den regulären Untergrundbereich von Y -64 bis 63 neu skaliert."
+       ]
+      },
+      {
+       "title": "Fehlerbehebungen",
+       "kind": "bug_fixes",
+       "items": [
+        "Die 2000-Block-Tiefenerweiterung und das tiefe Umschreiben von Chunks, die die Weltgenerierung stark verlangsamten, wurden entfernt.",
+        "Welten mit bisherigen deep_overworld- und shallow_overworld-Dimensionstypen bleiben über die einheitliche Definition Y -64 bis 1999 und dynamische Aliase kompatibel."
+       ]
+      },
+      {
+       "title": "Verbesserungen",
+       "kind": "refinements",
+       "items": [
+        "Alte Tiefenkonfigurationen (depth.json, hokku_floor.json) und zugehörige Hooks wurden entfernt, um Weltstart und Chunk-Laden zu verschlanken.",
+        "Die Inhalte der Sculk-Herrschaft und das 14-tägige Raid-Start-Event (2026-11-19 bis 2026-12-02 UTC) laufen unverändert weiter.",
+        "Systemanforderungen bleiben Minecraft 26.3, Fabric Loader 0.19.5+, Fabric API 0.161.0+26.3+ und Java 25 (inkl. GeckoLib 5.5.6)."
+       ]
+      }
+     ]
+    },
     {
      "version": "V3.5 20261119",
      "date": "2026-11-19",
